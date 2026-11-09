@@ -4190,4 +4190,2607 @@ NS:AddTexts("itIT", {
 		"La paura sa sempre esattamente quanto è grossa la minaccia. È solo pessima a prendere le mie misure.",
 		"La mia paura vede benissimo ogni pericolo, e me per niente.",
 	},
+	["muse.w12.coin.001"] = {
+		"Ogni prezzo è fatto delle ore di qualcuno. Più gli stivali costano poco, più a lungo qualcuno li ha cuciti per meno.",
+		"Dietro qualsiasi cifra ci sono due mani e una giornata di lavoro. A buon mercato vuol dire solo che a quelle mani è toccato meno.",
+	},
+	["muse.w12.coin.002"] = {
+		"Sto mettendo da parte monete per qualcosa. Cosa, non lo ricordo più. Il risparmio è sopravvissuto al motivo e tira dritto lo stesso.",
+		"In fondo allo zaino c'è un gruzzoletto destinato a un acquisto che ho scordato da un pezzo. Continuo a dargli da mangiare per affetto.",
+	},
+	["muse.w12.coin.003"] = {
+		"Tengo una moneta d'argento nello stivale per il giorno peggiore. Se mi seppelliranno con lei ancora lì, vorrà dire che quel giorno non è mai venuto. La moneta migliore che non spenderò.",
+		"Una sola moneta d'argento, nascosta a parte, per quando andrà tutto storto. Ogni volta che controllo e la ritrovo al suo posto è una piccola vittoria.",
+	},
+	["muse.w12.coin.004"] = {
+		"Con la borsa piena la generosità mi viene facile. Con la borsa vuota scopro opinioni fermissime sul risparmio. I miei principi stanno sempre a un passo dalle mie monete.",
+		"Buffo come la mia generosità salga e scenda insieme alla borsa, mentre le mie prediche sul risparmio fanno esattamente il contrario.",
+	},
+	["muse.w12.coin.005"] = {
+		"Lascio una moneta di rame per chi sparecchia. È il modo più economico che conosca per restare una persona per bene.",
+		"Accanto al piatto lascio una moneta per chi pulirà dopo di me. Prezzo modesto, pur di non diventare gente che se ne scorda.",
+		"Chi pulisce dopo di me si prende una moneta. C'entra meno chi la riceve che la persona che diventerei senza quest'abitudine.",
+	},
+	["muse.w12.coin.006"] = {
+		"L'oro pesa più di quanto ammettano le canzoni. Nessuno che canti di tesori ha mai dovuto portarselo su per una rampa di scale.",
+		"Nelle ballate il tesoro non pesa niente. In un sacco pesa parecchio, e a ogni passo tintinna come una confessione.",
+	},
+	["muse.w12.coin.007"] = {
+		"Certi giorni lascio vincere il mercante. Un affare fa piacere solo se tutti e due possono ancora permettersi la cena.",
+		"In ogni contrattazione c'è un punto in cui vincere diventa prendere. Cerco di fermarmi un passo prima.",
+	},
+	["muse.w12.coin.008"] = {
+		"Tutti hanno un prezzo, si sente dire. Il mio vorrei scoprirlo prima che lo scopra qualcun altro.",
+		"Se è vero che chiunque si può comprare, voglio conoscere la mia cifra prima degli altri, per avere il rifiuto già pronto quando arriva l'offerta.",
+	},
+	["muse.w12.coin.009"] = {
+		"Il lavoro onesto paga poco, ma continua a pagare. Quello storto paga benissimo, più o meno una volta.",
+		"Il guadagno sporco arriva in un'unica manciata, e poi mai più. Quello pulito gocciola per sempre. So bene quale preferisco contare.",
+		"Un lavoro storto paga per una stagione. Uno onesto paga per una vita intera, poche monete per volta.",
+	},
+	["muse.w12.coin.010"] = {
+		"L'oro messo in una tomba fa una cosa sola: aspetta un ladro. Nella mia, se verrà il momento, meglio niente che valga la fatica di scavare.",
+		"Quando sarà ora, che mi seppelliscano senza una moneta. L'oro nelle tombe insegna solo al prossimo ladro dove scavare.",
+	},
+	["muse.w12.coin.011"] = {
+		"Non riuscirei mai a tenermi una moneta portafortuna. Prima o poi diventerebbe pane, e la fortuna finirebbe mangiata con lei.",
+		"La moneta portafortuna è un'idea splendida, per chi non ha mai fame.",
+	},
+	["muse.w12.coin.012"] = {
+		"Non sono {g:povero|povera}. Sono tra una fortuna e l'altra.",
+		"Al verde? Ma no. Mi riposo tra due fortune.",
+		"Povertà è una parola così definitiva. Diciamo che la fortuna è in ritardo.",
+	},
+	["muse.w12.coin.014"] = {
+		"Una moneta regalata non mi manca mai. Una persa da una tasca bucata la piango per una settimana. È la stessa moneta: a cambiare sono io.",
+		"Se perdo una moneta di rame mi tormenta per giorni. Se la regalo, a cena l'ho già dimenticata. La moneta non vede la differenza; io sì.",
+	},
+	["muse.w12.coin.015"] = {
+		"Una moneta di rame, da sola, non sfama nessuno. Prima deve diventare pane, e in quel passaggio c'è un fornaio che si è alzato prima di tutti.",
+		"Le monete sono solo promesse di pane. La ricchezza vera è il fornaio, già all'opera quando il resto del mondo dorme ancora.",
+	},
+	["muse.w12.coin.016"] = {
+		"Avere già pronte le monete giuste, senza resto da aspettare: un trionfo minuscolo che nessun altro noterà mai.",
+		"Pagare con la cifra esatta mi dà più soddisfazione di quanto dovrebbe. Le piccole vittorie restano vittorie.",
+	},
+	["muse.w12.coin.017"] = {
+		"Non conto mai il resto davanti al mercante: mi sembra di dargli del bugiardo in faccia. Lo conto dietro l'angolo, come fanno i vigliacchi.",
+		"Contare il resto al banco è un piccolo insulto. Così lo conto qualche passo più in là, dove a guardarmi c'è solo la coscienza.",
+	},
+	["muse.w12.coin.018"] = {
+		"Le guerre si pagano due volte. Una in oro, da chi le comincia. Una in tutto il resto, da chi non le ha volute.",
+		"Chi comincia una guerra la salda in monete. Chi non l'ha mai chiesta la salda con tutto quello che gli restava.",
+	},
+	["muse.w12.coin.019"] = {
+		"Le poche monete d'argento messe da parte non servono davvero a comprare. Comprano il diritto di dire di no a un lavoro che non mi convince.",
+		"I risparmi, per me, sono soprattutto la libertà di rifiutare. Una borsa vuota dice di sì a tutto.",
+		"Ogni moneta che non spendo è un piccolo no che tengo in tasca, pronto per quando servirà.",
+	},
+	["muse.w12.coin.020"] = {
+		"Se devi abbastanza alla persona sbagliata, comincia a decidere lei dove dormi, cosa fai, a chi sorridi. Il debito è un guinzaglio dalla voce gentile.",
+		"Un debito grosso è una catena che ci si mette da soli, un anello per ogni firma.",
+	},
+	["muse.w12.coin.021"] = {
+		"Nessuno ha mai il resto per una moneta d'oro. L'oro è la moneta che rende tutti poveri, per un istante.",
+		"Tira fuori una moneta d'oro e guarda l'intera bottega rovesciarsi le tasche. Le monete grosse sono un fastidio travestito da ricchezza.",
+		"L'oro è meraviglioso, finché non provi a comprarci una mela.",
+	},
+	["muse.w12.coin.022"] = {
+		"Ho deciso come spendere una fortuna così tante volte che, se mai ne arrivasse una vera, mi sembrerebbe di farlo per la seconda volta.",
+		"Nella mia testa ho già speso una dozzina di fortune, con gran giudizio. Peccato che nessuna fosse vera: avrei dato prova di un buonsenso ammirevole.",
+	},
+	["muse.w12.coin.023"] = {
+		"Pagare il pasto a uno sconosciuto mi fa stare meglio che mangiare il mio. Non lo faccio abbastanza spesso da capirne il perché.",
+		"Offrire la cena a qualcun altro lascia un tepore curioso. Costa meno di quasi tutti i piaceri, e capita meno di quanto dovrebbe.",
+	},
+	["muse.w12.coin.024"] = {
+		"Chi presta ricorda la cifra fino all'ultima moneta. Chi riceve ricorda la gentilezza e perde il numero. Tutti e due si credono giusti.",
+		"Chi presta tiene i conti, chi riceve tiene i sentimenti. Per questo tanti prestiti finiscono in liti che nessuno sa sciogliere.",
+		"Un prestito è un unico fatto che si ricorda come due storie diverse.",
+	},
+	["muse.w12.coin.025"] = {
+		"L'interesse è l'unica cosa che conosco capace di lavorare mentre il padrone dorme. Io, purtroppo, sto sempre dalla parte sbagliata.",
+		"Chissà dove, il debito di qualcuno lievita piano al buio, come pasta da pane. Spero tanto che non sia il mio.",
+	},
+	["muse.w12.coin.026"] = {
+		"Questo non è un prezzo. È una minaccia con dei numeri dentro.",
+		"Volevi davvero dire quella cifra ad alta voce?",
+	},
+	["muse.w12.coin.027"] = {
+		"Il ferro ricorda la forgia, la pietra ricorda la montagna. L'oro non ricorda nulla, se non il desiderio che ha acceso.",
+		"Ogni metallo serba qualcosa del luogo da cui viene. L'oro serba soltanto le mani che lo hanno afferrato.",
+	},
+	["muse.w12.coin.028"] = {
+		"Accettare la carità è più difficile che farla. Il segreto è dire grazie senza calcolare quanto sia costata a chi la dà.",
+		"Quando qualcuno mi aiuta con del denaro, cerco di accettare con garbo: un grazie, un cenno, e nessun conto in testa su quanto potesse permetterselo.",
+	},
+	["muse.w12.coin.029"] = {
+		"Quasi tutto ciò che mi tiene in vita costa pochissimo: acqua, una striscia di stoffa pulita, un attimo di attenzione. Le cose care servono soprattutto a fare figura.",
+		"Fruga nel mio zaino: le cose più economiche sono quelle che mi tengono a galla. Quelle costose stanno lì per impressionare gente che non chiede mai niente.",
+	},
+	["muse.w12.coin.030"] = {
+		"Quello che lascerò non riempirà una borsa. Mi accontento che riempia una frase o due sulla bocca di qualcuno.",
+		"Il mio patrimonio, se così si può chiamare, sta in una mano. Spero che il resto di me stia in una parola gentile.",
+	},
+	["muse.w12.coin.031"] = {
+		"I dadi sono i ladri più onesti che esistano. Ti prendono le monete senza mai fingere di farti un favore.",
+		"Il gioco d'azzardo ha almeno la decenza di derubarti apertamente. Parecchi mercanti avrebbero da imparare dai dadi.",
+		"Se perdi ai dadi, almeno sai con chi prendertela. Se perdi con un mercante sorridente, lo ringrazi pure uscendo.",
+	},
+	["muse.w12.coin.033"] = {
+		"In questo momento qualcuno sta vendendo una cosa che aveva giurato di non vendere mai. Quel prezzo lo fissa la fame, e la fame non tratta.",
+		"Gli affari più tristi li concludono quelli che non hanno più scelta. La cifra la detta la fame, e chi vende fa sì con la testa.",
+	},
+	["muse.w12.coin.034"] = {
+		"Ogni bilancia da mercante pende di un capello verso il padrone. Non proprio disonestà. Solo un peso con le sue idee.",
+		"Le bilance delle botteghe sono bestiole fedeli. Sembrano sempre sapere su quale banco stanno.",
+		"Nessuno ha mai visto una bilancia pendere verso il cliente. Certi misteri sono più semplici di come sembrano.",
+	},
+	["muse.w12.coin.035"] = {
+		"C'è qualcuno che rade una scaglia dalle monete d'argento prima di rimetterle in giro. Un furto paziente. Quasi ne rispetto la pazienza.",
+		"Passa il pollice sul bordo di una moneta e ogni tanto la trovi rosicchiata. Qualche ladro con una lima e tutto il tempo del mondo.",
+	},
+	["muse.w12.coin.036"] = {
+		"Un regalo che non mi costa niente non è davvero un regalo. Quel piccolo pizzico mentre lo porgo è il segno che vale.",
+		"Se dare non brucia un poco, ho solo fatto ordine nelle tasche. Il bruciore è il dono.",
+	},
+	["muse.w12.coin.037"] = {
+		"Le ricompense promesse sono sempre forzieri. Quelle consegnate sono sempre borsellini. Strada facendo, la ricompensa si mette a dieta.",
+		"Una ricompensa suona d'oro quando la offrono e tintinna di rame quando la pagano. La differenza si chiama spese.",
+		"Le ricompense si restringono nel tragitto dalla promessa al palmo, come lana lavata troppo calda.",
+	},
+	["muse.w12.coin.038"] = {
+		"C'è chi paga in ringraziamenti e chi in monete. Chi paga in tutte e due è raro, e me li ricordo uno per uno.",
+		"Denaro o gratitudine: quasi tutti ne scelgono uno. Chi li dà entrambi mi resta in mente molto dopo che le monete sono finite.",
+	},
+	["muse.w12.coin.039"] = {
+		"Non so mai quanto chiedere quando qualcuno vuole una mano. Troppo, ed è brigantaggio; troppo poco, ed è dabbenaggine. Così non chiedo niente e brontolo dopo.",
+		"Dare un prezzo al mio lavoro è il conto più difficile che esista. Di solito lo arrotondo per difetto, fino a un'alzata di spalle.",
+	},
+	["muse.w12.coin.040"] = {
+		"Condonare un debito è l'unico acquisto che non ho mai rimpianto. Costa esattamente quanto mi spettava e compra qualcosa a cui non so dare un nome.",
+		"Abbuona a qualcuno quello che ti deve e guarda le sue spalle che si abbassano. Nessuna moneta incassata ha mai fatto un effetto così.",
+		"Cancellare quello che qualcuno mi deve è l'unica spesa che mi alleggerisce nel modo giusto.",
+	},
+	["muse.w12.coin.041"] = {
+		"Ogni tanto salta fuori una vecchia moneta, battuta per un regno che non c'è più. Il mercante la accetta a peso. Il regno non c'entra.",
+		"Passano ancora di mano, le monete dei regni caduti, purché pesino abbastanza. La bilancia di un mercante non porta il lutto per nessuno.",
+	},
+	["muse.w12.coin.042"] = {
+		"Prima di ogni acquisto celebro un piccolo processo nella mia testa. La borsa accusa, i piedi difendono, e il verdetto è sempre: stivali.",
+		"Ogni volta che desidero qualcosa, nella mia testa si riunisce un tribunale: bisogno contro voglia, e la borsa a fare da giudice. Una giudice spietata, la borsa.",
+	},
+	["muse.w12.coin.043"] = {
+		"L'invidia è la cosa più cara che non compro mai. Eppure trova sempre il modo di mandarmi il conto.",
+		"L'invidia non la compro, ma me la consegnano lo stesso, e la fanno pagare a ore.",
+		"L'invidia è un acquisto a credito: nessuna moneta sul momento, e un conto lungo dopo.",
+	},
+	["muse.w12.coin.044"] = {
+		"Facili da contare e difficili da tenere: così sono le monete. Gli amici, il contrario.",
+		"Ti so dire cosa c'è nella mia borsa fino all'ultimo spicciolo. Quanti amici ho, sinceramente, non saprei. Forse è giusto così.",
+		"Il denaro scivola tra le dita. Gli amici, quelli buoni, si attaccano come lappole.",
+	},
+	["muse.w12.coin.045"] = {
+		"Ogni avviso con una taglia sulla testa di qualcuno mi fa chiedere chi stabilisca la cifra, e cosa scriverebbe sotto il mio nome.",
+		"C'è chi decide quanto vale una vita in monete d'argento e la inchioda a un palo. Non vorrei conoscere la mia cifra. Ancora meno vorrei trovarla bassa.",
+	},
+	["muse.w12.coin.046"] = {
+		"Un prezzo giusto è quello di cui si lamentano tutti e due. Così lo riconosci.",
+		"Se dopo nessuno tiene il broncio, qualcuno è stato imbrogliato.",
+		"Se compratore e venditore se ne vanno tutti e due un po' scontenti, il prezzo era giusto.",
+	},
+	["muse.w12.coin.047"] = {
+		"I soldi parlano, dicono. I miei sussurrano solo scuse.",
+		"Le mie monete non parlano. Si schiariscono la voce e se ne vanno.",
+	},
+	["muse.w12.coin.048"] = {
+		"Qualunque cosa costi, costa meno che farne a meno.",
+		"Prendi quello buono. Arrangiarsi senza è sempre la scelta più cara.",
+	},
+	["muse.w12.coin.049"] = {
+		"Tieni il resto. È minuscolo, come la mia borsa: finirebbero per litigare.",
+		"No, tienilo tu. Io e gli spiccioli non siamo mai andati d'accordo.",
+	},
+	["muse.w12.coin.050"] = {
+		"Ben vengano le monete. E il pane pure. Un grazie fa piacere più di tutto, ed è l'unica cosa su cui nessuno contratta.",
+		"Si paga quel che si può. Il resto lo salda un grazie.",
+	},
+	["muse.w12.coin.063"] = {
+		"Chi mi ha offerto da mangiare più in fretta, quasi sempre, era chi poteva permetterselo meno. Conosceva il prezzo della fame meglio di quello del pane.",
+		"La generosità scorre al contrario: meno monete, più mani aperte.",
+		"Chi ha meno da dare è spesso il primo a darlo. Ho smesso di stupirmene e ho cominciato a prendere appunti.",
+	},
+	["muse.w12.coin.064"] = {
+		"Ho visto gente con oro d'avanzo più in ansia di me con tre monete di rame. La preoccupazione, pare, cresce insieme al mucchio.",
+		"Le grandi fortune arrivano con grandi serrature, grandi guardie e grandi musi lunghi. Mi tengo la mia borsetta e le mie preoccupazioni piccole.",
+	},
+	["muse.w12.coin.065"] = {
+		"Lo spreco è l'unico lusso che non posso permettermi, e l'unico che non mi manca mai.",
+		"Buttare via le cose buone è un'abitudine da ricchi. Non ne ho mai avuto i mezzi, e non ne ho mai sentito la mancanza.",
+	},
+	["muse.w12.coin.066"] = {
+		"Una bustarella è un prezzo che si vergogna di se stesso.",
+		"Le mazzette sono prezzi che non guardano nessuno negli occhi.",
+		"Ogni mazzetta è un affare concluso sottovoce, perché ad alta voce non sopravvivrebbe.",
+	},
+	["muse.w12.coin.067"] = {
+		"Paga e valore non si incontrano quasi mai. Le persone migliori che ho conosciuto erano quasi sempre le meno pagate.",
+		"Nessuno di quelli con cui ho lavorato era pagato quanto valeva. Quasi tutti meritavano di più. Qualcuno meritava una bella strigliata.",
+	},
+	["muse.w12.coin.068"] = {
+		"Una moneta è un pezzetto di metallo che tutti hanno deciso di prendere sul serio. Se il mondo intero si scordasse l'accordo in un colpo, avrei in mano un bottone.",
+		"Il rame vale una pagnotta solo perché il fornaio conta che ci creda anche il mugnaio. Tutto il commercio è una catena di persone che si fidano delle ipotesi altrui.",
+	},
+	["muse.w12.coin.069"] = {
+		"Il rame diventa verde se lo trascuri. L'oro non cambia mai. Forse per questo mi fido di più del rame: ammette i suoi anni.",
+		"L'oro resta lucido per sempre, ed è un po' sospetto. Il rame si scurisce come una faccia onesta.",
+	},
+	["muse.w12.coin.070"] = {
+		"La prima moneta d'oro di un bottino si guadagna sempre una seconda occhiata, come se potesse tornare rame appena sbatto le palpebre.",
+		"Tra gli spiccioli di rame, l'oro va sempre guardato due volte. Una parte di me si aspetta uno scherzo.",
+	},
+	["muse.w12.coin.071"] = {
+		"Se un giorno qualcuno mi ruba la borsa, spero ne avesse più bisogno di me. Se no, spero che fosse leggera.",
+		"A chi un giorno mi sfilerà la borsa: che ti sfami, se hai fame, e che ti deluda, se non ce l'hai.",
+	},
+	["muse.w12.coin.072"] = {
+		"Chi cura per niente viene pagato lo stesso: pane lasciato sulla soglia, un tetto aggiustato senza chiedere. Il denaro gira; cambia solo forma.",
+		"Non tutti i debiti si saldano in argento. Alcuni si pagano in legna da ardere, in uno steccato rimesso in piedi, in una pentola di zuppa al momento giusto.",
+	},
+	["muse.w12.coin.073"] = {
+		"Se un giorno qualcuno mi salverà la vita, cosa gli dovrò? Non monete, credo. Una gentilezza lunga e un po' goffa, senza scadenza.",
+		"Non esiste borsa abbastanza grande per pagare un salvataggio. Si paga in lealtà, piano piano, finché si campa tutti e due.",
+	},
+	["muse.w12.coin.074"] = {
+		"Un affare chiuso con una stretta di mano vale quanto due memorie. La mia regge. È l'altra che mi preoccupa.",
+		"La stretta di mano va benissimo. Poi però si mette per iscritto, caso mai l'altra mano dimenticasse.",
+	},
+	["muse.w12.coin.075"] = {
+		"Detesto chiedere in prestito. Ogni incontro con chi mi ha prestato diventa una piccola scusa.",
+		"Basta dovere a qualcuno qualche moneta e non riesci più a incrociarlo senza che lo sguardo ti scivoli altrove.",
+	},
+	["muse.w12.coin.076"] = {
+		"C'è chi passa la vita a risparmiare per una vita migliore e finisce sepolto con i risparmi. Io vorrei almeno comprarmi prima un bel cappello.",
+		"Un gruzzolo tenuto per dopo ha il vizio di sopravvivere al dopo.",
+	},
+	["muse.w12.coin.077"] = {
+		"Un rotolo di corda costa poche monete su una bancarella e vale una vita sull'orlo di un precipizio. Il prezzo è quanto costa; il valore è quando ti serve.",
+		"Niente ha un prezzo solo. Un otre d'acqua costa poco, fino al giorno in cui è l'unica cosa tra te e la fine.",
+		"Il prezzo si fissa al banco. Il valore si fissa dopo, là dove le cose vanno storte.",
+	},
+	["muse.w12.coin.078"] = {
+		"Chissà dove, una guardia sta facendo un lungo turno per una manciata d'argento a settimana. Mezza sicurezza del mondo si compra a quel prezzo, e nessuno dice grazie.",
+		"Ogni strada tranquilla è pagata col salario di qualcuno, e non è mai un salario alto.",
+	},
+	["muse.w12.coin.079"] = {
+		"Si sono riscattati re con forzieri d'oro. Per un contadino nessuno ha mai pagato un riscatto, eppure senza contadini il mondo morirebbe di fame molto prima che senza re.",
+		"La storia pesa un re in oro e un contadino in niente. Eppure è del contadino che il mondo non può fare a meno, nemmeno per una stagione.",
+	},
+	["muse.w12.coin.080"] = {
+		"Nelle storie i draghi ammucchiano oro, e le storie non dicono mai cosa ne facciano. Forse niente. Forse l'avvertimento è proprio quello.",
+		"Qualunque cosa voglia un drago da una montagna d'oro, non è spenderla. Accumulare per accumulare è forse la malattia più antica che ci sia.",
+	},
+	["muse.w12.coin.081"] = {
+		"L'avidità non dice mai 'basta'. Dice 'e poi'.",
+		"L'avidità non vuole la cosa. Vuole quella dopo, e quella dopo ancora, e non si è mai saziata una volta.",
+		"Chiedi all'avidità quanto le basterebbe, e risponde: un po' di più.",
+	},
+	["muse.w12.coin.082"] = {
+		"Il letto più economico di una locanda non è mai economico. La differenza si paga in sonno, e in pulci.",
+		"Risparmia qualche moneta sulla stanza e la restituirai con gli interessi, sotto forma di torcicollo.",
+	},
+	["muse.w12.coin.083"] = {
+		"Parsimonia e taccagneria, viste da fuori, si somigliano. La differenza sta in chi resta senza: tu, o qualcun altro.",
+		"Stare attenti al denaro è una virtù finché il prezzo non lo paga qualcun altro. Allora ha un nome più brutto.",
+	},
+	["muse.w12.coin.084"] = {
+		"Ogni tanto compro apposta qualcosa di inutile: un nastro, un dolcetto, un bottone grazioso. Altrimenti le monete si mettono in testa di comandare loro.",
+		"Un piccolo sfizio ogni tanto tiene umile la borsa. Le monete mai sprecate diventano superbe.",
+	},
+	["muse.w12.coin.085"] = {
+		"C'è un piacere sommesso nel desiderare qualcosa che non posso permettermi. Comprarla metterebbe solo fine al piacere.",
+		"Certe cose è meglio lasciarle sullo scaffale del mercante. Desiderarle mi fa più compagnia di quanta me ne farebbe possederle.",
+	},
+	["muse.w12.coin.086"] = {
+		"Regala tutto e per un giorno sarai un esempio, per un anno un pezzente. Anche la bontà ha bisogno di un po' di aritmetica.",
+		"Le mani aperte sono una bella cosa, purché domani ci sia ancora qualcosa dentro.",
+	},
+	["muse.w12.coin.087"] = {
+		"Qualcuno ci guadagna da ogni guerra. Quelli che contano in silenzio nel retrobottega non sono mai quelli che sanguinano.",
+		"Ogni guerra ha i suoi vincitori, e di rado stanno sul campo. Stanno seduti a un tavolo, a fare somme.",
+		"Le guerre sono un buon affare per qualcuno. Mai per qualcuno con cui divideresti un fuoco.",
+	},
+	["muse.w12.coin.088"] = {
+		"Il favore è la moneta più strana. Non perde mai valore, nessuno è d'accordo su quanto valga, e viene sempre riscosso nel momento peggiore.",
+		"I favori sono una valuta senza zecca. Ognuno tiene il suo conto, e non ci sono mai due conti uguali.",
+	},
+	["muse.w12.coin.089"] = {
+		"Far notare a un mercante un errore a mio favore mi costa qualche moneta ogni volta. È l'onestà più economica che comprerò mai, e continuo a comprarla.",
+		"Quando un mercante sbaglia il resto a suo danno, restituisco la differenza. Poche monete, per continuare a guardarmi in faccia.",
+	},
+	["muse.w12.coin.090"] = {
+		"I regni si alzano sull'oro e cadono sui debiti. Il difficile è capire quale delle due cose ti stia succedendo intorno.",
+		"Nessun impero ha mai finito prima il coraggio. Finisce il denaro, e il coraggio gli va dietro fuori dalla porta.",
+	},
+	["muse.w12.coin.091"] = {
+		"La speranza è l'unica moneta che salta fuori da una borsa che avrei giurato vuota.",
+		"Per quanto vuota sia la borsa, in fondo tintinna sempre una moneta di speranza. Non so chi continui a mettercela.",
+	},
+	["muse.w12.coin.092"] = {
+		"Alle monete che arrivano, a quelle che partono, e a tutte le mani per cui passano strada facendo.",
+		"Brindo a ogni moneta di rame che abbia mai pagato un pasto a uno sconosciuto.",
+	},
+	["muse.w12.coin.093"] = {
+		"Più soldi, più vigliaccheria. Più la borsa pesa, più faccio attenzione a dove metto i piedi.",
+		"Con la borsa piena ogni ombra sembra un borseggiatore.",
+		"Niente mi mette più in agitazione che portarmi dietro una fortuna. Per fortuna capita di rado.",
+	},
+	["muse.w12.coin.094"] = {
+		"Nessuno sa con precisione quanto possiedo, e a nessuno serve saperlo. È uno dei pochi segreti che mantengo senza fatica.",
+		"La borsa è la cosa più privata che ho. Non perché sia piena: perché quanto sia vuota non riguarda nessuno.",
+	},
+	["muse.w12.coin.095"] = {
+		"Con abbastanza stanchezza addosso, pago il primo prezzo che mi dicono. La fatica è la migliore amica dei mercanti.",
+		"I mercanti dovrebbero assumere la stanchezza come garzone. Quando mi prende, accetto qualunque cifra pur di sedermi.",
+	},
+	["muse.w12.coin.096"] = {
+		"Niente debiti, niente invidie. Questo, per me, è essere ricchi.",
+		"Non dovere niente a nessuno, non invidiare nessuno. Ogni altra ricchezza viene dopo.",
+	},
+	["muse.w12.coin.097"] = {
+		"Certe cose non sono in vendita. Quasi tutte sì. Il trucco è sapere quali, prima che qualcuno faccia un'offerta.",
+		"Sappi cosa non venderesti prima che qualcuno te lo chieda. Dopo è tardi per decidere a mente fredda.",
+	},
+	["muse.w12.coin.098"] = {
+		"L'oro può prendere in affitto le buone maniere. Comprarle, no.",
+		"La cortesia, i soldi la noleggiano a ore. La gentilezza non accetta quei patti.",
+	},
+	["muse.w12.coin.099"] = {
+		"Che tu la spenda o la risparmi, la moneta vuole sempre andarsene. Meglio darle un bel posto dove andare.",
+		"Ferme, le monete, non ci stanno mai. Tanto vale scegliere dove se ne vanno.",
+	},
+	["muse.w12.coin.100"] = {
+		"Meglio una borsa vuota che un nome a cui nessuno farebbe credito.",
+		"Perdere le monete, pazienza. Perdere il credito di un nome onesto, e nessuna borsa lo ripara.",
+	},
+	["muse.w12.craft.001"] = {
+		"Un nodo che so fare senza guardare vale più di uno di cui conosco solo il nome.",
+		"Sapere come si chiama un nodo non conta. Farlo alla cieca, di fretta, con la corda che tira dall'altra parte: quello è saperlo.",
+		"Qualunque nodo funziona in una giornata tranquilla. Quello da imparare è il nodo che si fa anche con le mani che tremano.",
+	},
+	["muse.w12.craft.002"] = {
+		"Rammendare è quanto di più vicino a un orto io abbia: lavoro piccolo, fatto con calma, e alla fine qualcosa che sta meglio di prima.",
+		"Un orto non ce l'ho. Ho un ago e un mucchio di roba strappata, e il piacere, a conti fatti, è quasi lo stesso.",
+	},
+	["muse.w12.craft.003"] = {
+		"Se questa fibbia cede un'altra volta, le do un nome. E un rancore da portarsi dietro.",
+		"Ancora uno scherzo da questa fibbia e diventa una questione personale.",
+		"Fra me e questa fibbia manca un solo cedimento per una rottura definitiva.",
+	},
+	["muse.w12.craft.005"] = {
+		"Il cuoio si unge prima che si crepi, non dopo. Avere cura dell'equipaggiamento vuol dire quasi sempre muoversi con un po' d'anticipo.",
+		"Il cuoio ha sete un giorno prima di spaccarsi. Prendersene cura significa accorgersene in tempo.",
+		"Ungi la fibbia al primo cigolio e al secondo non ci arriva mai. La cura è questione di tempismo.",
+	},
+	["muse.w12.craft.006"] = {
+		"Una cosa che non si può aggiustare insegna quello che nessuna cosa intera sa insegnare: quando smettere di provarci.",
+		"Certi strappi non valgono il filo. Riconoscerli è un mestiere anche quello, il più difficile che conosca.",
+	},
+	["muse.w12.craft.007"] = {
+		"Il filo finisce sempre a un punto dalla fine. Ormai sono {g:convinto|convinta} che li conti.",
+		"Il filo mi ha mollato a un solo punto dalla fine. Ovvio. Il filo sa contare, ed è dispettoso.",
+		"Il filo è lungo fino all'istante esatto in cui gli manca un punto.",
+	},
+	["muse.w12.craft.008"] = {
+		"La pratica è noiosa apposta. È nella noia che le mani imparano, senza che la testa ci metta bocca.",
+		"Ripeti la stessa piccola cosa finché non ti stufa. Quando la testa si annoia, le mani l'hanno imparata per sempre.",
+		"Nessuno ha mani abili grazie a un'ora d'ispirazione. Vengono da cento ore noiose.",
+	},
+	["muse.w12.craft.009"] = {
+		"Aspetta. Qualcosa sbatacchia, e quel rumore non fa che crescere.",
+		"Un attimo. Una cosa allentata prima fa rumore, poi fa danni.",
+	},
+	["muse.w12.craft.011"] = {
+		"Guarda lavorare chi conosce un mestiere: la cosa strana è quanto poco si muove. I principianti si agitano, i maestri muovono appena un dito.",
+		"Da fuori, la bravura somiglia all'immobilità. Chi conosce il lavoro non spreca niente, nemmeno un gesto.",
+		"Gli impacciati fanno un gran teatro mentre lavorano. I bravi danno l'impressione che non stia succedendo quasi niente.",
+	},
+	["muse.w12.craft.012"] = {
+		"Le mie riparazioni hanno uno stile. Nessuno lo chiamerebbe bello, ma lo riconosceresti ovunque.",
+		"Un mio rammendo si riconosce a venti passi. Non perché sia fatto bene: perché è mio.",
+		"Nessun altro rammenda così male, e in questo modo preciso. È praticamente una firma.",
+	},
+	["muse.w12.craft.013"] = {
+		"Prima pulisco quello che porto, poi penso a me. È una regola sciocca, e finora non ha mai sbagliato.",
+		"Prima l'equipaggiamento, poi io. Un ordine un po' stupido, ma mi tiene in piedi.",
+	},
+	["muse.w12.craft.014"] = {
+		"Una buona cucitura sopravvive alle mani che l'hanno fatta. Non è male da lasciarsi dietro: qualche punto piccolo che fa il suo dovere per un estraneo.",
+		"I punti durano più di chi li cuce. Mi accontenterei di un'eredità così: piccola, semplice, e ancora salda.",
+	},
+	["muse.w12.craft.016"] = {
+		"C'è una piccola gioia pulita in una cucitura che sta piatta. Nessun altro se ne accorgerà mai, ed è parte del piacere.",
+		"Una fila di punti dritta e regolare: nessuno la guarderà due volte, e io ne resterò segretamente {g:contento|contenta} per un'ora.",
+		"Una fibbia che si chiude con uno scatto pulito è una ricompensa minuscola, e io queste le raccolgo ovunque capitino.",
+	},
+	["muse.w12.craft.017"] = {
+		"Le cose pesanti in fondo, vicino alla schiena. Quelle che servono in fretta, sopra. Uno zaino ha una sua grammatica, e la sto imparando.",
+		"Uno zaino fatto male combatte contro chi lo porta. Uno fatto bene cammina con te. Stesse cose, ordine diverso.",
+		"Fare lo zaino è un piccolo mestiere che nessuno insegna: il peso basso e vicino, le cose rapide in alto, niente che sbatacchi.",
+	},
+	["muse.w12.craft.018"] = {
+		"Il necessario per le riparazioni pesa di più ogni volta che lo guardo. Presto servirà un secondo corredo per aggiustare il primo.",
+		"Mi porto dietro abbastanza spago, filo e toppe da rimettere in sesto un carretto. Gli stivali, però, restano scettici.",
+	},
+	["muse.w12.craft.019"] = {
+		"Il cuoio ha una sua venatura, come il legno, come le persone. Assecondala e ti perdona molto. Contrastala e se lo ricorda.",
+		"Segui la vena e il cuoio fa metà del lavoro. Va' contropelo e ti contesta ogni singolo punto.",
+	},
+	["muse.w12.craft.020"] = {
+		"O lo aggiusti adesso o te lo porti dietro rotto. Le scelte sono solo due, e una sola diventa più leggera.",
+		"Lo riparo qui, oppure lo trascino rotto. So bene per cosa votano le mie spalle.",
+		"Una cosa rotta non diventa più leggera se la ignori. Diventa solo più rotta.",
+	},
+	["muse.w12.craft.021"] = {
+		"Quando rammendo da {g:solo|sola}, parlo col lavoro. Fermo. Quasi. Ecco. È una compagnia migliore di quanto sembri.",
+		"Mentre cucio borbotto alla stoffa come se potesse sentirmi. Non risponde mai, il che la rende un'ascoltatrice comoda.",
+	},
+	["muse.w12.craft.022"] = {
+		"Gli apprendisti cominciano con la scopa, a quanto si dice. Non è crudeltà, credo: imparano la bottega prima di toccare il lavoro.",
+		"Prima la scopa, poi gli attrezzi. Spazzare una bottega per un anno deve insegnare dove sta ogni cosa, e perché.",
+	},
+	["muse.w12.craft.023"] = {
+		"Ogni riparazione che miglioro un'ultima volta è quella che si rompe. Il 'va bene così' era il lavoro finito, e ci sono {g:passato|passata} oltre.",
+		"C'è un momento in cui il rammendo è finito, e uno subito dopo in cui lo rovino a forza di ritocchi. Trovo sempre il secondo.",
+	},
+	["muse.w12.craft.025"] = {
+		"Un combattimento disfa le cose in un istante. Rammendare le rimette insieme piano. Cerco di tenere le due cose in una specie di equilibrio.",
+		"Le lotte rompono, gli aghi ricuciono. Rompere è svelto, ricucire lento, e al lato lento devo più ore.",
+	},
+	["muse.w12.craft.026"] = {
+		"Chiunque abbia cucito questa borsa conosceva il mestiere. Non saprò mai il suo nome, ma ci penso ogni volta che le cuciture reggono.",
+		"Una mano sconosciuta ha messo questi punti, piccoli e regolari, e reggono ancora. A chi li ha cuciti devo più del prezzo pagato.",
+	},
+	["muse.w12.craft.027"] = {
+		"Le riparazioni veloci non esistono. Esistono solo riparazioni su cui ho mentito a me {g:stesso|stessa}.",
+		"'Ci vuole un attimo', mi dico, e un'ora dopo sono ancora {g:chino|china} su una cinghia.",
+		"Una piccola riparazione è solo una grande che non ha ancora mostrato tutta la sua misura.",
+	},
+	["muse.w12.craft.028"] = {
+		"Le mani stanche cuciono storto, è inutile far finta di niente. Una cucitura fatta mezza addormentata si fa due volte.",
+		"Rammendare quando non ne posso più è un falso risparmio. I punti vagano e dopo tocca disfarli tutti.",
+	},
+	["muse.w12.craft.029"] = {
+		"Nessuno tocchi questa cinghia. La tiene un nodo che nemmeno io capisco del tutto.",
+		"Questa fibbia funziona, ma solo per affetto. Meglio non metterla alla prova.",
+	},
+	["muse.w12.craft.030"] = {
+		"Una tirata a ogni cinghia prima di muoversi. Costa un attimo. Uno zaino che si apre nel momento sbagliato costa molto di più.",
+		"Un rapido strattone a ogni fibbia prima di andare dovunque. Un'assicurazione da poco, l'unica che posso permettermi.",
+	},
+	["muse.w12.craft.031"] = {
+		"Una toppa non è mai uguale al resto. È la sua parte onesta: dice che qui qualcosa è andato storto, e che qualcuno ci ha tenuto abbastanza da aggiustarlo.",
+		"Mi piacciono le toppe che non fingono. Stoffa diversa, colore diverso, e la verità semplice su una brutta giornata.",
+	},
+	["muse.w12.craft.033"] = {
+		"Ogni mestiere consuma la sua parte del corpo. I fabbri le spalle, i sarti gli occhi, i calzolai la schiena. Chissà quale si prenderebbe la mia.",
+		"Un mestiere si riconosce da come uno sta in piedi. I fabbri si appoggiano a tutto, i sarti guardano il mondo strizzando gli occhi, come se andasse orlato.",
+	},
+	["muse.w12.craft.034"] = {
+		"Se mai finiranno le battaglie, vorrei imparare a fare qualcosa. Stivali, magari. Qualcosa con cui la gente se ne va per la sua strada.",
+		"Un giorno metterò giù tutto questo e imparerò un mestiere con le mani. Qualcosa che lasci il mondo più ricco di un oggetto.",
+	},
+	["muse.w12.craft.035"] = {
+		"Certi miei nodi terrebbero una barca al molo. Altri si sciolgono se gli parli con durezza. Da fuori non c'è modo di distinguerli.",
+		"I miei nodi sono di due tipi: quelli che tengono per sempre e quelli che tengono finché non ci conto davvero. Sono identici.",
+		"Un nodo che tiene e uno che scivola sembrano gemelli. La differenza si vede solo quando qualcosa di pesante dipende da loro.",
+	},
+	["muse.w12.craft.036"] = {
+		"La ruggine è trascuratezza che si vede. Un giorno di pigrizia, scritto in arancione.",
+		"Lascia una cosa di metallo bagnata e trascurata, e alla tappa dopo ti ha già scritto un reclamo in ruggine.",
+	},
+	["muse.w12.craft.037"] = {
+		"Il piccolo rumore di un ago che passa nel cuoio è il suono più tranquillo che conosca. Spingi, tira, il lieve scricchiolio del filo.",
+		"Spingi, tira, il lamento sommesso del filo cerato. Se la pace avesse un suono, forse sarebbe questo.",
+	},
+	["muse.w12.craft.038"] = {
+		"Dammi un momento con questo laccio. Minaccia di andarsene dall'ultima sosta.",
+		"Aspetta un attimo. Questo laccio sta tramando qualcosa.",
+	},
+	["muse.w12.craft.039"] = {
+		"Due di tutto ciò che si spezza: lacci, filo, cordino. Uno di tutto ciò che non si spezza. Ecco tutta la mia filosofia dello zaino.",
+		"Ricambi per quello che si rompe, nessuno per quello che dura. Regola semplice, e batte di gran lunga zoppicare con una suola che sbatte.",
+	},
+	["muse.w12.craft.041"] = {
+		"Imparare un'abilità ha una parte di mezzo noiosa di cui nessuno avverte: passato l'entusiasmo dell'inizio, lontano ancora il piacere di essere {g:bravo|brava}.",
+		"Cominciare è emozionante e padroneggiare è dolce. In mezzo c'è un lungo tratto piatto in cui lo fai solo un po' meno male.",
+		"La parte difficile di un'abilità non è l'inizio. È il lungo mezzo senza sorprese, dove sembra di non migliorare e invece si migliora.",
+	},
+	["muse.w12.craft.042"] = {
+		"Deve esistere una bottega che fabbrica fibbie fatte apposta per rompersi nel momento peggiore. E gli affari vanno a gonfie vele.",
+		"Le fibbie non si consumano. Aspettano. Poi scelgono.",
+		"Le fibbie sono pazienti come solo il metallo sa essere. Aspettano esattamente il momento sbagliato.",
+	},
+	["muse.w12.craft.043"] = {
+		"Quello che ho e che taglia, lo tengo affilato. Una cosa smussata combatte contro chi la tiene prima che contro chiunque altro.",
+		"Tieni affilato quello che va tenuto affilato. L'ottusità non aiuta nessuno, men che meno chi la stringe in mano.",
+	},
+	["muse.w12.craft.045"] = {
+		"Non saprei dire chi mi ha insegnato il primo nodo. C'è e basta, come una parola di cui ho perso l'origine.",
+		"Il primo nodo che si impara non ha un maestro che si ricordi. Sta lì e basta, sotto tutti gli altri.",
+	},
+	["muse.w12.craft.046"] = {
+		"Il primo tentativo di qualunque cosa nuova viene brutto. Il secondo viene brutto in modo più istruito.",
+		"I principianti fanno cose brutte. Poi, con la pratica, le fanno brutte più in fretta. Da lì in poi, chissà come, migliora.",
+	},
+	["muse.w12.craft.047"] = {
+		"Non è bello. Però tiene. È l'unica prova che conta.",
+		"Rammendo brutto, rammendo solido. Fra le due parole scelgo la seconda.",
+	},
+	["muse.w12.craft.048"] = {
+		"Ogni cosa nello zaino ha il suo posto, e le mie mani lo trovano alla cieca. È l'unica casa che tengo in ordine.",
+		"Lo zaino è una casetta senza porta. Ogni cosa ha la sua stanza, e le mani ci vanno dritte.",
+	},
+	["muse.w12.craft.049"] = {
+		"Riparare l'equipaggiamento è il lavoro dopo il lavoro. Nessuno lo paga, e senza non va avanti niente.",
+		"Lo scontro finisce, e comincia il secondo turno: filo, grasso, cinghie, e una schiena dolorante sopra a tutto.",
+		"Dopo ogni zuffa arrivano l'ago e il grasso. Lo scontro è breve; il riordino non finisce più.",
+	},
+	["muse.w12.craft.050"] = {
+		"Quando tutto il resto mi sfugge di mano, una cinghia da aggiustare è una grazia. Qualcosa che posso davvero rimettere a posto.",
+		"I grandi guai non stanno in mano. Una fibbia rotta sì. Certi giorni ne aggiusto una solo per aggiustare qualcosa.",
+		"Quando nient'altro vuole andare per il verso giusto, trovo una cinghia allentata e la sistemo. Una vittoria piccola, ma è mia.",
+	},
+	["muse.w12.craft.052"] = {
+		"Uno gnomo aggiungerebbe a questa fibbia tre ingranaggi e una molla. Sarebbe magnifica, e scoppierebbe.",
+		"Dai questa cinghia a uno gnomo e te la restituisce con una manovella, un fischietto e un vago odore di fumo.",
+	},
+	["muse.w12.craft.053"] = {
+		"Riponi gli attrezzi bagnati e ti puniscono. Riponili sporchi e puniscono chi li usa dopo. In un modo o nell'altro, qualcuno paga.",
+		"Un attrezzo messo via sporco è un debito per dopo. Chi apre il corredo la volta successiva lo eredita, e di solito sono io.",
+	},
+	["muse.w12.craft.054"] = {
+		"Mani che sapessero solo combattere sarebbero mani povere. Le mie sanno anche rammendare, legare, piegare, allacciare. Mi piacciono di più per questo.",
+		"Sono {g:contento|contenta} che le mie mani conoscano anche lavori più quieti: un punto, un laccio, un panno piegato. Così non sono soltanto una cosa.",
+	},
+	["muse.w12.craft.055"] = {
+		"Rammenderei anche la mia reputazione, se qualcuno vendesse il filo adatto.",
+		"Toppe per la stoffa, grasso per le fibbie. Per la dignità ancora niente.",
+	},
+	["muse.w12.craft.056"] = {
+		"Uno stivale si consuma sempre prima dell'altro, una cinghia si sfilaccia sempre per prima. Il mio equipaggiamento sa come mi muovo meglio di me.",
+		"Leggi l'usura sull'equipaggiamento di chiunque e hai il suo passo, la sua postura, la spalla preferita. Il mio mi tradisce del tutto.",
+	},
+	["muse.w12.craft.057"] = {
+		"Un mestiere è pazienza resa visibile. Ogni cosa finita è un mucchio di piccole attese, impilate con ordine.",
+		"Quella che sembra bravura è soprattutto pazienza che qualcuno ha speso dove non si vede.",
+		"La pazienza è la vera materia di ogni mestiere. Cuoio, legno e filo sono solo le forme in cui la si piega.",
+	},
+	["muse.w12.craft.059"] = {
+		"Finito di legare tutto, avanza sempre un ultimo pezzo di cordino, e non so mai a cosa servisse.",
+		"Lego tutto per bene, faccio un passo indietro, e mi resta in mano un pezzo di cordino. Qualcosa è rimasto slegato, e scoprirò cosa a mie spese.",
+	},
+	["muse.w12.craft.060"] = {
+		"Le piccole riparazioni, fatte ogni giorno, sono il modo per non arrivare mai alle grandi.",
+		"Cinque minuti adesso su una cinghia che si sfilaccia risparmiano un'intera giornata di guai più avanti.",
+	},
+	["muse.w12.craft.061"] = {
+		"Il rumore di qualcosa che si spezza è sempre più forte di quanto dovrebbe. Un laccio, una cinghia, un cordino: un piccolo suono che chiude una lunga storia.",
+		"Una cinghia cede con un piccolo schiocco, ed è finita lì. Tanto servizio, e un suono così piccolo per chiuderlo.",
+	},
+	["muse.w12.craft.062"] = {
+		"In ogni città c'è qualcuno che insegna un mestiere a chiunque abbia le monete e la pazienza. Solo una delle due è difficile da trovare.",
+		"Qualunque mestiere si può imparare da qualcuno in città, pagando in monete. Il prezzo è la parte economica; sono le ore che costano.",
+	},
+	["muse.w12.craft.063"] = {
+		"La pratica rende migliori. Perfetti, mai.",
+		"Meglio del nodo di ieri. È l'unico traguardo che mi do.",
+	},
+	["muse.w12.craft.065"] = {
+		"Cerare il filo è il passaggio più noioso e quello che conta di più. Senza cera, ogni punto si sfilaccia un poco mentre passa.",
+		"Fai scorrere il filo sulla cera prima di cucire. Nessuno lo vede, la cucitura non ti ringrazia, e dura il doppio.",
+	},
+	["muse.w12.craft.066"] = {
+		"Gli aghi hanno un talento per nascondersi. Ne posi uno per un attimo e diventa parte del pavimento, dell'erba o dell'interno di un guanto.",
+		"Perdi un ago e salta fuori una settimana dopo, di punta, proprio dove infili la mano senza guardare.",
+	},
+	["muse.w12.craft.067"] = {
+		"Abbastanza larga da muoversi, abbastanza stretta da non scivolare. Ogni cinghia vive su quel confine, e anche gran parte della vita.",
+		"Troppo stretta sfrega, troppo larga scivola. Sistemare bene una fibbia è una piccola lezione su come sistemare quasi tutto.",
+		"Una cinghia regolata bene sparisce; una regolata male diventa il tuo unico pensiero. Quasi tutto il buon lavoro è così.",
+	},
+	["muse.w12.craft.068"] = {
+		"C'è chi si sente a casa in un luogo. Gli artigiani si sentono a casa in un lavoro: mettiglielo davanti e sono arrivati.",
+		"Un buon artigiano porta la casa nelle mani. Mettilo ovunque con i suoi attrezzi e quel punto diventa una bottega.",
+		"La casa non deve per forza essere un luogo. Per un artigiano è il lavoro stesso, e se lo porta ovunque vada.",
+	},
+	["muse.w12.craft.070"] = {
+		"Un artigiano non aspetta di sentirsi pronto. Le mani cominciano, e la prontezza arriva dopo, arrancando.",
+		"Nessuno si è mai sentito pronto prima del suo primo vero lavoro. Si comincia lo stesso, e la prontezza raggiunge il passo.",
+	},
+	["muse.w12.craft.071"] = {
+		"Rovina abbastanza cuoio e cominci a capirlo. Nessuno impara un mestiere senza una pila di fallimenti dietro il banco.",
+		"I pezzi sciupati sono i veri maestri di ogni arte. Ogni maestro ne tiene un mucchio da qualche parte, ben nascosto.",
+	},
+	["muse.w12.craft.072"] = {
+		"Ecco. Aggiustato. Nessuno lo guardi troppo forte.",
+		"Fatto, e regge. Meglio non fargli domande difficili.",
+	},
+	["muse.w12.craft.073"] = {
+		"Nessuno guarda qualcuno che si aggiusta un laccio. È una delle poche cose che faccio che appartengono solo a me.",
+		"Le piccole riparazioni sono faccende private. Nessuno si ferma a guardare un laccio rinfilato, e a me piace così.",
+	},
+	["muse.w12.craft.074"] = {
+		"Chiunque può comprare un buon equipaggiamento. Tenerlo buono è la parte che va fatta a mano, ogni giorno, da chi lo indossa.",
+		"Un buon equipaggiamento si compra. Uno ben tenuto no: quello si guadagna punto dopo punto, da chi se lo porta addosso.",
+	},
+	["muse.w12.craft.076"] = {
+		"L'abilità è soprattutto un elenco di errori che non faccio più. L'elenco è lungo, e intanto continuo ad aggiungere voci all'altro.",
+		"Essere bravi in qualcosa è un mucchio silenzioso di errori lasciati alle spalle. Il mio cresce piano, e cresce anche quello che ho davanti.",
+	},
+	["muse.w12.craft.077"] = {
+		"Le cose si rompono in uno di due momenti: quando ho fretta, o quando ho una fretta tremenda.",
+		"L'equipaggiamento ha un senso del tempo che qualunque bardo invidierebbe. Nelle giornate tranquille non si spezza niente.",
+		"L'equipaggiamento si rompe secondo un suo calendario, e il calendario dice sempre: adesso, quando fa più comodo a lui.",
+	},
+	["muse.w12.craft.078"] = {
+		"Prima piano finché non viene giusto, poi giusto finché non viene svelto. La velocità è solo correttezza che ha smesso di esitare.",
+		"Prima lento e corretto. La rapidità arriva dopo, da sola, quando le mani smettono di chiedere il permesso.",
+		"Le mani frettolose imparano la fretta. Le mani lente imparano il lavoro, e la velocità arriva in regalo.",
+	},
+	["muse.w12.craft.079"] = {
+		"Presta un ago e non torna più. Ho deciso che è così che viaggiano gli aghi: di mano in mano, per tutto il mondo.",
+		"Ago e filo sono l'unica cosa che nessuno restituisce. I miei saranno in giro, a rammendare la fortuna di qualcun altro.",
+	},
+	["muse.w12.craft.081"] = {
+		"Dieci fibbie, nove obbediscono. La decima aspetta che io sia {g:stanco|stanca} e poi si rifiuta di trovare il suo buco.",
+		"L'ultima cinghia della giornata è sempre la più testarda. Sa che sono {g:sfinito|sfinita} e se ne approfitta.",
+		"La fibbia che allaccio per ultima è sempre quella che mi fa la guerra. Sente quando non ne ho più.",
+	},
+	["muse.w12.craft.082"] = {
+		"Ogni mestiere comincia copiando qualcuno. Un tocco proprio arriva molto dopo, se arriva, e nessuno può affrettarlo.",
+		"Imparare un mestiere è prendere in prestito le mani di qualcun altro per molto tempo, finché un giorno non le senti tue.",
+	},
+	["muse.w12.craft.083"] = {
+		"Il nodo perfetto esiste. L'ho fatto una volta, per caso, e da allora non mi è più riuscito.",
+		"Un nodo perfetto, venuto per puro caso, e da quel momento non riesco più a rifarlo.",
+	},
+	["muse.w12.craft.084"] = {
+		"Guarda un fabbro al lavoro e conta i colpi a vuoto. Non ce ne sono. È questo che comprano gli anni.",
+		"Il martello di un fabbro non sembra mai chiedersi dove cadere. Guardarlo vale più di qualunque lezione a parole.",
+	},
+	["muse.w12.craft.085"] = {
+		"Equipaggiamento controllato, cinghie strette, niente che sbatacchia. Adesso posso pensare al resto.",
+		"Allacciato tutto quello che andava allacciato. Bene. Ora, alle preoccupazioni più grosse.",
+	},
+	["muse.w12.craft.086"] = {
+		"Certi giorni anche un nodo semplice sembra troppo. È così che capisco che è ora di fermarmi, non dai dolori.",
+		"Quando le mani pasticciano con un laccio che saprei legare dormendo, non è colpa del laccio. Sono io che chiedo riposo, nell'unica voce che ascolto.",
+	},
+	["muse.w12.craft.088"] = {
+		"Tutto ciò che le mani fanno bene, all'inizio lo fanno lentamente. Non c'è altra strada verso la maestria, e nessuno ne ha trovata una più breve.",
+		"Alla maestria non si accede pagando un pedaggio. C'è solo la lunga strada delle mani, percorsa finché il lavoro smette di essere fatica.",
+	},
+	["muse.w12.craft.089"] = {
+		"Il grasso va dappertutto tranne dove lo metto. La fibbia resta asciutta, la manica luccica come lo stivale di un signore.",
+		"Una goccia di grasso, messa con cura sul cardine, e chissà come finisce sulla faccia, sul polsino e sul pane.",
+	},
+	["muse.w12.craft.090"] = {
+		"Ogni attrezzo ha un compito per cui è nato e una dozzina per cui finisce usato. È in quella dozzina che imparo di più.",
+		"Nessun attrezzo viene usato solo per quello a cui serve. Il bello è sapere fin dove spingerlo prima che si pieghi.",
+	},
+	["muse.w12.craft.091"] = {
+		"Le cose rotte non chiedono di essere aggiustate. Qualcuno decide semplicemente che ne valgono la pena. Ogni tanto mi piace essere quel qualcuno.",
+		"Niente di rotto ha mai chiesto aiuto. Riparare è una scelta fatta al suo posto, ed è una delle più gentili che conosca.",
+		"Una cosa riparata è un piccolo argomento contro lo spreco e contro la disperazione. Lo sostengo ogni volta che posso.",
+	},
+	["muse.w12.craft.092"] = {
+		"Sto migliorando. Il nodo si è sciolto solo due volte.",
+		"Progressi: stavolta i punti sono quasi allineati.",
+	},
+	["muse.w12.craft.093"] = {
+		"Prima si rammenda, poi si riposa. Al contrario, al rammendo non ci arrivo mai.",
+		"Le riparazioni prima di sedermi. Una volta {g:seduto|seduta}, non si aggiusta più niente.",
+	},
+	["muse.w12.craft.094"] = {
+		"Spezzato di netto. Ha servito più a lungo di quanto avesse diritto.",
+		"Andato, finalmente. Quel laccio ha fatto più della sua parte.",
+	},
+	["muse.w12.craft.095"] = {
+		"Chi ha fatto questo nodo aveva fretta. Purtroppo ero io.",
+		"Nodo fatto male. Me la prenderei con chi l'ha legato, ma parlerei da {g:solo|sola}.",
+	},
+	["muse.w12.craft.096"] = {
+		"Sui vecchi campi di battaglia l'equipaggiamento giace dov'è caduto, ogni fibbia ancora allacciata. Nessuno è tornato a slacciarle.",
+		"L'equipaggiamento dei caduti tiene i suoi nodi molto dopo che il padrone se n'è andato. Ognuno fu stretto con cura, da chi contava di scioglierlo più tardi.",
+	},
+	["muse.w12.craft.097"] = {
+		"Molto prima di qualunque regno, qualcuno si sedette a torcere fibre per farne un cordino. Tutto ciò che è venuto dopo poggia su quel primo nodo paziente.",
+		"La prima corda del mondo l'hanno fatta mani senza nome. Da allora ogni regno ci è rimasto appeso, in un modo o nell'altro.",
+	},
+	["muse.w12.craft.098"] = {
+		"Prima di qualunque cosa importante, metto in ordine l'equipaggiamento. Non è superstizione. È l'unica parte di ciò che viene di cui posso essere {g:certo|certa}.",
+		"Prima l'ordine nel corredo, poi la giornata. Qualunque cosa arrivi, troverà ogni cinghia al suo posto.",
+		"Corredo in ordine, testa in ordine. Non so quale segua l'altro, so solo che vanno insieme.",
+	},
+	["muse.w12.craft.099"] = {
+		"Le grandi imprese sono appese a piccoli fermagli. Una canzone su un eroe non nomina mai la fibbia che ha retto, ma l'eroe sì.",
+		"Ogni leggenda che ho sentito poggia su una cinghia che non si è spezzata. Le canzoni lo dimenticano. Chi c'era, no.",
+	},
+	["muse.w12.craft.100"] = {
+		"Certe cose le rammendo solo per non doverle sostituire. Una nuova sarebbe un'estranea, e di cose familiari ne ho già perse abbastanza.",
+		"Continuo a riparare la vecchia cinghia ben oltre il buon senso. Una nuova funzionerebbe meglio e non significherebbe niente.",
+	},
+	["muse.w12.doubt.001"] = {
+		"C'è una vocina che dice: torna indietro. Quasi sempre sbaglia. Il guaio sono le volte che non sbaglia.",
+		"La parte di me che vuole voltarsi è vigliacca nove volte su dieci. La decima è l'unica con un po' di giudizio.",
+		"Ho imparato a non ubbidire alla voce che dice di tornare, e nemmeno a zittirla. Ogni tanto, di rado, si guadagna il pane.",
+	},
+	["muse.w12.doubt.002"] = {
+		"Le bugie che mi racconto sono piccole e fatte bene: «non è lontano», «regge», «me lo ricorderò». Ci credo ogni volta, a tutte quante.",
+		"«Manca poco.» «Tiene.» «Me lo ricordo dove l'ho messo.» Le mie bugie preferite, e l'unica persona che ci casca sempre sono io.",
+	},
+	["muse.w12.doubt.003"] = {
+		"A volte sento il rimpianto arrivare prima ancora di aver fatto la cosa. La faccio lo stesso, e il rimpianto si presenta puntualissimo.",
+		"Certi errori si annunciano in anticipo, come un ospite che scrive prima di venire. Gli apro la porta comunque.",
+	},
+	["muse.w12.doubt.004"] = {
+		"Potrei sbagliarmi. Lo metto agli atti adesso, finché suona ancora saggio.",
+		"Sia chiaro che «forse sbaglio» l'ho detto per primo. Dopo dovrà pur contare qualcosa.",
+		"Magari mi sbaglio. Dirlo in anticipo è molto più dignitoso.",
+	},
+	["muse.w12.doubt.005"] = {
+		"Fare la cosa giusta è facile quando c'è qualcuno che guarda. È la stanza vuota che mi chiede chi sono.",
+		"Nessuno lo saprebbe mai. È proprio quello il momento che decide che razza di persona sono.",
+		"Quando nessuno guarda, l'onestà si paga a prezzo pieno. È lì che scopro se ci credevo davvero.",
+	},
+	["muse.w12.doubt.006"] = {
+		"Tutte le persone davvero pericolose di cui ho sentito parlare erano sicurissime. Io un po' di dubbio me lo porto dietro, come un laccio di riserva.",
+		"La certezza è un pregio in un ponte e una cosa che fa paura in una persona.",
+		"Di un ponte sicuro di sé mi fido. Di una persona, molto meno.",
+	},
+	["muse.w12.doubt.007"] = {
+		"Frugare nelle tasche di qualcosa che un attimo fa era vivo. Non ho mai trovato un modo di farlo che sembri decente. Lo faccio lo stesso.",
+		"Ogni pezzo di bottino, un minuto prima, era di qualcuno. Almeno cerco di prenderlo in silenzio.",
+		"Non esiste un modo educato di perquisire chi è caduto. Ho smesso di cercarlo, ma lo faccio sempre senza rumore.",
+	},
+	["muse.w12.doubt.008"] = {
+		"Chiedere la strada costa una frase. Non chiederla mi è costato ore intere. L'orgoglio tiene i conti e non me li fa mai vedere.",
+		"Piuttosto che ammettere di essermi {g:perso|persa} mi faccio un miglio in più. I piedi, su questo mio orgoglio, avrebbero da ridire.",
+		"L'orgoglio preferisce farmi girare in tondo piuttosto che chiedere la strada a uno sconosciuto. Tanto, a camminare, non è lui.",
+	},
+	["muse.w12.doubt.009"] = {
+		"Quando qualcosa si volta e scappa, la lascio andare. Saggio o no, è la regola che vorrei qualcuno rispettasse con me.",
+		"Ciò che fugge ha già perso. Inseguirlo è solo mettere in ordine, e io per l'ordine non ho tutta questa passione.",
+	},
+	["muse.w12.doubt.010"] = {
+		"D'accordo: avevo torto. Una cosa così non ricapita spesso, meglio godersela.",
+		"Sì, va bene, avevo torto. Da segnarsi: è un uccello raro.",
+		"Avevo torto. Ecco. Nessuno svenga.",
+	},
+	["muse.w12.doubt.011"] = {
+		"La coscienza è l'unica compagna che non va mai sfamata e che non resta mai indietro.",
+		"Tutto il resto che porto, a fine giornata, lo poso. La coscienza viene a letto con me.",
+		"Via l'equipaggiamento, via gli stivali. La coscienza è l'unica cosa che non sono mai {g:riuscito|riuscita} a slacciare.",
+	},
+	["muse.w12.doubt.012"] = {
+		"Nel difendermi sono imbattibile: dammi una qualsiasi sciocchezza che ho fatto e prima di cena le trovo tre ottime ragioni.",
+		"Nessuno sostiene le mie ragioni bene quanto me. Proprio per questo non dovrei essere io a giudicare.",
+		"Nel tribunale che ho in testa vengo sempre {g:assolto|assolta}. Comincio a sospettare del giudice.",
+	},
+	["muse.w12.doubt.014"] = {
+		"Cambiare idea non è perdere. È la testa che, per una volta, si guadagna la paga.",
+		"Una mente che non cambia mai è solo un sasso con delle opinioni.",
+		"Se finisco la giornata credendo esattamente quello che credevo all'inizio, vuol dire che non ho fatto attenzione.",
+	},
+	["muse.w12.doubt.015"] = {
+		"Le cose che combatto non possono mai dire la loro. Cerco di ricordarmi che una versione loro c'era.",
+		"Qualunque cosa io abbia abbattuto aveva le sue ragioni per trovarsi sulla mia strada. Le mie non valgono di più solo perché a restare in piedi sono io.",
+	},
+	["muse.w12.doubt.016"] = {
+		"Chiunque mi chieda un favore è sicuro che sia la cosa giusta. Mi piacerebbe sapere chi ha controllato.",
+		"Ogni incarico che mi affidano arriva con una fiducia totale e nessuna prova. Quasi sempre lo accetto lo stesso, e su ognuno mi faccio delle domande.",
+		"La gente mi affida compiti come se il giusto e lo sbagliato fossero stati decisi altrove, tempo fa. Le carte, io, non le ho mai viste.",
+	},
+	["muse.w12.doubt.017"] = {
+		"Quasi nessuno di quelli che potrei perdonare me lo chiederà mai. Lo faccio lo stesso, in silenzio, e non sapranno mai di essere stati graziati.",
+		"Perdonare chi non sa di averne bisogno è una gentilezza strana, privata. Nessuno ringrazia. Vale la pena lo stesso.",
+	},
+	["muse.w12.doubt.018"] = {
+		"«Solo per questa volta» è la frase più cara che conosco. Non viaggia mai da sola.",
+		"Ogni brutto vizio che ho è nato come un «solo per stavolta».",
+		"Niente succede una volta sola. «Solo stavolta» è il modo in cui la seconda volta entra dalla porta.",
+	},
+	["muse.w12.doubt.020"] = {
+		"Testardaggine e fermezza si somigliano finché si è a metà strada. Solo la fine dice quale delle due era.",
+		"Nessuno distingue la costanza dalla zucconaggine finché non è tutto finito. Scoprirò anch'io cosa sono alla fine, come chiunque.",
+	},
+	["muse.w12.doubt.021"] = {
+		"Fammici pensare. Poi fammici pensare dal lato opposto. Poi farò quello che avrei fatto comunque.",
+		"Ci dormo sopra. Poi faccio la cosa che avevo già deciso, ma {g:riposato|riposata}.",
+	},
+	["muse.w12.doubt.022"] = {
+		"Ogni rovina di questo mondo l'ha ordinata qualcuno che si sentiva sicurissimo. Il dubbio non ha mai bruciato una città.",
+		"Guarda cos'hanno fatto ad Azeroth quelli che non avevano dubbi, e il dubbio comincia a sembrare una virtù.",
+		"Nessuno ha mai aperto un varco alla Legione chiedendosi «e se mi sbaglio?». Lo hanno fatto quelli che non se lo chiedevano.",
+	},
+	["muse.w12.doubt.023"] = {
+		"Do consigli eccellenti. Solo che non mi sono mai {g:trovato|trovata} nella condizione di seguirli.",
+		"Se seguissi metà dei consigli che do, sarei insopportabile e camperei moltissimo.",
+	},
+	["muse.w12.doubt.024"] = {
+		"Una parola detta per rabbia non si va a riprendere. Ho imparato a contare fino a dieci. Di solito arrivo a quattro.",
+		"Le parole dure partono più svelte di qualsiasi scusa che possa rincorrerle.",
+		"Certe parole escono di bocca e sono già a metà del mondo prima che io riesca a gridare «aspetta».",
+	},
+	["muse.w12.doubt.025"] = {
+		"La cosa giusta di rado costa poco. Quando succede la controllo due volte: probabilmente è qualcos'altro col suo mantello addosso.",
+		"Se fare il giusto mi sembra facile, guardo meglio. Di solito è la comodità che si è presa il suo nome in prestito.",
+	},
+	["muse.w12.doubt.026"] = {
+		"«Tanto nessuno se ne accorge» è la ninna nanna preferita dei ladri. Ogni tanto la canticchio anch'io, e mi fermo prima del ritornello.",
+		"Una vocina continua a farmi notare che nessuno se ne accorgerebbe. Ha ragione, ed è proprio quello il suo difetto.",
+	},
+	["muse.w12.doubt.028"] = {
+		"Il dubbio non si fa mai vivo quando ho da fare. Aspetta la quiete, mi si siede accanto e fa le sue domande con educazione.",
+		"Mentre combatto sono {g:sicuro|sicura} di tutto. È dopo, quando smetto di muovermi, che le domande entrano in fila, una dietro l'altra.",
+	},
+	["muse.w12.doubt.029"] = {
+		"Io e la mia coscienza al momento non ci parliamo. Lei sa perché.",
+		"Non adesso, coscienza. Prendi appuntamento.",
+		"Sì, coscienza, ti ho sentita. Ho deciso di non ascoltarti. È diverso.",
+	},
+	["muse.w12.doubt.030"] = {
+		"Ammettere un errore brucia una volta. Nasconderlo brucia ogni volta che qualcuno si avvicina all'argomento.",
+		"Di' subito «colpa mia» ed è una cosa da poco. Aspetta, e le crescono i denti.",
+		"Un errore ammesso sta in tasca. Uno nascosto cresce finché non gli serve uno zaino tutto suo.",
+	},
+	["muse.w12.doubt.031"] = {
+		"Soppesa due scelte abbastanza a lungo e qualcun altro sceglierà per te. Anche quella è una decisione, e di solito la peggiore.",
+		"Esita quanto basta e decide il mondo al posto tuo. Senza chiederti cosa avresti preferito.",
+	},
+	["muse.w12.doubt.032"] = {
+		"«Ci penserà qualcun altro» lo pensano tutti nello stesso momento, mentre nessuno fa niente.",
+		"Quando qualcuno è nei guai e la gente sta a guardare, ognuno è sicuro che si muoverà un altro. Io provo a essere quell'altro.",
+	},
+	["muse.w12.doubt.033"] = {
+		"Non tutti gli scontri andavano combattuti. Solo che non so mai quali finché non sono finiti ed è tardi per chiederlo.",
+		"Certi combattimenti potevo evitarli girandoci intorno. La domanda arriva dopo, quando non c'è più nessuno a cui farla.",
+	},
+	["muse.w12.doubt.034"] = {
+		"L'orgoglio è un bel cappotto, finché non devo chinarmi a raccogliere qualcosa.",
+		"Il mio orgoglio mi sta d'incanto, a patto di non muovermi di un dito.",
+		"L'orgoglio mi tiene il mento alto che è una meraviglia. Non serve a niente quando devo guardare dove metto i piedi.",
+	},
+	["muse.w12.doubt.035"] = {
+		"Ogni scelta chiude una porta dietro la quale non guarderò mai. Quasi tutte non mi mancano. Qualcuna la sento cigolare a lungo.",
+		"Scegliere una cosa vuol dire seppellire in silenzio tutte le altre. Mi piace pensare che riposino in pace.",
+	},
+	["muse.w12.doubt.036"] = {
+		"Ricordami perché mi era sembrata una buona idea. Anzi no, lascia stare. Preferisco il mistero.",
+		"A un certo punto questa era una buona idea. C'ero anch'io. Ero d'accordo.",
+	},
+	["muse.w12.doubt.037"] = {
+		"Il dubbio mi costa un istante prima di agire. Ho deciso che è un prezzo giusto per non fare in fretta qualcosa di imperdonabile.",
+		"Un po' di esitazione è un pedaggio che vale la pena pagare. Le cose di cui mi pentirei di più sono tutte rapide.",
+	},
+	["muse.w12.doubt.038"] = {
+		"Metà del bene che faccio lo faccio per ragioni sbagliate: orgoglio, noia, voglia di sentirmi dire grazie. Il bene però si fa lo stesso. Ho deciso di non guardarci troppo da vicino.",
+		"Probabilmente aiuto per i motivi sbagliati. A chi viene aiutato non sembra importare granché.",
+	},
+	["muse.w12.doubt.040"] = {
+		"Se riesco a dare una seconda possibilità a uno sconosciuto, forse posso concederne una anche a me. Forse.",
+		"Distribuisco seconde possibilità a tutti, tranne alla faccia che vedo riflessa nell'acqua ferma.",
+	},
+	["muse.w12.doubt.041"] = {
+		"Le cose su cui avrei giurato sono quelle che poi cedono. Quelle che ho ricontrollato, mai.",
+		"Quando mi sorprendo a dire «ci scommetterei la vita», vado a controllare. Due volte.",
+	},
+	["muse.w12.doubt.042"] = {
+		"La coscienza è un messaggero lento. Arriva con la sua lettera quando la cosa è fatta da un pezzo, e aspetta che la legga.",
+		"Sul momento la coscienza tace. Si tiene tutto il discorso per dopo, quando non posso più farci niente.",
+	},
+	["muse.w12.doubt.043"] = {
+		"Se è sbagliato, me ne prendo la colpa. Se è giusto, non chiedo grazie. In tutti i casi è roba mia.",
+		"Scelta mia, peso mio. Nessun altro deve reggere la cinghia.",
+	},
+	["muse.w12.doubt.044"] = {
+		"I miei ripensamenti sono sempre migliori dei primi pensieri. Se solo arrivassero prima.",
+		"Il secondo pensiero: più saggio, più gentile e sempre un passo indietro, come un amico assennato che non trova gli stivali.",
+		"I primi pensieri entrano di corsa e fanno il danno. I secondi arrivano dopo, con la scopa.",
+	},
+	["muse.w12.doubt.045"] = {
+		"«Ho paura» è difficile da dire. «Avevi ragione» lo è di più. Le sto ancora provando entrambe.",
+		"Di tutte le cose da dire ad alta voce, «avevi ragione» è quella che resta in gola più a lungo.",
+	},
+	["muse.w12.doubt.047"] = {
+		"La pietà verso qualcosa che non potrà mai ricambiarla è l'unica di cui sono {g:sicuro|sicura} che sia sincera.",
+		"Se non può ringraziarmi né ripagarmi, allora quello che gli do è autentico.",
+	},
+	["muse.w12.doubt.048"] = {
+		"Ho una scusa pronta per quasi tutto. Chi non le accetta mai sono io.",
+		"Le mie scuse sono ben provate e fatte con cura. Peccato che il pubblico sia sempre io, e le conosco a memoria.",
+	},
+	["muse.w12.doubt.049"] = {
+		"Se nessuno, da nessuna parte, tiene il conto di quello che faccio, a testimoniare ci sono solo io. Questo fa più paura, non meno.",
+		"Forse nessuna potenza lassù guarda. Allora l'ho visto soltanto io, e io non mi lascio comprare né ingannare a lungo.",
+	},
+	["muse.w12.doubt.050"] = {
+		"Certo che ne sono {g:sicuro|sicura}. Mi capita anche spesso di sbagliare. Le due cose vanno d'accordissimo.",
+		"Se ne sono {g:certo|certa}? Del tutto. Se ho ragione? Quella è un'altra faccenda.",
+	},
+	["muse.w12.doubt.051"] = {
+		"Una promessa si mette alla prova solo quando diventa una seccatura. Prima, mantenerla è semplice buona educazione.",
+		"Tutti mantengono la parola quando fa comodo. Il giorno in cui comincia a pesare è il primo in cui conta.",
+		"Mantenere una promessa che mi fa comodo non dimostra niente. Solo quelle che stringono mi dicono qualcosa.",
+	},
+	["muse.w12.doubt.052"] = {
+		"La certezza è un'armatura pesante: non passa niente, ma non riesco a girare la testa.",
+		"Essere sicuri di tutto è come portare un elmo senza feritoie. Sicurissimo. Stupidissimo.",
+	},
+	["muse.w12.doubt.053"] = {
+		"Nelle giornate storte rispondo male a chi non ha fatto niente. Da qualche parte uno sconosciuto si porta ancora dietro una mia parola tagliente, e la rivorrei indietro.",
+		"Con la stanchezza addosso tratto male chi mi capita vicino. Se ne vanno portandoselo dietro, e non so mai i loro nomi per rimediare.",
+	},
+	["muse.w12.doubt.055"] = {
+		"Non tutte le mani che porgo erano desiderate. Certo aiuto è solo la mia voglia di sentirmi utile, con una faccia più gentile.",
+		"Prima di correre a dare una mano, una domanda piccola: lo faccio per loro o per me? La risposta non sempre mi lusinga.",
+	},
+	["muse.w12.doubt.056"] = {
+		"Se dovessi cadere da qualche parte e non rialzarmi più, spero che l'ultima cosa fatta sia una che firmerei col mio nome.",
+		"Vorrei che l'ultima cosa che faccio fosse una per cui non mi dispiacerebbe essere {g:ricordato|ricordata}. È un buon motivo per scegliere con cura, ora dopo ora.",
+	},
+	["muse.w12.doubt.057"] = {
+		"Sono {g:sicurissimo|sicurissima} delle cose fino al momento in cui qualcuno mi chiede perché.",
+		"La certezza regge benissimo finché non entra in scena la parola «perché».",
+	},
+	["muse.w12.doubt.058"] = {
+		"Non mi serve la certezza per agire. Mi basta accettare di poter sbagliare, e di rimediare.",
+		"Aspettare di essere sicuri è un ottimo modo per non fare mai niente. Preferisco muovermi, sbagliare e aggiustare quello che rompo.",
+	},
+	["muse.w12.doubt.059"] = {
+		"No. Non così. Sono meglio di così, o almeno voglio esserlo.",
+		"Piano. Non è questo che voglio essere. Rifallo, e fallo bene.",
+	},
+	["muse.w12.doubt.060"] = {
+		"Mentire agli altri richiede fatica e buona memoria. Mentirmi non richiede né l'una né l'altra, ed è per questo che lo faccio molto più spesso.",
+		"Con gli altri le bugie mi vengono malissimo. Con me, invece, mi riescono d'incanto.",
+	},
+	["muse.w12.doubt.061"] = {
+		"Certi giorni non so proprio dire se sto facendo del bene o se sto solo riempiendo le ore. Da dentro, i giorni sembrano uguali.",
+		"Sto migliorando qualcosa o mi sto soltanto muovendo? Visto da dentro, è la stessa identica sensazione.",
+	},
+	["muse.w12.doubt.062"] = {
+		"Avere ragione e avere torto, da dentro, si sentono allo stesso identico modo. Per questo la certezza è una guida inutile.",
+		"Lo sbaglio somiglia alla ragione fino al momento in cui smette di somigliarle. Nemmeno la certezza sa distinguerli.",
+		"Sbagliare e avere ragione hanno la stessa faccia, quando a portarla sono io.",
+	},
+	["muse.w12.doubt.064"] = {
+		"«Me l'hanno ordinato» non ha mai reso giusta nessuna cosa. Chi compie il gesto se lo porta addosso, chiunque abbia dato l'ordine.",
+		"Gli ordini possono dire alle mie mani cosa fare. Non possono togliermene il peso, dopo.",
+	},
+	["muse.w12.doubt.065"] = {
+		"Vado piuttosto {g:fiero|fiera} della mia umiltà. Ho il sospetto che non funzioni così.",
+		"Nessuno è più modesto di me, e lo dico a chiunque. Qualcosa non quadra.",
+	},
+	["muse.w12.doubt.066"] = {
+		"Il perdono non si dà una volta sola. Va rinnovato ogni volta che il ricordo bussa, e certi giorni ci riesco.",
+		"Avevo perdonato quel torto. Poi mi è tornato in mente e ho dovuto perdonarlo una seconda volta. Credo che funzioni così, finché non smette.",
+	},
+	["muse.w12.doubt.067"] = {
+		"Sto litigando con me da un pezzo. Vinco e perdo in parti uguali, e le due parti sono sfinite.",
+		"Due versioni di me non vanno d'accordo su qualcosa. La terza cerca solo un po' di pace.",
+	},
+	["muse.w12.doubt.068"] = {
+		"Giusto o sbagliato, è deciso. Presto saprò quale dei due.",
+		"Deciso. Se è un errore, almeno è un errore fatto con convinzione.",
+	},
+	["muse.w12.doubt.069"] = {
+		"Difficile trovare qualcuno più sicuro di essere nel giusto della Scarlet Crusade. Già questo dovrebbe mettere a disagio chiunque si senta sicuro.",
+		"La Scarlet Crusade, a quanto si dice, non ha mai avuto un dubbio. Guarda che cosa ne ha fatto.",
+	},
+	["muse.w12.doubt.070"] = {
+		"Le voci forti che ho in testa di solito sbagliano. Quella giusta tende a borbottare.",
+		"Quando i pensieri si mettono a gridare, cerco quello sommesso che c'è sotto. Di solito è l'unico da ascoltare.",
+		"I pensieri alzano la voce quando non sono sicuri di sé. Quelli assennati non gridano mai.",
+	},
+	["muse.w12.doubt.071"] = {
+		"Quando provo a compensare un'azione brutta con una buona, quella buona viene bene e quella brutta resta esattamente dov'era.",
+		"Le buone azioni non cancellano le cattive. Si limitano a stare loro accanto, in imbarazzo.",
+	},
+	["muse.w12.doubt.072"] = {
+		"La vendetta, da lontano, sembra sempre giustizia. Da vicino ha la mia faccia e quella di nessun altro.",
+		"Pareggiare i conti suona così ordinato. Non lo è mai. Resta sempre un avanzo, ed è sempre mio.",
+	},
+	["muse.w12.doubt.074"] = {
+		"Chi serve la Luce dice che vede dentro ogni cuore. Se è così, spero che pesi quello che intendevo oltre a quello che sono {g:riuscito|riuscita} a fare.",
+		"Se la Luce legge davvero le intenzioni, come sostengono i suoi sacerdoti, conto che sia una lettrice generosa.",
+	},
+	["muse.w12.doubt.075"] = {
+		"Appena mi sento superiore a qualcuno, mi preparo. Il mondo corregge in fretta queste cose, e senza delicatezza.",
+		"Sentiti al di sopra di qualcuno e la terra ti organizza una lezione. Non è mai discreta.",
+	},
+	["muse.w12.doubt.076"] = {
+		"C'è un momento per dire «non è giusto», ed è sempre breve e sempre imbarazzante. Se lo perdi, il silenzio dà ragione al posto tuo.",
+		"Anche il silenzio si schiera. Vorrei che non fosse così, ma succede ogni volta che lascio correre.",
+	},
+	["muse.w12.doubt.077"] = {
+		"Se ne sono {g:sicuro|sicura}? Richiedimelo fra un'ora. Anzi, lascia stare: avrò cambiato idea.",
+		"Ne sono assolutamente {g:certo|certa}. Più o meno.",
+	},
+	["muse.w12.doubt.078"] = {
+		"Il dubbio prima di una scelta è una lanterna. Dopo, è solo un sasso nello zaino.",
+		"Esitare prima illumina la strada. Rimuginare dopo è un sasso in più da portare.",
+	},
+	["muse.w12.doubt.079"] = {
+		"Mi accorgo che alzo la voce proprio quando sono meno {g:sicuro|sicura}. Utile da sapere su di sé, e irritante.",
+		"Più pianto i talloni, più è probabile che la discussione l'abbia già persa senza accorgermene.",
+	},
+	["muse.w12.doubt.080"] = {
+		"La durezza è la strada facile, ci arriva chiunque. La gentilezza chiede più coraggio di quanto ne abbia di solito da parte.",
+		"Essere duri è facile, il mondo te lo porge già pronto. Essere gentili costa fatica, quella in salita.",
+		"Chiunque sa fare il muro. Fare la porta che si apre chiede molto di più.",
+	},
+	["muse.w12.doubt.082"] = {
+		"«Non lo so» è la frase più onesta che possa dire. Ed è anche quella che evito con più impegno.",
+		"Niente di ciò che dico è vero, e raro, quanto «non lo so».",
+	},
+	["muse.w12.doubt.083"] = {
+		"La testa dice una cosa, la pancia un'altra, e i piedi risolvono la questione andandosene in una terza direzione.",
+		"Testa e pancia sono in stallo. I piedi, come al solito, hanno smesso di aspettare la sentenza.",
+	},
+	["muse.w12.doubt.084"] = {
+		"Le scelte che pesano di più non sono quelle che pagherei io. Sono quelle in cui pagherebbe qualcun altro.",
+		"Rischiare la mia pelle è un conto semplice. Rischiare quella di qualcun altro trasforma ogni scelta in piombo.",
+	},
+	["muse.w12.doubt.085"] = {
+		"Scusa. Quella non era giusta, su chiunque sia caduta.",
+		"Se è uscita dura, la ritiro. Anche se non lo era.",
+	},
+	["muse.w12.doubt.086"] = {
+		"Preferisco fare la cosa giusta goffamente che quella sbagliata con eleganza.",
+		"Il bene fatto male conta lo stesso. Il male fatto con grazia resta male.",
+		"Fare il giusto senza grazia batte comunque fare lo sbagliato con tutto lo stile del mondo.",
+	},
+	["muse.w12.doubt.087"] = {
+		"Le cose di cui sono più {g:sicuro|sicura} sono quasi sempre quelle che non ho mai controllato.",
+		"Prendi quello in cui credo più fermamente: scommetto che è la cosa che ho esaminato di meno.",
+	},
+	["muse.w12.doubt.088"] = {
+		"Non mi serve morire con la certezza di aver avuto ragione. Mi basterebbe sapere di aver continuato a chiedermelo.",
+		"Qualunque sia il mio ultimo pensiero, spero non sia «ne ero {g:sicuro|sicura}». Meglio «ho cercato di vedere».",
+	},
+	["muse.w12.doubt.090"] = {
+		"Chi ero un'ora fa ha fatto la scelta migliore che poteva con quello che sapeva. Non è giusto giudicarla con ciò che so adesso.",
+		"Col senno di poi la scelta sembra sciocca. Sul momento, con quello che vedevo, sembrava sensata. Sono vere entrambe le cose.",
+	},
+	["muse.w12.doubt.091"] = {
+		"Sarei una persona pazientissima, se nessuno mettesse mai alla prova la mia pazienza.",
+		"Le mie virtù sono in perfetto stato. Non le ho quasi mai usate.",
+		"La mia pazienza è impeccabile, purché non vada storto proprio niente.",
+	},
+	["muse.w12.doubt.092"] = {
+		"Certe scelte non si possono passare a nessun altro. Pesano di più, per questo, e in qualche modo sono anche più mie.",
+		"Non c'è nessuno a cui chiedere, e forse è giusto così. Certe domande entrano in un paio di mani soltanto.",
+	},
+	["muse.w12.doubt.093"] = {
+		"Non dirmi che avevo ragione. Mi incoraggia soltanto.",
+		"Se salta fuori che avevo ragione, acqua in bocca. Sono già abbastanza insopportabile così.",
+	},
+	["muse.w12.doubt.098"] = {
+		"Un'altra occhiata. Non che dubiti della cosa. Dubito di me.",
+		"Ricontrollo. Non è della cosa che non mi fido.",
+	},
+	["muse.w12.doubt.099"] = {
+		"Va bene, va bene. Torno indietro e lo faccio per bene.",
+		"E va bene. Farò la cosa decente. Brontolando, ma la farò.",
+	},
+	["muse.w12.humor.001"] = {
+		"Ovunque vada c'è una gallina. Sui campi di battaglia, agli incroci, sui gradini di un tempio. Non è di nessuno, e nessuno fa domande.",
+		"Guerre, pestilenze, villaggi bruciati, e le galline ne escono sempre senza un graffio. Mi piacerebbe conoscere il loro segreto.",
+		"Ogni grande evento di cui ho sentito parlare aveva una gallina ai margini, che beccava per conto suo, per niente impressionata.",
+	},
+	["muse.w12.humor.002"] = {
+		"Mai una gallina che mi abbia guardato con qualcosa di diverso dal disprezzo. Vorrei sapere cosa le hanno raccontato.",
+		"Le galline mi studiano di sbieco, un occhio per volta, come se ognuno volesse farsi un'idea sua. Nessuna delle due è lusinghiera.",
+	},
+	["muse.w12.humor.003"] = {
+		"Ho offeso qualche gallina, ultimamente? No? Bene. Allora la fortuna dovrebbe reggere.",
+		"Prima regola: mai far arrabbiare una gallina. Non so perché. Mi sembra importante e basta.",
+	},
+	["muse.w12.humor.004"] = {
+		"Chi costruisce torri in questo mondo non ne ha mai salita una con lo zaino pieno. Oppure sì, una volta, e per ripicca ha fatto la successiva più alta.",
+		"I maghi abitano in cima alle torri così chi sale arriva troppo stanco per discutere. Ci metterei la mano sul fuoco.",
+		"A metà di qualunque scala a chiocciola perdo il conto, poi il coraggio, poi ogni idea di dove fosse la porta.",
+	},
+	["muse.w12.humor.005"] = {
+		"Una scala a pioli è una scalinata a cui, a metà dei lavori, è mancato il coraggio.",
+		"Delle scale a pioli mi fido come dei cani degli sconosciuti: con educazione, dal basso, e con le mani pronte a mollare.",
+	},
+	["muse.w12.humor.006"] = {
+		"Chi porta tuniche lunghe deve avere un accordo privato con le scale. Al secondo pianerottolo io avrei già finito a gambe all'aria.",
+		"Tunica lunga e gradini ripidi: non ho mai visto nessuno mettere insieme le due cose e restare dignitoso per tutta la rampa.",
+	},
+	["muse.w12.humor.007"] = {
+		"La moda degli spallacci enormi finirà il giorno in cui qualcuno resterà incastrato in una porta davanti a testimoni.",
+		"Certi spallacci che si vedono in giro potrebbero ospitare una famiglia di quattro persone. Chissà come fanno a passare dalle porte, di traverso o per niente.",
+	},
+	["muse.w12.humor.008"] = {
+		"Certi elmi sembrano un secchio promosso ben oltre i propri meriti.",
+		"Metà degli elmi di questo mondo li ha disegnati qualcuno che una testa l'aveva solo sentita descrivere.",
+	},
+	["muse.w12.humor.009"] = {
+		"Ogni cinghia e ogni fibbia che porto scricchiola in una tonalità diversa. Avvicinarmi di soppiatto è fuori discussione: arrivo come il carretto di un ambulante carico di pentole.",
+		"Quando provo a muovermi in silenzio, il mondo tira fuori un rametto secco, un'asse sconnessa o un secchio, sempre giusto sotto il mio piede.",
+	},
+	["muse.w12.humor.010"] = {
+		"La chiave di una porta chiusa sta sempre dall'altra parte. Chi organizza queste cose ha un senso dell'umorismo piccolo piccolo, e cattivo.",
+		"Porta chiusa, chiave al di là. Ammirerei l'eleganza del trucco, se a restare in corridoio non fossi io.",
+		"Ho smesso di provare le porte nell'ordine sensato. La chiave giusta salta fuori nell'ultimo posto, dalla parte sbagliata, puntualmente.",
+	},
+	["muse.w12.humor.011"] = {
+		"Nello zaino mi tintinnano chiavi che non aprono niente di quel che ho trovato finora. Le tengo lo stesso: il giorno che le butto, salta fuori la porta giusta.",
+		"C'è una serratura, chissà dove, che aspetta una delle chiavi spaiate che mi porto dietro. Può continuare ad aspettare: io non butto niente.",
+	},
+	["muse.w12.humor.012"] = {
+		"Regola dei posti antichi: mai tirare una leva solo per vedere cosa succede. Io la tiro sempre, solo per vedere cosa succede.",
+		"Una leva su un muro fa una domanda sola, e io non ho mai avuto abbastanza carattere da lasciarla senza risposta.",
+	},
+	["muse.w12.humor.013"] = {
+		"Le porte di questo mondo non dicono mai se si aprono verso dentro o verso fuori. Con ognuna ci ho rimesso un pezzetto di dignità.",
+		"Spingi, tira, solleva, dai una spallata: la porta accetta una sola risposta, e non dà suggerimenti.",
+	},
+	["muse.w12.humor.014"] = {
+		"Un cancello che cigola solo quando cerco di non far rumore non è un cancello. È una spia.",
+		"I cardini tacciono tutto il giorno e tengono lo strillo per il momento in cui ho bisogno che stiano zitti.",
+	},
+	["muse.w12.humor.015"] = {
+		"Un cartello con scritto 'vietato entrare' è l'invito più efficace che sia mai stato dipinto.",
+		"Nessuno è mai rimasto fuori da un posto perché glielo diceva un'asse. L'asse serve soprattutto a indicare dove stanno le cose interessanti.",
+		"Scrivi 'pericolo' su una porta, e tanto vale aggiungere le indicazioni per arrivarci.",
+	},
+	["muse.w12.humor.016"] = {
+		"Chi comanda in un posto pericoloso abita sempre in fondo, in fondo. Mai una volta che il padrone di una tana tenga le stanze accanto all'ingresso.",
+		"Il capo sta sempre all'estremità opposta, dopo ogni guardia, ogni trappola e ogni scala. Nessun malvagio vuole stare vicino all'ingresso, dove tira la corrente.",
+		"Mai sentito di un signore oscuro che tenesse la sala del trono vicino alla porta. Vogliono tutti la camminata lunga, le scale, il dramma.",
+	},
+	["muse.w12.humor.017"] = {
+		"Tombe antiche, sigillate da secoli, e le torce alle pareti ancora accese. Qualcuno passa a cambiarle, e non ha mai lasciato nemmeno un biglietto.",
+		"In cripte del genere non entra nessuno da mille anni, eppure le torce bruciano tutte. Mi piacerebbe conoscere il custode.",
+	},
+	["muse.w12.humor.018"] = {
+		"Ogni antico male di cui ho sentito parlare era stato rinchiuso da qualcuno che non aveva controllato la serratura due volte.",
+		"Gli eroi di un tempo erano bravissimi a sigillare gli orrori e pessimi a scriverci sopra 'non aprire' in una lingua che durasse.",
+	},
+	["muse.w12.humor.019"] = {
+		"Perché le sette si riuniscono sempre sottoterra? Per una volta vorrei trovarne una che complotta la fine del mondo in una bella stanza con la finestra.",
+		"Le sette oscure non hanno fantasia quando si tratta di alloggi. Cantine, grotte, cripte. Mai una soffitta luminosa con vista.",
+	},
+	["muse.w12.humor.020"] = {
+		"Gli adepti delle sette portano tutti la stessa tunica. C'è un sarto, chissà dove, che cuce per la fine del mondo e non chiede mai a cosa serva l'ordinazione.",
+		"Stesso taglio, stesso colore, stesso cappuccio profondo. Sulla moda, almeno, tutte le sette dell'apocalisse vanno d'accordo.",
+	},
+	["muse.w12.humor.021"] = {
+		"I cattivi adorano spiegare tutto il piano prima che succeda qualcosa. Interromperli sarebbe maleducato, immagino, ma la tirano lunga.",
+		"Dai ai malvagi un pubblico che non può andarsene e parleranno per un'ora. Nessuno ha mai insegnato loro il dono della sintesi.",
+	},
+	["muse.w12.humor.022"] = {
+		"Dietro ogni trappola di un'antica rovina c'è stato un costruttore, molto fiero dell'idea, che però non ci è mai dovuto passare in mezzo.",
+		"Punte nel pavimento, dardi nei muri: qualcuno ci ha messo un vero orgoglio. Gli farei i complimenti, se non fosse polvere da un pezzo.",
+	},
+	["muse.w12.humor.023"] = {
+		"Una fortezza antica è fatta per lo più di corridoi. Qualcuno, morto da secoli, amava i corridoi sopra ogni cosa e non costruiva altro.",
+		"Chi progetta i sotterranei ha una passione per i corridoi lunghi e un conto aperto con i cartelli.",
+	},
+	["muse.w12.humor.024"] = {
+		"Ogni grotta ha l'odore di qualcosa che ci ha abitato e aveva idee molto precise sull'ordine, tutte contrarie.",
+		"Nessuna grotta profuma di qualcosa di buono. Il naso entra per primo, e vorrebbe sempre tornare indietro.",
+	},
+	["muse.w12.humor.025"] = {
+		"Non riesco a guardare in un pozzo senza aspettarmi che qualcosa ricambi lo sguardo. Finora solo la mia faccia, che è già abbastanza.",
+		"I pozzi sono profondi, bui e silenziosi: per quel che ne so, è la descrizione di un guaio con un secchio in cima.",
+	},
+	["muse.w12.humor.026"] = {
+		"I soli libri che varrebbe la pena leggere sono sempre scritti in una grafia che non decifro. Quelli che capisco parlano della corretta manutenzione dei cardini.",
+		"Gli scritti antichi non dicono mai niente di utile, tipo 'l'uscita è a sinistra'. Sempre profezie, mai indicazioni.",
+	},
+	["muse.w12.humor.027"] = {
+		"In questo mondo niente resta sgombro. Svuoti un accampamento, ti giri due volte, e sono tutti tornati come se niente fosse.",
+		"Giurerei che le stesse creature tornano negli stessi posti, come i clienti fissi di una taverna. Qualcuno continua a riaprire il locale.",
+		"Qualunque cosa scacci, è di ritorno prima che abbia finito di allacciarmi uno stivale. Le stesse, giurerei, con un atteggiamento rinnovato.",
+	},
+	["muse.w12.humor.028"] = {
+		"Le cose mi inseguono fino a un certo punto e poi tornano indietro, come se fossero arrivate al confine del loro podere e il resto fosse affare di altri.",
+		"Niente mi insegue a lungo. Passato un certo punto si fermano, mi guardano con disgusto e trotterellano a casa. Ci devono essere cippi di confine che io non vedo.",
+		"Una cosa mi insegue ringhiando, poi si blocca di colpo, come se si fosse ricordata di aver lasciato qualcosa sul fuoco.",
+	},
+	["muse.w12.humor.029"] = {
+		"Su cinque, uno solo ha addosso il pezzo che mi serve. Gli altri l'avranno lasciato a casa.",
+		"Tanti lupi, e pellicce buone quasi nessuna. Gli altri le avranno avute in prestito.",
+		"È sempre l'ultimo ad avere quello che cerco. I primi nove servivano solo a peggiorare la mia opinione del mondo.",
+	},
+	["muse.w12.humor.030"] = {
+		"Qualunque cosa abbia un nome porta guai. Un lupo qualsiasi vuole solo essere lasciato in pace; un lupo con un nome ha una reputazione da difendere.",
+		"Diffida di tutto ciò a cui qualcuno ha dato un nome. Glielo hanno dato per un motivo, e il motivo raramente era la tenerezza.",
+	},
+	["muse.w12.humor.031"] = {
+		"Certe cose là fuori sono molto più grosse di quanto la loro specie avrebbe diritto di essere. Qualcuno le lascia crescere senza sorveglianza.",
+		"Ogni tanto spunta un ragno grande come un carro, o un cinghiale grande come una capanna. La natura non ha il senso delle proporzioni, e nessuno che glielo faccia notare.",
+	},
+	["muse.w12.humor.032"] = {
+		"I coboldi scavano dappertutto e sembrano sicurissimi di sé. Nessuno ha mai scoperto dove credano di andare.",
+		"Dai a un coboldo una galleria e ne scaverà un'altra di lato. Ammiro l'impegno più della pianificazione.",
+	},
+	["muse.w12.humor.033"] = {
+		"Una melma non ha faccia, né cervello, né progetti, eppure riesce ad avere un'aria compiaciuta.",
+		"Non ho mai capito cosa voglia una melma. Sospetto che non lo sappia nemmeno lei, e che sia più felice così.",
+	},
+	["muse.w12.humor.034"] = {
+		"Per certe cose là fuori sono un terrore, per altre uno spuntino. Il trucco è ricordarsi quali sono quali prima di presentarsi.",
+		"Ci sono creature che scappano appena mi vedono e creature che si rallegrano. Mi piacerebbe un cartello di avviso su ognuna.",
+	},
+	["muse.w12.humor.035"] = {
+		"Strano come il mondo mi mandi cose più dure proprio quando comincio a migliorare. Una coincidenza molto sospetta.",
+		"Divento un po' più forte e i guai, chissà come, si fanno un po' più grossi per pareggiare. Vorrei conoscere chi tiene il passo a tutti e due.",
+	},
+	["muse.w12.humor.036"] = {
+		"Le rane se ne stanno lì con l'aria di chi ha risolto la vita da un pezzo e non ha intenzione di dirlo a nessuno.",
+		"Una rana su un sasso sembra più in pace di qualunque saggio di cui abbia sentito parlare. Certo, mangia mosche: forse il prezzo è quello.",
+	},
+	["muse.w12.humor.037"] = {
+		"Gli scoiattoli sembrano sempre rimproverare qualcuno, e quando ci sono io nei paraggi, ce l'hanno con me. Vorrei almeno sapere l'accusa.",
+		"Le bestiole mi chiacchierano addosso dai rami come se avessi calpestato qualcosa di loro. Probabilmente l'ho fatto.",
+	},
+	["muse.w12.humor.038"] = {
+		"I conigli scappano appena mi vedono, come se avessero sentito qualcosa sul mio conto. Non ho mai fatto niente a un coniglio. Non che mi crederebbero.",
+		"Davanti a me corre una certa reputazione, e a quanto pare l'hanno letta solo i conigli.",
+	},
+	["muse.w12.humor.039"] = {
+		"Un gatto mi guarda come se gli dovessi una spiegazione, e io in qualche modo sento di dovergliela davvero.",
+		"I gatti mi squadrano, mi trovano carente e tornano a lavarsi. Giudizio onesto.",
+	},
+	["muse.w12.humor.040"] = {
+		"Tutte le mosche nel raggio di un miglio sembrano conoscere il mio nome, e vogliono parlarne proprio accanto al mio orecchio.",
+		"Posso affrontare qualunque cosa ci sia là fuori, ma una mosca che mi ronza intorno alla testa mi porta sull'orlo della resa.",
+	},
+	["muse.w12.humor.041"] = {
+		"I cani randagi mi seguono per miglia e poi se ne vanno senza una parola, come una scorta delusa.",
+		"Tutti i randagi del mondo camminano volentieri con me, finché non sentono un odore più interessante. Conosco il mio posto.",
+	},
+	["muse.w12.humor.042"] = {
+		"I corvi mi osservano come le vecchie zie a un matrimonio: non perdono niente e approvano ancora meno.",
+		"C'è sempre un corvo su qualche palo, che tiene il conto dei miei errori. Gli serviranno parecchi pali.",
+	},
+	["muse.w12.humor.043"] = {
+		"Entro in una tana di chissà cosa senza battere ciglio, e poi strillo per una falena. Il mio coraggio tiene orari strani.",
+		"I grandi spaventi li affronto a viso fermo. Sono i piccoli, la cosa che zampetta accanto allo stivale, a strapparmi un verso.",
+	},
+	["muse.w12.humor.044"] = {
+		"Metà delle mie commissioni consiste nel portare una lettera da una persona a un'altra che abita abbastanza vicino da gridargliela.",
+		"C'è gente che preferisce mandare un forestiero con un biglietto in fondo alla via piuttosto che affacciarsi alla porta e chiamare.",
+	},
+	["muse.w12.humor.045"] = {
+		"'Non aprirlo.' Ogni pacco sigillato arriva con queste parole, e ogni volta la curiosità pesa più del pacco.",
+		"Dammi una scatola e dimmi di non guardarci dentro: mi hai appena dato due carichi da portare.",
+	},
+	["muse.w12.humor.046"] = {
+		"Una lettera attraversa il mondo intero in un'ora. Io ci metto una settimana e quando arrivo ho fango fino alle ginocchia. Mi batte in velocità un pezzo di carta.",
+		"La posta viaggia più veloce di me e non si ferma mai a riposare. Forse dovrei piegarmi in quattro e imbucarmi.",
+		"Le mie lettere arrivano a destinazione prima che io abbia raggiunto il paese successivo. L'inchiostro, a quanto pare, ha gambe migliori delle mie.",
+	},
+	["muse.w12.humor.047"] = {
+		"La pietruzza che mi riporta a una locanda non mi chiede mai se ne preferirei un'altra. Ha la sua preferita, e basta.",
+		"Basta un tocco su una pietra liscia e mi ritrovo davanti allo stesso focolare, allo stesso sgabello, al solito cenno del locandiere. È magia, eppure sa di abitudine.",
+	},
+	["muse.w12.humor.048"] = {
+		"Le navi salpano nell'istante in cui arrivo in vista del molo. È una specie di dono. Non l'ho chiesto io.",
+		"In questo momento una nave si sta staccando da un pontile, e sul pontile qualcuno corre e grida, troppo tardi. Per una volta non sono io. Piccole grazie.",
+	},
+	["muse.w12.humor.049"] = {
+		"L'acqua alta ha il suo modo di dirmi, fino all'ultima oncia, quanto pesa quello che ho addosso.",
+		"Nessuno confessa di aver imparato a nuotare con tutta l'attrezzatura addosso. Imparano tutti, e tutti tacciono.",
+	},
+	["muse.w12.humor.050"] = {
+		"Mi sorprendo a saltellare mentre cammino, senza motivo, come se così si arrivasse prima. Non è vero. E continuo.",
+		"C'è una parte piccola e sciocca di me che salta sopra il nulla mentre cammino. Il resto di me fa finta di non conoscerla.",
+	},
+	["muse.w12.humor.051"] = {
+		"Nel mio mestiere nessuno cammina mai. Si fa tutto di corsa, come se ogni commissione avesse preso fuoco.",
+		"Ho dimenticato come si passeggia. Attraverso un paese da un capo all'altro di gran carriera, per imbucare una lettera.",
+	},
+	["muse.w12.humor.052"] = {
+		"Le facce sui manifesti dei ricercati potrebbero essere di chiunque. Strizzi gli occhi e, in una brutta giornata, una è la mia.",
+		"Leggo sempre i manifesti dei ricercati, per scrupolo. Non si sa mai cos'hai combinato finché qualcuno non lo disegna.",
+	},
+	["muse.w12.humor.053"] = {
+		"La sola creatura che inseguo da un'ora cade sempre per mano di uno sconosciuto un attimo prima che io arrivi.",
+		"In questo momento, chissà dove, un pugno di sconosciuti sta in piedi intorno a un pezzo di terra vuoto, tutti ad aspettare la stessa bestia rara, e ognuno fa finta di niente.",
+		"Insegui abbastanza a lungo una bestia rara e la abbatte un passante che nemmeno la cercava. E il passante non ringrazia mai.",
+	},
+	["muse.w12.humor.054"] = {
+		"Ho visto due avventurieri adulti attraversare un prato di corsa per lo stesso fiore. Non si sono guardati. Ci hanno rimesso la dignità tutti e due.",
+		"La gara più feroce del mondo è quella fra due sconosciuti che hanno avvistato la stessa macchia d'erbe. Niente regole, niente parole, niente vergogna.",
+	},
+	["muse.w12.humor.055"] = {
+		"Davanti alle porte di qualunque città ci sono due persone che cercano con grande impegno di stendersi a vicenda, con molta educazione, e un capannello che dà consigli.",
+		"Un duello amichevole: due sconosciuti, un inchino, poi un sincero sforzo per mettersi al tappeto. Poi un altro inchino. Non lo capirò mai.",
+	},
+	["muse.w12.humor.056"] = {
+		"La gente, in questo mondo, perde le cose più strane nei posti più pericolosi, e poi resta lì ferma ad aspettare aiuto.",
+		"Come si fa a far cadere un anello in fondo a un lago pieno di denti? E perché è sempre l'anello della nonna?",
+	},
+	["muse.w12.humor.057"] = {
+		"Aiuta qualcuno una volta e ti sentirai dire 'grazie'. Aiutalo due volte e sentirai 'già che ci sei...'",
+		"La gratitudine scade presto. Al secondo favore si è già trasformata in un'altra commissione.",
+	},
+	["muse.w12.humor.058"] = {
+		"Le cose più belle che trovo sono sempre fatte per qualcun altro. Forma sbagliata, uso sbagliato, e una bellezza che sa di presa in giro.",
+		"Il tesoro ha una vena crudele: si presenta scintillante, perfetto, e pensato per mani di tutt'altro mestiere.",
+	},
+	["muse.w12.humor.059"] = {
+		"Nello stivale ho un sassolino che ha viaggiato più di tanti eroi. Resta lì finché non impara l'umiltà.",
+		"Il sassolino nel mio stivale ha visto più mondo di parecchi re. Lo scuoterei fuori, ma ormai sembra essersi guadagnato il posto.",
+	},
+	["muse.w12.humor.060"] = {
+		"Ogni cassa del mondo tiene un chiodo sporgente, che aspetta con pazienza la mia mano.",
+		"Un falegname, chissà quando, ha lasciato un chiodo fuori da una cassa, e da allora quel chiodo aspetta la mia manica.",
+	},
+	["muse.w12.humor.061"] = {
+		"Una candela si accende subito quando non serve e fa i capricci quando serve. È quel genere di rapporto.",
+		"L'esca prende fuoco benissimo davanti a chiunque guardi, e mai quando non c'è nessuno. Credo che si esibisca solo per il pubblico.",
+	},
+	["muse.w12.humor.062"] = {
+		"La corda esiste in due misure: troppo corta, e aggrovigliata.",
+		"Per quanta corda mi porti dietro, il vuoto da superare è sempre un braccio più largo. Corda e distanze si sono messe d'accordo.",
+		"Non mi riesce mai di tagliare una corda della misura giusta. La corda sente quando la misuri, e per dispetto si accorcia.",
+	},
+	["muse.w12.humor.063"] = {
+		"Ogni pozzanghera sembra bassa finché non ci sono dentro. Sono le bugiarde più convincenti che conosca.",
+		"L'unica pozzanghera in cui metto il piede è sempre quella profonda. Il mondo me la tiene lì apposta.",
+	},
+	["muse.w12.humor.064"] = {
+		"Un ramo scostato è un ramo che tornerà a cercarmi la faccia. Nessuno manca all'appuntamento.",
+		"Basta sfiorare un'ortica una volta e quella lo racconta alle altre. Adesso mi conosce tutta la siepe.",
+	},
+	["muse.w12.humor.065"] = {
+		"C'è chi ha il dono di trovare l'unico posto asciutto dove sedersi. Io ho il dono opposto, e lo esercito ogni giorno.",
+		"Mi siedo dove capita, e la terra si rivela umida esattamente nella forma della mia sagoma.",
+	},
+	["muse.w12.humor.066"] = {
+		"I guanti se ne vanno da soli, mai in coppia. Chissà dove quelli perduti hanno fondato un villaggio, e ci vivono tutti mancini.",
+		"Non ho mai perso un paio di niente. Sempre e solo uno dei due, che è molto più dispettoso.",
+	},
+	["muse.w12.humor.067"] = {
+		"Lavare qualcosa per strada serve solo a cambiare indirizzo allo sporco.",
+		"Strofino, risciacquo, strizzo, e la macchia mi guarda riposata e rinfrescata.",
+	},
+	["muse.w12.humor.068"] = {
+		"Un bel cappello fa sembrare saggio chiunque, da lontano. Da vicino, temo, sotto ci sono sempre io.",
+		"Dicono che un bel cappello dia dignità. Te la presta, certo. Poi arriva il primo ramo basso e se la riprende.",
+	},
+	["muse.w12.humor.069"] = {
+		"Ho intravisto la mia faccia in un'acqua ferma e ho salutato quel forestiero prima di capire chi fosse. Bell'educazione, almeno.",
+		"Ogni riflesso che incrocio per strada mostra qualcuno che ne ha passate tante. Giusto. Però preferirei uno stagno più gentile.",
+	},
+	["muse.w12.humor.070"] = {
+		"Se la fortuna fosse un paio di dadi, i miei li avrebbe truccati qualcuno che ce l'ha con me personalmente.",
+		"I dadi non sono mai stati dalla mia parte. Credo che si parlino tra loro.",
+	},
+	["muse.w12.humor.071"] = {
+		"Ballo come chi litiga con un'ape. Nessuno ha mai ripetuto l'invito.",
+		"Appena c'è musica i piedi si offrono volontari prima che riesca a fermarli, e poi mi abbandonano a metà.",
+	},
+	["muse.w12.humor.072"] = {
+		"Saluti con la mano uno sconosciuto, quello non risponde, e per il miglio successivo fai finta che fosse un modo di sgranchirti.",
+		"Non c'è piccola umiliazione pari a un saluto che nessuno ricambia. Di solito trasformo il mio in una grattata di testa.",
+	},
+	["muse.w12.humor.073"] = {
+		"Ho giurato che non toccherò mai più un fungo strano. Lo giuro più o meno una volta a settimana.",
+		"I miei voti solenni durano fino alla prossima cosa luccicante. Finché durano, però, sono solennissimi.",
+	},
+	["muse.w12.humor.074"] = {
+		"Per una posa eroica servono il mento alto, lo sguardo fermo e un mantello che svolazza alle spalle. A me riesce il mento.",
+		"Nei dipinti gli eroi stanno ritti su una roccia con i capelli all'aria. Quando ci salgo io, la roccia traballa.",
+	},
+	["muse.w12.humor.075"] = {
+		"La scheggia è fuori. Si racconti in ogni sala di come, dopo lunga e aspra lotta, abbia ceduto.",
+		"Vittoria. La scheggia è stata cacciata dal mio pollice, e la pace torna nel regno.",
+	},
+	["muse.w12.humor.076"] = {
+		"C'è un fantoccio di paglia che ha preso più colpi di qualunque soldato vivente e non si è mai lamentato. Se qualcuno merita una medaglia, è quel sacco.",
+		"Ho un profondo rispetto per i fantocci da allenamento. Stanno lì, incassano, non chiedono niente. Hanno più carattere di tanta gente.",
+		"Il fantoccio da allenamento non trasale, non reagisce, non tiene il broncio. Ci sono re con meno contegno.",
+	},
+	["muse.w12.humor.077"] = {
+		"Impari un trucco nuovo e per un po' ogni cosa sembra l'occasione buona per usarlo. Dev'essere stancante da guardare.",
+		"Non c'è nessuno di più insopportabile di me nella settimana dopo che ho imparato qualcosa. Per fortuna il mondo è abbastanza grande da girarmi alla larga.",
+	},
+	["muse.w12.humor.078"] = {
+		"Qualunque cosa costruita da uno gnomo ha due posizioni, e una delle due è il fumo.",
+		"Gli aggeggi degli gnomi sono meraviglie. Solo che non sempre sono d'accordo su che tipo di meraviglia.",
+	},
+	["muse.w12.humor.079"] = {
+		"Chi costruisce quei grandi montacarichi a fune ha più fiducia nella corda di quanta ne abbia io in qualunque cosa.",
+		"Quando la cesta oscilla sul vuoto appesa al suo unico cavo, scopro di avere sui nodi opinioni che non sapevo di avere.",
+	},
+	["muse.w12.humor.080"] = {
+		"Campione, mi chiamano. E io mi guardo ancora alle spalle per cercare quello vero.",
+		"'Eroe.' Molto gentili. Se ne incontro uno, glielo riferisco.",
+	},
+	["muse.w12.humor.081"] = {
+		"Con l'autorità conferitami da nessuno, dichiaro aperta la pausa.",
+		"Ascoltami, mondo: proclamo una breve sosta. Le obiezioni si presentano dopo, per iscritto.",
+	},
+	["muse.w12.humor.082"] = {
+		"Non fateci caso. Io e il mio piede sinistro stiamo chiarendo una divergenza di vedute.",
+		"Nessun problema. Il piede sinistro ha fatto di testa sua, e adesso gli faccio un discorsetto.",
+	},
+	["muse.w12.humor.083"] = {
+		"Sia chiaro: io la prudenza ce l'ho messa. È il mondo che non ha collaborato.",
+		"Ho fatto tutto come si deve. Il mondo aveva altri programmi, e più rumorosi.",
+	},
+	["muse.w12.humor.084"] = {
+		"Ogni volta che dico 'che ci vuole', il mondo la prende per una domanda vera.",
+		"Avviso al mondo: 'che ci vuole' non era un invito.",
+	},
+	["muse.w12.humor.085"] = {
+		"Certi giorni sono {g:l'eroe|l'eroina} della storia. Quasi sempre sono la comparsa che la storia supera senza voltarsi.",
+		"Ogni storia ha bisogno di qualcuno sullo sfondo con un secchio in mano. Col secchio me la cavo benissimo.",
+	},
+	["muse.w12.humor.086"] = {
+		"Sono una persona dignitosissima. È il mondo che continua a farmi lo sgambetto.",
+		"La dignità ce l'ho, eccome. Solo che non è mai dove l'ho lasciata.",
+	},
+	["muse.w12.humor.087"] = {
+		"Coraggio? Direi piuttosto informazioni scarse e gambe veloci.",
+		"Dicono che ho fegato. Lo dice soprattutto chi non c'era.",
+	},
+	["muse.w12.humor.088"] = {
+		"Ho un ottimo piano. Primo punto: non cascarci dentro.",
+		"Il piano è semplice: stare fuori dall'acqua, dal fuoco e dai guai. Finora uno su tre.",
+	},
+	["muse.w12.humor.089"] = {
+		"Fango. Dappertutto. Come fa il fango a finire dentro una tasca chiusa?",
+		"Ho trovato fango in posti di cui il fango non dovrebbe nemmeno conoscere l'esistenza.",
+	},
+	["muse.w12.humor.090"] = {
+		"Fra un attimo avrò coraggio. Sto solo aspettando che arrivi l'attimo.",
+		"Il coraggio sta arrivando. Ha preso la strada panoramica.",
+	},
+	["muse.w12.humor.091"] = {
+		"Ho smesso di cercare di fare colpo. Adesso punto a restare dritto sulle gambe.",
+		"Fare colpo è roba per altri. Io sono specialista dello stare in piedi.",
+	},
+	["muse.w12.hunger.001"] = {
+		"Il dolore si porta via prima di tutto la fame. Qualche giorno dopo te la rende senza dire niente, e mangiare sembra quasi un tradimento.",
+		"Quando si perde qualcosa, il cibo per un po' non sa di niente. Mangio lo stesso: il corpo la notizia non l'ha ancora ricevuta.",
+		"Il dispiacere e la fame non stanno nella stessa stanza. Uno dei due deve uscire, e non è mai il dispiacere il primo.",
+	},
+	["muse.w12.hunger.002"] = {
+		"Una buona notizia è il miglior condimento che esista. La stessa crosta, in una giornata fortunata, ha un altro sapore.",
+		"Strano come la contentezza arrivi fino alla lingua. Quando le cose girano, anche una galletta secca sembra fatta con amore.",
+		"Una bella giornata condisce tutto quello che c'è nel piatto. Nessun vasetto di spezie c'è mai riuscito.",
+	},
+	["muse.w12.hunger.003"] = {
+		"Non c'è crudeltà più raffinata delle cipolle di un altro che soffriggono quando la mia pentola è vuota.",
+		"Il tormento peggiore che conosco non è una ferita: è il profumo della cena di qualcun altro che passa davanti a uno stomaco vuoto.",
+	},
+	["muse.w12.hunger.005"] = {
+		"C'è chi toglie la crosta al formaggio. Io non ho mai avuto abbastanza soldi per farlo.",
+		"Se la crosta del formaggio sia cibo dipende da quanto sei lontano dal mercato. In viaggio, è cibo e basta.",
+	},
+	["muse.w12.hunger.006"] = {
+		"Quello che resta attaccato in fondo alla pentola, un po' bruciacchiato, è la parte migliore. Ogni cuoco lo sa, e se lo tiene.",
+		"Dove lo stufato si attacca alla pentola si forma una crosticina. Chi ha il diritto di grattarla via ha vinto qualcosa.",
+		"Il bruciacchiato sul fondo è l'errore del cuoco e il tesoro dell'ospite. Per quella pentola litigherei, se qualcuno me la contendesse.",
+	},
+	["muse.w12.hunger.007"] = {
+		"Metti un piatto in mezzo a degli sconosciuti e l'ultimo pezzo resterà lì in eterno. La buona educazione è una forza potente, quasi quanto la fame.",
+		"Nessuno prende mai l'ultimo boccone di un piatto in comune. Resta lì, sorvegliato dalle buone maniere di tutti.",
+	},
+	["muse.w12.hunger.008"] = {
+		"Ogni mela che metto nello zaino arriva ammaccata dallo stesso lato, quello schiacciato contro tutto il resto. So come ci si sente.",
+		"La frutta non è fatta per viaggiare. Arriva in fondo alla borsa con l'aria di chi le ha prese. La capisco.",
+	},
+	["muse.w12.hunger.009"] = {
+		"Un cuoco affamato e un fuoco lento sono nemici giurati. Vince sempre il fuoco.",
+		"Niente cuoce più piano della cena quando muoio di fame. Giurerei che le fiamme lo fanno apposta.",
+		"Sopra la pentola veglia la fame, e il fuoco se la prende comoda. Quei due non si sono mai messi d'accordo sui tempi.",
+	},
+	["muse.w12.hunger.010"] = {
+		"Il tè non si lascia mettere fretta. Versalo troppo presto e sa d'acqua; lascialo troppo e sa di rimpianto. In mezzo c'è quasi tutto quello che so della pazienza.",
+		"Lasciare il tè in infusione è una piccola lezione d'attesa. Troppo presto, niente; troppo tardi, amaro. La tazza buona sta nello spazio stretto fra le due cose.",
+	},
+	["muse.w12.hunger.011"] = {
+		"Ne tengo sempre un po' da parte per dopo. Il dopo arriva sempre una decina di minuti più tardi.",
+		"Gli avanzi sono un'idea bellissima che non è mai arrivata intera al pasto successivo.",
+	},
+	["muse.w12.hunger.012"] = {
+		"La fame brontola. La sete comanda. Ho imparato a chi dare retta per prima.",
+		"Con la fame si può trattare per giorni. La sete non tratta: si prende tutti i pensieri.",
+		"Senza cibo la mente vaga. Senza acqua le resta un solo argomento.",
+	},
+	["muse.w12.hunger.013"] = {
+		"La carne salata si conserva in eterno e mi fa bere come una spugna. Così mi porto dietro più acqua, che pesa più della carne. Non vince nessuno.",
+		"Secca, salata, fatta per durare: la carne da viaggio sarebbe perfetta, se ogni morso non costasse un sorso d'acqua.",
+	},
+	["muse.w12.hunger.014"] = {
+		"Mangia quello che hai davanti e ringrazia chi ce l'ha messo. Le buone maniere, dappertutto, sono quasi tutte lì.",
+		"Vuota la scodella. Qualunque altra cosa dicano di te, diranno che eri un buon ospite.",
+	},
+	["muse.w12.hunger.015"] = {
+		"Quando ho troppo da fare mi dimentico del tutto di mangiare. Poi le mani cominciano a tremare e il promemoria arriva tutto in una volta.",
+		"La fame per un po' è paziente. Poi smette di bussarmi sulla spalla e comincia a prendere a calci la porta.",
+		"Posso passare mezza giornata senza pensare al cibo, e poi per un'ora non pensare ad altro.",
+	},
+	["muse.w12.hunger.016"] = {
+		"Niente mi mette fame come averla scampata per un pelo. Appena passa il pericolo, lo stomaco torna e pretende spiegazioni.",
+		"La paura chiude la cucina. Il sollievo spalanca le porte e pretende un banchetto.",
+	},
+	["muse.w12.hunger.017"] = {
+		"Il pane chiede più tempo che bravura. Farina, acqua, un angolo tiepido e pazienza, e lievita che qualcuno lo guardi o no.",
+		"L'impasto ha qualcosa che rimette in pace. Fa il suo lavoro piano, senza storie, e nessuno può costringerlo a diventare pane prima del tempo.",
+		"Le pagnotte migliori sono fatte soprattutto di attesa. Le mani fanno un poco; il resto lo fa il tempo, senza prendersene il merito.",
+	},
+	["muse.w12.hunger.018"] = {
+		"Il pane raffermo non è finito. Mettilo nel brodo e ha una seconda vita, più morbida e migliore della prima.",
+		"Nessun pane è troppo duro per la zuppa. La pentola perdona quello che la dispensa ha dimenticato.",
+		"Pane vecchio, brodo caldo, un po' di pazienza: la resurrezione più economica del mondo.",
+	},
+	["muse.w12.hunger.019"] = {
+		"Il miele è una cosa meravigliosa per circa un minuto. Dopo ce l'ho sulle dita, sulla manica, sulla cinghia e, non so come, dentro uno stivale.",
+		"Mangia del miele per strada e te lo porterai dietro per giorni, su tutto quello che tocchi.",
+	},
+	["muse.w12.hunger.020"] = {
+		"Certe spezie non sono un sapore, sono una sfida. Le accetto tutte, e ne perdo quasi tutte.",
+		"Esiste un peperoncino che andrebbe venduto con un avvertimento. Lo comprerei lo stesso: il guaio è tutto lì.",
+	},
+	["muse.w12.hunger.021"] = {
+		"Tutti hanno un piatto che non perdoneranno mai. Il mio non lo nomino nemmeno: potrebbe sentirmi.",
+		"Mangio quasi tutto. Quasi. C'è un piatto a questo mondo per cui preferirei restare a digiuno, e lui lo sa benissimo.",
+	},
+	["muse.w12.hunger.022"] = {
+		"Il gusto per l'amaro si acquisisce, dicono. Secondo me la lingua semplicemente si stanca di protestare.",
+		"Ci sono sapori che si impara ad amare solo dopo abbastanza giornate dure. L'amaro è uno. Il tè forte è un altro.",
+	},
+	["muse.w12.hunger.023"] = {
+		"Chi fa lo schizzinoso in viaggio dura poco. La fame insegna la tolleranza più in fretta di qualsiasi maestro.",
+		"Lo schizzinoso e l'affamato non restano a lungo due persone diverse. Uno diventa l'altro.",
+		"Contro la schizzinosità, la fame funziona meglio di qualsiasi sgridata.",
+	},
+	["muse.w12.hunger.024"] = {
+		"Quando rispondo male a qualcuno, la prima domanda dovrebbe essere quando ho mangiato l'ultima volta. La seconda può aspettare.",
+		"Metà dei miei malumori è solo fame con un mantello preso in prestito. Dalle da mangiare, e il malumore si toglie il mantello e se ne va.",
+	},
+	["muse.w12.hunger.025"] = {
+		"Mangiare subito la cosa migliore, nel caso vada storto qualcosa? O tenerla da parte, per avere qualcosa da aspettare? Ho sostenuto entrambe le tesi con me {g:stesso|stessa} e ho perso due volte.",
+		"Il boccone migliore prima o dopo: la lite più vecchia che ho con me {g:stesso|stessa}. Di solito trovo un compromesso e lo mangio a metà.",
+	},
+	["muse.w12.hunger.027"] = {
+		"Il cibo è l'unica cosa nello zaino che si alleggerisce usandola. Ogni pasto, per me, è un favore fatto alle spalle.",
+		"Ogni boccone che mando giù è un peso in meno da portare. Io lo chiamo alleggerire il bagaglio, e nessuno può dimostrare il contrario.",
+	},
+	["muse.w12.hunger.028"] = {
+		"Mai mangiare un fungo di cui non sai il nome. Quelli che ammazzano sono spesso i più belli, e non chiedono scusa.",
+		"Un fungo che non riconosco resta dov'è nato. La fame può aspettare; il rimpianto non si può risputare.",
+		"Cappelle graziose, colori vivaci, un buon odore di terra: i funghi più velenosi si vestono a festa.",
+	},
+	["muse.w12.hunger.029"] = {
+		"Certi cuochi guardano una faccia stanca in un certo modo, e poi nella scodella finisce un mestolo in più, senza una parola. La gentilezza nella sua forma più pratica.",
+		"Un secondo mestolo versato senza che tu lo chieda: la carità più silenziosa che esista, e la più gradita.",
+		"Chi cucina per i viaggiatori legge la fame a colpo d'occhio, e i migliori rispondono col mestolo.",
+	},
+	["muse.w12.hunger.030"] = {
+		"I tavoli delle locande sono levigati da mille gomiti. Sedersi a uno vuol dire entrare in una conversazione lunghissima.",
+		"Ogni vecchio tavolo da taverna è stato lucidato dalle braccia di gente che non c'è più. Ci appoggio le mie e per un attimo mi sento in buona compagnia.",
+	},
+	["muse.w12.hunger.031"] = {
+		"Mentre mastico gallette, progetto banchetti. Arrosto con la cotenna croccante, pane appena sfornato, una torta col coperchio. Progettare non costa niente, e quasi aiuta.",
+		"Per i periodi di magra tengo un banchetto intero in testa: qualcosa di arrosto, qualcosa di dolce, una pagnotta che fuma. Apparecchiare quella tavola non costa nulla.",
+		"Le cene immaginate sono le uniche che non si bruciano mai. Le cucino in testa, portata dopo portata, mentre il pasto vero scricchiola sotto i denti.",
+	},
+	["muse.w12.hunger.032"] = {
+		"Ho sentito di banchetti in cui metà del cibo torna in cucina intatto. Da qualche altra parte, lo stesso giorno, qualcuno sta bollendo uno stivale.",
+		"Una tavola reale può buttare via in un solo pasto più di quanto un villaggio mangi in una settimana. E a quella tavola nessuno sembra trovarlo strano.",
+	},
+	["muse.w12.hunger.033"] = {
+		"Un pasto abbondante e una lunga camminata non vanno d'accordo. Continuo a presentarli, e non diventano mai amici.",
+		"Mangi come un re, cammini come un mulo. Ogni banchetto manda il conto alle gambe.",
+	},
+	["muse.w12.hunger.034"] = {
+		"Una giornata senza mangiare per qualche ora ti lascia la testa limpida, leggera, affilata. Poi non più, e ogni pensiero va a finire nello stesso posto.",
+		"Resta a digiuno abbastanza a lungo e la mente si fa semplicissima. Qualunque pensiero, comunque cominci, va a finire sul pane.",
+		"Il digiuno rende la testa limpida, poi leggera, poi testarda su un solo argomento.",
+	},
+	["muse.w12.hunger.035"] = {
+		"Quando ho fame sento l'odore del pane attraverso due muri e una porta chiusa. È l'unico momento in cui il naso mi serve davvero.",
+		"Uno stomaco vuoto trasforma il naso in un esploratore. Scova ogni cucina nel giro di un miglio e fa rapporto, senza alcuna utilità.",
+	},
+	["muse.w12.hunger.036"] = {
+		"Lo sfrigolio di qualcosa in padella è uno dei rumori più amichevoli del mondo. Vuol dire che qualcuno sta per mangiare.",
+		"Il grasso che scoppietta in una padella rovente: non conosco musica che prometta di più.",
+	},
+	["muse.w12.hunger.037"] = {
+		"Cucinare sulla fiamma viva è una lezione d'umiltà: nero fuori, crudo dentro, e nessuno da incolpare se non me {g:stesso|stessa}.",
+		"Troppo fuoco e la carne sembra cotta molto prima di esserlo. Funzionano così parecchie cose.",
+		"Fiamma bassa, lunga attesa, buona cena. Fiamma alta, attesa breve, carbone. Lo so benissimo, e ci casco lo stesso ogni volta.",
+	},
+	["muse.w12.hunger.038"] = {
+		"Mescolare una pentola è quanto di più vicino conosca allo stare fermi con i propri pensieri. Gira e rigira, e si depositano come lo stufato.",
+		"C'è pace nel mescolare. Il cucchiaio gira, la testa si quieta, e la cena si fa comunque.",
+		"Un cucchiaio che gira in una pentola è quanto di più vicino all'immobilità possano concedersi due mani indaffarate.",
+	},
+	["muse.w12.hunger.039"] = {
+		"Il 'pizzico' di ogni cuoco ha una misura diversa. Ne ho visto uno che si è rivelato mezza manciata.",
+		"Le ricette dicono 'un po'', 'quanto basta', 'a piacere'. La cucina è l'unico mestiere che si fida così tanto di chiunque.",
+	},
+	["muse.w12.hunger.041"] = {
+		"Il cibo ben avvolto è cibo rispettato. Un panno pulito, una piega stretta, e il pane arriva come pane e non come briciole.",
+		"Incartare un pasto per il viaggio è un'arte, e la ricompensa arriva dopo: intera, e ancora tua.",
+	},
+	["muse.w12.hunger.042"] = {
+		"Il formaggio stagionato è amico del viaggiatore. Quello fresco è un ospite che resta un giorno e poi comincia a puzzare.",
+		"Il formaggio si sceglie per il viaggio, non per la tavola. I più pregiati non sopravvivono mai alla camminata.",
+	},
+	["muse.w12.hunger.043"] = {
+		"La carne secca più che un pasto è una lunga trattativa con la mascella. Alla fine siamo a pezzi, io e lei.",
+		"Certe strisce di carne essiccata si masticano più a lungo di quanto ci voglia per andare da una locanda all'altra.",
+	},
+	["muse.w12.hunger.044"] = {
+		"Tutti i popoli di cui ho sentito parlare hanno lo stesso rimedio per i malati: qualcosa di caldo in una scodella. Non può essere un caso.",
+		"Il brodo è la prima medicina che si impara. I guaritori hanno le loro arti; il resto del mondo ha la minestra.",
+		"Prima dei guaritori, prima delle pozioni, qualcuno sedeva accanto a un malato con una scodella di brodo. E c'è chi lo fa tuttora.",
+	},
+	["muse.w12.hunger.045"] = {
+		"Qualcosa di dolce nascosto per dopo la parte difficile. Una piccola mancia a me {g:stesso|stessa}, e funziona sempre.",
+		"Tengo nella borsa una cosa dolce per la fine di un brutto tratto. Sapere che c'è mi porta più lontano di quanto dovrebbe.",
+	},
+	["muse.w12.hunger.046"] = {
+		"C'è sempre qualcuno con più fame di me. Quando posso, faccio in modo che mangi anche lui. Costa una crosta; vale molto di più.",
+		"Una faccia affamata davanti a una porta non chiede niente ad alta voce. Ho imparato a rispondere lo stesso.",
+		"Del pane in più nella borsa e una mano vuota tesa davanti a me: quel conto torna sempre allo stesso modo.",
+	},
+	["muse.w12.hunger.047"] = {
+		"L'oro è la seconda ricchezza. La prima è un'acqua di cui ti puoi fidare, abbastanza vicina da raggiungerla.",
+		"I regni si contano in monete, ma ognuno è nato accanto a una sorgente.",
+	},
+	["muse.w12.hunger.048"] = {
+		"Il primo sorso d'acqua dopo una sete vera vale qualsiasi vino versato in qualsiasi salone. Il salone lo darei via per quello.",
+		"Per una bocca riarsa non esiste bevanda più ricca dell'acqua. I re avrebbero qualcosa da imparare dagli assetati.",
+		"L'acqua dopo una vera sete ha un sapore che nessun birraio è mai riuscito a mettere in una botte.",
+	},
+	["muse.w12.hunger.049"] = {
+		"Quando l'acqua scarseggia bevo come un avaro conta le monete: un sorsetto, poi una lunga attesa, poi un'altra discussione con me {g:stesso|stessa}.",
+		"Con poca acqua, ogni sorso diventa una decisione. Sfinisce, decidere così tante volte.",
+	},
+	["muse.w12.hunger.050"] = {
+		"Acqua fangosa filtrata in un panno pulito, poi sul fuoco. Sa ancora di stagno, ma non me ne farà pentire.",
+		"Prima falla bollire. Quello che vive nell'acqua ferma è più simpatico da morto.",
+	},
+	["muse.w12.hunger.051"] = {
+		"Le promesse fatte davanti a una birra sono scritte nella schiuma. Il giorno dopo resta solo un cerchio sul tavolo.",
+		"Mai accettare niente dopo il secondo boccale. Lo penserai sul serio, e più o meno per un'ora.",
+		"La birra è un ottimo consigliere e un pessimo testimone. Ti incoraggia e poi non si ricorda niente.",
+	},
+	["muse.w12.hunger.052"] = {
+		"Metà del conforto del tè sta nel tenere la tazza. L'altra metà è la scusa per restare {g:seduto|seduta} finché dura.",
+		"Una tazza calda fra le mani non mi chiede niente finché non è vuota. È quello il vero regalo.",
+	},
+	["muse.w12.hunger.053"] = {
+		"Ogni popolo di questo mondo cuoce un suo pane: piatto, tondo, scuro, dolce. È la cosa più vicina a una lingua che parlano tutti.",
+		"Orchi, nani, umani, troll: tutti impastano qualcosa e lo mettono vicino al fuoco. Il pane non l'ha inventato nessun popolo da solo.",
+	},
+	["muse.w12.hunger.054"] = {
+		"Dopo un periodo difficile, una scodella di semplice pappa d'avena sa di premio pensato apposta. Dentro non c'è altro che avena e sollievo.",
+		"La cena più semplice dopo qualche giorno brutto sa di gentilezza. Il cibo non è cambiato. Sono {g:cambiato|cambiata} io.",
+		"Le difficoltà non migliorano la cucina. Migliorano chi mangia, per un pasto o due.",
+	},
+	["muse.w12.hunger.055"] = {
+		"Nessuno canta le lodi di chi lava i piatti. Sabbia, uno straccio, e una pentola che si tiene stretta la cena di ieri come un rancore.",
+		"La cucina si prende gli applausi. Sfregare la pentola dopo tocca a chi ha perso la discussione, in silenzio.",
+	},
+	["muse.w12.hunger.056"] = {
+		"Prima o poi ogni cosa da mangiare nello zaino deve superare la prova del naso. Quasi tutte passano. Quelle bocciate le piango a lungo, con tristezza.",
+		"È ancora buono? Il naso dice forse, lo stomaco dice sì, e il buon senso tace, perché nessuno lo ha interpellato.",
+	},
+	["muse.w12.hunger.057"] = {
+		"Un po' di verde sulla crosta è un consiglio, non una sentenza. Lo tagli via e vai avanti.",
+		"Il pane che ammuffisce in un angolo ha ancora il cuore buono. Taglio via l'angolo e tengo il cuore.",
+	},
+	["muse.w12.hunger.058"] = {
+		"Fra tutte le cose che potrei desiderare, continuo a tornare a un uovo fresco. Fritto, coi bordi croccanti. Una voglia così piccola e precisa.",
+		"Certe voglie non hanno senso e non ne hanno bisogno. La mia, adesso, è un uovo cotto nel burro.",
+	},
+	["muse.w12.hunger.059"] = {
+		"Il burro è un cibo per chi sta fermo. In viaggio irrancidisce o si squaglia, così per lo più lo ricordo con affetto.",
+		"Latte fresco e burro vero: due lussi che non viaggiano mai, ed è per questo che sanno di chi resta dove sta.",
+	},
+	["muse.w12.hunger.060"] = {
+		"Un pizzico di una spezia cresciuta dall'altra parte del mondo, e uno stufato qualunque sa di voci che arrivano da lontano.",
+		"Le spezie sono distanze che si possono mangiare: qualcuno ha portato quel sapore oltre mari e deserti solo per arrivare a una pentola.",
+	},
+	["muse.w12.hunger.061"] = {
+		"Certi giorni cucinare sembra un compito di troppo, e la cena è una carota cruda. La carota non si lamenta. Io, poco.",
+		"Troppa stanchezza per accendere un fuoco, così la cena è qualunque cosa non ne abbia bisogno. Nessuno ci comporrà mai sopra una canzone.",
+	},
+	["muse.w12.hunger.063"] = {
+		"Lo stufato è più buono il giorno dopo. Certe cose devono stare un po' con se stesse prima di valere qualcosa. Dicono che valga anche per le persone.",
+		"Lo stufato riscaldato batte sempre quello appena fatto. Il tempo fa a una pentola quello che la fretta non saprebbe mai fare.",
+	},
+	["muse.w12.hunger.064"] = {
+		"Cucinare per uno è più difficile che cucinare per dieci. La pentola continua a dimenticare che ci sono solo io.",
+		"Per quanto poco ci metta dentro, la pentola ne fa abbastanza per due. Forse ci spera.",
+		"Quando cucino per me faccio sempre una seconda porzione per sbaglio. La pentola ha progetti più grandi dei miei.",
+	},
+	["muse.w12.hunger.065"] = {
+		"Nessuno impara a cucinare senza bruciare qualcosa. Le pentole rovinate sono le lezioni; i pasti riusciti sono solo la prova.",
+		"Una cena bruciata insegna più di una riuscita. Soprattutto la pazienza, un po' anche il fuoco.",
+	},
+	["muse.w12.hunger.066"] = {
+		"Dovunque mi sieda vicino a un fuoco da campo, il fumo mi trova. Mi sposto a sinistra, si sposta a sinistra. Ci sarà pure un fuoco che preferisce qualcun altro.",
+		"Il fumo segue chi cucina come i pettegolezzi seguono un matrimonio. Non si scappa: si strizzano gli occhi e basta.",
+	},
+	["muse.w12.hunger.067"] = {
+		"Ogni casa degna di questo nome è costruita intorno alla cucina. Il resto sono solo stanze dove dormire tra un pasto e l'altro.",
+		"Muri e tetto sono la scusa. Il focolare con la pentola sopra è il vero motivo per cui qualcuno si costruisce una casa.",
+		"Le sale hanno i troni e le torri le campane, ma ogni casa che abbia mai contato qualcosa aveva una pentola appesa sopra il fuoco.",
+	},
+	["muse.w12.hunger.068"] = {
+		"Un re e un mendicante hanno fame esattamente allo stesso modo. È l'unico appuntamento a cui nessuno dei due può mancare, nemmeno pagando.",
+		"La fame non guarda i titoli. Bussa alle porte dei palazzi e a quelle delle catapecchie con le stesse nocche.",
+	},
+	["muse.w12.hunger.069"] = {
+		"Un banchetto è solo cibo finché la gente non ci si siede intorno a ridere. Allora diventa qualcosa che nessun cuoco potrebbe fare da solo.",
+		"La parte migliore di un banchetto non sta nei piatti. Sta nel baccano.",
+	},
+	["muse.w12.hunger.070"] = {
+		"Quando qualcuno è in lutto, la gente porta da mangiare. Non sa cosa dire, e allora lo dice col pane. Non è una brutta lingua.",
+		"Accanto a un lutto recente nessuno trova le parole giuste. Una pentola di stufato lasciata sulla soglia le dice abbastanza bene.",
+		"Chi piange un morto trova sempre qualcuno che gli dà da mangiare. Una pagnotta sulla soglia è il modo dei vicini per dire quello che non sanno dire.",
+	},
+	["muse.w12.hunger.071"] = {
+		"In una pentola c'è sempre posto per un po' d'acqua in più. È così che una minestra per due ne sfama quattro, più leggera e più generosa.",
+		"Una minestra lunga non è un errore del cuoco. È un cuoco che ha scelto più scodelle invece di una più ricca.",
+	},
+	["muse.w12.hunger.072"] = {
+		"Mangia la stessa cosa abbastanza a lungo e comincerai ad avere un'opinione su ogni singolo boccone.",
+		"La monotonia a tavola arriva piano. Prima non te ne accorgi, poi non ti accorgi d'altro.",
+	},
+	["muse.w12.hunger.073"] = {
+		"Dopo giorni di cibo sempre uguale, un sapore nuovo arriva come una notizia da lontano. Una bacca aspra, un pizzico di qualcosa di verde: una festa intera.",
+		"La varietà è sprecata per chi mangia bene tutti i giorni. Bisogna farne a meno per sentire davvero il sapore di un ravanello.",
+		"Un boccone di qualcosa di nuovo dopo una settimana di sempre uguale: come una porta che si apre su un'altra stanza.",
+	},
+	["muse.w12.hunger.074"] = {
+		"Qualunque cosa ordini in una locanda, il piatto del tavolo accanto sembra migliore. Se ordino quello che hanno preso loro, vince il tavolo dopo.",
+		"La scodella degli altri profuma sempre più della mia. È una legge di natura, come cadere.",
+	},
+	["muse.w12.hunger.075"] = {
+		"In ogni locanda nuova ordino la cosa più semplice che c'è. Se non sanno fare bene pane e brodo, niente di più elaborato li salverà.",
+		"Il piatto semplice ti dice tutto di una cucina. Dietro una salsa sanno nascondersi tutti.",
+	},
+	["muse.w12.hunger.076"] = {
+		"Il vapore che sale da una scodella è una promessa mantenuta. Mi piace guardarlo un attimo prima di romperlo col cucchiaio.",
+		"Prima di mangiare qualcosa di caldo mi concedo una piccola pausa, solo per guardarlo fumare. Una cerimonia minima che nessun altro ha bisogno di conoscere.",
+	},
+	["muse.w12.hunger.086"] = {
+		"Qualcuno mi dia da mangiare prima che cominci a fare filosofia.",
+		"Ho fame. Quindi per la prossima ora tutto quello che dico va preso con le pinze.",
+	},
+	["muse.w12.hunger.087"] = {
+		"Prima l'acqua. Poi si parla.",
+		"Fammi bere qualcosa. Poi avrò delle opinioni.",
+		"Un sorso d'acqua, e sono a tua disposizione. Prima, non ci sono per nessuno.",
+	},
+	["muse.w12.hunger.088"] = {
+		"Prima il tè. Così forte che ci sta in piedi il cucchiaio. Il mondo aspetti il suo turno.",
+		"Non si decide niente prima di una tazza di qualcosa di caldo.",
+	},
+	["muse.w12.hunger.089"] = {
+		"Mangia finché è caldo. I guai si conservano, la cena no.",
+		"Un pasto lasciato andare a male è un piccolo peccato. Mangialo finché vale ancora qualcosa.",
+	},
+	["muse.w12.hunger.090"] = {
+		"Dividilo. Mezza pagnotta in compagnia vale più di una intera da soli.",
+		"Il cibo diviso in due è più buono. Nessuno ha mai spiegato perché, e non serve.",
+	},
+	["muse.w12.hunger.091"] = {
+		"Mangia qualcosa. Qualunque cosa sia, dopo sembrerà più piccola.",
+		"I guai, visti da dietro un piatto pieno, sembrano di una taglia più piccoli.",
+	},
+	["muse.w12.hunger.092"] = {
+		"La birra è per dopo. L'acqua è per adesso.",
+		"La birra tienila per quando il lavoro è finito. Guadagnata ha un altro sapore.",
+	},
+	["muse.w12.hunger.093"] = {
+		"Se non parlo, non sto tenendo il broncio. Sto pensando a una torta di carne.",
+		"Non fateci caso. Sto solo immaginando un pasticcio di carne. Grande, col sugo.",
+	},
+	["muse.w12.hunger.094"] = {
+		"Siediti e mangia. Qualunque cosa sia, può aspettare che la scodella sia vuota.",
+		"Non c'è lite tanto urgente da non poter aspettare la fine della cena.",
+	},
+	["muse.w12.hunger.095"] = {
+		"Mai discutere con chi tiene il mestolo. Vinci la discussione e perdi la cena.",
+		"Il cuoco ha sempre ragione. Non perché abbia ragione, ma perché è il cuoco a riempire le scodelle.",
+	},
+	["muse.w12.rest.001"] = {
+		"Mi stendo dopo una lunga marcia e le gambe tirano avanti da sole per un po', come se nessuno le avesse avvisate.",
+		"Le mie gambe non credono che la marcia sia finita. Sto a terra da un pezzo e loro fanno ancora passi, chissà dove.",
+		"Il corpo si ferma, le gambe no, non subito. Continuano a contare le miglia dietro le mie palpebre chiuse.",
+	},
+	["muse.w12.rest.002"] = {
+		"Il sonno non viene mai quando lo chiamo. Poi piomba dentro a metà di qualcosa d'importante, con la stessa creanza di una capra.",
+		"Mi sdraio e lo supplico, e il sonno se ne sta alla larga. Mi metto a leggere una pagina utile, e alla seconda riga mi ha già preso.",
+	},
+	["muse.w12.rest.003"] = {
+		"L'ultimo pensiero prima di dormire non è mai quello importante. È sempre una fibbia, o una parola che ho pronunciato male tre giorni fa.",
+		"Qualunque cosa mi proponga di pensare prima di addormentarmi, l'ultima che mi resta in testa è una sciocchezza: un filo allentato, un prezzo, un nome sbagliato.",
+	},
+	["muse.w12.rest.004"] = {
+		"Ho sognato di camminare. Ore intere, solo camminare. Al risveglio mi sentivo addosso tutta la fatica, ed è un'ingiustizia doppia.",
+		"Certi sogni sono soltanto altra strada. Passo il sonno intero a marciare e al risveglio devo delle scuse ai piedi.",
+		"C'è una crudeltà tutta speciale nel sognare di arrancare. Tutta quella fatica, e nemmeno un miglio da mostrare.",
+	},
+	["muse.w12.rest.005"] = {
+		"Nei sogni incontro gente che conosco benissimo e che non saprei nominare per nessuna ricompensa. Loro, invece, sembrano conoscermi più di quanto vorrei.",
+		"I miei sogni sono pieni di estranei familiari: facce che giurerei di conoscere da sempre, e nemmeno un nome tra tutte.",
+	},
+	["muse.w12.rest.006"] = {
+		"Mai decidere niente d'importante quando si è stanchi. Dormici sopra: la scelta sarà ancora lì, solo più piccola.",
+		"Da stanchi ogni scelta sembra facilissima o impossibile. Basta una dormita in mezzo e quasi tutte tornano alla loro misura vera.",
+		"Una testa sfinita giudica male, e con superbia. Il verdetto può aspettare una dormita: aspettando non perde nulla.",
+	},
+	["muse.w12.rest.007"] = {
+		"Non sto oziando. Sto aspettando, con grande maestria e nessuno sforzo visibile.",
+		"Questo non è far niente. Questo è aspettare, e guarda caso mi riesce benissimo.",
+		"Non scambiatela per pigrizia. È pazienza, e sta lavorando sodo.",
+	},
+	["muse.w12.rest.008"] = {
+		"Non fare niente apposta è più difficile di qualsiasi lavoro. Le mani cercano di continuo una cinghia da sistemare, e io continuo a dire loro di no.",
+		"Datemi un momento vuoto e le mani vanno subito in cerca di lavoro. Insegnare loro a restare ferme è un mestiere a parte.",
+		"Mani in ozio, si dice, combinano guai. Le mie trovano solo fibbie. Sto cercando di insegnare loro a non trovare niente.",
+	},
+	["muse.w12.rest.009"] = {
+		"Se resto immobile per un po', il rumore del mondo si scosta, come una folla che gira l'angolo. Non se ne va: smette soltanto di rivolgersi a me.",
+		"Basta un po' di silenzio e tutto ciò che si affanna sembra allontanarsi, come se il mondo fosse passato nella stanza accanto per lasciarmi in pace.",
+	},
+	["muse.w12.rest.012"] = {
+		"Lo zaino è un cuscino scadente e geloso. Però, finché ci tengo sopra la testa, nessuno se lo porta via.",
+		"Bitorzoluto, duro, con l'odore di cuoio vecchio: come cuscino lo zaino è pessimo. Ma è l'unico che di certo ritroverò al risveglio.",
+	},
+	["muse.w12.rest.013"] = {
+		"Appena mi sdraio, tutti i pensieri rimandati arrivano insieme, e ognuno è convinto di essere il più urgente.",
+		"Per le mie preoccupazioni, mettermi giù è un segnale. Hanno fatto la fila educatamente per ore, e adesso vogliono parlare tutte per prime.",
+		"Mi allungo, chiudo gli occhi, e la testa spalanca le porte a ogni commissione e a ogni rimpianto, che si parlano tutti addosso.",
+	},
+	["muse.w12.rest.014"] = {
+		"Il riposo è l'unica cosa al mondo che continua a rendere mentre non guardo. Una bella dormita sotto un tetto, e il tratto dopo va via più liscio.",
+		"Dormi in un posto sicuro, e dopo il mondo sembra doverti qualcosa. Il conto non l'ho mai capito, ma incasso volentieri.",
+		"Un riposo fatto bene rende interessi. Nessuno ti dà la ricevuta, ma il tempo che segue pesa sempre un filo di meno.",
+	},
+	["muse.w12.rest.015"] = {
+		"Tra la fine di una cosa e l'inizio della successiva c'è un piccolo spazio, largo appena un attimo. Ho imparato a fermarmici apposta.",
+		"Ogni lavoro si lascia dietro un piccolo vuoto prima che cominci il prossimo. Quasi tutti lo scavalcano. A me piace sostarci un po'.",
+	},
+	["muse.w12.rest.016"] = {
+		"Mi siedo. Le obiezioni si presentano per iscritto, e io non le leggerò.",
+		"Mi metto giù. Chi mi cerca mi troverà un po' più in basso di prima.",
+		"Mi siedo, punto. Qualunque cosa sia, che venga lei da me.",
+	},
+	["muse.w12.rest.017"] = {
+		"Mi annoio. Che lusso. La noia vuol dire che niente mi insegue, niente sanguina e nessuno ha bisogno di nulla.",
+		"Non c'è sensazione più ricca della noia. Per provarla bisogna essere al sicuro, sfamati e non richiesti, tutto nello stesso momento.",
+		"Nessuno sotto assedio si è mai annoiato. Se sbadiglio davanti al nulla, le cose devono andare straordinariamente bene.",
+	},
+	["muse.w12.rest.018"] = {
+		"Metà dei guai di questo mondo li ha cominciati qualcuno che non aveva niente da fare e una porta non ancora aperta.",
+		"La noia ha aperto più porte chiuse di qualsiasi ladro. Comprese alcune delle mie, a dirla tutta.",
+	},
+	["muse.w12.rest.019"] = {
+		"La pazienza non è l'attesa. È quello che faccio con le mani e con la testa mentre l'attesa va avanti.",
+		"Aspettare lo sa fare chiunque. La pazienza è aspettare senza mangiarsi le unghie fino all'osso.",
+		"L'attesa è una cosa che mi capita. La pazienza è quel che ci metto io, quando mi ricordo di portarla.",
+	},
+	["muse.w12.rest.020"] = {
+		"Ogni tanto sogno una stanza in cui non ho mai messo piede, e al risveglio ne ho nostalgia.",
+		"Nei miei sogni c'è una porta di cui conosco a memoria il cigolio, e a occhi aperti non l'ho mai vista.",
+		"Certi sogni mi prestano una casa per un po': un gradino che cede, un'imposta che s'incastra. Poi se la riprendono senza chiedere.",
+	},
+	["muse.w12.rest.022"] = {
+		"Ho dormito davvero bene. Niente dolori, niente testa confusa. Naturalmente ho passato i primi minuti a chiedermi cosa fosse andato storto.",
+		"Una bella dormita, e al risveglio stavo bene. Non ci ho creduto nemmeno un istante, e ho controllato le tasche.",
+	},
+	["muse.w12.rest.023"] = {
+		"Ogni bestia sa come si riposa: si raggomitola, si rintana, si ferma. Solo la gente fa una lunga cerimonia del mettersi a letto.",
+		"Guarda un animale che si accuccia: un giro, due, ed è fatta. Le persone, invece, armeggiano col giaciglio come se potesse dir loro di no.",
+		"Nessuna creatura selvatica ha bisogno di cuscino, coperta e una buona ragione. Trova un avvallamento, si ripiega su se stessa e dorme.",
+	},
+	["muse.w12.rest.024"] = {
+		"Siediti prima che lo pretendano le gambe. Una sosta scelta da me vale il doppio di una che mi strappano loro.",
+		"Meglio fermarsi finché è ancora una scelta. Quando la fa il corpo al posto mio, la sosta arriva con la multa.",
+		"Prima o poi le gambe mi fermeranno comunque. Preferisco che sia prima, e per idea mia.",
+	},
+	["muse.w12.rest.025"] = {
+		"Per un po' nessuno vuole niente da me. Niente commissioni, niente domande, nessuna mano tesa. Non so nemmeno che faccia fare.",
+		"Nessuno che chiede, nessuno che aspetta, niente in scadenza. È così raro che mi aspetto da un momento all'altro che qualcuno venga a riprenderselo.",
+		"Un momento che non appartiene a nessun altro. Lo tengo con cura, come una cosa avuta in prestito che dovrò restituire.",
+	},
+	["muse.w12.rest.026"] = {
+		"Svegliatemi se succede qualcosa d'interessante. Anzi no: le cose interessanti di solito finiscono con le bende.",
+		"Se arriva qualcosa di emozionante, che aspetti il suo turno. Adesso sto riposando.",
+	},
+	["muse.w12.rest.027"] = {
+		"Certe volte la stanchezza non sta affatto nelle gambe. Il sonno non la guarisce: è tristezza travestita da fatica, perché io la faccia entrare.",
+		"Non ogni stanchezza chiede un letto. A volte è un dolore col cappotto preso in prestito, e il riposo gli offre soltanto una sedia.",
+	},
+	["muse.w12.rest.028"] = {
+		"Il primo istante in cui mi siedo è il più bello che ci sia. Tutto quello che viene dopo è solo il prezzo per rialzarmi.",
+		"Niente batte l'attimo in cui mi siedo. Ogni parte di me ringrazia in coro, prima di ricordarsi che più tardi toccherà rialzarsi.",
+		"Di tutte le piccole gioie, quel primo sprofondare su un sedile è l'unica che difenderei in duello.",
+	},
+	["muse.w12.rest.030"] = {
+		"La lentezza la deridono in tanti. Ma le mani lente fanno cadere meno cose, gli occhi lenti si lasciano sfuggire meno, e dei caratteri lenti mi fido.",
+		"Non c'è niente di vergognoso nell'andar piano. Il passo attento perde meno cose, nota di più e attacca meno liti.",
+		"Alla svelta vanno gli elogi, alla lenta va il lavoro fatto. Come mi chiamino, ormai non m'importa.",
+	},
+	["muse.w12.rest.031"] = {
+		"Quando la noia morde, comincio a contare: nodi in un'asse, anelli di una catena, crepe in una pietra. Dei totali non me ne faccio mai nulla.",
+		"Se non succede niente per un bel po', conto quello che ho davanti. Quarantuno chiodi, finora. Non so bene per chi stia tenendo il punteggio.",
+	},
+	["muse.w12.rest.032"] = {
+		"Chiunque dorma sembra più giovane e più onesto. Immagino valga anche per me: è l'unico momento in cui mi farei da garante.",
+		"Dormendo, ogni viso abbassa la guardia. Anche la gente più dura, a occhi chiusi, ha l'aria di un bambino di qualcuno.",
+	},
+	["muse.w12.rest.033"] = {
+		"Riposo fatto, pancia piena e niente in fiamme. Questa me la segno.",
+		"Ho dormito come si deve, per una volta. Quasi non mi riconosco.",
+		"Un riposo vero. Mi sembra di avere le gambe di un altro.",
+	},
+	["muse.w12.rest.034"] = {
+		"Ogni volta che mi sdraio cedo un po' del controllo e mi fido che il mondo me lo restituisca. Finora l'ha sempre fatto.",
+		"Il sonno è una piccola resa: poso tutto e spero di ritrovarlo al suo posto quando lo riprendo. Un giorno non ci sarà, e io non lo saprò.",
+	},
+	["muse.w12.rest.035"] = {
+		"Se parlo nel sonno, spero almeno di dire qualcosa di più saggio di quel che mi riesce a occhi aperti. Sarebbe un peccato sprecare la fatica.",
+		"Qualunque cosa borbotti dormendo, vorrei che fosse un consiglio utile. A occhi aperti la scorta è quasi finita.",
+	},
+	["muse.w12.rest.036"] = {
+		"L'immobilità ha un suono tutto suo. Non è silenzio: è un ronzio basso e largo, il rumore di ogni cosa che va avanti senza di me.",
+		"La quiete non è vuota. Ascoltala abbastanza e si riempie di piccole cose: uno scricchiolio, una goccia, qualcosa di lontano che si fa gli affari suoi.",
+		"Quando niente si muove vicino a me, sento il mondo che lavora a distanza, come una casa che ronza delle faccende altrui.",
+	},
+	["muse.w12.rest.038"] = {
+		"Stivali addosso o stivali tolti: è questa la vera domanda di ogni riposo. Toglierli è una beatitudine; tenerli vuol dire poter scappare in fretta. Non l'ho mai risolta.",
+		"Tutte le volte che mi corico si tiene lo stesso piccolo processo: la comodità dice slaccia, la prudenza dice lascia stare. Di solito vince la prudenza, e i piedi non me lo perdonano mai.",
+		"Slacciarmi gli stivali per dormire è un atto di fiducia verso quel che mi sta intorno. Certi posti se lo meritano. Quasi tutti no.",
+	},
+	["muse.w12.rest.039"] = {
+		"Quando ho finito di allacciare gli stivali, il sogno se n'è già andato. Me ne resta la forma, come l'impronta su un cuscino, e nient'altro.",
+		"I sogni se ne vanno senza salutare. Resta solo una sensazione, come in una stanza dove qualcuno era seduto un attimo prima.",
+		"I sogni non sopravvivono al primo laccio. Al secondo non saprei nemmeno dire se era un sogno felice.",
+	},
+	["muse.w12.rest.040"] = {
+		"Riposare non è arrendersi, anche se entrambe le cose cominciano col sedersi. La differenza sta nel rialzarsi.",
+		"Da fuori, una sosta e una resa si somigliano: qualcuno a terra, fermo. Solo il momento dopo le distingue.",
+	},
+	["muse.w12.rest.041"] = {
+		"Un momento, per favore. Non per qualcosa in particolare. Solo un momento.",
+		"Un attimo per me, nient'altro. Torno subito, insieme al resto di me.",
+	},
+	["muse.w12.rest.042"] = {
+		"Metà di questa vita la passo a correre per arrivare da qualche parte, e l'altra metà ferma sul posto ad aspettare ciò per cui correvo.",
+		"Corri, poi aspetta. Corri, poi aspetta. Chi ha inventato questo mestiere aveva un crudele senso del ritmo.",
+		"Nessuno mi aveva avvertito di quanta avventura si passi appoggiati a qualcosa, in attesa che cominci il pezzo successivo.",
+	},
+	["muse.w12.rest.043"] = {
+		"Buttarsi dentro richiede fegato. Aspettare, quando ogni parte di me vorrebbe muoversi, ne richiede di più, e nessuno lo loda mai.",
+		"Restare immobile mentre tutto dice vai è anch'esso coraggio, di quello silenzioso che non finisce nelle canzoni.",
+		"Gli ordini più duri che mi do sono quelli che dicono: non ancora, aspetta.",
+	},
+	["muse.w12.rest.044"] = {
+		"La noia è una specie di fame, solo che abita dietro gli occhi. Se la nutri di sciocchezze, si fa soltanto più rumorosa.",
+		"Una testa in ozio ha fame come uno stomaco, e non va per il sottile. Piuttosto che niente, rosicchia la prima preoccupazione che trova.",
+		"Niente rode come una testa vuota. Se non le dai lavoro, comincia a lavorare su di me.",
+	},
+	["muse.w12.rest.046"] = {
+		"Riposare e dormire non sono la stessa cosa. Posso riposare a occhi aperti e dormire senza riposare affatto. La seconda capita molto più spesso.",
+		"Una dormita che mi lascia a pezzi, una breve sosta che mi rimette al mondo: il corpo tiene conti suoi, e raramente tornano con le ore.",
+	},
+	["muse.w12.rest.047"] = {
+		"C'è un sogno che torna: sono in ritardo per qualcosa, e nessuno vuole dirmi per cosa. Mi sveglio già di corsa.",
+		"Nel solito sogno sono sempre in ritardo a un appuntamento che non ricordo di aver preso. Aprire gli occhi non basta a togliermi la sensazione.",
+		"In sogno ho fatto tardi più volte di quante ne possa contare, e non so ancora per cosa. Chi mi aspetta là dev'essere molto paziente.",
+	},
+	["muse.w12.rest.048"] = {
+		"Il mondo fiuta chi si siede. Appena mi sistemo, qualcosa ha bisogno di me, mi morde o vuole scambiare due parole.",
+		"Se resto in piedi a fingere da fare, la quiete dura in eterno. Basta sedermi, ed è il sedersi che suona la campanella.",
+	},
+	["muse.w12.rest.049"] = {
+		"Guardare un fuoco è l'ozio più onesto che conosca. Le fiamme fanno tutto il lavoro, e chissà come il riposo lo guadagno io.",
+		"Nessuno chiama pigrizia restare a fissare un fuoco. È l'unico modo di non far niente che tutti perdonano.",
+	},
+	["muse.w12.rest.050"] = {
+		"Ho pazienza con gli estranei, con i muli, con i mercanti. Con me, quasi per niente. Dovrei prestarmene un po', di quella che regalo agli altri.",
+		"La mia pazienza ce l'hanno tutti tranne me. Aspetto tranquillamente dietro un carro lento e poi mi maledico per un attimo di ritardo.",
+		"Se trattassi chiunque altro come tratto me quando vado piano, gli dovrei delle scuse.",
+	},
+	["muse.w12.rest.051"] = {
+		"Se mi sdraio non mi rialzo più. Quindi mi appoggio. Appoggiarsi è una promessa.",
+		"Sedermi no, è pericoloso. Mi appoggio, che vale ancora come lavorare.",
+	},
+	["muse.w12.rest.052"] = {
+		"Ai morti si augura il riposo, come fosse il dono più bello che ci sia. Quasi tutti i vivi si accontenterebbero di una piccola porzione, qui e adesso.",
+		"I vivi promettono il riposo ai morti. Peccato che per chi cammina ancora ne resti così poco.",
+		"Ogni tomba davanti a cui passo augura al suo ospite un lungo riposo. Per chi sta in piedi, nessuno incide auguri simili.",
+	},
+	["muse.w12.rest.053"] = {
+		"Aspettare notizie è il modo peggiore di stare fermi. Il corpo riposa e la testa gli corre in tondo attorno.",
+		"Niente mi sfinisce come aspettare di sapere com'è andata. Non muovo un muscolo e mi ritrovo comunque a pezzi.",
+		"Restare lì ad aspettare notizie da altrove: il lavoro più immobile che ci sia, e il più sfiancante.",
+	},
+	["muse.w12.rest.054"] = {
+		"Le dormite migliori sono quelle che non avevo in programma. Mi siedo un attimo, e un istante dopo il mondo è andato un po' avanti senza di me.",
+		"Va bene il riposo previsto, ma quello capitato per caso è meglio: una seduta di un momento che, senza chiedere permesso, diventa un sonno vero.",
+		"Non dormo mai così bene come quando volevo solo chiudere gli occhi un momento.",
+	},
+	["muse.w12.rest.056"] = {
+		"Quando mi annoio davvero, metto in ordine. È così che capisco che è grave. Lo zaino non è mai così ordinato come quando non succede niente.",
+		"Niente da fare vuol dire che tutto viene piegato, smistato e ripiegato da capo. La noia ha un lato maniaco dell'ordine.",
+	},
+	["muse.w12.rest.057"] = {
+		"Un seme può aspettare anni in terra asciutta senza fare assolutamente nulla, e senza perdere niente di ciò che è. Vorrei imparare quel trucco.",
+		"I semi sono maestri dell'attesa. Restano immobili per tutto il tempo che serve, e non scordano mai cosa devono diventare.",
+		"Sotto ogni strada ci sono semi addormentati, che tengono tutto il loro avvenire piegato in piccolo, senza la minima fretta.",
+	},
+	["muse.w12.rest.058"] = {
+		"Il riposo arriva sempre con un po' di senso di colpa ripiegato dentro, come se da qualche parte qualcuno lavorasse il doppio per compensare me.",
+		"Non riesco a restare a lungo con le mani in mano senza sentirmi in debito con qualcuno. Nessuno me l'ha mai detto. Me lo dico da me.",
+	},
+	["muse.w12.rest.059"] = {
+		"Niente da fare e nessun posto dove andare. Meraviglioso. Terrificante, ma meraviglioso.",
+		"Nemmeno una commissione rimasta. Festeggerei, se solo sapessi cosa si fa in questi casi.",
+	},
+	["muse.w12.rest.060"] = {
+		"Per addormentarmi conto le cose che devo ancora fare. Funziona, ma solo perché crollo dallo sconforto prima di arrivare in fondo alla lista.",
+		"C'è chi conta le pecore. Io conto le commissioni in sospeso, e il sonno arriva per pura vergogna.",
+	},
+	["muse.w12.rest.061"] = {
+		"Certe cose si possono solo lasciar passare: il malumore, una guarigione lenta, una serie di sfortune. Se le spingi, s'impuntano.",
+		"Non tutto cede alla fatica. Un rancore, una febbre, una sfilza di sfortune: accanto a quelle ci si siede e si aspetta che si annoino e se ne vadano.",
+		"Ci sono guai che solo il tempo solleva, e l'unica cosa che mi chiede è di smettere di punzecchiarli.",
+	},
+	["muse.w12.rest.062"] = {
+		"Quando leggo la stessa riga tre volte e non mi entra in testa, è il modo educato con cui il corpo mi dice basta.",
+		"La stanchezza si annuncia con piccoli segni: la stessa frase letta due volte, una cinghia allacciata storta, una parola che non viene. Al terzo dovrei sedermi.",
+	},
+	["muse.w12.rest.064"] = {
+		"È una consolazione restare immobile e sapere che il mondo gira benissimo anche senza il mio aiuto. Non tutto tocca a me portarlo.",
+		"Per un attimo mi fermo, e niente crolla. Qualunque cosa tenga in piedi questo mondo, non sono io. Fa bene ricordarselo.",
+		"Mollo tutto per un po' e il mondo nemmeno se ne accorge. C'è una grande gentilezza nell'essere così poco indispensabili.",
+	},
+	["muse.w12.rest.065"] = {
+		"Non parlatemi di fretta. Io e la fretta non ci rivolgiamo la parola.",
+		"Niente fretta. L'ho mollata, come un vizio.",
+		"La premura è per chi ha una fila di rimpianti alle calcagna. Io vado piano.",
+	},
+	["muse.w12.rest.066"] = {
+		"Certe volte mi addormento con un problema ingarbugliato e mi sveglio col nodo sciolto, come se qualcuno ci avesse lavorato mentre non c'ero. Non l'ho mai conosciuto.",
+		"Nel mio sonno lavora qualcuno, in silenzio, e sistema quel che io non riuscivo a sistemare. Non chiede grazie, non lascia nome.",
+	},
+	["muse.w12.rest.067"] = {
+		"Annoiarsi in compagnia permette almeno di lamentarsi a vicenda. Annoiarsi senza nessuno accanto vuol dire non avere altri da incolpare, e nessuno a cui raccontarlo.",
+		"Divisa con qualcuno, la noia diventa pettegolezzo. Tenuta per me, se ne sta lì e mi fissa.",
+	},
+	["muse.w12.rest.068"] = {
+		"C'è sempre un bancone con qualcuno davanti a me che racconta tutta la sua vita a chi sta dall'altra parte.",
+		"La fila più corta è sempre quella che si ferma nell'istante in cui mi ci metto.",
+		"Buona parte delle mie attese l'ho passata ai banconi, a guardare la nuca di uno sconosciuto che decide cosa vuole.",
+	},
+	["muse.w12.rest.070"] = {
+		"Dopo uno scontro la quiete torna a pezzi: prima si spegne il ronzio nelle orecchie, poi i piccoli rumori rientrano uno dopo l'altro, come uccelli quando il falco se n'è andato.",
+		"C'è un'immobilità particolare che segue i guai. Il mondo sembra sbirciare fuori, controllare, e solo allora riprende le sue faccende.",
+		"Finiti i guai, per un po' niente osa fiatare. Poi qualcosa di piccolo azzarda un cinguettio, e gli altri vanno dietro.",
+	},
+	["muse.w12.rest.071"] = {
+		"Se aspetto il momento perfetto, aspetterò per sempre. Il momento abbastanza buono passa spesso, e di solito è adesso.",
+		"Il momento giusto è una diceria. L'ho atteso più volte e non s'è mai fatto vedere. Quello passabile, invece, si presenta tutti i giorni.",
+	},
+	["muse.w12.rest.072"] = {
+		"L'attesa è più vecchia di qualunque arte. Prima che qualcuno cacciasse, costruisse o combattesse, qualcuno sedeva e aspettava che succedesse qualcosa.",
+		"Molto prima del primo attrezzo o del primo muro, qualcuno si è seduto accanto a una tana e ha aspettato. Tutto il resto è venuto dopo.",
+	},
+	["muse.w12.rest.073"] = {
+		"Senti qua. Proprio niente. Che meraviglia.",
+		"Sentito? Nemmeno io. Il suono più bello che ci sia.",
+		"Neanche un fruscio, da nessuna parte. Potrei farci l'abitudine.",
+	},
+	["muse.w12.rest.074"] = {
+		"Lo sbadiglio arriva sempre nel momento peggiore: a metà del discorso serio di qualcuno, o proprio mentre qualcosa mi sta prendendo le misure.",
+		"I miei sbadigli non hanno il senso dell'occasione. Scelgono apposta i momenti solenni, ne sono {g:convinto|convinta}.",
+	},
+	["muse.w12.rest.076"] = {
+		"Nei sogni tutti mi capiscono al primo colpo. Svegliarsi è il lento ritorno allo spiegare le cose due volte.",
+		"I miei sogni sono pieni di gente che mi capisce senza bisogno di parlare. Poi apro gli occhi e devo tornare alle parole, e male.",
+	},
+	["muse.w12.rest.077"] = {
+		"Addormentarsi è un'arte in tre passi: stendersi, smettere di ascoltare, mollare la presa. Il primo lo padroneggio benissimo.",
+		"Sdraiarmi, quello lo so fare. È spegnere le orecchie che non mi riesce mai.",
+		"Dormire è facile, mi dicono. Basta smettere. Nessuno spiega come si fa smettere la parte di te che sta di guardia.",
+	},
+	["muse.w12.rest.078"] = {
+		"Un airone sa restare nell'acqua bassa così a lungo che i pesci si scordano di lui. Tutta la pazienza sta lì, e regge su una zampa sola.",
+		"Gli aironi aspettano su una zampa finché l'acqua non si dimentica di loro. Io non ho mai saputo restare immobile così a lungo, per nessuna ragione.",
+	},
+	["muse.w12.rest.079"] = {
+		"Se aspetto una cosa abbastanza a lungo, finirà per deludermi. Ha avuto tutto quel tempo per gonfiarsi nella mia testa.",
+		"Più aspetto qualcosa, più cresce nella mia fantasia, e più sembra piccola quando finalmente arriva.",
+		"L'attesa è una cuoca furba: condisce tutto così tanto che il piatto vero sa sempre di poco.",
+	},
+	["muse.w12.rest.080"] = {
+		"Chissà cosa sognano gli altri. Gli gnomi a schemi e progetti, direi. Gli ogre il pranzo. I mercanti una bilancia che pende dalla loro parte.",
+		"Ognuno sogna secondo la sua natura, sospetto: lo gnomo ingranaggi, il contadino un buon raccolto, la guardia un turno tranquillo. Darei qualcosa per sbirciare in quello di un drago.",
+	},
+	["muse.w12.rest.081"] = {
+		"Non stavo dormendo. Stavo ispezionando l'interno delle palpebre. A fondo.",
+		"Dormire, io? No. Occhi chiusi per controllo qualità.",
+	},
+	["muse.w12.rest.082"] = {
+		"Se resto immobile abbastanza a lungo comincio a sentire davvero i miei pensieri, senza che il lavoro ci gridi sopra. Alcuni avrei preferito non incontrarli.",
+		"Quando ho da fare, di me restano solo mani e commissioni. Quando mi fermo, resta chi c'è sotto, e quello ha parecchio da dire.",
+	},
+	["muse.w12.rest.083"] = {
+		"In questo mondo la noia non dura mai molto. Arriva sempre qualcosa a curarla, di solito munito di artigli.",
+		"Della noia non serve avere paura a lungo. Il mondo ha cento rimedi, e nessuno è delicato.",
+	},
+	["muse.w12.rest.085"] = {
+		"Ogni volta che chiudo gli occhi mi esercito per qualcosa che dovrò fare sul serio una volta sola. Strano quanta calma ci sia, in questo.",
+		"Ogni sonno è una piccola prova generale di quello lungo. Spero che, quando conterà, saprò la mia parte a memoria.",
+	},
+	["muse.w12.rest.086"] = {
+		"Riposati quando puoi. Il mondo non manda a dire quando avrà bisogno di te.",
+		"Prenditi il riposo finché te lo offrono. Nessuno lo distribuisce due volte.",
+		"Siediti finché puoi. Nessuno si è mai pentito di un riposo preso.",
+	},
+	["muse.w12.rest.087"] = {
+		"Apro gli occhi, e c'è sempre già qualcosa al lavoro: uno scarabeo, un uccello, una formica che trascina qualcosa grande il doppio di lei. Il mondo, sul lavoro, non l'ho mai battuto.",
+		"Mi sveglio quando mi pare, e il mondo ha sempre già cominciato senza di me. Qualche piccola cosa ci ha dato dentro per tutto il tempo.",
+	},
+	["muse.w12.rest.088"] = {
+		"Nei tratti peggiori tengo in mente un'immagine sola: un posto dove sedermi, dopo. Mi ha portato più lontano di qualunque discorso.",
+		"Quando la strada si fa dura non penso alla gloria. Penso al momento in cui potrò sedermi, e basta questo a mandare avanti i piedi.",
+	},
+	["muse.w12.rest.090"] = {
+		"Aspettare nessuno in particolare ha un suo strano conforto. Nessuno è in ritardo, nessuno mi delude, e posso andarmene quando voglio.",
+		"Quando non arriva nessuno, l'attesa diventa semplicemente stare in un posto. Scopro che non mi dispiace.",
+		"Nessuno da incontrare, nessun posto dove mi aspettino. Un'attesa senza termine non è quasi più un'attesa.",
+	},
+	["muse.w12.rest.091"] = {
+		"Un augurio per chiunque, là fuori, si regga in piedi a stento: una dormita profonda, e qualcuno di fidato a fare la guardia.",
+		"Che ogni anima stanca trovi un angolo dove nessuno la svegli prima del tempo.",
+	},
+	["muse.w12.rest.092"] = {
+		"Ho perfezionato l'arte di sembrare {g:assorto|assorta} mentre non faccio assolutamente nulla. Un leggero cipiglio fa quasi tutto il lavoro.",
+		"Chi passa vede qualcuno immerso nei pensieri. In realtà vede una persona che riposa con la fronte aggrottata.",
+	},
+	["muse.w12.sayings.001"] = {
+		"Un muro che ha fretta finisce in ghiaia, dicono i nani. Qualche mio progetto ha fatto la stessa fine.",
+		"'Muro tirato su di corsa, ghiaia per l'indomani', recita un detto nanico. Ripensando a certe mie trovate, gli do ragione.",
+	},
+	["muse.w12.sayings.002"] = {
+		"A Ironforge, a quanto pare, si dice che un nano ti presta il martello prima del boccale. Chi li ha visti bere non ne dubita.",
+		"'Chiedi a un nano gli attrezzi, mai il boccale', dicono a Ironforge. Sembra un consiglio, ed è un avvertimento.",
+	},
+	["muse.w12.sayings.003"] = {
+		"Secondo i nani le bugie di qualcuno si contano da quante volte si tira la barba. A quel conto, nelle loro taverne non è mai stata detta una parola vera.",
+		"Per i nani una barba onesta resta ferma mentre il padrone parla. Io una barba nanica ferma non l'ho mai vista.",
+	},
+	["muse.w12.sayings.004"] = {
+		"I minatori dicono che la vena migliore è sempre un colpo più in là. Detto consolante, e comodissimo per chi vende i picconi.",
+		"'Ancora un colpo e trovi il buono', si ripetono in miniera. La roccia, sospetto, se lo sente dire da mille anni.",
+	},
+	["muse.w12.sayings.005"] = {
+		"I Wildhammer dicono che un grifone ti ha già giudicato prima che tu finisca di salutarlo. Cosa abbia deciso su di me, preferisco non saperlo.",
+		"Fra i Wildhammer si racconta che il grifone soppesa chi lo monta con un'occhiata, e non cambia più idea. Più severo di qualunque tribunale.",
+	},
+	["muse.w12.sayings.006"] = {
+		"Si racconta che il clan Dark Iron abbia un detto: più profonda è la forgia, più corta è la pazienza. Visto dove abitano, di pazienza non gliene resta.",
+		"'Forgia profonda, miccia corta', dice un detto dei nani Dark Iron. Con quanto hanno scavato, non vorrei incontrarne uno di cattivo umore. O di qualunque umore.",
+	},
+	["muse.w12.sayings.007"] = {
+		"I nani di montagna dicono che la montagna non chiede mai di chi sia il re che ci abita dentro. Ogni corona dovrebbe averlo inciso sopra la porta.",
+		"'La montagna sopravvive al trono che ospita', recita un detto dei nani. Mi piacerebbe sentirlo dire da un re, almeno una volta.",
+	},
+	["muse.w12.sayings.008"] = {
+		"I nani scherzano che a un elfo servono cent'anni per decidere dove mettere una porta, e poi la fa crescere. Non capisco se sia invidia o esasperazione.",
+		"'Un elfo progetta una porta per un secolo', dice la battuta dei nani. O è lentissimo, o è sicurissimo. Forse tutte e due.",
+	},
+	["muse.w12.sayings.009"] = {
+		"Gli scavatori dell'Explorers' League hanno un detto: scava piano, o troverai quello che speravi invece di quello che c'è davvero. Vale ben oltre le rovine.",
+		"'La pala frettolosa trova quello che cercava', dicono all'Explorers' League, e non è un complimento. Desiderare una cosa è un pessimo modo di cercarla.",
+	},
+	["muse.w12.sayings.010"] = {
+		"Gli ingegneri gnomi hanno un detto: se ha funzionato al primo colpo, l'ha costruito qualcun altro. Strano quanto consoli, per un detto sul fallire.",
+		"'Niente di onesto funziona la prima volta', mi disse una volta una gnoma tutta allegra, mentre alle sue spalle qualcosa prendeva fuoco.",
+	},
+	["muse.w12.sayings.011"] = {
+		"Gli gnomi chiamano la città una macchina per tenere gli amici a portata di voce. La loro si è rotta, e cercano ancora i pezzi di ricambio.",
+		"Dicono gli gnomi che una città non è che un congegno per tenere vicini gli amici. Dopo Gnomeregan, sembra meno una battuta e più un lamento.",
+	},
+	["muse.w12.sayings.012"] = {
+		"I meccanici gnomi giurano che ogni macchina ha un pezzo che serve solo a sferragliare e lamentarsi. So benissimo qual è il mio.",
+		"Secondo gli gnomi, ogni marchingegno ha un pezzo che non fa altro che brontolare. Nel mio caso sono le ginocchia, e ci mettono tutto l'impegno.",
+	},
+	["muse.w12.sayings.013"] = {
+		"Gli gnomi sostengono che la domanda sia l'unico attrezzo che si affila usandolo. Il che spiega parecchio, sugli gnomi.",
+		"'Le domande non si spuntano, le risposte sì', dice un detto gnomesco. Mi piace un po' di più ogni volta che il mondo mi sorprende.",
+	},
+	["muse.w12.sayings.014"] = {
+		"Un proverbio gnomesco sostiene che nessun problema è troppo grande: è la chiave inglese a essere troppo piccola. Ammiro l'ottimismo. Sulla chiave ho dei dubbi.",
+		"'Non esistono problemi grandi, solo chiavi inglesi corte', amano dire gli gnomi. Fiducia commovente. Vorrei vedere la chiave, prima.",
+	},
+	["muse.w12.sayings.015"] = {
+		"Gli ingegneri goblin pensano che quello che non è esploso non si sia impegnato abbastanza. Gli gnomi sostengono l'esatto contrario. Io, tra i due, mi tengo a distanza.",
+		"'Niente botto, niente affari', dicono gli inventori goblin. Gli gnomi giurano il contrario. Da entrambe le filosofie sto alla larga.",
+	},
+	["muse.w12.sayings.016"] = {
+		"I contadini dicono che un campo non dimentica chi lo ha lasciato: ci fa crescere cardi in suo nome. Il nord, ormai, dev'essere tutto un cardo.",
+		"Un detto dei campi vuole che la terra abbandonata porti rancore e lo scriva in erbacce. Le campagne di Lordaeron devono gridare.",
+	},
+	["muse.w12.sayings.017"] = {
+		"Nelle campagne si dice che il bue non scopre mai che l'eroe del raccolto era lui. Parecchi eroi sarebbero più simpatici, se valesse anche per loro.",
+		"'Il bue tira tutto il raccolto e nessuno gli canta una canzone', dicono i contadini. Giusto così: al bue la canzone non piacerebbe.",
+	},
+	["muse.w12.sayings.018"] = {
+		"I vecchi soldati giurano che per campare bastano due cose: stivali asciutti e un sergente senza fantasia. Io ne aggiungerei una terza: nessuno che guarda.",
+		"Il detto dei soldati fa così: tieni asciutti gli stivali e annoiato il capitano, e vivrai abbastanza per lamentarti di entrambi. Saggio, ma si scorda della fortuna.",
+	},
+	["muse.w12.sayings.019"] = {
+		"I muratori di Stormwind dicono che ogni città si costruisce due volte: una con la pietra, una con le paghe. Loro sanno bene quale metà non è mai stata saldata.",
+		"'La pietra regge la città, la paga regge i muratori', recita un detto dei costruttori di Stormwind. Dopo come è finita con quei salari, nessuno ci ride più.",
+	},
+	["muse.w12.sayings.020"] = {
+		"Si racconta che i profughi del nord abbiano un detto: lascia l'argenteria, prendi il cucchiaio. Per chi deve partire di corsa, non conosco consiglio più vero.",
+		"'Prendi il cucchiaio, lascia l'argento', si dicono quelli scappati da Lordaeron. Ciò con cui mangi vale più di ciò che potresti vendere.",
+	},
+	["muse.w12.sayings.021"] = {
+		"I vecchi di Lordaeron dicevano che un buon re non è che un contadino il cui campo sono le persone. L'ultimo raccolto del regno è finito malissimo.",
+		"'Un re cura la gente come un contadino cura i filari', dicevano un tempo gli anziani dei regni del nord. Non immaginavano chi sarebbe venuto a mietere quei filari.",
+	},
+	["muse.w12.sayings.022"] = {
+		"Nei villaggi di Elwynn dicono che una scala prestata torna sempre con un piolo in meno. Nessuno sa dove finiscano i pioli. Io ho qualche sospetto sui vicini.",
+		"'Presti una scala, ti torna uno sgabello', dicono i contadini di Elwynn. Prestare è un'abitudine bellissima, con un costo piccolo e costante.",
+	},
+	["muse.w12.sayings.023"] = {
+		"A Darkshire si dice di non rispondere mai a un bussare che non aspettavi. Con tutto quello che si racconta di quel bosco, non posso dargli torto.",
+		"'Colpo inatteso, porta chiusa', dicono a Darkshire. Una regola triste da dover avere, e saggia da rispettare.",
+	},
+	["muse.w12.sayings.024"] = {
+		"I contadini di Westfall dicono che un raccolto magro ti mostra chi sono davvero i tuoi vicini. E di raccolti magri, a quanto si sente, ne hanno avuti parecchi.",
+		"'I cattivi raccolti contano gli amici al posto tuo', dicono nelle campagne di Westfall. Un modo duro di fare il censimento.",
+	},
+	["muse.w12.sayings.025"] = {
+		"Dalle parti di Redridge dicono che un buon ponte vale tre muri. I muri tengono fuori i guai, ma un ponte fa arrivare l'aiuto. Non ci avevo mai pensato.",
+		"'Un ponte vale più di tre mura', si dice intorno a Lakeshire. Difendersi è bene; lasciare una strada agli amici è meglio.",
+	},
+	["muse.w12.sayings.026"] = {
+		"Pare che i kaldorei insegnino ai giovani a giurare in piccolo, perché un giuramento può sopravvivere a chi lo fa di qualche migliaio d'anni. Vale per chiunque, longevo o no.",
+		"'Prometti poco: le promesse vivono più delle persone', dice un detto kaldorei. Con quello che campano, lo sanno bene.",
+	},
+	["muse.w12.sayings.027"] = {
+		"I kaldorei dicono che un bosco tace solo quando ascolta. Da allora abbasso la voce ogni volta che qualcosa si fa silenzioso, bosco o no.",
+		"Il silenzio tra gli alberi, secondo un detto elfico, è attenzione e non assenza. Da quando l'ho sentito, ogni posto quieto mi pare un po' sorvegliato.",
+	},
+	["muse.w12.sayings.028"] = {
+		"Stando ai kaldorei, gli umani costruiscono in pietra perché non hanno la pazienza di far crescere una casa. Ingeneroso, forse. Ma un po' vero.",
+		"'Chi vive poco scava la cava, chi sa aspettare coltiva', recita un detto kaldorei. Io un tetto lo vorrei comunque entro l'anno.",
+	},
+	["muse.w12.sayings.029"] = {
+		"Le Sentinelle hanno un detto: nessun turno di guardia è lungo, è chi veglia che si stanca. Immagino voglia consolare. Non del tutto.",
+		"'Non è la guardia che si allunga, è la sentinella che si accorcia', insegnerebbero le Sentinelle alle reclute. Strano da ricordare quando il sonno non arriva.",
+	},
+	["muse.w12.sayings.030"] = {
+		"I druidi del Cenarion Circle dicono che un seme non discute mai con la terra su cui cade. Io discuto con tutto, il che forse spiega perché germoglio così poco.",
+		"'Il seme prende la terra che gli tocca', insegnano i druidi del Circle. Ammirevole. Io avrei comunque un paio di lamentele per la terra.",
+	},
+	["muse.w12.sayings.031"] = {
+		"Per i kaldorei, a quanto si dice, una scusa come si deve ha bisogno di un secolo per maturare. Per chi vive meno, è un pessimo modo di chiudere una lite.",
+		"'Una scusa colta troppo presto non sa di niente', sostengono i kaldorei, e aspettano di conseguenza. Certe loro liti devono essere più vecchie dei regni.",
+	},
+	["muse.w12.sayings.032"] = {
+		"Gli alti elfi avevano un detto: la bellezza è un muro, e va sorvegliata come qualsiasi altro. Dopo Quel'Thalas, suona come un avvertimento rimasto inascoltato.",
+		"'Anche una cosa bella ha bisogno di una sentinella', dicevano un tempo gli elfi di Quel'Thalas, mi raccontano. Il loro regno lo ha dimostrato nel modo più duro.",
+	},
+	["muse.w12.sayings.033"] = {
+		"Gli orchi dicono che una cicatrice è l'unica lezione che nessuno può rubarti. D'altra parte, nessuno si è mai sforzato molto di rubare una lezione.",
+		"'La cicatrice è un maestro che non se ne va più', dice un vecchio proverbio orchesco. Io preferirei un maestro che bussa prima di entrare.",
+	},
+	["muse.w12.sayings.034"] = {
+		"Gli anziani orchi insegnano che la forza che urla è forza che dubita. Ci penso ogni volta che in taverna qualcuno alza la voce su quanto è duro.",
+		"Fra gli orchi si dice che il braccio forte non ha bisogno della bocca larga. Parole sagge, da un popolo celebre per entrambi.",
+	},
+	["muse.w12.sayings.035"] = {
+		"Si dice che il clan Frostwolf insegni: sfama il lupo prima di te stesso, e non andrai mai a caccia da solo. Parla di lupi. E chiaramente non parla di lupi.",
+		"'Chi sfama prima il lupo non cammina mai da solo', dice un detto dei Frostwolf. Più ci giro intorno, più ci trovo dentro persone.",
+	},
+	["muse.w12.sayings.036"] = {
+		"Gli orchi usciti dai campi d'internamento hanno un detto: un recinto trattiene il corpo, mai il resto. Se lo sono guadagnato. A me tocca solo ascoltare.",
+		"'Le mura prendono le gambe, non la volontà', dicono gli orchi che ricordano i campi. Parole così non sono mie: io posso solo ascoltarle.",
+	},
+	["muse.w12.sayings.037"] = {
+		"Così recita un proverbio orchesco: la rabbia o la dici in faccia o la ingoi intera, ma non masticarla. Io mastico. Lo so benissimo.",
+		"'La rabbia sputala o mandala giù, ma non ruminarla', raccomandano gli orchi. Ottimo consiglio, e io lo tradisco di continuo.",
+	},
+	["muse.w12.sayings.038"] = {
+		"Per gli orchi una bugia detta al nemico ferisce chi la racconta. Strano onore, tenere fede persino all'altra parte. Mi accorgo di ammirarlo.",
+		"'Menti al nemico e ti sei tagliato la mano da solo', recita un proverbio degli orchi sull'onore. Regola esigente. Molti non la rispettano nemmeno con gli amici.",
+	},
+	["muse.w12.sayings.039"] = {
+		"Gli orchi avvertono che ciò che il clan dimentica, il nemico lo ricorderà al posto suo. Un buon argomento per tenere registri onesti, tra le altre cose.",
+		"'Scorda i tuoi torti e i nemici li terranno a mente per te', ammonisce un detto orchesco. La storia sembra dargli ragione, e ad alta voce.",
+	},
+	["muse.w12.sayings.040"] = {
+		"I Darkspear dicono che i loa rispondono piano per darti il tempo di pentirti della domanda. La cosa più saggia che abbia mai sentito sul chiedere.",
+		"'I loa se la prendono comoda, così puoi ritirare la richiesta', dice un detto troll. La pazienza come misericordia. Mi piace.",
+	},
+	["muse.w12.sayings.041"] = {
+		"I troll della giungla dicono che la pantera non insegue mai: aspetta dove il sentiero arriva all'acqua. Una lezione che ogni cacciatore sta ancora imparando.",
+		"'Non correre dietro alla cena della pantera: aspetta dove beve.' Un detto troll, mi dicono, e vale per molto più della caccia.",
+	},
+	["muse.w12.sayings.042"] = {
+		"I troll hanno un detto: una ferita che si chiude troppo in fretta non insegna niente. Facile per loro. Le loro si chiudono mentre ancora parlano.",
+		"'Chi guarisce presto impara tardi', sentenziano i troll, che guariscono più in fretta di chiunque. Io baratterei volentieri un po' di saggezza per quel dono.",
+	},
+	["muse.w12.sayings.043"] = {
+		"Si racconta che gli anziani troll insegnino ai giovani ad ascoltare con più attenzione proprio quando i tamburi tacciono. Quello che resta in quel silenzio è la verità.",
+		"Presso i troll si dice che il tamburo serve a ballare, e il silenzio dopo serve a capire. Ci ripenso spesso, quando tutto si quieta.",
+	},
+	["muse.w12.sayings.044"] = {
+		"Si dice che gli stregoni troll insegnino che ogni maledizione è una promessa che qualcuno ha tradito. Mi spaventa più di qualsiasi discorso su poteri oscuri.",
+		"'Una maledizione è un giuramento andato a male', insegnano gli stregoni troll. Se è vero, il mondo è molto più maledetto di quanto sembri.",
+	},
+	["muse.w12.sayings.045"] = {
+		"Per i Darkspear la tribù è una canoa, e se remi fuori tempo si bagnano tutti. Non avevo mai pensato alla compagnia come a una questione di remi.",
+		"'Rema con gli altri o nuota da solo', dice un detto dei Darkspear. Non proprio una minaccia. Piuttosto una descrizione di come funzionano le canoe.",
+	},
+	["muse.w12.sayings.046"] = {
+		"I troll dicono che il buon mojo non si compra: si prende in prestito, e prima o poi torna a riscuotere. Vorrei sapere a che punto è il mio conto.",
+		"'Il mojo è un prestito, e si ricorda chi l'ha chiesto', raccontano i troll. Sospetto di essere in rosso.",
+	},
+	["muse.w12.sayings.047"] = {
+		"Gli anziani tauren insegnano a camminare come se ogni passo fosse sentito, laggiù sotto. Da allora poso i piedi con un po' più di garbo.",
+		"'Cammina come cammina un ospite', dicono i tauren della terra. Non avevo mai pensato che al suolo potesse dispiacere essere calpestato.",
+	},
+	["muse.w12.sayings.048"] = {
+		"I mandriani tauren dicono che la mandria va al passo del vitello più lento, ed è questo a farne una mandria. Quasi tutte le folle preferirebbero lasciare indietro il vitello.",
+		"'La mandria cammina veloce quanto il più debole', dice un detto tauren. Detto da loro non è un lamento. È una definizione.",
+	},
+	["muse.w12.sayings.049"] = {
+		"I conducenti di kodo dicono di non discutere mai la strada con un kodo: lui ricorda acque che tu non hai mai visto. Certe guide farebbero bene a essere kodo.",
+		"'Il kodo sa dov'è l'acqua prima che tu sappia di avere sete', amano dire i mandriani delle Barrens. Fidati di chi ricorda più a lungo, insomma.",
+	},
+	["muse.w12.sayings.050"] = {
+		"I tauren dicono che i loro morti sono solo andati avanti lungo il sentiero, e che brontoleranno se arrivi troppo presto. Stranamente, ci credo senza fatica.",
+		"'I morti camminano davanti: non affrettarti a raggiungerli', recita un detto tauren. Gentile e pratico, due cose che di rado stanno insieme.",
+	},
+	["muse.w12.sayings.051"] = {
+		"I cacciatori tauren dicono che quello che prendi alla terra o lo ringrazi o lo lasci stare. Mi è venuta l'abitudine di un piccolo grazie, detto sottovoce.",
+		"'Prendi ringraziando, o non prendere', dice il detto dei cacciatori tauren. Seguirlo non costa nulla, e ho notato che cambia il sapore del prendere.",
+	},
+	["muse.w12.sayings.052"] = {
+		"Gli anziani tauren amano ricordare ai giovani che ogni sassolino un tempo era parte di una montagna. Rispetta le cose piccole, intendono. Da allora guardo la ghiaia con altri occhi.",
+		"'Ogni sasso si ricorda di quando era montagna', è un detto tauren. Sii gentile con le cose piccole: hanno già perso parecchio.",
+	},
+	["muse.w12.sayings.053"] = {
+		"Se si dà retta ai tauren, i quilboar hanno un detto: la spina si ricorda di ogni mano. Gente simpatica. Filosofia spinosa.",
+		"I quilboar, a sentire certuni, dicono che una spina non dimentica mai la mano che l'ha afferrata. Più che saggezza, una minaccia con un buon portamento.",
+	},
+	["muse.w12.sayings.054"] = {
+		"Nell'Undercity si dice che ciò che resiste oltre la morte era la parte che valeva la pena tenere. Una consolazione dura, nata da chi si è visto portare via moltissimo.",
+		"Secondo i Reietti la morte spoglia di tutto tranne quello che contava. Cupo, e probabilmente meritato. Pochi detti sono costati tanto.",
+	},
+	["muse.w12.sayings.055"] = {
+		"'La fretta è un vizio dei vivi', amano dire i Reietti. E lo dicono pure lentamente, il che dimostra il punto.",
+		"Tra i Reietti, correre è considerato un'abitudine dei vivi, e se ne ride piano. A guardare chiunque aspetti in fila, capisco cosa intendono.",
+	},
+	["muse.w12.sayings.056"] = {
+		"Alcuni Reietti dicono che il nome è la prima cosa che la morte si prende, e il rancore l'ultima. Spiegherebbe l'umore dell'Undercity.",
+		"Il detto dei Reietti fa così: prima se ne va il nome, per ultimo il rancore. Chissà quale dei miei resisterebbe di più.",
+	},
+	["muse.w12.sayings.057"] = {
+		"C'è un detto cupo dei Reietti: quel che la tomba non ha saputo trattenere, nessun muro lo tratterrà. Come minaccia, difficile ribattere.",
+		"'Se la tomba l'ha lasciato andare, nient'altro lo terrà', dicono i Reietti di se stessi. Vanto e avvertimento in un'unica frase.",
+	},
+	["muse.w12.sayings.058"] = {
+		"Si dice che gli speziali dell'Undercity scherzino che una cura e una pestilenza differiscono soprattutto per chi paga. Spero sia uno scherzo. Lo spero davvero.",
+		"'Rimedio o veleno? Chiedi chi ha firmato l'ordine', dice un detto cupo della Royal Apothecary Society. Non rassicura, da gente che produce entrambi.",
+	},
+	["muse.w12.sayings.059"] = {
+		"Le guardie dei Reietti, si racconta, sostengono che una porta la tiene chi si rifiuta più a lungo di cadere. Niente di glorioso. Efficacissimo.",
+		"'Le porte le tengono i testardi, non i forti', ripetono le guardie dei Reietti. Aggiungerei: e gli annoiati.",
+	},
+	["muse.w12.sayings.060"] = {
+		"I mercanti goblin hanno una regola: l'ultimo pezzo non si vende, si rincara. Con me funziona ogni volta, e la regola la conosco.",
+		"'L'ultimo non è in vendita: è in vendita a più caro', dice il detto goblin. Saperlo non mi ha mai impedito di pagare.",
+	},
+	["muse.w12.sayings.061"] = {
+		"Un detto dello Steamwheedle Cartel: ogni contratto è una gabbia, quindi trova la porta prima di firmare. Io non ho mai letto niente con tanta attenzione.",
+		"'Un contratto si legge come si entra in una gabbia: cercando la porta', dicono i goblin. Sensato. Io firmo le cose come scaccio le mosche.",
+	},
+	["muse.w12.sayings.062"] = {
+		"I goblin amano dire che la lealtà è una moneta che si spende una volta sola. Io direi che è l'unica che torna indietro, se la spendi bene.",
+		"'La lealtà si spende una volta: spendila cara', recita il detto goblin. Non mi tornano i conti. Spesa bene, di solito ritorna.",
+	},
+	["muse.w12.sayings.063"] = {
+		"A Booty Bay dicono che tutti sono onesti finché non si ritira la marea. Cosa c'entri la marea non lo so, e non lo chiedo.",
+		"'Onesto con l'acqua alta', a Booty Bay, è chi è affidabile solo finché gli conviene. Ci rientra un numero sorprendente di persone.",
+	},
+	["muse.w12.sayings.064"] = {
+		"I goblin raccomandano di non mercanteggiare mai con chi non ha altro posto dove andare: ti batte per sfinimento. Di solito quello con la fretta sono io.",
+		"'Mai contrattare con chi ha tutto il tempo del mondo', dicono i mercanti goblin. Non è mai capitato che fossi io.",
+	},
+	["muse.w12.sayings.065"] = {
+		"I venditori d'acqua di Gadgetzan dicono che la sete è l'unico cliente che non mercanteggia mai. Detto cupo. Ottimi affari.",
+		"'La sete non tratta', dicono i mercanti d'acqua di Gadgetzan. La descrizione più onesta di un monopolio che abbia mai sentito.",
+	},
+	["muse.w12.sayings.066"] = {
+		"Dai furbolg Timbermaw, raccontano, un ospite è accolto anche a mani vuote, purché siano mani di buona volontà. Una regola migliore di quella di molte locande.",
+		"'Le mani vuote sono un dono, se portano legna', dice un detto furbolg, così mi raccontano. Ospitalità con un lavoro incluso. Giusto.",
+	},
+	["muse.w12.sayings.067"] = {
+		"I furbolg hanno un detto: il marcio comincia nella tana, mai nel bosco. Visto cosa ha fatto la corruzione demoniaca a tante loro tribù, è un detto pagato caro.",
+		"'La malattia arriva da casa prima che da fuori', dicono i Timbermaw. Con tante tribù furbolg impazzite dall'interno, ci credo.",
+	},
+	["muse.w12.sayings.068"] = {
+		"I furbolg pensano che tutta la saggezza dell'orso stia nel mangiare quando può, dormire quando può e non preoccuparsi mai nel mezzo. Le prime due mi riescono.",
+		"'Mangia, dormi e lascia le preoccupazioni agli scoiattoli', consiglia un detto furbolg. Mi piacerebbe tanto. A quanto pare, lo scoiattolo sono io.",
+	},
+	["muse.w12.sayings.069"] = {
+		"Gli ogre hanno un detto, per quanto lo si riesca a tradurre: due teste, due pareri, una pancia sola, e decide la pancia. Certi consigli funzionano uguale.",
+		"'Due teste litigano, vince lo stomaco', suona più o meno il detto degli ogre. Più di un regno si governa con lo stesso principio.",
+	},
+	["muse.w12.sayings.070"] = {
+		"Pare che i magi ogre abbiano un detto: ogre furbo, sempre ogre. Detto da loro, lo trovo più onesto di metà delle lezioni dei dotti.",
+		"'Ogre furbo, sempre ogre', borbotterebbero i magi degli ogre. Più umiltà in quattro parole che in tante biblioteche.",
+	},
+	["muse.w12.sayings.071"] = {
+		"Un detto degli ogre, tradotto alla buona: più grossa la clava, più breve la discussione. Diplomazia da ogre. Molti con clave ben più piccole la seguono lo stesso.",
+		"'Clava grossa, discorso corto', dicono gli ogre. Rozzo, ma parecchi signori risolvono le cose nello stesso modo, solo con modi migliori.",
+	},
+	["muse.w12.sayings.072"] = {
+		"I marinai dicono che una nave non si perde mai: arriva in anticipo in un porto che nessuno aveva previsto. Lo adotto, a partire dalla prossima svolta sbagliata.",
+		"'Non persi: in arrivo in un posto inatteso', come dicono i marinai. Un modo generoso di vedere le cose, e me lo prendo in prestito.",
+	},
+	["muse.w12.sayings.073"] = {
+		"I marinai dicono che la cima che ti salva la vita è sempre una che hai arrotolato per noia. Il lavoro noioso è quasi sempre un regalo a un momento peggiore.",
+		"'Arrotola bene la cima quando non succede niente: qualcosa succederà', dice un detto di bordo. Ci penso ogni volta che vorrei saltare un compito noioso.",
+	},
+	["muse.w12.sayings.074"] = {
+		"A sentire i marinai, i guai imparano il tuo nome solo quando scendi a terra: in acqua sei soltanto uno scafo tra tanti. Capisco perché certi non sbarcano mai.",
+		"'In coperta sei uno scafo, a terra sei un nome, con i debiti attaccati', dice la gente di mare. Per forza sembrano a disagio sulla terraferma.",
+	},
+	["muse.w12.sayings.075"] = {
+		"I marinai giurano che ogni porto ha esattamente una taverna onesta, ed è sempre chiusa. Ho smesso di cercarla. Controllo i bicchieri e basta.",
+		"'Una taverna onesta per porto, e ha la porta sbarrata', raccontano i marinai. Un buon consiglio travestito da battuta, come i loro consigli migliori.",
+	},
+	["muse.w12.sayings.076"] = {
+		"I pescatori hanno un detto: una rete senza buchi non prende che acqua. Ho cominciato a perdonarmi qualche buco anch'io.",
+		"'Una rete è fatta quasi tutta di buchi, eppure sfama il villaggio', amano dire i pescatori. Incoraggiante, per chi è pieno di lacune.",
+	},
+	["muse.w12.sayings.077"] = {
+		"Chi pesca dice che dove i murloc cominciano a gorgogliare, i pesci hanno già fatto i bagagli. Seguirei il loro esempio.",
+		"'Quando cantano i murloc, la pesca è finita', dicono i pescatori della costa. Saggi. Me ne andrei anch'io, e non solo per i pesci.",
+	},
+	["muse.w12.sayings.078"] = {
+		"I capicarovana consigliano di viaggiare carichi a metà: il carro pieno attira i briganti, quello vuoto la compassione. La moderazione, praticata da chi è già stato derubato.",
+		"'Mezzo carico: troppo poco per rapinarti, troppo per mendicare', dicono quelli delle carovane. La via di mezzo, alla lettera.",
+	},
+	["muse.w12.sayings.079"] = {
+		"I banditori d'asta hanno un detto: una cosa vale esattamente quanto è disposto a pagare il secondo più testardo. Onesto, a suo modo, e un po' crudele.",
+		"'Il prezzo lo fa chi si arrende per secondo', dice il detto dei banditori. Non è commercio: è una gara tra muli.",
+	},
+	["muse.w12.sayings.080"] = {
+		"I venditori ambulanti sostengono che il cliente che discute più a lungo è quello che alla fine compra. Quelli zitti non avrebbero comprato comunque. Io ho fatto tutte e due le parti.",
+		"'Chi mercanteggia sta già comprando', dicono i mercanti di strada. Il che fa di me un cliente molto prevedibile.",
+	},
+	["muse.w12.sayings.081"] = {
+		"Pare che i soldati dell'Argent Dawn dicano: i morti non riposano mai, quindi i vivi è meglio che facciano i turni. Una fede pratica. La rispetto più di quella solenne.",
+		"'I morti non hanno orari: tu tieni i tuoi a turni', direbbero quelli dell'Argent Dawn. Semplice, stanco e giusto.",
+	},
+	["muse.w12.sayings.082"] = {
+		"I sergenti amano dire che una marcia dura insegna più di dieci bei discorsi. Ci credo, anche se un discorso me lo ascolterei volentieri.",
+		"'Un piede con le vesciche impara prima di un orecchio pieno', dicono gli istruttori. Vero, purtroppo. Avrei gradito anche il discorso.",
+	},
+	["muse.w12.sayings.083"] = {
+		"C'è un detto dei soldati: la paura è l'unica commilitona che non manca mai all'appello. Tanto vale imparare a marciarle accanto.",
+		"'La paura risponde sempre all'appello', dicono i veterani. Ho smesso di sperare che dorma troppo e le ho trovato un posto nella fila.",
+	},
+	["muse.w12.sayings.084"] = {
+		"I soldati amano dire che la ferita che ti ammazza è quella che l'orgoglio ti ha impedito di far vedere al cerusico. L'orgoglio, pare, tiene il suo conto dei morti.",
+		"'L'orgoglio nasconde il taglio finché il taglio vince', dicono i vecchi militari. Ci penso quando mi viene da dire che sto bene.",
+	},
+	["muse.w12.sayings.085"] = {
+		"Chi cura i feriti sul campo ha un detto cupo: quelli che urlano stanno bene, preoccupati per quelli zitti. Ci penso ogni volta che qualcuno tace troppo a lungo.",
+		"'Il ferito che grida vive', dicono quelli che medicano in battaglia. È dai silenziosi che corrono. Mai sentito un detto così pratico e così triste.",
+	},
+	["muse.w12.sayings.086"] = {
+		"Chi segue le tracce ha un detto: la pista più fresca, in qualunque bosco, di solito è la tua. È un avvertimento contro il girare in tondo. Vale anche per i pensieri.",
+		"'Le orme più nuove sono quasi sempre le tue', amano dire gli esploratori. Mi capita abbastanza spesso di inseguire i miei pensieri in cerchio per crederci.",
+	},
+	["muse.w12.sayings.087"] = {
+		"I maestri di volo dicono che una cavalcatura che conosce la strada va ringraziata, non guidata. A parecchia gente farebbe bene sentirselo dire, e non solo sulle cavalcature.",
+		"'Non guidare chi sa già la strada: ringrazialo', dicono quelli che badano alle bestie dei nidi. Un buon consiglio per chiunque ami comandare.",
+	},
+	["muse.w12.sayings.088"] = {
+		"Chi raccoglie erbe avverte che il fiore più bello di una palude è sempre quello che ti fa star male. Le cose belle hanno parecchio da farsi perdonare.",
+		"'Cogli la foglia modesta, lascia quella vistosa', dicono gli erboristi. Un consiglio che allargherei ben oltre le piante.",
+	},
+	["muse.w12.sayings.089"] = {
+		"Gli osti dicono che chi paga in anticipo dorme peggio, sveglio a fare i conti. Non ho mai capito se sia saggezza o un trucco per vendere un altro boccale.",
+		"'Pagato prima, sveglio dopo', dicono gli osti dei clienti in ansia. Saggezza, forse. O un modo per vendere il boccale che aiuta a far tornare i conti.",
+	},
+	["muse.w12.sayings.090"] = {
+		"Ogni tavolo è un confine, dicono gli osti, e ogni panca condivisa è un trattato. Alcuni dei posti più pacifici che conosca sono panche lunghe.",
+		"Gli osti amano dire che una panca affollata ha chiuso più faide di qualsiasi ambasciatore. Non ne dubito. È difficile odiare chi ti divide il gomito.",
+	},
+	["muse.w12.sayings.091"] = {
+		"Gli osti sostengono di leggere tutta la storia di un viaggiatore dagli stivali, prima che apra bocca. Ho preso a nascondere i miei sotto il tavolo.",
+		"'Ascolta gli stivali, non la bocca', è un detto da osteria sui clienti. I miei racconterebbero storie imbarazzanti.",
+	},
+	["muse.w12.sayings.092"] = {
+		"I nani dicono di non fidarsi mai di un pavimento che non hai scavato tu. Questa me la tengo.",
+		"'Non fidarti di un suolo che non hai scavato', dicono i nani. Gente sensata.",
+	},
+	["muse.w12.sayings.093"] = {
+		"I goblin chiamano affare una perdita che ti ha sorriso per prima. Da ricordare alla prossima bancarella.",
+		"'Un affare è una perdita educata.' Saggezza goblin. Me la sento in testa ogni volta che apro il borsello.",
+	},
+	["muse.w12.sayings.094"] = {
+		"I tauren dicono che una strada lunga accorcia la lingua. Basta chiacchiere, allora.",
+		"Strada lunga, lingua corta, come dicono i tauren. Quindi: silenzio.",
+	},
+	["muse.w12.sayings.095"] = {
+		"Un vecchio detto orchesco: chi si vanta per primo torna a casa zoppicando per ultimo. Preso nota.",
+		"'Chiassoso all'andata, zoppo al ritorno.' Proverbio degli orchi. Bello.",
+	},
+	["muse.w12.sayings.096"] = {
+		"Mai fidarsi, dicono i marinai, di chi giura di non aver mai sofferto il mal di mare. Giusto. Io non mi fido nemmeno di chi non si è mai perso.",
+		"'Mai avuto il mal di mare? O non sei mai salito su una nave, o non sei sincero.' Saggezza da marinai. Difficile ribattere.",
+	},
+	["muse.w12.sayings.097"] = {
+		"L'ultimo giro, dicono gli osti, è sempre quello che la gente ricorda male. Tanto per dire.",
+		"'L'ultimo giro nessuno lo ricorda giusto', dicono gli osti. Allora lo salto.",
+	},
+	["muse.w12.sayings.098"] = {
+		"Gli gnomi dicono che non esistono incidenti, solo esperimenti fuori programma. Allora ultimamente ho fatto parecchia scienza.",
+		"'Niente incidenti, solo prove non previste', dicono gli gnomi. A quel conto, faccio ricerca a tempo pieno.",
+	},
+	["muse.w12.sayings.099"] = {
+		"Saggezza troll: non scappare da quello che puoi aspettare. Allora aspetto.",
+		"'Ciò che si può aspettare non serve batterlo in corsa', dicono i troll. Pazienza, dunque.",
+	},
+	["muse.w12.sayings.100"] = {
+		"I soldati dicono che il veterano si riconosce da quanto in fretta si siede. Ecco, così.",
+		"'Il veterano si siede per primo', dicono i soldati. Mi siedo.",
+	},
+	["muse.w12.sayings.101"] = {
+		"Nella testa di un nano, un boccale vuoto è una domanda che aspetta risposta. Lasciarla in sospeso è scortese.",
+		"'Un boccale vuoto fa una domanda', dicono i nani. Qualcuno dovrebbe rispondere.",
+	},
+	["muse.w12.sayings.102"] = {
+		"I Reietti dicono che il rancore si conserva meglio della carne. Gente allegra.",
+		"'La carne marcisce, il rancore si conserva.' Detto dei Reietti. Delizioso.",
+	},
+	["muse.w12.sayings.103"] = {
+		"Lupo zitto, lupo affamato, dicono gli orchi. Questo spiega il mio silenzio.",
+		"'Il lupo che tace ha fame', dicono gli orchi. Ecco il perché del mio umore.",
+	},
+	["muse.w12.sayings.104"] = {
+		"Gli ogre hanno un detto: conta le tue teste prima di attaccar briga. Più facile per alcuni che per altri.",
+		"'Prima conta le tue teste', dice il detto degli ogre. Una, nel mio caso. Me la tengo stretta.",
+	},
+	["muse.w12.sayings.105"] = {
+		"I mandriani dicono che un kodo non dimentica né una carezza né un calcio. Nemmeno io, a dirla tutta.",
+		"'Il kodo ricorda calci e gentilezze', dicono i mandriani. Pure io.",
+	},
 }, "base_monologues")

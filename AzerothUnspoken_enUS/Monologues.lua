@@ -4190,4 +4190,2607 @@ NS:AddTexts("enUS", {
 		"Fear always knows exactly how big the threat is. It's just terrible at measuring me.",
 		"My fear sees every danger clearly and me not at all.",
 	},
+	["muse.w12.coin.001"] = {
+		"Every price is somebody's hours. The cheaper the boots, the longer someone sat stitching them for less.",
+		"Behind any price there's a pair of hands and a day of work. Cheap only means those hands got less for it.",
+	},
+	["muse.w12.coin.002"] = {
+		"I've been putting coin aside for something. I no longer remember what. The saving has outlived the reason and carries on regardless.",
+		"There's a little hoard at the bottom of my pack meant for some purchase I've long since forgotten. I keep feeding it out of loyalty.",
+	},
+	["muse.w12.coin.003"] = {
+		"One silver rides in my boot for the worst day. If I'm buried with it still there, the worst day never came. Best coin I'll never spend.",
+		"A single silver kept hidden apart, for when everything goes wrong. Each time I check and find it still there is a small win of its own.",
+	},
+	["muse.w12.coin.004"] = {
+		"With a full purse I'm generous. With an empty one I discover strong views on thrift. My principles keep remarkably close to my coin.",
+		"Funny how my generosity rises and falls with the purse, while my little sermons on saving do just the opposite.",
+	},
+	["muse.w12.coin.005"] = {
+		"A copper left for whoever clears the table. It's the cheapest way I know of staying a decent sort.",
+		"I leave a coin by the plate for the one who'll wipe up after me. A small price for not turning into someone who forgets to.",
+		"Whoever cleans up after me gets a coin. It's less about them than about the sort of person I'd turn into without the habit.",
+	},
+	["muse.w12.coin.006"] = {
+		"Gold is heavier than the songs let on. Nobody who sings about treasure has ever had to carry it up a flight of stairs.",
+		"Treasure in a ballad weighs nothing. Treasure in a sack weighs a great deal, and it clinks at every step like a confession.",
+	},
+	["muse.w12.coin.007"] = {
+		"Some days I let the merchant win the haggle. A bargain only feels good when both sides can still afford supper.",
+		"There's a point in any haggle where winning turns into taking. I try to stop just short of it.",
+	},
+	["muse.w12.coin.008"] = {
+		"Everyone has a price, people like to say. I'd like to learn mine before somebody else does.",
+		"If it's true that anyone can be bought, I want to know my own figure first, so the refusal is ready when the offer comes.",
+	},
+	["muse.w12.coin.009"] = {
+		"Honest work pays badly and keeps on paying. Crooked work pays handsomely, about once.",
+		"Crooked coin comes in one big handful and then never again. Honest coin trickles in for good. I know which I'd rather count.",
+		"A crooked job pays for a season. An honest one pays for a life, a few coppers at a go.",
+	},
+	["muse.w12.coin.010"] = {
+		"Gold put in a grave does one thing: it waits for a thief. In mine, if it comes to that, I'd rather leave nothing worth the digging.",
+		"Bury me without a coin, when the time comes. Grave gold only teaches the next robber where to dig.",
+	},
+	["muse.w12.coin.011"] = {
+		"I could never keep a lucky coin. Sooner or later it would turn into bread, and the luck would go down with it.",
+		"A lucky coin is a lovely idea for people who are never hungry.",
+	},
+	["muse.w12.coin.012"] = {
+		"I'm not poor. I'm between fortunes.",
+		"Broke? Hardly. Resting between fortunes.",
+		"Poor is such a final word. Let's say the fortune is running late.",
+	},
+	["muse.w12.coin.014"] = {
+		"A coin I give away I never miss. A coin I lose through a torn pocket I mourn for a week. It's the same coin. The difference is me.",
+		"Lose a copper and it nags at me for days. Give one away and I've forgotten it by supper. The coin can't tell the two apart; I can.",
+	},
+	["muse.w12.coin.015"] = {
+		"A copper won't feed anyone by itself. It has to become bread first, and somewhere in that change a baker got up before everyone else.",
+		"Coins are only promises of bread. The real wealth is the baker, already at work while the rest of the world is still asleep.",
+	},
+	["muse.w12.coin.016"] = {
+		"Having the exact coins ready, no change to wait for: a tiny triumph that nobody else will ever notice.",
+		"Paying with precisely the right sum pleases me more than it should. A small victory is still a victory.",
+	},
+	["muse.w12.coin.017"] = {
+		"I never count my change in front of the merchant. It feels like calling them a liar to their face. I count it round the corner instead, like a coward.",
+		"Counting change at the counter is a small insult. So I count it a few steps later, where only my conscience can see.",
+	},
+	["muse.w12.coin.018"] = {
+		"Wars are paid for twice. Once in gold, by the people who start them. Once in everything else, by the people who don't.",
+		"Whoever begins a war pays for it in coin. Whoever never asked for it pays with the rest of what they had.",
+	},
+	["muse.w12.coin.019"] = {
+		"A few silver put by aren't really for buying things. They buy the right to say no to a job I don't like the smell of.",
+		"Savings, to me, are mostly the freedom to refuse. An empty purse says yes to everything.",
+		"Every coin I don't spend is a small no kept in my pocket, ready for when I'll need it.",
+	},
+	["muse.w12.coin.020"] = {
+		"Owe enough to the wrong person and they start choosing where you sleep, what you do, whom you smile at. Debt is a leash with a polite voice.",
+		"A large debt is a chain you put on yourself, one link for every signature.",
+	},
+	["muse.w12.coin.021"] = {
+		"Nobody ever has change for a gold coin. Gold is the coin that makes everyone around it poor for a moment.",
+		"Hand over gold and watch the whole shop turn out its pockets. Big coins are a nuisance dressed up as wealth.",
+		"Gold is wonderful until you try to buy an apple with it.",
+	},
+	["muse.w12.coin.022"] = {
+		"I've planned how to spend a fortune so many times that, if one ever turned up, the spending would feel like something I'd done before.",
+		"In my head I've already spent a dozen fortunes, all very wisely. Shame none of them was real; the good sense would have been impressive.",
+	},
+	["muse.w12.coin.023"] = {
+		"Paying for a stranger's meal feels better than eating my own. I don't do it often enough to understand why.",
+		"There's an odd glow in covering somebody else's supper. Cheaper than most pleasures, and rarer than it ought to be.",
+	},
+	["muse.w12.coin.024"] = {
+		"The one who lends remembers the sum to the copper. The one who borrows remembers the kindness and loses the figure. Both think they're being fair.",
+		"Lenders keep numbers; borrowers keep feelings. That's why so many loans end in a quarrel nobody can settle.",
+		"A loan is one event remembered as two different stories.",
+	},
+	["muse.w12.coin.025"] = {
+		"Interest is the only thing I know that works while its owner sleeps. I've yet to find myself on the right side of it.",
+		"Somewhere a debt of somebody's is quietly rising in the dark, like bread dough. I do hope it isn't mine.",
+	},
+	["muse.w12.coin.026"] = {
+		"That's not a price. That's a threat with numbers in it.",
+		"Did you mean to say that figure out loud?",
+	},
+	["muse.w12.coin.027"] = {
+		"Iron remembers the forge, stone remembers the mountain. Gold remembers nothing except being wanted.",
+		"Every metal keeps a little of where it came from. Gold keeps only the hands that reached for it.",
+	},
+	["muse.w12.coin.028"] = {
+		"Taking charity is harder than giving it. The trick is to say thank you and not reckon up what it cost them.",
+		"When someone helps me with coin, I try to take it cleanly: a thanks, a nod, and no sums done in my head about what they could spare.",
+	},
+	["muse.w12.coin.029"] = {
+		"Most of what keeps me alive costs almost nothing: water, a strip of clean cloth, a moment's attention. The dear things mostly help me look the part.",
+		"Go through my pack and the cheapest things are the ones that keep me going. The costly ones are there to impress people who never ask.",
+	},
+	["muse.w12.coin.030"] = {
+		"Whatever I leave behind won't fill a purse. I'd settle for it filling a sentence or two in someone's mouth.",
+		"My estate, such as it is, would fit in one hand. I hope the rest of me fits in a kind word.",
+	},
+	["muse.w12.coin.031"] = {
+		"Dice are the most honest thieves there are. They take your coin and never once pretend they're doing you a favor.",
+		"Gambling at least has the decency to rob you openly. Plenty of merchants could take lessons from the dice.",
+		"Lose to dice and at least you know whom to blame. Lose to a smiling merchant and you'll thank him on the way out.",
+	},
+	["muse.w12.coin.033"] = {
+		"Right now someone is selling a thing they swore they'd never sell. Hunger sets that price, and hunger doesn't haggle.",
+		"The saddest bargains are struck by people with no choice left. Hunger names the figure, and the seller nods.",
+	},
+	["muse.w12.coin.034"] = {
+		"Every merchant's scale leans a hair toward its owner. Not dishonesty, exactly. Just weight with an opinion.",
+		"Shop scales are loyal creatures. They always seem to know whose counter they sit on.",
+		"Nobody has ever seen a scale tip toward the customer. Some mysteries are simpler than they look.",
+	},
+	["muse.w12.coin.035"] = {
+		"Somebody out there shaves a sliver off silver coins before passing them on. A patient sort of theft. I almost respect the patience.",
+		"Run a thumb round the rim of a coin and now and then it's been nibbled. Some thief with a file and all the time in the world.",
+	},
+	["muse.w12.coin.036"] = {
+		"A gift that costs me nothing isn't really one. That small pinch as I hand it over is how I know it counted.",
+		"If giving doesn't sting a little, I've only tidied my pockets. The sting is the gift.",
+	},
+	["muse.w12.coin.037"] = {
+		"Promised rewards are always chests. Delivered rewards are always pouches. Somewhere between the two, the reward goes on a diet.",
+		"A reward sounds like gold when it's offered and jingles like copper when it's paid. The difference is called expenses.",
+		"Rewards shrink on the way from the promise to the palm, like wool washed too hot.",
+	},
+	["muse.w12.coin.038"] = {
+		"Some people pay in thanks, some in coin. The ones who pay in both are rare, and I remember every one.",
+		"Coin or gratitude: most folk pick one. Those who give both stay in my head long after the money's gone.",
+	},
+	["muse.w12.coin.039"] = {
+		"I never know what to ask when someone wants help. Too much and I'm a bandit, too little and I'm a fool. So I ask nothing and grumble later.",
+		"Putting a price on my own work is the hardest sum there is. Usually I round it down to a shrug.",
+	},
+	["muse.w12.coin.040"] = {
+		"Forgiving a debt is the one purchase I've never regretted. It costs exactly what I was owed and buys something I couldn't name.",
+		"Let someone off what they owe you and watch their shoulders drop. No coin ever collected looked half that good.",
+		"Cancelling what someone owes me is the only spending that leaves me lighter in the right way.",
+	},
+	["muse.w12.coin.041"] = {
+		"Now and then an old coin turns up, struck for a kingdom that isn't there anymore. The merchant takes it by weight. The kingdom doesn't come into it.",
+		"Coins of fallen realms still pass, if they're heavy enough. A merchant's scale goes into mourning for no one.",
+	},
+	["muse.w12.coin.042"] = {
+		"Before any purchase I hold a small trial in my head. The purse prosecutes, my feet speak for the defense, and the verdict is always boots.",
+		"Each time I want something, a court sits in my skull: need against wish, with the purse as judge. A hanging judge, that purse.",
+	},
+	["muse.w12.coin.043"] = {
+		"Envy is the costliest thing I never buy. It still finds a way to send me the bill.",
+		"I don't purchase envy, but it gets delivered anyway, and it charges by the hour.",
+		"Envy is a purchase made on credit: no coin at the time, and a long bill after.",
+	},
+	["muse.w12.coin.044"] = {
+		"Coin is easy to count and hard to keep. Friends are the other way round.",
+		"I can tell what's in my purse to the copper. How many friends I have, I honestly couldn't say. Maybe that's the right way round.",
+		"Money slips out between the fingers. Friends, the good ones, stick like burrs.",
+	},
+	["muse.w12.coin.045"] = {
+		"Every notice with a price on someone's head makes me wonder who settles the figure, and what they'd write under my name.",
+		"Somebody decides what a life is worth in silver and nails it to a post. I'd hate to know my own figure. I'd hate more to find it low.",
+	},
+	["muse.w12.coin.046"] = {
+		"A fair price is one both sides grumble about. That's how you know.",
+		"If nobody's sulking afterward, somebody got cheated.",
+		"When buyer and seller both leave a little sore, the price was about right.",
+	},
+	["muse.w12.coin.047"] = {
+		"Money talks, people say. Mine just whispers apologies.",
+		"My coin doesn't talk. It clears its throat and leaves.",
+	},
+	["muse.w12.coin.048"] = {
+		"Whatever it costs, it costs less than doing without.",
+		"Buy the good one. Doing without is always the dearest choice.",
+	},
+	["muse.w12.coin.049"] = {
+		"Keep the change. It's tiny, and so is my purse; they'd only quarrel.",
+		"No, keep it. Small change and I have never got along.",
+	},
+	["muse.w12.coin.050"] = {
+		"Coin's welcome. Bread's welcome. A thank-you is welcome most of all, and it's the one nobody haggles over.",
+		"Pay what you can. A thank-you settles the rest.",
+	},
+	["muse.w12.coin.063"] = {
+		"The people quickest to share a meal with me were mostly the ones who could least afford it. They knew the price of hunger better than the price of bread.",
+		"Generosity runs strangest at the bottom: the fewer the coins, the more open the hands.",
+		"Those with least to give are often the first to give it. I've stopped being surprised and started taking notes.",
+	},
+	["muse.w12.coin.064"] = {
+		"I've met people with gold to spare who looked more anxious than I do with three coppers. Worry seems to grow with the pile.",
+		"Big fortunes come with big locks, big guards and big frowns. I'll keep my small purse and my small worries.",
+	},
+	["muse.w12.coin.065"] = {
+		"Waste is the one luxury I can't afford, and the only one I never miss.",
+		"Throwing good things away is a habit of the rich. I've never had the means, and never felt the lack.",
+	},
+	["muse.w12.coin.066"] = {
+		"A bribe is a price that's ashamed of itself.",
+		"Bribes are prices that won't look anyone in the eye.",
+		"Every bribe is a deal struck in a whisper, because it could never survive being said out loud.",
+	},
+	["muse.w12.coin.067"] = {
+		"Wages and worth hardly ever meet. The best people I've known were nearly always the cheapest hired.",
+		"Nobody I've worked beside was paid what they were worth. Most deserved more. A few deserved a sharp talking-to.",
+	},
+	["muse.w12.coin.068"] = {
+		"A coin is a scrap of metal that everyone has agreed to take seriously. If the whole world forgot the agreement at once, I'd be holding a button.",
+		"Copper buys a loaf only because the baker trusts the miller to trust it too. All of trade is a chain of people believing each other's guesses.",
+	},
+	["muse.w12.coin.069"] = {
+		"Copper goes green if it's left alone. Gold never changes. Maybe that's why I trust copper more: it admits its age.",
+		"Gold stays bright forever, which is a little suspicious. Copper tarnishes like an honest face.",
+	},
+	["muse.w12.coin.070"] = {
+		"The first gold coin in any find gets a second look, as though it might turn back into copper if I blink.",
+		"Gold among the coppers always earns a double take. Some part of me expects it to be a joke.",
+	},
+	["muse.w12.coin.071"] = {
+		"If someone ever takes my purse, I hope they needed it more than I did. If they didn't, I hope it was light.",
+		"To whoever lifts my purse one day: may it feed you, if you're hungry, and disappoint you, if you're not.",
+	},
+	["muse.w12.coin.072"] = {
+		"Those who heal for nothing still get paid: bread left on a doorstep, a roof mended without asking. Coin goes round; it only changes shape.",
+		"Not every debt is settled in silver. Some are paid in firewood, in a fence put right, in a pot of soup at the right moment.",
+	},
+	["muse.w12.coin.073"] = {
+		"If someone ever saves my life, what will I owe them? Not coin, I think. A long, awkward kindness with no end date.",
+		"No purse is big enough to pay for a rescue. It gets paid in loyalty instead, slowly, for as long as both of you are around.",
+	},
+	["muse.w12.coin.074"] = {
+		"A deal sealed with a handshake is only as good as two memories. Mine's sound. It's the other one that worries me.",
+		"Shake on it, by all means. Then write it down, in case the other hand forgets.",
+	},
+	["muse.w12.coin.075"] = {
+		"I hate borrowing. It turns every meeting with the lender into a small apology.",
+		"Owe someone a few coins and you can't cross paths with them without your eyes sliding off somewhere else.",
+	},
+	["muse.w12.coin.076"] = {
+		"Some people spend their lives saving for a better one and are buried with the savings. I'd like at least to buy a decent hat first.",
+		"A fortune kept for later has a habit of outliving the later.",
+	},
+	["muse.w12.coin.077"] = {
+		"A coil of rope costs a few coppers at a stall and is worth a life at the edge of a drop. Price is what it costs; worth is when you need it.",
+		"Nothing has a single price. A waterskin is cheap right up until it's the only thing standing between you and the end.",
+		"Price gets set at the stall. Worth gets set later, out where things go wrong.",
+	},
+	["muse.w12.coin.078"] = {
+		"Somewhere a guard is standing a long watch for a handful of silver a week. Half the safety in the world is bought that cheaply, and nobody says thank you.",
+		"Every quiet road is paid for out of somebody's wages, and they're never high.",
+	},
+	["muse.w12.coin.079"] = {
+		"Kings have been ransomed for chests of gold. Nobody ever paid a ransom for a farmer, yet the world would starve without farmers long before it missed a king.",
+		"History weighs a king in gold and a farmer in nothing at all. Still, it's the farmer the world can't spare for a single season.",
+	},
+	["muse.w12.coin.080"] = {
+		"In the stories, dragons heap up gold, and the stories never say what they do with it. Perhaps nothing. Perhaps that's the warning.",
+		"Whatever a dragon wants with a mountain of gold, it isn't to spend it. Hoarding for its own sake may be the oldest sickness there is.",
+	},
+	["muse.w12.coin.081"] = {
+		"Greed never says 'enough'. It says 'and then'.",
+		"Greed doesn't want the thing. It wants the next thing, and the one after that, and it has never once been full.",
+		"Ask greed how much would do, and it answers: a little more.",
+	},
+	["muse.w12.coin.082"] = {
+		"The cheapest bed at any inn is never cheap. The difference gets paid in sleep, and in fleas.",
+		"Save a few coppers on a room and you'll hand them back with interest, in the form of a stiff neck.",
+	},
+	["muse.w12.coin.083"] = {
+		"Thrift and meanness look the same from outside. The difference is who goes without: you, or someone else.",
+		"Being careful with coin is a virtue right up until someone else pays for it. Then it has an uglier name.",
+	},
+	["muse.w12.coin.084"] = {
+		"Now and then I buy something useless on purpose: a ribbon, a sweet, a pretty button. Otherwise the coin starts to think it's in charge.",
+		"One small extravagance every so often keeps the purse humble. Coins that are never wasted grow proud.",
+	},
+	["muse.w12.coin.085"] = {
+		"There's a quiet pleasure in wanting something I can't afford. Buying it would only end the pleasure.",
+		"Some things are best left on the merchant's shelf. Wanting them keeps me better company than owning them would.",
+	},
+	["muse.w12.coin.086"] = {
+		"Give it all away and you're a hero for a day and a beggar for a year. Kindness needs a little arithmetic.",
+		"Open hands are a fine thing, as long as there's still something left in them tomorrow.",
+	},
+	["muse.w12.coin.087"] = {
+		"Somebody profits from every war. The quiet ones counting in the back room are never the ones who bleed.",
+		"Every war has its winners, and they're rarely on the field. They're sitting at a table, adding up.",
+		"Wars are good business for someone. Never for anyone you'd want to share a fire with.",
+	},
+	["muse.w12.coin.088"] = {
+		"A favor is the strangest coin. It never loses value, nobody agrees what it's worth, and it's always called in at the worst moment.",
+		"Favors are a currency with no mint. Everyone keeps their own count, and no two counts ever match.",
+	},
+	["muse.w12.coin.089"] = {
+		"Pointing out a merchant's mistake in my favor costs me a few coppers each time. It's the cheapest honesty I'll ever buy, and I keep buying it.",
+		"When a merchant short-changes the wrong side of the counter, I hand the extra back. A few coppers is a small price for meeting my own eye.",
+	},
+	["muse.w12.coin.090"] = {
+		"Kingdoms rise on gold and fall on debt. The hard part is telling which of the two is happening around you.",
+		"No empire ever ran short of courage first. The coin runs out, and the courage follows it out the door.",
+	},
+	["muse.w12.coin.091"] = {
+		"Hope is the one coin that turns up in a purse I'd have sworn was empty.",
+		"However empty the purse, there's always one coin of hope rattling at the bottom. I don't know who keeps putting it there.",
+	},
+	["muse.w12.coin.092"] = {
+		"To the coin that comes, the coin that goes, and every hand it passes through on the way.",
+		"Here's to every copper that ever bought a stranger a meal.",
+	},
+	["muse.w12.coin.093"] = {
+		"Money makes cowards. The heavier my purse, the more carefully I watch where I put my feet.",
+		"With a full purse every shadow looks like a pickpocket.",
+		"Nothing makes me jumpier than carrying a fortune. Luckily, it hardly ever comes up.",
+	},
+	["muse.w12.coin.094"] = {
+		"Nobody knows exactly how much I have, and nobody needs to. It's one of the few secrets I keep without any effort.",
+		"My purse is the most private thing I own. Not because it's full. Because how empty it is is nobody's business.",
+	},
+	["muse.w12.coin.095"] = {
+		"Tired enough, I'll pay the first price anyone names. Weariness is the merchant's best friend.",
+		"Merchants ought to hire exhaustion as a shop boy. Once it gets hold of me, I'll agree to any figure just to sit down.",
+	},
+	["muse.w12.coin.096"] = {
+		"Nothing owed, nothing envied. That's what I call rich.",
+		"Owe nobody, envy nobody. Every other kind of wealth comes second.",
+	},
+	["muse.w12.coin.097"] = {
+		"Some things aren't for sale. Most things are. The trick is knowing which before someone makes an offer.",
+		"Know what you won't sell before anybody asks. Afterward it's too late to decide calmly.",
+	},
+	["muse.w12.coin.098"] = {
+		"Gold can rent good manners. It can't buy them outright.",
+		"Money hires politeness by the hour. Kindness never comes on those terms.",
+	},
+	["muse.w12.coin.099"] = {
+		"Spend it or save it, coin always wants to leave. Best give it somewhere good to go.",
+		"Coin never stays put. Might as well choose where it walks off to.",
+	},
+	["muse.w12.coin.100"] = {
+		"I'd rather have an empty purse than a name nobody will lend to.",
+		"Lose the coin, fine. Lose the credit of an honest name and no purse will fix it.",
+	},
+	["muse.w12.craft.001"] = {
+		"A knot I can tie without looking is worth more than one I can only name.",
+		"Knowing what a knot is called is nothing. Tying it blind, in a hurry, with the rope pulling back: that's knowing it.",
+		"Any knot works on a calm day. The one worth learning is the one I can still tie with shaking hands.",
+	},
+	["muse.w12.craft.002"] = {
+		"Mending is the nearest thing I have to a garden: small work, done slowly, and something better at the end of it.",
+		"No garden for me. A needle and a heap of torn things instead, which turns out to be nearly the same pleasure.",
+	},
+	["muse.w12.craft.003"] = {
+		"If this buckle gives way once more, it gets a name, and a grudge to go with it.",
+		"One more trick from this buckle and it's personal.",
+		"This buckle and I are one more failure away from a serious falling-out.",
+	},
+	["muse.w12.craft.005"] = {
+		"Oil the leather before it cracks, not after. Most of looking after gear is doing things a little too early.",
+		"Leather gets thirsty a day before it splits. Caring for it mostly means hearing that in time.",
+		"Grease the buckle at the first squeak and it never reaches the second. Care is a matter of good timing.",
+	},
+	["muse.w12.craft.006"] = {
+		"A thing that can't be mended teaches what no whole thing can: when to stop trying.",
+		"Some rips aren't worth the thread. Telling which is a skill as well, the hardest one I know.",
+	},
+	["muse.w12.craft.007"] = {
+		"Thread always runs out one stitch short of the end. I'm convinced it counts.",
+		"The thread gave out with a single stitch to go. Naturally. Thread can count, and it's spiteful.",
+		"Thread is long right up until the moment it is precisely one stitch too short.",
+	},
+	["muse.w12.craft.008"] = {
+		"Practice is boring on purpose. The boredom is where the hands learn without the head getting in the way.",
+		"Do the same small thing until it's dull. Once it bores the head, the hands have it for good.",
+		"Nobody gets clever hands from one inspired hour. They come from a hundred dull ones.",
+	},
+	["muse.w12.craft.009"] = {
+		"Hold on. Something's rattling, and rattles only ever get louder.",
+		"One moment. A loose thing makes noise first and trouble after.",
+	},
+	["muse.w12.craft.011"] = {
+		"Watch anyone good at a craft and the odd thing is how little they move. Beginners flap. Masters barely stir.",
+		"From outside, skill looks like stillness. Whoever knows the work wastes nothing, not even a gesture.",
+		"The clumsy make a great show of working. The skilled make it look as if nothing much is happening.",
+	},
+	["muse.w12.craft.012"] = {
+		"My repairs have a style. Nobody would call it a good one, but you'd know it anywhere.",
+		"You can spot my mending at twenty paces. Not because it's fine work. Because it's mine.",
+		"Nobody else mends quite this badly, in quite this way. It's practically a signature.",
+	},
+	["muse.w12.craft.013"] = {
+		"Clean what I carry before I clean myself. It's a silly rule, and it has never once let me down.",
+		"Gear first, then me. A foolish order of things, and it keeps me standing.",
+	},
+	["muse.w12.craft.014"] = {
+		"A good seam outlives the hands that sewed it. Not a bad thing to leave behind: a few small stitches doing their job for a stranger.",
+		"Stitches outlast the one who sews them. I'd settle for that kind of legacy: small, plain, and still holding.",
+	},
+	["muse.w12.craft.016"] = {
+		"There's a small, clean joy in a seam that lies flat. Nobody else will ever notice it. That's part of the joy.",
+		"A stitch line that runs straight and even: nobody will look twice at it, and I'll be quietly pleased for an hour.",
+		"A buckle that clicks home cleanly is a tiny reward, and I collect those wherever they turn up.",
+	},
+	["muse.w12.craft.017"] = {
+		"Heavy things at the bottom, near the back. Things I'll want in a hurry on top. A pack has a grammar, and I'm learning it.",
+		"A badly packed bag fights the one carrying it. A good one walks with you. Same things, different order.",
+		"Packing is a small craft nobody teaches: weight low and close, the quick things high, nothing that rattles.",
+	},
+	["muse.w12.craft.018"] = {
+		"The repair kit grows heavier every time I look at it. Soon I'll need a second kit to mend the first.",
+		"I carry enough string, thread and patches to fix a small wagon. My boots remain unconvinced.",
+	},
+	["muse.w12.craft.019"] = {
+		"Leather has a grain, like wood, like people. Work with it and it forgives a lot. Work against it and it remembers.",
+		"Go along the grain and the leather does half the work. Go against it and it argues every inch.",
+	},
+	["muse.w12.craft.020"] = {
+		"Fix it now or carry it broken. Those are the only two choices, and only one of them gets lighter.",
+		"Mend it here, or haul it broken. I know which one my shoulders vote for.",
+		"A broken thing doesn't get lighter by being ignored. It only gets more broken.",
+	},
+	["muse.w12.craft.021"] = {
+		"Mending alone, I talk to the work. Hold still. Nearly. There. It's better company than it sounds.",
+		"When I sew I mutter at the cloth as if it could hear me. It never answers, which makes it an easy listener.",
+	},
+	["muse.w12.craft.022"] = {
+		"Apprentices start with a broom, by every account. Not cruelty, I think: they learn the shop before they're let near the work.",
+		"First the broom, then the tools. Sweeping a workshop for a year must teach where everything lives, and why.",
+	},
+	["muse.w12.craft.023"] = {
+		"Every repair I improve one last time is the one that breaks. Good enough was the finished state, and I walked right past it.",
+		"There's a point where a mend is done, and a point just after where I ruin it by fussing. I keep finding the second.",
+	},
+	["muse.w12.craft.025"] = {
+		"A fight unmakes things in a moment. Mending puts them back slowly. I try to keep the two in some kind of balance.",
+		"Fights break, needles mend. The breaking is quick and the mending slow, and I owe the slow side more hours.",
+	},
+	["muse.w12.craft.026"] = {
+		"Whoever stitched this bag knew the work. I'll never learn their name, but I think of them every time the seams hold.",
+		"Some unknown hand put these stitches in, small and even, and they're still holding. I owe that stranger more than the price.",
+	},
+	["muse.w12.craft.027"] = {
+		"There is no such thing as a quick repair. There are only repairs I lied to myself about.",
+		"'It'll take a moment,' I tell myself, and an hour later I'm still bent over a strap.",
+		"A small repair is just a large one that hasn't shown its full size yet.",
+	},
+	["muse.w12.craft.028"] = {
+		"Tired hands sew crooked. No use pretending otherwise: a seam done half asleep is a seam done twice.",
+		"Mending when worn out is a false saving. The stitches wander and I end up unpicking them later.",
+	},
+	["muse.w12.craft.029"] = {
+		"Nobody touch this strap. It's held by a knot even I don't fully understand.",
+		"This buckle works, but only out of loyalty. Best not to test it.",
+	},
+	["muse.w12.craft.030"] = {
+		"Tug every strap before moving off. It costs a moment. A pack bursting open at the wrong time costs a good deal more.",
+		"A quick pull on each buckle before going anywhere. Cheap insurance, the only kind I can afford.",
+	},
+	["muse.w12.craft.031"] = {
+		"A patch never matches. That's the honest part of it: it says something went wrong here, and someone cared enough to fix it.",
+		"I like a patch that doesn't pretend. Different cloth, different color, telling the plain truth about a bad day.",
+	},
+	["muse.w12.craft.033"] = {
+		"Each trade wears out its own part of a body. Smiths get the shoulders, tailors the eyes, cobblers the back. I wonder which one would claim mine.",
+		"You can tell a trade by how someone stands. Smiths lean into everything; tailors squint at the world as if it needed hemming.",
+	},
+	["muse.w12.craft.034"] = {
+		"If the fighting ever stops, I'd like to learn to make something. Boots, maybe. Something people walk away in.",
+		"One day I'll put all this down and learn a trade with my hands. Something that leaves the world one thing richer.",
+	},
+	["muse.w12.craft.035"] = {
+		"Some of my knots would hold a boat to a jetty. Others come undone if spoken to sharply. From outside, there's no telling which.",
+		"My knots come in two kinds: the ones that hold forever and the ones that hold until I'm counting on them. They look identical.",
+		"A knot that holds and a knot that slips look like twins. The difference only shows when something heavy depends on it.",
+	},
+	["muse.w12.craft.036"] = {
+		"Rust is just neglect you can see. A day of not bothering, written in orange.",
+		"Leave anything metal wet and uncared for, and by the next stop it has written a complaint in rust.",
+	},
+	["muse.w12.craft.037"] = {
+		"The quiet sound of a needle going through leather is the most peaceful noise I know. Push, pull, the small creak of the thread.",
+		"Push, pull, the soft complaint of waxed thread. If peace had a sound it might be that.",
+	},
+	["muse.w12.craft.038"] = {
+		"Give me a moment with this lace. It's been threatening to quit since the last stop.",
+		"Hold that thought. This lace is plotting something.",
+	},
+	["muse.w12.craft.039"] = {
+		"Two of everything that snaps: laces, thread, cord. One of everything that doesn't. That's my whole philosophy of packing.",
+		"Spares for whatever breaks, none for whatever lasts. A simple rule, and it beats limping on with a flapping sole.",
+	},
+	["muse.w12.craft.041"] = {
+		"Learning a skill has a dull middle nobody warns about: past the thrill of starting, short of the pleasure of being good.",
+		"Starting is exciting and mastery is sweet. In between lies a long, flat stretch of doing it slightly less badly.",
+		"The hard part of any skill isn't the beginning. It's the long plain middle, where nothing seems to improve and yet it does.",
+	},
+	["muse.w12.craft.042"] = {
+		"There must be a workshop that makes buckles designed to fail at the worst moment. Business is good.",
+		"Buckles don't wear out. They wait. Then they choose.",
+		"Buckles are patient, the way only metal can be. They'll wait for exactly the wrong moment.",
+	},
+	["muse.w12.craft.043"] = {
+		"Whatever of mine takes an edge, I keep honed. A dull thing fights its owner before it fights anything else.",
+		"Keep keen whatever needs keeping keen. Dullness never helps anybody, least of all whoever is holding it.",
+	},
+	["muse.w12.craft.045"] = {
+		"I can't say who taught me my first knot. It's simply there, like a word whose origin I've lost.",
+		"The first knot anyone learns has no teacher they remember. It's just there, under all the others.",
+	},
+	["muse.w12.craft.046"] = {
+		"The first try at anything new comes out ugly. The second is ugly in a more educated way.",
+		"Beginners make ugly things. Then, with practice, they make ugly things more quickly. Somewhere after that it gets better.",
+	},
+	["muse.w12.craft.047"] = {
+		"Not pretty. Holds, though. That's the only test that counts.",
+		"Ugly mend. Strong mend. I'll take the second word over the first.",
+	},
+	["muse.w12.craft.048"] = {
+		"Everything in the pack has its own place, and my hands know them blind. That's the only house I keep.",
+		"The pack is a small house with no door. Each thing has a room, and my hands walk straight to it.",
+	},
+	["muse.w12.craft.049"] = {
+		"Mending gear is the work after the work. Nobody pays for it and nothing goes on without it.",
+		"The fight ends, and then the second shift begins: thread, grease, straps, and a sore back over all of it.",
+		"After every scrap come the needle and the grease. The fighting is short; the tidying up goes on and on.",
+	},
+	["muse.w12.craft.050"] = {
+		"When everything else is out of my hands, a strap to fix is a mercy. Something I can actually make right.",
+		"Big troubles don't fit in the hands. A broken buckle does. Some days I fix one just so as to fix something.",
+		"When nothing else will come right, I find a loose strap and make it right. A small victory, but it's mine.",
+	},
+	["muse.w12.craft.052"] = {
+		"Gnomes would add three gears and a spring to this buckle. It would be magnificent, and it would explode.",
+		"Hand this strap to a gnome and it comes back with a crank, a whistle and a faint smell of smoke.",
+	},
+	["muse.w12.craft.053"] = {
+		"Put tools away wet and they punish you. Put them away dirty and they punish the next user. Either way, someone pays.",
+		"A tool stored dirty is a debt left for later. Whoever opens the kit next inherits it, and that's usually me.",
+	},
+	["muse.w12.craft.054"] = {
+		"Hands that only ever fight would be poor hands. Mine also mend, tie, fold, fasten. I like them better for it.",
+		"I'm glad my hands know quieter work too: a stitch, a lace, a folded cloth. It keeps them from being only one thing.",
+	},
+	["muse.w12.craft.055"] = {
+		"I'd mend my reputation too, if anyone sold thread for it.",
+		"Patches for cloth, grease for buckles. Nothing yet for dignity.",
+	},
+	["muse.w12.craft.056"] = {
+		"One boot always wears through before the other, one strap always frays first. My gear knows how I move better than I do.",
+		"Read the wear on anyone's kit and you have their walk, their lean, their favorite shoulder. Mine gives me away completely.",
+	},
+	["muse.w12.craft.057"] = {
+		"A craft is patience made visible. Every finished thing is a pile of small waits, stacked neatly.",
+		"What looks like skill is mostly patience someone was willing to spend where it wouldn't show.",
+		"Patience is the true material of any craft. Leather, wood and thread are only the shapes it gets bent into.",
+	},
+	["muse.w12.craft.059"] = {
+		"There's always one last loop of cord left over after tying everything, and I never know what it was meant for.",
+		"I tie everything down, step back, and there's a spare length of cord in my hand. Something is loose somewhere, and I'll find out what the hard way.",
+	},
+	["muse.w12.craft.060"] = {
+		"Small repairs, done every day, are how big ones never happen.",
+		"Five minutes on a fraying strap now saves a whole day of misery further on.",
+	},
+	["muse.w12.craft.061"] = {
+		"The sound of something snapping is always louder than it should be. A lace, a strap, a cord: a small noise that ends a long story.",
+		"A strap gives with a little crack, and that's the end of it. So much service, and such a small sound to close it.",
+	},
+	["muse.w12.craft.062"] = {
+		"Trainers in every town will teach a craft to anyone with the coin and the patience. Only one of those is hard to find.",
+		"Any trade can be learned from someone in a town, for a fee in coin. The fee is the cheap part; the hours are what cost.",
+	},
+	["muse.w12.craft.063"] = {
+		"Practice makes better. Perfect never shows up.",
+		"Better than yesterday's knot. That's the only goal I set.",
+	},
+	["muse.w12.craft.065"] = {
+		"Waxing thread is the dullest step and the one that matters most. Unwaxed, every stitch frays a little on its way through.",
+		"Draw the thread through the wax before sewing. Nobody sees it, the seam never thanks you, and it lasts twice as long.",
+	},
+	["muse.w12.craft.066"] = {
+		"Needles have a gift for hiding. Put one down for a moment and it joins the floor, the grass, or the inside of my glove.",
+		"Lose a needle and it turns up a week later, point first, in the one place I put my hand without looking.",
+	},
+	["muse.w12.craft.067"] = {
+		"Loose enough to move, tight enough not to shift. Every strap lives on that line, and so does most of life.",
+		"Too tight chafes, too loose slips. Getting a buckle right is a small lesson in getting most things right.",
+		"A strap set just right disappears; a strap set wrong is all you think about. Most good work is like that.",
+	},
+	["muse.w12.craft.068"] = {
+		"Some people are at home in a place. Craftsmen are at home in a task: put the work in front of them and they've arrived.",
+		"A good worker carries home in the hands. Set them down anywhere with their tools and the spot becomes a workshop.",
+		"Home doesn't have to be a place. For a craftsman it's the work itself, carried wherever they go.",
+	},
+	["muse.w12.craft.070"] = {
+		"A craftsman doesn't wait to feel ready. The hands start, and the readiness comes trailing after.",
+		"No one ever felt ready before their first real piece of work. They began anyway, and the readiness caught up.",
+	},
+	["muse.w12.craft.071"] = {
+		"Ruin enough leather and you start to understand it. Nobody learns a craft without a pile of failures behind the bench.",
+		"Spoiled pieces are the true teachers of any trade. Every master keeps a heap of them somewhere, quietly hidden.",
+	},
+	["muse.w12.craft.072"] = {
+		"There. Fixed. Nobody look at it too hard.",
+		"Done, and holding. Best not ask it anything difficult.",
+	},
+	["muse.w12.craft.073"] = {
+		"Nobody watches anyone fix a bootlace. It's one of the few things I do that belongs entirely to me.",
+		"Small repairs are private. No one ever stops to see a lace rethreaded, and I like that about them.",
+	},
+	["muse.w12.craft.074"] = {
+		"Anyone can buy good gear. Keeping it good is the part that has to be done by hand, every day, by whoever wears it.",
+		"Good gear can be bought. Well-kept gear can't: that's earned, stitch by stitch, by the one who carries it.",
+	},
+	["muse.w12.craft.076"] = {
+		"Skill is mostly a list of mistakes I no longer make. That list is long, and I keep adding to the other one.",
+		"Being good at something is a quiet heap of errors left behind. Mine grows slowly, and so does the heap still ahead.",
+	},
+	["muse.w12.craft.077"] = {
+		"A thing breaks in one of two moments: when I'm in a hurry, or when I'm in a terrible hurry.",
+		"Gear has a sense of timing any bard would envy. Nothing snaps on a quiet day.",
+		"Gear breaks on its own schedule, and that schedule always reads: now, when it's least convenient.",
+	},
+	["muse.w12.craft.078"] = {
+		"Do it slowly until it's right, then do it right until it's quick. Speed is just correctness that stopped hesitating.",
+		"Slow and correct first. Quick comes later, on its own, once the hands stop asking permission.",
+		"Rushed hands learn rushing. Slow hands learn the work, and the speed arrives as a gift.",
+	},
+	["muse.w12.craft.079"] = {
+		"Lend a needle and it never comes back. I've decided that's how needles travel: from hand to hand, all around the world.",
+		"Thread and needles are the one thing nobody returns. Mine are out there somewhere, mending other people's luck.",
+	},
+	["muse.w12.craft.081"] = {
+		"Ten buckles, nine behave. The tenth waits until I'm tired and then refuses to meet its hole.",
+		"The last strap of the day is always the stubborn one. It knows I'm worn out and takes full advantage.",
+		"Whichever buckle I fasten last is the one that fights me. It can tell when I've nothing left.",
+	},
+	["muse.w12.craft.082"] = {
+		"Every craft begins by copying someone. A touch of one's own comes much later, if it comes at all, and nobody can hurry it.",
+		"Learning a trade is borrowing someone else's hands for a long while, until one day they feel like yours.",
+	},
+	["muse.w12.craft.083"] = {
+		"The perfect knot does exist. I tied it once, by accident, and have never managed it since.",
+		"One perfect knot, tied by pure accident, and I've been failing to repeat it ever since.",
+	},
+	["muse.w12.craft.084"] = {
+		"Watch a smith at work and count the blows that miss. There aren't any. That's what years buy.",
+		"A smith's hammer never seems to wonder where to land. Watching that is worth more than any lesson in words.",
+	},
+	["muse.w12.craft.085"] = {
+		"Gear checked, straps tight, nothing rattling. Now I can think about the rest.",
+		"Everything fastened that should be. Good. On to the bigger worries.",
+	},
+	["muse.w12.craft.086"] = {
+		"Some days even a simple knot feels like too much. That's how I know it's time to stop, not the aches.",
+		"When my hands fumble a lace I could tie in my sleep, it isn't the lace. It's me, asking for rest in the only voice I'll hear.",
+	},
+	["muse.w12.craft.088"] = {
+		"Whatever the hands make well, they make slowly at first. There is no other road into mastery, and no one has found a shorter.",
+		"Mastery has no gate to buy through. Only the long road of the hands, walked until the work stops being work.",
+	},
+	["muse.w12.craft.089"] = {
+		"Grease gets everywhere except where I put it. The buckle stays dry; my sleeve shines like a lord's boot.",
+		"One dab of grease, carefully placed on the hinge, and somehow it ends up on my face, my cuff and the bread.",
+	},
+	["muse.w12.craft.090"] = {
+		"Every tool has one job it was made for and a dozen it gets used for. The dozen are where I learn the most.",
+		"No tool is used only for what it was meant to do. The clever part is knowing how far to push it before it bends.",
+	},
+	["muse.w12.craft.091"] = {
+		"Broken things don't ask to be mended. Someone simply decides they're worth it. I like being that someone, now and then.",
+		"Nothing broken ever asked for help. Mending is a choice made on its behalf, and one of the kinder choices I know.",
+		"A mended thing is a small argument against waste and despair alike. I make that argument whenever I can.",
+	},
+	["muse.w12.craft.092"] = {
+		"I'm getting better at this. The knot only fell apart twice.",
+		"Progress: this time the stitches nearly line up.",
+	},
+	["muse.w12.craft.093"] = {
+		"Mend first, rest after. The other way round, I never get to the mending.",
+		"Repairs before sitting down. Once I sit, nothing gets fixed.",
+	},
+	["muse.w12.craft.094"] = {
+		"Snapped clean through. It served longer than it had any right to.",
+		"Gone, finally. That lace did more than its share.",
+	},
+	["muse.w12.craft.095"] = {
+		"Whoever tied this knot was in a hurry. Unfortunately, that was me.",
+		"Bad knot. I'd complain to whoever tied it, but I'd only be talking to myself.",
+	},
+	["muse.w12.craft.096"] = {
+		"On the old battlefields the gear lies where it fell, every buckle still fastened. Nobody came back to undo them.",
+		"Fallen gear keeps its knots long after its owner is gone. Somebody tied each one carefully, meaning to untie it later.",
+	},
+	["muse.w12.craft.097"] = {
+		"Long before any kingdom, someone sat down and twisted fiber into cord. Everything since has been built on that patient first knot.",
+		"The first rope in the world was made by hands that left no name. Every kingdom since has hung on it, one way or another.",
+	},
+	["muse.w12.craft.098"] = {
+		"Before anything that matters, I put my gear in order. It isn't superstition. It's the one part of what's coming that I can make sure of.",
+		"Order the kit, then face the day. Whatever comes, it will find every strap where it belongs.",
+		"Kit in order, mind in order. I don't know which follows which, only that they move together.",
+	},
+	["muse.w12.craft.099"] = {
+		"Great deeds hang on small fastenings. A song about a hero never mentions the buckle that held, but the hero would.",
+		"Every legend I've heard rests on a strap that didn't snap. The songs forget it. Those who lived through it don't.",
+	},
+	["muse.w12.craft.100"] = {
+		"Some things I mend only so I don't have to replace them. A replacement would be a stranger, and I've lost enough familiar things.",
+		"I keep repairing the old strap long past sense. A new one would work better and mean nothing.",
+	},
+	["muse.w12.doubt.001"] = {
+		"There's a small voice that says turn back. It's wrong most of the time. The trouble is the times it isn't.",
+		"The part of me that wants to turn around is a coward nine times in ten. The tenth time it's the only one with any sense.",
+		"I've learned not to obey the voice that says go back, and not to silence it either. Once in a long while it earns its keep.",
+	},
+	["muse.w12.doubt.002"] = {
+		"The lies I tell myself are small and well made: 'it isn't far', 'it'll hold', 'I'll remember'. I believe every one of them, every time.",
+		"'Nearly there.' 'That'll hold.' 'I'll remember where I put it.' My favorite lies, and I'm the only one who keeps falling for them.",
+	},
+	["muse.w12.doubt.003"] = {
+		"Sometimes I can feel the regret coming before I've done the thing. I do it anyway, and the regret arrives exactly on time.",
+		"Some mistakes announce themselves in advance, like a guest who writes ahead. I open the door to them all the same.",
+	},
+	["muse.w12.doubt.004"] = {
+		"I could be wrong. I'd like that on record now, while it still sounds wise.",
+		"Let it be known I said 'I might be wrong' first. That has to count for something later.",
+		"Possibly I'm mistaken. Saying so early makes it much more dignified.",
+	},
+	["muse.w12.doubt.005"] = {
+		"The right thing is easy when someone's watching. It's the empty room that asks who I am.",
+		"Nobody would ever know. That's exactly the moment that decides what sort of person I am.",
+		"With no one looking, honesty costs full price. That's when I find out whether I meant it.",
+	},
+	["muse.w12.doubt.006"] = {
+		"Everyone truly dangerous I've heard of was completely sure. I keep a little doubt about me, the way I'd keep a spare lace.",
+		"Certainty is a fine thing in a bridge and a frightening one in a person.",
+		"I trust a bridge that's sure of itself. A person, much less.",
+	},
+	["muse.w12.doubt.007"] = {
+		"Going through the pockets of something that was alive a moment ago. I've never found a way to do it that feels decent. I do it anyway.",
+		"Every bit of loot belonged to someone a minute before. I try to take it quietly, at least.",
+		"There's no polite way to search the fallen. I've stopped looking for one, but I still go about it without a sound.",
+	},
+	["muse.w12.doubt.008"] = {
+		"Asking the way costs one sentence. Not asking has cost me whole hours. Pride keeps the accounts and never shows them.",
+		"I'd rather walk an extra mile than admit I'm lost. My feet have opinions about that pride of mine.",
+		"Pride would sooner march me in circles than let me ask a stranger which way. Pride doesn't have to do the walking.",
+	},
+	["muse.w12.doubt.009"] = {
+		"When something turns and runs, I let it go. Wise or not, it's the rule I'd want someone to keep with me.",
+		"A thing that flees has already lost. Chasing it down is only tidying up, and I'm not that tidy.",
+	},
+	["muse.w12.doubt.010"] = {
+		"Fine. I was wrong. Enjoy it; I won't be saying that again soon.",
+		"Yes, all right, I was wrong. Write it down, it's a rare bird.",
+		"I was wrong. There. Nobody faint.",
+	},
+	["muse.w12.doubt.011"] = {
+		"My conscience is the one companion that never needs feeding and never once falls behind.",
+		"Everything else I carry gets set down at the end of the day. The conscience comes along to bed.",
+		"Gear comes off, boots come off. Conscience is the one thing I've never managed to unbuckle.",
+	},
+	["muse.w12.doubt.012"] = {
+		"I'm an excellent advocate for myself. Give me any foolish thing I've done and I'll find it three good reasons by supper.",
+		"Nobody argues my side as well as I do. That's exactly why I shouldn't be the judge.",
+		"In the court inside my head I'm always acquitted. I'm starting to suspect the judge.",
+	},
+	["muse.w12.doubt.014"] = {
+		"Changing my mind isn't losing. It's the mind earning its keep for once.",
+		"A mind that never changes is only a stone with opinions.",
+		"A day that ends with every belief I started it with is a day I wasn't paying attention.",
+	},
+	["muse.w12.doubt.015"] = {
+		"The things I fight never get to give their side of it. I try to remember that there was one.",
+		"Whatever I've put down had its own reasons for standing in my way. Mine aren't better just because I'm the one still standing.",
+	},
+	["muse.w12.doubt.016"] = {
+		"Everyone who asks me for a favor is certain it's the right thing. I'd love to know who checked their work.",
+		"Every request I'm handed comes with total confidence and no proof. I do most of them anyway, and wonder about each one.",
+		"People give me tasks as if right and wrong were settled somewhere long ago. I've never once been shown the paperwork.",
+	},
+	["muse.w12.doubt.017"] = {
+		"Most of the people I could forgive will never ask. I do it anyway, quietly, and they never find out they've been let off.",
+		"Forgiving someone who doesn't know they need it is a strange, private kindness. Nobody thanks you. It's worth doing all the same.",
+	},
+	["muse.w12.doubt.018"] = {
+		"'Just this once' is the most expensive phrase I know. It never travels alone.",
+		"Every bad habit I have was born as a 'just this once'.",
+		"Nothing happens only once. 'Just this once' is how the second time gets in the door.",
+	},
+	["muse.w12.doubt.020"] = {
+		"Stubborn and steadfast look the same on the way in. Only the ending tells you which one you were.",
+		"Nobody can tell persistence from pigheadedness until it's over. I'll learn which I am at the end, like everyone.",
+	},
+	["muse.w12.doubt.021"] = {
+		"Let me think about it. Then let me think about it from the other side. Then I'll do what I was going to do.",
+		"I'll sleep on it. Then I'll do the thing I'd already decided on, but rested.",
+	},
+	["muse.w12.doubt.022"] = {
+		"Every ruin in this world was ordered by someone who felt completely sure. Doubt has never burned a city.",
+		"Look at what the certain have done to Azeroth, and doubt starts to look like a virtue.",
+		"No one ever opened a way for the Legion while asking 'am I sure?'. The sure ones did that.",
+	},
+	["muse.w12.doubt.023"] = {
+		"I give excellent advice. I've just never been in a position to take it.",
+		"If I followed half the advice I hand out, I'd be insufferable and live for a very long time.",
+	},
+	["muse.w12.doubt.024"] = {
+		"A word said in temper can't be fetched back. I've learned to count to ten. Usually I reach four.",
+		"Harsh words leave faster than any apology can follow them.",
+		"Some words leave the mouth and are halfway across the world before I can call out 'wait'.",
+	},
+	["muse.w12.doubt.025"] = {
+		"The right thing rarely comes cheap. When it does, I check it twice; it's probably something else wearing its coat.",
+		"If doing right ever feels easy, I look again. Usually it's comfort borrowing the name.",
+	},
+	["muse.w12.doubt.026"] = {
+		"'Nobody will miss it' is the thief's favorite lullaby. I hum it now and then, and stop before the chorus.",
+		"A little voice keeps pointing out that nobody would notice. It's right, and that's the whole problem with it.",
+	},
+	["muse.w12.doubt.028"] = {
+		"Doubt never shows up while I'm busy. It waits for the quiet, sits down beside me and asks its questions politely.",
+		"In a fight I'm sure of everything. It's afterward, once I stop moving, that the questions file in one by one.",
+	},
+	["muse.w12.doubt.029"] = {
+		"My conscience and I aren't speaking at the moment. It knows why.",
+		"Not now, conscience. Make an appointment.",
+		"Yes, conscience, I heard you. I'm choosing not to listen. There's a difference.",
+	},
+	["muse.w12.doubt.030"] = {
+		"Admitting a mistake stings once. Hiding it stings every time somebody gets near the subject.",
+		"Say 'my fault' quickly and it's a small thing. Wait, and it grows teeth.",
+		"A mistake owned up to fits in a pocket. One hidden keeps growing until it needs a pack of its own.",
+	},
+	["muse.w12.doubt.031"] = {
+		"Weigh two choices long enough and the choosing gets done for you. That's a decision too, and usually the worst one.",
+		"Hesitate long enough and the world decides instead. It never asks what I'd have preferred.",
+	},
+	["muse.w12.doubt.032"] = {
+		"'Somebody else will help' is what everyone thinks, all at once, while nobody does.",
+		"When someone's in trouble and the crowd waits, each one is sure another will step up. I try to be the other.",
+	},
+	["muse.w12.doubt.033"] = {
+		"Not every fight needed fighting. I just never know which ones until they're over and it's too late to ask.",
+		"Some fights I could have walked around. The question comes after, when there's nobody left to answer it.",
+	},
+	["muse.w12.doubt.034"] = {
+		"Pride is a lovely coat until I need to bend down for something.",
+		"My pride fits beautifully, as long as I stand perfectly still.",
+		"Pride holds my chin up wonderfully. It's no help at all when I need to look where I'm stepping.",
+	},
+	["muse.w12.doubt.035"] = {
+		"Every choice shuts a door I'll never see behind. Most of them I don't miss. A few I hear creaking for a long time.",
+		"Choosing one thing is quietly burying all the others. I'd like to think they rest easy.",
+	},
+	["muse.w12.doubt.036"] = {
+		"Remind me why this seemed a good idea. No, don't. I'd rather keep the mystery.",
+		"At some point this was a good idea. I was there. I agreed.",
+	},
+	["muse.w12.doubt.037"] = {
+		"Doubt costs me a moment before I act. I've decided that's a fair price for not doing something unforgivable in a hurry.",
+		"A little hesitation is a toll worth paying. The things I'd regret most are all quick.",
+	},
+	["muse.w12.doubt.038"] = {
+		"Half the good I do is for bad reasons: pride, boredom, wanting to be thanked. The good gets done regardless. I've decided not to look too closely.",
+		"I help for the wrong reasons, probably. The ones I help don't seem to mind.",
+	},
+	["muse.w12.doubt.040"] = {
+		"If I can give a stranger a second chance, I can probably spare one for myself. Probably.",
+		"I hand out second chances to everyone but the face I see in still water.",
+	},
+	["muse.w12.doubt.041"] = {
+		"The things I'd have sworn to are the ones that give way. The things I double-checked never do.",
+		"Whenever I catch myself saying 'I'd stake my life on it', I go and check. Twice.",
+	},
+	["muse.w12.doubt.042"] = {
+		"Conscience is a slow messenger. It arrives with its letter long after the thing is done, and waits while I read it.",
+		"In the moment, my conscience says nothing. It saves the whole speech for afterward, when I can't do a thing about it.",
+	},
+	["muse.w12.doubt.043"] = {
+		"If it's wrong, I'll own it. If it's right, I won't ask for thanks. Either way, it's mine.",
+		"My choice, my weight to carry. Nobody else needs to hold the strap.",
+	},
+	["muse.w12.doubt.044"] = {
+		"My second thoughts are always better than my first. If only they'd arrive first.",
+		"Second thoughts: wiser, kinder, and always a step behind, like a sensible friend who can't find their boots.",
+		"First thoughts rush in and do the damage. Second thoughts turn up later with a broom.",
+	},
+	["muse.w12.doubt.045"] = {
+		"'I'm afraid' is hard to say. 'You were right' is harder. I'm still practicing both.",
+		"Of all the things to say aloud, 'you were right' sticks in the throat the longest.",
+	},
+	["muse.w12.doubt.047"] = {
+		"Mercy to something that can never repay it is the only kind I'm sure is honest.",
+		"If it can't thank me and can't pay me back, then whatever I give it is the real thing.",
+	},
+	["muse.w12.doubt.048"] = {
+		"I've an excuse ready for almost anything. The only one who never accepts them is me.",
+		"My excuses are well rehearsed and beautifully made. Sadly, I'm also the audience, and I've heard them all.",
+	},
+	["muse.w12.doubt.049"] = {
+		"If nobody anywhere is keeping count of what I do, then I'm the only witness. That's more frightening, not less.",
+		"Maybe no power above is watching. Then the only one who saw it was me, and I can't be bribed or fooled for long.",
+	},
+	["muse.w12.doubt.050"] = {
+		"Of course I'm sure. I'm also frequently wrong. The two get along fine.",
+		"Sure? Completely. Right? That's a separate question.",
+	},
+	["muse.w12.doubt.051"] = {
+		"A promise is only tested when it becomes a nuisance. Before that, keeping it is just good manners.",
+		"Anyone keeps their word when it's convenient. The day it chafes is the first day it counts.",
+		"Keeping a promise that suits me proves nothing. Only the ones that pinch tell me anything.",
+	},
+	["muse.w12.doubt.052"] = {
+		"Certainty is heavy armor: nothing gets through, and I can't turn my head.",
+		"Being sure of everything is like wearing a helm with no eye slits. Very safe. Very stupid.",
+	},
+	["muse.w12.doubt.053"] = {
+		"On a bad day I'm short with people who've done nothing. Somewhere a stranger is still carrying a sharp word of mine, and I'd like it back.",
+		"Tired, I get curt with whoever is nearest. They walk off with it, and I never learn their names to make it right.",
+	},
+	["muse.w12.doubt.055"] = {
+		"Not every hand I offer was wanted. Some help is only me wanting to feel useful, wearing a kinder face.",
+		"Before I rush to lend a hand, one small question: is this for them, or for me? The answer isn't always flattering.",
+	},
+	["muse.w12.doubt.056"] = {
+		"If I fall somewhere and never get up, I hope the last thing I did was something I'd sign my name to.",
+		"I'd like whatever I do last to be something I wouldn't mind being remembered by. That's reason enough to choose carefully, hour by hour.",
+	},
+	["muse.w12.doubt.057"] = {
+		"I'm completely sure of things right up until someone asks me why.",
+		"Certainty holds up beautifully until the word 'why' walks in.",
+	},
+	["muse.w12.doubt.058"] = {
+		"I don't need to be certain before I act. I only need to be ready to be wrong, and to mend it.",
+		"Waiting to be sure is a fine way to never do anything. I'd rather move, err, and fix what I break.",
+	},
+	["muse.w12.doubt.059"] = {
+		"No. Not like that. I'm better than that, or I mean to be.",
+		"Easy. That's not who I want to be. Try it properly.",
+	},
+	["muse.w12.doubt.060"] = {
+		"Lying to others takes effort and a good memory. Lying to myself takes neither, which is why I do so much more of it.",
+		"I'm a hopeless liar with other people. With myself, I'm a natural.",
+	},
+	["muse.w12.doubt.061"] = {
+		"Some days I honestly can't tell whether I'm doing good or only keeping busy. The days look the same from inside.",
+		"Am I making anything better, or just moving? From the inside, the two feel identical.",
+	},
+	["muse.w12.doubt.062"] = {
+		"Being right and being wrong feel exactly alike from the inside. That's what makes certainty so useless as a guide.",
+		"Wrong feels just like right until the moment it doesn't. Certainty can't tell them apart either.",
+		"Mistaken and correct wear the same face when I'm the one wearing them.",
+	},
+	["muse.w12.doubt.064"] = {
+		"'I was told to' has never once made anything right. Whoever does the deed carries it, whoever gave the word.",
+		"Orders can tell my hands what to do. They can't lift the weight off afterward.",
+	},
+	["muse.w12.doubt.065"] = {
+		"I'm quite proud of my humility. I've a feeling that's not how it works.",
+		"Nobody is more modest than I am, and I'll tell that to anyone. Something's off there.",
+	},
+	["muse.w12.doubt.066"] = {
+		"Forgiving isn't done once. It has to be done over each time the memory knocks, and some days I manage it.",
+		"I forgave it. Then it came to mind, and I had to forgive it a second time. That's how it goes, I think, until it stops.",
+	},
+	["muse.w12.doubt.067"] = {
+		"I've been arguing with myself for some time now. I'm winning and losing in equal measure, and both sides are tired.",
+		"Two of me are disagreeing about something. The third is just trying to get some peace.",
+	},
+	["muse.w12.doubt.068"] = {
+		"Right or wrong, it's decided. I'll know which soon enough.",
+		"Decided. If it's a mistake, at least it's a whole-hearted one.",
+	},
+	["muse.w12.doubt.069"] = {
+		"Hard to find anyone surer of being right than the Scarlet Crusade. That alone should make a person nervous about being sure.",
+		"The Scarlet Crusade has never had a doubt, by all accounts. Look what it's made of them.",
+	},
+	["muse.w12.doubt.070"] = {
+		"The loud voices in my head are usually wrong. The right one tends to mumble.",
+		"When my thoughts start shouting, I look for the quiet one underneath. It's usually the one worth hearing.",
+		"My thoughts get loud when they're unsure of themselves. The sensible ones never raise their voice.",
+	},
+	["muse.w12.doubt.071"] = {
+		"Whenever I try to balance a bad deed with a good one, the good one goes fine and the bad one stays exactly where it was.",
+		"Good deeds don't cancel bad ones. They just stand next to them, looking awkward.",
+	},
+	["muse.w12.doubt.072"] = {
+		"Revenge always looks like justice from a distance. Up close it has my face and nobody else's.",
+		"Getting even sounds tidy. It never is. There's always a remainder, and it's always mine.",
+	},
+	["muse.w12.doubt.074"] = {
+		"Those who serve the Light say it sees into every heart. If so, I hope it weighs what I meant as well as what I managed.",
+		"If the Light truly reads intentions, as its priests claim, then I'm counting on the reading being generous.",
+	},
+	["muse.w12.doubt.075"] = {
+		"The moment I feel better than someone, I brace myself. The world corrects that sort of thing fast, and without kindness.",
+		"Feel above anyone and the ground arranges a lesson. It's never subtle about it.",
+	},
+	["muse.w12.doubt.076"] = {
+		"There's a moment to say 'that isn't right', and it's always short and always awkward. Miss it and the silence agrees on your behalf.",
+		"Silence takes a side. I wish it didn't, but it does, every time I let something pass.",
+	},
+	["muse.w12.doubt.077"] = {
+		"Am I sure? Ask me in an hour. Or don't; I'll have changed my mind.",
+		"I'm absolutely certain. Give or take.",
+	},
+	["muse.w12.doubt.078"] = {
+		"Doubt before a choice is a lantern. Doubt after it is just a stone in the pack.",
+		"Hesitating beforehand lights the way. Second-guessing afterward is another stone to carry.",
+	},
+	["muse.w12.doubt.079"] = {
+		"I notice I argue loudest when I'm least sure. A useful thing to know about oneself, and an annoying one.",
+		"The harder I dig my heels in, the likelier it is I've lost the argument and haven't noticed.",
+	},
+	["muse.w12.doubt.080"] = {
+		"Hardness is the easy road. Any fool can manage it. Gentleness takes more nerve than I usually have to spare.",
+		"It's easy to be harsh; the world practically hands it to you. Kindness takes real effort, the uphill kind.",
+		"Anyone can be a wall. Being a door that opens takes far more out of a person.",
+	},
+	["muse.w12.doubt.082"] = {
+		"'I don't know' is the most honest sentence I can say. It's also the one I avoid hardest.",
+		"Nothing I say is as true, or as rare, as 'I don't know'.",
+	},
+	["muse.w12.doubt.083"] = {
+		"My head says one thing, my gut says another, and my feet settle it by wandering off in a third direction.",
+		"Head and gut are deadlocked. The feet, as usual, have stopped waiting for a verdict.",
+	},
+	["muse.w12.doubt.084"] = {
+		"The choices that weigh most aren't the ones I'd pay for. They're the ones where someone else would.",
+		"Risking my own neck is simple arithmetic. Risking anyone else's turns every choice to lead.",
+	},
+	["muse.w12.doubt.085"] = {
+		"Sorry. That one wasn't fair, whoever it landed on.",
+		"If that came out hard, I take it back. Even if it didn't.",
+	},
+	["muse.w12.doubt.086"] = {
+		"I'd rather do the right thing clumsily than the wrong thing with style.",
+		"Good done badly still counts. Harm done gracefully is still harm.",
+		"Doing right without grace still beats doing wrong with all the polish in the world.",
+	},
+	["muse.w12.doubt.087"] = {
+		"The things I'm surest of are mostly the things I've never once checked.",
+		"Pick whatever I believe most firmly, and I'll bet it's the thing I've examined least.",
+	},
+	["muse.w12.doubt.088"] = {
+		"I don't need to die certain I was right. It would be enough to know I kept asking.",
+		"Whatever my last thought is, I hope it isn't 'I was sure'. I'd rather it were 'I tried to see'.",
+	},
+	["muse.w12.doubt.090"] = {
+		"Whoever I was an hour ago made the best call they could with what they knew. It isn't fair to judge it with what I know now.",
+		"In hindsight the choice looks foolish. At the time, with what I could see, it looked sound. Both are true.",
+	},
+	["muse.w12.doubt.091"] = {
+		"I'd be wonderfully patient if nothing ever tested it.",
+		"My virtues are in excellent condition. They've hardly been used.",
+		"My patience is flawless, as long as nothing whatsoever goes wrong.",
+	},
+	["muse.w12.doubt.092"] = {
+		"Some choices can't be handed to anyone else. They're heavier for it, and somehow they're also more mine.",
+		"There's no one to ask, and maybe that's right. Some questions only fit one pair of hands.",
+	},
+	["muse.w12.doubt.093"] = {
+		"Don't tell me I was right. It only encourages me.",
+		"Should I turn out to be right, keep it quiet. I'm unbearable enough as it is.",
+	},
+	["muse.w12.doubt.098"] = {
+		"One more look. Not that I doubt it. I doubt me.",
+		"I'll check it once more. It's not the thing I don't trust.",
+	},
+	["muse.w12.doubt.099"] = {
+		"All right, all right. I'll go back and do it properly.",
+		"Fine. I'll do the decent thing. Grumbling, but I'll do it.",
+	},
+	["muse.w12.humor.001"] = {
+		"There's a chicken wherever I go. Battlefields, crossroads, the steps of a temple. Nobody owns it and nobody questions it.",
+		"Wars, plagues, burned villages, and somehow the chickens come through all of it without a scratch. I'd love to know their secret.",
+		"Every great event I've heard of had a chicken somewhere at the edge of it, pecking away, entirely unimpressed.",
+	},
+	["muse.w12.humor.002"] = {
+		"No chicken has ever looked at me with anything but contempt. I'd like to know what they've been told.",
+		"Chickens study me sideways, one eye at a time, as if each eye wanted its own opinion. Neither opinion is flattering.",
+	},
+	["muse.w12.humor.003"] = {
+		"Have I offended any chickens lately? No? Good. Then my luck should hold.",
+		"Rule one: never anger a chicken. I don't know why. It just feels important.",
+	},
+	["muse.w12.humor.004"] = {
+		"Whoever builds towers in this world has never climbed one with a full pack. Or they did, once, and built the next one taller out of spite.",
+		"Wizards live at the top of towers so that visitors arrive too tired to argue. I'm nearly sure of it.",
+		"Halfway up any spiral stair I lose count, then heart, then all sense of which way the door was.",
+	},
+	["muse.w12.humor.005"] = {
+		"A ladder is a staircase that lost its nerve halfway through being built.",
+		"I trust ladders the way I trust strangers' dogs: politely, from the bottom, and ready to let go.",
+	},
+	["muse.w12.humor.006"] = {
+		"Anyone who wears long robes must have a private arrangement with stairs. I'd have gone down in a heap by the second landing.",
+		"Long robes and steep steps: I've never seen anyone combine the two and stay dignified for the whole flight.",
+	},
+	["muse.w12.humor.007"] = {
+		"The fashion for enormous shoulder pieces will end the day someone gets wedged in a doorway in front of witnesses.",
+		"Some of the shoulder armor I see about could shelter a family of four. I wonder how the wearers get through doors, sideways or not at all.",
+	},
+	["muse.w12.humor.008"] = {
+		"Some helmets look like a bucket that was promoted well above its talents.",
+		"Half the helmets in this world were designed by someone who'd only ever heard a head described.",
+	},
+	["muse.w12.humor.009"] = {
+		"Every strap and buckle I wear creaks in its own key. Sneaking up on anything is out of the question; I arrive like a peddler's cart full of pots.",
+		"When I try to move quietly, the world produces a dry twig, a loose board or a bucket, always exactly under my foot.",
+	},
+	["muse.w12.humor.010"] = {
+		"The key to a locked door is always on the far side of it. Whoever arranges these things has a very small, very mean sense of humor.",
+		"Locked door, key behind it. I'd admire the neatness of the trick if I weren't the one left standing in the corridor.",
+		"I've given up trying doors in the order that makes sense. The right key turns up in the last place, on the wrong side, without fail.",
+	},
+	["muse.w12.humor.011"] = {
+		"There are keys rattling in my pack that open nothing I've ever found. I keep them anyway. The day I throw them out, the right door will turn up.",
+		"Somewhere a lock is waiting for one of the odd keys I carry. It can go on waiting; I'm not throwing anything out.",
+	},
+	["muse.w12.humor.012"] = {
+		"Rule of old places: never pull a lever just to see what it does. I always pull the lever just to see what it does.",
+		"A lever on a wall asks one question, and I've never had the strength of character to leave it unanswered.",
+	},
+	["muse.w12.humor.013"] = {
+		"Doors in this world never say whether they open in or out. I've lost a little dignity to every one of them.",
+		"Push, pull, lift, shove: the door accepts one answer and gives no hints.",
+	},
+	["muse.w12.humor.014"] = {
+		"A gate that squeaks only when I'm trying to be quiet is not a gate. It's an informer.",
+		"Hinges keep silent all day and save their scream for the one moment I need them to hold their tongue.",
+	},
+	["muse.w12.humor.015"] = {
+		"A sign that says 'keep out' is the most effective invitation anyone has ever painted.",
+		"Nobody has ever stayed out of anywhere because a board told them to. The board is mostly a map of where the interesting things are.",
+		"Write 'danger' on a door and you've as good as drawn the way to it.",
+	},
+	["muse.w12.humor.016"] = {
+		"Whoever's in charge of a dangerous place always lives at the very back of it. Not once has the master of a lair kept rooms by the front door.",
+		"The thing in charge is always at the far end, past every guard, trap and stair. Nobody wicked ever wants to sit near the entrance, where the drafts are.",
+		"Never once have I heard of a dark lord who kept his throne room near the door. They all want the long walk, the stairs, the drama.",
+	},
+	["muse.w12.humor.017"] = {
+		"Ancient tombs, sealed for ages, and the torches on the walls still lit. Somebody's been popping in to change them, and they've never once left a note.",
+		"Nobody has set foot in that sort of crypt for a thousand years, yet the sconces are all burning. I'd love to meet the caretaker.",
+	},
+	["muse.w12.humor.018"] = {
+		"Every ancient evil I've heard of was sealed away by someone who didn't check the lock twice.",
+		"The heroes of old were very good at sealing horrors away and very poor at writing 'do not open' in any language that lasted.",
+	},
+	["muse.w12.humor.019"] = {
+		"Why does every cult meet underground? Just once I'd like to find one plotting the end of the world in a bright, pleasant room upstairs.",
+		"Dark cults have no imagination about lodgings. Cellars, caves, crypts. Never a pleasant loft with a view.",
+	},
+	["muse.w12.humor.020"] = {
+		"Cultists all wear the same robes. Somewhere there's a tailor sewing for the end of the world who never asks what the order is for.",
+		"Same cut, same color, same deep hood. Fashion is the one thing every doomsday sect agrees on.",
+	},
+	["muse.w12.humor.021"] = {
+		"Villains love to explain the whole plan before anything happens. Rude to interrupt, I suppose, but it does go on.",
+		"Give the wicked an audience that can't leave and they'll talk for an hour. Nobody ever teaches them to be brief.",
+	},
+	["muse.w12.humor.022"] = {
+		"Behind every trap in an old ruin there was once a builder, very pleased with the idea, who never had to walk through it.",
+		"Spikes in the floor, darts in the walls: someone took real pride in this. I'd pass on my compliments, if they weren't dust by now.",
+	},
+	["muse.w12.humor.023"] = {
+		"Most of an ancient stronghold is corridors. Somebody long dead loved corridors more than anything, and built nothing else.",
+		"Whoever designs dungeons has a passion for long corridors and a grudge against signposts.",
+	},
+	["muse.w12.humor.024"] = {
+		"Caves all smell as if something lived there once and had strong opinions about tidiness, every one of them against.",
+		"No cave smells of anything pleasant. The nose goes in first, and it always wants to turn back.",
+	},
+	["muse.w12.humor.025"] = {
+		"I can't look down a well without expecting something to look back up. So far, only my own face, which is bad enough.",
+		"Wells are deep, dark and quiet, which is how I'd describe trouble with a bucket on top.",
+	},
+	["muse.w12.humor.026"] = {
+		"The only books worth reading are always written in a script I can't make out. The ones I can read are about the proper care of hinges.",
+		"Ancient writings never say anything useful like 'the way out is on the left'. It's always prophecy, never directions.",
+	},
+	["muse.w12.humor.027"] = {
+		"Nothing in this world stays cleared. Empty a camp, turn round twice, and they've all moved back in as if nothing happened.",
+		"I'd swear the same creatures come back to the same spots, like regulars to a tavern. Someone keeps reopening the place.",
+		"Whatever I chase off is back by the time I've laced a boot. The same ones, I'd swear, with a fresh attitude.",
+	},
+	["muse.w12.humor.028"] = {
+		"Things chase me just so far and then turn back, as if they'd reached the edge of their property and the rest was somebody else's problem.",
+		"Nothing chases me for long. Past a certain point they stop, look at me with disgust, and trot home. There must be boundary stones I can't see.",
+		"A thing chases me, snarling, then stops dead as if it had just remembered leaving something on the fire.",
+	},
+	["muse.w12.humor.029"] = {
+		"Only one in five of anything ever seems to be carrying the part I need. The rest must leave theirs at home.",
+		"All those wolves, and hardly a pelt fit to use among them. The others must have been wearing borrowed ones.",
+		"It's always the last one that carries what I came for. The first nine were only there to lower my opinion of the world.",
+	},
+	["muse.w12.humor.030"] = {
+		"Anything with a name is trouble. A nameless wolf only wants to be left alone; a wolf with a name has a reputation to keep up.",
+		"Beware of anything that's been given a name. Somebody gave it one for a reason, and the reason was rarely affection.",
+	},
+	["muse.w12.humor.031"] = {
+		"Some of the things out there are far bigger than their kind has any right to be. Somebody has been letting them grow without supervision.",
+		"Every so often there's a spider the size of a cart, or a boar the size of a hut. Nature has no sense of proportion and nobody to point it out.",
+	},
+	["muse.w12.humor.032"] = {
+		"Kobolds dig everywhere and seem very sure of themselves. Nobody has ever found out where they think they're going.",
+		"Give a kobold a tunnel and it'll dig another off the side of it. I admire the commitment more than the planning.",
+	},
+	["muse.w12.humor.033"] = {
+		"An ooze has no face, no mind and no plans, and still manages to look smug.",
+		"I've never understood what an ooze wants. I suspect the ooze hasn't either, and it's happier for it.",
+	},
+	["muse.w12.humor.034"] = {
+		"To some things out there I'm a terror, and to others I'm a light meal. The trick is remembering which is which before I say hello.",
+		"There are creatures that flee at the sight of me and creatures that cheer right up. I'd like a warning sign on each.",
+	},
+	["muse.w12.humor.035"] = {
+		"Funny how the world always sends harder things just as I'm getting better. The timing is very suspicious.",
+		"I get a little stronger and, somewhere, the trouble gets a little bigger to match. I'd like to meet whoever keeps the two in step.",
+	},
+	["muse.w12.humor.036"] = {
+		"Frogs sit about with the look of something that worked life out long ago and isn't telling.",
+		"A frog on a stone looks more at peace than any sage I've heard of. It also eats flies, so perhaps that's the price.",
+	},
+	["muse.w12.humor.037"] = {
+		"Squirrels always seem to be scolding someone, and when I'm near, it's me. I'd like at least to hear the charge.",
+		"Small creatures chatter at me from the branches as if I'd trodden on something of theirs. I probably have.",
+	},
+	["muse.w12.humor.038"] = {
+		"Rabbits bolt the moment they see me, as though they'd heard something. I've done nothing to a rabbit. Not that they'd believe me.",
+		"A reputation runs ahead of me, and only the rabbits seem to have read it.",
+	},
+	["muse.w12.humor.039"] = {
+		"A cat will look at me as if I owe it an explanation, and somehow I always feel I do.",
+		"Cats size me up, find me wanting, and go back to washing. It's a fair review.",
+	},
+	["muse.w12.humor.040"] = {
+		"Every fly within a mile seems to know my name, and wants to discuss it right beside my ear.",
+		"I can face whatever's out there, but one fly circling my head can bring me to the edge of surrender.",
+	},
+	["muse.w12.humor.041"] = {
+		"Stray dogs follow me for miles and then leave without a word, like a disappointed escort.",
+		"Strays are happy to walk with me until something more interesting smells. I know my place.",
+	},
+	["muse.w12.humor.042"] = {
+		"Crows watch me the way old aunts watch a wedding: missing nothing, approving of less.",
+		"There's always a crow on some fence post, keeping count of my mistakes. It must need a great many fence posts.",
+	},
+	["muse.w12.humor.043"] = {
+		"I'll walk into a den of who-knows-what without blinking and then yelp at a moth. My courage keeps odd hours.",
+		"Big terrors I meet with a straight face. It's the small ones, the thing that scuttles past a boot, that get a noise out of me.",
+	},
+	["muse.w12.humor.044"] = {
+		"Half my errands are carrying a letter from one person to another who lives close enough to shout.",
+		"Some folk would rather send a stranger down the lane with a note than lean out of the door and call.",
+	},
+	["muse.w12.humor.045"] = {
+		"'Don't open it.' Every sealed parcel comes with those words, and every time the curiosity weighs more than the parcel.",
+		"Hand me a box and tell me not to look inside, and you've given me two loads to carry.",
+	},
+	["muse.w12.humor.046"] = {
+		"A letter can cross the whole world in an hour. It takes me a week and I arrive muddier. I'm being outrun by paper.",
+		"The post moves faster than I do and never needs a rest. Perhaps I should fold myself up and send myself.",
+		"My letters reach their reader before I've finished walking to the next town. Ink, it turns out, has better legs than mine.",
+	},
+	["muse.w12.humor.047"] = {
+		"The little stone that carries me back to an inn never asks whether I'd like a different inn. It has its favorite and that's that.",
+		"One touch of a smooth stone and I'm back at the same hearth, the same stool, the same nod from the innkeeper. Magic, and somehow still a habit.",
+	},
+	["muse.w12.humor.048"] = {
+		"Ships pull away the moment I come in sight of the dock. It's a gift, of sorts. Not one I asked for.",
+		"Right now a ship is drawing away from some pier, and on the pier someone is running and shouting, too late. For once it isn't me. Small mercies.",
+	},
+	["muse.w12.humor.049"] = {
+		"Deep water has a way of telling me, exactly and to the ounce, what my gear weighs.",
+		"Nobody admits to learning to swim in full kit. Everybody learns, and nobody tells.",
+	},
+	["muse.w12.humor.050"] = {
+		"I catch myself hopping as I walk, for no reason at all, as though it got me there faster. It doesn't. I keep doing it.",
+		"There's a small, foolish part of me that jumps over nothing while walking. The rest of me pretends not to know it.",
+	},
+	["muse.w12.humor.051"] = {
+		"Nobody in this line of work ever walks. Everything is done at a run, as if every errand were on fire.",
+		"I've forgotten how to stroll. I cross a whole town at full tilt just to drop off a letter.",
+	},
+	["muse.w12.humor.052"] = {
+		"The faces on wanted posters could be anyone. Squint, and on a bad day, one of them is me.",
+		"I always read the wanted notices, just to be sure. You never know what you've done until somebody draws it.",
+	},
+	["muse.w12.humor.053"] = {
+		"The one creature I've been hunting for an hour always falls to some stranger a moment before I reach it.",
+		"Somewhere right now a handful of strangers stand round an empty patch of ground, all waiting for the same rare beast, each pretending not to.",
+		"Hunt something rare long enough and it falls to a passer-by who wasn't even looking for it. The passer-by never says thank you.",
+	},
+	["muse.w12.humor.054"] = {
+		"I've seen two grown adventurers sprint across a field for the same flower. Neither looked at the other. Both lost their dignity.",
+		"The fiercest race in the world is two strangers who've spotted the same patch of herbs. No rules, no words, no shame.",
+	},
+	["muse.w12.humor.055"] = {
+		"Outside any town gate there are two people trying very hard to flatten each other, very politely, and a small crowd giving advice.",
+		"A friendly duel: two strangers, a bow, then a sincere effort to knock each other flat. Then another bow. I'll never understand it.",
+	},
+	["muse.w12.humor.056"] = {
+		"People in this world lose the strangest things in the most dangerous places, and then stand very still and wait for help.",
+		"How does anyone drop a ring at the bottom of a lake full of teeth? And why is it always the ring their grandmother gave them?",
+	},
+	["muse.w12.humor.057"] = {
+		"Help someone once and you'll hear 'thank you'. Help them twice and you'll hear 'while you're here...'",
+		"Gratitude spoils quickly. By the second favor it has already turned into another errand.",
+	},
+	["muse.w12.humor.058"] = {
+		"The finest things I find are always made for somebody else entirely. Wrong shape, wrong use, and beautiful in a way that feels personal.",
+		"Treasure has a cruel streak: it turns up gleaming, perfect, and meant for hands of a completely different trade.",
+	},
+	["muse.w12.humor.059"] = {
+		"There's a pebble in my boot that has traveled further than most heroes. It can stay until it learns humility.",
+		"The pebble in my boot has seen more of the world than many kings. I'd shake it out, but it seems to have earned its place.",
+	},
+	["muse.w12.humor.060"] = {
+		"Every crate in the world keeps one nail standing proud, waiting patiently for my hand.",
+		"Somewhere a carpenter left a single nail sticking out of a crate, and it has been waiting for my sleeve ever since.",
+	},
+	["muse.w12.humor.061"] = {
+		"A candle lights at once when I don't need it and sulks when I do. It's that sort of relationship.",
+		"Tinder catches beautifully for anyone watching and never when nobody's about. I think it only performs for an audience.",
+	},
+	["muse.w12.humor.062"] = {
+		"Rope comes in two lengths: too short, and tangled.",
+		"However much rope I carry, the gap is always an arm's length wider. Rope and distance have come to an arrangement.",
+		"No rope I cut is ever the length I needed. It senses the measuring and shrinks out of spite.",
+	},
+	["muse.w12.humor.063"] = {
+		"Puddles all look shallow until I'm standing in one. They're the most convincing liars I know.",
+		"The one puddle I step in is always the deep one. The world must keep it there for me.",
+	},
+	["muse.w12.humor.064"] = {
+		"A branch pushed aside is a branch that will come back for my face. Not one has ever missed the appointment.",
+		"Brush past a nettle once and it seems to tell the others. The whole hedge knows me now.",
+	},
+	["muse.w12.humor.065"] = {
+		"Some people have a gift for finding the one dry spot to sit. I have the opposite gift, and I use it daily.",
+		"Sit down anywhere and the ground turns out to be damp in exactly the shape of me.",
+	},
+	["muse.w12.humor.066"] = {
+		"Gloves leave one at a time, never in pairs. Somewhere the lost ones have founded a village and all live there, left-handed.",
+		"I've never lost a pair of anything. Only ever one of a pair, which is far more spiteful.",
+	},
+	["muse.w12.humor.067"] = {
+		"Washing anything on the road only moves the dirt to a new address.",
+		"I scrub, I rinse, I wring it out, and the stain looks back at me rested and refreshed.",
+	},
+	["muse.w12.humor.068"] = {
+		"A good hat makes anyone look wise from far off. Up close, I'm afraid, it's still me underneath.",
+		"I'm told a fine hat lends dignity. It lends it, certainly. Then the first low branch takes it back.",
+	},
+	["muse.w12.humor.069"] = {
+		"Caught sight of my face in still water and nodded to the stranger before I knew who it was. Polite of me, at least.",
+		"Any reflection I catch on the road looks like someone who's been through something. Which is fair. I'd still prefer a kinder pond.",
+	},
+	["muse.w12.humor.070"] = {
+		"If luck came as dice, mine would have been weighted by somebody who dislikes me personally.",
+		"Dice have never once been on my side. I think they talk to each other.",
+	},
+	["muse.w12.humor.071"] = {
+		"I dance like someone arguing with a bee. Nobody has asked me twice.",
+		"Whenever there's music, my feet volunteer before I can stop them, and then abandon me halfway.",
+	},
+	["muse.w12.humor.072"] = {
+		"Wave at a stranger, get nothing back, and spend the next mile pretending it was a stretch.",
+		"There's no small humiliation quite like a greeting nobody returns. I usually turn mine into scratching my head.",
+	},
+	["muse.w12.humor.073"] = {
+		"I've sworn off ever touching strange mushrooms. I swear it about once a week.",
+		"My solemn vows last until the next shiny thing. They're very solemn while they last.",
+	},
+	["muse.w12.humor.074"] = {
+		"A heroic pose takes a lifted chin, a steady gaze and a cloak flapping behind. I manage the chin.",
+		"In the paintings, heroes stand on rocks with their hair streaming. When I stand on a rock, the rock wobbles.",
+	},
+	["muse.w12.humor.075"] = {
+		"The splinter is out. Let it be told in every hall how, after a long and bitter struggle, it yielded.",
+		"Victory. The splinter has been driven from my thumb, and peace returns to the realm.",
+	},
+	["muse.w12.humor.076"] = {
+		"Somewhere a straw dummy has taken more blows than any soldier alive and never once complained. If anyone deserves a medal, it's that sack.",
+		"I have a deep respect for practice dummies. They stand, they take it, they ask for nothing. Better character than most people.",
+		"The practice dummy never flinches, never hits back, never sulks. There are kings with less composure.",
+	},
+	["muse.w12.humor.077"] = {
+		"Learn one new trick and for a while everything looks like a chance to use it. It must be very tiring to watch.",
+		"There's no one more insufferable than me the week after I've learned something new. Luckily the world is big enough to keep out of my way.",
+	},
+	["muse.w12.humor.078"] = {
+		"Anything built by a gnome has two settings, and one of them is smoke.",
+		"Gnomish devices are marvels. They just don't always agree on what they're marvels of.",
+	},
+	["muse.w12.humor.079"] = {
+		"The people who build those great rope lifts have more faith in rope than I have in anything.",
+		"When the basket sways out over the drop on its one cable, I discover I hold opinions about knots I never knew I had.",
+	},
+	["muse.w12.humor.080"] = {
+		"Champion, they call me. I still check over my shoulder for the real one.",
+		"'Hero.' Kind of them. I'll pass it on if I ever meet one.",
+	},
+	["muse.w12.humor.081"] = {
+		"By the authority vested in me by nobody at all, I declare this a rest.",
+		"Hear me, world: I proclaim a short pause. Objections may be lodged later, in writing.",
+	},
+	["muse.w12.humor.082"] = {
+		"Don't mind me. My left foot and I are settling a difference of opinion.",
+		"Nothing's wrong. The left foot went its own way, and I'm having words with it.",
+	},
+	["muse.w12.humor.083"] = {
+		"Let it be known: I was being careful. The world simply didn't cooperate.",
+		"I did everything right. The world just had other plans, and louder ones.",
+	},
+	["muse.w12.humor.084"] = {
+		"Every time I say 'how hard can it be', the world takes it as a real question.",
+		"Notice to the world: 'how hard can it be' was not an invitation.",
+	},
+	["muse.w12.humor.085"] = {
+		"Some days I'm the hero of the tale. Most days I'm the one the tale walks straight past.",
+		"Every tale needs someone in the background holding a bucket. I'm good with the bucket.",
+	},
+	["muse.w12.humor.086"] = {
+		"I am a very dignified person. It's just that the world keeps tripping me.",
+		"Dignity? Plenty of it. It's just never where I left it.",
+	},
+	["muse.w12.humor.087"] = {
+		"Brave? I'd call it poorly informed and quick on my feet.",
+		"People say I've got nerve. Mostly people who weren't there.",
+	},
+	["muse.w12.humor.088"] = {
+		"I have an excellent plan. Step one: don't fall in.",
+		"The plan is simple. Stay out of the water, the fire and the trouble. One out of three so far.",
+	},
+	["muse.w12.humor.089"] = {
+		"Mud. On everything. How does mud get inside a closed pocket?",
+		"I have found mud in places mud has no business knowing about.",
+	},
+	["muse.w12.humor.090"] = {
+		"I'll be brave in a moment. I'm just letting the moment arrive first.",
+		"My courage is on its way. It's taking the scenic route.",
+	},
+	["muse.w12.humor.091"] = {
+		"I've given up on looking impressive. These days I aim for upright.",
+		"Impressive is for other people. I specialize in staying on my feet.",
+	},
+	["muse.w12.hunger.001"] = {
+		"Grief takes the appetite first. A few days on it hands it back without a word, and eating feels like a small betrayal.",
+		"When something is lost, food tastes of nothing for a while. I eat anyway. The body hasn't heard the news.",
+		"Sorrow and hunger won't share a room. One of them has to leave, and it's never sorrow that goes first.",
+	},
+	["muse.w12.hunger.002"] = {
+		"Good news is the finest seasoning there is. The same crust tastes different on a lucky day.",
+		"Funny how gladness reaches the tongue. When things go right, even a dry biscuit seems to have been made with care.",
+		"A good day seasons everything on the plate. No spice jar has ever managed that.",
+	},
+	["muse.w12.hunger.003"] = {
+		"No smell is crueler than another person's onions frying when my own pot is empty.",
+		"The worst torment I know isn't a wound. It's somebody else's supper drifting past an empty stomach.",
+	},
+	["muse.w12.hunger.005"] = {
+		"Some people cut the rind off their cheese. I've never had that kind of money.",
+		"Whether cheese rind is food depends on how far you are from a market. On the move, it's food.",
+	},
+	["muse.w12.hunger.006"] = {
+		"The scrapings at the bottom of the pot, a little burnt, are the best part. Every cook knows it, and every cook keeps them.",
+		"Where the stew catches the pot, a crust forms. Whoever gets to scrape it off has won something.",
+		"Burnt at the bottom is the cook's mistake and the guest's treasure. I'd quarrel over that pot if anyone tried me.",
+	},
+	["muse.w12.hunger.007"] = {
+		"Put a plate between strangers and the last piece will sit there forever. Politeness is a strong force, nearly as strong as hunger.",
+		"Nobody ever takes the last bite from a shared dish. It just sits there, guarded by everyone's good manners.",
+	},
+	["muse.w12.hunger.008"] = {
+		"Every apple I pack arrives bruised on the same side, the side pressed against everything else. I know how it feels.",
+		"Fruit isn't built for travel. It reaches the bottom of the bag looking like it lost a fight. I sympathize.",
+	},
+	["muse.w12.hunger.009"] = {
+		"A hungry cook and a slow fire are natural enemies. The fire always wins.",
+		"Nothing cooks slower than supper when I'm starving. I'd swear the flames do it on purpose.",
+		"Hunger stands over the pot and the fire takes its time. Those two have never agreed on a schedule.",
+	},
+	["muse.w12.hunger.010"] = {
+		"Tea can't be hurried. Pour it too soon and it tastes of water; leave it too long and it tastes of regret. Somewhere between lies most of what I know about patience.",
+		"Steeping tea is a small lesson in waiting. Too early, nothing. Too late, bitterness. The good cup lives in the narrow gap between.",
+	},
+	["muse.w12.hunger.011"] = {
+		"I always save some for later. Later always arrives about ten minutes afterward.",
+		"Leftovers are a lovely idea that has never once survived until the next meal.",
+	},
+	["muse.w12.hunger.012"] = {
+		"Hunger nags. Thirst gives orders. I've learned which of the two to obey first.",
+		"A body can bargain with hunger for days. Thirst doesn't bargain; it takes over the thinking.",
+		"Go without food and the mind wanders. Go without water and the mind has only one subject left.",
+	},
+	["muse.w12.hunger.013"] = {
+		"Salted meat keeps forever and makes me drink like a sponge. So I carry more water, which weighs more than the meat. Nobody wins.",
+		"Dried, salted, built to last: road meat would be perfect if every bite didn't cost a mouthful of water.",
+	},
+	["muse.w12.hunger.014"] = {
+		"Eat what's in front of you and thank whoever put it there. That's most of good manners, anywhere.",
+		"Clean the bowl. Whatever else they say about you, they'll say you were a good guest.",
+	},
+	["muse.w12.hunger.015"] = {
+		"Busy enough, I forget to eat entirely. Then my hands start to shake and the reminder arrives all at once.",
+		"Hunger is patient for a while. Then it stops tapping my shoulder and starts kicking the door.",
+		"I can go half a day without a thought of food, and then think of nothing else for the next hour.",
+	},
+	["muse.w12.hunger.016"] = {
+		"Nothing makes me hungrier than a close call. The moment the danger's gone, my stomach comes back and wants an explanation.",
+		"Fear shuts the kitchen. Relief throws the doors open and demands a feast.",
+	},
+	["muse.w12.hunger.017"] = {
+		"Bread asks for time more than skill. Flour, water, a warm corner and patience, and it rises whether anyone is watching or not.",
+		"There's something steadying about dough. It does its work slowly, without fuss, and nobody can hurry it into being bread.",
+		"The best loaves are made mostly of waiting. Hands do a little; time does the rest, and takes no credit.",
+	},
+	["muse.w12.hunger.018"] = {
+		"Stale bread isn't finished. Drop it in broth and it gets a second life, softer and better than the first.",
+		"No bread is too hard for soup. The pot forgives what the shelf forgot.",
+		"Old bread, hot broth, a little patience: the cheapest resurrection in the world.",
+	},
+	["muse.w12.hunger.019"] = {
+		"Honey is a wonderful thing for about a minute. After that it's on my fingers, my sleeve, the strap and somehow inside a boot.",
+		"Eat honey on the move and you'll carry it for days, on everything you touch.",
+	},
+	["muse.w12.hunger.020"] = {
+		"Some spices aren't a flavor, they're a challenge. I accept every one, and I lose most of them.",
+		"There's a kind of pepper that ought to be sold with a warning. I'd buy it anyway; that's the trouble.",
+	},
+	["muse.w12.hunger.021"] = {
+		"Everyone has one food they'll never forgive. I won't even name mine; it might hear.",
+		"I'll eat nearly anything. Nearly. There's one dish in this world I'd go hungry rather than touch, and it knows who it is.",
+	},
+	["muse.w12.hunger.022"] = {
+		"Bitterness is an acquired taste, people say. I think the tongue simply gets tired of protesting.",
+		"Some flavors you only come to love after enough hard days. Bitterness is one. Strong tea is another.",
+	},
+	["muse.w12.hunger.023"] = {
+		"Picky eaters don't last long on the road. Hunger teaches tolerance faster than any tutor.",
+		"The fussy and the hungry rarely stay two different people for long. One turns into the other.",
+		"Hunger cures fussiness better than any scolding ever could.",
+	},
+	["muse.w12.hunger.024"] = {
+		"When I snap at someone, the first question should be when I last ate. The second can wait.",
+		"Half my bad moods are only hunger in a borrowed cloak. Feed it, and the mood takes the cloak off and leaves.",
+	},
+	["muse.w12.hunger.025"] = {
+		"Eat the best thing first, in case things go wrong? Or save it, so there's something to look forward to? I've argued both sides with myself and lost twice.",
+		"Best bite first or last: the oldest quarrel I have with myself. Usually I compromise and eat it somewhere in the middle.",
+	},
+	["muse.w12.hunger.027"] = {
+		"Food is the only thing in the pack that gets lighter by being used. I think of every meal as a favor to my shoulders.",
+		"Every meal I eat is weight I don't have to carry. I call it packing, and nobody can prove otherwise.",
+	},
+	["muse.w12.hunger.028"] = {
+		"Never eat a mushroom you can't name. The ones that kill are often the prettiest, and they never apologize.",
+		"A mushroom I don't recognize stays where it grew. Hunger can wait; regret can't be spat back out.",
+		"Pretty caps, bright colors, a pleasant smell of earth: the deadliest mushrooms dress for the occasion.",
+	},
+	["muse.w12.hunger.029"] = {
+		"Some cooks give a tired face a certain look, and then an extra ladle goes into the bowl without a word. Kindness at its most practical.",
+		"A second ladle slipped in without asking: the quietest charity there is, and the most welcome.",
+		"Whoever cooks for travelers reads hunger at a glance, and the good ones answer it with the ladle.",
+	},
+	["muse.w12.hunger.030"] = {
+		"Inn tables are worn smooth by a thousand elbows. Sit at one and you're joining a very long conversation.",
+		"Every old tavern table has been polished by the arms of people long gone. I rest mine there and feel, briefly, in good company.",
+	},
+	["muse.w12.hunger.031"] = {
+		"Chewing hardtack, I plan feasts. A roast with crackling skin, new bread, a pie with a lid. The planning is free, and it nearly helps.",
+		"I keep a whole banquet in my head for lean stretches: something roasted, something sweet, a loaf still steaming. Laying that table costs nothing.",
+		"Imagined suppers are the only ones that never burn. I cook them in my head, course by course, while the real meal crunches.",
+	},
+	["muse.w12.hunger.032"] = {
+		"I've heard of feasts where half the food goes back to the kitchen untouched. Somewhere, the same day, someone is boiling a boot.",
+		"A king's table can throw away more in one sitting than a village eats in a week. Nobody at that table seems to find it strange.",
+	},
+	["muse.w12.hunger.033"] = {
+		"A big meal and a long walk don't get on. I keep introducing them, and they never grow any friendlier.",
+		"Eat like a king, walk like a mule. Every feast sends its bill to the legs.",
+	},
+	["muse.w12.hunger.034"] = {
+		"A day without food is clear-headed for a few hours, light and sharp. Then it isn't, and every thought ends at the same place.",
+		"Go hungry long enough and the mind gets very simple. Every thought, however it starts, ends up at bread.",
+		"Fasting makes the head clear, then light, then stubborn about one subject only.",
+	},
+	["muse.w12.hunger.035"] = {
+		"Hungry, I can smell bread through two walls and a closed door. It's the only time my nose is truly useful.",
+		"An empty stomach turns the nose into a scout. It finds every kitchen for a mile around and reports back, uselessly.",
+	},
+	["muse.w12.hunger.036"] = {
+		"The sound of something in a pan is one of the friendliest noises in the world. It means someone is about to be fed.",
+		"Fat spitting in a hot pan: no music I know of promises more.",
+	},
+	["muse.w12.hunger.037"] = {
+		"Cooking over open flame is a lesson in humility: black outside, raw in the middle, and nobody to blame but me.",
+		"Too much fire and the meat looks done long before it is. A good many things work that way.",
+		"Low flames, long wait, good supper. High flames, short wait, charcoal. I know this, and I'm still tempted every time.",
+	},
+	["muse.w12.hunger.038"] = {
+		"Stirring a pot is the nearest I come to sitting still with my thoughts. Round and round, and they settle the way the stew does.",
+		"There's peace in stirring. The spoon goes round, the mind goes quiet, and supper gets made either way.",
+		"A spoon going round a pot is about as close to stillness as busy hands ever get.",
+	},
+	["muse.w12.hunger.039"] = {
+		"Every cook's 'pinch' is a different size. I've watched one turn out to be half a handful.",
+		"Recipes say 'some' and 'enough' and 'to taste'. Cooking is the only craft that trusts anyone that much.",
+	},
+	["muse.w12.hunger.041"] = {
+		"Food wrapped well is food respected. A clean cloth, a tight fold, and the bread arrives as bread instead of as crumbs.",
+		"There's an art to wrapping a meal for the road, and the reward comes later: whole, and still yours.",
+	},
+	["muse.w12.hunger.042"] = {
+		"Hard cheese is a traveler's friend. Soft cheese is a guest who stays one day and then begins to smell.",
+		"Choose the cheese for the journey, not for the table. The finest ones never survive the walk.",
+	},
+	["muse.w12.hunger.043"] = {
+		"Dried meat is less a meal than a long negotiation with my jaw. By the end, the jaw and I are both worn out.",
+		"Some strips of road jerky take longer to chew than it takes to walk from one inn to the next.",
+	},
+	["muse.w12.hunger.044"] = {
+		"All the peoples I've heard of share one remedy for the sick: something hot in a bowl. That can't be an accident.",
+		"Broth is the first medicine anyone learns. Healers have their arts; the rest of the world has soup.",
+		"Before healers, before potions, someone sat by a sickbed with a bowl of broth. Someone still does.",
+	},
+	["muse.w12.hunger.045"] = {
+		"Something sweet tucked away for after the hard part. A small bribe to myself, and it works without fail.",
+		"I keep one sweet thing in the bag for the end of a bad stretch. Knowing it's there carries me further than it should.",
+	},
+	["muse.w12.hunger.046"] = {
+		"There's always someone hungrier than me. When I can, I make sure that someone eats too. It costs a crust; it's worth a great deal more.",
+		"A hungry face at a gate asks nothing aloud. I've learned to answer it anyway.",
+		"Spare bread in my bag and an empty hand held out in front of me: that sum works out the same way every time.",
+	},
+	["muse.w12.hunger.047"] = {
+		"Gold is the second wealth. The first is water you can trust, close enough to reach.",
+		"Kingdoms are counted in coin, but every one of them began beside a spring.",
+	},
+	["muse.w12.hunger.048"] = {
+		"The first mouthful of water after real thirst is worth any wine poured in any hall. I'd give up the hall for it.",
+		"To a parched mouth, no drink is richer than plain water. Kings could learn something from the thirsty.",
+		"Water after real thirst tastes of something no brewer has ever managed to put in a cask.",
+	},
+	["muse.w12.hunger.049"] = {
+		"When water runs low I drink the way a miser counts: one small mouthful, then a long wait, then another argument with myself.",
+		"Short of water, every swallow becomes a decision. It's exhausting, deciding that many times.",
+	},
+	["muse.w12.hunger.050"] = {
+		"Muddy water through a clean cloth, then over the fire. It still tastes of the pond, but it won't make me sorry.",
+		"Boil it first. Whatever lives in still water is better company once it's dead.",
+	},
+	["muse.w12.hunger.051"] = {
+		"Promises made over ale are written in foam. By the next day there's only a ring on the table.",
+		"Never agree to anything after the second tankard. You'll mean it completely, and for about an hour.",
+		"Ale makes a fine counselor and a terrible witness. It urges you on and remembers nothing.",
+	},
+	["muse.w12.hunger.052"] = {
+		"Half the comfort of tea is holding the cup. The other half is the excuse to sit for as long as it lasts.",
+		"A hot cup in both hands asks nothing of me until it's empty. That's the real gift in it.",
+	},
+	["muse.w12.hunger.053"] = {
+		"Every people in this world bakes some kind of bread: flat, round, dark, sweet. It's the closest thing to a tongue everybody speaks.",
+		"Orcs, dwarves, humans, trolls: all of them knead something and set it near a fire. Bread was never one people's invention alone.",
+	},
+	["muse.w12.hunger.054"] = {
+		"After a hard stretch, a bowl of plain porridge tastes like a reward someone thought about. Nothing in it but oats and relief.",
+		"The plainest supper after a few bad days tastes like a kindness. The food hasn't changed. I have.",
+		"Hardship doesn't improve the cooking. It improves the one eating, for a meal or two.",
+	},
+	["muse.w12.hunger.055"] = {
+		"Nobody sings about the washing up. Sand, a scrap of cloth, and a pot that clings to yesterday's supper like a grudge.",
+		"Cooking gets the praise. Scrubbing the pot afterward is done in silence, by whoever lost the argument.",
+	},
+	["muse.w12.hunger.056"] = {
+		"Sooner or later every scrap of food in the pack faces the sniff. Most pass. The ones that don't, I mourn for a long, sad moment.",
+		"Is it still good? The nose says maybe, the stomach says yes, and good sense says nothing, because nobody asked it.",
+	},
+	["muse.w12.hunger.057"] = {
+		"A little green on the crust is a suggestion, not a verdict. Cut it off and carry on.",
+		"Bread going blue at one corner still has a good heart. I cut away the corner and keep the heart.",
+	},
+	["muse.w12.hunger.058"] = {
+		"Of all the things I could wish for, it's a fresh egg I keep coming back to. Fried, with crisp edges. Such a small, exact longing.",
+		"Some cravings make no sense and need none. Mine, right now, is an egg cooked in butter.",
+	},
+	["muse.w12.hunger.059"] = {
+		"Butter is a food for people who stay put. On the move it turns rancid or melts away, so mostly I remember it fondly.",
+		"Fresh milk and real butter: two luxuries that never travel, which is why they taste of staying where you are.",
+	},
+	["muse.w12.hunger.060"] = {
+		"A pinch of a spice grown half a world away, and plain stew tastes like a rumor of somewhere else.",
+		"Spices are distance you can eat. Someone carried that flavor over seas and deserts just to reach a cooking pot.",
+	},
+	["muse.w12.hunger.061"] = {
+		"Some days cooking feels like one task too many, and supper is a raw carrot. The carrot doesn't complain. Neither, much, do I.",
+		"Too tired to light a fire, so supper is whatever needs none. Nobody will ever write a song about it.",
+	},
+	["muse.w12.hunger.063"] = {
+		"Stew is better on the second day. Some things need to sit with themselves before they're any good. I'm told that's true of people too.",
+		"Reheated stew beats fresh every time. Time does to a pot what hurry never could.",
+	},
+	["muse.w12.hunger.064"] = {
+		"Cooking for one is harder than cooking for ten. The pot keeps forgetting there's only me.",
+		"However little I put in, the pot makes enough for two. I suppose it's hoping.",
+		"Cooking for myself, I always make a second portion by mistake. The pot has bigger plans than I do.",
+	},
+	["muse.w12.hunger.065"] = {
+		"Nobody learns to cook without burning a few things. The ruined pots are the lessons; the good meals are only the proof.",
+		"A burnt supper teaches more than a good one. Mostly about patience, a little about fire.",
+	},
+	["muse.w12.hunger.066"] = {
+		"Wherever I sit by a cookfire, the smoke finds me. Move left, it moves left. There must be a fire somewhere that likes someone else.",
+		"Smoke follows the cook the way gossip follows a wedding. There's no escaping it; there's only squinting.",
+	},
+	["muse.w12.hunger.067"] = {
+		"Every house worth the name is built around its kitchen. The rest is just rooms to sleep in between meals.",
+		"Walls and a roof are the excuse. A hearth with a pot on it is the real reason anyone ever builds a house.",
+		"Halls have their thrones and towers their bells, but every home that ever mattered had a pot hanging over a fire.",
+	},
+	["muse.w12.hunger.068"] = {
+		"A king and a beggar get hungry in exactly the same way. It's the one appointment neither of them can buy out of.",
+		"Hunger doesn't check titles. It knocks on palace doors and hovel doors with the same knuckles.",
+	},
+	["muse.w12.hunger.069"] = {
+		"A feast is only food until people sit around it laughing. Then it's something no cook could make alone.",
+		"The best part of a feast isn't on the plates. It's the noise.",
+	},
+	["muse.w12.hunger.070"] = {
+		"When someone is grieving, people bring food. They don't know what to say, so they say it with bread. It isn't a bad language.",
+		"Nobody finds the right words beside a fresh loss. A pot of stew left at the door says them well enough.",
+		"Mourners are always fed by somebody. A loaf on the doorstep is how neighbors say what they can't.",
+	},
+	["muse.w12.hunger.071"] = {
+		"A pot can always take a little more water. That's how a soup for two feeds four, thinner and kinder.",
+		"Thin soup isn't the cook failing. It's a cook choosing more bowls over a richer one.",
+	},
+	["muse.w12.hunger.072"] = {
+		"Eat the same thing long enough and you start to hold opinions about each individual bite.",
+		"Monotony at meals creeps in quietly. First you don't notice it, then you notice nothing else.",
+	},
+	["muse.w12.hunger.073"] = {
+		"After days of the same food, a single new flavor lands like news from far away. A sour berry, a pinch of something green: a whole festival.",
+		"Variety is wasted on people who eat well every day. You have to go without to taste a radish properly.",
+		"One bite of something new after a week of the same: like a door opening onto a different room.",
+	},
+	["muse.w12.hunger.074"] = {
+		"Whatever I order at an inn, the next table's plate looks better. When I order what they had, the table after that wins.",
+		"Someone else's bowl always smells better than mine. It's a law of nature, like falling.",
+	},
+	["muse.w12.hunger.075"] = {
+		"At any new inn, I order the plainest thing on offer. If they can't get bread and broth right, nothing fancier will save them.",
+		"The simple dish tells you everything about a kitchen. Anyone can hide behind a sauce.",
+	},
+	["muse.w12.hunger.076"] = {
+		"Steam rising off a bowl is a promise kept. I like to watch it a moment before I break it with a spoon.",
+		"I keep a little pause before eating anything hot, just to watch it steam. A small ceremony nobody else needs to know about.",
+	},
+	["muse.w12.hunger.086"] = {
+		"Somebody feed me before I start being philosophical.",
+		"Hungry. Which means anything I say for the next hour should be taken lightly.",
+	},
+	["muse.w12.hunger.087"] = {
+		"Water first. Then talk.",
+		"Let me drink something. Then I'll have opinions.",
+		"A mouthful of water, and I'm all yours. Before that, I'm nobody's.",
+	},
+	["muse.w12.hunger.088"] = {
+		"Tea first. Strong enough to stand a spoon in. The world can wait its turn.",
+		"Nothing gets decided before a cup of something hot.",
+	},
+	["muse.w12.hunger.089"] = {
+		"Eat while it's hot. Trouble keeps; supper doesn't.",
+		"A meal left to spoil is a small sin. Eat it while it's still worth something.",
+	},
+	["muse.w12.hunger.090"] = {
+		"Share it. Half a loaf in company beats a whole one alone.",
+		"Food tastes better split two ways. Nobody has ever explained why, and nobody needs to.",
+	},
+	["muse.w12.hunger.091"] = {
+		"Eat something. Whatever it is, it'll look smaller afterward.",
+		"Trouble looks a size smaller from behind a full plate.",
+	},
+	["muse.w12.hunger.092"] = {
+		"Ale's for after. Water's for now.",
+		"Save the ale for when the work's done. It tastes better earned.",
+	},
+	["muse.w12.hunger.093"] = {
+		"If I go quiet, I'm not sulking. I'm thinking about pie.",
+		"Don't mind me. Just imagining a pie. A big one, with gravy.",
+	},
+	["muse.w12.hunger.094"] = {
+		"Sit down, eat. Whatever it is can wait until the bowl's empty.",
+		"No quarrel is so urgent it can't wait until after supper.",
+	},
+	["muse.w12.hunger.095"] = {
+		"Never argue with whoever holds the ladle. You'll win the point and lose the supper.",
+		"The cook is always right. Not because the cook is right, but because the cook fills the bowls.",
+	},
+	["muse.w12.rest.001"] = {
+		"Lie down after a long march and the legs keep walking for a while on their own, as if nobody had told them.",
+		"My legs refuse to believe the march is over. Long after I've stretched out flat, they're still taking steps somewhere.",
+		"The body stops; the legs don't, not at first. They go on pacing out the miles behind my closed eyes.",
+	},
+	["muse.w12.rest.002"] = {
+		"Sleep ignores me when I call it, then barges in halfway through something important, with no more manners than a goat.",
+		"Lie down and beg, and sleep stays away. Sit up to read one useful page, and it's on me before the second line.",
+	},
+	["muse.w12.rest.003"] = {
+		"The last thought before sleep is never the important one. It's always a buckle, or some word I mispronounced three days back.",
+		"Whatever I mean to think about before I drift off, the last thing in my head turns out to be a trifle: a loose thread, a price, a name I got wrong.",
+	},
+	["muse.w12.rest.004"] = {
+		"I dreamed I was walking. Hours of it, nothing but walking. I woke up tired, which seems unfair on both counts.",
+		"Some dreams are nothing but more road. I spend the whole sleep marching and wake owing my feet an apology.",
+		"A dream about trudging has a special cruelty: all that effort, and not a single mile to show for it.",
+	},
+	["muse.w12.rest.005"] = {
+		"In dreams I meet people I know perfectly well and couldn't name for any reward. They seem to know me better than I'd like.",
+		"My dreams are crowded with familiar strangers: faces I'd swear I've always known, and not one name among them.",
+	},
+	["muse.w12.rest.006"] = {
+		"Never decide anything worth keeping while tired. Sleep on it. The choice will still be there, only smaller.",
+		"Tired, every choice looks either easy or impossible. Put a sleep in between and most of them shrink to their real size.",
+		"A weary head makes poor judgments and proud ones. The verdict can wait for a good sleep; it loses nothing by waiting.",
+	},
+	["muse.w12.rest.007"] = {
+		"I'm not idle. I'm waiting, with great skill and no visible effort.",
+		"This isn't doing nothing. This is waiting, and I happen to be very good at it.",
+		"Don't mistake this for laziness. It's patience, and it's working very hard.",
+	},
+	["muse.w12.rest.008"] = {
+		"Doing nothing on purpose is harder than any chore. My hands keep reaching for a strap to fix, and I keep telling them no.",
+		"Give me an empty moment and my hands go looking for work. Teaching them to stay empty is a craft of its own.",
+		"Idle hands, they say, find mischief. Mine only find buckles. I'm trying to teach them to find nothing at all.",
+	},
+	["muse.w12.rest.009"] = {
+		"Sit quiet long enough and the world's noise moves off a little, like a crowd turning a corner. It's still there. It just stops talking to me.",
+		"Keep quiet for a while and everything busy seems to drift further off, as if the world had stepped into the next room to let me be.",
+	},
+	["muse.w12.rest.012"] = {
+		"The pack makes a poor pillow and a jealous one. At least while my head's on it, nobody walks off with it.",
+		"Lumpy, hard, smelling of old leather: the pack is a terrible pillow. It's also the only one I know will still be there when I wake.",
+	},
+	["muse.w12.rest.013"] = {
+		"The moment I lie down, every thought I put off arrives at once, each one sure it's the most urgent.",
+		"Lying down is a signal to my worries. They've been queuing politely for hours and now they all want to speak first.",
+		"Stretch out, close the eyes, and the head throws open its doors to every errand and every regret, all talking over each other.",
+	},
+	["muse.w12.rest.014"] = {
+		"Rest is the one thing in this world that keeps paying while I'm not looking. A good sleep under a roof, and the next stretch goes easier.",
+		"Sleep somewhere safe and the world seems to owe you a little for it afterward. I've never understood the arithmetic, but I collect.",
+		"A proper rest pays interest. Nobody hands over a receipt, but the next while always goes a shade lighter for it.",
+	},
+	["muse.w12.rest.015"] = {
+		"Between finishing one thing and starting the next there's a small gap, hardly a moment wide. I've learned to stand in it on purpose.",
+		"Every task leaves a little space behind it before the next one starts. Most people step straight over. I like to stop in it awhile.",
+	},
+	["muse.w12.rest.016"] = {
+		"Sitting down. Objections can be made in writing, and I won't read them.",
+		"I'm sitting. Anyone who needs me will find me lower than before.",
+		"Down I go. Whatever it is, it can come to me.",
+	},
+	["muse.w12.rest.017"] = {
+		"Bored. What a luxury. Boredom means nothing is chasing me, nothing is bleeding and nobody needs anything.",
+		"There's no richer feeling than boredom. To manage it you have to be safe, fed and unwanted all at once.",
+		"Nobody under siege was ever bored. If I'm yawning at nothing, things must be going remarkably well.",
+	},
+	["muse.w12.rest.018"] = {
+		"Half the trouble in this world was started by someone with nothing to do and a door they hadn't opened yet.",
+		"Boredom has opened more locked doors than any thief. A few of mine included, if I'm honest.",
+	},
+	["muse.w12.rest.019"] = {
+		"Patience isn't the waiting. It's what I do with my hands and my head while the waiting goes on.",
+		"Anyone can wait. Patience is waiting without chewing my own nails down to nothing.",
+		"Waiting is what happens to me. Patience is what I bring to it, when I remember to bring any.",
+	},
+	["muse.w12.rest.020"] = {
+		"Now and then I dream of a room I've never stood in, and wake up homesick for it.",
+		"There's a door in my dreams whose creak I know by heart, and I've never once seen it with my eyes open.",
+		"Some dreams lend me a house for a while: a step that dips, a shutter that sticks. Then they take it back without asking.",
+	},
+	["muse.w12.rest.022"] = {
+		"I slept properly. No aches, no muddle in the head. Naturally, I spent the first few minutes wondering what had gone wrong.",
+		"A good sleep, and I woke up feeling fine. I didn't trust it for a moment and checked my pockets.",
+	},
+	["muse.w12.rest.023"] = {
+		"Every beast knows how to rest: curl up, tuck in, stop. Only people make a long ceremony out of lying down.",
+		"Watch any animal settle: one turn, two, and it's done. People alone fuss over a bed as if it might refuse them.",
+		"No creature in the wild needs a pillow, a blanket and a reason. It finds a hollow, folds itself up, and sleeps.",
+	},
+	["muse.w12.rest.024"] = {
+		"Sit down before the legs insist. A rest I choose is worth twice one they take from me.",
+		"Better to stop while it's still a choice. Once the body makes it for me, the rest comes with a fine attached.",
+		"The legs will stop me sooner or later. I'd rather it were sooner, and my own idea.",
+	},
+	["muse.w12.rest.025"] = {
+		"For a little while nobody wants anything from me. No errand, no question, no hand held out. I hardly know what to do with my face.",
+		"Nobody asking, nobody waiting, nothing due. It's so rare I keep half expecting someone to come and take it back.",
+		"A moment that belongs to nobody but me. I hold it carefully, like something borrowed that I'll have to return.",
+	},
+	["muse.w12.rest.026"] = {
+		"Wake me if anything interesting happens. Actually, don't. Interesting usually ends in bandages.",
+		"If something exciting turns up, it can wait its turn. I'm resting.",
+	},
+	["muse.w12.rest.027"] = {
+		"Some days the tiredness isn't in the legs at all. Sleep won't fix it; it's sorrow, dressed up as fatigue so I'll let it in.",
+		"Not every weariness wants a bed. Some of it is grief in a borrowed coat, and rest only offers it a chair.",
+	},
+	["muse.w12.rest.028"] = {
+		"The first moment of sitting down is the best moment there is. Everything after it is just the price of getting up.",
+		"Nothing beats the instant I sit. Every part of me sends thanks at once, before remembering it'll have to stand up later.",
+		"Of all the small joys going, that first sinking into a seat is the one I'd defend in a duel.",
+	},
+	["muse.w12.rest.030"] = {
+		"People sneer at slowness. But slow hands drop less, slow eyes miss less, and slow tempers are the only ones I trust.",
+		"There's nothing shameful in slow. The careful pace drops fewer things, notices more, and starts fewer fights.",
+		"Quick gets the praise and slow gets the work done. I've stopped minding which one I'm called.",
+	},
+	["muse.w12.rest.031"] = {
+		"Bored enough, I start counting things: knots in a plank, links in a chain, cracks in a stone. I never do anything with the totals.",
+		"When nothing happens long enough I count whatever is in front of me. Forty-one rivets, so far. I'm not sure who I'm keeping score for.",
+	},
+	["muse.w12.rest.032"] = {
+		"Anyone asleep looks younger and more honest. I suppose I do too, which is the only time I'd vouch for myself.",
+		"Sleep takes the guard off every face. Even the hardest folk look like somebody's child with their eyes shut.",
+	},
+	["muse.w12.rest.033"] = {
+		"Rested, fed, and nothing on fire. I'll remember this one.",
+		"Slept properly, for once. I hardly recognize myself.",
+		"A real rest. Feels like borrowing someone else's legs.",
+	},
+	["muse.w12.rest.034"] = {
+		"Every time I lie down I give up a little control and trust the world to hand it back. So far it always has.",
+		"Sleep is a small surrender: I set everything down and hope it's all there when I pick it up. One day it won't be, and I won't know.",
+	},
+	["muse.w12.rest.035"] = {
+		"If I talk in my sleep, I hope I say something wiser than I manage awake. It would be a shame to waste the effort.",
+		"Whatever I mumble asleep, I'd like it to be useful advice. With my eyes open, the supply is running low.",
+	},
+	["muse.w12.rest.036"] = {
+		"Stillness has a sound of its own. Not silence: a low, wide hum, the sound of everything getting on without me.",
+		"Quiet isn't empty. Listen long enough and it fills with small things: a creak, a drip, something far off minding its own business.",
+		"When nothing near me moves, I can hear the world working at a distance, the way a house hums with other people's chores.",
+	},
+	["muse.w12.rest.038"] = {
+		"Boots on or boots off: that's the real question of any rest. Off is bliss. On is getting away in a hurry. I've never settled it.",
+		"Every time I lie down I hold the same small trial. Comfort says unlace them, caution says leave them. Caution usually wins, and my feet never forgive it.",
+		"Unlacing my boots to sleep is an act of faith in whatever's nearby. Some places earn it. Most don't.",
+	},
+	["muse.w12.rest.039"] = {
+		"By the time my boots are laced, the dream is gone. I keep the shape of it, like a dent in a pillow, and nothing else.",
+		"Dreams leave without saying goodbye. All that stays is a feeling, like a room where someone was sitting a moment ago.",
+		"Dreams don't survive the first bootlace. By the second, I couldn't even say whether it was a happy one.",
+	},
+	["muse.w12.rest.040"] = {
+		"Resting is not the same as giving up, though both begin by sitting down. The difference is in the getting up.",
+		"A rest and a surrender look alike from outside: someone on the ground, not moving. Only the next moment tells them apart.",
+	},
+	["muse.w12.rest.041"] = {
+		"A moment, please. Not for anything in particular. Just a moment.",
+		"One moment to myself, that's all. I'll be right back with the rest of me.",
+	},
+	["muse.w12.rest.042"] = {
+		"Half this life is running to get somewhere, and the other half is standing there once I've arrived, waiting for whatever I ran for.",
+		"Rush, then wait. Rush, then wait. Somebody designed this trade with a cruel sense of rhythm.",
+		"Nobody warned me how much of an adventure is spent leaning on things, waiting for the next part to start.",
+	},
+	["muse.w12.rest.043"] = {
+		"Rushing in takes nerve. Waiting, when every part of me wants to move, takes more, and nobody ever praises it.",
+		"Holding still while everything says go is a kind of courage too, the quiet sort that never makes it into a song.",
+		"The hardest orders I give myself are the ones that say: not yet.",
+	},
+	["muse.w12.rest.044"] = {
+		"Boredom is a kind of hunger, only it lives behind the eyes. Feed it nonsense and it just gets louder.",
+		"An idle head gets hungry the way a belly does, and it isn't picky. It'll chew on any old worry rather than nothing.",
+		"Nothing gnaws like an empty head. Give it no work and it starts working on me.",
+	},
+	["muse.w12.rest.046"] = {
+		"Rest and sleep aren't the same. I can rest with my eyes open and sleep without resting at all. The second is far more common.",
+		"A sleep that leaves me wrecked, a short sit that puts me right: the body keeps its own accounts, and they rarely match the hours.",
+	},
+	["muse.w12.rest.047"] = {
+		"There's a dream that keeps coming back: I'm late for something, and nobody will tell me what. I wake up hurrying.",
+		"In the same old dream I'm always running behind for an appointment I don't remember making. Waking doesn't quite cure the feeling.",
+		"I've been late in my dreams more times than I can count, and I still don't know for what. Whoever's waiting there must be very patient.",
+	},
+	["muse.w12.rest.048"] = {
+		"The world can smell a person sitting down. The moment I settle, something needs me, bites me, or wants a word.",
+		"Stand around pretending to be busy and the quiet lasts forever. Sit, and it's the sitting that rings the bell.",
+	},
+	["muse.w12.rest.049"] = {
+		"Watching a fire is the most honest idleness I know. The flames do all the work, and somehow I'm the one who comes away rested.",
+		"Nobody calls it lazy to stare into a fire. It's the one kind of doing nothing that everyone forgives.",
+	},
+	["muse.w12.rest.050"] = {
+		"I'm patient with strangers, with mules, with merchants. With myself, hardly at all. I should lend myself some of what I give away.",
+		"Everyone gets my patience except me. I wait calmly behind a slow cart and then curse myself for a moment's delay.",
+		"If I spoke to anyone else the way I speak to myself when I'm slow, I'd owe them an apology.",
+	},
+	["muse.w12.rest.051"] = {
+		"If I lie down, I'm not getting up. So I'm leaning. Leaning is a promise.",
+		"Not sitting. Sitting is dangerous. I'm leaning, which still counts as working.",
+	},
+	["muse.w12.rest.052"] = {
+		"People wish the dead rest, as if it were the finest gift going. Most of the living would settle for a small helping of it, here and now.",
+		"Rest is what the living promise the dead. A pity so little of it is left over for the ones still walking.",
+		"Every grave I've passed wishes its tenant a long rest. Nobody carves that kind of wish for the ones on their feet.",
+	},
+	["muse.w12.rest.053"] = {
+		"Waiting for news is the worst kind of sitting still. The body rests and the head runs laps around it.",
+		"Nothing wears me out like waiting to hear how something turned out. I don't move a muscle and still end up worn through.",
+		"Sitting by, waiting on word from elsewhere: the stillest work there is, and the most exhausting.",
+	},
+	["muse.w12.rest.054"] = {
+		"The best sleeps are the ones I never meant to take. I sit for a moment, and the next thing I know the world has moved on a little without me.",
+		"Planned rest is fine. Rest that happens by accident is better: a moment's sit that turns, without asking, into a proper sleep.",
+		"I never sleep so well as when I only meant to close my eyes for a moment.",
+	},
+	["muse.w12.rest.056"] = {
+		"Bored enough, I tidy. That's how I know it's serious. My pack is never so orderly as when nothing happens.",
+		"Nothing to do means everything gets folded, sorted and folded once more. Boredom has a very neat streak.",
+	},
+	["muse.w12.rest.057"] = {
+		"A seed can wait for years in dry ground, doing nothing at all, and lose none of what it is. I'd like to learn that trick.",
+		"Seeds are the masters of waiting. They lie still for as long as it takes and never forget what they're meant to become.",
+		"Somewhere under every road there are seeds asleep, holding their whole future folded small, in no hurry whatsoever.",
+	},
+	["muse.w12.rest.058"] = {
+		"Rest always comes with a little guilt folded inside it, as if someone somewhere were working twice as hard to make up for me.",
+		"I can't keep my hands idle for long without feeling I'm in someone's debt. Nobody has ever said so. I say it for them.",
+	},
+	["muse.w12.rest.059"] = {
+		"Nothing to do and nowhere to be. Marvelous. Terrifying, but marvelous.",
+		"Not one errand left. I'd celebrate, if I could think what people do at times like this.",
+	},
+	["muse.w12.rest.060"] = {
+		"To fall asleep I count the things I still have to do. It works, but only because I pass out from despair before the end of the list.",
+		"Some count sheep. I count unfinished errands, and sleep comes out of sheer embarrassment.",
+	},
+	["muse.w12.rest.061"] = {
+		"Some things can only be waited out: a bad mood, a slow mend, a run of rotten luck. Push at them and they dig in.",
+		"Not everything gives way to effort. A grudge, a fever, a streak of bad luck: those you sit beside until they get bored and leave.",
+		"There are troubles that only time can lift, and all it asks of me is that I stop prodding them.",
+	},
+	["muse.w12.rest.062"] = {
+		"When I read the same line three times and it still won't go in, that's the body's polite way of saying stop.",
+		"Tired arrives in small signs: a sentence read twice, a strap buckled wrong, a word that won't come. By the third, I should sit.",
+	},
+	["muse.w12.rest.064"] = {
+		"It's a comfort, sitting still and knowing the world turns perfectly well without my help. Not everything is mine to carry.",
+		"For a moment I stop, and nothing collapses. Whatever holds this world up, it isn't me. That's restful to remember.",
+		"I let go of everything for a while and the world doesn't even notice. There's a great kindness in being that unnecessary.",
+	},
+	["muse.w12.rest.065"] = {
+		"Don't talk to me about hurry. Hurry and I aren't speaking.",
+		"There'll be no hurrying. I've given it up, like a bad habit.",
+		"Fast is for people with a string of regrets at their heels. I'm going slow.",
+	},
+	["muse.w12.rest.066"] = {
+		"Sometimes I fall asleep with a problem knotted tight and wake up with it untied, as if someone worked on it while I was out. I've never met them.",
+		"Somebody quiet works in my sleep, sorting out what I couldn't. No thanks expected, no name given.",
+	},
+	["muse.w12.rest.067"] = {
+		"Bored in company, at least you can complain to each other. Bored alone, there's nobody to blame and nobody to tell.",
+		"Shared, boredom turns into gossip. Kept to myself, it just sits there and stares back.",
+	},
+	["muse.w12.rest.068"] = {
+		"Somewhere there's always a counter with someone ahead of me, explaining their whole life to the person behind it.",
+		"The shortest line is always the one that stops moving the moment I join it.",
+		"I've done a great deal of my waiting at counters, watching the back of a stranger's head decide what it wants.",
+	},
+	["muse.w12.rest.070"] = {
+		"After a fight the quiet comes back in pieces: first the ringing fades, then the small sounds return one by one, like birds after a hawk has gone.",
+		"There's a particular stillness that follows trouble. The world seems to peer out, check, and only then go back to its business.",
+		"Trouble over, and for a while nothing dares make a sound. Then something small ventures a chirp, and the rest follow.",
+	},
+	["muse.w12.rest.071"] = {
+		"Wait for the perfect moment and I'll wait forever. A good enough moment comes round often, and it's usually now.",
+		"The right moment is a rumor. I've waited on it plenty and it never showed. The tolerable one turns up every day.",
+	},
+	["muse.w12.rest.072"] = {
+		"Waiting is older than any craft. Before anyone hunted, or built, or fought, somebody sat and waited for something to happen.",
+		"Long before the first tool or the first wall, someone sat beside a burrow and waited. Everything else came after.",
+	},
+	["muse.w12.rest.073"] = {
+		"Listen to that. Nothing at all. Lovely.",
+		"Hear that? Neither do I. Best sound there is.",
+		"Not a peep anywhere. I could get used to this.",
+	},
+	["muse.w12.rest.074"] = {
+		"A yawn always arrives at the worst moment: in the middle of someone's serious speech, or right as something is sizing me up.",
+		"My yawns have no sense of occasion. They pick the solemn moments on purpose, I'm convinced of it.",
+	},
+	["muse.w12.rest.076"] = {
+		"In dreams everyone understands me the first time. Waking is the slow return to explaining things twice.",
+		"My dreams are full of people who understand me without a word. Then I wake and have to go back to words, and badly.",
+	},
+	["muse.w12.rest.077"] = {
+		"Falling asleep is a skill in three steps: lie down, stop listening, let go. I've mastered the first.",
+		"Lying down I can do. Switching off the ears is where I always come unstuck.",
+		"Sleep is easy, I'm told. You simply stop. Nobody explains how to stop the part of you that's keeping watch.",
+	},
+	["muse.w12.rest.078"] = {
+		"A heron can stand in the shallows so long that the fish forget it's there. That's the whole of patience, and it fits on one leg.",
+		"Herons wait on one leg until the water forgets them. I've never been able to keep that still for anything.",
+	},
+	["muse.w12.rest.079"] = {
+		"Wait long enough for anything and it's bound to disappoint. It's had all that time to grow in my head.",
+		"The longer I wait for something, the bigger it gets in my imagination, and the smaller it looks when it finally comes.",
+		"Anticipation is a sly cook. It seasons everything so heavily that the real dish always tastes plain.",
+	},
+	["muse.w12.rest.080"] = {
+		"I wonder what other folk dream. Gnomes in diagrams, I'd guess. Ogres of lunch. Merchants of a scale that tips their way.",
+		"Everyone dreams after their kind, I suspect: the gnome of gears, the farmer of a good harvest, the guard of a quiet shift. I'd love a look at a dragon's.",
+	},
+	["muse.w12.rest.081"] = {
+		"I wasn't asleep. I was inspecting the insides of my eyelids. Thoroughly.",
+		"Asleep? No. Eyes closed for quality control.",
+	},
+	["muse.w12.rest.082"] = {
+		"Keep still long enough and I start to hear my own thoughts properly, without the work shouting over them. Some of them I'd rather not have met.",
+		"Busy, I'm nothing but hands and errands. Still, I'm whoever is left underneath, and that one has a lot to say.",
+	},
+	["muse.w12.rest.083"] = {
+		"Boredom never lasts long in this world. Something always comes along to cure it, usually with claws.",
+		"No need to fear boredom for long. The world has a hundred cures for it and not one of them is gentle.",
+	},
+	["muse.w12.rest.085"] = {
+		"Each time I close my eyes I'm practicing something I'll only need to do once for real. Strange, how calm it all feels.",
+		"Sleep is a small rehearsal for the long one. I hope by the time it counts I've learned my part.",
+	},
+	["muse.w12.rest.086"] = {
+		"Rest when you can. The world won't send word when it's going to need you.",
+		"Take the rest while it's offered. Nobody hands it out twice.",
+		"Sit while you can. Nobody ever regretted a rest they took.",
+	},
+	["muse.w12.rest.087"] = {
+		"Whenever I open my eyes, something is already busy: a beetle, a bird, an ant hauling something twice its size. I've never once beaten the world to work.",
+		"Wake when I like, and the world has always started without me. Some small thing, somewhere, has been hard at it the whole time.",
+	},
+	["muse.w12.rest.088"] = {
+		"Through the worst stretches I keep one picture in my head: somewhere to sit, after. It's carried me further than any speech.",
+		"When it's hard going, I don't think of glory. I think of the moment I'll get to sit down, and that's enough to keep my feet moving.",
+	},
+	["muse.w12.rest.090"] = {
+		"Waiting for nobody in particular has its own odd comfort. Nobody's late, nobody lets me down, and I can leave whenever I like.",
+		"When nobody's coming, waiting turns into simply being somewhere. I find I don't mind it.",
+		"Nobody to meet, nowhere I'm expected. A wait with no end in it is hardly a wait at all.",
+	},
+	["muse.w12.rest.091"] = {
+		"A wish for anyone out there who's dead on their feet: one sound sleep, and someone trustworthy keeping watch.",
+		"May every weary soul find a corner where nobody wakes them before they're done.",
+	},
+	["muse.w12.rest.092"] = {
+		"I've perfected looking thoughtful while doing nothing whatsoever. A slight frown does most of the work.",
+		"Anyone passing sees someone deep in thought. What they're actually seeing is a person resting with a frown on.",
+	},
+	["muse.w12.sayings.001"] = {
+		"Dwarves have a saying: a wall built in a hurry is tomorrow's gravel. A few of my plans could have used that warning.",
+		"'A hasty wall ends up as gravel,' goes the dwarven saying. Looking back over some of my own bright ideas, I'd say the dwarves are right.",
+	},
+	["muse.w12.sayings.002"] = {
+		"Ironforge has a saying that a dwarf will lend you a hammer sooner than a full mug. Anyone who has watched them drink would believe it.",
+		"'Borrow a dwarf's tools, never a dwarf's tankard,' as the saying goes in Ironforge. It sounds like advice and reads like a warning.",
+	},
+	["muse.w12.sayings.003"] = {
+		"Dwarves claim you can count a liar's fibs by how often he tugs at his beard. By that measure, no true word has ever been spoken in a dwarven tavern.",
+		"An honest beard keeps still while its owner talks, by one dwarven notion. I have yet to see a dwarven beard keep still for anything.",
+	},
+	["muse.w12.sayings.004"] = {
+		"Miners say the best seam always lies one more blow into the rock. A comforting saying, and a very convenient one for whoever sells the picks.",
+		"'One more blow and you'll hit the good stuff,' the miners tell each other. I suspect the rock has been hearing that for a thousand years.",
+	},
+	["muse.w12.sayings.005"] = {
+		"The Wildhammer say a gryphon has judged you before you've finished saying hello. I'd rather not know what one decided about me.",
+		"Among the Wildhammer it's said that a gryphon weighs up its rider in one glance and never changes its mind. Harsher than any court.",
+	},
+	["muse.w12.sayings.006"] = {
+		"The Dark Iron clan is said to have a saying: the deeper the forge, the shorter the temper. Considering where they live, they can't have much temper left.",
+		"'Deep forge, short fuse,' runs a saying of the Dark Iron dwarves. Given how far down they've dug, I'd hate to meet one in a bad mood. Or any mood.",
+	},
+	["muse.w12.sayings.007"] = {
+		"Mountain dwarves say the mountain never asks whose king sits inside it. Every crown could use that line carved over its door.",
+		"'The mountain outlasts the throne it holds,' goes a dwarven saying. I'd like to hear a king say it aloud, just once.",
+	},
+	["muse.w12.sayings.008"] = {
+		"Dwarves joke that an elf takes a hundred years to decide where a door should go, and then grows it. I can't tell if that's envy or exasperation.",
+		"'An elf plans a doorway for a century,' goes the dwarven jibe. Which is either very slow or very sure of itself. Possibly both.",
+	},
+	["muse.w12.sayings.009"] = {
+		"Explorers' League diggers have a saying: dig slowly, or you'll find what you were hoping for instead of what's actually there. That reaches far beyond ruins.",
+		"'Hasty shovels find what they came for,' say the diggers of the Explorers' League, and they don't mean it kindly. Wanting a thing is a poor way to look for it.",
+	},
+	["muse.w12.sayings.010"] = {
+		"Gnome engineers have a saying: if it worked on the first try, someone else built it. Strangely comforting, for a saying about failure.",
+		"'Nothing honest works the first time,' a gnome tinker once told me, very cheerfully, while something behind her caught fire.",
+	},
+	["muse.w12.sayings.011"] = {
+		"Gnomes call a city a machine for keeping friends within shouting distance. Theirs broke, and they're still hunting for the spare parts.",
+		"A city is only an engine for keeping friends close, if the gnomish saying is right. Since Gnomeregan, it sounds less like a joke and more like a lament.",
+	},
+	["muse.w12.sayings.012"] = {
+		"Gnome tinkers swear every machine has one part whose only job is to rattle and complain. I know exactly which part of me that is.",
+		"According to the gnomes, every contraption carries one piece that does nothing but grumble. In my case it's the knees, and they're very dedicated.",
+	},
+	["muse.w12.sayings.013"] = {
+		"Gnomes hold that a question is the only tool that gets sharper with use. Which explains rather a lot about gnomes.",
+		"'Questions don't blunt; answers do,' runs a gnomish saying. I like it a little more every time the world surprises me.",
+	},
+	["muse.w12.sayings.014"] = {
+		"A gnomish saying holds that no problem is too big, only the wrench too small. I admire the optimism. I have questions about the wrench.",
+		"'There are no big problems, only short wrenches,' the gnomes like to say. Touching confidence. I'd want to see the wrench first.",
+	},
+	["muse.w12.sayings.015"] = {
+		"Goblin engineers reckon anything that didn't explode wasn't trying hard enough. Gnomes say the exact opposite. Between the two, I stand well back.",
+		"'No bang, no business,' so the goblin tinkers say. The gnomes insist on the reverse. I keep a safe distance from both philosophies.",
+	},
+	["muse.w12.sayings.016"] = {
+		"Farmers say a field never forgets who walked away from it; it just grows thistles in their name. Half the north must be thistles by now.",
+		"There's a farmers' saying that untended land keeps a grudge and writes it out in weeds. The empty fields of Lordaeron must be shouting.",
+	},
+	["muse.w12.sayings.017"] = {
+		"Farm folk like to say the ox never learns it was the hero of the harvest. Most heroes would be better company if they never found out either.",
+		"'The ox pulls the whole harvest and never hears a song about it,' they say in farm country. Fair enough. The ox would hate the song.",
+	},
+	["muse.w12.sayings.018"] = {
+		"Old soldiers swear a fighter needs just two things: dry boots and a sergeant with no imagination. I'd add a third: nobody watching.",
+		"The soldiers' saying runs: keep your boots dry and your captain bored, and you'll live to complain about both. Sound, though it leaves out luck.",
+	},
+	["muse.w12.sayings.019"] = {
+		"Stormwind's masons have a saying that every city gets built twice, once in stone and once in wages. They know better than anyone which half went unpaid.",
+		"'Stone holds a city up; pay holds the masons,' runs a saying among the builders of Stormwind. After what came of the unpaid wages, nobody there laughs at it.",
+	},
+	["muse.w12.sayings.020"] = {
+		"The refugees from the north are said to have a saying: leave the silver, take the spoon. I can't think of truer advice for leaving in a hurry.",
+		"'Take the spoon and leave the silver,' the folk who fled Lordaeron tell each other. Whatever you can eat with is worth more than whatever you can sell.",
+	},
+	["muse.w12.sayings.021"] = {
+		"Old folk of Lordaeron used to say a good king is only a farmer whose field happens to be people. The kingdom's last harvest went very badly.",
+		"'A king tends people the way a farmer tends rows,' the elders of the northern kingdoms once said. They never foresaw what would come to reap those rows.",
+	},
+	["muse.w12.sayings.022"] = {
+		"Village folk in Elwynn say a borrowed ladder always comes back one rung short. Nobody knows where the rungs go. I have theories about neighbors.",
+		"'Lend a ladder, get back a stool,' as the farmers of Elwynn put it. Lending is a lovely habit with a small, steady cost.",
+	},
+	["muse.w12.sayings.023"] = {
+		"In Darkshire, people say you never answer a knock you weren't expecting. After everything told about that wood, I can't blame them.",
+		"'Unexpected knock, unopened door,' as Darkshire folk have it. A sad rule to need, and a sensible one to keep.",
+	},
+	["muse.w12.sayings.024"] = {
+		"Westfall farmers have a saying that a lean harvest shows you who your neighbors really are. By all accounts they've had plenty of lean ones lately.",
+		"'Bad harvests count your friends for you,' as the farm folk of Westfall put it. A hard way to take a census.",
+	},
+	["muse.w12.sayings.025"] = {
+		"Redridge folk say a good bridge is worth three walls. Walls keep trouble out, but a bridge lets help in. I'd never looked at it that way.",
+		"'One bridge beats three walls,' goes a saying around Lakeshire. Defense is good; a way for friends to reach you is better.",
+	},
+	["muse.w12.sayings.026"] = {
+		"Kaldorei are said to teach their young to swear only small oaths, since an oath can outlive its maker by a few thousand years. Good advice for anyone, long-lived or not.",
+		"'Promise little; promises live longer than people,' goes a kaldorei saying. With their lifespans, they'd know.",
+	},
+	["muse.w12.sayings.027"] = {
+		"The kaldorei say a forest only goes quiet when it's listening. I've caught myself lowering my voice whenever anything goes quiet, forest or not.",
+		"An elven saying holds that silence among the trees is attention, not absence. Ever since I heard it, every quiet place feels slightly watched.",
+	},
+	["muse.w12.sayings.028"] = {
+		"The kaldorei claim humans build in stone because they haven't the patience to grow a house. Unkind, maybe. Also a little true.",
+		"'The short-lived quarry; the patient grow,' as one kaldorei saying has it. I'd still like a roof before the year is out.",
+	},
+	["muse.w12.sayings.029"] = {
+		"The Sentinels have a saying: no watch is long, only the watcher grows tired. I suspect it's meant to be comforting. It isn't, quite.",
+		"'The watch doesn't lengthen; the watcher shortens,' Sentinels supposedly tell their recruits. A strange thing to remember when sleep won't come.",
+	},
+	["muse.w12.sayings.030"] = {
+		"Druids of the Cenarion Circle say a seed never argues with the soil it lands in. I argue with everything, which may be why so little of me has sprouted.",
+		"'The seed takes the ground it's given,' the Circle's druids teach. Admirable. I'd still have a few complaints for the ground.",
+	},
+	["muse.w12.sayings.031"] = {
+		"Kaldorei supposedly hold that a proper apology needs a century to ripen. For anyone shorter-lived, that's a terrible way to settle a quarrel.",
+		"'An apology picked too early tastes of nothing,' the kaldorei are said to believe, and they wait accordingly. Some of their quarrels must be older than kingdoms.",
+	},
+	["muse.w12.sayings.032"] = {
+		"The high elves once had a saying that beauty is a wall which needs guarding like any other. After Quel'Thalas, it reads like a warning nobody heeded.",
+		"'A lovely thing still needs a sentry,' the elves of Quel'Thalas used to say, I'm told. Their kingdom proved it the hard way.",
+	},
+	["muse.w12.sayings.033"] = {
+		"The orcs have a saying that a scar is the one lesson nobody can steal from you. Then again, nobody has ever tried very hard to steal a lesson.",
+		"'A scar is a teacher that never leaves,' goes an old orcish saying. I'd prefer a teacher who knocked first.",
+	},
+	["muse.w12.sayings.034"] = {
+		"Orc elders teach that strength which shouts is strength that doubts itself. I think of it whenever someone in a tavern gets loud about how tough they are.",
+		"There's an orcish saying: the strong arm has no need of the loud mouth. Wise words, from a people famous for both.",
+	},
+	["muse.w12.sayings.035"] = {
+		"The Frostwolf clan is said to teach: feed the wolf before yourself, and you'll never hunt alone. It's about wolves. It's also very clearly not about wolves.",
+		"'Who feeds the wolf first never walks alone,' runs a Frostwolf saying. The more I turn it over, the more people I find inside it.",
+	},
+	["muse.w12.sayings.036"] = {
+		"Orcs who came out of the internment camps have a saying: a fence can hold the body, never the rest. They earned the right to say it. I can only listen.",
+		"'Walls take the legs, not the will,' say the orcs who remember the camps. I have no claim on words like those, only the duty of hearing them.",
+	},
+	["muse.w12.sayings.037"] = {
+		"An orcish saying goes: speak your anger to the face, or swallow it whole, but never chew it. I chew. I know perfectly well that I chew.",
+		"'Spit anger out or swallow it, but don't chew on it,' the orcs say. Good advice, and I break it constantly.",
+	},
+	["muse.w12.sayings.038"] = {
+		"Orcs hold that a lie told to an enemy wounds the one who tells it. Strange honor, keeping faith even with the other side. I find I admire it.",
+		"'Lie to your foe and you've cut your own hand,' goes an orcish saying about honor. A demanding rule. Plenty of people don't keep it even with their friends.",
+	},
+	["muse.w12.sayings.039"] = {
+		"Orcs warn that whatever the clan forgets, the enemy will remember for it. A strong argument for keeping honest records, among other things.",
+		"'Forget your own wrongs and your foes will keep them for you,' goes an orcish saying. History seems to agree, loudly.",
+	},
+	["muse.w12.sayings.040"] = {
+		"The Darkspear say the loa answer slowly so you have time to regret the question. The wisest thing I've heard about asking for anything.",
+		"'Loa take their time, so you can take back your asking,' goes a troll saying. Patience as a kind of mercy. I like that.",
+	},
+	["muse.w12.sayings.041"] = {
+		"Jungle trolls say the panther never chases; it waits where the path meets the water. Every hunter alive is still learning that one.",
+		"'Don't run after the panther's supper. Wait where it drinks.' A troll saying, I'm told, and it applies to far more than hunting.",
+	},
+	["muse.w12.sayings.042"] = {
+		"A wound that closes too fast teaches nothing, according to the trolls. Easy for them to say. Their wounds close while they're still talking.",
+		"'Quick healing, slow learning,' say the trolls, who heal faster than anyone. I'd gladly trade a little wisdom for that.",
+	},
+	["muse.w12.sayings.043"] = {
+		"Troll elders are said to teach the young to listen hardest just after the drums stop. Whatever is left in that quiet is what's real.",
+		"Trolls have a saying: the drum is for the dancing, and the silence after it is for the truth. I come back to it in quiet moments.",
+	},
+	["muse.w12.sayings.044"] = {
+		"Troll witch doctors are said to teach that every curse is a promise somebody broke. I find that more frightening than any talk of dark powers.",
+		"'A curse is an oath gone bad,' goes a saying of the troll witch doctors. If it's true, the world is far more cursed than it looks.",
+	},
+	["muse.w12.sayings.045"] = {
+		"The Darkspear have a saying that a tribe is a canoe: pull out of rhythm and everyone gets wet. I'd never thought of company as a matter of rowing.",
+		"'Paddle with the others or swim alone,' runs a Darkspear saying. Not a threat, exactly. More a plain description of how canoes work.",
+	},
+	["muse.w12.sayings.046"] = {
+		"Trolls say good mojo can't be bought, only borrowed, and it always comes back to collect. I'd like to know what my account looks like.",
+		"'Mojo is a loan, and it remembers who borrowed,' as the trolls tell it. I suspect I'm overdrawn.",
+	},
+	["muse.w12.sayings.047"] = {
+		"Tauren elders teach that you should walk as if every step is felt below. I've begun placing my feet a little more politely.",
+		"'Tread as a guest treads,' the tauren say of the ground. It had never crossed my mind that the earth might mind being stamped on.",
+	},
+	["muse.w12.sayings.048"] = {
+		"Tauren herders say the herd moves at the pace of its slowest calf, and that's what makes it a herd. Most crowds would sooner leave the calf behind.",
+		"'A herd walks as fast as its weakest,' goes a tauren saying. Not a complaint, the way they say it. A definition.",
+	},
+	["muse.w12.sayings.049"] = {
+		"Kodo drivers say never to argue with a kodo over the way; it remembers water you've never seen. A few guides could stand to be kodos.",
+		"'The kodo knows the path to water before you know you're thirsty,' herders in the Barrens like to say. Trust the one with the longer memory, in other words.",
+	},
+	["muse.w12.sayings.050"] = {
+		"The tauren say their dead have simply gone ahead on the trail, and will grumble if you arrive too soon. I find that oddly easy to believe.",
+		"'The dead walk ahead; don't hurry to catch them,' runs a tauren saying. Gentle and practical, two things that rarely sit together.",
+	},
+	["muse.w12.sayings.051"] = {
+		"Tauren hunters say you either thank what you take from the land or you leave it be. I've slipped into the habit of a small thanks, said quietly.",
+		"'Take with thanks or don't take,' runs the tauren hunters' saying. It costs nothing to follow, and I've noticed it changes how the taking feels.",
+	},
+	["muse.w12.sayings.052"] = {
+		"Tauren elders like to remind the young that every pebble was part of a mountain once. Respect the small, they mean. Gravel has looked different to me ever since.",
+		"'Every pebble remembers being a mountain,' goes a tauren saying. Be gentle with small things; they've already lost a great deal.",
+	},
+	["muse.w12.sayings.053"] = {
+		"If the tauren can be trusted on it, the quilboar have a saying: the thorn remembers every hand. Charming people. Prickly philosophy.",
+		"The quilboar supposedly say that a thorn never forgets the hand that grabbed it. Less a piece of wisdom than a threat with good posture.",
+	},
+	["muse.w12.sayings.054"] = {
+		"In the Undercity it's said that whatever endures past death was the part worth keeping. A hard comfort, made by people who had a great deal taken first.",
+		"The Forsaken have it that death strips away everything except what mattered. Grim, and probably earned. Few sayings cost that much to coin.",
+	},
+	["muse.w12.sayings.055"] = {
+		"'Hurry is a habit of the living,' the Forsaken are fond of saying. They say it slowly, too, which rather proves the point.",
+		"Among the Forsaken, rushing is called a habit of the living, and gently mocked. Watching anyone stuck waiting in a line, I see what they mean.",
+	},
+	["muse.w12.sayings.056"] = {
+		"Some of the Forsaken say a name is the first thing death takes and a grudge the very last. That would account for the mood in the Undercity.",
+		"The Forsaken saying runs: the name goes first, the grudge goes last. I wonder which of mine would hold on longer.",
+	},
+	["muse.w12.sayings.057"] = {
+		"There's a grim Forsaken saying: what the grave couldn't hold, no wall will. As threats go, it's hard to argue with.",
+		"'If the grave let go of it, nothing else will keep it,' the Forsaken say of themselves. A boast and a warning in a single sentence.",
+	},
+	["muse.w12.sayings.058"] = {
+		"Undercity apothecaries are said to joke that a cure and a plague differ mainly in who's paying. I hope it's a joke. I really do.",
+		"'Remedy or poison: ask who signed the order,' goes a grim saying among the Royal Apothecaries. Not reassuring, from people who make both.",
+	},
+	["muse.w12.sayings.059"] = {
+		"The Undercity's deathguards are said to hold that a gate is kept by whoever refuses to fall over longest. Not glamorous. Very effective.",
+		"'Gates are kept by the stubborn, not the strong,' runs a saying among the Forsaken guards. I'd add: and by the bored.",
+	},
+	["muse.w12.sayings.060"] = {
+		"Goblin traders have a rule: never sell the last one, raise its price. It works on me every single time, and I know the rule.",
+		"'The last one isn't for sale. It's for a higher price,' goes the goblin saying. Knowing it has never once stopped me paying.",
+	},
+	["muse.w12.sayings.061"] = {
+		"A Steamwheedle saying: every contract is a cage, so find the door before you sign. I have never read anything that carefully in my life.",
+		"'Read a contract the way you'd walk into a cage: looking for the door,' goblins say. Sensible. I sign things the way I swat flies.",
+	},
+	["muse.w12.sayings.062"] = {
+		"Goblins like to say loyalty is a coin you can spend exactly once. I'd argue it's the only coin that comes back if it's spent well.",
+		"'Loyalty spends once, so spend it high,' the goblin saying goes. I disagree with the arithmetic. Spent right, it tends to return.",
+	},
+	["muse.w12.sayings.063"] = {
+		"In Booty Bay they say everyone's honest until the tide goes out. What the tide has to do with it, I can't say, and I'm not asking.",
+		"'Honest at high water' is what Booty Bay calls someone you can trust only while it suits them. It covers a surprising number of people.",
+	},
+	["muse.w12.sayings.064"] = {
+		"Goblins warn never to haggle with anyone who has nowhere else to be. They'll outwait you every time. I'm always the one in a hurry.",
+		"'Never bargain with someone who has all the time in the world,' the goblin merchants say. That has never once been me.",
+	},
+	["muse.w12.sayings.065"] = {
+		"Water sellers in Gadgetzan say thirst is the one customer who never haggles. A grim little saying. Very good business.",
+		"'Thirst doesn't bargain,' runs the saying among Gadgetzan's water merchants. The most honest description of a monopoly I've ever heard.",
+	},
+	["muse.w12.sayings.066"] = {
+		"The Timbermaw furbolgs are said to welcome a guest with empty hands, as long as the hands are willing. A better rule than most inns keep.",
+		"'Empty hands are a gift if they'll carry wood,' runs a furbolg saying, or so I'm told. Hospitality with a job attached. Fair.",
+	},
+	["muse.w12.sayings.067"] = {
+		"Furbolgs have a saying that rot starts in the den, never in the woods. Given what demon taint did to so many of their tribes, it's a dearly bought saying.",
+		"'Sickness comes home before it comes from outside,' the Timbermaw say. With so many furbolg tribes gone mad from within, I believe them.",
+	},
+	["muse.w12.sayings.068"] = {
+		"Furbolgs reckon a bear's whole wisdom is to eat when it can, sleep when it can, and never worry in between. I've managed the first two.",
+		"'Eat, sleep, and leave the worrying to the squirrels,' goes a furbolg saying. I'd love to. It seems I'm the squirrel.",
+	},
+	["muse.w12.sayings.069"] = {
+		"Ogres have a saying, as far as anyone can translate it: two heads, two opinions, one belly, so the belly decides. Some councils work the same way.",
+		"'Two heads argue, one stomach wins,' is roughly how the ogre saying goes. More than one kingdom is governed on that principle.",
+	},
+	["muse.w12.sayings.070"] = {
+		"Ogre magi supposedly have a saying: clever ogre, still ogre. Coming from them, I find it more honest than half the lectures scholars give.",
+		"'Smart ogre, still ogre,' the ogre magi are said to grumble. More humility in four words than in most libraries.",
+	},
+	["muse.w12.sayings.071"] = {
+		"An ogre saying, loosely translated: the bigger the club, the shorter the argument. Diplomacy, ogre style. Plenty of people with smaller clubs live by it too.",
+		"'Big club, short talk,' the ogres say. Crude, but more than a few lords settle things the same way, only with better manners.",
+	},
+	["muse.w12.sayings.072"] = {
+		"Sailors say a ship is never lost, only early to a harbor nobody planned on. I'm adopting that, starting with my next wrong turn.",
+		"'Not lost: arriving somewhere unexpected,' as the sailors put it. A generous way of seeing things, and I'll be borrowing it.",
+	},
+	["muse.w12.sayings.073"] = {
+		"Sailors say the rope that saves your life is always one you coiled while bored. Dull work is mostly a gift to some later, worse moment.",
+		"'Coil the line well when nothing's happening; something will,' runs a sailors' saying. I think of it whenever I'm tempted to skip a dull chore.",
+	},
+	["muse.w12.sayings.074"] = {
+		"Sailors claim trouble only learns your name once you step ashore; afloat, you're just another hull. I can see why some never come in.",
+		"'On deck you're a hull; ashore you're a name, with debts attached,' as sailors have it. No wonder they look uneasy on dry land.",
+	},
+	["muse.w12.sayings.075"] = {
+		"Sailors swear every port has exactly one honest tavern, and it's always shut. I've given up looking for it. I just check the cups.",
+		"'One honest tavern per harbor, and its door is locked,' as sailors tell it. Sound advice dressed up as a joke, the way their best advice usually is.",
+	},
+	["muse.w12.sayings.076"] = {
+		"Fishermen have a saying: a net with no holes catches nothing but water. I've begun to forgive a few holes in myself.",
+		"'A net is mostly holes, and it still feeds the village,' the fishing folk like to say. Encouraging, for anyone full of gaps.",
+	},
+	["muse.w12.sayings.077"] = {
+		"Fishing folk say that where murlocs start gurgling, the fish have already packed up and left. I'd follow the fish's lead.",
+		"'When the murlocs sing, the fishing's over,' is what fishermen along the coasts say. Wise. I'd leave too, and for more reasons than fish.",
+	},
+	["muse.w12.sayings.078"] = {
+		"Caravan masters advise traveling half full: a loaded wagon draws bandits and an empty one draws pity. Moderation, as practiced by people who've been robbed.",
+		"'Half a load: too little to rob, too much to beg,' so the caravan folk say. The middle of the road, quite literally.",
+	},
+	["muse.w12.sayings.079"] = {
+		"Auctioneers have a saying: a thing is worth exactly what the second most stubborn buyer will pay. Honest, in its way, and a little cruel.",
+		"'Value is set by whoever gives up second,' goes the auctioneers' saying. That isn't trade. That's a contest of mules.",
+	},
+	["muse.w12.sayings.080"] = {
+		"Peddlers claim the customer who argues longest is the one who buys in the end. The silent ones were never going to. I've played both parts.",
+		"'Haggling is the sound of a sale coming,' the traveling merchants say. Which makes me a very predictable customer.",
+	},
+	["muse.w12.sayings.081"] = {
+		"Argent Dawn soldiers supposedly say: the dead never rest, so the living had better take turns. Practical faith. I respect it more than the grand kind.",
+		"'The dead keep no hours; keep yours in shifts,' as the Argent Dawn reportedly puts it. Plain, tired, and right.",
+	},
+	["muse.w12.sayings.082"] = {
+		"Sergeants like to say one hard march teaches more than ten fine speeches. I believe it, though I'd still like to hear one of the speeches.",
+		"'A blistered foot learns faster than a full ear,' as drill sergeants put it. True, sadly. I'd have liked the speech as well.",
+	},
+	["muse.w12.sayings.083"] = {
+		"There's a soldiers' saying that fear is the one comrade who never misses a muster. Might as well learn to march beside it.",
+		"'Fear always answers the roll call,' veterans say. I've stopped hoping it will oversleep and given it a place in the line instead.",
+	},
+	["muse.w12.sayings.084"] = {
+		"Soldiers like to say the wound that kills you is the one you were too proud to show the medic. Pride, it seems, keeps a tally of its own.",
+		"'Pride hides the cut until the cut wins,' as old campaigners put it. I keep it in mind whenever I'm tempted to say I'm fine.",
+	},
+	["muse.w12.sayings.085"] = {
+		"Field healers have a grim saying: the ones shouting are doing fine; worry about the quiet ones. I think of it whenever someone says nothing for too long.",
+		"'Loud wounded live,' as battlefield menders put it. It's the silent ones they run to. I've never heard a saying so practical and so sad.",
+	},
+	["muse.w12.sayings.086"] = {
+		"Trackers have a saying that the freshest trail in any wood is usually your own. It's a warning against walking in circles. It works for thinking, too.",
+		"'The newest tracks are mostly yours,' scouts like to say. Often enough I've followed my own thoughts round in a ring to believe it.",
+	},
+	["muse.w12.sayings.087"] = {
+		"Flight masters say you thank a mount that knows the way rather than try to steer it. Plenty of people could stand to hear that about plenty of things.",
+		"'Don't steer what already knows the road; thank it,' goes a saying among the beast handlers at the roosts. Good counsel for anyone who loves to be in charge.",
+	},
+	["muse.w12.sayings.088"] = {
+		"Herb gatherers warn that the prettiest bloom in any bog is the one that'll make you sick. Pretty things have a lot to answer for.",
+		"'Pick the plain leaf, leave the showy one,' the herbalists say. Advice I'd extend well beyond plants.",
+	},
+	["muse.w12.sayings.089"] = {
+		"Innkeepers say the guest who pays ahead sleeps worst, lying awake doing sums. I can't decide if that's wisdom or a way to sell one more drink.",
+		"'Paid up front, up all hours,' is an innkeepers' saying about nervous guests. Wisdom, possibly. Or a way of selling the drink that helps with the sums.",
+	},
+	["muse.w12.sayings.090"] = {
+		"An innkeeper's saying: every table is a border and every shared bench is a treaty. Some of the most peaceful places I know of are long benches.",
+		"Innkeepers like to say a crowded bench has ended more feuds than any envoy. I don't doubt it. It's hard to hate someone whose elbow you're sharing.",
+	},
+	["muse.w12.sayings.091"] = {
+		"Innkeepers claim they can read a traveler's whole story off their boots before a word is said. I've taken to hiding mine under the table.",
+		"'Listen to the boots, not the mouth,' goes an innkeepers' saying about guests. Mine would tell some embarrassing tales.",
+	},
+	["muse.w12.sayings.092"] = {
+		"Dwarves say never trust a floor you didn't dig yourself. I'm keeping that one.",
+		"'Don't trust ground you didn't dig,' as the dwarves say. Sensible folk, dwarves.",
+	},
+	["muse.w12.sayings.093"] = {
+		"Goblins call a bargain a loss that smiled at you first. Worth remembering at the next stall.",
+		"'A bargain is a loss with good manners.' Goblin wisdom. I hear it every time I open my purse.",
+	},
+	["muse.w12.sayings.094"] = {
+		"The tauren say a long road makes for a short tongue. Enough talking, then.",
+		"Long trail, short talk, as the tauren put it. So: I'll hush.",
+	},
+	["muse.w12.sayings.095"] = {
+		"An old orc saying: whoever boasts first limps home last. Noted.",
+		"'Loud on the way out, limping on the way back.' Orcish proverb. A good one.",
+	},
+	["muse.w12.sayings.096"] = {
+		"Sailors say never trust anyone who claims they've never been seasick. Fair. I don't trust anyone who's never been lost, either.",
+		"'Never been sick on a ship? Then you've never sailed, or never been honest.' Sailors' wisdom. Hard to argue.",
+	},
+	["muse.w12.sayings.097"] = {
+		"Innkeepers say the last round is always the one people remember wrong. Just so it's said.",
+		"'Nobody remembers the last round right,' as innkeepers put it. I'll skip it, then.",
+	},
+	["muse.w12.sayings.098"] = {
+		"Gnomes say there are no accidents, only experiments nobody scheduled. Then I've been very scientific lately.",
+		"'No accidents, just unplanned tests,' as the gnomes put it. By that measure, I'm a fine researcher.",
+	},
+	["muse.w12.sayings.099"] = {
+		"Troll wisdom: don't run from what you can wait out. Waiting it is.",
+		"'Whatever can be outwaited needn't be outrun,' the trolls say. Patience, then.",
+	},
+	["muse.w12.sayings.100"] = {
+		"Soldiers say you can tell a veteran by how fast they sit down. Like so.",
+		"'The veteran sits first,' as soldiers say. Sitting.",
+	},
+	["muse.w12.sayings.101"] = {
+		"Dwarves have it that an empty mug is a question waiting for an answer. Rude to leave it hanging.",
+		"'A dry mug asks a question,' the dwarves say. Somebody ought to answer it.",
+	},
+	["muse.w12.sayings.102"] = {
+		"The Forsaken say a grudge keeps better than meat. Cheerful lot.",
+		"'Meat rots, grudges keep.' A Forsaken saying. Charming.",
+	},
+	["muse.w12.sayings.103"] = {
+		"Orcs say a silent wolf is a hungry wolf. Don't mind my silence, then.",
+		"'The quiet wolf is the hungry one,' as the orcs put it. That explains my mood.",
+	},
+	["muse.w12.sayings.104"] = {
+		"Ogres have a saying: count your heads before you pick a fight. Easier for some than others.",
+		"'First count your own heads,' goes the ogre saying. One, in my case. I'm keeping it.",
+	},
+	["muse.w12.sayings.105"] = {
+		"Kodo herders say a kodo forgets neither a kind hand nor a kick. Same here, honestly.",
+		"'Kodos remember kicks and kindness alike,' the herders say. So do I.",
+	},
 }, "base_monologues")

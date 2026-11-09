@@ -3301,4 +3301,2415 @@ NS:AddTexts("itIT", {
 		"si scosta dai resti e aspetta un momento, per essere {g:sicuro|sicura} che restino fermi.",
 		"osserva i resti un respiro più del necessario. Con i morti, si impara.",
 	},
+	["battle.w12.cries.001"] = {
+		"Ho piantato i piedi. Ti servirà una leva.",
+		"Piedi a terra e mento alto. Porta una leva, se vuoi smuovermi.",
+		"Ho messo radici. Vai a prendere una leva, ti aspetto.",
+	},
+	["battle.w12.cries.002"] = {
+		"Senti? Ti sembra la voce di chi trema?",
+		"Ascolta bene. Ha l'aria di una voce che trema, questa?",
+	},
+	["battle.w12.cries.003"] = {
+		"Incontriamoci a metà strada! La mia metà l'ho già fatta!",
+		"A metà strada, allora! La mia parte l'ho percorsa, il resto tocca a te!",
+	},
+	["battle.w12.cries.004"] = {
+		"Passo su passo! Per ognuno che fai, ne faccio uno anch'io!",
+		"Tienimi testa passo dopo passo, se ne hai il fegato!",
+		"Ti muovi tu, mi muovo io. Un passo per uno, fino in fondo!",
+	},
+	["battle.w12.cries.005"] = {
+		"In piedi e fatevi contare! ...Solo io? Allora contatemi due volte!",
+		"Chi resta, si faccia avanti! ...Va bene. Valgo per parecchi.",
+	},
+	["battle.w12.cries.006"] = {
+		"La mia risposta è no! Qualunque fosse la domanda, no!",
+		"No! Qualunque cosa tu voglia chiedermi, la risposta è no!",
+		"Mettila come vuoi, la risposta non cambia: no!",
+	},
+	["battle.w12.cries.007"] = {
+		"Vuoi questo pezzo di terra? Pagalo palmo a palmo!",
+		"Questa terra non è in vendita. E comunque ogni palmo ti costerà caro!",
+	},
+	["battle.w12.cries.008"] = {
+		"Qui! Da questa parte! Sì, sono io che urlo!",
+		"Di qua! No, non lì. Qui, dove c'è tutto il baccano!",
+		"Da questa parte! Segui il chiasso, sono io!",
+	},
+	["battle.w12.cries.009"] = {
+		"Bene! Era da un pezzo che tenevo da parte questa rabbia!",
+		"Finalmente qualcosa su cui sfogare tutta questa collera!",
+		"Era ora! Tutta questa rabbia non sapeva dove andare!",
+	},
+	["battle.w12.cries.010"] = {
+		"Qualcuno tenga il conto! Voglio che questa sia ricordata come si deve!",
+		"Qualcuno guarda? Bene. Guardate attentamente!",
+	},
+	["battle.w12.cries.011"] = {
+		"Forte e chiaro, perché non ci siano equivoci: io non me ne vado!",
+		"Che non ci siano malintesi: io resto, e tu te la sbrighi!",
+	},
+	["battle.w12.cries.012"] = {
+		"Ho una voce e due mani, e stai per conoscerle tutte e tre!",
+		"Due mani e una boccaccia. Le conoscerai tutte!",
+	},
+	["battle.w12.cries.013"] = {
+		"Se cado, cadrò urlando!",
+		"Comunque vada, nessuno dirà che me ne sono {g:andato|andata} in silenzio!",
+		"In silenzio? Mai. Qualunque cosa venga, verrà con un gran rumore!",
+	},
+	["battle.w12.cries.014"] = {
+		"Questo scontro non me lo regala nessuno. Me lo prendo!",
+		"Nessuno mi ha dato questa battaglia. Me la prendo io, e lo dico forte!",
+	},
+	["battle.w12.cries.015"] = {
+		"Non mi tiro indietro, non tratto e non mollo prima del tempo!",
+		"Niente passi indietro, niente patti, niente resa!",
+	},
+	["battle.w12.cries.016"] = {
+		"Una sfida? Accettata prima ancora che finissi di lanciarla!",
+		"Accetto! Qualunque cosa fosse, accetto!",
+		"Sfida ricevuta, sfida raccolta, e niente ripensamenti!",
+	},
+	["battle.w12.cries.017"] = {
+		"Hai tracciato una linea. E io ci sto sopra!",
+		"Ecco il tuo confine. L'ho appena scavalcato.",
+	},
+	["battle.w12.cries.018"] = {
+		"Raddrizzati! O no, fa' come vuoi: ti affronto a qualunque altezza!",
+		"Che tu sia una torre o un sasso, ti affronto lo stesso!",
+	},
+	["battle.w12.cries.019"] = {
+		"Uno o cento, di qualunque stazza: la risposta è la stessa, più in là no!",
+		"Quanti che siate, di qualunque taglia: qui ci si ferma!",
+	},
+	["battle.w12.cries.020"] = {
+		"Che la terra ricordi chi l'ha tenuta!",
+		"Che il suolo serbi memoria di chi non ha ceduto!",
+	},
+	["battle.w12.cries.021"] = {
+		"Fino all'ultima oncia di me!",
+		"Fino all'ultima goccia, e anche un po' oltre!",
+		"Tutto quello che sono, fino all'ultimo briciolo!",
+	},
+	["battle.w12.cries.022"] = {
+		"Ti avverto una volta, a voce alta. Di cortesia non ne resta altra.",
+		"Ecco il mio unico avvertimento. Poi basta con le buone maniere!",
+	},
+	["battle.w12.cries.023"] = {
+		"C'è qualcuno qui vicino che dorme? Scusate! Sarà rumoroso!",
+		"Chiedo scusa a tutte le orecchie nei paraggi! Non sarà una cosa silenziosa!",
+	},
+	["battle.w12.cries.024"] = {
+		"Tutta questa strada per poi fermarmi davanti a te? Scordatelo!",
+		"Ho camminato troppo per farmi fermare qui!",
+		"Con tutta la strada che ho alle spalle, credi che mi fermi proprio qui?",
+	},
+	["battle.w12.cries.025"] = {
+		"Ogni livido che mi fai te lo restituisco con gli interessi!",
+		"Lasciami un livido e te lo ripago, interessi compresi!",
+	},
+	["battle.w12.cries.026"] = {
+		"Una volontà, due mani, nessuna ritirata!",
+		"Due mani, una volontà, e nessuna via di fuga!",
+	},
+	["battle.w12.cries.027"] = {
+		"Coraggio, {g:sciocco|sciocca}! ...Parlavo a me, non a te.",
+		"Fatti forza, {g:testone|testona}! ...Dicevo a me {g:stesso|stessa}.",
+		"Su la testa, {g:fifone|fifona}! ...Scusa, ce l'avevo con me.",
+	},
+	["battle.w12.cries.028"] = {
+		"Date l'allarme! Ah, no, aspetta. L'allarme sono io.",
+		"Qualcuno dia l'allarme! Lascia stare, la voce ce l'ho io.",
+	},
+	["battle.w12.cries.029"] = {
+		"Semplice come il pane: tu o io, e preferirei io!",
+		"Pane al pane, e senza giri di parole: sono qui per affrontarti!",
+	},
+	["battle.w12.cries.030"] = {
+		"Non qui, non oltre me, non finché posso alzare una mano!",
+		"Di qui non passa niente, finché ho una mano da alzare!",
+	},
+	["battle.w12.cries.031"] = {
+		"Sulla mia sola parola, e su nient'altro, mi oppongo a te!",
+		"Sulla parola di nessuno, se non la mia, mi schiero contro di te!",
+	},
+	["battle.w12.cries.032"] = {
+		"Ho ancora troppo da fare per fermarmi qui per te!",
+		"Ho un mucchio di cose da fare, e nessuna aspetta te!",
+		"Ho le giornate piene, io. Dovrai trovarti un buco!",
+	},
+	["battle.w12.cries.033"] = {
+		"Hai un grido tutto tuo? Sentiamolo! Il mio è più forte!",
+		"Rispondi! Urla, ringhia, sibila, fa' quello che sai fare! Io lo farò più forte!",
+		"Fai il verso che fai. Poi senti il mio!",
+	},
+	["battle.w12.cries.034"] = {
+		"Non risparmiarti per riguardo a me! Io di certo non mi risparmio!",
+		"Dai tutto quello che hai. Io non mi tengo niente!",
+	},
+	["battle.w12.cries.035"] = {
+		"Ultima occasione per andartene! ...No? Bene. Non volevo che lo facessi.",
+		"Torna indietro finché puoi! ...No? Speravo proprio in questa risposta.",
+	},
+	["battle.w12.cries.036"] = {
+		"Guadagnatelo! Qualunque cosa tu voglia da me, guadagnatela tutta!",
+		"Qui niente è gratis! Ogni briciola che prendi dovrai meritarla!",
+	},
+	["battle.w12.cries.037"] = {
+		"Il primo colpo è mio! ...O tuo. Non sono {g:schizzinoso|schizzinosa}!",
+		"Il primo colpo a chi lo vuole! Non ci tengo!",
+	},
+	["battle.w12.cries.038"] = {
+		"Ho le mani ferme e il carattere no! Scegli tu cosa preferisci incontrare!",
+		"Mani ferme, pazienza corta. Le avrai entrambe!",
+	},
+	["battle.w12.cries.039"] = {
+		"Senti come sbatacchia la mia roba? È il rumore di me che non scappo!",
+		"Tutto questo fracasso? Sono io che non me la do a gambe!",
+	},
+	["battle.w12.cries.040"] = {
+		"Qualunque cosa tu cerchi, dovrai passare da me!",
+		"Tutto quello che vuoi oltre questo punto passa prima da me!",
+		"Vuoi passare? La strada passa per me!",
+	},
+	["battle.w12.cries.041"] = {
+		"Hai appena finito la mia pazienza. Tutta, in un colpo!",
+		"Ecco, la pazienza è finita. Ora ti tocca quello che viene dopo!",
+	},
+	["battle.w12.cries.042"] = {
+		"Segnatevi il posto! Sta per succedere qualcosa da ricordare!",
+		"Ricordati di questo posto. Ho intenzione di renderlo famoso!",
+	},
+	["battle.w12.cries.043"] = {
+		"Preparati, perché io lo sono già!",
+		"Hai finito di prepararti? Non importa. Io ho finito!",
+		"Prenditi tutto il tempo che vuoi. Io sono a posto da un pezzo!",
+	},
+	["battle.w12.cries.044"] = {
+		"Che lo sappia chiunque sia a portata d'orecchio: non ho tremato!",
+		"Che si senta lontano: io non arretro!",
+	},
+	["battle.w12.cries.045"] = {
+		"Denti in mostra e collera al massimo! Il chiasso l'hai voluto tu!",
+		"Ghigno da {g:matto|matta} e voce doppia! Ecco!",
+	},
+	["battle.w12.cries.046"] = {
+		"Vince chi urla di più! ...Non funziona così? Troppo tardi, ho già cominciato!",
+		"Ho deciso che vince chi grida più forte. Obiezioni? Alzate la voce!",
+	},
+	["battle.w12.cries.047"] = {
+		"Qualcuno deve mettersi di traverso. Tocca a me!",
+		"Qualcuno deve dire di no. Mi offro io, e a voce alta!",
+		"Serviva un muro. Piacere, eccomi!",
+	},
+	["battle.w12.cries.048"] = {
+		"Meglio far chiasso da folli che tacere da vigliacchi! Eccomi!",
+		"Dammi pure del folle: ma del folle che si fa sentire!",
+	},
+	["battle.w12.cries.049"] = {
+		"Questo è stato il tuo errore! E questa è la mia risposta!",
+		"Hai fatto la tua mossa. Ecco la mia replica, forte e chiara!",
+	},
+	["battle.w12.cries.050"] = {
+		"Scappare non l'ho mai imparato. Troppo tardi per cominciare!",
+		"Fuggire non è mai stato il mio forte. Combattere, invece!",
+	},
+	["battle.w12.cries.051"] = {
+		"{g:Sveglio|Sveglia}, {g:arrabbiato|arrabbiata} e proprio qui!",
+		"Ben {g:sveglio|sveglia}, di pessimo umore, e proprio davanti a te!",
+	},
+	["battle.w12.cries.052"] = {
+		"Non sarò io a battere ciglio per {g:primo|prima}!",
+		"Battere ciglio per {g:primo|prima}? Non io. Mai io!",
+	},
+	["battle.w12.cries.053"] = {
+		"Hai svegliato qualcosa che dovevi lasciar dormire!",
+		"Pessima idea, stuzzicarmi! Pessima davvero!",
+		"Dovevi lasciarmi in pace! Ormai è tardi!",
+	},
+	["battle.w12.cries.054"] = {
+		"Chi è qui intorno, sia testimone: la sfida è arrivata, e io ho risposto!",
+		"Sia noto a tutti: c'è stata una sfida, e io ho risposto presente!",
+	},
+	["battle.w12.cries.055"] = {
+		"Prima il grido, poi lo scontro. Così si è sempre fatto.",
+		"Il grido viene prima, lo scontro dopo: è l'ordine più antico.",
+	},
+	["battle.w12.cries.056"] = {
+		"Avevo pronto un grido di guerra migliore. Questo dovrà bastare: AH!",
+		"Mi ero {g:preparato|preparata} qualcosa di solenne. È uscito un «EHI!»",
+	},
+	["battle.w12.cries.057"] = {
+		"Ovunque tu stia andando, ci sono io di mezzo!",
+		"Qualunque fosse il tuo piano, io sono la parte che non avevi previsto!",
+	},
+	["battle.w12.cries.058"] = {
+		"Adesso basta! Ora mi senti!",
+		"Basta così! Tocca a me farmi sentire!",
+		"Fine del silenzio! Senti un po' questa!",
+	},
+	["battle.w12.cries.059"] = {
+		"Ho paura di un sacco di cose. Tu non sei nella lista!",
+		"Di cose che mi spaventano ce ne sono tante. Dovrai impegnarti di più!",
+	},
+	["battle.w12.cries.060"] = {
+		"Ascoltate, voi che potete: io resto in piedi, e non mi inginocchio!",
+		"Non mi inginocchierò. Che lo senta chiunque abbia orecchie!",
+	},
+	["battle.w12.cries.061"] = {
+		"Di fronte o di sbieco, provaci come ti pare!",
+		"Da qualunque lato tu venga, mi troverai di fronte!",
+		"Davanti, di fianco, fa lo stesso: io sono qui!",
+	},
+	["battle.w12.cries.062"] = {
+		"Questo momento si merita un grido. Ecco il mio!",
+		"Un momento così merita un ruggito come si deve! Ecco!",
+	},
+	["battle.w12.cries.063"] = {
+		"I dubbi a dopo! Adesso sono {g:tutto|tutta} certezza e rumore!",
+		"Niente ripensamenti! Solo primi pensieri, e pure rumorosi!",
+	},
+	["battle.w12.cries.064"] = {
+		"Cercavi guai? I guai sono qui, e gridano!",
+		"Volevi grane? Eccole, e fanno un baccano!",
+	},
+	["battle.w12.cries.065"] = {
+		"Una volta, chiaramente, perché resti detto: non cederò!",
+		"Lo dico ad alta voce, così mi vincola: non cedo!",
+		"Ad alta voce, così non si torna indietro: io tengo!",
+	},
+	["battle.w12.cries.066"] = {
+		"Interrompi i miei pensieri? Che maleducazione! Eccotene uno ad alta voce!",
+		"Stavo pensando! Adesso sto urlando! Colpa tua!",
+	},
+	["battle.w12.cries.067"] = {
+		"Niente nascondigli, niente fughe, niente sussurri! Eccomi, a piena voce!",
+		"Allo scoperto, e senza farne un segreto! Qui!",
+	},
+	["battle.w12.cries.068"] = {
+		"Se questa è la via difficile, allora via difficile sia!",
+		"La via difficile, dunque! Di quella facile non mi sono mai {g:fidato|fidata}!",
+	},
+	["battle.w12.cries.069"] = {
+		"Fa' che ne valga la pena! Odio sprecare un urlo come si deve!",
+		"Vali il chiasso che faccio? Non ruggisco per niente!",
+	},
+	["battle.w12.cries.070"] = {
+		"Hai bussato! Rispondo! Ad alta voce!",
+		"Bussa a questa porta e vedi chi viene ad aprire!",
+		"Qualcuno ha bussato? Ecco chi apre!",
+	},
+	["battle.w12.cries.071"] = {
+		"Ah! Finalmente una conversazione in cui me la cavo!",
+		"Era ora, qualcosa che non devo dire con garbo!",
+	},
+	["battle.w12.cries.072"] = {
+		"Collera sciolta e mani pronte! Vediamo!",
+		"Via il guinzaglio, tutto quanto! Prendi questo!",
+	},
+	["battle.w12.cries.073"] = {
+		"Ma guarda che stazza! Bene, più difficile mancarti!",
+		"Questa sì che è una sfida! Meglio: c'è più roba con cui prendersela!",
+	},
+	["battle.w12.cries.074"] = {
+		"Finalmente qualcosa di degno! Facciamo chiasso!",
+		"Finalmente una sfida che merita un grido come si deve!",
+	},
+	["battle.w12.cries.075"] = {
+		"Più forte di me? E io farò più chiasso, e non mollerò!",
+		"Mi superi in forza. Non in voce!",
+	},
+	["battle.w12.cries.076"] = {
+		"Più forte di me? Bene. Mi seccherebbe sprecare un grido per meno!",
+		"Tu hai la forza, io la faccia tosta. Vediamo!",
+	},
+	["battle.w12.cries.077"] = {
+		"Nessuna vergogna in una sfida piccola. Rispondo per intero!",
+		"Sei in svantaggio e ti fai avanti lo stesso? Allora ti meriti il mio grido intero!",
+	},
+	["battle.w12.cries.078"] = {
+		"{target}! Dico a te! Affrontami!",
+		"Ehi! Tu! Di qua, e in fretta!",
+	},
+	["battle.w12.cries.079"] = {
+		"Ascoltami, {target}! Adesso te la vedi con me!",
+		"Lascia perdere tutto il resto: ora il conto è con me!",
+	},
+	["battle.w12.cries.080"] = {
+		"{target}! Quel nome me lo ricorderò, comunque finisca!",
+		"Comunque vada a finire, questo me lo ricorderò!",
+	},
+	["battle.w12.cries.081"] = {
+		"{target}, eh? Bene. Ora so cosa gridare!",
+		"Ecco! Adesso so con chi prendermela!",
+	},
+	["battle.w12.cries.082"] = {
+		"Da me! Fate baccano, tutti!",
+		"Tutti, con la voce più forte che avete! Che ci sentano arrivare!",
+	},
+	["battle.w12.cries.083"] = {
+		"Gridate con me! Una voce sola, tutti!",
+		"Tutti insieme, e forte! Se entriamo, entriamo ruggendo!",
+	},
+	["battle.w12.cries.084"] = {
+		"Grida. Non è per il nemico, è per le gambe, così restano ferme.",
+		"Fai rumore. Le gambe ci credono anche quando io no.",
+	},
+	["battle.w12.cries.085"] = {
+		"Un grido è solo coraggio detto ad alta voce prima che cambi idea.",
+		"Prima dì la cosa coraggiosa. Il resto di me si adeguerà.",
+	},
+	["battle.w12.cries.086"] = {
+		"Più forte di come mi sento. Tutto il trucco è lì.",
+		"Far sembrare la voce più grande di me. Un vecchio trucco, e funziona anche su di me.",
+		"Che la voce sia più coraggiosa di me. Lei non sa la differenza.",
+	},
+	["battle.w12.cries.087"] = {
+		"Qualunque cosa mi esca di bocca adesso, che almeno suoni coraggiosa.",
+		"Che il primo suono sia coraggioso. Gli altri, come vengono.",
+	},
+	["battle.w12.cries.088"] = {
+		"Niente parole furbe. Una sola, forte, e via.",
+		"Lascia stare i discorsi. Un bell'urlo e dentro.",
+	},
+	["battle.w12.cries.089"] = {
+		"Ce l'ho, un grido di guerra, dentro di me. Sarebbe il momento di tirarlo fuori.",
+		"Ovunque si sia nascosto il mio grido di guerra, farebbe bene a uscire adesso.",
+	},
+	["battle.w12.cries.090"] = {
+		"Urlare non mi rende più forte. Mi fa dimenticare la paura, che è quasi lo stesso.",
+		"L'urlo non colpisce più forte. Tiene solo occupata la paura.",
+	},
+	["battle.w12.cries.091"] = {
+		"Tanto forte che il dubbio non riesca più a sentirsi pensare.",
+		"Affoga il dubbio. Ruggiscigli sopra.",
+	},
+	["battle.w12.cries.092"] = {
+		"La mia voce entra per prima. Il resto di me la segue.",
+		"Manda avanti il grido, come un esploratore. Poi seguilo.",
+		"Il grido fa strada. A me tocca solo stargli dietro.",
+	},
+	["battle.w12.cries.093"] = {
+		"Se devo fare {g:lo sciocco|la sciocca}, almeno a tutto volume.",
+		"{g:Sciocco|Sciocca}, forse. Ma {g:rumoroso|rumorosa} di sicuro.",
+		"Meglio una follia rumorosa che una silenziosa.",
+	},
+	["battle.w12.cries.094"] = {
+		"Dillo come se ci credessi, e magari ci crederò.",
+		"Gridalo come se ne fossi {g:convinto|convinta}. La convinzione arriverà dopo.",
+	},
+	["battle.w12.cries.095"] = {
+		"Troppo tardi per il silenzio. Tanto vale ruggire.",
+		"Il silenzio è andato. Meglio riempire il vuoto con qualcosa di feroce.",
+		"Il silenzio ha avuto la sua occasione. Adesso, rumore.",
+	},
+	["battle.w12.cries.096"] = {
+		"Annunciarmi, anche se non capirà. Capirò io.",
+		"Non serve che sappia il mio nome. Serve a me sentirmelo dire.",
+	},
+	["battle.w12.cries.097"] = {
+		"Un grido pulito. Se di tutto questo resterà qualcosa, che sia quello.",
+		"Che il grido sia buono. Potrebbe essere la parte che si ricorda.",
+	},
+	["battle.w12.cries.098"] = {
+		"Fai uscire la rabbia dalla bocca, prima che arrivi alle mani.",
+		"La collera esca prima come rumore. Meglio lì che nella presa.",
+	},
+	["battle.w12.cries.099"] = {
+		"I gridi di guerra che conosco sono troppo lunghi, o di qualcun altro. Improvvisa.",
+		"Niente gridi presi in prestito. Quello che esce è mio.",
+	},
+	["battle.w12.cries.100"] = {
+		"getta indietro la testa e lancia un grido che arriva lontano.",
+		"piega la testa all'indietro e manda avanti un lungo grido.",
+	},
+	["battle.w12.cries.101"] = {
+		"si batte un pugno sul petto e grida qualcosa di feroce, senza parole.",
+		"si colpisce il petto due volte e lancia un ruggito.",
+	},
+	["battle.w12.cries.102"] = {
+		"pesta il piede una volta, forte, e ruggisce una sfida.",
+		"batte forte un piede a terra e urla all'avversario di farsi sotto.",
+		"batte il piede a terra e lancia un verso breve e provocatorio.",
+	},
+	["battle.w12.cries.103"] = {
+		"allarga le braccia, una sfida aperta, e grida all'avversario di provarci.",
+		"apre le braccia come a dire «eccomi», e poi lo urla davvero.",
+	},
+	["battle.w12.cries.104"] = {
+		"scopre i denti in un ghigno che è quasi tutto sfida.",
+		"mostra i denti e ringhia di rimando, più forte.",
+		"arriccia le labbra e ringhia, prima piano, poi a gola spiegata.",
+	},
+	["battle.w12.cries.105"] = {
+		"lancia un urlo che è metà risata e metà sfida.",
+		"caccia un grido selvaggio, a metà tra una risata e un guanto di sfida.",
+		"ride forte, e a metà strada la risata diventa una sfida.",
+	},
+	["battle.w12.cries.106"] = {
+		"urla una parola sola, e somiglia moltissimo a un «no».",
+		"scaglia contro l'avversario una parola breve. Non è una parola gentile.",
+	},
+	["battle.w12.cries.107"] = {
+		"invita l'avversario a farsi avanti con due dita piegate e un grido.",
+		"fa segno all'avversario con un dito e lancia un insulto allegro.",
+	},
+	["battle.w12.cries.108"] = {
+		"alza il mento e chiama fuori l'avversario, a voce abbastanza alta da farsi sentire lontano.",
+		"si mette in posizione, il mento alto, e lancia una sfida che non trema.",
+	},
+	["battle.w12.cries.109"] = {
+		"caccia un urlo roco che non lascia dubbi su quel che succederà.",
+		"manda un grido ruvido, e con quello lo scontro è cominciato.",
+	},
+	["battle.w12.cries.110"] = {
+		"alza una mano aperta, poi la chiude a pugno con un grido.",
+		"mostra il palmo all'avversario, poi lo stringe, urlando.",
+	},
+	["battle.w12.cries.111"] = {
+		"si raddrizza in tutta la sua altezza e si annuncia all'avversario.",
+		"si fa più {g:alto|alta} che può e chiama a voce chiara e ferma.",
+	},
+	["battle.w12.cries.112"] = {
+		"lascia uscire la sfida in un solo grido, rauco e furioso.",
+		"mette tutto in un unico urlo furibondo.",
+	},
+	["battle.w12.cries.113"] = {
+		"batte le mani una volta, secco come una porta sbattuta, e chiama l'avversario.",
+		"batte un colpo di mani, forte, e grida all'avversario di sbrigarsi.",
+	},
+	["battle.w12.cries.114"] = {
+		"sorride e grida qualcosa di poco adatto alle persone educate.",
+		"urla una sfida che nessuno ripeterebbe a tavola.",
+	},
+	["battle.w12.cries.115"] = {
+		"ruggisce, più forte di quanto chiunque lì vicino si sarebbe aspettato.",
+		"lascia andare un ruggito molto più grande di quanto serva.",
+	},
+	["battle.w12.dread.001"] = {
+		"Ho paura, e resto qui. Le due cose stanno insieme.",
+		"Paura, sì. Andarmene, no.",
+		"Spaventarmi mi spavento, ma non mi muovo da qui. Buffo, eh?",
+	},
+	["battle.w12.dread.002"] = {
+		"Mi fai paura. Non cambia niente.",
+		"Mi fai paura, sì. Eppure eccomi qua, no?",
+		"Sì, mi spaventi. I piedi però non si spostano di un dito.",
+	},
+	["battle.w12.dread.003"] = {
+		"Le ginocchia hanno votato per andarsene. Voto respinto.",
+		"Gambe, vi sento. Richiesta respinta.",
+		"Le ginocchia vorrebbero filarsela. Le ginocchia non decidono.",
+	},
+	["battle.w12.dread.004"] = {
+		"Se questo dev'essere il mio ultimo scontro, farà rumore.",
+		"Se devo finire qui, nessuno potrà dire che sia stato in silenzio.",
+	},
+	["battle.w12.dread.005"] = {
+		"Fortuna, stammi vicino. Più vicino di così.",
+		"Fortuna, se sei nei paraggi, questo sarebbe il momento giusto.",
+		"C'è un po' di fortuna avanzata? La prenderei adesso, grazie.",
+	},
+	["battle.w12.dread.006"] = {
+		"Comunque vada, che qualcuno se lo ricordi: non ho girato le spalle.",
+		"Qualcuno se lo segni: da qui non mi ha mosso nessuno.",
+	},
+	["battle.w12.dread.007"] = {
+		"Piano, adesso. Nessuno va nel panico. Men che meno io.",
+		"Calma. Calma. L'ho detto, calma, o no?",
+		"Niente panico. A quanto pare, la calma qui la porto io.",
+	},
+	["battle.w12.dread.008"] = {
+		"Non so se da te me ne andrò sulle mie gambe. Scopriamolo.",
+		"Non so dire se uscirò da questa in piedi. Vediamo.",
+	},
+	["battle.w12.dread.009"] = {
+		"Senza paura? No. Solo qui.",
+		"Nessun eroe. Solo qualcuno che non se n'è andato.",
+		"Impavido? Macché. Presente, però.",
+	},
+	["battle.w12.dread.010"] = {
+		"Luce, spiriti, Madre Terra, chiunque stia ascoltando: un piccolo aiuto.",
+		"A chiunque vegli sugli sciocchi come me: guarda bene, adesso.",
+	},
+	["battle.w12.dread.011"] = {
+		"Se urlo, è un grido di battaglia. Ufficialmente.",
+		"Qualsiasi urlo tu senta è puramente tattico.",
+	},
+	["battle.w12.dread.012"] = {
+		"La morte aspetti il suo turno. La fila è lunga.",
+		"La morte si metta in coda come tutti.",
+		"In fila, morte. Non tocca a te.",
+	},
+	["battle.w12.dread.013"] = {
+		"Potrei ancora andarmene. Ricordati che non l'ho fatto.",
+		"Sarei in tempo a tirarmi indietro. Scelgo di no.",
+		"La via d'uscita è aperta. Non la prendo.",
+	},
+	["battle.w12.dread.014"] = {
+		"Paura, ti presento la mia testardaggine. Non andrete d'accordo.",
+		"Paura, questa è la mia cocciutaggine. Vi detesterete.",
+	},
+	["battle.w12.dread.015"] = {
+		"Vorrei tornare ad annoiarmi presto. Prestissimo.",
+		"Alla noia: che si sbrighi a tornare.",
+	},
+	["battle.w12.dread.016"] = {
+		"Domanda veloce, prima di cominciare: a chi vanno le mie cose?",
+		"Se va male, qualcuno faccia qualcosa di buono con il mio zaino.",
+		"Prima di iniziare: non ho ancora deciso a chi lasciare i calzini.",
+	},
+	["battle.w12.dread.017"] = {
+		"Piedi, restate dove vi ho messi.",
+		"Fermi, piedi. Voi non andate da nessuna parte.",
+		"Piedi, voi restate. È un ordine.",
+	},
+	["battle.w12.dread.018"] = {
+		"D'accordo, vocina che vuole scappare. Preso nota. Ignorata.",
+		"Sì, sì, la parte di me che vuole fuggire. Ti ho sentita.",
+	},
+	["battle.w12.dread.019"] = {
+		"Se sarai tu a finirmi, te lo sarai guadagnato.",
+		"Farmi fuori ti costerà caro. Questo te lo prometto.",
+		"Chiudere i conti con me non sarà a buon mercato. Contaci.",
+	},
+	["battle.w12.dread.020"] = {
+		"Il prezzo per stare qui è la paura. Pagato per intero.",
+		"Avere paura è solo la tassa d'ingresso. Saldata.",
+	},
+	["battle.w12.dread.021"] = {
+		"Non sono {g:pronto|pronta}. Nessuno lo è mai. Cominciamo.",
+		"A questo non si è mai pronti. Si comincia lo stesso.",
+		"Se sono {g:pronto|pronta}? No. Se si comincia? Sì.",
+	},
+	["battle.w12.dread.022"] = {
+		"Dall'altra parte di questo c'è un'ora tranquilla che mi aspetta. La voglio.",
+		"Oltre questo scontro c'è un po' di pace. Ho intenzione di riscuoterla.",
+	},
+	["battle.w12.dread.023"] = {
+		"Potrebbe far male. A me, intendo. Andiamo.",
+		"Diciamolo: brucerà un po'. Soprattutto a me. Si parte.",
+	},
+	["battle.w12.dread.024"] = {
+		"Chiunque tenga i nomi dei caduti, il mio lo lasci fuori ancora un po'.",
+		"A chi conta i caduti: non me. Non adesso.",
+		"Se qualcuno tiene il conto dei morti, il mio nome lo salti, per ora.",
+	},
+	["battle.w12.dread.025"] = {
+		"Tu mi fai paura. Scappare me ne fa di più.",
+		"Affrontarti mi spaventa. Fuggire mi spaventerebbe peggio.",
+		"Scappare mi fa più paura di te. Quindi, eccomi.",
+	},
+	["battle.w12.dread.026"] = {
+		"Tieni duro. La paura passa, tu resti.",
+		"Resta lì. La paura se ne andrà prima di te.",
+	},
+	["battle.w12.dread.027"] = {
+		"Che sia una di quelle facili. Per favore.",
+		"Per una volta, che sia più semplice di come sembra.",
+		"Facile, per favore. Solo stavolta.",
+	},
+	["battle.w12.dread.028"] = {
+		"Potresti farmi fuori. Ma dovrai farlo davvero.",
+		"Forse hai la forza per finirmi. Allora guadagnatela.",
+		"Sì, sei più forte. Ma la forza il lavoro deve farlo lo stesso.",
+	},
+	["battle.w12.dread.029"] = {
+		"Sei fuori dalla mia portata. Lo so. Sono qui lo stesso.",
+		"Più forte di me di parecchio. Ai miei piedi non l'ha detto nessuno.",
+	},
+	["battle.w12.dread.030"] = {
+		"Quello lì è di quelli che mettono fine alla gente. Occhi aperti.",
+		"Attenzione. È così che le storie si interrompono.",
+		"Roba che chiude la storia alla gente, quella. Attenti.",
+	},
+	["battle.w12.dread.031"] = {
+		"Se cado, non fermatevi per me. Finite il lavoro.",
+		"Se dovessi cadere, andate avanti. Guai a voi se vi fermate.",
+	},
+	["battle.w12.dread.032"] = {
+		"Restate vicino. Con qualcuno accanto il coraggio mi viene meglio.",
+		"State vicini. Il mio coraggio ama la compagnia.",
+	},
+	["battle.w12.dread.033"] = {
+		"{target}, eh? Mi seccherebbe che fosse l'ultimo nome che imparo.",
+		"Ecco con chi ho a che fare. Spero non sia l'ultima cosa che imparo.",
+	},
+	["battle.w12.dread.034"] = {
+		"Mortale, e lo so. Allora che conti qualcosa.",
+		"Solo un mortale. Basta e avanza. Che valga qualcosa.",
+	},
+	["battle.w12.dread.035"] = {
+		"Sverrei, ma il momento è pessimo.",
+		"Svenire sarebbe comodissimo. Ma non adesso.",
+		"Pessimo momento per uno svenimento. Lo rimando a dopo.",
+	},
+	["battle.w12.dread.036"] = {
+		"Il coraggio non è una sensazione. È questo passo. Guarda.",
+		"Coraggio? Non ce l'ho. Lo faccio. È diverso.",
+		"Non si possiede, il coraggio. Si fa. Così.",
+	},
+	["battle.w12.dread.037"] = {
+		"Non diventerò la storia che si racconta per mettere in guardia.",
+		"Non voglio finire come l'esempio di quello che non si fa.",
+	},
+	["battle.w12.dread.038"] = {
+		"Un altro giorno qualunque, dopo questo. Non chiedo altro.",
+		"Concedetemi un domani noioso e qualunque. Il desiderio è tutto qui.",
+	},
+	["battle.w12.dread.039"] = {
+		"L'ultimo scontro di chiunque comincia come tutti gli altri. Il guaio è questo.",
+		"A nessuno viene detto quale sarà lo scontro finale.",
+		"L'ultimo scontro non si annuncia. Comincia e basta, così.",
+	},
+	["battle.w12.dread.040"] = {
+		"La paura fa rumore. Ma il rumore non le dà ragione.",
+		"Grida, la paura. Ma gridare non vuol dire avere ragione.",
+		"Fare chiasso non è avere ragione. Lei non l'ha mai capito.",
+	},
+	["battle.w12.dread.041"] = {
+		"I coraggiosi sono gente spaventata che si è mossa per prima.",
+		"Il coraggio è paura che ha fatto lo stesso un passo avanti.",
+	},
+	["battle.w12.dread.042"] = {
+		"C'è una versione di questa storia in cui non mi rialzo. Non guardarla.",
+		"Nei prossimi istanti c'è anche il modo in cui finisce male. Guarda altrove.",
+		"In uno dei modi in cui può andare, resto giù. Non pensarci.",
+	},
+	["battle.w12.dread.043"] = {
+		"Tutte le cose che volevo fare mi stanno vicinissime, in questo momento.",
+		"Ogni progetto lasciato a metà mi si è appena stretto alle spalle.",
+	},
+	["battle.w12.dread.044"] = {
+		"Avere paura vuol dire solo che mi importa di come finisce.",
+		"Paura. Ovvio. Sarebbe strano fregarsene.",
+		"Paura, perché conta. Giusto così.",
+	},
+	["battle.w12.dread.045"] = {
+		"La Luce, gli spiriti, la Madre Terra. Almeno uno starà guardando da questa parte.",
+		"Ci sono tante potenze, al mondo. Una potrebbe anche voltarsi verso di me.",
+		"Elune, i loa, la Luce. Qualcuno, da qualche parte, si annoierà abbastanza da guardare.",
+	},
+	["battle.w12.dread.046"] = {
+		"Se finisce qui, avrei preferito un panorama migliore.",
+		"Non è un gran posto per finire. E allora niente fine.",
+	},
+	["battle.w12.dread.047"] = {
+		"Potrei starmene in un posto tranquillo a non fare niente. Un giorno ci starò. Non così.",
+		"Un giorno resterò immobile per sempre. Non qui. Non in questo modo.",
+	},
+	["battle.w12.dread.048"] = {
+		"Che la paura serva a qualcosa: a tenermi gli occhi aperti.",
+		"E sia, paura. Renditi utile e controlla i lati.",
+	},
+	["battle.w12.dread.049"] = {
+		"Qualunque sia la mia stoffa, sto per scoprirla.",
+		"È qui che scopro cosa ho dentro. Che sia qualcosa di buono.",
+	},
+	["battle.w12.dread.050"] = {
+		"Che nei prossimi istanti io sia qualcuno di cui non vergognarmi.",
+		"Un piccolo desiderio: non deludermi.",
+		"Solo questo: che dopo io possa guardarmi in faccia.",
+	},
+	["battle.w12.dread.051"] = {
+		"Tutto ciò che muore credeva di avere più tempo.",
+		"Niente di ciò che cade pensa che il suo tempo sia finito.",
+	},
+	["battle.w12.dread.052"] = {
+		"Forse c'è chi aspetta di vedermi entrare. Non deluderlo.",
+		"Se qualcuno mi aspetta, che non aspetti invano.",
+	},
+	["battle.w12.dread.053"] = {
+		"La paura dice il vero sul pericolo. Su di me, mente.",
+		"Sul pericolo la paura ha ragione; su cosa farò io, torto.",
+	},
+	["battle.w12.dread.054"] = {
+		"Pensiero strano, proprio adesso: chi se ne accorgerebbe?",
+		"Se andasse male, quanto ci vorrebbe prima che qualcuno lo sapesse?",
+		"Che cosa va a venirmi in mente: qualcuno ne avrebbe notizia?",
+	},
+	["battle.w12.dread.055"] = {
+		"Vecchia quanto la gente, la paura. E il passo avanti lo è altrettanto.",
+		"Da sempre i mortali esitano su quest'orlo. E da sempre lo superano.",
+	},
+	["battle.w12.dread.056"] = {
+		"Ecco il buon senso che se la svigna dalla porta di dietro. I piedi però sono rimasti.",
+		"Il buon senso è appena uscito dalla porta. Il resto di me no.",
+	},
+	["battle.w12.dread.057"] = {
+		"Ah. Eccola, la vocina che chiede se sarà questo, l'ultimo.",
+		"Ed ecco la domanda sottovoce: sarà questo, lo scontro?",
+	},
+	["battle.w12.dread.058"] = {
+		"Nessuno mi ha promesso che ne uscirò in piedi. Allora me lo prometto da me.",
+		"Nessuna garanzia. Pazienza: me la invento io.",
+	},
+	["battle.w12.dread.059"] = {
+		"Della paura mi occupo dopo. Adesso non c'è posto.",
+		"Più tardi potrò andare in pezzi. Adesso no.",
+		"Metto la paura in lista per dopo. Adesso non ci sta.",
+	},
+	["battle.w12.dread.060"] = {
+		"Strano come il mondo si faccia nitido proprio prima.",
+		"Sull'orlo tutto diventa chiarissimo. Ogni minima cosa.",
+	},
+	["battle.w12.dread.061"] = {
+		"Vorrei una vita lunga e noiosa. Questo è d'intralcio.",
+		"Una vita lunga, perlopiù noiosa: questo è il piano. Questo scontro no.",
+	},
+	["battle.w12.dread.062"] = {
+		"Il mondo non si ferma per la mia paura. E nemmeno io.",
+		"Niente si mette in pausa perché ho paura. Quindi neanch'io.",
+		"Nessuno ferma il mondo per chi ha paura. Stagli dietro.",
+	},
+	["battle.w12.dread.063"] = {
+		"Se cado qui, almeno le ginocchia smetteranno di lamentarsi.",
+		"Il lato buono del morire: basta mal di schiena. Grazie, passo.",
+		"L'unico vantaggio di finire: niente più piedi doloranti. No, grazie.",
+	},
+	["battle.w12.dread.064"] = {
+		"La morte è paziente. Che si eserciti.",
+		"Aspetta tutti, la morte. Può aspettare me ancora un po'.",
+		"Tutto il tempo che esiste è della morte. Me ne può lasciare un po'.",
+	},
+	["battle.w12.dread.065"] = {
+		"Con la paura tutto accelera, tranne me. Muoviti.",
+		"Tutto corre tranne i miei piedi. Muovili.",
+	},
+	["battle.w12.dread.066"] = {
+		"Nessuna vergogna ad avere paura. Solo a lasciarla decidere.",
+		"Spaventarsi è permesso. Farsi scegliere da lei, no.",
+		"Parlare, la paura può. Scegliere, no.",
+	},
+	["battle.w12.dread.067"] = {
+		"Che il prossimo istante sia gentile. Solo il prossimo.",
+		"Un istante benevolo. Poi ne chiederò un altro.",
+		"Un istante clemente, nient'altro. A quello dopo ci penso poi.",
+	},
+	["battle.w12.dread.068"] = {
+		"I mortali combattono perché possono perdere. È questo a dargli peso.",
+		"Se non potessi cadere, niente di tutto questo avrebbe senso.",
+	},
+	["battle.w12.dread.069"] = {
+		"Questa paura la vedo solo io. E così resta.",
+		"La faccia può mentire ancora un po'. La paura è affar mio.",
+	},
+	["battle.w12.dread.070"] = {
+		"Qualunque cosa ci sia dopo la fine, può aspettare. Ho da fare.",
+		"Ciò che sta oltre, stavolta, resterà a mani vuote.",
+	},
+	["battle.w12.dread.071"] = {
+		"Calma. Il peggio è l'istante prima. È questo.",
+		"Questo pezzo qui, prima che cominci, è il peggiore.",
+		"L'istante prima è sempre il più pesante. Eccolo, dunque.",
+	},
+	["battle.w12.dread.072"] = {
+		"Ricorda: qui ci sono per scelta mia, non per forza.",
+		"Mi ci hanno portato i miei piedi. Mi fiderò di loro ancora un po'.",
+	},
+	["battle.w12.dread.073"] = {
+		"Ah, il terrore. Non bussa mai.",
+		"Il terrore entra senza bussare. Che maleducato.",
+	},
+	["battle.w12.dread.074"] = {
+		"Da ogni scontro qualcuno se ne va sulle sue gambe. Tanto vale che sia io.",
+		"Qualcuno ne esce sempre. Mi piace pensare di essere quel qualcuno.",
+	},
+	["battle.w12.dread.075"] = {
+		"Forse è troppo forte per me. Mi aggrappo tutto a quel forse.",
+		"Probabilmente è fuori dalla mia portata. Probabilmente non vuol dire di sicuro.",
+	},
+	["battle.w12.dread.076"] = {
+		"Sento quanto sono in svantaggio. Sentirlo non è perdere.",
+		"Svantaggio netto. L'ho capito subito. Non vuol dire che sia finita.",
+		"Troppo per me, dice ogni istinto. Ma l'istinto non è la sentenza.",
+	},
+	["battle.w12.dread.077"] = {
+		"Quella è roba che mette fine alla gente. E io sono gente. Attenzione.",
+		"Avversari così scrivono finali brevi. Non dargli la penna.",
+	},
+	["battle.w12.dread.078"] = {
+		"Se qualcuno di noi cade qui, che non sia perché mi sono {g:bloccato|bloccata}.",
+		"Chiunque vada giù, che non sia colpa della mia esitazione.",
+	},
+	["battle.w12.dread.079"] = {
+		"Il mio nome non è ancora inciso da nessuna parte. Teniamo pulita la pietra.",
+		"Finora nessuna lapide porta il mio nome. Mi piacerebbe che restasse liscia.",
+	},
+	["battle.w12.dread.080"] = {
+		"Il panico è una porta. Non aprirla.",
+		"Il panico è lì, una porta socchiusa. Tienila chiusa.",
+		"C'è una porta con scritto panico. Tira dritto.",
+	},
+	["battle.w12.dread.081"] = {
+		"Coraggio per un istante. Poi per quello dopo. Il trucco è tutto qui.",
+		"Il coraggio deve durare solo un momento. E poi un altro.",
+	},
+	["battle.w12.dread.082"] = {
+		"Dopo: qualcosa da mangiare, un posto per sedersi. Tienilo stretto.",
+		"Cibo e un posto dove sedersi, dopo. Pensa a quello.",
+		"Pane e una panca, dall'altra parte. Pensa al pane.",
+	},
+	["battle.w12.dread.083"] = {
+		"Strano quanto sembri piccola una vita, vista da qui.",
+		"Una vita intera, e ci sta tutta in questo istante.",
+	},
+	["battle.w12.dread.084"] = {
+		"La paura non combatte al posto mio. Può solo intralciare. Spostala.",
+		"Qui, della paura, non me ne faccio niente. Girale intorno.",
+	},
+	["battle.w12.dread.085"] = {
+		"Qualunque cosa venga a prendermi, che mi trovi a faccia a faccia.",
+		"Se qualcosa vuole portarmi via, dovrà guardarmi negli occhi.",
+	},
+	["battle.w12.dread.086"] = {
+		"La fortuna non mi deve niente. Glielo chiedo con gentilezza lo stesso.",
+		"La fortuna non tiene i conti. Comunque, un piccolo prestito, grazie.",
+	},
+	["battle.w12.dread.087"] = {
+		"Anche gli eroi delle vecchie storie avevano paura proprio qui. Le storie lo tacciono.",
+		"Ogni racconto eroico salta questo pezzo, quello in cui l'eroe vorrebbe scappare.",
+	},
+	["battle.w12.dread.088"] = {
+		"Se nel mondo c'è un po' di clemenza in giro, un pizzico potrebbe cadere qui.",
+		"Di tutta la misericordia che gira per il mondo, me ne basterebbe una briciola.",
+	},
+	["battle.w12.dread.089"] = {
+		"Odio questo momento. Lo odierò sempre. Eccolo.",
+		"Questo istante non mi piacerà mai. Arriva lo stesso.",
+	},
+	["battle.w12.dread.090"] = {
+		"Se cado, che sia con la faccia in avanti.",
+		"Se vado giù, che sia di fronte e non con le spalle girate.",
+	},
+	["battle.w12.dread.091"] = {
+		"Troppo tardi per la prudenza. Tanto vale il coraggio.",
+		"La saggezza andava usata prima. Adesso resta solo il coraggio.",
+	},
+	["battle.w12.dread.092"] = {
+		"Ci sono troppe cose che non ho fatto perché finisca qui.",
+		"Troppo lasciato a metà per fermarsi adesso.",
+	},
+	["battle.w12.dread.093"] = {
+		"Sotto la paura c'è un angolo quieto. Mettiti lì.",
+		"Sotto tutto il rumore della paura, un posto fermo. Vai lì.",
+		"Sotto, la paura ha un fondo calmo. Appoggia i piedi lì.",
+	},
+	["battle.w12.dread.094"] = {
+		"lancia un'occhiata sola verso la via di fuga, poi più nessuna.",
+		"guarda alle proprie spalle una volta soltanto, poi tiene gli occhi avanti.",
+	},
+	["battle.w12.dread.095"] = {
+		"chiude gli occhi per un istante, li riapre e avanza.",
+		"stringe forte le palpebre, appena un attimo, e le riapre sullo scontro.",
+	},
+	["battle.w12.dread.096"] = {
+		"arretra di mezzo passo, si ferma, e non ne fa un altro.",
+		"cede terreno di un palmo, poi se lo riprende.",
+		"ondeggia appena all'indietro, poi si piega in avanti, verso lo scontro.",
+	},
+	["battle.w12.dread.097"] = {
+		"borbotta qualche parola che potrebbe essere un desiderio o un'imprecazione.",
+		"dice qualcosa a mezza voce, troppo piano per capire se sia una supplica o un giuramento.",
+	},
+	["battle.w12.dread.098"] = {
+		"sfiora una cinghia sul petto, come fa chi cerca un po' di fortuna.",
+		"batte una volta sola sulla fibbia più vicina, come si tocca qualcosa per scaramanzia.",
+	},
+	["battle.w12.dread.099"] = {
+		"si lascia sfuggire un suono breve che potrebbe essere una risata. O forse no.",
+		"emette un versetto, metà risata e metà qualcos'altro.",
+	},
+	["battle.w12.dread.100"] = {
+		"resta immobile, poi si costringe a muoversi.",
+		"si irrigidisce per un istante, poi spinge avanti i piedi a forza.",
+		"si blocca, solo per un istante, e poi si muove lo stesso.",
+	},
+	["battle.w12.dread.101"] = {
+		"alza appena il mento, come si fa prima di una cosa difficile.",
+		"solleva il mento e lo tiene alto.",
+	},
+	["battle.w12.dread.102"] = {
+		"si porta due dita alla fronte, un piccolo segno tutto suo, e avanza.",
+		"preme un attimo una nocca sulla fronte, un'abitudine privata, e alza lo sguardo.",
+	},
+	["battle.w12.dread.103"] = {
+		"guarda l'avversario come si guarda un salto nel vuoto, e avanza lo stesso.",
+		"fissa l'avversario come il ciglio di un dirupo, poi gli va incontro.",
+	},
+	["battle.w12.dread.104"] = {
+		"distende le dita finché non smettono di contrarsi, e si mette in guardia.",
+		"apre e chiude le mani finché non obbediscono.",
+		"scuote le mani come per liberarle da qualcosa, e si prepara.",
+	},
+	["battle.w12.dread.105"] = {
+		"muove le labbra su una parola sola, senza suono, che non è per nessuno.",
+		"dice una parola a nessuno, così piano che quasi non esiste.",
+	},
+	["battle.w12.dread.106"] = {
+		"guarda la terra sotto i piedi come se la misurasse per qualcosa, e distoglie in fretta gli occhi.",
+		"fissa il suolo un istante più del necessario, poi rialza lo sguardo.",
+	},
+	["battle.w12.dread.107"] = {
+		"squadra l'avversario da capo a piedi e, per un istante onesto, non muove un muscolo.",
+		"prende atto di quanto sia grosso ciò che ha di fronte e, per un attimo, resta solo a guardare.",
+	},
+	["battle.w12.dread.108"] = {
+		"lascia cadere le spalle, come chi posa una paura troppo pesante per combatterci.",
+		"abbassa le spalle, scrollandosi di dosso qualcosa di più pesante dell'equipaggiamento.",
+	},
+	["battle.w12.dread.109"] = {
+		"lancia uno sguardo agli altri, come per fissarsene in mente i volti, poi si volta verso il nemico.",
+		"dà un'occhiata rapida a ciascun compagno prima di girarsi verso il nemico.",
+	},
+	["battle.w12.grit.001"] = {
+		"Stanchezza, sì. Ma stanchezza non vuol dire resa.",
+		"Le gambe sono stanche. Il resto di me non ne è stato informato.",
+		"Un conto è essere logori, un altro essere finiti. E io non lo sono.",
+	},
+	["battle.w12.grit.002"] = {
+		"Buttami giù e mi rialzo. Non c'è altro da sapere.",
+		"Mi rialzerò ogni volta che mi butti a terra. Conta pure, se ti va.",
+		"Finire a terra, per me, è solo una pausa.",
+	},
+	["battle.w12.grit.003"] = {
+		"Non sto urlando. Dovrebbe preoccuparti.",
+		"Senti che silenzio? È la parte arrabbiata di me.",
+		"Hai notato che ho smesso di parlare? Per te non è un buon segno.",
+	},
+	["battle.w12.grit.004"] = {
+		"Qualcuno deve occuparsi di te. Tanto vale che sia io.",
+		"Va fatto, e qui ci sono io.",
+		"Qualcuno deve farlo. A quanto pare, quel qualcuno sono io.",
+	},
+	["battle.w12.grit.005"] = {
+		"Ogni passo che vuoi, dovrai strapparmelo.",
+		"Questo spazio è mio. Vieni a discuterne, se hai coraggio.",
+	},
+	["battle.w12.grit.006"] = {
+		"Stavo per sedermi. Adesso sono in piedi, e di pessimo umore.",
+		"Mi hai rubato una sosta. Vengo a riprendermela.",
+		"Mi ero già {g:scelto|scelta} dove sedermi. Al suo posto, adesso, ho un diavolo per capello.",
+	},
+	["battle.w12.grit.007"] = {
+		"Basta. Di spintoni ne ho presi abbastanza.",
+		"Questo è l'ultimo spintone che accetto, da chiunque.",
+		"Spingi, spingi, spingi. Adesso tocca a me.",
+	},
+	["battle.w12.grit.008"] = {
+		"Prova pure. Di testardaggine ne ho da vendere.",
+		"Mettimi alla prova. La cocciutaggine è l'unica cosa che non mi manca mai.",
+		"La testardaggine è la mia dote migliore. Stai per conoscerla.",
+	},
+	["battle.w12.grit.009"] = {
+		"Il dovere non chiede se ne ho voglia. E nemmeno tu.",
+		"Il momento non l'avrei scelto io. Pazienza: sono qui.",
+		"Scomodo, non voluto, e tocca a me. Dentro.",
+	},
+	["battle.w12.grit.010"] = {
+		"Ogni palmo ti costerà fatica.",
+		"Qui niente si regala. Io men che meno.",
+		"Ogni spanna ha un prezzo, e il prezzo lo decido io.",
+	},
+	["battle.w12.grit.011"] = {
+		"L'hai cominciata tu. Non aspettarti che io lasci perdere.",
+		"Un'idea tua, questa lotta. Adesso è anche mia, tutta quanta.",
+		"Hai cominciato tu. Adesso io non mollo più.",
+	},
+	["battle.w12.grit.012"] = {
+		"Mi fanno male le ginocchia, la schiena, e vengo avanti lo stesso.",
+		"Mi fa male tutto. Meglio: mi tiene {g:sveglio|sveglia}.",
+		"Dolori dappertutto. Non abbastanza da fermarmi.",
+	},
+	["battle.w12.grit.013"] = {
+		"Piegami, se ci riesci. Spezzarmi non è in programma.",
+		"Mi piego. Non mi spezzo. Impara la differenza.",
+		"Ciò che si piega torna su. Guarda.",
+	},
+	["battle.w12.grit.014"] = {
+		"Non mi fermo a metà. Né per te, né per nessun altro.",
+		"Le cose a metà non le lascio dietro di me.",
+		"Quello che comincio lo porto a termine. Anche questo.",
+	},
+	["battle.w12.grit.015"] = {
+		"Rabbia e calma insieme. Per te, il peggio dei due mondi.",
+		"Testa lucida e rabbia piena. Scegli tu quale incontrare prima.",
+	},
+	["battle.w12.grit.016"] = {
+		"Quanto ci vorrà, ci vorrà. Io ho più tempo di te.",
+		"Prenditi tutto il tempo che vuoi. Io da qui non mi sposto.",
+		"Tirala per le lunghe, se ti va. La pazienza costa meno di quanto credi.",
+	},
+	["battle.w12.grit.017"] = {
+		"Io non me ne vado. Tanto vale cominciare.",
+		"Aspettare non mi farà sparire. Datti una mossa.",
+		"Io resto dove sono. A te la mossa.",
+	},
+	["battle.w12.grit.018"] = {
+		"A terra ci vado malvolentieri. Tienilo a mente.",
+		"Se mi vuoi a terra, dovrai guadagnartelo.",
+		"La terra può aspettarmi. Aspetterà parecchio.",
+	},
+	["battle.w12.grit.019"] = {
+		"Troppa testardaggine per cadere, troppa stanchezza per scappare. Resta solo l'avanti.",
+		"Per scappare servono forze che non ho. Per lottare, a quanto pare, sì.",
+	},
+	["battle.w12.grit.020"] = {
+		"È il lavoro, e il lavoro non aspetta il momento giusto.",
+		"Nessuno ha chiesto se mi andava bene. Il lavoro è il lavoro.",
+		"Brontola dopo. Adesso fai il lavoro.",
+	},
+	["battle.w12.grit.021"] = {
+		"Adesso è una questione personale.",
+		"Ora è personale. Ricordati che l'hai scelto tu.",
+		"Bene. Da qui in poi è una faccenda tra te e il mio caratteraccio.",
+	},
+	["battle.w12.grit.022"] = {
+		"Ogni colpo che metti a segno avrà una risposta. Ognuno.",
+		"Colpiscimi pure. Tengo il conto, e restituisco tutto.",
+		"Restituisco quel che ricevo, con gli interessi.",
+	},
+	["battle.w12.grit.023"] = {
+		"C'è sempre un ultimo fondo di grinta. L'hai trovato tu.",
+		"Raschia il barile e un po' di grinta ci resta. Eccola.",
+	},
+	["battle.w12.grit.024"] = {
+		"Più forte, d'accordo. La forza si stanca. La testardaggine no.",
+		"Il peso ce l'hai tu. Io ho la voglia di restare. Vediamo cosa conta.",
+		"Più muscoli di me, te lo concedo. Ma i muscoli non sono tenacia.",
+	},
+	["battle.w12.grit.025"] = {
+		"So bene quanto sei più forte di me. Vado lo stesso.",
+		"Troppo per me? Forse. I piedi non l'hanno saputo.",
+		"Più forte di me. Annotato. Ignorato.",
+	},
+	["battle.w12.grit.026"] = {
+		"Questo sarà un lavoro pesante. Ci entro comunque.",
+		"Si preannuncia dura. Le cose dure sono il mio pane.",
+		"Lavoro pesante, questo. Spalle, sapete cosa fare.",
+	},
+	["battle.w12.grit.027"] = {
+		"Restate qui con me. Nessuno cede un palmo.",
+		"Piantate i piedi, tutti. Ce ne andiamo a lavoro finito, non prima.",
+	},
+	["battle.w12.grit.028"] = {
+		"Se la fatica vi pesa, appoggiatevi a me. Pesa anche a me, e vado avanti.",
+		"Stanchezza? Ce l'abbiamo tutti. Restate in piedi.",
+	},
+	["battle.w12.grit.029"] = {
+		"Nessuno arretra finché non arretro io. E non ho intenzione di farlo.",
+		"Il primo che cede terreno paga da bere. Non sarò io.",
+	},
+	["battle.w12.grit.030"] = {
+		"I miei piedi sono piantati. Il resto seguirà.",
+		"Qui pongo i piedi, e qui restano.",
+		"Ho messo radici. Prova a spostare una radice.",
+	},
+	["battle.w12.grit.031"] = {
+		"{target}. Una lunga giornata, e tu sei la fine della mia pazienza.",
+		"Con te, il carico è al completo. Tieniti forte.",
+	},
+	["battle.w12.grit.032"] = {
+		"{target}, da me non avrai terreno.",
+		"Niente terreno per te, {target}. Neanche un palmo.",
+		"Quel che vuoi, non l'avrai a buon mercato.",
+	},
+	["battle.w12.grit.033"] = {
+		"Bene, {target}. Hai svegliato la parte testarda di me.",
+		"Hai svegliato la mia parte testarda. Non si riaddormenta facilmente.",
+	},
+	["battle.w12.grit.034"] = {
+		"La pazienza mi è appena finita. Tu eri lì, a portata.",
+		"Fine della pazienza. Peccato per te, che passavi di qui.",
+	},
+	["battle.w12.grit.035"] = {
+		"Arrendermi non fa per me.",
+		"Mollare non è una cosa che so fare.",
+		"Arrendermi? Non ho mai imparato come si fa.",
+	},
+	["battle.w12.grit.036"] = {
+		"I lividi passano. Essersi tirati indietro, no.",
+		"Le botte guariscono. Aver ceduto ti resta addosso.",
+		"Il dolore passa. Una resa, invece, te la porti dietro.",
+	},
+	["battle.w12.grit.037"] = {
+		"C'è chi mi aspetta. Non sarai tu a trattenermi.",
+		"C'è gente che conta su di me. Tu non sei tra loro, quindi fatti da parte.",
+	},
+	["battle.w12.grit.038"] = {
+		"Qualunque cosa tu abbia, la riceverò in piedi.",
+		"Tutto quanto, allora. Mi troverai in piedi per ogni pezzo.",
+		"Dammi il peggio che hai. Lo incasso senza piegarmi.",
+	},
+	["battle.w12.grit.039"] = {
+		"Spingimi, e scopri cosa spinge indietro.",
+		"Spingi pure. Io rispondo.",
+		"Mettimi le mani addosso e vedrai quanto ti costa.",
+	},
+	["battle.w12.grit.040"] = {
+		"Preferirei riposare. Riposerò dopo.",
+		"Il riposo, dopo. Che bella parola, dopo.",
+		"C'è un pisolino che mi aspetta. Dopo.",
+	},
+	["battle.w12.grit.041"] = {
+		"Non mi serve che sia rapido. Mi serve che sia fatto.",
+		"Lento o veloce, lo porto a termine.",
+	},
+	["battle.w12.grit.042"] = {
+		"Le buone maniere sono finite. Quel che resta non è educato.",
+		"Ci ho provato, con la pazienza. È esaurita.",
+	},
+	["battle.w12.grit.043"] = {
+		"Non ti volterò le spalle. Una promessa che faccio a me {g:stesso|stessa}.",
+		"La faccia resta rivolta a te. È una promessa.",
+	},
+	["battle.w12.grit.044"] = {
+		"Mento alto. Nessuna ritirata.",
+		"Testa alta, talloni piantati.",
+		"Occhi avanti, talloni giù, nessun passo indietro.",
+	},
+	["battle.w12.grit.045"] = {
+		"Sono {g:consumato|consumata}, non {g:finito|finita}.",
+		"Un po' di logorio ai bordi. Il cuore della cosa tiene.",
+		"Il tessuto è liso, forse. Ma regge.",
+	},
+	["battle.w12.grit.046"] = {
+		"Vuoi una lotta? Te ne do una che non conosce resa.",
+		"Bene. In me non troverai cedimenti.",
+	},
+	["battle.w12.grit.047"] = {
+		"Se cado, cado in avanti.",
+		"Se dovessi cadere, sarà con la faccia verso di te.",
+		"Succeda quel che succeda, le mie spalle non le vedrà nessuno.",
+	},
+	["battle.w12.grit.048"] = {
+		"Non riguarda te. Riguarda il non mollare.",
+		"Non ho niente contro di te. È che io le cose non le mollo.",
+	},
+	["battle.w12.grit.049"] = {
+		"Che tu sia più debole non cambia niente. Non faccio le cose a metà.",
+		"Scontro più piccolo, stesso impegno. È la mia natura.",
+	},
+	["battle.w12.grit.050"] = {
+		"Lunga o corta, ci sto fino all'ultimo.",
+		"Comunque vada, resto fino alla fine.",
+	},
+	["battle.w12.grit.051"] = {
+		"Io i rancori li conservo. Questo lo terrò a lungo.",
+		"Da adesso ti porto rancore. E il rancore lo conservo bene.",
+		"Complimenti. Sei nella lista delle cose che non perdono.",
+	},
+	["battle.w12.grit.052"] = {
+		"Le ritirate non fanno per me. Le pause, a malapena.",
+		"Indietreggiare non è nella mia natura. Purtroppo, nemmeno stare {g:fermo|ferma}.",
+	},
+	["battle.w12.grit.053"] = {
+		"Ho detto che sarei {g:arrivato|arrivata} in fondo. Dirlo era la parte facile.",
+		"Le parole costano poco. Restare qui è il pagamento.",
+		"La mia parola mi ha {g:portato|portata} fin qui. I piedi faranno il resto.",
+	},
+	["battle.w12.grit.054"] = {
+		"Dovrai staccarmi a forza. Io non mollo la presa.",
+		"Afferro e non lascio. Tutta la mia arte è qui.",
+		"Scuoti pure. La presa resta.",
+	},
+	["battle.w12.grit.055"] = {
+		"Gambe come corde bagnate. Non importa: mi porteranno.",
+		"Tutto pesa. Braccia, occhi, tutto quanto. Vai comunque.",
+		"Piombo negli stivali. Cammina lo stesso.",
+	},
+	["battle.w12.grit.056"] = {
+		"Le mie spalle non le vedrà. Non stavolta.",
+		"Qualunque cosa sia, vedrà la mia faccia, non i miei talloni.",
+	},
+	["battle.w12.grit.057"] = {
+		"Tieni la rabbia fredda. La rabbia fredda dura.",
+		"Che bruci piano, non a fiammata. Il fuoco lento dura di più.",
+		"La rabbia calda trabocca. Tienila fredda e ferma.",
+	},
+	["battle.w12.grit.058"] = {
+		"Nessuno lo farà al posto mio.",
+		"Questo tocca a me portarlo. Sollevalo.",
+		"Il mio carico. Lo sollevo io. Nessun altro.",
+	},
+	["battle.w12.grit.059"] = {
+		"Non contare niente. Vai avanti finché non finisce.",
+		"Non pensare alla fine. Pensa al pezzo che viene.",
+		"Il prossimo istante. Poi quello dopo. Nient'altro.",
+	},
+	["battle.w12.grit.060"] = {
+		"Ho paura e sono {g:furioso|furiosa}. Vince la furia.",
+		"La paura dice vattene. La rabbia dice resta. Ascolto la rabbia.",
+	},
+	["battle.w12.grit.061"] = {
+		"Se devo essere {g:testardo|testarda} su qualcosa, che sia su questo.",
+		"Ora la testardaggine. Il buon senso, più tardi.",
+		"La testardaggine ha i suoi usi. Eccone uno.",
+	},
+	["battle.w12.grit.062"] = {
+		"Eccolo, il nodo caldo dietro gli occhi. Usalo.",
+		"La rabbia, proprio dove l'avevo lasciata. Bene. Puntala avanti.",
+	},
+	["battle.w12.grit.063"] = {
+		"Il corpo presenta reclami. Ricevuti. Respinti.",
+		"Ogni articolazione ha qualcosa da dire. Dopo.",
+	},
+	["battle.w12.grit.064"] = {
+		"Non lo voglio. Volere non c'entra.",
+		"Nessuno mi ha chiesto cosa volevo. Di solito nessuno lo chiede.",
+	},
+	["battle.w12.grit.065"] = {
+		"Tieni. Solo tieni. Il resto verrà.",
+		"Metti radici. Sii la cosa che non si muove.",
+		"Resta. Qualunque cosa spinga, resta.",
+	},
+	["battle.w12.grit.066"] = {
+		"Mi resta poco. Per cominciare, poco basta.",
+		"Avanzi di forza. Andranno bene gli avanzi.",
+		"Anche i fondi si bevono.",
+	},
+	["battle.w12.grit.067"] = {
+		"Più cresce la rabbia, più abbasso la voce. Tienila bassa.",
+		"La rabbia che urla si consuma. Quella che aspetta resta.",
+	},
+	["battle.w12.grit.068"] = {
+		"Che stanchezza, tutto questo. Eppure ci entro, come sempre.",
+		"Stanchezza fino alle ossa, e ci vado lo stesso. Ovvio.",
+	},
+	["battle.w12.grit.069"] = {
+		"Arrivi quel che arrivi, incassalo a testa alta.",
+		"Il primo colpo, prenderlo in piedi. È tutto quello che mi chiedo.",
+	},
+	["battle.w12.grit.070"] = {
+		"Se non io, chi? Va bene. Io.",
+		"Potrei andarmene. Non lo farò. È tutto qui.",
+	},
+	["battle.w12.grit.071"] = {
+		"Dormire dopo. Il sonno è un premio per il dopo.",
+		"Il letto è lontano. Questo, invece, è qui.",
+	},
+	["battle.w12.grit.072"] = {
+		"Mi hanno stancato le lotte che non scelgo. Allora questa la faccio bene.",
+		"Se proprio devo, allora fino in fondo.",
+	},
+	["battle.w12.grit.073"] = {
+		"C'è qualcosa in me che non si inginocchia. Lascia che guidi lui.",
+		"Ho una radice testarda, dentro. Appoggiati a quella.",
+	},
+	["battle.w12.grit.074"] = {
+		"Durare più a lungo. Qualunque cosa succeda, durare.",
+		"Prima resistere. Tutto il resto dopo.",
+	},
+	["battle.w12.grit.075"] = {
+		"La seccatura è troppa per lasciare spazio alla paura. Che fortuna.",
+		"L'irritazione batte la paura. E di irritazione sono {g:pieno|piena}.",
+		"Non c'è posto per la paura. Il fastidio ha preso tutto lo spazio.",
+	},
+	["battle.w12.grit.076"] = {
+		"Le promesse non si mantengono da sole.",
+		"Tutte le promesse che ho fatto sono qui, alle mie spalle.",
+	},
+	["battle.w12.grit.077"] = {
+		"Mani che tremano, piedi saldi. Basta così.",
+		"Che tremino pure le mani. I piedi restano dove sono.",
+		"Tremare è permesso. Arretrare no.",
+	},
+	["battle.w12.grit.078"] = {
+		"Stringi i denti. I denti servono a questo.",
+		"Mascella serrata, testa decisa. Vai.",
+		"Stringi forte e vai.",
+	},
+	["battle.w12.grit.079"] = {
+		"Anche le mani stanche si chiudono a pugno.",
+		"Stanchezza non vuol dire vuoto.",
+	},
+	["battle.w12.grit.080"] = {
+		"Che venga. Ho deciso di non lasciarmi smuovere.",
+		"La decisione è presa. Ora c'è solo da tenere.",
+	},
+	["battle.w12.grit.081"] = {
+		"Ho più rabbia di quanta dovrei. Va bene, spendila qui.",
+		"Troppa rabbia per un giorno solo. Ecco dove metterla.",
+	},
+	["battle.w12.grit.082"] = {
+		"Giusto o no, tocca a me.",
+		"Né giusto né facile, ma comunque mio.",
+		"Mio, che mi piaccia o no.",
+	},
+	["battle.w12.grit.083"] = {
+		"Costi quel che costi, pago e vado avanti.",
+		"Paga il prezzo e prosegui. Si tratta dopo.",
+	},
+	["battle.w12.grit.084"] = {
+		"Si scappa quando non resta niente. E resta parecchio.",
+		"Niente più forze? Sbagliato. Guarda meglio: ce n'è in abbondanza.",
+	},
+	["battle.w12.grit.085"] = {
+		"Ogni parte di me vuole sedersi. Quella che decide dice di no.",
+		"Il corpo vota per il riposo. La volontà ha il diritto di veto.",
+	},
+	["battle.w12.grit.086"] = {
+		"Contano su di me perché io tenga. E io tengo.",
+		"Qualcuno dietro di me ha bisogno che vada bene. Pianta i piedi.",
+	},
+	["battle.w12.grit.087"] = {
+		"Sii la roccia con cui discute l'acqua.",
+		"L'acqua spinge, la roccia resta. Sii roccia.",
+	},
+	["battle.w12.grit.088"] = {
+		"Me lo ricorderò. Tutto quanto.",
+		"Segnatelo: non dimentico chi ha cominciato.",
+		"Ogni sgarbo viene annotato. Qui dentro.",
+	},
+	["battle.w12.grit.089"] = {
+		"È qui che non mi arrendo. Proprio qui.",
+		"Se c'è una linea, è questa, e io non la riattraverso.",
+	},
+	["battle.w12.grit.090"] = {
+		"Fame, dolori e nessuna voglia. Perfetto.",
+		"Stomaco vuoto, pazienza corta. Brutto miscuglio, per chiunque sia.",
+	},
+	["battle.w12.grit.091"] = {
+		"Spalle indietro. Non mostrare altro che decisione.",
+		"Non lasciare appigli. Niente dubbi, niente tentennamenti.",
+	},
+	["battle.w12.grit.092"] = {
+		"raddrizza le spalle come chi si carica un peso tutt'altro che leggero.",
+		"serra la mascella e non arretra di un passo.",
+		"porta indietro le spalle come per scrollarsi di dosso un cappotto pesante, e resta dov'è.",
+	},
+	["battle.w12.grit.093"] = {
+		"digrigna i denti una volta, piano, e smette di sembrare {g:stanco|stanca}.",
+		"lascia cadere la stanchezza dal viso come un mantello posato.",
+	},
+	["battle.w12.grit.094"] = {
+		"si raddrizza piano, ogni dolore rimandato a più tardi.",
+		"passa con una spinta da una postura stanca a una pronta.",
+	},
+	["battle.w12.grit.095"] = {
+		"si fa immobile, e quell'immobilità ha tutta l'aria della rabbia.",
+		"non dice nulla; la piega della bocca basta e avanza.",
+	},
+	["battle.w12.grit.096"] = {
+		"punta i talloni e si sporge in avanti, verso quel che viene.",
+		"abbassa la testa e si butta, {g:testardo|testarda} come un mulo.",
+	},
+	["battle.w12.grit.097"] = {
+		"apre e chiude i pugni, una volta, due, e li tiene chiusi.",
+		"chiude entrambe le mani a pugno e le tiene così, senza fretta.",
+	},
+	["battle.w12.grit.098"] = {
+		"si lascia scappare una risata stanca e va avanti lo stesso.",
+		"scuote la testa per il tempismo, poi la rialza per andare incontro allo scontro.",
+	},
+	["battle.w12.grit.099"] = {
+		"si massaggia una spalla dolorante, poi se ne scorda del tutto.",
+		"scioglie una spalla rigida e si mette in guardia.",
+	},
+	["battle.w12.grit.100"] = {
+		"pianta sull'avversario uno sguardo piatto, senza battere ciglio, e non cede di un palmo.",
+		"accoglie l'avversario con uno sguardo che non ha più niente da trattare.",
+	},
+	["battle.w12.grit.101"] = {
+		"abbassa il mento e ci si appoggia, come chi spinge una porta incastrata.",
+		"porta avanti una spalla, come se ci fosse da sfondare una porta bloccata.",
+	},
+	["battle.w12.grit.102"] = {
+		"borbotta qualcosa di breve e irripetibile, poi si mette all'opera.",
+		"ringhia piano, un suono che non concede nulla.",
+	},
+	["battle.w12.grit.103"] = {
+		"sta un po' più {g:dritto|dritta} di quanto la stanchezza dovrebbe permettere.",
+		"si tira su a forza di puro rifiuto.",
+	},
+	["battle.w12.grit.104"] = {
+		"si volta ad affrontare il guaio di petto, senza fretta e senza dubbi.",
+		"affronta il guaio di petto, come se farsi da parte non fosse mai stato inventato.",
+	},
+	["battle.w12.grit.105"] = {
+		"annuisce una volta, con aria cupa, come chi accetta una corvée.",
+		"accetta lo scontro con un breve cenno, come si accetta una commissione pesante.",
+	},
+	["battle.w12.grit.106"] = {
+		"stringe gli occhi a fessura; il viso intorno resta calmissimo.",
+		"assume uno sguardo duro e paziente che non promette nulla di gentile.",
+	},
+	["battle.w12.grit.107"] = {
+		"posa la stanchezza come uno zaino lasciato sulla soglia, e si fa avanti.",
+		"mette da parte la fatica come chi si toglie un fardello, e avanza.",
+	},
+	["battle.w12.measure.001"] = {
+		"Lento va bene. È di fretta che si finisce a terra.",
+		"Niente fretta sulla prima mossa. Gli errori nascono lì.",
+	},
+	["battle.w12.measure.002"] = {
+		"Un'occhiata al terreno, una sola. Radici, sassi, pendenza. Poi fidati.",
+		"Punti molli, punti che cedono: trovali adesso, non a metà.",
+		"Sapere cosa c'è sotto i piedi, prima che si metta a dire la sua.",
+	},
+	["battle.w12.measure.003"] = {
+		"Tutto ha un ritmo. Trovo il suo prima che trovi il mio.",
+		"Sotto ogni scontro batte un tempo. Prima ascoltalo.",
+	},
+	["battle.w12.measure.004"] = {
+		"Anche aspettare è una mossa. Forse la migliore che ho.",
+		"Aspettare conta. Aspettare bene conta il doppio.",
+	},
+	["battle.w12.measure.005"] = {
+		"Silenzio nella testa. Il rumore resti fuori.",
+		"Che tutto taccia, tranne questo.",
+		"Abbassa il volume del resto del mondo. Solo questo, adesso.",
+	},
+	["battle.w12.measure.006"] = {
+		"Quanti? Dove? Chi si muove per primo? Poi vai.",
+		"Contare, piazzare, scegliere. In quest'ordine.",
+	},
+	["battle.w12.measure.007"] = {
+		"Niente sta in equilibrio perfetto. Scopri da che parte pende.",
+		"Tutto si appoggia più da un lato. Scopri quale.",
+		"Da qualche parte pende. Pende sempre.",
+	},
+	["battle.w12.measure.008"] = {
+		"Non la prima mossa. È la seconda a dire la verità.",
+		"Lascia perdere l'apertura. È quello che segue a mostrare cosa c'è di vero.",
+		"Le aperture sono vetrina. Aspetta quello che viene dopo.",
+	},
+	["battle.w12.measure.009"] = {
+		"Non spendere tutto all'inizio. Tieni una riserva.",
+		"Tieni qualcosa da parte. Gli scontri durano più di quanto sembri.",
+	},
+	["battle.w12.measure.010"] = {
+		"Mani ferme. Il resto può fare quello che vuole.",
+		"Le mani stiano quiete. Il resto tremi pure, se gli va.",
+		"Tieni calme le mani. Tutto il resto faccia come crede.",
+	},
+	["battle.w12.measure.011"] = {
+		"Cosa c'è alle mie spalle? Bene. Adesso dimenticalo.",
+		"Un'occhiata indietro. Niente. Occhi avanti.",
+	},
+	["battle.w12.measure.012"] = {
+		"Non tutti i varchi sono veri. Qualcuno è lasciato lì apposta.",
+		"Una porta aperta può essere una trappola. Prima guarda i cardini.",
+	},
+	["battle.w12.measure.013"] = {
+		"Il primo istante non va vinto. Basta non perderlo.",
+		"Il primo momento non serve a vincere. Serve a non perdere.",
+	},
+	["battle.w12.measure.014"] = {
+		"Piedi sotto di me, occhi aperti. Il resto sono dettagli.",
+		"Appoggio e occhi. Tutto il resto aspetti il suo turno.",
+	},
+	["battle.w12.measure.015"] = {
+		"Chi ha fretta si legge come un libro aperto. Non esserlo.",
+		"La fretta ti scrive addosso la prossima mossa. Non regalarla.",
+	},
+	["battle.w12.measure.016"] = {
+		"Tutto in me dice adesso. Non ancora. Non proprio ancora.",
+		"Non ancora. Non ancora... Ecco.",
+	},
+	["battle.w12.measure.017"] = {
+		"I passi piccoli tengono l'equilibrio. Quelli lunghi sono per dopo.",
+		"Passetti, per ora. Le falcate quando è deciso.",
+	},
+	["battle.w12.measure.018"] = {
+		"Quello che fa due volte lo rifarà una terza. Aspetta la terza.",
+		"Le abitudini si vedono al secondo tentativo. Aspetta che si vedano.",
+	},
+	["battle.w12.measure.019"] = {
+		"La rabbia è veloce. La calma, alla lunga, di più.",
+		"La rabbia arriva prima, la calma arriva giusta.",
+		"La collera corre. La calma arriva.",
+	},
+	["battle.w12.measure.020"] = {
+		"Sciogli la mascella. A denti stretti non pensa bene nessuno.",
+		"Mascella morbida, spalle morbide, testa lucida.",
+	},
+	["battle.w12.measure.021"] = {
+		"Un solo compito, adesso: vedere chiaro. Il resto viene dopo.",
+		"Prima si guarda. Tutto il resto fa la fila.",
+	},
+	["battle.w12.measure.022"] = {
+		"Ogni scontro ha una forma. Trovane i bordi.",
+		"Prima i bordi. Il centro si sistema da solo.",
+	},
+	["battle.w12.measure.023"] = {
+		"Prima il terreno. Chi ha l'appoggio ha il momento dopo.",
+		"Un buon appoggio è mezza risposta. Trovalo.",
+		"Sistema il terreno, e tutto il resto avrà dove posare.",
+	},
+	["battle.w12.measure.024"] = {
+		"Qualunque cosa succeda, non farti chiudere in un angolo. Tieniti una via.",
+		"Lasciarmi spazio. Lasciarmi sempre spazio.",
+		"Avere spazio per muoversi vale più di qualsiasi idea brillante.",
+	},
+	["battle.w12.measure.025"] = {
+		"Conta fino a tre. Non a voce alta. Quanto basta per assestarti.",
+		"Uno, due, tre. Ecco. A posto.",
+		"Una breve conta in testa, e il tremito trova un altro posto dove stare.",
+	},
+	["battle.w12.measure.026"] = {
+		"Non guardare il rumore. Guarda quello che sta zitto.",
+		"La parte rumorosa di rado è quella pericolosa.",
+		"Chiunque faccia il chiasso, il guaio di solito sta altrove.",
+	},
+	["battle.w12.measure.027"] = {
+		"Più largo. Guarda tutto il campo, non solo la cosa più vicina.",
+		"Non fissare. Fissare restringe. Guarda largo.",
+	},
+	["battle.w12.measure.028"] = {
+		"Il piano dura finché non si muove. Va bene, poi ne avrò un altro.",
+		"Pianificare quanto basta per sbagliare in modo utile.",
+		"Ogni piano incontra la prima mossa e perde. Fanne uno che costi poco.",
+	},
+	["battle.w12.measure.029"] = {
+		"Impara qualcosa. Comunque vada, impara qualcosa.",
+		"Occhi aperti. Questa è una lezione, qualunque altra cosa sia.",
+	},
+	["battle.w12.measure.030"] = {
+		"Troppa voglia. Tirala indietro di una tacca. Ecco.",
+		"Piano. La smania porta distrazione. Molla un po'.",
+	},
+	["battle.w12.measure.031"] = {
+		"Guarda dove vuole portarmi. Poi vai da un'altra parte.",
+		"Se mi vuole lì, io voglio essere ovunque tranne lì.",
+	},
+	["battle.w12.measure.032"] = {
+		"Non sono qui per fare {g:il coraggioso|la coraggiosa}. Sono qui per non sbagliare.",
+		"Il coraggio costa poco. Non sbagliare costa di più e rende meglio.",
+	},
+	["battle.w12.measure.033"] = {
+		"Lo scontro mi sta già dicendo qualcosa. Silenzio, e ascolta.",
+		"Ogni scontro comincia con una piccola confessione. Stai a sentire.",
+	},
+	["battle.w12.measure.034"] = {
+		"Qualcosa si tradisce sempre. Un lato preferito, un'abitudine, una fretta.",
+		"C'è sempre un segnale. Trovalo prima che impari a nascondersi.",
+	},
+	["battle.w12.measure.035"] = {
+		"Non devo essere veloce. Devo essere puntuale.",
+		"La velocità è sopravvalutata. Il tempismo è tutto.",
+		"La velocità è una vanteria. Il tempismo è un mestiere.",
+	},
+	["battle.w12.measure.036"] = {
+		"Che mi mostri il suo meglio. Così saprò dov'è il soffitto.",
+		"Prima il suo sforzo migliore. Poi saprò quanto è alto il soffitto.",
+	},
+	["battle.w12.measure.037"] = {
+		"Cominciare è facile, finire bene no. Pensa alla fine adesso.",
+		"Comincia pensando alla fine. Dove voglio trovarmi, quando si ferma?",
+	},
+	["battle.w12.measure.038"] = {
+		"Due cose da sapere: come si muove e come rispondo io. Nient'altro.",
+		"Come si muove. Come rispondo. Fine dell'elenco.",
+	},
+	["battle.w12.measure.039"] = {
+		"Con la coda dell'occhio, tutto il resto. C'è sempre un resto.",
+		"Occhio ai lati. Quello che hai davanti di rado è tutto.",
+		"Il davanti, certo. Ma anche i fianchi. Le sorprese adorano i fianchi.",
+	},
+	["battle.w12.measure.040"] = {
+		"{g:Testardo|Testarda} posso esserlo dopo. Adesso devo essere {g:furbo|furba}.",
+		"Prima l'astuzia. La testardaggine è per quando l'astuzia finisce.",
+	},
+	["battle.w12.measure.041"] = {
+		"La prima cosa che fa è quella di cui si fida di più. Prendine nota.",
+		"Con cosa apre, di quello si fida. Ricordalo.",
+	},
+	["battle.w12.measure.042"] = {
+		"O il passo lo detto io, o me lo dettano. Preferisco dettarlo io.",
+		"Chi detta il passo detta quasi tutto il resto.",
+	},
+	["battle.w12.measure.043"] = {
+		"Mani quiete, piedi quieti, occhi svegli.",
+		"Mani immobili, piedi immobili, occhi al lavoro.",
+	},
+	["battle.w12.measure.044"] = {
+		"Non sobbalzare al primo rumore. I rumori mentono.",
+		"Il primo rumore di uno scontro non vuol dire niente. Non saltarci sopra.",
+	},
+	["battle.w12.measure.045"] = {
+		"Pensa alla seconda mossa adesso, finché la prima costa poco.",
+		"Due mosse avanti. La prima è già in ritardo.",
+	},
+	["battle.w12.measure.046"] = {
+		"La paura vuole una risposta rapida. Lo scontro ne vuole una giusta.",
+		"Lo spavento corre. Non devo per forza corrergli dietro.",
+	},
+	["battle.w12.measure.047"] = {
+		"Qualunque cosa costi, che costi per quello che ho scelto, non per quello che mi è sfuggito.",
+		"Pagare per ciò che decido, non per ciò che non ho visto.",
+	},
+	["battle.w12.measure.048"] = {
+		"Morbidezza. Un corpo rigido si muove tardi.",
+		"La rigidità rende lenti. Via, scrollala di dosso.",
+	},
+	["battle.w12.measure.049"] = {
+		"Su, fammi vedere come ti muovi.",
+		"Vediamo prima come ti muovi.",
+		"Muoviti. Voglio guardarti mentre lo fai.",
+	},
+	["battle.w12.measure.050"] = {
+		"Nessuna fretta. Ho tutto il tempo che serve.",
+		"Prenditi il tuo tempo. Io mi prendo il mio.",
+		"Io non ho fretta. Tu sì?",
+	},
+	["battle.w12.measure.051"] = {
+		"Calma. Calma... ecco.",
+		"Piano. Piano, adesso. Ora.",
+		"Tieni. Tieni... sì.",
+	},
+	["battle.w12.measure.052"] = {
+		"Prima tu. Voglio vedere con cosa apri.",
+		"Comincia pure. Mi interessa sapere su cosa conti.",
+	},
+	["battle.w12.measure.053"] = {
+		"Occhio al terreno. Io ci ho già pensato.",
+		"Attenzione a dove ti metti. Il mio posto l'ho scelto.",
+	},
+	["battle.w12.measure.054"] = {
+		"D'accordo. Ti ho preso le misure. Cominciamo.",
+		"Misure prese. Si comincia.",
+	},
+	["battle.w12.measure.055"] = {
+		"La pazienza a me non costa niente. A te?",
+		"Io so aspettare. E tu?",
+		"Aspettare è gratis. Vediamo chi se lo può permettere.",
+	},
+	["battle.w12.measure.056"] = {
+		"Aspetta. Aspetta... aspetta.",
+		"Non ancora. Ancora un attimo.",
+	},
+	["battle.w12.measure.057"] = {
+		"Calma. Non tu, io. Tu fai pure come ti pare.",
+		"Piano, piano. Parlavo con me, non con te.",
+	},
+	["battle.w12.measure.058"] = {
+		"Buon terreno, questo. Me lo tengo.",
+		"Questo posto va bene. Lo tengo io.",
+		"Appoggio decente. Adesso è mio.",
+	},
+	["battle.w12.measure.059"] = {
+		"Piano e con cura. Vediamo cosa sai fare.",
+		"Inizio con prudenza. Prima di fidarmi di qualcosa voglio conoscerti.",
+	},
+	["battle.w12.measure.060"] = {
+		"Ti vedo. Ogni tua mossa.",
+		"Oh, ti vedo bene. Fino all'ultimo scatto.",
+	},
+	["battle.w12.measure.061"] = {
+		"Un'occhiata, poi il lavoro.",
+		"Prima un'occhiata. Poi si lavora.",
+		"Guardato. Adesso si lavora.",
+	},
+	["battle.w12.measure.062"] = {
+		"Prendo quello che viene. Tutto, in ordine.",
+		"Una cosa dopo l'altra. L'ordine lo so tenere.",
+	},
+	["battle.w12.measure.063"] = {
+		"Bene. Io so dove sto. E tu?",
+		"Il mio terreno lo conosco. E tu il tuo?",
+	},
+	["battle.w12.measure.064"] = {
+		"Mm. Fatti guardare un momento.",
+		"Un momento, non muoverti. Sto guardando.",
+	},
+	["battle.w12.measure.065"] = {
+		"Quando vuoi. Io ci sono già.",
+		"Quando ti pare. Sono a posto.",
+	},
+	["battle.w12.measure.066"] = {
+		"Io non faccio la prima mossa. Faccio quella giusta.",
+		"La prima mossa è tua. Quella giusta è mia.",
+	},
+	["battle.w12.measure.067"] = {
+		"Prudenza. È con la prudenza che si invecchia.",
+		"Prudente non vuol dire vigliacco. Vuol dire arrivare a vecchi.",
+	},
+	["battle.w12.measure.068"] = {
+		"Con calma. Niente si decide al primo istante.",
+		"Rallenta. Il primo istante non decide niente.",
+		"Non serve vincere l'apertura. È solo l'apertura.",
+	},
+	["battle.w12.measure.069"] = {
+		"Hai uno schema. Ce l'hanno tutti. Lo troverò.",
+		"C'è uno schema, lì dentro. Dammi un momento.",
+		"Gli schemi sono ovunque. Il tuo non ci metterà molto.",
+	},
+	["battle.w12.measure.070"] = {
+		"Voi guardate i lati, io il centro. Dite cosa vedete.",
+		"Occhi dappertutto. Chi vede qualcosa lo dica.",
+	},
+	["battle.w12.measure.071"] = {
+		"Nessuno si butti dentro. Lasciamo che ci mostri cosa fa.",
+		"Aspettate un momento. Prima impariamo come si muove, poi andiamo.",
+	},
+	["battle.w12.measure.072"] = {
+		"Allargatevi un po'. Un bersaglio solo è un bersaglio facile.",
+		"Non state ammucchiati. Ammucchiati si è facili.",
+	},
+	["battle.w12.measure.073"] = {
+		"Roba grossa. Prima impara il suo ritmo, poi mettilo alla prova.",
+		"Più grande del solito. Guarda un po', prima di fidarti di una mossa.",
+	},
+	["battle.w12.measure.074"] = {
+		"Più forte di me. Va bene. Anche la forza deve arrivare a segno.",
+		"La forza ce l'hai. Vediamo se hai anche il tempismo.",
+	},
+	["battle.w12.measure.075"] = {
+		"Sulla carta sono in vantaggio. Non è un motivo per distrarmi.",
+		"Più debole o no, non mi metto a fare le cose a metà.",
+	},
+	["battle.w12.measure.076"] = {
+		"{target}. Guardo come ti porti.",
+		"Vedo come ti porti. Mi basta per cominciare.",
+	},
+	["battle.w12.measure.077"] = {
+		"Prima ti imparo. Poi il resto.",
+		"Prima si impara. Poi si fa.",
+	},
+	["battle.w12.measure.078"] = {
+		"Bene. Il terreno è mio, il passo pure. A te la mossa.",
+		"Il mio passo, il mio terreno. Tocca a te.",
+		"Dove e quanto in fretta l'ho scelto io. Il quando lo scegli tu.",
+	},
+	["battle.w12.measure.079"] = {
+		"Non così in fretta. Prima diamoci un'occhiata come si deve.",
+		"Piano, lì. Non ha senso correre.",
+	},
+	["battle.w12.measure.080"] = {
+		"Mi stai già dicendo un sacco di cose. Continua così.",
+		"Ogni tua mossa mi racconta qualcosa. Grazie.",
+	},
+	["battle.w12.measure.081"] = {
+		"Non badare a me. Sto solo contando.",
+		"Fai finta di niente. Sto facendo due conti.",
+	},
+	["battle.w12.measure.082"] = {
+		"Mm. Interessante. Molto bene.",
+		"Interessante. E va bene.",
+	},
+	["battle.w12.measure.083"] = {
+		"Terreno fermo, mani ferme.",
+		"Il terreno tiene. Io pure.",
+	},
+	["battle.w12.measure.084"] = {
+		"Qualunque cosa tu abbia, fammela vedere. La metto in ordine io.",
+		"Tira fuori tutto. Lo smisto man mano che arriva.",
+	},
+	["battle.w12.measure.085"] = {
+		"Terra sotto, occhi avanti, pazienza nel mezzo.",
+		"La terra sotto di me, l'avversario davanti, e tempo per entrambi.",
+	},
+	["battle.w12.measure.086"] = {
+		"Attenzione, adesso. Il primo passo nessuno lo fa due volte.",
+		"Di inizio ce n'è uno solo. Non sprechiamolo.",
+	},
+	["battle.w12.measure.087"] = {
+		"Un attimo di silenzio. Devo sentirmi pensare.",
+		"Sst. Sto pensando.",
+	},
+	["battle.w12.measure.088"] = {
+		"struscia il piede sul terreno, una volta, per sentire quanto tiene.",
+		"saggia il terreno con un piede prima di affidargli tutti e due.",
+	},
+	["battle.w12.measure.089"] = {
+		"lancia un'occhiata alle spalle, una sola.",
+		"guarda indietro una volta, poi soltanto avanti.",
+		"controlla cosa c'è alle spalle con un rapido giro di testa, e chiude la faccenda.",
+	},
+	["battle.w12.measure.090"] = {
+		"si fa immobile, ogni cosa raccolta nell'attesa.",
+		"si ferma del tutto, attenzione pura, come una nota tenuta.",
+	},
+	["battle.w12.measure.091"] = {
+		"scuote le mani e poi le lascia pendere, sciolte e pronte.",
+		"dà una scrollata alle mani e le lascia quietare.",
+		"apre e chiude le mani un paio di volte, poi le lascia tranquille.",
+	},
+	["battle.w12.measure.092"] = {
+		"inclina appena la testa, osservando come si muove l'avversario.",
+		"piega il capo di lato e segue con cura il primo movimento dell'avversario.",
+	},
+	["battle.w12.measure.093"] = {
+		"abbassa il mento e si gira un poco di lato, per offrire meno.",
+		"si mette di tre quarti, mento basso, concedendo il meno possibile.",
+	},
+	["battle.w12.measure.094"] = {
+		"si sposta di un paio di passi, lo sguardo un attimo a terra, scegliendo dove stare.",
+		"sceglie un punto con una rapida occhiata a terra e lo fa suo.",
+	},
+	["battle.w12.measure.095"] = {
+		"muove le labbra senza suono, contando qualcosa che conosce solo {g:lui|lei}.",
+		"conta in silenzio, a fior di labbra, gli occhi sull'avversario.",
+	},
+	["battle.w12.measure.096"] = {
+		"aspetta senza fretta che l'avversario si sbilanci.",
+		"lascia che sia l'avversario a scoprirsi per primo, e osserva con attenzione.",
+		"si trattiene, senza fretta, finché l'avversario non rivela le sue intenzioni.",
+	},
+	["battle.w12.measure.097"] = {
+		"scioglie la mascella con uno sforzo e lascia cadere le spalle.",
+		"abbassa le spalle di un dito, e la rigidità se ne va con loro.",
+	},
+	["battle.w12.measure.098"] = {
+		"squadra l'avversario da cima a fondo, come chi stima il prezzo di un cavallo.",
+		"rivolge all'avversario un lungo sguardo da intenditore, come un compratore davanti a un mulo.",
+	},
+	["battle.w12.measure.099"] = {
+		"socchiude gli occhi un istante, poi li riapre, limpidi.",
+		"sbatte le palpebre una volta, lentamente, e gli occhi che si riaprono sono calmi.",
+	},
+	["battle.w12.measure.100"] = {
+		"stringe una cinghia allentata con uno strattone, senza abbassare lo sguardo.",
+		"dà un ultimo strattone a una cinghia: niente deve penzolare.",
+		"controlla una fibbia al tatto, senza distogliere lo sguardo.",
+	},
+	["battle.w12.measure.101"] = {
+		"abbraccia in un lungo sguardo il terreno, l'avversario e lo spazio in mezzo.",
+		"misura con un'occhiata lo spazio che {g:lo|la} separa dall'avversario.",
+	},
+	["battle.w12.measure.102"] = {
+		"piega appena le ginocchia, per poter andare dove andrà lo scontro.",
+		"si abbassa di un soffio sulle ginocchia, per poter partire in ogni direzione.",
+	},
+	["battle.w12.measure.103"] = {
+		"lascia passare il primo istante senza muoversi, a leggerlo.",
+		"lascia scorrere un momento senza toccarlo, studiando l'avversario.",
+	},
+	["battle.w12.measure.104"] = {
+		"si strofina le mani, una volta e con energia, e si mette al lavoro.",
+		"si scuote la polvere dalle mani e si volta verso l'avversario.",
+	},
+	["battle.w12.measure.105"] = {
+		"segue l'avversario con gli occhi soltanto; il resto è immobile.",
+		"insegue l'avversario con lo sguardo e basta, senza muovere nient'altro.",
+	},
+	["battle.w12.measure.106"] = {
+		"aggrotta la fronte, non per rabbia: come davanti a un conto.",
+		"corruga la fronte, come se l'avversario fosse una somma da fare.",
+		"stringe le labbra, come davanti a un registro che non torna.",
+	},
+	["battle.w12.measure.107"] = {
+		"annuisce piano tra sé, come se qualcosa fosse stato confermato.",
+		"fa un piccolo cenno del capo, rivolto a nessuno, e si mette in posizione.",
+	},
+	["battle.w12.measure.108"] = {
+		"guarda a sinistra, guarda a destra, e solo allora guarda l'avversario.",
+		"controlla entrambi i lati prima di dedicare all'avversario tutta la sua attenzione.",
+	},
+	["battle.w12.measure.109"] = {
+		"si raccoglie senza fretta, come una parola scelta con cura.",
+		"si prende un istante per raccogliersi, senza alcuna fretta visibile.",
+	},
+	["battle.w12.measure.110"] = {
+		"tiene le mani basse e morbide, senza lasciar trapelare nulla.",
+		"lascia le mani giù, quiete, e non tradisce niente.",
+	},
+	["battle.w12.measure.111"] = {
+		"guarda per un attimo oltre l'avversario, a quello che c'è dietro, e poi torna a lui.",
+		"concede un'occhiata a ciò che sta oltre l'avversario, poi torna a fissarlo.",
+	},
+	["battle.w12.measure.112"] = {
+		"dondola una volta sui piedi, a saggiare l'equilibrio.",
+		"ondeggia appena, avanti e indietro, cercando il punto d'equilibrio.",
+		"trova il proprio centro con un piccolo spostamento e lo tiene lì.",
+	},
+	["battle.w12.measure.113"] = {
+		"osserva con intensità, cogliendo ogni piccolo movimento prima che finisca.",
+		"strizza gli occhi, cogliendo ogni minimo spostamento dell'avversario.",
+	},
+	["battle.w12.measure.114"] = {
+		"non fa la prima mossa, e non ne fa mistero.",
+		"resta dov'è e lascia l'apertura all'avversario.",
+	},
+	["battle.w12.measure.115"] = {
+		"raddrizza le spalle e livella lo sguardo.",
+		"mette le spalle in squadra e punta uno sguardo fermo sull'avversario.",
+	},
+	["battle.w12.wit.001"] = {
+		"Scusa il disordine. Non aspettavo visite.",
+		"Perdona come mi trovi. Nessuno mi aveva annunciato ospiti.",
+		"Ospiti? E nessuno ha messo in ordine.",
+	},
+	["battle.w12.wit.002"] = {
+		"Hai un appuntamento? Non ti trovo sull'agenda.",
+		"Si riceve solo su appuntamento, temo. Non te l'ha detto nessuno?",
+	},
+	["battle.w12.wit.003"] = {
+		"È per qualcosa che ho detto? Non ho ancora aperto bocca.",
+		"Ho detto qualcosa di male? Mi pare proprio di non aver detto niente.",
+	},
+	["battle.w12.wit.004"] = {
+		"Ho detto ad alta voce 'cos'altro può andare storto'. Colpa mia.",
+		"Mai chiedersi a voce alta se può andare peggio. Lezione presa.",
+		"Qualcuno ha chiesto cosa mai potesse succedere. Io. L'ho chiesto io.",
+	},
+	["battle.w12.wit.005"] = {
+		"rotea gli occhi con tanta convinzione che vale quasi come esercizio.",
+		"rotea gli occhi per l'interruzione, poi si mette al lavoro.",
+	},
+	["battle.w12.wit.006"] = {
+		"Ti devo dei soldi? Credo che me lo ricorderei.",
+		"Se è per un debito, prima vorrei vedere le carte.",
+		"Qualunque cosa ti debba, dev'esserci un errore.",
+	},
+	["battle.w12.wit.007"] = {
+		"La mia fortuna ha dato un'occhiata e se n'è andata prima.",
+		"La fortuna è uscita a fare due passi. Mai presente quando arriva il conto.",
+	},
+	["battle.w12.wit.008"] = {
+		"Ah. Qualcuno si offre.",
+		"Guarda un po': qualcuno si fa avanti. Nessuno l'aveva chiesto.",
+		"Che zelo, farsi avanti così. Quasi commovente.",
+	},
+	["battle.w12.wit.009"] = {
+		"Ero nel bel mezzo di un nulla importantissimo.",
+		"Non facevo niente, e lo facevo benissimo. Rovinato tutto.",
+		"E dire che il far niente stava andando così bene.",
+	},
+	["battle.w12.wit.010"] = {
+		"Direi che è un piacere. Non lo è, ma lo direi.",
+		"{g:Lietissimo|Lietissima}, davvero. Non è vero, ma l'educazione è educazione.",
+	},
+	["battle.w12.wit.011"] = {
+		"Ogni scontro comincia con un piccolo 'oh no' nella mia testa. Tradizione.",
+		"Eccolo, il piccolo 'oh no' interiore. Non manca mai.",
+	},
+	["battle.w12.wit.012"] = {
+		"Rapina, faida o passatempo? Lo chiedo per i miei registri.",
+		"Rancore, fame o semplice noia? Mi piace tenere il conto.",
+		"Per te è lavoro o piacere?",
+	},
+	["battle.w12.wit.013"] = {
+		"alza un dito come per sollevare un'obiezione, poi ci ripensa.",
+		"apre la bocca per lamentarsi, la richiude e si mette in guardia.",
+	},
+	["battle.w12.wit.014"] = {
+		"Aspetta, non ero {g:pronto|pronta}. ...Va bene, ora sì. Più o meno.",
+		"Un attimo, un attimo, non avevo... no, lascia stare. Prego.",
+	},
+	["battle.w12.wit.015"] = {
+		"Calma. Calma perfetta. Nessuno è mai stato più tranquillo di così.",
+		"Tutto a posto. Del tutto, sospettosamente a posto.",
+	},
+	["battle.w12.wit.016"] = {
+		"Accetto l'invito. Con riserva. Molte riserve.",
+		"Invito accettato, sotto protesta. Annotalo.",
+	},
+	["battle.w12.wit.017"] = {
+		"Cervello, qualcosa di utile, grazie. Cervello? ...Si improvvisa, allora.",
+		"Pensieri, in fila. Pensieri? Spariti. Vado d'istinto.",
+	},
+	["battle.w12.wit.018"] = {
+		"Addio buonumore. Ha avuto vita breve.",
+		"E il buonumore se n'è andato. Lo conoscevo appena.",
+	},
+	["battle.w12.wit.019"] = {
+		"Piccole grazie: almeno non sono scale.",
+		"Poteva andare peggio. Poteva essere una scala a pioli.",
+		"Almeno non è una porta chiusa a chiave. Quelle mi battono sempre.",
+	},
+	["battle.w12.wit.020"] = {
+		"Le presentazioni dopo. Prima le lamentele.",
+		"I nomi possono aspettare. Ho una lista di rimostranze da smaltire.",
+	},
+	["battle.w12.wit.021"] = {
+		"Adesso? Davvero? Fra tutti i momenti possibili?",
+		"Con tutti i momenti che c'erano al mondo, proprio questo.",
+		"Questo minuto? Proprio questo?",
+	},
+	["battle.w12.wit.022"] = {
+		"riserva all'avversario lo sguardo che di solito tocca al sassolino nello stivale.",
+		"guarda il guaio come si guarda un sasso nella scarpa: con un disprezzo stanco.",
+	},
+	["battle.w12.wit.023"] = {
+		"È troppo tardi per far finta di non averti visto?",
+		"Potrei fingere di non averti notato? Troppo tardi: notato.",
+	},
+	["battle.w12.wit.024"] = {
+		"Chiunque tenga il conto delle mie giornate storte, ne aggiunga una.",
+		"Il registro delle mie giornate storte ha appena guadagnato una riga.",
+	},
+	["battle.w12.wit.025"] = {
+		"La mia offerta: te ne vai e io dimentico tutto. Rifiutata? Ne prendo nota.",
+		"Condizioni generose: giri i tacchi adesso e io non porto rancore.",
+		"Vattene e dirò a tutti che hai vinto tu. Affare fatto?",
+	},
+	["battle.w12.wit.026"] = {
+		"Ti do tre monete di rame se te ne vai. Quattro, se ti sbrighi.",
+		"Tre monete di rame se sparisci subito. Nessuno ci sta?",
+	},
+	["battle.w12.wit.027"] = {
+		"Promemoria: smettere di sembrare così avvicinabile.",
+		"Devo avere una faccia cordiale. Ci lavorerò su.",
+	},
+	["battle.w12.wit.028"] = {
+		"Mai pensato a un passatempo più tranquillo? Il ricamo, per dire?",
+		"Hai mai considerato altri interessi? La ceramica rilassa tantissimo.",
+	},
+	["battle.w12.wit.029"] = {
+		"Hai il senso del tempo. Pessimo, ma ce l'hai.",
+		"Tempismo impeccabile. Impeccabilmente pessimo.",
+		"Il tuo tempismo è un dono. Un dono maledetto.",
+	},
+	["battle.w12.wit.030"] = {
+		"Quando lo racconterò sarò più {g:alto|alta} e molto più {g:calmo|calma}.",
+		"Lo racconterò più coraggioso di com'è stato. Tanto vale cominciare subito.",
+	},
+	["battle.w12.wit.031"] = {
+		"Spero che tu sia in forma. Io per niente.",
+		"Hai fatto qualche preparativo? Io nessuno.",
+	},
+	["battle.w12.wit.032"] = {
+		"Ahi. In anticipo. Tanto per dirlo.",
+		"Mi porto avanti con le lamentele: ahi.",
+	},
+	["battle.w12.wit.033"] = {
+		"Aria sicura. Aria sicura. Aria... be', un'aria qualsiasi.",
+		"Faccia, fai qualcosa di coraggioso. Ecco... più o meno.",
+	},
+	["battle.w12.wit.034"] = {
+		"Non badare alla mia faccia. È quella dei pensieri. E anche quella delle preoccupazioni.",
+		"Questa espressione? Concentrazione. Per lo più.",
+	},
+	["battle.w12.wit.035"] = {
+		"Non sono in vena. A quanto pare non cambia niente.",
+		"Nessuno ha chiesto se fossi in vena. Nessuno lo chiede mai.",
+		"Umore: assente. Rissa: presente. Tipico.",
+	},
+	["battle.w12.wit.036"] = {
+		"Ogni storia decente comincia con la pessima idea di qualcuno.",
+		"Le belle storie cominciano con una decisione sbagliata. Questa parte alla grande.",
+	},
+	["battle.w12.wit.037"] = {
+		"Arrivo anche da te. C'è una lista, ma arrivo.",
+		"Mettiti in fila con i problemi della settimana. Verso il fondo, mi spiace.",
+		"Adesso sei sulla lista. Non è una bella lista.",
+	},
+	["battle.w12.wit.038"] = {
+		"borbotta una lamentela breve e sentita, rivolta a nessuno in particolare.",
+		"brontola qualcosa sul tempismo che nessuno dovrebbe sentire.",
+	},
+	["battle.w12.wit.039"] = {
+		"Grido prima io o preferisci cominciare tu?",
+		"Chi urla per primo? A me va bene il secondo turno.",
+	},
+	["battle.w12.wit.040"] = {
+		"Se ne esco, mi compro qualcosa di bello.",
+		"Sopravvivi, e poi un regalo. Questo è il patto.",
+	},
+	["battle.w12.wit.041"] = {
+		"Nessun preavviso? Nemmeno un colpo di tosse?",
+		"Un po' di preavviso sarebbe stato gradito. Un fruscio, qualcosa.",
+	},
+	["battle.w12.wit.042"] = {
+		"E va bene, eccoti lo scontro. Ma tengo il muso dall'inizio alla fine.",
+		"D'accordo. Ma sappi che tengo il broncio.",
+	},
+	["battle.w12.wit.043"] = {
+		"Perché sempre io? Ho un cartello sulla schiena?",
+		"Ho un cartello sulla schiena, vero? 'Per guai, rivolgersi qui.'",
+	},
+	["battle.w12.wit.044"] = {
+		"Con educazione, se si può. In fretta, se no.",
+		"Della cortesia sarebbe gradita. Della brevità, ancor di più.",
+	},
+	["battle.w12.wit.045"] = {
+		"fa un inchino, minimo e molto sarcastico.",
+		"rivolge all'avversario un inchino storto e minuscolo, per nulla gentile.",
+		"accenna un inchinetto beffardo.",
+	},
+	["battle.w12.wit.046"] = {
+		"Applausi per l'entrata in scena. Molto teatrale.",
+		"Bell'ingresso. Un po' eccessivo, ma bello.",
+	},
+	["battle.w12.wit.047"] = {
+		"Magnifico. Alla giornata mancava giusto un disastro.",
+		"Bene. Per un attimo ho temuto che le cose filassero lisce.",
+		"Splendido. Le cose andavano fin troppo bene.",
+	},
+	["battle.w12.wit.048"] = {
+		"Fammi indovinare: anche tu hai avuto una giornata lunga.",
+		"Giornataccia? Pure io. Il mondo è piccolo.",
+	},
+	["battle.w12.wit.049"] = {
+		"Se è un malinteso, questo è il momento di dirlo.",
+		"Ci sono speranze che sia un equivoco? Parla adesso.",
+	},
+	["battle.w12.wit.050"] = {
+		"Potrei scappare. Non lo farò. Ma il pensiero me lo tengo in tasca.",
+		"La fuga resta un'opzione. Vergognosa. Archiviata per dopo.",
+	},
+	["battle.w12.wit.051"] = {
+		"Se vendi qualcosa, non compro.",
+		"No, grazie, non mi serve niente. Qualunque cosa sia.",
+	},
+	["battle.w12.wit.052"] = {
+		"Rivoglio indietro questa interruzione, con gli interessi.",
+		"Mi devi un momento di pace. Passo a riscuoterlo adesso.",
+		"Quella che hai appena rotto era la mia pace.",
+	},
+	["battle.w12.wit.053"] = {
+		"Qualunque sia il motivo, non ne vale la pena. Ma va bene.",
+		"Dubito che convenga a qualcuno. Comunque. Eccolo qua.",
+	},
+	["battle.w12.wit.054"] = {
+		"Niente smorfie. ...Ecco, smorfia fatta.",
+		"Faccia seria. Seria. Oh, lascia stare.",
+	},
+	["battle.w12.wit.055"] = {
+		"Un'idea sola in testa, ed è pessima. La uso.",
+		"Il mio unico piano è terribile. Ottimo: almeno un piano c'è.",
+	},
+	["battle.w12.wit.056"] = {
+		"Non prenderla sul personale. O prendila pure. Scegli tu.",
+		"Personale o no, prendila come ti pare.",
+	},
+	["battle.w12.wit.057"] = {
+		"Mi era stata promessa una passeggiata tranquilla. Da me. Ho mentito.",
+		"Chi aveva detto che sarebbe stata una passeggiata in pace? Ah, già. Io.",
+		"Una gita tranquilla, mi dicevo. Ingenuità mia.",
+	},
+	["battle.w12.wit.058"] = {
+		"Occhio. Quando mi interrompono divento mordace. In senso figurato. Quasi sempre.",
+		"Se mi interrompi divento intrattabile. Ecco, ora lo sai.",
+	},
+	["battle.w12.wit.059"] = {
+		"Questa è la parte in cui te ne vai. Hai perso l'attacco.",
+		"Qui dovresti voltarti e andare. No? Con le battute non ci sai fare.",
+	},
+	["battle.w12.wit.060"] = {
+		"Resta in quella posa. Anzi no, mette i brividi.",
+		"Posa interessante. Inquietante, ma interessante.",
+	},
+	["battle.w12.wit.061"] = {
+		"Qualcuno, chissà dove, mi trova {g:spassosissimo|spassosissima}.",
+		"Chi organizza le mie giornate ha un senso dell'umorismo crudele.",
+	},
+	["battle.w12.wit.062"] = {
+		"Che fortuna. Che fortuna sfacciata.",
+		"Ma guarda che sorte. Che sorte straordinaria.",
+		"La fortuna mi sorride. Con tutti i denti.",
+	},
+	["battle.w12.wit.063"] = {
+		"Prima lo spuntino, poi la zuffa, avevo detto. Nessuno ascolta.",
+		"Avevo lo spuntino a metà strada verso la bocca. A metà strada!",
+	},
+	["battle.w12.wit.064"] = {
+		"Ma certo. Ma certo che succede adesso.",
+		"Ovviamente. Ovviamente proprio adesso.",
+		"Ovvio che adesso. E quando, se no?",
+	},
+	["battle.w12.wit.065"] = {
+		"si tasta le tasche come in cerca di pazienza, e ne trova pochissima.",
+		"cerca un po' di pazienza in una tasca, la trova quasi vuota e si arrangia.",
+	},
+	["battle.w12.wit.066"] = {
+		"scuote piano la testa, il ritratto di chi aveva sperato di meglio.",
+		"scuote la testa adagio, come un oste che guarda il fango portato sul pavimento pulito.",
+		"ha l'aria rassegnata di chi è stato interrotto troppe volte.",
+	},
+	["battle.w12.wit.067"] = {
+		"arriccia il naso per l'interruzione, poi si mette all'opera.",
+		"fa la faccia di chi si vede consegnare un conto da pagare, e si volta a saldarlo.",
+	},
+	["battle.w12.wit.068"] = {
+		"mima con le labbra un commento muto e piuttosto scortese all'avversario.",
+		"dice qualcosa di molto maleducato senza emettere un suono.",
+	},
+	["battle.w12.wit.069"] = {
+		"Sì, sì, ti vedo. Difficile non vederti.",
+		"Ti vedo, ti vedo. Non c'è bisogno di fare tutte queste storie.",
+	},
+	["battle.w12.wit.070"] = {
+		"Potevi scegliere un momento peggiore? Sul serio, provaci.",
+		"Se esisteva un momento peggiore, l'avresti trovato.",
+	},
+	["battle.w12.wit.071"] = {
+		"Smettila di raccontartela e fa' qualcosa.",
+		"Meno commenti, più fatti. Parola del commento.",
+	},
+	["battle.w12.wit.072"] = {
+		"Si può saltare dritti alla fine? Pagherei.",
+		"Esiste una versione breve di questa faccenda? Prendo quella.",
+	},
+	["battle.w12.wit.073"] = {
+		"Vorrei scambiare due parole con chi risponde di te.",
+		"Chi ti manda? Vorrei sporgere reclamo.",
+	},
+	["battle.w12.wit.074"] = {
+		"Sia messo agli atti che mi facevo gli affari miei.",
+		"Per la cronaca: io ero qui prima, e in silenzio.",
+	},
+	["battle.w12.wit.075"] = {
+		"Udite, udite: obietto. È tutto.",
+		"Si sappia che obietto, a gran voce e senza alcun risultato.",
+		"Obiezione formale registrata. Da me, per me.",
+	},
+	["battle.w12.wit.076"] = {
+		"Ah. Un contrattempo.",
+		"Mh. Un intoppo. Piuttosto vivace.",
+		"Mm. Un ostacolo. Con delle opinioni.",
+	},
+	["battle.w12.wit.077"] = {
+		"Bastava una lettera.",
+		"Sinceramente, sarebbe bastato un biglietto severo.",
+	},
+	["battle.w12.wit.078"] = {
+		"Deve per forza finire tutto a botte? A quanto pare sì.",
+		"Non c'è niente, a questo mondo, che si limiti a salutare?",
+	},
+	["battle.w12.wit.079"] = {
+		"Non dovevo alzarmi. Me lo segno per la prossima volta.",
+		"Alzarmi è stato l'errore. Tutto il resto ne è la conseguenza.",
+	},
+	["battle.w12.wit.080"] = {
+		"Vorrei un rimborso per tutta questa gita.",
+		"Si può rendere questo viaggio? È arrivato rovinato.",
+	},
+	["battle.w12.wit.081"] = {
+		"Un po' di musica eroica aiuterebbe. Qualunque cosa eroica aiuterebbe.",
+		"Con dei tamburi in sottofondo andrebbe meglio. Come quasi tutto.",
+	},
+	["battle.w12.wit.082"] = {
+		"La pazienza è una virtù, mi dicono. La mia è appena finita.",
+		"Prima la pazienza ce l'avevo. L'ho spesa tutta per qualcosa di più piccolo.",
+	},
+	["battle.w12.wit.083"] = {
+		"Ah, sei tu. Chiunque tu sia.",
+		"Eccoti. Non so chi tu sia, ma eccoti.",
+	},
+	["battle.w12.wit.084"] = {
+		"Coraggio, presentarsi in prima fila. Coraggio? Qualcuno?",
+		"Il coraggio in prima linea, prego. ...Arriverà.",
+	},
+	["battle.w12.wit.085"] = {
+		"Decisione interessante. Io ne avrei presa un'altra.",
+		"Non è la scelta che avrei fatto io. Ma è tua.",
+	},
+	["battle.w12.wit.086"] = {
+		"Prego, prima tu. No, davvero, insisto.",
+		"Comincia tu. Non vorrei essere scortese.",
+		"L'età prima della bellezza. Vai pure.",
+	},
+	["battle.w12.wit.087"] = {
+		"Tutto questo mondo, e tu scegli proprio qui.",
+		"Il mondo è grande. Non abbastanza da evitarti, a quanto pare.",
+		"Strade infinite là fuori, e tu hai scelto la mia.",
+	},
+	["battle.w12.wit.088"] = {
+		"No. No, grazie. ...Ah, non era una domanda.",
+		"Declino. Con garbo. Come, non si può declinare?",
+	},
+	["battle.w12.wit.089"] = {
+		"Me ne lamenterò per giorni. Qualcosa di bello da aspettare.",
+		"Giorni di brontolii in vista. Almeno avrò materiale.",
+	},
+	["battle.w12.wit.090"] = {
+		"Niente panico. Per me vale doppio.",
+		"Calma. Nessuno si agiti. Io meno di tutti.",
+	},
+	["battle.w12.wit.091"] = {
+		"Quello sguardo l'hai provato a lungo, vero? Ti riesce bene.",
+		"Che minaccia. Il massimo dei voti per la minaccia.",
+	},
+	["battle.w12.wit.092"] = {
+		"Cose che vogliono farmi male: in aumento. Cose che mi offrono un tè: nessuna.",
+		"Un sacco di cose vogliono fare a botte con me. Nessuna vuole due chiacchiere.",
+	},
+	["battle.w12.wit.093"] = {
+		"Troppo {g:stanco|stanca} per questo. Eppure eccolo qui.",
+		"Così {g:stanco|stanca} da dormire in piedi. A quanto pare non è permesso.",
+	},
+	["battle.w12.wit.094"] = {
+		"I piedi hanno presentato reclamo. Respinto.",
+		"Gambe, lo so. Lo so. Solo questo.",
+	},
+	["battle.w12.wit.095"] = {
+		"Sono più {g:coraggioso|coraggiosa} di quanto sembri. Per forza.",
+		"L'apparenza inganna. La mia ci spera proprio.",
+	},
+	["battle.w12.wit.096"] = {
+		"Ah, il comitato di benvenuto. E la torta?",
+		"Un ricevimento di benvenuto. Che pensiero gentile. Ma niente torta.",
+		"Un'accoglienza tutta per me? Non dovevi. Davvero.",
+	},
+	["battle.w12.wit.097"] = {
+		"Avevo chiesto che succedesse qualcosa. Dovevo essere più {g:preciso|precisa}.",
+		"Desideravo un po' di movimento. Devo formulare meglio i desideri.",
+	},
+	["battle.w12.wit.098"] = {
+		"Pensa a una battuta brillante. Niente? Allora si passa ai fatti.",
+		"Una frase arguta, una frase arguta... sparita. Pazienza.",
+	},
+	["battle.w12.wit.099"] = {
+		"Dammi tempo. Alla fine ci si affeziona a me. Qualcuno.",
+		"Dicono che con la conoscenza io migliori. Lentamente.",
+	},
+	["battle.w12.wit.100"] = {
+		"fa scrocchiare le nocche con un gesto teatrale, più che altro di scena.",
+		"fa scrocchiare le nocche, fa una smorfia e se ne pente all'istante.",
+	},
+	["battle.w12.wit.101"] = {
+		"si spazzola un granello di polvere dalla manica, come se lo scontro dovesse almeno {g:trovarlo|trovarla} in ordine.",
+		"raddrizza con gran cura una cinghia storta, e solo dopo alza lo sguardo.",
+	},
+	["battle.w12.wit.102"] = {
+		"si lascia sfuggire una risata breve e per nulla divertita.",
+		"fa una risatina secca, senza un briciolo di allegria.",
+	},
+	["battle.w12.wit.103"] = {
+		"si guarda intorno in cerca di qualcuno con cui lamentarsi, poi ci rinuncia e affronta l'avversario.",
+		"cerca con gli occhi un testimone di questa ingiustizia, non ne trova uno all'altezza e si volta.",
+	},
+	["battle.w12.wit.104"] = {
+		"inarca entrambe le sopracciglia verso l'avversario: un discorso intero in uno sguardo.",
+		"alza un solo sopracciglio, per nulla {g:colpito|colpita} dall'accoglienza.",
+	},
+	["battle.w12.wit.105"] = {
+		"Ah, {target}. Speravo di non incrociarti.",
+		"Tu. Fra tutti quelli che potevo incontrare, proprio tu.",
+	},
+	["battle.w12.wit.106"] = {
+		"{target}. Mi segno il nome, per il reclamo.",
+		"Un nome mi servirebbe. Per il reclamo, capisci.",
+	},
+	["battle.w12.wit.107"] = {
+		"{target}, dunque? Avevo in mente tutt'altro.",
+		"Buffo. Nella mia testa avevi tutt'altro aspetto.",
+	},
+	["battle.w12.wit.108"] = {
+		"Più forte di me? Che sbruffonata.",
+		"Ah, sei del tipo tosto. Magnifico. Davvero magnifico.",
+	},
+	["battle.w12.wit.109"] = {
+		"D'accordo, sei più forte. Io però sono molto più irritante. Conta anche quello.",
+		"La forza è tua. La molestia testarda è tutta mia.",
+	},
+	["battle.w12.wit.110"] = {
+		"Spirito ammirevole. Aritmetica discutibile.",
+		"Adoro l'entusiasmo. Sui conti ho qualche dubbio.",
+	},
+	["battle.w12.wit.111"] = {
+		"Ci hai pensato bene? Lo chiedo per te.",
+		"Prenditi un momento, pensaci. ...Ecco, il momento è passato.",
+	},
+	["battle.w12.wit.112"] = {
+		"Oh. Oh, questo è un bel fagotto di guai.",
+		"Questo è... parecchio più di quanto avessi ordinato.",
+	},
+	["battle.w12.wit.113"] = {
+		"Sei la versione grande, vero? Ma certo.",
+		"Fra tutte le taglie disponibili, la più grossa. Naturalmente.",
+	},
+	["battle.w12.wit.114"] = {
+		"Chi ha cominciato? Qualcuno ha cominciato.",
+		"Su, confessate. Di chi è stata l'idea?",
+	},
+	["battle.w12.wit.115"] = {
+		"Non guardate me. Non ho cominciato io.",
+		"Per una volta non è colpa mia. Credo.",
+	},
 }, "base_combat")

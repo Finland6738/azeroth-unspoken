@@ -6708,4 +6708,356 @@ NS:AddTexts("itIT", {
 		"fa un piccolo inchino ironico a nessuno in particolare, come per ringraziare la fortuna dell'ultimo tratto.",
 		"si tocca un cappello immaginario rivolto al mondo intero, per motivi che tiene per sé.",
 	},
+	["muse.w12.coin.013"] = {
+		"si porta la borsa accanto all'orecchio e la scuote piano, in ascolto come un guaritore davanti a un petto debole.",
+		"scuote appena la borsa vicino all'orecchio, e la risposta fioca non sembra {g:rassicurarlo|rassicurarla} granché.",
+	},
+	["muse.w12.coin.032"] = {
+		"divide una manciata di monete in due mucchietti, ciò che va speso e ciò che si potrebbe risparmiare, e il secondo perde ogni discussione.",
+		"separa le monete in un mucchio per i bisogni e uno per le speranze, poi fa scivolare in silenzio quasi tutte le speranze dall'altra parte.",
+	},
+	["muse.w12.coin.051"] = {
+		"strofina una moneta annerita sulla manica finché non riaffiora un volto consumato, e lo studia come per ricordare dove l'ha già visto.",
+		"lucida una moneta opaca sul polsino, socchiudendo gli occhi su ciò che un tempo vi era impresso.",
+	},
+	["muse.w12.coin.052"] = {
+		"riallaccia i lacci della borsa con un doppio nodo, poi con un terzo, come se le monete dentro stessero tramando qualcosa.",
+		"stringe il cordone della borsa più del necessario e lo ferma con un nodo testardo, per nulla {g:fiducioso|fiduciosa} nelle intenzioni del contenuto.",
+	},
+	["muse.w12.coin.053"] = {
+		"tiene un piccolo oggetto in ciascuna mano e li soppesa l'uno contro l'altro, con la faccia seria di chi deve decidere quale vendere.",
+		"rigira un ninnolo, poi un altro, chiaramente {g:intento|intenta} a calcolare quale dei due un mercante pagherebbe di più e quale dei due {g:gli|le} mancherebbe di meno.",
+	},
+	["muse.w12.coin.054"] = {
+		"guarda uno stivale consumato, poi la borsa, poi ancora lo stivale, come se i due stessero trattando e nessuno volesse cedere.",
+		"lancia un'occhiata a una cucitura aperta, poi alla borsa che porta alla cintura, e sembra fare da arbitro a una lite tra le due.",
+	},
+	["muse.w12.coin.055"] = {
+		"liscia un pezzetto di carta spiegazzato con una cifra scritta sopra, la legge, e lo ripone con la faccia lunga.",
+		"apre un bigliettino con una somma scarabocchiata, sospira davanti alla cifra e lo ripiega più piccolo, come se così potesse rimpicciolirla.",
+	},
+	["muse.w12.coin.056"] = {
+		"rovescia una tasca, trova una moneta di rame solitaria impigliata nella cucitura e la saluta come una vecchia conoscenza.",
+		"scova una moneta dispersa nell'angolo di una tasca e la guarda con sincero affetto, come se fosse rientrata da sola.",
+	},
+	["muse.w12.coin.057"] = {
+		"chiude il pugno sulle ultime poche monete e lo tiene così per un momento, come si terrebbe un uccellino.",
+		"ripiega le dita sulle poche monete rimaste e tiene ferma la mano per un po', con cura, come se potessero volare via.",
+	},
+	["muse.w12.coin.058"] = {
+		"traccia in aria con un dito una rapida colonna di numeri, li somma e aggrotta la fronte davanti al totale sospeso lì.",
+		"scrive una somma sul niente con la punta di un dito, fa il riporto e lancia un'occhiataccia al risultato invisibile.",
+	},
+	["muse.w12.coin.059"] = {
+		"ripone la borsa con il gesto fermo e definitivo di chi ha appena detto di no a una tentazione.",
+		"rimette la borsa alla cintura con un colpetto deciso: la faccenda di un piccolo lusso è chiaramente chiusa.",
+	},
+	["muse.w12.coin.060"] = {
+		"fissa a lungo una sola moneta nel palmo, come se fosse la moneta a dover decidere qualcosa.",
+		"guarda una moneta posata sulla mano aperta, immobile, come chi aspetta che sia lei a dare un parere.",
+	},
+	["muse.w12.coin.061"] = {
+		"si guarda intorno muovendo le labbra, dando un prezzo a tutto ciò che vede per pura abitudine, e arriva a un totale che chiaramente non {g:gli|le} piace.",
+		"fa scorrere uno sguardo da stimatore su tutto ciò che ha vicino, come fanno i mercanti, e la somma non sembra {g:impressionarlo|impressionarla}.",
+	},
+	["muse.w12.coin.062"] = {
+		"sorride un istante al nulla, con l'aria di chi ricorda un affare andato benissimo.",
+		"ridacchia tra sé, {g:contento|contenta} in silenzio, come chi ha spuntato un prezzo onesto e anche qualcosa in più.",
+	},
+	["muse.w12.craft.004"] = {
+		"dispone qualche piccolo attrezzo in fila ordinata, li usa uno dopo l'altro e li rimette via nell'ordine in cui sono usciti.",
+		"tira fuori un modesto corredo di cianfrusaglie utili, lo usa pezzo per pezzo e lo ripone esattamente com'era.",
+	},
+	["muse.w12.craft.010"] = {
+		"allenta un nodo ostinato con la punta di un'unghia, paziente come chi non ha nessun altro posto dove andare.",
+		"scioglie un nodo stretto troppo, filo dopo filo, senza perdere la pazienza nemmeno per un momento.",
+	},
+	["muse.w12.craft.015"] = {
+		"prova a infilare un ago, sbaglia, strizza gli occhi, sbaglia ancora una volta e alla fine ci riesce con l'aria di chi l'aveva previsto fin dall'inizio.",
+		"punta il filo verso la cruna dell'ago più volte, borbotta qualcosa di poco gentile e al tentativo seguente lo fa passare.",
+	},
+	["muse.w12.craft.024"] = {
+		"strofina un po' di grasso su una fibbia dura finché non si muove senza un suono.",
+		"lavora un pizzico di grasso in un fermaglio che cigola, aprendolo e chiudendolo finché non tace.",
+	},
+	["muse.w12.craft.032"] = {
+		"dà uno strattone deciso a ogni cinghia, una dopo l'altra, come se facesse a ciascuna una domanda.",
+		"fa scorrere una mano lungo la fila di fibbie, provandole con un breve strappo prima di passare oltre.",
+	},
+	["muse.w12.craft.040"] = {
+		"solleva una cinghia appena riparata per esaminarla, la gira da una parte e dall'altra e approva con un piccolo cenno del capo.",
+		"finisce una riparazione, le dà uno strattone deciso e sembra segretamente {g:soddisfatto|soddisfatta} quando regge.",
+	},
+	["muse.w12.craft.044"] = {
+		"svuota una borsetta, guarda {g:accigliato|accigliata} un groviglio di spago, fil di ferro e filo, e passa un bel po' a districarlo.",
+		"tira fuori da una tasca un groviglio disperato di cordino e si mette a scioglierlo con cupa determinazione.",
+	},
+	["muse.w12.craft.051"] = {
+		"rigira tra le dita un piccolo attrezzo consumato, il pollice nell'incavo scavato da altri pollici tanto tempo fa.",
+		"osserva la conca liscia sul manico di un vecchio attrezzo, e ci posa dentro il proprio pollice.",
+	},
+	["muse.w12.craft.058"] = {
+		"stacca coi denti l'estremità del filo, la annoda e resta un momento a guardare il nulla.",
+		"dà l'ultimo punto, spezza il filo coi denti e lascia riposare il lavoro sulle ginocchia.",
+	},
+	["muse.w12.craft.064"] = {
+		"nota l'estremità sfilacciata di una cinghia e la stringe fra pollice e indice, come per prendere un appunto.",
+		"si accorge di un bordo sfilacciato sul suo equipaggiamento, aggrotta la fronte e per ora lo nasconde alla vista.",
+	},
+	["muse.w12.craft.069"] = {
+		"riallaccia un laccio allentato con dita svelte ed esperte, senza nemmeno abbassare lo sguardo.",
+		"si china a sistemare un laccio che scivola ed è già in piedi prima che il nodo si sia assestato.",
+	},
+	["muse.w12.craft.075"] = {
+		"rifà lo zaino con grande cura, fa un passo indietro e trova un piccolo oggetto ancora per terra.",
+		"sistema l'ultima cosa nello zaino con una pacca soddisfatta, poi nota qualcos'altro che doveva entrare per primo.",
+	},
+	["muse.w12.craft.080"] = {
+		"liscia una toppa con il palmo della mano, piano, come si calma un animale addormentato.",
+		"preme una toppa nuova con il palmo e ce lo tiene un momento più del necessario.",
+	},
+	["muse.w12.craft.087"] = {
+		"fulmina con lo sguardo una fibbia appena slacciata, come se avesse detto qualcosa di villano.",
+		"abbassa gli occhi su una cinghia penzolante e le rivolge lo sguardo lungo e piatto di un sergente per niente colpito.",
+	},
+	["muse.w12.doubt.013"] = {
+		"fa un passo, si ferma e guarda indietro come se qualcosa laggiù {g:gli|le} avesse fatto una domanda.",
+		"accenna a tornare sui suoi passi, ci ripensa, e poi ripensa anche al ripensamento.",
+	},
+	["muse.w12.doubt.019"] = {
+		"alza una mano come per fare un'obiezione a qualcosa, la tiene sospesa, poi la riabbassa piano.",
+		"fa per dire qualcosa, la soppesa, e alla fine la ingoia.",
+	},
+	["muse.w12.doubt.027"] = {
+		"si massaggia la nuca con l'aria imbarazzata di chi dà ragione a qualcuno che non c'è.",
+		"fa una smorfia per qualche pensiero tutto suo, borbotta «giusto» a nessuno, e lascia perdere.",
+	},
+	["muse.w12.doubt.039"] = {
+		"resta immobile a rigirarsi in testa qualcosa che chiaramente non si risolverà in fretta.",
+		"fissa a lungo il terreno, {g:accigliato|accigliata}, come chi rilegge la propria sentenza.",
+	},
+	["muse.w12.doubt.046"] = {
+		"fa qualche passo da una parte, si ferma e si volta con l'aria di chi ha appena perso una discussione con sé.",
+		"si avvia in una direzione, esita, e cambia strada scuotendo appena la testa, con rassegnazione.",
+	},
+	["muse.w12.doubt.054"] = {
+		"fa una risatina mesta, come chi si è appena {g:colto|colta} in una piccola bugia.",
+		"scuote piano la testa davanti a una sua sciocchezza privata, metà per gioco e metà no.",
+	},
+	["muse.w12.doubt.063"] = {
+		"si mordicchia l'interno della guancia, chiaramente {g:impegnato|impegnata} a sostenere due posizioni senza vincerne nessuna.",
+		"gira le mani col palmo in su, poi in giù, come una bilancia che non trova l'equilibrio.",
+	},
+	["muse.w12.doubt.073"] = {
+		"torna indietro di qualche passo per raddrizzare una cosetta lasciata storta, poi riprende con un passo più leggero.",
+		"si ferma, ripercorre un passo o due per rimettere qualcosa al suo posto, e solo allora prosegue.",
+	},
+	["muse.w12.doubt.081"] = {
+		"conta sulle dita, i pro su una mano e i contro sull'altra, e aggrotta la fronte davanti al risultato.",
+		"alza una mano, poi l'altra, soppesando due cose che non ci sono, e sospira davanti al pareggio.",
+	},
+	["muse.w12.doubt.089"] = {
+		"alza un dito per puntualizzare qualcosa, ci ripensa a metà e trasforma il gesto in una grattatina all'orecchio.",
+		"si raddrizza per ribattere, poi si sgonfia e concede la vittoria con un'alzata di spalle a qualcuno che non c'è.",
+	},
+	["muse.w12.doubt.094"] = {
+		"raccoglie un sassolino, lo soppesa nel palmo come se fosse una domanda, e lo rimette esattamente dov'era.",
+		"rigira un sassolino tra le dita, come se una faccia dicesse sì e l'altra no, e se lo mette in tasca senza decidere.",
+	},
+	["muse.w12.doubt.095"] = {
+		"trasale a un pensiero arrivato senza invito, lo lascia restare un attimo e poi lo congeda.",
+		"tace con la pazienza scomoda di chi sta ascoltando la propria coscienza.",
+	},
+	["muse.w12.doubt.096"] = {
+		"traccia una linea nella polvere con la punta dello stivale, la studia, e la scavalca con un'alzata di spalle.",
+		"segna una riga per terra con uno stivale, la guarda a lungo e alla fine la oltrepassa.",
+	},
+	["muse.w12.doubt.097"] = {
+		"apre i pugni serrati un dito dopo l'altro, come chi lascia andare qualcosa che non valeva la stretta.",
+		"distende lentamente le mani, come chi molla una discussione che non ha vinto nessuno.",
+	},
+	["muse.w12.humor.092"] = {
+		"inciampa nel nulla, si volta a esaminare il nulla, e riprende a camminare con grande dignità.",
+		"incespica su un terreno perfettamente piano e riserva al punto incriminato una lunga occhiata d'accusa.",
+	},
+	["muse.w12.humor.093"] = {
+		"scaccia una mosca, la manca, e trasforma il gesto in una stiracchiata, come se fosse quella l'intenzione.",
+		"allontana con la mano un insetto ronzante, poi un altro, e alla fine gli cede il campo.",
+	},
+	["muse.w12.humor.094"] = {
+		"stacca una spina dalla manica, la studia e la allontana con un colpetto, come un servitore congedato.",
+		"toglie un riccio di bardana da una manica, se lo ritrova attaccato all'altra mano, e per un po' ci perde la partita.",
+	},
+	["muse.w12.humor.095"] = {
+		"saggia il terreno davanti a sé con la punta del piede, come si fa con un ponte che ha già mentito una volta.",
+		"appoggia con cautela uno stivale sul tratto successivo, come se potesse non esserci.",
+	},
+	["muse.w12.humor.096"] = {
+		"fa un inchino solenne al suolo, poi ci si siede sopra con tutte le cerimonie.",
+		"si siede con la lenta solennità di chi accetta un trono, anche se il trono è soltanto la nuda terra.",
+	},
+	["muse.w12.humor.097"] = {
+		"prova un'espressione severa ed eroica, la tiene per un momento e la lascia crollare in un sorriso.",
+		"si prova addosso un cipiglio nobile, decide che non è della sua misura e lo mette via.",
+	},
+	["muse.w12.humor.098"] = {
+		"pesta qualcosa che fa ciaf, si blocca, e decide di non guardare giù.",
+		"sente qualcosa cedere, molle, sotto il piede, e prosegue con gli occhi fissi davanti a sé.",
+	},
+	["muse.w12.humor.099"] = {
+		"fa un saltello sopra il nulla, atterra e si guarda intorno per vedere se qualcuno se n'è accorto.",
+		"accenna un saltello a metà passo, senza motivo, e tira dritto fingendo che non sia successo.",
+	},
+	["muse.w12.humor.100"] = {
+		"fa il saluto militare a uno scarabeo di passaggio, con assoluta serietà.",
+		"gira con cura intorno a una bestiolina che striscia, con la cortesia dovuta a un compagno di viaggio.",
+	},
+	["muse.w12.humor.101"] = {
+		"annuncia il proprio arrivo con una piccola fanfara canticchiata per nessuno.",
+		"canticchia tra sé una breve fanfara pomposa, poi si guarda intorno come in attesa di applausi.",
+	},
+	["muse.w12.humor.102"] = {
+		"si appoggia con disinvoltura a qualcosa che si sposta, e si ricompone con tutta la dignità reperibile su due piedi.",
+		"posa il gomito su quello che si rivela il vuoto, e trasforma il barcollamento in una passeggiata pensosa.",
+	},
+	["muse.w12.humor.103"] = {
+		"fulmina con lo sguardo un sassolino davanti ai piedi, come se fosse stato messo lì apposta, poi lo scavalca con enorme dignità.",
+		"osserva con profondo sospetto un piccolo ostacolo sul proprio cammino, poi lo aggira dalla parte più lunga.",
+	},
+	["muse.w12.humor.104"] = {
+		"borbotta 'mai più' a nessuno, col tono di chi l'ha detto spesso.",
+		"scuote piano la testa e mima le parole 'mai più', senza grande convinzione.",
+	},
+	["muse.w12.hunger.004"] = {
+		"sbuccia una mela in un'unica lunga spirale, e quando arriva in fondo ha l'aria vagamente soddisfatta.",
+		"fa girare piano una mela tra le dita, staccando la buccia in un solo nastro.",
+		"mette una cura enorme nello sbucciare un frutto, come se tutta la giornata dipendesse da una buccia rimasta intera.",
+	},
+	["muse.w12.hunger.026"] = {
+		"si toglie di dosso un po' di briciole, ne trova altre in una piega dei vestiti e ci rinuncia.",
+		"scuote via le briciole da una manica, poi dall'altra, con l'aria di chi ha smesso di chiedersi come ci siano arrivate.",
+	},
+	["muse.w12.hunger.040"] = {
+		"sparge qualche briciola per terra, un'offerta per qualunque piccola creatura possa volerla.",
+		"lascia cadere le ultime briciole del pasto per le piccole bocche che forse stanno a guardare.",
+	},
+	["muse.w12.hunger.062"] = {
+		"finisce di mangiare e si lecca le dita una per una, senza la minima vergogna.",
+		"si pulisce le dita sulla manica dopo l'ultimo boccone, si guarda intorno e poi se le lecca lo stesso.",
+	},
+	["muse.w12.hunger.077"] = {
+		"assaggia una bevanda bollente con la punta della lingua, fa una smorfia e la posa ad aspettare.",
+		"beve un sorso di qualcosa di troppo caldo, lo mette da parte con l'aria di chi è stato tradito, e aspetta.",
+	},
+	["muse.w12.hunger.078"] = {
+		"toglie il tappo all'otre, beve e lo richiude con cura, come se l'acqua fosse preziosa.",
+		"beve un lungo sorso d'acqua, poi un secondo più piccolo, e mette via il resto per dopo.",
+	},
+	["muse.w12.hunger.079"] = {
+		"scuote l'otre vicino all'orecchio, per sentire quanta acqua resta.",
+		"inclina l'otre, ne valuta il peso e decide di aspettare ancora un po' prima di bere.",
+	},
+	["muse.w12.hunger.080"] = {
+		"controlla quanto resta da mangiare, lo divide a mente in pasti e ne trova uno in meno del necessario.",
+		"scarta l'ultimo pezzo di pane, lo guarda per un po' e lo incarta di nuovo, per un momento peggiore.",
+	},
+	["muse.w12.hunger.081"] = {
+		"spezza in due un pezzo di formaggio e ne studia l'interno, come se potesse nascondere un segreto.",
+		"taglia una scaglia di formaggio, la assaggia piano e annuisce, come se avesse risposto bene a una domanda.",
+	},
+	["muse.w12.hunger.082"] = {
+		"mangia piano, gli occhi socchiusi, come se il cibo più semplice meritasse tutta la sua attenzione.",
+		"mastica ogni boccone con calma, senza fretta, dedicando al pasto l'attenzione di un ospite a una buona tavola.",
+	},
+	["muse.w12.hunger.083"] = {
+		"raccoglie con una crosta l'ultimo resto dalla scodella e lascia il legno lucido.",
+		"passa una crosta di pane tutto intorno alla scodella finché non resta più niente da discutere.",
+	},
+	["muse.w12.hunger.084"] = {
+		"si mette in bocca una bacca, fa una smorfia per l'asprezza e allunga la mano per prenderne un'altra.",
+		"mangia una manciata di qualcosa di piccolo e aspro, facendo una smorfia a ogni boccone senza fermarsi mai.",
+	},
+	["muse.w12.hunger.085"] = {
+		"annusa l'aria con speranza, come se da qualche parte lì vicino ci fosse una cena, e resta {g:deluso|delusa}.",
+		"alza la testa e annusa, come fa chi ha fame e si convince di sentire odore di pane.",
+	},
+	["muse.w12.rest.010"] = {
+		"soffoca uno sbadiglio dietro il pugno, poi un secondo, e al terzo rinuncia alla dignità.",
+		"prova a nascondere uno sbadiglio, non ci riesce, e lascia uscire il successivo per intero.",
+	},
+	["muse.w12.rest.011"] = {
+		"chiude e riapre gli occhi adagio, come chi sta perdendo in silenzio una discussione col sonno, e poi li spalanca a forza.",
+		"lascia calare le palpebre, le ferma a metà e le rialza con uno sforzo ben visibile.",
+		"tiene gli occhi aperti per pura testardaggine, anche se loro hanno chiaramente altri programmi.",
+	},
+	["muse.w12.rest.021"] = {
+		"si siede a gambe incrociate, le mani abbandonate sulle ginocchia, e non fa assolutamente nulla, con grande cura.",
+		"si mette a terra e ci resta senza fare niente, ma facendolo per bene.",
+	},
+	["muse.w12.rest.029"] = {
+		"si appisola un attimo lì dove si trova, il mento che cala, poi si raddrizza di scatto e si guarda intorno come se niente fosse.",
+		"cede al sonno per qualche istante, la testa che ciondola in avanti, e si risveglia di soprassalto con un'aria del tutto innocente.",
+	},
+	["muse.w12.rest.037"] = {
+		"chiude gli occhi e ascolta quel che accade lontano, come se qualcuno lo stesse raccontando apposta per {g:lui|lei}.",
+		"tiene gli occhi chiusi per un po' e ascolta soltanto, il viso che si distende mentre i rumori lontani trovano il loro posto.",
+	},
+	["muse.w12.rest.045"] = {
+		"stira le braccia in alto finché qualcosa non scrocchia, poi le lascia ricadere con un grugnito soddisfatto.",
+		"si allunga verso l'alto in uno stiramento lungo e senza vergogna, lo trattiene e poi molla tutto di colpo.",
+		"si stiracchia finché ogni giuntura non ha detto la sua, e ne esce con l'aria di essere {g:cresciuto|cresciuta} di due dita.",
+	},
+	["muse.w12.rest.055"] = {
+		"sposta il peso su una gamba sola e si sistema nella postura paziente e un po' storta di chi si aspetta un'attesa lunga.",
+		"si appoggia alla prima cosa solida a portata e aspetta, braccia conserte, senza alcuna fretta.",
+		"si appoggia a quel che capita, incrocia una caviglia sull'altra e dà tutta l'impressione di poter aspettare per giorni.",
+	},
+	["muse.w12.rest.063"] = {
+		"si stende sulla schiena, le braccia spalancate, e resta lì come se il terreno avesse chiesto un po' di compagnia.",
+		"si allunga a terra in tutta la sua lunghezza e resta immobile, gli occhi socchiusi, un ritratto di pigrizia voluta.",
+	},
+	["muse.w12.rest.069"] = {
+		"dispone tre sassolini e ci gioca contro se {g:stesso|stessa} a un qualche gioco inventato, e a quanto pare sta perdendo.",
+		"si inventa un piccolo gioco con quel che ha a portata di mano e ci gioca con assoluta serietà, finché non smette di divertirsi.",
+	},
+	["muse.w12.rest.075"] = {
+		"appoggia i piedi sulla prima cosa che li regga e sospira come chi finalmente si sente capito.",
+		"trova qualcosa su cui posare i piedi e ce li mette con una soddisfazione enorme.",
+	},
+	["muse.w12.rest.084"] = {
+		"si appoggia all'indietro sulle mani e guarda il mondo sbrigare le sue faccende, senza la minima intenzione di unirsi.",
+		"segue quel che si muove nei dintorni con l'interesse mite e senza fretta di chi non ha nessun posto dove andare.",
+	},
+	["muse.w12.rest.089"] = {
+		"assume un atteggiamento di profondo ozio, poi si guarda attorno come a sfidare chiunque a obiettare.",
+		"si mette {g:comodo|comoda} con l'aria di chi intende restarci, qualunque cosa abbia in serbo il mondo.",
+	},
+	["muse.w12.sayings.106"] = {
+		"borbotta metà di un detto dei nani, qualcosa sulla pietra e la pazienza, ne perde la fine e alza le spalle.",
+		"mormora qualche parola di un proverbio nanico, qualcosa sulla pietra e sull'attesa, e non sembra ricordare come finisce.",
+	},
+	["muse.w12.sayings.107"] = {
+		"ripete piano un detto dei mercanti goblin, contando sulle dita come per controllare se i conti tornano.",
+		"dice a mezza voce un proverbio goblin, qualcosa sul profitto e la pazienza, poi aggrotta la fronte come se facesse le somme.",
+	},
+	["muse.w12.sayings.108"] = {
+		"annuisce piano tra sé, rigirando qualche detto tauren sulla terra, e pare trovarlo più pesante del previsto.",
+		"resta in silenzio su un proverbio tauren mezzo dimenticato, muovendo le labbra sulle parole, e fa un piccolo cenno lento col capo.",
+	},
+	["muse.w12.sayings.109"] = {
+		"sbuffa con un mezzo sorriso per un detto da marinai tornato chissà da dove, di quelli che fanno ridere solo dopo un lungo viaggio.",
+		"ride una volta, piano, per qualche proverbio di bordo riaffiorato dal nulla, e non lo spiega a nessuno.",
+	},
+	["muse.w12.sayings.110"] = {
+		"pronuncia senza voce un detto troll sulla pazienza, lentamente, come se la lentezza ne facesse parte.",
+		"ripete un proverbio troll sull'attesa, molto adagio, come se a dirlo in fretta se ne guastasse il senso.",
+	},
+	["muse.w12.sayings.111"] = {
+		"raddrizza le spalle al ricordo di qualche detto orchesco sull'onore, come se fosse rivolto proprio a {g:lui|lei}.",
+		"si raddrizza per un proverbio degli orchi sull'onore tornato in mente all'improvviso, con l'aria di chi si sente sfidato.",
+	},
+	["muse.w12.sayings.112"] = {
+		"ricorda qualche detto kaldorei su quanto a lungo si ricordi un bosco, e prosegue con un po' più di cautela.",
+		"sembra rammentare un proverbio kaldorei sulla lunga memoria degli alberi, e va avanti con un tocco più gentile.",
+	},
 }, "base_exploration")

@@ -8,6 +8,44 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### Content wave W12: the generic thoughts and the first moment of a fight (issue #138)
+
+The twelfth content wave of [docs/content/WAVES.md](docs/content/WAVES.md), the first of the random need only. Its
+pools were the first row of the table after W11: the generic `muse` (the speak key, 1,466 texts per language) and the
+generic `battle` (the start of a fight, 1,231). **1,263 intentions, 2,840 texts per language** (5,680 in both),
+written by twelve parallel writer subagents (authors `ai-w12-<unit>`), one per theme so that the lines do not converge
+on the same images, and passed through the archive (drafts, `cli dups --state draft` with no exact and no near
+duplicate and no over-used opening or closing, submit, owner sample, approve, export; the round trip is an empty
+diff). No literary piece and no `tier` field. The addon goes from 14,830 to **16,093 intentions** and from 35,631 to
+**38,471 texts per language**.
+
+- **Added: 702 generic thoughts of the speak key** (`muse.w12.<family>.NNN`, 1,551 texts per language;
+  `base_monologues` for the inner voice and the character, `base_exploration` for the narrator), in seven families new
+  to the pool: coin and value, food and drink, doubt and conscience, the small humor of the trade, rest and waiting,
+  the work of the hands and the kit, and the sayings of Azeroth's peoples and trades (every saying is attributed to a
+  voice and marked `invented_lore`).
+- **Added: 561 generic battle lines** (`battle.w12.<family>.NNN`, 1,289 texts per language, `base_combat`): the generic
+  battle pool had 67 intentions. Five families: cries and challenges, wit, grit, measure (reading the foe, footing,
+  timing) and dread (fear and mortality at the edge of a fight). Every rule has a short variant (80 bytes or less,
+  ADR 0056); almost every variant is short. None names a kind of foe, an outcome, a weapon or a school of fighting.
+- **Generic means true for everyone.** No place, sky, hour, weather, season, race, class, faction, level or invented
+  past, and nothing a Forsaken's body cannot do (no breath, heartbeat, sweat or blush). Nine in ten lines have no
+  condition at all; the rest are calm narrator gestures (`combat = false`, `mounted = false`) or, in battle, the
+  non-layer conditions the existing lines use (`hasTarget`, `elite`, `targetStronger`, `targetWeaker`, `group`).
+  Italian agreement uses whole-word forms (`{g:contento|contenta}`).
+- **The gap after W12** (per language): soft need 8,947, gap **0**; strict need 29,536, gap **0**; random need
+  276,398, gap **239,490** (was 242,187). **83 waves** left (the next is the first row of WAVES.md: the generic
+  victory, quest_complete and subzone_enter lines).
+- **Measured.** `run_tests` M2: pick 53.9 → 55.1 thousand Lua instructions (p95 81.9 → 91.7; reference 42.7, fails at
+  64.1). `bench_scale` (every line loaded): memory 30.8 → 31.5 MB, pick 30.7 → 30.7 thousand Lua instructions (p95
+  57.8 → 60.3). `bench_trial --long 20` over seeds 1-5 (main → W12): first exact repetition orc 9.0 → 7.7 h, troll
+  8.5 → 7.1 h, human 8.5 → 9.0 h; repeated share orc 3.5% → 3.9%, troll 3.9% → 3.4%, human 3.2% → 3.4%. In both
+  the first repetitions of the orc and the troll are Durotar's own speak-key lines (`dur.muse.*`), which this wave
+  does not touch; no W12 line repeats in their 20 hours.
+- **Tests:** counts: base intentions 16050, lines loaded 16057, `base_combat` 1326.
+- **Owner sample:** [docs/content/reviews/W12.md](docs/content/reviews/W12.md) (`cli sample --state review --share
+  0.02`: 25 intentions).
+
 ### Content wave W11: the raids, the battlegrounds, the last endgame pools and the speak key (issue #138)
 
 The eleventh content wave of [docs/content/WAVES.md](docs/content/WAVES.md). Its pools were the first row of the table
