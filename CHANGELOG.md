@@ -45,7 +45,10 @@ from 16,093 to **17,215 intentions** and from 38,471 to **41,229 texts per langu
   first exact repetition orc 7.7 → 7.8 h, troll 7.1 → 7.5 h, human 9.0 → 9.4 h; repeated share orc 3.9% → 3.3%, troll
   3.4% → 3.5%, human 3.4% → 2.9%. No W13 line repeats in the 20-hour runs looked at (seeds 1 and 4, all three
   characters).
-- **Tests:** counts: base intentions 17172, lines loaded 17179, `base_combat` 1793.
+- **Tests:** counts: base intentions 17172, lines loaded 17179, `base_combat` 1793. `TestDynamism` looks for a
+  speak-key monologue for up to 20,000 picks instead of 3,000: with the generic muse pool of W12 one comes about once
+  in 2,600 picks, so 3,000 failed about one run in five under any random stream (it failed on Linux CI here). The
+  assertion is unchanged: a monologue still has to come.
 - **Owner sample:** [docs/content/reviews/W13.md](docs/content/reviews/W13.md) (`cli sample --state review --share
   0.02`: 22 intentions).
 
