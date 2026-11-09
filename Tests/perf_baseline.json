@@ -1,14 +1,18 @@
 {
- "about": "Lua instructions per Engine:PickEntry, in thousands. pick_kinstr_2000: the scale projection of run_tests.py (2,000 synthetic rules, two languages, 150 picks, seed 1); run_tests.py warns above warn_ratio times it (#157). m2_pick_kinstr: the picks of the simulated M2 session (Tests/bench_m2.py, one pick in five counted); run_tests.py fails above m2_fail_ratio times it (C0e, ADR 0052). Update them in the PR that changes them on purpose, and say why in `history`.",
+ "about": "Lua instructions per Engine:PickEntry, in thousands. pick_kinstr_2000: the scale projection of run_tests.py (2,000 synthetic rules, two languages, 150 picks, seed 1); run_tests.py warns above warn_ratio times it (#157). m2_pick_kinstr: the picks of the simulated M2 session (Tests/bench_m2.py, one pick in five counted); run_tests.py fails above m2_fail_ratio times it (C0e, ADR 0052). pool_flat_ratio and pool_p95_ratio: Tests/bench_pool.py grows the large pools of the M2 session 16 times and run_tests.py fails when the mean (p95) pick costs more than this many times what it costs on today's pools (C0j, ADR 0057). Update them in the PR that changes them on purpose, and say why in `history`.",
  "pick_kinstr_2000": 24.0,
  "warn_ratio": 1.25,
- "m2_pick_kinstr": 42.7,
+ "m2_pick_kinstr": 36.4,
  "m2_fail_ratio": 1.5,
+ "pool_flat_ratio": 1.25,
+ "pool_p95_ratio": 1.5,
  "history": [
   "#204 (U-perf, #157): pick_kinstr_2000 21.0, the first reference.",
   "#239 (#138): 16.4, the groups of the index checked apart.",
   "#243 (C0a, ADR 0048): 20.2, the column store (and the content then).",
   "W01-W04 (#246-#250): the content grew to 34.1 (p95 174.1) without a reset; W04 warned at 169%, which led to C0e.",
-  "2026-11-06 C0e (ADR 0052): the bounded pick, on the same content: pick_kinstr_2000 34.1 -> 24.0 (p95 174.1 -> 47.2); m2_pick_kinstr added as a gate, 84.1 -> 42.7 (p95 193.8 -> 70.6)."
+  "2026-11-06 C0e (ADR 0052): the bounded pick, on the same content: pick_kinstr_2000 34.1 -> 24.0 (p95 174.1 -> 47.2); m2_pick_kinstr added as a gate, 84.1 -> 42.7 (p95 193.8 -> 70.6).",
+  "W05-W15 (#253-#273): the M2 pick grew to 56.8 (p95 88.3) without a reset, toward its fail line of 64.1, which led to C0j.",
+  "2026-11-09 C0j (ADR 0057): weights read only where the pick needs them and the tiers of large groups kept as rules are registered, on the same content and with the same picks: m2_pick_kinstr 42.7 -> 36.4 (measured 56.8 -> 36.4, p95 88.3 -> 56.0); pool_flat_ratio 1.25 and pool_p95_ratio 1.5 added (16x pools: main 2.5x the mean and 4x the p95, C0j 0.93-0.99x)."
  ]
 }

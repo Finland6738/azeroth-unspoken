@@ -521,6 +521,11 @@ end
 -- (tests, tools) makes every split again. Weak keys: a group no longer in the index takes its tiers with it.
 local splits = setmetatable({}, { __mode = "k" })
 local SPLIT_FIELDS = { tier = true, situational = true }
+-- C0j (ADR 0057): a group of at least SPLIT_EAGER rules keeps its split as rules join it (AddToIndex, EndStaging) and
+-- leave it (HidePack), so no pick splits a large group: the first pick of an event no longer walks its pools, and a
+-- dropped area no longer makes the next pick split the generic group again. A smaller group is split when a pick
+-- first reads it, as before: at most SPLIT_EAGER rules.
+Engine.SPLIT_EAGER = 64
 
 -- __newindex of every shape: the key is not in the rule table. A view of a rule (#138) writes the new shape to the
 -- column too, so the selection sees it
@@ -1068,10 +1073,14 @@ local function AddToIndex(index, ev, r, keys)
 	if not byForm then byForm = {}; index[ev] = byForm end
 	local byKey = byForm[form]
 	if not byKey then byKey = {}; byForm[form] = byKey end
+	local eager = Engine.SPLIT_EAGER
 	for _, k in ipairs(keys) do
 		local list = byKey[k]
 		if not list then list = {}; byKey[k] = list end
-		list[#list + 1] = r
+		local n = #list + 1
+		list[n] = r
+		-- C0j: a large group keeps its split (Engine.Split extends it by this rule)
+		if n >= eager then Engine.Split(list) end
 	end
 end
 
@@ -1177,6 +1186,54 @@ function Engine.Split(list)
 	end
 	s.n = n
 	return s
+end
+
+-- C0j: a share split brought up to date with the tiers of its split: the rules added since are tested
+local function ExtendShare(ss, s)
+	local test, lang = ss.test, ss.lang
+	for t = 0, Engine.MAX_TIER do
+		local base, done = s[t], ss.done[t]
+		local n = #base
+		if done < n then
+			local pref, rest = ss.pref[t], ss.rest[t]
+			for i = done + 1, n do
+				local r = base[i]
+				if test(r, lang) then pref[#pref + 1] = r else rest[#rest + 1] = r end
+			end
+			ss.done[t] = n
+		end
+	end
+end
+
+-- every share split of a split brought up to date (before HidePack cuts them)
+local function ExtendShares(s)
+	for _, ss in pairs(s.shares or EMPTY_LIST) do ExtendShare(ss, s) end
+end
+
+---The rules of a group of the index that a pool share prefers, and the others, by tier (C0i, ADR 0056): pref[t] and
+---rest[t], each in the order of the group. Made when a pick first needs them and kept with the split of the group
+---(Engine.Split): C0j (ADR 0057) extends them with the rules added to it since, and HidePack cuts them in place, so a
+---pick tests only the rules it has not seen. Made again for another language of the texts.
+---@param list integer[] a group of the index
+---@param def table a pool share (Engine.poolShares)
+---@param lang string
+---@return { pref: integer[][], rest: integer[][] }
+function Engine.SplitShare(list, def, lang)
+	local s = Engine.Split(list)
+	local shares = s.shares
+	if not shares then
+		-- weak keys: a share replaced (SetPoolShare) takes its splits with it
+		shares = setmetatable({}, { __mode = "k" })
+		s.shares = shares
+	end
+	local ss = shares[def]
+	if not ss or ss.lang ~= lang or ss.test ~= def.test then
+		ss = { lang = lang, test = def.test, pref = {}, rest = {}, done = {} }
+		for t = 0, Engine.MAX_TIER do ss.pref[t], ss.rest[t], ss.done[t] = {}, {}, 0 end
+		shares[def] = ss
+	end
+	ExtendShare(ss, s)
+	return ss
 end
 
 ---The rules of the event written for a composite situation (#100) that can hold in the context, in order of
@@ -1601,7 +1658,12 @@ function Engine:EndStaging()
 				if not main[form] then
 					main[form] = byKey
 				else
-					for k, list in pairs(byKey) do AppendOrds(main[form], k, list) end
+					local into = main[form]
+					for k, list in pairs(byKey) do
+						AppendOrds(into, k, list)
+						-- C0j: a large group keeps its split (extended by the rules of the area)
+						if #into[k] >= Engine.SPLIT_EAGER then Engine.Split(into[k]) end
+					end
 				end
 			end
 		end
@@ -1905,6 +1967,21 @@ local function Without(list, packId, gone, from)
 	return removed
 end
 
+-- C0j (ADR 0057): the rules of `gone` out of the split of a group and of its share splits, in place (each list is in
+-- order of registration, so Without walks only its tail from `from`); `s` was up to date before the group lost them
+local function CutSplit(s, list, gone, from)
+	for t = 0, Engine.MAX_TIER do Without(s[t], nil, gone, from) end
+	Without(s.sit, nil, gone, from)
+	s.n = #list
+	for _, ss in pairs(s.shares or EMPTY_LIST) do
+		for t = 0, Engine.MAX_TIER do
+			Without(ss.pref[t], nil, gone, from)
+			Without(ss.rest[t], nil, gone, from)
+			ss.done[t] = #s[t]
+		end
+	end
+end
+
 ---Drops a pack from the registry: its rules (with their texts, in every language), frames and vocabulary entries
 ---leave byId, byEvent, the selection index, frames and vocab, so the garbage collector can free them. Used by the
 ---regional packs when the character leaves the region (#101, ADR 0025): WoW cannot unload an addon, only its data.
@@ -1927,7 +2004,11 @@ local function HideOrds(byEvent, index, events, packId, gone, from)
 		end
 		for _, byKey in pairs(index[ev] or EMPTY_LIST) do
 			for k, list in pairs(byKey) do
-				if Without(list, packId, gone, from) then splits[list] = nil end
+				-- C0j: the split of the group (and its share splits) loses the same rules, in place: it is brought up
+				-- to date first, so what is left of it is up to date after the cut
+				local s = splits[list]
+				if s then Engine.Split(list); ExtendShares(s) end
+				if Without(list, packId, gone, from) and s then CutSplit(s, list, gone, from) end
 				if #list == 0 then byKey[k] = nil end
 			end
 		end

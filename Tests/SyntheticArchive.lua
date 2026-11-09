@@ -260,3 +260,68 @@ function SYNTH_AREA_SOURCES(NS, n, opts)
 		.. table.concat(texts) .. "} end)\n"
 	return rulesSrc, textsSrc
 end
+
+-- C0j (ADR 0057): the pools of some events grown in place. SYNTH_POOL_SOURCE(NS, events, copies, opts) returns the
+-- source of a pack (as SYNTH_SOURCE writes it, one language) with `copies` clones of every rule of those events whose
+-- specificity tier is in opts.tiers (default { 0, 1 }: the generic and situation pools, which the content waves grow
+-- and which stay in memory), each clone keeping its conditions, voice, form, registers, tags, theme and motifs, asked
+-- only for the events of the list, with unique texts. So a pool of the character holds (1 + copies) times its rules,
+-- in the same proportions of tiers, voices and conditions: the shape a pool takes as the waves write it. Rules with a
+-- function in their conditions, monologues and stanzas are not cloned. Also returns { [event] = clones }.
+--   opts.lang (default "enUS"), opts.tiers (a list of tiers), opts.prefix (default "pool")
+function SYNTH_POOL_SOURCE(NS, events, copies, opts)
+	opts = opts or {}
+	local Engine = NS.Engine
+	local lang = opts.lang or "enUS"
+	local code = Engine.LangCode(lang)
+	local prefix = opts.prefix or "pool"
+	local want, tiers = {}, {}
+	for _, ev in ipairs(events) do want[ev] = true end
+	for _, t in ipairs(opts.tiers or { 0, 1 }) do tiers[t] = true end
+	local registry, texts, n, count = {}, {}, 0, {}
+	for _, id in ipairs(Engine.SortedKeys(Engine.ordOf)) do
+		local p = Engine.byId[id]
+		local evs = {}
+		for _, ev in ipairs(p.events or {}) do
+			if want[ev] then evs[#evs + 1] = ev end
+		end
+		local list = p.text[code]
+		if #evs > 0 and p.kind == nil and not HasFunction(p.when) and tiers[Engine.Tier(p)] and list
+			and VariantText(list[1]) then
+			for c = 1, copies do
+				n = n + 1
+				local cid = ("syn.%s.%07d"):format(prefix, n)
+				registry[cid] = {
+					event = evs, speaker = p.speaker, form = p.form, category = p.category, tier = p.tier,
+					styles = Copy(p.styles), depth = Keys(p.depth), tags = Keys(p.tags), weight = p.weight,
+					cooldown = p.cooldown, conditions = Copy(p.when), theme = p.theme, motifs = Copy(p.motifs),
+				}
+				local out = {}
+				for k, v in ipairs(list) do
+					local t = VariantText(v)
+					if t then out[#out + 1] = t .. " [" .. n .. "." .. k .. "]" end
+				end
+				texts[cid] = out
+				for _, ev in ipairs(evs) do count[ev] = (count[ev] or 0) + 1 end
+			end
+		end
+	end
+	local packId = "synthetic_pool_" .. prefix
+	local out = { "local NS = ...\n", "local function Put(into, t) for k, v in pairs(t) do into[k] = v end end\n",
+		"local registry, texts = {}, {}\n" }
+	local ids = Engine.SortedKeys(registry)
+	local function Blocks(var, of)
+		for first = 1, #ids, SYNTH_BLOCK do
+			out[#out + 1] = ("Put(%s, (function() return {\n"):format(var)
+			for i = first, math.min(#ids, first + SYNTH_BLOCK - 1) do
+				out[#out + 1] = ("[%q] = %s,\n"):format(ids[i], Serialize(of[ids[i]]))
+			end
+			out[#out + 1] = "} end)())\n"
+		end
+	end
+	Blocks("registry", registry)
+	out[#out + 1] = ("NS:RegisterPack({ id = %q, name = \"Synthetic pools\", registry = registry })\n"):format(packId)
+	Blocks("texts", texts)
+	out[#out + 1] = ("NS:AddTexts(%q, texts, %q)\n"):format(lang, packId)
+	return table.concat(out), count
+end
