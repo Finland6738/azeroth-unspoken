@@ -8,6 +8,54 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### Content wave W14: the generic flights, wounds, heals and NPC meetings (issue #138)
+
+The fourteenth content wave of [docs/content/WAVES.md](docs/content/WAVES.md), random need only. Its pools were the
+first row of the table after W13: the generic `journey` (a flight taking off or landing, 511 texts per language),
+`lowhp` (health just under 30%, 466), `heal` (1,285: 713 on oneself, 572 on someone else, ADR 0055) and `npc_meet`
+(an NPC of a known role, 410). **1,138 intentions, 2,830 texts per language** (5,660 in both), written by twelve
+parallel writer subagents (authors `ai-w14-<unit>`), one per theme so that the lines do not converge on the same
+images, openings and closings, and passed through the archive (drafts, `cli dups --state draft` with no exact and no
+near duplicate and no over-used opening or closing, submit, owner sample, approve, export; the round trip is an empty
+diff). No literary piece, no invented saying and no `tier` field. The addon goes from 17,215 to **18,353 intentions**
+and from 41,229 to **44,059 texts per language**.
+
+- **Added: 210 generic flight lines** (`journey.w14.<up|down>.NNN`, 549 texts per language, `base_world`): the
+  take-off and the first minutes aloft (`journey = "start", onFlight = true`), the landing and the first steps after
+  (`journey = "arrival", onFlight = false`; 16 about a long flight with `journeyMin = 120`). None names the kind of
+  mount (gryphon, wyvern, hippogryph or bat), the land below, the sky, the weather or the destination.
+- **Added: 203 generic low-health lines** (`lowhp.w14.<grit|fade>.NNN`, 513 texts per language, `base_combat`):
+  defiance and black humor, and the world narrowing, fear held down and quick thinking. None names a kind of foe, a
+  weapon or a wound, or claims the outcome; 12 calls to companions write `group`. Never the everyday register.
+- **Added: 548 generic heal lines** (`heal.w14.<family>.NNN`, 1,342 texts per language, `base_spells`), in the two
+  halves of ADR 0055. **298 on oneself** (`castOnSelf = true`; the mending felt, the wit of patching oneself up, the
+  resolve to go on) never name the means, so a bandage, a potion, a healthstone and a healing spell hear them alike,
+  nor say how close the call was. **250 on someone else** (`castOnSelf = false`; tender words, gruff words, the
+  healer's own thoughts) never say who the one healed is and never gender them in Italian; the 129 that speak to them
+  or name `{target}` write `hasTarget` and `friendly`, and all of them exclude the bandage, the potion, the healthstone
+  and Health Funnel as W06's did. No line names the spell or the class.
+- **Added: 177 generic NPC meeting lines** (`npc_meet.w14.<shop|guide>.NNN`, 426 texts per language,
+  `base_context`): the merchant, the banker, the innkeeper, the trainer, the quest giver and the flight master, 77 in
+  the NPC's own voice. 168 write the role (`other.role`) and 9 fit every role. None asks the NPC's temperament, speech
+  or goals, so the voice lines of ADR 0056 keep their share; none names a race, a faction or a place.
+- **Short lines in a fight.** Every lowhp and heal rule has a variant of 80 bytes or less in both languages (ADR
+  0056); 948 of the 1,026 lowhp variants and 2,217 of the 2,684 heal variants are short.
+- **Generic means true for everyone.** No place, sky, hour, weather, season, race, class, faction, level or invented
+  past, and nothing a Forsaken's body cannot do. Italian agreement uses whole-word forms.
+- **The gap after W14** (per language): soft and strict need met (gap **0**); random need 276,398, gap **234,298**
+  (was 236,970). **81 waves** left (the next is the first row of WAVES.md: the generic attack, ally_death,
+  relation_player, weather_change, buff and other small generic pools).
+- **Measured.** `run_tests` M2: pick 51.5 → **53.9** thousand Lua instructions (p95 89.7 → 85.5; reference 42.7, fails
+  at 64.1). `bench_scale` (every line loaded): memory 35.7 → 36.6 MB, bytes per synthetic rule at 10,000 rules
+  1,090 → 1,274, at 50,000 rules 1,181 → 1,178, pick 31.6 → 30.5 thousand Lua instructions (p95 65.8 → 64.7).
+  `bench_trial --long 20` over seeds 1-5 (main → W14): first exact repetition orc 7.8 → 7.3 h, troll 7.5 → 7.7 h,
+  human 9.4 → 7.5 h; repeated share orc 3.3% → 3.6%, troll 3.5% → 3.3%, human 2.9% → 3.6%. No W14 line repeats in the
+  20-hour runs looked at (seed 5, all three characters): the first repetitions are the zones' own speak-key lines
+  (`dur.muse.*`, `elw.muse.*`, as #270), which this wave does not touch.
+- **Tests:** counts: base intentions 18310, lines loaded 18317, `base_combat` 1996, `base_context` 629.
+- **Owner sample:** [docs/content/reviews/W14.md](docs/content/reviews/W14.md) (`cli sample --state review --share
+  0.02`: 23 intentions).
+
 ### Content wave W13: the generic victories, quest turn-ins and subzone arrivals (issue #138)
 
 The thirteenth content wave of [docs/content/WAVES.md](docs/content/WAVES.md), random need only. Its pools were the

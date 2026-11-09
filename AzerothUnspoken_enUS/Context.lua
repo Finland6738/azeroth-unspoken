@@ -1926,4 +1926,784 @@ NS:AddTexts("enUS", {
 		"A rival's challenge, under the same banner. I'll fight it fair and still beat you.",
 		"You again. Fine. Same banner or not, I've been waiting for this.",
 	},
+	["npc_meet.w14.guide.001"] = {
+		"Stand where I can see you. I teach better when I can watch your hands.",
+		"Come closer. Half of teaching is watching, and I can't watch you properly from over there.",
+		"In front of me, not beside. I need to see what you're doing wrong before you do.",
+	},
+	["npc_meet.w14.guide.002"] = {
+		"Ask me anything. I may not answer, but I'll enjoy watching you work it out.",
+		"Questions are welcome. Answers cost effort, and the effort is yours.",
+		"Curious pupils are my favorite kind. Exhausting, but my favorite.",
+	},
+	["npc_meet.w14.guide.003"] = {
+		"Make your mistakes here, in front of me. They're cheaper here than anywhere else.",
+		"I'd rather see you get it wrong ten times here than once where it matters.",
+		"Go ahead and fumble. That's what this corner of the world is for.",
+	},
+	["npc_meet.w14.guide.004"] = {
+		"Teaching never wears thin. Every pupil gets stuck in a slightly different place.",
+		"I learn something from every pupil. Usually patience.",
+		"Teaching keeps a body honest. You can't fake a thing you have to explain.",
+	},
+	["npc_meet.w14.guide.005"] = {
+		"Tell me what you're after, and I'll tell you whether you're ready for it.",
+		"What'll it be? Name it, and I'll see if your hands agree with your ambitions.",
+		"So. What's it to be? Say it out loud; it helps.",
+	},
+	["npc_meet.w14.guide.006"] = {
+		"Knowing a thing and doing it are two different animals. I only teach the first; the second is on you.",
+		"I can show you how it's done. The practicing is the part nobody can sell you.",
+		"The lesson takes a moment. Making it yours takes as long as it takes.",
+	},
+	["npc_meet.w14.guide.007"] = {
+		"What I know was handed to me, and I hand it on. That's the whole bargain, and it was old long before I was.",
+		"Someone patient taught me this once. The least I can do is pass the patience along with it.",
+		"Nobody owns what I teach. I only keep it safe for the next one who asks.",
+	},
+	["npc_meet.w14.guide.008"] = {
+		"No rushing. A lesson swallowed whole comes back up at the worst moment.",
+		"Slowly. Chew on it. Hurried learning sits badly.",
+		"Small bites. I've seen too many pupils choke on the whole meal.",
+	},
+	["npc_meet.w14.guide.009"] = {
+		"Lessons aren't free, I'm afraid. Ignorance is, but look where it gets people.",
+		"Yes, there's a fee. Think of it as paying for the mistakes you won't make.",
+		"Every coin you spend here, you'll earn back by not doing something foolish.",
+	},
+	["npc_meet.w14.guide.010"] = {
+		"I watch how pupils stand before I watch what they do. You can tell a lot from how someone waits.",
+		"Even the way you came over told me something. Don't worry: mostly good things.",
+	},
+	["npc_meet.w14.guide.011"] = {
+		"Pupils come and go. There's always room for one more who means it.",
+		"Plenty of people want to learn. Fewer want to practice. Which are you?",
+		"I don't care how quickly you learn. I care whether you keep at it.",
+	},
+	["npc_meet.w14.guide.012"] = {
+		"Past all the practice there's a moment when it simply comes to you. I can't give you that moment, only the way to it.",
+		"Mastery isn't a gift I can hand over. It's a habit you build, and I'll show you where to lay the first stone.",
+	},
+	["npc_meet.w14.guide.013"] = {
+		"If you forget something, come and ask. Pretending to remember costs far more.",
+		"Asking twice is no shame. Guessing wrong in a hurry is.",
+		"Write it down if you must. Memory makes a poor storeroom for a busy head.",
+	},
+	["npc_meet.w14.guide.014"] = {
+		"Being watched by someone who knows better: the oldest kind of nerves there is.",
+		"Funny how a teacher's eyes make my hands forget everything they knew a moment ago.",
+		"A teacher's silence is worse than any scolding. I'd rather be told.",
+	},
+	["npc_meet.w14.guide.015"] = {
+		"Listen, nod, repeat it in my head. Then hope some of it survives the walk out.",
+		"I'll understand all of it while {other} talks, and about half once I try it myself.",
+		"Every lesson sounds simple while someone else is doing it.",
+	},
+	["npc_meet.w14.guide.016"] = {
+		"Whatever I think I know, there's someone who knows it better and doesn't mind saying so. Good.",
+		"It does me good to be reminded that I'm unfinished. Everyone is, but it slips the mind.",
+	},
+	["npc_meet.w14.guide.017"] = {
+		"Coin for knowledge. Of all the trades I make, this one never feels like a loss.",
+		"Paying to be taught feels odd. Less odd than paying for my own mistakes later on.",
+	},
+	["npc_meet.w14.guide.018"] = {
+		"Teachers stay put while pupils walk off into the world. I wonder how many {other} has watched leave and never heard from again.",
+		"Every teacher must keep a quiet tally of the pupils who were never seen again. I'd rather not end up on it.",
+	},
+	["npc_meet.w14.guide.019"] = {
+		"Pride wants to say I already know this. Pride also never learned anything.",
+		"The hard part isn't the lesson. It's admitting I need one.",
+		"Admitting I don't know is the real price of a lesson. The coin is the easy part.",
+	},
+	["npc_meet.w14.guide.020"] = {
+		"Each thing learned is one less thing that can go wrong out there. That's reason enough.",
+		"Sooner or later, something learned here will be the only thing between me and a bad end. I'll be grateful then.",
+	},
+	["npc_meet.w14.guide.021"] = {
+		"{other} must have said these words a thousand times, and still says them as if they matter. They do.",
+		"Same lesson, a thousand pupils, and no sign of boredom. That's its own kind of skill.",
+	},
+	["npc_meet.w14.guide.022"] = {
+		"A good correction stings for a moment and helps for years.",
+		"Being corrected is a gift with sharp edges. I'll take it anyway.",
+	},
+	["npc_meet.w14.guide.023"] = {
+		"straightens a little under the trainer's gaze, the way pupils everywhere seem to.",
+		"squares {g:his|her} shoulders before the lesson starts, as if about to be measured for it.",
+	},
+	["npc_meet.w14.guide.024"] = {
+		"listens closely, nodding, and now and then repeats a point quietly to {g:himself|herself}.",
+		"follows every word with a frown of concentration, as though the lesson might run off if left unwatched.",
+	},
+	["npc_meet.w14.guide.025"] = {
+		"tries the movement once with empty hands, slowly, then looks up to see whether it was right.",
+		"copies the gesture just shown, a little clumsily, and does it again before anyone can comment.",
+	},
+	["npc_meet.w14.guide.026"] = {
+		"waits a respectful pace away until {other} looks up.",
+		"lingers at a polite distance, hands clasped, until the lesson is offered.",
+	},
+	["npc_meet.w14.guide.027"] = {
+		"counts out the fee carefully, and seems to weigh each coin against what it will buy.",
+		"sets the coins down one by one, with the air of someone paying for something that will last.",
+	},
+	["npc_meet.w14.guide.028"] = {
+		"Teach me whatever I'm ready for. I'll worry about the rest.",
+		"Whatever you think I can handle. And maybe one thing I can't, quite.",
+	},
+	["npc_meet.w14.guide.029"] = {
+		"Go on, then. Show me how it should look, and I'll show you how it actually does.",
+		"Be honest with me. I'd rather hear it from you than learn it the hard way.",
+		"Show me slowly. Then show me again, slower.",
+	},
+	["npc_meet.w14.guide.030"] = {
+		"I'm here to learn. Teach me well, and I'll put it to good use.",
+		"Your knowledge, my effort. I'd call that a fair trade.",
+	},
+	["npc_meet.w14.guide.031"] = {
+		"Ah, good. You're exactly who I was hoping to see.",
+		"There you are. I was starting to think nobody would stop by.",
+		"Good, good. Just the person I needed.",
+	},
+	["npc_meet.w14.guide.032"] = {
+		"Asking strangers for help never gets easier. Thanking them is the part I like.",
+		"Needing help is humbling. Getting it is something else entirely.",
+		"Help is hard to ask for and sweet to receive. Either way, it's good to see you.",
+	},
+	["npc_meet.w14.guide.033"] = {
+		"My list of troubles grows faster than I can cross things off. Let's talk.",
+		"Problems don't wait in line, I'm afraid. Can you spare me a moment?",
+		"So much to see to, so few willing hands. You're a pleasant sight.",
+	},
+	["npc_meet.w14.guide.034"] = {
+		"I've a nose for people who finish what they start. Mine's twitching.",
+		"Some people make promises and some keep them. I can usually tell the two apart.",
+	},
+	["npc_meet.w14.guide.035"] = {
+		"Words first, then deeds. That's how anything gets done around me.",
+		"Talk is cheap, I know. But everything worth doing starts and ends with a little of it.",
+	},
+	["npc_meet.w14.guide.036"] = {
+		"Every bit of help counts. You'd be surprised how far one pair of hands can carry things.",
+		"One person willing to help is worth ten who only sympathize.",
+		"Big troubles are just small ones that piled up. Every bit you take on helps.",
+	},
+	["npc_meet.w14.guide.037"] = {
+		"Let me look at you. Hmm. Steady enough, I'd say.",
+		"I size people up for a living, more or less. You'll pass.",
+		"You have the air of someone who doesn't give up halfway. I hope I'm right.",
+	},
+	["npc_meet.w14.guide.038"] = {
+		"Everyone who comes by wants something. It's nice to meet someone who might give instead of ask.",
+		"Most folk stop by to ask me things. You're the sort who gets things done. Refreshing.",
+	},
+	["npc_meet.w14.guide.039"] = {
+		"Small troubles grow when nobody tends them. You know that as well as I do.",
+		"Leave a small trouble alone long enough and it stops being small. Few seem to understand that.",
+	},
+	["npc_meet.w14.guide.040"] = {
+		"You'll always find me here. Some folk put down roots in one spot, and are glad of those who don't.",
+		"Travel was never for me; my place is here. That's why I need people who move.",
+	},
+	["npc_meet.w14.guide.041"] = {
+		"I'll speak plainly with you, and I'll expect the same.",
+		"No tricks, no fine print. Just someone who needs a hand and someone who has two.",
+		"I'll tell you what I know and nothing I don't. That's the best I can offer anyone.",
+	},
+	["npc_meet.w14.guide.042"] = {
+		"Folk like you are what keeps everything else running. I mean that.",
+		"Without people willing to lend a hand, most of my worries would never leave my head.",
+		"People forget how much a little help means. I don't.",
+	},
+	["npc_meet.w14.guide.043"] = {
+		"Easy things I handle myself. The other kind is what this talk is for.",
+		"I don't bother people with the simple stuff. You can take that as a compliment.",
+	},
+	["npc_meet.w14.guide.044"] = {
+		"It does me good to deal with someone who doesn't flinch at trouble.",
+		"You've no idea how restful it is to talk to someone who listens.",
+		"A steady listener is rarer than you'd think. Thank you for that much, at least.",
+	},
+	["npc_meet.w14.guide.045"] = {
+		"{other} has the look of someone with more troubles than hands.",
+		"More worries than hands to carry them. I know that look.",
+	},
+	["npc_meet.w14.guide.046"] = {
+		"Somebody asks, somebody answers. The world runs on that more than on kings.",
+		"Not every deed ends up in a song. Most of them end with a nod and a word of thanks.",
+	},
+	["npc_meet.w14.guide.047"] = {
+		"Everyone who needs help thinks theirs is the most urgent. Sometimes they're even right.",
+		"Urgent, of course. It's always urgent. Now and then it truly is.",
+		"Every trouble looks small from outside. I'll try to see this one from inside.",
+	},
+	["npc_meet.w14.guide.048"] = {
+		"Strange, to be trusted by someone who knows nothing about me but that I stopped.",
+		"{other} trusts me on very little evidence. I'd like to deserve it.",
+	},
+	["npc_meet.w14.guide.049"] = {
+		"Listen to the whole thing. The detail that matters is always the one mumbled at the end.",
+		"People tell you the important part last, as if embarrassed by it. Pay attention.",
+	},
+	["npc_meet.w14.guide.050"] = {
+		"Help given is never quite lost. It goes around and comes back in odd shapes.",
+		"Every favor is a seed. I rarely see what grows, but something does.",
+	},
+	["npc_meet.w14.guide.051"] = {
+		"Everyone has a little errand. Put them all end to end and they'd circle the world twice.",
+		"Sometimes it feels as if half the world needs a hand, and the other half is me.",
+	},
+	["npc_meet.w14.guide.052"] = {
+		"A promise weighs nothing when it's made and a great deal afterward. Best to remember that, either way.",
+		"A word given is a kind of load. I try to pick up only what I can carry.",
+	},
+	["npc_meet.w14.guide.053"] = {
+		"In a month I may not remember this face. The help will still have happened, though.",
+		"These meetings are brief and easily forgotten. What gets done in between them isn't.",
+	},
+	["npc_meet.w14.guide.054"] = {
+		"listens with head tilted, letting {other} come to the point unhurried.",
+		"waits through the preamble without a sign of impatience.",
+	},
+	["npc_meet.w14.guide.055"] = {
+		"nods slowly, as if filing every word somewhere safe.",
+		"keeps quiet and attentive, the way people do when someone else's trouble is being laid out.",
+	},
+	["npc_meet.w14.guide.056"] = {
+		"returns the look squarely, as one does when being sized up.",
+		"bears the appraising look without fidgeting, and gives it back evenly.",
+	},
+	["npc_meet.w14.guide.057"] = {
+		"listens politely to a story that begins much further back than strictly necessary.",
+		"lets the long version run its course, saving questions for whenever the short one arrives.",
+	},
+	["npc_meet.w14.guide.058"] = {
+		"Tell me plainly. I'll do the same.",
+		"No need to dress it up. Just say it straight.",
+		"Say what you need to say. I can take it.",
+	},
+	["npc_meet.w14.guide.059"] = {
+		"Take your time. I'm in no hurry, whatever it is.",
+		"Go at your own pace. I'm here.",
+	},
+	["npc_meet.w14.guide.060"] = {
+		"You look like someone with a problem. Lucky for you, I'm someone with free hands.",
+		"Something's on your mind. Out with it; I've got the time.",
+	},
+	["npc_meet.w14.guide.061"] = {
+		"Mounts are rested and ready. Say the word.",
+		"Rested, fed and impatient, every one of them. Much like their riders.",
+		"Pick a route. The mounts are bored, and a bored mount is a grumpy one.",
+	},
+	["npc_meet.w14.guide.062"] = {
+		"One rule up there: whatever you're holding, don't let go of it.",
+		"Nobody's ever fallen off on my watch. Keep it that way for me, would you?",
+		"Hands on the harness, eyes forward, and let the beast do the thinking.",
+	},
+	["npc_meet.w14.guide.063"] = {
+		"Every route I keep is right here. Pick one: the mounts know the way better than you or I ever will.",
+		"Point to where you're going and leave the rest to the beast. It's done this more often than you've laced your boots.",
+	},
+	["npc_meet.w14.guide.064"] = {
+		"I spend my working life watching others leave. Somebody has to be the one who stays.",
+		"Everyone who comes to me is on the way somewhere else. I'm the one place that never moves.",
+		"Arrivals, departures, and me in the middle, forever waving.",
+	},
+	["npc_meet.w14.guide.065"] = {
+		"Queasy? Fix your eyes ahead and think about something dull. Taxes work.",
+		"Nervous flier? Count backward from a thousand. You'll land long before you reach one.",
+		"If heights get to you, hum something. The mounts don't mind bad singing.",
+	},
+	["npc_meet.w14.guide.066"] = {
+		"The fare's the fare. The mount doesn't care how important you are, and neither does the ledger.",
+		"Pay up front, fly in comfort. Well, in something close to comfort.",
+		"Coin first, then the saddle. No exceptions, not even for a charming smile.",
+	},
+	["npc_meet.w14.guide.067"] = {
+		"Not everyone gets to see the world from above. Never stop counting yourself lucky for it.",
+		"From up there the whole world fits in one look. It's worth the fare for that alone.",
+	},
+	["npc_meet.w14.guide.068"] = {
+		"I check every harness myself. Twice. Then once more, because fussing is my trade.",
+		"Every buckle's been checked by my own hands. You can trust the straps; that's my promise.",
+	},
+	["npc_meet.w14.guide.069"] = {
+		"Busy, busy. Mounts in, mounts out, and everyone in a hurry.",
+		"You'd think the whole world had somewhere urgent to be. Maybe it has.",
+	},
+	["npc_meet.w14.guide.070"] = {
+		"They're good beasts. Bad conversation, but good beasts.",
+		"Talk to your mount if you like. It won't answer, but it listens better than most riders.",
+		"Mine are the best-tempered in the trade. Don't tell them I said so; they'll get ideas.",
+	},
+	["npc_meet.w14.guide.071"] = {
+		"Safe flight, traveler. The ground will be waiting when you set foot on it.",
+		"May your landing be gentle and your legs remember how to walk.",
+		"Fly well. And if you can't fly well, at least land well.",
+	},
+	["npc_meet.w14.guide.072"] = {
+		"Trusting a beast I barely know with my life, for a handful of coin. Travel is a strange business.",
+		"My whole life, strapped to something with opinions of its own. And I'm paying for the privilege.",
+	},
+	["npc_meet.w14.guide.073"] = {
+		"{other} must know every route by heart, and never travels any of them.",
+		"Strange trade, sending others off and staying behind. I don't think I could do it.",
+	},
+	["npc_meet.w14.guide.074"] = {
+		"Long roads on foot, traded for a short while in the saddle. Part of me feels like a cheat.",
+		"Feet earn the road; wings only borrow it. Borrowing is faster, though.",
+	},
+	["npc_meet.w14.guide.075"] = {
+		"A little fear of flying is healthy. It's what makes people grip properly.",
+		"My knees have opinions about this part. I've decided not to consult them.",
+	},
+	["npc_meet.w14.guide.076"] = {
+		"All those routes, each one a different version of what comes next.",
+		"Every route on offer is a door. I only get to walk through one.",
+	},
+	["npc_meet.w14.guide.077"] = {
+		"The mounts barely glance at me. Riders come and go; they've seen plenty.",
+		"To the beasts I'm just one more load. There's something restful in mattering so little.",
+	},
+	["npc_meet.w14.guide.078"] = {
+		"Whatever's been gnawing at me will stay down here for a while. It can't follow where I'm going.",
+		"Some troubles can't fly. That's half the reason to pay the fare.",
+	},
+	["npc_meet.w14.guide.079"] = {
+		"glances over the waiting mounts, as if trying to guess which one will give the gentlest ride.",
+		"eyes the mounts one by one, though the choice was never {g:his|hers} to make.",
+	},
+	["npc_meet.w14.guide.080"] = {
+		"tugs at a pack strap, then at another, making sure nothing will come loose in the air.",
+		"pats down every pocket before going near the mounts, one last inventory on the ground.",
+	},
+	["npc_meet.w14.guide.081"] = {
+		"counts out the fare and hands it over without haggling; there's no bargaining with distance.",
+		"pays the fare quietly, eyes already on the mounts.",
+	},
+	["npc_meet.w14.guide.082"] = {
+		"studies the routes for a long moment, finger hovering, like someone choosing between doors.",
+		"traces one route with a finger, then another, weighing distances only {g:he|she} can see.",
+	},
+	["npc_meet.w14.guide.083"] = {
+		"Whichever's least grumpy, please. I'm not picky beyond that.",
+		"Something steady, if you have it. I'll take calm over fast.",
+		"The calmest you've got, please. I'll bring my own panic.",
+	},
+	["npc_meet.w14.guide.084"] = {
+		"Keep the landing soft and I'll recommend you to everyone I meet.",
+		"Get me there in one piece and I'll say good things about you.",
+	},
+	["npc_meet.w14.guide.085"] = {
+		"Is the beast in a good mood? Asking for my nerves.",
+		"Does it bite? No? Then it and I will get along fine.",
+	},
+	["npc_meet.w14.guide.086"] = {
+		"People who serve travelers see a thousand faces and remember the rude ones. Better to be among the others.",
+		"Courtesy costs nothing with folk who serve the road, and somehow it buys more than coin.",
+	},
+	["npc_meet.w14.guide.087"] = {
+		"Everyone in this line of work has heard every question. I try to ask mine quickly.",
+		"They must answer the same three questions a hundred times over. Patience is part of the job.",
+	},
+	["npc_meet.w14.guide.088"] = {
+		"offers a word of greeting before getting down to business, as courtesy asks.",
+		"pauses long enough for a proper greeting; rushing someone at their work never helps.",
+	},
+	["npc_meet.w14.guide.089"] = {
+		"Nobody writes songs about the people who keep travelers going. Somebody should.",
+		"Heroes get the stories; the people behind them get a nod, if they're lucky. I'll make it a good nod.",
+	},
+	["npc_meet.w14.guide.090"] = {
+		"steps up and waits for a sign of attention, patient as a guest.",
+		"comes to a stop at a polite distance and leaves the first word to whoever stands there.",
+	},
+	["npc_meet.w14.shop.001"] = {
+		"Buying, selling, or just warming the counter? All three are allowed. Only one pays.",
+		"Browse as long as you like. The prices won't move, but the company is pleasant.",
+		"Look, ask, buy or sell. I charge for two of those.",
+	},
+	["npc_meet.w14.shop.002"] = {
+		"Put it all on the counter. I've bought stranger things than whatever's in that pack.",
+		"Empty the bag, let's see. Odds, ends, a few surprises: that's how the best deals start.",
+		"Whatever you're carrying, I've a price for it. Maybe not the price you hoped.",
+	},
+	["npc_meet.w14.shop.003"] = {
+		"Anything that needs mending, set it here. Dents I can fix. Bad habits cost extra.",
+		"If anything you wear has a crack in it, leave it with me a moment.",
+		"Bring me the worn pieces. A little work now saves a lot of cursing later.",
+	},
+	["npc_meet.w14.shop.004"] = {
+		"Go ahead, make an offer. I enjoy a good laugh as much as anyone.",
+		"You can haggle, and I'll listen politely. The price stays where it is.",
+		"An offer? Splendid. I'll write it down so I can enjoy it later.",
+	},
+	["npc_meet.w14.shop.005"] = {
+		"One moment, let me find the right page. Every sale goes in the book, even the small ones.",
+		"Your name? No, never mind. In the ledger I only write 'good customer'. Let's keep it true.",
+		"Every sale gets written down. My ledger has a longer memory than I do.",
+	},
+	["npc_meet.w14.shop.006"] = {
+		"Supplies for the road? Start with what you'll miss most when it runs out.",
+		"The dull things sell best: thread, salt, a spare strap. Nobody misses a trinket on the road; everybody misses salt.",
+		"Before anything shiny, buy the dull things. They're what get you home.",
+	},
+	["npc_meet.w14.shop.007"] = {
+		"The scales are honest. Check them yourself if you like; everybody does, sooner or later.",
+		"Weights on the left, coins on the right. Nothing up my sleeves but my arms.",
+		"Mind the scales: they're older than some kingdoms and twice as honest.",
+	},
+	["npc_meet.w14.shop.008"] = {
+		"Sold is sold, mind. If you want it back later, it'll cost you more than I paid.",
+		"Before you sell it, be sure. Things come back across this counter at a different price.",
+		"Think before you sell. Buying it back is possible, just never cheap.",
+	},
+	["npc_meet.w14.shop.009"] = {
+		"I don't ask where things come from. I only ask whether they're still in one piece.",
+		"Where you found it is your business. What it's worth is mine.",
+		"Found it, won it, dug it up: it all sells the same.",
+	},
+	["npc_meet.w14.shop.010"] = {
+		"Everything here has a price, friend, except the advice. The advice is free and worth about that.",
+		"Free advice, while you look: never buy the first thing you like. Unless it's from me.",
+		"Advice costs nothing here. Everything else costs a little something.",
+	},
+	["npc_meet.w14.shop.011"] = {
+		"Quiet stretch. Glad of a face that isn't trying to sell me something.",
+		"First customer in a while who didn't start by complaining. Take all the time you want.",
+		"Nice to see someone. The counter gets lonely between customers.",
+	},
+	["npc_meet.w14.shop.012"] = {
+		"That everything? Think twice. People always remember the one thing three steps out the door.",
+		"Anything else? Check the pack once more. The forgotten thing always comes to mind halfway down the road.",
+		"Got everything? Count your pockets before you go; the counter can't follow you.",
+	},
+	["npc_meet.w14.shop.013"] = {
+		"A fair price leaves both sides grumbling a little. Let the grumbling begin.",
+		"Haggle away. Somebody out-talked me once. Not lately.",
+	},
+	["npc_meet.w14.shop.014"] = {
+		"This lot came a long way to sit on my shelf. Show it some respect, or at least some coin.",
+		"Everything on these shelves traveled to get here. The price includes the journey.",
+		"Some of this came farther than you'd guess. Don't ask me from where; I only buy it.",
+	},
+	["npc_meet.w14.shop.015"] = {
+		"Don't mind the mess. Everything's where I can find it, which is all that counts.",
+		"It looks like chaos, I know. Ask for anything and watch how fast I find it.",
+		"Excuse the clutter. There's a system. Only I know it, which is the point.",
+	},
+	["npc_meet.w14.shop.016"] = {
+		"Coin first, goods after. I gave credit once. I'm still waiting, and so is my patience.",
+		"No credit, sorry. The last one who asked swore to come straight back. Never saw them since.",
+		"Payment up front, if you please. My memory for debts is excellent; other people's is not.",
+	},
+	["npc_meet.w14.shop.017"] = {
+		"Take your time. The goods aren't going anywhere, and neither am I.",
+		"No rush. I've stood behind this counter long enough to know hurry costs money.",
+		"Look around. Prices are on the tags, and the tags don't bite.",
+	},
+	["npc_meet.w14.shop.018"] = {
+		"Here to lighten the load? Lay it out, I'll make you an offer.",
+		"Got things to sell? Put them in a row. I buy faster when I can see it all.",
+		"Selling? Show me. I pay fair for the useful and fairly little for the rest.",
+	},
+	["npc_meet.w14.shop.019"] = {
+		"Whatever you buy here, use it well. Goods that sit unused are the only bad bargain.",
+		"Buy what you'll use. Things that only ride in a pack are good coin thrown away.",
+		"Spend wisely, friend. Coin is only patience you've already paid for.",
+	},
+	["npc_meet.w14.shop.020"] = {
+		"Everything at a stall is arranged to make me want the thing on the left. I'll look right first.",
+		"Shops have a way of making the useless glitter. Eyes on the list.",
+		"First rule at any counter: decide what I need before the merchant decides for me.",
+	},
+	["npc_meet.w14.shop.021"] = {
+		"Everything I picked up along the way, reduced to a few coins. It weighed far more than it's worth.",
+		"I hauled all this here for a handful of coins. Next time I'll be choosier about what I pick up.",
+		"All that weight, and it comes to this. Still, lighter is lighter.",
+	},
+	["npc_meet.w14.shop.022"] = {
+		"The trick is to look a little disappointed by everything. Merchants know the trick too.",
+		"I'll pretend not to want it. The merchant will pretend to believe me. A small, polite play.",
+	},
+	["npc_meet.w14.shop.023"] = {
+		"Sold it a moment ago, and already I can think of three uses for it.",
+		"The moment the coin's in my palm, the thing I sold starts to look useful.",
+	},
+	["npc_meet.w14.shop.024"] = {
+		"Without people like this behind a counter, every road would end in an empty pack.",
+		"Someone carried all this here so I wouldn't have to. A counter is a road that came to me.",
+	},
+	["npc_meet.w14.shop.025"] = {
+		"Mending costs coin. Not mending costs more, and at a worse moment.",
+		"Cheaper to find a crack here, at the counter, than out on the road at the wrong time.",
+	},
+	["npc_meet.w14.shop.026"] = {
+		"The merchant writes something in the ledger after each sale. I'd give a silver coin to know what it says about me.",
+		"A line in a ledger: that's all I'll be here. Price, item, a little mark. Not the worst way to be remembered.",
+	},
+	["npc_meet.w14.shop.027"] = {
+		"One thing. I'm here for one thing. The shelves have other ideas.",
+		"A list in my head, and a merchant who knows exactly how to make it longer.",
+		"Food, then mending, then whatever's left. In that order. Probably.",
+	},
+	["npc_meet.w14.shop.028"] = {
+		"Counting coins under someone's eyes always makes me lose track at seven.",
+		"I count twice. The merchant counts once and is right. There's a lesson there I'd rather not learn.",
+		"Coins on the counter, eyes on the coins. Mine and the merchant's, watching the same small pile.",
+	},
+	["npc_meet.w14.shop.029"] = {
+		"A merchant sees a thousand faces and remembers the ones that paid. Fair enough.",
+		"To the one behind the counter I'm another pair of hands across the wood. There's a kind of freedom in that.",
+	},
+	["npc_meet.w14.shop.030"] = {
+		"Every trade is a small truce: one side wants coin, the other wants goods, and nobody has to win.",
+		"Buying and selling: the one contest where both sides can walk away pleased.",
+	},
+	["npc_meet.w14.shop.031"] = {
+		"Spend a little, keep a little. Whatever comes next will want its share.",
+		"Not everything. Leave something in the purse for whatever I haven't thought of.",
+	},
+	["npc_meet.w14.shop.032"] = {
+		"lays out a row of odds and ends on the counter and waits for the verdict.",
+		"empties the pack onto the counter, piece by piece, like someone settling an old account.",
+	},
+	["npc_meet.w14.shop.033"] = {
+		"turns an item over twice, checks the price, and puts it back with a sigh.",
+		"picks something up, weighs it in one hand, and sets it down exactly where it was.",
+	},
+	["npc_meet.w14.shop.034"] = {
+		"counts the coins out slowly onto the counter, under the merchant's patient eye.",
+		"slides the coins across the counter and keeps a finger on the last one a moment too long.",
+	},
+	["npc_meet.w14.shop.035"] = {
+		"nods to {other} and begins the slow business of choosing.",
+		"exchanges a few pleasantries over the counter before the talk turns to prices.",
+	},
+	["npc_meet.w14.shop.036"] = {
+		"haggles a while, loses gracefully, and pays the first price after all.",
+		"makes an offer, hears the counteroffer, and pays without another word, half amused.",
+		"argues the price down by a single copper and looks unreasonably pleased about it.",
+	},
+	["npc_meet.w14.shop.037"] = {
+		"sets a worn piece of gear on the counter and waits while it's looked over.",
+		"hands over a piece of gear for mending and follows the work with interest.",
+	},
+	["npc_meet.w14.shop.038"] = {
+		"What would you give me for all of this? Be kind. I carried it here myself.",
+		"Make me an offer for the lot. Go on, surprise me.",
+	},
+	["npc_meet.w14.shop.039"] = {
+		"Is that your best price, or your first one?",
+		"That's the price for anyone, or the price for me?",
+		"Half that, and I'll pretend I'm doing you a favor.",
+	},
+	["npc_meet.w14.shop.040"] = {
+		"Just looking. Honestly. Well, mostly.",
+		"I'm only here to browse. Don't look at me like that.",
+	},
+	["npc_meet.w14.shop.041"] = {
+		"Can you mend this? It's done more than its share and it's starting to tell me so.",
+		"Can this be fixed, or should I start saying goodbye to it?",
+	},
+	["npc_meet.w14.shop.042"] = {
+		"Keep the change. No, wait, I'll need that. Sorry.",
+		"Here, exact coin. I counted it twice, so it's probably wrong.",
+	},
+	["npc_meet.w14.shop.043"] = {
+		"Whatever you've left here is exactly where you put it. Nobody touches what isn't theirs.",
+		"What's yours stays yours. It's kept as if it were mine. Better, actually.",
+		"Not a thing has moved since you left it. The vault is boring that way, and proud of it.",
+	},
+	["npc_meet.w14.shop.044"] = {
+		"Sign here, and here, and once more there. The vault likes its paperwork.",
+		"Name, then your mark. The vault opens for paperwork, not for smiles.",
+		"Your mark, if you please. The locks don't care who you are, but the ledger does.",
+	},
+	["npc_meet.w14.shop.045"] = {
+		"Need more room? Another slot can be arranged. For a price, naturally.",
+		"Running short of space? The vault has more. Space, sadly, isn't free.",
+		"More space means a bigger box, and bigger boxes cost bigger coins.",
+	},
+	["npc_meet.w14.shop.046"] = {
+		"Keep only what you need on you. The rest is safer behind this door than on any road.",
+		"Leave the heavy things here. You'll walk farther with less on your back.",
+		"Travel light. Whatever you leave here won't get lost, stolen, or sat on.",
+	},
+	["npc_meet.w14.shop.047"] = {
+		"I keep the keys. You keep the memory of why you kept all this. Fair division of labor.",
+		"People leave the strangest things in the vault. I never ask. You'd be surprised how much I don't ask.",
+	},
+	["npc_meet.w14.shop.048"] = {
+		"Discretion is the whole job. What's in your box is between you and the lock.",
+		"I don't look inside. I only make sure nobody else does.",
+		"Your secrets are as safe as your things. I couldn't tell anyone if I tried; I never looked.",
+	},
+	["npc_meet.w14.shop.049"] = {
+		"Take your time. A vault is patient. So am I, as long as there's no queue.",
+		"No need to hurry. Locks don't get bored, and neither do I. Much.",
+	},
+	["npc_meet.w14.shop.050"] = {
+		"Trust is the only thing I can't store for you. That one you bring each time.",
+		"I keep things safe. Remembering what they are is your half of the bargain.",
+	},
+	["npc_meet.w14.shop.051"] = {
+		"Strange, owning things I can't carry. Half of me lives in a vault.",
+		"A box behind a locked door, full of maybes: maybe I'll need it, maybe I'll come for it.",
+	},
+	["npc_meet.w14.shop.052"] = {
+		"Things go into the vault to be forgotten. That's half the point of a vault.",
+		"What I can't bring myself to throw away, I bring here. A bank is a drawer for indecision.",
+	},
+	["npc_meet.w14.shop.053"] = {
+		"Handing my things to someone I barely know and calling it safe. Trust is a strange habit.",
+		"I leave my things with someone whose name I hardly know. And somehow it works.",
+	},
+	["npc_meet.w14.shop.054"] = {
+		"The vault doesn't care whether I come back. That's the comfort of it: it simply waits.",
+		"Behind a heavy door, a few things of mine sit in the dark and wait. I find that oddly kind.",
+	},
+	["npc_meet.w14.shop.055"] = {
+		"A banker who smiles is either very honest or very good at the job. Possibly both.",
+		"The banker's face gives nothing away. I suppose that's the point.",
+	},
+	["npc_meet.w14.shop.056"] = {
+		"hands over a bundle for safekeeping and watches it disappear into the vault.",
+		"passes a few things across the counter and watches them carried off toward the locks.",
+	},
+	["npc_meet.w14.shop.057"] = {
+		"waits as {other} unlocks the box, and leans in a little to see what's inside.",
+		"stands at the banker's counter, quietly sorting what to keep close and what to leave behind.",
+	},
+	["npc_meet.w14.shop.058"] = {
+		"Just checking it's all still there. Not that I doubt you.",
+		"Only a look. I like to see my things now and then, like old friends.",
+	},
+	["npc_meet.w14.shop.059"] = {
+		"Keep this safe for me. Don't ask why I'm keeping it; I don't know either.",
+		"Put this somewhere safe, would you? I can't bear to sell it and I can't bear to carry it.",
+	},
+	["npc_meet.w14.shop.060"] = {
+		"Want to call this place home? Say the word and it's done. Coming back is easier when you know the way.",
+		"I can mark this inn as yours. Wherever you wander, you'll find the way back here quick enough.",
+		"Shall I set you down as one of mine? Then this is where the road brings you back.",
+	},
+	["npc_meet.w14.shop.061"] = {
+		"There's a pot on the fire and bread that isn't too old. Sit, if you've a mind to.",
+		"Something to eat? It's simple, but it's hot, and there's plenty.",
+		"Hungry? Never mind, eat anyway. Nobody leaves this inn thinner.",
+	},
+	["npc_meet.w14.shop.062"] = {
+		"A room's ready if you want it. Clean sheets, and nobody asks your business.",
+		"A bed's free, if you need one. The floor creaks; the bed, I promise, doesn't.",
+		"Need a bed? Pick a corner. They're all softer than the road.",
+	},
+	["npc_meet.w14.shop.063"] = {
+		"Sit a while. Whatever brought you in can wait the length of a meal.",
+		"Pull up a chair. The rest of the world is all hurry; these chairs never learned the word.",
+		"Sit down, sit down. Just watching you stand makes my own feet ache.",
+	},
+	["npc_meet.w14.shop.064"] = {
+		"Everyone who stops here has a story. Keep yours, if you like. I hear plenty.",
+		"You'd be amazed what people tell an innkeeper. You'd be more amazed what an innkeeper forgets.",
+	},
+	["npc_meet.w14.shop.065"] = {
+		"The trade is simple: keep a place ready for people who come back.",
+		"Go where you must. There'll be a place by the hearth when you're done.",
+		"However far you go, a bowl and a bench stay waiting.",
+	},
+	["npc_meet.w14.shop.066"] = {
+		"Only rule of the house: settle up before the brawl, not after.",
+		"Pay for what you break, and if you break nothing, I'll remember your face kindly.",
+		"Coin on the counter, tempers at the door, and nobody gets thrown out.",
+	},
+	["npc_meet.w14.shop.067"] = {
+		"Rest is the cheapest thing I sell, and the one people skimp on most.",
+		"Food, drink, a bed. Of the three, folk always skimp on the bed. Don't.",
+		"A full belly, a quiet room, a few hours with nothing to do. Cheapest medicine I know.",
+	},
+	["npc_meet.w14.shop.068"] = {
+		"What'll it be? Water, milk, or something with a bit more bite?",
+		"Something to drink? There's the sensible stuff, and there's the good stuff.",
+		"Something to wet the throat? Name it. If I haven't got it, I'll swear the last barrel just ran dry.",
+	},
+	["npc_meet.w14.shop.069"] = {
+		"Whatever's weighing on you, set it down a while. I'll keep an eye on it.",
+		"Troubles don't get a room. They can wait by the door until you're ready for them.",
+	},
+	["npc_meet.w14.shop.070"] = {
+		"Every guest gets the same here: a seat, a bowl, and peace if they ask for it.",
+		"Talk if you want, keep quiet if you'd rather. Either way, the soup's the same.",
+		"No one has to be good company here. Quiet company will do.",
+	},
+	["npc_meet.w14.shop.071"] = {
+		"The stew's the same as ever. Take that as a recommendation, not a warning.",
+		"Cook's in a good mood, so the stew is edible. You picked your moment well.",
+	},
+	["npc_meet.w14.shop.072"] = {
+		"Inns all smell a little alike: smoke, bread, damp wool. My shoulders drop before I've even sat down.",
+		"That mix of old smoke and bread every inn seems to share. It works on me without fail.",
+	},
+	["npc_meet.w14.shop.073"] = {
+		"Calling a place home for a while costs one word with the innkeeper. Easier than most homes.",
+		"Home, for now, is wherever I tell the innkeeper it is. A light sort of root.",
+	},
+	["npc_meet.w14.shop.074"] = {
+		"A real chair. Small mercies are the best kind.",
+		"Somewhere to sit that wasn't put there by chance. Small comforts count double.",
+	},
+	["npc_meet.w14.shop.075"] = {
+		"Innkeepers hear everything and repeat nothing. Or so they'd like you to believe.",
+		"The innkeeper's eyes go to the door each time it opens. A habit of the trade, I'd guess.",
+		"An innkeeper knows everyone's order and nobody's business. A rare kind of tact.",
+	},
+	["npc_meet.w14.shop.076"] = {
+		"Any inn, anywhere, has a way of feeling like a return.",
+		"Every inn is a little bit the same inn. That's the whole comfort of them.",
+	},
+	["npc_meet.w14.shop.077"] = {
+		"Everything else wants something from me. At an inn, only the bill does.",
+		"For the price of a meal, nobody needs me for a while. A bargain.",
+	},
+	["npc_meet.w14.shop.078"] = {
+		"sets the pack down by the counter and lets {g:his|her} shoulders sag at last.",
+		"finds a bench near the hearth and sits as if it were a small victory.",
+	},
+	["npc_meet.w14.shop.079"] = {
+		"has {other} keep a place ready, and feels the arrangement settle like an anchor.",
+		"lets {other} mark the inn as home, the way one ties a knot to find a path back.",
+	},
+	["npc_meet.w14.shop.080"] = {
+		"lingers by the counter, letting the small sounds of the inn settle around {g:him|her}.",
+		"stands a moment at the counter, taking in the comfort of the place before saying a word.",
+	},
+	["npc_meet.w14.shop.081"] = {
+		"orders whatever's in the pot, without asking what it is.",
+		"nods at whatever the innkeeper suggests; arguing over a meal feels like a waste of good sitting.",
+	},
+	["npc_meet.w14.shop.082"] = {
+		"Whatever's in the pot, I'll have it. Surprise me.",
+		"A seat and something warm in a bowl. That's the whole of my wish list.",
+	},
+	["npc_meet.w14.shop.083"] = {
+		"Mark me down as one of yours. Places like this are good to come back to.",
+		"Make this my home for now. I'll try to come back with all my pieces.",
+	},
+	["npc_meet.w14.shop.084"] = {
+		"People who serve travelers learn to read them fast. I wonder what I read like.",
+		"Someone whose work is dealing with passersby sees me for a moment, then the next one. A small, honest sort of meeting.",
+	},
+	["npc_meet.w14.shop.085"] = {
+		"Thousands pass by them, and they still find a word for each. That's a skill nobody teaches.",
+		"They must say the same few things a hundred times over. They still make them sound meant.",
+	},
+	["npc_meet.w14.shop.086"] = {
+		"Every road is held together by people who stay put so others can keep moving.",
+		"Those who stay in one place so travelers needn't carry everything: the world leans on them more than it admits.",
+	},
+	["npc_meet.w14.shop.087"] = {
+		"offers a short nod of greeting, the kind travelers and those who serve them trade without thinking.",
+		"greets {other} with a plain courtesy, the kind that costs nothing and opens most doors.",
+	},
 }, "base_context")

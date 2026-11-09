@@ -6041,4 +6041,973 @@ NS:AddTexts("itIT", {
 		"Ci si preoccupa quando c'è motivo. Nel frattempo, si osserva.",
 		"Inutile agitarsi per niente. Utilissimo guardarsi intorno.",
 	},
+	["journey.w14.down.001"] = {
+		"Le gambe hanno penzolato per tutto il viaggio. Adesso devono farsi un'opinione sul terreno, e ci mettono un po'.",
+		"Primo passo: con cautela. Secondo: meno. Al terzo le gambe si ricordano di averlo già fatto.",
+		"Per ultime tornano le gambe, come ospiti rimasti troppo a lungo alla tavola di un altro.",
+	},
+	["journey.w14.down.002"] = {
+		"si preme i pugni sulla schiena, in basso, e si inarca finché qualcosa lì dentro non accetta di muoversi.",
+		"si piega in avanti, le mani sulle ginocchia, e lascia che la rigidità della sella se ne vada con calma.",
+		"si inarca all'indietro con le mani sui fianchi, adagio, come chi raddrizza un vecchio cardine.",
+	},
+	["journey.w14.down.003"] = {
+		"Atterraggio: brusco. Panorama: ottimo. Spazio per le gambe: nessuno. Volerei ancora, ma lamentandomi.",
+		"Sette su dieci. Punti in meno per l'ultima virata, che ho sentito fin nei denti.",
+		"Velocità, ammirevole. Comodità, una diceria. La discesa, una questione per il mio avvocato.",
+	},
+	["journey.w14.down.004"] = {
+		"Lassù intere strade stavano sotto il pollice. Quaggiù un passo torna a essere un passo, e il mondo si riprende il suo peso.",
+		"Le cose si erano fatte piccole e ordinate, mentre ero lassù. Adesso sono di nuovo grandi, disordinate, abbastanza vicine da toccarle.",
+		"Il mondo è tornato alla sua misura. Io pure, credo: non più un puntino sopra una mappa, solo qualcuno in piedi da qualche parte.",
+	},
+	["journey.w14.down.005"] = {
+		"Vai pure, allora. Grazie per non avermi fatto cadere: l'ho notato, e lo apprezzo.",
+		"Grazie. Tu hai fatto tutta la fatica e io tutta la preoccupazione. Divisione onesta.",
+		"Torna indietro, forza. Una sella vuota te la sei meritata.",
+	},
+	["journey.w14.down.006"] = {
+		"deve convincere le dita a lasciare la cinghia, una per una, come se ci si fossero affezionate.",
+		"molla finalmente l'imbracatura, e si guarda le mani con un lieve stupore per quanto stringevano.",
+		"stacca una mano, poi l'altra, e le apre e chiude entrambe come attrezzi presi in prestito da restituire.",
+	},
+	["journey.w14.down.007"] = {
+		"Lassù c'era solo l'aria che correva e i miei pensieri. Quaggiù tutto vuole dire la sua nello stesso momento.",
+		"Voci, passi, il tintinnio dell'equipaggiamento di qualcuno. La terra è rumorosa; il silenzio di lassù me l'aveva fatto scordare.",
+		"Tutto quel silenzio, e adesso rumore da ogni parte. Ci vuole un attimo per capire a quale tocca a me rispondere.",
+	},
+	["journey.w14.down.008"] = {
+		"Testa in su, piedi in giù. E adesso, dove stavo andando?",
+		"Un giro d'orizzonte completo, e poi saprò cosa c'è e dove.",
+		"Un momento. Prima trovo il nord, poi la testa.",
+	},
+	["journey.w14.down.009"] = {
+		"Tutta quella terra, e neanche un palmo sotto i piedi. È come leggere prima l'ultima pagina.",
+		"Ho fatto tanta strada senza guadagnarmene un solo passo. Un giorno la strada vorrà indietro il conto.",
+		"Mi è appena capitata addosso un sacco di distanza, e non ho alzato un piede per averla.",
+	},
+	["journey.w14.down.010"] = {
+		"segue con gli occhi la cavalcatura che si allontana, finché lassù non si distingue più da nient'altro, poi torna alle faccende di quaggiù.",
+		"alza lo sguardo una volta, come ci si volta verso una porta appena chiusa, e poi pensa ad altro.",
+		"segue per un momento le ali che rimpiccioliscono, poi fa spallucce e le lascia a qualcun altro.",
+	},
+	["journey.w14.down.011"] = {
+		"Le orecchie sono rimaste lassù. Scenderanno quando se la sentono.",
+		"Tutto arriva un po' attutito, come se il mondo parlasse da dietro un muro. Diamogli un minuto.",
+		"Ho un ronzio nelle orecchie che nessuno ha invitato. Si è unito al viaggio e non si è accorto che è finito.",
+	},
+	["journey.w14.down.012"] = {
+		"Una discesa elegantissima. Nessuno ha visto l'altra versione.",
+		"Volevo atterrare proprio così. L'inciampo era un tocco di stile.",
+		"Elegante, no? Non rispondere.",
+	},
+	["journey.w14.down.013"] = {
+		"Prima le cose importanti: capire dove sono, poi dove servo, poi se mi importa.",
+		"Lassù non avevo commissioni. La terra me le restituisce appena ci metto piede, come un mantello all'ingresso.",
+		"I piani fatti in volo non sopravvivono mai all'atterraggio. Tocca farne di veri.",
+	},
+	["journey.w14.down.014"] = {
+		"rimette piede sulla terra e per un momento resta come sono sempre rimasti i viandanti alla fine di un viaggio: fermi, a fare il punto.",
+		"scende nel mondo di tutti i giorni e lascia che {g:gli|le} si richiuda intorno, con i suoi rumori e i suoi odori.",
+	},
+	["journey.w14.down.015"] = {
+		"Mi manca già, quel tratto in cui nessuno voleva niente. La terra ha buona memoria per quello che le devo.",
+		"Per un po' niente poteva raggiungermi. Adesso tutto può. Va bene, ma con calma.",
+		"Il silenzio di lassù era di quelli che nessuno può interrompere. Quaggiù ogni silenzio ha una porta che prima o poi si apre.",
+	},
+	["journey.w14.down.016"] = {
+		"Basta stare a sedere. Le gambe vogliono lavorare, e il lavoro non manca.",
+		"Bene. Qualcosa su cui stare in piedi, e cose da fare. Nell'ordine.",
+		"Gambe, il riposo l'avete avuto. Adesso ve lo guadagnate.",
+	},
+	["journey.w14.down.017"] = {
+		"Mezza mappa mi è passata sotto. Le gambe non ne sanno niente: credono di essere state su una sedia.",
+		"Tante leghe senza muovermi. Il corpo non ha ancora deciso se è stanco o solo annoiato.",
+		"Leghe su leghe, e l'unica parte di me che ha percorso qualche distanza è la pazienza.",
+	},
+	["journey.w14.down.018"] = {
+		"si districa dalla sella a tappe, come una mappa rimasta piegata male troppo a lungo.",
+		"scende dopo il lungo tragitto e muove i primi passi con l'andatura cauta di chi ha scordato dove si piegano le ginocchia.",
+	},
+	["journey.w14.down.019"] = {
+		"Abbastanza lungo da mettere radici nella sella. Qualcuno mi stacchi.",
+		"Se qualcuno chiede, per un po' cammino. Cammino e basta.",
+		"Quel volo aveva un inizio, una parte centrale lunghissima e, alla fine, una fine. La fine mi è piaciuta di più.",
+	},
+	["journey.w14.down.020"] = {
+		"Credo di essermi {g:appisolato|appisolata} a metà strada. Spero che non mi sia sfuggito niente di bello. Spero di non averci russato sopra.",
+		"A un certo punto ho smesso di guardare e ho cominciato a vagare con la testa. Tornare in me proprio all'atterraggio è uno strano modo di arrivare.",
+	},
+	["journey.w14.down.021"] = {
+		"Calma. Sei giù. Lascia che il mondo smetta di ondeggiare prima di fidarti.",
+		"Va bene. Piedi, vi presento la terra. Terra, abbi pazienza con loro.",
+		"Con calma. Non c'è nessuno a cronometrare.",
+	},
+	["journey.w14.down.022"] = {
+		"Proverò a tenermi un po' di quell'altezza. Non il panorama: il modo in cui niente quaggiù sembrava valere un litigio.",
+		"Da lassù ogni questione che mi porto dietro aveva la misura di una briciola. Vorrei ricordarmelo almeno per un po'.",
+		"Dopo un atterraggio, qualcosa della vista dall'alto resta dietro gli occhi. Svanisce in fretta; lo userò prima che succeda.",
+	},
+	["journey.w14.down.023"] = {
+		"si sistema lo zaino più in alto sulle spalle e gli dà una scossa, in ascolto di qualunque cosa si sia allentata.",
+		"posa le borse un momento, solo per vederle restare dove sono state messe.",
+	},
+	["journey.w14.down.024"] = {
+		"Comunque io stia camminando adesso, passerà. Probabilmente.",
+		"Se per un po' cammino di sbieco, è affar mio.",
+		"È un'andatura del tutto normale. Solo un po' timida.",
+	},
+	["journey.w14.down.025"] = {
+		"Il cielo non si accorge della mia partenza. Non si era accorto nemmeno della mia presenza. È questo il suo lato riposante.",
+		"Lascio l'aria aperta a chiunque ci sia lassù adesso. Non so se sia mai stata mia, da lasciare.",
+		"Lassù niente si ricorderà del mio passaggio. Scopro che non mi dispiace, farmi dimenticare da qualcosa di così grande.",
+	},
+	["journey.w14.down.026"] = {
+		"fa tre passi, si ferma, ne fa altri tre, come per vedere se alla terra si può affidare qualcosa di più.",
+		"percorre qualche passo in linea retta con grande concentrazione, come chi debba dimostrare qualcosa a un giudice invisibile.",
+		"posa un piede con cura esagerata, poi l'altro, come chi saggia un ponte di corda e scopre che è un pavimento.",
+	},
+	["journey.w14.down.027"] = {
+		"Sarà solo a me, ma volare mi mette fame. Dev'essere tutto quel mondo che passa gratis.",
+		"Tutto quello stare {g:seduto|seduta}, e mangerei un bue. Chi me lo spiega?",
+		"Neanche un passo vero in tutto il viaggio, e ho una fame da lupi. Il corpo tiene conti strani.",
+	},
+	["journey.w14.down.028"] = {
+		"Velocità di cammino. Più lenta di come la ricordavo, e mi piace più di quanto pensassi.",
+		"Torno al mio passo, lento abbastanza da accorgermi delle cose. Lassù tutto scorreva troppo in fretta per essere di qualcuno.",
+		"Camminare è una velocità piccola, ma è la mia, e si ferma quando mi fermo io.",
+	},
+	["journey.w14.down.029"] = {
+		"tiene una mano sul collo della cavalcatura un attimo più del necessario, poi fa un passo indietro e la lascia andare.",
+		"mormora qualcosa alla cavalcatura, troppo piano perché altri sentano, e dà un'ultima pacca all'imbracatura.",
+		"resta accanto alla cavalcatura quanto basta per ricevere un grazie, se le cavalcature ringraziassero, e poi si fa da parte.",
+	},
+	["journey.w14.down.030"] = {
+		"Voli come se avessi un posto migliore dove andare. Giusto. Anch'io.",
+		"Senza offesa, ma vederti ripartire mi fa piacere.",
+		"Vai, dai. Non dirò a nessuno come hai preso l'ultima curva.",
+	},
+	["journey.w14.down.031"] = {
+		"Strano quanto possa stancare non fare niente. Mi sono solo {g:tenuto|tenuta} forte, e ogni parte di me fa rapporto.",
+		"Immobilità per tutto il viaggio, eppure sono a pezzi. Reggersi è un lavoro; nessuno lo dice.",
+		"Farsi trasportare, a quanto pare, è un mestiere: tutti i dolori di un lavoro e nessuna paga.",
+	},
+	["journey.w14.down.032"] = {
+		"pianta bene i piedi, si guarda a lungo intorno, e sembra mettere in ordine tutto il posto prima di farci un solo passo.",
+		"resta un momento al margine dell'atterraggio, misurando il terreno davanti con la pazienza di chi sta per attraversarlo a piedi.",
+		"si ferma con una mano sulla cinghia dello zaino, leggendo la disposizione del terreno come la prima mossa su una scacchiera.",
+	},
+	["journey.w14.down.033"] = {
+		"Fatta. Il resto è camminare, e camminare lo so fare.",
+		"Giù dalla sella e di nuovo al lavoro.",
+		"Arrivo, mi scarico dall'aria e mi rendo utile.",
+	},
+	["journey.w14.down.034"] = {
+		"Le vecchie strade laggiù non mi hanno visto passare. Da qualche parte, la via che non ho preso aspetta ancora, paziente come la pietra.",
+		"Ogni strada che ho sorvolato è ancora là sotto, senza le mie impronte. Mi piace sapere che resteranno.",
+		"Laggiù le strade continuano a tenere le loro distanze. Devo loro il cammino che non ho fatto, e lo sanno.",
+	},
+	["journey.w14.down.035"] = {
+		"si dà una spolverata con entrambe le mani, rimettendo a posto tutto quello che l'aria in corsa ha scompigliato.",
+		"si risistema l'equipaggiamento un pezzo dopo l'altro, con la cura di chi rimonta un giocattolo a molla.",
+		"rimbocca, stringe e liscia ogni lembo che il volo ha allentato, e sembra un po' meno un pacco appena consegnato.",
+	},
+	["journey.w14.down.036"] = {
+		"Mi piacerebbe sapere chi ha deciso che la parte brusca dovesse essere l'atterraggio.",
+		"Perché la fine di un volo arriva tanto più in fretta della parte centrale? Qualcuno doveva avvisare il terreno.",
+		"Un'eternità a planare, e poi tutto si risolve in due scossoni. Il volo non ha il senso delle proporzioni.",
+	},
+	["journey.w14.down.037"] = {
+		"Va' in pace. Mi hai portato più lontano di quanto avrei camminato in molti giorni, e mi hai chiesto solo di tenermi.",
+		"Grazie, ali. Che il prossimo a salirti in groppa pesi meno di me.",
+	},
+	["journey.w14.down.038"] = {
+		"La prima cosa a tornare è l'olfatto: polvere, gente, qualunque cosa capiti qui intorno. Lassù avevo smesso di accorgermi di avere un naso.",
+		"Lassù l'aria non sapeva di niente. Quaggiù ogni cosa ha di nuovo il suo odore, e non tutti sono graditi.",
+		"Il naso si sveglia prima del resto. Qualunque posto sia questo, si presenta prima a lui.",
+	},
+	["journey.w14.down.039"] = {
+		"scuote una gamba, poi l'altra, come chi controlla che siano arrivate tutte e due.",
+		"scalcia l'aria con un piede e poi con l'altro, due volte, finché il formicolio non si decide ad andarsene.",
+		"saltella piano sul posto qualche volta, per risvegliare i piedi che si erano addormentati durante il viaggio.",
+	},
+	["journey.w14.down.040"] = {
+		"Ogni arrivo ha lo stesso piccolo istante: il posto non sa ancora che ci sono. Mi piace restarci dentro un po'.",
+		"Per un momento nessuno qui sa del mio arrivo. È quanto di più vicino all'essere invisibili.",
+		"Un attimo in cui nessuno fa caso a me. Lo spendo a guardarmi intorno.",
+	},
+	["journey.w14.down.041"] = {
+		"Dunque. Quale di tutte queste direzioni è la mia?",
+		"Dall'alto era tutto così ovvio. Quaggiù ogni direzione sembra uguale alle altre.",
+		"Mh. La mappa che ho in testa l'ho disegnata da lassù. Col terreno, per ora, non combacia.",
+	},
+	["journey.w14.down.042"] = {
+		"Un volo lungo lascia un buco nei conti. Ho guardato, ho aspettato, ed è più tardi di quanto avrebbe diritto di essere.",
+		"Tanto tempo a farmi portare. Mi piacerebbe dire di aver fatto pensieri profondi. Ho pensato soprattutto alle gambe.",
+		"A metà di quella traversata ho finito le cose a cui pensare. Il resto è stato solo stare lì, molto in alto.",
+	},
+	["journey.w14.down.043"] = {
+		"atterra dopo la lunga traversata e zoppica per la prima decina di passi, massaggiando una gamba che si è addormentata strada facendo.",
+		"smonta con una cura lenta e deliberata, mettendo alla prova ogni articolazione, come se il lungo tratto in volo potesse averne lasciata indietro una.",
+	},
+	["journey.w14.down.044"] = {
+		"Non che fossi {g:preoccupato|preoccupata}. Mi piace solo rilassare tutti i muscoli che ho in un colpo solo.",
+		"Guarda un po', le mani funzionano di nuovo. Si tenevano con una convinzione ammirevole.",
+		"Niente di che. Tra un minuto smetto di aggrapparmi alle cose.",
+	},
+	["journey.w14.down.045"] = {
+		"Da lassù ho visto quanto mondo c'è. Quaggiù devo occuparmi soltanto del prossimo pezzo.",
+		"C'è più mondo di quanto una vita possa percorrere a piedi. Un pezzo l'ho appena saltato, e non me ne vergogno.",
+		"Tanta terra, e tutta occupata coi suoi guai. I miei sono solo un fazzoletto in mezzo, ed è un conforto.",
+	},
+	["journey.w14.down.046"] = {
+		"socchiude gli occhi sulle cose vicine, con lo sguardo ancora regolato per le distanze, e aspetta che tornino a fuoco.",
+		"si strofina gli occhi, che sembrano ancora cercare l'orizzonte, e li costringe a posarsi su ciò che è vicino.",
+		"sbatte le palpebre un paio di volte davanti alle cose vicine, come chi passa da un vasto panorama a una stanza piccola.",
+	},
+	["journey.w14.down.047"] = {
+		"I voli finiscono in modo troppo netto. Un momento sono sopra tutto, quello dopo sono una persona con uno zaino e un posto dove andare.",
+		"Nessuna cerimonia. Le ali se ne vanno, la terra resta, e io resto lì in piedi, una figura qualunque con un bagaglio.",
+	},
+	["journey.w14.down.048"] = {
+		"Piedi, si torna in servizio. Scusate per la lunga vacanza.",
+		"Destro, sinistro. Mi ricordo come funziona.",
+		"Camminare. Già. È quella cosa in cui le gambe fanno a turno.",
+	},
+	["journey.w14.down.049"] = {
+		"Da qualche parte dietro di me una cavalcatura si gode il carico più leggero. Buon per lei.",
+		"Il mio peso adesso è il sollievo di qualcun altro. Mi offenderei, se stare in piedi non mi facesse tanto piacere.",
+		"Chi mi ha portato pensa già ad altro. Vorrei saperlo fare così in fretta.",
+	},
+	["journey.w14.down.050"] = {
+		"tocca il suolo con il palmo della mano, appena un attimo, come si saluta qualcosa di vecchio e paziente, e si rialza.",
+		"china il capo un momento all'atterraggio, una piccola cortesia privata verso qualunque cosa abbia vegliato su quel volo.",
+	},
+	["journey.w14.down.051"] = {
+		"Il peso che avevo alla partenza non è sceso tutto con me. Qualcosa è rimasto lassù, e non credo che mi mancherà.",
+		"Una delle mie preoccupazioni sta ancora volando. Che voli. Non ho nessuna intenzione di tornare a prenderla.",
+		"Qualunque cosa mi tormentasse alla partenza, all'atterraggio non c'è arrivata. Tanto meglio.",
+	},
+	["journey.w14.down.052"] = {
+		"I miei complimenti al terreno. Puntuale, robusto, proprio dove l'avevo lasciato.",
+		"Affidabile, la terra. Non mi è mai volata via una volta.",
+		"Ed ecco il terreno. Non sbatte le ali, non vira, non cala di colpo. Un capolavoro.",
+	},
+	["journey.w14.down.053"] = {
+		"compie lentamente un giro completo, facendo combaciare ciò che vede ora con ciò che vedeva dall'alto.",
+		"guarda da una parte e poi dall'altra, confrontando la terra ad altezza d'occhi con la mappa che era un attimo fa.",
+		"individua un paio di cose viste dall'alto e fa loro un cenno, come a dei conoscenti.",
+	},
+	["journey.w14.down.054"] = {
+		"Il volo mi porta vicino. L'ultimo tratto si fa sempre a piedi; nessuno ha mai trovato il modo di evitarlo.",
+		"L'aria ha fatto la parte lunga. Quella corta, quella che conta, vuole ancora le gambe.",
+		"Le ali mi portano vicino. Arrivare davvero è un lavoro che devono finire i piedi.",
+	},
+	["journey.w14.down.055"] = {
+		"Ho visto passare un bel pezzo di mondo senza mai dover chiedere la strada. Non so bene cosa ho imparato, ma era tanto.",
+		"Dopo una traversata così lunga, la terra sembra meno un elenco di posti e più una cosa sola, tutta unita.",
+		"Abbastanza a lungo in volo da vedere come tutto, là sotto, sconfina in tutto il resto. Quaggiù i confini tornano.",
+	},
+	["journey.w14.down.056"] = {
+		"Un momento. Voglio solo stare qui, in un posto preciso.",
+		"Un attimo, per favore. Finora non ho fatto che passare sopra le cose; adesso voglio starci dentro.",
+		"Aspetta. Lascia atterrare anche la testa.",
+	},
+	["journey.w14.down.057"] = {
+		"guarda la cavalcatura allontanarsi con un'espressione fatta di gratitudine e sollievo in parti uguali, e non prova a scegliere.",
+		"saluta con un cenno le ali che ripartono, poi si guarda intorno in fretta per vedere se qualcuno ha notato il cenno.",
+	},
+	["journey.w14.down.058"] = {
+		"C'è un piacere semplice nel peso. Lassù ero un carico. Quaggiù mi appoggio al mondo e il mondo ricambia.",
+		"Farsi portare va bene. Portarsi da sé va meglio: è l'unico lavoro che non devo mai spiegare a nessuno.",
+		"Quaggiù ho un peso, e il peso vuol dire che posso spingere. Mi piace più che volare.",
+	},
+	["journey.w14.down.059"] = {
+		"Quella sella non l'ha mai provata chi l'ha fatta. Ne vorrei parlare, ma in piedi.",
+		"La forma di quella sella me la porterò addosso per un po'. Era una forma molto particolare.",
+		"Io e quella sella siamo arrivati a un accordo: vince lei, e io smaltisco camminando.",
+	},
+	["journey.w14.down.060"] = {
+		"Nota per il prossimo volo: appoggiarsi indietro, allentare la presa, e smettere di prepararsi all'atterraggio tre leghe prima.",
+		"La prossima volta mangio qualcosa prima. E stringo un po' meno la cinghia. E magari me lo godo.",
+		"Lezione del volo: l'atterraggio non è il momento di cominciare a godersi il panorama.",
+	},
+	["journey.w14.down.061"] = {
+		"fa ruotare la testa da una spalla all'altra, lenta come una macina, finché il collo non rinuncia al suo rancore.",
+		"fa girare le spalle in ampi cerchi, sciogliendo la forma che le cinghie ci hanno lasciato.",
+		"si massaggia la nuca con una mano e fa una smorfia per quello che il volo le ha combinato.",
+	},
+	["journey.w14.down.062"] = {
+		"Dovunque le ali mi lascino, il lavoro comincia da qui. Preferisco affrontarlo in piedi che da una sella.",
+		"Qualunque cosa mi aspetti qui, ha aspettato senza sapere del mio arrivo. Questo mi dà la prima mossa.",
+		"Grazie al volo ho del tempo in più. Quello che ne faccio comincia da questo pezzo di terra.",
+	},
+	["journey.w14.down.063"] = {
+		"La parte veloce è fatta. Il resto me lo faccio a piedi.",
+		"Fatta la parte veloce. Adesso quella lenta: arrivo.",
+		"Finito il pezzo rapido. Quello lungo tocca a me.",
+	},
+	["journey.w14.down.064"] = {
+		"Le gambe hanno la forma della sella e le mani quella della cinghia. Ci vorrà un po' di cammino per tornare alla mia, di forma.",
+		"Quella traversata è durata tanto da smettere di essere un volo e diventare un posto dove ho abitato per un po'. Adesso ho traslocato.",
+	},
+	["journey.w14.down.065"] = {
+		"scende alla fine della lunga traversata e resta in silenzio un momento, come per lasciare che tutta quella distanza {g:lo|la} raggiunga.",
+		"smonta piano dopo il lungo volo, e per un po' sembra portarsi dietro gli occhi tutta l'ampiezza della terra.",
+	},
+	["journey.w14.down.066"] = {
+		"È tanto mondo da attraversare stando seduti. La schiena dice che è stato tutto molto interessante.",
+		"Farei una lega a piedi adesso, solo per ricordarmi che ne sono capace.",
+	},
+	["journey.w14.down.067"] = {
+		"Per tutto quel tempo la mia vita è stata sulle ali di qualcun altro. È bello riaverla nelle mie mani maldestre.",
+		"Per tutto il volo il mio destino è stato il lavoro di un altro. Adesso torna mio, e non so se le sue probabilità siano migliorate.",
+		"Per tutto il volo ho rinunciato a ogni parola su dove andavo. Riprendermela è un piccolo piacere.",
+	},
+	["journey.w14.down.068"] = {
+		"parte un po' {g:incerto|incerta}, e al decimo passo cammina come se non avesse mai lasciato la terra.",
+		"si allontana con un leggero dondolio nelle prime falcate, che si spegne a ogni passo finché del volo non resta che uno sguardo all'insù.",
+	},
+	["journey.w14.down.069"] = {
+		"Da lassù vedevo una dozzina di strade possibili. Quaggiù ne vedo due, e una è alle mie spalle.",
+		"Lassù ogni sentiero era chiaro. All'altezza degli occhi tornano a nascondersi uno dietro l'altro.",
+		"La vista dall'alto mi ha mostrato delle scorciatoie. La terra mi mostrerà perché nessuno le prende.",
+	},
+	["journey.w14.down.070"] = {
+		"Ehi? Ehi. Bene, la voce funziona. Le orecchie arriveranno.",
+		"Orecchie ancora piene d'aria. Chi vuole parlarmi, riprovi più tardi.",
+	},
+	["journey.w14.down.071"] = {
+		"Non esiste un modo elegante di essere consegnati come un sacco di farina. La dignità me la riprendo a piedi.",
+		"Il mio è stato l'arrivo di un bagaglio. Da qui in avanti intendo arrivare come una persona.",
+		"Atterraggio da merce. Vorrei andarmene come qualcuno che ha uno scopo.",
+	},
+	["journey.w14.down.072"] = {
+		"resta dove è {g:atterrato|atterrata} un momento più del necessario, senza guardare niente in particolare, lasciando che il silenzio del volo se ne vada piano.",
+		"indugia un poco presso il punto d'atterraggio, senza fretta, come se il volo fosse una stanza da cui non si sente ancora {g:pronto|pronta} a uscire.",
+	},
+	["journey.w14.down.073"] = {
+		"La terra non si muove. Lo so che non si muove. L'orecchio interno ha i suoi dubbi.",
+		"Tutto è fermo. Troppo fermo. Dammi un minuto e smetto di piegarmi in curve che non ci sono.",
+		"Una parte di me sta ancora virando a sinistra. Il resto ha presentato un reclamo.",
+	},
+	["journey.w14.down.074"] = {
+		"La terra e io abbiamo affari in sospeso. Vediamo che cosa vuole per prima.",
+		"Eccomi qui. Quello che viene dopo può venire a cercarmi, oppure lo cerco io.",
+	},
+	["journey.w14.down.075"] = {
+		"Le ali coprono le distanze. I piedi servono a conoscere un posto. La prima cosa è fatta; la seconda comincia adesso.",
+		"Il volo mostra la forma delle cose. Il cammino mostra di che cosa sono fatte. È ora di scoprirlo.",
+		"Un posto visto dall'alto è solo una voce che gira su di lui. La verità sta all'altezza delle caviglie.",
+	},
+	["journey.w14.down.076"] = {
+		"chiude gli occhi per un momento, i piedi ben piantati, e ascolta tornare i rumori ordinari della terra.",
+		"resta un po' a occhi chiusi, lasciando che il mondo si rimetta a posto intorno senza bisogno di guardarlo.",
+	},
+	["journey.w14.down.077"] = {
+		"Tanto tempo seduti che stare in piedi sembra un'idea nuova e audace. Comincia a piacermi.",
+		"Abbastanza a lungo lassù da dimenticare a cosa servono le gambe. Me lo stanno ricordando, e senza garbo.",
+		"Mi farebbe bene una passeggiata corta. Poi una lunga. Poi magari una terza, per sicurezza.",
+	},
+	["journey.w14.down.078"] = {
+		"Ricordami perché avevo tanta voglia di saltare il cammino. Il fondoschiena ha qualche domanda.",
+		"La prossima volta ricorderò che una sella è solo una sedia che ce l'ha con te.",
+	},
+	["journey.w14.down.079"] = {
+		"Quaggiù nessuno ha visto il volo. Per quanto ne sanno, il mio arrivo è una specie di apparizione. Lascerò che credano fosse voluto.",
+		"Ogni pensiero di lassù era solo mio. È come uscire da una piccola stanza privata.",
+		"In volo non ero affare di nessuno. Quaggiù tornerò presto a esserlo di qualcuno.",
+	},
+	["journey.w14.down.080"] = {
+		"si lascia cadere per l'ultimo piccolo tratto dalla sella e atterra con un grugnito più di sorpresa che di dolore.",
+		"molla l'imbracatura e scivola giù, con meno dignità del previsto e più velocità.",
+	},
+	["journey.w14.down.081"] = {
+		"Piano, piano. Fammi liberare il piede prima di andartene.",
+		"Aspetta che io sia del tutto giù. Del tutto. Grazie.",
+	},
+	["journey.w14.down.082"] = {
+		"Un arrivo è una piccola pagina pulita. Quello che ho fatto altrove è rimasto altrove, almeno per un momento.",
+		"Il volo non ha saldato i miei debiti, però ci ha messo in mezzo una bella distanza.",
+		"Ogni atterraggio è una porta aperta dall'altra parte. Mi piace l'aria che fa entrare.",
+	},
+	["journey.w14.down.083"] = {
+		"scende dall'aria aperta come un viandante d'altri tempi che lascia una lunga strada, e la terra {g:lo|la} accoglie senza commenti.",
+		"posa il piede, e la terra si prende il suo peso con la stessa pazienza con cui ha preso quello di ogni viaggiatore prima.",
+	},
+	["journey.w14.down.084"] = {
+		"Le dita mi fanno male a forza di tenermi. Non sapevo di stringere così tanto finché non ho mollato.",
+		"Mani rigide come cuoio vecchio. Tutta quella preoccupazione doveva finire da qualche parte: è finita nella presa.",
+	},
+	["journey.w14.down.085"] = {
+		"E per questo ho pagato. Di mia volontà. Voglio che resti agli atti.",
+		"Valeva ogni moneta, immagino. Le gambe vorrebbero un rimborso.",
+		"Soldi ben spesi. Chiedimelo di nuovo quando mi sentirò i piedi.",
+	},
+	["journey.w14.down.086"] = {
+		"Laggiù dietro di me ci sono cento posti che ho sorvolato e dove forse non metterò mai piede. I voli lunghi me lo fanno sentire più di tutto.",
+		"Tutta quella terra è scivolata sotto di me, e metà non saprei nominarla. Mi porto dietro una veduta per cui non ho parole.",
+	},
+	["journey.w14.down.087"] = {
+		"sbadiglia sonoramente appena tocca terra, come se il volo fosse stato un pisolino lungo e un po' scomodo.",
+		"allunga le braccia sopra la testa, poi sembra decidere che tendersi verso l'alto può aspettare, e le abbassa.",
+	},
+	["journey.w14.down.088"] = {
+		"Dopo tanta aria, la terra sembra una faccenda molto personale. Ogni sassolino ha qualcosa da dire ai miei piedi.",
+		"Lassù non mi toccava niente se non l'aria in corsa. Quaggiù tutto preme, spinge, si mette in mezzo. Ed è bello.",
+	},
+	["journey.w14.down.089"] = {
+		"Coraggio. Hai fatto cose più difficili che stare in piedi.",
+		"Su, in piedi. La terra non scappa, e a quanto pare nemmeno le gambe.",
+	},
+	["journey.w14.down.090"] = {
+		"lancia un ultimo sguardo verso l'alto, si assesta lo zaino e si avvia a grandi passi, come se la terra aspettasse proprio questo.",
+		"volta le spalle all'atterraggio senza cerimonie e cammina incontro a ciò che viene dopo, il volo già dimenticato.",
+	},
+	["journey.w14.down.091"] = {
+		"Giorni di cammino ripiegati in una sola lunga seduta. Non so decidere se ho imbrogliato la strada o se lei ha imbrogliato me.",
+		"La distanza è vera. Solo che non l'ho sentita affatto, e mi sembra una cosa che in qualche modo pagherò.",
+	},
+	["journey.w14.down.092"] = {
+		"Oplà. La terra va bene, sono io che pendo da una parte.",
+		"Ferme, gambe. Ferme. Così. Guardatevi, camminate.",
+	},
+	["journey.w14.down.093"] = {
+		"Alzo gli occhi e tutta la strada appena percorsa è sparita senza un segno. L'aria non tiene impronte.",
+		"Lassù c'è una strada senza solchi e senza cartelli. L'ho percorsa e non ci ho lasciato niente. Strana strada.",
+	},
+	["journey.w14.down.094"] = {
+		"allenta le fibbie con dita ancora goffe per la presa, e si libera dell'imbracatura con un piccolo verso di gratitudine.",
+		"sgancia l'ultima cinghia, e per un momento sembra non sapere che fare di mani che non hanno più niente da stringere.",
+	},
+	["journey.w14.down.095"] = {
+		"Durante il viaggio ho visto laggiù qualcosa di strano, un po' di lato. A piedi non lo ritroverò mai, e continuerò a chiedermelo.",
+		"A metà strada c'è stato un momento in cui avrei voluto saltare giù per andare a vedere una cosa. Meno male che non l'ho fatto. Resta la curiosità.",
+	},
+	["journey.w14.down.096"] = {
+		"Terra, ti saluto. Mi sei mancata, un poco.",
+		"Ciao, terra. Non facciamo gli estranei.",
+	},
+	["journey.w14.down.097"] = {
+		"Il corpo è arrivato. Il resto di me è ancora a metà viaggio, e se la prende comoda.",
+		"Una traversata così lunga mi lascia come dopo aver dormito nel letto sbagliato. Niente fa male davvero; niente è proprio dove l'avevo lasciato.",
+	},
+	["journey.w14.down.098"] = {
+		"esce dalla sella dopo il lungo tragitto con tutta la grazia di una sedia pieghevole arrugginita.",
+		"ci mette tre tentativi a scavalcare la sella, dopo un volo così lungo, e finge che i primi due fossero di riscaldamento.",
+	},
+	["journey.w14.down.099"] = {
+		"Gente, di nuovo. Mi serve un momento per ricordarmi come si fa ad avere l'aria di chi sa dove va.",
+		"Facce, voci, qualcuno che vuole passare. Quaggiù il mondo è pieno di cose che non sono me.",
+	},
+	["journey.w14.down.100"] = {
+		"Consegna effettuata. Quasi intatta. Firmi qui.",
+		"Pacco arrivato. Lievemente ammaccato.",
+	},
+	["journey.w14.down.101"] = {
+		"Quando scendo mi stupisco sempre un po' che il mondo sia andato avanti senza che lo guardassi. Non ha mai tanto bisogno di me quanto credo.",
+		"Il mondo se l'è cavata benissimo mentre gli passavo sopra. Utile ricordarselo, ogni tanto.",
+	},
+	["journey.w14.down.102"] = {
+		"lancia uno sguardo in alto, vagamente accusatorio, come se il cielo si fosse tenuto qualcosa di suo.",
+		"rivolge all'aria aperta lassù un ultimo cenno, come tra due parti che hanno concluso un affare e non hanno fretta di rivedersi.",
+	},
+	["journey.w14.down.103"] = {
+		"Le altezze sono alle spalle. Che la terra porti quello che ha.",
+		"L'aria ha avuto il suo turno. Adesso tocca alla terra.",
+	},
+	["journey.w14.down.104"] = {
+		"Le gambe hanno convocato un'assemblea. Mozione: mai più stare fermi così a lungo. Approvata.",
+		"Rapporto dalla metà inferiore: formicolio, lieve indignazione, per il resto tutto funziona.",
+	},
+	["journey.w14.down.105"] = {
+		"Più in fretta che a piedi, con il doppio del capogiro. Mi sta bene.",
+		"Meno tempo per strada vuol dire più tempo per i guai che ci sono in fondo. Non so se sia un affare.",
+	},
+	["journey.w14.up.001"] = {
+		"Tutta la mia parte è stata pagare il viaggio e salire. Da qui in poi decidono le ali.",
+		"La meta l'ho scelta io. Le altre decisioni non sono mai state mie, e scopro che non mi mancano.",
+		"Qualcun altro guida, qualcun altro conosce le curve. A me si chiede soltanto di non cadere.",
+	},
+	["journey.w14.up.002"] = {
+		"Nessuna commissione sta in una sella. Per una volta, starsene con le mani in mano è la cosa più utile che posso fare.",
+		"Un tratto senza niente da portare, niente da andare a prendere, nessuno a cui rispondere. Potrei affezionarmi a quest'ozio.",
+		"Mani in mano, e nessuno che me lo rinfacci. È la parte migliore di ogni viaggio.",
+	},
+	["journey.w14.up.003"] = {
+		"Una lista, già che c'è tempo. Ricucire lo strappato, vendere l'inutile, dormire dove c'è una porta.",
+		"In sella c'è tutto il tempo per pensare. Prima cosa all'atterraggio: scoprire che cosa ho dimenticato di fare.",
+		"I prossimi giorni li organizzo qui sopra. I piani fatti così in alto sembrano sempre più ordinati di come poi vanno.",
+	},
+	["journey.w14.up.004"] = {
+		"Mani, smettetela. Queste cinghie hanno retto sciocchi più pesanti di me.",
+		"Le dita si sono serrate sulla cinghia. Si apriranno quando vorranno loro, e non un attimo prima.",
+		"Da qui sopra non cade nessuno. L'ho deciso io, e mi ci aggrappo, insieme a tutto il resto.",
+	},
+	["journey.w14.up.005"] = {
+		"Quel primo strattone coglie il corpo alla sprovvista, come se nessuno si fosse preso la briga di avvisarlo.",
+		"Lo strattone, lo stomaco che scende, poi la lunga tirata verso l'alto. Il corpo prima protesta, poi ammira.",
+		"Per un attimo tutto in me vorrebbe riacchiappare la terra. Poi è troppo lontana per afferrarla.",
+	},
+	["journey.w14.up.006"] = {
+		"Da qui la terra smette di essere un elenco di pericoli e diventa un disegno. Grazioso, e del tutto incapace di raggiungermi.",
+		"Tutto quello che laggiù mi costringeva a stare in guardia, da qui è una macchia. La distanza è una specie di misericordia.",
+		"L'altezza toglie i denti alle cose. Qualunque cosa si aggiri là in fondo è un puntino fra i puntini.",
+	},
+	["journey.w14.up.007"] = {
+		"Qualunque peso avessi addosso quando sono {g:salito|salita}, a questa velocità non riesce a reggersi. Che cada dove vuole.",
+		"Certe preoccupazioni pesano più di uno zaino pieno. Curioso come in sella non ci salgano mai.",
+		"I guai lasciati indietro mi aspetteranno da qualche parte. Quassù, però, non hanno diritto di parola.",
+	},
+	["journey.w14.up.008"] = {
+		"Nessun messaggero vola così in fretta. Qualunque cosa vogliano da me, dovranno aspettare che atterri.",
+		"Nessuno può chiamarmi, farmi segno o chiedermi un favore. È il posto più riservato del mondo, e si muove.",
+		"Per tutta la durata del volo sono introvabile. Non è nascondersi se nessuno cerca, ma ci somiglia molto.",
+	},
+	["journey.w14.up.009"] = {
+		"Bella vista. Sempre bella. Sì, bella anche adesso. Quanto dura, il bello?",
+		"La meraviglia dura più o meno fino alla prima virata. Poi resta una lunga seduta con lo spiffero.",
+		"Potrei contare i colpi d'ala. Potrei. Non lo farò, ma il fatto che ci stia pensando la dice lunga.",
+	},
+	["journey.w14.up.010"] = {
+		"Tanto mondo, e tutto intento alle sue faccende senza mai alzare gli occhi. Mi sento un segreto.",
+		"Di qualunque cosa sia fatta la terra, da quassù sembra che valesse la pena di farla.",
+		"C'è tutto, là sotto, ogni pezzo insieme, e niente sa di essere guardato.",
+	},
+	["journey.w14.up.011"] = {
+		"Questa cavalcatura ha fatto la rotta più volte di quante io abbia attraversato una stanza. Fidati di chi conosce la strada.",
+		"Non guarda giù, non esita. Se non si preoccupa chi vola, non ne ho il diritto io.",
+		"Bene. I colpi d'ala si sono assestati in qualcosa di regolare. Del regolare mi fido.",
+	},
+	["journey.w14.up.012"] = {
+		"Chi sta là sotto non alza mai gli occhi. Potrei passargli proprio sopra la testa e sentirebbe solo lo spostamento d'aria.",
+		"Da qualche parte sotto di me qualcuno contratta, qualcuno si è perso, qualcuno sonnecchia. Nessuno sa che sto passando.",
+		"Nemmeno un viso rivolto in su. Passare inosservati non è mai stato così piacevole.",
+	},
+	["journey.w14.up.013"] = {
+		"Ho pagato bene questo posto. Intendo godermelo tutto, anche i pezzi che mi fanno stringere più forte.",
+		"Il modo più economico di macinare strada senza spendere un solo passo. Vale ogni moneta che ho sborsato.",
+		"Il prezzo è pagato e indietro non torna, tanto vale farlo fruttare guardando ogni cosa.",
+	},
+	["journey.w14.up.014"] = {
+		"La corsa dell'aria mi riempie le orecchie finché non c'è più posto per i miei pensieri. Un silenzio raro, fatto di rumore.",
+		"Quassù l'aria rugge così uguale da diventare silenzio. Non sapevo che il rumore potesse fare una cosa simile.",
+		"Quassù c'è un tale frastuono che pensare costa fatica, e allora smetto. È riposante, in un modo un po' manesco.",
+	},
+	["journey.w14.up.015"] = {
+		"Ho lasciato indietro qualcosa? Troppo tardi per controllare. Qualunque cosa fosse, ora è il tesoro di qualcun altro.",
+		"Zaino addosso, cinghie strette, e se ho dimenticato qualcosa, dovrà imparare a cavarsela senza di me.",
+	},
+	["journey.w14.up.016"] = {
+		"Alla cavalcatura non importa chi sono o che cosa ho fatto. Per lei sono un peso sul lato sinistro, un po' troppo indietro.",
+		"Per quanto io mi stimi, le ali vedono un pacco. Creature oneste.",
+		"Titoli, imprese, debiti: in sella non conta niente. Qui sopra sono merce con delle opinioni.",
+	},
+	["journey.w14.up.017"] = {
+		"Non appisolarti. Non appisolarti. Il dondolio è molto convincente, ma addormentarsi in sella è una storia che finisce male.",
+		"Gli occhi si chiudono da soli. Li faccio riposare un attimo, e mi tengo con tutto il resto.",
+		"Il dondolio, niente da fare: chi ha inventato questi voli mi vuole addormentare, e non gli darò questa soddisfazione.",
+	},
+	["journey.w14.up.018"] = {
+		"Ogni popolo che abbia mai alzato gli occhi deve aver desiderato questo. E io sono qui a desiderare un cuscino.",
+		"Quante generazioni sono rimaste a terra a invidiare gli uccelli? Il loro desiderio lo prendo in prestito per la durata di un volo.",
+		"Le ali erano il desiderio più antico, più antico dell'oro. Le ho in prestito, e la mia lamentela principale è il sedile.",
+	},
+	["journey.w14.up.019"] = {
+		"Laggiù la strada la misuro in passi e piedi doloranti. Quassù si misura in colpi d'ala, e nessuno è mio.",
+		"In aria la distanza vuol dire un'altra cosa. La terra scorre via e io non ho mosso un muscolo per meritarmela.",
+		"Le leghe passano senza che io dica niente. Sembra un po' un imbroglio, e non mi dispiace affatto.",
+	},
+	["journey.w14.up.020"] = {
+		"Per un po' niente là sotto può toccarmi. Questa sensazione la tengo in tasca per dopo.",
+		"Più {g:leggero|leggera}. Non nel corpo, che pesa come ha sempre pesato, ma da qualche parte dietro le costole.",
+		"Per ora niente laggiù può reclamarmi. Potrei abituarmi a non essere di nessuno.",
+	},
+	["journey.w14.up.021"] = {
+		"Se qualcosa va storto a quest'altezza, almeno non avrò molto tempo per pentirmene. Strano conforto, ma è il mio.",
+		"Una fibbia allentata tra me e una brevissima carriera da uccello. L'ho controllata due volte. Una terza non guasta.",
+		"Cadere, almeno, sarebbe rapido. Lo dico solo perché i nervi sappiano che ho preso in esame la loro obiezione.",
+	},
+	["journey.w14.up.022"] = {
+		"Salendo non mi sono {g:voltato|voltata}. Mi volto adesso, e quel che ho lasciato è già troppo piccolo per salutarlo.",
+		"Un'occhiata da sopra la spalla. Il punto dove stavo un attimo fa è sparito nella sfocatura, e tanto basta.",
+	},
+	["journey.w14.up.023"] = {
+		"Quelle ali fanno tutto il lavoro mentre io sto qui come un sacco di farina. Il minimo è non agitarsi.",
+		"Sotto la sella i muscoli lavorano senza sosta. Mi porta la fatica di qualcun altro, e farei bene a ricordarmelo.",
+		"Ogni colpo d'ala costa qualcosa alla cavalcatura e niente a me. Qualcuno dovrebbe ringraziare. Lo farò io.",
+	},
+	["journey.w14.up.024"] = {
+		"La terra c'era molto prima che qualcuno le volasse sopra, e ci sarà quando l'ultima ala si chiuderà. Il traffico non la disturba.",
+		"Da così in alto il suolo ha un'aria paziente. Ha visto ogni viaggiatore e non ne ricorda nessuno.",
+		"Sotto tutte le strade e le liti, la terra se ne sta lì, a fare la terra. C'è una calma, in questo, che vale la pena portarsi dietro.",
+	},
+	["journey.w14.up.025"] = {
+		"Tutte le strade che altrimenti starei percorrendo, ed eccole lì, che vanno avanti senza di me. Mi perdoneranno.",
+		"Strade là sotto, che si arricciano e tornano indietro. Da quassù vedo ogni punto in cui hanno perso tempo.",
+		"Da terra una strada sembra così sicura di sé. Dall'alto, metà di loro pare che improvvisi.",
+	},
+	["journey.w14.up.026"] = {
+		"Cinghia, fibbia, zaino, cinghia. Il mio piccolo rito prima di consegnarmi all'aria.",
+		"Mani sul davanti della sella, occhi avanti. C'è un modo giusto di cominciare un volo, anche se l'ho inventato io.",
+		"Presa salda, schiena dritta, un cenno a nessuno. Ogni viaggio merita un inizio che abbia una forma.",
+	},
+	["journey.w14.up.027"] = {
+		"Con un briciolo di buon senso avrei comprato da mangiare prima di salire. Il buon senso l'ho lasciato al banco.",
+		"Chissà quanto dura, e lo stomaco già reclama. La prossima volta prima il pane in tasca, poi l'avventura.",
+		"Un pezzo di formaggio trasformerebbe questo volo in un banchetto. Invece ho la vista, che sazia meno.",
+	},
+	["journey.w14.up.028"] = {
+		"Quassù mi sento poca cosa, e non è sgradevole. Quasi tutto ciò che mi preoccupa era fatto su misura per la terra.",
+		"Chiunque io sia laggiù, qui sopra sono {g:un passeggero|una passeggera}. C'è una lezione, da qualche parte. La troverò dopo.",
+		"Farsi portare è una piccola umiltà. Ogni tanto mi fa bene.",
+	},
+	["journey.w14.up.029"] = {
+		"Vorrei far presente che io avrei preso un'altra strada. Nessuno me l'ha chiesto. Nessuno chiede mai al carico.",
+		"Vira a sinistra per una ragione che non vedo. Va bene. Chi vola ha le ali; io ho soltanto le opinioni.",
+		"Chi traccia queste rotte non mi ha mai chiesto consiglio. A giudicare dalla deviazione, dovrebbe cominciare.",
+	},
+	["journey.w14.up.030"] = {
+		"Quassù i pensieri vengono più limpidi. Forse è la distanza. Forse è che niente può interromperli.",
+		"A terra mille piccole cose mi tirano per la manica. In sella restano solo i pensieri abbastanza pesanti da non volare via.",
+		"C'è qualcosa nell'altezza che mette in fila i problemi. I grossi davanti, i meschini che cadono di dietro.",
+	},
+	["journey.w14.up.031"] = {
+		"Tutto quello che laggiù voleva un pezzo di me dovrà mettersi in fila, e prima imparare a volare.",
+		"Sotto di me ci sono cose con i denti e con i rancori. Sopra ci sono io, che per un po' non devo niente a nessuno.",
+		"Nell'aria vuota non si tendono agguati. L'unica cosa quassù che trama contro di me è la mia fame.",
+	},
+	["journey.w14.up.032"] = {
+		"Ogni colpo d'ala mi solleva come una mano sotto le costole. Ne sento la forza attraverso la sella.",
+		"La spinta di quelle ali è la cosa più forte su cui io mi sia mai {g:seduto|seduta}. Il rispetto è l'unico sentimento ragionevole.",
+		"Tutta quella forza, spesa per portare me. Cercherò di meritarla, ovunque si vada a finire.",
+	},
+	["journey.w14.up.033"] = {
+		"Il rumore della terra si dirada in fretta: voci, passi, la lite di qualcuno. Resta l'aria, e le ali.",
+		"Un attimo fa c'era chiacchiericcio tutt'intorno. Ora la cosa più rumorosa della mia vita è l'ala accanto al ginocchio.",
+		"Alle spalle tutto quel chiasso. Davanti solo la corsa dell'aria e le ali, e non ho nessuna fretta di fare cambio.",
+	},
+	["journey.w14.up.034"] = {
+		"La testa mi si è svuotata. Non in senso brutto. Spazzata, come un pavimento prima degli ospiti.",
+		"Niente piani, niente pensieri, niente liste. Solo l'aria che passa. Non sapevo di esserne ancora capace.",
+		"In testa solo la corsa dell'aria e il ritmo. Se l'ozio è questo, finora me lo sono {g:perso|persa}.",
+	},
+	["journey.w14.up.035"] = {
+		"Dovunque finisca, ci sarà qualcosa ad aspettarmi che non ho visto arrivare. Scopro che la cosa mi fa piacere.",
+		"Ogni volo atterra in un posto nuovo, anche quando è un posto vecchio. Chi scenderà non sarà proprio chi è salito.",
+	},
+	["journey.w14.up.036"] = {
+		"I piedi si sono zittiti. Credono che sia la loro ricompensa, e non sarò io a contraddirli.",
+		"Ogni dolore della terra è salito con me, ma almeno nessuno peggiora.",
+		"Stare seduti e andare veloci nello stesso momento. Chi l'ha pensata merita una statua, o almeno un pisolino.",
+	},
+	["journey.w14.up.037"] = {
+		"Le altezze non mi danno fastidio, se non ci penso. Quindi: pensare ad altro. A qualunque altra cosa. La zuppa.",
+		"Guardare avanti, non sotto. Davanti c'è solo aria, e l'aria non ha mai fatto male a chi ci resta dentro.",
+		"Se tengo gli occhi sul collo della cavalcatura, il vuoto è solo una diceria. Ignorare le dicerie mi riesce bene.",
+	},
+	["journey.w14.up.038"] = {
+		"Laggiù tutto corre. Quassù l'unica cosa che non ha fretta sono io, e vado più veloce di tutto il resto.",
+		"Strano starsene immobili e coprire terreno più in fretta di qualunque viandante.",
+	},
+	["journey.w14.up.039"] = {
+		"Quassù nessuno mi vede in faccia. Se il viso si lascia andare, l'aria terrà il segreto.",
+		"Un buon posto per pensare quello che non dico ad alta voce. La corsa dell'aria se lo porterebbe via comunque.",
+		"Qualunque cosa provi, qui non c'è nessuno a leggerla. Per una volta posso lasciarla vedere, fino a dove si atterra.",
+	},
+	["journey.w14.up.040"] = {
+		"Da qualche parte là sotto c'è ogni errore che ho commesso a piedi. Da quest'altezza nessuno sembra fatale.",
+		"A quest'altitudine la prospettiva costa poco. Proverò a portarne giù un po' con me.",
+	},
+	["journey.w14.up.041"] = {
+		"Paura? Un po'. Quanto basta per tenersi bene, che è la dose utile.",
+		"Certa paura è solo buon senso con la voce grossa. La lascio gridare, e non mollo la presa.",
+		"La paura è salita in sella anche lei. Finché siede dietro e tiene le mani a posto, può restare.",
+	},
+	["journey.w14.up.042"] = {
+		"Sali, plana, sali. Il ritmo mi entra nelle ossa come il dondolio di una culla.",
+		"C'è un'oscillazione, su e giù e avanti, che il corpo impara presto. Il mio sta imparando.",
+		"Finita la salita il movimento si fa gentile, quasi educato, come se la cavalcatura sapesse del mio nervosismo.",
+	},
+	["journey.w14.up.043"] = {
+		"Mi portano via come un sacco di posta. Almeno la posta il viaggio non lo paga.",
+		"Da qualche parte un mercante spedisce casse così. Stavolta la cassa sono io.",
+	},
+	["journey.w14.up.044"] = {
+		"Questa è la strada senza polvere e senza solchi, quella che nessuno stivale ha mai consumato. Ci sono sopra, per un poco.",
+		"La strada più alta del mondo, e l'unica che non chiede niente alle mie gambe.",
+		"Niente pedaggi, niente incroci, niente fango. Se le strade sognassero, sognerebbero questo.",
+	},
+	["journey.w14.up.045"] = {
+		"Quando atterro, la prossima mossa toccherà a me. Fino ad allora sono fuori servizio, e intendo prenderla sul serio.",
+		"Fuori servizio, per ordine delle ali. Riprenderò tutto quando avrò la terra sotto i piedi.",
+		"Qualunque cosa mi aspetti, può aspettare ancora un po'. Mi stanno portando, e chi viene portato non ha obblighi.",
+	},
+	["journey.w14.up.046"] = {
+		"Le persone che ho lasciato si fanno più piccole, ma non meno mie. L'altezza non cambia questo.",
+		"Chiunque abbia salutato, o non abbia salutato, è laggiù da qualche parte. L'aria non porta messaggi, quindi questo lo tengo per me.",
+	},
+	["journey.w14.up.047"] = {
+		"dà a ogni cinghia un ultimo strattone mentre il suolo si allontana, poi un secondo, non si sa mai.",
+		"controlla la fibbia al fianco, la trova chiusa, e la controlla comunque.",
+		"passa il pollice lungo l'imbracatura, fibbia dopo fibbia, mentre la cavalcatura prende quota.",
+	},
+	["journey.w14.up.048"] = {
+		"sbanda all'indietro sulla sella quando le ali mordono l'aria, e afferra la cinghia più vicina con tutte e due le mani.",
+		"viene {g:schiacciato|schiacciata} contro il sedile dal primo grande colpo d'ala, e si lascia scappare un versetto poco dignitoso.",
+		"oscilla all'indietro quando la cavalcatura balza su, con una mano che annaspa finché non trova una cinghia.",
+	},
+	["journey.w14.up.049"] = {
+		"rischia un'occhiata dritta in basso, e poi trova molto interessante lo spazio davanti a sé per un bel pezzo.",
+		"sbircia oltre il fianco, si irrigidisce, e decide che la vista migliore è quella davanti.",
+	},
+	["journey.w14.up.050"] = {
+		"allenta la presa sulle cinghie un poco a ogni colpo d'ala regolare, finché a tenersi resta una mano sola.",
+		"si rilassa per gradi: prima le spalle, poi la mascella, poi, a malincuore, le mani.",
+	},
+	["journey.w14.up.051"] = {
+		"sposta il peso finché la sella smette di discutere, e si accomoda come chi non ha nessun posto dove andare.",
+		"trova l'unico modo comodo di stare in sella, e non lo cederebbe per niente al mondo.",
+		"si dimena una volta, due, e poi si ferma con l'aria di chi ha finalmente trovato la posizione giusta.",
+	},
+	["journey.w14.up.052"] = {
+		"si volta una volta sola verso il punto da cui ha preso il volo, anche se non resta altro da vedere che distanza.",
+		"si gira sulla sella per un'ultima occhiata alle spalle, poi torna a guardare avanti e non si volta più.",
+		"guarda indietro da sopra una spalla per un lungo momento, come se dicesse a quel luogo qualcosa che nessun altro deve sentire.",
+	},
+	["journey.w14.up.053"] = {
+		"dà una pacca decisa sul collo della cavalcatura, come si ringrazia in anticipo un traghettatore.",
+		"si sporge in avanti a posare una mano sul collo della bestia, e sente sotto il lavoro regolare dei muscoli.",
+		"rivolge alla cavalcatura una parola sommessa e le gratta il collo, là dove arriva l'imbracatura.",
+	},
+	["journey.w14.up.054"] = {
+		"chiude gli occhi durante la salita e li riapre solo quando la cavalcatura si è messa in piano.",
+		"tiene gli occhi serrati per tutto il tratto ripido, e poi finge di aver ammirato il panorama fin dall'inizio.",
+	},
+	["journey.w14.up.055"] = {
+		"allunga una mano dietro per accertarsi che lo zaino ci sia ancora, e qualche momento dopo ripete il gesto.",
+		"si stringe lo zaino addosso quando l'aria comincia a tirarlo, come se potesse decidere di andarsene per conto suo.",
+	},
+	["journey.w14.up.056"] = {
+		"si sporge quanto le cinghie consentono, e si beve con curiosità tutto il mondo che si apre là sotto.",
+		"si raddrizza in sella mentre la terra si spalanca sotto, con lo sguardo che corre da un capo all'altro.",
+		"allunga il collo oltre la spalla della cavalcatura per seguire il suolo che si allontana, senza volerne perdere un pezzo.",
+	},
+	["journey.w14.up.057"] = {
+		"mormora qualcosa alla cavalcatura, e l'aria in corsa se lo porta via prima che chiunque possa sentirlo.",
+		"dice qualche parola sottovoce all'aria davanti a sé, per le ali, o forse per nessuno.",
+		"parla alla cavalcatura a voce bassa e regolare per tutta la salita, come si parla a chi è nervoso; non è chiaro chi dei due lo sia.",
+	},
+	["journey.w14.up.058"] = {
+		"sbadiglia di gusto alla fine della salita, e si accomoda con l'aria di chi ha pagato per un pisolino.",
+		"infila le mani contro l'imbracatura e lascia che la testa ciondoli al ritmo delle ali.",
+	},
+	["journey.w14.up.059"] = {
+		"ondeggia nella prima lunga virata, corregge troppo, ondeggia dall'altra parte, e alla fine rinuncia e lascia fare alla cavalcatura.",
+		"si inclina insieme alle ali in virata, con l'aria vagamente tradita, poi si raddrizza quando la curva finisce.",
+		"si piega dalla parte sbagliata nella prima virata, si accorge dell'errore, e si piega da quella giusta con enorme compostezza.",
+	},
+	["journey.w14.up.060"] = {
+		"strizza gli occhi contro l'aria in corsa, che punge, e decide che la vista lo vale.",
+		"abbassa la testa dietro il collo della cavalcatura per sfuggire alla spinta dell'aria, e guarda la terra scorrere da lì.",
+	},
+	["journey.w14.up.061"] = {
+		"conta con una mano le monete rimaste nella borsa, tenendosi con l'altra, e fa una smorfia davanti al totale.",
+		"dà un colpetto alla borsa più leggera appesa alla cintura e decide che, tutto sommato, il prezzo era giusto.",
+	},
+	["journey.w14.up.062"] = {
+		"cerca di mantenere un'espressione seria mentre la cavalcatura sale, non ci riesce, e smette di provarci.",
+		"si lascia sfuggire una breve risata mentre la terra si allontana, {g:sorpreso|sorpresa} dal suono.",
+		"sorride come uno sciocco a niente di preciso mentre le ali {g:lo|la} portano più in alto.",
+	},
+	["journey.w14.up.063"] = {
+		"stringe la mascella quando la cavalcatura si lancia, {g:deciso|decisa} a godersela, piaccia o non piaccia.",
+		"si tiene saldamente, pianta le ginocchia contro la sella e fissa lo sguardo avanti, come chi raccoglie una sfida.",
+		"raddrizza le spalle al momento del decollo, come se l'aria fosse un avversario da affrontare a viso aperto.",
+	},
+	["journey.w14.up.064"] = {
+		"acchiappa il capo libero di una cinghia prima che l'aria lo porti via, e lo annoda con una cura esagerata.",
+		"mette al sicuro tutto quello che potrebbe volare via, un oggetto dopo l'altro, finché niente sbatte più.",
+	},
+	["journey.w14.up.065"] = {
+		"canticchia qualcosa di stonato a salita finita, troppo piano perché lo noti altri che la cavalcatura.",
+		"tamburella con le dita sulla sella a tempo con i colpi d'ala, distrattamente, con aria soddisfatta.",
+	},
+	["journey.w14.up.066"] = {
+		"appoggia il mento su un pugno e guarda il mondo passare, con la pazienza di chi assiste a uno spettacolo.",
+		"poggia un gomito sul bordo della sella e guarda la terra scorrere, senza fretta e senza pensieri.",
+		"si mette a guardare, il mento basso, mentre la terra scorre via senza alcuna premura.",
+	},
+	["journey.w14.up.067"] = {
+		"alza una mano in un piccolo saluto alla terra che si allontana, come ci si congeda da un anziano.",
+		"china il capo per un istante al momento del decollo, una cortesia privata alla terra che si lascia.",
+	},
+	["journey.w14.up.068"] = {
+		"fa ruotare le spalle quando la salita si spiana, e le lascia cadere, sciolte, finalmente.",
+		"scuote una mano, poi l'altra, indolenzite dalla stretta, e le riposa sulle cinghie con più delicatezza.",
+	},
+	["journey.w14.up.069"] = {
+		"indica qualcosa molto più in basso, apre la bocca per commentare, e si accorge che non c'è nessuno a cui dirlo.",
+		"segue un puntino che si muove su una strada laggiù, finché la rotta della cavalcatura non lo lascia indietro.",
+		"si volta per fare un commento a qualcuno, ricorda che c'è solo la cavalcatura, e lo rivolge a lei.",
+	},
+	["journey.w14.up.070"] = {
+		"allarga un braccio nell'aria in corsa per un momento, poi ci ripensa e afferra la cinghia.",
+		"offre il viso alla spinta della salita e lascia che si porti via qualunque cosa {g:gli|le} pesasse addosso.",
+	},
+	["journey.w14.up.071"] = {
+		"ricambia il saluto del maestro di volo, che sta già servendo il cliente successivo.",
+		"rivolge al maestro di volo un cenno sicuro al decollo, e perde la sicurezza da qualche parte sopra il primo vuoto.",
+	},
+	["journey.w14.up.072"] = {
+		"prova diversi modi di stare in sella prima di trovare quello che segue le ali invece di contrastarle.",
+		"impara il ritmo della cavalcatura in una dozzina di colpi d'ala e comincia, quasi, ad assecondarlo invece di subirlo.",
+	},
+	["journey.w14.up.073"] = {
+		"osserva il suolo che si allontana con un'espressione a metà tra la meraviglia e il ripensamento.",
+		"guarda in basso con gli occhi spalancati mentre la terra si apre, e poi, piano piano, comincia a sorridere.",
+		"ammutolisce mentre la terra si apre sotto, ogni pensiero indaffarato messo da parte per un momento.",
+	},
+	["journey.w14.up.074"] = {
+		"si appiattisce contro il collo della cavalcatura mentre sale, rimpicciolendosi contro la corsa dell'aria.",
+		"si china basso e in avanti sulla sella, come fa chi vuole diventare parte della velocità.",
+	},
+	["journey.w14.up.075"] = {
+		"pesca una crosta di pane dalla tasca appena finita la salita, e la mangia con la soddisfazione di chi è in vacanza.",
+		"scarta un boccone con grande attenzione, sapendo bene che qualunque cosa cada da quassù è persa per sempre.",
+		"tira fuori qualcosa da masticare appena la cavalcatura si mette in piano, come chi sa usare il tempo morto.",
+	},
+	["journey.w14.up.076"] = {
+		"per prova lascia la presa con una mano, mantiene la posa per un istante, e la rimette al suo posto con grande dignità.",
+		"prova a stare in sella senza mani, per pochissimo, e poi non ne parla con nessuno.",
+	},
+	["journey.w14.up.077"] = {
+		"guarda l'ala accanto a sé alzarsi e abbassarsi, alzarsi e abbassarsi, con l'attenzione di chi impara un mestiere.",
+		"non riesce a smettere di guardare le ali al lavoro: lo slancio, la spinta, la piega. Passa parecchio prima che guardi altrove.",
+		"inclina la testa per seguire ogni colpo d'ala, {g:affascinato|affascinata}, come se contarli fosse un'arte da imparare.",
+	},
+	["journey.w14.up.078"] = {
+		"Vai pure, allora. Io sto qui sopra a tenermi forte e a fingere calma.",
+		"Le ali tue, il peso mio. Mi pare uno scambio onesto.",
+		"Tutto tuo. Cerca di ridurre al minimo gli scossoni.",
+	},
+	["journey.w14.up.079"] = {
+		"È alto. È molto alto. Smetto di fare la cronaca.",
+		"Su, su, sempre più su. Ma ce l'ha una cima, questa cosa?",
+		"Quanta strada fino a terra. Continuo a notarlo, in silenzio, per conto mio.",
+	},
+	["journey.w14.up.080"] = {
+		"Mi fido di te, ciecamente. Per favore, non farmi pentire di averlo detto ad alta voce.",
+		"Tu sai dove stai andando. Io sono il bagaglio che annuisce.",
+	},
+	["journey.w14.up.081"] = {
+		"Ah! Ma guarda un po'. Tutto quanto, tutto insieme.",
+		"Oh, che spettacolo. Che spettacolo davvero.",
+		"Guarda quanta roba! No, sul serio, guarda.",
+	},
+	["journey.w14.up.082"] = {
+		"Svegliami se succede qualcosa di interessante. Anzi, no. Quassù non deve succedere niente.",
+		"Se in questo viaggio capita qualcosa di emozionante, vorrei essere {g:avvisato|avvisata}. E poi vorrei che non capitasse.",
+	},
+	["journey.w14.up.083"] = {
+		"Addio, terra. Tienimi il posto caldo.",
+		"A dopo, terra. Cerca di non spostarti mentre sono via.",
+	},
+	["journey.w14.up.084"] = {
+		"Si tratta solo di stare seduti. Stare seduti mi riesce benissimo. Questo è stare seduti, ma in alto.",
+		"È solo una sedia con le sue idee. Una sedia che vola. Va bene. Va bene.",
+	},
+	["journey.w14.up.085"] = {
+		"Partenza liscia. Molto liscia. Ti consiglierei a chiunque.",
+		"Bel lavoro, la salita. Ti darei una mancia, ma la faresti cadere.",
+		"Bel decollo. Se c'è un modulo per i complimenti, ne compilo uno.",
+	},
+	["journey.w14.up.086"] = {
+		"Così sì che si lascia un posto. Niente camminate, niente occhiate indietro.",
+		"Ah! Fuori dalla portata di tutto. Una meraviglia.",
+	},
+	["journey.w14.up.087"] = {
+		"È lungo, questo? Non che mi dispiaccia. Alle gambe forse sì.",
+		"Hai idea di quanto manca? No? Nemmeno io. Bene, allora.",
+	},
+	["journey.w14.up.088"] = {
+		"Niente acrobazie, d'accordo? Niente picchiate, niente virate strette. Un volo noioso è un buon volo.",
+		"Linee dritte, per favore. Le curve sono per chi ha uno stomaco migliore del mio.",
+		"Un volo tranquillo, per favore. Niente sorprese, niente esibizioni.",
+	},
+	["journey.w14.up.089"] = {
+		"Portami bene, ali, e a terra parlerò bene di te.",
+		"Portami a destinazione senza danni, e ovunque scenda avrai da me una buona parola.",
+	},
+	["journey.w14.up.090"] = {
+		"Finalmente un viaggio in cui la fatica la fa qualcun altro.",
+		"Tocca a qualcun altro faticare. Era ora.",
+	},
+	["journey.w14.up.091"] = {
+		"Se cado, voglio che resti agli atti che fino a quel momento mi stavo divertendo.",
+		"Se finisco di sotto, di' a tutti che mi stavo divertendo un mondo.",
+		"Se scivolo giù, ricordami con affetto. Fino a quel momento avevo un ottimo posto.",
+	},
+	["journey.w14.up.092"] = {
+		"E via. Adesso non resta che tenersi e darsi un'aria importante.",
+		"Via, lontano. Voi là sotto, andate avanti senza di me.",
+	},
+	["journey.w14.up.093"] = {
+		"Non volevo guardare giù. Ho guardato. Ne valeva la pena.",
+		"Avevo giurato di non guardare in basso. Giuramento rotto in un attimo. Valeva la pena.",
+		"Eh, ho guardato. Certo che ho guardato. Chi non lo farebbe?",
+	},
+	["journey.w14.up.094"] = {
+		"Ah. Provate a raggiungermi adesso, tutti quanti.",
+		"Che chiamino pure. Quassù non sento niente, e mi va benissimo.",
+	},
+	["journey.w14.up.095"] = {
+		"Allora. Passi spesso da queste parti?",
+		"Bel mestiere, il tuo. Ti pagano, almeno? Dovrebbero.",
+		"Ci sai fare, sai? Te l'ha mai detto nessuno?",
+	},
+	["journey.w14.up.096"] = {
+		"Non ho paura. Sto prestando moltissima attenzione. È diverso.",
+		"Paura no. Attenzione. Moltissima attenzione.",
+	},
+	["journey.w14.up.097"] = {
+		"Cinghie strette, zaino addosso, occhi avanti. Verso dove si va.",
+		"Cinghia, zaino, presa. Più controlli di così non ne faccio.",
+		"Fibbie chiuse, zaino carico, direzione giusta. Probabilmente.",
+	},
+	["journey.w14.up.098"] = {
+		"Calma. Calma. Così, bello in piano.",
+		"Bene, bene. Tienila liscia così e da me non sentirai lamentele.",
+	},
+	["journey.w14.up.099"] = {
+		"Senti? Niente. Un niente meraviglioso.",
+		"Senti? Nessuno che mi chieda niente. Che bellezza.",
+		"Silenzio, finalmente. Nessuno me lo rovina, nemmeno io.",
+	},
+	["journey.w14.up.100"] = {
+		"Ehi! Va bene. Era solo la partenza. Lo sapevo. Lo sapevo benissimo.",
+		"Uff. Sì. Si decolla. Benissimo. Prosegui pure.",
+	},
+	["journey.w14.up.101"] = {
+		"Niente da aggiustare, niente da prendere, niente da combattere. Lo accetto volentieri.",
+		"In aria non ci sono faccende. Nessuna. Ho controllato.",
+		"Quassù nessuno ha bisogno di me. Che pace.",
+	},
+	["journey.w14.up.102"] = {
+		"Più su, allora. Fammi vedere tutto.",
+		"Dai, sali. Voglio vedere quanto è grande davvero questo mondo.",
+	},
+	["journey.w14.up.103"] = {
+		"Scusa per il peso. Metà è roba che continuo a ripromettermi di vendere.",
+		"Peso parecchio, eh? Dai la colpa allo zaino. Mai a chi monta.",
+		"Spero di non pesarti troppo. L'ultimo pasto è stato abbondante.",
+	},
+	["journey.w14.up.104"] = {
+		"Da quassù ogni sentiero sembra portare in un posto che merita. A correggere l'impressione penserà il suolo, e presto.",
+		"Qualunque cosa ci sia là sotto, da quest'altezza sembra tutta una promessa. Più tardi scoprirò quali sono state mantenute.",
+	},
+	["journey.w14.up.105"] = {
+		"si appoggia all'indietro a salita finita e fa la cosa più rara di tutte: assolutamente niente.",
+		"intreccia le mani in grembo quando la cavalcatura si mette in piano, come chi aspetta che si alzi un sipario.",
+	},
 }, "base_world")

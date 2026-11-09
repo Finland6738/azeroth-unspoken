@@ -1926,4 +1926,784 @@ NS:AddTexts("itIT", {
 		"La sfida di una rivalità, sotto la stessa bandiera. Combatterò lealmente e vincerò lo stesso.",
 		"Ancora tu. Va bene. Stessa bandiera o no, era un pezzo che lo aspettavo.",
 	},
+	["npc_meet.w14.guide.001"] = {
+		"Mettiti dove posso vederti. Insegno meglio quando ti guardo le mani.",
+		"Avvicinati. Metà dell'insegnare è guardare, e da laggiù non ti vedo bene.",
+		"Davanti a me, non di lato. Devo accorgermi di cosa sbagli prima che te ne accorga tu.",
+	},
+	["npc_meet.w14.guide.002"] = {
+		"Chiedimi quello che vuoi. Magari non rispondo, ma mi godrò lo spettacolo mentre ci arrivi da {g:solo|sola}.",
+		"Le domande sono gradite. Le risposte costano fatica, e la fatica tocca a te.",
+		"Gli allievi curiosi sono i miei preferiti. Sfiancanti, certo, ma restano i preferiti.",
+	},
+	["npc_meet.w14.guide.003"] = {
+		"Sbaglia qui, davanti a me. Altrove gli errori si pagano molto più cari.",
+		"Preferisco vederti sbagliare dieci volte qui che una sola dove conta davvero.",
+		"Inciampa pure. Questo angolo di mondo serve proprio a questo.",
+	},
+	["npc_meet.w14.guide.004"] = {
+		"Insegnare non stanca mai. Ogni allievo s'inceppa in un punto un po' diverso.",
+		"Da ogni allievo imparo qualcosa. Di solito, la pazienza.",
+		"Insegnare non perdona: una cosa che devi spiegare non la puoi fingere.",
+	},
+	["npc_meet.w14.guide.005"] = {
+		"Dimmi cosa cerchi, e io ti dirò se sei {g:pronto|pronta}.",
+		"Cosa vuoi imparare? Dillo, e vediamo se le tue mani sono d'accordo con le tue ambizioni.",
+		"Allora. Che cosa vuoi imparare? Dillo ad alta voce: aiuta.",
+	},
+	["npc_meet.w14.guide.006"] = {
+		"Sapere una cosa e farla sono due bestie diverse. Io ti insegno la prima; la seconda è affar tuo.",
+		"Posso mostrarti come si fa. L'esercizio, però, nessuno può vendertelo.",
+		"La lezione dura un attimo. Farla tua richiede il tempo che richiede.",
+	},
+	["npc_meet.w14.guide.007"] = {
+		"Quello che so mi è stato consegnato, e io lo consegno a te. Tutto qui: è un patto molto più vecchio di me.",
+		"Qualcuno, con pazienza, me l'ha insegnato tempo fa. Il minimo è passarti anche quella, insieme al resto.",
+		"Quello che insegno non è di nessuno. Lo custodisco soltanto per chi verrà a chiederlo.",
+	},
+	["npc_meet.w14.guide.008"] = {
+		"Senza fretta. Una lezione inghiottita in un boccone torna su nel momento peggiore.",
+		"Con calma. Mastica bene. Quello che s'impara di corsa non si digerisce.",
+		"A piccoli morsi. Ho visto troppi allievi strozzarsi a ingoiarla tutta insieme.",
+	},
+	["npc_meet.w14.guide.009"] = {
+		"Le lezioni si pagano, mi spiace. L'ignoranza è gratis, ma guarda dove porta la gente.",
+		"Sì, c'è un compenso. Consideralo il prezzo degli errori che non farai.",
+		"Ogni moneta spesa qui la riguadagni evitando qualche sciocchezza.",
+	},
+	["npc_meet.w14.guide.010"] = {
+		"Prima di guardare cosa fanno, guardo come stanno in piedi. Da come uno aspetta si capiscono molte cose.",
+		"Anche il modo in cui ti sei {g:avvicinato|avvicinata} mi ha detto qualcosa. Niente paura: quasi tutte cose buone.",
+	},
+	["npc_meet.w14.guide.011"] = {
+		"Gli allievi vanno e vengono. Per uno che fa sul serio, un posto c'è sempre.",
+		"In tanti vogliono imparare. Molti meno vogliono esercitarsi. Tu da che parte stai?",
+		"Non m'importa quanto impari in fretta. M'importa che tu non molli.",
+	},
+	["npc_meet.w14.guide.012"] = {
+		"Oltre tutto l'esercizio c'è un momento in cui la cosa ti viene da sé. Quel momento non posso dartelo: solo la strada per arrivarci.",
+		"La maestria non è un dono da passare di mano. È un'abitudine che si costruisce, e io ti mostro dove posare la prima pietra.",
+	},
+	["npc_meet.w14.guide.013"] = {
+		"Se dimentichi qualcosa, vieni a chiedere. Fingere di ricordare costa molto di più.",
+		"Chiedere due volte non è una vergogna. Tirare a indovinare di corsa, sì.",
+		"Scrivitelo, se serve. La memoria è un magazzino scadente per una testa piena di cose.",
+	},
+	["npc_meet.w14.guide.014"] = {
+		"Farsi guardare da chi ne sa di più: l'agitazione più vecchia del mondo.",
+		"Buffo: basta lo sguardo di un maestro, e le mani si scordano quel che sapevano un attimo prima.",
+		"Il silenzio di chi insegna è peggio di qualsiasi rimprovero. Preferirei sentirmelo dire.",
+	},
+	["npc_meet.w14.guide.015"] = {
+		"Ascolta, annuisci, ripetilo dentro di te. E spera che qualcosa sopravviva fino all'uscita.",
+		"Capirò tutto finché {other} parla, e metà quando ci proverò da {g:solo|sola}.",
+		"Ogni lezione sembra semplice finché la fa qualcun altro.",
+	},
+	["npc_meet.w14.guide.016"] = {
+		"Qualunque cosa io creda di sapere, c'è chi la sa meglio e non ha problemi a dirlo. Tanto meglio.",
+		"Fa bene ricordarsi di essere un lavoro in corso. Lo siamo tutti, ma lo si scorda facilmente.",
+	},
+	["npc_meet.w14.guide.017"] = {
+		"Monete in cambio di sapere. Tra tutti i miei scambi, questo non mi sembra mai una perdita.",
+		"Pagare per imparare fa uno strano effetto. Meno strano che pagare più avanti i propri errori.",
+	},
+	["npc_meet.w14.guide.018"] = {
+		"I maestri restano, gli allievi se ne vanno per il mondo. Chissà quanti {other} ne ha visti partire senza saperne più nulla.",
+		"Chi insegna deve tenere un conto silenzioso degli allievi spariti per sempre. Preferirei non finirci dentro.",
+	},
+	["npc_meet.w14.guide.019"] = {
+		"L'orgoglio vorrebbe dire che questa la so già. L'orgoglio, però, non ha mai imparato niente.",
+		"La parte difficile non è la lezione. È ammettere che mi serve.",
+		"Ammettere di non sapere è il vero prezzo di una lezione. Le monete sono la parte facile.",
+	},
+	["npc_meet.w14.guide.020"] = {
+		"Ogni cosa imparata è una cosa in meno che può andare storta, là fuori. Basta e avanza.",
+		"Quel che imparo qui, prima o poi, sarà l'unica cosa tra me e una brutta fine. Allora ne sarò {g:grato|grata}.",
+	},
+	["npc_meet.w14.guide.021"] = {
+		"{other} avrà ripetuto queste parole mille volte, eppure le dice come se contassero. E contano.",
+		"La stessa lezione, mille allievi, e nessun segno di noia. Anche questa è un'arte.",
+	},
+	["npc_meet.w14.guide.022"] = {
+		"Una buona correzione brucia un attimo e serve per anni.",
+		"Una correzione è un regalo con gli spigoli. Lo prendo lo stesso.",
+	},
+	["npc_meet.w14.guide.023"] = {
+		"si raddrizza un poco sotto lo sguardo di chi insegna, come fanno gli allievi dappertutto.",
+		"raddrizza le spalle prima della lezione, come davanti a chi deve prendere le misure.",
+	},
+	["npc_meet.w14.guide.024"] = {
+		"ascolta con attenzione, annuisce, e ogni tanto ripete un passaggio a mezza voce.",
+		"segue ogni parola con la fronte aggrottata, come se la lezione potesse scappare appena distolto lo sguardo.",
+	},
+	["npc_meet.w14.guide.025"] = {
+		"prova il movimento una volta a mani vuote, piano, poi alza gli occhi per vedere se andava bene.",
+		"rifà il gesto appena mostrato, un po' goffamente, e lo ripete prima che qualcuno possa commentare.",
+	},
+	["npc_meet.w14.guide.026"] = {
+		"aspetta a un passo di distanza, con rispetto, finché {other} alza lo sguardo.",
+		"resta a distanza educata, le mani intrecciate, finché la lezione non viene offerta.",
+	},
+	["npc_meet.w14.guide.027"] = {
+		"conta il compenso con cura, e sembra soppesare ogni moneta contro quello che comprerà.",
+		"posa le monete una a una, con l'aria di chi paga qualcosa destinato a durare.",
+	},
+	["npc_meet.w14.guide.028"] = {
+		"Insegnami quello per cui sono {g:pronto|pronta}. Al resto ci penso io.",
+		"Quello che pensi io possa reggere. E magari una cosa un po' oltre.",
+	},
+	["npc_meet.w14.guide.029"] = {
+		"Coraggio, mostrami come dovrebbe venire. Poi io ti mostro come viene davvero.",
+		"Dimmelo chiaro. Meglio sentirlo da te che impararlo a mie spese.",
+		"Fammelo vedere piano. Poi ancora, più piano.",
+	},
+	["npc_meet.w14.guide.030"] = {
+		"Sono qui per imparare. Insegnami bene, e ne farò buon uso.",
+		"Il tuo sapere, la mia fatica. Mi pare uno scambio onesto.",
+	},
+	["npc_meet.w14.guide.031"] = {
+		"Ah, bene. Sei proprio chi speravo di vedere.",
+		"Eccoti. Cominciavo a pensare che non si sarebbe fermato nessuno.",
+		"Bene, bene. Proprio la persona che mi serviva.",
+	},
+	["npc_meet.w14.guide.032"] = {
+		"Chiedere aiuto agli sconosciuti non diventa mai più facile. Ringraziarli, invece, mi piace.",
+		"Aver bisogno d'aiuto insegna l'umiltà. Riceverlo è tutta un'altra cosa.",
+		"L'aiuto costa chiederlo ed è dolce riceverlo. Comunque sia, mi fa piacere vederti.",
+	},
+	["npc_meet.w14.guide.033"] = {
+		"La mia lista di guai cresce più in fretta di quanto riesca a depennare. Parliamone.",
+		"I problemi non fanno la fila, purtroppo. Hai un momento per me?",
+		"Tante cose da sistemare, così poche mani volenterose. Fa piacere vederti.",
+	},
+	["npc_meet.w14.guide.034"] = {
+		"Ho fiuto per chi porta a termine quello che comincia. E il naso mi prude.",
+		"C'è chi promette e c'è chi mantiene. Di solito li distinguo al primo sguardo.",
+	},
+	["npc_meet.w14.guide.035"] = {
+		"Prima le parole, poi i fatti. Con me le cose vanno così.",
+		"Le chiacchiere costano poco, lo so. Ma tutto ciò che vale la pena comincia e finisce con due parole.",
+	},
+	["npc_meet.w14.guide.036"] = {
+		"Ogni aiuto conta. Non immagini quanto lontano possa arrivare un solo paio di mani.",
+		"Una persona disposta ad aiutare vale dieci che si limitano a compatire.",
+		"I guai grossi sono solo guai piccoli ammucchiati. Ogni pezzetto che ti prendi aiuta.",
+	},
+	["npc_meet.w14.guide.037"] = {
+		"Fatti guardare. Mm. Mi sembri una persona affidabile.",
+		"Valutare le persone è quasi il mio mestiere. Tu passi l'esame.",
+		"Hai l'aria di chi non molla a metà strada. Spero di non sbagliarmi.",
+	},
+	["npc_meet.w14.guide.038"] = {
+		"Chi passa di qui vuole sempre qualcosa. È bello incontrare qualcuno che, per una volta, dà invece di chiedere.",
+		"Quasi tutti passano a chiedermi qualcosa. Tu sei di quelli che le cose le fanno. Che sollievo.",
+	},
+	["npc_meet.w14.guide.039"] = {
+		"I piccoli guai crescono quando nessuno se ne occupa. Lo sai bene quanto me.",
+		"Lascia un piccolo guaio a sé stesso abbastanza a lungo, e smette di essere piccolo. In pochi lo capiscono.",
+	},
+	["npc_meet.w14.guide.040"] = {
+		"Mi trovi sempre qui. C'è chi mette radici in un punto, e chi, per fortuna, no.",
+		"Viaggiare non fa per me: il mio posto è qui. Per questo mi serve chi si muove.",
+	},
+	["npc_meet.w14.guide.041"] = {
+		"Con te parlerò chiaro, e mi aspetto lo stesso.",
+		"Niente trucchi, niente clausole. Solo qualcuno che ha bisogno di una mano e qualcuno che ne ha due.",
+		"Ti dico quello che so, e niente di quello che non so. È il meglio che posso offrire a chiunque.",
+	},
+	["npc_meet.w14.guide.042"] = {
+		"Gente come te tiene in piedi tutto il resto. Lo dico sul serio.",
+		"Senza gente disposta a dare una mano, quasi tutte le mie preoccupazioni resterebbero chiuse nella mia testa.",
+		"La gente dimentica quanto valga un piccolo aiuto. Io no.",
+	},
+	["npc_meet.w14.guide.043"] = {
+		"Le cose facili le sbrigo da me. Per quelle difficili, c'è questa chiacchierata.",
+		"Non disturbo nessuno per le sciocchezze. Prendilo come un complimento.",
+	},
+	["npc_meet.w14.guide.044"] = {
+		"Mi fa bene avere a che fare con qualcuno che non si tira indietro davanti ai guai.",
+		"Non immagini quanto riposi parlare con qualcuno che ascolta.",
+		"Chi ascolta con calma è più raro di quanto pensi. Grazie almeno per questo.",
+	},
+	["npc_meet.w14.guide.045"] = {
+		"{other} ha l'aria di chi ha più guai che mani.",
+		"Più pensieri che mani per portarli. Conosco quell'aria.",
+	},
+	["npc_meet.w14.guide.046"] = {
+		"Qualcuno chiede, qualcuno risponde. Il mondo va avanti più per questo che per i re.",
+		"Non tutte le imprese finiscono in una canzone. Quasi tutte finiscono con un cenno e un grazie.",
+	},
+	["npc_meet.w14.guide.047"] = {
+		"Chiunque abbia bisogno d'aiuto crede che il suo caso sia il più urgente. A volte ha pure ragione.",
+		"Dev'essere urgente: lo è sempre. Ogni tanto, per davvero.",
+		"Ogni guaio sembra piccolo visto da fuori. Proverò a guardare questo da dentro.",
+	},
+	["npc_meet.w14.guide.048"] = {
+		"Strano, ricevere fiducia da chi di me sa soltanto che mi sono {g:fermato|fermata}.",
+		"{other} si fida di me con ben poche prove. Mi piacerebbe meritarmelo.",
+	},
+	["npc_meet.w14.guide.049"] = {
+		"Ascolta fino in fondo. Il dettaglio che conta è sempre quello borbottato alla fine.",
+		"La parte importante la gente la dice per ultima, quasi se ne vergognasse. Occhio.",
+	},
+	["npc_meet.w14.guide.050"] = {
+		"L'aiuto dato non va mai del tutto perso. Fa il giro e torna in forme strane.",
+		"Ogni favore è un seme. Di rado vedo cosa ne nasce, ma qualcosa nasce.",
+	},
+	["npc_meet.w14.guide.051"] = {
+		"Tutti hanno una piccola commissione. Messe in fila, farebbero due volte il giro del mondo.",
+		"A volte pare che mezzo mondo abbia bisogno di una mano, e l'altra metà sia io.",
+	},
+	["npc_meet.w14.guide.052"] = {
+		"Una promessa non pesa niente quando la si fa, e molto dopo. Meglio ricordarselo, comunque vada.",
+		"La parola data è una specie di carico. Cerco di raccogliere solo quello che riesco a portare.",
+	},
+	["npc_meet.w14.guide.053"] = {
+		"Tra un mese forse non ricorderò questo volto. L'aiuto, però, ci sarà stato comunque.",
+		"Incontri brevi, presto dimenticati. Quello che si fa nel mezzo, invece, resta.",
+	},
+	["npc_meet.w14.guide.054"] = {
+		"ascolta con la testa inclinata, e lascia che {other} arrivi al punto senza fretta.",
+		"sopporta il preambolo senza dare segni d'impazienza.",
+	},
+	["npc_meet.w14.guide.055"] = {
+		"annuisce piano, come se riponesse ogni parola in un posto sicuro.",
+		"resta in silenzio, {g:attento|attenta}, come si fa quando qualcuno espone i propri guai.",
+	},
+	["npc_meet.w14.guide.056"] = {
+		"ricambia lo sguardo senza abbassarlo, come si fa quando si viene valutati.",
+		"regge quello sguardo che misura senza agitarsi, e lo ricambia con calma.",
+	},
+	["npc_meet.w14.guide.057"] = {
+		"ascolta con cortesia un racconto che comincia molto più indietro dello stretto necessario.",
+		"lascia che la versione lunga faccia il suo corso, e tiene le domande per quando arriverà quella breve.",
+	},
+	["npc_meet.w14.guide.058"] = {
+		"Dimmi le cose come stanno. Io farò lo stesso.",
+		"Non serve infiocchettarla. Dilla dritta e basta.",
+		"Di' quello che devi dire. Lo reggo.",
+	},
+	["npc_meet.w14.guide.059"] = {
+		"Prenditi il tempo che serve. Non ho fretta, qualunque cosa sia.",
+		"Con calma, al tuo ritmo. Io ci sono.",
+	},
+	["npc_meet.w14.guide.060"] = {
+		"Hai l'aria di chi ha un problema. Per tua fortuna, io ho le mani libere.",
+		"Hai qualcosa che ti frulla in testa. Sputa il rospo: il tempo ce l'ho.",
+	},
+	["npc_meet.w14.guide.061"] = {
+		"Le cavalcature sono riposate e pronte. Basta una parola.",
+		"Riposate, sazie e impazienti, tutte quante. Un po' come chi le monta.",
+		"Scegli una rotta. Le cavalcature si annoiano, e una cavalcatura annoiata diventa scontrosa.",
+	},
+	["npc_meet.w14.guide.062"] = {
+		"Lassù c'è una sola regola: qualunque cosa tu stia stringendo, non mollarla.",
+		"Con me nessuno è mai caduto. Vediamo di non cominciare adesso, eh?",
+		"Mani sulla bardatura, occhi avanti, e lascia pensare la bestia.",
+	},
+	["npc_meet.w14.guide.063"] = {
+		"Tutte le rotte che curo sono qui. Scegline una: le cavalcature conoscono la strada meglio di chiunque.",
+		"Indica dove vuoi andare e lascia il resto alla bestia. L'ha fatto più volte di quante tu abbia allacciato gli stivali.",
+	},
+	["npc_meet.w14.guide.064"] = {
+		"Passo la vita a guardare gli altri partire. Qualcuno deve pur essere chi resta.",
+		"Chi viene da me è sempre di passaggio. Io sono l'unico punto che non si sposta mai.",
+		"Arrivi, partenze, e io nel mezzo a salutare con la mano.",
+	},
+	["npc_meet.w14.guide.065"] = {
+		"Ti viene la nausea? Tieni gli occhi avanti e pensa a qualcosa di noioso. Le tasse funzionano.",
+		"Paura del volo? Conta alla rovescia da mille. Atterrerai molto prima di arrivare a uno.",
+		"Se l'altezza ti fa effetto, canticchia qualcosa. Alle bestie le stonature non danno fastidio.",
+	},
+	["npc_meet.w14.guide.066"] = {
+		"La tariffa è la tariffa. Alla bestia non importa quanto tu sia importante, e al registro nemmeno.",
+		"Prima si paga, poi si vola in comodità. O in qualcosa che le somiglia.",
+		"Prima le monete, poi la sella. Nessuna eccezione, nemmeno per chi sorride bene.",
+	},
+	["npc_meet.w14.guide.067"] = {
+		"Non a tutti è dato vedere il mondo dall'alto. Non smettere mai di ritenerti {g:fortunato|fortunata}.",
+		"Da lassù il mondo intero sta in un'occhiata. Già solo questo vale il prezzo.",
+	},
+	["npc_meet.w14.guide.068"] = {
+		"Ogni bardatura la controllo di persona. Due volte. Poi una terza, perché la pignoleria è il mio mestiere.",
+		"Ogni fibbia l'ho controllata con le mie mani. Delle cinghie ti puoi fidare: parola mia.",
+	},
+	["npc_meet.w14.guide.069"] = {
+		"Che via vai. Cavalcature che arrivano, cavalcature che partono, e tutti di fretta.",
+		"Pare che il mondo intero abbia un posto urgente dove andare. Forse è così.",
+	},
+	["npc_meet.w14.guide.070"] = {
+		"Sono brave bestie. Pessime per fare conversazione, ma brave bestie.",
+		"Parla pure alla tua cavalcatura, se vuoi. Non risponde, ma ascolta meglio di quasi tutti quelli che la montano.",
+		"Le mie hanno il carattere migliore del mestiere. Non dirglielo, però: si monterebbero la testa.",
+	},
+	["npc_meet.w14.guide.071"] = {
+		"Buon volo, viandante. La terra ti aspetterà quando ci rimetterai piede.",
+		"Che l'atterraggio sia dolce, e che le gambe si ricordino come si cammina.",
+		"Vola bene. E se proprio non ci riesci, almeno atterra bene.",
+	},
+	["npc_meet.w14.guide.072"] = {
+		"Affidare la vita a una bestia che conosco appena, per una manciata di monete. Che strano affare, il viaggio.",
+		"Tutta la mia vita legata a qualcosa che ha opinioni proprie. E pago pure per il privilegio.",
+	},
+	["npc_meet.w14.guide.073"] = {
+		"{other} deve conoscere ogni rotta a memoria, e non ne percorre mai nessuna.",
+		"Strano mestiere, far partire gli altri e restare indietro. Non credo che ne sarei capace.",
+	},
+	["npc_meet.w14.guide.074"] = {
+		"Lunghe strade a piedi, barattate con un po' di sella. Una parte di me si sente in colpa, come se barassi.",
+		"I piedi la strada se la guadagnano; le ali la prendono in prestito. Ma il prestito è più veloce.",
+	},
+	["npc_meet.w14.guide.075"] = {
+		"Un po' di paura del volo fa bene. È quella che fa stringere le cinghie come si deve.",
+		"Le mie ginocchia hanno opinioni su questa faccenda. Ho deciso di non consultarle.",
+	},
+	["npc_meet.w14.guide.076"] = {
+		"Tutte quelle rotte, ognuna una versione diversa di quello che verrà.",
+		"Ogni rotta in offerta è una porta. Io posso attraversarne una sola.",
+	},
+	["npc_meet.w14.guide.077"] = {
+		"Le cavalcature mi degnano appena di un'occhiata. I passeggeri vanno e vengono: ne hanno visti tanti.",
+		"Per le bestie sono solo un carico come tanti. C'è qualcosa di riposante nel contare così poco.",
+	},
+	["npc_meet.w14.guide.078"] = {
+		"Qualunque cosa mi stia rodendo resterà quaggiù per un po'. Dove vado io non può seguirmi.",
+		"Certi guai non sanno volare. È metà del motivo per pagare il viaggio.",
+	},
+	["npc_meet.w14.guide.079"] = {
+		"dà un'occhiata alle cavalcature in attesa, come per indovinare quale avrà l'andatura più dolce.",
+		"osserva le cavalcature una a una, anche se la scelta non spetta a {g:lui|lei}.",
+	},
+	["npc_meet.w14.guide.080"] = {
+		"tira una cinghia dello zaino, poi un'altra, per assicurarsi che niente si sciolga in volo.",
+		"si tasta ogni tasca prima di avvicinarsi alle cavalcature: un ultimo inventario a terra.",
+	},
+	["npc_meet.w14.guide.081"] = {
+		"conta il prezzo del volo e lo consegna senza trattare: con la distanza non si mercanteggia.",
+		"paga il volo in silenzio, con gli occhi già sulle cavalcature.",
+	},
+	["npc_meet.w14.guide.082"] = {
+		"studia le rotte a lungo, il dito sospeso, come chi deve scegliere tra più porte.",
+		"segue una rotta con il dito, poi un'altra, soppesando distanze che vede solo {g:lui|lei}.",
+	},
+	["npc_meet.w14.guide.083"] = {
+		"Quella meno scontrosa, per favore. Per il resto non ho pretese.",
+		"Qualcosa di tranquillo, se ce l'hai. Preferisco la calma alla velocità.",
+		"La più calma che hai, per favore. Il panico lo porto io.",
+	},
+	["npc_meet.w14.guide.084"] = {
+		"Fammi atterrare morbido e ti raccomanderò a tutti quelli che incontro.",
+		"Portami a destinazione senza pezzi mancanti e parlerò bene di te.",
+	},
+	["npc_meet.w14.guide.085"] = {
+		"La bestia è di buon umore? Chiedo per i miei nervi.",
+		"Morde? No? Allora andremo d'accordo.",
+	},
+	["npc_meet.w14.guide.086"] = {
+		"Chi serve i viaggiatori vede mille facce e ricorda quelle maleducate. Meglio essere tra le altre.",
+		"Con chi lavora per la gente di passaggio la cortesia non costa nulla, e in qualche modo compra più delle monete.",
+	},
+	["npc_meet.w14.guide.087"] = {
+		"Chi fa questo lavoro ha sentito ogni domanda possibile. Io cerco di fare la mia in fretta.",
+		"Devono rispondere alle stesse tre domande cento volte. La pazienza fa parte del mestiere.",
+	},
+	["npc_meet.w14.guide.088"] = {
+		"rivolge un saluto prima di passare agli affari, come vuole la cortesia.",
+		"si ferma il tempo di un saluto come si deve: mettere fretta a chi lavora non serve mai.",
+	},
+	["npc_meet.w14.guide.089"] = {
+		"Nessuno scrive canzoni su chi tiene in movimento i viaggiatori. Qualcuno dovrebbe.",
+		"Gli eroi si prendono le storie; chi sta loro dietro, se va bene, un cenno. Che almeno sia un bel cenno.",
+	},
+	["npc_meet.w14.guide.090"] = {
+		"si fa avanti e aspetta un cenno, con la pazienza di un ospite.",
+		"si ferma a una distanza educata e lascia la prima parola a chi sta di fronte.",
+	},
+	["npc_meet.w14.shop.001"] = {
+		"Compri, vendi o scaldi il bancone? Tutto permesso. Paga una cosa sola.",
+		"Guarda finché vuoi. I prezzi restano fermi, ma la compagnia è gradita.",
+		"Guarda, chiedi, compra o vendi. Due di queste cose si pagano.",
+	},
+	["npc_meet.w14.shop.002"] = {
+		"Metti tutto sul banco. Ho comprato cose più strane di qualunque cosa tu abbia nello zaino.",
+		"Svuota la sacca, vediamo. Cianfrusaglie, avanzi, qualche sorpresa: gli affari migliori cominciano così.",
+		"Qualunque cosa tu porti, ho un prezzo pronto. Forse non quello che speravi.",
+	},
+	["npc_meet.w14.shop.003"] = {
+		"Se qualcosa va rimesso a posto, appoggialo qui. Le ammaccature le sistemo. Le cattive abitudini si pagano a parte.",
+		"Se qualcosa che indossi ha una crepa, lasciamelo un momento.",
+		"Portami i pezzi consumati. Un po' di lavoro adesso risparmia un sacco di imprecazioni dopo.",
+	},
+	["npc_meet.w14.shop.004"] = {
+		"Avanti, fammi un'offerta. Una bella risata non la rifiuto mai.",
+		"Puoi contrattare, e io ascolto con educazione. Il prezzo resta dov'è.",
+		"Un'offerta? Splendido. Me la segno, così potrò godermela più tardi.",
+	},
+	["npc_meet.w14.shop.005"] = {
+		"Un attimo, trovo la pagina giusta. Ogni vendita finisce nel libro, anche le più piccole.",
+		"Il tuo nome? No, lascia stare. Nel registro scrivo solo 'buon cliente'. Facciamo in modo che resti vero.",
+		"Ogni vendita viene annotata. Il mio registro ha più memoria di me.",
+	},
+	["npc_meet.w14.shop.006"] = {
+		"Provviste per la strada? Comincia da quello che ti mancherà di più quando finisce.",
+		"Le cose noiose si vendono meglio: filo, sale, una cinghia di ricambio. Nessuno rimpiange un ninnolo, in viaggio. Il sale, tutti.",
+		"Prima delle cose luccicanti, compra quelle noiose. Sono loro a riportarti a casa.",
+	},
+	["npc_meet.w14.shop.007"] = {
+		"La bilancia è onesta. Controllala pure, prima o poi lo fanno tutti.",
+		"I pesi a sinistra, le monete a destra. Nelle maniche ho solo le braccia.",
+		"Occhio alla bilancia: è più vecchia di certi regni, e onesta il doppio.",
+	},
+	["npc_meet.w14.shop.008"] = {
+		"Venduto è venduto, sia chiaro. Se poi lo rivuoi, ti costerà più di quanto l'ho pagato io.",
+		"Prima di vendere, pensaci bene. Le cose tornano indietro da questo banco a un altro prezzo.",
+		"Rifletti prima di vendere. Ricomprarlo si può, ma non costa mai poco.",
+	},
+	["npc_meet.w14.shop.009"] = {
+		"Non chiedo da dove vengono le cose. Chiedo solo se sono ancora intere.",
+		"Dove l'hai trovato sono affari tuoi. Quanto vale, affari miei.",
+		"Trovato, vinto, dissotterrato: si vende tutto allo stesso modo.",
+	},
+	["npc_meet.w14.shop.010"] = {
+		"Qui tutto ha un prezzo, {g:amico|amica}, tranne i consigli. Quelli sono gratis, e valgono più o meno altrettanto.",
+		"Un consiglio gratis, mentre guardi: non comprare mai la prima cosa che ti piace. A meno che non sia mia.",
+		"Qui i consigli non costano niente. Tutto il resto costa qualcosina.",
+	},
+	["npc_meet.w14.shop.011"] = {
+		"Periodo tranquillo. Fa piacere una faccia che non cerca di vendermi qualcosa.",
+		"Da un pezzo nessuno arrivava senza lamentarsi. Prenditi tutto il tempo che vuoi.",
+		"Fa piacere vedere qualcuno. Il banco si sente solo, tra un cliente e l'altro.",
+	},
+	["npc_meet.w14.shop.012"] = {
+		"È tutto? Pensaci un attimo. Ci si ricorda sempre dell'ultima cosa a tre passi dalla porta.",
+		"Nient'altro? Ricontrolla lo zaino. Quello che dimentichi ti torna in mente sempre a metà strada.",
+		"Hai tutto? Conta le tasche prima di andare; il banco non può seguirti.",
+	},
+	["npc_meet.w14.shop.013"] = {
+		"Un prezzo giusto lascia un po' di malumore da entrambe le parti. Cominciamo a brontolare, allora.",
+		"Contratta pure. Qualcuno mi ha battuto a parole, una volta. Non di recente.",
+	},
+	["npc_meet.w14.shop.014"] = {
+		"Questa roba ha fatto tanta strada per finire sui miei scaffali. Portale un po' di rispetto, o almeno qualche moneta.",
+		"Tutto quello che vedi ha viaggiato per arrivare fin qui. Nel prezzo c'è anche il viaggio.",
+		"Parte di questa roba viene da più lontano di quanto immagini. Non chiedermi da dove: io la compro e basta.",
+	},
+	["npc_meet.w14.shop.015"] = {
+		"Non badare al disordine. Ogni cosa è dove la trovo io, ed è quello che conta.",
+		"Sembra un caos, lo so. Chiedimi qualunque cosa e guarda quanto ci metto a trovarla.",
+		"Scusa il disordine. C'è un sistema. Lo conosco solo io, ed è proprio questo il bello.",
+	},
+	["npc_meet.w14.shop.016"] = {
+		"Prima le monete, poi la merce. Una volta ho fatto credito. Aspetto ancora, e la pazienza pure.",
+		"Niente credito, mi spiace. L'ultimo che l'ha chiesto ha giurato di tornare subito. Non s'è più visto.",
+		"Si paga subito, per favore. Io i debiti li ricordo benissimo; gli altri, molto meno.",
+	},
+	["npc_meet.w14.shop.017"] = {
+		"Fai con calma. La merce non scappa, e io nemmeno.",
+		"Nessuna fretta. Sto dietro questo banco da abbastanza per sapere che la fretta costa cara.",
+		"Dai un'occhiata. I prezzi sono sui cartellini, e i cartellini non mordono.",
+	},
+	["npc_meet.w14.shop.018"] = {
+		"Vuoi alleggerire il carico? Stendi tutto qui, ti faccio un'offerta.",
+		"Hai roba da vendere? Mettila in fila. Compro più in fretta quando vedo tutto.",
+		"Vendi? Fammi vedere. Pago il giusto per le cose utili, e giusto un po' per il resto.",
+	},
+	["npc_meet.w14.shop.019"] = {
+		"Usa bene tutto ciò che compri qui. L'unico cattivo affare è la merce che resta lì a non far niente.",
+		"Compra quello che userai. Le cose che viaggiano e basta, in fondo allo zaino, sono soldi buttati.",
+		"Spendi con giudizio. Le monete sono solo pazienza già pagata.",
+	},
+	["npc_meet.w14.shop.020"] = {
+		"Davanti a un banco tutto è sistemato perché io voglia la cosa a sinistra. Guarderò prima a destra.",
+		"Le botteghe hanno un modo tutto loro di far brillare l'inutile. Occhi sulla lista.",
+		"Prima regola davanti a ogni banco: decidere cosa mi serve prima che lo decida il mercante.",
+	},
+	["npc_meet.w14.shop.021"] = {
+		"Tutto quello che ho raccolto per strada, ridotto a qualche moneta. Pesava molto più di quanto vale.",
+		"Ho portato tutto questo fin qui per una manciata di monete. La prossima volta sarò più {g:selettivo|selettiva}.",
+		"Tutto quel peso, e il risultato è questo. Però uno zaino più leggero resta uno zaino più leggero.",
+	},
+	["npc_meet.w14.shop.022"] = {
+		"Il trucco è sembrare un po' delusi da tutto. Anche i mercanti conoscono il trucco.",
+		"Fingerò di non volerlo. Il mercante fingerà di crederci. Una piccola recita, molto educata.",
+	},
+	["npc_meet.w14.shop.023"] = {
+		"L'ho venduto un attimo fa, e già mi vengono in mente tre modi per usarlo.",
+		"Appena la moneta mi tocca il palmo, la cosa che ho venduto comincia a sembrarmi utile.",
+	},
+	["npc_meet.w14.shop.024"] = {
+		"Senza gente come questa dietro un banco, ogni strada finirebbe con uno zaino vuoto.",
+		"Qualcuno ha portato tutto questo fin qui perché non dovessi farlo io. Un banco è una strada venuta a cercarmi.",
+	},
+	["npc_meet.w14.shop.025"] = {
+		"Riparare costa monete. Non riparare costa di più, e nel momento peggiore.",
+		"Meglio scoprire una crepa qui, al banco, che per strada nel momento sbagliato.",
+	},
+	["npc_meet.w14.shop.026"] = {
+		"Dopo ogni vendita il mercante scrive qualcosa nel registro. Pagherei una moneta d'argento per sapere che cosa dice di me.",
+		"Una riga in un registro: ecco cosa resterà di me, qui. Prezzo, merce, un segnetto. Ci sono modi peggiori di essere ricordati.",
+	},
+	["npc_meet.w14.shop.027"] = {
+		"Una cosa. Sono qui per una cosa sola. Gli scaffali la pensano diversamente.",
+		"Una lista in testa, e un mercante che sa benissimo come allungarla.",
+		"Cibo, poi riparazioni, poi quel che resta. In quest'ordine. Probabilmente.",
+	},
+	["npc_meet.w14.shop.028"] = {
+		"Contare le monete sotto lo sguardo di qualcuno mi fa sempre perdere il filo al sette.",
+		"Io conto due volte. Il mercante una sola, e ha ragione. C'è una lezione, lì, che preferirei non imparare.",
+		"Monete sul banco, occhi sulle monete. I miei e quelli del mercante, a fissare lo stesso mucchietto.",
+	},
+	["npc_meet.w14.shop.029"] = {
+		"Un mercante vede mille facce e si ricorda di quelle che hanno pagato. Giusto così.",
+		"Per chi sta al banco sono solo un altro paio di mani dall'altra parte del legno. In questo c'è una specie di libertà.",
+	},
+	["npc_meet.w14.shop.030"] = {
+		"Ogni affare è una piccola tregua: c'è chi vuole monete e chi vuole merce, e nessuno deve vincere.",
+		"Comprare e vendere: l'unica sfida in cui tutti e due possono andarsene contenti.",
+	},
+	["npc_meet.w14.shop.031"] = {
+		"Spendi un po', tieni un po'. Qualunque cosa verrà dopo vorrà la sua parte.",
+		"Non tutto. Lascia qualcosa nella borsa per quello a cui ancora non hai pensato.",
+	},
+	["npc_meet.w14.shop.032"] = {
+		"allinea sul banco una fila di cianfrusaglie e aspetta il verdetto.",
+		"svuota lo zaino sul banco, un pezzo dopo l'altro, come chi salda un vecchio conto.",
+	},
+	["npc_meet.w14.shop.033"] = {
+		"rigira un oggetto due volte, guarda il prezzo e lo rimette a posto con un sospiro.",
+		"prende qualcosa, lo soppesa in una mano e lo rimette esattamente dov'era.",
+	},
+	["npc_meet.w14.shop.034"] = {
+		"conta le monete sul banco con lentezza, sotto l'occhio paziente del mercante.",
+		"fa scivolare le monete sul banco e tiene un dito sull'ultima un istante di troppo.",
+	},
+	["npc_meet.w14.shop.035"] = {
+		"saluta {other} con un cenno e comincia la lenta faccenda della scelta.",
+		"scambia due convenevoli sopra il banco, prima che il discorso passi ai prezzi.",
+	},
+	["npc_meet.w14.shop.036"] = {
+		"contratta un po', perde con eleganza e alla fine paga il primo prezzo.",
+		"fa un'offerta, ascolta la controfferta e paga senza aggiungere altro, {g:divertito|divertita} a metà.",
+		"strappa uno sconto di un solo rame e ne sembra assurdamente {g:soddisfatto|soddisfatta}.",
+	},
+	["npc_meet.w14.shop.037"] = {
+		"posa sul banco un pezzo dell'equipaggiamento ormai consumato e aspetta che venga esaminato.",
+		"consegna un pezzo dell'equipaggiamento da riparare e segue il lavoro con interesse.",
+	},
+	["npc_meet.w14.shop.038"] = {
+		"Quanto mi dai per tutto questo? Sii gentile, me lo sono portato dietro fin qui.",
+		"Fammi un prezzo per tutto il lotto. Avanti, sorprendimi.",
+	},
+	["npc_meet.w14.shop.039"] = {
+		"È il tuo prezzo migliore o soltanto il primo?",
+		"Questo è il prezzo per tutti o il prezzo per me?",
+		"Metà, e farò finta di farti un favore.",
+	},
+	["npc_meet.w14.shop.040"] = {
+		"Do solo un'occhiata. Davvero. Be', più o meno.",
+		"Sono qui solo per guardare. Non fare quella faccia.",
+	},
+	["npc_meet.w14.shop.041"] = {
+		"Riesci a sistemarlo? Ha fatto più della sua parte e comincia a farmelo capire.",
+		"Si può aggiustare, o comincio a dirgli addio?",
+	},
+	["npc_meet.w14.shop.042"] = {
+		"Tieni il resto. No, aspetta, mi serve. Scusa.",
+		"Ecco, il conto giusto. L'ho contato due volte, quindi probabilmente è sbagliato.",
+	},
+	["npc_meet.w14.shop.043"] = {
+		"Quello che hai lasciato qui è esattamente dove l'hai messo. Nessuno tocca ciò che non è suo.",
+		"Ciò che è tuo resta tuo. Lo custodisco come fosse mio. Anzi, meglio.",
+		"Da quando l'hai lasciato non si è mosso niente. Il caveau è noioso così, e ne va fiero.",
+	},
+	["npc_meet.w14.shop.044"] = {
+		"Firma qui, e qui, e un'altra volta là. Il caveau ama le sue scartoffie.",
+		"Nome, poi il tuo segno. La cassaforte si apre con le carte, non con i sorrisi.",
+		"Il tuo segno, per favore. Alle serrature non importa chi sei; al registro sì.",
+	},
+	["npc_meet.w14.shop.045"] = {
+		"Ti serve più spazio? Un altro scomparto si può sistemare. A pagamento, naturalmente.",
+		"Lo spazio ti sta finendo? Nel caveau ce n'è dell'altro. Purtroppo non è gratis.",
+		"Più spazio vuol dire una cassetta più grande, e le cassette grandi costano monete grandi.",
+	},
+	["npc_meet.w14.shop.046"] = {
+		"Porta con te solo quello che ti serve. Il resto è più al sicuro dietro questa porta che su qualsiasi strada.",
+		"Lascia qui le cose pesanti. Con meno sulle spalle si cammina più lontano.",
+		"Viaggia con poco peso. Quello che lasci qui non verrà perso, rubato o schiacciato.",
+	},
+	["npc_meet.w14.shop.047"] = {
+		"Io tengo le chiavi. Tu ricordi perché hai conservato tutto questo. Giusta divisione dei compiti.",
+		"La gente lascia le cose più strane nel caveau. Non chiedo mai. Ti stupiresti di quanto non chiedo.",
+	},
+	["npc_meet.w14.shop.048"] = {
+		"La discrezione è tutto il mestiere. Quello che c'è nella tua cassetta resta fra te e la serratura.",
+		"Io dentro non guardo. Mi assicuro solo che non lo faccia nessun altro.",
+		"I tuoi segreti sono al sicuro quanto le tue cose. Non potrei raccontarli neanche volendo: non ho mai guardato.",
+	},
+	["npc_meet.w14.shop.049"] = {
+		"Fai con comodo. Un caveau è paziente. Anch'io, finché non c'è la fila.",
+		"Non c'è bisogno di correre. Le serrature non si annoiano, e io neppure. Quasi.",
+	},
+	["npc_meet.w14.shop.050"] = {
+		"La fiducia è l'unica cosa che non posso custodire per te. Quella la porti ogni volta.",
+		"Io tengo le cose al sicuro. Ricordarti che cosa sono è la tua metà dell'accordo.",
+	},
+	["npc_meet.w14.shop.051"] = {
+		"Strano, possedere cose che non posso portare. Metà di me vive in un caveau.",
+		"Una cassetta dietro una porta chiusa, piena di forse: forse mi servirà, forse verrò a prenderla.",
+	},
+	["npc_meet.w14.shop.052"] = {
+		"Le cose finiscono nel caveau per essere dimenticate. È metà dello scopo di un caveau.",
+		"Quello che non so decidermi a buttare lo porto qui. Una banca è un cassetto per l'indecisione.",
+	},
+	["npc_meet.w14.shop.053"] = {
+		"Consegnare le mie cose a qualcuno che conosco appena e chiamarlo sicurezza. La fiducia è una strana abitudine.",
+		"Lascio le mie cose a qualcuno di cui so appena il nome. E in qualche modo funziona.",
+	},
+	["npc_meet.w14.shop.054"] = {
+		"Al caveau non importa se torno. È questo il conforto: aspetta e basta.",
+		"Dietro una porta pesante, qualche mia cosa sta al buio e aspetta. Lo trovo stranamente gentile.",
+	},
+	["npc_meet.w14.shop.055"] = {
+		"Un banchiere che sorride è o molto onesto o molto bravo nel mestiere. Forse tutte e due le cose.",
+		"La faccia del banchiere non lascia trapelare niente. Immagino sia questo il punto.",
+	},
+	["npc_meet.w14.shop.056"] = {
+		"consegna un fagotto in custodia e lo guarda sparire nel caveau.",
+		"passa alcune cose oltre il banco e le guarda portare via, verso le serrature.",
+	},
+	["npc_meet.w14.shop.057"] = {
+		"aspetta che {other} apra la cassetta e si sporge un poco per vedere che cosa c'è dentro.",
+		"resta al banco del banchiere, a fare il conto in silenzio di cosa tenere con sé e cosa lasciare.",
+	},
+	["npc_meet.w14.shop.058"] = {
+		"Controllo solo che sia ancora tutto lì. Non che dubiti di te.",
+		"Solo un'occhiata. Mi piace rivedere le mie cose ogni tanto, come vecchi amici.",
+	},
+	["npc_meet.w14.shop.059"] = {
+		"Tienimelo al sicuro. Non chiedermi perché lo conservo, non lo so nemmeno io.",
+		"Lo metti in un posto sicuro? Non me la sento di venderlo e nemmeno di portarmelo dietro.",
+	},
+	["npc_meet.w14.shop.060"] = {
+		"Vuoi che questo posto diventi casa tua? Basta una parola. Tornare è più facile quando conosci la strada.",
+		"Posso segnare questa locanda come tua. Ovunque tu vada, la strada per tornare la troverai in fretta.",
+		"Ti segno tra i miei ospiti? Così sarà qui che la strada ti riporta.",
+	},
+	["npc_meet.w14.shop.061"] = {
+		"C'è una pentola sul fuoco e del pane non troppo vecchio. Siediti, se ti va.",
+		"Qualcosa da mangiare? Roba semplice, ma calda, e ce n'è in abbondanza.",
+		"Fame? Non importa, mangia lo stesso. Da questa locanda nessuno esce più magro.",
+	},
+	["npc_meet.w14.shop.062"] = {
+		"C'è una stanza pronta, se la vuoi. Lenzuola pulite, e nessuno ti chiede niente.",
+		"Un letto è libero, se ti serve. Il pavimento scricchiola; il letto, te lo prometto, no.",
+		"Ti serve un letto? Scegli un angolo. Sono tutti più morbidi della strada.",
+	},
+	["npc_meet.w14.shop.063"] = {
+		"Siediti un po'. Qualunque cosa ti abbia portato qui può aspettare il tempo di un pasto.",
+		"Prendi una sedia. Il resto del mondo è tutto fretta; queste sedie la parola non l'hanno mai imparata.",
+		"Siediti, siediti. Solo a guardarti in piedi mi fanno male i piedi.",
+	},
+	["npc_meet.w14.shop.064"] = {
+		"Chiunque si fermi qui ha una storia. Tieniti la tua, se vuoi. Ne sento già tante.",
+		"Non immagini quante cose la gente racconti a un oste. E quante un oste ne dimentichi.",
+	},
+	["npc_meet.w14.shop.065"] = {
+		"Il mestiere è semplice: tenere un posto pronto per chi torna.",
+		"Va' dove devi. Quando avrai finito, ci sarà un posto vicino al focolare.",
+		"Per quanto lontano tu vada, una scodella e una panca restano lì ad aspettare.",
+	},
+	["npc_meet.w14.shop.066"] = {
+		"Unica regola della casa: si paga prima della rissa, non dopo.",
+		"Paga quello che rompi; e se non rompi niente, mi ricorderò di te con affetto.",
+		"Monete sul banco, malumori sulla soglia, e nessuno verrà buttato fuori.",
+	},
+	["npc_meet.w14.shop.067"] = {
+		"Il riposo è la cosa più economica che vendo, ed è proprio quella su cui tutti risparmiano.",
+		"Cibo, bevande, un letto. Dei tre, la gente lesina sempre sul letto. Tu non farlo.",
+		"Pancia piena, stanza tranquilla, qualche ora senza far niente. La medicina più economica che conosca.",
+	},
+	["npc_meet.w14.shop.068"] = {
+		"Cosa ti porto? Acqua, latte, o qualcosa che morde un po' di più?",
+		"Da bere? C'è la roba giudiziosa, e c'è la roba buona.",
+		"Qualcosa per bagnarti la gola? Dimmi pure. Se non ce l'ho, giuro che l'ultima botte è appena finita.",
+	},
+	["npc_meet.w14.shop.069"] = {
+		"Qualunque cosa ti pesi, posala per un po'. Ci do un'occhiata io.",
+		"I guai non hanno diritto a una stanza. Possono aspettare sulla soglia finché non sarai {g:pronto|pronta}.",
+	},
+	["npc_meet.w14.shop.070"] = {
+		"Qui ogni ospite riceve le stesse cose: un posto, una scodella e la pace, se la chiede.",
+		"Parla se vuoi, taci se preferisci. La zuppa è la stessa in tutti e due i casi.",
+		"Qui nessuno è obbligato a fare compagnia. Basta non fare troppo rumore.",
+	},
+	["npc_meet.w14.shop.071"] = {
+		"Lo stufato è quello di sempre. Prendilo come una raccomandazione, non come un avvertimento.",
+		"Il cuoco è di buon umore, quindi lo stufato si mangia. Hai scelto il momento giusto.",
+	},
+	["npc_meet.w14.shop.072"] = {
+		"Le locande hanno tutte un po' lo stesso odore: fumo, pane, lana umida. Le spalle mi si sciolgono prima ancora di sedermi.",
+		"Quel misto di fumo vecchio e pane che sembra comune a tutte le locande. Su di me funziona sempre.",
+	},
+	["npc_meet.w14.shop.073"] = {
+		"Chiamare casa un posto, per un po', costa una parola con l'oste. Più facile della maggior parte delle case.",
+		"Casa, per ora, è dove dico all'oste che sia. Una radice leggera.",
+	},
+	["npc_meet.w14.shop.074"] = {
+		"Una vera sedia. Le piccole grazie sono le migliori.",
+		"Un posto per sedersi che non è lì per caso. Le piccole comodità valgono doppio.",
+	},
+	["npc_meet.w14.shop.075"] = {
+		"Gli osti sentono tutto e non ripetono niente. O almeno così vogliono farti credere.",
+		"Gli occhi dell'oste vanno alla porta ogni volta che si apre. Un'abitudine del mestiere, immagino.",
+		"Un oste conosce le ordinazioni di tutti e gli affari di nessuno. Una forma rara di tatto.",
+	},
+	["npc_meet.w14.shop.076"] = {
+		"Ogni locanda, chissà come, ha il sapore di un ritorno.",
+		"Le locande sono tutte un po' la stessa locanda. È tutto qui il loro conforto.",
+	},
+	["npc_meet.w14.shop.077"] = {
+		"Tutto il resto vuole qualcosa da me. In una locanda, solo il conto.",
+		"Al prezzo di un pasto, per un po' nessuno ha bisogno di me. Un affare.",
+	},
+	["npc_meet.w14.shop.078"] = {
+		"posa lo zaino accanto al banco e lascia finalmente cadere le spalle.",
+		"trova una panca vicino al focolare e si siede come se fosse una piccola vittoria.",
+	},
+	["npc_meet.w14.shop.079"] = {
+		"si fa promettere un posto pronto, e {other} annuisce: le parole si posano come un'ancora.",
+		"lascia che {other} segni la locanda come casa, come chi fa un nodo per ritrovare la strada.",
+	},
+	["npc_meet.w14.shop.080"] = {
+		"si attarda al banco, lasciando che i piccoli rumori della locanda {g:lo|la} avvolgano.",
+		"resta un momento al banco, assaporando la quiete del posto prima di dire una parola.",
+	},
+	["npc_meet.w14.shop.081"] = {
+		"ordina quello che c'è in pentola, senza chiedere che cosa sia.",
+		"annuisce a qualunque cosa l'oste proponga: discutere del pasto sarebbe sprecare il piacere di stare {g:seduto|seduta}.",
+	},
+	["npc_meet.w14.shop.082"] = {
+		"Prendo quello che c'è in pentola, qualunque cosa sia. Sorprendimi.",
+		"Un posto a sedere e qualcosa di caldo in una scodella. La mia lista dei desideri finisce qui.",
+	},
+	["npc_meet.w14.shop.083"] = {
+		"Segnami tra i tuoi ospiti fissi. Posti come questo fa bene ritrovarli.",
+		"Fai di questo posto la mia casa, per ora. Cercherò di tornare con tutti i pezzi al loro posto.",
+	},
+	["npc_meet.w14.shop.084"] = {
+		"Chi serve i viaggiatori impara a leggerli in fretta. Chissà come mi si legge.",
+		"Chi per mestiere tratta con chi passa mi vede per un momento, poi tocca al prossimo. Un incontro piccolo e onesto.",
+	},
+	["npc_meet.w14.shop.085"] = {
+		"Migliaia passano davanti a loro, e trovano ancora una parola per ciascuno. È un'arte che nessuno insegna.",
+		"Devono ripetere le stesse due cose cento volte. Eppure riescono a farle sembrare sincere.",
+	},
+	["npc_meet.w14.shop.086"] = {
+		"Ogni strada si regge su chi resta fermo perché gli altri possano continuare a muoversi.",
+		"Chi resta in un posto perché i viaggiatori non debbano portarsi dietro tutto: il mondo si appoggia a loro più di quanto ammetta.",
+	},
+	["npc_meet.w14.shop.087"] = {
+		"fa un breve cenno di saluto, quello che i viaggiatori e chi li serve si scambiano senza pensarci.",
+		"saluta {other} con una cortesia semplice, di quelle che non costano niente e aprono quasi tutte le porte.",
+	},
 }, "base_context")

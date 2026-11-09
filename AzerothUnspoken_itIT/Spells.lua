@@ -1972,4 +1972,2442 @@ NS:AddTexts("itIT", {
 		"Un tempo perfetto per camminare, e io prendo la scorciatoia. La strada si terrà il suo buonumore senza di me.",
 		"Cielo vuoto, strada asciutta, e io ripiego tutto dentro una pietra. Qualcuno chieda scusa al tempo da parte mia.",
 	},
+	["heal.w14.care.001"] = {
+		"Lascia che si richiuda, {target}. Se ti muovi adesso, fatica il doppio.",
+		"Non serve muoversi. Concedi alla cura un minuto di quiete.",
+		"Pazienza. La cura detesta la fretta.",
+	},
+	["heal.w14.care.002"] = {
+		"{target}, ti resto accanto finché non è finita. Nessuno ti lascia qui.",
+		"Non me ne vado. Resto qui fino alla fine.",
+		"Hai compagnia, fino all'ultimo.",
+	},
+	["heal.w14.care.003"] = {
+		"Reggerà. Ci ho messo tutto quello che avevo, e reggerà.",
+		"Terrà. Hai la mia parola.",
+		"Dammi retta: regge. Me ne sono {g:assicurato|assicurata}.",
+	},
+	["heal.w14.care.004"] = {
+		"Ancora un poco. Senti che si allenta? È il peggio che se ne va.",
+		"Quasi fatto. Il peggio ormai ce l'hai alle spalle.",
+		"Quasi. Lascia scivolare via l'ultimo dolore.",
+	},
+	["heal.w14.care.005"] = {
+		"Appoggia il peso su di me per un momento. Sono qui per questo.",
+		"Posalo per un po'. Portarlo adesso tocca a me.",
+		"Quel peso per un po' è mio. Tu riposa.",
+	},
+	["heal.w14.care.006"] = {
+		"Qualunque cosa arrivi, {target}, dovrà passare prima da me.",
+		"Chi ti vuole dovrà prima vedersela con me.",
+		"Resta alle mie spalle. Niente ti raggiunge, se prima non raggiunge me.",
+	},
+	["heal.w14.care.007"] = {
+		"Ci penso io. Puoi smettere di tenerti insieme: adesso è compito mio.",
+		"Ti tengo io. Lascia andare, il peso lo reggo io.",
+		"Appoggiati a me. Adesso a tenere sono io.",
+	},
+	["heal.w14.care.008"] = {
+		"Non andartene, {target}. Non finché posso ancora fare qualcosa.",
+		"Resta. Finché le mie mani lavorano, tu resti.",
+		"Resta, {target}. Ti chiedo di restare.",
+	},
+	["heal.w14.care.009"] = {
+		"Ciò che qui era rotto sia ricucito, e ricucito resti.",
+		"Chiusa e salda. Che nulla la riapra presto.",
+		"Ricucita, e ricucita bene. Che duri.",
+	},
+	["heal.w14.care.010"] = {
+		"Cerca qualcosa di fermo da guardare. Che sia io.",
+		"Punta lo sguardo su qualcosa che non si muove. Io resto immobile.",
+		"Guarda qui, verso di me. Sono io il punto fermo.",
+	},
+	["heal.w14.care.011"] = {
+		"La senti? La forza sta ritrovando la strada verso di te.",
+		"{target}, la forza sta tornando. Lasciala posare, prima.",
+		"Eccola, la tua forza. La sento arrivare.",
+	},
+	["heal.w14.care.012"] = {
+		"Sembra peggio di quello che è. Te lo prometto, sembra soltanto.",
+		"Più brutta che pericolosa. Te la caverai.",
+		"Brutta, sì. Grave, no. Fidati.",
+	},
+	["heal.w14.care.013"] = {
+		"Finché resto qui, nessuna tua ferita resterà senza cura.",
+		"Nessuna tua ferita resta senza risposta, finché ci sono io.",
+		"Qui ogni tuo dolore ha risposta. Ognuno.",
+	},
+	["heal.w14.care.014"] = {
+		"Shh. Silenzio, adesso. La cura sa da sé dove andare.",
+		"Calma, {target}. Sta facendo quello che deve.",
+		"Silenzio, ora. Lascia che faccia il suo corso.",
+	},
+	["heal.w14.care.015"] = {
+		"Non te. Non ho nessuna intenzione di perderti così.",
+		"Mi rifiuto di perderti qui, {target}. Mi rifiuto e basta.",
+		"Non così. Così non te ne vai.",
+	},
+	["heal.w14.care.016"] = {
+		"Riparti quando te la senti, e non un istante prima.",
+		"Nessuna fretta. Faccio la guardia finché non te la senti di muoverti.",
+		"Prenditi tutto il tempo che serve. Al resto bado io.",
+	},
+	["heal.w14.care.017"] = {
+		"Forse lascerà un segno. Solo un segno, te lo garantisco.",
+		"Una cicatrice, al massimo. Niente di più.",
+		"Un segno, forse. I segni sbiadiscono, o diventano storie.",
+	},
+	["heal.w14.care.018"] = {
+		"Questo dolore lo prendo in mano io, {target}. Adesso è affar mio, non tuo.",
+		"Lascia a me il dolore. Adesso risponde a me.",
+		"Dammi il tuo dolore. Lo tengo io per te.",
+	},
+	["heal.w14.care.019"] = {
+		"Da questa te ne vai sulle tue gambe, {target}.",
+		"Da qui te ne andrai camminando. L'ho deciso io.",
+	},
+	["heal.w14.care.020"] = {
+		"Lascia a me le preoccupazioni. Tu devi solo stare immobile.",
+		"Preoccuparmi tocca a me. A te, riposare.",
+	},
+	["heal.w14.care.021"] = {
+		"Per un momento c'è solo questo, e me ne sto occupando io.",
+		"Per ora, solo questo. Me ne occupo io.",
+	},
+	["heal.w14.care.022"] = {
+		"Hai dato abbastanza, per un tratto. Lascia che ti restituisca qualcosa.",
+		"Hai speso parecchio. Eccone indietro una parte.",
+	},
+	["heal.w14.care.023"] = {
+		"Non c'è vergogna nell'aver bisogno di cure. Prima o poi capita a chiunque.",
+		"Nessuna vergogna, {target}. Ci si fa male tutti.",
+		"Farsi male non è una sconfitta. È solo dolore, e ci sono qui io.",
+	},
+	["heal.w14.care.024"] = {
+		"Quello che ti è successo non posso cancellarlo. Posso fare in modo che finisca qui.",
+		"Il male è fatto. Che resti, no.",
+		"Quel che è fatto è fatto. Il resto lo decido io.",
+	},
+	["heal.w14.care.025"] = {
+		"Adagio. Così, adagio. Stai andando bene.",
+		"Con calma. Va tutto per il verso giusto.",
+		"Con pazienza. Stai facendo tutto bene.",
+	},
+	["heal.w14.care.026"] = {
+		"Qualunque cosa abbia provato a spezzarti, non ci è riuscita. Farò in modo che non ci riesca mai.",
+		"Ha provato a spezzarti e ha fallito. Adesso fallisce per sempre.",
+	},
+	["heal.w14.care.027"] = {
+		"Trova pace per un momento, {target}. Nessuno ti chiede niente.",
+		"Per adesso non ti si chiede nulla. Solo di riposare.",
+		"Riposa. Adesso non devi dimostrare niente a nessuno.",
+	},
+	["heal.w14.care.028"] = {
+		"La vedo. So esattamente dove fa male, e ci sto lavorando.",
+		"Vedo dove fa male. Ci sono già.",
+		"Trovato. Ecco il guaio, e si sta chiudendo.",
+	},
+	["heal.w14.care.029"] = {
+		"In te c'è più di quanto questa ferita sappia. Sta per scoprirlo.",
+		"Questa ferita ha fatto male i conti con te. Se ne sta andando.",
+		"Ha scelto la vittima sbagliata.",
+	},
+	["heal.w14.care.030"] = {
+		"La parte profonda è chiusa, {target}. Resta solo l'indolenzimento.",
+		"Il male profondo è sigillato. Resta soltanto il dolore sordo.",
+	},
+	["heal.w14.care.031"] = {
+		"Dimentica questa ferita, {target}. Se qualcuno deve ricordarla, che sia io.",
+		"Toglitela dalla testa. Il ricordo lo tengo io.",
+	},
+	["heal.w14.care.032"] = {
+		"Ogni ferita a portata delle mie mani si chiude. La tua è a portata.",
+		"Sei a portata. Non serve altro.",
+	},
+	["heal.w14.care.033"] = {
+		"Per adesso il coraggio non ti serve. Ce ne metto io per due.",
+		"Posa il coraggio per un momento. Ne ho abbastanza per due.",
+		"La paura è permessa. Il coraggio lo metto io, quanto basta.",
+	},
+	["heal.w14.care.034"] = {
+		"Qualcuno è venuto per te, {target}. Conta più di quanto immagini.",
+		"Qualcuno è arrivato. Ricordalo, qualunque altra cosa tu dimentichi.",
+		"Nessuno si è scordato di te. Tienilo stretto.",
+	},
+	["heal.w14.care.035"] = {
+		"Va' con prudenza, {target}, e con le ferite chiuse.",
+		"Riprendi il cammino con passo fermo. Non chiedo altro.",
+		"Riparti, allora, e con dolcezza.",
+	},
+	["heal.w14.care.036"] = {
+		"Proprio qui, {target}. Abbastanza vicino da non doverti chiedere dove sono.",
+		"Sono a un passo. Abbastanza vicino da poterci contare.",
+		"Qui vicino, {target}. Sempre a portata di braccio.",
+	},
+	["heal.w14.care.037"] = {
+		"Che regga finché ti serve, e anche un po' oltre.",
+		"Che tenga, e tenga più a lungo del necessario.",
+		"Che resti salda, e salda rimanga.",
+	},
+	["heal.w14.care.038"] = {
+		"Per questo non mi devi niente. Né grazie, né scuse.",
+		"Nessun debito. Nemmeno un grazie.",
+		"Questa è gratis. Lo sono tutte.",
+	},
+	["heal.w14.care.039"] = {
+		"Cercava te, e ha trovato me di mezzo. Che sfortuna.",
+		"Puntava a te, e ha trovato prima me.",
+		"Tu eri il suo bersaglio. Io il suo problema.",
+	},
+	["heal.w14.care.040"] = {
+		"Resto finché non ti reggi bene. Per tutto il tempo che serve.",
+		"Quanto ci vuole per rimetterti in sesto, lo aspetto con te.",
+	},
+	["heal.w14.care.041"] = {
+		"È a questo che servono queste mani. Lasciale lavorare.",
+		"Queste mani sono fatte proprio per questo.",
+		"Lascia che le mie mani facciano quello che sanno.",
+	},
+	["heal.w14.care.042"] = {
+		"Da qui usciamo insieme, io e te. È l'unico finale che accetto.",
+		"Io e te arriviamo alla fine di questa storia. Insisto.",
+	},
+	["heal.w14.care.043"] = {
+		"Fammi vedere. Mm. Sì. Questa la sistemo.",
+		"Bene, questa so come chiuderla.",
+		"Ah. Questa la conosco. Si chiude bene.",
+	},
+	["heal.w14.care.044"] = {
+		"Lo so che fa male. Lo so. Ancora per poco.",
+		"Fa male, lo so. Un attimo ancora e passa.",
+		"Brucia, vero? Sta passando. Senti come passa.",
+	},
+	["heal.w14.care.045"] = {
+		"Vali ogni briciola di questa fatica, {target}. Non pensare mai il contrario.",
+		"Ne vale la pena. Tu ne vali la pena. Ricordatelo.",
+	},
+	["heal.w14.care.046"] = {
+		"Appoggia la testa un momento. In questo minuto niente ti reclama.",
+		"Abbassa la testa, chiudi gli occhi se vuoi. Niente ti aspetta, per ora.",
+		"Chiudi gli occhi, se aiuta. I miei li tengo aperti io.",
+	},
+	["heal.w14.care.047"] = {
+		"Da questo momento le tue ferite le porto io, {target}.",
+		"Affidami i tuoi dolori. Li accompagno io alla porta.",
+	},
+	["heal.w14.care.048"] = {
+		"Di vita in te ce n'è ancora tanta. La sento che spinge.",
+		"Ne hai ancora tanta, dentro. Lotta per restare, e io con lei.",
+		"Qualcosa in te vuole restare. Io sto dalla sua parte.",
+	},
+	["heal.w14.care.049"] = {
+		"si muove adagio e tiene le mani in vista, come ci si avvicina a qualunque creatura che soffre.",
+		"si avvicina piano a chi è ferito: niente di brusco, niente di forte.",
+		"si fa {g:vicino|vicina} senza fretta, le mani aperte bene in vista.",
+	},
+	["heal.w14.care.050"] = {
+		"si sistema accanto, e resta lì in silenzio e con pazienza finché il dolore di {target} non cede.",
+		"resta lì vicino, paziente, senza chiedere nulla, finché il dolore non cala.",
+	},
+	["heal.w14.care.051"] = {
+		"sorregge chi è ferito con una mano che non trema, e non la ritira troppo presto.",
+		"tiene una presa ferma e gentile, senza tremare, fino alla fine.",
+	},
+	["heal.w14.care.052"] = {
+		"toglie prima lo sporco intorno alla ferita, con la cura di chi pulisce un oggetto prezioso.",
+		"spazzola via la polvere dai bordi della ferita, prima di ogni altra cosa.",
+	},
+	["heal.w14.care.053"] = {
+		"si china vicino al viso di {target} e dice qualcosa a voce così bassa che nessun altro la coglie.",
+		"si sporge e parla piano, parole solo per chi è ferito.",
+	},
+	["heal.w14.care.054"] = {
+		"aspetta con una mano appoggiata lieve vicino alla ferita, paziente come una porta tenuta aperta.",
+		"resta immobile, paziente come chi tiene aperta una porta.",
+	},
+	["heal.w14.care.055"] = {
+		"sposta il peso per mettersi tra chi è ferito e qualunque cosa possa arrivare.",
+		"si piazza davanti a chi sta curando, come a voler prendere su di sé il prossimo colpo.",
+	},
+	["heal.w14.care.056"] = {
+		"resta accanto, paziente come la pietra, finché {target} non è a posto.",
+		"continua a vegliare su chi ha curato anche quando non resta più niente da curare.",
+	},
+	["heal.w14.care.057"] = {
+		"rivolge a chi è ferito un cenno lento del capo, di quelli che dicono: è tutto sotto controllo.",
+		"annuisce, piano e con sicurezza, come a dire che il peggio è sistemato.",
+	},
+	["heal.w14.care.058"] = {
+		"tiene ogni movimento piccolo e misurato, per non urtare la ferita.",
+		"lavora con gesti piccoli e attenti, senza mai scuotere la parte ferita.",
+	},
+	["heal.w14.care.059"] = {
+		"si trattiene al fianco di {target} un momento più del necessario, giusto per sicurezza.",
+		"resta ancora un po' a lavoro finito, solo per essere {g:certo|certa} che regga.",
+	},
+	["heal.w14.care.060"] = {
+		"china per un attimo il capo su chi è ferito, come se il compito meritasse una certa solennità.",
+		"si ferma a capo chino, come ci si ferma su una soglia.",
+	},
+	["heal.w14.care.061"] = {
+		"si carica per un momento sulla spalla il peso di chi è ferito, senza che nessuno lo chieda.",
+		"regge un po' del peso di chi è ferito, in silenzio, come se niente fosse.",
+	},
+	["heal.w14.care.062"] = {
+		"lavora in fretta ma mai di corsa, come se rapidità e cura avessero fatto pace.",
+		"si muove rapidamente, senza un solo gesto distratto.",
+	},
+	["heal.w14.care.063"] = {
+		"pronuncia una volta il nome di {target}, piano, come si richiama qualcuno da lontano.",
+		"parla a chi è ferito con voce bassa e ferma, come una mano tesa.",
+	},
+	["heal.w14.care.064"] = {
+		"mette da parte tutto il resto e dedica a chi è ferito tutta la sua attenzione.",
+		"lascia che il resto del mondo scivoli via e si occupa di quest'unica ferita.",
+	},
+	["heal.w14.care.065"] = {
+		"sta accanto a chi sta curando come un muro che ha deciso di non crollare.",
+		"non arretra di un passo accanto a chi è ferito, semplice e {g:saldo|salda} come uno stipite.",
+	},
+	["heal.w14.care.066"] = {
+		"non molla la presa finché non è {g:sicuro|sicura} che {target} si regga bene.",
+		"tiene una mano pronta finché chi è ferito non si regge da sé.",
+	},
+	["heal.w14.care.067"] = {
+		"si occupa della ferita con la serietà di chi mantiene una promessa.",
+		"cura la ferita con solennità, come si onora un vecchio giuramento.",
+	},
+	["heal.w14.care.068"] = {
+		"rivolge a chi è ferito un sorriso piccolo e fermo, che vuol dire: non c'è niente da temere.",
+		"sorride appena, come se fosse la cosa più semplice del mondo.",
+	},
+	["heal.w14.care.069"] = {
+		"Mani gentili. Il dolore mette in allarme chiunque, e un corpo in allarme si cura male.",
+		"Con dolcezza. Il dolore mette tutti sulla difensiva.",
+		"Piano. Il dolore rende ogni tocco più acuto.",
+	},
+	["heal.w14.care.070"] = {
+		"Che senta che qui c'è qualcuno. Metà della cura è questa.",
+		"Esserci conta. Forse conta quasi tutto.",
+	},
+	["heal.w14.care.071"] = {
+		"Voce ferma, mani ferme. La calma si attacca: che si attacchi la mia.",
+		"Se resto {g:calmo|calma}, un po' di calma passa anche a chi curo.",
+		"La calma contagia. Che parta da me.",
+	},
+	["heal.w14.care.072"] = {
+		"Chiunque sia, in questo momento niente di quello che potrei fare conta di più.",
+		"Adesso conta questa vita, prima di tutto. Semplice.",
+	},
+	["heal.w14.care.073"] = {
+		"Parlare piano, muoversi adagio, e promettere solo ciò che posso mantenere.",
+		"Parole morbide, mani lente, promesse oneste. Tutta l'arte è qui.",
+	},
+	["heal.w14.care.074"] = {
+		"Niente discorsi. Serve sentirsi dire che reggerà, quindi dillo chiaro.",
+		"Semplice: reggerà. Non c'è altro da aggiungere.",
+	},
+	["heal.w14.care.075"] = {
+		"Qualcosa si è rotto, e lo si sta rimettendo a posto. Al mondo poche cose vanno in quel verso.",
+		"Rotto, poi aggiustato. Sono poche le cose che vanno in questa direzione.",
+	},
+	["heal.w14.care.076"] = {
+		"Il dolore e la solitudine insieme sono troppo per chiunque. Alla seconda posso rimediare.",
+		"Soffrire senza nessuno accanto è troppo. Ma accanto, adesso, ci sono io.",
+	},
+	["heal.w14.care.077"] = {
+		"Se si può ricucire, lo sarà. Non seguo altre regole.",
+		"Quel che si può aggiustare si aggiusta. È la mia sola legge.",
+	},
+	["heal.w14.care.078"] = {
+		"Tenere la preoccupazione lontana dal viso. È lì che chi è ferito guarderà per prima cosa.",
+		"Nemmeno un lampo di dubbio. È il mio viso che verrà letto.",
+	},
+	["heal.w14.care.079"] = {
+		"Una parola gentile qui non costa nulla, e fa più di quanto avrebbe diritto.",
+		"La gentilezza è la cosa più economica che porto con me, e mai la meno utile.",
+	},
+	["heal.w14.care.080"] = {
+		"Che qualcuno me l'abbia chiesto o no, non c'entra.",
+		"Chiesto o no, è uguale: la ferita si cura.",
+		"Curare non è un favore. Qui funziona così.",
+	},
+	["heal.w14.grit.001"] = {
+		"Chiusa. La parte di me che voleva mollare può sedersi e tacere.",
+		"La ferita si è chiusa prima che il dubbio finisse la sua predica.",
+	},
+	["heal.w14.grit.002"] = {
+		"In piedi, e ci resto.",
+		"Mi tengo su. E conto di restarci per un bel po'.",
+		"Le gambe reggono. E faranno quello che dico io.",
+	},
+	["heal.w14.grit.004"] = {
+		"Ricordati da dove è arrivata. La ferita si chiude, la lezione no.",
+		"Chiudere la ferita, tenere a mente come me la sono guadagnata. Quella parte resta.",
+		"La carne può dimenticare. Io no, non me lo concedo.",
+	},
+	["heal.w14.grit.005"] = {
+		"In sesto quanto basta per mantenere la parola. È a questo che serviva.",
+		"Rattoppata la carne, la promessa regge. Si prosegue.",
+	},
+	["heal.w14.grit.006"] = {
+		"Nessuno sarebbe venuto a sistemarla. Così l'ho fatto io. Il segreto è tutto lì.",
+		"Nessun altro mi avrebbe rimesso in piedi. Pazienza: tocca a me.",
+		"Fatto da me. L'unico aiuto che non manca mai.",
+	},
+	["heal.w14.grit.007"] = {
+		"si raddrizza a poco a poco, voltandosi verso il punto da cui è arrivato il colpo.",
+		"torna alla sua piena altezza, senza fretta, e serra la mascella.",
+		"si tira su e si volta verso ciò che resta da fare.",
+	},
+	["heal.w14.grit.008"] = {
+		"Quanto basta per andare avanti. Il resto della forza lo tengo da parte.",
+		"Spendila con giudizio. Quello che è tornato deve durare.",
+		"Parsimonia. La forza è una borsa, non un pozzo.",
+	},
+	["heal.w14.grit.009"] = {
+		"Chiusa. Stavolta sarà più difficile buttarmi giù.",
+		"Sigillata. Ci vuole ben altro per mettermi a terra.",
+		"Ferita sigillata. Quello che arriva adesso troverà meno spazio.",
+	},
+	["heal.w14.grit.010"] = {
+		"Ogni ferita chiusa è una porta che non ho attraversato. Su questa tengo il chiavistello.",
+		"Per un attimo c'era una porta. Ora è chiusa, e io sono da questa parte.",
+	},
+	["heal.w14.grit.011"] = {
+		"Lezione presa. Preferirei non averne bisogno due volte.",
+		"Capito. Questa me la tengo.",
+		"Annotato, e conservato.",
+	},
+	["heal.w14.grit.012"] = {
+		"La testardaggine costa poco e non finisce mai. Bene: me ne servirà parecchia.",
+		"Di tutto quello che porto, la testardaggine pesa meno e dura di più.",
+		"La testardaggine non costa niente. Ne ho in abbondanza.",
+	},
+	["heal.w14.grit.013"] = {
+		"prova il punto risanato con un po' di peso, poi un po' di più, poi tutto.",
+		"carica con prudenza il lato ferito, e scopre che regge.",
+	},
+	["heal.w14.grit.014"] = {
+		"Sistemata, questa. C'è da fare, e non aspetterà che io mi compatisca.",
+		"A posto. Il piangersi addosso può fare reclamo più tardi.",
+		"Tutto in ordine. Il broncio lo metto in calendario un'altra volta.",
+	},
+	["heal.w14.grit.015"] = {
+		"Una cicatrice è un appunto che scrive il corpo. Preferisco prenderlo io, e risparmiargli l'inchiostro.",
+		"Impararlo adesso, con la testa, così la pelle non deve impararlo al posto mio.",
+	},
+	["heal.w14.grit.016"] = {
+		"Già chiusa. Quello che l'ha aperta è stato troppo lento.",
+		"Ha avuto la sua occasione. Non l'ha presa.",
+	},
+	["heal.w14.grit.017"] = {
+		"Un giorno niente la chiuderà. Quel giorno è altrove, lontano da qui.",
+		"Verrà una ferita che non si chiude. Non è questa.",
+		"Non questa ferita. Questa no.",
+	},
+	["heal.w14.grit.018"] = {
+		"Rialzarsi, muoversi, finire. Tre cose. Tre cose le reggo.",
+		"In piedi, avanti, fatto. Lista corta. Una lista corta sta anche in una testa dolorante.",
+	},
+	["heal.w14.grit.019"] = {
+		"Si metta a verbale: colpo, ferita chiusa, si riparte.",
+		"Annotare nel registro: un colpo, una ferita chiusa, un passo avanti.",
+	},
+	["heal.w14.grit.020"] = {
+		"Stanchezza non vuol dire fine. Conosco la differenza, e la conosce anche il corpo.",
+		"Stanchezza e resa: due parole diverse, e le tengo ben separate.",
+		"Logorarsi è molto lontano dal finire.",
+	},
+	["heal.w14.grit.021"] = {
+		"allarga un po' la posizione dei piedi, come se adesso ci volesse ben altro per {g:smuoverlo|smuoverla}.",
+		"assume una posizione più salda, senza alcuna intenzione di cedere un palmo.",
+	},
+	["heal.w14.grit.022"] = {
+		"Quel colpo non lo lascio arrivare una seconda volta.",
+		"Visto tardi, quello. Non succederà due volte.",
+		"Lo stesso trucco con me non funziona due volte.",
+	},
+	["heal.w14.grit.023"] = {
+		"Chiudere solo ciò che mi rallenta. Il resto può dolere: il dolore insegna.",
+		"Chiudere quello che conta, lasciare i lividi. I lividi sanno ricordare.",
+	},
+	["heal.w14.grit.024"] = {
+		"Il corpo è una cosa presa in prestito. Ho appena pagato un altro po' d'affitto.",
+		"Questa carne non è mai del tutto mia. Io la tengo in ordine, e lei mi lascia restare.",
+	},
+	["heal.w14.grit.025"] = {
+		"In piedi, e di umore peggiore di prima.",
+		"Rimarginata, la ferita. L'umore, molto meno.",
+	},
+	["heal.w14.grit.026"] = {
+		"La paura ha parlato finché faceva male. Ora aspetta fuori.",
+		"La paura ha chiacchierato per tutto il tempo. Adesso tace. Bene.",
+		"Finché durava il dolore, la parola era della paura. Adesso è mia.",
+	},
+	["heal.w14.grit.027"] = {
+		"guarda la ferita chiusa un istante più del necessario, poi distoglie lo sguardo, di proposito.",
+		"osserva il punto in cui per poco non è finita male, e poi gli volta le spalle.",
+		"guarda la ferita chiusa, poi altrove, di proposito.",
+	},
+	["heal.w14.grit.028"] = {
+		"Ne ho ancora, dentro. Molto di più.",
+		"Qualcosa rimane sempre, se lo cerco.",
+	},
+	["heal.w14.grit.029"] = {
+		"La forza ritrovata è un incarico, non un regalo. Risponderò di come la spendo.",
+		"Restituita perché sia spesa per qualcosa che valga.",
+	},
+	["heal.w14.grit.030"] = {
+		"Ero nel posto sbagliato. La prossima volta, mezzo passo più in là.",
+		"Posto sbagliato, momento sbagliato. Colpa mia, e rimediabile.",
+	},
+	["heal.w14.grit.031"] = {
+		"A terra non ci vado. Non è la mia direzione.",
+		"Cadrò quando lo deciderò io. E non lo decido.",
+		"A terra no. Non adesso.",
+	},
+	["heal.w14.grit.032"] = {
+		"Lo spavento me lo porto dietro più a lungo della ferita. È la parte utile.",
+		"La ferita se n'è andata; lo spavento lo tengo. È quello che mi rende prudente.",
+		"Tenere lo spavento, perdere la ferita. Scambio onesto.",
+	},
+	["heal.w14.grit.033"] = {
+		"Un bel tentativo. Non abbastanza, ma un bel tentativo.",
+		"Punti per l'impegno. Zero per il risultato.",
+	},
+	["heal.w14.grit.034"] = {
+		"Ciascuna ferita richiusa mi rende un po' più difficile da spezzare. È lo scambio, e lo accetto.",
+		"Ogni ferita mi mostra un buco nella guardia. Questo l'ho visto, e l'ho chiuso.",
+	},
+	["heal.w14.grit.035"] = {
+		"resta immobile per un istante, come chi si è appena ritratto da un orlo senza parapetto.",
+		"si ferma, immobile, poi si scrolla di dosso l'istante come acqua da un mantello.",
+	},
+	["heal.w14.grit.036"] = {
+		"Riprendo da dove avevo lasciato.",
+		"A che punto ero? Ah, sì. A vincere.",
+		"Torno dov'ero.",
+	},
+	["heal.w14.grit.037"] = {
+		"Le mani hanno smesso di tremare prima che la ferita finisse di chiudersi. Quello lo conto come merito mio.",
+		"Prima ha smesso il tremito, poi il dolore. Il primo dei due è opera mia.",
+	},
+	["heal.w14.grit.038"] = {
+		"Se qualcuno conta su di me, mi vuole in piedi, non a dare spiegazioni.",
+		"Le scuse non guariscono niente. Rialzarsi sì.",
+		"Stare in piedi si spiega da sé.",
+	},
+	["heal.w14.grit.039"] = {
+		"Ha avuto il suo turno, il dolore. Ora tocca a me.",
+		"Il dolore ha parlato per primo. A chiudere sarò io.",
+	},
+	["heal.w14.grit.040"] = {
+		"Per un attimo sotto i piedi avevo solo la fortuna. Ora c'è di nuovo terra.",
+		"La fortuna mi ha retto per un istante. Adesso possono pensarci le mie gambe.",
+	},
+	["heal.w14.grit.041"] = {
+		"L'orgoglio ha aperto la ferita, il buon senso l'ha chiusa. So a chi dare retta.",
+		"Orgoglio per aprirla, giudizio per chiuderla. Ricordarsi chi è chi.",
+	},
+	["heal.w14.grit.042"] = {
+		"Mi alzo. Questa è la mia risposta.",
+		"Sulle mie gambe: ecco tutta la mia replica.",
+	},
+	["heal.w14.grit.043"] = {
+		"si raddrizza lentamente, con la gravità di chi riprende un incarico posato solo per un attimo.",
+		"raddrizza le spalle come per rimettersi a posto un mantello pesante.",
+	},
+	["heal.w14.grit.044"] = {
+		"Ne vale la pena? Il dolore lo chiede sempre. Sì, ne vale.",
+		"Ogni ferita mi domanda se faccio sul serio. Ogni volta, sì.",
+	},
+	["heal.w14.grit.045"] = {
+		"La prossima volta più calma. E più giudizio.",
+		"Meno fretta, più occhi aperti. Ricevuto.",
+		"Lezione: prima guardare.",
+	},
+	["heal.w14.grit.046"] = {
+		"Nessuno se ne va da questo mondo tutto intero. Io intendo andarmene molto più tardi.",
+		"Alla fine si esaurisce chiunque. La mia fine non è a portata di mano.",
+		"Mortale, sì. Puntuale, no.",
+	},
+	["heal.w14.grit.047"] = {
+		"Niente sedersi. Sedersi diventa sdraiarsi, e sdraiarsi diventa restare.",
+		"Se mi siedo adesso, vorrò restare. Quindi non mi siedo.",
+		"Restare in piedi. È metà di tutto.",
+	},
+	["heal.w14.grit.048"] = {
+		"Ferita chiusa, sguardo avanti.",
+		"Rimessa a posto la carne, e la faccia dalla parte giusta.",
+		"Intera quanto basta la pelle, e occhi davanti.",
+	},
+	["heal.w14.grit.049"] = {
+		"Per fortuna il corpo è un maestro paziente. Io imparo piano.",
+		"Il corpo insegna, io dimentico, il corpo alza la voce. Preferirei non arrivarci.",
+	},
+	["heal.w14.grit.050"] = {
+		"C'è ancora un lavoro a metà. I lavori a metà non si finiscono stando sdraiati.",
+		"Mezzo compito aspetta. Non si finisce da solo mentre mi coccolo un graffio.",
+		"Le faccende in sospeso non badano a come mi sento.",
+	},
+	["heal.w14.grit.051"] = {
+		"scioglie la rigidità del collo e torna a voltarsi verso ciò che verrà.",
+		"fa un breve cenno col capo, a nessuno in particolare, e riprende.",
+	},
+	["heal.w14.grit.052"] = {
+		"Si è avvicinata. Più di così non è riuscita.",
+		"Vicino. Vicino non vuol dire arrivati.",
+	},
+	["heal.w14.grit.053"] = {
+		"Non spenderla tutta subito. La forza torna più piano di come se ne va.",
+		"Attenzione a quello che è tornato. Se ne va di corsa e rientra adagio.",
+		"La forza rientra piano. Non mandarla fuori per niente.",
+	},
+	["heal.w14.grit.054"] = {
+		"C'è una fossa senza ancora un nome sopra. Resterà così per un bel pezzo.",
+		"La terra ha un posto riservato per me. Può restare vuoto per molto tempo.",
+		"La mia fossa resta a metà ancora un po'. Che il becchino si riposi.",
+	},
+	["heal.w14.grit.055"] = {
+		"Calma. Calma. Così.",
+		"Con calma. I pezzi sono tutti al loro posto.",
+		"Adagio. Ogni pezzo è tornato.",
+	},
+	["heal.w14.grit.056"] = {
+		"Potrei fermarmi qui. Potrei. Non lo farò.",
+		"Fermarsi sarebbe facile. Il facile non porta mai da nessuna parte.",
+		"Fermarmi? No.",
+	},
+	["heal.w14.grit.057"] = {
+		"Fragilità. Lo sapevo già. Avrei solo preferito un promemoria meno tagliente.",
+		"Un promemoria su quanto è sottile la pelle. Ricevuto, grazie, archiviato.",
+	},
+	["heal.w14.grit.058"] = {
+		"Regge. Non mi serve altro permesso.",
+		"Non deve essere bello. Deve tenere.",
+		"Il bello è per dopo. Tenere è per adesso.",
+	},
+	["heal.w14.grit.059"] = {
+		"tocca per un attimo il punto della ferita, come si tocca ferro per scaramanzia.",
+		"lancia un'occhiata alla ferita chiusa, una sola, e non ci torna più sopra.",
+	},
+	["heal.w14.grit.060"] = {
+		"Mentiva, il dolore. Diceva che era finita. Di solito mente.",
+		"Il dolore giura sempre di avere l'ultima parola. Non ce l'ha mai.",
+	},
+	["heal.w14.grit.061"] = {
+		"Ferita mia, cura mia, strada mia.",
+		"La ferita è mia, la cura pure, e anche la strada che resta.",
+	},
+	["heal.w14.grit.062"] = {
+		"La paura mi rende prudente. Troppa mi rallenta. Tenerla a un pizzico.",
+		"Un po' di paura è un buon condimento. Una manciata rovina il piatto.",
+	},
+	["heal.w14.grit.063"] = {
+		"Non sempre mi rialzerò. Non è un buon motivo per saltare le volte in cui posso.",
+		"Un giorno non mi rialzerò. Tutti gli altri giorni, sì.",
+		"Non tutte le volte. Questa volta sì.",
+	},
+	["heal.w14.grit.064"] = {
+		"Ho ancora parecchia grinta in corpo.",
+		"Ho appena cominciato.",
+		"Ne resta. Ne resta parecchio.",
+	},
+	["heal.w14.grit.065"] = {
+		"chiude le dita a pugno, poi le riapre, di nuovo pronte.",
+		"alza il mento e va avanti.",
+		"porta indietro le spalle e fa un passo avanti.",
+	},
+	["heal.w14.grit.066"] = {
+		"Contare quello che resta: gambe, mani, occhi, fegato. Basta e avanza.",
+		"Gambe, mani, occhi, volontà. Ci sono tutti. Si parte.",
+	},
+	["heal.w14.grit.067"] = {
+		"Ogni cicatrice segna una volta in cui non ho mollato. Questa non farà eccezione, se mai lascerà il segno.",
+		"Se lascia un segno, che segni questo: non ho mollato.",
+	},
+	["heal.w14.grit.068"] = {
+		"Promemoria: guardare quel lato.",
+		"Quel lato è debole. Ricordarselo.",
+		"Coprire quel lato. Ricordarselo.",
+	},
+	["heal.w14.grit.069"] = {
+		"Tenerla a distanza. La morte ha le braccia lunghe, ma per ora le mie bastano.",
+		"A un braccio dalla fine. Abbastanza vicino da vederla, abbastanza lontano da voltarsi.",
+	},
+	["heal.w14.grit.070"] = {
+		"Testa dura come un chiodo in uno stivale vecchio, ecco.",
+		"Ho la testa troppo dura per restare a terra. Un difetto, ma utile.",
+	},
+	["heal.w14.grit.071"] = {
+		"Prendersi cura dell'attrezzo che fa il lavoro. L'attrezzo, in questo caso, sono io.",
+		"Un filo smussato non serve a nessuno. Riaffilato, allora.",
+	},
+	["heal.w14.grit.072"] = {
+		"Basta così. Avanti.",
+		"Finito di poltrire. Si va.",
+	},
+	["heal.w14.grit.073"] = {
+		"Alla ferita non importava chi fossi. Alla prossima nemmeno. Tanto vale farsi trovare in guardia.",
+		"Nessun dolore chiede il nome. Adesso almeno gli rispondo in piedi.",
+	},
+	["heal.w14.grit.074"] = {
+		"chiude gli occhi un momento; quando li riapre, dal suo viso è sparita ogni incertezza.",
+		"lascia passare il peggio, poi stringe le labbra in una linea dura e dritta.",
+	},
+	["heal.w14.grit.075"] = {
+		"La rabbia è un pessimo medico ma un'ottima stampella. Mi ci appoggio ancora un po'.",
+		"Un po' di collera tiene oneste le gambe. Me la tengo.",
+		"La collera fa da stampella. Mi appoggio.",
+	},
+	["heal.w14.grit.076"] = {
+		"Quello che mi aspettava può continuare ad aspettare.",
+		"Può aspettare. Aspettare le riesce bene.",
+	},
+	["heal.w14.grit.077"] = {
+		"Gli errori da cui si esce vivi sono i maestri più economici che ci siano.",
+		"Un errore da cui ci si rialza costa poco. Quelli cari non lasciano il tempo di prendere appunti.",
+	},
+	["heal.w14.grit.078"] = {
+		"Ammaccature sì, sconfitta no.",
+		"Fa male, sì. Ma non mi piega.",
+		"Qualche ammaccatura. Niente di più.",
+	},
+	["heal.w14.grit.079"] = {
+		"Resistere. Guarire. Resistere. La regola più antica, e la più semplice.",
+		"Sopportare e rialzarsi: non c'è regola più nobile, né più dura.",
+	},
+	["heal.w14.grit.080"] = {
+		"osserva la ferita chiusa con un'approvazione riluttante, come si guarda un rivale che ha fatto una cosa per bene.",
+		"concede alla ferita richiusa un cenno secco, di quelli riservati al lavoro appena sufficiente.",
+		"fa un cenno riluttante alla ferita chiusa.",
+	},
+	["heal.w14.grit.081"] = {
+		"Al lavoro. Qualunque cosa sia, tocca a me finirla.",
+		"Stavo facendo qualcosa, prima di farmi male. Torno a farla.",
+		"Ho lasciato cadere un filo. Lo riprendo.",
+	},
+	["heal.w14.grit.082"] = {
+		"Ci metterò un po' di più a fidarmi del terreno. Non è paura: è giudizio guadagnato.",
+		"Mi fiderò un po' meno dei piedi e un po' di più degli occhi.",
+	},
+	["heal.w14.grit.084"] = {
+		"Qualunque cosa ci sia dentro di me, è roba che ritorna.",
+		"Dentro ho qualcosa che torna sempre. Lo preferisco alla durezza.",
+		"Io ritorno. È tutto il mio talento.",
+	},
+	["heal.w14.grit.085"] = {
+		"Guarire non è riposare. Prendo in prestito il riposo e lo restituirò più avanti.",
+		"Integra la pelle, non le forze. Si va avanti lo stesso.",
+	},
+	["heal.w14.grit.086"] = {
+		"Che venga pure. Lo aspetto in piedi.",
+		"Il resto, pure. Sono in piedi.",
+		"Ancora, allora. Ci sono.",
+	},
+	["heal.w14.grit.087"] = {
+		"C'è una vocina piccola e ferma che dice: avanti. Ho intenzione di continuare ad ascoltarla.",
+		"Qualcosa di silenzioso, dentro, continua a dire: in piedi. Finora non ha sbagliato.",
+		"Una voce quieta, dentro, dice: avanti. Le do retta.",
+	},
+	["heal.w14.grit.089"] = {
+		"Va bene. Va bene così. Si parte.",
+		"Basta questo. Non mi serve di meglio.",
+	},
+	["heal.w14.grit.090"] = {
+		"Ho imparato due cose: dove fa male, e che lo reggo.",
+		"Adesso so quanto costa quell'errore, e che una volta posso pagarlo.",
+		"Due lezioni da una sola ferita. Prezzo onesto.",
+	},
+	["heal.w14.grit.091"] = {
+		"La mia parte non la porta nessun altro. Quindi la porto io, dolore o no.",
+		"Il mio carico resta il mio. Con la ferita chiusa, almeno pesa meno.",
+		"La mia parte. Le mie spalle.",
+	},
+	["heal.w14.grit.092"] = {
+		"Mi rialzerò ogni volta. Contaci.",
+		"Cento cadute, cento volte in piedi. È il patto che rispetto.",
+		"Ogni volta. Senza eccezioni.",
+	},
+	["heal.w14.grit.093"] = {
+		"Se il mondo mi vuole togliere di mezzo, dovrà essere più accurato.",
+		"Quello che ha cercato di finirmi ha lasciato il lavoro a metà. Tanto peggio.",
+	},
+	["heal.w14.grit.094"] = {
+		"controlla l'equipaggiamento con mani rapide e sicure, {g:pronto|pronta} a riprendere.",
+		"stringe una cinghia, sistema l'equipaggiamento, ed è {g:pronto|pronta}.",
+	},
+	["heal.w14.grit.095"] = {
+		"La prossima volta lo sentirò arrivare. Anche le orecchie imparano, non solo la pelle.",
+		"Gli occhi saranno più svelti la prossima volta. La ferita ci ha pensato.",
+	},
+	["heal.w14.grit.096"] = {
+		"Non ho finito. Sentitelo bene, chiunque stia ascoltando.",
+		"Sia chiaro a tutti: non ho chiuso.",
+		"Chiudere qui? Nemmeno a parlarne.",
+	},
+	["heal.w14.grit.097"] = {
+		"Quante altre ne ha dentro, il corpo? Abbastanza. Devono bastare.",
+		"C'è un limite a quante volte la carne si richiude. Il mio non l'ho trovato, e non lo cerco.",
+	},
+	["heal.w14.grit.098"] = {
+		"Cadere, rialzarsi. Conta solo la seconda.",
+		"Andare giù capita a chiunque. Il bello è quello che viene dopo.",
+		"Andar giù è facile. È rialzarsi che significa qualcosa.",
+	},
+	["heal.w14.grit.099"] = {
+		"Sistemata. Cosa c'è da fare?",
+		"Questa è sistemata. Cosa mi aspetta?",
+		"Fatto. Prossima cosa.",
+	},
+	["heal.w14.grit.100"] = {
+		"guarda la ferita chiusa come per imprimersi bene in mente come è successo.",
+		"aggrotta la fronte sul punto risanato, rigirandosi l'errore nella mente.",
+	},
+	["heal.w14.grit.101"] = {
+		"Il segreto è durare più del dolore. Si stanca prima lui.",
+		"Il dolore si annoia. Io no.",
+		"Molla prima il dolore. Succede sempre.",
+	},
+	["heal.w14.grit.103"] = {
+		"Non c'è vergogna nell'aver bisogno di cure. Vergogna sarebbe restare a pezzi per orgoglio.",
+		"Rimettersi in sesto non è debolezza. Rifiutarlo lo sarebbe.",
+		"Restare a pezzi è una vanità. Non posso permettermela.",
+	},
+	["heal.w14.mend.001"] = {
+		"Torna prima la presa. Le dita che fingevano adesso si chiudono davvero.",
+		"Per prima la mano si ricorda come stringere. Il resto di me le va dietro.",
+		"Prima di tutto, le dita. Si piegano, afferrano, e fanno sul serio.",
+	},
+	["heal.w14.mend.002"] = {
+		"Questo prurito. La carne che si richiude prude sempre come un rancore.",
+		"Adesso prude, ed è una buona notizia travestita da seccatura.",
+		"La carne che si chiude dà prurito. Ho imparato a leggerlo come una gentilezza.",
+	},
+	["heal.w14.mend.003"] = {
+		"I contorni delle cose tornano netti. Erano più sfocati di quanto pensassi.",
+		"Le sagome del mondo ritornano, una per una, mentre il dolore si ritrae.",
+		"Le linee si fanno ferme. Il mondo smette di sbavare agli angoli.",
+	},
+	["heal.w14.mend.004"] = {
+		"Si ripara, il corpo, senza dirmi quante altre volte ha intenzione di farlo.",
+		"Si chiude, come ha sempre fatto. Nessuno avvisa quale sarà l'ultima volta.",
+		"Si è riparato, senza dire quante altre volte ne sarà capace.",
+	},
+	["heal.w14.mend.005"] = {
+		"Acuto, poi sordo, poi solo un ronzio da qualche parte nelle ossa. Con un ronzio ci convivo.",
+		"Da fitta a martellata sorda, poi a un lieve ronzio. Col ronzio si lavora.",
+		"La fitta si attutisce, poi tace, poi è appena una voce lontana.",
+	},
+	["heal.w14.mend.006"] = {
+		"Le mani smettono di tremare prima che glielo dica io. Lo sapevano già.",
+		"Il tremito lascia le mani da solo. Loro le notizie le sentono sempre prima di me.",
+		"Il tremito esce dalle dita. Mani quiete, finalmente.",
+	},
+	["heal.w14.mend.007"] = {
+		"La ferita si chiude. La pelle terrà una linea chiara, l'unico diario che scrive.",
+		"Chiusa, la ferita. Resterà un segno leggero, che nessuno leggerà tranne me.",
+		"Si è sigillata. La pelle ci mette sopra la sua firma, piccola e per sempre.",
+	},
+	["heal.w14.mend.008"] = {
+		"La forza risale dalle gambe come qualcosa che torna a casa arrampicandosi.",
+		"La sento tornare dal basso: piedi, ginocchia, schiena, e infine la volontà.",
+	},
+	["heal.w14.mend.009"] = {
+		"Il sollievo colpisce più forte del colpo. Per un attimo il mondo ondeggia.",
+		"Strano: il sollievo mi indebolisce le ginocchia più della ferita.",
+		"Molla così in fretta, il dolore, che mi gira la testa e non trovo appigli.",
+	},
+	["heal.w14.mend.010"] = {
+		"Le spalle, che non sapevo di tenere alzate, scendono di un dito.",
+		"La fronte si era aggrottata chissà quando. Adesso si spiana da sola.",
+	},
+	["heal.w14.mend.011"] = {
+		"Le ossa accettano la cura senza lamentarsi. Hanno smesso di aspettarsi un trattamento migliore.",
+		"Le ossa sono pazienti. Quello che non dicono adesso lo diranno fra molti anni.",
+		"Le ossa incassano in silenzio. Col silenzio, le ossa ci sanno fare.",
+	},
+	["heal.w14.mend.012"] = {
+		"Il fischio nelle orecchie si assottiglia fino a sparire, e i piccoli rumori tornano a occupare il posto.",
+		"Le orecchie si liberano. Tornano i piccoli rumori, come da una porta aperta.",
+		"Il sibilo nelle orecchie si spegne, e il chiacchiericcio minuto del mondo rientra.",
+	},
+	["heal.w14.mend.013"] = {
+		"Il corpo è un compagno testardo. Si lamenta per tutta la strada e non se ne va mai.",
+		"Il mio corpo: brontolone, dolorante, inaffidabile, eppure presente. Non mi ha mai {g:piantato|piantata} in asso.",
+		"Il corpo: indolenzito, lento, brontolone, ma sempre qui. Non mi lascia.",
+	},
+	["heal.w14.mend.014"] = {
+		"Un silenzio piccolo e pulito dove c'era il dolore. Quasi ci potrei stare {g:seduto|seduta} dentro.",
+		"Il dolore lascia dietro di sé una stanza quieta. Ci resto un momento più del necessario.",
+		"Dov'era la fitta, una quiete. Non mi muovo, per non sciuparla.",
+	},
+	["heal.w14.mend.015"] = {
+		"La volontà torna per ultima, e torna con la voce più forte.",
+		"Gambe, mani, occhi. Poi la parte di me che non cede. Quella arriva gridando.",
+	},
+	["heal.w14.mend.016"] = {
+		"Qualcosa di lontano e paziente aspettava appena oltre il dolore. Adesso arretra. Non se n'è andato.",
+		"Ciò che aspettava dietro il dolore fa un passo indietro. Uno soltanto.",
+		"La cosa paziente dietro il dolore si ritira un poco. Non ha mai avuto fretta.",
+	},
+	["heal.w14.mend.017"] = {
+		"Sento la forma esatta della ferita mentre si chiude. Per un po' me la ricorderò.",
+		"Chiudendosi, disegna il proprio contorno sotto la pelle. Difficile scordare qualcosa che hai sentito rimpicciolire.",
+		"La sento restringersi, bordo dopo bordo. Ne ricorderò la forma.",
+	},
+	["heal.w14.mend.018"] = {
+		"Tutto ciò che era serrato si scioglie: pugni, mascella, i muscoli lunghi della schiena.",
+		"Avevo tutto serrato, dal collo alle ginocchia. Pezzo per pezzo, si allenta.",
+	},
+	["heal.w14.mend.019"] = {
+		"Devo delle scuse a queste mani. Hanno tenuto duro per tutto il tempo.",
+		"Grazie, mani. Tremavate, ma non avete mai mollato.",
+		"Queste mani meritano più di quanto do loro. Hanno retto, per tutto il tempo.",
+	},
+	["heal.w14.mend.020"] = {
+		"Fa rumore, il dolore; la guarigione no. Dovrei imparare ad ascoltare quella silenziosa.",
+		"Gridava, la ferita. La cura sussurra appena. Meritano ascolto tutte e due.",
+		"Tutto rumore, il dolore. La guarigione invece è muta.",
+	},
+	["heal.w14.mend.021"] = {
+		"La carne perdona in fretta. È il resto di me che tiene il conto.",
+		"La pelle perdona in un attimo. Qualcosa più in fondo tiene i conti molto più a lungo.",
+		"Per la carne è già acqua passata. Un'altra parte di me ci si aggrappa ancora.",
+	},
+	["heal.w14.mend.022"] = {
+		"C'è un momento, proprio mentre il dolore se ne va, in cui niente è sbagliato. Provo a restarci.",
+		"Per un batter d'occhio niente fa male e niente manca. Poi passa.",
+	},
+	["heal.w14.mend.023"] = {
+		"L'impalcatura di me si ricorda la sua forma giusta e ci si rimette dentro.",
+		"Ossa e tendini ritrovano il loro posto, come soldati che tornano in riga.",
+	},
+	["heal.w14.mend.024"] = {
+		"La ferita è chiusa, la stanchezza no. Rimettersi in sesto non è mai stato riposare.",
+		"Riparare non è riposare. Lo so, e le ossa lo sanno meglio di me.",
+		"Andato il dolore, resta la fatica. Non hanno mai tenuto gli stessi orari.",
+	},
+	["heal.w14.mend.025"] = {
+		"La ferita si chiude dal fondo. È la superficie quella che ci mette di più a convincersi.",
+		"In profondità la ferita è già saldata. La pelle sopra è l'ultima a lasciarsi persuadere.",
+		"Sotto, il taglio è già chiuso. La pelle ci sta ancora pensando.",
+	},
+	["heal.w14.mend.026"] = {
+		"Nessuno guarda un corpo che si ripara. Fa il lavoro da solo, e io con lui.",
+		"Nessun testimone per questa parte. Solo io e una ferita che si chiude piano.",
+		"Questa parte non la vede mai nessuno: io e la ferita che chiudiamo la lite.",
+	},
+	["heal.w14.mend.027"] = {
+		"La vista si assesta. Il mondo smette di ondeggiare e resta dove l'hanno messo.",
+		"Lo sfocato se ne va dagli occhi. Le cose stanno ferme quando le guardo.",
+		"Gli occhi ritrovano l'appiglio. Le cose smettono di scivolare.",
+	},
+	["heal.w14.mend.028"] = {
+		"Il dolore non sparisce. Fa le valigie piano, come un ospite che spera di essere trattenuto.",
+		"Se ne va, questo dolore, ma senza fretta. Trova sempre un'ultima cosa da dire.",
+		"Se ne va, se ne va, e intanto indugia sulla soglia, questa fitta.",
+	},
+	["heal.w14.mend.029"] = {
+		"Qualcosa dentro di me si raddrizza prima del resto. Una schiena di un altro genere.",
+		"Prima che si raddrizzi la schiena, qualcos'altro in me l'ha già fatto.",
+	},
+	["heal.w14.mend.030"] = {
+		"Buffo quanto in fretta dimentico com'era. Il corpo è generoso, in questo.",
+		"Già fatico a ricordare il dolore. I corpi dimenticano apposta, credo.",
+		"Provo a ricordare quanto era brutto, e non ci riesco del tutto. Una specie di grazia.",
+	},
+	["heal.w14.mend.031"] = {
+		"La sensibilità torna nei polpastrelli con un formicolio di spilli. Maleducato, ma benvenuto.",
+		"Formicolio nelle dita. I nervi si svegliano, offesi per essere stati lasciati fuori.",
+		"Pizzicore nei polpastrelli: il tatto, di nuovo al lavoro.",
+	},
+	["heal.w14.mend.032"] = {
+		"Mi spaventa la quiete dopo, non la ferita. Nella quiete posso misurare quanto ci sono {g:andato|andata} vicino.",
+		"Finché c'era il dolore, la testa era occupata. Ora che è andato, c'è spazio per capirlo.",
+		"Ora che è tutto quieto, posso contare quanto è mancato poco.",
+	},
+	["heal.w14.mend.033"] = {
+		"Come una campana percossa che torna muta: così si quieta il corpo.",
+		"Una vibrazione bassa mi attraversa mentre tutto si quieta, come una corda pizzicata che si ferma.",
+	},
+	["heal.w14.mend.034"] = {
+		"Pelle nuova, pelle tenera. Per un po' risparmierò questo lato senza volerlo.",
+		"La pelle fresca sembra sottile come carta. Il corpo la proteggerà senza chiedermelo.",
+		"Delicata, la pelle nuova. Ci farò attenzione, che lo voglia o no.",
+	},
+	["heal.w14.mend.035"] = {
+		"Riempie il posto lasciato dal dolore, la forza, come l'acqua prende la forma di una tazza.",
+		"Torna a colmare il vuoto lasciato dal dolore, la forza, e lo riempie alla perfezione.",
+		"La forza filtra di nuovo nei vuoti, lenta e sicura.",
+	},
+	["heal.w14.mend.036"] = {
+		"Le ginocchia smettono di tremare. Sembrano di nuovo ginocchia, non corda bagnata.",
+		"La debolezza scivola via dalle gambe. Sono di nuovo mie, per starci in piedi.",
+		"Le gambe, che un attimo fa erano di sabbia, tornano gambe. Mi ci appoggio, con gratitudine.",
+	},
+	["heal.w14.mend.037"] = {
+		"Questa è chiusa. La stanchezza sotto, quella lunga, non la raggiunge niente.",
+		"Le ferite si chiudono. La fatica profonda che ci sta sotto resta esattamente dov'è.",
+		"Chiusa, questa. La vecchia stanchezza lì sotto, intatta.",
+	},
+	["heal.w14.mend.038"] = {
+		"Il dolore si sgancia da me un fermaglio dopo l'altro, come una fibbia ostinata.",
+		"Molla la presa a tappe, come un pugno rattrappito che si apre.",
+	},
+	["heal.w14.mend.039"] = {
+		"Ascolto il corpo come si ascolta una casa che si assesta. Uno scricchiolio qui. Niente di rotto.",
+		"Scricchiolii nelle costole, uno scatto nella spalla. Niente di più.",
+		"Piccoli rumori da dentro, le giunture che ritrovano il loro posto. Nessuno suona come un allarme.",
+	},
+	["heal.w14.mend.040"] = {
+		"Sotto la pelle, ciò che era strappato si ricongiunge. Lo sento come mani che si stringono.",
+		"Sotto la pelle i lembi strappati si ritrovano e tengono, piano, al buio.",
+	},
+	["heal.w14.mend.041"] = {
+		"Il corpo non mi chiede mai perché continuo a fargli questo. Si ripara e basta. Non so se me lo merito.",
+		"Nemmeno un rimprovero, dal corpo. Aggiusta e basta quello che ho rotto io.",
+		"Niente accuse, niente musi lunghi. La carne si limita a perdonarmi.",
+	},
+	["heal.w14.mend.042"] = {
+		"Potrei dormire, qui e adesso. Rimettersi in sesto costa questo a un corpo.",
+		"Il sonno bussa nell'istante in cui il dolore se ne va. Più tardi, gli dico.",
+		"Se ne va la fitta, e al suo posto una gran voglia di sdraiarmi.",
+	},
+	["heal.w14.mend.043"] = {
+		"Chiusa, la ferita. Ma una parte di me aveva già cominciato a salutare.",
+		"Una parte di me aveva cominciato a mollare prima che il resto decidesse di restare. Torna piano.",
+		"Sigillata la ferita, la parte di me che aveva fatto i bagagli ci mette di più a disfarli.",
+	},
+	["heal.w14.mend.044"] = {
+		"Chiudo il pugno, lo apro, lo richiudo. La mano risponde ogni volta. È tutta qui la prova.",
+		"Chiudi, apri, chiudi. Le dita obbediscono senza storie.",
+		"Pugno, mano aperta, pugno. Risponde sempre.",
+	},
+	["heal.w14.mend.045"] = {
+		"Che sia un piccolo rito: il dolore che se ne va, e io {g:fermo|ferma} a guardarlo partire.",
+		"Do a questo momento quel che gli spetta. Una ferita che si chiude merita un po' di quiete.",
+		"Certe cose vanno onorate. Resto in silenzio mentre questa passa.",
+	},
+	["heal.w14.mend.046"] = {
+		"Se n'è andato, il dolore, ma il corpo continua a prepararsi a riceverlo. Ci vorrà un po' per disimpararlo.",
+		"Non fa più male, ma mi ritraggo lo stesso. Il riflesso guarisce più piano.",
+		"Il male se n'è andato. La smorfia non l'ha ancora saputo.",
+	},
+	["heal.w14.mend.047"] = {
+		"Ogni volta che la ferita si ripara, torna un po' più dura. Mi sto facendo, piano, con ciò che è sopravvissuto.",
+		"Richiusa più dura, la pelle. Divento ciò che ha retto.",
+		"Dove si era strappata, la carne si rinsalda più spessa. Il corpo si fa le mura con le proprie brecce.",
+	},
+	["heal.w14.mend.048"] = {
+		"Lascio cadere la testa un momento e sento soltanto questo: meno, e meno, e meno.",
+		"Occhi chiusi un istante. Meno dolore. Meno. Ancora meno.",
+	},
+	["heal.w14.mend.049"] = {
+		"Con quanta facilità il corpo si disfa, e con quanta pazienza si ricompone. Cambierei un po' di pazienza con meno facilità.",
+		"Carne svelta a rompersi, lenta e fedele a ripararsi. Patto poco equo.",
+	},
+	["heal.w14.mend.050"] = {
+		"Le fitte rallentano a un ritmo pigro, e poi si dimenticano di sé.",
+		"Il ritmo del dolore rallenta, inciampa, e alla fine perde il conto.",
+	},
+	["heal.w14.mend.051"] = {
+		"Non capisco metà di quello che succede sotto la pelle. Non ha bisogno che io capisca.",
+		"Carne che ritrova carne, fili di me che si riannodano. Non saprei spiegarlo, e non me lo chiede.",
+		"Sotto la pelle qualcosa si risalda. Non saprei spiegare come.",
+	},
+	["heal.w14.mend.052"] = {
+		"Il mondo torna con i suoi colori giusti. Non mi ero {g:accorto|accorta} che si fosse spento.",
+		"I colori riprendono tutto il loro peso. Stava sbiadendo tutto, e lo lasciavo fare.",
+		"Le cose ritrovano il colore, come dietro un vetro appena pulito.",
+	},
+	["heal.w14.mend.053"] = {
+		"Ogni parte di me fa rapporto, una dopo l'altra, ognuna con la sua piccola lagnanza, ognuna presente.",
+		"Spalla, costole, ginocchio: tutti all'appello, doloranti ma presenti.",
+	},
+	["heal.w14.mend.054"] = {
+		"Nessun altro saprà mai quanto ha fatto male. Lo sa il corpo. Basterà.",
+		"Solo il corpo sa quanto è stata brutta. E non è uno che parla.",
+		"Quanto è costato lo sa solo il corpo. E tace.",
+	},
+	["heal.w14.mend.055"] = {
+		"Anche i pensieri smettono di inciampare. Tornano a camminare in fila.",
+		"La mente si schiarisce. Le parole si rimettono nell'ordine giusto, cosa che avevano smesso di fare.",
+		"La confusione in testa se ne va col dolore. Riesco a tenere un pensiero fino in fondo.",
+	},
+	["heal.w14.mend.056"] = {
+		"scioglie le dita una per una, richiamando in servizio tutta la mano.",
+		"apre e chiude una mano, piano, guardandola obbedire.",
+		"conta le dita muovendole, e le trova tutte.",
+	},
+	["heal.w14.mend.057"] = {
+		"lascia ricadere le spalle, e un po' di rigidità abbandona la sua postura.",
+		"si scioglie da una postura raccolta tenuta troppo a lungo.",
+	},
+	["heal.w14.mend.058"] = {
+		"si gratta distrattamente la ferita che si chiude, poi si trattiene.",
+		"strofina il prurito lungo la pelle che si risana, aggrottando la fronte.",
+		"fa per grattarsi, ci ripensa, e lascia che il prurito faccia il suo corso.",
+	},
+	["heal.w14.mend.059"] = {
+		"si raddrizza per gradi, lentamente, finché non è di nuovo {g:dritto|dritta} in tutta la sua altezza.",
+		"si tira su poco per volta dalla postura curva, e alla fine raddrizza le spalle.",
+	},
+	["heal.w14.mend.060"] = {
+		"chiude gli occhi un momento e aspetta che il dolore finisca di andarsene.",
+		"chiude gli occhi, in ascolto di sé, finché quello che sente dentro sembra bastare.",
+	},
+	["heal.w14.mend.061"] = {
+		"sposta il peso sul lato che faceva male, lo mette alla prova, e scopre che regge.",
+		"carica con cautela un po' di peso sul lato dolente, poi un po' di più.",
+	},
+	["heal.w14.mend.062"] = {
+		"resta immobile a lungo, come per paura di spaventare la guarigione e farla scappare.",
+		"si fa del tutto immobile, badando a non disturbare quello che accade sotto la pelle.",
+		"non muove un muscolo, e lascia che sotto la pelle succeda quel che deve.",
+	},
+	["heal.w14.mend.063"] = {
+		"allenta la mascella, e il viso si distende.",
+		"abbandona una smorfia che portava da un pezzo.",
+		"perde a poco a poco la piega dura della bocca.",
+	},
+	["heal.w14.mend.064"] = {
+		"fa ruotare il collo una volta, e sembra crescere di un palmo.",
+		"alza il mento, e tutta la figura sembra ricordarsi a cosa serve.",
+		"per un istante pare più {g:alto|alta} di prima.",
+	},
+	["heal.w14.mend.065"] = {
+		"passa il pollice lungo la linea dove c'era la ferita, sentendola sigillarsi.",
+		"segue con un dito la ferita che si chiude, come si controlla una cucitura.",
+		"tasta la ferita che si chiude come si cerca una crepa in un vaso.",
+	},
+	["heal.w14.mend.066"] = {
+		"guarda a lungo il punto risanato, con un'espressione difficile da definire.",
+		"osserva in silenzio la ferita guarita, come se avesse appena detto qualcosa di importante.",
+		"contempla a lungo il punto guarito, senza dire nulla.",
+	},
+	["heal.w14.mend.067"] = {
+		"lascia sfuggire un suono basso di sollievo, metà risata, metà qualcos'altro.",
+		"emette un piccolo verso senza parole mentre il dolore cede, di quelli che nessuno fa apposta.",
+	},
+	["heal.w14.mend.068"] = {
+		"prova qualche piccolo movimento, uno dopo l'altro, come un artigiano che collauda un attrezzo appena riavuto.",
+		"prova un allungo, una torsione, un mezzo piegamento, e le risposte bastano.",
+	},
+	["heal.w14.mend.069"] = {
+		"si affloscia un attimo, come se fosse stato il dolore a tenere su tutto.",
+		"si abbandona un istante, una volta che il dolore molla, come se fosse stato l'unica cosa a stare in piedi.",
+	},
+	["heal.w14.mend.070"] = {
+		"inclina la testa, come se il fischio nelle orecchie si fosse appena interrotto.",
+		"strizza gli occhi, poi smette, mentre il mondo davanti torna fermo.",
+	},
+	["heal.w14.mend.071"] = {
+		"china brevemente il capo, un piccolo omaggio privato allo scampato pericolo.",
+		"fa un cenno del capo a nessuno in particolare, come per ringraziare il corpo della fatica.",
+	},
+	["heal.w14.mend.072"] = {
+		"pianta bene le gambe e aspetta che smettano di tremare prima di fidarsene.",
+		"lascia che il tremito esca dalle ginocchia, in piedi e senza muoversi.",
+	},
+	["heal.w14.mend.073"] = {
+		"guarda il segno fresco, poi altrove, poi di nuovo il segno.",
+		"continua a guardare la nuova linea chiara sulla pelle, e poi, con decisione, smette.",
+	},
+	["heal.w14.mend.074"] = {
+		"si ricompone, pezzo per pezzo, come chi raccoglie cose sparse.",
+		"si raccoglie piano, e dal viso il dolore se ne va per ultimo.",
+	},
+	["heal.w14.mend.075"] = {
+		"sembra assestarsi meglio dentro la propria figura, più {g:saldo|salda} a ogni istante.",
+		"occupa più spazio, chissà come, man mano che la forza ritorna.",
+	},
+	["heal.w14.mend.076"] = {
+		"si strofina un occhio con le nocche: ora che il dolore se n'è andato, arriva la stanchezza.",
+		"preme un momento la base dei palmi sugli occhi, poi lascia ricadere le mani.",
+	},
+	["heal.w14.mend.077"] = {
+		"tasta con prudenza il punto guarito, fa una smorfia per abitudine, e scopre che non ce n'è motivo.",
+		"pungola con cautela il punto risanato, sussulta in anticipo, e poi pare quasi provarne delusione.",
+		"tocca il punto risanato, in attesa di un dolore che non arriva.",
+	},
+	["heal.w14.mend.078"] = {
+		"resta in silenzio, di quel silenzio che arriva quando un dolore lungo smette.",
+		"lascia scorrere via la tensione dalla schiena come acqua da un secchio rovesciato.",
+	},
+	["heal.w14.mend.079"] = {
+		"solleva lo sguardo dalla ferita al mondo, abbastanza in sesto da guardarlo.",
+		"alza gli occhi dal proprio dolore, come ricordandosi che il mondo è più grande di una ferita.",
+	},
+	["heal.w14.mend.080"] = {
+		"sfiora il punto risanato con una strana tenerezza, come se appartenesse a qualcun altro.",
+		"osserva la propria guarigione con una dolcezza strana, lontana.",
+	},
+	["heal.w14.mend.081"] = {
+		"affonda le dita in un punto indolenzito e massaggia finché non cede.",
+		"scioglie l'ultimo indolenzimento da un muscolo, con dita lente e distratte.",
+	},
+	["heal.w14.mend.082"] = {
+		"sorride appena, senza volerlo, mentre il dolore si allontana.",
+		"lascia passare un sorriso piccolo e stanco, che c'è e poi non c'è più.",
+	},
+	["heal.w14.mend.083"] = {
+		"si stira con cura, giuntura per giuntura, come chi rimonta un congegno.",
+		"si allunga con grande cautela, un po' di più a ogni tentativo, in ascolto di ogni protesta.",
+	},
+	["heal.w14.mend.084"] = {
+		"ritrova l'equilibrio, e il terreno sembra acconsentire.",
+		"assesta la posizione, salda e quadrata, mentre se ne va l'ultima debolezza.",
+	},
+	["heal.w14.mend.085"] = {
+		"si ferma come ci si ferma davanti a una porta che stava per aprirsi, poi le volta le spalle.",
+		"resta un momento in silenzio, come davanti a una soglia vicina e poi lontana.",
+	},
+	["heal.w14.mend.086"] = {
+		"Ah. Mi sta lasciando andare.",
+		"Mm. Senti come si allenta.",
+	},
+	["heal.w14.mend.087"] = {
+		"Mani ferme. Bene. Bene.",
+		"Mani ferme. Era la prima cosa che rivolevo.",
+	},
+	["heal.w14.mend.088"] = {
+		"Tutto al suo posto. O abbastanza da starci in piedi.",
+		"In piedi, e stavolta sul serio.",
+	},
+	["heal.w14.mend.090"] = {
+		"Ci vedo dritto. Piccole grazie.",
+		"Gli occhi funzionano. Bene. Il resto verrà dietro.",
+	},
+	["heal.w14.mend.091"] = {
+		"Oh, il dolore se ne va. Finalmente.",
+		"Mm, sta passando. Meno male.",
+	},
+	["heal.w14.mend.092"] = {
+		"Grazie, ossa testarde.",
+		"Grazie, corpo mio. La parte difficile l'hai fatta tu.",
+	},
+	["heal.w14.mend.093"] = {
+		"Si sta chiudendo. Lo sento tirare.",
+		"Senti come tira? È lei che si chiude.",
+	},
+	["heal.w14.mend.094"] = {
+		"La forza è tornata. La sento nella presa.",
+		"Eccola, la forza. Proprio dove l'avevo lasciata.",
+	},
+	["heal.w14.mend.095"] = {
+		"Questa lascerà il segno. Va bene. Me la ricorderò.",
+		"Resterà la cicatrice. Pazienza. Certe cose devono restare.",
+	},
+	["heal.w14.mend.096"] = {
+		"Calma. Lascia che finisca.",
+		"Adagio. Questa parte non si affretta.",
+	},
+	["heal.w14.mend.097"] = {
+		"Uff. Il prurito è la parte peggiore.",
+		"Prude da impazzire. Vuol dire che funziona, immagino.",
+	},
+	["heal.w14.mend.098"] = {
+		"Tutti i pezzi al loro posto. Contati uno per uno.",
+		"Ogni parte di me dove deve stare.",
+	},
+	["heal.w14.mend.099"] = {
+		"Mh. Niente male. Il corpo sa il fatto suo.",
+		"Guarda come si salda. Strano da vedere.",
+	},
+	["heal.w14.mend.100"] = {
+		"Shh. Il peggio se n'è andato.",
+		"Ssh. Era il peggio, e se ne sta andando.",
+	},
+	["heal.w14.watch.001"] = {
+		"Per il tempo di una cura, una vita che non è mia sta nelle mie mani. A quel peso non ci si abitua.",
+		"Una vita non mia, tenuta un attimo. Lieve da reggere, atroce da far cadere.",
+		"Un'intera vita altrui appesa a come farò i prossimi istanti.",
+	},
+	["heal.w14.watch.002"] = {
+		"Tra il troppo tardi e l'appena in tempo c'è mezzo istante. Tutto il mio mestiere sta lì dentro.",
+		"In tempo, o mezzo istante dopo. Il resto non conta, e non mi toglie il sonno.",
+		"Mezzo istante. È largo così il terreno su cui lavoro.",
+	},
+	["heal.w14.watch.003"] = {
+		"Le mani mi sembrano più lente di quanto siano. Meglio così che il contrario.",
+		"La velocità che vorrei non ce l'ho mai. Quella che basta, di solito. È quel «di solito» che mi segue ovunque.",
+		"«Troppo piano», dice la paura. Le mani non l'ascoltano e vanno avanti.",
+	},
+	["heal.w14.watch.004"] = {
+		"Prima chi sta peggio. Una regola semplice, e non mi è mai sembrata semplice.",
+		"Prima chi è più vicino al bordo. Chi resta deve aspettare, e io devo sopportarlo.",
+		"Scegliere chi prima: parola fredda per una scelta fatta con le mani incerte.",
+	},
+	["heal.w14.watch.005"] = {
+		"Conosco la forma esatta di questa ferita, e nient'altro di chi la porta. Una vicinanza strana.",
+		"Per un attimo, una vicinanza da famiglia. Poi ognuno per la sua strada. Strano mestiere.",
+		"Questa ferita la conosco a memoria, chi la porta per niente.",
+	},
+	["heal.w14.watch.006"] = {
+		"Esiste una versione di questo momento in cui ho esitato. Cerco di non andarci mai a far visita.",
+		"Ogni cura ha un gemello in ombra: quello giunto tardi. Mai guardarlo in faccia.",
+	},
+	["heal.w14.watch.007"] = {
+		"La stanchezza di chi cura non la vede nessuno. Si siede dietro gli occhi e aspetta un momento tranquillo.",
+		"La fatica arriva dopo, quando nessuno ha più bisogno di niente. Almeno è educata.",
+		"Una stanchezza che il sonno non raggiunge mai del tutto.",
+	},
+	["heal.w14.watch.008"] = {
+		"Curare è mettersi in mezzo tra una vita e il buio, e dirlo senza parole.",
+		"Ogni cura è un piccolo rifiuto, pronunciato senza aprire bocca.",
+		"La cura dice di no al buio senza alzare la voce.",
+	},
+	["heal.w14.watch.009"] = {
+		"Nessuno applaude una ferita che si chiude. Pazienza: applaudo io, in silenzio.",
+		"Niente evviva per una cura riuscita. Gli evviva sono per le cose che vanno storte con fracasso.",
+		"Una ferita che si chiude non fa rumore. Me ne accorgo solo io, e mi basta.",
+	},
+	["heal.w14.watch.010"] = {
+		"Quella pausa prima che il male ceda è l'attimo più lungo che conosca.",
+		"Tra il primo tocco e il momento in cui fa presa c'è un vuoto. Ci passo più tempo di quanto vorrei.",
+		"Nessuna attesa si allunga come quella prima che la cura faccia presa.",
+	},
+	["heal.w14.watch.011"] = {
+		"Le battaglie le vincono altri. Il mio lavoro è che resti qualcuno a festeggiare.",
+		"La mia parte in uno scontro è piccola: rifare intero quello che si è rotto.",
+		"Qualcuno vince. Qualcun altro fa sì che chi vince sia ancora in piedi per godersela.",
+	},
+	["heal.w14.watch.012"] = {
+		"Tutto ciò che si ricuce resta fragile. Io la rottura la sposto solo un po' più in là.",
+		"La fine non la cancello. La sposto un po' più avanti, e spero che si perda per strada.",
+		"Ricucito non vuol dire infrangibile. Vuol dire soltanto: più tardi.",
+	},
+	["heal.w14.watch.013"] = {
+		"Forse non ci rivedremo mai. La cura parte comunque insieme a quella vita, ovunque vada.",
+		"Chiunque sia, porterà un pezzo del mio lavoro dove io non andrò mai.",
+		"Forse le strade non si incroceranno più. La cura resta comunque.",
+	},
+	["heal.w14.watch.014"] = {
+		"Quando comincio a curare qualcuno, quella vita è affar mio finché non torna intera. Altri giuramenti non servono.",
+		"Una cura cominciata è un debito finché non è finita.",
+		"Una volta cominciata, una cura ha diritto su di me finché non è conclusa.",
+	},
+	["heal.w14.watch.015"] = {
+		"La paura non deve arrivare alle mani. In questo momento sono l'unica parte di me che conta per qualcuno.",
+		"La paura resta nel petto. Alle mani spetta la calma, a qualunque prezzo.",
+		"Tremare è roba da dopo. Adesso le mani appartengono a qualcun altro.",
+	},
+	["heal.w14.watch.016"] = {
+		"Ha un prezzo, rimettere in sesto qualcuno. Mai molto in una volta, ma si somma in un posto che non vedo.",
+		"Piccoli pagamenti, ogni volta. Prima o poi chiederò di vedere il registro.",
+		"Ogni cura si paga. Solo che il conto non lo vedo mai arrivare.",
+	},
+	["heal.w14.watch.017"] = {
+		"Fa presa. In me si scioglie un nodo che non sapevo di avere.",
+		"Tiene. Solo adesso le spalle mi scendono dalle orecchie.",
+		"La cura attecchisce, e mi si allenta dentro un nodo che non avevo notato.",
+	},
+	["heal.w14.watch.018"] = {
+		"Chiunque sia alla mia portata resta in piedi. Parole grosse, e le penso tutte.",
+		"Nessuno alla mia portata cade senza una risposta.",
+		"Questo è il mio terreno. Qui nessuno viene lasciato al male.",
+	},
+	["heal.w14.watch.019"] = {
+		"Ogni ferita che chiudo mi insegna qualcosa della prossima. Preferirei imparare in un altro modo.",
+		"Ogni male che curo è una lezione per quello dopo. Scuola cara, questa.",
+		"Migliorare perché serve. Non è il modo che avrei scelto.",
+	},
+	["heal.w14.watch.020"] = {
+		"Curare qualcuno mi ricorda quanto poco tenga insieme chiunque. Un filo, un attimo, qualcuno che fa attenzione.",
+		"Così poco tiene ferma una vita. Di solito, qualcuno che presta attenzione.",
+	},
+	["heal.w14.watch.021"] = {
+		"Il modo in cui qualcuno sta in piedi dice più di qualsiasi ferita. Se regge, posso guardare altrove.",
+		"Leggo la postura prima della ferita. Se è salda, gli occhi possono spostarsi.",
+		"Come si assesta un corpo dopo la cura dice più della cura stessa.",
+	},
+	["heal.w14.watch.022"] = {
+		"A chi ricuce nessuno fa una statua. Le statue sono per chi le ferite le apre, non per chi le chiude.",
+		"Niente statue per chi ricuce. Poco male: le statue non vanno da nessuna parte.",
+	},
+	["heal.w14.watch.023"] = {
+		"Curare è una compagnia solitaria: due vite, e una sola sa quanto ci si è andati vicino.",
+		"Due vite nello stesso istante, e a tenere il conto è solo chi cura.",
+		"Di quanto ci si è andati vicino, il ricordo resterà soltanto a chi cura.",
+	},
+	["heal.w14.watch.024"] = {
+		"Nessuno mi ha chiesto se volevo questa fiducia. Mi è stata consegnata nell'istante in cui è arrivato il male.",
+		"Fiducia data senza una parola. Il minimo è esserne {g:degno|degna}.",
+		"Nessuno firma niente. Il patto lo stringe il male da solo.",
+	},
+	["heal.w14.watch.025"] = {
+		"A volte il male continua anche dopo che ho fatto la mia parte. Non stavolta. Mi concedo di notare la differenza.",
+		"Ha fatto presa. Non succede sempre, e non scordo mai che potrebbe non farlo.",
+	},
+	["heal.w14.watch.026"] = {
+		"Per un istante il mondo intero è una ferita e chi la porta. Poi si riallarga, quasi controvoglia.",
+		"Il mondo si stringe su una sola ferita, poi piano si riapre.",
+	},
+	["heal.w14.watch.027"] = {
+		"Mai spendere tutto su una sola ferita. Poco più in là, la prossima con ogni probabilità sta già succedendo.",
+		"Tenersi qualcosa per la prossima. Di sicuro è già per strada.",
+		"Spendere con giudizio. La cura è una borsa che si svuota prima di riempirsi.",
+	},
+	["heal.w14.watch.028"] = {
+		"C'è qualcuno che cammina intero perché non ho esitato. Come orgoglio, mi basta e avanza.",
+		"Qualcuno è in piedi perché non ho esitato. Un po' di orgoglio me lo concedo.",
+		"Niente stendardi, niente canzoni. Solo qualcuno in piedi che poteva non esserci.",
+	},
+	["heal.w14.watch.029"] = {
+		"Adesso le mani sono ferme. Tremeranno dopo, quando potranno permetterselo. Hanno imparato l'ordine.",
+		"Ferme adesso, tremanti dopo. Le mani hanno un calendario tutto loro.",
+		"Il tremore aspetta il suo turno, e dopo arriva puntuale.",
+	},
+	["heal.w14.watch.030"] = {
+		"Quello che provo resta fuori dal viso. Chi riceve la cura ha già abbastanza da portare.",
+		"Viso calmo, mani occupate. La preoccupazione aspetti il suo turno.",
+		"Lo spavento può vedersi ovunque tranne che su di me. Forse qualcuno mi guarda per capire quanto è grave.",
+	},
+	["heal.w14.watch.031"] = {
+		"Il dolore passa dall'urlare al borbottare. È quello l'attimo che aspetto.",
+		"Da un grido a un borbottio: così suona una buona cura.",
+		"Il dolore abbassa la voce. È il segnale che aspetto.",
+	},
+	["heal.w14.watch.032"] = {
+		"Non chiedo da che parte stesse nessuno prima che arrivasse il male. Una ferita non porta stendardi.",
+		"Nessuna bandiera per il dolore. Né per la cura.",
+	},
+	["heal.w14.watch.033"] = {
+		"Il ritardo è un debito che non si restituisce. Quindi niente ritardo. Tutto qui, il piano.",
+		"Arrivare tardi è l'unico errore che una cura non perdona.",
+		"La lentezza è un lusso per chi non ha niente da ricucire.",
+	},
+	["heal.w14.watch.034"] = {
+		"Mi piacerebbe, una volta tanto, starmene {g:seduto|seduta} mentre è qualcun altro a preoccuparsi.",
+		"Un giorno toccherà a me farmi curare. Detesterò ogni minuto.",
+	},
+	["heal.w14.watch.035"] = {
+		"Mentre curo gli altri, dimentico che anch'io sono della stessa pasta fragile. Poi me ne ricordo, e vado avanti.",
+		"Stessa pasta fragile, chi cura e chi riceve la cura.",
+		"Chi cura si rompe con la stessa facilità. Ogni tanto conviene ricordarlo.",
+	},
+	["heal.w14.watch.036"] = {
+		"Gli occhi di chi cura non stanno mai tutti in un posto. Una parte di me cerca sempre la prossima ferita.",
+		"Anche a metà cura, mezzo occhio va già in cerca del prossimo male.",
+	},
+	["heal.w14.watch.037"] = {
+		"Restituire a qualcuno la sua stessa forza è una cosa piccola e buona. Mi va bene piccola e buona.",
+		"Forza restituita a chi la possedeva. Piccola cosa, e buona.",
+		"Niente di grandioso: solo rendere ciò che il male aveva provato a prendersi.",
+	},
+	["heal.w14.watch.038"] = {
+		"Chi cura in ritardo lo notano tutti. Chi arriva in tempo, nessuno. Passare inosservati mi sta benissimo.",
+		"Arrivare in tempo vuol dire non farsi notare. Bene così.",
+	},
+	["heal.w14.watch.039"] = {
+		"Certe ferite le chiudo sapendo che presto si riapriranno. Le chiudo lo stesso. Questo è il mestiere, non la speranza.",
+		"Probabilmente si riaprirà. La chiudo come se non dovesse.",
+		"Chiuderla comunque. Quello che verrà sarà un'altra cura.",
+	},
+	["heal.w14.watch.040"] = {
+		"Sento il male cedere sotto le mani, come un nodo che finalmente ha trovato il verso giusto.",
+		"Cede sotto le mani, come un nodo tirato dal verso giusto.",
+	},
+	["heal.w14.watch.041"] = {
+		"Finché mi reggo in piedi, il dolore riceve una risposta.",
+		"Il male fa domande. Finché mi reggo, una risposta la trova.",
+		"Il dolore chiami pure forte quanto vuole. Qui c'è chi ascolta.",
+	},
+	["heal.w14.watch.042"] = {
+		"Con ogni cura cedo un po' della mia fermezza. Poi torna. Più lenta di come se ne va.",
+		"Fermezza data in prestito. Torna a casa piano.",
+		"Ogni volta presto un po' di calma. Prima o poi ritrova la strada di casa.",
+	},
+	["heal.w14.watch.043"] = {
+		"Quando a chiedere sono in due nello stesso momento, qualunque scelta faccia, chi resta indietro mi resta dentro a lungo.",
+		"Due bisogni, un paio di mani. Scelgo, e mi porto dietro la scelta.",
+	},
+	["heal.w14.watch.044"] = {
+		"Non saprò mai come prosegue questa storia. So solo che prosegue, e che una riga l'ho scritta io.",
+		"Una riga nella storia di qualcun altro. Spero buona.",
+		"Quella strada continua oltre dove arrivo a vedere. La mia parte ormai c'è.",
+	},
+	["heal.w14.watch.045"] = {
+		"Io e la ferita facciamo una gara, e il premio è qualcun altro. È questo che fa paura.",
+		"Una gara contro la ferita, e il premio non è mio.",
+		"Io contro il male, e la posta in gioco è di qualcun altro.",
+	},
+	["heal.w14.watch.046"] = {
+		"Le mani non hanno ancora finito e gli occhi sono già altrove. Vizio del mestiere.",
+		"Le mani finiscono il lavoro; gli occhi sono già più avanti.",
+	},
+	["heal.w14.watch.047"] = {
+		"Qualunque cosa succeda poi, per un momento nessuno è stato più vicino di me a questo dolore. Conta qualcosa.",
+		"Nessuno, per un attimo, è stato più vicino di me a quel dolore. È un legame.",
+	},
+	["heal.w14.watch.048"] = {
+		"Curare è soprattutto aspettare, cercando di non sembrare in attesa.",
+		"Metà della cura è mostrare calma. L'altra metà è la cura.",
+		"Il grosso del lavoro è avere l'aria calma mentre la cura agisce.",
+	},
+	["heal.w14.watch.049"] = {
+		"dà un'ultima occhiata al punto rimesso a posto, poi una seconda, per sicurezza.",
+		"guarda due volte la ferita chiusa, poi una terza, per scrupolo.",
+	},
+	["heal.w14.watch.050"] = {
+		"resta immobile mentre la cura fa presa, come ci si ferma accanto a qualcosa che si spaventa facilmente.",
+		"non muove un muscolo finché il male non cede.",
+	},
+	["heal.w14.watch.051"] = {
+		"fa ruotare un polso rigido a lavoro finito, come se la cura fosse stata pesante da sollevare.",
+		"sgranchisce le dita a cose fatte, come se la cura avesse avuto un peso.",
+		"si scioglie un crampo da una mano, come se curare fosse lavoro pesante.",
+	},
+	["heal.w14.watch.052"] = {
+		"osserva {target} come una sentinella osserva un cancello: con pazienza, senza perdersi niente.",
+		"tiene d'occhio {target} con pazienza da sentinella, senza perdere nulla.",
+		"continua a guardare chi ha appena curato anche quando non c'è più niente da vedere.",
+	},
+	["heal.w14.watch.053"] = {
+		"conta in silenzio mentre lavora, muovendo appena le labbra, come chi sa che qui non si deve avere fretta.",
+		"conta senza voce mentre lavora, labbra appena mosse, senza fretta.",
+	},
+	["heal.w14.watch.054"] = {
+		"aggrotta la fronte davanti alla ferita come davanti a un rompicapo da risolvere prima che qualcuno se ne accorga.",
+		"fissa la ferita come un enigma con la miccia corta.",
+	},
+	["heal.w14.watch.055"] = {
+		"alza gli occhi dalla cura per vedere cos'altro sta arrivando, poi torna a chinarsi.",
+		"solleva lo sguardo un istante, tagliente, poi torna al lavoro.",
+		"si interrompe un attimo per scrutare i dintorni, poi torna al male.",
+	},
+	["heal.w14.watch.056"] = {
+		"stringe la mascella e va avanti, senza affrettarsi e senza rallentare.",
+		"lavora a denti stretti, né più in fretta né più adagio.",
+	},
+	["heal.w14.watch.057"] = {
+		"fa un mezzo passo indietro da {target} solo quando il male si è chiaramente arreso.",
+		"non si volta finché il peggio non ha chiaramente mollato la presa.",
+	},
+	["heal.w14.watch.058"] = {
+		"sembra invecchiare un poco e calmarsi un poco, nello spazio di una cura.",
+		"sembra, per un attimo, insieme più {g:stanco|stanca} e più {g:contento|contenta}.",
+		"lascia andare la tensione dalle spalle solo a cosa fatta.",
+	},
+	["heal.w14.watch.059"] = {
+		"divide l'attenzione tra la ferita e il mondo intorno, senza dare a nessuno dei due meno del necessario.",
+		"tiene un occhio sulla ferita e uno su tutto il resto.",
+	},
+	["heal.w14.watch.060"] = {
+		"ondeggia appena, una volta, a cura finita, poi pianta bene i piedi e resta {g:dritto|dritta}.",
+		"vacilla un niente a cosa fatta, poi ritrova l'equilibrio.",
+	},
+	["heal.w14.watch.061"] = {
+		"si china così vicino alla ferita che per un attimo non sembra esistere altro.",
+		"si china sul male, e per un attimo esiste solo quello.",
+	},
+	["heal.w14.watch.062"] = {
+		"osserva {target} come si osserva un ponte appena riparato, aspettando di vedere se regge il peso.",
+		"guarda {target} come un ponte appena rifatto: reggerà?",
+	},
+	["heal.w14.watch.063"] = {
+		"lascia ricadere le mani solo quando non resta davvero più niente da ricucire.",
+		"non abbassa le mani finché resta qualcosa da chiudere.",
+	},
+	["heal.w14.watch.064"] = {
+		"lavora con la fronte aggrottata, che si distende man mano che il male cede.",
+		"ha la fronte corrugata, poi distesa, man mano che la ferita si chiude.",
+	},
+	["heal.w14.watch.065"] = {
+		"fa un piccolo cenno, solo per sé, quando la cura tiene.",
+		"annuisce appena, tra sé e sé, mentre il male si placa.",
+		"solleva appena un angolo della bocca mentre il male si quieta.",
+	},
+	["heal.w14.watch.066"] = {
+		"non stacca mai gli occhi da {target} finché non ha finito.",
+		"tiene lo sguardo fisso, senza battere ciglio, su chi ha bisogno finché la cura non è compiuta.",
+	},
+	["heal.w14.watch.067"] = {
+		"si strofina gli occhi stanchi col dorso del polso, a cura finita, poi si guarda intorno.",
+		"si passa un polso sugli occhi, un attimo, poi si guarda attorno.",
+	},
+	["heal.w14.watch.068"] = {
+		"veglia su chi ha appena curato come una candela lasciata accesa alla finestra.",
+		"veglia su chi ha curato come un guardiano su una casa che dorme.",
+	},
+	["heal.w14.watch.069"] = {
+		"sussulta appena, come se un po' del dolore fosse passato dall'altra parte.",
+		"fa una lieve smorfia, come se un po' del male fosse finito addosso a {g:lui|lei}.",
+	},
+	["heal.w14.watch.070"] = {
+		"pronuncia piano il nome di {target}, una volta sola, come per legarlo al mondo.",
+		"dice il nome di {target} a bassa voce, una volta, come una cima d'ormeggio.",
+	},
+	["heal.w14.watch.071"] = {
+		"si muove con calma studiata, come se la fretta fosse l'unica cosa che potesse ancora andare storta.",
+		"lavora piano apposta: la fretta è l'unico nemico rimasto a portata.",
+		"si prende il suo tempo, di proposito, come con una serratura che s'inceppa a forzarla.",
+	},
+	["heal.w14.watch.072"] = {
+		"si raddrizza piano a lavoro finito, con la cautela rigida di chi ha speso più del prudente.",
+		"si raddrizza con cura, un po' più {g:vuoto|vuota} di prima.",
+	},
+	["heal.w14.watch.073"] = {
+		"Adesso sei in custodia mia, {target}. Quello che custodisco non lo perdo.",
+		"Ora sei sotto la mia custodia. Non lascio cadere ciò che custodisco.",
+	},
+	["heal.w14.watch.074"] = {
+		"Più in fretta del male. Basta questo: più in fretta del male.",
+		"Prima della ferita. Arrivare prima della ferita, e basta.",
+		"Davanti al male. Restare davanti al male.",
+	},
+	["heal.w14.watch.075"] = {
+		"Mani ferme. Mani ferme. Il resto viene da sé.",
+		"Mani salde, testa lucida. Non serve altro.",
+	},
+	["heal.w14.watch.076"] = {
+		"Ti tengo d'occhio, {target}. Se si riapre, lo saprò prima di te.",
+		"I miei occhi restano su di te. Niente si riapre senza che me ne accorga.",
+	},
+	["heal.w14.watch.077"] = {
+		"Di forza ne ho ancora parecchia. Parecchia. Quasi di sicuro.",
+		"Ce n'è ancora per un'altra. Forse due.",
+		"Bene. Bene. Sto bene. A chi tocca?",
+	},
+	["heal.w14.watch.078"] = {
+		"Finché non torni in forze, {target}, sei affar mio. Funziona così.",
+		"Finché non torni in forze, sei affar mio.",
+	},
+	["heal.w14.watch.079"] = {
+		"In tempo. Per un pelo, ma in tempo.",
+		"Fatto in tempo. Me lo faccio bastare.",
+		"Ce l'ho fatta. Per un capello, ma ce l'ho fatta.",
+	},
+	["heal.w14.watch.080"] = {
+		"Vai pure, {target}. Ti guardo le spalle, per la prossima.",
+		"Vai. Da qui in poi seguo ogni tuo passo con gli occhi.",
+	},
+	["heal.w14.wit.001"] = {
+		"Lavoro grezzo, ma svelto. Tre su cinque, e il voto lo do io.",
+		"Fatto alla buona e di corsa. Diciamo tre su cinque.",
+		"Giudizio sulla riparazione: funziona, brutta a vedersi, fatta di fretta. Promossa.",
+	},
+	["heal.w14.wit.002"] = {
+		"Un capolavoro di rammendo non è. Però tiene, e tenere è tutto il mestiere.",
+		"Questo rammendo non vincerà premi. Deve solo reggere.",
+	},
+	["heal.w14.wit.003"] = {
+		"D'accordo, ferita, hai detto la tua. Adesso chiuditi.",
+		"Ricevuto, ferita. Ora chiudi, per cortesia.",
+		"Ferita, ho ascoltato le tue ragioni. Respinte.",
+	},
+	["heal.w14.wit.004"] = {
+		"Aggiungilo al conto che ho con la fortuna. Prima o poi vorrà essere pagata.",
+		"Questa l'ha coperta la fortuna. Dovrei cominciare a conservare le ricevute.",
+		"La fortuna mi ha tirato fuori dai guai. Le lascerei una mancia, se accettasse monete.",
+	},
+	["heal.w14.wit.005"] = {
+		"Era un piccolo fastidio. Adesso è più piccolo.",
+		"Fastidio ridotto. Si prosegue.",
+		"Una seccatura, ora declassata a seccatura lieve.",
+	},
+	["heal.w14.wit.006"] = {
+		"Lo squarcio si è chiuso. L'orgoglio è ancora là, steso nella polvere.",
+		"La carne guarisce in fretta. L'orgoglio se la prende comoda.",
+		"Si è chiuso tutto tranne l'orgoglio, che resta spalancato.",
+	},
+	["heal.w14.wit.007"] = {
+		"La prossima volta proverò un'idea rivoluzionaria: non trovarmi lì quando arriva il colpo.",
+		"Strategia nuova e audace: essere altrove quando arriva la botta.",
+		"Approccio rivisto: stare dove i guai non ci sono.",
+	},
+	["heal.w14.wit.008"] = {
+		"Si metta agli atti: la ferita c'era, ora non c'è, e nessun lamento. Be', quasi nessuno.",
+		"Sia scritto che l'ho sopportato con nobiltà. Più o meno.",
+	},
+	["heal.w14.wit.009"] = {
+		"esamina il punto rimesso a posto, poi si guarda intorno come per controllare che nessuno abbia visto com'è successo.",
+		"si guarda intorno, sperando che nessuno abbia visto la parte prima.",
+	},
+	["heal.w14.wit.010"] = {
+		"Il corpo presenta i suoi reclami in triplice copia. Questo, almeno, è archiviato.",
+		"Reclamo ricevuto, reclamo chiuso. Questa carne ha un impiegato molto zelante.",
+	},
+	["heal.w14.wit.011"] = {
+		"Ahi. Meno ahi. Quasi niente ahi. Benissimo.",
+		"Da ahi a quasi bene tutto d'un tratto. Mi sta bene.",
+		"Ahi, ahi, e poi, per fortuna, niente ahi.",
+	},
+	["heal.w14.wit.012"] = {
+		"Le ginocchia chiedevano un periodo di riposo. Hanno avuto un rattoppo e un no deciso.",
+		"Le ginocchia volevano le ferie. Si sono prese un rattoppo.",
+	},
+	["heal.w14.wit.013"] = {
+		"Chi l'ha lasciato passare? Ah, già. Io.",
+		"Chi ha lasciato quel buco nella guardia dovrebbe vergognarsi. Ah, ero io.",
+		"Nella guardia c'era un buco. Indovina chi ce l'ha lasciato.",
+	},
+	["heal.w14.wit.014"] = {
+		"Parlo con le mie ferite più che con quasi tutta la gente. Ascoltano altrettanto poco.",
+		"Le ferite sono pessima compagnia. Parlano solo di sé.",
+	},
+	["heal.w14.wit.015"] = {
+		"Sistemato quasi tutto. Quello che avanza conta come carattere.",
+		"Quel che non si è aggiustato lo chiamo carattere.",
+		"Qualche danno resta. Lo porterò come tratto di personalità.",
+	},
+	["heal.w14.wit.016"] = {
+		"Conto veloce: braccia, due. Gambe, due. Dignità, da discutere.",
+		"Inventario dopo il rattoppo: arti tutti presenti, dignità dispersa.",
+		"Testa: attaccata. Arti: presenti all'appello. Orgoglio: in fase di revisione.",
+	},
+	["heal.w14.wit.017"] = {
+		"Che spettacolo: qualcuno che un attimo fa cadeva a pezzi, e adesso no.",
+		"Gloria a me, che ho appena smesso di cadere a pezzi.",
+	},
+	["heal.w14.wit.018"] = {
+		"Il male fa i bagagli e se ne va borbottando, come un creditore saldato fino all'ultima moneta.",
+		"Se ne va borbottando, il dolore. Saldato.",
+	},
+	["heal.w14.wit.019"] = {
+		"Se resta la cicatrice, la storia che c'è dietro migliorerà parecchio.",
+		"Cicatrice o no, il racconto sarà più grandioso della verità.",
+		"Se resta il segno, dirò che me l'ha fatto qualcosa di terrificante.",
+	},
+	["heal.w14.wit.020"] = {
+		"Non esiste un modo dignitoso di farsi male. Esiste un modo appena dignitoso di riprendersi, e ci sto provando.",
+		"Farsi male non è mai elegante. Riprendersi, almeno, posso farlo con stile.",
+	},
+	["heal.w14.wit.021"] = {
+		"Senti? È il rumore di me che non muoio. Silenzioso. Bellissimo.",
+		"Che bel silenzio, quello di chi non muore.",
+		"Non morire non fa quasi rumore. Potrei abituarmici.",
+	},
+	["heal.w14.wit.022"] = {
+		"Io e il mio corpo abbiamo un accordo: lui si fa male, io lo aggiusto, e nessuno dei due dice chi ha cominciato.",
+		"Lui si rompe, io lo aggiusto, e dell'argomento non si parla più.",
+	},
+	["heal.w14.wit.023"] = {
+		"Corpo, fa' il bravo. Ti ho appena aggiustato.",
+		"Basta lamentarsi, corpo. Hai già avuto le tue cure.",
+		"Allora, carcassa. Basta storie da parte tua.",
+	},
+	["heal.w14.wit.024"] = {
+		"Come paziente sono un disastro: niente pazienza, niente gratitudine, e continuo a farmi male.",
+		"Curarmi è un lavoro ingrato: il paziente non si ferma mai e non ringrazia.",
+	},
+	["heal.w14.wit.025"] = {
+		"Un pezzo solo, un po' ammaccato, ma uno solo.",
+		"In un pezzo, per quanto un po' storto.",
+		"Qualche ammaccatura, niente di rotto. Come un buon paiolo.",
+	},
+	["heal.w14.wit.026"] = {
+		"Esiste una versione di me che l'aveva visto arrivare. Vorrei scambiarci due parole.",
+		"L'io di un attimo fa avrebbe dovuto vederlo arrivare. Annotato, e perdonato.",
+		"L'io di prima ha sbagliato, l'io di adesso ha rimediato. L'io di dopo stia all'erta.",
+	},
+	["heal.w14.wit.027"] = {
+		"dà due colpetti al punto appena rimesso a posto, come chi suggella un patto.",
+		"dà al punto guarito una pacca soddisfatta, come se il male avesse finalmente imparato l'educazione.",
+	},
+	["heal.w14.wit.028"] = {
+		"Punteggio: ferita, zero. Io, uno.",
+		"Se qualcuno tiene il conto, questa la segni a me.",
+	},
+	["heal.w14.wit.029"] = {
+		"Il dolore è un pessimo maestro. Urla tanto e non spiega niente.",
+		"Insegna come un sergente, il dolore: forte, in fretta, e mai in modo chiaro.",
+		"Fa lezione a tutto volume, il dolore, e non lascia mai appunti.",
+	},
+	["heal.w14.wit.030"] = {
+		"Su una scala da uno a disastro, adesso sono un comodo quattro.",
+		"Da disastro a qualche graffio. Progressi.",
+		"Rovina scongiurata. Lievi ammaccature, accettate.",
+	},
+	["heal.w14.wit.031"] = {
+		"Una piccola vanità: rimettermi in sesto prima che qualcuno se ne accorga.",
+		"Preferisco sbrigarmela da me e alla svelta, prima che qualcuno noti che c'era da sbrigare.",
+	},
+	["heal.w14.wit.032"] = {
+		"Che si sappia: faceva male. Tanto. Ora no, ma faceva male.",
+		"Adesso non fa male. Prima sì, e qualcuno dovrebbe saperlo.",
+		"Tutto a posto. Un po' di compassione per la parte di prima, però, la gradirei.",
+	},
+	["heal.w14.wit.033"] = {
+		"Ogni graffio ha la sua piccola cerimonia: una smorfia, un'imprecazione, un rammendo. Molto tradizionale.",
+		"Smorfia, imprecazione, rammendo. Il rito è rispettato.",
+	},
+	["heal.w14.wit.034"] = {
+		"Chiuso per riparazioni, ma per poco. Adesso si riapre.",
+		"Bottega riaperta. Riparazioni eseguite in sede.",
+		"Il locale ha riaperto, sotto la stessa testarda gestione.",
+	},
+	["heal.w14.wit.035"] = {
+		"Il bello del farmi da medico: nessuno mi fa la predica. Il brutto: me la faccio io.",
+		"Nessuno mi sgrida per questo, tranne me. E non mollo mai.",
+	},
+	["heal.w14.wit.036"] = {
+		"Oh, bene, il resto di me mi ha raggiunto.",
+		"Le parti di me che mancavano si presentano a rapporto.",
+		"Tutto ciò che si era allontanato è rientrato nei ranghi.",
+	},
+	["heal.w14.wit.037"] = {
+		"Un giorno il rammendo arriverà tardi. Quel giorno, a quanto pare, è in ritardo anche lui.",
+		"Prima o poi una ferita sarà più svelta di me. Per ora non ha fretta.",
+	},
+	["heal.w14.wit.038"] = {
+		"Rattoppo fatto. Da qualche parte c'è qualcuno di molto deluso.",
+		"Tutto rimesso a posto. Chi mi ha fatto questo ci resterà malissimo.",
+		"Chi mi voleva a pezzi resterà a bocca asciutta.",
+	},
+	["heal.w14.wit.039"] = {
+		"Ho il fisico di una brocca incrinata e la testa dura di una capra. La brocca è incollata; la capra va avanti.",
+		"Brocca incrinata, incollata. Capra testarda, tale e quale.",
+	},
+	["heal.w14.wit.040"] = {
+		"Grazie, io. Figurati, io.",
+		"Mi ringrazio di cuore. Ottimo lavoro.",
+		"Il merito a chi spetta: a me, tutto quanto.",
+	},
+	["heal.w14.wit.041"] = {
+		"approva il punto guarito con un cenno, da capomastro davanti a un muro.",
+		"osserva a lungo, con qualche dubbio, il punto rimesso a posto, poi decide di fidarsi.",
+	},
+	["heal.w14.wit.042"] = {
+		"Il corpo è una stanza in affitto e io la tratto malissimo. Almeno le riparazioni le faccio da me.",
+		"Corpo in affitto: rompo, aggiusto, e il padrone non lo saprà mai.",
+	},
+	["heal.w14.wit.043"] = {
+		"Molto meglio. Quasi consiglierei di farsi male, solo per questa parte.",
+		"Farsi male: orribile. Rimettersi in sesto: quasi ne vale la pena.",
+		"Essere rimessi in sesto è così piacevole che quasi giustifica il resto.",
+	},
+	["heal.w14.wit.044"] = {
+		"Se mi facessi pagare per questo, avrei le tasche piene e vuote nello stesso istante.",
+		"La tariffa per questa riparazione: zero monete. Le vale tutte.",
+		"Riparazione gratuita, e vale esattamente quanto l'ho pagata.",
+	},
+	["heal.w14.wit.045"] = {
+		"Dolore, sei congedato. Attento alla porta, uscendo.",
+		"Puoi andare, dolore. Fuori.",
+		"Fuori, dolore. Va' a seccare qualcuno che se lo merita.",
+	},
+	["heal.w14.wit.046"] = {
+		"Metà dell'arte del rammendo sta nel fingere che non abbia mai fatto male. E in quell'arte eccello.",
+		"Il rammendo è fatto, e già fingo che fosse niente. Gran bella recita.",
+	},
+	["heal.w14.wit.047"] = {
+		"Guardati, che ti rimetti in sesto come una persona assennata.",
+		"Bel lavoro. Che giudizio, eh.",
+		"Guarda un po' chi si prende cura di sé. Che orgoglio.",
+	},
+	["heal.w14.wit.048"] = {
+		"Io e la ferita avevamo un disaccordo. L'ho risolto io.",
+		"Ferita contro me. Verdetto di misura, a mio favore.",
+	},
+	["heal.w14.wit.049"] = {
+		"Niente da vedere. Non più, almeno.",
+		"Adesso non c'è niente da guardare. Un attimo fa, parecchio.",
+		"Lo spettacolo è finito. La parte interessante si è richiusa.",
+	},
+	["heal.w14.wit.050"] = {
+		"Mi tengono insieme la testardaggine e le riparazioni veloci, come quasi tutto il resto del mondo.",
+		"Testardaggine e rattoppi alla svelta: la mia malta, e quella di mezzo mondo.",
+	},
+	["heal.w14.wit.051"] = {
+		"Lo sappia il mondo intero: la ferita non c'è più!",
+		"Si esulti! Il buco è stato chiuso!",
+		"Suonino i corni: una ferita, sconfitta!",
+	},
+	["heal.w14.wit.052"] = {
+		"Al dolore piace fare discorsi. Io preferisco interromperlo presto.",
+		"Ho zittito il male a metà frase. Una scortesia, ma efficace.",
+	},
+	["heal.w14.wit.054"] = {
+		"Le cose rammendate non contano. Regole della casa.",
+		"Se si chiude, non è mai successo. È la mia regola, e non la cambio.",
+		"Ciò che è rammendato non è successo. Qui le regole le faccio io.",
+	},
+	["heal.w14.wit.055"] = {
+		"si raddrizza con esagerata dignità, come se non fosse successo nulla.",
+		"si tira su con gran dignità e nessuna spiegazione.",
+	},
+	["heal.w14.wit.056"] = {
+		"Il mio prossimo appuntamento col dolore è annullato. A tempo indeterminato.",
+		"Col dolore ci vediamo più avanti. Molto più avanti. Mai, possibilmente.",
+		"Che lasci pure detto, il dolore. Non risponderò.",
+	},
+	["heal.w14.wit.057"] = {
+		"Non è un corpo elegante, il mio, ma è puntuale. Arriva il male, segue il rammendo.",
+		"Elegante no. Puntuale sì. Il rammendo è arrivato in orario.",
+	},
+	["heal.w14.wit.058"] = {
+		"Non dico che non abbia fatto male. Dico che l'orgoglio non me lo lascia ammettere.",
+		"Male? Io? Solo all'amor proprio, e quello guarisce più adagio.",
+	},
+	["heal.w14.wit.059"] = {
+		"Guarisco più in fretta di quanto impari. Prima o poi una delle due cose dovrà raggiungere l'altra.",
+		"Guarire svelti, imparare lenti. Una coppia pericolosa.",
+	},
+	["heal.w14.wit.060"] = {
+		"Mi sono {g:rimesso|rimessa} in sesto senza alcun aiuto. Accetto medaglie.",
+		"Nessun aiuto richiesto. Le medaglie si lasciano ai miei piedi, grazie.",
+		"Riparazione in solitaria, nessun testimone, risultato impeccabile. Praticamente leggenda.",
+	},
+	["heal.w14.wit.061"] = {
+		"Scriverei alla ferita una lettera di fuoco, se pensassi che sa leggere.",
+		"Cara ferita: chiusa, come richiesto. Non serve rispondere.",
+	},
+	["heal.w14.wit.062"] = {
+		"I miei complimenti a qualunque cosa sia stata. Bel colpo. Disfatto, mi spiace.",
+		"Bel tentativo, qualunque cosa fosse. Annullato.",
+		"A qualunque cosa sia stata: bello sforzo. Peccato non abbia attecchito.",
+	},
+	["heal.w14.wit.063"] = {
+		"C'è una soddisfazione tutta speciale nel rimediare ai propri pasticci. E me la sto godendo.",
+		"Compiacimento, ecco la parola giusta. Rammendo fatto, e me ne compiaccio.",
+	},
+	["heal.w14.wit.064"] = {
+		"borbotta alla ferita qualcosa che non è un complimento, e la ferita, ormai chiusa, non replica.",
+		"dice due parole poco gentili alla ferita, che ormai chiusa non risponde.",
+	},
+	["heal.w14.wit.065"] = {
+		"Ed ecco che la parte lesa si rialzò, rimessa in sesto dalla parte lesa medesima.",
+		"Parte lesa e chi ripara, la stessa persona. Che risparmio.",
+		"La vittima, chi l'ha curata e il testimone sono la stessa persona, e tutti e tre sono soddisfatti.",
+	},
+	["heal.w14.wit.066"] = {
+		"Con un po' di attenzione, questo rammendo non sarebbe servito. Ma poi come passerei il tempo?",
+		"Con un po' d'attenzione me lo sarei risparmiato. Ma che divertimento c'è?",
+	},
+	["heal.w14.wit.067"] = {
+		"Su, su. Tutto rammendato. Ma chi è che tiene botta, eh?",
+		"Calma, calma. Va tutto bene. Sì, sto parlando tra me e me.",
+		"Shh, ora. Tutto rattoppato. Niente smorfie.",
+	},
+	["heal.w14.wit.068"] = {
+		"Non so mai valutare quanto sto male: o sto morendo, o sto benissimo, niente in mezzo.",
+		"Morente o benissimo: i miei due stati. Al momento, benissimo.",
+	},
+	["heal.w14.wit.069"] = {
+		"Era tutto sotto controllo. Dall'inizio alla fine. Più o meno.",
+		"Sotto controllo, assolutamente. Quasi. Alla fine.",
+	},
+	["heal.w14.wit.070"] = {
+		"Rammendare è la parte facile. Spiegarmi perché ce n'era bisogno richiede molto di più.",
+		"Per lo squarcio è bastato un attimo. Per la scusa ci vuole parecchio di più.",
+	},
+	["heal.w14.wit.071"] = {
+		"esamina la riparazione da più lati, come un compratore davanti a un cavallo dalla storia dubbia.",
+		"si rigira, esaminando il rammendo come se cercasse il marchio di bottega.",
+	},
+	["heal.w14.wit.072"] = {
+		"Prognosi: sopravvivo. Sempre più probabile, di momento in momento.",
+		"Probabilità di cavarmela: in netto miglioramento.",
+	},
+	["heal.w14.wit.073"] = {
+		"Io e la fortuna regoliamo i conti come due mercanti furbi: di malavoglia, e arrotondando parecchio.",
+		"La fortuna arrotonda per difetto, io per eccesso. I conti non quadrano mai.",
+	},
+	["heal.w14.wit.074"] = {
+		"C'è più sostanza in me di quanto sembri. Non molta di più, ma c'è.",
+		"Reggo più di quel che sembra. L'asticella era bassa, ma l'ho superata.",
+		"Più fragile di quanto vorrei, più resistente di quanto temessi.",
+	},
+	["heal.w14.wit.075"] = {
+		"Si è chiusa con tanta educazione, la ferita, che sembrava chiedere scusa. E ci mancherebbe.",
+		"Si chiude tutta compita, adesso. Un po' tardi per le buone maniere.",
+	},
+	["heal.w14.wit.076"] = {
+		"Dieci e lode per non aver tirato le cuoia. Avanti così.",
+		"Stellina d'oro per la sopravvivenza. Da appendere in bella vista.",
+		"Sopravvivenza: ottenuta. Applausi: facoltativi.",
+	},
+	["heal.w14.wit.077"] = {
+		"Ogni rammendo è un piccolo prestito sulla fine. Gli interessi sono alti, ma non sono nella posizione di trattare.",
+		"Gli interessi su questi rammendi sono salati. Io firmo lo stesso.",
+	},
+	["heal.w14.wit.078"] = {
+		"Così imparo. Non imparerò, si capisce, ma dovrei.",
+		"Lezione imparata. E presto dimenticata, temo.",
+		"Lezione impartita. Se sia stata appresa, resta da vedere.",
+	},
+	["heal.w14.wit.079"] = {
+		"Questo corpo è un carretto cigolante: rattoppato, cigola un po' meno e rotola un po' di più.",
+		"Carretto cigolante, appena oliato. Si riparte.",
+	},
+	["heal.w14.wit.080"] = {
+		"Sistemata, la cosa. Il fastidio no.",
+		"Il male se n'è andato. Il rancore resta.",
+		"Rammendo fatto, malumore intatto. Solo uno dei due era urgente.",
+	},
+	["heal.w14.wit.081"] = {
+		"I racconti saltano sempre la parte in cui l'eroe si ferma a tappare un buco. Meglio così: non è un bello spettacolo.",
+		"Gli eroi delle storie non si fermano mai a rattoppare. Beati loro.",
+	},
+	["heal.w14.wit.082"] = {
+		"Chi ha progettato i corpi ci ha lasciato troppe parti morbide. Almeno si rattoppano.",
+		"Troppe parti molli in un corpo. Progetto scadente, riparazioni discrete.",
+	},
+	["heal.w14.wit.084"] = {
+		"Ricordami di fare più attenzione. Anzi, lascia stare: non ti ascolterei.",
+		"Fare più attenzione, mi dico. Non mi do mai retta.",
+		"Consiglio a me: guarda dove sono i guai. Consiglio, temo, ignorato.",
+	},
+	["heal.w14.wit.085"] = {
+		"fa un piccolo inchino a nessuno in particolare, come se un lavoro difficile si fosse appena guadagnato un applauso.",
+		"s'inchina appena, a nessuno, come un artigiano sul lavoro finito.",
+	},
+	["heal.w14.wit.086"] = {
+		"Dicano di me quel che vogliono, ma nessuno può dire che non rimedio ai miei disastri.",
+		"I disastri li combino io, i buchi li tappo io. Giusto così.",
+	},
+	["heal.w14.wit.087"] = {
+		"Un buco in me diventa un buco nei miei piani. Tappati tutti e due.",
+		"Chiuso un buco in me e uno nella tabella di marcia. Efficienza.",
+	},
+	["heal.w14.wit.088"] = {
+		"Voglio bene a questo corpo. È l'unico che ho, e continua a perdonarmi.",
+		"L'unico corpo che ho, e mi perdona sempre. Generoso da parte sua.",
+	},
+	["heal.w14.wit.089"] = {
+		"Ah. Niente di più dolce di un dolore che si arrende.",
+		"Un male che non fa più male. Che bella idea.",
+		"Si arrende, il male. Condizioni generose, direi.",
+	},
+	["heal.w14.wit.090"] = {
+		"C'è chi colleziona monete. Io, a quanto pare, colleziono scampati pericoli. Li scambierei tutti con monete.",
+		"Gli scampati pericoli fanno una pessima collezione. Nessuno li compra.",
+	},
+	["heal.w14.wit.091"] = {
+		"Fatto nei tempi e spendendo meno del previsto. La mia riparazione preferita.",
+		"Economico, rapido e quasi in ordine. Miglior offerta sulla piazza.",
+		"Lavoro rapido, economico, sufficiente. Mi assumerei subito.",
+	},
+	["heal.w14.wit.092"] = {
+		"Il dolore se n'è andato, promettendo di passare a trovarmi. Ho cambiato la serratura.",
+		"Ha lasciato un biglietto, il dolore: passerà. Serratura cambiata.",
+	},
+	["heal.w14.wit.093"] = {
+		"Rimettiti insieme, mi dico. E guarda un po': fatto.",
+		"Rimettiti in sesto. Alla lettera, a quanto pare.",
+	},
+	["heal.w14.wit.094"] = {
+		"Ogni rammendo sembra una discussione vinta col mondo. Una discussione piccola e meschina, ma vinta da me.",
+		"Piccola vittoria in una lite meschina col mondo. Mi accontento.",
+	},
+	["heal.w14.wit.095"] = {
+		"tocca con cautela il punto rimesso a posto, fa una smorfia d'istinto, poi ha l'aria di vergognarsene un poco.",
+		"fa una smorfia per un dolore già sparito, e la spaccia per uno sbadiglio.",
+	},
+	["heal.w14.wit.096"] = {
+		"Tutto sistemato. Chi viene dopo dovrà ricominciare da zero.",
+		"Lavagna pulita. Il prossimo parte da niente.",
+	},
+	["heal.w14.wit.097"] = {
+		"Indistruttibilità ritrovata, dopo un po' di montaggio. Attenzione alle giunture.",
+		"Indistruttibile, previo montaggio.",
+		"Infrangibile, salvo qualche riparazione.",
+	},
+	["heal.w14.wit.098"] = {
+		"Il dolore è solo il corpo che fa il melodrammatico. L'ho riportato alla ragione.",
+		"Ha esagerato, il corpo. L'ho calmato con un rattoppo veloce e un'occhiataccia.",
+		"Capricci del corpo: finiti.",
+	},
+	["heal.w14.wit.099"] = {
+		"Fingerò che sia andato tutto esattamente come previsto.",
+		"Come previsto, tutto quanto. Quale fosse il piano, è un altro discorso.",
+	},
+	["heal.w14.wit.100"] = {
+		"Tra 'ahi' e 'bene' c'è un lungo corridoio. L'ho appena percorso in un batter d'occhio.",
+		"Da 'ahi' a 'bene' in un lampo. Il viaggio più breve che farò.",
+	},
+	["heal.w14.wit.101"] = {
+		"guarda il punto rammendato con un vago sospetto, come se potesse riaprirsi solo per ripicca.",
+		"tiene d'occhio il rammendo, evidentemente senza fidarsene del tutto.",
+	},
+	["heal.w14.wit.102"] = {
+		"si spolvera l'equipaggiamento, come se tutta la faccenda fosse stata solo un po' di polvere.",
+		"si dà una spolverata solenne, come se fosse capitata solo un po' di polvere.",
+	},
+	["heal.w14.wry.001"] = {
+		"Le scuse dopo. Prima si ricuce, poi le scuse, e che siano buone.",
+		"Ma cosa cercavi di fare? No, non spiegare. Sono {g:occupato|occupata} a rimediare.",
+		"Me lo spieghi dopo. Piano. Con i disegni.",
+	},
+	["heal.w14.wry.002"] = {
+		"Questa è gratis. Dicono che la generosità forgi il carattere: il mio sta diventando enorme.",
+		"Niente da pagare. Diciamo che investo sulla tua capacità di restare in piedi.",
+		"Offre la casa. La casa, però, sta rivedendo le sue regole.",
+	},
+	["heal.w14.wry.003"] = {
+		"Occhio al rattoppo: è fresco, e mi piacerebbe che restasse intatto per un po'.",
+		"Occhio alla riparazione. Non si è nemmeno assestata.",
+		"Lavoro fresco, {target}. Dagli un minuto prima di metterlo alla prova.",
+	},
+	["heal.w14.wry.004"] = {
+		"Patto: io ti tengo in piedi, tu mi tieni lontani i guai. Giusto?",
+		"Facciamo un accordo. Tu non ti rompi più, io smetto di urlare. Ci guadagnano tutti.",
+	},
+	["heal.w14.wry.005"] = {
+		"Avevi un aspetto pessimo. Adesso è soltanto brutto. Sono progressi.",
+		"Da disastro a semplice preoccupazione. Mi accontento.",
+	},
+	["heal.w14.wry.006"] = {
+		"Non azzardarti a cadere adesso. La prenderei sul personale.",
+		"Cadere è vietato. L'ho deciso io, e di questa parte mi occupo io.",
+		"Prova a cadere e ti rimetto in sesto solo per sgridarti come si deve.",
+	},
+	["heal.w14.wry.007"] = {
+		"Il lavoro è mio, la pelle è tua. Abbi cura di tutti e due, va bene?",
+		"Il lavoro ce l'ho messo io, la pelle ce la metti tu. Trattali bene entrambi.",
+		"La pelle è tua, {target}, ma i punti sono miei. Rispettali.",
+	},
+	["heal.w14.wry.008"] = {
+		"Avevo dei programmi, {target}. In nessuno c'era questo.",
+		"Stavo facendo una cosa. Andava pure bene. E poi, tu.",
+	},
+	["heal.w14.wry.009"] = {
+		"La prossima volta fatti male più vicino. La corsa è la parte peggiore.",
+		"Se proprio devi sanguinare, fallo a portata di mano. Le mie ginocchia ringraziano.",
+	},
+	["heal.w14.wry.010"] = {
+		"Va bene. È tutto a posto. Puoi smettere di guardarmi così.",
+		"Chiusa. Sì, per bene. No, non serve che controlli.",
+		"È chiusa. Resterà chiusa. Smettila di guardarmi come se raccontassi frottole.",
+	},
+	["heal.w14.wry.011"] = {
+		"Meno eroismi, {target}. E più posti sensati dove stare.",
+		"Meno eroismi, più buon senso. Mi basterebbe uno dei due.",
+	},
+	["heal.w14.wry.012"] = {
+		"Non sono {g:arrabbiato|arrabbiata}. Sto ricucendo. La rabbia è in programma per dopo.",
+		"La sgridata viene dopo. Per adesso ti tocca solo la parte gentile.",
+		"Calma adesso, furia dopo. Ho fatto posto a tutte e due.",
+	},
+	["heal.w14.wry.013"] = {
+		"Dichiaro solennemente chiuso questo buco. Gli applausi sono facoltativi, ma graditi.",
+		"Sia noto a tutti: la ferita è chiusa, e a me spetta una sedia.",
+	},
+	["heal.w14.wry.014"] = {
+		"Tempismo perfetto. Davvero, hai scelto il momento ideale.",
+		"Fra tutti i momenti possibili, proprio questo. Bella scelta.",
+		"Tempismo squisito, {target}. Davvero, un talento.",
+	},
+	["heal.w14.wry.015"] = {
+		"Questo è sistemato. Il livido all'orgoglio è affar tuo.",
+		"La carne la sistemo io. L'orgoglio ammaccato, curatelo da te.",
+	},
+	["heal.w14.wry.016"] = {
+		"Ricucire è gratis. Guardare quella scena mi è costato un anno di vita.",
+		"Il buco non costa niente. Lo spavento che mi hai fatto prendere, quello lo metto in conto.",
+		"Il rattoppo non costa nulla. La preoccupazione me la tengo come ricordo.",
+	},
+	["heal.w14.wry.017"] = {
+		"Per un attimo mi sono quasi {g:preoccupato|preoccupata}. Non farci l'abitudine.",
+		"Per poco non mi prendeva un colpo. Per poco. Non c'è niente da sorridere.",
+	},
+	["heal.w14.wry.018"] = {
+		"La prossima volta che vuoi attenzioni, chiedi. Costa meno a tutti.",
+		"Voler compagnia va bene. Sanguinare per averla è un po' troppo.",
+		"Se ti annoi, esistono passatempi meno dolorosi.",
+	},
+	["heal.w14.wry.019"] = {
+		"Era un piano, {target}? Dimmi che non era quello il piano.",
+		"Dimmi che c'era un piano. E dimmi che non era quello.",
+	},
+	["heal.w14.wry.020"] = {
+		"Il merito me lo tengo io, {target}. Tu tieniti la cicatrice.",
+		"Divisione onesta: a me la gloria, a te il segno che resta.",
+		"La cicatrice è tua. Il diritto di vantarsene è mio.",
+	},
+	["heal.w14.wry.021"] = {
+		"Al prossimo giro di follie, avvisami prima. Mi piace farmi trovare {g:pronto|pronta}.",
+		"Hai in mente altro del genere? Un preavviso sarebbe gradito.",
+	},
+	["heal.w14.wry.022"] = {
+		"Che disastro. Ho visto banchi di macelleria più in ordine.",
+		"Guarda qui. Un macellaio se ne vergognerebbe.",
+	},
+	["heal.w14.wry.023"] = {
+		"Hai fortuna: sono di buon umore. Non è vero, ma la fortuna ce l'hai lo stesso.",
+		"Ringrazia la sorte: sono di pessimo umore e ho lavorato bene comunque.",
+	},
+	["heal.w14.wry.024"] = {
+		"Per questo c'è una tariffa. Ci penserò su. Sarà spiacevole.",
+		"Non ti chiedo monete. Ti chiedo un favore, e lo scelgo io.",
+		"Condizioni di pagamento: più prudenza. Previste penali per i ritardi.",
+	},
+	["heal.w14.wry.025"] = {
+		"Tienila chiusa almeno finché non mi sono {g:seduto|seduta}. È chiedere troppo?",
+		"Può restare chiusa il tempo che mi siedo? Solo quello.",
+	},
+	["heal.w14.wry.026"] = {
+		"Se qualcuno chiede, era un graffio. Risparmia ai miei nervi la versione vera.",
+		"Ufficialmente non era niente. Ufficiosamente, non farlo mai più vicino a me.",
+		"Non dirlo a nessuno. La mia fama di persona calma non sopravvivrebbe.",
+	},
+	["heal.w14.wry.027"] = {
+		"Morire non è permesso finché ci sono io. Non me lo perdonerei mai.",
+		"Vicino a me non si muore. Mi rovinerebbe l'umore.",
+		"In mia compagnia è severamente vietato morire. Chiedi in giro. Anzi, no.",
+	},
+	["heal.w14.wry.028"] = {
+		"Mi arrabbio dopo. Adesso resta lì un momento.",
+		"La rabbia dopo. Ora non muovere un muscolo.",
+		"Predica rimandata. Resta dove sei, {target}.",
+	},
+	["heal.w14.wry.029"] = {
+		"Fatto. Ho rimesso a posto tutto quello che ho trovato.",
+		"Ogni pezzo che ho trovato è tornato al suo posto. Il resto non andarlo a cercare.",
+		"Rimontaggio finito. Potrebbero servire dei ritocchi.",
+	},
+	["heal.w14.wry.030"] = {
+		"Le ossa dove vanno le ossa, la pelle dove va la pelle. Lasciale lì, per cortesia.",
+		"Ogni cosa è tornata dove deve stare. Non rimettere in disordine.",
+	},
+	["heal.w14.wry.031"] = {
+		"Ho pazienza giusto per una di queste. L'hai appena consumata.",
+		"Quella era tutta la mia scorta di pazienza. Spendila bene.",
+	},
+	["heal.w14.wry.032"] = {
+		"Vai a renderti utile. Con prudenza. Utile e prudente, in quest'ordine.",
+		"Vai pure. Sii utile, sii prudente, torna in un pezzo solo.",
+		"Utile e prudente, {target}. Tutte e due le cose. Non si sceglie.",
+	},
+	["heal.w14.wry.033"] = {
+		"C'è mancato poco. Abbastanza poco da farmi arrabbiare.",
+		"Troppo vicino. Così vicino che adesso sono di cattivo umore.",
+	},
+	["heal.w14.wry.034"] = {
+		"Rifallo e la prossima volta ti rimetto in sesto con tutta calma.",
+		"Un'altra bravata così e il prossimo rattoppo arriva con una lunga predica allegata.",
+	},
+	["heal.w14.wry.035"] = {
+		"Non ho fatto tutto questo lavoro perché tu vada in pezzi alla prima spinta.",
+		"Tanta fatica, e già stai adocchiando il prossimo disastro.",
+	},
+	["heal.w14.wry.036"] = {
+		"Ti scrollerei per bene, ma ho appena finito di aggiustarti.",
+		"Una parte di me vorrebbe scuoterti fino a farti rinsavire. L'altra ha appena finito il lavoro su di te.",
+	},
+	["heal.w14.wry.037"] = {
+		"La prossima volta urla prima. Se qualcuno mi avvisa, arrivo molto più in fretta.",
+		"Un grido avrebbe aiutato. Un piccolo avviso, non chiedo altro.",
+	},
+	["heal.w14.wry.038"] = {
+		"Fatto. E io che mi stavo godendo un momento di pace.",
+		"Tutto a posto. Addio al mio unico minuto tranquillo.",
+	},
+	["heal.w14.wry.039"] = {
+		"Prima o poi mi farai morire, {target}. Non stavolta, ma ci riuscirai.",
+		"Uno di questi giorni mi farai venire un colpo. Non con questa, però.",
+	},
+	["heal.w14.wry.040"] = {
+		"Le mani sono ferme. L'umore no. Spera che vincano le mani.",
+		"Mani salde, nervi a pezzi. Per fortuna il lavoro lo fanno le mani.",
+	},
+	["heal.w14.wry.041"] = {
+		"Questa è fatta. Le storie arrivano dopo, per intero e con gli interessi.",
+		"Questo era il rattoppo. La ramanzina arriva a parte.",
+	},
+	["heal.w14.wry.042"] = {
+		"La ferita è chiusa. Per la testa dura che se l'è guadagnata non ho rimedi.",
+		"Uno squarcio lo chiudo. Una testa dura è tutt'altra faccenda.",
+		"La pelle si ricuce. La testardaggine, purtroppo, non si scuce mai.",
+	},
+	["heal.w14.wry.043"] = {
+		"Fanne buon uso. Qualunque cosa ci farai, che valga la mia fatica.",
+		"Vai a spenderlo bene. Non l'ho fatto per niente.",
+		"Era un regalo. Non sprecarlo in qualche sciocchezza.",
+	},
+	["heal.w14.wry.044"] = {
+		"Sei a posto, non immortale. Impara la differenza prima che tocchi a me insegnartela.",
+		"Un rattoppo non è un'armatura. Ricordatelo, quando ti viene voglia di strafare.",
+	},
+	["heal.w14.wry.045"] = {
+		"Qualunque cosa stessi pensando, la prossima volta pensala un po' meno.",
+		"L'idea che hai avuto? Lasciala qui. Con te non viene.",
+	},
+	["heal.w14.wry.046"] = {
+		"Se vai giù, mi arrabbio. A lungo. Sulla tua tomba.",
+		"Cadi e passerò un anno a sgridare la tua lapide. Non mettermi alla prova.",
+	},
+	["heal.w14.wry.047"] = {
+		"Non morirmi. Per quella cosa non ho parole pronte, e mi rifiuto di cercarle.",
+		"Resta fra i vivi. Per l'altra faccenda non ho pazienza.",
+		"Mi rifiuto di perderti per una cosa così stupida.",
+	},
+	["heal.w14.wry.048"] = {
+		"Fa meno male? Bene. È l'ultima gentilezza che ti faccio per un po'.",
+		"Questa era gentilezza. Goditela: le scorte stanno finendo.",
+	},
+	["heal.w14.wry.049"] = {
+		"{target}, è venuto così bene che quasi mi dispiace sprecarlo con te.",
+		"Un lavoro splendido, modestamente. Sprecato con tanta sbadataggine.",
+	},
+	["heal.w14.wry.050"] = {
+		"Ricordati cosa hai provato. La memoria è l'unica cosa che non posso rimetterti a posto.",
+		"Tieniti il bruciore. Quello lo lascio apposta.",
+	},
+	["heal.w14.wry.051"] = {
+		"Ti perdono appena mi passa lo spavento. Dammi un minuto.",
+		"Il perdono sta arrivando. È in coda dietro lo spavento.",
+		"Lasciami il tempo che passi la paura. Poi passerà anche la rabbia.",
+	},
+	["heal.w14.wry.052"] = {
+		"Che resti scritto: ti ho salvato la pelle, e ho brontolato per tutto il tempo.",
+		"Annotalo da qualche parte: salvataggio riuscito, controvoglia, con commenti.",
+	},
+	["heal.w14.wry.053"] = {
+		"Fatto. Adesso vai a infastidire chi ti ha fatto questo, non me.",
+		"Vai pure. Disturba chi ti ha fatto male; io ho già dato.",
+	},
+	["heal.w14.wry.054"] = {
+		"Ancora un po' così e a farmi ricucire sarò io.",
+		"A questo ritmo, a terra ci finisco io.",
+	},
+	["heal.w14.wry.055"] = {
+		"{target}, sei un lavoro a tempo pieno. E io la domanda non l'ho mai fatta.",
+		"Badare a te è un lavoro onesto. Solo che non ricordo di averlo accettato.",
+	},
+	["heal.w14.wry.056"] = {
+		"Scegli meglio i tuoi disastri, {target}. Possibilmente lontano da me.",
+		"Catastrofi più piccole, per favore. Ho solo due mani.",
+	},
+	["heal.w14.wry.057"] = {
+		"Silenzio. Sto contando, e mi fai perdere il filo.",
+		"Sst. Mi sto concentrando. Ti lamenterai quando sarà chiusa.",
+	},
+	["heal.w14.wry.058"] = {
+		"Ecco. Adesso vai a fare faville, ma dove posso vederti.",
+		"Vai, fai scintille. Però sotto i miei occhi.",
+		"Vai a brillare, {target}. Non troppo lontano.",
+	},
+	["heal.w14.wry.059"] = {
+		"No, non cadrà. Probabilmente. Smettila di stuzzicarla.",
+		"Lasciala stare. A toccarla non guarisce prima: fai solo innervosire me.",
+		"Reggerà. A meno che tu non continui a toccarla: in quel caso, non rispondo io.",
+	},
+	["heal.w14.wry.060"] = {
+		"{target}, mi hai fatto prendere uno spavento. Tutto qui. Non farmelo ripetere.",
+		"Mi hai fatto paura. Ecco, l'ho detto. E non lo dirò una seconda volta.",
+	},
+	["heal.w14.wry.061"] = {
+		"Hai addosso il mio lavoro migliore, {target}. Portagli rispetto.",
+		"Addosso hai il meglio che so fare. Non strapparlo.",
+	},
+	["heal.w14.wry.062"] = {
+		"Ringrazia la fortuna che mi ha messo lì vicino. Lei un premio se l'è meritato; tu no.",
+		"La fortuna mi ha messo nei paraggi. A lei la gratitudine. A te il conto.",
+	},
+	["heal.w14.wry.063"] = {
+		"Prima la sgridata, poi la paura. Al contrario, le mani rallentano.",
+		"Brontolare tiene svelte le mani. Angosciarsi le renderebbe goffe.",
+	},
+	["heal.w14.wry.064"] = {
+		"Se sembro {g:arrabbiato|arrabbiata}, è perché la rabbia pesa meno della paura.",
+		"La rabbia è svelta e utile. La paura intaserebbe le mani, quindi il lavoro tocca alla rabbia.",
+	},
+	["heal.w14.wry.065"] = {
+		"La ferita è chiusa. Il mio umore ci metterà parecchio di più.",
+		"La carne si richiude in fretta. Il mio malumore, invece, ha bisogno di tempo.",
+	},
+	["heal.w14.wry.066"] = {
+		"Chiusa, e ci brontolerò sopra per un po'. Brontolare è la via d'uscita dello spavento.",
+		"Borbotta, borbotta. Non è malumore: è lo spavento che cerca la porta.",
+	},
+	["heal.w14.wry.067"] = {
+		"Più facile sgridare che ammettere quanto mi ha spaventato.",
+		"Una parola brusca costa meno che confessare lo spavento. Quindi, parole brusche.",
+	},
+	["heal.w14.wry.068"] = {
+		"Nessuno deve sapere che le mani mi tremavano finché non si è chiusa.",
+		"Le mani hanno tremato dall'inizio alla fine. Ora possono smettere: nessuno ha visto.",
+	},
+	["heal.w14.wry.069"] = {
+		"Parole ruvide, mani ferme. Se mai uscissero quelle dolci, vorrebbe dire che è andata male.",
+		"Le parole gentili restano sotto chiave. Sono per i finali brutti.",
+	},
+	["heal.w14.wry.070"] = {
+		"La preoccupazione mi esce di bocca vestita da lamentela. Così viaggia meglio.",
+		"Tradotto dal brontolio: ho avuto paura, e adesso no.",
+	},
+	["heal.w14.wry.071"] = {
+		"C'è chi cura con parole dolci. Le mie escono storte, ma la cura è la stessa.",
+		"Le parole sono spigolose, il lavoro no. Funziona così.",
+	},
+	["heal.w14.wry.072"] = {
+		"Se un giorno qualcuno mi pagasse per questi, mi ritirerei in un posto senza spigoli.",
+		"Una moneta per ogni buco richiuso e avrei una fortezza. Con le pareti imbottite.",
+	},
+	["heal.w14.wry.073"] = {
+		"Ricucire, sgridare, ricominciare. È un mestiere. Non dei migliori.",
+		"Rattoppare, rimproverare, rimandare indietro. In qualche modo è la mia vocazione.",
+	},
+	["heal.w14.wry.074"] = {
+		"Troppo vicino. La sgridata può aspettare che le mani smettano di essere così prudenti.",
+		"Per poco non mi scappava. Ci andrò giù duro dopo, a mani ferme.",
+	},
+	["heal.w14.wry.075"] = {
+		"Chi ha fatto i corpi così facili da rompere mi deve delle scuse.",
+		"Che cose fragili, i corpi. Chi li ha progettati non ha mai dovuto ripararne uno.",
+	},
+	["heal.w14.wry.076"] = {
+		"Ricucita. E adesso andrà a rifare esattamente la stessa cosa. Ci scommetterei.",
+		"Chiusa. E via, verso gli stessi guai di prima. Ovviamente.",
+	},
+	["heal.w14.wry.077"] = {
+		"Meglio arrabbiarsi coi vivi che fare i complimenti ai morti.",
+		"Sgridare è un lusso. Serve qualcuno di vivo che ascolti.",
+	},
+	["heal.w14.wry.078"] = {
+		"Chissà dove c'è qualcuno che cura soltanto gente prudente. Spero che apprezzi la fortuna.",
+		"Ci sarà pure qualcuno che rattoppa solo i prudenti. Che fortuna, la sua.",
+	},
+	["heal.w14.wry.079"] = {
+		"borbotta qualcosa di poco gentile sull'imprudenza per tutto il tempo, e non smette finché il lavoro non è fatto a dovere.",
+		"brontola senza sosta mentre lavora; il lavoro, però, è accurato.",
+	},
+	["heal.w14.wry.080"] = {
+		"schiocca la lingua in segno di disapprovazione, poi ripara il danno comunque, con cura e per bene.",
+		"fa un verso seccato davanti al danno, poi lo ripara con gran cura.",
+	},
+	["heal.w14.wry.081"] = {
+		"fulmina {target} con lo sguardo, poi chiude la ferita con una dolcezza che smentisce l'occhiataccia.",
+		"guarda storto la ferita, come un insulto, e la ripara con mani leggere.",
+	},
+	["heal.w14.wry.082"] = {
+		"ripara la ferita con l'espressione di chi somma un conto lunghissimo.",
+		"lavora con la faccia acida del bottegaio che fa il totale di un debito che nessuno pagherà.",
+	},
+	["heal.w14.wry.083"] = {
+		"scuote piano la testa davanti al danno, come davanti a una pentola lasciata traboccare.",
+		"osserva il danno con stanca incredulità, poi si mette all'opera.",
+	},
+	["heal.w14.wry.084"] = {
+		"a ferita chiusa, alza un dito ammonitore: una predica intera, senza una parola.",
+		"a lavoro finito solleva un dito severo, e lascia che sia il silenzio a sgridare.",
+	},
+	["heal.w14.wry.085"] = {
+		"rimette in sesto {target} con una cura spiccia e impaziente, borbottando per tutto il tempo.",
+		"rattoppa il danno in fretta e con precisione, brontolando cupamente.",
+	},
+	["heal.w14.wry.086"] = {
+		"a dolore passato, squadra {target} con gli occhi stretti, come chi decide se sgridare subito o rimandare.",
+		"scruta il lavoro finito a occhi stretti, e rimanda la predica a dopo.",
+	},
+	["heal.w14.wry.087"] = {
+		"finisce di ricucire e si spolvera le mani con l'aria di chi ne riparlerà più tardi.",
+		"chiude la ferita, poi incrocia le braccia: arriveranno due paroline.",
+	},
+	["heal.w14.wry.088"] = {
+		"dà un'occhiata al danno e fa un piccolo verso sofferto, come un artigiano che trova un graffio su un lavoro finito.",
+		"fa una smorfia davanti al danno, come un calzolaio a una cucitura saltata.",
+	},
+	["heal.w14.wry.089"] = {
+		"pronuncia il nome di {target} una volta sola, col tono secco di un rimprovero, e la ferita comincia a chiudersi.",
+		"sbotta una sola parola di rimprovero, poi ricuce senza aggiungerne altre.",
+	},
+	["heal.w14.wry.090"] = {
+		"tiene il broncio finché il pericolo non passa, e solo allora lo molla.",
+		"aggrotta la fronte per tutto il tempo, e si rilassa soltanto quando la ferita si chiude.",
+	},
 }, "base_spells")
