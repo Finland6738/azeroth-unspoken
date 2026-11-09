@@ -8,6 +8,47 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### C0j: a pick that does not grow with its pools (issue #138, ADR 0057)
+
+The M2 gate of ADR 0052 (the Lua instructions of a pick in the simulated session, failing at 64.1 thousand) climbed
+with the generic waves: 47.8 after W10, 56.8 after W15 (p95 88.3), with about 80 waves left. A profile showed why:
+every rule a bounded pick kept was weighed (46% of a pick), more tiers of more events filled up as the pools grew, and
+the first pick of an event split its groups by tier, a walk of the whole pool. A new bench that grows the pools in place
+showed the next waves: on `main` the M2 pick went from 55.2 to 134.2 thousand instructions (p95 104 to 451) with the
+pools of `muse`, `battle`, `victory`, `lowhp`, `heal` and `attack` grown 16 times. See
+[ADR 0057](docs/adr/0057-a-pick-that-does-not-grow-with-its-pools.md).
+
+- **Changed: a weight is computed only where the pick reads it** (`Engine.Lazy`, `Engine:PickOwn`). `Engine.TierPool`
+  counts the fresh candidates of a tier only up to `TIER_MIN` (the levels read the counts only through "more than 0"
+  and "at least `TIER_MIN`", so the same level is drawn), `Engine.SharePool` stops at the first fresh preferred one,
+  and `WeightedPick` weighs the level drawn, testing the window first. A weight reads nothing the pick changes and draws
+  no random number, so **the picks are the same**: `Tests/trace_picks.py` prints the same 3,000 picks as `main`, and
+  the M2 session the same interventions and metrics.
+- **Changed: a large group keeps its tiers as it loads** (`Engine.SPLIT_EAGER` = 64, `Engine/PhraseRegistry.lua`). A
+  group of the index of at least 64 rules is split by tier when its rules are registered or an area is merged
+  (`EndStaging`), and `HidePack` cuts the split in place instead of throwing it away; the splits of a pool share
+  (`Engine.SplitShare`, ADR 0056) are kept with it, extended and cut the same way. No pick splits a large group: the
+  first pick of an event after login or after a change of area costs what the next ones cost.
+- **Added: `Tests/bench_pool.py`** and `SYNTH_POOL_SOURCE` (`Tests/SyntheticArchive.lua`): the generic and situation
+  pools of the large events of the M2 session cloned to 4 and 16 times their rules, with their conditions, voices and
+  tiers, and the session played on them with every pick counted. **`run_tests.py` now fails** when a pick on the pools
+  grown 16 times costs more than 1.25 times its mean on today's pools, or 1.5 times its p95
+  (`pool_flat_ratio`, `pool_p95_ratio` in `Tests/perf_baseline.json`); `m2_pick_kinstr` is reset on purpose from 42.7
+  to 36.4 (the fail line moves from 64.1 to 54.6).
+- **Added: tests** (`TestSelection`): TierPool on lazy weights draws the same level and pick as on weights computed at
+  once, after at most `TIER_MIN` weights per tier; the first pick of an event of 8,005 lines costs what the next ones
+  cost, also after a pack in its groups is dropped, and the splits (and a share's) keep every rule of the group and none
+  of the dropped pack.
+- **Measured** (thousands of Lua instructions per pick, mean / p95, `main` → C0j, same content): M2 session 56.8 / 88.3
+  → **36.4 / 56.0** (CPU 0.90 → 0.69 ms); pools grown 1x / 4x / 16x: 55.2 / 68.1 / 134.2 → **34.6 / 33.8 / 33.1**
+  (p95 58.8 / 59.5 / 60.1); `bench_scale --sizes 0` 31.6 / 65.0 → 24.0 / 48.8 (max 3.3 → 0.9 ms); at 50,000 synthetic
+  rules 38.1 / 75.6 → 28.4 / 58.5 (max 22.7 → 1.4 ms); by area at 270,000 texts per language 41.3 / 94.2 → 27.8 / 56.3.
+  Memory: +0.2 MB with today's lines (37.3 → 37.5 MB), +0.5-0.7 MB at 270,000 texts per language by area (43.0 → 43.7
+  MB at most). **Untested in the client** (G1 item 25).
+- **Not done:** the composite pick (#100) still checks every line written for a composite situation of its event (13
+  today); a common helper for the tests that list the line ids a pick may return (each judges a different property:
+  the NPC's role, the pet's mood, the feeling).
+
 ### Content wave W15: the generic attacks, griefs, recognitions, skies, rests, blessings and the other small pools (issue #138)
 
 The fifteenth content wave of [docs/content/WAVES.md](docs/content/WAVES.md), random need only. Its pools were the

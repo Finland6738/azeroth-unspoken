@@ -506,9 +506,10 @@ local function WeightedPick(items, key, window)
 		for _, id in ipairs(Mem().recent[key] or EMPTY) do recent[id] = true end
 	end
 	for _, it in ipairs(items) do
-		-- #138: e is a rule's ord, or a frame
+		-- #138: e is a rule's ord, or a frame. C0j: the window first, so a lazy weight (PickOwn) of a recent rule is
+		-- not computed for nothing
 		local e = it.e
-		if it.w > 0 and not recent[ID[e] or e.id] then
+		if not recent[ID[e] or e.id] and it.w > 0 then
 			table.insert(pool, it)
 			total = total + it.w
 		end
@@ -534,7 +535,20 @@ local function KeepFor(n)
 	return math.max(1, math.min(window, math.floor(n * 0.6)))
 end
 
-Engine.WeightedPick, Engine.Remember, Engine.KeepFor = WeightedPick, Remember, KeepFor
+-- C0j (ADR 0057): the metatable of the items of one pick whose weight `w` is computed by weigh(e) when it is first
+-- read, then stored in the item (a plain field: WeightedPick, TierPool and SharePool read it as before). The weight
+-- of a candidate depends on the rule, the context and the memory, which do not change before the pick is said, so
+-- reading it late gives the number reading it early gave.
+local function Lazy(weigh)
+	return { __index = function(it, k)
+		if k ~= "w" then return nil end
+		local w = weigh(it.e)
+		it.w = w
+		return w
+	end }
+end
+
+Engine.WeightedPick, Engine.Remember, Engine.KeepFor, Engine.Lazy = WeightedPick, Remember, KeepFor, Lazy
 ---Score for tests and tools: a rule may be given by its ord (#138).
 function Engine.Score(entry, ...)
 	return Score(Engine.Rule(entry), ...)
@@ -872,17 +886,22 @@ function Engine:SampledEligible(event, ctx, form, lang, now, memo, recent, speak
 		local sh = math.min(1, active[1].share)
 		budget = { sh, 1 - sh }
 	end
+	-- C0j: the split of each group once (kept up to date as rules join the index, Engine.SPLIT_EAGER)
+	local split = {}
+	for i, list in ipairs(groups) do
+		split[i] = def and Engine.SplitShare(list, def, lang) or Engine.Split(list)
+	end
 	local tiers, large = {}, false
 	for t = 0, Engine.MAX_TIER do
 		for part = 1, #budget do
 			local lists, size = {}, 0
-			for _, list in ipairs(groups) do
+			for i = 1, #groups do
 				local seg
 				if def then
-					local ss = Engine.SplitShare(list, def, lang)
+					local ss = split[i]
 					seg = part == 1 and ss.pref[t] or ss.rest[t]
 				else
-					seg = Engine.Split(list)[t]
+					seg = split[i][t]
 				end
 				if #seg > 0 then
 					lists[#lists + 1] = seg
@@ -1230,6 +1249,7 @@ function Engine.TierPool(items, key, window)
 	-- #138: the deduced tier once per conditions table in this call (many rules share one, see Engine.Tier)
 	local byWhen = {}
 	local SHAPE, WHEN, ID = SHAPE, WHEN, ID
+	local min = Engine.TIER_MIN
 	for i, it in ipairs(items) do
 		local e = it.e
 		-- an ord has a shape in the column; a view (tests) is read as a table
@@ -1251,9 +1271,13 @@ function Engine.TierPool(items, key, window)
 			end
 		end
 		tiers[i] = t
-		if it.w > 0 and not recent[ID[e] or e.id] then fresh[t] = (fresh[t] or 0) + 1 end
+		-- C0j (ADR 0057): the levels below read fresh[t] only through "> 0" and sums ">= TIER_MIN", which give the same
+		-- answers with every count capped at TIER_MIN; so a tier stops counting there, and the weight of a candidate
+		-- (lazy in PickOwn) is computed only while its tier still counts, or when its level is drawn
+		local f = fresh[t] or 0
+		if f < min and not recent[ID[e] or e.id] and it.w > 0 then fresh[t] = f + 1 end
 	end
-	local shares, min = Engine.TIER_SHARES, Engine.TIER_MIN
+	local shares = Engine.TIER_SHARES
 	local top = #shares
 	-- the place level: its most specific tier with TIER_MIN fresh candidates, counting those above it
 	local floor, n = top, 0
@@ -1343,37 +1367,8 @@ function Engine.ActiveShares(ctx, event)
 	return out
 end
 
--- the preferred rules of a group by tier, per share (weak keys: a group no longer in the index takes them with it)
-local shareSplits = setmetatable({}, { __mode = "k" })
-
----The rules of a group of the index that a pool share prefers, and the others, by tier (C0i, ADR 0056): pref[t] and
----rest[t], each in the order of the group. Made when a pick first needs them and kept, like Engine.Split; made again
----when the group or its split changed, or the language of the texts.
----@param list integer[] a group of the index
----@param def table a pool share (Engine.poolShares)
----@param lang string
----@return { pref: integer[][], rest: integer[][] }
-function Engine.SplitShare(list, def, lang)
-	local base = Engine.Split(list)
-	local byDef = shareSplits[list]
-	if not byDef then
-		byDef = {}
-		shareSplits[list] = byDef
-	end
-	local s = byDef[def]
-	if s and s.base == base and s.n == base.n and s.lang == lang then return s end
-	s = { base = base, n = base.n, lang = lang, pref = {}, rest = {} }
-	local test = def.test
-	for t = 0, Engine.MAX_TIER do
-		local pref, rest = {}, {}
-		for _, r in ipairs(base[t]) do
-			if test(r, lang) then pref[#pref + 1] = r else rest[#rest + 1] = r end
-		end
-		s.pref[t], s.rest[t] = pref, rest
-	end
-	byDef[def] = s
-	return s
-end
+-- C0i: the preferred rules of a group by tier, per share: Engine.SplitShare (PhraseRegistry.lua, kept with the split of
+-- the group since C0j)
 
 ---The pool shares (C0i, ADR 0056), before the tiers: for each share that holds in ctx, when the pool has a candidate
 ---it prefers outside the anti-repetition window and one it does not, the pick keeps only the preferred candidates
@@ -1414,7 +1409,7 @@ function Engine.SharePool(items, key, ctx, lang)
 			end
 			local fresh = false
 			for _, it in ipairs(pref) do
-				if it.w > 0 and not own[ID[it.e] or it.e.id] then fresh = true; break end
+				if not own[ID[it.e] or it.e.id] and it.w > 0 then fresh = true; break end
 			end
 			if fresh and math.random() < a.share then items, window = pref, own end
 		end
@@ -1526,10 +1521,16 @@ function Engine:PickOwn(event, ctx, form, composite)
 	local items = {}
 	local own, held = EligibleOf(form)
 	local weights = memo and #own >= self.MEMO_MIN and memo
-	-- #138: the candidates are ords; a rule becomes a view only once chosen
-	for _, r in ipairs(own) do
-		table.insert(items, { e = r, w = weights and ScoreMemo(r, lastTone, ctx, profile, nil, weights)
-			or Score(Load(r), event, #own, lastTone, ctx, profile) })
+	-- #138: the candidates are ords; a rule becomes a view only once chosen.
+	-- C0j (ADR 0057): the weight of a candidate is computed when the pick first reads it (Lazy), not for every one:
+	-- the tiers need it only to count TIER_MIN fresh candidates per tier, and the pick only in the level drawn. The
+	-- same numbers (a weight reads no random number and nothing the pick changes), so the same pick, for less.
+	local lazy = Lazy(function(r)
+		return weights and ScoreMemo(r, lastTone, ctx, profile, nil, weights)
+			or Score(Load(r), event, #own, lastTone, ctx, profile)
+	end)
+	for i, r in ipairs(own) do
+		items[i] = setmetatable({ e = r }, lazy)
 	end
 
 	local frames
@@ -1544,11 +1545,13 @@ function Engine:PickOwn(event, ctx, form, composite)
 			local says, saysHeld = EligibleOf("say", "character")
 			held = held + saysHeld
 			local voice = r3 and "narrator" or nil
-			weights = memo and #says >= self.MEMO_MIN and memo
+			local sweights = memo and #says >= self.MEMO_MIN and memo
+			local slazy = Lazy(function(r)
+				return 0.8 * (sweights and ScoreMemo(r, lastTone, ctx, profile, voice, sweights)
+					or Score(Load(r), event, #says, lastTone, ctx, profile, voice))
+			end)
 			for _, r in ipairs(says) do
-				table.insert(items, { e = r, framed = true,
-					w = 0.8 * (weights and ScoreMemo(r, lastTone, ctx, profile, voice, weights)
-						or Score(Load(r), event, #says, lastTone, ctx, profile, voice)) })
+				items[#items + 1] = setmetatable({ e = r, framed = true }, slazy)
 			end
 		end
 	end

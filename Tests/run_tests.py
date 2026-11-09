@@ -542,6 +542,19 @@ if m2_ms >= 2:
     print(f"  M2: {m2_ms:.2f} ms, measured again: {again['pick_mean_ms_median']:.2f} ms")
     m2_ms = min(m2_ms, again["pick_mean_ms_median"])
 check(m2_ms < 2, f"M2: PickEntry stays fast ({m2_ms:.2f} ms of CPU time, median of the runs)")
+# C0j (ADR 0057): the cost of a pick does not follow the size of the pools it draws from. Tests/bench_pool.py grows the
+# generic and situation pools of the large events of the M2 session to 16 times their rules today and plays the
+# session again (1 hour, one seed): the picks must cost about what they cost on today's pools, on average and at the
+# 95th percentile. Before C0j the first pick of an event split its pools (16x: 2.5 times the mean, 4 times the p95)
+import bench_pool  # noqa: E402
+pool1, pool16 = (bench_pool.measure(ADDON, f, hours=1, seeds=(1,)) for f in (1, 16))
+print(f"  pools grown 16x (muse {pool1['muse_candidates']} -> {pool16['muse_candidates']} candidates): pick "
+      f"{pool1['pick_kinstr']:.1f} -> {pool16['pick_kinstr']:.1f} thousand Lua instructions (p95 "
+      f"{pool1['pick_p95_kinstr']:.1f} -> {pool16['pick_p95_kinstr']:.1f})")
+check(pool16["pick_kinstr"] < pool1["pick_kinstr"] * perf_base["pool_flat_ratio"],
+      f"pools 16x: the mean pick stays under {perf_base['pool_flat_ratio']:.0%} of today's ({pool16['pick_kinstr']:.1f} thousand)")
+check(pool16["pick_p95_kinstr"] < pool1["pick_p95_kinstr"] * perf_base["pool_p95_ratio"],
+      f"pools 16x: the p95 pick stays under {perf_base['pool_p95_ratio']:.0%} of today's ({pool16['pick_p95_kinstr']:.1f} thousand)")
 
 # 9a-bis) scenario M6 of the analysis A1 (R4: #97, #98, Tests/scenario_return.py): enter Elwynn, die, come back. No
 # cheerful or ironic return line for a neutral or a cheerful character; gallows humour only for an ironic one

@@ -431,6 +431,90 @@ T.run("C0e: a line that holds is found also when the sample misses it, and dropp
 	Engine:DropPack("t_c0e_rare")
 end)
 
+T.run("C0j: TierPool weighs a candidate only while its tier counts and when its level is drawn", function()
+	Fresh()
+	-- 30 candidates in each level, as views; the weights of one list computed at once, of the other when read
+	local calls = 0
+	local lazy = Engine.Lazy(function(e)
+		calls = calls + 1
+		return e.w0
+	end)
+	local eager, late = {}, {}
+	for i = 1, 90 do
+		local view = { id = ("c0jw.%02d"):format(i), tier = (i - 1) % 3 == 2 and 2 or (i - 1) % 3, w0 = 1 + i % 4 }
+		eager[i] = { e = view, w = view.w0 }
+		late[i] = setmetatable({ e = view }, lazy)
+	end
+	for seed = 1, 20 do
+		math.randomseed(seed)
+		local a, ta = Engine.TierPool(eager, "c0jw")
+		local pa = Engine.WeightedPick(a, "c0jw")
+		math.randomseed(seed)
+		calls = 0
+		for _, it in ipairs(late) do rawset(it, "w", nil) end
+		local b, tb = Engine.TierPool(late, "c0jw")
+		local counted = calls
+		local pb = Engine.WeightedPick(b, "c0jw")
+		T.ok(ta == tb and #a == #b and pa.e == pb.e, ("seed %d: the same level and the same pick (%s, %s)")
+			:format(seed, pa.e.id, pb.e.id))
+		T.ok(counted <= 3 * Engine.TIER_MIN, ("seed %d: the levels are drawn after %d weights (at most %d)")
+			:format(seed, counted, 3 * Engine.TIER_MIN))
+		T.ok(calls <= counted + #b, ("seed %d: then only the level drawn is weighed (%d weights in all)"):format(seed, calls))
+	end
+end)
+
+T.run("C0j: the first pick of a large event costs what the next ones cost, and a dropped pack leaves the splits in place", function()
+	-- 8,005 lines: the split of the generic group is made as the rules are registered, not by the first pick
+	BigPack("t_c0j_a", "c0jpool", 2000)
+	P.zone, P.subzone, P.class = "Elwynn Forest", "", "WARRIOR"
+	local ctx = NS:BuildContext()
+	math.randomseed(21)
+	Fresh()
+	local first = Kinstr("c0jpool", ctx)
+	local next = 0
+	for _ = 1, 10 do next = next + Kinstr("c0jpool", ctx) end
+	T.ok(first < 2 * next / 10, ("the first pick %.1f thousand instructions, the next ones %.1f"):format(first, next / 10))
+
+	-- a pool share reads its own split of the group; a second pack in the same groups, then dropped
+	local function IdOf(e) return type(e) == "number" and Engine.R.id[e] or e.id end
+	Engine:SetPoolShare("t_c0j", function(_, event) return event == "c0jpool" and 0.5 or nil end,
+		function(e) return IdOf(e):find("%.gen0") ~= nil end)
+	BigPack("t_c0j_b", "c0jpool", 50)
+	Fresh()
+	for _ = 1, 5 do Engine:PickEntry("c0jpool", ctx, "say") end
+	Engine:DropPack("t_c0j_b")
+	local def
+	for _, d in ipairs(Engine.poolShares) do
+		if d.name == "t_c0j" then def = d end
+	end
+	for key, group in pairs(Engine.index.c0jpool.say) do
+		local s, ss = Engine.Split(group), Engine.SplitShare(group, def, NS:TextLang())
+		local n, gone, parts = 0, 0, true
+		for t = 0, Engine.MAX_TIER do
+			n = n + #s[t]
+			for _, r in ipairs(s[t]) do
+				if IdOf(r):find("t_c0j_b", 1, true) then gone = gone + 1 end
+			end
+			if #ss.pref[t] + #ss.rest[t] ~= #s[t] then parts = false end
+			for _, r in ipairs(ss.pref[t]) do
+				if IdOf(r):find("t_c0j_b", 1, true) or not IdOf(r):find("%.gen0") then parts = false end
+			end
+		end
+		T.eq(n, #group, "group " .. key .. ": its tiers hold every rule of the group")
+		T.eq(gone, 0, "group " .. key .. ": no rule of the dropped pack is left in its tiers")
+		T.ok(parts, "group " .. key .. ": the share split follows the drop")
+	end
+	-- and the first pick after the drop costs what the next ones cost
+	Fresh()
+	first = Kinstr("c0jpool", ctx)
+	next = 0
+	for _ = 1, 10 do next = next + Kinstr("c0jpool", ctx) end
+	T.ok(first < 2 * next / 10, ("after a drop, the first pick %.1f thousand instructions, the next ones %.1f")
+		:format(first, next / 10))
+	Engine:SetPoolShare("t_c0j", nil)
+	Engine:DropPack("t_c0j_a")
+end)
+
 T.run("C0e: the composite pick reads the situational lines of the split groups", function()
 	local mismatches, compared, nonEmpty = 0, 0, 0
 	for _, zone in ipairs({ "Durotar", "Elwynn Forest", "Orgrimmar", "Stormwind City" }) do

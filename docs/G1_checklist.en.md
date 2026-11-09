@@ -617,6 +617,14 @@ a boss fight the short lines keep about 85% of the picks and say their short var
 24. **Short lines in a battleground.** In a battleground, with `/au chance battle 100`, fight for a few minutes.
     **Expect:** the battle lines are short (one breath). **Report:** any long line, with `/au debug`.
 
+**C0j (ADR 0057): a pick that does not grow with its pools.** Never run in the client either. The addon now sorts the
+lines of each large pool as it loads them, instead of on the first line of each moment, and weighs only the lines it
+may say; the lines said are the same.
+
+25. **The first lines after login.** Log in, `/au prof reset`, then fight a few monsters and use `/au speak` a few
+    times in the first two minutes, then `/au prof`. **Expect:** the max of `PickEntry` close to its p95 (no first pick
+    of several ms), loading no slower than before. **Report:** the mean, p95 and max of `PickEntry`, and the memory.
+
 ## Summary form (copy and fill in)
 
 ```
@@ -701,4 +709,5 @@ C0f own lines .......... /au packs class/race ______  rules/texts left out _____
 C0g own gestures ....... bandage on self heal? ___  on another silent? ___  Battle Shout/poison/aspect buff? ___  names ______
 C0h cast on self ....... potion + friend: line to the friend? ___  self heal + friend: to the friend? ___  heal on friend ok? ___
 C0i voice and battle ... innkeeper sounds like herself? ___  too repetitive? ___  battleground lines short? ___
+C0j first picks ........ PickEntry mean/p95/max (ms) ______  loading slower? ___  KB ______
 ```
