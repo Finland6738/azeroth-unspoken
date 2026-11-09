@@ -683,4 +683,61 @@ NS:AddTexts("itIT", {
 		"tace a lungo; il sentiero non chiede nulla, e nulla riceve.",
 		"resta in piedi senza una parola, le mani ferme, finché il momento non passa da sé.",
 	},
+	["arc_resolve.w16.001"] = {
+		"guarda ancora una volta {other}, come chi ripone una piccola cosa su uno scaffale: la voce, le abitudini, la giornata che si legge su quel viso. Si conserverà.",
+		"si sofferma sul volto noto un istante più di quanto chieda la cortesia. Certi volti vale la pena portarli lontano.",
+		"fa un cenno e tiene l'immagine così com'è: un'ora qualunque, una voce diventata familiare. Le cose comuni sono quelle che durano di più.",
+	},
+	["arc_resolve.w16.002"] = {
+		"sale di livello e continua a guardare avanti. Il luogo della caduta resta dov'è, e non decide più dove va la strada.",
+		"sente la forza nuova assestarsi e non ne spreca nulla per voltarsi. Quello che è successo laggiù ha smesso di essere la fine della storia.",
+		"prende il nuovo livello come un passo, non come una cicatrice. La caduta resta un fatto; solo, non è più l'ultimo.",
+	},
+	["arc_resolve.w16.003"] = {
+		"si lascia la porta alle spalle con il chiasso di dieci accenti ancora nelle orecchie. Una capitale, a quanto pare, è il posto dove le strade vengono a litigare.",
+		"esce sulla strada con le tasche piene di parole altrui: un saluto imparato in un quartiere, un'imprecazione in un altro. I crocevia lasciano il segno così.",
+	},
+	["nemesis_meet.w16.001"] = {
+		"Ecco {other}, con lo stesso passo tranquillo dell'altra volta. La differenza è che stavolta me ne accorgo prima.",
+		"Conosco quell'andatura. L'ultima volta ho guardato {other} dal basso, con la guancia contro la terra.",
+		"Mi basta guardare {other} un istante e la caduta torna tutta, in ordine, passo dopo passo.",
+	},
+	["nemesis_meet.w16.002"] = {
+		"{other}. Fra noi c'è una sconfitta, e per ora è mia. Mi piacerebbe restituirla.",
+		"Dunque {other} si aggira ancora da queste parti, con quell'aria soddisfatta. Bene. C'è una brutta giornata da saldare.",
+	},
+	["nemesis_meet.w16.003"] = {
+		"si arresta di colpo alla vista di {other}, e una mano scivola da sola sul punto dove è arrivato l'ultimo colpo.",
+		"si fa immobile quando compare {other}. Il mondo intorno va avanti per conto suo, proprio come l'ultima volta.",
+	},
+	["nemesis_meet.w16.004"] = {
+		"{other}, e le ginocchia cedono prima ancora che il pensiero sia finito. Due cadute bastano a insegnare la paura a un corpo.",
+		"Per due volte, a causa di {other}, ho fatto il lungo cammino di ritorno fino al mio corpo. Quella strada non vorrei impararla a memoria.",
+		"Le mani sono ferme. Erano ferme anche le altre due volte, fino a quando mi ha raggiunto {other}.",
+	},
+	["nemesis_meet.w16.005"] = {
+		"Due vittorie per {other}, e nemmeno uno sguardo dalla mia parte. Sono un'abitudine, nient'altro.",
+		"Guarda {other}, senza un pensiero al mondo. Fra noi due, i conti li tiene uno solo.",
+	},
+	["nemesis_meet.w16.006"] = {
+		"vede {other}, e l'istante si assottiglia. Fra i due ci sono già due cadute, e nessuna è dimenticata.",
+		"accoglie la vista di {other} con un'immobilità imparata a caro prezzo, per due volte.",
+	},
+	["nemesis_meet.w16.007"] = {
+		"{other}. Ha avuto l'ultima parola troppe volte, e io le ho spese tutte a preparare la risposta.",
+		"Dopo la terza caduta ho giurato che il prossimo incontro sarebbe andato diversamente. Ecco {other}. Ecco il prossimo incontro.",
+		"Con {other} ho smesso di scappare. Qualunque cosa succeda adesso, ci vado incontro.",
+	},
+	["nemesis_meet.w16.008"] = {
+		"pianta i piedi alla vista di {other}, come chi si presenta a un appuntamento fissato da tempo e mai rimandato.",
+		"si volta verso {other}, a viso aperto. Quello che è stato giurato dopo l'ultima caduta sta tutto nella linea delle spalle.",
+	},
+	["nemesis_meet.w16.009"] = {
+		"Gli occhi trovano {other} prima che io decida di guardare. Il corpo tiene un registro tutto suo.",
+		"Strano quanto in fretta ho distinto {other} da tutto il resto. La paura ha una vista eccellente.",
+	},
+	["nemesis_meet.w16.010"] = {
+		"Né io né {other} abbiamo finito, anche se a me la fine è passata molto più vicino.",
+		"Fra me e {other} c'è una fossa non ancora scavata. Manca soltanto il nome.",
+	},
 }, "base_arcs")

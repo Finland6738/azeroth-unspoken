@@ -8156,4 +8156,176 @@ NS:AddTexts("itIT", {
 		"dà una pacca allo zaino, come per rassicurarlo che fra loro due non deve cambiare niente.",
 		"mormora qualcosa di rassicurante al proprio equipaggiamento, il che è segno di buon senso oppure preoccupante.",
 	},
+	["dawn.w16.day.001"] = {
+		"Una giornata intera davanti, ancora da spendere. Cercherò di non sprecarla tutta nella prima ora.",
+		"Piena fino all'orlo, questa giornata. Vediamo quanta ne riesco a rovesciare prima che sia a metà.",
+	},
+	["dawn.w16.day.002"] = {
+		"Ogni buona giornata comincia con una lista. Il guaio è sempre l'ultima riga, quella scritta con troppa speranza.",
+		"Tre cose da fare, se la giornata lo permette. Due, se è onesta. Una, se è come quasi tutte le altre.",
+	},
+	["dawn.w16.day.003"] = {
+		"conta sulle dita le commissioni della giornata, aggrotta la fronte davanti al totale e ricomincia il conto in silenzio.",
+		"ripassa a mezza voce le faccende della giornata, poi lascia cadere la meno probabile senza dire niente.",
+	},
+	["dawn.w16.day.004"] = {
+		"D'accordo, giornata. Vediamo che cosa sai fare.",
+		"In piedi e in marcia. La giornata non aspetta, e nemmeno chi ha bisogno che qualcosa venga fatto.",
+	},
+	["dawn.w16.day.005"] = {
+		"Qualunque cosa sia costato ieri, ormai è pagato. Il giorno nuovo arriva con la borsa vuota e senza debiti, e dovrà bastare.",
+		"Ieri è saldato, nel bene e nel male. Quest'ora non gli deve niente, e per adesso nemmeno io.",
+		"Le ore buie si sono prese quello che si sono prese. Almeno il giorno comincia in pari, e sul resto non chiede interessi.",
+	},
+	["dawn.w16.look.001"] = {
+		"vede il buio sciogliersi in forme nella prima luce grigia, prima le più vicine e poi le lontane, come se il mondo venisse ricontato e rimesso al suo posto.",
+		"guarda il mondo uscire dal buio pezzo per pezzo, e ogni cosa ritrovare il proprio contorno man mano che la prima luce lo concede.",
+	},
+	["dawn.w16.look.002"] = {
+		"Da un lato il cielo sta perdendo la sua discussione col buio. Non è ancora luce, è solo meno buio: è così che cominciano quasi tutte le cose buone.",
+		"Il buio si consuma da una parte. Più che luce è una voce di luce che corre, e io la prendo per buona.",
+		"Adesso da una parte è più chiaro. Il buio ha cominciato a fare i bagagli, piano, come un ospite che ha capito che la festa è finita.",
+	},
+	["dawn.w16.look.003"] = {
+		"Prima luce. Adesso vedo esattamente quanta strada resta, ed era molto più piacevole tirare a indovinare al buio.",
+		"C'è abbastanza luce per vederci. Anche per vedere ogni pasticcio che ho combinato per arrivare fin qui.",
+	},
+	["dawn.w16.look.004"] = {
+		"si volta verso il lato più pallido del cielo e aspetta lì, senza fretta, che il giorno si decida.",
+		"alza il capo mentre il cielo passa dal nero a un grigio debole e indeciso, e lo lascia fare con calma.",
+		"resta {g:fermo|ferma} un poco mentre il buio si assottiglia, e guarda il mondo decidersi, senza alcuna premura, a farsi vedere.",
+	},
+	["dawn.w16.look.005"] = {
+		"Arriva la luce. Ottima per camminare, pessima per nascondersi.",
+		"Eccola: abbastanza luce per vederci. E pure per farsi vedere.",
+	},
+	["dawn.w16.turn.001"] = {
+		"Il giorno si volta come una pagina nuova. Ancora niente di scritto: può essere un conforto o un avvertimento.",
+		"Una pagina pulita, questa giornata. Presto scoprirò di chi è la calligrafia che la riempie.",
+	},
+	["dawn.w16.turn.002"] = {
+		"segna il cambio del giorno alla maniera semplice: una cinghia tirata, una fibbia controllata, lo zaino sistemato più in alto sulle spalle.",
+		"accoglie il nuovo giorno senza cerimonie, provando ogni fibbia e ogni cinghia come se il giorno dovesse passarle in rassegna.",
+		"riconosce l'ora per sola abitudine, e passa il pollice lungo ogni cinghia e ogni chiusura prima di fare qualsiasi altra cosa.",
+	},
+	["dawn.w16.turn.003"] = {
+		"L'alba è la promessa più antica del mondo, e l'unica che non abbia mai mancato di mantenere.",
+		"Ogni giorno il mondo mantiene una promessa che non ha mai fatto ad alta voce: ricomincia. Si può imparare da molto di peggio.",
+		"Più vecchio di qualunque strada o muro, questo: il buio finisce, il giorno comincia. Certe cose reggono, e questa è la prima.",
+	},
+	["dawn.w16.turn.004"] = {
+		"Giorno nuovo. Qualunque cosa sia andata storta ieri, adesso è ufficialmente un problema di ieri.",
+		"È mattina, più o meno. Gli sbagli di ieri hanno chiuso bottega.",
+	},
+	["dawn.w16.turn.005"] = {
+		"L'ora è girata, che io fossi {g:pronto|pronta} o no. Il mattino non aspetta mai che lo si inviti a entrare.",
+		"È spuntato il giorno, senza consultarmi. Non lo fa mai, e ho smesso di prendermela.",
+	},
+	["dusk.w16.day.001"] = {
+		"Il conto della giornata: qualcosa fatto, qualcosa lasciato a metà, e niente di rotto che non si possa aggiustare. Mi sta bene.",
+		"Il bilancio della giornata, a grandi linee: un po' di terreno guadagnato, un po' perso, e i conti chiudono non troppo in rosso.",
+		"Facendo i conti: una cosa andata bene, una andata storta, e il resto pari. Per una giornata, può andare.",
+	},
+	["dusk.w16.day.002"] = {
+		"ripassa in silenzio i guadagni e le perdite della giornata, e nel complesso sembra considerarla pari.",
+		"guarda a lungo i propri stivali consumati, come se tenessero il conto della giornata meglio della memoria.",
+	},
+	["dusk.w16.day.003"] = {
+		"Ci sono giorni che si possono soltanto attraversare. Questo era uno di quelli. Il crepuscolo è benvenuto anche solo per questo.",
+		"Non un giorno da ricordare, solo da finire. Ed è finito. Lo lascio andare senza voltarmi.",
+		"È stata una giornata pesante, e adesso è finita. Non le chiedo altro.",
+	},
+	["dusk.w16.day.004"] = {
+		"Per oggi basta. Chi vuole qualcosa da me può chiederlo domani.",
+		"Giornata finita, e io quasi. Quel che resta mi troverà domattina.",
+	},
+	["dusk.w16.day.005"] = {
+		"Inutile fingere che questa giornata si possa ancora salvare. Lasciala andare, e tieni quel che c'era di buono.",
+		"Ormai non si aggiusta. Meglio ripiegare la giornata con garbo, tenere le parti buone e lasciare il resto dov'è caduto.",
+	},
+	["dusk.w16.look.001"] = {
+		"guarda le cose intorno perdere i contorni una dopo l'altra, finché soltanto le più vicine conservano i propri.",
+		"vede i profili ammorbidirsi nella luce che cala, prima i lontani, come se il mondo venisse ripiegato e messo via per le ore buie.",
+	},
+	["dusk.w16.look.002"] = {
+		"Il buio sale prima dalla terra. Il cielo resiste più a lungo di tutti, come se avesse un altro posto dove andare, dopo.",
+		"I luoghi bassi si scuriscono prima di quelli alti. Il cielo è l'ultimo a mollare, testardo fino in fondo.",
+		"Il crepuscolo lavora dal basso. Prima se ne va il terreno, poi tutto ciò che ci sta sopra, e il cielo per ultimo.",
+	},
+	["dusk.w16.look.003"] = {
+		"La luce se ne va. Quello che va guardato bene, si guarda adesso.",
+		"Resta poca luce. Quel che c'è da vedere, si vede ora o si lascia a domani.",
+	},
+	["dusk.w16.look.004"] = {
+		"vede il giorno colare via dal mondo come l'acqua da una ciotola incrinata: piano, e poi tutto d'un tratto.",
+		"resta {g:fermo|ferma} mentre il grigio si fa più fitto, come se restare immobile potesse rallentarlo.",
+	},
+	["dusk.w16.turn.001"] = {
+		"Il crepuscolo: l'ora che fa a chiunque sia in giro la stessa domanda. Dove sarai, quando sarà buio?",
+		"È l'ora che pretende una risposta: dove sarò quando sarà buio del tutto, e con che cosa alle spalle.",
+	},
+	["dusk.w16.turn.002"] = {
+		"si ferma al volgere del giorno, come a quest'ora ci si ferma da quando esiste qualcuno che possa farlo.",
+		"lascia passare la fine del giorno in un attimo di quiete, un'abitudine molto più vecchia di chiunque la conservi.",
+	},
+	["dusk.w16.turn.003"] = {
+		"Ogni crepuscolo si porta via qualcosa. Di solito soltanto la giornata. Certi giorni, di più.",
+		"Che sia andato bene o no, il giorno finisce. Il crepuscolo non pesa niente: chiude il coperchio e basta.",
+		"Andato, il giorno, con tutto quello che non capiterà due volte. Il crepuscolo non dà mai il resto.",
+	},
+	["dusk.w16.turn.004"] = {
+		"È già sera? Avevo dei progetti per questa giornata. La giornata ne aveva altri.",
+		"A quanto pare la giornata è finita. Nessuno mi aveva avvisato che fosse cominciata davvero.",
+	},
+	["dusk.w16.turn.005"] = {
+		"È l'ora in cui i rumori piccoli diventano grandi. Mi sorprendo ad ascoltare più di quanto vorrei.",
+		"A quest'ora ogni scricchiolio sembra avere qualcosa da dire. So bene che non è così. Ascolto lo stesso.",
+	},
+	["dusk.w16.turn.006"] = {
+		"rallenta un poco al volgere dell'ora, come fanno i viandanti quando il giorno comincia a chiudersi alle loro spalle.",
+		"si guarda intorno mentre la giornata si spegne, con l'aria di chi sta già calcolando dove passerà le ore buie.",
+	},
+	["reputation_change.w16.down.001"] = {
+		"Questo, con loro, mi è costato qualcosa. L'ho sentito andarsene, come una moneta che scivola da una tasca bucata.",
+		"Un gradino più giù ai loro occhi. Certe scelte costano benevolenza, e io ne ho appena fatta una.",
+		"La loro stima per me è calata. Qualunque cosa io abbia fatto, ne hanno tenuto il conto come un usuraio conta le monete.",
+	},
+	["reputation_change.w16.down.002"] = {
+		"Ormai {g:indesiderato|indesiderata}. Dovrò trovare altre strade per girargli intorno, e ricordarmi perché.",
+		"Dove un tempo mi avrebbero lasciato passare, adesso preferirebbero di no. Quella strada ora è sbarrata, e la mano sul chiavistello era la mia.",
+	},
+	["reputation_change.w16.down.003"] = {
+		"Che mi guardino storto. Non mi serve la loro accoglienza per continuare a camminare.",
+		"E va bene, non gli piaccio. Cercherò di farmene una ragione, in qualche modo.",
+	},
+	["reputation_change.w16.down.004"] = {
+		"Ecco chi ho fatto arrabbiare. Buono a sapersi, anche se non è una buona notizia.",
+		"L'opinione che qualcuno ha di me è appena calata. Meglio sapere come stanno le cose che tirare a indovinare.",
+	},
+	["reputation_change.w16.up.001"] = {
+		"Qualcuno ha deciso che valgo un secondo sguardo. Non so cosa abbia fatto pendere la bilancia, e non lo chiederò.",
+		"È cambiato il modo in cui mi salutano con un cenno. Una piccolezza. Me ne sono {g:accorto|accorta} lo stesso.",
+		"Qualcosa si è spostato nel modo in cui mi vedono. Non molto. Abbastanza da sentire la differenza quando passo.",
+	},
+	["reputation_change.w16.up.002"] = {
+		"Neutrale. Hanno smesso di giudicarmi e si sono messi ad aspettare per vedere. Mi sembra giusto.",
+		"Non più {g:un sospettato|una sospettata}, non ancora {g:un ospite|un'ospite}. Nello spazio in mezzo ci posso stare, per un po'.",
+	},
+	["reputation_change.w16.up.003"] = {
+		"Pare che abbiano deciso che gli sto {g:simpatico|simpatica}. Cercherò di non rovinare tutto parlando troppo.",
+		"Amichevoli, adesso. È una bella sorpresa, e intendo fare in modo che non duri poco.",
+	},
+	["reputation_change.w16.up.004"] = {
+		"{g:Onorato|Onorata}. Quelli che prima mercanteggiavano con me adesso arrotondano il prezzo per difetto senza che io lo chieda.",
+		"{g:Onorato|Onorata}, a quanto pare. I prezzi si sono addolciti prima delle facce, e questo dice qualcosa su come vanno le cose.",
+	},
+	["reputation_change.w16.up.005"] = {
+		"accoglie in silenzio la notizia della propria reputazione, come si accetta un dono troppo prezioso per usarlo ogni giorno.",
+		"riceve la stima accresciuta senza una parola, e la porta con cura, come una cosa avuta in prestito da restituire intatta.",
+	},
+	["reputation_change.w16.up.006"] = {
+		"{g:Osannato|Osannata}. Più in alto di così, con loro, non si sale. Da qui in poi c'è solo da conservarlo.",
+		"Più in alto di così la loro stima non arriva. Tutto quello che viene dopo è manutenzione, ed è il mestiere più difficile.",
+		"Niente più da vincere con loro, e parecchio da perdere. Uno strano punto d'arrivo.",
+	},
 }, "base_world")

@@ -852,4 +852,68 @@ NS:AddTexts("enUS", {
 		"{target}, thank you. I'll keep the name, and what goes with it.",
 		"I'll remember who to be grateful to.",
 	},
+	["jest.w16.wit.001"] = {
+		"A merchant will buy a cracked pot for a copper and sell you a whole one for a silver. That isn't trade, it's arithmetic with a grudge.",
+		"Merchants are a marvel. They'll take all your junk off your hands, then charge you a fortune for slightly different junk.",
+	},
+	["jest.w16.wit.002"] = {
+		"Every map I buy is right about everything except the bit I'm standing in.",
+		"Mapmakers draw a little picture wherever they got bored. I've found plenty of those spots. Never the picture.",
+	},
+	["jest.w16.wit.003"] = {
+		"Bears never have the thing. You wrestle one for an hour and all it had on it was a pebble and a bad temper.",
+		"Why is the thing I need always in the third bear? Never the first. The first bear is just practice.",
+		"A bear has never once had what I was looking for. I'm starting to think they hide it on purpose.",
+	},
+	["jest.w16.wit.004"] = {
+		"An innkeeper's stew never runs out. It just changes its name every few days.",
+		"Nobody has ever seen the bottom of an innkeeper's stew pot. Scholars have tried.",
+	},
+	["jest.w16.wit.005"] = {
+		"'You can't miss it,' they said. I'm proud to report I missed it twice.",
+		"Directions I was given: past the big rock, then left at the other big rock. Very helpful.",
+		"Nobody gives directions in steps. It's always 'just over there', and 'there' is half a day's walk.",
+	},
+	["jest.w16.wit.006"] = {
+		"My bags are full of things that will be useful someday. None of them has been so far, but I'm patient.",
+		"I'm carrying a feather, three pebbles and a key to nothing. Someday this will all make sense.",
+	},
+	["jest.w16.wit.007"] = {
+		"Nothing out there hits as hard as the repair bill.",
+		"The wild has teeth. The smith's bill for repairs has more.",
+	},
+	["jest.w16.wit.008"] = {
+		"People only call me a hero when something heavy needs carrying somewhere far.",
+		"Funny how 'hero' always seems to mean 'the one with the strong back and nothing better to do'.",
+	},
+	["jest.w16.wit.009"] = {
+		"Trail bread is very filling. Mostly with regret.",
+		"Travel rations: the food that makes every other food look good, including none at all.",
+	},
+	["jest.w16.wit.010"] = {
+		"'Wait here,' they told me. That was a while ago. I've grown quite fond of this spot.",
+		"I was asked to wait right here. I have. The spot and I are on first-name terms now.",
+	},
+	["jest.w16.wit.011"] = {
+		"Something that size, and all it carried was one copper and a broken tooth. Where does it all go?",
+		"Big as a cart, and its pockets held a single copper. Somebody must be robbing these things before I get to them.",
+		"The wild is the stingiest employer there is. Pays in teeth, mostly.",
+	},
+	["jest.w16.wit.012"] = {
+		"I've stood up to all sorts of trouble. The thing that nearly finished me was a step I didn't see.",
+		"Fierce foes, dark places, all very dramatic. And then a loose stair tries harder than any of them.",
+	},
+	["pray.w16.word.001"] = {
+		"Nothing to ask for this time. Only thanks, for the small mercies I nearly walked past.",
+		"To whatever listens: thank you for the things that went right and that I never thought to count.",
+		"No name to give you, and maybe you have none. Thank you anyway, for what was spared.",
+	},
+	["pray.w16.word.002"] = {
+		"You who listen, by whatever name: let me be of use, and let me know when to stop.",
+		"Hear me, whoever hears: a steady head, and the grace to be wrong without being cruel.",
+	},
+	["toast.w16.cup.001"] = {
+		"To the strangers who point the right way and ask nothing for it!",
+		"A toast to the kind strangers: good directions, no questions, and gone before anyone can thank them!",
+	},
 }, "base_social")

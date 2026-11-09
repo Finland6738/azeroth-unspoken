@@ -683,4 +683,61 @@ NS:AddTexts("enUS", {
 		"keeps quiet for a long while; the path asks nothing, and gets nothing.",
 		"stands without a word, hands still, until the moment has passed on its own.",
 	},
+	["arc_resolve.w16.001"] = {
+		"takes in {other} once more, as one sets a small thing on a shelf: the voice, the habits, the day showing on that face. It will keep.",
+		"studies the familiar face a moment longer than courtesy needs. Some faces are worth carrying a long way.",
+		"nods and keeps the picture as it is: an ordinary hour, a voice grown known. Ordinary things last the longest.",
+	},
+	["arc_resolve.w16.002"] = {
+		"rises a level and keeps facing forward. The place of the fall stays where it is, and no longer gets to say where the road goes.",
+		"feels the new strength settle in and spends none of it on looking back. What happened at that place has stopped being the end of the story.",
+		"takes the new level as a step, not a scar. The fall is still a fact; it is just no longer the last one.",
+	},
+	["arc_resolve.w16.003"] = {
+		"leaves the gate behind with a dozen accents still in {g:his|her} ears. A capital, it turns out, is where roads come to argue.",
+		"steps out onto the road with a pocketful of other people's words: a greeting learned in one quarter, a curse in another. Crossroads leave their mark that way.",
+	},
+	["nemesis_meet.w16.001"] = {
+		"There is {other}, unhurried, the same as before. The difference is that this time I see it coming.",
+		"I know that walk. The last time I saw {other}, I was looking up at it from the ground.",
+		"One look at {other} and the whole fall comes back, in the right order, every step of it.",
+	},
+	["nemesis_meet.w16.002"] = {
+		"{other}. There is one defeat between us, and so far it belongs to me. I would like to hand it back.",
+		"So {other} is still about, looking pleased with itself. Good. There is one bad day left to settle.",
+	},
+	["nemesis_meet.w16.003"] = {
+		"stops short at the sight of {other}, and one hand drifts to the place where the last blow landed.",
+		"goes very still as {other} comes into view. The world carries on around {g:him|her}, as it did that last time.",
+	},
+	["nemesis_meet.w16.004"] = {
+		"{other}, and my knees go soft before the thought is even finished. Two falls are enough to teach a body fear.",
+		"Twice I have made the long walk back to my own body because of {other}. I would rather not learn that road by heart.",
+		"My hands are steady. They were steady the last two times as well, right up until {other} reached me.",
+	},
+	["nemesis_meet.w16.005"] = {
+		"Two wins for {other}, and it does not even glance my way. To it I am a habit, nothing more.",
+		"Look at {other}, not a care in the world. Of the two of us, only one is keeping score.",
+	},
+	["nemesis_meet.w16.006"] = {
+		"sees {other}, and the moment stretches thin. Two falls already lie between them, and neither has been forgotten.",
+		"meets the sight of {other} with a stillness learned the hard way, twice over.",
+	},
+	["nemesis_meet.w16.007"] = {
+		"{other}. It has had the last word too many times, and I have spent every one of them working out my answer.",
+		"After the third fall I swore the next meeting would go differently. Here is {other}. Here is the next meeting.",
+		"No more running from {other}. Whatever happens now, I walk toward it.",
+	},
+	["nemesis_meet.w16.008"] = {
+		"plants {g:his|her} feet at the sight of {other}, like someone arriving for an appointment made long ago and never put off.",
+		"turns to face {other} squarely. Whatever was vowed after the last fall sits in the set of the shoulders.",
+	},
+	["nemesis_meet.w16.009"] = {
+		"My eyes find {other} before I have decided to look. The body keeps its own records.",
+		"Strange how quickly I picked {other} out of everything around me. Fear has excellent eyesight.",
+	},
+	["nemesis_meet.w16.010"] = {
+		"Neither of us is finished, {other} and I, though I have come much closer to it.",
+		"There is a grave somewhere between {other} and me, not dug yet. Only the name on it is undecided.",
+	},
 }, "base_arcs")

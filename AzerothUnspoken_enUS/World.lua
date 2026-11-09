@@ -8156,4 +8156,176 @@ NS:AddTexts("enUS", {
 		"pats the pack as if to reassure it that nothing has to change between the two of them.",
 		"murmurs something soothing to {g:his|her} own gear, which is either sensible or worrying.",
 	},
+	["dawn.w16.day.001"] = {
+		"A whole day ahead, still unspent. I'll try not to waste all of it in the first hour.",
+		"The day is full to the brim. Let's see how much of it I manage to spill before it's half gone.",
+	},
+	["dawn.w16.day.002"] = {
+		"Every good day starts with a list. The trouble is always the last line of it, the one written too hopefully.",
+		"Three things to do, if the day allows. Two, if it's honest. One, if it's like most days.",
+	},
+	["dawn.w16.day.003"] = {
+		"counts the day's errands on {g:his|her} fingers, frowns at the total, and quietly starts the count over.",
+		"goes through the day's tasks half aloud, then drops the least likely one without a word.",
+	},
+	["dawn.w16.day.004"] = {
+		"All right, day. Show me what you've got.",
+		"Up and moving. The day won't wait, and neither will the ones who need things done.",
+	},
+	["dawn.w16.day.005"] = {
+		"Whatever yesterday cost, it's paid now. The new day comes with an empty purse and no debts, and that will have to do.",
+		"Yesterday is settled, the good and the bad of it. This hour owes it nothing, and neither, for now, do I.",
+		"The dark hours took what they took. At least the day starts square, and charges no interest on the rest.",
+	},
+	["dawn.w16.look.001"] = {
+		"sees the dark thin into shapes in the first gray light, the nearest first and then the farther ones, as if the world were being counted back into place.",
+		"watches the world come out of the dark piece by piece, each thing finding its outline as the first light allows.",
+	},
+	["dawn.w16.look.002"] = {
+		"One edge of the sky is losing its argument with the dark. Not light yet, only less dark, which is how most good things begin.",
+		"The dark is wearing thin at one side. It isn't light so much as a rumor of light, and I'll take the rumor.",
+		"Paler on one side now. The dark has started packing up, slowly, like a guest who knows the party is over.",
+	},
+	["dawn.w16.look.003"] = {
+		"First light. Now I can see exactly how far there is still to go, which was much nicer to guess at in the dark.",
+		"Light enough to see by. Also light enough to see every mess I made getting here.",
+	},
+	["dawn.w16.look.004"] = {
+		"turns toward the paler side of the sky and waits there, unhurried, for the day to make up its mind.",
+		"lifts {g:his|her} head as the sky goes from black to a weak, undecided gray, and lets it take its time.",
+		"stands still a while as the dark goes thin, watching the world decide, without any hurry, to be seen.",
+	},
+	["dawn.w16.look.005"] = {
+		"Light's coming. Good for walking, bad for hiding.",
+		"There it is: light enough to see by. And light enough to be seen by, too.",
+	},
+	["dawn.w16.turn.001"] = {
+		"The day turns over like a fresh page. Nothing written on it yet, which is either a comfort or a warning.",
+		"A clean page of a day. I'll find out soon enough whose handwriting fills it.",
+	},
+	["dawn.w16.turn.002"] = {
+		"marks the turn of the day the plain way: a strap pulled tight, a buckle checked, the pack settled higher on the shoulders.",
+		"greets the new day without ceremony, testing each buckle and strap as if the day meant to inspect them.",
+		"notes the hour by habit alone, running a thumb along every strap and fastening before anything else.",
+	},
+	["dawn.w16.turn.003"] = {
+		"Dawn is the oldest promise the world makes, and the only one it has never once failed to keep.",
+		"Each day the world keeps a promise it never said out loud: it starts over. There are worse things to learn from.",
+		"Older than any road or wall, this: the dark ends, the day begins. Some things hold, and this is the first of them.",
+	},
+	["dawn.w16.turn.004"] = {
+		"New day. Whatever went wrong yesterday is officially yesterday's problem.",
+		"Morning, of a sort. Yesterday's mistakes are closed for business.",
+	},
+	["dawn.w16.turn.005"] = {
+		"The hour has turned, whether or not I was ready for it. Mornings never wait to be asked in.",
+		"Daybreak, without consulting me. It never does, and I've stopped taking it personally.",
+	},
+	["dusk.w16.day.001"] = {
+		"Tally of the day: a few things done, a few left undone, and nothing broken that won't mend. I'll take it.",
+		"The day's account, roughly: some ground gained, some lost, and the books close not too far in the red.",
+		"Counting up: one thing gone right, one gone sideways, and the rest a draw. Fair enough, for a day.",
+	},
+	["dusk.w16.day.002"] = {
+		"goes over the day's gains and losses in silence, and seems, on the whole, to call it even.",
+		"looks down at {g:his|her} scuffed boots for a long moment, as if they kept the day's record better than memory does.",
+	},
+	["dusk.w16.day.003"] = {
+		"Some days there's nothing to do but get through them. This was one. Dusk is welcome for that alone.",
+		"Not a day to remember, only one to finish. Finished now. I'll let it go without looking back.",
+		"It was a heavy day, and now it's over. That's all I ask of it.",
+	},
+	["dusk.w16.day.004"] = {
+		"That's the day done. Anyone who wants something from me can ask tomorrow.",
+		"Day's finished, and so am I, near enough. Whatever's left can find me come morning.",
+	},
+	["dusk.w16.day.005"] = {
+		"No point pretending this day can still be saved. Let it go, and keep what was good in it.",
+		"No mending it now. Better to fold the day up gently, keep the good parts, and leave the rest where it fell.",
+	},
+	["dusk.w16.look.001"] = {
+		"watches the things around {g:him|her} lose their edges one after another, until only the nearest keep theirs.",
+		"sees the outlines go soft in the failing light, the far ones first, as if the world were being folded away for the dark hours.",
+	},
+	["dusk.w16.look.002"] = {
+		"The dark comes up out of the ground first. The sky holds on the longest, as if it had somewhere else to be afterward.",
+		"Low places go dark before high ones. The sky is the last to let go, stubborn to the end.",
+		"Dusk works from the bottom up. The ground goes first, then everything standing on it, and the sky last of all.",
+	},
+	["dusk.w16.look.003"] = {
+		"Losing the light. Anything that needs a good look gets it now.",
+		"Not much light left. Whatever needs seeing, see it now or leave it for tomorrow.",
+	},
+	["dusk.w16.look.004"] = {
+		"sees the day leak out of the world like water from a cracked bowl: slowly, and then all at once.",
+		"stands still while the gray deepens, as though staying put might slow it down.",
+	},
+	["dusk.w16.turn.001"] = {
+		"Dusk: the hour that asks everyone abroad the same question. Where will you be when it's dark?",
+		"This is the hour that wants an answer: where I'll be once it's dark, and with what at my back.",
+	},
+	["dusk.w16.turn.002"] = {
+		"pauses at the turning of the day, as people have paused at this hour for as long as there have been people.",
+		"lets the end of the day pass in a moment of stillness, a habit far older than anyone who keeps it.",
+	},
+	["dusk.w16.turn.003"] = {
+		"Every dusk takes something with it. Usually just the day itself. Some days, more than that.",
+		"Whether it went well or not, the day ends. Dusk weighs nothing; it only closes the lid.",
+		"Gone, the day, with everything in it that won't happen twice. Dusk never gives change.",
+	},
+	["dusk.w16.turn.004"] = {
+		"Already evening? I had plans for this day. The day had other plans.",
+		"The day's over, apparently. Nobody told me it had properly started.",
+	},
+	["dusk.w16.turn.005"] = {
+		"This is the hour when small sounds get bigger. I catch myself listening harder than I mean to.",
+		"At this hour every creak sounds like it has an opinion. I know better. I listen anyway.",
+	},
+	["dusk.w16.turn.006"] = {
+		"slows a little as the hour turns, the way travelers do when the day starts to close behind them.",
+		"glances about as the day draws to a close, with the look of someone already reckoning where the dark hours will be spent.",
+	},
+	["reputation_change.w16.down.001"] = {
+		"That's cost me something with them. I felt it go, like a coin slipping through a torn pocket.",
+		"Down a notch in their eyes. Some choices cost goodwill, and I've just made one of those.",
+		"Their regard for me has dropped. Whatever I did, they kept count of it, the way a moneylender counts coins.",
+	},
+	["reputation_change.w16.down.002"] = {
+		"Unwelcome now. I'll have to find other roads around them, and remember why.",
+		"Where they'd once have let me pass, they'd rather I didn't. That road is shut now, and the hand on the bolt was mine.",
+	},
+	["reputation_change.w16.down.003"] = {
+		"Let them glare. I don't need their welcome to keep walking.",
+		"So they don't like me. I'll try to bear the loss somehow.",
+	},
+	["reputation_change.w16.down.004"] = {
+		"So that's who I've annoyed. Good to know, even if it isn't good news.",
+		"Somebody's opinion of me just fell. Better to know where I stand than to guess.",
+	},
+	["reputation_change.w16.up.001"] = {
+		"Somebody has decided I'm worth a second look. I don't know what tipped it, and I won't ask.",
+		"The way they nod at me has changed. A small thing. I noticed it all the same.",
+		"Something has shifted in how they see me. Not much. Enough to feel the difference when I walk past.",
+	},
+	["reputation_change.w16.up.002"] = {
+		"Neutral. They've stopped deciding about me and started waiting to see. That's fair.",
+		"No longer a suspect, not yet a guest. I can live in the space between for a while.",
+	},
+	["reputation_change.w16.up.003"] = {
+		"Seems they've decided they like me. I'll try not to spoil it by talking too much.",
+		"Friendly, now. It's a pleasant surprise, and I mean to keep it from being a short one.",
+	},
+	["reputation_change.w16.up.004"] = {
+		"Honored. The ones who used to haggle with me now round the price down without being asked.",
+		"Honored, it seems. The prices got kinder before the faces did, which tells you something about how these things work.",
+	},
+	["reputation_change.w16.up.005"] = {
+		"takes the news of {g:his|her} standing quietly, the way one accepts a gift too fine to use every day.",
+		"receives the higher regard without a word, carrying it carefully, like something borrowed that must go back unmarked.",
+	},
+	["reputation_change.w16.up.006"] = {
+		"Exalted. There's no higher to climb with them. From here the only work is keeping it.",
+		"As high as their regard goes. Everything after this is upkeep, and upkeep is the harder craft.",
+		"Nothing left to win with them, and plenty left to lose. An odd place to have arrived.",
+	},
 }, "base_world")
