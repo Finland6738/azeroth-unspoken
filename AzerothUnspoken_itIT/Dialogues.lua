@@ -1739,4 +1739,48 @@ NS:AddTexts("itIT", {
 		"Quello che ti manca, probabilmente ce l'ho. Quello che ti avanza, probabilmente lo compro.",
 		"Cose utili a prezzi onesti, e un paio di occasioni per chi sa guardare.",
 	},
+	["npcd.flightmaster.bye.w16.001"] = {
+		"Buon viaggio, da qualunque parte tu vada. Se un giorno ti servono delle ali, sai dove le teniamo.",
+		"Arrivederci. E se vai a piedi, saluta quando uno dei miei ti passa sopra la testa.",
+		"Stammi bene. Io sarò qui a contare le cavalcature e a controllare le cinghie, come ogni giorno.",
+	},
+	["npcd.guard.bye.w16.001"] = {
+		"Vai pure, allora. Tieni la borsa vicina e la pazienza ancora più vicina.",
+		"Va' pure. Se qualcuno ti dà fastidio, sai com'è fatta una guardia.",
+	},
+	["npcd.guard.bye.w16.002"] = {
+		"Circola, e torna con lo stesso numero di pezzi. Quando nessuno si fa male, i miei rapporti sono brevi.",
+		"Bada a te. Mi piacciono i turni tranquilli, e tu puoi aiutarmi ad averne uno.",
+	},
+	["npcd.guard.directions.w16.001"] = {
+		"Scegli qualcosa che si veda quasi da ogni punto e impara dove sta. Così non ti perdi mai davvero: al massimo ti allontani.",
+		"Percorrila una volta con gli occhi aperti. La seconda, ci penseranno i piedi.",
+		"Chiedi alla prossima guardia che incontri. Indicare la strada è metà del nostro lavoro; l'altra metà è non muoversi.",
+	},
+	["npcd.guard.directions.w16.002"] = {
+		"Il primo giorno si perdono tutti. Al terzo danno indicazioni agli altri, e sbagliano pure.",
+		"Il trucco è avere l'aria di chi sa dove va. La gente ti segue, e magari qualcuno lo sa davvero.",
+	},
+	["npcd.guard.directions.w16.003"] = {
+		"Chi esercita lo stesso mestiere tende a stare vicino ai suoi pari. Trovate una porta del mestiere che cercate, e la seguente di rado è lontana.",
+		"Se doveste smarrire l'orientamento, tornate al punto da cui è cominciato il vostro giro e ripartite da lì. È più lento, ma non sbaglia mai.",
+	},
+	["npcd.guard.directions.w16.004"] = {
+		"Scegli un punto di riferimento. Non perderlo di vista.",
+		"Chiedi due volte. Fidati di quello su cui le risposte coincidono.",
+	},
+	["npcd.innkeeper.bye.w16.001"] = {
+		"Vai pure. Controlla le borse prima della porta: quello che i clienti dimenticano qui finisce nella zuppa, o quasi.",
+		"Fa' attenzione per strada. E se incontri qualcuno che ha bisogno di un piatto e di un tetto, mandalo da me.",
+		"Buon cammino. La panca contro il muro è tua, ogni volta che passi di qui.",
+	},
+	["npcd.innkeeper.bye.w16.002"] = {
+		"Riguardati, là fuori. Troppi bravi clienti non sono più tornati, e non vorrei aggiungerti al conto.",
+		"Mangia come si deve, per strada. Quello che ti serviranno non sarà roba mia, ma mangialo lo stesso.",
+	},
+	["npcd.innkeeper.thanks.w16.001"] = {
+		"Non ringraziarmi, sono solo chiacchiere. Metà di quello che passa da questo banco sono voci, e l'altra metà è peggio.",
+		"Felice di aiutare. Le notizie sono l'unica cosa che regalo: costano meno della zuppa e vanno a male prima.",
+		"Quando vuoi. Torna a raccontarmi com'è finita; io le storie non riesco mai a sentirle fino in fondo.",
+	},
 }, "base_dialogues")

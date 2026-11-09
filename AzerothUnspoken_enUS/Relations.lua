@@ -2621,4 +2621,520 @@ NS:AddTexts("enUS", {
 		"Same place, same person. Either this spot is lucky or it simply has no imagination.",
 		"Back where the last meeting was. I half expect to pick the conversation up mid-sentence.",
 	},
+	["npc_grief.w16.001"] = {
+		"{other} saw me off more times than I can count, and was always there when I came down. Nobody waits at the landing now.",
+		"The roost is the same, and the voice that went with it is gone. Every departure from here will start a little colder.",
+		"{other}. Every flight I took from here began with that voice.",
+	},
+	["npc_grief.w16.002"] = {
+		"It is the small things that go first. {other} will never again ask me how the road was.",
+		"The gap left behind is small and exact: the size of one greeting, said in the same place every time.",
+		"Somebody else will stand there now. They will do well enough, and they will not be {other}.",
+	},
+	["pet_call.w16.hunt.001"] = {
+		"{pet} reaches me and turns to face where I'm facing. No order given; none needed.",
+		"Back at my side, {pet} is already watching the same thing I am.",
+		"{pet} takes up the watch the moment it arrives, as if there had been no pause at all.",
+	},
+	["pet_call.w16.hunt.002"] = {
+		"One low word and {pet} is there, half a pace ahead, reading the ground before I do.",
+		"{pet} answers before the call has quite finished. That kind of speed only comes from many hunts shared.",
+		"A glance with {pet} settles what words would take a minute to.",
+	},
+	["pet_call.w16.hunt.003"] = {
+		"Back to work, {pet}. Eyes open, and stay where I can find you.",
+		"With {pet} here, whatever waits ahead has two to deal with instead of one.",
+		"Up, {pet}. There's ground to cover, and you see more of it than I do.",
+	},
+	["pet_call.w16.hunt.004"] = {
+		"Eager and all set to go, {pet}. Good. I'd rather hold that back than drag it along.",
+		"All readiness, this one. {pet} wants to be off before I've even chosen a direction.",
+	},
+	["pet_call.w16.hunt.005"] = {
+		"At my side once more, {pet} looks past me at the stretch behind. Something back there deserves a second look.",
+		"First thing {pet} does is check the edges. I've learned to watch where it watches.",
+	},
+	["pet_call.w16.hunt.006"] = {
+		"No need to point anymore. {pet} takes the side I left open.",
+		"{pet} still glances back for a sign, but less often. That's progress I can count.",
+		"Half a gesture now, and {pet} finishes the other half.",
+	},
+	["pet_call.w16.hunt.007"] = {
+		"Two that hunt as one is an old idea, older than any town. {pet} and I are only keeping it alive.",
+		"The hunt was never meant for one alone. {pet} has always known that; I needed telling.",
+	},
+	["pet_call.w16.hunt.008"] = {
+		"{pet} and I no longer hunt side by side so much as with one attention split in two.",
+		"Call, answer, move. With {pet} there's no seam left between the three.",
+		"{pet} moves and I'm already moving with it. I couldn't say who started.",
+	},
+	["pet_call.w16.hunt.009"] = {
+		"Here, {pet}. Close and quiet; the quarry should hear nothing until it's too late.",
+		"{pet}, with me. No running off after the first thing that moves.",
+		"Keep to my flank, {pet}. Wide is how things get missed.",
+	},
+	["pet_call.w16.hunt.010"] = {
+		"Steady and unhurried, {pet}. A calm beast makes for clean work.",
+		"Settled, fed, attentive: with {pet} like this, the work goes well.",
+	},
+	["pet_call.w16.hunt.011"] = {
+		"The odds just shifted. {pet} has joined me, and whatever comes next will notice.",
+		"Whatever waits further on, {pet} will sense it before I do. That's worth a great deal.",
+		"My back is covered once more, and I can feel it in how I stand. Thank you, {pet}.",
+	},
+	["pet_call.w16.hunt.012"] = {
+		"{pet} comes when called, which is a start. Coming to the right spot will take a few more hunts.",
+		"{pet} and I are still working out who stands where when it counts. Patience on both sides.",
+	},
+	["pet_call.w16.hunt.013"] = {
+		"There's a stillness {pet} brings back with it, the stillness of something that knows how to wait. I borrow it.",
+		"{pet} settles in beside me and goes very still. I try to do the same, and mostly fail.",
+	},
+	["pet_call.w16.hunt.014"] = {
+		"{pet} knows the work as well as I do. Some days better. It's in place before the thought is finished.",
+		"So many hunts together that {pet} answers the plan, not the call.",
+		"{pet} takes its place and I take mine. Nobody has to look.",
+	},
+	["pet_call.w16.hunt.015"] = {
+		"Two pairs of eyes beat one. Good to have you, {pet}.",
+		"{pet} rejoins me, and the blind side of things closes up.",
+	},
+	["pet_call.w16.hunt.016"] = {
+		"Same appetite for the chase as mine, {pet}. Good.",
+		"No hesitation in {pet}. Show it trouble and it throws itself in.",
+	},
+	["pet_call.w16.kin.001"] = {
+		"{pet} presses its head against my hand and holds it there. Fine. A moment won't hurt.",
+		"A nudge at my elbow, then {pet} puts its whole weight into it. I push back, gently.",
+		"{pet} won't settle until it's had its moment of attention. I give it. I wanted it too.",
+	},
+	["pet_call.w16.kin.002"] = {
+		"{pet} takes its usual spot without being shown. Habit is a kind of promise between two creatures.",
+		"Same place, same pace. {pet} has its customs, and I've come to rely on them.",
+	},
+	["pet_call.w16.kin.003"] = {
+		"In a rush, {pet} circles me twice before stopping. I choose to take that as a compliment.",
+		"Such open gladness from {pet} at a simple call. Nobody else greets me like that.",
+		"{pet} can't decide where to stand, so it tries every spot in turn. I laugh in spite of myself.",
+	},
+	["pet_call.w16.kin.004"] = {
+		"{pet}. The rest of the world takes a step back when it's here, and I don't mind.",
+		"With {pet} beside me I could forget I ever walked anywhere alone.",
+		"{pet} comes, and something in me that was braced lets go.",
+	},
+	["pet_call.w16.kin.005"] = {
+		"{pet} gives me a long look, decides I'm in one piece, and settles.",
+		"First the inspection, then the welcome. {pet} has its order of things.",
+		"{pet} looks me over like a quartermaster checking returned gear. I pass, apparently.",
+	},
+	["pet_call.w16.kin.006"] = {
+		"{pet} comes, but stops a little farther off than I'd like. That distance will shrink.",
+		"Still wary of me, {pet}, but it came all the same. I'll take that.",
+	},
+	["pet_call.w16.kin.007"] = {
+		"{pet} arrives with the unbothered calm of a creature that ate well and slept better.",
+		"No fuss from {pet}. It settles, it watches, it waits. Easy company.",
+		"Calm comes in with {pet} the way the smell comes with bread. I hadn't noticed I'd missed it.",
+	},
+	["pet_call.w16.kin.008"] = {
+		"The quiet had started to feel like a habit. {pet} breaks it with all the small noises of something alive beside me.",
+		"Only now, with {pet} here, do I notice how long I'd gone without anyone to keep an eye on.",
+	},
+	["pet_call.w16.kin.009"] = {
+		"{pet} lies down within reach, the way it does when it trusts the spot I chose.",
+		"Within arm's reach, never farther: {pet} decided that on its own, a while back.",
+		"{pet} settles where it can see me and the way ahead at once. It chose that spot; I didn't.",
+	},
+	["pet_call.w16.kin.010"] = {
+		"I look {pet} over for knocks and scrapes, and it lets me. Being allowed is its own sort of thanks.",
+		"A quick check of {pet}: eyes clear, moving easy, nothing new to mend. Good.",
+	},
+	["pet_call.w16.kin.011"] = {
+		"There is an old understanding between one who feeds and one who guards. {pet} keeps its side without ever being reminded.",
+		"Food, shelter, a name. In return {pet} gives the one thing I couldn't buy: a watch that never dozes on duty.",
+	},
+	["pet_call.w16.kin.012"] = {
+		"{pet} has picked up my habits: the pause at a corner, the look back before moving on. Or I picked up its. Hard to say.",
+		"Familiar now, {pet}. Familiar enough that I'd notice its absence before almost anything else.",
+		"{pet} feels less like something I call and more like something I come back to.",
+	},
+	["pet_call.w16.kin.013"] = {
+		"Distance and opinions: {pet} keeps both, even while answering. A meal will buy them back.",
+		"Slow to answer, {pet}. Fair. I've been a poor provider lately.",
+	},
+	["pet_call.w16.kin.014"] = {
+		"I count {pet} back in the way some people count coins: carefully, and with relief.",
+		"Not a scratch on {pet}. The rest can sort itself out.",
+	},
+	["pet_call.w16.kin.015"] = {
+		"{pet} greets me as if I'd been gone a year. It was an hour, at most.",
+		"To hear {pet} tell it, I've been away for ages. It's been no time at all.",
+		"You'd think I'd been missing for a month, the fuss {pet} makes.",
+	},
+	["pet_call.w16.kin.016"] = {
+		"Wherever {pet} waits between calls, it comes back from it unchanged. I wish I could say the same of my own waiting.",
+		"Exactly as it left, {pet} returns. There's comfort in a thing that holds its shape.",
+	},
+	["pet_call.w16.kin.017"] = {
+		"With {pet} near, I'll sleep with both eyes shut. That's not a small thing to give anyone.",
+		"{pet} settles by my pack like a seasoned sentry. I let my shoulders drop.",
+	},
+	["pet_call.w16.pact.001"] = {
+		"Each time the words take a little of me with them, and {pet} steps into the space they leave.",
+		"I pay for the summoning in a coin I can't see. {pet} arrives, and the account is opened.",
+		"Something goes out of me, and {pet} comes in. That's the arithmetic.",
+	},
+	["pet_call.w16.pact.002"] = {
+		"{pet}, to heel. Terms as before: you serve, I decide, nobody improvises.",
+		"Same terms as always, {pet}. Serve well, and the parting will be civil.",
+		"{pet}. You know the terms. I know you know them. Let's skip the part where you pretend otherwise.",
+	},
+	["pet_call.w16.pact.003"] = {
+		"There's a moment, every time, when the pact holds and {pet} decides to honor it. I've stopped pretending I don't wait for it.",
+		"Through comes {pet}, testing the chain once as a matter of form. It holds. So far it always has.",
+	},
+	["pet_call.w16.pact.004"] = {
+		"With the air of something answering a summons from a lesser court, {pet} appears. Which, to be fair, it is.",
+		"Here is {pet}, contempt freshly polished. Nice to see something kept in good order.",
+		"{pet} appears, looks me over, and finds fault with me in under a moment.",
+	},
+	["pet_call.w16.pact.005"] = {
+		"A fresh pact, and {pet} reads every word of it for loopholes. So did I, when I wrote it.",
+		"New bindings creak. {pet} leans on this one to hear where it gives.",
+	},
+	["pet_call.w16.pact.006"] = {
+		"Long acquaintance makes the summoning easy. Too easy. {pet} answers like something that has learned my voice by heart.",
+		"{pet} knows my ways now, and I know its. Calling that trust would be a mistake, and an easier one every time.",
+	},
+	["pet_call.w16.pact.007"] = {
+		"Once {pet} has answered, I check myself the way one checks a pocket after a crowd. Everything still there. This time.",
+		"I call {pet}, and for a moment the call seems to travel farther than it needs to.",
+	},
+	["pet_call.w16.pact.008"] = {
+		"A tool with opinions, that's {pet}. I keep the tool sharp and the opinions short.",
+		"Useful: that's what {pet} is. Useful is enough. I don't ask a lock to be fond of me.",
+		"Not a friend, not a servant, not quite a weapon. {pet} is a contract that walks.",
+	},
+	["pet_call.w16.pact.009"] = {
+		"{pet}. Spare me the look. You come because you must, and I call because I must.",
+		"Don't bother with the sneer, {pet}. This arrangement was nobody's first choice.",
+		"Yes, {pet}, me once more. Contain your joy.",
+	},
+	["pet_call.w16.pact.010"] = {
+		"Lately {pet} anticipates the summons. I'd call it eagerness, if I didn't know better.",
+		"{pet} no longer makes me wait through the theatrics. Familiarity has its uses, and its warnings.",
+	},
+	["pet_call.w16.pact.011"] = {
+		"Of all the company I could keep, I keep {pet}. I try not to think too long about what that says.",
+		"The one who always comes when I call is {pet}. There are worse things to be able to say, and better ones.",
+	},
+	["pet_call.w16.pact.012"] = {
+		"Old words, older debts. {pet} answers to both, and to me only by way of them.",
+		"The pact is older than my voice speaking it. {pet} bends to the pact; I'm only the hand that holds it.",
+		"The pact speaks first; {pet} only follows. I keep that order in mind at all times.",
+	},
+	["pet_call.w16.pact.013"] = {
+		"Summoning {pet} costs me a little, every time. I budget for it the way others budget for repairs.",
+		"The price of {pet} is paid in advance and never quite in full. Good business, for one of the two parties.",
+	},
+	["pet_call.w16.pact.014"] = {
+		"Between me and the world, {pet} takes its post. It isn't loyalty. It's still a post well taken.",
+		"Wherever trouble comes from, {pet} will be standing in its way. That's the only promise I asked for.",
+		"Front, {pet}. Anything that wants me gets you first.",
+	},
+	["pet_call.w16.pact.015"] = {
+		"Some part of me is proud that {pet} answers. I keep an eye on that part.",
+		"{pet} obeys, and a small hard pleasure runs through me. I note it, put it away, and don't feed it.",
+	},
+	["pet_call.w16.pact.016"] = {
+		"{pet} looks at the place I've chosen like a guest at a very poor party.",
+		"Not impressed, {pet}? You never are. Consistency is a virtue, even in you.",
+		"{pet} disapproves of everything in sight, me above all. Reassuring, in its way.",
+	},
+	["pet_call.w16.pact.017"] = {
+		"{pet} and I have kept this pact so long that it has worn smooth in places. I run my thumb along them and wonder.",
+		"Bonded, the books would call it. {pet} would call it something less polite, and be closer to the truth.",
+	},
+	["pet_call.w16.wry.001"] = {
+		"{pet} answers the call at a speed of its own choosing, which is not the speed I asked for.",
+		"I call; {pet} weighs the offer. Eventually, it accepts.",
+		"Eventually, {pet}. Eventually is still a kind of yes.",
+	},
+	["pet_call.w16.wry.002"] = {
+		"Whatever {pet} found to roll in, it found plenty. That conversation can wait.",
+		"{pet} brings back a smell I can't place and don't want to. Glad you're back; stay a pace off.",
+	},
+	["pet_call.w16.wry.003"] = {
+		"{pet} arrives and immediately stares at something I can't see. I've decided not to ask.",
+		"Back with me, {pet}, and already more alert than I've managed to be in an hour.",
+		"{pet} tilts its head at me as if I'd said something foolish. I only said its name.",
+	},
+	["pet_call.w16.wry.004"] = {
+		"A list of grievances comes with {pet}, none of them ever voiced, none ever forgotten.",
+		"The summons works. The mood of {pet} doesn't.",
+		"Here's {pet}, radiating all the warmth of an unpaid bill.",
+	},
+	["pet_call.w16.wry.005"] = {
+		"If {pet} rolled its eyes any harder, I'd have to count it as an attack.",
+		"{pet} manages to make obedience look like a favor it's doing me.",
+	},
+	["pet_call.w16.wry.006"] = {
+		"At least one of the pair is glad {pet} came. I'm fairly sure it's me.",
+		"There's {pet}, wearing the face of a colleague called in on a rest day.",
+		"{pet} shows up with the air of someone who'll be filing a report on me.",
+	},
+	["pet_call.w16.wry.007"] = {
+		"{pet} is far too pleased to see me. Either I'm better company than I thought, or it found something to eat on the way.",
+		"Such joy from {pet}. I'm flattered, and a little suspicious.",
+	},
+	["pet_call.w16.wry.008"] = {
+		"Still at the stage of pretending to read each other's minds, {pet} and I. Badly, on both sides.",
+		"New pact, new face of disdain. {pet} is still deciding which one to wear.",
+	},
+	["pet_call.w16.wry.009"] = {
+		"{pet} answers so quickly now I suspect it was already on its way. Maybe it heard me thinking.",
+		"At this point {pet} could probably do the calling, and I'd come just as fast.",
+	},
+	["pet_call.w16.wry.010"] = {
+		"{pet}, wearing the usual sulk. Nobody asked you to like it; just do it.",
+		"The face {pet} makes on being summoned should be studied by anyone who ever had a bad master.",
+	},
+	["pet_call.w16.wry.011"] = {
+		"{pet} reports for duty with the dignity of a sergeant and the attention of a small child.",
+		"Very busy about nothing at all, {pet}. I recognize the technique.",
+		"Arrival, a brief memory of dignity, then forgetting: {pet} manages all three in a moment.",
+	},
+	["pet_call.w16.wry.012"] = {
+		"Called, {pet} comes. People should take notes.",
+		"Say one thing for {pet}: when I call, something answers. That's more than I can say for most.",
+		"Between {pet} and me, only one keeps appointments.",
+	},
+	["pet_call.w16.wry.013"] = {
+		"{pet} arrives ready to take offense at whatever I ask first. I ask for silence, to be efficient.",
+		"Something from beyond the world answers my call, and it's {pet}, looking put out. The great mysteries are smaller up close.",
+	},
+	["pet_call.w16.wry.014"] = {
+		"{pet} has learned exactly how long it can dawdle before I notice. It uses every second.",
+		"Getting to know {pet} means learning its sense of humor. It has one, and I'm usually the joke.",
+	},
+	["pet_dismiss.w16.alone.001"] = {
+		"{pet} goes, and I notice how much of my attention was resting on it. Now it all comes back to me, heavier.",
+		"One less watcher. The space around me feels wider, and less mine.",
+		"Without {pet}, I have to listen hard enough for two.",
+	},
+	["pet_dismiss.w16.alone.002"] = {
+		"The quiet {pet} leaves behind isn't empty, exactly. More like a room with the furniture moved.",
+		"The tether lets go. I feel lighter, and then, oddly, a little exposed.",
+	},
+	["pet_dismiss.w16.alone.003"] = {
+		"Just me now. I check the ground ahead twice, the way I do when nobody else is checking it.",
+		"Now that {pet} is gone, I walk a little slower and look a little harder. Plain rules for walking without company.",
+	},
+	["pet_dismiss.w16.alone.004"] = {
+		"Sending {pet} away gets no easier. I don't think it's meant to.",
+		"I watch the place where {pet} was a moment too long. Then I make myself look ahead.",
+		"Go on, {pet}. I'll be the one counting the hours this time.",
+	},
+	["pet_dismiss.w16.alone.005"] = {
+		"{pet} leaves, and the first thing I feel is relief. The second is that I shouldn't feel relief about a partner. Then I remember what it is.",
+		"Relief, when {pet} goes. Clean, simple relief. I've learned not to be ashamed of it.",
+		"Without {pet}, I'm only myself, which is both the relief and the problem.",
+	},
+	["pet_dismiss.w16.alone.006"] = {
+		"Once {pet} is sent off, the small sounds I'd stopped hearing are suddenly all there is.",
+		"On my own for a stretch. I find I talk less when there's no one to not answer me.",
+	},
+	["pet_dismiss.w16.alone.007"] = {
+		"{pet} goes to rest, and I square my shoulders. Some stretches ask for one pair of eyes, and a quiet one.",
+		"Solitude suits certain work. {pet} would only be bored by what comes next.",
+	},
+	["pet_dismiss.w16.alone.008"] = {
+		"What answered me has gone back, and I'm left wondering what else heard the dismissal.",
+		"{pet} withdraws. The air settles, but I keep looking over my shoulder a little longer.",
+	},
+	["pet_dismiss.w16.rest.001"] = {
+		"Go and rest, {pet}. You carried more than your share of that stretch.",
+		"Some quiet is the least {pet} has earned. I send it off and keep the worrying for myself.",
+		"Off to rest. Whatever you dream about, {pet}, I hope it's easy.",
+	},
+	["pet_dismiss.w16.rest.002"] = {
+		"Return, {pet}, and gather whatever passes for strength where you go.",
+		"Dismissed. A little distance now will make {pet} more useful later.",
+		"Go, {pet}. When you're needed, you'll know it before I do.",
+	},
+	["pet_dismiss.w16.rest.003"] = {
+		"Rest well, {pet}. I'll call the moment I need you, and not one moment sooner.",
+		"{pet} leaves easily now. Partings are simpler between those who know there will be a next time.",
+		"Sleep, {pet}, or whatever you do. I'll be right here when you're called.",
+	},
+	["pet_dismiss.w16.rest.004"] = {
+		"Rest, {pet}, and when you're back the food will be better. My word on it.",
+		"Off you go, {pet}, sulk and all. A pause can only help.",
+	},
+	["pet_dismiss.w16.rest.005"] = {
+		"Let the pact ease for a while. {pet} returns to its waiting, and I to mine.",
+		"The circle closes behind {pet}. Whatever it does between summonings, it does far from here.",
+	},
+	["pet_dismiss.w16.rest.006"] = {
+		"That's enough work for one stretch. Go on, {pet}; I'll keep watch alone a while.",
+		"{pet} looked tired. Maybe I'm only seeing my own tiredness in it. Either way, rest.",
+		"Rest now, {pet}. Being tired at the wrong moment costs more than being alone at the right one.",
+	},
+	["pet_dismiss.w16.rest.007"] = {
+		"Not needed for now, {pet}. Go, before I think of a reason to keep you.",
+		"I let {pet} go while things are calm. Calm never lasts, so it's best used.",
+	},
+	["pet_dismiss.w16.rest.008"] = {
+		"Go on, {pet}. Short work, short rest; the long stretches come later.",
+		"That's enough for a start, {pet}. Rest, and come back a little less wary of me.",
+	},
+	["pet_dismiss.w16.rest.009"] = {
+		"Go, {pet}. After all this time, sending you off is less like shutting a door than like letting it swing to.",
+		"No last word from {pet} this time. Between old partners in a bad bargain, silence is almost courtesy.",
+	},
+	["pet_dismiss.w16.rest.010"] = {
+		"Calm and full, off goes {pet}. The best way to part: nothing owed on either side.",
+		"Fed, rested, sent off in good humor. If only everyone had the life of {pet}.",
+	},
+	["pet_dismiss.w16.wry.001"] = {
+		"{pet} leaves as though it had been planning to go anyway. Credit where it's due: nicely done.",
+		"Dismissed, and {pet} goes off with the air of something that was about to resign.",
+		"{pet} wanders off unhurried, as if leaving were its own idea and I had merely agreed.",
+	},
+	["pet_dismiss.w16.wry.002"] = {
+		"{pet} departs with a look that promises a long conversation someday. I'll be busy that day.",
+		"Away with you, {pet}. The company improves at once.",
+		"And off goes {pet}, leaving its contempt behind like a smell.",
+	},
+	["pet_dismiss.w16.wry.003"] = {
+		"Go, {pet}, and try not to come back carrying anything that used to be alive.",
+		"{pet} goes without complaint, which means it has a plan. I'll find out about it later.",
+	},
+	["pet_dismiss.w16.wry.004"] = {
+		"A dismissal is a small thing, but {pet} manages to make it feel like a negotiation I lost.",
+		"I'm the one sending company away, and somehow I'm the one who feels shown the door.",
+	},
+	["pet_dismiss.w16.wry.005"] = {
+		"Go back to your own side, {pet}, and give my regards to nobody.",
+		"Trailing its usual opinion of me, {pet} departs. I've heard worse from tavern keepers.",
+		"Go and sulk elsewhere, {pet}. Elsewhere is your specialty.",
+	},
+	["pet_dismiss.w16.wry.006"] = {
+		"So well does {pet} know the dismissal that it starts leaving at the first syllable. Rude, but efficient.",
+		"Half a word and {pet} is off. Quicker at leaving than at coming, I notice.",
+	},
+	["pet_dismiss.w16.wry.007"] = {
+		"Before going, {pet} checks twice that I really mean it. A new pact runs on suspicion.",
+		"First dismissals are awkward for everyone. {pet} hesitates, I insist, and the moment passes.",
+	},
+	["pet_dismiss.w16.wry.008"] = {
+		"Happy even to be sent away, {pet}. That's more than most manage.",
+		"Off it goes, cheerful as anything. I'd like to know the secret of {pet}.",
+	},
+	["pet_dismiss.w16.wry.009"] = {
+		"Dismissing {pet} spares me a cost I'd otherwise keep paying. Thrift, of a dark sort.",
+		"No need for {pet} right now, and no sense paying for what I don't use.",
+	},
+	["pet_grief.w16.loss.001"] = {
+		"{pet} doesn't get up. I say the name once more, quieter, as if that could matter.",
+		"My hand on {pet}, and nothing answering it. The world can wait a moment.",
+		"{pet}. Stay with me. Please.",
+	},
+	["pet_grief.w16.loss.002"] = {
+		"Between one moment and the next, {pet} is gone. I tell myself a pact can be renewed. The jolt stays anyway.",
+		"The binding snaps back empty. Whatever {pet} was to me, I feel the absence in my hands first.",
+	},
+	["pet_grief.w16.loss.003"] = {
+		"The rhythm with {pet} had only just begun to come. Not here. Not like this.",
+		"{pet} lies still, and I see how many of my habits were built around it.",
+	},
+	["pet_grief.w16.loss.004"] = {
+		"There is an old silence that falls when a companion falls. I stand in it beside {pet}.",
+		"Everyone who keeps a beast learns this hour sooner or later. Mine has come, {pet}.",
+		"Quiet now, {pet}. I'll keep the name safe until it's needed.",
+	},
+	["pet_grief.w16.loss.005"] = {
+		"I spent so long watching {pet} for betrayal that I forgot to watch its back.",
+		"{pet} falls, and the pact goes quiet. All that distrust, and this is what I feel? Grief, of all things.",
+	},
+	["pet_mood.w16.glad.001"] = {
+		"Alert, quick, pleased with the whole arrangement: {pet} is in high fettle.",
+		"Something has put {pet} in a fine mood. Whatever it was, I'd like a share.",
+		"Hard to stay in a bad temper anywhere near {pet} when it's this pleased with things.",
+	},
+	["pet_mood.w16.glad.002"] = {
+		"{pet} keeps close and easy, glancing up now and then as if to share a good joke with me.",
+		"There's a lightness in how {pet} moves now. A little of it reaches me too.",
+	},
+	["pet_mood.w16.glad.003"] = {
+		"Delighted with life, {pet}. I'll try not to take credit for it, and fail.",
+		"A happy beast at my side. I look around for whatever I did right, so I can repeat it.",
+		"Whatever has {pet} so pleased, I hope it's catching.",
+	},
+	["pet_mood.w16.glad.004"] = {
+		"{pet} is happy, and I know it without looking. That's what the long road gives you.",
+		"After so long together, I feel the good mood of {pet} before I see it.",
+	},
+	["pet_mood.w16.glad.005"] = {
+		"An even temper, from {pet}. No complaints, no demands. A working mood.",
+		"Content is a good word for {pet} now. Not giddy, not sour: ready.",
+		"Settled and steady, {pet}, the way I'd like to be.",
+	},
+	["pet_mood.w16.glad.006"] = {
+		"Calmer now, {pet}. I envy how quickly a beast forgives a lean stretch once there's food.",
+		"Peace between {pet} and me, for now. Easier made than kept, that kind.",
+	},
+	["pet_mood.w16.glad.007"] = {
+		"I'm getting better at reading the contentment of {pet}: the slower blink, the looser stance.",
+		"I can tell {pet} is at ease now. A while ago I'd have missed the signs.",
+	},
+	["pet_mood.w16.glad.008"] = {
+		"Happy with me, {pet}. With me. A good sign, this early.",
+		"The first real gladness from {pet}. I'll remember this one.",
+	},
+	["pet_mood.w16.glad.009"] = {
+		"Fed, rested, unhurried: {pet} wants nothing more, and for a moment neither do I.",
+		"A beast at peace asks little of anyone. {pet} shows me how that's done.",
+		"Quiet contentment from {pet}. Nothing to fix, for once.",
+	},
+	["pet_mood.w16.glad.010"] = {
+		"People stare at how cheerful {pet} is. Mostly at me, as if I owed them the secret.",
+		"Good spirits all round, as far as {pet} is concerned. I'm included whether I like it or not.",
+	},
+	["pet_mood.w16.sulk.001"] = {
+		"Quiet and sullen, {pet}. I know that silence; it's the one with a bill attached.",
+		"{pet} turns a sour look on me and holds it until I look away first.",
+		"{pet} gives me a look I know well: unpaid wages.",
+	},
+	["pet_mood.w16.sulk.002"] = {
+		"{pet} keeps its head turned and will not meet my eye. Fair. I've been a poor keeper of late.",
+		"Gone sullen, {pet}, and with cause. I'll mend it before I ask for anything.",
+	},
+	["pet_mood.w16.sulk.003"] = {
+		"{pet} turns sullen eyes on me. All right. Food first, then forgiveness, if I'm lucky.",
+		"Plainly sullen, as only a hungry beast can be. I hear you, {pet}.",
+		"Hungry, unhappy, and sullen with it: {pet} has had enough of my neglect.",
+	},
+	["pet_mood.w16.sulk.004"] = {
+		"{pet} keeps me at a distance, and after so much ground covered together that stings more than any bite.",
+		"I know {pet} too well to miss it: the turned head, the pace kept just out of reach. The fault is mine.",
+	},
+	["pet_mood.w16.sulk.005"] = {
+		"Unhappy with me, {pet}, and it has learned exactly how to show it: by doing everything asked, slowly.",
+		"Long enough together that the sulks of {pet} have a style. This one is the slow walk. I deserve it.",
+	},
+	["pet_mood.w16.sulk.006"] = {
+		"{pet} gives me a sour look, then a second sour look, in case I missed the first.",
+		"As sullen as a soldier on half rations, {pet}. Half rations is about right, too.",
+		"Not pleased, and {pet} wants me to know it. A sullen beast is an honest one.",
+	},
+	["pet_mood.w16.sulk.007"] = {
+		"The sulk is over. {pet} is merely content now, which is a long way from forgiving, but a start.",
+		"{pet} has stopped holding a grudge, or has put it away somewhere for later. I'll take either.",
+		"Calm once more. Whatever I did to set things right with {pet}, I'm writing it down.",
+	},
+	["pet_mood.w16.sulk.008"] = {
+		"Not much trust so far, and now {pet} won't meet my eye. Feed it, and begin from there.",
+		"{pet} is sullen with me already. A new bond bruises easily.",
+	},
 }, "base_relations")

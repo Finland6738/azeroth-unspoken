@@ -852,4 +852,68 @@ NS:AddTexts("itIT", {
 		"{target}, grazie. Il nome me lo tengo stretto, e quello che significa.",
 		"Mi ricorderò a chi devo essere {g:grato|grata}.",
 	},
+	["jest.w16.wit.001"] = {
+		"Un mercante ti compra una pentola crepata per un rame e te ne vende una intera per un argento. Non è commercio, è aritmetica col rancore.",
+		"I mercanti sono una meraviglia. Ti levano di mano tutte le cianfrusaglie, poi ti fanno pagare una fortuna per cianfrusaglie appena diverse.",
+	},
+	["jest.w16.wit.002"] = {
+		"Ogni mappa che compro ha ragione su tutto, tranne che sul pezzo dove mi trovo io.",
+		"I cartografi disegnano una figurina dove si sono annoiati. Di quei posti ne ho trovati tanti. La figurina, mai.",
+	},
+	["jest.w16.wit.003"] = {
+		"Gli orsi non hanno mai la cosa giusta. Ne affronti uno per un'ora e addosso aveva solo un sassolino e un pessimo carattere.",
+		"Perché quello che mi serve è sempre nel terzo orso? Mai nel primo. Il primo orso è solo allenamento.",
+		"Un orso non ha mai avuto quello che cercavo. Comincio a pensare che lo nascondano apposta.",
+	},
+	["jest.w16.wit.004"] = {
+		"Lo stufato di un oste non finisce mai. Cambia nome ogni due o tre giorni, tutto qui.",
+		"Nessuno ha mai visto il fondo della pentola di stufato di un oste. Gli studiosi ci hanno provato.",
+	},
+	["jest.w16.wit.005"] = {
+		"«Impossibile non vederlo», dicevano. Io ci sono {g:riuscito|riuscita} due volte.",
+		"Le indicazioni che mi hanno dato: oltre il sasso grosso, poi a sinistra all'altro sasso grosso. Utilissime.",
+		"Nessuno dà indicazioni in passi. È sempre «proprio lì», e «lì» è mezza giornata di cammino.",
+	},
+	["jest.w16.wit.006"] = {
+		"Ho le borse piene di cose che un giorno torneranno utili. Finora nessuna, ma so aspettare.",
+		"Mi porto dietro una piuma, tre sassolini e una chiave che non apre niente. Un giorno tutto questo avrà un senso.",
+	},
+	["jest.w16.wit.007"] = {
+		"Niente là fuori colpisce duro come il conto delle riparazioni.",
+		"Il mondo selvaggio ha i denti. Il conto del fabbro per le riparazioni ne ha di più.",
+	},
+	["jest.w16.wit.008"] = {
+		"La gente mi chiama {g:eroe|eroina} solo quando c'è qualcosa di pesante da portare lontano.",
+		"Strano come «eroe» finisca sempre per voler dire «chi ha la schiena buona e niente di meglio da fare».",
+	},
+	["jest.w16.wit.009"] = {
+		"Il pane da viaggio sazia parecchio. Soprattutto di rimpianti.",
+		"Le razioni da viaggio: il cibo che fa sembrare buono qualunque altro cibo, compreso il digiuno.",
+	},
+	["jest.w16.wit.010"] = {
+		"«Aspetta qui», mi hanno detto. È passato un bel po'. Ormai mi sono {g:affezionato|affezionata} a questo posto.",
+		"Mi hanno chiesto di aspettare proprio qui. L'ho fatto. Adesso io e questo posto ci diamo del tu.",
+	},
+	["jest.w16.wit.011"] = {
+		"Una cosa così grossa, e tutto quello che aveva addosso era un rame e un dente rotto. Dove va a finire tutto?",
+		"Grande come un carro, e in tasca un rame solo. Qualcuno deve derubarle prima che arrivi io.",
+		"Il mondo selvaggio è il datore di lavoro più tirchio che ci sia. Paga quasi tutto in denti.",
+	},
+	["jest.w16.wit.012"] = {
+		"Ho tenuto testa a guai di ogni genere. Quello che per poco non mi ha fatto fuori è stato un gradino che non avevo visto.",
+		"Nemici feroci, posti bui, tutto molto drammatico. Poi arriva uno scalino traballante e si impegna più di tutti.",
+	},
+	["pray.w16.word.001"] = {
+		"Niente da chiedere, stavolta. Solo un grazie, per le piccole misericordie che per poco non ho ignorato.",
+		"A qualunque cosa ascolti: grazie per le cose andate bene, quelle che non mi è mai venuto in mente di contare.",
+		"Non ho un nome da darti, e forse non ne hai uno. Grazie lo stesso, per ciò che è stato risparmiato.",
+	},
+	["pray.w16.word.002"] = {
+		"Tu che ascolti, con qualunque nome: fa' che io sia utile, e che sappia quando fermarmi.",
+		"Ascoltami, chiunque tu sia: una testa salda, e la grazia di sbagliare senza essere crudele.",
+	},
+	["toast.w16.cup.001"] = {
+		"Agli sconosciuti che indicano la strada giusta e non chiedono niente in cambio!",
+		"Un brindisi agli sconosciuti gentili: indicazioni giuste, nessuna domanda, e spariti prima che qualcuno possa ringraziarli!",
+	},
 }, "base_social")

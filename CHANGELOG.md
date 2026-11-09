@@ -8,6 +8,70 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### Content wave W16: the last small generic pools and the first zone pools, Dun Morogh, Durotar and Mulgore (issue #138)
+
+The sixteenth content wave of [docs/content/WAVES.md](docs/content/WAVES.md), random need only. Its pools were the
+first row of the table after W15 and C0j: the last small generic pools (`pet_call` 146, `pet_dismiss` 59, `pet_mood`
+40, `dawn` 32, `dusk` 31, `jest` 25, `reputation_change` 21, `nemesis_meet` 20, `npcd_guard_*` 11, `pet_grief` 10,
+`arc_resolve` 7, `npcd_innkeeper_*` 6, `npc_grief` 5, `pray` 4, `npcd_flightmaster_bye` 2, `toast` 1: 420 texts per
+language) and the first zone pools of the random need, the starting zones **Dun Morogh** (800), **Durotar** (659) and
+**Mulgore** (800): 2,679 texts per language in all. **1,223 intentions, 2,961 texts per language** (5,922 in both),
+written by twelve parallel writer subagents (authors `ai-w16-<unit>`): three for the generic pools and three for each
+zone (its thoughts, its fights, its roads), so that the lines do not converge on the same images, openings and
+closings, and passed through the archive (drafts, `cli dups --state draft` with no exact and no near duplicate and no
+over-used opening or closing, submit, owner sample, approve, export; the round trip is an empty diff). No literary
+piece and no `tier` field; the few invented sayings are attributed to a voice. The addon goes from 19,549 to **20,772
+intentions** and from 46,913 to **49,874 texts per language**.
+
+- **Added: 114 lines of the companion pet** (`pet_<event>.w16.<family>.NNN`, 278 texts, `base_relations`, all in
+  the inner voice as ADR 0046 requires): 64 `pet_call` (158 texts; every variant names `{pet}`), 27 `pet_dismiss`
+  (64), 18 `pet_mood` (44, a hunter's beast only) and 5 `pet_grief` (12, `topic:death`). Every line writes `petKind`
+  (a hunter's beast or a warlock's demon) and names no species, no body part only some beasts have and no kind of
+  demon; `petStage` and `petMood` narrow some.
+- **Added: the hours and the small words.** 30 `dawn` and `dusk` lines (69 texts, `base_world`): a line that sees the
+  light writes `indoors = false` and names no sun, stars or clear sky, the others speak of the hour itself, true
+  underground; 12 `jest` (27 texts), 2 `pray` (5 texts, `topic:religion`, no named faith) and 1 `toast` (2 texts) in
+  `base_social`; 10 `reputation_change` (23 texts, 4 going down), never naming the faction.
+- **Added: arcs, griefs and NPCs.** 10 `nemesis_meet` (23 texts, every variant names the nemesis) and 3 `arc_resolve`
+  beats (8 texts: a familiar face remembered, the fallen and onward, the capitals' crossroads) in `base_arcs`; 2
+  `npc_grief` (6 texts); 10 NPC dialogue lines of a guard (directions and goodbyes), an innkeeper and a flight master
+  (24 texts, `base_dialogues`), true of any NPC of that role anywhere.
+- **Added: Dun Morogh** (`dmo.<event>.w16.<family>.NNN`, 386 intentions, 872 texts, `eastern_dunmorogh`): 134 `muse`
+  (287 texts), 7 `weather_change`, 56 `battle`, 44 `victory`, 20 `lowhp`, 12 `attack`, 41 `quest_complete`, 19
+  `npc_meet`, 19 `subzone_enter`, 14 `journey`, 10 `landmark` (Coldridge Valley and Kharanos), 10 `quest_progress`.
+- **Added: Durotar** (`dur.<event>.w16.<family>.NNN`, 287 intentions, 733 texts, `kalimdor_durotar`): 97 `muse`
+  (267 texts), 4 `weather_change`, 41 `battle`, 36 `victory`, 19 `lowhp`, 13 `attack`, 40 `quest_complete`, 15
+  `npc_meet`, 12 `journey`, 10 `quest_progress`.
+- **Added: Mulgore** (`mul.<event>.w16.<family>.NNN`, 356 intentions, 891 texts, `kalimdor_mulgore`): 102 `muse` (306
+  texts), 8 `weather_change`, 59 `battle`, 48 `victory`, 20 `lowhp`, 12 `attack`, 40 `quest_complete`, 20 `npc_meet`,
+  14 `subzone_enter`, 14 `journey`, 9 `landmark` (Camp Narache and Bloodhoof Village), 10 `quest_progress`.
+- **A zone line holds for the whole zone and nothing more.** It writes `zone` and is heard by anyone who stands there:
+  a Horde rogue in Dun Morogh, an Alliance hunter in Durotar, a Forsaken in Mulgore, a level-60 passing through. So no
+  "our people" or home ground without a `race` or `faction` of the zone's own side (at most 1 line in 8), no claim that
+  the character is new to the road, no hour or falling weather without `time` or `weather`, no village named as "here"
+  without its `subzone` or `landmark`, and nothing a Forsaken's body cannot do. The zones' own names stay English in
+  Italian.
+- **Flights.** Classic has no flight master in Dun Morogh, Durotar or Mulgore (they are in Ironforge, Orgrimmar and
+  Thunder Bluff), but the need model asks for their `journey` pools: the 40 lines are written as the zones' existing
+  ones (taking off over the zone, landing in it) and will rarely be heard.
+- **Short lines in a fight.** Every rule of `battle`, `attack`, `lowhp` and `victory` has a variant of 80 bytes or
+  less in both languages (ADR 0056).
+- **The gap after W16** (per language): soft and strict need met (gap **0**); random need 276,398, gap **229,050**
+  (was 231,729). **79 waves** left (the next is the first row of WAVES.md: the starting zones Teldrassil, Tirisfal
+  Glades and Elwynn Forest and the capital Orgrimmar).
+- **Measured.** `run_tests` M2: pick 36.4 → **36.6** thousand Lua instructions (p95 56.0 → 59.3; reference 36.4,
+  fails at 54.6); `bench_pool` (C0j): a pick on pools grown 16 times costs **32.0** against **35.2** on today's (gate
+  1.25 times). `bench_scale` (every line loaded): memory 37.5 → 39.3 MB, bytes per synthetic rule at 10,000 rules 1,315 →
+  1,266, at 50,000 rules 1,219 → 1,222, pick 24.0 → 25.5 thousand Lua instructions (p95 48.8 → 54.1).
+  `bench_trial --long 20` over seeds 1-5 (main → W16): first exact repetition orc 7.4 → **10.0** h, troll 7.4 →
+  **11.5** h, human 8.1 → 8.1 h (Elwynn is untouched); repeated share orc 3.7% → **1.5%**, troll 3.9% → **1.2%**, human
+  3.7% → 3.7%. The first repetitions in Durotar are now its own new thoughts of the speak key (as #270: one seed's orc
+  repeats a new narrator line at 5.7 h), on a pool four times larger.
+- **Tests:** counts: base intentions 20729, lines loaded 20736, `base_arcs` 131 in `TestArcs` (148 in the archive),
+  `base_dialogues` 425, the companion's inner lines 342 (`TestCompanion`). No test needed a change of logic.
+- **Owner sample:** [docs/content/reviews/W16.md](docs/content/reviews/W16.md) (`cli sample --state review --share
+  0.02`: 24 intentions).
+
 ### C0j: a pick that does not grow with its pools (issue #138, ADR 0057)
 
 The M2 gate of ADR 0052 (the Lua instructions of a pick in the simulated session, failing at 64.1 thousand) climbed

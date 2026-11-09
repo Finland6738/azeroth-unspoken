@@ -2624,4 +2624,520 @@ NS:AddTexts("itIT", {
 		"Stesso posto, stessa persona. O questo angolo porta fortuna, o semplicemente non ha fantasia.",
 		"Nello stesso punto della volta scorsa. Quasi mi aspetto di riprendere il discorso a metà frase.",
 	},
+	["npc_grief.w16.001"] = {
+		"{other} mi ha salutato alla partenza più volte di quante ne ricordi, e c'era sempre quando tornavo giù. Ora all'arrivo non aspetta più nessuno.",
+		"Il posatoio è lo stesso, ma la voce che ci stava accanto non c'è più. Ogni partenza, da qui in poi, comincerà un po' più fredda.",
+		"{other}. Ogni volo che ho preso da qui cominciava con quella voce.",
+	},
+	["npc_grief.w16.002"] = {
+		"Sono le piccole cose ad andarsene per prime. {other} non mi chiederà più com'è andata la strada.",
+		"Il vuoto che resta è piccolo e preciso: grande quanto un saluto, detto ogni volta nello stesso posto.",
+		"Adesso là ci starà qualcun altro. Se la caverà bene, e non sarà {other}.",
+	},
+	["pet_call.w16.hunt.001"] = {
+		"{pet} mi raggiunge e si gira dalla stessa parte in cui guardo io. Nessun ordine: non serve.",
+		"Di ritorno al mio fianco, {pet} tiene già d'occhio la stessa cosa che guardo io.",
+		"{pet} riprende la guardia nel momento stesso in cui arriva, come se non ci fosse stata nessuna pausa.",
+	},
+	["pet_call.w16.hunt.002"] = {
+		"Basta una parola sottovoce e {pet} è lì, mezzo passo avanti, a leggere il terreno prima di me.",
+		"{pet} risponde prima che il richiamo sia finito. Una prontezza così viene solo da molte cacce insieme.",
+		"Un'occhiata con {pet} sistema ciò che a parole richiederebbe un minuto.",
+	},
+	["pet_call.w16.hunt.003"] = {
+		"Si torna al lavoro, {pet}. Occhi aperti, e resta dove posso trovarti.",
+		"Con {pet} qui, qualunque cosa aspetti più avanti dovrà vedersela con due, non con uno.",
+		"Su, {pet}. C'è terreno da coprire, e i tuoi occhi ne vedono di più.",
+	},
+	["pet_call.w16.hunt.004"] = {
+		"{pet} arriva con una gran voglia di muoversi. Meglio così: preferisco frenare che trascinare.",
+		"Tutta prontezza: {pet} vuole partire prima ancora che io abbia scelto la direzione.",
+	},
+	["pet_call.w16.hunt.005"] = {
+		"Raggiunto il mio fianco, {pet} guarda oltre, al tratto che ho alle spalle. Qualcosa là dietro merita una seconda occhiata.",
+		"La prima cosa che fa {pet} è controllare i margini. Ho imparato a guardare dove guarda.",
+	},
+	["pet_call.w16.hunt.006"] = {
+		"Non c'è più bisogno di indicare. {pet} prende il lato che ho lasciato scoperto.",
+		"Si volta ancora a cercare un cenno, {pet}, ma meno spesso. Un progresso che si può contare.",
+		"Ormai basta mezzo gesto, e l'altra metà la completa {pet}.",
+	},
+	["pet_call.w16.hunt.007"] = {
+		"Due che cacciano come uno solo: un'idea antica, più antica di qualunque città. {pet} e io la teniamo soltanto in vita.",
+		"La caccia non è mai stata cosa da uno solo. {pet} lo ha sempre saputo; io ho avuto bisogno che me lo dicessero.",
+	},
+	["pet_call.w16.hunt.008"] = {
+		"{pet} e io non cacciamo più fianco a fianco: è una sola attenzione divisa in due.",
+		"Chiamata, risposta, movimento. Con {pet} fra le tre cose non resta nessuna cucitura.",
+		"Appena {pet} si muove, mi sto già muovendo anch'io. Non saprei dire chi abbia cominciato.",
+	},
+	["pet_call.w16.hunt.009"] = {
+		"Qui, {pet}. Vicino e in silenzio: la preda non deve sentire niente finché non è troppo tardi.",
+		"{pet}, con me. Niente fughe dietro la prima cosa che si muove.",
+		"Resta sul mio fianco, {pet}. Allargandosi, le cose sfuggono.",
+	},
+	["pet_call.w16.hunt.010"] = {
+		"Nessuna fretta, tutta calma: così risponde {pet}. Una bestia tranquilla fa un lavoro pulito.",
+		"Sazietà, quiete, attenzione: con {pet} così, il lavoro viene bene.",
+	},
+	["pet_call.w16.hunt.011"] = {
+		"Le probabilità sono appena cambiate: {pet} mi raggiunge, e qualunque cosa arrivi se ne accorgerà.",
+		"Qualunque cosa ci sia più avanti, {pet} la avvertirà prima di me. Vale moltissimo.",
+		"C'è di nuovo {pet}, e già sto in piedi in un altro modo, come chi ha le spalle coperte.",
+	},
+	["pet_call.w16.hunt.012"] = {
+		"{pet} risponde al richiamo, ed è già un inizio. Per arrivare nel punto giusto servirà qualche caccia in più.",
+		"{pet} e io stiamo ancora capendo chi sta dove quando conta. Pazienza, da entrambe le parti.",
+	},
+	["pet_call.w16.hunt.013"] = {
+		"Torna con {pet} una quiete, quella di chi sa aspettare. Me la prendo in prestito.",
+		"{pet} si sistema accanto a me e si fa immobile. Provo a fare lo stesso, e quasi sempre non ci riesco.",
+	},
+	["pet_call.w16.hunt.014"] = {
+		"{pet} conosce il lavoro quanto me. Certi giorni meglio. È al suo posto prima che il pensiero sia finito.",
+		"Tante cacce insieme che ormai {pet} risponde al piano, non al richiamo.",
+		"{pet} prende il suo posto, io il mio. Nessuno dei due deve guardare.",
+	},
+	["pet_call.w16.hunt.015"] = {
+		"Due paia d'occhi valgono più di uno. Eccoti qua, {pet}.",
+		"{pet} torna con me, e il lato cieco delle cose si richiude.",
+	},
+	["pet_call.w16.hunt.016"] = {
+		"La stessa fame d'inseguimento che ho io, {pet}. Bene.",
+		"Zero esitazioni, con {pet}. Basta indicare un guaio, e ci si butta.",
+	},
+	["pet_call.w16.kin.001"] = {
+		"{pet} mi spinge la testa contro la mano e resta così. Va bene. Un momento non farà male.",
+		"Un colpetto al gomito, poi {pet} ci mette tutto il suo peso. Ricambio la spinta, piano.",
+		"{pet} non si calma finché non ha avuto il suo momento di attenzioni. Glielo concedo: lo volevo anch'io.",
+	},
+	["pet_call.w16.kin.002"] = {
+		"{pet} va al solito posto senza che glielo mostri. L'abitudine è una specie di promessa fra due creature.",
+		"Stesso posto, stessa andatura. {pet} ha le sue usanze, e ho imparato a contarci.",
+	},
+	["pet_call.w16.kin.003"] = {
+		"Di slancio, {pet} mi gira intorno due volte prima di fermarsi. Scelgo di prenderlo come un complimento.",
+		"Tanta gioia aperta, da parte di {pet}, per un semplice richiamo. Nessun altro mi accoglie così.",
+		"{pet} non riesce a decidere dove mettersi, così prova tutti i posti uno dopo l'altro. Mi scappa da ridere, mio malgrado.",
+	},
+	["pet_call.w16.kin.004"] = {
+		"{pet}. Il resto del mondo fa un passo indietro quando c'è, e non mi dispiace.",
+		"Con {pet} accanto potrei dimenticare di aver mai camminato da {g:solo|sola}.",
+		"Arriva {pet}, e qualcosa in me che stava in guardia si scioglie.",
+	},
+	["pet_call.w16.kin.005"] = {
+		"Un lungo sguardo di {pet}: sono ancora in un pezzo solo, conclude. Poi si sistema.",
+		"Prima l'ispezione, poi il benvenuto. {pet} ha il suo ordine delle cose.",
+		"Come un furiere che controlla l'equipaggiamento restituito, {pet} mi squadra. A quanto pare, passo l'esame.",
+	},
+	["pet_call.w16.kin.006"] = {
+		"{pet} arriva, ma si ferma un po' più lontano di quanto vorrei. Quella distanza si accorcerà.",
+		"{pet} diffida ancora di me, eppure risponde. Per adesso mi basta.",
+	},
+	["pet_call.w16.kin.007"] = {
+		"Che calma imperturbabile, quella di {pet}: la calma di chi ha mangiato bene e dormito meglio.",
+		"Nessuna storia, con {pet}. Si accomoda, osserva, aspetta. Compagnia facile.",
+		"Arriva la calma insieme con {pet}, come il profumo arriva col pane. Non sapevo che mi mancasse.",
+	},
+	["pet_call.w16.kin.008"] = {
+		"Il silenzio stava diventando un'abitudine. {pet} lo rompe con tutti i piccoli rumori di qualcosa di vivo accanto a me.",
+		"C'è {pet}, e mi accorgo solo adesso di quanto tempo sia passato senza nessuno di cui occuparmi.",
+	},
+	["pet_call.w16.kin.009"] = {
+		"{pet} si accuccia a portata di mano, come fa quando si fida del posto che ho scelto.",
+		"A portata di braccio, mai più lontano: {pet} l'ha deciso per conto suo, tempo fa.",
+		"Il posto da cui vede me e la strada davanti nello stesso momento, {pet} l'ha scelto da sé.",
+	},
+	["pet_call.w16.kin.010"] = {
+		"Controllo {pet} in cerca di botte e graffi, e mi lascia fare. Il permesso è già una forma di ringraziamento.",
+		"Un rapido controllo di {pet}: occhi limpidi, movimenti sciolti, niente di nuovo da curare. Bene.",
+	},
+	["pet_call.w16.kin.011"] = {
+		"Esiste un'intesa antica fra chi nutre e chi protegge. {pet} mantiene la sua parte senza che nessuno debba ricordarglielo.",
+		"Cibo, riparo, un nome. In cambio {pet} mi dà l'unica cosa che non potrei comprare: una guardia che non si appisola mai in servizio.",
+	},
+	["pet_call.w16.kin.012"] = {
+		"{pet} ha preso le mie abitudini: la pausa a ogni svolta, l'occhiata indietro prima di ripartire. O io ho preso le sue. Difficile dirlo.",
+		"Ormai {pet} mi è familiare. Abbastanza da accorgermi della sua assenza prima di quasi ogni altra cosa.",
+		"{pet} sembra meno qualcosa che chiamo e più qualcosa da cui torno.",
+	},
+	["pet_call.w16.kin.013"] = {
+		"La distanza e le opinioni, {pet} se le tiene tutte e due, anche quando risponde. Un pasto le ricomprerà.",
+		"Con calma, molta calma, risponde {pet}. Giusto: ultimamente ho provveduto poco e male.",
+	},
+	["pet_call.w16.kin.014"] = {
+		"Conto {pet} come certa gente conta le monete: con cura, e con sollievo.",
+		"Nemmeno un graffio, per {pet}. Il resto si sistemerà da sé.",
+	},
+	["pet_call.w16.kin.015"] = {
+		"Che accoglienza, da parte di {pet}: come se mancassi da un anno. È passata un'ora, al massimo.",
+		"A sentire {pet}, è passata un'eternità. Non è passato quasi niente.",
+		"Si direbbe che manchi da un mese, a vedere le feste che fa {pet}.",
+	},
+	["pet_call.w16.kin.016"] = {
+		"Ovunque aspetti {pet} fra un richiamo e l'altro, ne torna uguale. Vorrei poter dire lo stesso delle mie attese.",
+		"Esattamente com'era, {pet} ritorna. C'è conforto in qualcosa che conserva la sua forma.",
+	},
+	["pet_call.w16.kin.017"] = {
+		"Con {pet} vicino dormirò a occhi chiusi, tutti e due. Non è poco da concedere a qualcuno.",
+		"Accanto al mio zaino, {pet} prende posto come una sentinella esperta. Lascio cadere le spalle.",
+	},
+	["pet_call.w16.pact.001"] = {
+		"Ogni volta le parole si portano via qualcosa di me, e {pet} entra nello spazio che lasciano.",
+		"Pago l'evocazione con una moneta che non vedo. Arriva {pet}, e il conto si apre.",
+		"Qualcosa esce da me, ed entra {pet}. Questa è l'aritmetica.",
+	},
+	["pet_call.w16.pact.002"] = {
+		"{pet}, al tuo posto. Patti come sempre: tu servi, io decido, nessuno improvvisa.",
+		"Stessi termini di sempre, {pet}. Servi bene, e il congedo sarà civile.",
+		"{pet}. Conosci i termini. So che li conosci. Saltiamo la parte in cui fingi il contrario.",
+	},
+	["pet_call.w16.pact.003"] = {
+		"C'è un momento, ogni volta, in cui il patto tiene e {pet} decide di rispettarlo. Ho smesso di fingere di non aspettarlo.",
+		"{pet} passa e saggia la catena una volta, per principio. Tiene. Finora ha sempre tenuto.",
+	},
+	["pet_call.w16.pact.004"] = {
+		"Con l'aria di chi risponde alla convocazione di un tribunale minore: così si presenta {pet}. E a dire il vero, è proprio così.",
+		"Ecco {pet}, col disprezzo appena lucidato. Fa piacere vedere qualcosa tenuto in ordine.",
+		"{pet} compare, mi squadra, e in un attimo trova qualcosa da ridire.",
+	},
+	["pet_call.w16.pact.005"] = {
+		"Un patto fresco, e {pet} ne legge ogni parola in cerca di scappatoie. Ho fatto lo stesso, quando l'ho scritto.",
+		"I vincoli nuovi scricchiolano. {pet} ci si appoggia per sentire dove cedono.",
+	},
+	["pet_call.w16.pact.006"] = {
+		"La lunga frequentazione rende l'evocazione facile. Troppo facile. {pet} risponde come qualcosa che ha imparato la mia voce a memoria.",
+		"{pet} conosce le mie abitudini, e io le sue. Chiamare tutto questo fiducia sarebbe un errore, e ogni volta più facile da commettere.",
+	},
+	["pet_call.w16.pact.007"] = {
+		"Quando {pet} ha risposto, mi controllo come si controllano le tasche uscendo dalla calca. C'è ancora tutto. Per stavolta.",
+		"Chiamo {pet}, e per un istante il richiamo sembra arrivare più lontano del necessario.",
+	},
+	["pet_call.w16.pact.008"] = {
+		"Un attrezzo con delle opinioni, ecco cos'è {pet}. L'attrezzo lo tengo affilato, le opinioni corte.",
+		"Utile: ecco cos'è {pet}. Utile basta. A una serratura non chiedo di volermi bene.",
+		"Né amico né servo, e nemmeno proprio un'arma. {pet} è un contratto che cammina.",
+	},
+	["pet_call.w16.pact.009"] = {
+		"{pet}. Risparmiami quello sguardo. Tu vieni perché devi, e io chiamo perché devo.",
+		"Lascia perdere il ghigno, {pet}. Questo accordo non era la prima scelta di nessuno.",
+		"Sì, {pet}, sempre io. Contieni l'entusiasmo.",
+	},
+	["pet_call.w16.pact.010"] = {
+		"Comincia ad anticipare la chiamata, {pet}. La chiamerei impazienza, se non sapessi come stanno le cose.",
+		"Niente più messinscena: {pet} non mi fa aspettare. La familiarità ha i suoi vantaggi, e i suoi avvertimenti.",
+	},
+	["pet_call.w16.pact.011"] = {
+		"Fra tutte le compagnie possibili, io ho {pet}. Cerco di non chiedermi troppo a lungo cosa dica di me.",
+		"Chi viene sempre quando chiamo è {pet}. Ci sono cose peggiori da poter dire, e migliori.",
+	},
+	["pet_call.w16.pact.012"] = {
+		"Parole antiche, debiti più antichi ancora. {pet} risponde agli uni e agli altri, e a me soltanto attraverso loro.",
+		"Il patto è più vecchio della mia voce che lo pronuncia. {pet} si piega al patto; io sono solo la mano che lo regge.",
+		"Prima parla il patto; {pet} si limita a seguire. Quell'ordine lo tengo sempre a mente.",
+	},
+	["pet_call.w16.pact.013"] = {
+		"Evocare {pet} mi costa sempre un po'. Lo metto in conto come altri mettono in conto le riparazioni.",
+		"Il prezzo di {pet} si paga in anticipo, e mai del tutto. Un buon affare, per una delle due parti.",
+	},
+	["pet_call.w16.pact.014"] = {
+		"{pet} prende posizione fra me e il mondo. Non è lealtà. Resta comunque una posizione ben presa.",
+		"Da qualunque parte venga il pericolo, {pet} gli starà davanti. È l'unica promessa che ho chiesto.",
+		"Davanti, {pet}. Chi vuole me, prima trova te.",
+	},
+	["pet_call.w16.pact.015"] = {
+		"Una parte di me è fiera che {pet} risponda. Quella parte la tengo d'occhio.",
+		"{pet} obbedisce, e mi attraversa un piccolo piacere duro. Lo annoto, lo metto via, e non gli do da mangiare.",
+	},
+	["pet_call.w16.pact.016"] = {
+		"{pet} squadra il posto che ho scelto con l'aria di un ospite a una festa molto misera.",
+		"Niente ti impressiona, vero, {pet}? Mai. La coerenza è una virtù, perfino in te.",
+		"{pet} disapprova tutto quello che vede, me prima di ogni altra cosa. A modo suo, rassicurante.",
+	},
+	["pet_call.w16.pact.017"] = {
+		"{pet} e io teniamo fede a questo patto da così tanto che in certi punti si è levigato. Ci passo sopra il pollice, e mi faccio domande.",
+		"Un legame, lo chiamerebbero i libri. {pet} lo chiamerebbe in modo meno educato, e sarebbe più vicino al vero.",
+	},
+	["pet_call.w16.wry.001"] = {
+		"{pet} risponde al richiamo alla velocità che preferisce, che non è quella che ho chiesto io.",
+		"Chiamo; {pet} valuta l'offerta. Alla fine, accetta.",
+		"Prima o poi, {pet}. Anche prima o poi è una specie di sì.",
+	},
+	["pet_call.w16.wry.002"] = {
+		"Qualunque cosa abbia trovato {pet} per rotolarcisi dentro, ne ha trovata parecchia. Ne parliamo dopo.",
+		"Un odore che non riconosco, e non voglio riconoscere, arriva insieme con {pet}. Il ritorno mi fa piacere, l'odore meno: un passo più in là.",
+	},
+	["pet_call.w16.wry.003"] = {
+		"{pet} arriva e si mette subito a fissare qualcosa che io non vedo. Ho deciso di non chiedere.",
+		"{pet} torna con me, e ha già più attenzione addosso di quanta ne abbia avuta io in un'ora intera.",
+		"{pet} piega la testa di lato come se avessi detto una sciocchezza. Ho detto solo il suo nome.",
+	},
+	["pet_call.w16.wry.004"] = {
+		"Un elenco di lamentele mai dette e mai dimenticate: ecco cosa porta con sé {pet}.",
+		"L'evocazione funziona. L'umore di {pet}, no.",
+		"Ecco {pet}, che emana tutto il calore di un conto non pagato.",
+	},
+	["pet_call.w16.wry.005"] = {
+		"Se {pet} roteasse gli occhi con più forza, dovrei considerarlo un attacco.",
+		"{pet} riesce a far sembrare l'obbedienza un favore che mi concede.",
+	},
+	["pet_call.w16.wry.006"] = {
+		"Almeno uno dei due è felice dell'arrivo di {pet}. Credo proprio di essere io.",
+		"Ecco {pet}, con la faccia di un collega richiamato nel giorno di riposo.",
+		"A giudicare dall'aria, {pet} scriverà poi un rapporto sul mio conto.",
+	},
+	["pet_call.w16.wry.007"] = {
+		"{pet} è fin troppo felice di vedermi. O sono una compagnia migliore di quanto pensassi, o ha trovato qualcosa da mangiare per strada.",
+		"Quanta gioia, da parte di {pet}. Mi lusinga, e un po' mi insospettisce.",
+	},
+	["pet_call.w16.wry.008"] = {
+		"Siamo ancora alla fase in cui si finge di leggersi nel pensiero, {pet} e io. Male, da entrambe le parti.",
+		"Patto nuovo, nuova smorfia di sdegno. {pet} sta ancora scegliendo quale indossare.",
+	},
+	["pet_call.w16.wry.009"] = {
+		"Ormai {pet} risponde così in fretta che sospetto fosse già per strada. Forse sente i miei pensieri.",
+		"A questo punto potrebbe essere {pet} a chiamare me, e arriverei altrettanto in fretta.",
+	},
+	["pet_call.w16.wry.010"] = {
+		"{pet}, col solito broncio addosso. Nessuno ti ha chiesto di farti piacere la cosa: falla e basta.",
+		"La faccia che fa {pet} a ogni evocazione andrebbe studiata da chiunque abbia mai avuto un cattivo padrone.",
+	},
+	["pet_call.w16.wry.011"] = {
+		"In servizio, {pet}, con la dignità di un sergente e la concentrazione di un bambino.",
+		"{pet} torna con l'aria indaffaratissima, senza niente da fare. Conosco la tecnica.",
+		"L'arrivo, un breve ricordo di dignità, poi la dimenticanza: {pet} fa tutto in un attimo.",
+	},
+	["pet_call.w16.wry.012"] = {
+		"Chiamo, e {pet} viene. La gente dovrebbe prendere appunti.",
+		"Una cosa va detta di {pet}: quando chiamo, qualcuno risponde. Non è poco, di questi tempi.",
+		"Fra me e {pet}, gli appuntamenti li rispetta una parte sola.",
+	},
+	["pet_call.w16.wry.013"] = {
+		"L'offesa già in mano, {pet}, per qualunque cosa chieda per prima. Chiedo silenzio, per efficienza.",
+		"Qualcosa d'oltre il mondo risponde al mio richiamo, ed è {pet}, con l'aria seccata. I grandi misteri, da vicino, sono più piccoli.",
+	},
+	["pet_call.w16.wry.014"] = {
+		"{pet} ha imparato quanto può bighellonare prima che me ne accorga. E sfrutta ogni secondo.",
+		"Conoscere {pet} vuol dire imparare il suo senso dell'umorismo. Ce l'ha, e di solito la battuta sono io.",
+	},
+	["pet_dismiss.w16.alone.001"] = {
+		"{pet} se ne va, e mi accorgo di quanta della mia attenzione si appoggiasse a quella presenza. Adesso mi torna tutta addosso, più pesante.",
+		"Un guardiano in meno. Lo spazio attorno a me sembra più largo, e meno mio.",
+		"Senza {pet} devo ascoltare per due.",
+	},
+	["pet_dismiss.w16.alone.002"] = {
+		"Il silenzio che lascia {pet} non è vuoto, esattamente. Somiglia a una stanza coi mobili spostati.",
+		"Il legame si scioglie. Prima viene il sollievo, poi, stranamente, la sensazione di essere allo scoperto.",
+	},
+	["pet_dismiss.w16.alone.003"] = {
+		"Adesso ci sono solo io. Controllo due volte il terreno davanti, come faccio quando nessun altro lo controlla.",
+		"Senza {pet} cammino un po' più piano e guardo un po' meglio. Regole semplici, per chi cammina senza compagnia.",
+	},
+	["pet_dismiss.w16.alone.004"] = {
+		"Mandare via {pet} non diventa più facile. Non credo debba diventarlo.",
+		"Guardo il punto dove stava {pet} un momento di troppo. Poi mi costringo a guardare avanti.",
+		"Va' pure, {pet}. Stavolta sono io a contare le ore.",
+	},
+	["pet_dismiss.w16.alone.005"] = {
+		"{pet} se ne va, e la prima cosa che provo è sollievo. La seconda è che non dovrei provare sollievo per un compagno. Poi mi ricordo che cos'è.",
+		"Sollievo, quando {pet} se ne va. Sollievo semplice, pulito. Ho imparato a non vergognarmene.",
+		"Senza {pet} torno a essere soltanto me, ed è insieme il sollievo e il problema.",
+	},
+	["pet_dismiss.w16.alone.006"] = {
+		"Mando via {pet}, e i piccoli rumori che avevo smesso di sentire diventano d'un tratto tutto ciò che c'è.",
+		"Per un tratto sono per conto mio. Mi accorgo che parlo meno, quando non c'è nessuno che possa non rispondermi.",
+	},
+	["pet_dismiss.w16.alone.007"] = {
+		"{pet} va a riposare, e io raddrizzo le spalle. Certi tratti vogliono un solo paio d'occhi, e silenzioso.",
+		"Certi lavori si fanno meglio senza compagnia. {pet} si annoierebbe soltanto, con quel che viene adesso.",
+	},
+	["pet_dismiss.w16.alone.008"] = {
+		"Ciò che mi aveva risposto se n'è andato, e mi resta il dubbio su cos'altro abbia sentito il congedo.",
+		"{pet} si ritira. L'aria si posa, ma per un po' continuo a guardarmi alle spalle.",
+	},
+	["pet_dismiss.w16.rest.001"] = {
+		"Va' a riposare, {pet}. In quel tratto hai portato più della tua parte.",
+		"Un po' di quiete è il minimo, per {pet}. Mando via la bestia, e la preoccupazione me la tengo io.",
+		"A riposare. Qualunque cosa tu sogni, {pet}, spero sia leggera.",
+	},
+	["pet_dismiss.w16.rest.002"] = {
+		"Torna indietro, {pet}, e raccogli quel che vale come forza là dove vai.",
+		"Congedo. Un po' di lontananza adesso renderà {pet} più utile dopo.",
+		"Vai, {pet}. Quando servirai, lo saprai prima di me.",
+	},
+	["pet_dismiss.w16.rest.003"] = {
+		"Riposa bene, {pet}. Ti chiamerò appena avrò bisogno di te, e non un istante prima.",
+		"Ormai {pet} se ne va senza fatica. I congedi sono più semplici fra chi sa che ci sarà una prossima volta.",
+		"Dormi, {pet}, o quello che fai. Quando ti chiamerò, sarò proprio qui.",
+	},
+	["pet_dismiss.w16.rest.004"] = {
+		"Riposa, {pet}, e quando torni il cibo sarà migliore. Hai la mia parola.",
+		"Vai pure, {pet}, broncio compreso. Una pausa può solo fare bene.",
+	},
+	["pet_dismiss.w16.rest.005"] = {
+		"Che il patto si allenti per un po'. {pet} torna alla sua attesa, e io alla mia.",
+		"Il cerchio si chiude dietro {pet}. Qualunque cosa faccia fra un'evocazione e l'altra, la fa lontano da qui.",
+	},
+	["pet_dismiss.w16.rest.006"] = {
+		"Per questo tratto basta lavoro. Vai, {pet}: per un po' faccio la guardia da me.",
+		"{pet} aveva l'aria stanca. Forse ci vedo solo la mia stanchezza. In ogni caso, riposo.",
+		"Riposa, {pet}. Essere stanchi nel momento sbagliato costa più che restare senza compagnia in quello giusto.",
+	},
+	["pet_dismiss.w16.rest.007"] = {
+		"Per ora non mi servi, {pet}. Vai, prima che mi venga in mente un motivo per trattenerti.",
+		"Lascio andare {pet} finché le cose sono tranquille. La calma non dura mai: meglio usarla.",
+	},
+	["pet_dismiss.w16.rest.008"] = {
+		"Su, {pet}: poco lavoro, poco riposo; i tratti lunghi verranno dopo.",
+		"Per cominciare basta così, {pet}. Riposa, e torna con un po' meno diffidenza.",
+	},
+	["pet_dismiss.w16.rest.009"] = {
+		"Vai, {pet}. Dopo tanto tempo, congedarti somiglia meno a chiudere una porta che a lasciarla accostata.",
+		"Nessuna ultima parola, stavolta, da parte di {pet}. Fra vecchi soci di un cattivo affare, il silenzio è quasi una cortesia.",
+	},
+	["pet_dismiss.w16.rest.010"] = {
+		"In pace e con la pancia piena: così parte {pet}. Il modo migliore di separarsi, nessun debito da nessuna parte.",
+		"Cibo, riposo, un congedo di buon umore. Magari tutti avessero la vita di {pet}.",
+	},
+	["pet_dismiss.w16.wry.001"] = {
+		"Come se avesse già in programma di andarsene: così sparisce {pet}. Bisogna riconoscerlo, ben fatto.",
+		"Congedo, e {pet} se ne va con l'aria di chi stava per dare le dimissioni.",
+		"Senza fretta, {pet} prende congedo, come se andarsene fosse un'idea sua e io avessi solo dato il mio assenso.",
+	},
+	["pet_dismiss.w16.wry.002"] = {
+		"Uno sguardo che promette una lunga conversazione, un giorno: così saluta {pet}. Quel giorno avrò da fare.",
+		"Sparisci, {pet}. La compagnia migliora all'istante.",
+		"E {pet} se ne va, lasciandosi dietro il disprezzo come un odore.",
+	},
+	["pet_dismiss.w16.wry.003"] = {
+		"Vai, {pet}, e cerca di non tornare con qualcosa che una volta era vivo.",
+		"{pet} se ne va senza protestare, il che vuol dire che ha un piano. Lo scoprirò più avanti.",
+	},
+	["pet_dismiss.w16.wry.004"] = {
+		"Il congedo è poca cosa, ma {pet} riesce a trasformarlo in una trattativa persa da me.",
+		"Sono io a congedare, eppure, chissà come, la porta in faccia la prendo io.",
+	},
+	["pet_dismiss.w16.wry.005"] = {
+		"Torna dalla tua parte, {pet}, e non salutarmi nessuno.",
+		"Trascinandosi dietro la solita opinione di me, {pet} sparisce. Ho sentito di peggio da certi osti.",
+		"Va' a tenere il broncio altrove, {pet}. L'altrove è la tua specialità.",
+	},
+	["pet_dismiss.w16.wry.006"] = {
+		"{pet} conosce il congedo così bene che comincia ad andarsene alla prima sillaba. Maleducazione efficiente.",
+		"Mezza parola e {pet} sparisce. Ad andarsene ci mette meno che ad arrivare, noto.",
+	},
+	["pet_dismiss.w16.wry.007"] = {
+		"Prima di andarsene, {pet} controlla due volte che io dica sul serio. Un patto nuovo va avanti a sospetti.",
+		"I primi congedi sono imbarazzanti per tutti. {pet} esita, io insisto, e il momento passa.",
+	},
+	["pet_dismiss.w16.wry.008"] = {
+		"Va via felice, {pet}, il che è più di quanto ottenga la gente quando la si manda via.",
+		"Se ne va di buon umore, come niente fosse. Vorrei conoscere il segreto di {pet}.",
+	},
+	["pet_dismiss.w16.wry.009"] = {
+		"Congedare {pet} mi risparmia un costo che altrimenti continuerei a pagare. Una parsimonia un po' oscura.",
+		"Adesso {pet} non serve, e non ha senso pagare per ciò che non uso.",
+	},
+	["pet_grief.w16.loss.001"] = {
+		"{pet} non si rialza. Ripeto il nome un'altra volta, più piano, come se potesse servire.",
+		"La mano posata sopra {pet}, e niente che risponda. Il mondo può aspettare un momento.",
+		"{pet}. Resta con me. Ti prego.",
+	},
+	["pet_grief.w16.loss.002"] = {
+		"Da un istante all'altro, {pet} non c'è più. Mi dico che un patto si può rinnovare. Il colpo resta lo stesso.",
+		"Il vincolo torna indietro vuoto. Qualunque cosa fosse {pet} per me, l'assenza la sento prima nelle mani.",
+	},
+	["pet_grief.w16.loss.003"] = {
+		"Il ritmo con {pet} cominciava appena a venire. Non qui. Non così.",
+		"{pet} giace immobile, e mi accorgo di quante abitudini avevo costruito attorno a quella presenza.",
+	},
+	["pet_grief.w16.loss.004"] = {
+		"C'è un silenzio antico che scende quando cade un compagno. Ci sto dentro, insieme con {pet}.",
+		"Chi tiene una bestia impara prima o poi quest'ora. La mia è arrivata, {pet}.",
+		"Silenzio, adesso, {pet}. Il nome lo custodisco io, finché servirà.",
+	},
+	["pet_grief.w16.loss.005"] = {
+		"Ho passato tanto tempo a sorvegliare {pet} per paura di un tradimento che ho dimenticato di guardarne le spalle.",
+		"{pet} cade, e il patto tace. Tutta quella diffidenza, e adesso questo? Dolore, proprio dolore.",
+	},
+	["pet_mood.w16.glad.001"] = {
+		"Attenzione viva, scatti rapidi, soddisfazione per tutto quanto: {pet} è in gran forma.",
+		"Qualcosa ha messo {pet} di ottimo umore. Qualunque cosa sia, ne vorrei un po' anch'io.",
+		"Con un buon umore come quello di {pet}, è difficile tenere il muso.",
+	},
+	["pet_mood.w16.glad.002"] = {
+		"Sempre a un passo da me, {pet} alza ogni tanto lo sguardo come per dividere una battuta.",
+		"C'è una leggerezza nuova nei movimenti di {pet}. Un poco arriva anche a me.",
+	},
+	["pet_mood.w16.glad.003"] = {
+		"Entusiasta della vita, {pet}. Cercherò di non prendermene il merito, e non ci riuscirò.",
+		"Una bestia felice al mio fianco. Mi guardo intorno in cerca di ciò che ho fatto di giusto, per poterlo ripetere.",
+		"Qualunque cosa metta {pet} di così buon umore, spero sia contagiosa.",
+	},
+	["pet_mood.w16.glad.004"] = {
+		"{pet} è felice, e lo so senza guardare. È questo che dà la strada lunga.",
+		"Dopo tanto tempo insieme, il buon umore di {pet} lo sento prima di vederlo.",
+	},
+	["pet_mood.w16.glad.005"] = {
+		"Umore uniforme, per {pet}. Niente lamentele, niente pretese. Un umore da lavoro.",
+		"Tranquillità è la parola giusta per {pet}, adesso. Né euforia né malumore: prontezza.",
+		"Saldo e costante, l'umore di {pet}: come vorrei averlo io.",
+	},
+	["pet_mood.w16.glad.006"] = {
+		"{pet} ritrova la calma. Invidio la rapidità con cui una bestia perdona un periodo magro, appena c'è da mangiare.",
+		"Pace fra me e {pet}, per adesso. Facile da fare, meno da mantenere.",
+	},
+	["pet_mood.w16.glad.007"] = {
+		"{pet} sta bene, e io sto imparando a capirne i segni: lo sguardo più lento, la postura più sciolta.",
+		"Capisco che {pet} è a suo agio, adesso. Tempo fa i segni mi sarebbero sfuggiti.",
+	},
+	["pet_mood.w16.glad.008"] = {
+		"{pet} è felice con me. Proprio con me. Un buon segno, così presto.",
+		"La prima vera gioia di {pet}. Questa me la ricorderò.",
+	},
+	["pet_mood.w16.glad.009"] = {
+		"Sazietà, riposo, nessuna fretta: {pet} non vuole altro, e per un momento nemmeno io.",
+		"Una bestia in pace chiede poco a chiunque. {pet} mi mostra come si fa.",
+		"Una contentezza quieta, quella di {pet}. Niente da sistemare, per una volta.",
+	},
+	["pet_mood.w16.glad.010"] = {
+		"La gente si volta a guardare l'allegria di {pet}. Soprattutto guarda me, come per chiedere il segreto.",
+		"Buon umore per tutti, a giudizio di {pet}. Io ci rientro, che mi piaccia o no.",
+	},
+	["pet_mood.w16.sulk.001"] = {
+		"Silenzio scontroso, da parte di {pet}. Lo conosco: è quello con il conto allegato.",
+		"Un'occhiata acida, quella che {pet} mi rivolge, e la tiene finché non sono io ad abbassare lo sguardo.",
+		"Conosco bene lo sguardo che mi lancia {pet}: salario non pagato.",
+	},
+	["pet_mood.w16.sulk.002"] = {
+		"{pet} tiene la testa girata e non incrocia il mio sguardo. Giusto. Ultimamente ho badato poco a questa bestia.",
+		"Ha il muso, {pet}, e con ragione. Prima rimedio, poi chiedo qualcosa.",
+	},
+	["pet_mood.w16.sulk.003"] = {
+		"Occhi scontrosi, quelli di {pet}. D'accordo. Prima il cibo, poi il perdono, se mi va bene.",
+		"{pet} tiene il broncio senza nasconderlo, come sa fare solo una bestia affamata. Ricevuto.",
+		"Fame, malumore e broncio: {pet} ne ha abbastanza della mia trascuratezza.",
+	},
+	["pet_mood.w16.sulk.004"] = {
+		"{pet} mi tiene a distanza, e dopo tanta strada fatta insieme brucia più di un morso.",
+		"Conosco {pet} troppo bene per non accorgermene: la testa girata, il passo tenuto appena fuori portata. Il torto è mio.",
+	},
+	["pet_mood.w16.sulk.005"] = {
+		"{pet} ce l'ha con me, e ha imparato benissimo a farlo capire: fa tutto ciò che chiedo, lentamente.",
+		"Insieme da abbastanza tempo perché i bronci di {pet} abbiano uno stile. Questo è quello del passo lento. Me lo merito.",
+	},
+	["pet_mood.w16.sulk.006"] = {
+		"Prima un'occhiata acida, poi un'altra, nel caso non avessi colto la prima: così fa {pet}.",
+		"Il muso di un soldato a mezza razione, ecco cos'ha {pet}. E mezza razione è più o meno quel che ha avuto.",
+		"Di cattivo umore, {pet}, e vuole che io lo sappia. Una bestia imbronciata è una bestia sincera.",
+	},
+	["pet_mood.w16.sulk.007"] = {
+		"Il broncio è passato. {pet} adesso sta solo bene, che è ancora lontano dal perdono, ma è un inizio.",
+		"{pet} ha smesso di serbare rancore, o l'ha messo via da qualche parte per dopo. Mi va bene in entrambi i casi.",
+		"Serenità ritrovata. Qualunque cosa abbia aggiustato con {pet}, me la segno.",
+	},
+	["pet_mood.w16.sulk.008"] = {
+		"Poca fiducia per ora, e adesso {pet} non incrocia nemmeno il mio sguardo. Prima il cibo, poi si ricomincia da lì.",
+		"{pet} tiene già il muso. Un legame nuovo si ammacca facilmente.",
+	},
 }, "base_relations")

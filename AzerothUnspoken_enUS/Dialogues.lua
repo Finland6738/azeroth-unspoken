@@ -1739,4 +1739,48 @@ NS:AddTexts("enUS", {
 		"Whatever you're short of, I probably have. Whatever you've too much of, I'll probably buy.",
 		"Useful things at honest prices, and a couple of bargains for anyone who knows how to look.",
 	},
+	["npcd.flightmaster.bye.w16.001"] = {
+		"Travel safe, whichever way you go. If you ever need wings, you know where they're kept.",
+		"Farewell. And if you go on foot, wave when one of mine passes over you.",
+		"Go well. I'll be here counting mounts and checking straps, same as every day.",
+	},
+	["npcd.guard.bye.w16.001"] = {
+		"On your way, then. Keep your purse close and your temper closer.",
+		"Off you go. If anyone gives you trouble, you know what a guard looks like.",
+	},
+	["npcd.guard.bye.w16.002"] = {
+		"Move along, and come back in the same number of pieces. My reports are short when nobody gets hurt.",
+		"Mind yourself. I like a quiet watch, and you could help me have one.",
+	},
+	["npcd.guard.directions.w16.001"] = {
+		"Pick something you can see from almost anywhere and learn where it stands. Then you're never really lost, only farther from it.",
+		"Walk it once with your eyes open. The second time, your feet will know the way.",
+		"Ask the next guard you pass. Pointing is half our work; the other half is standing still.",
+	},
+	["npcd.guard.directions.w16.002"] = {
+		"Everyone gets lost the first day. By the third they're giving directions to someone else, and getting them wrong.",
+		"The trick is to look like you know where you're going. Folk will follow you, and one of them might actually know.",
+	},
+	["npcd.guard.directions.w16.003"] = {
+		"Those who share a trade tend to keep near one another. Find one door of the craft you seek, and the next is seldom far.",
+		"Should you lose your bearings, return to where your walk began and set out again from there. It is slower, but it does not fail.",
+	},
+	["npcd.guard.directions.w16.004"] = {
+		"Pick a landmark. Keep it in sight.",
+		"Ask twice. Trust what both answers agree on.",
+	},
+	["npcd.innkeeper.bye.w16.001"] = {
+		"Off you go. Check your bags at the door; what guests leave behind here ends up in the soup, or near enough.",
+		"Mind how you go. And if you meet anyone in need of a meal and a roof, send them my way.",
+		"Go well. The bench by the wall is yours whenever you're passing through.",
+	},
+	["npcd.innkeeper.bye.w16.002"] = {
+		"Take care of yourself out there. Too many good guests have not come back, and I'd rather not count you among them.",
+		"Eat properly on the road. Whatever they serve you out there won't be mine, but eat it anyway.",
+	},
+	["npcd.innkeeper.thanks.w16.001"] = {
+		"Don't thank me, it's only talk. Half of what crosses this counter is rumor, and the other half is worse.",
+		"Glad to help. News is the one thing I give away; it costs less than the soup and goes off faster.",
+		"Any time. Come back and tell me how it turned out; I never get to hear the ends of stories.",
+	},
 }, "base_dialogues")
