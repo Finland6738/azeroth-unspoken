@@ -8742,4 +8742,310 @@ NS:AddTexts("itIT", {
 		"grida una sola parola secca sopra il frastuono, e continua a combattere senza aspettare risposta.",
 		"lancia un'occhiata ai compagni, poi torna alla lotta, la mascella serrata.",
 	},
+	["threat.w15.cold.001"] = {
+		"Abbassa la voce. Adesso ascolto con molta attenzione.",
+		"Parla piano. Sento ogni parola, e le peso tutte.",
+		"Piano, per favore. Nel silenzio decido meglio cosa fare di te.",
+	},
+	["threat.w15.cold.002"] = {
+		"Non c'è bisogno di urlare. Hai capito benissimo la prima volta.",
+		"Non alzerò la voce. Era già chiaro così.",
+		"Avverto sottovoce. Le urla vengono dopo.",
+	},
+	["threat.w15.cold.003"] = {
+		"Qui c'è un confine invisibile. Ci stai già con la punta dei piedi.",
+		"Vedi quanto è poco lo spazio tra dove sei e dove te ne pentiresti?",
+	},
+	["threat.w15.cold.004"] = {
+		"Mi ricorderò la tua faccia. Come, lo decide il prossimo minuto.",
+		"La tua faccia ormai la conservo. Se con affetto, dipende ancora da te.",
+		"{target}. Ora ho il nome, e la faccia. Scegli tu come conservarli.",
+	},
+	["threat.w15.cold.005"] = {
+		"smette del tutto di muoversi; solo gli occhi continuano a seguire ogni gesto davanti a sé.",
+		"resta immobile, e quella quiete pesa più di un grido.",
+	},
+	["threat.w15.cold.006"] = {
+		"Questo è il momento in cui puoi ancora scegliere. Scegli bene.",
+		"La scelta è ancora nelle tue mani. Usala bene, e usala presto.",
+		"Decidi finché la decisione spetta ancora a te.",
+	},
+	["threat.w15.cold.007"] = {
+		"Non sono in collera. La collera, per te, sarebbe più rapida.",
+		"La rabbia finirebbe in fretta. Peccato che io non ne provi.",
+	},
+	["threat.w15.cold.008"] = {
+		"Qualunque cosa tu stia tramando, ci ho già pensato. Lasciala perdere.",
+		"Qualunque cosa tu stia per tentare, l'ho vista arrivare. Non farlo.",
+		"Vedo l'idea che ti prende forma negli occhi. Lasciala cadere.",
+	},
+	["threat.w15.cold.009"] = {
+		"Pensa bene alla prossima cosa che dici. Pensaci davvero.",
+		"Scegli con cura le prossime parole. Potrebbero essere quelle con cui ti ricorderò.",
+	},
+	["threat.w15.cold.010"] = {
+		"Tutto ciò che cammina per il mondo finisce in qualche luogo. Che non sia qui.",
+		"Ogni strada finisce. La tua non deve per forza finire ai miei piedi.",
+		"A niente di ciò che vive è promessa una strada lunga. Non accorciare la tua qui.",
+	},
+	["threat.w15.cold.011"] = {
+		"Ho finito la pazienza. Quello che resta non ti conviene conoscerlo.",
+		"La pazienza era la parte gentile di me. Se n'è appena andata.",
+		"Un attimo fa avevo pazienza. Noterai che non c'è più.",
+	},
+	["threat.w15.cold.012"] = {
+		"Quello che avevi in mente, adesso passa prima da me.",
+		"I tuoi affari qui hanno un passaggio in più. Io.",
+	},
+	["threat.w15.cold.013"] = {
+		"Preferirei di no. Per favore, non costringermi.",
+		"Non lo voglio. Non essere tu il motivo per cui lo farò lo stesso.",
+		"C'è ancora un'uscita in cui nessuno si fa male. Prendila.",
+	},
+	["threat.w15.cold.014"] = {
+		"Ascoltami bene: questo è un avvertimento, e gli avvertimenti finiscono.",
+		"Consideralo l'avvertimento. Non ne ho una scorta infinita.",
+	},
+	["threat.w15.cold.015"] = {
+		"avanza di un passo, lento, poi aspetta, come se quel passo fosse tutto il discorso.",
+		"si avvicina di un passo, senza fretta, e lascia il resto non detto.",
+	},
+	["threat.w15.cold.016"] = {
+		"Nessuno verrebbe a cercarti. Io ci penserei.",
+		"Chiediti chi se ne accorgerebbe, se da qui non te ne andassi sulle tue gambe.",
+		"Chi sentirebbe la tua mancanza, se finisse male? Pensa a loro, e vattene.",
+	},
+	["threat.w15.cold.017"] = {
+		"Sto contando. Da che numero, non ti è dato saperlo.",
+		"Nella mia testa c'è un conto alla rovescia. Non ti piacerà dove finisce.",
+	},
+	["threat.w15.cold.018"] = {
+		"Hai scambiato la calma per debolezza. È un errore che con me si fa una volta sola.",
+		"La quiete non è mollezza. Impara la differenza altrove.",
+		"Ho la calma, non la dolcezza. Chi le confonde impara in fretta.",
+	},
+	["threat.w15.cold.019"] = {
+		"Il mondo ha pazienza con gli stolti. Io ne sono solo un pezzetto.",
+		"Il mondo perdona molte cose. Io sono la parte che non lo fa.",
+	},
+	["threat.w15.cold.020"] = {
+		"Continua a guardarmi così e scoprirai quanto costa.",
+		"Quello sguardo ha un prezzo. Stai per ricevere il conto.",
+		"Fissami pure. Ogni secondo finisce sul tuo conto.",
+	},
+	["threat.w15.cold.021"] = {
+		"si piazza ben {g:saldo|salda} e non cede di un palmo, senza sprecare parole.",
+		"sposta il peso, si assesta e aspetta: è evidente che non ha intenzione di muoversi.",
+	},
+	["threat.w15.cold.022"] = {
+		"Non ho voglia di aggiungerti alle cose a cui cerco di non pensare.",
+		"Non diventare l'ennesimo ricordo che preferirei non avere.",
+	},
+	["threat.w15.cold.023"] = {
+		"Ultima occasione. E lo dico nel senso più semplice.",
+		"Questa è la tua ultima occasione, e di riserva non ne tengo.",
+		"Non ci sarà una seconda offerta. Questa è già generosa.",
+	},
+	["threat.w15.loud.001"] = {
+		"Provaci! Non vedo l'ora di vederti provare!",
+		"Fatti sotto, allora! Sono qui!",
+		"Lo vuoi? Allora vieni a prendertelo!",
+	},
+	["threat.w15.loud.002"] = {
+		"Io non mi sposto. Non per te, né per chi ti somiglia!",
+		"Spingi quanto vuoi. Io non cedo!",
+		"Spintona finché vuoi! Qui ho messo radici!",
+	},
+	["threat.w15.loud.003"] = {
+		"Doveva farmi paura? Serve di più!",
+		"Tutto qui? Da te mi aspettavo molto più rumore!",
+		"È il tuo peggio? Mi ha spaventato di più il mio riflesso!",
+	},
+	["threat.w15.loud.004"] = {
+		"Guardami! Guardami bene, e ricorda chi ti ha detto di no!",
+		"Segnatelo bene! Sono io che non ho fatto un passo indietro!",
+	},
+	["threat.w15.loud.005"] = {
+		"Va' a spintonare qualcun altro! Non me!",
+		"Tra tutti quelli con cui potevi provarci, hai scelto me. Pessima scelta!",
+		"{target}, hai sbagliato spalla su cui premere!",
+	},
+	["threat.w15.loud.006"] = {
+		"Ascoltami! Non un passo oltre, sulla mia parola e per mia volontà!",
+		"Per tutto ciò a cui tengo, di qui non passi!",
+	},
+	["threat.w15.loud.007"] = {
+		"Basta! Di te ne ho avuto abbastanza!",
+		"Ne ho fin sopra i capelli di te! Chiuso, finito!",
+		"Ho sentito abbastanza! Non una parola di più!",
+	},
+	["threat.w15.loud.008"] = {
+		"Urla quanto ti pare! Non ti renderà più grande!",
+		"Alza pure la voce! Il rumore non è coraggio!",
+		"Tanto urlare, e dietro ancora niente!",
+	},
+	["threat.w15.loud.009"] = {
+		"Tira fuori tutto quello che hai! Non basterà!",
+		"Scaricami addosso tutto! Vediamo fin dove arrivi!",
+		"Non risparmiarti niente! Voglio vederlo fallire per intero!",
+	},
+	["threat.w15.loud.010"] = {
+		"Volevi la mia attenzione? Adesso ce l'hai tutta!",
+		"Complimenti, sono tutt'occhi per te! Te ne pentirai!",
+	},
+	["threat.w15.loud.011"] = {
+		"Nessuno mi dice dove posso stare! Nessuno!",
+		"Sto dove mi pare, e non sarai tu a spostarmi!",
+		"Questo pezzo di terra è mio finché ci sto sopra! Spostami, se ci riesci!",
+	},
+	["threat.w15.loud.012"] = {
+		"Fatti avanti, oppure taci!",
+		"O vieni avanti, o chiudi la bocca!",
+		"{target}! Vieni qui, o tieni a freno la lingua!",
+	},
+	["threat.w15.loud.013"] = {
+		"ruggisce, abbastanza forte da far voltare teste anche lontano.",
+		"getta indietro la testa e lancia una sfida a gran voce, al mondo intero.",
+	},
+	["threat.w15.loud.014"] = {
+		"Buttami a terra e mi rialzerò più {g:arrabbiato|arrabbiata}. Ogni volta!",
+		"Mettimi giù, e vedrai quanto in fretta torno in piedi, e con che umore!",
+	},
+	["threat.w15.loud.015"] = {
+		"Se vado giù, sarà in avanti, addosso a te! Ricordatelo!",
+		"Qualunque cosa accada, cadrò guardandoti in faccia!",
+		"La mia schiena non la vedrai mai! Non finché mi reggo in piedi!",
+	},
+	["threat.w15.loud.016"] = {
+		"Bene! Cerchi guai? Eccoli, ce li hai davanti!",
+		"Guai? Li hai trovati. Sono io!",
+	},
+	["threat.w15.loud.017"] = {
+		"Lo senta chiunque sia a portata d'orecchio: io non cedo!",
+		"Chi ascolta, lo sappia: non arretro!",
+	},
+	["threat.w15.loud.018"] = {
+		"Non ti azzardare! Non pensarci neanche!",
+		"Neanche un passo più vicino! Dico sul serio!",
+		"Fermati lì! Non lo ripeto!",
+	},
+	["threat.w15.loud.019"] = {
+		"Prenditela con qualcuno della tua taglia! Prenditela con me!",
+		"Cerchi qualcuno da tormentare? Prova con me!",
+	},
+	["threat.w15.loud.020"] = {
+		"Di tutti i momenti per mettermi alla prova, hai scelto proprio questo? Pessimo tempismo!",
+		"Ho già abbastanza guai senza che tu ci aggiunga i tuoi! Fatti indietro!",
+		"Momento sbagliato! Peggiore di così non potevi sceglierlo!",
+	},
+	["threat.w15.loud.021"] = {
+		"Non m'importa cosa tu sia. Ho deciso che non mi fai paura!",
+		"Paura? Di te? Trovati qualcun altro da spaventare.",
+	},
+	["threat.w15.loud.022"] = {
+		"si raddrizza e fa un gesto che non lascia dubbi: vieni a provarci.",
+		"fa cenno con due dita di farsi avanti, un invito chiaro e piuttosto maleducato.",
+	},
+	["threat.w15.loud.023"] = {
+		"Dovrai passare sopra di me, e non ho nessuna voglia di farmi calpestare!",
+		"Superarmi? Ci vorrebbe ben altro!",
+		"Intorno a me non si gira! Si passa attraverso, e auguri!",
+	},
+	["threat.w15.wry.001"] = {
+		"Mi dispiacerebbe se diventasse spiacevole. Soprattutto per te.",
+		"Teniamola amichevole. È tutto molto più pulito.",
+		"Sono gentile. È un favore, e i favori hanno una scadenza.",
+	},
+	["threat.w15.wry.002"] = {
+		"Sembri una persona a modo. Sarebbe un peccato cambiarlo.",
+		"Hai una faccia così simpatica. Peccato se dovesse cambiare forma.",
+	},
+	["threat.w15.wry.003"] = {
+		"Dicono che ho un bel caratterino. Non mettiamolo alla prova.",
+		"Dicono che sono una persona tranquilla. La gente sbaglia, a volte.",
+	},
+	["threat.w15.wry.004"] = {
+		"Che coraggio. Del coraggio si parla sempre bene, ai funerali.",
+		"Quanto coraggio. Dei coraggiosi si dicono cose bellissime, dopo.",
+	},
+	["threat.w15.wry.005"] = {
+		"Sono in vena di generosità: te ne puoi andare senza nemmeno un graffio.",
+		"Sono di manica larga. Vattene ora, e porta via ogni pezzo di te.",
+		"Offerta rara: te ne vai senza un livido. Scade appena finisco la frase.",
+	},
+	["threat.w15.wry.006"] = {
+		"Continua pure. Sono {g:curioso|curiosa} di sapere come pensi che finisca.",
+		"Va' avanti, per carità. Adoro le storie di cui conosco già il finale.",
+	},
+	["threat.w15.wry.007"] = {
+		"Conto fino a tre. Il due potrei saltarlo.",
+		"Al tre, allora. Coi numeri non vado forte: magari al due.",
+		"Tre. Ah, volevi anche l'uno e il due?",
+	},
+	["threat.w15.wry.008"] = {
+		"Fammi un piccolo favore: vattene. Mi ringrazierai più tardi.",
+		"Fatti una gentilezza: vai a stare da un'altra parte.",
+	},
+	["threat.w15.wry.009"] = {
+		"Tutta questa sicurezza. È quasi commovente.",
+		"Quanta fiducia in te. Mi spiacerebbe quasi vederla sparire.",
+		"{target}, quanta sicurezza. Mi intenerisce, quasi.",
+	},
+	["threat.w15.wry.010"] = {
+		"Vuoi che ti scriva le ultime parole? Ho una bella calligrafia.",
+		"Se hai delle ultime parole, so ascoltare benissimo.",
+	},
+	["threat.w15.wry.011"] = {
+		"Mossa audace. Fammi sapere com'è andata. Anzi, lo saprò da me.",
+		"Questo è senz'altro un piano. Non buono, ma un piano.",
+		"Idea interessante. Ne ho viste di peggiori. Non molte.",
+	},
+	["threat.w15.wry.012"] = {
+		"Sono una persona che perdona facilmente. Di solito a cose fatte.",
+		"Ma sì, ti perdonerò. Prima o poi. A cose finite.",
+		"Rancori? Mai. Io sistemo tutto sul momento.",
+	},
+	["threat.w15.wry.013"] = {
+		"sorride con garbo, come si sorride a qualcosa che non ha ancora capito.",
+		"china appena il capo, con una cortesia che di cortese non ha proprio niente.",
+	},
+	["threat.w15.wry.014"] = {
+		"Ti darei un consiglio, ma vedo che ci tieni proprio.",
+		"Un consiglio, gratis: non farlo.",
+	},
+	["threat.w15.wry.015"] = {
+		"Davvero? Tu? D'accordo, ma che si sappia: l'avvertimento te l'ho dato.",
+		"Mettiamo a verbale che l'avvertimento c'è stato. E pure gentile.",
+		"Nessuno potrà dire che sono mancate le buone maniere. Ricordatelo, dopo.",
+	},
+	["threat.w15.wry.016"] = {
+		"Posso essere una persona incantevole o una molto sbrigativa. Scegli.",
+		"Due possibilità: resto amabile, oppure smetto. Decidi tu.",
+	},
+	["threat.w15.wry.017"] = {
+		"Sono {g:sicuro|sicura} che diventerai un bellissimo esempio da non seguire.",
+		"Saresti un esempio eccellente. Non del tipo che si imita.",
+	},
+	["threat.w15.wry.018"] = {
+		"Ah, splendido: c'è chi si offre.",
+		"Magnifico. Speravo proprio che qualcuno si facesse avanti.",
+		"{target} si fa avanti. Che pensiero gentile.",
+	},
+	["threat.w15.wry.019"] = {
+		"Bada alle maniere. Le mie sono solo in prestito.",
+		"Un po' di garbo, per favore. Le mie buone maniere sono in prestito, e il proprietario le rivuole.",
+	},
+	["threat.w15.wry.020"] = {
+		"Ti direi di fare attenzione, ma è un po' tardi.",
+		"La prudenza sarebbe stata una buona idea un minuto fa.",
+		"Ripensamenti? Che bello. Prima sarebbero stati ancora più belli.",
+	},
+	["threat.w15.wry.021"] = {
+		"fa scrocchiare le nocche piano, una dopo l'altra, con aria un po' annoiata.",
+		"si rimbocca le maniche con gran cura, canticchiando.",
+	},
+	["threat.w15.wry.022"] = {
+		"Fai con calma. Aspetto mentre ripensi alla tua vita.",
+		"Prenditi il tempo che serve. Ripensarci fa bene alla salute.",
+	},
 }, "base_combat")

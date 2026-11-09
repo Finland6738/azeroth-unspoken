@@ -8742,4 +8742,310 @@ NS:AddTexts("enUS", {
 		"calls out over the noise, one sharp word, and keeps fighting without waiting for an answer.",
 		"glances toward {g:his|her} companions, then back to the fight, jaw set.",
 	},
+	["threat.w15.cold.001"] = {
+		"Lower your voice. I'm listening very closely now.",
+		"Speak softly. I'm hearing every word, and weighing each one.",
+		"Quietly, please. It's easier to decide what to do with you when it's quiet.",
+	},
+	["threat.w15.cold.002"] = {
+		"No need to shout. You understood me the first time.",
+		"I won't raise my voice. It was clear enough as it was.",
+		"Whispering is how I warn. Shouting comes after.",
+	},
+	["threat.w15.cold.003"] = {
+		"There's a line here nobody drew. Your toes are on it.",
+		"See how little room there is between where you stand and where you'd regret standing?",
+	},
+	["threat.w15.cold.004"] = {
+		"I'll remember your face. The next minute decides how.",
+		"Your face is one I'll keep. Whether fondly is still up to you.",
+		"{target}. I have the name now, and the face. Choose how I keep them.",
+	},
+	["threat.w15.cold.005"] = {
+		"stops moving entirely; only {g:his|her} eyes go on following every move in front of {g:him|her}.",
+		"freezes in place, and the stillness says more than a shout would.",
+	},
+	["threat.w15.cold.006"] = {
+		"This is the part where you still get to choose. Choose well.",
+		"The choice is still in your hands. Use it well, and use it soon.",
+		"Make your choice while it's still yours to make.",
+	},
+	["threat.w15.cold.007"] = {
+		"I'm not angry. Anger would be quicker for you.",
+		"Anger would be over quickly. Pity I don't feel any.",
+	},
+	["threat.w15.cold.008"] = {
+		"Whatever you're planning, I've already thought of it. Let it go.",
+		"Whatever you're about to try, I've seen it coming. Don't.",
+		"I can see the idea forming behind your eyes. Drop it.",
+	},
+	["threat.w15.cold.009"] = {
+		"Think about the next thing you say. Really think.",
+		"Pick your next words carefully. They may be the ones I remember you by.",
+	},
+	["threat.w15.cold.010"] = {
+		"Everything that walks the world ends somewhere. Don't let it be here.",
+		"All roads end. Yours doesn't have to end at my feet.",
+		"Nothing that lives is promised a long road. Don't shorten yours here.",
+	},
+	["threat.w15.cold.011"] = {
+		"My patience is spent. What's left isn't something you want to meet.",
+		"Patience was the friendly part of me. It just left.",
+		"I had patience a moment ago. You'll notice it's gone.",
+	},
+	["threat.w15.cold.012"] = {
+		"Whatever you meant to do here, it goes through me first now.",
+		"Your business here has gained one more step. Me.",
+	},
+	["threat.w15.cold.013"] = {
+		"I'd rather not. Please don't make me.",
+		"I don't want this. Don't be the reason I do it anyway.",
+		"There's still a way out of this where nobody gets hurt. Take it.",
+	},
+	["threat.w15.cold.014"] = {
+		"Hear me plainly: this is a warning, and warnings don't last forever.",
+		"Count this as the warning. There is a limited supply.",
+	},
+	["threat.w15.cold.015"] = {
+		"takes one slow step forward, then waits, as if that step were the whole argument.",
+		"moves a pace closer, unhurried, and leaves the rest unsaid.",
+	},
+	["threat.w15.cold.016"] = {
+		"Nobody will come looking for you. I'd think about that.",
+		"Ask yourself who would notice if you didn't leave this on your own feet.",
+		"Who misses you, if this goes badly? Think of them, and go.",
+	},
+	["threat.w15.cold.017"] = {
+		"I'm counting. You don't get to know from what number.",
+		"There's a count going on in my head. You won't like where it ends.",
+	},
+	["threat.w15.cold.018"] = {
+		"You've mistaken quiet for weak. That mistake gets made with me exactly once.",
+		"Quiet isn't the same as soft. Learn the difference somewhere else.",
+		"I'm calm. People who confuse that with gentle tend to learn quickly.",
+	},
+	["threat.w15.cold.019"] = {
+		"The world is patient with fools. I am only a small part of the world.",
+		"The world forgives a great deal. I'm the part that doesn't.",
+	},
+	["threat.w15.cold.020"] = {
+		"Keep looking at me like that and find out what it costs.",
+		"That look has a price. You're about to be handed the bill.",
+		"Stare all you like. Every second of it goes on your account.",
+	},
+	["threat.w15.cold.021"] = {
+		"sets {g:his|her} feet and refuses to give an inch, not a word wasted.",
+		"settles {g:his|her} weight and waits, plainly not going anywhere.",
+	},
+	["threat.w15.cold.022"] = {
+		"I've no wish to add you to the things I try not to think about.",
+		"Don't become one more memory I'd rather not keep.",
+	},
+	["threat.w15.cold.023"] = {
+		"Last chance. I mean that in the plainest way.",
+		"This is your last chance, and I don't hand out spares.",
+		"There won't be a second offer. This one is already generous.",
+	},
+	["threat.w15.loud.001"] = {
+		"Try it! I'd love to see you try!",
+		"Go ahead, make your move! I'm right here!",
+		"You want this? Then come and take it!",
+	},
+	["threat.w15.loud.002"] = {
+		"I'm not moving. Not for you, not for anyone like you!",
+		"Push all you like. I don't budge!",
+		"Shove all you want! I'm rooted here!",
+	},
+	["threat.w15.loud.003"] = {
+		"Was that supposed to scare me? You'll need more!",
+		"Is that all? I expected far more noise from you!",
+		"That's your worst? I've been frightened worse by my own reflection!",
+	},
+	["threat.w15.loud.004"] = {
+		"Look at me! Look, and remember who told you no!",
+		"Mark this well! I'm the one who wouldn't back down!",
+	},
+	["threat.w15.loud.005"] = {
+		"Push someone else around! Not me!",
+		"Of everyone you could have tried this on, you chose me. Poor choice!",
+		"{target}, you've leaned on the wrong shoulder!",
+	},
+	["threat.w15.loud.006"] = {
+		"Hear me! No further, by my word and by my will!",
+		"By everything I hold to, you pass no further!",
+	},
+	["threat.w15.loud.007"] = {
+		"Enough! I'm sick to the teeth of you!",
+		"Not another peep from you! Done, finished, over!",
+		"I've heard plenty! Not one word more!",
+	},
+	["threat.w15.loud.008"] = {
+		"Shout all you like! It won't make you any bigger!",
+		"Raise your voice all you want! Noise isn't the same as nerve!",
+		"All that shouting, and still nothing behind it!",
+	},
+	["threat.w15.loud.009"] = {
+		"Bring everything you've got! It won't be enough!",
+		"Throw all of it at me! See how far it gets you!",
+		"Hold nothing back! I want to see the whole of it fail!",
+	},
+	["threat.w15.loud.010"] = {
+		"You were after my attention? Well, it's yours. Every scrap!",
+		"Congratulations, you've got my full attention! You'll regret it!",
+	},
+	["threat.w15.loud.011"] = {
+		"Nobody tells me where I can stand! Nobody!",
+		"I'll stand where I please, and you won't be the one to move me!",
+		"This patch of ground is mine as long as I'm on it! Shift me if you can!",
+	},
+	["threat.w15.loud.012"] = {
+		"Step up, or shut up!",
+		"Either come forward or close your mouth!",
+		"{target}! Come forward, or hold your tongue!",
+	},
+	["threat.w15.loud.013"] = {
+		"roars, loud enough to turn heads a good way off.",
+		"throws back {g:his|her} head and bellows a challenge at the world in general.",
+	},
+	["threat.w15.loud.014"] = {
+		"Knock me down and I'll get up angrier. Every time!",
+		"Put me on the ground, and watch how fast I'm back on my feet, and how annoyed!",
+	},
+	["threat.w15.loud.015"] = {
+		"If I drop, it'll be forwards, at you! Remember that!",
+		"Whatever happens, I go down facing you!",
+		"You'll never see my back! Not while I can stand!",
+	},
+	["threat.w15.loud.016"] = {
+		"Fine! You want trouble? Here it is, right in front of you!",
+		"Trouble? You found it. It's me!",
+	},
+	["threat.w15.loud.017"] = {
+		"Let everyone within earshot hear it: I do not yield!",
+		"Let anyone listening hear it: I will not give way!",
+	},
+	["threat.w15.loud.018"] = {
+		"Don't you dare! Don't you even think it!",
+		"Not one step nearer! I mean it!",
+		"Stop right there! I won't say it twice!",
+	},
+	["threat.w15.loud.019"] = {
+		"Pick on someone your own size! Pick on me!",
+		"Want someone to bully? Try me instead!",
+	},
+	["threat.w15.loud.020"] = {
+		"Of all the moments to cross me, you chose this one? Bad timing!",
+		"I've got troubles enough without yours! Back away!",
+		"Wrong moment! You really couldn't have picked a worse one!",
+	},
+	["threat.w15.loud.021"] = {
+		"Whatever you are, I've decided I'm not afraid of you!",
+		"Fear? Of you? Pick someone else to frighten.",
+	},
+	["threat.w15.loud.022"] = {
+		"squares up and gestures, unmistakably: come and try.",
+		"beckons with two fingers, a clear and rather rude invitation.",
+	},
+	["threat.w15.loud.023"] = {
+		"You'll have to go through me, and I'm in no mood to be gone through!",
+		"Get past me? You'd need a lot more than that!",
+		"There's no way around me! Only through, and good luck with that!",
+	},
+	["threat.w15.wry.001"] = {
+		"I'd hate for this to get unpleasant. Mostly for you.",
+		"Let's keep things friendly. It's so much tidier.",
+		"I'm being nice. It's a favor, and favors have a shelf life.",
+	},
+	["threat.w15.wry.002"] = {
+		"You seem nice. It would be a pity to change that.",
+		"You've got such a pleasant face. Shame if it had to rearrange itself.",
+	},
+	["threat.w15.wry.003"] = {
+		"I'm told I have a lovely temper. Let's not test the claim.",
+		"People say I'm easygoing. People can be wrong.",
+	},
+	["threat.w15.wry.004"] = {
+		"That's a brave thing to try. Brave is a word people use at funerals.",
+		"How brave. They say lovely things about the brave, afterwards.",
+	},
+	["threat.w15.wry.005"] = {
+		"I'm in a generous mood. You may leave with all your pieces.",
+		"Feeling generous. Go now and keep the full set of yourself.",
+		"A rare offer: you walk off unbruised. It expires as I finish this sentence.",
+	},
+	["threat.w15.wry.006"] = {
+		"Do carry on. I'm curious how you think this ends.",
+		"Please, go on. I love a story where I know the ending.",
+	},
+	["threat.w15.wry.007"] = {
+		"I'll count to three. I may skip two.",
+		"On three, then. I'm not great with numbers, so maybe on two.",
+		"Three. Oh, did you want one and two first?",
+	},
+	["threat.w15.wry.008"] = {
+		"A small favor, if you would: leave. You'll thank me later.",
+		"Do yourself a kindness and be somewhere else.",
+	},
+	["threat.w15.wry.009"] = {
+		"You're very sure of yourself. It's almost sweet.",
+		"Such confidence. I'd almost be sad to see it go.",
+		"{target}, all that confidence. Almost touching.",
+	},
+	["threat.w15.wry.010"] = {
+		"Shall I write down your last words for you? I have neat handwriting.",
+		"If you've any last words, I'm a very good listener.",
+	},
+	["threat.w15.wry.011"] = {
+		"Bold move. Let me know how it goes. Actually, I'll know.",
+		"That's certainly a plan. Not a good one, but a plan.",
+		"Interesting idea. I've seen worse ones. Not many.",
+	},
+	["threat.w15.wry.012"] = {
+		"I'm a very forgiving sort. Usually afterwards.",
+		"Oh, I'll forgive you. Eventually. Once it's over.",
+		"Grudges? Never. I settle things on the spot.",
+	},
+	["threat.w15.wry.013"] = {
+		"smiles politely, the way one smiles at something that hasn't understood yet.",
+		"gives a small, courteous nod that manages to contain no courtesy at all.",
+	},
+	["threat.w15.wry.014"] = {
+		"I'd offer you advice, but you've clearly got your heart set on this.",
+		"Some advice, free of charge: don't.",
+	},
+	["threat.w15.wry.015"] = {
+		"Really? You? Fine, but I want it known that I warned you.",
+		"Let it be noted I gave fair warning. Politely, even.",
+		"Nobody can say I wasn't courteous about this. Remember that later.",
+	},
+	["threat.w15.wry.016"] = {
+		"I can be charming or I can be quick. Pick one.",
+		"Two options: I stay charming, or I stop. Your call.",
+	},
+	["threat.w15.wry.017"] = {
+		"I'm sure you'll make a lovely cautionary tale.",
+		"You'd make an excellent example for others. Not the good kind.",
+	},
+	["threat.w15.wry.018"] = {
+		"Oh good, someone volunteers.",
+		"Splendid. I was hoping someone would offer.",
+		"{target} steps forward. How thoughtful.",
+	},
+	["threat.w15.wry.019"] = {
+		"Mind your manners. Mine are only on loan.",
+		"Be polite. My good manners are borrowed, and the lender wants them back.",
+	},
+	["threat.w15.wry.020"] = {
+		"I'd tell you to be careful, but it's a bit late for that.",
+		"Caution would have been a fine idea about a minute ago.",
+		"Second thoughts? Lovely. They'd have been even lovelier earlier.",
+	},
+	["threat.w15.wry.021"] = {
+		"cracks {g:his|her} knuckles slowly, each one in turn, looking faintly bored.",
+		"rolls up {g:his|her} sleeves with great care, humming.",
+	},
+	["threat.w15.wry.022"] = {
+		"No hurry. I'll wait while you reconsider your life.",
+		"Take your time. Reconsidering is healthy.",
+	},
 }, "base_combat")

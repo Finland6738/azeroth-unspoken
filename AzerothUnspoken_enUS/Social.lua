@@ -707,4 +707,149 @@ NS:AddTexts("enUS", {
 		"Thank you. Kindness in the dark counts double; it's harder to find.",
 		"My thanks. At this hour I'd stopped expecting any help at all.",
 	},
+	["farewell.w15.light.001"] = {
+		"Off with you. Try not to get into anything I'd have to hear about.",
+		"Bye! Don't do anything I wouldn't. Which leaves you plenty.",
+	},
+	["farewell.w15.light.002"] = {
+		"See you around! Try to keep all your fingers.",
+		"Be seeing you. Keep your limbs where they belong.",
+	},
+	["farewell.w15.light.003"] = {
+		"Go on, go. I'll pretend I'm not sorry to see you leave.",
+		"Shoo. I'll be fine. Probably. Mostly.",
+	},
+	["farewell.w15.light.004"] = {
+		"waves goodbye with far more enthusiasm than the occasion calls for.",
+		"gives a cheerful, slightly overdone wave of farewell.",
+	},
+	["farewell.w15.light.005"] = {
+		"Bye for now. It was good, this. Whatever this was.",
+		"Goodbye, then. I liked this more than I expected to.",
+		"Goodbye for now, and thanks for the company.",
+	},
+	["farewell.w15.road.001"] = {
+		"Go well, and may every road you take be kind to your feet.",
+		"Walk safely. May the miles be gentle with you.",
+		"Fare you well, and may every turning treat you fairly.",
+	},
+	["farewell.w15.road.002"] = {
+		"Take care of yourself out there. I mean it.",
+		"Look after yourself. The world is careless; don't be.",
+	},
+	["farewell.w15.road.003"] = {
+		"Off you go. Keep your wits sharp and your pack light.",
+		"Mind the road, and let the road mind you.",
+		"Go on, then. Wherever the way leads, keep your eyes open.",
+	},
+	["farewell.w15.road.004"] = {
+		"touches two fingers to {g:his|her} brow in a parting salute, then turns away.",
+		"gives a short wave over {g:his|her} shoulder, already on the move.",
+	},
+	["farewell.w15.road.005"] = {
+		"Partings are only the space between two meetings. Go well.",
+		"Every goodbye leaves a door open. Mind you find it again.",
+	},
+	["farewell.w15.road.006"] = {
+		"Farewell, {target}. Mind how you go.",
+		"Mind how you go, and don't let anything chew on you.",
+	},
+	["thanks.w15.plain.001"] = {
+		"Appreciated.",
+		"Much appreciated. I mean it.",
+	},
+	["thanks.w15.plain.002"] = {
+		"Thanks. That's a kindness.",
+		"Kind of you, that. Really.",
+		"Thanks. That was kindly done.",
+	},
+	["thanks.w15.plain.003"] = {
+		"Thanks. Try not to get used to hearing it.",
+		"Thanks. Now let's never speak of it.",
+	},
+	["thanks.w15.plain.004"] = {
+		"Let me at least shake your hand. You've earned that much.",
+		"Give me your hand. That deserves a proper thanks.",
+	},
+	["thanks.w15.plain.005"] = {
+		"Obliged to you.",
+		"I'm obliged. Won't forget it.",
+	},
+	["thanks.w15.plain.006"] = {
+		"Thanks. I'd tip you, but I've seen my purse and it's embarrassing.",
+		"Thank you kindly. My purse would like to add something, but it's shy.",
+	},
+	["thanks.w15.plain.007"] = {
+		"Good of you. I mean that.",
+		"That was decent of you. I won't pretend otherwise.",
+	},
+	["thanks.w15.plain.008"] = {
+		"You're a treasure. Thank you!",
+		"You're a marvel, you know that? Thanks!",
+	},
+	["thanks.w15.plain.009"] = {
+		"I thank you, and gladly.",
+		"Accept my thanks, plainly given.",
+	},
+	["thanks.w15.plain.010"] = {
+		"Thanks. I needed that more than I'd say.",
+		"That helped. I won't make a speech, but it helped.",
+	},
+	["thanks.w15.plain.011"] = {
+		"nods {g:his|her} thanks with a quick, crooked smile.",
+		"offers a grateful nod and a small, lopsided grin.",
+	},
+	["thanks.w15.plain.012"] = {
+		"Thanks, {target}. Truly.",
+		"Cheers. You're good people.",
+	},
+	["thanks.w15.warm.001"] = {
+		"You had every reason to walk past. Thank you for not doing it.",
+		"You could have kept walking. I'm glad you didn't.",
+	},
+	["thanks.w15.warm.002"] = {
+		"That meant more than you know. Thank you.",
+		"You've no idea how much that helped. Truly.",
+		"It mattered. More than I can easily say.",
+	},
+	["thanks.w15.warm.003"] = {
+		"Whatever I make of myself, a piece of it will be yours.",
+		"If I ever amount to something, remember you had a hand in it.",
+	},
+	["thanks.w15.warm.004"] = {
+		"Consider me in your debt. I mean to settle it properly.",
+		"My thanks, freely given, and a debt I mean to honor.",
+	},
+	["thanks.w15.warm.005"] = {
+		"Kindness like that makes the whole world a little easier to bear.",
+		"Small kindnesses like that are what keep a person going. Thanks.",
+	},
+	["thanks.w15.warm.006"] = {
+		"lays a hand over {g:his|her} heart and bows {g:his|her} head in thanks.",
+		"presses a hand to {g:his|her} chest and dips {g:his|her} head, grateful.",
+	},
+	["thanks.w15.warm.007"] = {
+		"Thank you. You make it hard to stay cynical.",
+		"Careful, or you'll ruin my low opinion of people. Thanks.",
+	},
+	["thanks.w15.warm.008"] = {
+		"Some debts are heavy. This one I'm glad to carry.",
+		"I'll carry this debt gladly. It weighs nothing at all.",
+	},
+	["thanks.w15.warm.009"] = {
+		"Thanks! If you're ever near a tavern when I am, the first cup is mine.",
+		"Cheers! I owe you a drink, and I'm good for it.",
+	},
+	["thanks.w15.warm.010"] = {
+		"Thank you, truly. I'll try to be worth the trouble you took.",
+		"I'll do my best to deserve that. Thank you.",
+	},
+	["thanks.w15.warm.011"] = {
+		"bows, low and unhurried, the way one bows to settle a debt.",
+		"bows deeply, holding it a moment longer than manners require.",
+	},
+	["thanks.w15.warm.012"] = {
+		"{target}, thank you. I'll keep the name, and what goes with it.",
+		"I'll remember who to be grateful to.",
+	},
 }, "base_social")

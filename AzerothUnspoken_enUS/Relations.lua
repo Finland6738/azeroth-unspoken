@@ -1731,4 +1731,894 @@ NS:AddTexts("enUS", {
 		"{other}. A duel, the Horde way: hard, fair, and no grudges after. Mostly.",
 		"There's {other}. Our duel settled nothing, which is exactly what a duel between allies should settle.",
 	},
+	["ally_death.w15.mourn.001"] = {
+		"{other} is down, and the noise of everything else goes on as if nothing happened.",
+		"The world didn't even pause. I did.",
+		"Everything else keeps moving. I'm the only thing that stopped.",
+	},
+	["ally_death.w15.mourn.002"] = {
+		"I keep listening for a voice that has nothing left to say.",
+		"That voice was part of the noise of this group. The quiet it leaves is louder.",
+		"Half of what I knew of {other} was a voice. Now there's a hole in the sound.",
+	},
+	["ally_death.w15.mourn.003"] = {
+		"For a moment I thought someone had called my name. Nobody had. It was only the silence.",
+		"I stopped without deciding to. My feet knew before I did.",
+		"Something in me went still, the way it does when a count comes up short.",
+	},
+	["ally_death.w15.mourn.004"] = {
+		"{other}. Just the name, for now. The rest of the thought won't come.",
+		"Just a name in my head, and nothing after it.",
+	},
+	["ally_death.w15.mourn.005"] = {
+		"Funny how fast a group learns the shape of each person in it. And how fast it notices a hole.",
+		"A group learns its own shape quickly. It notices a missing piece quicker.",
+		"Everyone fits together without noticing. Until one piece goes.",
+	},
+	["ally_death.w15.mourn.006"] = {
+		"I want everyone to stop and leave a space for {other}. Just for a moment.",
+		"Someone's missing. The least we can do is notice.",
+		"Give it a moment. Only one.",
+	},
+	["ally_death.w15.mourn.007"] = {
+		"It takes so little. A moment ago the group was whole.",
+		"One moment everyone is accounted for. The next, no. Nothing in between.",
+		"Not even a moment between before and after. That's the cruel part.",
+	},
+	["ally_death.w15.mourn.008"] = {
+		"Head down, for a moment. It's the least I can give, and all I have right now.",
+		"A bowed head. Small, but it's what there is.",
+		"I lower my head toward {other} and let it stay lowered a while.",
+	},
+	["ally_death.w15.mourn.009"] = {
+		"Whatever {other} last said, I wasn't really listening. Nobody ever is.",
+		"The last words are always ordinary ones, and never kept.",
+		"Can't recall the last words. Probably something about the work.",
+	},
+	["ally_death.w15.mourn.010"] = {
+		"Grief always arrives a beat late. I can feel it on its way.",
+		"It hasn't arrived yet. It will, all of it, when I stop.",
+		"It's on its way. It always comes, just late.",
+	},
+	["ally_death.w15.mourn.011"] = {
+		"My hand keeps opening and closing on nothing, as if it had been holding something.",
+		"My hands don't know what to do with themselves.",
+		"Empty hands. I keep looking at them as if they owed me an answer.",
+	},
+	["ally_death.w15.mourn.012"] = {
+		"Every life gets cut off mid-sentence. {other}'s just was.",
+		"Nobody gets to the end. Everyone stops somewhere in the middle.",
+	},
+	["ally_death.w15.mourn.013"] = {
+		"Oh, {other}.",
+		"Oh, no. No.",
+		"That's not... no.",
+	},
+	["ally_death.w15.mourn.014"] = {
+		"I'll think of something fitting to say later. Right now there's only a dull, heavy nothing.",
+		"Words later. Right now just a heaviness with no shape.",
+		"There are no right words. I'll look for some afterward.",
+	},
+	["ally_death.w15.mourn.015"] = {
+		"Let the quiet stand for a moment. It's earned that much.",
+		"No words. The silence says it better than I would.",
+		"I'll let the hush last a little. Nobody needs to fill it.",
+	},
+	["ally_death.w15.mourn.016"] = {
+		"Everything {other} knew how to do, all of it, stopped at once.",
+		"All that skill, all those habits, halted in a single moment.",
+	},
+	["ally_death.w15.mourn.017"] = {
+		"There's never a good moment for this. This one is worse than most.",
+		"Bad timing. Death doesn't come in any other kind.",
+		"Death keeps a terrible calendar. Never once asks if we're free.",
+	},
+	["ally_death.w15.mourn.018"] = {
+		"We've lost someone. Somebody should say it out loud. I can't, not just now.",
+		"We've lost {other}. Moving on can wait a moment.",
+		"Someone's down. Say it plainly, at least inside.",
+	},
+	["ally_death.w15.mourn.019"] = {
+		"Everyone carries their death around with them. {other} just set theirs down before the rest of us.",
+		"We all walk about with our end folded up in a pocket somewhere.",
+	},
+	["ally_death.w15.mourn.020"] = {
+		"I glance at the spot where {other} stood and look away fast, like touching something hot.",
+		"There's one spot I won't look at. I know exactly where it is.",
+		"Don't look there. Look anywhere else.",
+	},
+	["ally_death.w15.mourn.021"] = {
+		"I don't even know what I'm supposed to feel. Something is missing, and that's all I've got.",
+		"Hard to name what this is. Only that something's gone missing.",
+	},
+	["ally_death.w15.mourn.022"] = {
+		"A group is a quiet promise that everyone walks out together. That promise just broke.",
+		"Everybody walks out together. That was the deal, even if nobody said it.",
+		"Nobody says it, but every group sets out meaning to come back whole.",
+	},
+	["ally_death.w15.mourn.023"] = {
+		"I'm sorry, {other}. I'm so sorry.",
+		"Sorry. I'm sorry.",
+		"Sorry. That's all I've got, and it's not enough.",
+	},
+	["ally_death.w15.mourn.024"] = {
+		"Brow, then chest. A small gesture for the dead. My hand made it before I thought.",
+		"My hand moves toward {other} on its own, the way hands do for the dead.",
+	},
+	["ally_death.w15.mourn.025"] = {
+		"This is the part nobody gets used to. Good. Nobody should.",
+		"You never get used to this. Better that way.",
+		"Let it hurt. It should.",
+	},
+	["ally_death.w15.mourn.026"] = {
+		"{other} was right there. That's the whole thought. It keeps going round.",
+		"Right there, a moment ago. My head won't get past it.",
+	},
+	["ally_death.w15.small.001"] = {
+		"Strange, what the eye catches. A loose buckle on {other}'s gear. Nobody fixed it.",
+		"A strap left undone. That's where my eyes keep landing.",
+	},
+	["ally_death.w15.small.002"] = {
+		"A step to the left and it would be me lying there. I'm not going to think about which step.",
+		"A step the other way, and someone would be grieving me.",
+		"A few steps. That's all the distance between the ones who stay and the one who doesn't.",
+	},
+	["ally_death.w15.small.003"] = {
+		"Somewhere, an errand {other} meant to run is still waiting.",
+		"Every death leaves some small errand undone.",
+	},
+	["ally_death.w15.small.004"] = {
+		"Known for years or for an hour, it lands the same. That surprises me.",
+		"An hour or a lifetime. The weight comes out about the same.",
+		"Strange. The weight doesn't check how long you've known someone.",
+	},
+	["ally_death.w15.small.005"] = {
+		"{other}'s bag has come open. I close it. The one thing here I can fix.",
+		"Something small has come undone. I reach to straighten it and stop halfway.",
+	},
+	["ally_death.w15.small.006"] = {
+		"Somebody owes {other} a drink now. I'll volunteer, and drink it on their behalf if I must.",
+		"There's a drink owed here. I'll hold it until it can be paid.",
+	},
+	["ally_death.w15.small.007"] = {
+		"It doesn't care how good you are. That's the thought I'd rather not have.",
+		"Skill doesn't buy you out of it. Nothing does.",
+		"Skill, care, luck. None of them count for as much as you'd hope.",
+	},
+	["ally_death.w15.small.008"] = {
+		"I catch myself patting my own arms, like someone checking that nothing's gone missing.",
+		"Fingers, one by one. All there. Why am I counting?",
+	},
+	["ally_death.w15.small.009"] = {
+		"I'm not sure I ever heard {other} laugh. Now I wonder what it sounded like.",
+		"Strange to wonder, only now, what their laugh sounded like.",
+	},
+	["ally_death.w15.small.010"] = {
+		"Death never knocks. Rude, but consistent.",
+		"No knock, no warning. Death's manners haven't improved.",
+		"Death, as usual, didn't bother to ask.",
+	},
+	["ally_death.w15.small.011"] = {
+		"Not the way anyone wants to leave a group.",
+		"{other}, that's a rotten way to leave.",
+	},
+	["ally_death.w15.small.012"] = {
+		"If it were me down there, would anyone stop? I'd like to think so.",
+		"Would they pause for me like this? I hope I'd be worth it.",
+		"I wonder who'd stop for me. Best not to count.",
+	},
+	["ally_death.w15.small.013"] = {
+		"My eyes have caught on some meaningless little detail and won't let go.",
+		"Staring at nothing. I should stop. In a moment.",
+	},
+	["ally_death.w15.small.014"] = {
+		"I notice a scuff on my gear I'd never seen before. What a stupid thing to see right now.",
+		"My mind goes looking for trivial things. A scratch, a loose thread. Anything else.",
+		"Of all the things to notice: a frayed cuff on my own sleeve.",
+	},
+	["ally_death.w15.small.015"] = {
+		"Names come and go in a group like this. I want this one to stay a little.",
+		"So many names pass through. Let this one stick.",
+	},
+	["ally_death.w15.small.016"] = {
+		"I wonder if {other} had someone waiting, somewhere.",
+		"Who would want to hear about this? Someone, surely.",
+	},
+	["ally_death.w15.small.017"] = {
+		"If {other} gets back up, someone will have to explain what happened. Not me.",
+		"First thing anyone asks after getting up: what happened? I won't have a good answer.",
+	},
+	["ally_death.w15.small.018"] = {
+		"I look from face to face, quickly, counting who's still up.",
+		"Check the living. Each of them. Quickly.",
+	},
+	["ally_death.w15.small.019"] = {
+		"Some part of me is relieved it wasn't me. I'm not proud of that part.",
+		"Relief that it wasn't me. Shame right behind it.",
+		"Glad it wasn't me. Ashamed to be glad. Both at once.",
+	},
+	["ally_death.w15.small.020"] = {
+		"The living are practical. Already the work is being shared out again.",
+		"Already the rest of us are dividing up the work. The living don't waste time.",
+	},
+	["ally_death.w15.small.021"] = {
+		"I never said thanks, {other}. I should have.",
+		"Thank you. Should've said it sooner.",
+	},
+	["ally_death.w15.small.022"] = {
+		"Everyone who has ever traveled in company has stood like this once. I'm in old company.",
+		"Countless people have stood just like this. It doesn't make it lighter.",
+	},
+	["ally_death.w15.small.023"] = {
+		"I wipe my face with the back of a hand and don't ask myself why.",
+		"Rubbing my eyes. Just tired. That's what I'll say.",
+	},
+	["ally_death.w15.small.024"] = {
+		"My first thought was practical, and I'm ashamed of how fast it came.",
+		"The mind is a heartless little clerk. It's already doing the sums.",
+		"Part of me is already counting what we're short. I don't like that part.",
+	},
+	["ally_death.w15.small.025"] = {
+		"I'm suddenly aware of every ache I've got. As if my body wanted a word.",
+		"Every ache I own speaks up at once, as if to say: you, too.",
+	},
+	["ally_death.w15.small.026"] = {
+		"Somebody must have made up a word for this. I don't know it.",
+		"There should be a word for this.",
+		"Say something, anything, even if only to myself.",
+	},
+	["ally_death.w15.small.027"] = {
+		"I've stopped mid-step. Finish the step. Then the next.",
+		"One foot raised, and for a moment I forget where to put it.",
+	},
+	["ally_death.w15.steel.001"] = {
+		"Later. I'll feel this properly later, when whoever's left is safe.",
+		"Grief can queue behind the living.",
+	},
+	["ally_death.w15.steel.002"] = {
+		"Shoulders back. Whoever's left needs me steady more than sorry.",
+		"Steady first. Sorry later.",
+		"Keep it together. Fall apart afterward, if it comes to that.",
+	},
+	["ally_death.w15.steel.003"] = {
+		"Jaw set. Back to what still needs doing.",
+		"Swallow it. Find the others. Go.",
+		"One hard blink and I'm moving. Nobody needs to see the pause.",
+	},
+	["ally_death.w15.steel.004"] = {
+		"We stay together now. We mourn {other} when it's done.",
+		"Stay close to the others. Grief can come when it's over.",
+	},
+	["ally_death.w15.steel.005"] = {
+		"There's a list of things to do, and grief isn't on it yet. I'll add it at the bottom.",
+		"Grief goes at the bottom of the list. It'll still be there when I get to it.",
+	},
+	["ally_death.w15.steel.006"] = {
+		"If I stop now I won't start again. So I don't stop.",
+		"Stopping is a luxury. I'll take it when there's room.",
+		"Keep moving. Grief is quicker to catch the ones who stand still.",
+	},
+	["ally_death.w15.steel.007"] = {
+		"Wait for me, {other}. I'll come and sit with you when this is done.",
+		"I'll come back to you. Just let me finish this.",
+	},
+	["ally_death.w15.steel.008"] = {
+		"The dead are patient. The living aren't. Tend the living.",
+		"Those who are gone can wait. Those who are here can't. See to them first.",
+	},
+	["ally_death.w15.steel.009"] = {
+		"One look. That's all I allow myself. Then back to it.",
+		"Look once. Only once. Then the work.",
+		"A moment for {other}. One. Then the task.",
+	},
+	["ally_death.w15.steel.010"] = {
+		"Feel it later. Use it now.",
+		"Put it somewhere. Use it to keep the others standing.",
+	},
+	["ally_death.w15.steel.011"] = {
+		"Count who's left. See how they are. Then, and only then, {other}.",
+		"Count heads. Check on them. Then think.",
+	},
+	["ally_death.w15.steel.012"] = {
+		"Head up. Grief keeps; it always has.",
+		"Look sharp. It'll keep.",
+	},
+	["ally_death.w15.steel.013"] = {
+		"My hands are shaking. Fine. They can shake and work at the same time.",
+		"Shaking hands still work. Use them.",
+		"Hands, keep working. You can shake after.",
+	},
+	["ally_death.w15.steel.014"] = {
+		"A fist to the chest, once. That will have to stand for everything I'd say.",
+		"Fist to chest. Enough for now.",
+	},
+	["ally_death.w15.steel.015"] = {
+		"Mourning is for people who are safe. I'm not there yet.",
+		"Grief is for safe places. Get somewhere safe first.",
+		"Safe first. Sad after.",
+	},
+	["ally_death.w15.steel.016"] = {
+		"{other} would hate us standing around moping. Probably. Let's go with probably.",
+		"The dead never ask anyone to mope. Convenient, but I'll take it.",
+	},
+	["ally_death.w15.steel.017"] = {
+		"Someone has to see to {other}. If nobody does, I will.",
+		"Someone should stay close to them. Maybe me.",
+	},
+	["ally_death.w15.steel.018"] = {
+		"One fewer pair of hands. Mine will have to do the work of two.",
+		"Two people's work, one pair of hands. Fine.",
+	},
+	["ally_death.w15.steel.019"] = {
+		"Shoulders square. The load's heavier now, and it's mine to carry.",
+		"Something just got added to what I'm carrying. I can feel exactly where it sits.",
+		"A stiff shoulder, a new weight on it. Settle it and walk.",
+	},
+	["ally_death.w15.steel.020"] = {
+		"Mourner or useful. Not both at once. Useful first.",
+		"I'll mourn properly once there's nothing left for me to do.",
+	},
+	["ally_death.w15.steel.021"] = {
+		"Push it down. Not forever. Just past this.",
+		"Fold it up small and keep moving. It'll open later on its own.",
+		"Lock it away for now. I know where I'm leaving the key.",
+	},
+	["ally_death.w15.steel.022"] = {
+		"This doesn't happen twice. Nobody else goes down.",
+		"That's enough. Nobody else.",
+		"Not one more. Not one.",
+	},
+	["ally_death.w15.steel.023"] = {
+		"The oldest rule of any company: grief waits outside until the work is done.",
+		"Grief waits by the door. It always has. Let it.",
+	},
+	["ally_death.w15.steel.024"] = {
+		"Eyes on the way ahead. If I look back now, I'll stay there.",
+		"Face forward. Keep facing forward.",
+	},
+	["ally_death.w15.steel.025"] = {
+		"If {other} gets back up, good. Until then the job is the same: keep the others alive.",
+		"Maybe they'll be back on their feet soon. Either way, the job hasn't changed.",
+	},
+	["ally_death.w15.steel.026"] = {
+		"Rest, {other}. We'll finish it.",
+		"Rest. We'll see it through.",
+		"Rest now. Leave the rest to us.",
+	},
+	["ally_death.w15.vow.001"] = {
+		"I'll remember the name {other}. That much I can promise.",
+		"A name is a small thing to carry. I'll carry it.",
+		"Some names deserve to outlast the moment. This one will, if I've any say.",
+	},
+	["ally_death.w15.vow.002"] = {
+		"You won't be left behind, {other}. Not by me.",
+		"Nobody gets left behind.",
+		"We don't leave our own.",
+	},
+	["ally_death.w15.vow.003"] = {
+		"Whatever brought {other} here, I'll see it finished.",
+		"Their reason for being here doesn't stop now. I'll take it up.",
+	},
+	["ally_death.w15.vow.004"] = {
+		"I want to remember something true about {other}, not just the end. I'll find it.",
+		"Not the end. I'll keep something from before the end.",
+	},
+	["ally_death.w15.vow.005"] = {
+		"I say {other}'s name once, very low, to put it somewhere safe.",
+		"Say the name once, quietly. Put it away where it can't get lost.",
+		"A name, said softly twice. That's me keeping it.",
+	},
+	["ally_death.w15.vow.006"] = {
+		"I'll get better at this. That's the only apology that means anything.",
+		"Next time I'll be quicker. That's the promise.",
+		"This won't go the same way twice. I'll see to it.",
+	},
+	["ally_death.w15.vow.007"] = {
+		"For {other}. I want that name remembered.",
+		"This should not be forgotten. I won't let it be.",
+	},
+	["ally_death.w15.vow.008"] = {
+		"The world forgets quickly. I can be slower than the world.",
+		"Forgetting is the world's habit. It needn't be mine.",
+		"I'll keep it long after the world has moved past.",
+	},
+	["ally_death.w15.vow.009"] = {
+		"If {other} gets back up, I'll make sure they know someone noticed.",
+		"If they get up again, I'll say it plainly: you were missed.",
+	},
+	["ally_death.w15.vow.010"] = {
+		"I look at {other} a long while. I want to be able to find this face again later.",
+		"Look properly. Learn it. Memory won't do the work for me.",
+	},
+	["ally_death.w15.vow.011"] = {
+		"No candle here to light. I'll keep one lit somewhere inside instead.",
+		"No candle to light. Memory will have to do.",
+		"There ought to be a candle lit for this. I'll owe one.",
+	},
+	["ally_death.w15.vow.012"] = {
+		"I've got you, {other}. I'm not going anywhere.",
+		"I'm here. I'm not leaving.",
+		"Staying. Right here.",
+	},
+	["ally_death.w15.vow.013"] = {
+		"From here on, some of what I do is done for {other}.",
+		"Some of every fight from now on belongs to them.",
+		"I'll fight a little harder now. Part of it is theirs.",
+	},
+	["ally_death.w15.vow.014"] = {
+		"Later I'll write it down somewhere: the name, and that it happened. Someone should.",
+		"Somebody should keep a record. It might as well be me.",
+		"A line in my private ledger. It deserves a whole page.",
+	},
+	["ally_death.w15.vow.015"] = {
+		"An open hand, raised toward {other}. Goodbye, or until later. I don't get to choose which.",
+		"Hand up, palm open. A farewell, quietly.",
+		"Two fingers to my brow. The smallest salute I know.",
+	},
+	["ally_death.w15.vow.016"] = {
+		"I'll tell it right, if anyone asks. No dressing it up, no leaving it out.",
+		"If someone asks how it went, they'll get the truth from me.",
+	},
+	["ally_death.w15.vow.017"] = {
+		"Your place stays yours, {other}.",
+		"Your place is kept. Come back to it if you can.",
+	},
+	["ally_death.w15.vow.018"] = {
+		"People go on a while in what others repeat about them. I'll keep repeating {other}.",
+		"You last as long as someone keeps saying your name. I can say it.",
+	},
+	["ally_death.w15.vow.019"] = {
+		"Call it a debt. I'll see it settled before I rest.",
+		"A debt, then. Paid in full before I stop.",
+	},
+	["ally_death.w15.vow.020"] = {
+		"My stride's changed. Harder. Like there's a promise at the end of it.",
+		"Walk like you mean it. You do now.",
+		"A quieter step, and a harder one. I'll keep it.",
+	},
+	["ally_death.w15.vow.021"] = {
+		"Whatever {other} was to everyone else, here they stood with me. I'll keep that.",
+		"They stood beside me. That's what I'll keep.",
+	},
+	["ally_death.w15.vow.022"] = {
+		"You did your share, {other}. Let the rest of us do ours.",
+		"Your share is done. We'll do ours.",
+	},
+	["ally_death.w15.vow.023"] = {
+		"I'll keep this moment exactly as it is. Not prettier, not worse.",
+		"Remember it as it was. Don't polish it.",
+	},
+	["ally_death.w15.vow.024"] = {
+		"Whatever comes next, I'll meet it for two.",
+		"I'll face what's left on behalf of someone who can't.",
+		"For two, then. Fine.",
+	},
+	["ally_death.w15.vow.025"] = {
+		"I tie a small knot in a strap of my gear. Some people keep count that way. Now I do.",
+		"A knot in a loose strap. I'll leave it there.",
+	},
+	["ally_death.w15.vow.026"] = {
+		"Go well, wherever the dead go. I'll catch up one day, but not soon.",
+		"Wherever it is you've gone, save me a seat. Just not too soon.",
+	},
+	["relation_player.w15.bond.001"] = {
+		"{other}, here. Whatever I was about to grumble about can wait.",
+		"A friend's name turning up unannounced. Few things mend a mood so quickly.",
+		"One familiar person, and everywhere feels a little less borrowed.",
+	},
+	["relation_player.w15.bond.002"] = {
+		"My shoulders drop half an inch before I've even placed the name. The body knows a friend first.",
+		"Some greetings I hand out to everyone. The one ready in my hand now is kept for a single person.",
+	},
+	["relation_player.w15.bond.003"] = {
+		"Some people I would follow into a bad idea just to keep them company. {other} is one.",
+		"If this turns into trouble, at least it will be trouble in good company.",
+		"A friend in sight. My judgment gets worse and my mood gets better; a fair trade.",
+	},
+	["relation_player.w15.bond.004"] = {
+		"Some names make me stand up straighter, and some let me slouch. {other} lets me slouch.",
+		"With some people I have to weigh every word. Not with this one, and that is the whole gift.",
+		"Some company is work and some is rest. This is the resting kind.",
+	},
+	["relation_player.w15.bond.005"] = {
+		"Friendship asks so little out loud. Mostly it just wants to be noticed, so: I see you, {other}.",
+		"A friend. I keep forgetting how much lighter everything weighs with one in reach.",
+	},
+	["relation_player.w15.bond.006"] = {
+		"Someone found me, and it's the right someone. Good.",
+		"There you are, {other}. I'll stay close a while.",
+	},
+	["relation_player.w15.bond.007"] = {
+		"{other} in sight. Whatever comes next, I would rather meet it with this one at my side.",
+		"Some trust is built in words. This one was built in the moments nobody had time to talk.",
+		"Shoulder to shoulder is a habit, and this is someone I have the habit with.",
+	},
+	["relation_player.w15.bond.008"] = {
+		"Without deciding to, I've left room at my side for {other}. Some habits come before thought.",
+		"A short nod is all it takes between people used to covering each other. Anything longer would be fuss.",
+	},
+	["relation_player.w15.bond.009"] = {
+		"If {other} is here, then so is trouble, and I am glad of both.",
+		"A comrade turns up and my first thought is relief. My second is to check what they brought along.",
+		"Good to see this one. Slightly less good to think about what usually follows.",
+	},
+	["relation_player.w15.bond.010"] = {
+		"{other}. Everything else in sight goes a little out of focus, as it should.",
+		"That name, and suddenly I am less tired than I was a moment ago.",
+		"Some faces I look at. This one I look for, even when I have no reason to expect it.",
+	},
+	["relation_player.w15.bond.011"] = {
+		"Everything in me goes quiet and glad at once. {other} has that effect, and I've stopped arguing with it.",
+		"A greeting would do. I'd rather let the moment run a little long.",
+	},
+	["relation_player.w15.bond.012"] = {
+		"Someone on my side by decision, not by habit. Decisions can be unmade, which is why this one is worth something.",
+		"{other}, who picked my side when there was no need to. I keep a careful tally of people like that.",
+		"A shared purpose is a strong rope. I'll keep my end of it taut.",
+	},
+	["relation_player.w15.bond.013"] = {
+		"Good timing, {other}. Same cause, same side.",
+		"The agreement stands, I trust. It had better.",
+	},
+	["relation_player.w15.bond.014"] = {
+		"With {other} near, I stop counting the ways out. I only notice it afterward.",
+		"Trust is quiet. It shows up as the things I no longer bother to check.",
+		"Here is someone whose word I would take without looking for the catch.",
+	},
+	["relation_player.w15.bond.015"] = {
+		"I'd hand {other} my pack and walk off without a second look. That is about the highest praise I have.",
+		"Some people I'd lend coin to. Fewer I'd lend my back to. This one gets both.",
+		"If I had to leave something precious in someone's keeping, this name would be near the top.",
+	},
+	["relation_player.w15.bond.016"] = {
+		"My guard drops a notch, the way it does for {other} and almost nobody else.",
+		"Turning my back here wouldn't cost me a thought. That's rarer than it sounds.",
+	},
+	["relation_player.w15.bond.017"] = {
+		"No particular reason. I just like {other}, and I've stopped asking it to explain itself.",
+		"Some company improves everything a little without doing anything special. This is that company.",
+		"A face I'm glad to see. It needs no better excuse than that.",
+	},
+	["relation_player.w15.bond.018"] = {
+		"Even my bad mood recognizes {other}, and quietly steps aside.",
+		"There are people I put up with and people I'm glad of. This one sits firmly in the second pile.",
+	},
+	["relation_player.w15.bond.019"] = {
+		"Oh, good. It's you.",
+		"{other}! Things just got more bearable.",
+	},
+	["relation_player.w15.bond.020"] = {
+		"Somewhere there's a kindness I never paid back. {other} has likely forgotten it; I haven't.",
+		"Gratitude is an odd load: it weighs nothing, and still I feel it every time this name comes round.",
+		"A good turn done for me, once, without being asked. That is not the kind of thing that wears off.",
+	},
+	["relation_player.w15.bond.021"] = {
+		"There's a thank-you I've been saving up, and no idea how to say it without making it awkward.",
+		"Someone I'm in debt to, the pleasant kind of debt. I'd rather pay it in deeds than in speeches.",
+	},
+	["relation_player.w15.bond.022"] = {
+		"I'll bow my head to {other} a little lower than a greeting asks. Only I need know why.",
+		"An old debt, weighed once more and found still there. I don't mind carrying it.",
+	},
+	["relation_player.w15.edge.001"] = {
+		"{other}. Somewhere in my head a scoreboard I pretend not to keep just woke up.",
+		"Nothing keeps me sharp like a rival at the edge of my sight. I resent how well it works.",
+		"A rival. Good. I was getting comfortable, and comfortable is how people fall behind.",
+	},
+	["relation_player.w15.edge.002"] = {
+		"Next to {other} I never quite know where I stand, and I mean to find out.",
+		"Respect and rivalry walk closer together than people admit. This one has both from me.",
+	},
+	["relation_player.w15.edge.003"] = {
+		"Oh, it's you. I'll make sure to stay a step ahead.",
+		"{other}. I was hoping you'd show; I needed a reason to try harder.",
+		"Finally. Winning was getting dull.",
+	},
+	["relation_player.w15.edge.004"] = {
+		"I stand up a little straighter for {other}. Someone has started counting, and it might as well be me.",
+		"If eyes meet, I'll hold the look one moment longer than politeness asks. Petty, and I don't care.",
+	},
+	["relation_player.w15.edge.005"] = {
+		"I'd never wish {other} harm. Just a slightly worse day than mine, now and then.",
+		"If this rivalry ever ended, I'd miss it more than I'd admit. It's useful, having someone to beat.",
+	},
+	["relation_player.w15.edge.006"] = {
+		"{other}. Every muscle I own remembers why, even before I do.",
+		"The one name I'd least like to meet, in plain sight. My face stays calm; the rest of me is already measuring distances.",
+		"Hatred is tiring. Seeing this name, I find I still have the strength for it.",
+	},
+	["relation_player.w15.edge.007"] = {
+		"{other}. The world is large, and still it keeps finding ways to put this one in my path.",
+		"Out of everyone there is to run into. The world has a sense of humor, and I don't share it.",
+	},
+	["relation_player.w15.edge.008"] = {
+		"I go still at the sight of {other}. Not afraid, not ready: just still, deciding nothing yet.",
+		"Hands quiet, eyes steady, mouth shut. Whatever this turns into, it won't start with me.",
+	},
+	["relation_player.w15.edge.009"] = {
+		"I could pretend {other} is just a face like any other. I won't; pretending is how people get careless.",
+		"Enmity is honest in its way. With this one, at least, I know exactly where I stand.",
+		"Hate is a costly thing to carry. I've decided this name is worth the expense.",
+	},
+	["relation_player.w15.edge.010"] = {
+		"{other}. I'll be polite, and I'll keep my belongings where I can see them.",
+		"Distrust isn't rude if it stays quiet. Mine is staying very quiet, and very awake.",
+	},
+	["relation_player.w15.edge.011"] = {
+		"My pack drifts to the far shoulder all on its own. Habit knows this name.",
+		"Civil, then. Civil costs nothing and promises less.",
+	},
+	["relation_player.w15.edge.012"] = {
+		"{other}. I'm sure somebody somewhere finds this one charming. I'll take their word for it.",
+		"Some names sour a moment just by arriving. This is one of them.",
+		"I don't wish this person ill. I just wish them somewhere else, at some length.",
+	},
+	["relation_player.w15.edge.013"] = {
+		"That name. My patience shrinks by a size.",
+		"{other}. Courtesy, then, the thin kind that's mostly teeth.",
+		"I'll nod. That's the whole budget.",
+	},
+	["relation_player.w15.edge.014"] = {
+		"{other}. Fancy that.",
+		"Ah. You.",
+	},
+	["relation_player.w15.edge.015"] = {
+		"Without meaning to, I make myself smaller. Then I make myself stop.",
+		"Fear is a poor advisor and a loud one. Right now it is telling me exactly where this one is standing.",
+		"I keep my voice level and my distance generous. Neither is an accident.",
+	},
+	["relation_player.w15.edge.016"] = {
+		"With {other} about, I'd rather go quiet and leave the space between as wide as it is.",
+		"I keep this one at the edge of my sight, and I never quite turn my back.",
+	},
+	["relation_player.w15.edge.017"] = {
+		"{other}. Pleasant enough. So were plenty of people, right up until they weren't.",
+		"I listen to this one the way I'd count change from a stranger: twice, and politely.",
+		"No accusation, nothing I could say out loud. Just a small hand on my shoulder saying: careful.",
+	},
+	["relation_player.w15.edge.018"] = {
+		"I'd trust {other} with a message. Not with the reply.",
+		"Wariness is cheap insurance. I'll keep paying it with this one.",
+		"This one smiles easily. I've learned to count what easy smiles cost.",
+	},
+	["relation_player.w15.edge.019"] = {
+		"A glance at {other}, a glance at my belongings, and back. No hurry; no accusation either.",
+		"I can smile and keep watching at the same time. It's one of my better skills.",
+	},
+	["relation_player.w15.edge.020"] = {
+		"{other}. My hands want something to do. I give them nothing, and wait.",
+		"Some fears shout. This one only whispers the same name, over and over.",
+		"I know this tightness in my shoulders. It always turns up a moment ahead of this name.",
+	},
+	["relation_player.w15.edge.021"] = {
+		"Nothing has happened. Nothing has to. Having this one near is enough to set every nerve on edge.",
+		"I could leave. I won't, but knowing I could helps more than it should.",
+	},
+	["relation_player.w15.edge.022"] = {
+		"{other}. The old wrong sits up and looks around, wide awake.",
+		"I've tried to set it down, this grudge. It keeps finding its way back into my hands.",
+		"Forgiveness is a door I keep meaning to open. Not for this name. Not so far.",
+	},
+	["relation_player.w15.edge.023"] = {
+		"Look at {other}, carrying on as if nothing happened. Must be restful.",
+		"I've rehearsed what I'd say to this one so often the words have worn smooth. I still won't say them.",
+		"Some wrongs heal. This one has only learned to keep quiet.",
+	},
+	["relation_player.w15.edge.024"] = {
+		"I look at {other} a moment too long, then away. My jaw stays set a while after.",
+		"I'll let this one pass without a word. The silence won't be an empty one.",
+	},
+	["relation_player.w15.tie.001"] = {
+		"{other} and I have stood in the same fight. Whatever else is true, that stays true.",
+		"Once you've seen how someone moves when things go wrong, you don't forget it. I've seen this one.",
+		"I don't remember much of that fight clearly. I remember who was in it.",
+	},
+	["relation_player.w15.tie.002"] = {
+		"Shared danger leaves something behind, small and stubborn. It stirs at this name.",
+		"I've trusted {other} with my life once, whether I meant to or not. That's harder to undo than people think.",
+		"Fighting alongside someone isn't friendship. It's something stranger, and harder to shake off.",
+	},
+	["relation_player.w15.tie.003"] = {
+		"{other} gets the nod I keep for people I've been in a fight with.",
+		"My hands flex at the sight of this one, as if the memory of that fight lived in my fingers.",
+	},
+	["relation_player.w15.tie.004"] = {
+		"Last time {other} and I were in the same place, something was trying very hard to kill everyone. Let's hope that isn't a tradition.",
+		"Nothing ties two people together like almost dying at the same moment.",
+	},
+	["relation_player.w15.tie.005"] = {
+		"I know how this one fights. That's more than I know about most people I've shared a meal with.",
+		"A name from a fight I was in. The details have blurred; the feeling of having someone there hasn't.",
+	},
+	["relation_player.w15.tie.006"] = {
+		"I still remember how that duel ended, and I'm choosing not to say which way.",
+		"Facing someone in a duel teaches you their habits faster than any friendship would.",
+		"A duel is a conversation with fewer words and more footwork. This one and I have had it.",
+	},
+	["relation_player.w15.tie.007"] = {
+		"{other}: one duel, once. Some questions don't stay closed for long.",
+		"There's a respect that only comes from having tried your best against someone. I have some for this one.",
+	},
+	["relation_player.w15.tie.008"] = {
+		"I'm already sizing {other} up, the way you do with someone faced once in a duel.",
+		"My shoulder gives a small twinge at the sight of this one. The old exchange still has some ache left in it.",
+	},
+	["relation_player.w15.tie.009"] = {
+		"{other}. Some part of me is already eyeing a rematch.",
+		"I remember you. And that duel.",
+	},
+	["relation_player.w15.tie.010"] = {
+		"{other}, someone I've traded with. Goods changed hands; a little trust did too, or didn't.",
+		"Trading shows you how someone counts. I remember how this one counts.",
+		"A trade is a small test with coin on the table. This name passed it or failed it; I remember which.",
+	},
+	["relation_player.w15.tie.011"] = {
+		"Last time I dealt with this one, coin moved. I'm still deciding if it moved in the right direction.",
+		"A name I've done business with. My purse remembers it, in its own way.",
+	},
+	["relation_player.w15.tie.012"] = {
+		"My hand goes to my purse at the sight of {other}. A trader's reflex, nothing more.",
+		"The brisk nod I keep for people I've done business with. Earned, one way or another.",
+	},
+	["relation_player.w15.tie.013"] = {
+		"An invitation went between {other} and me once. Who asked whom, I'd have to think about.",
+		"Being asked to join someone, or asking them, is a small risk. This name was part of one.",
+		"Joining up, even once, leaves a mark. A small one, but I can find it.",
+	},
+	["relation_player.w15.tie.014"] = {
+		"Someone who once wanted me along, or whom I wanted along. Either way, a door was opened.",
+		"{other}. There was an offer of company once. I remember it more than I'd have guessed.",
+	},
+	["relation_player.w15.tie.015"] = {
+		"My hand half rises toward {other}, remembering an invitation from some time ago.",
+		"This is someone who once asked, or was asked, to come along. That counts for something.",
+	},
+	["relation_player.w15.tie.016"] = {
+		"A gesture from this one, once. I remember it better than what it meant.",
+		"A wave, a bow, something rude? Whatever it was, it was enough to make this name stick.",
+	},
+	["relation_player.w15.tie.017"] = {
+		"People who bother to make a gesture at someone are rarer than you'd think. This one did, once.",
+		"One small gesture, and the name stayed with me. Memory keeps odd receipts.",
+	},
+	["relation_player.w15.tie.018"] = {
+		"An old gesture from {other} deserves a small one back. I have one ready.",
+		"A tilt of the head for this one: repaying a gesture from some time back.",
+	},
+	["relation_player.w15.tie.019"] = {
+		"{other}. One of the names I keep, for reasons of my own.",
+		"Recognition comes before the reason for it. First the name, then why it matters.",
+		"I know this one. What I feel about it can wait a moment; knowing comes first.",
+	},
+	["relation_player.w15.tie.020"] = {
+		"One brief look at {other}, the look I keep for people already known.",
+		"Noted, and filed away. No hurry to decide what it means.",
+	},
+	["relation_player.w15.tie.021"] = {
+		"A known name in a world full of unknown ones. Whatever it means, it means something.",
+		"Every name I keep is a small promise to pay attention. Here's one coming due.",
+		"Out of all the people passing, this one I know. It changes the shape of the moment.",
+	},
+	["relation_player.w15.tie.022"] = {
+		"{other}. Good news or bad, I'd know that name anywhere.",
+		"Familiar. Whether that's a comfort or a warning, I'll find out shortly.",
+	},
+	["relation_player.w15.tie.023"] = {
+		"Most passers-by are blank to me. This one isn't, and the difference is enough to slow my step.",
+		"The mind sorts people faster than the eyes do. It has already put this one somewhere.",
+	},
+	["relation_player.w15.tie.024"] = {
+		"An acquaintance. Not close, not a stranger: one of those names that sit in the middle.",
+		"{other}. Met before; that's about all I could swear to.",
+	},
+	["relation_player.w15.tie.025"] = {
+		"A polite nod for {other}, the passing kind, kept for faces that aren't quite friends.",
+		"The ordinary courtesy owed to someone half remembered. I can manage that much.",
+	},
+	["relation_player.w15.tie.026"] = {
+		"Familiar name, no strong feelings attached, and I'm not looking for any.",
+		"Neither liking nor dislike, for this one. Some people simply don't take up much room.",
+	},
+	["relation_player.w15.tie.027"] = {
+		"A name I recognize and can't make myself care about. That's allowed.",
+		"Not every familiar person needs a feeling attached. This one comes without.",
+	},
+	["relation_player.w15.time.001"] = {
+		"{other}, and hardly any time since last. Either luck or a pattern.",
+		"Twice in so short a span. At this rate I'll learn the way this one walks.",
+		"The last meeting is barely behind me, and here comes the next one.",
+	},
+	["relation_player.w15.time.002"] = {
+		"In sight already. Whatever was left unsaid last time is still fresh enough to say.",
+		"So little time since the last meeting that I barely had a chance to think about it. Now I'll have to.",
+	},
+	["relation_player.w15.time.003"] = {
+		"This one, back already? That was quick.",
+		"{other}, so soon. I'd have bet on a longer wait.",
+	},
+	["relation_player.w15.time.004"] = {
+		"A second look at {other}, just to check how little time has gone by. Hardly any.",
+		"I squint, doing the sum: almost nothing since the last meeting.",
+	},
+	["relation_player.w15.time.005"] = {
+		"Meeting the same person twice in a short while feels like being told something. I haven't worked out what.",
+		"{other}, close on the heels of last time. Some acquaintances refuse to go stale.",
+	},
+	["relation_player.w15.time.006"] = {
+		"If this keeps up, people will think I'm being followed. Or that I'm the one following.",
+		"Hardly enough time apart to miss anyone, or to stop minding them.",
+	},
+	["relation_player.w15.time.007"] = {
+		"A short nod for {other} will do. No need to start from the beginning after so little time.",
+		"This soon, the briefest greeting is the right size. Anything bigger would feel like a reunion.",
+	},
+	["relation_player.w15.time.008"] = {
+		"It's been weeks since {other} and I last crossed paths. Long enough for news, too short to lose track.",
+		"Weeks, not months. Enough time for something to have changed, not enough to know what.",
+		"The gap is just wide enough to wonder what I've missed.",
+	},
+	["relation_player.w15.time.009"] = {
+		"Some weeks have passed. I find I remember the last meeting better than I expected.",
+		"Weeks apart shift a face slightly in the memory. Seeing {other} puts it back in order.",
+	},
+	["relation_player.w15.time.010"] = {
+		"I take a moment to look {other} over, the way you do after a few weeks apart.",
+		"A memory some weeks old against the real thing: I check what's moved.",
+		"A small pause, to catch up on a few weeks at a glance.",
+	},
+	["relation_player.w15.time.011"] = {
+		"Weeks. Long enough for this one to have done something foolish. Or me. Possibly both.",
+		"A few weeks out of sight. I wonder whose version of the last meeting has grown more flattering.",
+	},
+	["relation_player.w15.time.012"] = {
+		"That name, after some weeks of not hearing it. It fits back into place with a small click.",
+		"The last time feels near and far at once. That's what a few weeks will do.",
+	},
+	["relation_player.w15.time.013"] = {
+		"Weeks have a way of sanding the edges off a memory. Here's {other}, edges and all.",
+		"Not long enough to forget, just long enough to wonder if I'd remembered it right.",
+	},
+	["relation_player.w15.time.014"] = {
+		"People don't stand still for a month. I wonder which road {other} has taken.",
+		"Long enough that I had nearly filed this name away. Nearly.",
+		"The last meeting is so far back it feels like it happened to someone else.",
+	},
+	["relation_player.w15.time.015"] = {
+		"A long gap. I'll have to relearn this one a little, the way you relearn a tune you used to hum.",
+		"After more than a month, the name came back quicker than the details.",
+		"After this long, half of what I remember is probably wrong. Let's find out which half.",
+	},
+	["relation_player.w15.time.016"] = {
+		"The sight of {other} stops me for a moment, as it does when a long while has passed.",
+		"I set this one beside an older memory to see how well they match. Not perfectly; nothing does after so long.",
+	},
+	["relation_player.w15.time.017"] = {
+		"Long absences make every meeting a small reckoning. Let's see what this one adds up to.",
+		"A month or more. Enough for a whole life to tilt a little, mine included.",
+	},
+	["relation_player.w15.time.018"] = {
+		"A long stretch since the last time. I hope I've changed for the better; I'd settle for sideways.",
+		"After so long, I can't swear this one hasn't become insufferable. Or that I haven't.",
+	},
+	["relation_player.w15.time.019"] = {
+		"{other}, after a long while. I nearly said it aloud.",
+		"Look at that: a long time, and the proof is right in front of me.",
+	},
+	["relation_player.w15.time.020"] = {
+		"Last time it was here, too. I'm starting to suspect this spot of arranging things.",
+		"{other}, right where the last meeting happened. As if the place had kept the appointment on its own.",
+	},
+	["relation_player.w15.time.021"] = {
+		"Same ground, same name. I'd have bet against it.",
+		"It was here, last time. I remember because I remember almost nothing else about it.",
+		"If I come by this spot often enough, I suppose I'll always find {other} on it.",
+	},
+	["relation_player.w15.time.022"] = {
+		"I look around the spot, then at {other}, as if the place itself had remembered.",
+		"Here, where the last meeting happened, the familiar figure finishes the picture.",
+	},
+	["relation_player.w15.time.023"] = {
+		"Same place, same person. Either this spot is lucky or it simply has no imagination.",
+		"Back where the last meeting was. I half expect to pick the conversation up mid-sentence.",
+	},
 }, "base_relations")

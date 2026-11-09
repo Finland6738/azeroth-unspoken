@@ -2706,4 +2706,577 @@ NS:AddTexts("enUS", {
 		"offers a short nod of greeting, the kind travelers and those who serve them trade without thinking.",
 		"greets {other} with a plain courtesy, the kind that costs nothing and opens most doors.",
 	},
+	["encounter_end.w15.after.001"] = {
+		"How long did that take? It felt like an age and an instant, both at once.",
+		"No idea how long that lasted. Long enough to change me a little.",
+	},
+	["encounter_end.w15.after.002"] = {
+		"My ears are still full of the fight. The quiet will have to queue.",
+		"Everything rings. The quiet is here; my ears haven't heard the news.",
+		"There's a ringing that isn't from anything. It'll fade.",
+	},
+	["encounter_end.w15.after.003"] = {
+		"stands still and lets the din drain slowly out of {g:his|her} head.",
+		"waits, unmoving, for the noise in {g:his|her} head to settle.",
+	},
+	["encounter_end.w15.after.004"] = {
+		"Winning doesn't feel the way the songs say. It feels like being tired and lucky.",
+		"No trumpets. Just tired and lucky, and knowing it.",
+	},
+	["encounter_end.w15.after.005"] = {
+		"watches the others laugh, and joins in a moment late.",
+		"hears the others start to laugh and, after a beat, laughs with them.",
+		"lets the others' relief wash over {g:him|her} before adding {g:his|her} own.",
+	},
+	["encounter_end.w15.after.006"] = {
+		"Every fight ends. It's the one promise all of them keep.",
+		"However long a fight runs, it ends. Remember that when it seems it won't.",
+	},
+	["encounter_end.w15.after.007"] = {
+		"flexes stiff fingers one by one, as if counting what the fight cost.",
+		"opens and closes {g:his|her} hands slowly, testing them like borrowed tools.",
+	},
+	["encounter_end.w15.after.008"] = {
+		"Thirst, of all things. That's the first thing I notice.",
+		"Thirsty. Sore. Pleased. In roughly that order.",
+	},
+	["encounter_end.w15.after.009"] = {
+		"The details are going already. Soon I'll only remember that it ended.",
+		"Half of it is a blur. The half I'll keep is the end.",
+	},
+	["encounter_end.w15.after.010"] = {
+		"Listen to that. Nothing trying to hit anybody.",
+		"Hear that? Nothing. Lovely, lovely nothing.",
+		"No noise. Strange how loud that is.",
+	},
+	["encounter_end.w15.after.011"] = {
+		"stands in the stillness after {encounter}, as the ones who win always have.",
+		"lets the stillness close in, as it has around every victor since the first.",
+	},
+	["encounter_end.w15.after.012"] = {
+		"Losing is quieter than winning. Nobody cheers, and nobody wants to speak first.",
+		"No cheering. Just everyone waiting for someone else to say it.",
+	},
+	["encounter_end.w15.after.013"] = {
+		"The fight keeps playing in my head, and I keep losing it.",
+		"Round and round it goes, and it ends the same way each time.",
+		"I keep running it back. The ending doesn't change.",
+	},
+	["encounter_end.w15.after.014"] = {
+		"stays with the defeat a while, not hurrying past it.",
+		"lets the loss sit, unhurried, the way one lets a wound be looked at.",
+	},
+	["encounter_end.w15.after.015"] = {
+		"Being beaten is heavy. Heavier than any pack.",
+		"Defeat weighs more than gear. You carry it differently, too.",
+	},
+	["encounter_end.w15.after.016"] = {
+		"Every fight anyone ever won, someone lost first. This time it's my turn.",
+		"Somebody always loses before the winning starts. Fine. Let it be me, for now.",
+	},
+	["encounter_end.w15.after.017"] = {
+		"turns the last moments over and over, like a coin that won't land right.",
+		"keeps going back over the fight, the way one worries at a loose tooth.",
+	},
+	["encounter_end.w15.after.018"] = {
+		"Odd. The silence after losing sounds just like the silence after winning. It sits differently, that's all.",
+		"The quiet doesn't care who won. Only I do.",
+	},
+	["encounter_end.w15.after.019"] = {
+		"Take a moment, everyone. Words can wait.",
+		"Nobody has to say anything. Not straight away.",
+	},
+	["encounter_end.w15.after.020"] = {
+		"Too tired to be angry. The anger will come later, with interest.",
+		"Too spent for fury. Give it time.",
+		"Later I'll be angry. Right now I'm just empty.",
+	},
+	["encounter_end.w15.after.021"] = {
+		"takes the loss quietly, the way one takes bad news half expected.",
+		"receives the defeat like a letter whose contents {g:he|she} already knew.",
+	},
+	["encounter_end.w15.after.022"] = {
+		"Nobody's fault and everybody's. That's how these go.",
+		"Shared loss, shared blame. Fair's fair.",
+	},
+	["encounter_end.w15.after.023"] = {
+		"That's how close the edge is. Closer than it looks from a safe distance.",
+		"The edge was right there. I'd rather not know it so well.",
+	},
+	["encounter_end.w15.lost.001"] = {
+		"That was educational. Painfully so.",
+		"Lesson received. Bruises included, free of charge.",
+		"Educational, in the worst way.",
+	},
+	["encounter_end.w15.lost.002"] = {
+		"Something got past me. Find it before trying anything else.",
+		"There was a mistake in there. Mine, maybe. Find it first.",
+	},
+	["encounter_end.w15.lost.003"] = {
+		"Fine. {encounter} takes this one. Only this one.",
+		"Keep it, then. Enjoy it. It's the last one you get.",
+		"Your round. Don't get comfortable with it.",
+	},
+	["encounter_end.w15.lost.004"] = {
+		"Nobody point fingers. First we work out what happened, then we point them.",
+		"Blame later. Facts first.",
+		"Before anyone blames anyone: what actually happened?",
+	},
+	["encounter_end.w15.lost.005"] = {
+		"goes very quiet, like someone replaying every moment from the start.",
+		"says nothing for a long while, eyes elsewhere, going back over it all.",
+	},
+	["encounter_end.w15.lost.006"] = {
+		"mutters something unrepeatable in the direction of {encounter}.",
+		"has a few choice words for the whole affair, none of them polite.",
+	},
+	["encounter_end.w15.lost.007"] = {
+		"Defeat has a taste. Metal and ash. I'd rather not get used to it.",
+		"Losing leaves something bitter behind the teeth. It doesn't wash out quickly.",
+	},
+	["encounter_end.w15.lost.008"] = {
+		"Gather round. That was the rehearsal.",
+		"Consider that the practice run. Now we know the steps.",
+		"Think of it as scouting. Very thorough, very painful scouting.",
+	},
+	["encounter_end.w15.lost.009"] = {
+		"It didn't fall apart all at once. A little, then all of it.",
+		"One small slip, then another, then nothing left to hold.",
+	},
+	["encounter_end.w15.lost.010"] = {
+		"Same plan, fewer mistakes. How hard can it be?",
+		"Same idea as before, minus the parts that went wrong.",
+		"Do it over, but do it right this time.",
+	},
+	["encounter_end.w15.lost.011"] = {
+		"That was beyond me. For now. The 'for now' matters.",
+		"Out of my reach, this time. Reaches grow.",
+	},
+	["encounter_end.w15.lost.012"] = {
+		"inclines {g:his|her} head toward {encounter}, the way one concedes a better hand at cards.",
+		"gives a small, grudging nod, the salute owed to whoever won the round.",
+	},
+	["encounter_end.w15.lost.013"] = {
+		"Losing is learning with the volume turned up. I heard it. Next attempt, I answer.",
+		"A beating is a lesson nobody signs up for. Fine. I was paying attention.",
+	},
+	["encounter_end.w15.lost.014"] = {
+		"Noted. Filed. Next attempt.",
+		"Fine. Understood. Once more, with care.",
+		"Understood. Adjusting.",
+	},
+	["encounter_end.w15.lost.015"] = {
+		"No shame in that. Plenty of anger, though.",
+		"Not ashamed. Furious, a bit. Mostly furious.",
+		"Embarrassed? No. Angry? Getting there.",
+	},
+	["encounter_end.w15.lost.016"] = {
+		"If anyone saw what I did back there: no, you didn't.",
+		"Whatever you saw me do, forget it. Please.",
+		"Let's agree that moment never happened.",
+	},
+	["encounter_end.w15.lost.017"] = {
+		"lets out a long, tired groan that says more than any speech.",
+		"groans, long and heartfelt, at nobody in particular.",
+	},
+	["encounter_end.w15.lost.018"] = {
+		"{encounter} won the fight. What happens next is mine to decide.",
+		"The fight went how it went. What comes after is mine.",
+	},
+	["encounter_end.w15.lost.019"] = {
+		"All that work together, undone in a handful of seconds.",
+		"Everything we held together, gone in moments.",
+	},
+	["encounter_end.w15.lost.020"] = {
+		"Talk me through it. Who saw what, and when?",
+		"From the start, everyone. What did you see?",
+	},
+	["encounter_end.w15.lost.021"] = {
+		"takes the defeat with a dignity that lasts almost three seconds.",
+		"accepts the loss gracefully, then spoils it with one sharp, heartfelt word.",
+		"nods slowly, as if agreeing with the defeat, then shakes {g:his|her} head.",
+	},
+	["encounter_end.w15.lost.022"] = {
+		"Somewhere in that mess is the moment it slipped. Find it.",
+		"There was one moment where it turned. I want it back, to look at it properly.",
+	},
+	["encounter_end.w15.lost.023"] = {
+		"{encounter} hasn't seen the last of us.",
+		"This one stays open. Count on it.",
+		"We're not done here.",
+	},
+	["encounter_end.w15.lost.024"] = {
+		"is left with the particular silence of a fight gone wrong.",
+		"keeps very still in the hush that only a lost fight leaves behind.",
+	},
+	["encounter_end.w15.lost.025"] = {
+		"So that's what happens when that happens. Useful to know. Awful to learn.",
+		"Now I know what that does. I'd have preferred a book.",
+	},
+	["encounter_end.w15.lost.026"] = {
+		"Defeat teaches what victory never bothers to.",
+		"Defeat is the elder teacher. Listen to it.",
+	},
+	["encounter_end.w15.lost.027"] = {
+		"At least we lost together. Very together.",
+		"At least nobody can say we held back.",
+	},
+	["encounter_end.w15.won.001"] = {
+		"Roll call. Answer with your name, or at least a groan.",
+		"Sound off, all of you. Grumbling counts as present.",
+		"Whoever isn't answering, someone go and check.",
+	},
+	["encounter_end.w15.won.002"] = {
+		"clasps the nearest hand and holds it a moment longer than needed.",
+		"grips the forearm of whoever stands closest, hard, and lets go without a word.",
+	},
+	["encounter_end.w15.won.003"] = {
+		"laughs once, short and startled, as if the win caught {g:him|her} off guard.",
+		"lets out a single bark of laughter, more surprise than triumph.",
+		"breaks into a grin that refuses to be put away.",
+	},
+	["encounter_end.w15.won.004"] = {
+		"Now for the truly dangerous part: deciding who gets what.",
+		"The spoils, then. Try to stay friends through this bit.",
+		"Loot. Remember, we're all very generous people.",
+	},
+	["encounter_end.w15.won.005"] = {
+		"My kit took a beating. Kit can be mended.",
+		"Dents, scuffs, a strap hanging by a thread. All of it fixable.",
+	},
+	["encounter_end.w15.won.006"] = {
+		"A fight worth telling. I'll tell it badly, and often.",
+		"That one goes in the stories. My version will be longer.",
+		"I'll be telling this for a while. Some of it may even be true.",
+	},
+	["encounter_end.w15.won.007"] = {
+		"{encounter}. One name I can stop carrying around.",
+		"One less thing to chew on before sleep.",
+	},
+	["encounter_end.w15.won.008"] = {
+		"Nobody say it was easy. Things listen.",
+		"Don't call that easy. Something somewhere will take it personally.",
+	},
+	["encounter_end.w15.won.009"] = {
+		"Did that work? It worked. Don't poke at it.",
+		"It went right. All of it. I don't trust that, but I'll take it.",
+		"That actually went well. Quick, before it notices.",
+	},
+	["encounter_end.w15.won.010"] = {
+		"Exactly as planned. Roughly. Give or take everything.",
+		"Textbook. Some pages torn out, but textbook.",
+	},
+	["encounter_end.w15.won.011"] = {
+		"Let it be said: {encounter} was met, and answered.",
+		"Whoever asks, I'll say it plainly: this one was won.",
+	},
+	["encounter_end.w15.won.012"] = {
+		"Thank you. Every one of you. I mean it.",
+		"I couldn't have done that alone. Thank you.",
+		"My thanks. I owe each of you.",
+	},
+	["encounter_end.w15.won.013"] = {
+		"Us, one. {encounter}, nothing. I'm keeping score.",
+		"Put it on the tally: one for us.",
+	},
+	["encounter_end.w15.won.014"] = {
+		"counts the faces nearby, then counts them again to be sure.",
+		"looks from face to face, checking each one off without a word.",
+	},
+	["encounter_end.w15.won.015"] = {
+		"My shoulders are finally coming down from around my ears.",
+		"Unclench. Jaw, hands, the lot. It's over.",
+		"Let the shoulders drop. Let the hands open. Done.",
+	},
+	["encounter_end.w15.won.016"] = {
+		"raises a fist, and for once does not care who sees.",
+		"lifts a clenched fist high, the oldest gesture there is.",
+	},
+	["encounter_end.w15.won.017"] = {
+		"Whatever the bards make of this, they'll get it wrong.",
+		"Someone will sing about this one day, and nobody in the song will look tired.",
+	},
+	["encounter_end.w15.won.018"] = {
+		"Settled. Good.",
+		"Done with that one. What's next?",
+		"Good. That's one.",
+	},
+	["encounter_end.w15.won.019"] = {
+		"Patch up, drink something, check your gear. Then we talk.",
+		"Mend first, celebrate second. Who needs tending?",
+	},
+	["encounter_end.w15.won.020"] = {
+		"pats {g:himself|herself} down for missing parts and seems mildly surprised to find none.",
+		"takes a quick inventory of limbs. All present, apparently.",
+		"checks {g:his|her} arms, then {g:his|her} legs, then grins.",
+	},
+	["encounter_end.w15.won.021"] = {
+		"Let those who were there remember it. That's monument enough.",
+		"No one needs to carve this anywhere. It's carved in me.",
+	},
+	["encounter_end.w15.won.022"] = {
+		"Luck played its part. I'll thank it quietly and not count on it.",
+		"Some of that was skill. Some of it wasn't. I know which part to practice.",
+	},
+	["encounter_end.w15.won.023"] = {
+		"Someone, somewhere, rests easier for this and will never learn why.",
+		"People I'll never meet are a little safer now. They won't know. That's fine.",
+	},
+	["encounter_end.w15.won.024"] = {
+		"Ha! Answered, and then some!",
+		"That's for every bruise it took to get here!",
+		"And that is how it's done!",
+	},
+	["encounter_end.w15.won.025"] = {
+		"Anyone who blinked missed the best bit. Which was mine, obviously.",
+		"Did everyone see that? Tell me someone saw that.",
+		"Somebody write that down before I start improving it.",
+	},
+	["encounter_end.w15.won.026"] = {
+		"sits down right where {g:he|she} stands and lets the others do the cheering.",
+		"drops onto the nearest flat surface and waves the celebrations on without getting up.",
+	},
+	["encounter_end.w15.won.027"] = {
+		"{encounter} ran into someone more stubborn. That's the whole story.",
+		"Stubbornness: still undefeated.",
+	},
+	["other_action.w15.duel.001"] = {
+		"A challenge, out of nowhere. Some people say hello; some people want to know who ends up on the ground first.",
+		"Nobody challenges someone they find boring. I'll take it as a compliment, whatever I answer.",
+	},
+	["other_action.w15.duel.002"] = {
+		"You want to test me? Bold of you. Or just bored.",
+		"A duel. Give me a moment to work out whether luck is on my side.",
+		"Is this a challenge, or a very formal way of asking for a bruise?",
+	},
+	["other_action.w15.duel.003"] = {
+		"Duels ask a small, clean question. No grudge in it, no prize, only an answer.",
+		"Strange how one challenge sharpens everything at once: the eyes, the hands, the quiet around them.",
+	},
+	["other_action.w15.duel.004"] = {
+		"rolls {g:his|her} shoulders at the challenge, weighing it like a coin of uncertain value.",
+		"looks the challenge over with the air of someone reading a bill twice.",
+	},
+	["other_action.w15.duel.005"] = {
+		"You've asked properly. You'll get a proper answer.",
+		"A fair challenge deserves a fair reply. Give me a moment.",
+	},
+	["other_action.w15.duel.006"] = {
+		"{other}, eager to settle the score. As if any score between two rivals ever stays settled.",
+		"Of course it's you asking. Win or lose, this won't be the last word, and you know it.",
+	},
+	["other_action.w15.duel.007"] = {
+		"A duel, from that one. A fair fight is the last thing I'd expect, so I'll expect everything else.",
+		"The rules of a duel are thin protection. With this one I'd trust the rules before the hand that offers them.",
+	},
+	["other_action.w15.duel.008"] = {
+		"Why me? Answer that first.",
+		"I'd like to know what you're really asking for.",
+	},
+	["other_action.w15.duel.009"] = {
+		"There's something almost restful in a fight that means nothing. Nobody has to hate anybody.",
+		"A fight with no harm meant. The world could use more of those, and far fewer of the other kind.",
+	},
+	["other_action.w15.duel.010"] = {
+		"If it comes to it, the loser says something nice about the winner. Out loud.",
+		"Ha! Your nerve I accept. The duel I'm still thinking about.",
+		"One rule: nobody sulks afterward. Either side.",
+	},
+	["other_action.w15.duel.011"] = {
+		"meets the challenge with a slow, formal nod, the kind that promises nothing yet.",
+		"acknowledges the challenge with a slight tilt of the head, giving nothing away.",
+	},
+	["other_action.w15.invite.001"] = {
+		"Someone wants me along. That alone makes the pack feel a little lighter, whatever I decide.",
+		"An invitation. Nice to be thought of, even before I know what for.",
+		"Being asked along is a small thing. I notice it every time.",
+	},
+	["other_action.w15.invite.002"] = {
+		"What's the plan, and how bad is it?",
+		"Before I answer: where to, and for how long?",
+		"Tell me what you need me for. Then I'll tell you if I'm the right one.",
+	},
+	["other_action.w15.invite.003"] = {
+		"Every group needs someone. The trick is working out which someone they think I am.",
+		"Invited. Either my name travels faster than I do, or they're short of hands.",
+	},
+	["other_action.w15.invite.004"] = {
+		"looks at the invitation, then at {g:his|her} pack, then back at the invitation.",
+		"pauses over the invitation, thumb hovering, as if testing the weight of company.",
+	},
+	["other_action.w15.invite.005"] = {
+		"Alone is simple. Alone is also very quiet. The invitation sits there, waiting for me to choose.",
+		"Company means other people's pace, other people's mistakes. And someone watching your back while you watch theirs.",
+	},
+	["other_action.w15.invite.006"] = {
+		"Me? Happy to think it over. Give me a moment to pretend I'm busy.",
+		"You're asking me? I'll try not to look too pleased about it.",
+	},
+	["other_action.w15.invite.007"] = {
+		"An invitation from {other}. Kindly meant, perhaps. I'd still like to know why now.",
+		"Of all the people to ask me along. Either something has changed, or something is wanted.",
+	},
+	["other_action.w15.invite.008"] = {
+		"grins at the invitation from {other}, as if it had been expected for a while.",
+		"shakes {g:his|her} head fondly: of course it's that name on the invitation.",
+	},
+	["other_action.w15.invite.009"] = {
+		"Do I get a say in the plan, or only in who carries the loot?",
+		"Generous of you. I hope it isn't because nobody else answered.",
+	},
+	["other_action.w15.invite.010"] = {
+		"Every road worth walking was opened by people who asked each other along. Hard to wave that off lightly.",
+		"One person alone can do a great deal. A handful of them, trusting each other, can do something people remember.",
+	},
+	["other_action.w15.invite.011"] = {
+		"lets the invitation hang for a moment, the way one leaves a door standing open before going through, or not.",
+		"considers the invitation with lips pressed together, in no hurry either way.",
+	},
+	["other_action.w15.nod.001"] = {
+		"A gesture my way. Friendly or not, I've been noticed, which is half of what anyone wants.",
+		"Whatever that meant, it was meant for me. That's something.",
+	},
+	["other_action.w15.nod.002"] = {
+		"answers the gesture with one of {g:his|her} own, measured to match.",
+		"returns the gesture in kind, no more and no less.",
+	},
+	["other_action.w15.nod.003"] = {
+		"And the same to you!",
+		"Ha! I saw that. Consider it returned.",
+		"Noted, and appreciated.",
+	},
+	["other_action.w15.nod.004"] = {
+		"Small courtesies, offered when nothing is owed. Those are the ones that last.",
+		"Nobody had to do that. That's exactly why it counts.",
+	},
+	["other_action.w15.nod.005"] = {
+		"I'll assume that was polite. It saves a lot of trouble.",
+		"Charming. Whatever it was.",
+	},
+	["other_action.w15.nod.006"] = {
+		"tips {g:his|her} head toward {other}: message received, and returned with interest.",
+		"lifts a hand toward the familiar face, the small reply of people who know each other's habits.",
+	},
+	["other_action.w15.nod.007"] = {
+		"A gesture from {other}. I'd love to know what it costs me.",
+		"When that one makes a gesture, I look for the second meaning first.",
+	},
+	["other_action.w15.nod.008"] = {
+		"People speak in so many ways without saying a word. Some of it is kind, some of it is noise, and one learns to tell.",
+		"Not a word, just that. Most of what passes between people never gets said aloud.",
+	},
+	["other_action.w15.nod.009"] = {
+		"Was that for me? Then I'll take it.",
+		"For me? Flattered or offended, I haven't decided which.",
+	},
+	["other_action.w15.nod.010"] = {
+		"inclines {g:his|her} head in reply, as gravely as if the gesture had passed between envoys.",
+		"acknowledges it with a small, ceremonious bow, so the moment doesn't pass unremarked.",
+	},
+	["other_action.w15.nod.011"] = {
+		"That's going to stay with me for a while. Silly, how little it takes.",
+		"Funny how little it takes to lift a mood.",
+	},
+	["other_action.w15.nod.012"] = {
+		"raises an eyebrow at the gesture, filing it away for later.",
+		"blinks at the gesture, then gives a slow, unreadable nod.",
+	},
+	["other_action.w15.quest.001"] = {
+		"Accepted. Now it's mine, which is a strange thing to say about someone else's trouble.",
+		"A moment ago it was somebody else's problem. Funny how quickly a nod changes that.",
+	},
+	["other_action.w15.quest.002"] = {
+		"Leave it with me.",
+		"Consider it handled. Eventually.",
+		"I'll see to it. No need to worry in the meantime.",
+	},
+	["other_action.w15.quest.003"] = {
+		"mouths the request once, silently, to be sure of it.",
+		"files the request away with a short, businesslike nod.",
+	},
+	["other_action.w15.quest.004"] = {
+		"It always sounds simple when someone else explains it. Always.",
+		"Nobody ever hands out a task by saying 'this will be awful.' They let you find that out.",
+	},
+	["other_action.w15.quest.005"] = {
+		"Whoever asks for help admits they couldn't manage alone. That takes something too.",
+		"Asking costs pride. Being asked costs time. Seems a fair exchange.",
+	},
+	["other_action.w15.quest.006"] = {
+		"And if it goes wrong, I was never here.",
+		"Any small print I should know about?",
+	},
+	["other_action.w15.quest.007"] = {
+		"nods at {other}, already working out where to begin.",
+		"shifts {g:his|her} pack higher, the way people do when there's suddenly more to carry.",
+	},
+	["other_action.w15.quest.008"] = {
+		"Somebody just trusted me with something that matters to them. I'd rather not prove them wrong.",
+		"A request is a small act of faith. It deserves better than a shrug.",
+	},
+	["other_action.w15.quest.009"] = {
+		"Kindly asked or barked out, a task weighs the same once it's mine.",
+		"Whether {other} smiled or scowled hardly matters now. The work doesn't care about manners.",
+	},
+	["other_action.w15.quest.010"] = {
+		"Done deal. Expect me back with good news, or at least a good story.",
+		"Agreed. With luck I'll come back with news worth hearing.",
+	},
+	["other_action.w15.quest.011"] = {
+		"A promise made, however small. Those have a way of weighing more than they look.",
+		"Saying yes is quick. Keeping it is the long part.",
+	},
+	["other_action.w15.quest.012"] = {
+		"takes on the task with the solemn face of someone who hasn't yet heard the details.",
+		"nods along gravely, the very picture of reliability, at least for now.",
+	},
+	["other_action.w15.trade.001"] = {
+		"A trade offered. Hands out, eyes on the goods, trust kept somewhere in reserve.",
+		"Trade first, friendship later, if ever. The goods won't mind either way.",
+	},
+	["other_action.w15.trade.002"] = {
+		"What are you offering, and what do you think I've got?",
+		"Show me yours first. Not out of distrust. Out of habit.",
+		"Let's see it. And don't wave it about like it's the last one in the world.",
+	},
+	["other_action.w15.trade.003"] = {
+		"leans in to inspect what's offered, with the narrowed eyes of a seasoned haggler.",
+		"checks the offer, then checks it once more, as the careful always do.",
+	},
+	["other_action.w15.trade.004"] = {
+		"Everybody has something they want gone and something they want instead. A trade is just two of those meeting.",
+		"Somewhere in every trade one side thinks it got the better deal. Ideally both.",
+	},
+	["other_action.w15.trade.005"] = {
+		"Let's see what you have. If it's fair, it's fair.",
+		"Happy to look. A fair trade makes for an easy goodbye.",
+	},
+	["other_action.w15.trade.006"] = {
+		"Funny how an exchange of things can feel like an exchange of something else. A bit of trust, crossing hands.",
+		"Whatever changes hands here, a little goodwill tends to go with it.",
+	},
+	["other_action.w15.trade.007"] = {
+		"Trade with {other}. Count everything twice and smile only once.",
+		"I'll check every item as if it might bite. With this one, that's only sensible.",
+	},
+	["other_action.w15.trade.008"] = {
+		"pats {g:his|her} pockets in a show of poverty that convinces no one.",
+		"puts on {g:his|her} most innocent haggling face, which is not very innocent at all.",
+	},
+	["other_action.w15.trade.009"] = {
+		"Mind the count. I'm watching it too, but mind it.",
+		"Slowly, so nobody has to argue about it later.",
+	},
+	["other_action.w15.trade.010"] = {
+		"A trade is a small truce. For as long as the goods sit between two people, neither reaches for anything else.",
+		"Barter is a kind of conversation where nobody has to share a language.",
+	},
+	["other_action.w15.trade.011"] = {
+		"Someone wants something I have. That's a rare and flattering feeling.",
+		"An offer. Nice to be useful without having to fight anyone for it.",
+	},
+	["other_action.w15.trade.012"] = {
+		"Trading? Show me something worth the trouble.",
+		"Trade, is it? Go on, impress me.",
+	},
 }, "base_context")

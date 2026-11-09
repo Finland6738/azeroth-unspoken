@@ -318,4 +318,369 @@ NS:AddTexts("enUS", {
 		"{other}. I will remember you, which is more than you will do for me.",
 		"Well. {other} has a story now, and so, unfortunately, do I.",
 	},
+	["arc_open.w15.capitals.001"] = {
+		"A second great city. One is a place; two start to feel like a pattern.",
+		"{zone}. With two capitals counted, I'm beginning to compare, which feels a little rude.",
+		"Two of the great cities now. I'm no expert, but I've stopped being a complete stranger to them.",
+	},
+	["arc_open.w15.capitals.002"] = {
+		"slows at the threshold of {zone}, letting the name settle before going in.",
+		"crosses into the great city with the measured step of someone quietly comparing it against another.",
+	},
+	["arc_open.w15.capitals.003"] = {
+		"Every great city seems sure it's the middle of the world. They can't all be right, which is half the fun.",
+		"A second center of the world. I'll need to keep a list of them.",
+	},
+	["arc_open.w15.capitals.004"] = {
+		"Different gates, and the same road under my feet to reach them. I'm starting to see how it all joins up.",
+		"Roads from everywhere end up at a door like this one. It's the second I've walked through.",
+		"Every road gathers somewhere. This is one of the places where they do.",
+	},
+	["arc_open.w15.capitals.005"] = {
+		"stops just past the entrance to get {g:his|her} bearings, like anyone in a great city not yet learned by heart.",
+		"pauses to work out which way is which, with the patience of someone who has done this once before.",
+		"takes a moment at the entrance, fitting the pack and the pace to the size of the place.",
+	},
+	["arc_open.w15.capitals.006"] = {
+		"One more capital, and a whole new set of things I'm probably not supposed to touch.",
+		"Great cities, plural now. Each with its customs to get wrong; I'll try to get them wrong politely.",
+	},
+	["arc_open.w15.capitals.007"] = {
+		"Each great city seems to answer a different question. I haven't worked out this one's yet.",
+		"Two capitals. I'm beginning to suspect each one is a different answer to the same question.",
+	},
+	["arc_open.w15.capitals.008"] = {
+		"takes in {zone} with a traveler's double look: what is here, and what the other city had instead.",
+		"looks around with the half-distracted air of someone setting one city beside another in {g:his|her} head.",
+	},
+	["arc_open.w15.capitals.009"] = {
+		"Nobody in a great city notices one more traveler. I've found that out twice now, and I like it better each time.",
+		"There's a freedom in being small somewhere big. A second capital, and the feeling holds.",
+		"{zone}: big enough to vanish in. There's rest in that.",
+	},
+	["arc_open.w15.fallen.001"] = {
+		"I keep seeing the spot. Not the moment itself, only the ground and whatever stood near it.",
+		"The place stays with me more than the fall does. Odd, which part memory chooses to keep.",
+	},
+	["arc_open.w15.fallen.002"] = {
+		"rolls one stiff shoulder, then the other, and glances back the way the trouble lay.",
+		"stands a moment testing each limb, with a look over {g:his|her} shoulder toward somewhere left behind.",
+	},
+	["arc_open.w15.fallen.003"] = {
+		"In this world death sometimes lets you back out. That doesn't make the going in any easier.",
+		"Coming back doesn't cancel the going. Both happened; I just have to hold them together.",
+		"Dead, and then not. I'd like a moment to understand that before anything else happens.",
+	},
+	["arc_open.w15.fallen.004"] = {
+		"Humbling, that. Nobody saw but the ground, and the ground won't forget it either.",
+		"There's no dignified way to come back from that. I'll settle for upright.",
+		"Note to self: that was not the way.",
+	},
+	["arc_open.w15.fallen.005"] = {
+		"I won't need a map to find that place again. It's marked now, on me if nowhere else.",
+		"That spot has a pull to it already. Whenever I pass near, I'll know.",
+	},
+	["arc_open.w15.fallen.006"] = {
+		"moves on with a new care in each step, like someone who has learned what the ground can take back.",
+		"goes on more carefully than before, eyes on the path ahead as if it had changed its opinion of {g:him|her}.",
+		"picks up the road again, slower, as though counting what is left of the ground's patience.",
+	},
+	["arc_open.w15.fallen.007"] = {
+		"Am I afraid of going back there? Not much. Some. Enough to notice.",
+		"The thought of that place sits in my stomach. I'll go back when it sits easier.",
+	},
+	["arc_open.w15.fallen.008"] = {
+		"Let that place keep the worst of it. I'll take the lesson along, and leave the rest lying where it fell.",
+		"A bargain, then: the ground keeps the fall, I keep what it taught me.",
+	},
+	["arc_open.w15.fallen.009"] = {
+		"sits a moment before going on, hands on knees, until things feel ordinary again.",
+		"takes a while to move on, and when {g:he|she} does, it is without hurry.",
+		"shakes off what dust there is and stays quiet a little while, unhurried.",
+	},
+	["arc_open.w15.fallen.010"] = {
+		"Down once, up once. I mean to keep the count even.",
+		"It took me down. It didn't keep me. That's the part worth remembering.",
+	},
+	["arc_open.w15.knownface.001"] = {
+		"I had the name before I'd even looked properly: {other}. When did that start?",
+		"I don't have to think about who {other} is anymore. Somewhere along the way it stopped needing thought.",
+		"The name {other} came to mind on its own. I never set out to remember it.",
+	},
+	["arc_open.w15.knownface.002"] = {
+		"A face I know without trying: {other}. That's how you find out you keep coming back to the same places.",
+		"When {other} starts to look familiar, it means I've been circling more than I'd admit.",
+		"Funny: I didn't set out to know anyone. {other} happened anyway.",
+	},
+	["arc_open.w15.knownface.003"] = {
+		"gives {other} the short nod kept for people who need no introduction anymore.",
+		"doesn't bother with a formal greeting for {other} this time; a nod does the work, and it seems to be enough.",
+	},
+	["arc_open.w15.knownface.004"] = {
+		"I know the face of {other} well by now. Whether mine is known in return, I can't tell, and I find I don't mind.",
+		"{other} is familiar to me, at least. What I am on the other side of the exchange is anyone's guess.",
+	},
+	["arc_open.w15.knownface.005"] = {
+		"Same voice, same manner, every time I see {other}. With everything else shifting from one mile to the next, I'll take it.",
+		"Some people are like a landmark you can talk to. {other} has turned into one of mine.",
+		"{other} is one thing on the road I don't have to work out from scratch each time.",
+	},
+	["arc_open.w15.knownface.006"] = {
+		"lingers with {other} a moment longer than needed, for no reason anyone would put into words.",
+		"stays with {other} a little after the business is done, as if leaving straight away would be rude now.",
+	},
+	["arc_open.w15.knownface.007"] = {
+		"On roads full of strangers, one face that isn't goes further than it should. The face of {other} does.",
+		"Most people I pass, I'll never see twice. {other} keeps turning up, and I've started counting on it.",
+		"A stranger nearly everywhere. Here, with {other}, a little less of one.",
+	},
+	["arc_open.w15.knownface.008"] = {
+		"Careful. One more visit to {other} and I'll be asking how things are going, and actually listening to the answer.",
+		"This is how it starts: a familiar face, {other}, then small talk, then caring how the answer goes.",
+	},
+	["arc_open.w15.knownface.009"] = {
+		"knows {other} at a glance, and the set of {g:his|her} shoulders eases a little.",
+		"spots {other} and visibly stops bracing for a stranger.",
+		"falls into an easy manner with {other}, the kind kept for faces that need no guessing.",
+	},
+	["arc_open.w15.knownface.010"] = {
+		"Every familiar face is a small hostage to fortune, that of {other} included. I'd rather not think of that, so of course I do.",
+		"Knowing {other} is a risk of its own: one day the face won't be there, and I'll notice.",
+	},
+	["arc_open.w15.knownface.011"] = {
+		"{other}. A name and a way of doing things: that's all I know, and the way, at least, I trust.",
+		"I know next to nothing about {other}, except that things are always done properly. That counts for more than gossip.",
+	},
+	["arc_open.w15.knownface.012"] = {
+		"almost says the name of {other} before a word has been exchanged, then settles for a nod.",
+		"catches {g:himself|herself} halfway through a greeting to {other} that sounds far too familiar, and lets it finish anyway.",
+		"nods to {other} before {g:he|she} has quite decided to, which says enough.",
+	},
+	["arc_open.w15.nemesis.001"] = {
+		"{other}. A name I never asked to learn, and learned the hard way.",
+		"Some names you pick up in conversation. That one I picked up from the ground.",
+	},
+	["arc_open.w15.nemesis.002"] = {
+		"I keep going over it, looking for my mistake. Maybe there wasn't one. That would be worse.",
+		"If I'd done one thing differently... I can't find which thing. That's what bothers me.",
+		"Was it bad luck? Bad judgment? The answer matters more than it should.",
+	},
+	["arc_open.w15.nemesis.003"] = {
+		"gets up slowly and says a single name, low, like something being put away for later.",
+		"says {other} once, quietly, the way one writes down a debt.",
+	},
+	["arc_open.w15.nemesis.004"] = {
+		"Note for the future: {other}. Not to be approached casually, or at all, without a plan.",
+		"Lesson learned, at the usual price. Next time I'll pay attention before, not after.",
+		"Humility, freshly earned. Expensive stuff.",
+	},
+	["arc_open.w15.nemesis.005"] = {
+		"It won, once. One win doesn't settle anything, and I intend to have a say in the rest.",
+		"That's one to {other}. The tally is open, and I'm not done adding to my side.",
+		"It took a round. Rounds are not fights.",
+	},
+	["arc_open.w15.nemesis.006"] = {
+		"stands a long moment afterward, taking the measure of a foe that took {g:his|her} measure first.",
+		"looks back toward where it happened, learning the way as one learns a warning.",
+	},
+	["arc_open.w15.nemesis.007"] = {
+		"I always knew there were things out there stronger than me. Now one of them has a name.",
+		"Strength in the abstract is easy to respect. {other} made it specific.",
+		"There's a difference between knowing you can die and knowing what can do it. I've learned the second.",
+	},
+	["arc_open.w15.nemesis.008"] = {
+		"This isn't over. It only looks that way from where {other} is standing.",
+		"Done? Hardly. That was the first word, not the last.",
+	},
+	["arc_open.w15.nemesis.009"] = {
+		"goes over {g:his|her} gear with sudden, scrupulous care, like someone who has just been shown the alternative.",
+		"counts what is left in the pack twice, and frowns at the total.",
+		"sits down to mend what can be mended, slow and silent.",
+	},
+	["arc_open.w15.nemesis.010"] = {
+		"What stays with me isn't the end. It's the moment before, when I still thought it was going my way.",
+		"The worst part to remember is how sure I felt, right up until I wasn't.",
+		"Until the last moment I thought I had it. That's the part that stings.",
+	},
+	["arc_open.w15.nemesis.011"] = {
+		"Whatever {other} is doing now, it's not gloating. Gloating would at least be personal.",
+		"The real insult is how ordinary it must have been, on the other side.",
+	},
+	["arc_open.w15.nemesis.012"] = {
+		"sets {g:his|her} jaw, looks once toward where it happened, and the look is not a beaten one.",
+		"turns away from the place of the fight with the calm of someone filing it under unfinished.",
+	},
+	["arc_open.w15.nemesis.013"] = {
+		"It's a strange closeness, to be brought down by one particular foe. I know nothing of {other} but the one thing that counts.",
+		"One meeting, and already it's what I know best about this whole stretch of road.",
+	},
+	["arc_open.w15.path.001"] = {
+		"The road has brought me back to where I set out. I knew almost nothing when I left; I'd like to think the sum has grown.",
+		"Back at the start. Whatever I've learned since, this place only ever saw me knowing nothing.",
+	},
+	["arc_open.w15.path.002"] = {
+		"Nothing here asks where I've been. Places let you go without a word and take you back the same way.",
+		"This place never noticed I left. I suppose that's a kind of welcome.",
+		"{zone} kept quiet the whole time I was away. Fair enough: so did I.",
+	},
+	["arc_open.w15.path.003"] = {
+		"slows as {zone} opens around {g:him|her}, checking an old memory against the ground underfoot.",
+		"lingers a moment at the edge of where it all started, measuring the memory against what is actually there.",
+	},
+	["arc_open.w15.path.004"] = {
+		"The one who set out from here wouldn't know me now. Or would, and be quietly surprised.",
+		"If I passed my earlier self on this path, I wonder who would step aside first.",
+		"Here, I was someone else. Not worse. Just lighter, with far less to carry.",
+	},
+	["arc_open.w15.path.005"] = {
+		"stops on the path and laughs once, quietly, at nothing anyone else could see.",
+		"shakes {g:his|her} head with a small smile, and walks on more slowly than before.",
+		"brushes the dust of the road from {g:his|her} sleeves, then laughs at the idea of tidying up for a place.",
+	},
+	["arc_open.w15.path.006"] = {
+		"The worries I carried out of here would fit in a pocket now. I wouldn't trade the new ones for them, though. Probably.",
+		"Whatever troubled me here once looks small from where I stand. Small, and strangely dear.",
+	},
+	["arc_open.w15.path.007"] = {
+		"Beginnings stay where they were left. Everything else moves on, me included.",
+		"It's an odd comfort: wherever I go, this start keeps its place and waits.",
+		"Some things don't need to come with me. This place keeps the start of the story, and keeps it well.",
+	},
+	["arc_open.w15.path.008"] = {
+		"speaks the name half aloud, {zone}, as if testing whether it still fits.",
+		"stands still a while, letting the place say what it has to say first.",
+	},
+	["arc_open.w15.path.009"] = {
+		"Not everything I began here was finished. Some of it never will be, and that has to be allowed.",
+		"There are loose ends here I'll never tie. Coming back, I find I can live with that.",
+	},
+	["arc_step.w15.capitals.001"] = {
+		"Three great cities. That stopped being a detour some time ago; it's become a way of traveling.",
+		"A third capital. I could turn back now and say I'd seen the size of things. I don't think I will.",
+		"{zone} makes three. Somewhere along the line, passing through capitals became part of how I travel.",
+	},
+	["arc_step.w15.capitals.002"] = {
+		"passes the third gate with an ease the first one never allowed.",
+		"enters the city with the unbothered stride of someone collecting thresholds.",
+	},
+	["arc_step.w15.capitals.003"] = {
+		"What I want from the great cities is simple: a door that shuts behind me for a while, and the world on the other side of it.",
+		"Shelter. I pass the gates to put something solid between me and everything else, if only for an hour.",
+	},
+	["arc_step.w15.capitals.004"] = {
+		"unbuckles a strap that did not need unbuckling, as if the thought of shelter alone could ease the load.",
+		"lets {g:his|her} shoulders drop at the thought of a roof, any roof, behind a gate.",
+	},
+	["arc_step.w15.capitals.005"] = {
+		"In the great cities my road crosses everyone else's. I go to see which of theirs I could borrow next.",
+		"A crossroads, that's all a capital is to me: the place to pick the next road.",
+	},
+	["arc_step.w15.capitals.006"] = {
+		"turns the thought over: the great cities as knots in a net of roads, and {g:himself|herself} passing from one to the next.",
+		"traces an idle line in the air with one finger, from one point to another, then on to a third.",
+	},
+	["arc_step.w15.capitals.007"] = {
+		"Each great city is a reason to return. That's the promise I make passing through: to come back, and to find it standing.",
+		"I go through their gates to promise myself a return. Somebody has to keep them worth returning to.",
+	},
+	["arc_step.w15.capitals.008"] = {
+		"touches a hand to {g:his|her} chest, briefly, like someone sealing a word given to no one in particular.",
+		"nods once to nobody, the small private nod of a promise made and meant.",
+	},
+	["arc_step.w15.fallen.001"] = {
+		"Nothing to say to this place. I only wanted it to see me on my feet.",
+		"I stand here a while and add no words. It already knows the story better than I do.",
+	},
+	["arc_step.w15.fallen.002"] = {
+		"stops where it happened and lets a long moment pass without a sound.",
+		"stands quite still at the spot, head lowered, until the quiet has done its work.",
+		"says nothing, and the place says nothing back.",
+	},
+	["arc_step.w15.fallen.003"] = {
+		"This time I know where the trouble lies. Kit in order, eyes open, and no surprises I could have avoided.",
+		"Same ground, better prepared. I check every buckle twice and count what I have left.",
+	},
+	["arc_step.w15.fallen.004"] = {
+		"goes over {g:his|her} gear piece by piece within sight of the spot, slow and thorough.",
+		"tightens a strap, shifts the weight of the pack, and studies the ground ahead with care.",
+		"takes stock of everything carried, quietly, as if the place were checking the inventory.",
+	},
+	["arc_step.w15.fallen.005"] = {
+		"I could stop here and dwell on it. I'd rather keep walking and dwell on what's ahead.",
+		"This place had its say. It doesn't get to set my pace.",
+		"Whatever happened here, it doesn't follow me past the next bend.",
+	},
+	["arc_step.w15.fallen.006"] = {
+		"passes the spot at an even pace and does not turn {g:his|her} head.",
+		"walks straight through where it happened, neither faster nor slower than anywhere else.",
+	},
+	["arc_step.w15.knownface.001"] = {
+		"I've never said it properly, so let me at least think it: thank you, {other}. For the steadiness, mostly.",
+		"A thank-you to {other}, unspoken but meant. For being where I expected, every time I needed it.",
+		"Gratitude toward {other}, small and sincere. Not for anything grand: for a face that was always there when I came by.",
+	},
+	["arc_step.w15.knownface.002"] = {
+		"parts from {other} with a nod a little deeper than usual, a thank-you folded small enough to pass unnoticed.",
+		"thanks {other} once more than the moment calls for, and means each one.",
+	},
+	["arc_step.w15.knownface.003"] = {
+		"I want to remember {other} just like this: the manner, the voice, the small habits. Nothing stays where it is forever.",
+		"Let me fix {other} in mind, exactly as now. One day I'll want the picture, and it should be a clear one.",
+		"Remembering {other} is the one thing I can give that costs nothing. I mean to give it well.",
+	},
+	["arc_step.w15.knownface.004"] = {
+		"looks at {other} a moment longer than usual, the way one looks at a room before leaving it.",
+		"studies the face of {other} quietly, as if committing it to memory.",
+	},
+	["arc_step.w15.knownface.005"] = {
+		"Courteous, brief, nothing more. It suits me, and I suspect it suits {other} too.",
+		"No need to make it more than it is with {other}. A greeting, a bit of business, and on my way.",
+	},
+	["arc_step.w15.knownface.006"] = {
+		"keeps to a nod and a word with {other}, courteous and exactly as far away as before.",
+		"leaves the familiarity with {other} where it is and, politely, adds nothing to it.",
+	},
+	["arc_step.w15.nemesis.001"] = {
+		"Two for {other}, none for me. I'm beginning to suspect the road is trying to tell me something.",
+		"The same foe, a second time. Either I'm learning nothing, or the lesson is longer than I thought.",
+		"Brought down by the same foe once more. Once is bad luck; this is starting to look like a pattern, and I'm in it.",
+	},
+	["arc_step.w15.nemesis.002"] = {
+		"gets back up with a grimace that is starting to feel familiar, and says the name through {g:his|her} teeth.",
+		"rises a second time and does not look surprised, which is worse.",
+	},
+	["arc_step.w15.nemesis.003"] = {
+		"Three times. There's no chance left in it. This ends when {other} stays down, and I mean to see it.",
+		"A third time on the ground for the same name. Very well: I swear it, quietly, to no one but myself.",
+		"Count it: three. From here on it isn't a run of bad luck. It's a promise with my name on it.",
+	},
+	["arc_step.w15.nemesis.004"] = {
+		"rises a third time and stands very still, like someone taking an oath with no witness but the ground.",
+		"closes one hand slowly into a fist, and keeps it closed for a long time.",
+	},
+	["arc_step.w15.path.001"] = {
+		"Thanks, then. This place let me start badly and never held it against me.",
+		"Whatever I am now began with a clumsy try, here. I'm grateful the ground was patient.",
+		"I owe this place for its patience. Starting badly is easier somewhere that doesn't mind.",
+	},
+	["arc_step.w15.path.002"] = {
+		"rests a hand on the ground for a moment, a thank-you with no one there to receive it.",
+		"bows {g:his|her} head toward the path behind, briefly, the way one thanks a host.",
+	},
+	["arc_step.w15.path.003"] = {
+		"From that first stretch to now. I couldn't put a figure on it, but my feet could make a decent guess.",
+		"Measured from here, the road behind me is longer than I thought. Shorter than what's left, I suspect.",
+	},
+	["arc_step.w15.path.004"] = {
+		"looks back along the road for a long moment, then ahead, as if weighing one against the other.",
+		"turns once toward where the road began, then away, a measuring look in both directions.",
+	},
+	["arc_step.w15.path.005"] = {
+		"Words would only make this smaller. Better to stand here and let it be what it is.",
+		"I could name what I feel here. I'd rather not shrink it.",
+	},
+	["arc_step.w15.path.006"] = {
+		"keeps quiet for a long while; the path asks nothing, and gets nothing.",
+		"stands without a word, hands still, until the moment has passed on its own.",
+	},
 }, "base_arcs")

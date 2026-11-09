@@ -4410,4 +4410,1567 @@ NS:AddTexts("enUS", {
 		"keeps scowling until the danger has passed, and only then lets it slip.",
 		"frowns hard through every moment of it, and the frown eases only once the wound has closed.",
 	},
+	["attack.w15.cry.001"] = {
+		"Everything I have, all together!",
+		"All of it! Nothing kept in reserve!",
+		"Holding back? Not now!",
+	},
+	["attack.w15.cry.002"] = {
+		"Face me, then!",
+		"I'm right here. Face me!",
+		"{target}! Look at me and face this!",
+	},
+	["attack.w15.cry.003"] = {
+		"There's no retreat in me!",
+		"Back? I've forgotten the way back!",
+	},
+	["attack.w15.cry.004"] = {
+		"Move, or be moved!",
+		"Give way, or be made to!",
+	},
+	["attack.w15.cry.005"] = {
+		"Here I stand, and from here I answer!",
+		"This is where I stand. Try moving me!",
+	},
+	["attack.w15.cry.006"] = {
+		"Test me, if you dare!",
+		"I dare you. Test me!",
+		"Prove me wrong, if you can!",
+	},
+	["attack.w15.cry.007"] = {
+		"With everything I am!",
+		"Heart and hands, all of it in!",
+	},
+	["attack.w15.cry.008"] = {
+		"Of all the ones to cross, you picked me!",
+		"Wrong choice of enemy!",
+		"Bad pick. Truly a bad pick!",
+	},
+	["attack.w15.cry.009"] = {
+		"Afraid? Not of you!",
+		"Fear? Ask me afterwards!",
+	},
+	["attack.w15.cry.010"] = {
+		"For everyone who can't fight back!",
+		"For all the ones who can't do this themselves!",
+		"For the ones with no one else!",
+	},
+	["attack.w15.cry.011"] = {
+		"I will not yield!",
+		"Yield? I don't know the word!",
+		"Yielding is for someone else!",
+	},
+	["attack.w15.cry.012"] = {
+		"To the last scrap of me!",
+		"Until there's nothing left to give!",
+		"All I've got, to the very end!",
+	},
+	["attack.w15.cry.013"] = {
+		"By my name and my will!",
+		"On my name, I answer this!",
+	},
+	["attack.w15.cry.014"] = {
+		"Bring all you've got! I brought more!",
+		"Show me your worst. Mine's on its way!",
+		"Your best against mine. Let's see!",
+	},
+	["attack.w15.cry.015"] = {
+		"One heart, one will, one moment!",
+		"A single will, and every bit of it in this!",
+	},
+	["attack.w15.cry.016"] = {
+		"Not an inch!",
+		"No ground given! None!",
+		"I hold right here!",
+	},
+	["attack.w15.cry.017"] = {
+		"Fortune favors the one who moves first!",
+		"Glory to the bold, and the bold go first!",
+	},
+	["attack.w15.cry.018"] = {
+		"Make it count! Make it loud!",
+		"Loud and certain! No half measures!",
+		"Let it be heard far and wide!",
+	},
+	["attack.w15.cry.019"] = {
+		"You don't get to win this!",
+		"This one isn't yours to win!",
+		"Not this one. Not to you!",
+	},
+	["attack.w15.cry.020"] = {
+		"Whatever you are, you're in my way!",
+		"I don't care what you are. Out!",
+	},
+	["attack.w15.cry.021"] = {
+		"Brace yourself!",
+		"Get ready however you can. I'm done getting ready!",
+	},
+	["attack.w15.cry.022"] = {
+		"This ends my way!",
+		"On my terms, or not at all!",
+		"I set the pace here!",
+	},
+	["attack.w15.cry.023"] = {
+		"{target}! Your turn to worry!",
+		"Worry, now. You've earned it.",
+	},
+	["attack.w15.cry.024"] = {
+		"My fate, my call!",
+		"Nobody decides this but me!",
+		"Nobody writes my ending but me!",
+	},
+	["attack.w15.cry.025"] = {
+		"This is what I'm for. This, right now.",
+		"All my choices came down to this second. Go.",
+	},
+	["attack.w15.cry.026"] = {
+		"Doubt comes later. No room for it here.",
+		"Doubts can queue up for afterwards.",
+	},
+	["attack.w15.cry.027"] = {
+		"Stop waiting for courage. Take it.",
+		"Courage isn't something I have. It's something I do. Do it.",
+	},
+	["attack.w15.cry.028"] = {
+		"lets out a short, fierce cry and goes all in.",
+		"shouts something wordless and holds nothing back.",
+		"roars, short and sharp, and commits completely.",
+	},
+	["attack.w15.cry.029"] = {
+		"lifts {g:his|her} chin in open defiance and commits to the move.",
+		"meets the moment head-on, defiant to the bone.",
+	},
+	["attack.w15.cry.030"] = {
+		"bares {g:his|her} teeth and does not hold back.",
+		"acts with a snarl and every scrap of will behind it.",
+		"commits with a growl, all teeth and no doubt.",
+	},
+	["attack.w15.cry.031"] = {
+		"calls out {g:his|her} own name like a challenge, and acts on it.",
+		"names {g:himself|herself} aloud, the way fighters of old did, and moves.",
+	},
+	["attack.w15.cry.032"] = {
+		"draws {g:himself|herself} up to full height and commits without reserve.",
+		"seems to grow taller for an instant, all will and no fear.",
+	},
+	["attack.w15.focus.001"] = {
+		"Wait. Wait. There.",
+		"Not this instant. The next. Now.",
+		"Hold... hold... yes.",
+	},
+	["attack.w15.focus.002"] = {
+		"Clear head, quick hands.",
+		"Nothing in my head but this.",
+	},
+	["attack.w15.focus.003"] = {
+		"goes perfectly still for an instant, then moves all at once.",
+		"pauses, judges, and then there is no gap between deciding and doing.",
+	},
+	["attack.w15.focus.004"] = {
+		"The opening is small. It doesn't need to be big.",
+		"A narrow gap is still a gap.",
+		"No need for a door when a crack will do.",
+	},
+	["attack.w15.focus.005"] = {
+		"Now. Exactly now.",
+		"That's the moment. Taking it.",
+	},
+	["attack.w15.focus.006"] = {
+		"Don't rush it. Don't wait too long. That's the whole art.",
+		"Too soon spoils it. Too late wastes it. Between them: now.",
+	},
+	["attack.w15.focus.007"] = {
+		"waits for the half-second that matters, and takes it.",
+		"lets every moment pass but the right one.",
+	},
+	["attack.w15.focus.008"] = {
+		"I waited. Now I don't.",
+		"Waiting's over.",
+		"Enough watching.",
+	},
+	["attack.w15.focus.009"] = {
+		"Count it. One, two... go.",
+		"On three. One. Two.",
+	},
+	["attack.w15.focus.010"] = {
+		"Eyes on the moment, not on the fear.",
+		"Fear can watch. It doesn't get a say.",
+		"Fear's allowed to sit in. Not to steer.",
+	},
+	["attack.w15.focus.011"] = {
+		"narrows {g:his|her} eyes, measures the moment, and acts.",
+		"takes the measure of the moment in one look, and moves.",
+	},
+	["attack.w15.focus.012"] = {
+		"Small and exact beats big and wild.",
+		"Precise is better than mighty.",
+		"Exact, not enormous.",
+	},
+	["attack.w15.focus.013"] = {
+		"Shoulders loose. Mind quiet. Move.",
+		"Let the tension drop. Then go.",
+	},
+	["attack.w15.focus.014"] = {
+		"acts without a trace of hurry, as if the moment had been booked.",
+		"moves as calmly as someone keeping an appointment.",
+	},
+	["attack.w15.focus.015"] = {
+		"It isn't strength that decides this. It's when.",
+		"Strength is the what. Timing is everything else.",
+	},
+	["attack.w15.focus.016"] = {
+		"Right on time.",
+		"Exactly when I meant to.",
+		"To the instant.",
+	},
+	["attack.w15.focus.017"] = {
+		"lets the noise of the fight fall away, and moves into the quiet it leaves.",
+		"hears nothing but the moment, and answers it.",
+	},
+	["attack.w15.focus.018"] = {
+		"Every fight has a rhythm. Find it, then break it.",
+		"Learn the beat. Then strike off it.",
+	},
+	["attack.w15.focus.019"] = {
+		"lets the moment ripen, then takes it whole.",
+		"waits until the moment is ready, and not an instant longer.",
+	},
+	["attack.w15.focus.020"] = {
+		"You hesitated. I noticed.",
+		"Saw that pause of yours.",
+	},
+	["attack.w15.focus.021"] = {
+		"sets aside every other thought, and moves.",
+		"clears {g:his|her} mind of everything else and acts.",
+	},
+	["attack.w15.focus.022"] = {
+		"Clean and exact.",
+		"Measured, and meant.",
+		"Neat. Just as planned.",
+	},
+	["attack.w15.focus.023"] = {
+		"There's always a gap. Find it first.",
+		"Somewhere there's an opening. Find it before it closes.",
+	},
+	["attack.w15.focus.024"] = {
+		"{target}. I see you.",
+		"I see you. That's enough.",
+	},
+	["attack.w15.focus.025"] = {
+		"stops weighing it and simply acts.",
+		"is done deliberating.",
+		"lets the deciding end, and the doing begin.",
+	},
+	["attack.w15.focus.026"] = {
+		"The patient choose the moment. The hasty get chosen by it.",
+		"Patience picks the hour; haste gets picked.",
+	},
+	["attack.w15.focus.027"] = {
+		"Patience ran out right on schedule.",
+		"I had exactly this much patience. Used it.",
+	},
+	["attack.w15.focus.028"] = {
+		"Less thinking. Trust the hands.",
+		"Thought gets in the way now. Let the hands decide.",
+	},
+	["attack.w15.focus.029"] = {
+		"Patience, then precision.",
+		"First the waiting, then this.",
+		"Wait, then act. Never the other way.",
+	},
+	["attack.w15.grim.001"] = {
+		"I don't enjoy this. I do it anyway.",
+		"Joyless work. It gets done.",
+	},
+	["attack.w15.grim.002"] = {
+		"I'm sorry. Truly.",
+		"Forgive me. Or don't.",
+		"I wish there were another way.",
+	},
+	["attack.w15.grim.003"] = {
+		"Someone has to act. It's me.",
+		"Nobody else is going to do it. So I do.",
+		"If not me, who? Exactly.",
+	},
+	["attack.w15.grim.004"] = {
+		"Every move like this costs something, even when it's right.",
+		"Right or not, this always costs a little.",
+	},
+	["attack.w15.grim.005"] = {
+		"acts with a hard, closed look, like someone paying a debt.",
+		"does it the way one settles an old account.",
+	},
+	["attack.w15.grim.006"] = {
+		"You or me. I pick me.",
+		"Only one walks away. I've decided which.",
+	},
+	["attack.w15.grim.007"] = {
+		"Steady hand, heavy heart.",
+		"Not glad. Not unsure.",
+	},
+	["attack.w15.grim.008"] = {
+		"They leave this part out of the songs.",
+		"Songs skip this bit. They're wise to.",
+	},
+	["attack.w15.grim.009"] = {
+		"This has to happen. Let it be quick.",
+		"If it must be, let it be swift.",
+	},
+	["attack.w15.grim.010"] = {
+		"Hurting is easy. Carrying it after is the work.",
+		"The act is quick. Carrying it takes longer.",
+	},
+	["attack.w15.grim.011"] = {
+		"does it without pleasure and without pause.",
+		"acts grimly, wasting nothing, enjoying nothing.",
+	},
+	["attack.w15.grim.012"] = {
+		"If it must be done, it must be done well.",
+		"Half-done is the cruelest way. All the way, then.",
+	},
+	["attack.w15.grim.013"] = {
+		"Necessary. Not kind. Necessary.",
+		"Not kind. Just necessary.",
+		"Needed. That's all it is.",
+	},
+	["attack.w15.grim.014"] = {
+		"I'll think about this later. Much later.",
+		"Feelings can wait their turn.",
+		"File it away. Deal with it after.",
+	},
+	["attack.w15.grim.015"] = {
+		"I can't let you go on.",
+		"This stops with me.",
+	},
+	["attack.w15.grim.016"] = {
+		"Mercy is a luxury. Not this moment's.",
+		"Mercy comes after. If there's an after.",
+	},
+	["attack.w15.grim.017"] = {
+		"sets {g:his|her} jaw and does what the moment asks.",
+		"tightens {g:his|her} jaw against what has to be done.",
+	},
+	["attack.w15.grim.018"] = {
+		"My hands don't ask why. I'll ask for them, afterwards.",
+		"The hands do it now. The questions come later.",
+	},
+	["attack.w15.grim.019"] = {
+		"No part of me wants this. All of me does it.",
+		"Unwilling, and doing it anyway.",
+	},
+	["attack.w15.grim.020"] = {
+		"Don't make me do this twice.",
+		"Once should be enough. Don't make it twice.",
+	},
+	["attack.w15.grim.021"] = {
+		"There's a price for this. I'll pay it.",
+		"Every hurt I hand out, I keep a copy.",
+	},
+	["attack.w15.grim.022"] = {
+		"acts quietly, like someone doing a task nobody else would take.",
+		"goes about it like an unwanted chore, without complaint.",
+	},
+	["attack.w15.grim.023"] = {
+		"The world asks hard things of whoever keeps standing.",
+		"Those who keep going get asked the hardest things.",
+	},
+	["attack.w15.grim.024"] = {
+		"Only way through is this.",
+		"No other way past. So.",
+	},
+	["attack.w15.grim.025"] = {
+		"I'd rather be anywhere else. I'm here.",
+		"Anywhere but this. And yet, this.",
+	},
+	["attack.w15.grim.026"] = {
+		"Make it clean. That's the only kindness left.",
+		"Quick and clean: the last courtesy I can offer.",
+	},
+	["attack.w15.grim.027"] = {
+		"does not look away from what {g:he|she} is doing.",
+		"keeps {g:his|her} eyes open through all of it.",
+	},
+	["attack.w15.grim.028"] = {
+		"Better me than someone gentler.",
+		"Best it's me. Someone kinder would hesitate.",
+	},
+	["attack.w15.grim.029"] = {
+		"{target}, this isn't hatred. Just need.",
+		"No hatred in this. Only need.",
+	},
+	["attack.w15.grim.030"] = {
+		"Remember how this feels. It keeps me honest.",
+		"Never let this get easy. That's the line.",
+	},
+	["attack.w15.grim.031"] = {
+		"Strength is a weight. Lift it with care.",
+		"Power wants a steady hand, not an eager one.",
+	},
+	["attack.w15.grim.032"] = {
+		"hesitates for the smallest instant, then goes through with it.",
+		"flinches inwardly, and acts without letting it show.",
+	},
+	["attack.w15.wit.001"] = {
+		"I'd apologize, but I'd be lying.",
+		"Sorry. That was a lie. Not sorry.",
+		"An apology? You'd know it was fake.",
+	},
+	["attack.w15.wit.002"] = {
+		"Is this a bad time? Good.",
+		"Catching you at a bad moment? Perfect.",
+		"Timing is everything. Yours is terrible.",
+	},
+	["attack.w15.wit.003"] = {
+		"Someone must have warned you. I hope.",
+		"Nobody told you about me? Rude of them.",
+	},
+	["attack.w15.wit.004"] = {
+		"Consider this a strongly worded letter.",
+		"Think of this as honest feedback.",
+		"Kindly accept this formal complaint.",
+	},
+	["attack.w15.wit.005"] = {
+		"My manners stepped out. It's just me now.",
+		"Manners? Left them somewhere. Pity.",
+	},
+	["attack.w15.wit.006"] = {
+		"Believe it or not, this is the gentle version.",
+		"This is me being nice. Imagine the rest.",
+		"I'm holding back. You can tell, right?",
+	},
+	["attack.w15.wit.007"] = {
+		"Begging is allowed. It won't help, but it's allowed.",
+		"Plead all you like. Very moving. Not to me.",
+	},
+	["attack.w15.wit.008"] = {
+		"I've had worse ideas. Not many, but some.",
+		"Worst idea of the hour? Possibly. Too late to fuss.",
+	},
+	["attack.w15.wit.009"] = {
+		"Somebody had to do this. Lucky me.",
+		"Of everyone in the world, it's me doing this.",
+	},
+	["attack.w15.wit.010"] = {
+		"Hello. Goodbye. In that order, hopefully.",
+		"Nice to meet you. Briefly.",
+		"Charmed, I'm sure. Farewell.",
+	},
+	["attack.w15.wit.011"] = {
+		"Pardon the interruption.",
+		"So sorry to interrupt. Not really.",
+		"Don't let me interrupt. Too late.",
+	},
+	["attack.w15.wit.012"] = {
+		"Courtesy is free. This isn't.",
+		"Kind words cost nothing. This costs plenty.",
+		"Politeness is cheap. I splurge on other things.",
+	},
+	["attack.w15.wit.013"] = {
+		"Tell me if this tickles.",
+		"Let me know if it tickles. For science.",
+	},
+	["attack.w15.wit.014"] = {
+		"In theory, I'm a peaceful sort. In theory.",
+		"Peace-loving, me. Mostly. Not now.",
+	},
+	["attack.w15.wit.015"] = {
+		"Last chance to surrender. That was it.",
+		"You had a chance to give up. It just passed.",
+		"Surrender was an option. Past tense.",
+	},
+	["attack.w15.wit.016"] = {
+		"If anyone asks, you started it.",
+		"For the record: your fault.",
+		"History will blame you. I'll see to it.",
+	},
+	["attack.w15.wit.017"] = {
+		"Diplomacy, the short version.",
+		"Negotiations, abridged.",
+		"Talks have concluded.",
+	},
+	["attack.w15.wit.018"] = {
+		"I'd stop, but I want to see how this ends.",
+		"Stopping now would spoil the ending.",
+	},
+	["attack.w15.wit.019"] = {
+		"My counteroffer!",
+		"Here's my counteroffer. Take it or take it.",
+		"Final offer!",
+	},
+	["attack.w15.wit.020"] = {
+		"No hard feelings. Hard everything else.",
+		"Nothing against you. Everything at you.",
+	},
+	["attack.w15.wit.021"] = {
+		"{target}, a word. Well, more of a gesture.",
+		"A quick word with you. Mostly gestures.",
+	},
+	["attack.w15.wit.022"] = {
+		"{target}, it's not about you. You just happen to be here.",
+		"This isn't about you. You're only standing where it's happening.",
+	},
+	["attack.w15.wit.023"] = {
+		"Applause can wait.",
+		"Hold the applause until the end.",
+		"Cheer later. Busy now.",
+	},
+	["attack.w15.wit.024"] = {
+		"Stay where you are. Saves everyone time.",
+		"Don't bother dodging. It's tiring for everyone.",
+	},
+	["attack.w15.wit.025"] = {
+		"grins in a way that promises nothing pleasant, and follows through.",
+		"smiles far too pleasantly for what comes next.",
+		"looks almost cheerful about it, which is worse.",
+	},
+	["attack.w15.wit.026"] = {
+		"mutters an apology nobody believes, least of all {g:himself|herself}.",
+		"says 'pardon' without a shred of conviction.",
+	},
+	["attack.w15.wit.027"] = {
+		"sighs at the whole business and gets on with it anyway.",
+		"rolls {g:his|her} eyes at the necessity, then acts.",
+	},
+	["attack.w15.wit.028"] = {
+		"Some bard will tell this all wrong, I bet.",
+		"Bards will get this part wrong. They always do.",
+		"When I retell this, I'll be taller.",
+	},
+	["attack.w15.wit.029"] = {
+		"If this goes badly, it was a feint.",
+		"Should this miss, I meant it to. Officially.",
+	},
+	["attack.w15.wit.030"] = {
+		"Look confident. Half of this is looking confident.",
+		"Act sure. Nobody can tell the difference.",
+		"Fake it boldly. The rest follows.",
+	},
+	["attack.w15.wit.031"] = {
+		"I'm told I'm charming. Let's test that.",
+		"People say I've got charm. This is it.",
+	},
+	["attack.w15.wit.032"] = {
+		"Somewhere, a quiet life is going on without me.",
+		"A quiet life exists. I've heard rumors.",
+	},
+	["attack.w15.wit.033"] = {
+		"does it with the air of someone signing a form in triplicate.",
+		"acts with bored efficiency, like a clerk stamping papers.",
+	},
+	["buff.w15.gift.001"] = {
+		"Take it with you. It asks nothing back.",
+		"Yours to carry, {target}. No debt comes with it.",
+		"Here. Nothing owed, now or later.",
+	},
+	["buff.w15.gift.002"] = {
+		"Whatever you walk into next, you walk into it with more than you had.",
+		"Something of mine goes along with you. Make it count.",
+		"You leave here carrying a little extra. Put it to work.",
+	},
+	["buff.w15.gift.003"] = {
+		"Here, {target}. For the moments I can't reach you in time.",
+		"This is for when I'm too far away to help.",
+		"For the times I'm looking the other way.",
+	},
+	["buff.w15.gift.004"] = {
+		"Let it hold where you falter.",
+		"May it carry you past the moment that would have put you on your knees.",
+		"Where your footing goes, may this stay.",
+	},
+	["buff.w15.gift.005"] = {
+		"I can't promise you'll walk away from what comes. I can make it likelier.",
+		"No promises. Only better odds, and they're yours.",
+		"Safe is beyond me. Safer, I can manage.",
+	},
+	["buff.w15.gift.006"] = {
+		"There. Now I can worry about you a little less.",
+		"Done, {target}. One less thing for me to fret over.",
+		"That's one worry I can put down.",
+	},
+	["buff.w15.gift.007"] = {
+		"Head high. The strength you're carrying isn't only your own now.",
+		"Back straight. You've got more than yourself holding you up.",
+		"Chin up. Some of the load is mine from here.",
+	},
+	["buff.w15.gift.008"] = {
+		"Given whole, and gladly.",
+		"No half measures. All of it, gladly given.",
+		"All of it. I don't do this by halves.",
+	},
+	["buff.w15.gift.009"] = {
+		"If it spares you a single stumble, it was worth giving.",
+		"Even one fall fewer would make it worth it.",
+		"Spare yourself one bad slip with it, and I'm repaid.",
+	},
+	["buff.w15.gift.010"] = {
+		"I can't go everywhere you go, {target}. This can.",
+		"Where I can't follow, this will.",
+		"Take it where my reach ends.",
+	},
+	["buff.w15.gift.011"] = {
+		"May nothing catch you unawares.",
+		"Let whatever comes find you better kept than before.",
+		"Be well kept, for as long as it lasts.",
+	},
+	["buff.w15.gift.012"] = {
+		"No need to ask. There never was.",
+		"You won't ever have to ask me for that.",
+		"Asking was never part of the price.",
+	},
+	["buff.w15.gift.014"] = {
+		"From my hands to your road, {target}.",
+		"What I had to give is on your road now.",
+	},
+	["buff.w15.gift.016"] = {
+		"Too many go without this when it matters. Not you.",
+		"Not everyone gets this when it counts. You do.",
+		"Some never had it when they needed it. You have it now.",
+	},
+	["buff.w15.gift.018"] = {
+		"Small, I know. Small help has carried people further than you'd think.",
+		"It's a little thing. Little things get people through.",
+	},
+	["buff.w15.gift.019"] = {
+		"I give it without counting. Spend it the same way.",
+		"Freely given, {target}. Spend it without counting.",
+	},
+	["buff.w15.gift.020"] = {
+		"I'll never know if it mattered. Most good things are given that way.",
+		"Whether it counted, I won't ever learn. That's the usual fate of help.",
+	},
+	["buff.w15.gift.021"] = {
+		"Easier to give it than to watch someone go without.",
+		"It costs me a moment. Not giving it could cost someone else far more.",
+		"Holding back would have been cheaper. And worse.",
+	},
+	["buff.w15.gift.022"] = {
+		"A little harder to hurt than a moment ago. I don't need a better reason.",
+		"One more person a shade harder to break. Reason enough.",
+		"Harder to hurt, by a little. My whole argument fits in that.",
+	},
+	["buff.w15.gift.023"] = {
+		"I can't stand in front of every blow. This is the next best thing.",
+		"I won't always be close enough to step in. This will have to do it for me.",
+	},
+	["buff.w15.gift.024"] = {
+		"Some of my effort, walking around on someone else's legs now. I like that.",
+		"A piece of my work, gone off in someone else's keeping. Good.",
+	},
+	["buff.w15.gift.025"] = {
+		"lowers {g:his|her} hand once it is done and gives a small nod, as if signing off on a piece of work.",
+		"lets {g:his|her} hand fall with a short nod, like closing a finished ledger.",
+	},
+	["buff.w15.gift.026"] = {
+		"gives {target} a long look, then a short nod: that will do.",
+		"looks the other over once, the way one checks a traveler's straps before the road.",
+	},
+	["buff.w15.gift.027"] = {
+		"finishes the small motion and steps back, as if nothing worth remarking had happened.",
+		"is done before anyone quite notices, which seems to be the point.",
+	},
+	["buff.w15.gift.028"] = {
+		"lifts a hand toward {target}, palm open, and holds it there a moment longer than needed.",
+		"turns toward the other for a moment, steady and unhurried, hand half raised.",
+	},
+	["buff.w15.gift.029"] = {
+		"straightens once the work is finished, with the look of someone who has just sent a good thing out into the world.",
+		"steps back, quietly pleased, like a cooper rolling out a sound barrel.",
+	},
+	["buff.w15.gift.030"] = {
+		"keeps an eye on the other a moment after, as if making sure the gift has settled.",
+		"waits a beat to see it take, then looks away, satisfied.",
+	},
+	["buff.w15.gift.031"] = {
+		"inclines {g:his|her} head toward the other, briefly, as one does at the end of a small rite.",
+		"gives a short bow toward the one just helped, unhurried and grave.",
+		"lowers {g:his|her} chin a fraction, as if closing a small ceremony.",
+	},
+	["buff.w15.gift.032"] = {
+		"nods once at the other, the way a captain nods to a sentry taking a post.",
+		"gives the other a brisk nod, like an officer handing a watch along.",
+	},
+	["buff.w15.gift.033"] = {
+		"smiles at {target}, small and crooked, and leaves it at that.",
+		"gives the other a crooked little smile, nothing more.",
+	},
+	["buff.w15.gift.034"] = {
+		"Strange, how giving it away leaves me feeling stronger.",
+		"I've less than before, and I feel richer. Odd arithmetic.",
+	},
+	["buff.w15.gift.035"] = {
+		"It won't be me who decides whether it was enough.",
+		"Enough or not, that gets settled somewhere I won't be.",
+	},
+	["buff.w15.ready.001"] = {
+		"Small things first. The big ones go easier when the small ones are done.",
+		"Do the little things properly and the large ones have less room to go wrong.",
+		"Get the small things right and the large ones start out with fewer cracks.",
+	},
+	["buff.w15.ready.002"] = {
+		"A moment to put myself in order. Everything else can wait that long.",
+		"Whatever is waiting for me can spare me this much.",
+		"First I tidy myself. The world can be tidied afterward, or not.",
+	},
+	["buff.w15.ready.003"] = {
+		"A small rite, done properly. There's comfort in doing a thing the right way.",
+		"A rite is only a habit that remembers why it exists.",
+		"Nothing grand about it. A few careful moments, the same care every time.",
+	},
+	["buff.w15.ready.004"] = {
+		"tightens a strap that didn't need tightening, and seems the better for it.",
+		"checks a fastening, then another, and lets {g:his|her} hands rest.",
+		"tugs every strap once, firmly, in an order that seems to matter to {g:him|her}.",
+	},
+	["buff.w15.ready.005"] = {
+		"closes {g:his|her} eyes for the space of a slow count, and opens them on a steadier world.",
+		"shuts {g:his|her} eyes briefly, and opens them no longer wandering.",
+		"lowers {g:his|her} eyelids and waits, listening to nothing, until whatever was rushing inside slows.",
+	},
+	["buff.w15.ready.006"] = {
+		"The noise in my head goes quiet. Only what's in front of me, and what comes next.",
+		"Fewer thoughts now. The right ones.",
+		"Everything that isn't needed steps aside, politely, and waits.",
+	},
+	["buff.w15.ready.007"] = {
+		"All in order. Let things begin when they will.",
+		"Each thing in its place, me included.",
+	},
+	["buff.w15.ready.008"] = {
+		"Haste is how things get forgotten. I'd rather be slow and complete.",
+		"Rushing it would save a moment and waste the point.",
+	},
+	["buff.w15.ready.009"] = {
+		"shakes out {g:his|her} hands one after the other, as if flicking off the last of a doubt.",
+		"opens and closes both hands slowly, until they agree with {g:him|her}.",
+	},
+	["buff.w15.ready.010"] = {
+		"Meeting the world unprepared is a kind of rudeness. To it, and to me.",
+		"Preparing is a courtesy I owe whatever I'll have to face.",
+		"Whatever I meet deserves my best. Even the things I'll have to fight.",
+	},
+	["buff.w15.ready.011"] = {
+		"This part I like: the short stillness when everything is done and nothing has started.",
+		"A pause between finished and begun. Brief, and all mine.",
+		"Nothing is asked of me in this little gap. I'll stand in it a moment longer.",
+	},
+	["buff.w15.ready.012"] = {
+		"lifts {g:his|her} chin a little, the way one does on hearing one's name called.",
+		"raises {g:his|her} head and holds it there, attentive, like someone waiting for a signal.",
+	},
+	["buff.w15.ready.013"] = {
+		"Good. That's one less thing to remember.",
+		"Done, and off my mind.",
+		"Seen to. Moving along.",
+	},
+	["buff.w15.ready.014"] = {
+		"Hands steady, eyes clear, everything where it should be. Good enough to begin.",
+		"Eyes, hands, footing. If those three agree, the rest usually follows.",
+		"Straps, footing, temper. All checked. That's the whole method.",
+	},
+	["buff.w15.ready.015"] = {
+		"lets {g:his|her} gaze settle on the middle distance and stay there, unhurried.",
+		"looks at nothing for a long moment, then at everything, sharper.",
+	},
+	["buff.w15.ready.016"] = {
+		"Whatever asks something of me next will find the answer already given.",
+		"Let the next thing ask. The answer is in place.",
+	},
+	["buff.w15.ready.017"] = {
+		"settles the weight of {g:his|her} pack and stands quiet for a beat, gathering {g:himself|herself}.",
+		"hitches {g:his|her} pack higher, tests the fit, and finds it right.",
+	},
+	["buff.w15.ready.018"] = {
+		"Nobody gets a warning before the worst. Best to be ready before there's a reason.",
+		"The worst never knocks first. Better to have answered already.",
+		"Trouble is rarely polite enough to wait. So I don't keep it waiting either.",
+	},
+	["buff.w15.ready.019"] = {
+		"Whatever comes, come. I've made room for you.",
+		"Ready for you, whatever you turn out to be.",
+	},
+	["buff.w15.ready.020"] = {
+		"Everything's a touch sharper: the edges of things, the small sounds.",
+		"Sounds a little clearer, edges a little cleaner. Or I'm simply paying attention.",
+		"The world sharpens, like a page held at last at the proper distance.",
+	},
+	["buff.w15.ready.021"] = {
+		"stands perfectly still for a moment, the way a bell hangs before it is struck.",
+		"goes quiet and upright, like a held note waiting for the rest of the tune.",
+	},
+	["buff.w15.ready.022"] = {
+		"This is how I keep my word to myself: a little care, whenever it matters.",
+		"A promise paid in small coin: I won't meet things carelessly.",
+		"I told myself I'd look after me. This is what that looks like, most of the time.",
+	},
+	["buff.w15.ready.023"] = {
+		"Steady now. Steady.",
+		"Easy does it. All in good time.",
+		"Slow and sure. Slow and sure.",
+	},
+	["buff.w15.ready.024"] = {
+		"A quick look inward. Nothing loose, nothing missing. Good.",
+		"I take stock the way a merchant counts the till: quickly, and twice.",
+		"Inventory of one: present, intact, mostly willing.",
+	},
+	["buff.w15.ready.025"] = {
+		"lets {g:his|her} shoulders fall loose, then brings them back up, set and easy.",
+		"drops {g:his|her} shoulders, loosens {g:his|her} jaw, and waits with an unhurried face.",
+	},
+	["buff.w15.ready.026"] = {
+		"Every preparation is a small way of saying: I mean to come through this.",
+		"Getting ready is how I tell the world I intend to see what comes after.",
+		"You only bother getting ready if you expect to be around afterward. I do.",
+	},
+	["buff.w15.ready.027"] = {
+		"runs a thumb along a strap, slow and deliberate, and seems to find what {g:he|she} was looking for.",
+		"pauses with eyes lowered, then looks up like someone who has settled an account.",
+	},
+	["buff.w15.ready.028"] = {
+		"Ready doesn't mean sure. It means I've done what I could.",
+		"I can't know what's coming. I can know I didn't skip this.",
+		"Certainty was never on offer. Readiness was, so I took it.",
+	},
+	["buff.w15.ready.029"] = {
+		"Now I can stop fussing.",
+		"That's the fussing over with.",
+		"Enough fiddling. Whatever's next, it gets me as I am.",
+	},
+	["buff.w15.ready.030"] = {
+		"I can feel my own edges better. Where I end, where the world begins.",
+		"Somehow I fit myself better. Odd thing to notice, but there it is.",
+		"Sturdier around the edges, quieter in the middle. A good arrangement.",
+	},
+	["buff.w15.ready.031"] = {
+		"blinks twice, slowly, and the restless look leaves {g:his|her} face.",
+		"gives a small shake of the head, as if clearing it of everything that doesn't matter.",
+	},
+	["buff.w15.ready.032"] = {
+		"If this is the last thing I do properly, at least it was done properly.",
+		"Whatever happens next, this much was done right.",
+	},
+	["buff.w15.ready.033"] = {
+		"counts something off silently on {g:his|her} fingers and seems to reach the end of the list.",
+		"ticks off a silent list on {g:his|her} fingers, then closes the hand.",
+	},
+	["buff.w15.steel.001"] = {
+		"Let whatever comes find me harder to move than it expected.",
+		"Push, if you like. I'm heavier than I was.",
+		"Whatever leans on me now will find it's leaning on a wall.",
+	},
+	["buff.w15.steel.002"] = {
+		"Whatever it is, I'm not moving for it.",
+		"Bring it. I've planted myself.",
+	},
+	["buff.w15.steel.003"] = {
+		"sets {g:his|her} weight low and even, like a post driven deep.",
+		"sinks {g:his|her} weight into the ground, as hard to shift as a milestone.",
+	},
+	["buff.w15.steel.004"] = {
+		"Tougher. Not much, but enough to make something regret the extra effort.",
+		"A shade harder to break. Let that be someone else's problem.",
+		"Something tougher has taken its place in me. Let the world wear itself out on it.",
+	},
+	["buff.w15.steel.005"] = {
+		"Afraid? A little. Afraid and ready is still ready.",
+		"The fear doesn't leave. It just has less room now.",
+		"Doubt still has a seat. It just isn't at the head of the table anymore.",
+	},
+	["buff.w15.steel.006"] = {
+		"raises {g:his|her} eyes, and something in them has stopped asking permission.",
+		"looks up with a steadier face than a moment ago, and keeps it.",
+	},
+	["buff.w15.steel.007"] = {
+		"Harder to stop now. Remember that.",
+		"Try me. See how far you get.",
+	},
+	["buff.w15.steel.008"] = {
+		"No bravado. Just a quiet sense that I'll be hard to knock down.",
+		"Nothing to boast about. Only a stubbornness grown a little thicker.",
+		"I'm not loud about it. I'm just harder to shift.",
+	},
+	["buff.w15.steel.009"] = {
+		"sets {g:his|her} jaw, and the set of it says more than any boast.",
+		"clenches {g:his|her} jaw and leaves it that way, stubborn as a barred door.",
+	},
+	["buff.w15.steel.010"] = {
+		"Whatever wants me down will have to earn it, every inch.",
+		"If I go down, it won't come cheap. That much is settled.",
+		"Going down? Not without sending the bill.",
+	},
+	["buff.w15.steel.011"] = {
+		"I stand. That's the whole of it.",
+		"Mind made up. Let the rest follow.",
+		"Firm. Let that be enough.",
+	},
+	["buff.w15.steel.012"] = {
+		"I'd rather be gentle. The world keeps voting otherwise.",
+		"Softness is a luxury. I'll afford it later, if there is a later.",
+		"Gentler days may come. Until then, this.",
+	},
+	["buff.w15.steel.013"] = {
+		"seems to take up a little more space than before, without moving at all.",
+		"seems more solid where {g:he|she} stands, the way old stone seems solid: without trying.",
+	},
+	["buff.w15.steel.014"] = {
+		"Something in me has pulled tight like a good knot. Let it hold.",
+		"Every loose thread pulled snug. Whatever tugs at me now will feel it.",
+	},
+	["buff.w15.steel.015"] = {
+		"Steel in the spine. Let's see what bends first.",
+		"Backbone in place. The rest can try its luck.",
+	},
+	["buff.w15.steel.016"] = {
+		"Someone may need me standing. Reason enough to make sure I will be.",
+		"Somebody might be counting on me to hold. I'd hate to let down a stranger.",
+		"If anyone ends up leaning on me, I'd better be worth leaning on.",
+	},
+	["buff.w15.steel.017"] = {
+		"closes both hands into fists, slowly, and opens them again with a quiet certainty.",
+		"makes two fists and lets them go, like someone weighing a vow.",
+	},
+	["buff.w15.steel.018"] = {
+		"The world doesn't soften for anyone. So I've stopped waiting and hardened instead.",
+		"Nothing out there will go easy on me. Fine. I won't go easy either.",
+		"The world plays rough. Now so do I, a little.",
+	},
+	["buff.w15.steel.019"] = {
+		"Harder than I look. And I look fairly hard.",
+		"Don't let the face fool anyone. There's more holding it up now.",
+	},
+	["buff.w15.steel.020"] = {
+		"I can still fall. I just mean to make falling harder work.",
+		"Nothing makes me unbreakable. But I can make breaking me a long job.",
+		"Breakable, yes. Just not on the first try, nor the second.",
+	},
+	["buff.w15.steel.021"] = {
+		"stands like a gatepost, unhurried and immovable.",
+		"waits where {g:he|she} is and lets things make the first move.",
+	},
+	["buff.w15.steel.022"] = {
+		"A quiet vow, renewed: I will not be easy to take from this world.",
+		"The small oath, renewed: whoever wants me gone will work for it.",
+	},
+	["buff.w15.steel.023"] = {
+		"Firm in body, firmer in mind.",
+		"Steady of hand and sure of foot.",
+	},
+	["buff.w15.steel.024"] = {
+		"My footing feels deeper, my temper steadier. A fair trade for a moment's effort.",
+		"Heavier step, harder edges. Let anything try me now.",
+	},
+	["buff.w15.steel.025"] = {
+		"goes very quiet, the hard sort of quiet that does not invite argument.",
+		"falls into a grim, settled silence, like a lid pressed down and held.",
+	},
+	["buff.w15.steel.026"] = {
+		"Harder to hurt. I owe myself that much, at least.",
+		"Toughening up is the kindest thing I can do for myself right now.",
+		"Being a little harder isn't unkindness. It's looking after myself.",
+	},
+	["buff.w15.steel.027"] = {
+		"If it has to be hard, then let me be harder.",
+		"Hard world, hard me. Fair's fair.",
+	},
+	["buff.w15.steel.028"] = {
+		"shifts {g:his|her} weight once to each side, testing a balance that will not give.",
+		"leans forward a fraction, as if into a strong push, and doesn't budge.",
+	},
+	["buff.w15.steel.029"] = {
+		"A hardness has come into me, and I like the feel of it.",
+		"I like this feeling. Like being made of something denser.",
+	},
+	["buff.w15.steel.030"] = {
+		"Stronger. Steadier. Not stopping.",
+		"Stronger now. Watch me prove it.",
+	},
+	["buff.w15.steel.031"] = {
+		"Whatever I'm asked to carry next, I'll carry it on firmer legs.",
+		"Firmer under me than before. Let the load be what it will.",
+	},
+	["buff.w15.steel.032"] = {
+		"bows {g:his|her} head for a moment, like someone accepting a heavy charge, and lifts it again unbent.",
+		"gives a single grave nod, as if agreeing to terms nobody else heard.",
+	},
+	["buff.w15.tease.001"] = {
+		"It makes you tougher, not cleverer. Plan accordingly.",
+		"Sturdier, yes. Wiser, no. That part's still on you.",
+		"Harder to dent. The thinking's still up to you.",
+	},
+	["buff.w15.tease.002"] = {
+		"Every excuse you had just went away.",
+		"There goes your last excuse, {target}.",
+		"So much for excuses. You're out of them.",
+	},
+	["buff.w15.tease.003"] = {
+		"I hereby declare you slightly harder to kill. Carry on.",
+		"By the authority of absolutely no one, you are improved.",
+	},
+	["buff.w15.tease.004"] = {
+		"Go and be impressive. I'll take the credit from here.",
+		"Off you go. If it goes well, remember who helped.",
+		"Dazzle them. I'll be quietly claiming my share.",
+	},
+	["buff.w15.tease.005"] = {
+		"It covers a lot. It doesn't cover stupidity.",
+		"Good against most things. Useless against bad ideas, {target}.",
+		"Protects against plenty. Not against your own plans.",
+	},
+	["buff.w15.tease.006"] = {
+		"If you fall over now, that's entirely on you.",
+		"From here on, any tumble is your own doing.",
+		"Trip now and I'm telling everyone it was carelessness.",
+	},
+	["buff.w15.tease.007"] = {
+		"Consider yourself improved. Slightly. Within reason.",
+		"Improved, {target}. Modestly. Don't let it go to your head.",
+	},
+	["buff.w15.tease.009"] = {
+		"Don't get used to it. I'm generous in short bursts.",
+		"Enjoy it. My kindness comes in small, rare doses.",
+		"Savor it. My charity runs out fast.",
+	},
+	["buff.w15.tease.010"] = {
+		"I've done what I can. Your judgment I can't fix.",
+		"The rest of you is seen to. The decisions are still yours, sadly.",
+	},
+	["buff.w15.tease.013"] = {
+		"Behold: you, but more so.",
+		"Witness {target}, as before, only sturdier.",
+	},
+	["buff.w15.tease.014"] = {
+		"Now if anything goes wrong, at least it won't be my fault.",
+		"My part's done. Whatever happens next, I'm blameless.",
+	},
+	["buff.w15.tease.017"] = {
+		"That's my good deed done. I'll be unbearable about it for a while.",
+		"That was my kind act. Expect gloating.",
+	},
+	["buff.w15.tease.018"] = {
+		"It wears off. Your bad habits won't. Rely on the right one.",
+		"This fades in a while. Your bad habits never do.",
+		"Temporary help for a permanent problem. Make it last.",
+	},
+	["buff.w15.tease.021"] = {
+		"Try not to need it. Nobody ever manages, but try.",
+		"Ideally, you'll never notice it working. That's never how it goes.",
+	},
+	["buff.w15.tease.022"] = {
+		"I'll want a full report on how well it worked.",
+		"Tell me later if it helped. In detail. With flattery.",
+		"Feedback welcome. Complaints, less so.",
+	},
+	["buff.w15.tease.023"] = {
+		"Off you go, {target}. Stay out of trouble, or at least out of the worst of it.",
+		"Try to dodge the worst of the trouble. Only the worst; I'm a realist.",
+	},
+	["buff.w15.tease.024"] = {
+		"brushes off {g:his|her} hands with great ceremony, as after heavy lifting.",
+		"makes a show of rolling {g:his|her} shoulders, as though that had been terribly hard work.",
+	},
+	["buff.w15.tease.025"] = {
+		"gives {target} a look that plainly says: you owe me one.",
+		"raises an eyebrow at the other, with the air of a creditor noting down a small loan.",
+	},
+	["buff.w15.tease.026"] = {
+		"bows with mock solemnity, as if handing over a crown instead of a small favor.",
+		"finishes the gesture with a flourish nobody asked for.",
+	},
+	["buff.w15.tease.027"] = {
+		"Done. Any disaster from here on has someone else's name on it.",
+		"Done. Now I can criticize their choices with a clear conscience.",
+	},
+	["buff.w15.tease.028"] = {
+		"Generous of me. I'll mention it at every opportunity.",
+		"One more kindness to bring up later, at the worst possible moment.",
+	},
+	["buff.w15.tease.029"] = {
+		"I should start charging for these. I won't. But I should.",
+		"Free, as usual. My generosity is a terrible business plan.",
+	},
+	["buff.w15.tease.030"] = {
+		"waggles a warning finger at {target}: don't squander it.",
+		"wags a finger at the other, half stern, half amused.",
+	},
+	["buff.w15.tease.031"] = {
+		"hums a few smug notes, plainly pleased with {g:himself|herself}.",
+		"looks rather too pleased with {g:himself|herself} for so small a favor.",
+	},
+	["buff.w15.tease.032"] = {
+		"They'll probably throw themselves at the first bad idea in sight. Sturdier, at least.",
+		"Now they can make the same mistakes, only more durably.",
+	},
+	["buff.w15.tease.033"] = {
+		"I give it away and then fret about how it's used. Ridiculous habit.",
+		"Handing it over is easy. Not checking how it's spent is the hard part.",
+	},
+	["buff.w15.wry.001"] = {
+		"Some people knock on wood. I do this. Wood has never once saved anyone.",
+		"Others touch a lucky charm. Mine at least does something.",
+		"My lucky charm is this, done properly. Rabbits' feet are for rabbits.",
+	},
+	["buff.w15.wry.002"] = {
+		"Lovely. Now I'm slightly harder to kill. Let the record show it.",
+		"One notch tougher. I'd like that on the record.",
+	},
+	["buff.w15.wry.003"] = {
+		"Boots laced, pack shut, self improved. The list gets shorter and I get smugger.",
+		"Item one: be harder to hurt. Done. Item two is 'don't do anything stupid.' Less reliable.",
+		"Checklist: pack, boots, self. Two out of three never complain.",
+	},
+	["buff.w15.wry.004"] = {
+		"looks down at {g:himself|herself} with frank approval, like someone inspecting a purchase that turned out well.",
+		"looks {g:himself|herself} over and seems pleased with the bargain.",
+		"gives {g:himself|herself} a small nod of approval, the kind usually saved for other people's work.",
+	},
+	["buff.w15.wry.005"] = {
+		"An improved me. Still perfectly capable of tripping over nothing.",
+		"Tougher, sharper, and exactly as likely to forget where I put things.",
+	},
+	["buff.w15.wry.006"] = {
+		"Improvements made. No refunds.",
+		"Upgraded. Results not guaranteed.",
+		"Slightly better than standard. The standard was low.",
+	},
+	["buff.w15.wry.007"] = {
+		"If I prepared for everything I'd never leave. So I prepare for most things and hope about the rest.",
+		"Complete preparation is a legend. Nearly complete, I can manage.",
+		"I could prepare for every possible disaster, or I could get on with things. I chose a bit of both.",
+	},
+	["buff.w15.wry.008"] = {
+		"pats {g:his|her} own arm twice, like someone reassuring a nervous mule.",
+		"gives {g:his|her} own shoulder a brisk, approving pat.",
+	},
+	["buff.w15.wry.009"] = {
+		"Me, prepared. Savor the rare sight.",
+		"Properly prepared, for once. Someone ought to paint this.",
+	},
+	["buff.w15.wry.010"] = {
+		"This is the bit where I feel very competent. It tends to last until the first surprise.",
+		"A brief and glorious feeling of having everything in hand. I'll treasure it.",
+		"For a moment I'm the most capable person I know. The moment passes.",
+	},
+	["buff.w15.wry.011"] = {
+		"Better. Not good, but better.",
+		"An improvement. Modest, but I'll settle for modest.",
+	},
+	["buff.w15.wry.012"] = {
+		"Too much preparation? No such thing. There's only 'not enough' and 'lucky.'",
+		"Overprepared is a word invented by people who got lucky.",
+		"Nobody ever lost anything by being too ready. Dignity, maybe.",
+	},
+	["buff.w15.wry.013"] = {
+		"pats down every pocket in turn, finds everything exactly where it was, and looks faintly disappointed.",
+		"checks the same buckle three times and finally lets it be.",
+	},
+	["buff.w15.wry.014"] = {
+		"Tougher than a moment ago. The world will take that as a challenge, I'm sure.",
+		"Each time I get a little stronger, the world seems to hear about it.",
+		"Stronger now, so naturally something stronger is on its way. That's how this works.",
+	},
+	["buff.w15.wry.015"] = {
+		"All this effort, and I still have to do the actual work.",
+		"I feel very impressive. Whether I look it is another matter.",
+	},
+	["buff.w15.wry.016"] = {
+		"Whatever wants a piece of me will find the piece harder to chew.",
+		"Anything after a piece of me now gets a tougher piece. Enjoy.",
+	},
+	["buff.w15.wry.017"] = {
+		"Cheaper than a healer and quicker than regret.",
+		"It costs me a moment. Skipping it could cost far more, and in worse coin.",
+		"The cheapest bargain I'll make all day.",
+	},
+	["buff.w15.wry.018"] = {
+		"strikes a brief heroic pose, holds it, and drops it before anyone can notice.",
+		"stands tall in a way clearly meant to be impressive, and very nearly is.",
+	},
+	["buff.w15.wry.019"] = {
+		"Sharper already. Shame about the jokes.",
+		"Sharper than before, which isn't saying much, but I'll say it anyway.",
+	},
+	["buff.w15.wry.020"] = {
+		"I've improved my odds. Odds are still odds, but I'd rather argue from up here.",
+		"The odds tipped a hair in my favor. Enough hairs make a rope.",
+		"Not a guarantee. A thumb on the scale, and I'll take a thumb.",
+	},
+	["buff.w15.wry.021"] = {
+		"Done. One less excuse for a heroic death.",
+		"Done. That's one fewer embarrassing way to go.",
+	},
+	["buff.w15.wry.022"] = {
+		"I'll admit I enjoy this part. It's the one bit of any day that goes exactly to plan.",
+		"The one part of things that reliably goes as planned. I savor it.",
+		"Getting ready is the only chore I never mind.",
+	},
+	["buff.w15.wry.023"] = {
+		"works through {g:his|her} knuckles until each one has cracked, then looks sheepish about the racket.",
+		"cracks {g:his|her} knuckles with great ceremony and no obvious purpose.",
+	},
+	["buff.w15.wry.024"] = {
+		"A note to the me of a few moments from now: you're welcome. Don't waste it.",
+		"A small gift to my future self, who never says thank you.",
+	},
+	["buff.w15.wry.025"] = {
+		"Prepared for anything. Well, most things. Some things.",
+		"Ready for anything, within reason. Mostly within reason.",
+	},
+	["buff.w15.wry.026"] = {
+		"Nobody hands out medals for getting ready. They should. It's the part I reliably get right.",
+		"Getting ready deserves more praise than it gets. Ask anyone who skipped it.",
+		"Preparation: unglamorous, unthanked, and the reason a lot of people are still about.",
+	},
+	["buff.w15.wry.027"] = {
+		"hums a few tuneless notes to {g:himself|herself}, oddly pleased.",
+		"glances around as though hoping someone saw that, then pretends not to care.",
+	},
+	["buff.w15.wry.028"] = {
+		"If anything goes wrong now, at least it won't be because I skipped the obvious.",
+		"Whatever goes wrong next, it won't be this. Something else, surely. Not this.",
+	},
+	["buff.w15.wry.029"] = {
+		"Now, where was I? Ah yes. About to be impressive.",
+		"Where was I? Right: about to get serious.",
+	},
+	["buff.w15.wry.030"] = {
+		"My knees are unconvinced. The rest of me is fully on board.",
+		"Most of me feels ready. The knees have asked to be left out of it.",
+		"Everything is prepared except my enthusiasm. That one's still putting its boots on.",
+	},
+	["buff.w15.wry.031"] = {
+		"Feeling formidable. Don't ask me to prove it just yet.",
+		"Formidable, at least on the inside. The outside may take a moment to catch up.",
+	},
+	["buff.w15.wry.032"] = {
+		"I'd feel naked without it. Strange thing to say about something so small.",
+		"Going without it would feel like leaving with one boot on.",
+	},
+	["buff.w15.wry.033"] = {
+		"inspects one forearm, then the other, like someone expecting compliments.",
+		"flexes an arm and studies it critically, as if it ought to look more impressive than it does.",
+	},
+	["rezother.w15.call.001"] = {
+		"Back to the ache and the noise. I'm sorry; it's all I have to offer.",
+		"I'm calling you back into all this mess. Forgive me for it.",
+	},
+	["rezother.w15.call.002"] = {
+		"Take your time. Nobody's rushing you.",
+		"No hurry, {target}. I'll wait right here.",
+		"Slowly does it. There's no prize for speed.",
+	},
+	["rezother.w15.call.003"] = {
+		"Get up if you want it. I'll wait for your answer.",
+		"The choice is yours. I've done the asking.",
+		"Come if you will. I won't drag you.",
+	},
+	["rezother.w15.call.004"] = {
+		"I'm not carrying your things, {target}. Come and get them yourself.",
+		"Your gear's still here. I'm not hauling it for you.",
+		"Everything you dropped is still lying here. So are you. Fix one of those.",
+	},
+	["rezother.w15.call.005"] = {
+		"Nobody said you could stop.",
+		"Who told you that you could lie down? Not me.",
+		"I don't remember giving anyone leave to quit.",
+	},
+	["rezother.w15.call.006"] = {
+		"By your name I call you. {target}, turn back.",
+		"I call you by name, and I call you here.",
+		"Your name, said plainly: answer to it.",
+	},
+	["rezother.w15.call.007"] = {
+		"I know it's quiet where you are. I'm asking anyway.",
+		"It must be peaceful there. I'm sorry to ask you to leave it.",
+		"Whatever stillness you've found, I'm asking you to give it up.",
+	},
+	["rezother.w15.call.008"] = {
+		"The end came close. I won't hand you over to it.",
+		"I'm not giving you up to that. Not while I'm here to argue.",
+		"It reached for you. I'm reaching too, and I hold on longer.",
+	},
+	["rezother.w15.call.009"] = {
+		"Can you hear me? Just the sound of my voice. Come toward it.",
+		"Hear that? It's me. Head this way.",
+	},
+	["rezother.w15.call.010"] = {
+		"Lie there much longer and someone will start charging you rent.",
+		"That spot's taken, {target}. Up you get.",
+	},
+	["rezother.w15.call.011"] = {
+		"There's a great deal left for you to do. Come and do it.",
+		"Too much unfinished, {target}. Rise and see to it.",
+		"Half your work is still waiting. It won't do itself.",
+	},
+	["rezother.w15.call.012"] = {
+		"Dying was a poor idea. Let's undo it.",
+		"That was a mistake. Allow me to reverse it.",
+		"Let's call that a rehearsal and try the real thing.",
+	},
+	["rezother.w15.call.013"] = {
+		"Turn around. Whatever you were walking toward can wait.",
+		"Not that way. Whatever's at the end of it will keep.",
+		"Wrong direction. Back this way.",
+	},
+	["rezother.w15.call.014"] = {
+		"Open your eyes when you can, not before.",
+		"Eyes when you're ready, {target}. Not a moment sooner.",
+	},
+	["rezother.w15.call.015"] = {
+		"Lying down on the job. I've seen better work.",
+		"Is this a nap? It had better be a nap.",
+		"Sleeping through all this? Impressive. Stop it.",
+	},
+	["rezother.w15.call.016"] = {
+		"What fell may stand again, if it wills.",
+		"Stand, if you choose. The ground has no claim on you.",
+	},
+	["rezother.w15.call.017"] = {
+		"I'd understand if you stayed there. I'm asking you not to.",
+		"Staying would be easier. Choose the hard way, {target}.",
+	},
+	["rezother.w15.call.018"] = {
+		"I'm not done with you, {target}. Nobody is.",
+		"Too early to be done with you. Far too early.",
+	},
+	["rezother.w15.call.019"] = {
+		"I'm told it's peaceful over there. Dull, though. Dreadfully dull.",
+		"Heard it's restful over there. You'd hate it.",
+	},
+	["rezother.w15.call.020"] = {
+		"Hey. Over here. Look for me.",
+		"This side, {target}. Look for my face.",
+		"Find me. I'm the one making all the fuss.",
+	},
+	["rezother.w15.call.021"] = {
+		"Death had its grip on you. Let's see it hold on now.",
+		"Let go of the dark. I'm pulling the other way.",
+		"Fight it. I'm already fighting it for you.",
+	},
+	["rezother.w15.call.022"] = {
+		"calls {target} low and steady, the way one calls across a crowded room.",
+		"says the name once, quietly, then a little louder.",
+	},
+	["rezother.w15.call.023"] = {
+		"speaks low over the fallen, unhurried, as if there were all the time in the world.",
+		"keeps talking to the still form, softly and without pause.",
+	},
+	["rezother.w15.call.024"] = {
+		"glares down at the fallen as if dying had been a personal insult.",
+		"scowls at the still form, plainly taking the whole thing personally.",
+	},
+	["rezother.w15.call.025"] = {
+		"kneels close to the fallen and says something too low to carry.",
+		"bends low, with words meant for one listener only.",
+	},
+	["rezother.w15.call.026"] = {
+		"You'll do anything to get out of work, won't you?",
+		"Dying just to skip the dull part. Clever. Not allowed.",
+	},
+	["rezother.w15.call.027"] = {
+		"Hear me, {target}: the way back is open, and it is short.",
+		"The way back is short. Walk it.",
+	},
+	["rezother.w15.call.028"] = {
+		"I've got you. Wherever you are, I've got hold of you.",
+		"Feel that? That's me, holding on.",
+		"Whatever's pulling at you, I'm pulling harder.",
+	},
+	["rezother.w15.call.029"] = {
+		"bows {g:his|her} head over the fallen and begins, slow and deliberate, as if setting each word in place.",
+		"kneels, eyes shut, and begins the long work of calling someone back.",
+	},
+	["rezother.w15.vigil.001"] = {
+		"Now the waiting. Nobody warns you about the waiting.",
+		"The asking is done. The waiting is the hard part.",
+		"Done asking. Now the long part.",
+	},
+	["rezother.w15.vigil.002"] = {
+		"I can only ask. Death decides how much it gives back.",
+		"Asking is all I can do. The answer isn't mine.",
+		"I make the request. Whether it's granted was never up to me.",
+	},
+	["rezother.w15.vigil.003"] = {
+		"A strange trade. Death took something, and I'm asking for it back.",
+		"Odd sort of bargaining, this. I have nothing death wants, and I ask anyway.",
+	},
+	["rezother.w15.vigil.004"] = {
+		"If they choose to stay down, I'll understand. I'll hate it, but I'll understand.",
+		"Some don't want to come back. I'd respect that. I'd hate it too.",
+	},
+	["rezother.w15.vigil.005"] = {
+		"Hands, stay steady. This is no time to shake.",
+		"Steady hands. Steadier. Not now, no shaking now.",
+		"My hands want to tremble. They can do it later.",
+	},
+	["rezother.w15.vigil.006"] = {
+		"Calling someone back takes something out of whoever does the calling.",
+		"It costs. It never says how much, but it costs.",
+		"Something leaves me with every call. I'll count it later.",
+	},
+	["rezother.w15.vigil.007"] = {
+		"Death keeps poor records. Sometimes it hands things back without checking.",
+		"With luck, death won't notice the paperwork's gone missing.",
+	},
+	["rezother.w15.vigil.008"] = {
+		"I wonder what they'll remember of where they've been.",
+		"Wherever they wandered, I hope they bring none of it back.",
+		"There's a place none of the living sees clearly. I'm asking someone to leave it.",
+	},
+	["rezother.w15.vigil.009"] = {
+		"Gone is a heavy word. I'm trying to make it a short one.",
+		"Gone, for now. I'd like 'for now' to be very brief.",
+	},
+	["rezother.w15.vigil.010"] = {
+		"Not everyone can be called back. I'm asking as if this one can.",
+		"Some can't be reached. I'll act as though this one can.",
+	},
+	["rezother.w15.vigil.011"] = {
+		"Of everything I can do, this still feels the most like cheating.",
+		"Undoing a death. Somewhere, someone must be filing a complaint.",
+	},
+	["rezother.w15.vigil.012"] = {
+		"Death will want a word with me one of these days.",
+		"Someday death and I are going to have a long talk about this.",
+	},
+	["rezother.w15.vigil.013"] = {
+		"Somewhere between here and there, someone is making up their mind. I can't hurry it.",
+		"Someone is deciding, far from here. No hurrying that.",
+	},
+	["rezother.w15.vigil.014"] = {
+		"Whatever this takes out of me, it's cheap at the price.",
+		"It'll leave me drained. A fair price, and I'd pay double.",
+	},
+	["rezother.w15.vigil.015"] = {
+		"Death is fast. I'm stubborn. Let's see which counts for more.",
+		"Quick as death is, stubbornness might be quicker.",
+	},
+	["rezother.w15.vigil.016"] = {
+		"The stillness is the worst of it. Anything else I could fight.",
+		"That stillness. I'd take any noise over it.",
+		"Stillness like that is the one thing I can't argue with.",
+	},
+	["rezother.w15.vigil.017"] = {
+		"I'll scold them later. First they have to be here to hear it.",
+		"The lecture can wait until there's someone to give it to.",
+	},
+	["rezother.w15.vigil.018"] = {
+		"goes very quiet beside the fallen, the kind of quiet that is asking for something.",
+		"falls silent by the still form, a silence with a question in it.",
+	},
+	["rezother.w15.vigil.019"] = {
+		"rubs tired eyes once, then bends to the work again.",
+		"blinks hard against the weariness and keeps going.",
+		"presses the heel of a hand to {g:his|her} eyes for a moment, and goes on.",
+	},
+	["rezother.w15.vigil.020"] = {
+		"does not look away from the fallen, not for a moment.",
+		"keeps both eyes on the still form, as if looking away might lose it.",
+		"watches the stillness the way a sentry watches a road.",
+	},
+	["rezother.w15.vigil.021"] = {
+		"stays down on one knee by the fallen, patient and a little more tired than before.",
+		"remains kneeling, unmoving, as patient as a stone.",
+	},
+	["rezother.w15.vigil.022"] = {
+		"lets the effort go and simply waits, very still, listening.",
+		"finishes, and waits without a sound for whatever comes next.",
+	},
+	["rezother.w15.vigil.023"] = {
+		"rests a hand on the fallen one's shoulder, lightly, as if not to startle a sleeper.",
+		"lays a hand on a still shoulder, gentle as with someone dozing.",
+	},
+	["rezother.w15.vigil.024"] = {
+		"taps a foot, waiting, with the look of someone kept too long at a door.",
+		"waits with folded arms, the very picture of patience under strain.",
+	},
+	["rezother.w15.vigil.025"] = {
+		"Any moment. Any moment now.",
+		"Soon. It has to be soon.",
+		"Now. Let it be now.",
+	},
+	["rezother.w15.vigil.026"] = {
+		"What if nothing answers? Don't think it. Wait.",
+		"Don't wonder whether it worked. Just wait.",
+	},
+	["rezother.w15.vigil.027"] = {
+		"stands over {target} like a gate that has decided not to open.",
+		"takes up a place beside the fallen and refuses to give it up.",
+	},
+	["rezother.w15.vigil.028"] = {
+		"Right now, nothing matters but the one in front of me.",
+		"For this moment, nobody in the world matters more.",
+	},
+	["rezother.w15.vigil.029"] = {
+		"One day it'll be me down there, and someone else doing the asking. I hope they're patient.",
+		"Someday the roles will swap. I hope whoever kneels by me is just as stubborn.",
+	},
+	["rezother.w15.vigil.030"] = {
+		"leans in close to the fallen, as if listening for an answer meant for one person only.",
+		"tilts {g:his|her} head toward the still form, listening hard.",
+	},
+	["travel.w15.away.001"] = {
+		"One moment here, the next somewhere else, and no road in between to tell me how far I've gone.",
+		"The world lets go of me on one side and catches me on the other. I'll get used to it. Probably.",
+		"No leagues walked, no sore feet to show for it. It feels a little like cheating, and I don't mind at all.",
+	},
+	["travel.w15.away.002"] = {
+		"blurs at the edges for a moment, then is simply gone, leaving the spot looking faintly surprised.",
+		"thins out like a reflection in a stirred pond, and the place goes on without {g:him|her}.",
+		"goes still, then goes elsewhere, with no step taken in between.",
+	},
+	["travel.w15.away.003"] = {
+		"Can't stay. Places to be, and I'd rather not walk to them.",
+		"Off I go. The long way round is for other people.",
+	},
+	["travel.w15.away.004"] = {
+		"Somewhere back there is a road I've just skipped entirely. It'll cope.",
+		"All the distance between here and there, and I simply decline to cross it. Rude, but efficient.",
+	},
+	["travel.w15.away.005"] = {
+		"is there, and then the world closes over the place where {g:he|she} stood like water over a dropped stone.",
+		"leaves without leaving tracks, the way the wise ones of old tales were said to travel.",
+	},
+	["travel.w15.away.006"] = {
+		"Walking teaches you the land. This teaches you nothing, but it's fast, and right now fast wins.",
+		"I'll miss what I would have seen on the way. Then again, I'll also miss the way.",
+	},
+	["travel.w15.away.007"] = {
+		"sways for an instant, like someone who missed a stair in a dream, and then the world tips {g:him|her} elsewhere.",
+		"has, for one odd moment, the look of someone nowhere at all, and seems surprisingly at peace with that.",
+	},
+	["travel.w15.home.001"] = {
+		"The stone pulls, and the world starts to feel like a painting of itself. Somewhere, a bed I've paid for is waiting.",
+		"A short wait with the stone in my hand, and then the inn, wherever I last left my name.",
+		"Back to where my hearth is set. Not home, maybe, but a door that knows me.",
+	},
+	["travel.w15.home.002"] = {
+		"closes {g:his|her} fingers around the hearthstone and waits, eyes half shut, while the world loosens its grip.",
+		"holds the hearthstone in a loose fist and stands very still, like someone listening for a name called from far off.",
+		"weighs the hearthstone in one palm, then closes {g:his|her} hand on it and lets the pull take over.",
+	},
+	["travel.w15.home.003"] = {
+		"That's enough adventure for now. Bed.",
+		"Off to a bed I've already paid for. Best decision I've made all week.",
+		"The inn's calling. I'd be rude not to answer.",
+	},
+	["travel.w15.home.004"] = {
+		"All that ground covered on foot, and the stone takes it back in a moment. I try not to think about it too hard.",
+		"Every league I walked to get here, undone in a few moments of waiting. It's a gift or an insult, and I'm too tired to decide.",
+	},
+	["travel.w15.home.005"] = {
+		"takes one last look around, as if to remember where {g:he|she} left off, and lets the hearthstone do the rest.",
+		"pockets a few loose things in a hurry, the hearthstone already humming in the other hand.",
+	},
+	["travel.w15.home.006"] = {
+		"I'm leaving in the middle of a thought. I'll find the other half of it at the inn, probably sitting in my chair.",
+		"Odd to be pulled toward a place just because I once told a stone to remember it.",
+	},
+	["travel.w15.home.007"] = {
+		"Done here. Back to the inn.",
+		"That'll do for this stretch. Hearth it is.",
+	},
+	["travel.w15.home.008"] = {
+		"A stone no bigger than a fist, and all that distance gives way to it. Small things hold the oddest powers.",
+		"The stone remembers one place in all the world for me. It's more than most things remember.",
+		"A strange old bargain: I carry the stone, and the stone carries me.",
+	},
 }, "base_spells")

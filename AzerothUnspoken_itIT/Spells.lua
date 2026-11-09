@@ -4410,4 +4410,1567 @@ NS:AddTexts("itIT", {
 		"tiene il broncio finché il pericolo non passa, e solo allora lo molla.",
 		"aggrotta la fronte per tutto il tempo, e si rilassa soltanto quando la ferita si chiude.",
 	},
+	["attack.w15.cry.001"] = {
+		"Tutto quello che ho, tutto insieme!",
+		"Tutto! Senza tenere niente da parte!",
+		"Risparmiarmi? Non adesso!",
+	},
+	["attack.w15.cry.002"] = {
+		"E allora affrontami!",
+		"Sono qui. Affrontami!",
+		"{target}! Guardami, e affronta questo!",
+	},
+	["attack.w15.cry.003"] = {
+		"In me non c'è ritirata!",
+		"Indietro? Ho dimenticato la strada per tornare!",
+	},
+	["attack.w15.cry.004"] = {
+		"Spostati, o ti sposto io!",
+		"Cedi il passo, o te lo faccio cedere io!",
+	},
+	["attack.w15.cry.005"] = {
+		"Qui sto, e da qui rispondo!",
+		"Io sto qui. Prova a spostarmi!",
+	},
+	["attack.w15.cry.006"] = {
+		"Mettimi alla prova, se hai il coraggio!",
+		"Ti sfido. Mettimi alla prova!",
+		"Dimostrami che sbaglio, se ci riesci!",
+	},
+	["attack.w15.cry.007"] = {
+		"Con tutto quello che sono!",
+		"Cuore e mani, tutti e due dentro!",
+	},
+	["attack.w15.cry.008"] = {
+		"Fra tutti quelli da sfidare, hai scelto me!",
+		"Hai sbagliato nemico!",
+		"Pessima scelta. Davvero pessima!",
+	},
+	["attack.w15.cry.009"] = {
+		"Paura? Non di te!",
+		"Paura? Chiedimelo dopo!",
+	},
+	["attack.w15.cry.010"] = {
+		"Per tutti quelli che non possono difendersi!",
+		"Per chi non è in grado di farlo da sé!",
+		"Per chi non ha nessun altro!",
+	},
+	["attack.w15.cry.011"] = {
+		"Non cedo!",
+		"Cedere? Non conosco la parola!",
+		"Arrendersi è roba per qualcun altro!",
+	},
+	["attack.w15.cry.012"] = {
+		"Fino all'ultimo briciolo di me!",
+		"Finché mi resta qualcosa da dare!",
+		"Tutto ciò che ho, fino alla fine!",
+	},
+	["attack.w15.cry.013"] = {
+		"Sul mio nome e sulla mia volontà!",
+		"Sul mio nome, rispondo a questo!",
+	},
+	["attack.w15.cry.014"] = {
+		"Tira fuori tutto quello che hai! Io ne ho di più!",
+		"Mostrami il tuo peggio. Il mio sta arrivando!",
+		"Il tuo meglio contro il mio. Vediamo!",
+	},
+	["attack.w15.cry.015"] = {
+		"Un cuore, una volontà, un istante!",
+		"Una volontà sola, e qui dentro c'è tutta!",
+	},
+	["attack.w15.cry.016"] = {
+		"Nemmeno un palmo!",
+		"Non regalo terreno a nessuno!",
+		"Io resto qui, e tengo!",
+	},
+	["attack.w15.cry.017"] = {
+		"La fortuna aiuta chi si muove per primo!",
+		"Gloria a chi osa, e chi osa non aspetta!",
+	},
+	["attack.w15.cry.018"] = {
+		"Che valga! E che si senta!",
+		"Forte e chiaro! Niente mezze misure!",
+		"Che si senta fin lontano!",
+	},
+	["attack.w15.cry.019"] = {
+		"Questa non la vinci tu!",
+		"Questa partita non è tua!",
+		"Non questa. Non a te!",
+	},
+	["attack.w15.cry.020"] = {
+		"Qualunque cosa tu sia, sei sulla mia strada!",
+		"Non mi importa cosa sei. Fuori!",
+	},
+	["attack.w15.cry.021"] = {
+		"Tieniti forte!",
+		"Preparati come puoi. Io ho finito di prepararmi!",
+	},
+	["attack.w15.cry.022"] = {
+		"Finisce a modo mio!",
+		"Alle mie condizioni, o niente!",
+		"Il ritmo, qui, lo detto io!",
+	},
+	["attack.w15.cry.023"] = {
+		"{target}! Ora tocca a te preoccuparti!",
+		"Preoccupati, adesso. Te lo sei guadagnato.",
+	},
+	["attack.w15.cry.024"] = {
+		"Il mio destino lo decido io!",
+		"Qui non decide nessuno tranne me!",
+		"Il mio finale lo scrivo io!",
+	},
+	["attack.w15.cry.025"] = {
+		"È per questo che ci sono. Per questo, adesso.",
+		"Ogni mia scelta si riduceva a questo istante. Vai.",
+	},
+	["attack.w15.cry.026"] = {
+		"I dubbi vengono dopo. Qui non c'è posto.",
+		"I dubbi facciano la fila per dopo.",
+	},
+	["attack.w15.cry.027"] = {
+		"Basta aspettare il coraggio. Prendilo.",
+		"Il coraggio non si ha: si fa. Fallo.",
+	},
+	["attack.w15.cry.028"] = {
+		"lancia un grido breve e feroce, e ci mette tutto.",
+		"urla qualcosa senza parole e non si risparmia.",
+		"ruggisce, breve e secco, e si impegna fino in fondo.",
+	},
+	["attack.w15.cry.029"] = {
+		"alza il mento in aperta sfida e non arretra di un passo.",
+		"affronta il momento a testa alta, senza esitare.",
+	},
+	["attack.w15.cry.030"] = {
+		"digrigna i denti e non si trattiene.",
+		"agisce con un ringhio, e dietro tutta la volontà che ha.",
+		"si impegna con un ringhio: denti in vista, nessun dubbio.",
+	},
+	["attack.w15.cry.031"] = {
+		"grida il proprio nome come una sfida, e passa ai fatti.",
+		"pronuncia ad alta voce il proprio nome, come facevano i combattenti di un tempo, e si muove.",
+	},
+	["attack.w15.cry.032"] = {
+		"si raddrizza in tutta la sua statura e si impegna senza riserve.",
+		"per un istante sembra {g:più alto|più alta}: volontà pura, nessuna paura.",
+	},
+	["attack.w15.focus.001"] = {
+		"Aspetta. Aspetta. Lì.",
+		"Non questo istante. Il prossimo. Adesso.",
+		"Aspetta... ancora... sì.",
+	},
+	["attack.w15.focus.002"] = {
+		"Testa sgombra, mani svelte.",
+		"In testa, nient'altro che questo.",
+	},
+	["attack.w15.focus.003"] = {
+		"resta immobile un istante, poi scatta di colpo.",
+		"si ferma, valuta, e poi tra decidere e fare non c'è più spazio.",
+	},
+	["attack.w15.focus.004"] = {
+		"Il varco è piccolo. Non serve che sia grande.",
+		"Un varco stretto resta un varco.",
+		"Non serve una porta, se basta una fessura.",
+	},
+	["attack.w15.focus.005"] = {
+		"Ora. Proprio ora.",
+		"È il momento. Lo prendo.",
+	},
+	["attack.w15.focus.006"] = {
+		"Niente fretta. Ma nemmeno troppa attesa. Tutta l'arte è lì.",
+		"Troppo presto la rovina. Troppo tardi la spreca. In mezzo: adesso.",
+	},
+	["attack.w15.focus.007"] = {
+		"aspetta il mezzo secondo che conta, e se lo prende.",
+		"lascia passare ogni istante tranne quello giusto.",
+	},
+	["attack.w15.focus.008"] = {
+		"Ho aspettato. Adesso basta.",
+		"L'attesa è finita.",
+		"Basta guardare.",
+	},
+	["attack.w15.focus.009"] = {
+		"Conta. Uno, due... via.",
+		"Al tre. Uno. Due.",
+	},
+	["attack.w15.focus.010"] = {
+		"Occhi sul momento, non sulla paura.",
+		"La paura può guardare. Non ha voce in capitolo.",
+		"La paura può restare. Ma non guida lei.",
+	},
+	["attack.w15.focus.011"] = {
+		"socchiude gli occhi, misura l'istante e agisce.",
+		"prende la misura del momento con un'occhiata, e si muove.",
+	},
+	["attack.w15.focus.012"] = {
+		"Piccolo e preciso batte grande e scomposto.",
+		"La precisione vale più della potenza.",
+		"Giusto, non grosso.",
+	},
+	["attack.w15.focus.013"] = {
+		"Spalle sciolte. Mente quieta. Muoviti.",
+		"Lascia andare la tensione. Poi vai.",
+	},
+	["attack.w15.focus.014"] = {
+		"agisce senza la minima fretta, come se avesse prenotato il momento.",
+		"si muove con la calma di chi rispetta un appuntamento.",
+	},
+	["attack.w15.focus.015"] = {
+		"Non è la forza a decidere. È il quando.",
+		"La forza è il cosa. Il momento giusto è tutto il resto.",
+	},
+	["attack.w15.focus.016"] = {
+		"Proprio in orario.",
+		"Esattamente quando volevo.",
+		"Al secondo esatto.",
+	},
+	["attack.w15.focus.017"] = {
+		"lascia che il rumore dello scontro si allontani, e si muove nel silenzio che resta.",
+		"non sente altro che il momento, e gli risponde.",
+	},
+	["attack.w15.focus.018"] = {
+		"Ogni scontro ha un ritmo. Trovalo, poi spezzalo.",
+		"Impara il tempo. Poi colpisci fuori tempo.",
+	},
+	["attack.w15.focus.019"] = {
+		"lascia maturare l'attimo, poi lo coglie intero.",
+		"aspetta che il momento sia pronto, e non un istante di più.",
+	},
+	["attack.w15.focus.020"] = {
+		"Hai esitato. Me ne sono {g:accorto|accorta}.",
+		"Ho visto quella tua pausa.",
+	},
+	["attack.w15.focus.021"] = {
+		"mette da parte ogni altro pensiero, e si muove.",
+		"sgombra la mente da tutto il resto e agisce.",
+	},
+	["attack.w15.focus.022"] = {
+		"Pulito e preciso.",
+		"Misurato, e voluto.",
+		"Ordinato. Come previsto.",
+	},
+	["attack.w15.focus.023"] = {
+		"C'è sempre un varco. Trovalo prima.",
+		"Un'apertura c'è. Trovala prima che si chiuda.",
+	},
+	["attack.w15.focus.024"] = {
+		"{target}. Ti vedo.",
+		"Ti vedo. Basta questo.",
+	},
+	["attack.w15.focus.025"] = {
+		"smette di soppesare e agisce, e basta.",
+		"ha finito di riflettere.",
+		"lascia che il decidere finisca e il fare cominci.",
+	},
+	["attack.w15.focus.026"] = {
+		"Chi ha pazienza sceglie il momento. Chi ha fretta ne viene scelto.",
+		"La pazienza sceglie l'ora; la fretta viene scelta.",
+	},
+	["attack.w15.focus.027"] = {
+		"La pazienza è finita nei tempi previsti.",
+		"Avevo esattamente questa pazienza. Finita.",
+	},
+	["attack.w15.focus.028"] = {
+		"Meno pensieri. Fidati delle mani.",
+		"Adesso il pensiero intralcia. Lascia decidere alle mani.",
+	},
+	["attack.w15.focus.029"] = {
+		"Pazienza, poi precisione.",
+		"Prima l'attesa, poi questo.",
+		"Prima aspetti, poi agisci. Mai il contrario.",
+	},
+	["attack.w15.grim.001"] = {
+		"Non mi piace. Lo faccio lo stesso.",
+		"Un lavoro senza gioia. Si fa.",
+	},
+	["attack.w15.grim.002"] = {
+		"Mi dispiace. Davvero.",
+		"Perdonami. O non farlo.",
+		"Vorrei che ci fosse un altro modo.",
+	},
+	["attack.w15.grim.003"] = {
+		"Qualcuno deve agire. Tocca a me.",
+		"Nessun altro lo farà. Quindi lo faccio io.",
+		"Se non io, chi? Appunto.",
+	},
+	["attack.w15.grim.004"] = {
+		"Ogni gesto così costa qualcosa, anche quando è giusto.",
+		"Giusto o no, questo costa sempre un po'.",
+	},
+	["attack.w15.grim.005"] = {
+		"agisce con lo sguardo duro e chiuso, come chi salda un debito.",
+		"lo fa come si chiude un vecchio conto.",
+	},
+	["attack.w15.grim.006"] = {
+		"O tu o io. Scelgo me.",
+		"Uno solo se ne va da qui. Ho già deciso chi.",
+	},
+	["attack.w15.grim.007"] = {
+		"Mano ferma, cuore pesante.",
+		"Non {g:contento|contenta}. Ma nemmeno {g:incerto|incerta}.",
+	},
+	["attack.w15.grim.008"] = {
+		"Questa è la parte che nelle canzoni non c'è.",
+		"Le canzoni saltano questo pezzo. Fanno bene.",
+	},
+	["attack.w15.grim.009"] = {
+		"Deve succedere. Che sia rapido.",
+		"Se dev'essere, che sia svelto.",
+	},
+	["attack.w15.grim.010"] = {
+		"Fare del male è facile. Il lavoro è portarselo dietro.",
+		"Il gesto è rapido. Portarlo con sé richiede di più.",
+	},
+	["attack.w15.grim.011"] = {
+		"lo fa senza piacere e senza pause.",
+		"agisce con aria cupa, senza sprecare niente e senza godersi niente.",
+	},
+	["attack.w15.grim.012"] = {
+		"Se va fatto, va fatto bene.",
+		"A metà è il modo più crudele. Fino in fondo, allora.",
+	},
+	["attack.w15.grim.013"] = {
+		"Necessario. Non gentile. Necessario.",
+		"Non è gentile. È solo necessario.",
+		"Serve. È tutto qui.",
+	},
+	["attack.w15.grim.014"] = {
+		"Ci penserò dopo. Molto dopo.",
+		"I sentimenti aspettino il loro turno.",
+		"Mettilo da parte. Se ne riparla poi.",
+	},
+	["attack.w15.grim.015"] = {
+		"Non posso lasciarti continuare.",
+		"Qui finisce, con me.",
+	},
+	["attack.w15.grim.016"] = {
+		"La pietà è un lusso. Non di questo momento.",
+		"La pietà viene dopo. Se c'è un dopo.",
+	},
+	["attack.w15.grim.017"] = {
+		"stringe la mascella e fa ciò che il momento chiede.",
+		"serra i denti contro quello che va fatto.",
+	},
+	["attack.w15.grim.018"] = {
+		"Le mani non chiedono perché. Lo chiederò io, dopo.",
+		"Adesso agiscono le mani. Le domande verranno poi.",
+	},
+	["attack.w15.grim.019"] = {
+		"Niente in me lo vuole. Eppure ci metto tutto.",
+		"Controvoglia, e lo faccio comunque.",
+	},
+	["attack.w15.grim.020"] = {
+		"Non costringermi a farlo due volte.",
+		"Una volta dovrebbe bastare. Non farne due.",
+	},
+	["attack.w15.grim.021"] = {
+		"Ha un prezzo. Lo pagherò.",
+		"Di ogni male che faccio, tengo una copia.",
+	},
+	["attack.w15.grim.022"] = {
+		"agisce in silenzio, come chi sbriga un compito che nessun altro vorrebbe.",
+		"se ne occupa come di una faccenda sgradita, senza lamentarsi.",
+	},
+	["attack.w15.grim.023"] = {
+		"Il mondo chiede cose dure a chi resta in piedi.",
+		"A chi va avanti si chiedono le cose più difficili.",
+	},
+	["attack.w15.grim.024"] = {
+		"L'unico modo per passare è questo.",
+		"Non c'è altra strada. E allora.",
+	},
+	["attack.w15.grim.025"] = {
+		"Vorrei essere ovunque tranne qui. E invece eccomi.",
+		"Ovunque, ma non questo. Eppure, questo.",
+	},
+	["attack.w15.grim.026"] = {
+		"Che sia pulito. È l'unica gentilezza rimasta.",
+		"Rapido e pulito: l'ultima cortesia che posso offrire.",
+	},
+	["attack.w15.grim.027"] = {
+		"non distoglie lo sguardo da quello che sta facendo.",
+		"tiene gli occhi aperti per tutto il tempo.",
+	},
+	["attack.w15.grim.028"] = {
+		"Meglio io che qualcuno più gentile.",
+		"Meglio che tocchi a me. Chi è più buono esiterebbe.",
+	},
+	["attack.w15.grim.029"] = {
+		"{target}, non è odio. È necessità.",
+		"Non c'è odio, qui. Solo necessità.",
+	},
+	["attack.w15.grim.030"] = {
+		"Ricorda cosa si prova. Mi tiene {g:onesto|onesta}.",
+		"Che questo non diventi mai facile. Il confine è lì.",
+	},
+	["attack.w15.grim.031"] = {
+		"La forza è un peso. Va sollevata con cura.",
+		"Il potere vuole una mano salda, non una mano impaziente.",
+	},
+	["attack.w15.grim.032"] = {
+		"esita per il più breve degli istanti, poi va fino all'ultimo.",
+		"trasale dentro di sé, e agisce senza darlo a vedere.",
+	},
+	["attack.w15.wit.001"] = {
+		"Chiederei scusa, ma mentirei.",
+		"Scusa. Era una bugia. Non mi dispiace.",
+		"Delle scuse? Capiresti che sono finte.",
+	},
+	["attack.w15.wit.002"] = {
+		"Disturbo? Bene.",
+		"Ti becco in un brutto momento? Perfetto.",
+		"Il tempismo è tutto. Il tuo è pessimo.",
+	},
+	["attack.w15.wit.003"] = {
+		"Spero che qualcuno te l'abbia detto.",
+		"Nessuno ti ha parlato di me? Che maleducati.",
+	},
+	["attack.w15.wit.004"] = {
+		"Considerala una lettera dai toni molto decisi.",
+		"Prendilo come un parere sincero.",
+		"Accetta, per favore, questo reclamo formale.",
+	},
+	["attack.w15.wit.005"] = {
+		"Le buone maniere sono uscite. Sono {g:rimasto|rimasta} solo io.",
+		"Le buone maniere? Le ho perse per strada. Peccato.",
+	},
+	["attack.w15.wit.006"] = {
+		"Che tu ci creda o no, questa è la versione gentile.",
+		"Questa è la mia gentilezza. Immagina il resto.",
+		"Mi sto trattenendo. Si nota, vero?",
+	},
+	["attack.w15.wit.007"] = {
+		"Supplicare è permesso. Non serve, ma è permesso.",
+		"Implora pure. Molto commovente. Non per me.",
+	},
+	["attack.w15.wit.008"] = {
+		"Ho avuto idee peggiori. Poche, ma qualcuna.",
+		"L'idea peggiore dell'ora? Forse. Ormai ci sono dentro.",
+	},
+	["attack.w15.wit.009"] = {
+		"Qualcuno doveva farlo. Che fortuna, proprio a me.",
+		"Con tutto il mondo a disposizione, tocca a me.",
+	},
+	["attack.w15.wit.010"] = {
+		"Ciao. Addio. Possibilmente in quest'ordine.",
+		"Piacere di conoscerti. Brevemente.",
+		"{g:Incantato|Incantata}, davvero. Addio.",
+	},
+	["attack.w15.wit.011"] = {
+		"Scusa l'interruzione.",
+		"Perdona se interrompo. Si fa per dire.",
+		"Non voglio interrompere. Troppo tardi.",
+	},
+	["attack.w15.wit.012"] = {
+		"La cortesia è gratis. Questo no.",
+		"Le parole gentili non costano niente. Questo costa caro.",
+		"La gentilezza costa poco. Io spendo in altro.",
+	},
+	["attack.w15.wit.013"] = {
+		"Dimmi se fa il solletico.",
+		"Fammi sapere se fa il solletico. È per la scienza.",
+	},
+	["attack.w15.wit.014"] = {
+		"In teoria sono una persona pacifica. In teoria.",
+		"Amo la pace, io. Quasi sempre. Non adesso.",
+	},
+	["attack.w15.wit.015"] = {
+		"Ultima occasione per arrenderti. Era questa.",
+		"Avevi una possibilità di arrenderti. È appena passata.",
+		"Arrendersi era un'opzione. Al passato.",
+	},
+	["attack.w15.wit.016"] = {
+		"Se qualcuno chiede, hai cominciato tu.",
+		"Per la cronaca: colpa tua.",
+		"La storia darà la colpa a te. Me ne occupo io.",
+	},
+	["attack.w15.wit.017"] = {
+		"Diplomazia, versione breve.",
+		"Trattative, in versione ridotta.",
+		"I colloqui sono conclusi.",
+	},
+	["attack.w15.wit.018"] = {
+		"Smetterei, ma sono {g:curioso|curiosa} di vedere come finisce.",
+		"Fermarmi adesso rovinerebbe il finale.",
+	},
+	["attack.w15.wit.019"] = {
+		"La mia controproposta!",
+		"Ecco la mia controproposta. Prendere o prendere.",
+		"Offerta finale!",
+	},
+	["attack.w15.wit.020"] = {
+		"Nessun rancore. Solo tutto il resto.",
+		"Niente contro di te. Tutto addosso a te.",
+	},
+	["attack.w15.wit.021"] = {
+		"{target}, due parole. Anzi, un gesto.",
+		"Due parole con te. Più che altro gesti.",
+	},
+	["attack.w15.wit.022"] = {
+		"{target}, non ce l'ho con te. Ti trovi qui, tutto qua.",
+		"Non ce l'ho con te. Sei soltanto nel posto sbagliato.",
+	},
+	["attack.w15.wit.023"] = {
+		"Gli applausi possono aspettare.",
+		"Gli applausi, alla fine.",
+		"Si applaude dopo. Ora ho da fare.",
+	},
+	["attack.w15.wit.024"] = {
+		"Resta lì. Fa risparmiare tempo a tutti.",
+		"Non disturbarti a schivare. Stanca tutti quanti.",
+	},
+	["attack.w15.wit.025"] = {
+		"sorride in un modo che non promette niente di buono, e va fino in fondo.",
+		"sorride con fin troppa cortesia, per quello che sta per fare.",
+		"ha un'aria quasi allegra, il che è peggio.",
+	},
+	["attack.w15.wit.026"] = {
+		"borbotta delle scuse a cui nessuno crede, a cominciare da sé.",
+		"dice «pardon» senza un filo di convinzione.",
+	},
+	["attack.w15.wit.027"] = {
+		"sospira per tutta la faccenda, e ci si mette comunque.",
+		"sbuffa per la seccatura, poi agisce.",
+	},
+	["attack.w15.wit.028"] = {
+		"Scommetto che qualche bardo lo racconterà male.",
+		"I bardi questa parte la sbaglieranno. Lo fanno sempre.",
+		"Quando lo racconterò, sarò {g:più alto|più alta}.",
+	},
+	["attack.w15.wit.029"] = {
+		"Se va male, era una finta.",
+		"Se va a vuoto, era voluto. Ufficialmente.",
+	},
+	["attack.w15.wit.030"] = {
+		"Fai la faccia sicura. Metà del lavoro è quella.",
+		"Fingi sicurezza. Nessuno nota la differenza.",
+		"Fingi con audacia. Il resto viene da sé.",
+	},
+	["attack.w15.wit.031"] = {
+		"Dicono che ho un certo fascino. Mettiamolo alla prova.",
+		"Dicono che ho fascino. Eccolo qui.",
+	},
+	["attack.w15.wit.032"] = {
+		"C'è una vita tranquilla che va avanti senza di me, chissà dove.",
+		"Una vita tranquilla esiste. Me l'hanno raccontato.",
+	},
+	["attack.w15.wit.033"] = {
+		"lo fa con l'aria di chi firma un modulo in triplice copia.",
+		"si comporta con efficienza annoiata, da impiegato che timbra carte.",
+	},
+	["buff.w15.gift.001"] = {
+		"Portalo con te. Non chiede nulla in cambio.",
+		"Da portare con te, {target}. Non lascia debiti.",
+		"Prendi. Niente da restituire, né ora né poi.",
+	},
+	["buff.w15.gift.002"] = {
+		"In qualunque cosa ti aspetti, ci entri con qualcosa in più.",
+		"Un pezzo di me viene con te. Fallo valere.",
+		"Te ne vai con un sovrappiù addosso. Mettilo a frutto.",
+	},
+	["buff.w15.gift.003"] = {
+		"Tieni, {target}. Per i momenti in cui non arriverò in tempo.",
+		"Questo è per quando sarò {g:troppo lontano|troppo lontana} per aiutarti.",
+		"Per le volte in cui guarderò altrove.",
+	},
+	["buff.w15.gift.004"] = {
+		"Che regga questo, dove tu vacilli.",
+		"Che ti porti oltre l'attimo che ti avrebbe messo in ginocchio.",
+		"Se ti manca l'appoggio, che questo non ti manchi.",
+	},
+	["buff.w15.gift.005"] = {
+		"Non posso prometterti che ne uscirai. Posso renderlo più probabile.",
+		"Niente promesse. Solo qualche probabilità in più, e sono tue.",
+		"Al sicuro non posso metterti. Un po' più al sicuro, sì.",
+	},
+	["buff.w15.gift.006"] = {
+		"Fatto. Adesso posso stare un po' meno in pensiero per te.",
+		"Fatto, {target}. Un cruccio in meno per me.",
+		"Ecco una preoccupazione che posso posare.",
+	},
+	["buff.w15.gift.007"] = {
+		"A testa alta. La forza che porti non è più soltanto tua.",
+		"Schiena dritta. Adesso a sorreggerti non sei solo tu.",
+		"Su la testa. Da qui una parte del carico è mia.",
+	},
+	["buff.w15.gift.008"] = {
+		"Dato per intero, e volentieri.",
+		"Niente mezze misure. Tutto, e di buon grado.",
+		"Tutto quanto. Non faccio le cose a metà.",
+	},
+	["buff.w15.gift.009"] = {
+		"Se ti risparmia anche solo un passo falso, è valsa la pena.",
+		"Basta una caduta in meno, e ne sarà valsa la pena.",
+		"Evitane anche un solo scivolone, e mi hai già ripagato.",
+	},
+	["buff.w15.gift.010"] = {
+		"Non posso venire ovunque tu vada, {target}. Questo sì.",
+		"Dove non posso seguirti, ti segue questo.",
+		"Portalo là dove io non arrivo.",
+	},
+	["buff.w15.gift.011"] = {
+		"Che nulla ti colga alla sprovvista.",
+		"Qualunque cosa arrivi, che trovi più difese di prima.",
+		"Che ti custodisca, finché dura.",
+	},
+	["buff.w15.gift.012"] = {
+		"Non serviva chiedere. Non è mai servito.",
+		"Per questo non dovrai chiedermi niente, mai.",
+		"Chiedere non è mai stato parte del prezzo.",
+	},
+	["buff.w15.gift.014"] = {
+		"Dalle mie mani alla tua strada, {target}.",
+		"Quel che avevo da dare è sulla tua strada, adesso.",
+	},
+	["buff.w15.gift.016"] = {
+		"Troppi ne restano senza proprio quando conta. Tu no.",
+		"Non tutti l'hanno quando serve davvero. Tu sì.",
+		"C'è chi non l'ha avuto nel momento del bisogno. Tu adesso ce l'hai.",
+	},
+	["buff.w15.gift.018"] = {
+		"Poca cosa, lo so. Ma l'aiuto piccolo porta più lontano di quanto si creda.",
+		"È una cosa piccola. Sono le cose piccole a far arrivare in fondo.",
+	},
+	["buff.w15.gift.019"] = {
+		"Lo do senza contare. Spendilo allo stesso modo.",
+		"Dato senza chiedere, {target}. Spendilo senza fare i conti.",
+	},
+	["buff.w15.gift.020"] = {
+		"Non saprò mai se è servito. Quasi tutto il bene si dà così.",
+		"Se abbia contato qualcosa, non lo scoprirò. Succede quasi sempre, all'aiuto.",
+	},
+	["buff.w15.gift.021"] = {
+		"Darlo è più facile che vedere qualcuno restarne senza.",
+		"A me costa un attimo. Non darlo potrebbe costare molto di più a qualcun altro.",
+		"Tenermelo sarebbe costato meno. E sarebbe stato peggio.",
+	},
+	["buff.w15.gift.022"] = {
+		"Un po' più difficile da ferire di un attimo fa. Non mi serve un motivo migliore.",
+		"Una persona in più un filo più dura da spezzare. Basta e avanza.",
+		"Un poco più difficile da ferire. Tutto il mio ragionamento sta lì.",
+	},
+	["buff.w15.gift.023"] = {
+		"Non posso mettermi davanti a ogni colpo. Questo è quanto di meglio posso fare.",
+		"Non sarò sempre {g:abbastanza vicino|abbastanza vicina} per intervenire. Ci penserà questo, al posto mio.",
+	},
+	["buff.w15.gift.024"] = {
+		"Un po' della mia fatica che adesso cammina sulle gambe di qualcun altro. Mi piace.",
+		"Un pezzo del mio lavoro affidato a qualcun altro. Bene così.",
+	},
+	["buff.w15.gift.025"] = {
+		"abbassa la mano a lavoro finito e fa un piccolo cenno, come chi firma in fondo a un'opera.",
+		"lascia ricadere la mano con un cenno breve, come chi chiude un registro.",
+	},
+	["buff.w15.gift.026"] = {
+		"guarda {target} a lungo, poi annuisce appena: può andare.",
+		"squadra l'altro da capo a piedi, come chi controlla le cinghie di un viandante prima della partenza.",
+	},
+	["buff.w15.gift.027"] = {
+		"completa il piccolo gesto e fa un passo indietro, come se non fosse successo niente di notevole.",
+		"ha finito prima che qualcuno se ne accorga, ed è questo il bello.",
+	},
+	["buff.w15.gift.028"] = {
+		"alza una mano verso {target}, il palmo aperto, e la tiene lì un attimo più del necessario.",
+		"si volge verso l'altro per un momento, con calma, la mano a mezz'aria.",
+	},
+	["buff.w15.gift.029"] = {
+		"si raddrizza a lavoro finito, con l'aria di chi ha appena mandato nel mondo una cosa buona.",
+		"si scosta con aria compiaciuta, come un bottaio davanti a una botte riuscita.",
+	},
+	["buff.w15.gift.030"] = {
+		"tiene d'occhio l'altro ancora un attimo, come per accertarsi che il dono abbia attecchito.",
+		"aspetta che faccia presa, poi distoglie lo sguardo con un cenno.",
+	},
+	["buff.w15.gift.031"] = {
+		"china il capo verso l'altro, brevemente, come alla fine di un piccolo rito.",
+		"accenna un inchino verso chi ha appena ricevuto aiuto, grave e senza fretta.",
+		"abbassa appena il mento, come a chiudere una piccola cerimonia.",
+	},
+	["buff.w15.gift.032"] = {
+		"fa un cenno secco all'altro, come un capitano a una sentinella che prende posto.",
+		"rivolge all'altro un cenno deciso, come un ufficiale che passa la guardia.",
+	},
+	["buff.w15.gift.033"] = {
+		"sorride appena, di sbieco, guardando {target}, e la cosa finisce lì.",
+		"regala all'altro un sorrisetto storto, e nient'altro.",
+	},
+	["buff.w15.gift.034"] = {
+		"Strano: a darla via, mi sento più forte io.",
+		"Ho meno di prima e mi sento {g:più ricco|più ricca}. Conti strani.",
+	},
+	["buff.w15.gift.035"] = {
+		"Se sia bastato, non toccherà a me deciderlo.",
+		"Basterà o no: lo si deciderà in un posto dove io non sarò.",
+	},
+	["buff.w15.ready.001"] = {
+		"Prima le piccole cose. Quelle grandi filano meglio, una volta sistemate queste.",
+		"Fai bene le cose minute, e a quelle grandi resta meno spazio per andare storte.",
+		"Se le piccole cose sono a posto, quelle grandi partono con meno crepe.",
+	},
+	["buff.w15.ready.002"] = {
+		"Un momento per mettermi in ordine. Tutto il resto può aspettare così poco.",
+		"Quel che mi aspetta può concedermi almeno questo.",
+		"Prima metto in ordine me. Il mondo si sistemerà dopo, o forse no.",
+	},
+	["buff.w15.ready.003"] = {
+		"Un piccolo rito, fatto come si deve. Fare una cosa nel modo giusto dà conforto.",
+		"Un rito è solo un'abitudine che ricorda il motivo per cui esiste.",
+		"Niente di solenne. Qualche momento di attenzione, la stessa cura ogni volta.",
+	},
+	["buff.w15.ready.004"] = {
+		"stringe una cinghia che non aveva alcun bisogno di essere stretta, e sembra starne meglio.",
+		"controlla un laccio, poi un altro, e lascia riposare le mani.",
+		"dà uno strattone deciso a ogni cinghia, in un ordine che per {g:lui|lei} pare avere importanza.",
+	},
+	["buff.w15.ready.005"] = {
+		"chiude gli occhi per il tempo di una conta lenta, e li riapre su un mondo più fermo.",
+		"chiude gli occhi un istante, e quando li riapre non vagano più.",
+		"abbassa le palpebre e aspetta, in ascolto del nulla, finché ciò che correva dentro non rallenta.",
+	},
+	["buff.w15.ready.006"] = {
+		"Il rumore nella testa si placa. Resta solo ciò che ho davanti, e ciò che viene dopo.",
+		"Meno pensieri, adesso. Quelli giusti.",
+		"Tutto ciò che non serve si fa da parte, con garbo, e aspetta.",
+	},
+	["buff.w15.ready.007"] = {
+		"Tutto in ordine. Le cose comincino quando vogliono.",
+		"Ogni cosa al suo posto, me {g:compreso|compresa}.",
+	},
+	["buff.w15.ready.008"] = {
+		"È con la fretta che si dimenticano le cose. Meglio la lentezza che un pezzo perso per strada.",
+		"Fare in fretta risparmierebbe un attimo e ne perderebbe il senso.",
+	},
+	["buff.w15.ready.009"] = {
+		"scuote le mani una dopo l'altra, come per scrollarsi di dosso l'ultimo dubbio.",
+		"apre e chiude le mani, piano, finché non vanno d'accordo con {g:lui|lei}.",
+	},
+	["buff.w15.ready.010"] = {
+		"Affrontare il mondo senza prepararsi è una specie di scortesia. Verso di lui, e verso di me.",
+		"Prepararsi è una cortesia che devo a qualunque cosa mi tocchi affrontare.",
+		"Qualsiasi cosa incontri merita il meglio di me. Anche quelle che dovrò combattere.",
+	},
+	["buff.w15.ready.011"] = {
+		"Questa parte mi piace: la breve quiete in cui tutto è fatto e niente è cominciato.",
+		"Una pausa tra il finito e l'iniziato. Breve, e tutta mia.",
+		"In questo piccolo intervallo nessuno mi chiede niente. Ci resto ancora un attimo.",
+	},
+	["buff.w15.ready.012"] = {
+		"alza appena il mento, come si fa quando si sente chiamare il proprio nome.",
+		"solleva la testa e la tiene così, {g:attento|attenta}, come chi aspetta un segnale.",
+	},
+	["buff.w15.ready.013"] = {
+		"Bene. Una cosa in meno da ricordare.",
+		"Fatto, e tolto dai pensieri.",
+		"Sistemato. Si prosegue.",
+	},
+	["buff.w15.ready.014"] = {
+		"Mani ferme, occhi limpidi, ogni cosa dove deve stare. Si può cominciare.",
+		"Occhi, mani, appoggio. Se quei tre vanno d'accordo, di solito il resto viene da sé.",
+		"Cinghie, appoggio, umore. Tutto controllato. Il metodo è tutto qui.",
+	},
+	["buff.w15.ready.015"] = {
+		"lascia che lo sguardo si posi a mezza distanza, e resti lì senza fretta.",
+		"guarda il nulla per un lungo momento, poi guarda tutto, con occhi più svegli.",
+	},
+	["buff.w15.ready.016"] = {
+		"Ciò che mi chiederà qualcosa, adesso, troverà la risposta già data.",
+		"La prossima cosa chieda pure. La risposta è già al suo posto.",
+	},
+	["buff.w15.ready.017"] = {
+		"sistema il peso dello zaino e resta in silenzio un momento, a raccogliersi.",
+		"tira lo zaino più su sulle spalle, prova come sta, e lo trova giusto.",
+	},
+	["buff.w15.ready.018"] = {
+		"Nessuno riceve un preavviso prima del peggio. Conviene prepararsi prima di averne motivo.",
+		"Il peggio non bussa mai prima di entrare. Meglio aver già risposto.",
+		"I guai di rado hanno la cortesia di aspettare. Così non li faccio aspettare io.",
+	},
+	["buff.w15.ready.019"] = {
+		"Venga quel che deve venire. Gli ho fatto posto.",
+		"Ti aspetto, qualunque cosa tu sia.",
+	},
+	["buff.w15.ready.020"] = {
+		"Tutto è un po' più nitido: i contorni delle cose, i piccoli rumori.",
+		"Suoni un po' più chiari, contorni più netti. O magari sto solo facendo attenzione.",
+		"Il mondo si fa nitido, come una pagina tenuta finalmente alla distanza giusta.",
+	},
+	["buff.w15.ready.021"] = {
+		"resta immobile per un momento, come una campana prima del colpo.",
+		"si raccoglie in silenzio, come una nota tenuta che aspetta il resto della melodia.",
+	},
+	["buff.w15.ready.022"] = {
+		"È così che mantengo la parola data a me {g:stesso|stessa}: un po' di cura, ogni volta che conta.",
+		"Una promessa pagata in spiccioli: non affronterò niente alla leggera.",
+		"Mi sono {g:promesso|promessa} di badare a me. Ecco com'è, il più delle volte.",
+	},
+	["buff.w15.ready.023"] = {
+		"Calma, adesso. Calma.",
+		"Con calma. Ogni cosa a suo tempo.",
+		"Piano e bene. Piano e bene.",
+	},
+	["buff.w15.ready.024"] = {
+		"Una rapida occhiata dentro di me. Niente di allentato, niente che manchi. Bene.",
+		"Faccio il conto come un mercante con la cassa: in fretta, e due volte.",
+		"Inventario di una persona sola: presente, intera, quasi del tutto volenterosa.",
+	},
+	["buff.w15.ready.025"] = {
+		"lascia ricadere le spalle, poi le riporta su, salde e sciolte insieme.",
+		"abbassa le spalle, scioglie la mascella e aspetta con il viso di chi non ha fretta.",
+	},
+	["buff.w15.ready.026"] = {
+		"Ogni preparativo è un modo semplice di dire: ho intenzione di uscirne.",
+		"Prepararsi è il mio modo di dire al mondo che intendo vedere cosa viene dopo.",
+		"Ci si prepara solo se si conta di esserci anche dopo. Io ci conto.",
+	},
+	["buff.w15.ready.027"] = {
+		"fa scorrere il pollice lungo una cinghia, con calma e attenzione, e sembra trovare ciò che cercava.",
+		"abbassa gli occhi un attimo, poi li rialza come chi ha saldato un conto.",
+	},
+	["buff.w15.ready.028"] = {
+		"Essere pronti non vuol dire essere sicuri. Vuol dire aver fatto il possibile.",
+		"Non posso sapere cosa arriva. Posso sapere di non aver saltato questo.",
+		"La certezza non era in vendita. La preparazione sì, e l'ho presa.",
+	},
+	["buff.w15.ready.029"] = {
+		"Adesso posso smettere di agitarmi.",
+		"Finito di armeggiare, finalmente.",
+		"Basta ritocchi. Qualunque cosa venga, mi prende così come sono.",
+	},
+	["buff.w15.ready.030"] = {
+		"Sento meglio i miei confini. Dove finisco io, dove comincia il mondo.",
+		"In qualche modo mi sento più a misura di me. Strano accorgersene, ma è così.",
+		"Ai bordi più robustezza, nel mezzo più quiete. Una buona sistemazione.",
+	},
+	["buff.w15.ready.031"] = {
+		"sbatte piano le palpebre due volte, e l'inquietudine se ne va dal viso.",
+		"scuote appena la testa, come per sgombrarla da tutto ciò che non conta.",
+	},
+	["buff.w15.ready.032"] = {
+		"Se questa è l'ultima cosa che faccio come si deve, almeno l'ho fatta come si deve.",
+		"Comunque vada, questo almeno è stato fatto bene.",
+	},
+	["buff.w15.ready.033"] = {
+		"conta qualcosa in silenzio sulle dita, e sembra arrivare in fondo all'elenco.",
+		"spunta un elenco muto sulle dita, poi chiude la mano.",
+	},
+	["buff.w15.steel.001"] = {
+		"Qualunque cosa arrivi, mi trovi più difficile da smuovere del previsto.",
+		"Spingi pure, se vuoi. Peso più di prima.",
+		"Chi si appoggia a me adesso scoprirà di appoggiarsi a un muro.",
+	},
+	["buff.w15.steel.002"] = {
+		"Che cosa sia non importa: non mi sposto.",
+		"Fatti avanti. Mi sono {g:piantato|piantata} qui.",
+	},
+	["buff.w15.steel.003"] = {
+		"abbassa il baricentro e lo distribuisce bene, come un palo piantato a fondo.",
+		"affonda il proprio peso nel terreno, difficile da smuovere come una pietra miliare.",
+	},
+	["buff.w15.steel.004"] = {
+		"Più {g:duro|dura}. Non molto, ma abbastanza da far pentire qualcuno della fatica in più.",
+		"Un poco più difficile da spezzare. Sarà un problema di qualcun altro.",
+		"Qualcosa di più duro ha preso posto in me. Che il mondo ci si consumi contro.",
+	},
+	["buff.w15.steel.005"] = {
+		"Paura? Un po'. Con la paura addosso, ma {g:pronto|pronta} lo stesso.",
+		"La paura non se ne va. Ha solo meno spazio, adesso.",
+		"Il dubbio ha ancora un posto a tavola. Solo, non più a capotavola.",
+	},
+	["buff.w15.steel.006"] = {
+		"alza gli occhi, e qualcosa in loro ha smesso di chiedere il permesso.",
+		"alza lo sguardo con un viso più saldo di un attimo prima, e lo mantiene.",
+	},
+	["buff.w15.steel.007"] = {
+		"Adesso è più difficile fermarmi. Tienilo a mente.",
+		"Mettimi alla prova. Vediamo fin dove arrivi.",
+	},
+	["buff.w15.steel.008"] = {
+		"Niente spacconate. Solo la tranquilla sensazione che sarò difficile da buttare giù.",
+		"Niente di cui vantarsi. Solo una testardaggine diventata un po' più spessa.",
+		"Non ne faccio un vanto. Sono solo più difficile da spostare.",
+	},
+	["buff.w15.steel.009"] = {
+		"serra la mascella, e quel gesto dice più di qualsiasi vanteria.",
+		"stringe i denti e non li allenta più, come una porta sprangata.",
+	},
+	["buff.w15.steel.010"] = {
+		"Chi mi vuole a terra dovrà guadagnarselo, palmo a palmo.",
+		"Se cado, non sarà a buon mercato. Questo almeno è deciso.",
+		"Andare giù? Non senza presentare il conto.",
+	},
+	["buff.w15.steel.011"] = {
+		"Io resto in piedi. Tutto qui.",
+		"Ho deciso. Il resto segua.",
+		"Tengo. E che basti.",
+	},
+	["buff.w15.steel.012"] = {
+		"Preferirei essere gentile. Il mondo continua a votare contro.",
+		"La morbidezza è un lusso. Me la concederò dopo, se ci sarà un dopo.",
+		"Verranno giorni più gentili, forse. Fino ad allora, questo.",
+	},
+	["buff.w15.steel.013"] = {
+		"sembra occupare un po' più spazio di prima, senza muoversi affatto.",
+		"pare più {g:solido|solida} lì dov'è, come lo è la pietra: senza sforzo.",
+	},
+	["buff.w15.steel.014"] = {
+		"Qualcosa in me si è stretto come un nodo ben fatto. Che tenga.",
+		"Ogni filo allentato è tirato a dovere. Chi mi strattona, adesso, se ne accorgerà.",
+	},
+	["buff.w15.steel.015"] = {
+		"Acciaio nella schiena. Vediamo cosa si piega per primo.",
+		"Spina dorsale al suo posto. Il resto tenti la sorte.",
+	},
+	["buff.w15.steel.016"] = {
+		"Qualcuno potrebbe aver bisogno che io resti in piedi. Basta questo per assicurarmene.",
+		"Forse qualcuno conta su di me per tenere duro. Mi spiacerebbe deludere chi nemmeno conosco.",
+		"Se qualcuno finirà per appoggiarsi a me, sarà meglio che io regga.",
+	},
+	["buff.w15.steel.017"] = {
+		"chiude piano entrambe le mani a pugno, e le riapre con una calma certezza.",
+		"stringe due pugni e li lascia andare, come chi soppesa un giuramento.",
+	},
+	["buff.w15.steel.018"] = {
+		"Il mondo non si ammorbidisce per nessuno. Così ho smesso di aspettare e mi sono {g:indurito|indurita}.",
+		"Là fuori nessuno avrà riguardo per me. Bene. Nemmeno io ne avrò.",
+		"Il mondo gioca duro. Adesso, un po', anch'io.",
+	},
+	["buff.w15.steel.019"] = {
+		"Sono più {g:tosto|tosta} di quel che sembro. E sembro già {g:tosto|tosta} parecchio.",
+		"Che la faccia non inganni nessuno. Adesso c'è di più a reggerla.",
+	},
+	["buff.w15.steel.020"] = {
+		"Posso ancora cadere. Voglio solo rendere la caduta un lavoro più faticoso.",
+		"Niente mi rende infrangibile. Però posso fare in modo che rompermi sia un lavoro lungo.",
+		"Fragile, sì. Ma non al primo tentativo, e nemmeno al secondo.",
+	},
+	["buff.w15.steel.021"] = {
+		"si pianta come lo stipite di un cancello, senza fretta, irremovibile.",
+		"aspetta lì dov'è, e lascia che siano le cose a muoversi per prime.",
+	},
+	["buff.w15.steel.022"] = {
+		"Un voto silenzioso, rinnovato: non sarà facile portarmi via da questo mondo.",
+		"Il piccolo giuramento, rinnovato: chi mi vuole via dovrà faticare.",
+	},
+	["buff.w15.steel.023"] = {
+		"Saldezza nel corpo, e ancora di più nella testa.",
+		"Mano ferma e passo sicuro.",
+	},
+	["buff.w15.steel.024"] = {
+		"L'appoggio sembra più profondo, il carattere più saldo. Un buon affare per un attimo di fatica.",
+		"Passo più pesante, spigoli più duri. Adesso chiunque può provarci.",
+	},
+	["buff.w15.steel.025"] = {
+		"si fa molto {g:silenzioso|silenziosa}, di quel silenzio duro che non ammette discussioni.",
+		"sprofonda in un silenzio cupo e deciso, come un coperchio premuto e tenuto giù.",
+	},
+	["buff.w15.steel.026"] = {
+		"Più difficile da ferire. Questo almeno me lo devo.",
+		"Indurirmi è la cosa più gentile che possa fare per me, adesso.",
+		"Indurirsi un po' non è cattiveria. È prendersi cura di sé.",
+	},
+	["buff.w15.steel.027"] = {
+		"Se dev'essere dura, che io lo sia di più.",
+		"Mondo duro, e io {g:duro|dura} uguale. È giusto così.",
+	},
+	["buff.w15.steel.028"] = {
+		"sposta il peso una volta per lato, saggiando un equilibrio che non cede.",
+		"si sporge appena in avanti, come contro una spinta forte, e non arretra di un passo.",
+	},
+	["buff.w15.steel.029"] = {
+		"Mi è entrata dentro una durezza, e mi piace sentirla.",
+		"Mi piace questa sensazione. Come essere {g:fatto|fatta} di qualcosa di più denso.",
+	},
+	["buff.w15.steel.030"] = {
+		"Più forza. Più fermezza. Nessuna sosta.",
+		"Più forza, adesso. E presto lo dimostro.",
+	},
+	["buff.w15.steel.031"] = {
+		"Qualunque peso mi tocchi portare, lo porterò su gambe più salde.",
+		"Sotto di me c'è più fermezza di prima. Il carico sia quel che sarà.",
+	},
+	["buff.w15.steel.032"] = {
+		"china il capo per un momento, come chi accetta un incarico pesante, e lo rialza senza piegarsi.",
+		"fa un cenno grave del capo, come chi accetta patti che nessuno ha sentito.",
+	},
+	["buff.w15.tease.001"] = {
+		"Ti dà più tenuta, non più giudizio. Regolati.",
+		"Più resistenza, sì. Più senno, no. Quello resta affar tuo.",
+		"Più difficile da ammaccare. A pensare, però, devi pensarci tu.",
+	},
+	["buff.w15.tease.002"] = {
+		"Tutte le tue scuse sono appena sparite.",
+		"Addio all'ultima scusa, {target}.",
+		"Scuse finite. Le hai esaurite tutte.",
+	},
+	["buff.w15.tease.003"] = {
+		"Con la presente ti dichiaro un po' più difficile da ammazzare. Prosegui pure.",
+		"Per l'autorità che nessuno mi ha mai dato, ti concedo un miglioramento.",
+	},
+	["buff.w15.tease.004"] = {
+		"Va' e fa' bella figura. Il merito me lo prendo io da qui.",
+		"Vai pure. Se va bene, ricordati chi ti ha dato una mano.",
+		"Fai faville. Io intanto reclamo in silenzio la mia parte.",
+	},
+	["buff.w15.tease.005"] = {
+		"Copre parecchio. La stupidità no.",
+		"Funziona contro quasi tutto. Contro le idee pessime no, {target}.",
+		"Protegge da parecchio. Dai tuoi piani, no.",
+	},
+	["buff.w15.tease.006"] = {
+		"Se adesso cadi, la colpa è tutta tua.",
+		"Da qui in poi, ogni capitombolo è opera tua.",
+		"Inciampa adesso, e racconterò a tutti che è stata sbadataggine.",
+	},
+	["buff.w15.tease.007"] = {
+		"Un miglioramento, ecco. Lieve. Entro certi limiti.",
+		"Un ritocco, {target}. Modesto. Non montarti la testa.",
+	},
+	["buff.w15.tease.009"] = {
+		"Non abituarti. La mia generosità va a sprazzi.",
+		"Goditela. La mia gentilezza arriva in dosi piccole e rare.",
+		"Assaporalo. La mia carità finisce in fretta.",
+	},
+	["buff.w15.tease.010"] = {
+		"Ho fatto il possibile. Il tuo giudizio non posso aggiustarlo.",
+		"Al resto ci ho pensato io. Le decisioni restano tue, purtroppo.",
+	},
+	["buff.w15.tease.013"] = {
+		"Ammirate: tu, ma di più.",
+		"Ammirate {target}: come prima, con un rinforzo.",
+	},
+	["buff.w15.tease.014"] = {
+		"Adesso, se qualcosa va storto, almeno non sarà colpa mia.",
+		"La mia parte è fatta. Qualunque cosa succeda, io sono a posto.",
+	},
+	["buff.w15.tease.017"] = {
+		"La mia buona azione è fatta. Per un po' sarò insopportabile.",
+		"Ecco il mio gesto gentile. Preparati a sentirmene vantare.",
+	},
+	["buff.w15.tease.018"] = {
+		"Questo svanisce. I tuoi vizi no. Scegli bene su cosa contare.",
+		"Fra un po' passa. I tuoi brutti vizi, mai.",
+		"Aiuto provvisorio per un problema permanente. Fallo durare.",
+	},
+	["buff.w15.tease.021"] = {
+		"Cerca di non averne bisogno. Non ci riesce nessuno, ma provaci.",
+		"In teoria non dovresti mai accorgerti che funziona. Non va mai così.",
+	},
+	["buff.w15.tease.022"] = {
+		"Poi voglio un resoconto completo su come ha funzionato.",
+		"Dopo mi racconti se è servito. Nei dettagli. Con qualche lusinga.",
+		"I commenti sono graditi. Le lamentele, meno.",
+	},
+	["buff.w15.tease.023"] = {
+		"Vai, {target}. Evita i guai, o almeno quelli peggiori.",
+		"Cerca di schivare i guai peggiori. Solo i peggiori: sono realista.",
+	},
+	["buff.w15.tease.024"] = {
+		"si spolvera le mani con gran cerimonia, come dopo un lavoro pesantissimo.",
+		"fa gran mostra di sciogliere le spalle, come se fosse stata una fatica tremenda.",
+	},
+	["buff.w15.tease.025"] = {
+		"guarda {target} come per dire: me ne devi una.",
+		"inarca un sopracciglio verso l'altro, con l'aria di chi annota un piccolo prestito.",
+	},
+	["buff.w15.tease.026"] = {
+		"si inchina con finta solennità, come se consegnasse una corona e non un piccolo favore.",
+		"chiude il gesto con uno svolazzo che nessuno ha chiesto.",
+	},
+	["buff.w15.tease.027"] = {
+		"Fatto. Da qui in poi, ogni disastro porta la firma di qualcun altro.",
+		"Fatto. Ora posso criticare le scelte altrui con la coscienza pulita.",
+	},
+	["buff.w15.tease.028"] = {
+		"Che generosità. Lo ricorderò a ogni occasione.",
+		"Una gentilezza in più da rinfacciare più avanti, nel momento meno opportuno.",
+	},
+	["buff.w15.tease.029"] = {
+		"Dovrei cominciare a farmi pagare. Non lo farò. Ma dovrei.",
+		"Gratis, come al solito. Come affari, la mia generosità è un disastro.",
+	},
+	["buff.w15.tease.030"] = {
+		"agita un dito ammonitore verso {target}: guai a sprecarlo.",
+		"punta un dito verso l'altro, metà severità e metà divertimento.",
+	},
+	["buff.w15.tease.031"] = {
+		"canticchia qualche nota compiaciuta, chiaramente {g:soddisfatto|soddisfatta} di sé.",
+		"sembra fin troppo {g:fiero|fiera} di sé per un favore così piccolo.",
+	},
+	["buff.w15.tease.032"] = {
+		"Probabilmente si getterà nella prima pessima idea che incontra. Almeno con più tenuta.",
+		"Adesso potrà commettere gli stessi errori, solo in modo più resistente.",
+	},
+	["buff.w15.tease.033"] = {
+		"Lo regalo e poi mi preoccupo di come verrà usato. Abitudine ridicola.",
+		"Darlo è facile. Il difficile è non controllare dopo come viene speso.",
+	},
+	["buff.w15.wry.001"] = {
+		"C'è chi bussa sul legno. Io faccio questo. Il legno non ha mai salvato nessuno.",
+		"Altri toccano un portafortuna. Il mio, almeno, serve a qualcosa.",
+		"Il mio portafortuna è questo, fatto bene. Le zampe di coniglio lasciamole ai conigli.",
+	},
+	["buff.w15.wry.002"] = {
+		"Splendido. Adesso sono un po' più difficile da ammazzare. Che resti agli atti.",
+		"Una tacca più resistente. Lo voglio messo a verbale.",
+	},
+	["buff.w15.wry.003"] = {
+		"Stivali allacciati, zaino chiuso, un ritocco a me. L'elenco cala, la boria sale.",
+		"Punto primo: essere più difficile da ferire. Fatto. Il punto due è 'non fare stupidaggini'. Meno affidabile.",
+		"Elenco: zaino, stivali, me. Due su tre non si lamentano mai.",
+	},
+	["buff.w15.wry.004"] = {
+		"si guarda con franca approvazione, come chi esamina un acquisto riuscito bene.",
+		"si squadra da capo a piedi e approva l'affare.",
+		"si concede un piccolo cenno di approvazione, di quelli che di solito si riservano al lavoro altrui.",
+	},
+	["buff.w15.wry.005"] = {
+		"Una versione migliore di me. Ancora capace di inciampare nel nulla.",
+		"Più {g:robusto|robusta}, più {g:sveglio|sveglia}, e con le stesse probabilità di scordare dove metto le cose.",
+	},
+	["buff.w15.wry.006"] = {
+		"Migliorie apportate. Niente rimborsi.",
+		"Potenziamento eseguito. Risultati non garantiti.",
+		"Un po' sopra la media. La media era bassa.",
+	},
+	["buff.w15.wry.007"] = {
+		"Se mi preparassi a tutto non partirei mai. Così mi preparo al grosso, e sul resto spero.",
+		"Prepararsi del tutto è una leggenda. Quasi del tutto, ci riesco.",
+		"Potrei prepararmi a ogni disastro possibile, oppure andare avanti. Ho scelto un po' e un po'.",
+	},
+	["buff.w15.wry.008"] = {
+		"si dà due colpetti sul braccio, come chi rassicura un mulo nervoso.",
+		"si dà una pacca sbrigativa e compiaciuta sulla spalla.",
+	},
+	["buff.w15.wry.009"] = {
+		"Io, {g:preparato|preparata}. Una vista rara.",
+		"Per una volta {g:preparato|preparata} come si deve. Qualcuno dovrebbe farci un ritratto.",
+	},
+	["buff.w15.wry.010"] = {
+		"Questo è il momento in cui mi sento {g:bravissimo|bravissima}. Di solito dura fino alla prima sorpresa.",
+		"Una breve, gloriosa sensazione di avere tutto in pugno. Me la tengo cara.",
+		"Per un attimo sono la persona più capace che conosca. Poi l'attimo passa.",
+	},
+	["buff.w15.wry.011"] = {
+		"Meglio. Non bene, ma meglio.",
+		"Un miglioramento. Modesto, ma mi accontento.",
+	},
+	["buff.w15.wry.012"] = {
+		"Troppa preparazione? Non esiste. Esistono solo 'non abbastanza' e 'fortuna'.",
+		"'Troppo preparati' è un'espressione inventata da gente fortunata.",
+		"Nessuno ci ha mai rimesso a prepararsi troppo. Al massimo la dignità.",
+	},
+	["buff.w15.wry.013"] = {
+		"si tasta una tasca dopo l'altra, trova tutto esattamente dov'era e sembra quasi {g:deluso|delusa}.",
+		"controlla la stessa fibbia tre volte e alla fine la lascia stare.",
+	},
+	["buff.w15.wry.014"] = {
+		"Più resistente di un attimo fa. Il mondo la prenderà come una sfida, ne sono {g:certo|certa}.",
+		"Ogni volta che divento un po' più forte, il mondo sembra venirlo a sapere.",
+		"Adesso sono più forte, quindi di sicuro sta arrivando qualcosa di più forte. Funziona così.",
+	},
+	["buff.w15.wry.015"] = {
+		"Tutta questa fatica, e il lavoro vero tocca ancora a me.",
+		"Mi sento molto imponente. Se lo sembri anche, è un altro discorso.",
+	},
+	["buff.w15.wry.016"] = {
+		"Chi vuole un pezzo di me lo troverà più duro da masticare.",
+		"Chiunque punti a un pezzo di me ora troverà un boccone più coriaceo. Buon appetito.",
+	},
+	["buff.w15.wry.017"] = {
+		"Costa meno di un guaritore e arriva prima del rimpianto.",
+		"Mi costa un attimo. Saltarlo potrebbe costare molto di più, e in moneta peggiore.",
+		"L'affare più conveniente della giornata.",
+	},
+	["buff.w15.wry.018"] = {
+		"assume per un attimo una posa eroica, la tiene, e la abbandona prima che qualcuno se ne accorga.",
+		"si raddrizza in un modo chiaramente pensato per far colpo, e quasi ci riesce.",
+	},
+	["buff.w15.wry.019"] = {
+		"Già più {g:sveglio|sveglia}. Peccato per le battute.",
+		"Più {g:sveglio|sveglia} di prima, il che non è dire molto, ma lo dico lo stesso.",
+	},
+	["buff.w15.wry.020"] = {
+		"Probabilità migliorate. Restano probabilità, ma ne discuto meglio da quassù.",
+		"Le probabilità si sono spostate di un capello dalla mia parte. Con abbastanza capelli si fa una corda.",
+		"Non è una garanzia. È un pollice sulla bilancia, e un pollice lo prendo volentieri.",
+	},
+	["buff.w15.wry.021"] = {
+		"Fatto. Una scusa in meno per una morte eroica.",
+		"Fatto. Un modo imbarazzante di andarsene in meno.",
+	},
+	["buff.w15.wry.022"] = {
+		"Lo ammetto, questa parte mi piace. È l'unico pezzo della giornata che va esattamente come previsto.",
+		"L'unica cosa che va sempre secondo i piani. Me la godo.",
+		"Prepararmi è l'unica faccenda che non mi pesa mai.",
+	},
+	["buff.w15.wry.023"] = {
+		"fa scrocchiare le nocche una a una, poi sembra un po' {g:imbarazzato|imbarazzata} dal rumore.",
+		"fa scrocchiare le nocche con gran cerimonia e senza uno scopo evidente.",
+	},
+	["buff.w15.wry.024"] = {
+		"Al me di fra poco: non c'è di che. Vedi di non sprecarlo.",
+		"Un piccolo regalo al me di più tardi, che non ringrazia mai.",
+	},
+	["buff.w15.wry.025"] = {
+		"Preparazione per ogni evenienza. Be', per quasi tutte. Per alcune.",
+		"{g:Pronto|Pronta} a tutto, nei limiti del ragionevole. Quasi sempre nei limiti.",
+	},
+	["buff.w15.wry.026"] = {
+		"Nessuno dà medaglie per i preparativi. Dovrebbero. È la parte che mi riesce sempre.",
+		"Prepararsi meriterebbe più lodi. Chiedere a chi l'ha saltato.",
+		"La preparazione: poco affascinante, mai ringraziata, ed è il motivo per cui tanta gente è ancora in giro.",
+	},
+	["buff.w15.wry.027"] = {
+		"canticchia tra sé due note stonate, stranamente {g:soddisfatto|soddisfatta}.",
+		"si guarda intorno come sperando che qualcuno abbia visto, poi finge che non {g:gli|le} importi.",
+	},
+	["buff.w15.wry.028"] = {
+		"Se adesso qualcosa va storto, almeno non sarà per aver saltato l'ovvio.",
+		"Se qualcosa andrà storto, non sarà questo. Qualcos'altro, di sicuro. Questo no.",
+	},
+	["buff.w15.wry.029"] = {
+		"Dunque, a che punto ero? Ah, sì. Stavo per fare colpo.",
+		"A che punto ero? Ah: sul punto di fare sul serio.",
+	},
+	["buff.w15.wry.030"] = {
+		"Le ginocchia non sono convinte. Il resto di me è tutto d'accordo.",
+		"Quasi tutto di me si sente {g:pronto|pronta}. Le ginocchia hanno chiesto di restarne fuori.",
+		"È tutto pronto tranne l'entusiasmo. Quello si sta ancora allacciando gli stivali.",
+	},
+	["buff.w15.wry.031"] = {
+		"Mi sento temibile. Meglio però non doverlo dimostrare subito.",
+		"Temibile, almeno dentro. Il fuori ci metterà un attimo a mettersi in pari.",
+	},
+	["buff.w15.wry.032"] = {
+		"Senza mi sentirei {g:nudo|nuda}. Strano a dirsi, per una cosa così piccola.",
+		"Farne a meno sarebbe come uscire con uno stivale solo.",
+	},
+	["buff.w15.wry.033"] = {
+		"esamina un avambraccio, poi l'altro, con l'aria di chi aspetta complimenti.",
+		"flette un braccio e lo studia con occhio critico, come se dovesse sembrare più imponente di così.",
+	},
+	["rezother.w15.call.001"] = {
+		"Torna al dolore e al baccano. Mi dispiace, è tutto quello che ho da offrire.",
+		"Ti richiamo in mezzo a tutto questo caos. Perdonami.",
+	},
+	["rezother.w15.call.002"] = {
+		"Prenditi il tuo tempo. Nessuno ti mette fretta.",
+		"Con calma, {target}. Io aspetto qui.",
+		"Senza fretta. Per chi arriva primo non c'è premio.",
+	},
+	["rezother.w15.call.003"] = {
+		"Alzati, se lo vuoi. Aspetto la tua risposta.",
+		"La scelta è tua. Io ho solo chiesto.",
+		"Vieni, se vuoi. Non ti trascinerò.",
+	},
+	["rezother.w15.call.004"] = {
+		"Le tue cose non te le porto io, {target}. Vieni a prendertele.",
+		"La tua roba è ancora qui. Non te la trascino io.",
+		"Tutto quello che hai lasciato cadere è ancora qui. Anche tu. Rimedia almeno a una delle due cose.",
+	},
+	["rezother.w15.call.005"] = {
+		"Nessuno ti ha detto che potevi smettere.",
+		"Chi ti ha dato il permesso di sdraiarti? Io no.",
+		"Non ricordo di aver dato a qualcuno il permesso di mollare.",
+	},
+	["rezother.w15.call.006"] = {
+		"Ti chiamo per nome. {target}, torna indietro.",
+		"Ti chiamo per nome, e ti chiamo qui.",
+		"Il tuo nome, detto chiaro: rispondi.",
+	},
+	["rezother.w15.call.007"] = {
+		"So che dove sei c'è silenzio. Te lo chiedo lo stesso.",
+		"Lì deve esserci pace. Mi spiace chiederti di lasciarla.",
+		"Qualunque quiete tu abbia trovato, ti chiedo di rinunciarci.",
+	},
+	["rezother.w15.call.008"] = {
+		"La fine ti è arrivata vicino. Non ti consegno a lei.",
+		"A quella non ti cedo. Non finché sono qui a discutere.",
+		"Ha allungato la mano su di te. La allungo anch'io, e tengo più a lungo.",
+	},
+	["rezother.w15.call.009"] = {
+		"Mi senti? Basta il suono della voce. Vienigli incontro.",
+		"Senti? Sono io. Da questa parte.",
+	},
+	["rezother.w15.call.010"] = {
+		"Se resti lì ancora un po', qualcuno comincerà a chiederti l'affitto.",
+		"Quel posto è occupato, {target}. Via da terra.",
+	},
+	["rezother.w15.call.011"] = {
+		"Ti resta ancora un sacco da fare. Vieni a farlo.",
+		"Troppe cose a metà, {target}. Rialzati e pensaci tu.",
+		"Metà del tuo lavoro è lì che aspetta. Da solo non si fa.",
+	},
+	["rezother.w15.call.012"] = {
+		"Morire è stata una pessima idea. Rimediamo.",
+		"Quello era un errore. Lascia che lo corregga.",
+		"Facciamo finta che fosse una prova, e passiamo a quella vera.",
+	},
+	["rezother.w15.call.013"] = {
+		"Voltati. Qualunque cosa ti aspetti laggiù, può attendere.",
+		"Non da quella parte. Quel che c'è in fondo non scappa.",
+		"Direzione sbagliata. Torna di qua.",
+	},
+	["rezother.w15.call.014"] = {
+		"Apri gli occhi quando puoi, non prima.",
+		"Gli occhi aprili quando te la senti, {target}. Non un attimo prima.",
+	},
+	["rezother.w15.call.015"] = {
+		"Sdraiarsi sul lavoro. Ho visto di meglio.",
+		"È un pisolino? Spero proprio che sia un pisolino.",
+		"Dormire in mezzo a tutto questo? Notevole. Smettila.",
+	},
+	["rezother.w15.call.016"] = {
+		"Ciò che è caduto può rialzarsi, se lo vuole.",
+		"Rialzati, se lo scegli. La terra non ha diritti su di te.",
+	},
+	["rezother.w15.call.017"] = {
+		"Capirei, se restassi là. Ti chiedo di non farlo.",
+		"Restare sarebbe più facile. Scegli la strada dura, {target}.",
+	},
+	["rezother.w15.call.018"] = {
+		"Non ho finito con te, {target}. Nessuno ha finito.",
+		"Troppo presto per chiudere con te. Davvero troppo presto.",
+	},
+	["rezother.w15.call.019"] = {
+		"Dicono che di là ci sia pace. Ma che noia. Una noia mortale.",
+		"Pare che di là si riposi. Ti annoieresti a morte.",
+	},
+	["rezother.w15.call.020"] = {
+		"Ehi. Di qua. Cercami.",
+		"Da questa parte, {target}. Cerca la mia faccia.",
+		"Trovami. Il chiasso che senti lo sto facendo io.",
+	},
+	["rezother.w15.call.021"] = {
+		"La morte ti aveva in pugno. Vediamo se tiene la presa.",
+		"Lascia andare il buio. Io tiro dall'altra parte.",
+		"Combattila. Io lo sto già facendo per te.",
+	},
+	["rezother.w15.call.022"] = {
+		"chiama {target} con voce bassa e ferma, come si chiama qualcuno attraverso una sala affollata.",
+		"pronuncia quel nome una volta, piano, poi un po' più forte.",
+	},
+	["rezother.w15.call.023"] = {
+		"parla piano sopra chi è caduto, senza fretta, come se ci fosse tutto il tempo del mondo.",
+		"continua a parlare al corpo immobile, sottovoce e senza pause.",
+	},
+	["rezother.w15.call.024"] = {
+		"fissa con aria torva chi è a terra, come se morire fosse stato un affronto personale.",
+		"guarda male il corpo immobile, prendendola chiaramente sul personale.",
+	},
+	["rezother.w15.call.025"] = {
+		"si inginocchia accanto a chi è caduto e dice qualcosa troppo piano perché arrivi ad altri.",
+		"si piega in basso, con parole che hanno un solo destinatario.",
+	},
+	["rezother.w15.call.026"] = {
+		"Faresti di tutto pur di non lavorare, eh?",
+		"Morire pur di saltare la parte noiosa. Astuzia notevole. Vietata.",
+	},
+	["rezother.w15.call.027"] = {
+		"Ascoltami, {target}: la via del ritorno è aperta, ed è breve.",
+		"La strada del ritorno è corta. Percorrila.",
+	},
+	["rezother.w15.call.028"] = {
+		"Ti tengo io. Ovunque tu sia, ti ho preso.",
+		"Lo senti? Sono io, che non mollo la presa.",
+		"Se qualcosa ti tira via, io tiro più forte.",
+	},
+	["rezother.w15.call.029"] = {
+		"china il capo su chi è caduto e comincia, con lentezza e misura, come se posasse ogni parola al suo posto.",
+		"si inginocchia a occhi chiusi e comincia il lungo lavoro del richiamo.",
+	},
+	["rezother.w15.vigil.001"] = {
+		"Adesso si aspetta. Dell'attesa non ti avverte mai nessuno.",
+		"La richiesta è fatta. Il difficile è aspettare.",
+		"Ho chiesto. Adesso viene la parte lunga.",
+	},
+	["rezother.w15.vigil.002"] = {
+		"Posso solo chiedere. Quanto restituire lo decide la morte.",
+		"Chiedere è tutto ciò che posso. La risposta non è mia.",
+		"Io presento la domanda. Se verrà accolta, non è mai dipeso da me.",
+	},
+	["rezother.w15.vigil.003"] = {
+		"Uno strano commercio. La morte si è presa qualcosa, e io lo rivoglio.",
+		"Strana trattativa. Non ho niente che alla morte interessi, e chiedo lo stesso.",
+	},
+	["rezother.w15.vigil.004"] = {
+		"Se sceglie di restare a terra, capirò. Lo odierò, ma capirò.",
+		"C'è chi non vuole tornare. Lo rispetterei. E lo detesterei.",
+	},
+	["rezother.w15.vigil.005"] = {
+		"Mani, state ferme. Non è il momento di tremare.",
+		"Mani ferme. Più ferme. Non adesso, non a tremare adesso.",
+		"Le mani vorrebbero tremare. Lo faranno dopo.",
+	},
+	["rezother.w15.vigil.006"] = {
+		"Richiamare qualcuno toglie qualcosa a chi chiama.",
+		"Ha un prezzo. Non dice mai quanto, ma ce l'ha.",
+		"Ogni richiamo si porta via qualcosa di mio. Farò i conti dopo.",
+	},
+	["rezother.w15.vigil.007"] = {
+		"La morte tiene male i conti. A volte restituisce senza controllare.",
+		"Con un po' di fortuna, la morte non si accorgerà che manca una pratica.",
+	},
+	["rezother.w15.vigil.008"] = {
+		"Mi chiedo cosa ricorderà di dove si trovava.",
+		"Ovunque abbia vagato, spero che non ne riporti nulla.",
+		"C'è un luogo che nessun vivo vede bene. Sto chiedendo a qualcuno di lasciarlo.",
+	},
+	["rezother.w15.vigil.009"] = {
+		"Fine è una parola pesante. Sto cercando di farla durare poco.",
+		"Per adesso è finita. Vorrei che quel «per adesso» durasse pochissimo.",
+	},
+	["rezother.w15.vigil.010"] = {
+		"Non tutti si possono richiamare. Chiedo come se qui si potesse.",
+		"Qualcuno non lo si raggiunge più. Faccio finta che non sia questo il caso.",
+	},
+	["rezother.w15.vigil.011"] = {
+		"Di tutto ciò che so fare, questa resta la cosa che più somiglia a barare.",
+		"Disfare una morte. Chissà dove, qualcuno starà sporgendo reclamo.",
+	},
+	["rezother.w15.vigil.012"] = {
+		"Prima o poi la morte vorrà scambiare due parole con me.",
+		"Un giorno io e la morte faremo una lunga chiacchierata su questa storia.",
+	},
+	["rezother.w15.vigil.013"] = {
+		"Tra qui e là, qualcuno sta decidendo. Non posso affrettare la scelta.",
+		"Qualcuno sta decidendo, lontano da qui. Non si può mettere fretta.",
+	},
+	["rezother.w15.vigil.014"] = {
+		"Qualunque cosa mi costi, è un prezzo da niente.",
+		"Mi lascerà {g:svuotato|svuotata}. Prezzo giusto, e pagherei il doppio.",
+	},
+	["rezother.w15.vigil.015"] = {
+		"La morte è veloce. Io sono {g:testardo|testarda}. Vediamo cosa conta di più.",
+		"Per quanto la morte sia rapida, la testardaggine può esserlo di più.",
+	},
+	["rezother.w15.vigil.016"] = {
+		"L'immobilità è la cosa peggiore. Qualunque altra cosa potrei combatterla.",
+		"Quella immobilità. Preferirei qualsiasi rumore.",
+		"Con un'immobilità così non si discute. È l'unica cosa.",
+	},
+	["rezother.w15.vigil.017"] = {
+		"La ramanzina gliela faccio dopo. Prima deve esserci qualcuno ad ascoltarla.",
+		"La predica può aspettare che ci sia qualcuno a cui farla.",
+	},
+	["rezother.w15.vigil.018"] = {
+		"resta in silenzio accanto a chi è caduto, un silenzio che chiede qualcosa.",
+		"tace accanto al corpo immobile, ed è un silenzio con una domanda dentro.",
+	},
+	["rezother.w15.vigil.019"] = {
+		"si strofina una volta gli occhi stanchi, poi si rimette all'opera.",
+		"sbatte forte le palpebre contro la stanchezza e va avanti.",
+		"si preme un attimo il palmo sugli occhi, e continua.",
+	},
+	["rezother.w15.vigil.020"] = {
+		"non distoglie lo sguardo da chi è caduto, nemmeno per un istante.",
+		"tiene gli occhi fissi sul corpo immobile, come se distoglierli potesse perderlo.",
+		"sorveglia quell'immobilità come una sentinella sorveglia la strada.",
+	},
+	["rezother.w15.vigil.021"] = {
+		"resta in ginocchio accanto a chi è caduto, paziente e un po' più {g:stanco|stanca} di prima.",
+		"rimane in ginocchio, immobile, paziente come una pietra.",
+	},
+	["rezother.w15.vigil.022"] = {
+		"lascia andare lo sforzo e aspetta, immobile, in ascolto.",
+		"conclude, e aspetta in silenzio quel che verrà.",
+	},
+	["rezother.w15.vigil.023"] = {
+		"posa una mano sulla spalla di chi è caduto, con leggerezza, come per non far sobbalzare chi dorme.",
+		"appoggia la mano su una spalla immobile, piano, come con chi sonnecchia.",
+	},
+	["rezother.w15.vigil.024"] = {
+		"batte il piede, in attesa, con l'aria di chi aspetta da troppo davanti a una porta.",
+		"aspetta a braccia conserte, l'immagine stessa della pazienza messa alla prova.",
+	},
+	["rezother.w15.vigil.025"] = {
+		"Da un momento all'altro. Da un momento all'altro, ormai.",
+		"Presto. Deve essere presto.",
+		"Adesso. Che sia adesso.",
+	},
+	["rezother.w15.vigil.026"] = {
+		"E se non risponde niente? Non pensarci. Aspetta.",
+		"Non chiederti se ha funzionato. Aspetta e basta.",
+	},
+	["rezother.w15.vigil.027"] = {
+		"fa la guardia sopra {target}, come un cancello che ha deciso di non aprirsi.",
+		"prende posto accanto a chi è caduto e non lo cede a nessuno.",
+	},
+	["rezother.w15.vigil.028"] = {
+		"In questo momento conta solo chi ho davanti.",
+		"Per adesso, nessuno al mondo conta tanto.",
+	},
+	["rezother.w15.vigil.029"] = {
+		"Un giorno toccherà a me, e a qualcun altro chiedere. Spero abbia pazienza.",
+		"Prima o poi le parti si invertiranno. Spero che chi mi starà accanto abbia la stessa testardaggine.",
+	},
+	["rezother.w15.vigil.030"] = {
+		"si avvicina a chi è caduto, come per cogliere una risposta destinata a una persona sola.",
+		"piega la testa verso il corpo immobile, in ascolto teso.",
+	},
+	["travel.w15.away.001"] = {
+		"Un momento qui, quello dopo altrove, e nessuna strada in mezzo a dirmi quanto sono {g:andato|andata} lontano.",
+		"Il mondo mi lascia andare da una parte e mi riprende dall'altra. Mi ci abituerò. Probabilmente.",
+		"Nessuna lega fatta a piedi, nessun piede dolorante da mostrare. Sa un po' di imbroglio, e non mi dispiace affatto.",
+	},
+	["travel.w15.away.002"] = {
+		"si sfuma ai bordi per un istante, poi semplicemente non c'è più, e il posto resta lì con l'aria vagamente sorpresa.",
+		"si assottiglia come un riflesso in uno stagno increspato, e il luogo continua senza di {g:lui|lei}.",
+		"resta immobile un istante, poi è altrove, senza un solo passo in mezzo.",
+	},
+	["travel.w15.away.003"] = {
+		"Non posso fermarmi. Ho posti dove andare, e preferisco non arrivarci a piedi.",
+		"Vado. Il giro lungo lo lascio agli altri.",
+	},
+	["travel.w15.away.004"] = {
+		"Lì dietro c'è una strada che ho appena saltato per intero. Se ne farà una ragione.",
+		"Tutta la distanza fra qui e là, e io semplicemente rifiuto di attraversarla. Un gesto poco educato, ma efficiente.",
+	},
+	["travel.w15.away.005"] = {
+		"è lì, e poi il mondo si richiude sul punto dove stava come l'acqua su un sasso caduto.",
+		"se ne va senza lasciare impronte, come nei vecchi racconti viaggiavano i saggi.",
+	},
+	["travel.w15.away.006"] = {
+		"Camminare ti insegna la terra. Questo non ti insegna niente, ma è veloce, e in questo momento vince la velocità.",
+		"Mi perderò quel che avrei visto lungo la strada. D'altra parte, mi perderò anche la strada.",
+	},
+	["travel.w15.away.007"] = {
+		"ondeggia per un istante, come chi manca un gradino in sogno, e poi il mondo {g:lo|la} rovescia altrove.",
+		"ha, per un attimo strano, l'aria di chi non è da nessuna parte, e sembra sorprendentemente in pace con questo.",
+	},
+	["travel.w15.home.001"] = {
+		"La pietra tira, e il mondo comincia a sembrare un dipinto di sé stesso. Da qualche parte mi aspetta un letto già pagato.",
+		"Una breve attesa con la pietra in mano, e poi la locanda, ovunque abbia lasciato il mio nome l'ultima volta.",
+		"Torno dove ho fissato il mio focolare. Forse non è casa, ma è una porta che mi conosce.",
+	},
+	["travel.w15.home.002"] = {
+		"stringe le dita attorno alla pietra del ritorno e aspetta, gli occhi socchiusi, mentre il mondo allenta la presa.",
+		"tiene la pietra del ritorno nel pugno appena chiuso e non si muove più, come chi tende l'orecchio a un nome chiamato da lontano.",
+		"soppesa la pietra del ritorno sul palmo, poi chiude la mano e si lascia prendere dal richiamo.",
+	},
+	["travel.w15.home.003"] = {
+		"Basta avventure, per adesso. A letto.",
+		"Me ne vado verso un letto che ho già pagato. La decisione migliore della settimana.",
+		"La locanda mi chiama. Sarebbe scortese non rispondere.",
+	},
+	["travel.w15.home.004"] = {
+		"Tutto quel terreno coperto a piedi, e la pietra se lo riprende in un attimo. Cerco di non pensarci troppo.",
+		"Ogni lega percorsa per arrivare qui, cancellata in pochi istanti d'attesa. È un dono o un insulto, e sono troppo {g:stanco|stanca} per decidere.",
+	},
+	["travel.w15.home.005"] = {
+		"dà un'ultima occhiata intorno, come per ricordarsi dove aveva lasciato il lavoro, e lascia che la pietra del ritorno faccia il resto.",
+		"intasca in fretta un paio di cose sparse, mentre nell'altra mano la pietra del ritorno già vibra.",
+	},
+	["travel.w15.home.006"] = {
+		"Parto a metà di un pensiero. L'altra metà la ritroverò alla locanda, seduta probabilmente al mio posto.",
+		"Buffo essere {g:trascinato|trascinata} verso un posto solo perché una volta ho chiesto a una pietra di ricordarselo.",
+	},
+	["travel.w15.home.007"] = {
+		"Qui ho finito. Si torna alla locanda.",
+		"Per questo tratto basta così. Dritto al focolare.",
+	},
+	["travel.w15.home.008"] = {
+		"Una pietra non più grande di un pugno, e tutta quella distanza le cede il passo. Le cose piccole hanno i poteri più strani.",
+		"Di tutto il mondo, la pietra ricorda un solo posto per me. È più di quanto ricordi la maggior parte delle cose.",
+		"Uno strano patto antico: io porto la pietra, e la pietra porta me.",
+	},
 }, "base_spells")

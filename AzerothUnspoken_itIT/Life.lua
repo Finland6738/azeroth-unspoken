@@ -362,4 +362,213 @@ NS:AddTexts("itIT", {
 		"Tutto qui? Più su non si va? Allora mi servono stivali migliori.",
 		"Più forte di così non diventerò. D'ora in poi, a quanto pare, conta solo l'equipaggiamento.",
 	},
+	["levelup.w15.grow.001"] = {
+		"Come se avessi addosso un mantello di una taglia in più, e ci fossi appena {g:cresciuto|cresciuta} dentro un po'.",
+		"La forma che devo riempire è ancora più grande di me. Lo scarto si è appena ridotto.",
+	},
+	["levelup.w15.grow.002"] = {
+		"I pericoli sono grandi quanto un attimo fa. Sono io che sono {g:cresciuto|cresciuta}.",
+		"Là fuori niente si è rimpicciolito. Sono solo io a misurare un po' di più.",
+		"Il mondo non si è fatto più tenero con me. Io, con lui, mi sono {g:fatto|fatta} un po' più {g:duro|dura}.",
+	},
+	["levelup.w15.grow.003"] = {
+		"sposta i piedi, e qualcosa nel suo modo di stare in piedi è diventato, senza rumore, più difficile da smuovere.",
+		"sta un filo più {g:saldo|salda}, come un palo una volta piantato fino in fondo.",
+	},
+	["levelup.w15.grow.004"] = {
+		"Qualunque cosa arrivi adesso, troverà ad aspettarla un po' più di me.",
+		"L'ho sentito. Avanti la prossima.",
+		"Qui dentro qualcosa si è appena fatto più forte. Bene. Mi servirà.",
+	},
+	["levelup.w15.grow.005"] = {
+		"Nessun istante preciso da indicare. Solo una differenza quieta, e niente che la disfi.",
+		"Non è arrivato. Era semplicemente lì quando ho guardato, come un'abilità che c'è quando smetti di sforzarti.",
+	},
+	["levelup.w15.grow.006"] = {
+		"resta immobile, come una campana appena colpita che ascolta la propria voce.",
+		"resta in silenzio mentre qualcosa {g:gli|le} si deposita dentro, lento come limo in acqua ferma.",
+		"rimane {g:fermo|ferma} un istante, come una campana dopo il rintocco, mentre il cambiamento ronza fino ai bordi.",
+	},
+	["levelup.w15.grow.007"] = {
+		"Ero qualcuno, un attimo fa. Adesso sono un passo più in là.",
+		"Un attimo fa i miei limiti erano qui. Si sono spostati. Non di molto. Di quanto basta.",
+		"Il punto in cui cedo si è spostato più in là. Di poco. Ma conta.",
+	},
+	["levelup.w15.grow.008"] = {
+		"Più {g:saldo|salda}. Questa è nuova.",
+		"Toh. Tutto è appena diventato un po' più leggero da portare.",
+		"Come se qualcuno mi avesse tolto un sassolino dalla scarpa. Da tutte le scarpe.",
+	},
+	["levelup.w15.grow.009"] = {
+		"La crescita è un animale silenzioso. Non si annuncia: occupa solo un po' più di spazio.",
+		"Niente cresce a forza di gridare. Cresce perché non si ferma.",
+	},
+	["levelup.w15.grow.010"] = {
+		"si guarda le mani come se avessero appena imparato un trucco nuovo.",
+		"gira un palmo verso l'alto e lo studia, come se il cambiamento potesse esserci scritto sopra.",
+	},
+	["levelup.w15.grow.011"] = {
+		"Ciò che è appena cresciuto in me voglio metterlo al lavoro.",
+		"Una misura in più di prima. Voglio vedere cosa riesce a spostare.",
+		"Una forza nuova lasciata a dormire è uno spreco. Mettetemi davanti qualcosa di pesante.",
+	},
+	["levelup.w15.grow.012"] = {
+		"Che resti scritto: sono più di quel che ero.",
+		"Lo segni chi tiene questi conti. Sono {g:cresciuto|cresciuta}.",
+	},
+	["levelup.w15.grow.013"] = {
+		"Non è proprio forza. È un motivo in meno per avere paura.",
+		"Non proprio potenza. Piuttosto una paura che finalmente posso posare.",
+		"Quello che sento non è più potente. È meno spaventato, e forse è meglio.",
+	},
+	["levelup.w15.grow.014"] = {
+		"per un istante non si muove, e quando riprende a muoversi spreca meno gesti.",
+		"riprende con un passo che non spreca niente, come se qualcuno avesse rifilato via le parti goffe.",
+	},
+	["levelup.w15.grow.015"] = {
+		"Da qui in avanti, ogni lotta comincia un po' più a mio favore.",
+		"Le probabilità si sono appena spostate, di pochissimo, dalla mia parte. Prendo ogni granello.",
+		"Ogni scontro che mi aspetta si è appena spostato di un capello verso di me. I capelli si sommano.",
+	},
+	["levelup.w15.grow.016"] = {
+		"Più di quanto fossi un attimo fa. Vediamo a che serve.",
+		"È più di quanto avessi un attimo fa. Ho intenzione di usarlo.",
+	},
+	["levelup.w15.weigh.001"] = {
+		"La forza non è un premio. È un conto più grosso, pagato in anticipo.",
+		"Qualunque cosa io possa portare adesso, qualcuno mi chiederà di portarla.",
+		"Non è un premio. È la ricevuta di qualcosa che non mi hanno ancora chiesto.",
+	},
+	["levelup.w15.weigh.002"] = {
+		"Ogni volta che cresco mi allontano un po' da chi ero prima di tutto questo.",
+		"Sto diventando qualcuno. Spero di riconoscerlo, quando arriverà.",
+	},
+	["levelup.w15.weigh.003"] = {
+		"si ferma in silenzio, come si fa davanti a un compito troppo grande da abbracciare con uno sguardo solo.",
+		"si fa {g:silenzioso|silenziosa}, col volto di chi soppesa un dono arrivato con delle condizioni.",
+	},
+	["levelup.w15.weigh.004"] = {
+		"Allora che io ne sia {g:degno|degna}.",
+		"Se mi viene dato di più, risponderò di più.",
+		"Adesso ho di più. E con esso, il conto da rendere.",
+	},
+	["levelup.w15.weigh.005"] = {
+		"Più cose sono in grado di fare, più ne vedo da fare. L'elenco non si accorcia mai.",
+		"Ogni briciolo di forza mi mostra un po' più dei guai del mondo. Vista più chiara, elenco più lungo.",
+	},
+	["levelup.w15.weigh.006"] = {
+		"Più forte, sì. Ma neanche un briciolo meno mortale. Non devo confondere le due cose.",
+		"Diventare più duri non vuol dire diventare irraggiungibili. La morte sta al passo con chiunque.",
+		"Per quanto io cresca, la mia fine cresce di pari passo. È l'unica compagna che non resta mai indietro.",
+	},
+	["levelup.w15.weigh.007"] = {
+		"resta in silenzio un momento, come chi fa il conto di quanto è costato e preferisce non finire la somma.",
+		"si volta un attimo a guardare da dove è {g:venuto|venuta}, poi guarda avanti, e lì tiene gli occhi.",
+	},
+	["levelup.w15.weigh.008"] = {
+		"Gli altri cominceranno ad aspettarsi di più da me. Preferisco cominciare io, ad aspettarmelo.",
+		"Adesso mi verrà chiesto di più. Preferisco essere io a chiederlo.",
+	},
+	["levelup.w15.weigh.009"] = {
+		"Più forte. Quindi il prossimo fardello sarà più pesante. Giusto.",
+		"Un po' di più da dare, allora. Vediamo chi ne ha bisogno.",
+		"Più forza vuol dire più cose da sollevare. C'è sempre qualcuno che aspetta di essere sollevato.",
+	},
+	["levelup.w15.weigh.010"] = {
+		"La cote dà il filo togliendo metallo. Crescere non è mai solo guadagno.",
+		"Ogni guadagno è pesato contro qualcosa. Solo che non vedo sempre l'altro piatto della bilancia.",
+	},
+	["levelup.w15.weigh.011"] = {
+		"abbassa lo sguardo per un istante, come se la forza nuova fosse anche un peso nuovo.",
+		"si raddrizza, e la linea delle spalle è insieme più fiera e più stanca.",
+		"sembra per un istante più grande e insieme più pesante, come uno zaino appena caricato.",
+	},
+	["levelup.w15.weigh.012"] = {
+		"Più avanti c'è un momento per cui serviva tutto questo. Spero di riconoscerlo quando arriva.",
+		"Questa forza serve a qualcosa. Non so ancora a cosa. Mi troverà lei.",
+	},
+	["levelup.w15.weigh.013"] = {
+		"Posso fare di più. Non sono {g:sicuro|sicura} di saperne di più. Non sono mai state la stessa cosa.",
+		"La forza è arrivata in fretta. Il giudizio arriva più piano, e ne avrò più bisogno.",
+	},
+	["levelup.w15.weigh.014"] = {
+		"Quello che mi aspetta là fuori mi troverà un po' più difficile da fermare.",
+		"Che lo sappia, quello che mi aspetta: adesso la lotta sarà più dura.",
+	},
+	["levelup.w15.weigh.015"] = {
+		"Mi servirà fino all'ultimo briciolo, e anche di più. Questo lo so già.",
+		"Non basterà. Non basta mai. Ma è più di prima.",
+		"Non abbastanza per quello che arriverà. Niente lo è mai. Però più vicino.",
+	},
+	["levelup.w15.weigh.016"] = {
+		"resta {g:dritto|dritta} per un momento, come chi presta un giuramento che nessuno gli chiede.",
+		"rivolge un unico cenno secco a ciò che l'aspetta, come chi prende atto di una convocazione.",
+	},
+	["levelup.w15.wry.001"] = {
+		"Ci vorrebbe uno stipite con una tacca nuova, per questo.",
+		"Qualcuno dovrebbe segnarlo su uno stipite. Mi accontenterò di sentirmi {g:compiaciuto|compiaciuta}.",
+	},
+	["levelup.w15.wry.002"] = {
+		"Qualcuno ha visto? No? Allora più tardi lo racconterò più in grande.",
+		"Nessuno ha visto? Ottimo. La storia sta già migliorando.",
+		"Nessun testimone. Peccato. L'avrei raccontata con tanta modestia.",
+	},
+	["levelup.w15.wry.003"] = {
+		"Più {g:robusto|robusta}, a quanto pare. La saggezza non è ancora arrivata. Sarà nel prossimo pacco.",
+		"La forza è arrivata. La saggezza deve aver preso la strada lunga.",
+	},
+	["levelup.w15.wry.004"] = {
+		"si tasta i fianchi, come per controllare che non sia caduto via niente.",
+		"si controlla le mani, poi i piedi, come se il cambiamento dovesse aver lasciato un segno ben visibile.",
+		"si guarda addosso con sospetto, come se aspettasse di trovarci appiccicata un'etichetta.",
+	},
+	["levelup.w15.wry.005"] = {
+		"Magnifico. D'ora in poi i miei errori saranno un po' più spettacolari.",
+		"Ora posso fare gli stessi identici errori con più convinzione.",
+		"Ottimo: adesso posso cacciarmi in guai che prima non avrei nemmeno raggiunto.",
+	},
+	["levelup.w15.wry.006"] = {
+		"Vorrei ringraziare i miei piedi, la mia testardaggine, e tutto quello che mi ha mancato.",
+		"Grazie a tutto ciò che ci ha provato e ha mancato. Senza di voi non ce l'avrei fatta.",
+	},
+	["levelup.w15.wry.007"] = {
+		"Niente nastro, niente discorso, niente pergamena. Diventare più forti, a questo mondo, è un affare silenzioso.",
+		"Per questo nessuno rilascia un attestato. Peccato: lo appenderei da qualche parte.",
+	},
+	["levelup.w15.wry.008"] = {
+		"borbotta qualcosa di compiaciuto tra sé, poi si guarda intorno per vedere se qualcuno ha sentito.",
+		"si concede un piccolo cenno di approvazione, tutto per sé.",
+	},
+	["levelup.w15.wry.009"] = {
+		"Lo zaino pesa esattamente come prima. Alla faccia della forza.",
+		"Più forte, eppure lo zaino tira sempre nello stesso identico punto.",
+		"Tutta questa crescita, e la cinghia affonda sempre lì. Certe cose non si migliorano.",
+	},
+	["levelup.w15.wry.010"] = {
+		"Ah. Non me l'aspettavo. Non me lo aspetto mai.",
+		"Oh, che bello. È compresa anche una sedia?",
+		"Uh. Nessuno mi ha {g:avvisato|avvisata}. Nessuno lo fa mai.",
+	},
+	["levelup.w15.wry.011"] = {
+		"Per festeggiare continuerò a fare esattamente quello che facevo, solo un filo meglio.",
+		"Ci vorrebbe una festa. La farò dopo, se me ne ricordo.",
+	},
+	["levelup.w15.wry.012"] = {
+		"si ferma a metà passo, aggrotta la fronte come chi cerca una parola, poi alza le spalle e prosegue.",
+		"sbatte le palpebre, si stropiccia gli occhi, e guarda due volte il nulla.",
+		"inclina la testa come per ascoltare qualcosa appena detto, e non sente altro.",
+	},
+	["levelup.w15.wry.013"] = {
+		"Chissà dove, qualcosa che non ho ancora incontrato è appena diventato un po' meno fortunato.",
+		"Lontano, qualche guaio che mi aspetta si è appena visto accorciare le probabilità.",
+	},
+	["levelup.w15.wry.014"] = {
+		"Sempre io, solo di più. Il mondo dovrà farsene una ragione.",
+		"C'è più di me di prima. Il mondo si regoli di conseguenza.",
+	},
+	["levelup.w15.wry.015"] = {
+		"Se solo la borsa crescesse volentieri quanto me.",
+		"Più muscoli, e la borsa non ha ancora preso l'abitudine.",
+		"In me cresce tutto tranne le monete che porto. C'è una lezione in questo, e mi irrita.",
+	},
 }, "base_life")
