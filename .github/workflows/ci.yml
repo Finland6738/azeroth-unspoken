@@ -18,7 +18,9 @@ jobs:
   tests:
     name: Tests
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    # The suite grows with every content wave: 12 min on a fast runner after W11, up to 20 min on a slow one in W12
+    # (#268), so the limit leaves room for the next waves.
+    timeout-minutes: 40
     steps:
       - name: Check out the repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
