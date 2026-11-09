@@ -8,6 +8,47 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### Content wave W13: the generic victories, quest turn-ins and subzone arrivals (issue #138)
+
+The thirteenth content wave of [docs/content/WAVES.md](docs/content/WAVES.md), random need only. Its pools were the
+first row of the table after W12: the generic `victory` (the end of a fight, 1,066 texts per language),
+`quest_complete` (a quest just turned in, 903) and `subzone_enter` (a new subzone, 551). **1,122 intentions, 2,758
+texts per language** (5,516 in both), written by twelve parallel writer subagents (authors `ai-w13-<unit>`), one per
+theme so that the lines do not converge on the same images, openings and closings, and passed through the archive
+(drafts, `cli dups --state draft` with no exact and no near duplicate and no over-used opening or closing, submit,
+owner sample, approve, export; the round trip is an empty diff). No literary piece and no `tier` field. The addon goes
+from 16,093 to **17,215 intentions** and from 38,471 to **41,229 texts per language**.
+
+- **Added: 467 generic victory lines** (`victory.w13.<family>.NNN`, 1,177 texts per language, `base_combat`): the
+  generic pool had 60 intentions. Five families: the stillness after a fight, wit, the weight of it (mortality and
+  mercy), pride, and the tally (taking stock, tending scrapes, what next). None names a kind of foe, describes the
+  body (the foe may have fled), says how hard the fight was, or names a weapon or a school of fighting. Every rule has
+  a short variant (80 bytes or less, ADR 0056); 1,091 of the 1,177 variants are short. Nine in ten have no
+  condition; the rest use `hpBelow` (a close call), `group` (a "we") or `elite`.
+- **Added: 417 generic quest turn-in lines** (`quest_complete.w13.<family>.NNN`, 1,002 texts per language,
+  `base_world`, `questJustCompleted = true` as the existing ones): the humor of the errand, its worth, the moment after
+  and what comes next, and second thoughts. None names the quest giver, the reward or the task.
+- **Added: 238 generic subzone arrival lines** (`subzone_enter.w13.<family>.NNN`, 579 texts per language,
+  `base_world`, no condition): names and maps, arriving watchful, and the crossing itself. None names a place or its
+  look, says who is there, or claims a first visit or a return. 220 of the 579 texts use `{subzone}`; the Italian
+  never puts a preposition or an article before it.
+- **Generic means true for everyone.** No place, sky, hour, weather, season, race, class, faction, level or invented
+  past, and nothing a Forsaken's body cannot do. Italian agreement uses whole-word forms. Five invented sayings, each
+  attributed to a voice and marked `invented_lore`.
+- **The gap after W13** (per language): soft and strict need met (gap **0**); random need 276,398, gap **236,970**
+  (was 239,490). **82 waves** left (the next is the first row of WAVES.md: the generic journey, lowhp, heal and
+  npc_meet lines).
+- **Measured.** `run_tests` M2: pick 55.1 → **51.5** thousand Lua instructions (p95 91.7 → 89.7; reference 42.7, fails
+  at 64.1). `bench_scale` (every line loaded): memory 31.5 → 35.7 MB (the loaded rules pass 16,384 and the Lua tables
+  double, as W11 foresaw), bytes per synthetic rule at 10,000 rules 1,233 → 1,090, at 50,000 rules 1,214 → 1,181,
+  pick 30.7 → 31.6 thousand Lua instructions (p95 60.3 → 65.8). `bench_trial --long 20` over seeds 1-5 (main → W13):
+  first exact repetition orc 7.7 → 7.8 h, troll 7.1 → 7.5 h, human 9.0 → 9.4 h; repeated share orc 3.9% → 3.3%, troll
+  3.4% → 3.5%, human 3.4% → 2.9%. No W13 line repeats in the 20-hour runs looked at (seeds 1 and 4, all three
+  characters).
+- **Tests:** counts: base intentions 17172, lines loaded 17179, `base_combat` 1793.
+- **Owner sample:** [docs/content/reviews/W13.md](docs/content/reviews/W13.md) (`cli sample --state review --share
+  0.02`: 22 intentions).
+
 ### CI: more time for the Tests job
 
 - **Changed:** the `Tests` job of `.github/workflows/ci.yml` may now run for 40 minutes instead of 20. The whole suite
