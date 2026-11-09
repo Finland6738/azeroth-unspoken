@@ -647,8 +647,10 @@ T.run("relation_player is a memory-priority Director candidate with a guard", fu
 	Person("Aldric-Stormrage", { trust = 50 })
 	P.target = ALDRIC
 	local rec = NS.Gateway:PickRecord("relation_player", NS:BuildContext())
-	-- a recognition line: a generic one, or one of the character's own race (the test character is an orc, W09)
-	T.ok(rec ~= nil and (rec.id:find("^rel%.player%.") or rec.id:find("^race%.orc%.relation_player%.")),
+	-- a recognition line: a generic one (of the base or of a content wave, W15), or one of the character's own race
+	-- (the test character is an orc, W09)
+	T.ok(rec ~= nil and (rec.id:find("^rel%.player%.") or rec.id:find("^relation_player%.w%d+%.")
+		or rec.id:find("^race%.orc%.relation_player%.")),
 		"a listed player: a recognition line (" .. tostring(rec and rec.id) .. ")")
 	-- an NPC is not a player
 	Fresh()
@@ -870,7 +872,8 @@ T.run("examples in the data use the new conditions, and frequency is unchanged",
 	P.mapID = 1411
 	R:Observe(key, "group"); R:Observe(key, "group_combat"); R:Observe(key, "duel")
 	LEAP(45 * DAY); R:OnInit()
-	local ids = Seen("relation_player", Subject(key), 200)
+	-- 1,000 picks: since W15 the generic lines of a long absence, of a shared fight and of a plain recognition are many
+	local ids = Seen("relation_player", Subject(key), 1000)
 	T.ok(ids["rel.player.absent.long"], "a long absence is recalled")
 	T.ok(ids["rel.player.met_here"], "meeting in the same place is recalled")
 	T.ok(ids["rel.player.shared.combat"] and ids["rel.player.shared.duel"], "shared experiences are recalled")
@@ -902,19 +905,22 @@ local SCENARIOS = {
 			["rel.player.shared.combat"] = true, ["rel.player.shared.duel"] = true }, must = "rel.player.resentment" },
 }
 
--- a line of the character's own race (ADR 0053; W09 wrote the orc's, and the test character is an orc) is coherent
--- with a feeling when its conditions name that feeling, a relation that goes with it, or no feeling at all (a plain
--- recognition line, like rel.player.known)
+-- a line of the character's own race (ADR 0053; W09 wrote the orc's, and the test character is an orc), or a generic
+-- line of a content wave (relation_player.w15.*), is coherent with a feeling when its conditions name that feeling, a
+-- relation that goes with it, or no feeling at all (a plain recognition line, like rel.player.known)
 local FEELING_RELATIONS = { trust = { friend = true, comrade = true, ally = true }, wariness = { wary = true },
 	resentment = { enemy = true, disliked = true } }
 local function RaceLineFits(id, feeling)
 	local p = Engine.byId[id]
 	local w = p and p.when
-	if not (w and id:find("^race%.") and w.race == P.race) then return false end
+	if not (w and ((id:find("^race%.") and w.race == P.race) or (id:find("^relation_player%.w%d+%.") and not w.race))) then
+		return false
+	end
 	if w.feeling then return w.feeling == feeling end
 	if w.relation then
 		for _, r in ipairs(type(w.relation) == "table" and w.relation or { w.relation }) do
-			if FEELING_RELATIONS[feeling][r] then return true end
+			-- an acquaintance is a neutral relation: it goes with any feeling (W15)
+			if FEELING_RELATIONS[feeling][r] or r == "acquaintance" then return true end
 		end
 		return false
 	end
@@ -945,7 +951,8 @@ for _, feeling in ipairs({ "trust", "wariness", "resentment" }) do
 		T.eq(LogCount("relation_player", "spoken"), 1, "and the narrator speaks")
 		local extra = offered[1].extra
 		local seen, texts = {}, {}
-		for _ = 1, 150 do
+		-- 400 picks: since W15 the lines that fit a feeling are many, the one asked for is one among them
+		for _ = 1, 400 do
 			NS.cdb.memory = { uses = {}, last = {}, recent = {}, lastTone = {}, variant = {} }
 			local ctx = NS:BuildContext(extra)
 			local rec = NS.Gateway:PickRecord("relation_player", ctx)

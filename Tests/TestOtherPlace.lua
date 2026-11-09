@@ -816,7 +816,7 @@ end)
 ---------------------------------------------------------------------------
 -- Frasi
 ---------------------------------------------------------------------------
-T.run("frasi bilingui di interlocutore e luogo (86 di S6c, 114 con S7 e i duelli di #105, 144 con la W01, 164 con la W02, 166 con la W04, 279 con la W08, 395 con la W09, 452 con la W10, 629 con la W14)", function()
+T.run("frasi bilingui di interlocutore e luogo (86 di S6c, 114 con S7 e i duelli di #105, 144 con la W01, 164 con la W02, 166 con la W04, 279 con la W08, 395 con la W09, 452 con la W10, 629 con la W14, 764 con la W15)", function()
 	Fresh()
 	local n, byEvent, byWho = 0, {}, { other = 0, place = 0 }
 	for id, p in Engine:Rules() do
@@ -829,7 +829,7 @@ T.run("frasi bilingui di interlocutore e luogo (86 di S6c, 114 con S7 e i duelli
 			if w.place then byWho.place = byWho.place + 1 end
 		end
 	end
-	T.eq(n, 629, "frasi del pacchetto")
+	T.eq(n, 764, "frasi del pacchetto")
 	T.ok(byWho.other >= 40 and byWho.place >= 40, ("per interlocutore %d, per luogo %d"):format(byWho.other, byWho.place))
 	for _, ev in ipairs({ "npc_meet", "other_action", "encounter_end", "zone", "greet", "battle", "victory" }) do
 		T.ok((byEvent[ev] or 0) > 0, "evento coperto: " .. ev)
@@ -855,10 +855,13 @@ T.run("le frasi seguono interlocutore e luogo", function()
 	T.ok(not ids["ctx.npc.cheerful"], "il generico allegro esclude i locandieri")
 	local rec = Engine:PickEntry("npc_meet", ctx, "say")
 	-- una frase da locandiere: generica, o della razza del personaggio rivolta a un locandiere (W09: il personaggio
-	-- delle prove è un orco)
+	-- delle prove è un orco), o una generica delle ondate (W14) rivolta a un locandiere o adatta a ogni ruolo (senza
+	-- condizione di ruolo): quale esca dipende dall'ordine delle estrazioni (W15)
 	local w = rec and Engine.byId[rec.id] and Engine.byId[rec.id].when
+	local role = w and type(w.other) == "table" and w.other.role or nil
 	T.ok(rec ~= nil and (rec.id:find("^ctx%.npcv?%.innkeeper") ~= nil
-		or (rec.id:find("^race%.orc%.npc_meet%.") ~= nil and w and type(w.other) == "table" and w.other.role == "innkeeper")),
+		or (rec.id:find("^race%.orc%.npc_meet%.") ~= nil and role == "innkeeper")
+		or (rec.id:find("^npc_meet%.w%d+%.") ~= nil and (role == "innkeeper" or role == nil))),
 		"scelta: " .. tostring(rec and rec.id))
 	P.npc = nil
 	FIRE("GOSSIP_CLOSED")

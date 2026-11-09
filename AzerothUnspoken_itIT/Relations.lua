@@ -1734,4 +1734,894 @@ NS:AddTexts("itIT", {
 		"{other}. Un duello alla maniera dell'Orda: duro, leale, e niente rancori dopo. Quasi.",
 		"Ecco {other}. Il nostro duello non ha deciso niente, ed è proprio quello che deve decidere un duello fra alleati.",
 	},
+	["ally_death.w15.mourn.001"] = {
+		"{other} è a terra, e tutto il resto continua a fare rumore come se niente fosse.",
+		"Il mondo non si è fermato nemmeno un attimo. Io sì.",
+		"Tutto il resto continua a muoversi. Mi sono {g:fermato|fermata} solo io.",
+	},
+	["ally_death.w15.mourn.002"] = {
+		"Continuo a tendere l'orecchio verso una voce che non ha più niente da dire.",
+		"Quella voce faceva parte del rumore del gruppo. Il silenzio che lascia si sente di più.",
+		"Metà di ciò che sapevo di {other} era una voce. Ora nel suono c'è un buco.",
+	},
+	["ally_death.w15.mourn.003"] = {
+		"Per un attimo mi è parso che qualcuno mi chiamasse. Nessuno. Era solo il silenzio.",
+		"Mi sono {g:fermato|fermata} senza deciderlo. I piedi l'hanno saputo prima di me.",
+		"Qualcosa dentro di me si è fermato, come quando un conto non torna.",
+	},
+	["ally_death.w15.mourn.004"] = {
+		"{other}. Solo il nome, per adesso. Il resto del pensiero non arriva.",
+		"Solo un nome in testa, e dopo il nulla.",
+	},
+	["ally_death.w15.mourn.005"] = {
+		"Strano quanto in fretta un gruppo impara la forma di ciascuno. E quanto in fretta si accorge di un buco.",
+		"Un gruppo impara presto la propria forma. Si accorge ancora prima del pezzo che manca.",
+		"Ci si incastra senza accorgersene. Finché un pezzo non viene a mancare.",
+	},
+	["ally_death.w15.mourn.006"] = {
+		"Vorrei che tutti si fermassero a lasciare un posto per {other}. Solo per un momento.",
+		"Manca qualcuno. Il minimo è accorgersene.",
+		"Un momento. Uno solo, almeno.",
+	},
+	["ally_death.w15.mourn.007"] = {
+		"Basta così poco. Un attimo fa il gruppo era al completo.",
+		"Un momento il gruppo è intero. Quello dopo, no. In mezzo, niente.",
+		"Tra il prima e il dopo, nemmeno un attimo. È questa la crudeltà.",
+	},
+	["ally_death.w15.mourn.008"] = {
+		"Capo chino, per un momento. È il minimo che posso dare, e tutto ciò che ho adesso.",
+		"Un capo chino. Poco, ma è quello che c'è.",
+		"Chino il capo verso {other} e lo lascio basso per un po'.",
+	},
+	["ally_death.w15.mourn.009"] = {
+		"Le ultime parole di {other}, non le stavo davvero ascoltando. Non lo fa mai nessuno.",
+		"Le ultime parole sono sempre parole qualunque, e nessuno le conserva.",
+		"Non ricordo le ultime parole. Qualcosa sul da farsi, probabilmente.",
+	},
+	["ally_death.w15.mourn.010"] = {
+		"Il dolore arriva sempre con un attimo di ritardo. Lo sento che si avvicina.",
+		"Ancora non arriva. Arriverà, tutto insieme, quando mi fermerò.",
+		"Sta arrivando. Arriva sempre, solo in ritardo.",
+	},
+	["ally_death.w15.mourn.011"] = {
+		"La mano continua ad aprirsi e chiudersi sul niente, come se stringesse qualcosa fino a un attimo fa.",
+		"Le mani non sanno cosa fare di sé.",
+		"Mani vuote. Continuo a guardarle come se mi dovessero una risposta.",
+	},
+	["ally_death.w15.mourn.012"] = {
+		"Ogni vita si interrompe a metà di una frase. Quella di {other}, adesso.",
+		"Nessuno arriva in fondo. Ci si ferma sempre a metà di qualcosa.",
+	},
+	["ally_death.w15.mourn.013"] = {
+		"{other}... no.",
+		"Ah, no. No, no.",
+		"Non è... no.",
+	},
+	["ally_death.w15.mourn.014"] = {
+		"Più tardi troverò qualcosa di giusto da dire. Adesso c'è solo un niente sordo e pesante.",
+		"Le parole dopo. Ora solo un peso senza forma.",
+		"Non ci sono parole giuste. Ne cercherò qualcuna dopo.",
+	},
+	["ally_death.w15.mourn.015"] = {
+		"Lascia che il silenzio resti un momento. Se l'è guadagnato.",
+		"Niente parole. Il silenzio lo dice meglio di me.",
+		"Lascio durare la quiete ancora un po'. Nessuno deve riempirla.",
+	},
+	["ally_death.w15.mourn.016"] = {
+		"Tutto quello che {other} sapeva fare, tutto, si è fermato di colpo.",
+		"Tutta quell'abilità, tutte quelle abitudini, ferme in un istante.",
+	},
+	["ally_death.w15.mourn.017"] = {
+		"Non c'è mai un buon momento per questo. Questo è peggio di molti.",
+		"Pessimo tempismo. La morte non ne conosce un altro.",
+		"La morte tiene un calendario pessimo. Non chiede mai se abbiamo tempo.",
+	},
+	["ally_death.w15.mourn.018"] = {
+		"Abbiamo perso qualcuno. Qualcuno dovrebbe dirlo ad alta voce. Io non ci riesco, non adesso.",
+		"Abbiamo perso {other}. Andare avanti può aspettare un momento.",
+		"C'è qualcuno a terra. Dillo chiaro, almeno dentro di te.",
+	},
+	["ally_death.w15.mourn.019"] = {
+		"Ognuno si porta dietro la propria morte. {other} ha solo posato la sua prima di noi.",
+		"Ognuno cammina con la propria fine piegata in tasca, chissà dove.",
+	},
+	["ally_death.w15.mourn.020"] = {
+		"Lancio uno sguardo al punto dove stava {other} e lo distolgo in fretta, come da qualcosa che scotta.",
+		"C'è un punto che non voglio guardare. So benissimo dov'è.",
+		"Non guardare lì. Guarda ovunque, tranne lì.",
+	},
+	["ally_death.w15.mourn.021"] = {
+		"Non so nemmeno cosa dovrei provare. Manca qualcosa, ed è tutto quello che ho.",
+		"Difficile dare un nome a questo. So solo che manca qualcosa.",
+	},
+	["ally_death.w15.mourn.022"] = {
+		"Un gruppo è una promessa silenziosa: si esce insieme. Quella promessa si è appena rotta.",
+		"Si esce insieme. Era quello il patto, anche se nessuno l'aveva detto.",
+		"Nessuno lo dice, ma ogni gruppo parte con l'idea di tornare al completo.",
+	},
+	["ally_death.w15.mourn.023"] = {
+		"Mi dispiace, {other}. Mi dispiace tanto.",
+		"Scusa. Scusami.",
+		"Mi dispiace. È tutto quello che ho, e non basta.",
+	},
+	["ally_death.w15.mourn.024"] = {
+		"Fronte, poi petto. Un piccolo gesto per i morti. La mano l'ha fatto prima che ci pensassi.",
+		"La mano va da sola verso {other}, come succede davanti ai morti.",
+	},
+	["ally_death.w15.mourn.025"] = {
+		"È la parte a cui nessuno si abitua. Bene. Nessuno dovrebbe.",
+		"A questo non ci si abitua. Meglio così.",
+		"Che faccia male. Deve farlo.",
+	},
+	["ally_death.w15.mourn.026"] = {
+		"{other} era proprio lì. Tutto il pensiero è questo. E continua a girare.",
+		"Proprio lì, un attimo fa. La testa non va oltre.",
+	},
+	["ally_death.w15.small.001"] = {
+		"Strano cosa nota l'occhio. Una fibbia allentata sull'equipaggiamento di {other}. Nessuno l'ha sistemata.",
+		"Una cinghia slacciata. È lì che lo sguardo continua a cadere.",
+	},
+	["ally_death.w15.small.002"] = {
+		"Un passo a sinistra e a terra ci sarei io. Non voglio pensare a quale passo.",
+		"Un passo dall'altra parte, e qualcuno starebbe piangendo me.",
+		"Pochi passi. È tutta la distanza tra chi resta e chi no.",
+	},
+	["ally_death.w15.small.003"] = {
+		"Chissà dove, una commissione di {other} resta in attesa.",
+		"Ogni morte lascia in sospeso qualche piccola commissione.",
+	},
+	["ally_death.w15.small.004"] = {
+		"Anni o un'ora di conoscenza, il colpo arriva uguale. Mi sorprende.",
+		"Un'ora o una vita. Il peso è più o meno lo stesso.",
+		"Strano. Il peso non controlla da quanto conosci qualcuno.",
+	},
+	["ally_death.w15.small.005"] = {
+		"La sacca di {other} è aperta. La richiudo. Almeno questo si aggiusta.",
+		"Qualcosa di piccolo si è slacciato. Allungo la mano per sistemarlo e mi fermo a metà.",
+	},
+	["ally_death.w15.small.006"] = {
+		"Adesso c'è un bicchiere in sospeso per {other}. Me ne occupo io, e se serve lo bevo io.",
+		"C'è un bicchiere in sospeso. Lo tengo da parte finché non si potrà pagare.",
+	},
+	["ally_death.w15.small.007"] = {
+		"Non le importa quanto vali. È il pensiero che preferirei non avere.",
+		"L'abilità non ti compra una via d'uscita. Niente lo fa.",
+		"Abilità, prudenza, fortuna. Nessuna conta quanto si spera.",
+	},
+	["ally_death.w15.small.008"] = {
+		"Mi sorprendo a tastarmi le braccia, come chi controlla di non aver perso niente.",
+		"Le dita, una per una. Ci sono tutte. Perché le sto contando?",
+	},
+	["ally_death.w15.small.009"] = {
+		"Non sono {g:sicuro|sicura} di aver mai sentito ridere {other}. Adesso mi chiedo come suonasse.",
+		"Strano chiedersi solo adesso come fosse la sua risata.",
+	},
+	["ally_death.w15.small.010"] = {
+		"La morte non bussa mai. Maleducata, ma coerente.",
+		"Niente bussare, niente preavviso. Le maniere della morte non migliorano.",
+		"La morte, come sempre, non ha chiesto il permesso.",
+	},
+	["ally_death.w15.small.011"] = {
+		"Nessuno vorrebbe lasciare un gruppo così.",
+		"{other}, che pessimo modo di andartene.",
+	},
+	["ally_death.w15.small.012"] = {
+		"Se a terra ci fossi io, qualcuno si fermerebbe? Mi piace pensare di sì.",
+		"Si fermerebbero così, per me? Spero di valerne la pena.",
+		"Chissà chi si fermerebbe per me. Meglio non contare.",
+	},
+	["ally_death.w15.small.013"] = {
+		"Lo sguardo si è impigliato in un dettaglio piccolo e senza senso, e non si stacca.",
+		"Fisso il vuoto. Dovrei smettere. Tra un momento.",
+	},
+	["ally_death.w15.small.014"] = {
+		"Noto un graffio sull'equipaggiamento che non avevo mai visto. Che cosa stupida da vedere, adesso.",
+		"La mente va a cercare cose futili. Un graffio, un filo che pende. Qualunque altra cosa.",
+		"Tra tutte le cose da notare: un polsino sfilacciato sulla mia manica.",
+	},
+	["ally_death.w15.small.015"] = {
+		"In un gruppo come questo i nomi vanno e vengono. Questo voglio che resti un po'.",
+		"Passano tanti nomi. Che almeno questo rimanga.",
+	},
+	["ally_death.w15.small.016"] = {
+		"Mi chiedo se c'era chi aspettava {other}, chissà dove.",
+		"Chi vorrebbe saperlo? Qualcuno, di sicuro.",
+	},
+	["ally_death.w15.small.017"] = {
+		"Se {other} si rialza, qualcuno dovrà spiegare com'è andata. Non io.",
+		"La prima cosa che si chiede, rialzandosi: cos'è successo? Non avrò una buona risposta.",
+	},
+	["ally_death.w15.small.018"] = {
+		"Passo in fretta da un viso all'altro, contando chi è ancora in piedi.",
+		"Controlla i vivi. Uno per uno. In fretta.",
+	},
+	["ally_death.w15.small.019"] = {
+		"Una parte di me è sollevata che non sia toccato a me. Non ne vado {g:fiero|fiera}.",
+		"Sollievo che non sia toccato a me. Subito dietro, la vergogna.",
+		"Felice che non sia toccato a me. Mi vergogno di esserlo. Tutte e due le cose.",
+	},
+	["ally_death.w15.small.020"] = {
+		"I vivi sono gente pratica. Il lavoro si sta già ridistribuendo.",
+		"Chi resta si sta già spartendo il lavoro. I vivi non perdono tempo.",
+	},
+	["ally_death.w15.small.021"] = {
+		"Non ti ho mai detto grazie, {other}. Avrei dovuto.",
+		"Grazie. Dovevo dirlo prima.",
+	},
+	["ally_death.w15.small.022"] = {
+		"A chiunque viaggi in compagnia è toccato stare così, prima o poi. Sono in buona e vecchia compagnia.",
+		"Innumerevoli persone hanno vissuto questo momento. Non lo rende più leggero.",
+	},
+	["ally_death.w15.small.023"] = {
+		"Mi passo il dorso della mano sul viso e non mi chiedo perché.",
+		"Mi strofino gli occhi. Stanchezza. Dirò così.",
+	},
+	["ally_death.w15.small.024"] = {
+		"Il mio primo pensiero è stato pratico, e mi vergogno di quanto in fretta sia arrivato.",
+		"La mente è un piccolo contabile senza cuore. Sta già facendo i conti.",
+		"Un pezzo di me sta già contando cosa ci manca. Quel pezzo non mi piace.",
+	},
+	["ally_death.w15.small.025"] = {
+		"All'improvviso sento ogni dolore che ho addosso. Come se il corpo volesse dire la sua.",
+		"Ogni acciacco si fa sentire insieme, come per dire: anche tu.",
+	},
+	["ally_death.w15.small.026"] = {
+		"Qualcuno avrà pure inventato una parola per questo. Io non la conosco.",
+		"Dovrebbe esserci una parola per questo.",
+		"Di' qualcosa, qualunque cosa, anche solo dentro di te.",
+	},
+	["ally_death.w15.small.027"] = {
+		"Mi sono {g:fermato|fermata} a metà di un passo. Finisci il passo. Poi il prossimo.",
+		"Un piede sollevato, e per un attimo non so dove posarlo.",
+	},
+	["ally_death.w15.steel.001"] = {
+		"Dopo. Lo sentirò come si deve dopo, quando chi resta sarà al sicuro.",
+		"Il lutto può fare la fila dietro ai vivi.",
+	},
+	["ally_death.w15.steel.002"] = {
+		"Spalle dritte. Chi resta ha bisogno di me {g:saldo|salda}, non {g:affranto|affranta}.",
+		"Prima la fermezza. Il dispiacere dopo.",
+		"Tieni duro. Ci sarà tempo per crollare dopo, se serve.",
+	},
+	["ally_death.w15.steel.003"] = {
+		"Mascella stretta. Torno a ciò che resta da fare.",
+		"Ingoialo. Trova gli altri. Vai.",
+		"Strizzo gli occhi una volta e riparto. Nessuno deve vedere la pausa.",
+	},
+	["ally_death.w15.steel.004"] = {
+		"Adesso si resta insieme. Piangeremo {other} a cose fatte.",
+		"Stai vicino al gruppo. Il lutto, a cose fatte.",
+	},
+	["ally_death.w15.steel.005"] = {
+		"C'è un elenco di cose da fare, e il dolore non c'è ancora. Lo scriverò in fondo.",
+		"Il dolore va in fondo alla lista. Quando ci arriverò, sarà ancora lì.",
+	},
+	["ally_death.w15.steel.006"] = {
+		"Se mi fermo adesso non riparto più. Quindi non mi fermo.",
+		"Fermarsi è un lusso. Me lo concederò quando ci sarà spazio.",
+		"Continua a muoverti. Il dolore acchiappa prima chi sta fermo.",
+	},
+	["ally_death.w15.steel.007"] = {
+		"Aspettami, {other}. Verrò a sedermi accanto a te quando sarà finita.",
+		"Torno da te. Lasciami solo finire.",
+	},
+	["ally_death.w15.steel.008"] = {
+		"I morti sanno aspettare. I vivi no. Prima i vivi.",
+		"Chi non c'è più può attendere. Chi c'è, no. Prima chi c'è.",
+	},
+	["ally_death.w15.steel.009"] = {
+		"Uno sguardo. È tutto quello che mi concedo. Poi di nuovo al lavoro.",
+		"Guarda una volta. Una sola. Poi il lavoro.",
+		"Un momento per {other}. Uno. Poi il compito.",
+	},
+	["ally_death.w15.steel.010"] = {
+		"Sentilo dopo. Usalo adesso.",
+		"Mettilo da parte. Usalo per tenere in piedi gli altri.",
+	},
+	["ally_death.w15.steel.011"] = {
+		"Contare chi resta. Vedere come stanno. Poi, solo poi, {other}.",
+		"Contare le teste. Controllare. Poi pensare.",
+	},
+	["ally_death.w15.steel.012"] = {
+		"Testa alta. Il lutto si conserva, da sempre.",
+		"Occhi aperti. Quello può aspettare.",
+	},
+	["ally_death.w15.steel.013"] = {
+		"Mi tremano le mani. Va bene. Possono tremare e lavorare insieme.",
+		"Anche le mani che tremano funzionano. Usale.",
+		"Mani, continuate a lavorare. Tremerete dopo.",
+	},
+	["ally_death.w15.steel.014"] = {
+		"Un pugno sul petto, una volta. Dovrà valere per tutto ciò che direi.",
+		"Pugno sul petto. Per ora basta.",
+	},
+	["ally_death.w15.steel.015"] = {
+		"Il lutto è per chi è al sicuro. Io devo ancora arrivarci.",
+		"Il lutto si fa nei posti sicuri. Prima trovane uno.",
+		"Prima al sicuro. Poi il dolore.",
+	},
+	["ally_death.w15.steel.016"] = {
+		"{other} detesterebbe vederci qui a piangerci addosso. Credo. Diciamo che è così.",
+		"I morti non chiedono mai di piangersi addosso. Comodo, ma lo accetto.",
+	},
+	["ally_death.w15.steel.017"] = {
+		"Qualcuno deve occuparsi di {other}. Se nessuno lo fa, lo farò io.",
+		"Qualcuno dovrebbe restare lì vicino. Forse io.",
+	},
+	["ally_death.w15.steel.018"] = {
+		"Un paio di mani in meno. Le mie dovranno fare per due.",
+		"Il lavoro di due, un paio di mani. Va bene.",
+	},
+	["ally_death.w15.steel.019"] = {
+		"Raddrizzo le spalle. Il carico adesso è più pesante, e tocca a me portarlo.",
+		"Si è aggiunto qualcosa a ciò che porto. Sento esattamente dove pesa.",
+		"Una spalla rigida, un peso nuovo sopra. Sistemalo e cammina.",
+	},
+	["ally_death.w15.steel.020"] = {
+		"O in lutto o utile. Non le due cose insieme. Prima utile.",
+		"Farò il lutto come si deve quando non ci sarà più niente da fare.",
+	},
+	["ally_death.w15.steel.021"] = {
+		"Ricaccialo giù. Non per sempre. Solo finché non è passata.",
+		"Piegalo piccolo e continua. Si riaprirà da solo, più tardi.",
+		"Chiudilo a chiave, per ora. So dove lascio la chiave.",
+	},
+	["ally_death.w15.steel.022"] = {
+		"Non succede due volte. Nessun altro va giù.",
+		"Basta così. Non perdiamo nessun altro.",
+		"Nessun altro. Nessuno.",
+	},
+	["ally_death.w15.steel.023"] = {
+		"La regola più vecchia di ogni compagnia: il dolore aspetta fuori finché il lavoro non è finito.",
+		"Il dolore aspetta alla porta. Lo ha sempre fatto. Che aspetti.",
+	},
+	["ally_death.w15.steel.024"] = {
+		"Occhi sulla strada davanti. Se mi volto adesso, resto lì.",
+		"Guarda avanti. Continua a guardare avanti.",
+	},
+	["ally_death.w15.steel.025"] = {
+		"Se {other} torna in piedi, bene. Fino ad allora il compito è lo stesso: tenere in vita gli altri.",
+		"Forse presto tornerà in piedi. In ogni caso, il compito non è cambiato.",
+	},
+	["ally_death.w15.steel.026"] = {
+		"Riposa, {other}. Finiamo noi.",
+		"Riposa. Lo portiamo a termine noi.",
+		"Riposa, ora. Al resto pensiamo noi.",
+	},
+	["ally_death.w15.vow.001"] = {
+		"Ricorderò il nome di {other}. Questo posso prometterlo.",
+		"Un nome pesa poco da portare. Lo porterò.",
+		"Certi nomi meritano di durare più del momento. Questo durerà, se dipende da me.",
+	},
+	["ally_death.w15.vow.002"] = {
+		"Non resterai indietro, {other}. Non per colpa mia.",
+		"Qui non si lascia indietro nessuno.",
+		"Non si abbandona chi è dei nostri.",
+	},
+	["ally_death.w15.vow.003"] = {
+		"Qualunque cosa abbia portato qui {other}, la porterò a termine io.",
+		"Il motivo per cui era qui non finisce adesso. Lo raccolgo io.",
+	},
+	["ally_death.w15.vow.004"] = {
+		"Voglio ricordare di {other} qualcosa di vero, non solo la fine. Ci penso finché non lo trovo.",
+		"Non la fine. Terrò qualcosa di prima.",
+	},
+	["ally_death.w15.vow.005"] = {
+		"Dico il nome di {other} una volta, sottovoce, per metterlo al sicuro.",
+		"Di' il nome una volta, piano. Riponilo dove non si perde.",
+		"Un nome, detto piano due volte. È il mio modo di tenerlo.",
+	},
+	["ally_death.w15.vow.006"] = {
+		"Diventerò più {g:bravo|brava} in questo. È l'unica scusa che valga qualcosa.",
+		"La prossima volta sarò più {g:svelto|svelta}. Questa è la promessa.",
+		"Non andrà due volte nello stesso modo. Ci penso io.",
+	},
+	["ally_death.w15.vow.007"] = {
+		"Per {other}. Voglio che quel nome sia ricordato.",
+		"Questo non va dimenticato. Non lo permetterò.",
+	},
+	["ally_death.w15.vow.008"] = {
+		"Il mondo dimentica in fretta. Io posso essere più {g:lento|lenta} del mondo.",
+		"Dimenticare è un'abitudine del mondo. Non deve per forza essere la mia.",
+		"Lo terrò anche quando il mondo sarà passato oltre.",
+	},
+	["ally_death.w15.vow.009"] = {
+		"Se {other} si rialza, farò in modo che sappia che qualcuno se n'è accorto.",
+		"Se torna in piedi, glielo dirò chiaro: si è sentita la tua mancanza.",
+	},
+	["ally_death.w15.vow.010"] = {
+		"Guardo {other} a lungo. Voglio poter ritrovare questo volto, più avanti.",
+		"Guarda bene. Imparalo. La memoria non lavora da sola.",
+	},
+	["ally_death.w15.vow.011"] = {
+		"Qui non c'è una candela da accendere. Ne terrò accesa una dentro di me.",
+		"Niente candele da accendere. Basterà la memoria.",
+		"Per questo andrebbe accesa una candela. Gliene devo una.",
+	},
+	["ally_death.w15.vow.012"] = {
+		"Ci sono io, {other}. Non vado da nessuna parte.",
+		"Sono qui. Non me ne vado.",
+		"Resto qui. Proprio qui.",
+	},
+	["ally_death.w15.vow.013"] = {
+		"D'ora in poi, una parte di ciò che faccio la faccio per {other}.",
+		"Da adesso, un pezzo di ogni battaglia è suo.",
+		"Combatterò un po' più forte, adesso. Una parte è sua.",
+	},
+	["ally_death.w15.vow.014"] = {
+		"Più tardi lo scriverò da qualche parte: il nome, e che è successo. Qualcuno deve farlo.",
+		"Qualcuno dovrebbe tenerne nota. Tanto vale che sia io.",
+		"Una riga in più nel mio registro privato. Meriterebbe una pagina intera.",
+	},
+	["ally_death.w15.vow.015"] = {
+		"Una mano aperta, alzata verso {other}. Addio, o a più tardi. Non sta a me scegliere.",
+		"Mano alzata, palmo aperto. Un saluto, in silenzio.",
+		"Due dita alla fronte. Il saluto più piccolo che conosco.",
+	},
+	["ally_death.w15.vow.016"] = {
+		"Se qualcuno chiede, lo racconterò com'è andata. Senza abbellire, senza tacere niente.",
+		"Se qualcuno chiede com'è andata, da me avrà la verità.",
+	},
+	["ally_death.w15.vow.017"] = {
+		"Il tuo posto resta tuo, {other}.",
+		"Il tuo posto ti aspetta. Torna, se puoi.",
+	},
+	["ally_death.w15.vow.018"] = {
+		"Si resta un po' in ciò che gli altri ripetono di noi. Continuerò a ripetere il nome di {other}.",
+		"Si dura finché qualcuno dice il tuo nome. Io posso dirlo.",
+	},
+	["ally_death.w15.vow.019"] = {
+		"Chiamalo debito. Lo vedrò saldato prima di riposare.",
+		"Un debito, allora. Pagato fino all'ultimo prima di fermarmi.",
+	},
+	["ally_death.w15.vow.020"] = {
+		"Il mio passo è cambiato. Più duro. Come se ci fosse una promessa in fondo.",
+		"Cammina come se ci credessi. Adesso ci credi.",
+		"Un passo più silenzioso, e più duro. Lo terrò.",
+	},
+	["ally_death.w15.vow.021"] = {
+		"Qualunque cosa fosse {other} per il resto del mondo, qui mi stava accanto. Questo lo tengo.",
+		"Mi stava accanto. È questo che terrò.",
+	},
+	["ally_death.w15.vow.022"] = {
+		"Hai fatto la tua parte, {other}. Lascia che facciamo la nostra.",
+		"La tua parte è fatta. Ora la nostra.",
+	},
+	["ally_death.w15.vow.023"] = {
+		"Terrò questo momento esattamente com'è. Né più bello, né peggiore.",
+		"Ricordalo com'è stato. Non lucidarlo.",
+	},
+	["ally_death.w15.vow.024"] = {
+		"Ciò che viene dopo, lo affronterò per due.",
+		"Quello che resta, lo affronto anche per chi non c'è.",
+		"Per due, allora. Va bene.",
+	},
+	["ally_death.w15.vow.025"] = {
+		"Faccio un piccolo nodo a una cinghia dell'equipaggiamento. C'è chi tiene il conto così. Ora anch'io.",
+		"Un nodo in una cinghia allentata. Lo lascio lì.",
+	},
+	["ally_death.w15.vow.026"] = {
+		"Buon cammino, ovunque vadano i morti. Un giorno ti raggiungerò, ma non presto.",
+		"Ovunque tu sia, tienimi un posto. Ma non troppo presto.",
+	},
+	["relation_player.w15.bond.001"] = {
+		"{other}, qui. Qualunque lamentela avessi in serbo può aspettare.",
+		"Un nome amico che spunta senza preavviso. Poche cose aggiustano l'umore così in fretta.",
+		"Basta una persona conosciuta, e ogni posto sembra un po' meno preso in prestito.",
+	},
+	["relation_player.w15.bond.002"] = {
+		"Le spalle si abbassano di un dito prima ancora che io metta a fuoco il nome. Il corpo riconosce l'amicizia prima di me.",
+		"Certi saluti li distribuisco a chiunque. Quello che ho pronto ora è riservato a una persona sola.",
+	},
+	["relation_player.w15.bond.003"] = {
+		"Ci sono persone che seguirei dentro una pessima idea solo per far loro compagnia. {other} è una di queste.",
+		"Se finirà in guai, almeno saranno guai in buona compagnia.",
+		"Una persona amica in vista. Il giudizio peggiora e l'umore migliora: uno scambio onesto.",
+	},
+	["relation_player.w15.bond.004"] = {
+		"Con certi nomi sto sull'attenti, con altri mi lascio andare. Con {other} mi lascio andare.",
+		"Con alcuni devo pesare ogni parola. Con questa persona no, ed è tutto lì il regalo.",
+		"Certa compagnia è fatica, altra è riposo. Questa è di quella che riposa.",
+	},
+	["relation_player.w15.bond.005"] = {
+		"L'amicizia chiede così poco ad alta voce. Per lo più vuole solo essere notata, e dunque: ti vedo, {other}.",
+		"Qualcuno di cui sono {g:amico|amica}. Ogni volta mi stupisco di quanto tutto pesi meno, con questa persona vicino.",
+	},
+	["relation_player.w15.bond.006"] = {
+		"Qualcuno mi ha {g:trovato|trovata}, ed è la persona giusta. Bene.",
+		"Eccoti, {other}. Resterò un po' qui vicino.",
+	},
+	["relation_player.w15.bond.007"] = {
+		"{other} in vista. Qualunque cosa arrivi, meglio affrontarla con questa persona al mio fianco.",
+		"Certa fiducia si costruisce a parole. Questa si è costruita nei momenti in cui nessuno aveva tempo di parlare.",
+		"Spalla a spalla è un'abitudine, e con questa persona ce l'ho.",
+	},
+	["relation_player.w15.bond.008"] = {
+		"Senza deciderlo, ho lasciato un posto libero al mio fianco per {other}. Certe abitudini vengono prima del pensiero.",
+		"Fra due persone abituate a coprirsi le spalle basta un cenno breve. Di più sarebbe solo cerimonia.",
+	},
+	["relation_player.w15.bond.009"] = {
+		"Se c'è {other}, ci sono anche i guai, e sono {g:contento|contenta} di entrambi.",
+		"Spunta qualcuno con cui ho diviso le armi, e il primo pensiero è sollievo; il secondo è guardare cosa si porta dietro.",
+		"Che piacere vedere questa persona. Un po' meno pensare a ciò che di solito arriva insieme.",
+	},
+	["relation_player.w15.bond.010"] = {
+		"{other}. Tutto il resto intorno si sfuoca un poco, com'è giusto.",
+		"Quel nome, e di colpo sono meno {g:stanco|stanca} di un attimo fa.",
+		"Certi volti li guardo. Questo lo cerco, anche quando non ho motivo di aspettarmelo.",
+	},
+	["relation_player.w15.bond.011"] = {
+		"Tutto in me si fa quieto e lieto nello stesso istante. {other} fa questo effetto, e ho smesso di discuterci.",
+		"Potrei limitarmi a un saluto. Preferisco lasciare che il momento duri un po' di più.",
+	},
+	["relation_player.w15.bond.012"] = {
+		"Qualcuno dalla mia parte per decisione, non per abitudine. Le decisioni si possono disfare, ed è per questo che questa vale qualcosa.",
+		"{other}, che ha scelto la mia parte quando non serviva. Di gente così tengo un conto preciso.",
+		"Uno scopo comune è una corda robusta. Terrò ben tesa la mia estremità.",
+	},
+	["relation_player.w15.bond.013"] = {
+		"Tempismo perfetto, {other}. Stessa causa, stessa parte.",
+		"L'accordo regge, confido. Sarà meglio.",
+	},
+	["relation_player.w15.bond.014"] = {
+		"Con {other} nei paraggi smetto di contare le vie d'uscita. Me ne accorgo solo dopo.",
+		"La fiducia fa poco rumore. Si vede nelle cose che non mi prendo più la briga di controllare.",
+		"Ecco qualcuno di cui prenderei la parola senza cercare il trucco.",
+	},
+	["relation_player.w15.bond.015"] = {
+		"Lascerei il mio zaino con {other} e me ne andrei senza voltarmi. È più o meno il complimento più alto che conosca.",
+		"A certe persone presterei del denaro. A meno ancora le spalle. Questa persona ha diritto a entrambe le cose.",
+		"Se dovessi lasciare qualcosa di prezioso in custodia, questo nome sarebbe tra i primi.",
+	},
+	["relation_player.w15.bond.016"] = {
+		"La guardia scende di una tacca, come succede con {other} e quasi con nessun altro.",
+		"Qui potrei voltare le spalle senza pensarci due volte. È più raro di quanto sembri.",
+	},
+	["relation_player.w15.bond.017"] = {
+		"Nessun motivo particolare. Ho simpatia per {other}, e ho smesso di chiedere a questa simpatia di giustificarsi.",
+		"Certe compagnie migliorano tutto un poco senza fare nulla di speciale. Questa è una di quelle.",
+		"Un volto che mi fa piacere vedere. Non serve altra scusa.",
+	},
+	["relation_player.w15.bond.018"] = {
+		"Persino il mio malumore riconosce {other}, e si fa da parte in silenzio.",
+		"C'è chi sopporto e c'è chi mi rallegra. Questa persona sta saldamente nel secondo mucchio.",
+	},
+	["relation_player.w15.bond.019"] = {
+		"Oh, bene. Sei tu.",
+		"{other}! Le cose si sono appena fatte più sopportabili.",
+	},
+	["relation_player.w15.bond.020"] = {
+		"C'è una gentilezza che non ho mai ricambiato. {other} forse l'ha dimenticata; io no.",
+		"Strano carico, la gratitudine: non pesa nulla, eppure la sento ogni volta che spunta questo nome.",
+		"Un favore fatto per me, una volta, senza che lo chiedessi. Non è roba che sbiadisce.",
+	},
+	["relation_player.w15.bond.021"] = {
+		"Ho un grazie messo da parte e nessuna idea di come dirlo senza che diventi imbarazzante.",
+		"Qualcuno con cui ho un debito, del tipo piacevole. Preferisco saldarlo coi fatti che con i discorsi.",
+	},
+	["relation_player.w15.bond.022"] = {
+		"Per {other} chinerò il capo un po' più di quanto chieda un saluto. Il perché lo so io.",
+		"Un vecchio debito, soppesato un'altra volta e trovato ancora lì. Non mi pesa portarlo.",
+	},
+	["relation_player.w15.edge.001"] = {
+		"{other}. Da qualche parte nella testa si è appena svegliato un tabellone che fingo di non tenere.",
+		"Niente mi tiene {g:sveglio|sveglia} come una rivalità a portata di sguardo. Mi secca quanto funzioni bene.",
+		"Rivalità in vista. Bene: cominciavo a stare {g:comodo|comoda}, ed è stando comodi che si resta indietro.",
+	},
+	["relation_player.w15.edge.002"] = {
+		"Con {other} intorno non so mai bene a che punto sono, e ho intenzione di scoprirlo.",
+		"Rispetto e rivalità camminano più vicini di quanto si ammetta. Da me, questa persona li ha entrambi.",
+	},
+	["relation_player.w15.edge.003"] = {
+		"Oh, sei tu. Vedrò di restare un passo avanti.",
+		"{other}. Speravo che ti facessi vedere; mi serviva un motivo per impegnarmi di più.",
+		"Finalmente. Vincere cominciava a diventare noioso.",
+	},
+	["relation_player.w15.edge.004"] = {
+		"Mi raddrizzo un poco, con {other} in giro. Qualcuno ha cominciato a contare, e tanto vale che sia io.",
+		"Se gli sguardi si incrociano, reggerò il mio un istante più di quanto la cortesia chieda. Una meschinità, e non m'importa.",
+	},
+	["relation_player.w15.edge.005"] = {
+		"Per {other} non vorrei mai del male. Solo, ogni tanto, una giornata un po' peggiore della mia.",
+		"Se questa rivalità finisse, mi mancherebbe più di quanto ammetterei. È utile avere qualcuno da battere.",
+	},
+	["relation_player.w15.edge.006"] = {
+		"{other}. Ogni muscolo che ho ricorda il perché, prima ancora di me.",
+		"Davanti agli occhi, il nome che meno vorrei incontrare. Tengo il volto calmo; il resto di me misura già le distanze.",
+		"L'odio stanca. Vedendo questo nome, scopro che ne ho ancora la forza.",
+	},
+	["relation_player.w15.edge.007"] = {
+		"{other}. Il mondo è grande, eppure trova sempre il modo di mettermi questa persona tra i piedi.",
+		"Con tutta la gente che c'è da incontrare. Il mondo ha il senso dell'umorismo, e io non lo condivido.",
+	},
+	["relation_player.w15.edge.008"] = {
+		"Alla vista di {other} mi faccio immobile. Né paura né prontezza: solo immobilità, senza ancora decidere nulla.",
+		"Mani ferme, sguardo fisso, bocca chiusa. Qualunque cosa diventi, non comincerà da me.",
+	},
+	["relation_player.w15.edge.009"] = {
+		"Potrei fingere che {other} sia un volto qualunque. Non lo farò: è fingendo che si diventa sbadati.",
+		"Anche l'inimicizia ha la sua onestà. Almeno qui so esattamente dove mi trovo.",
+		"L'odio è un carico costoso. Ho deciso che questo nome vale la spesa.",
+	},
+	["relation_player.w15.edge.010"] = {
+		"{other}. Sarò cortese, e terrò le mie cose dove posso vederle.",
+		"La diffidenza non è scortesia, se resta zitta. La mia resta zittissima, e ben sveglia.",
+	},
+	["relation_player.w15.edge.011"] = {
+		"Lo zaino scivola da solo sulla spalla più lontana. L'abitudine conosce bene il nome.",
+		"Educazione, allora. L'educazione non costa nulla e promette ancora meno.",
+	},
+	["relation_player.w15.edge.012"] = {
+		"{other}. Di sicuro c'è qualcuno, chissà dove, che trova questa persona affascinante. Mi fido sulla parola.",
+		"Certi nomi guastano un momento solo arrivando. Questo è uno di quelli.",
+		"Non auguro male a questa persona. Le auguro solo di essere altrove, e a lungo.",
+	},
+	["relation_player.w15.edge.013"] = {
+		"Quel nome. La mia pazienza si restringe di una taglia.",
+		"{other}. Cortesia, allora, di quella sottile, quasi tutta denti.",
+		"Farò un cenno. Il bilancio finisce lì.",
+	},
+	["relation_player.w15.edge.014"] = {
+		"{other}. Ma guarda.",
+		"Ah. Proprio tu.",
+	},
+	["relation_player.w15.edge.015"] = {
+		"Senza volerlo mi faccio più {g:piccolo|piccola}. Poi mi costringo a smettere.",
+		"La paura è una cattiva consigliera, e chiassosa. In questo momento mi dice con precisione dove si trova questa persona.",
+		"Tengo la voce ferma e la distanza generosa. Nessuna delle due cose è un caso.",
+	},
+	["relation_player.w15.edge.016"] = {
+		"Preferisco tacere, con {other} nei paraggi, e lasciare lo spazio in mezzo largo com'è.",
+		"Tengo questa persona al margine dello sguardo, e non le volto mai del tutto le spalle.",
+	},
+	["relation_player.w15.edge.017"] = {
+		"{other}. Abbastanza a modo. Come tanta gente, fino al momento in cui smetteva di esserlo.",
+		"Ascolto questa persona come conterei il resto ricevuto da chi non conosco: due volte, e con garbo.",
+		"Nessuna accusa, niente che potrei dire ad alta voce. Solo una piccola mano sulla spalla che dice: occhio.",
+	},
+	["relation_player.w15.edge.018"] = {
+		"Manderei un messaggio tramite {other}. La risposta no.",
+		"La diffidenza è un'assicurazione a buon mercato. Con questa persona continuerò a pagarla.",
+		"Questa persona sorride con facilità. Ho imparato a contare quanto costano i sorrisi facili.",
+	},
+	["relation_player.w15.edge.019"] = {
+		"Un'occhiata verso {other}, una alle mie cose, poi torno a guardare. Senza fretta, e senza accuse.",
+		"Riesco a sorridere e intanto a tenere d'occhio. È una delle mie doti migliori.",
+	},
+	["relation_player.w15.edge.020"] = {
+		"{other}. Le mani vogliono qualcosa da fare. Non do loro niente, e aspetto.",
+		"Certe paure gridano. Questa sussurra soltanto lo stesso nome, senza fine.",
+		"Conosco questa tensione nelle spalle. Arriva sempre un attimo prima di questo nome.",
+	},
+	["relation_player.w15.edge.021"] = {
+		"Non è successo nulla. Non serve. Basta questa presenza a mettere ogni nervo all'erta.",
+		"Potrei andarmene. Non lo farò, ma saperlo mi aiuta più di quanto dovrebbe.",
+	},
+	["relation_player.w15.edge.022"] = {
+		"{other}. Il vecchio torto si mette a sedere e si guarda intorno, ben sveglio.",
+		"Ho provato a posarlo, questo rancore. Trova sempre la strada per tornarmi in mano.",
+		"Il perdono è una porta che continuo a ripromettermi di aprire. Non per questo nome. Finora no.",
+	},
+	["relation_player.w15.edge.023"] = {
+		"Guarda {other}, che va avanti come se niente fosse. Dev'essere riposante.",
+		"Ho ripassato così tante volte ciò che direi a questa persona che le parole si sono consumate. E comunque non le dirò.",
+		"Certi torti guariscono. Questo ha solo imparato a stare zitto.",
+	},
+	["relation_player.w15.edge.024"] = {
+		"Guardo {other} un istante di troppo, poi distolgo gli occhi. La mascella resta serrata per un po'.",
+		"Lascerò passare questa persona senza una parola. Il silenzio non sarà vuoto.",
+	},
+	["relation_player.w15.tie.001"] = {
+		"{other} e io abbiamo combattuto nella stessa mischia. Qualunque altra cosa sia vera, questa resta vera.",
+		"Quando hai visto come si muove qualcuno nel momento in cui le cose vanno storte, non lo dimentichi. Questa persona l'ho vista.",
+		"Di quella battaglia ricordo poco con chiarezza. Ricordo chi c'era.",
+	},
+	["relation_player.w15.tie.002"] = {
+		"Il pericolo condiviso lascia qualcosa dietro di sé, piccolo e ostinato. Al suono di questo nome, si muove.",
+		"Una volta ho messo la vita nelle mani di {other}, che lo volessi o no. È più difficile da disfare di quanto si creda.",
+		"Combattere accanto a qualcuno non è amicizia. È qualcosa di più strano, e più difficile da scrollarsi di dosso.",
+	},
+	["relation_player.w15.tie.003"] = {
+		"{other} si merita il cenno che riservo a chi ha combattuto con me.",
+		"Le mani si flettono alla vista di questa persona, come se il ricordo di quella battaglia stesse nelle dita.",
+	},
+	["relation_player.w15.tie.004"] = {
+		"L'ultima volta che {other} e io eravamo nello stesso posto, qualcosa cercava con impegno di ammazzare tutti. Speriamo non diventi una tradizione.",
+		"Niente lega due persone come rischiare la pelle nello stesso istante.",
+	},
+	["relation_player.w15.tie.005"] = {
+		"So come combatte questa persona. È più di quanto sappia di molti con cui ho diviso un pasto.",
+		"Un nome da una battaglia in cui c'ero anch'io. I dettagli si sono sfocati; la sensazione di avere qualcuno lì, no.",
+	},
+	["relation_player.w15.tie.006"] = {
+		"Ricordo ancora come è finito quel duello, e preferisco non dire da che parte.",
+		"Affrontare qualcuno in duello insegna le sue abitudini più in fretta di qualsiasi amicizia.",
+		"Un duello è una conversazione con meno parole e più gioco di piedi. Con questa persona l'ho già fatta.",
+	},
+	["relation_player.w15.tie.007"] = {
+		"{other}: un duello, una volta. Certe domande non restano chiuse a lungo.",
+		"C'è un rispetto che nasce solo dall'aver dato il meglio contro qualcuno. Per questa persona ne ho un po'.",
+	},
+	["relation_player.w15.tie.008"] = {
+		"Sto già squadrando {other}, come si fa con chi si è affrontato in duello.",
+		"Alla vista di questa persona la spalla dà una piccola fitta. Il vecchio scontro ha ancora un po' di dolore da spendere.",
+	},
+	["relation_player.w15.tie.009"] = {
+		"{other}. Una parte di me sta già pensando a una rivincita.",
+		"Mi ricordo di te. E di quel duello.",
+	},
+	["relation_player.w15.tie.010"] = {
+		"{other}, qualcuno con cui ho fatto affari. Le merci sono passate di mano; un po' di fiducia anche, oppure no.",
+		"Commerciare insegna come conta una persona. Ricordo come conta questa.",
+		"Uno scambio è una piccola prova con le monete sul tavolo. Questo nome l'ha superata o no; ricordo com'è andata.",
+	},
+	["relation_player.w15.tie.011"] = {
+		"L'ultima volta che ho avuto a che fare con questa persona sono girate delle monete. Sto ancora decidendo se nella direzione giusta.",
+		"Ci ho fatto affari, con questo nome. La mia borsa se lo ricorda, a modo suo.",
+	},
+	["relation_player.w15.tie.012"] = {
+		"Alla vista di {other} la mano va alla borsa. Un riflesso da mercante, niente di più.",
+		"Il cenno svelto che tengo per chi ci ha fatto affari. Meritato, in un modo o nell'altro.",
+	},
+	["relation_player.w15.tie.013"] = {
+		"Una volta c'è stato un invito, fra me e {other}. Chi l'abbia fatto a chi, dovrei pensarci.",
+		"Chiedere a qualcuno di unirsi, o accettarlo, è un piccolo azzardo. Questo nome ne ha fatto parte.",
+		"Unirsi, anche una volta sola, lascia un segno. Piccolo, ma so dove trovarlo.",
+	},
+	["relation_player.w15.tie.014"] = {
+		"Qualcuno che una volta mi ha {g:voluto|voluta} con sé, o che io ho voluto con me. In un caso o nell'altro, una porta si è aperta.",
+		"{other}. Ci fu un'offerta di compagnia, a suo tempo. La ricordo più di quanto avrei immaginato.",
+	},
+	["relation_player.w15.tie.015"] = {
+		"La mano si alza a metà verso {other}, ricordando un invito di qualche tempo fa.",
+		"Questa è una persona a cui si è chiesto, o che ha chiesto, di unirsi. Conta qualcosa.",
+	},
+	["relation_player.w15.tie.016"] = {
+		"Un gesto, una volta, da parte di questa persona. Lo ricordo meglio di quanto ricordi cosa volesse dire.",
+		"Un saluto, un inchino, qualcosa di maleducato? Qualunque cosa fosse, è bastata perché il nome mi restasse in mente.",
+	},
+	["relation_player.w15.tie.017"] = {
+		"Chi si prende la briga di fare un gesto verso qualcuno è più raro di quanto si pensi. Questa persona l'ha fatto, una volta.",
+		"Un solo piccolo gesto, e il nome mi è rimasto. La memoria conserva ricevute strane.",
+	},
+	["relation_player.w15.tie.018"] = {
+		"Un vecchio gesto di {other} merita una piccola risposta. Ne ho una pronta.",
+		"Un cenno della testa per questa persona: ricambio un gesto di qualche tempo fa.",
+	},
+	["relation_player.w15.tie.019"] = {
+		"{other}. Uno dei nomi che conservo, per ragioni mie.",
+		"Il riconoscimento arriva prima del motivo. Prima il nome, poi perché conta.",
+		"Questa persona la conosco. Quello che ne penso può aspettare un attimo: prima viene il riconoscere.",
+	},
+	["relation_player.w15.tie.020"] = {
+		"Un'occhiata breve verso {other}, quella che riservo a chi conosco già.",
+		"Annotato, e messo da parte. Nessuna fretta di decidere cosa significhi.",
+	},
+	["relation_player.w15.tie.021"] = {
+		"Un nome conosciuto in un mondo pieno di sconosciuti. Qualunque cosa significhi, significa qualcosa.",
+		"Ogni nome che conservo è una piccola promessa di fare attenzione. Eccone una che scade.",
+		"Fra tutte le persone che passano, questa la conosco. Cambia la forma del momento.",
+	},
+	["relation_player.w15.tie.022"] = {
+		"{other}. Buona o cattiva notizia, riconoscerei quel nome ovunque.",
+		"Una presenza familiare. Che sia un conforto o un avvertimento, lo scoprirò a breve.",
+	},
+	["relation_player.w15.tie.023"] = {
+		"La maggior parte di chi passa per me non ha volto. Questa persona sì, e la differenza basta a rallentarmi il passo.",
+		"La mente smista le persone più in fretta degli occhi. Ha già messo questa persona da qualche parte.",
+	},
+	["relation_player.w15.tie.024"] = {
+		"Una conoscenza. Né persona vicina né estranea: uno di quei nomi che stanno nel mezzo.",
+		"{other}. Un incontro c'è già stato; è più o meno tutto ciò che potrei giurare.",
+	},
+	["relation_player.w15.tie.025"] = {
+		"Un cenno cortese e di passaggio verso {other}, come si fa con i volti noti ma non intimi.",
+		"La cortesia ordinaria che si deve a un ricordo a metà. Questo posso permettermelo.",
+	},
+	["relation_player.w15.tie.026"] = {
+		"Conosco il nome e non mi suscita granché. Né sto cercando che lo faccia.",
+		"Né simpatia né antipatia, per questa persona. Certa gente semplicemente occupa poco spazio.",
+	},
+	["relation_player.w15.tie.027"] = {
+		"Riconosco il nome, ma non riesco a provarne interesse. È permesso.",
+		"Non tutte le persone familiari hanno bisogno di un sentimento attaccato. Questa ne è senza.",
+	},
+	["relation_player.w15.time.001"] = {
+		"{other}, e dall'ultima volta è passato pochissimo. O fortuna, o abitudine.",
+		"Due volte in così poco tempo. Di questo passo imparerò a riconoscere l'andatura di questa persona.",
+		"L'ultimo incontro è appena alle spalle, ed ecco il prossimo.",
+	},
+	["relation_player.w15.time.002"] = {
+		"Già si rivede questo nome. Quel che restava da dire l'ultima volta è ancora abbastanza fresco da dirlo.",
+		"È passato così poco dall'ultimo incontro che non ho fatto in tempo a pensarci. Ora mi toccherà.",
+	},
+	["relation_player.w15.time.003"] = {
+		"Questa persona, già qui? Ha fatto presto.",
+		"{other}, così presto. Avrei puntato su un'attesa più lunga.",
+	},
+	["relation_player.w15.time.004"] = {
+		"Guardo due volte {other}, giusto per verificare quanto poco tempo sia passato. Quasi niente.",
+		"Socchiudo gli occhi e faccio il conto: dall'ultimo incontro non è passato quasi nulla.",
+	},
+	["relation_player.w15.time.005"] = {
+		"Incontrare la stessa persona due volte a breve distanza sembra un messaggio. Non ho ancora capito quale.",
+		"{other}, a poca distanza dall'ultima volta. Certe conoscenze non hanno nessuna voglia di invecchiare.",
+	},
+	["relation_player.w15.time.006"] = {
+		"Se continua così, penseranno che mi stiano seguendo. O che sia io a seguire.",
+		"Troppo poco tempo di distanza per sentire la mancanza di qualcuno, o per smettere di farci caso.",
+	},
+	["relation_player.w15.time.007"] = {
+		"Basta un cenno breve verso {other}. Dopo così poco tempo non serve ricominciare da capo.",
+		"Così presto, il saluto più breve è della misura giusta. Qualcosa di più sembrerebbe una rimpatriata.",
+	},
+	["relation_player.w15.time.008"] = {
+		"Sono settimane che non incrocio {other}. Abbastanza per avere notizie, troppo poco per perdersi di vista.",
+		"Settimane, non mesi. Abbastanza perché qualcosa sia cambiato, non abbastanza per sapere cosa.",
+		"La distanza è larga quanto basta per chiedermi cosa mi sia {g:perso|persa}.",
+	},
+	["relation_player.w15.time.009"] = {
+		"Sono passate alcune settimane. Mi accorgo di ricordare l'ultimo incontro meglio del previsto.",
+		"Qualche settimana di distanza sposta un volto nella memoria. Vedere {other} lo rimette in ordine.",
+	},
+	["relation_player.w15.time.010"] = {
+		"Mi prendo un momento per squadrare {other}, come si fa dopo qualche settimana senza vedersi.",
+		"Un ricordo di settimane fa contro la realtà: controllo cosa si è spostato.",
+		"Una breve pausa, per recuperare qualche settimana con un'occhiata.",
+	},
+	["relation_player.w15.time.011"] = {
+		"Settimane. Abbastanza perché questa persona abbia combinato qualche sciocchezza. O io. O, più probabilmente, ognuno per conto suo.",
+		"Qualche settimana senza vedersi. Mi chiedo quale versione dell'ultimo incontro sia diventata più lusinghiera.",
+	},
+	["relation_player.w15.time.012"] = {
+		"Quel nome, dopo qualche settimana di silenzio. Si rimette al suo posto con un piccolo scatto.",
+		"L'ultima volta sembra vicina e lontana insieme. È l'effetto di qualche settimana.",
+	},
+	["relation_player.w15.time.013"] = {
+		"Le settimane hanno il vizio di smussare gli spigoli di un ricordo. E invece ecco {other}, spigoli compresi.",
+		"Non abbastanza per dimenticare; giusto abbastanza per chiedermi se avessi ricordato bene.",
+	},
+	["relation_player.w15.time.014"] = {
+		"Le persone non restano ferme per un mese. Mi chiedo che strada abbia preso {other}.",
+		"Abbastanza a lungo da aver quasi archiviato questo nome. Quasi.",
+		"Tanto tempo fa, l'ultimo incontro: così tanto che sembra capitato a qualcun altro.",
+	},
+	["relation_player.w15.time.015"] = {
+		"Una lunga pausa. Dovrò reimparare un po' questa persona, come si riprende un motivetto che si canticchiava una volta.",
+		"Dopo più di un mese, il nome è riaffiorato prima dei dettagli.",
+		"Dopo tanto tempo, metà di quello che ricordo sarà sbagliata. Vediamo quale metà.",
+	},
+	["relation_player.w15.time.016"] = {
+		"La vista di {other} mi ferma un istante, come succede quando è passato molto tempo.",
+		"Accosto questa persona a un ricordo più vecchio, per vedere quanto combaciano. Non del tutto: dopo tanto tempo, niente combacia.",
+	},
+	["relation_player.w15.time.017"] = {
+		"Le lunghe assenze trasformano ogni incontro in un piccolo conto da fare. Vediamo a quanto ammonta questo.",
+		"Un mese, o più. Abbastanza perché un'intera vita si inclini un poco, compresa la mia.",
+	},
+	["relation_player.w15.time.018"] = {
+		"Un bel pezzo dall'ultima volta. Spero di essere {g:cambiato|cambiata} in meglio; mi accontenterei anche di lato.",
+		"Dopo tanto tempo, non posso giurare che questa persona non sia ormai insopportabile. O che non lo sia io.",
+	},
+	["relation_player.w15.time.019"] = {
+		"{other}, dopo tanto tempo. Per poco non l'ho detto ad alta voce.",
+		"Guarda un po': tanto tempo, e la prova è proprio davanti a me.",
+	},
+	["relation_player.w15.time.020"] = {
+		"Anche l'ultima volta era qui. Comincio a sospettare che questo posto combini gli incontri.",
+		"{other}, proprio dove c'è stato l'ultimo incontro. Come se il posto avesse tenuto l'appuntamento da solo.",
+	},
+	["relation_player.w15.time.021"] = {
+		"Stesso terreno, stesso nome. Avrei scommesso il contrario.",
+		"Era qui, l'ultima volta. Me lo ricordo perché di quel momento non ricordo quasi nient'altro.",
+		"Se passo di qui abbastanza spesso, immagino che ci troverò sempre {other}.",
+	},
+	["relation_player.w15.time.022"] = {
+		"Mi guardo intorno, poi guardo {other}, come se il luogo stesso avesse ricordato.",
+		"Qui, nel punto dell'incontro precedente, la figura nota completa il quadro.",
+	},
+	["relation_player.w15.time.023"] = {
+		"Stesso posto, stessa persona. O questo angolo porta fortuna, o semplicemente non ha fantasia.",
+		"Nello stesso punto della volta scorsa. Quasi mi aspetto di riprendere il discorso a metà frase.",
+	},
 }, "base_relations")

@@ -1690,4 +1690,53 @@ NS:AddTexts("itIT", {
 		"{g:Pronto|Pronta} a imparare? Bene. L'Orda ha bisogno di combattenti più affilati a ogni stagione, e tu ne fai parte.",
 		"Mettiti lì e fammi vedere. Da qualunque popolo tu venga, l'Orda addestra tutti allo stesso modo: duro, e con onestà.",
 	},
+	["npcd.merchant.bye.w15.001"] = {
+		"Fa' attenzione. I clienti mi piacciono interi: comprano di più.",
+		"Buon cammino. Spendi con giudizio, là fuori, e torna a spendere il resto qui.",
+	},
+	["npcd.merchant.bye.w15.002"] = {
+		"Te ne vai già? La roba buona stava proprio per uscire dal retro.",
+		"Così presto? Farò finta che non mi dispiaccia.",
+		"Di già? Cominciavi giusto a starmi {g:simpatico|simpatica}.",
+	},
+	["npcd.merchant.bye.w15.003"] = {
+		"Abbi cura di te. I buoni clienti sono difficili da sostituire, e tu sei tra quelli che si fanno voler bene.",
+		"Riguardati. Il banco sarà qui quando ti servirà.",
+	},
+	["npcd.merchant.bye.w15.004"] = {
+		"Buon viaggio. E se qualcuno ti chiede dove l'hai preso, fai il mio nome con garbo.",
+		"Stammi bene. Di' in giro che non mordo, almeno non dall'altra parte del banco.",
+	},
+	["npcd.merchant.bye.w15.005"] = {
+		"Arrivederci, e ricorda: non ti ho mai {g:visto|vista} trattare così duro. Tanto nessuno ci crederebbe.",
+		"Su, vai. La mia borsa ha bisogno di riposo, dopo questa.",
+	},
+	["npcd.merchant.news.w15.001"] = {
+		"Chi passa parla molto e paga poco. Quel che ho raccolto: sono tutti stanchi, e tutti di fretta.",
+		"Notizie? Più che altro lamentele sui prezzi, da gente che compra da me. Io ascolto educatamente.",
+	},
+	["npcd.merchant.news.w15.002"] = {
+		"Una voce di corridoio è come una moneta di origine incerta: vale qualcosa finché non provi a spenderla.",
+		"Sento molto e credo poco. È per questo che sono ancora in affari.",
+	},
+	["npcd.merchant.news.w15.003"] = {
+		"L'ultima è che qualcuno ha sentito qualcosa da qualcun altro. Al banco, le notizie sono solide più o meno così.",
+		"Si dice che da qualche parte si stia preparando un guaio. Lo si dice sempre. E di rado ci si sbaglia.",
+	},
+	["npcd.merchant.thanks.w15.001"] = {
+		"Il piacere è mio. Solo chi tratta onestamente si vede tornare i clienti.",
+		"Non serve. Basta che ti ricordi la strada per tornare qui.",
+	},
+	["npcd.merchant.thanks.w15.002"] = {
+		"I ringraziamenti sono gentili. Le monete, ancora di più. Prendo entrambi, si capisce.",
+		"Ma figurati. Ringraziami non comprando dalla concorrenza.",
+	},
+	["npcd.merchant.wares.w15.001"] = {
+		"Dai un'occhiata. Quello che sta sul banco è in vendita; quello che sta sotto, chiedilo con garbo.",
+		"Roba che ti manda avanti, soprattutto. Niente di elegante, niente che si rompa al primo uso.",
+	},
+	["npcd.merchant.wares.w15.002"] = {
+		"Quello che ti manca, probabilmente ce l'ho. Quello che ti avanza, probabilmente lo compro.",
+		"Cose utili a prezzi onesti, e un paio di occasioni per chi sa guardare.",
+	},
 }, "base_dialogues")

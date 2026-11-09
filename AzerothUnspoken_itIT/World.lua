@@ -7010,4 +7010,1150 @@ NS:AddTexts("itIT", {
 		"si appoggia all'indietro a salita finita e fa la cosa più rara di tutte: assolutamente niente.",
 		"intreccia le mani in grembo quando la cavalcatura si mette in piano, come chi aspetta che si alzi un sipario.",
 	},
+	["landmark.w15.keep.001"] = {
+		"Finisce nella memoria, accanto agli altri. Un giorno li metterò in ordine.",
+		"{landmark}. Archiviato. Prima o poi dovrò mettere in fila tutti questi nomi.",
+	},
+	["landmark.w15.keep.002"] = {
+		"mette da parte il nome di {landmark} con la lieve smorfia di chi è {g:deciso|decisa} a ricordarselo.",
+		"dice due volte, sottovoce, il nome del posto, per fissarlo come si stringe un nodo.",
+		"mima il nome con le labbra e annuisce, come se ora fosse riposto per bene.",
+	},
+	["landmark.w15.keep.003"] = {
+		"C'è chi colleziona monete o ninnoli. Io, a quanto pare, colleziono nomi di posti, e non pesano niente.",
+		"Un nome per la collezione. Non sta nello zaino, ed è il suo pregio migliore.",
+		"{landmark}. Dritto nella collezione. Niente polvere, niente peso, niente ladri.",
+	},
+	["landmark.w15.keep.004"] = {
+		"{landmark}. Preso nota.",
+		"Da ricordare, questo nome.",
+		"Questo nome lo conservo.",
+	},
+	["landmark.w15.keep.005"] = {
+		"Meglio impararlo ora, per bene, o si confonderà con tutti gli altri nomi quando qualcuno me lo chiederà.",
+		"Ricordare un nome a metà è peggio che non saperlo. Questo voglio ricordarlo giusto.",
+	},
+	["landmark.w15.keep.006"] = {
+		"traccia con un dito le lettere del nome sul palmo della mano, un trucco da viandante per non perderlo.",
+		"si porta due dita alla tempia, come per fissare lì dentro il nome di {landmark}.",
+	},
+	["landmark.w15.keep.007"] = {
+		"Un giorno tutti questi nomi, messi in fila, saranno la storia del mio cammino. Questo è un grano di quel filo.",
+		"{landmark}. Un grano sul lungo filo di nomi che sto infilando, un posto dopo l'altro.",
+	},
+	["landmark.w15.keep.008"] = {
+		"Mi ricorderò il nome, se non la strada per arrivarci. Di solito va così.",
+		"Strano come i nomi restino e le direzioni no. Potrei elencare posti per ore e perdermi comunque a cercarli.",
+		"{landmark}. Il nome me lo terrò. Quale svolta mi abbia {g:portato|portata} qui, l'ho già mezzo perso.",
+	},
+	["landmark.w15.keep.009"] = {
+		"si guarda attorno a lungo, con quello sguardo che si conserva per dopo, per raccontare.",
+		"studia {landmark} con lentezza e attenzione, come per mettere da parte ogni dettaglio per un racconto futuro.",
+	},
+	["landmark.w15.keep.010"] = {
+		"Se qualcuno mai mi domanderà dei miei giri, ecco una risposta in più.",
+		"Un posto in cui poter dire di essere {g:stato|stata}. Vale già qualcosa di per sé.",
+	},
+	["landmark.w15.keep.011"] = {
+		"si guarda attorno e sembra fissarsi bene in mente qualche dettaglio: dove stanno le cose, da che parte è {g:entrato|entrata}.",
+		"prende mentalmente nota di {landmark}, con cura, come si segna una pagina per ritrovarla.",
+		"indugia giusto il tempo di fissare il punto nella memoria, poi prosegue come se nulla fosse stato annotato.",
+	},
+	["landmark.w15.keep.012"] = {
+		"si mette in tasca il nome di {landmark} come un sasso liscio raccolto lungo il cammino.",
+		"sembra riporre il nome del posto in un angolino piccolo e sicuro, insieme agli altri.",
+	},
+	["landmark.w15.keep.013"] = {
+		"{landmark}. Farò finta di aver sempre saputo dove stavo andando.",
+		"Questo va segnato sulla mappa. A inchiostro, stavolta.",
+		"Da aggiungere alla mappa. Scritto giusto, se ci riesco.",
+	},
+	["landmark.w15.keep.014"] = {
+		"Ogni nome che imparo è un posto in più dove non posso perdermi del tutto.",
+		"Sapere come si chiama un posto è il primo passo per conoscerlo. Il resto richiede più tempo.",
+		"Impari un nome, e un pezzetto di mondo smette di esserti estraneo.",
+	},
+	["landmark.w15.keep.015"] = {
+		"resta in silenzio per un po', come se lasciasse che {landmark} si scrivesse da qualche parte dentro di {g:lui|lei}.",
+		"si ferma, senza fretta, e sembra riporre il posto in un angolo sicuro della memoria prima di riprendere il cammino.",
+	},
+	["landmark.w15.keep.016"] = {
+		"Le facce le dimentico. I nomi dei posti, mai. Strano, no?",
+		"Non saprei dire cosa ho mangiato, ma questo nome me lo ricorderò.",
+		"{landmark}. Ho la testa piena di nomi così e vuota di tutto ciò che serve.",
+	},
+	["landmark.w15.keep.017"] = {
+		"{landmark}. Questo non me lo scordo.",
+		"Bene. Un nome in più per orientarmi.",
+	},
+	["landmark.w15.keep.018"] = {
+		"Un giorno, lontano da qui, sentirò questo nome per caso e ricorderò di essermi {g:fermato|fermata} proprio in questo punto.",
+		"È con i nomi che i viandanti impediscono al mondo di confondersi in un'unica lunga macchia.",
+		"{landmark}. Un giorno salterà fuori in qualche discorso, e potrò dire: io ci sono {g:passato|passata}.",
+	},
+	["landmark.w15.keep.019"] = {
+		"prende atto di {landmark} con un piccolo cenno, come si spunta una tappa di un lungo itinerario.",
+		"fa un breve cenno di assenso, di quelli che vogliono dire: un posto in più messo in conto.",
+	},
+	["landmark.w15.name.001"] = {
+		"Un nome è la prima cosa che un posto offre a chi arriva. A volte è l'unica, ed è già qualcosa.",
+		"Prima di tutto il resto, un luogo ti dà il suo nome. È l'unica cortesia che nessun posto si scorda.",
+		"{landmark}. Il posto mi ha detto come si chiama; il resto me lo racconterà con calma.",
+	},
+	["landmark.w15.name.002"] = {
+		"{landmark}. Chi ha scelto questo nome era un poeta o aveva fretta. Forse tutte e due le cose.",
+		"Certi nomi si scelgono con cura. Altri sono solo la prima cosa che qualcuno ha gridato. Di questo, difficile dirlo.",
+		"Ogni nome è nato come l'idea brillante di qualcuno. Non tutte le idee reggono bene il tempo.",
+	},
+	["landmark.w15.name.003"] = {
+		"Bel nome. Vediamo se il posto ne è all'altezza.",
+		"{landmark}. Suona bene, non c'è che dire.",
+	},
+	["landmark.w15.name.004"] = {
+		"I nomi restano attaccati a un luogo anche quando il motivo per cui sono nati si è consumato.",
+		"Il perché di un nome sbiadisce per primo. Il nome no: è testardo, resiste.",
+		"Qualunque fosse la ragione di questo nome, probabilmente si è spenta. La parola resta e continua a fare il suo lavoro.",
+	},
+	["landmark.w15.name.005"] = {
+		"prova a pronunciare a mezza voce il nome del posto, come per sentire che sapore ha.",
+		"dice piano tra sé il nome di {landmark}, una volta sola, per sentire come suona.",
+	},
+	["landmark.w15.name.006"] = {
+		"Mi sembra scortese entrare in un posto senza sapere come si chiama. Adesso lo so.",
+		"Un luogo con un nome si può salutare. Lo faccio in silenzio, ma lo faccio.",
+		"{landmark}. Piacere di conoscerti. Cercherò di essere un ospite decente.",
+	},
+	["landmark.w15.name.007"] = {
+		"Ogni nome dice metà della verità e tiene l'altra metà per chi resta abbastanza a lungo.",
+		"Sono come insegne inchiodate sopra una porta, i nomi: dicono più o meno cosa c'è dentro, mai la parte interessante.",
+		"{landmark}. Ogni nome nasconde qualcosa. Scoprirò cosa nasconde questo, oppure no.",
+	},
+	["landmark.w15.name.008"] = {
+		"Qualcuno era molto soddisfatto di sé quando ha trovato questo nome.",
+		"{landmark}. Un nome coraggioso. Lo rispetto.",
+		"Ecco un nome per cui qualcuno si è battuto, scommetto.",
+	},
+	["landmark.w15.name.009"] = {
+		"sosta là dove qualcuno, un tempo, deve aver deciso che questo punto meritava una parola tutta sua.",
+		"indugia sul posto un momento, come chiedendosi di chi fosse la voce che ne ha pronunciato il nome per prima.",
+	},
+	["landmark.w15.name.010"] = {
+		"china appena il capo verso {landmark}, la piccola cortesia che chi viaggia deve a ogni luogo con un nome.",
+		"concede al posto un cenno, come si saluta qualcuno di cui si è appena saputo il nome.",
+		"rivolge al posto un breve cenno serio, come se ai nomi si dovesse almeno questo.",
+	},
+	["landmark.w15.name.011"] = {
+		"Certi nomi sono avvertimenti, altri vanterie, e altri ancora solo quello che ha detto il primo ad arrivare.",
+		"I nomi sono di tre tipi: promesse, avvertimenti e scherzi di cui nessuno ricorda più il senso.",
+	},
+	["landmark.w15.name.012"] = {
+		"In un nome c'è una consolazione silenziosa. Anche il più strano vuol dire che qualcuno ha voluto distinguere questo punto dagli altri.",
+		"Per quanto suoni strano, un nome vuol dire che qualcuno ci teneva abbastanza da smettere di chiamarlo 'laggiù'.",
+		"{landmark}. Qualcuno voleva che questo punto si ritrovasse. Quel desiderio sta ancora nel nome, e lavora.",
+	},
+	["landmark.w15.name.013"] = {
+		"{landmark}. Io l'avrei chiamato in un altro modo, ma nessuno mi ha interpellato.",
+		"Non è il nome che avrei scelto io. Peccato che nessuno chieda mai il parere a chi passa.",
+	},
+	["landmark.w15.name.014"] = {
+		"rigira nella testa il nome di {landmark}, cercando cosa volesse dire chi l'ha scelto.",
+		"pare soppesare il nome del posto contro il posto stesso, come si confronta un'etichetta con il barattolo.",
+		"aggrotta appena la fronte davanti al nome, come davanti a un indovinello che forse non ha soluzione.",
+	},
+	["landmark.w15.name.015"] = {
+		"I nomi sopravvivono a chi li dà. Credo che servano proprio a questo.",
+		"Chi ha dato il nome a questo posto non ha bisogno di esserci perché il nome funzioni. È il bello dei nomi.",
+	},
+	["landmark.w15.name.016"] = {
+		"{landmark}. Proprio dove doveva essere.",
+		"Trovato. Un nome e un luogo, d'accordo per una volta.",
+	},
+	["landmark.w15.name.017"] = {
+		"Un nome è una porta socchiusa: se ne vede uno spicchio, mai la stanza intera.",
+		"Che cosa promette un nome? Di solito meno di quanto sembri, e ogni tanto molto di più.",
+		"Promettono un po' e nascondono un po', i nomi. Il divertimento sta nello scoprire le proporzioni.",
+	},
+	["landmark.w15.name.018"] = {
+		"Imparo bene il nome adesso, così non lo storpio quando qualcuno mi chiederà dove sono {g:stato|stata}.",
+		"{landmark}. Conta pronunciarlo bene. Sbagli il nome di un posto, e quel posto non te lo perdona del tutto.",
+	},
+	["landmark.w15.name.019"] = {
+		"si ferma un istante e lascia che il nome del posto significhi quello che significa.",
+		"indugia come fanno i viandanti dove un nome è stato posato, come una pietra lasciata a un incrocio.",
+		"sosta un momento nel nome di {landmark}, come si poserebbe la mano su una pietra miliare.",
+	},
+	["landmark.w15.name.020"] = {
+		"Altisonante, un nome è una promessa; modesto, è il segno che qualcuno è stato onesto.",
+		"I posti dai nomi modesti sorprendono. Quelli dai nomi altisonanti devono faticare per starci dietro.",
+	},
+	["landmark.w15.stop.001"] = {
+		"rallenta senza dare l'impressione di deciderlo, come fanno i piedi quando il terreno sotto di loro prende un nome.",
+		"allenta il passo dentro i confini di {landmark}, con lo sguardo che corre dappertutto.",
+		"si arresta, si guarda attorno una volta per fissare il punto, e solo allora riprende.",
+	},
+	["landmark.w15.stop.002"] = {
+		"Prima i piedi, poi le opinioni. Voglio vedere il posto prima di decidere cosa ne penso.",
+		"Niente giudizi per ora. Un posto merita uno sguardo come si deve prima del verdetto.",
+		"{landmark}. Mi tengo il parere finché non avrò fatto un giro. Con i posti è come con le persone.",
+	},
+	["landmark.w15.stop.003"] = {
+		"{landmark}! Trovato, e senza chiedere la strada a nessuno.",
+		"Ce l'ho fatta. E con le mie gambe, per giunta.",
+		"Sono {g:arrivato|arrivata}. Per chi viaggia non c'è parola più bella.",
+	},
+	["landmark.w15.stop.004"] = {
+		"Arrivare in un posto che ha un nome è un'altra cosa che trovarsi semplicemente in giro. Le mie spalle lo sanno.",
+		"Nel momento in cui un posto ha un nome, il camminare diventa un arrivare.",
+	},
+	["landmark.w15.stop.005"] = {
+		"guarda a sinistra, poi a destra, poi oltre la spalla, per capire bene dove è {g:arrivato|arrivata}.",
+		"fa il punto con una lunga occhiata circolare prima di muovere un altro passo.",
+		"lascia che gli occhi facciano il giro completo di {landmark} prima che il resto segua.",
+	},
+	["landmark.w15.stop.006"] = {
+		"Arrivare è la parte migliore. Niente ha ancora avuto il tempo di andare storto.",
+		"Qui, con un nome, e niente di rotto. Il mio momento preferito di ogni viaggio.",
+	},
+	["landmark.w15.stop.007"] = {
+		"sosta ai margini di {landmark}, come i viandanti si fermano sul limite dei luoghi con un nome da quando esistono i nomi.",
+		"lascia cadere il passo e resta in silenzio un momento, nella pausa antica di chiunque giunga in un posto degno di un nome.",
+	},
+	["landmark.w15.stop.008"] = {
+		"Fermati. Guarda. Ascolta. Poi decidi. È un piccolo rito, e non costa niente.",
+		"Una breve sosta all'arrivo. Non costa nulla, e a più di un viandante ha risparmiato parecchio.",
+	},
+	["landmark.w15.stop.009"] = {
+		"sistema una cinghia, si spolvera una manica e avanza verso {landmark} come se fosse {g:atteso|attesa}.",
+		"si dà una sistemata all'arrivo, per un istinto secondo cui i luoghi con un nome se lo meritano.",
+		"arriva con una vaga aria di cerimonia, come se un nome richiedesse almeno un colletto in ordine.",
+	},
+	["landmark.w15.stop.010"] = {
+		"Bene. Un nome con della terra sotto.",
+		"Un posto con un nome. Mi va benissimo.",
+	},
+	["landmark.w15.stop.011"] = {
+		"rallenta prima ancora di volerlo, con le gambe che si accorgono dell'arrivo prima del resto.",
+		"lascia che i piedi accorcino il passo, come fanno sempre i piedi dove le cose hanno nomi.",
+	},
+	["landmark.w15.stop.012"] = {
+		"abbraccia tutto con lo sguardo e niente in particolare, come fanno gli occhi ovunque si arrivi.",
+		"lascia vagare lo sguardo sui dintorni di {landmark} prima di permettere ai piedi di seguirlo.",
+	},
+	["landmark.w15.stop.013"] = {
+		"Eccomi, dunque. Nessuno ha suonato una campana, ma lo prenderò per un benvenuto.",
+		"{landmark}. Niente trombe, niente cerimonie. Mi annuncio da {g:solo|sola}, sottovoce.",
+		"Arrivo senza araldi. Tipico. Gli araldi non ci sono mai quando servono.",
+	},
+	["landmark.w15.stop.014"] = {
+		"si ferma e resta immobile per un momento, lasciando che sia il posto ad accorgersi di {g:lui|lei} per primo.",
+		"giunge senza fretta né clamore, e lascia semplicemente che {landmark} sia il posto dove si trova adesso.",
+	},
+	["landmark.w15.stop.015"] = {
+		"Prima capire com'è fatto. Dove sono le cose, da che parte uscirei. Poi il motivo per cui sono qui.",
+		"Primo: dove mi trovo. Secondo: da che parte si esce. Il resto aspetti il suo turno.",
+		"{landmark}. Cerco le uscite prima delle comodità. Un'abitudine, e nemmeno cattiva.",
+	},
+	["landmark.w15.stop.016"] = {
+		"Arrivo, e nessuno mi fa nemmeno una festa. Che novità.",
+		"{landmark}. Niente applausi, per favore.",
+	},
+	["landmark.w15.stop.017"] = {
+		"appoggia una mano sulla cinghia dello zaino e si guarda attorno con calma.",
+		"si aggiusta lo zaino sulle spalle e percorre con lo sguardo {landmark}, senza fretta.",
+		"infila i pollici sotto le cinghie dello zaino e resta lì un po', a prendere le misure del posto.",
+	},
+	["landmark.w15.stop.018"] = {
+		"resta in quel breve silenzio dell'arrivo, prima che il posto cominci a riempirsi attorno a {g:lui|lei}.",
+		"lascia che il momento dell'arrivo duri un po' più del necessario.",
+	},
+	["landmark.w15.stop.019"] = {
+		"osserva {landmark} con l'aria di chi è {g:disposto|disposta} a credere a metà di ciò che il nome promette.",
+		"arriva con un'aria vagamente scettica, quella che i viandanti riservano ai nomi che promettono molto.",
+	},
+	["quest_progress.w15.done.001"] = {
+		"E questo è tutto. Dove prima c'era il compito adesso c'è un piccolo, strano silenzio.",
+		"Il lavoro è finito, e continuo a cercarlo per abitudine, come la lingua cerca un dente che non c'è più.",
+	},
+	["quest_progress.w15.done.002"] = {
+		"Lavoro finito. Adesso tocca al racconto.",
+		"Tutto a posto. C'è qualcuno che aspetta di saperlo.",
+		"Chiuso e impacchettato. Vado a dirlo in giro.",
+	},
+	["quest_progress.w15.done.003"] = {
+		"si raddrizza, guarda il lavoro finito con semplice soddisfazione e si volta per andare a riferirlo.",
+		"dà un'ultima occhiata attorno per essere {g:sicuro|sicura} che non manchi nulla, poi si avvia a riferire.",
+	},
+	["quest_progress.w15.done.004"] = {
+		"Non resta che andare a dire che è fatto. Il dirlo è breve; l'andarci, meno.",
+		"Ogni parte di quanto era stato chiesto è sistemata. Restano una camminata e qualche parola.",
+		"Il fare è finito. Il riferire è un'altra faccenda: più corta, e chissà perché più difficile da cominciare.",
+	},
+	["quest_progress.w15.done.005"] = {
+		"Un compito finito si chiude alle mie spalle come una porta. Mi piace quel rumore.",
+		"Certi lavori finiscono con un botto. Questo si è chiuso come una porta ben montata: piano, e fino in fondo.",
+	},
+	["quest_progress.w15.done.006"] = {
+		"Completato. Adesso arriva la parte in cui spiego perché ci ho messo tanto.",
+		"Resta solo il resoconto, che farà sembrare tutto molto più ordinato di com'è andato.",
+		"Finito. Il racconto che ne farò sarà più breve e più eroico della verità.",
+	},
+	["quest_progress.w15.done.007"] = {
+		"È finita. Che lo sappiano.",
+		"Fino all'ultimo pezzo, fatto. È ora che qualcuno lo sappia.",
+	},
+	["quest_progress.w15.done.008"] = {
+		"Qualcuno ha chiesto, e adesso è fatto. Semplice così, e fa comunque piacere.",
+		"Una cosa promessa, una cosa compiuta. L'orgoglio più semplice, e il migliore.",
+		"Richiesto e consegnato. Poche cose nella vita sono così pulite.",
+	},
+	["quest_progress.w15.done.009"] = {
+		"si spolvera le mani, a lavoro finito, e cerca con lo sguardo la via più breve per andare a riferire.",
+		"batte le mani una volta sola, con un colpo secco, come chi chiude un registro.",
+	},
+	["quest_progress.w15.done.010"] = {
+		"L'ultimo pezzo di qualsiasi cosa è il più pesante. Quello me lo sono lasciato alle spalle.",
+		"Il finale è sempre la parte più ostinata. Questo ha ceduto.",
+	},
+	["quest_progress.w15.done.011"] = {
+		"Finito, e lungo la strada non mi si è staccato niente di importante. Ora si va a riferire.",
+		"Qualcuno sta per rallegrarsi parecchio, grazie a me. Per poco, ma comunque.",
+		"C'è tutto, al completo. Me {g:compreso|compresa}, ed è un bel dettaglio.",
+	},
+	["quest_progress.w15.done.012"] = {
+		"Il compito adesso è intero. Gli manca solo chi l'ha chiesto.",
+		"Un compito finito è come una lettera scritta e non spedita. Adesso tocca spedirla.",
+	},
+	["quest_progress.w15.done.013"] = {
+		"resta un attimo senza niente da fare, e sembra doverci fare l'abitudine.",
+		"indugia, stranamente {g:inoperoso|inoperosa} ora che nessuno chiede più nulla.",
+	},
+	["quest_progress.w15.done.014"] = {
+		"Chiuso. Le mie gambe vorrebbero scambiare due parole con chi ha deciso che i resoconti vanno portati di persona.",
+		"Fatto tutto, e i piedi stanno già preparando le lamentele per il viaggio fino a chi aspetta.",
+		"Finito il lavoro. I miei piedi speravano che valesse anche per loro.",
+	},
+	["quest_progress.w15.done.015"] = {
+		"'Fatto' è una bella parola. Ancora meglio detta ad alta voce a qualcuno che l'aspettava.",
+		"Non c'è parola più bella di 'finito', se non forse 'finito' detto alla persona giusta.",
+	},
+	["quest_progress.w15.done.016"] = {
+		"ripassa il lavoro un'ultima volta nella testa, non ci trova lacune e si volta verso chi aspetta.",
+		"ricontrolla tutto un'ultima volta, trova il conto completo e si avvia senza altre cerimonie.",
+		"ripercorre tutto a mente come una lezione imparata, parola per parola, e alla fine annuisce.",
+	},
+	["quest_progress.w15.done.017"] = {
+		"Continuo a controllare che non manchi niente. Non manca niente. Ci vuole un po' per crederci.",
+		"Controllato due volte. Poi una terza. È tutto lì, e una parte di me vuole guardare lo stesso.",
+	},
+	["quest_progress.w15.done.018"] = {
+		"Tutto sistemato. Si parte.",
+		"Questa è chiusa. A qualcuno spetta la notizia.",
+		"Qui ho finito. Adesso si porta la voce.",
+	},
+	["quest_progress.w15.done.019"] = {
+		"Chiesto, e fatto. C'è un onore antico nelle cose portate a termine come si deve.",
+		"Un compito accettato e portato fino in fondo. C'è chi è stato giudicato per molto meno.",
+	},
+	["quest_progress.w15.done.020"] = {
+		"Finito presto, o tardi, o in perfetto orario. Dipende da chi lo chiede.",
+		"Nei tempi previsti. Previsti da chi, non saprei dire.",
+	},
+	["quest_progress.w15.done.021"] = {
+		"sorride brevemente tra sé e volta le spalle al lavoro finito, come se potesse chiedergli dell'altro.",
+		"guarda il lavoro finito con un che di sospettoso, come in attesa che spunti fuori qualche parte dimenticata.",
+		"dà un colpetto all'aria dove prima c'era il compito, come per assicurarsi che se ne sia andato davvero.",
+	},
+	["quest_progress.w15.done.022"] = {
+		"Una cosa finita sta in testa in modo diverso. Più leggera, e in qualche modo più rumorosa.",
+		"Strano come un compito pesi di più quando è finito. Non sulle spalle, ma in un posto migliore.",
+	},
+	["quest_progress.w15.done.023"] = {
+		"Fatto. Basta fare, adesso si racconta.",
+		"Non c'è altro da fare. Il resto sono parole.",
+		"Lavoro chiuso. Ora tocca alle chiacchiere.",
+	},
+	["quest_progress.w15.done.024"] = {
+		"Basta contare. Ora resta solo da riferire.",
+		"La conta è finita. Quasi mi mancherà.",
+	},
+	["quest_progress.w15.done.025"] = {
+		"si drizza un poco, il compito compiuto, e si volta per portarne notizia.",
+		"alza il mento, ogni parte del compito portata a termine, e si avvia con la notizia.",
+	},
+	["quest_progress.w15.done.026"] = {
+		"C'è qualcuno che aspettava questo. Ancora per poco.",
+		"Buone notizie, in arrivo a piedi.",
+		"Chi aspetta può smettere. O quasi.",
+	},
+	["quest_progress.w15.done.027"] = {
+		"È fatta. E fatta bene.",
+		"Fino all'ultimo. Quasi quasi ne vado {g:fiero|fiera}.",
+	},
+	["quest_progress.w15.done.028"] = {
+		"Adesso la parte difficile: ricordare chi era a chiederlo, e dove stava.",
+		"Finito. E adesso, da che parte stava chi lo voleva?",
+		"Completo, il lavoro. Le indicazioni per tornare, un po' meno.",
+	},
+	["quest_progress.w15.done.029"] = {
+		"si allontana col passo tranquillo di chi qui non ha più niente da dimostrare.",
+		"si avvia a riferire, con un passo più sciolto ora che il lavoro è alle spalle.",
+	},
+	["quest_progress.w15.done.030"] = {
+		"Una promessa mantenuta. Piccola, forse, ma mantenuta fino in fondo.",
+		"Qualunque altra cosa vada storta, questa è andata dritta. Me lo porto dietro insieme alla notizia.",
+	},
+	["quest_progress.w15.done.031"] = {
+		"È intero. Qualunque cosa ne pensassi a metà strada, adesso è intero, ed è questo che resta.",
+		"I dubbi che avevo a metà non contano più. La cosa è finita; i dubbi possono tornarsene a casa.",
+	},
+	["quest_progress.w15.step.001"] = {
+		"Ne resta meno di prima. Qualunque altra cosa voglia dire andare avanti, comincia da qui.",
+		"Il mucchio di ciò che resta si è ridotto un poco. Lo prendo per un buon segno e continuo.",
+		"Più piccolo di prima. A metà di un lavoro è l'unica misura di cui mi fido.",
+	},
+	["quest_progress.w15.step.002"] = {
+		"Contare una volta, poi smettere. Guardare il numero non l'ha mai fatto salire più in fretta.",
+		"Meglio non controllare di continuo quanto manca. La distanza non si accorcia a forza di fissarla.",
+	},
+	["quest_progress.w15.step.003"] = {
+		"Bene. Il resto, adesso.",
+		"Un pezzo sistemato. Si continua.",
+		"Questo è a posto. Non fermarti.",
+	},
+	["quest_progress.w15.step.004"] = {
+		"fa un piccolo verso soddisfatto e si guarda attorno in cerca di ciò che viene dopo.",
+		"approva i progressi con un cenno secco, poi torna subito al lavoro.",
+	},
+	["quest_progress.w15.step.005"] = {
+		"Il lavoro si restringe, di malavoglia, come un debitore che restituisce a monetine.",
+		"Progressi pagati in spiccioli. Contano lo stesso.",
+		"Un soldo di progresso. Con abbastanza soldi si compra tutto.",
+	},
+	["quest_progress.w15.step.006"] = {
+		"L'inizio di ogni compito sembra non finire mai. Questo ha cominciato a sembrare soltanto lungo.",
+		"C'è un punto in cui un lavoro smette di sembrare impossibile e comincia a sembrare noioso. È un progresso, a modo suo.",
+	},
+	["quest_progress.w15.step.007"] = {
+		"Si avanza. Piano, però, prima che il resto del lavoro se ne accorga.",
+		"Procede. Non lo dico troppo forte.",
+		"Sta andando bene. Ecco, l'ho detto, adesso porta sfortuna.",
+	},
+	["quest_progress.w15.step.008"] = {
+		"prende atto dei progressi con un cenno, come si prende atto di un debito pagato in parte, e prosegue.",
+		"registra il passo avanti in un attimo, ed è subito di nuovo in movimento.",
+	},
+	["quest_progress.w15.step.009"] = {
+		"Piccola vittoria. Intascata.",
+		"I piccoli guadagni si sommano. Tutto il segreto è questo, e non è granché come segreto.",
+		"Un po' meglio di prima. Mi accontento di un po'.",
+	},
+	["quest_progress.w15.step.010"] = {
+		"C'è un piacere tranquillo nelle cose fatte a metà: si comincia a vedere cosa diventeranno.",
+		"È quando un lavoro è fatto in parte che comincia a mostrare la sua vera forma.",
+	},
+	["quest_progress.w15.step.011"] = {
+		"calcola in fretta quanto manca e non sembra né {g:contento|contenta} né {g:preoccupato|preoccupata} del risultato.",
+		"conta in silenzio quel che resta, a labbra strette, e torna a darsi da fare.",
+		"fa un conto senza dire una parola, annuisce al risultato e lo lascia andare.",
+	},
+	["quest_progress.w15.step.012"] = {
+		"Buon lavoro. Ancora così, grazie.",
+		"Per cominciare va bene. Sotto con il resto.",
+	},
+	["quest_progress.w15.step.013"] = {
+		"La pazienza è per lo più contare senza lamentarsi. La parte del contare mi riesce benissimo.",
+		"I miei piedi ritengono che possa bastare. Il compito, con tutto il rispetto, non è d'accordo.",
+		"Le ginocchia hanno votato per fermarsi. Voto non vincolante.",
+	},
+	["quest_progress.w15.step.014"] = {
+		"Non pensare al tutto. Pensa al prossimo pezzo, e solo a quello.",
+		"Il totale è una trappola. Conta solo il pezzo che viene dopo.",
+	},
+	["quest_progress.w15.step.015"] = {
+		"dà un colpetto distratto allo zaino, come se fosse lo zaino a sapere quanto manca.",
+		"apre e chiude le mani, scioglie una spalla rigida e torna al resto del lavoro.",
+		"si pulisce le mani sui vestiti, getta un'occhiata a ciò che resta e gli va incontro.",
+	},
+	["quest_progress.w15.step.016"] = {
+		"Quel che è fatto è fatto, e nessuna preoccupazione può disfarlo. Almeno questo è al sicuro.",
+		"Comunque vada il resto, questa parte è chiusa e resta chiusa.",
+	},
+	["quest_progress.w15.step.017"] = {
+		"Ogni impresa degna di una canzone è fatta di tante imprese piccole. Questa è una di quelle, e me la prendo.",
+		"Le grandi cose si fanno a pezzi di questa misura. Nessuno canta i pezzi, ma senza di loro non c'è canzone.",
+	},
+	["quest_progress.w15.step.018"] = {
+		"Con calma. Ne manca parecchio, ma con calma.",
+		"Si procede. Inutile affrettare le cose.",
+		"Lento ma sicuro. Ci arriverà.",
+	},
+	["quest_progress.w15.step.019"] = {
+		"Nessuno ha detto di quanti pezzi fosse fatto. Nessuno lo dice mai.",
+		"Se ne avessi saputo la misura, avrei chiesto qualcosa di più piccolo. Lavori più piccoli non ne offre nessuno.",
+	},
+	["quest_progress.w15.step.020"] = {
+		"si concede il più piccolo dei cenni, poi si rimette all'opera.",
+		"si lascia sfuggire mezzo sorriso per i progressi, prima che il viso torni a farsi serio.",
+	},
+	["quest_progress.w15.step.021"] = {
+		"Più avanti di prima, eppure la fine sembra lontana uguale. Le sensazioni mentono; il conto no.",
+		"Le gambe continuano a dire che è quasi finita. Le mie gambe sono ottimiste.",
+		"Sembra di non aver fatto un passo. Non è così. La stanchezza misura male le distanze.",
+	},
+	["quest_progress.w15.step.022"] = {
+		"Si arriva da qualche parte. Forse perfino nel posto giusto.",
+		"Progressi! Da segnare sul calendario.",
+		"Ma guarda. Le cose si muovono.",
+	},
+	["quest_progress.w15.step.023"] = {
+		"Né l'inizio né la fine. È nel mezzo che il lavoro si fa davvero.",
+		"Gli inizi si amano facilmente e le fini si desiderano facilmente. Il mezzo è la parte che va fatta.",
+	},
+	["quest_progress.w15.step.024"] = {
+		"misura a occhio il lavoro che resta e trova che ormai si lascia abbracciare con uno sguardo solo.",
+		"si massaggia la nuca, fa il punto e sembra abbastanza {g:soddisfatto|soddisfatta} da proseguire.",
+		"socchiude gli occhi su ciò che resta, come chi stima una catasta di legna, poi ci si mette.",
+	},
+	["quest_progress.w15.step.025"] = {
+		"Sta prendendo forma. Mi piace questa fase: prima della fine, quando è chiaro che una fine ci sarà.",
+		"A un certo punto di ogni compito arriva il momento in cui sai che lo finirai. Questo gli somiglia parecchio.",
+	},
+	["quest_progress.w15.step.026"] = {
+		"Lo intacco poco per poco. Cederà.",
+		"Lo sto riducendo. Piano, ma si riduce.",
+	},
+	["quest_progress.w15.step.027"] = {
+		"Ne resta parecchio. Mi aspetterà, e non lo farò aspettare molto.",
+		"Nessuna fretta. Il lavoro non scappa, e io non me ne vado finché non è finito.",
+		"Il resto ha pazienza. Io pure.",
+	},
+	["quest_progress.w15.step.028"] = {
+		"osserva i progressi fatti con l'espressione di chi si aspettava di più e ha scelto di essere {g:generoso|generosa}.",
+		"considera quel piccolo passo avanti con finta solennità, come se meritasse un discorso.",
+	},
+	["quest_progress.w15.step.029"] = {
+		"Più in là di prima. È l'unica direzione che conti.",
+		"Lento, ma in avanti. Questo conta.",
+	},
+	["quest_progress.w15.step.030"] = {
+		"Certi lavori si finiscono in un colpo solo. Questo no, e va bene così.",
+		"Non si chiude in una volta sola. Non era mai previsto. Proseguo.",
+		"Questo si paga a rate. L'ultima l'ho saldata.",
+	},
+	["quest_progress.w15.step.031"] = {
+		"guarda il lavoro che resta come si guarda una lunga fila, e ci si rimette dentro a passetti.",
+		"osserva ciò che manca come una coda che si è appena mossa, poi avanza lo stesso, a piccoli passi.",
+	},
+	["rest_enter.w15.ease.001"] = {
+		"La guardia si è abbassata di una tacca prima che glielo permettessi. Va bene. Che scenda fino in fondo.",
+		"La diffidenza se ne va per ultima. Sempre, come l'ultimo ospite rimasto a tavola.",
+	},
+	["rest_enter.w15.ease.002"] = {
+		"posa lo zaino e lo guarda per un momento, come se lo vedesse per la prima volta.",
+		"si sfila lo zaino, e le spalle si sollevano da sole di un dito.",
+		"lascia scivolare a terra lo zaino e lo lascia esattamente dov'è caduto.",
+	},
+	["rest_enter.w15.ease.003"] = {
+		"Un'ora su cui nessuno ha diritti. Non sono {g:sicuro|sicura} di ricordare cosa se ne fa.",
+		"Tempo libero. Continuo a rigirarmelo tra le dita come una moneta di un paese mai visto.",
+		"Per un po' nessuno mi chiede niente. Me lo tengo in mano come una cosa prestata, troppo bella per usarla.",
+	},
+	["rest_enter.w15.ease.004"] = {
+		"Il mio programma per questo riposo: sedermi. Se va bene, restare {g:seduto|seduta}.",
+		"Tutto il piano: trovare un posto a sedere, e difenderlo contro chiunque.",
+	},
+	["rest_enter.w15.ease.005"] = {
+		"lascia scendere le spalle di una tacca, poi di un'altra, come una fune lasciata andare piano.",
+		"lascia ricadere la testa contro qualunque cosa abbia alle spalle, e per un momento resta così.",
+		"si allenta tutto in una volta, come un nodo di cui qualcuno ha finalmente trovato il capo.",
+	},
+	["rest_enter.w15.ease.006"] = {
+		"Per almeno un'ora non servo a nessuno. L'ho deciso io.",
+		"Per un'ora non appartengo a nessuno. Da adesso.",
+	},
+	["rest_enter.w15.ease.007"] = {
+		"Ho ancora le orecchie piene di strada. Se sto {g:fermo|ferma} abbastanza, si poserà.",
+		"In testa mi è rimasto un ronzio di tutto quel rumore là fuori. Gli do il tempo di andarsene.",
+		"La strada mi risuona ancora dentro, chissà dove. Stare in silenzio è l'unico rimedio che conosco.",
+	},
+	["rest_enter.w15.ease.008"] = {
+		"Il riposo non è pigrizia. Una corda tesa troppo a lungo si sfilaccia.",
+		"Anche il miglior attrezzo va posato ogni tanto, o si consuma storto.",
+	},
+	["rest_enter.w15.ease.009"] = {
+		"si guarda alle spalle una volta, per abitudine, e poi una seconda, per un'abitudine peggiore.",
+		"fa un lungo giro d'occhi, non trova nulla che cerchi rissa, e sembra quasi {g:deluso|delusa}.",
+	},
+	["rest_enter.w15.ease.010"] = {
+		"Stare {g:attento|attenta} lo so fare. È smettere che non mi riesce mai bene.",
+		"So sorvegliare. Non sorvegliare mi riesce malissimo. Esercizio, allora.",
+	},
+	["rest_enter.w15.ease.011"] = {
+		"Ricucire ciò che è strappato, contare quel che resta, mangiare quel che mi mettono davanti. Più o meno in quest'ordine.",
+		"Una cinghia da sistemare, due monete da contare, un pasto da trovare. Piccole faccende. Care piccole faccende.",
+		"Rattoppare, contare, mangiare, sedersi. Le quattro grandi opere di un'ora libera.",
+	},
+	["rest_enter.w15.ease.012"] = {
+		"A meno che non stia finendo il mondo, non voglio essere {g:disturbato|disturbata}.",
+		"Sto riposando. Le cose urgenti possono esercitarsi nella pazienza.",
+	},
+	["rest_enter.w15.ease.013"] = {
+		"si siede a tappe, come se trattasse con ogni articolazione, una per una.",
+		"si stiracchia finché qualcosa nella schiena non fa un piccolo scricchiolio riconoscente.",
+	},
+	["rest_enter.w15.ease.014"] = {
+		"Quando smetto di muovermi, i pensieri che ho seminato per strada vengono a sedersi accanto a me.",
+		"Il riposo è il momento in cui tutto ciò che ho tenuto a distanza finalmente mi raggiunge.",
+		"Là fuori ho troppo da fare per pensare. In un'ora quieta, ogni pensiero che ho schivato viene a reclamare il suo turno.",
+	},
+	["rest_enter.w15.ease.015"] = {
+		"Ora che mi sono {g:fermato|fermata}, il corpo mi presenta il conto, voce per voce.",
+		"Ogni dolore che avevo rimandato è venuto a riscuotere. D'accordo. Mi siedo.",
+	},
+	["rest_enter.w15.ease.016"] = {
+		"scioglie un nodo nella spalla con il palmo di una mano, senza fretta.",
+		"ammorbidisce una nocca rigida, poi un'altra, come chi fa un lento inventario dopo una lunga strada.",
+		"si massaggia le mani irrigidite, piano, come si strofina una macchia che forse non andrà mai via.",
+	},
+	["rest_enter.w15.ease.017"] = {
+		"Un'ora di pace, e ho intenzione di sprecarne ogni minuto come si deve.",
+		"Potrei usare questo riposo per qualcosa di utile. Non lo farò. È proprio questo il bello.",
+	},
+	["rest_enter.w15.ease.018"] = {
+		"Ah, ecco cosa ci voleva. Fermarsi e basta.",
+		"Piedi fermi, mani vuote. Va benissimo così.",
+		"Ahh. Fermarsi è stata una buona idea. Di chi era? Mia.",
+	},
+	["rest_enter.w15.inn.001"] = {
+		"Un tetto. Qualunque cosa ci sia là fuori, adesso deve prima passare da una porta.",
+		"Quattro mura tra me e tutto ciò che ha i denti. Non mi serve niente di più elegante.",
+	},
+	["rest_enter.w15.inn.002"] = {
+		"resta appena oltre la soglia finché gli occhi smettono di frugare negli angoli della stanza.",
+		"entra e, per abitudine, conta le uscite prima di qualunque altra cosa.",
+		"indugia appena oltre la soglia, e lascia che il chiasso della sala {g:gli|le} si richiuda sopra come acqua.",
+	},
+	["rest_enter.w15.inn.003"] = {
+		"Sul retro cuoce qualcosa. Non so cosa sia, e ho deciso che non m'importa.",
+		"Dalla cucina arriva un odore, e ogni progetto con cui sono {g:entrato|entrata} è appena finito in minoranza.",
+	},
+	["rest_enter.w15.inn.004"] = {
+		"Un posto senza niente di appuntito. Oltre a questo non faccio storie.",
+		"Un posto a sedere che non si muova. I miei desideri finiscono qui.",
+	},
+	["rest_enter.w15.inn.005"] = {
+		"Sconosciuti che ridono a una battuta che non ho sentito. Mi piace di più così.",
+		"Tutte queste voci, e nessuna che voglia qualcosa da me.",
+		"Una stanza piena di voci che non conosco. Compagnia, senza il fastidio della compagnia.",
+	},
+	["rest_enter.w15.inn.006"] = {
+		"svuota le tasche sul tavolo più vicino e osserva {g:accigliato|accigliata} quello che la strada ci ha lasciato.",
+		"allinea il contenuto delle tasche: qualche moneta, molta lanugine, un mistero.",
+	},
+	["rest_enter.w15.inn.007"] = {
+		"Rumoroso, affollato, e con l'odore di cento viandanti. Perfetto.",
+		"Troppo rumore, troppo caldo, troppi gomiti. Me lo prendo volentieri.",
+	},
+	["rest_enter.w15.inn.008"] = {
+		"Al chiuso ogni fibbia che porto addosso fa il doppio del rumore. Nessuno si volta.",
+		"Qui dentro la mia roba sferraglia come un carro pieno di pentole. Nessuno alza nemmeno gli occhi.",
+		"Sotto un tetto mi accorgo di quanto tintinno. La sala ha la gentilezza di non farci caso.",
+	},
+	["rest_enter.w15.inn.009"] = {
+		"tende le mani verso il fuoco per un po', anche se non erano poi così fredde.",
+		"si avvicina al focolare e lì resta, senza dire niente a nessuno.",
+		"volge i palmi al calore del fuoco, piano, come chi rilegge una lettera due volte.",
+	},
+	["rest_enter.w15.inn.010"] = {
+		"Un tavolo con sopra solo i miei gomiti. Potrei guardarlo per un'ora.",
+		"Un tavolo vuoto davanti a me. Niente mappe sopra, niente conti, niente da sistemare.",
+	},
+	["rest_enter.w15.inn.011"] = {
+		"Non badate a me. Sono qui solo per restare immobile un po'.",
+		"Nessuno mi parli di strade. Almeno per un'ora.",
+		"Non ci sono. Se qualcuno chiede, sono un mantello su una sedia.",
+	},
+	["rest_enter.w15.inn.012"] = {
+		"lascia scorrere le chiacchiere della sala, ne afferra una parola qua e là e non ne tiene nessuna.",
+		"si siede dove i discorsi sono più fitti, e non ci aggiunge una parola.",
+	},
+	["rest_enter.w15.inn.013"] = {
+		"Sotto questo tetto, chissà dove, c'è un letto. Saperlo è già mezzo riposo.",
+		"In questo edificio c'è un letto senza sassi sotto. Basta il pensiero a consolarmi.",
+		"Oltre queste pareti mi aspetta un materasso. Non ho fretta: tanto non scappa.",
+	},
+	["rest_enter.w15.inn.014"] = {
+		"Un tetto e quattro mura. La gentilezza più vecchia che degli sconosciuti si siano mai scambiati.",
+		"Riparo tra sconosciuti: viene prima di qualunque moneta, prima di qualunque strada.",
+	},
+	["rest_enter.w15.inn.015"] = {
+		"si scrolla la strada dai piedi sulla porta, per una cortesia che nessuno ha chiesto.",
+		"si pulisce i piedi sulla soglia con gran cura, come se quel pavimento fosse mai stato pulito.",
+	},
+	["rest_enter.w15.inn.016"] = {
+		"Al chiuso la strada sembra lontana. Non lo è: aspetta appena fuori dalla porta, paziente come un cane.",
+		"Stanze come questa fanno sembrare la strada lontanissima. Non lo è mai.",
+		"Qui dentro la strada si riduce a una diceria. Là fuori è stesa davanti alla porta, e aspetta che ci inciampi.",
+	},
+	["rest_enter.w15.inn.017"] = {
+		"Qualcuno chiuda quella porta, prima che la strada mi segua dentro.",
+		"Chiudetela dietro di me. Quello che c'è fuori imparerà ad aspettare.",
+	},
+	["rest_enter.w15.town.001"] = {
+		"Guardie annoiate. Non c'è segno migliore che un posto è sicuro.",
+		"Guardie che sbadigliano. Tra tutti i benvenuti possibili, è quello che mi ispira più fiducia.",
+		"Una guardia che sbadiglia al suo posto. Raramente ho visto qualcosa di così rassicurante.",
+	},
+	["rest_enter.w15.town.002"] = {
+		"osserva un passante che cammina senza mai guardarsi alle spalle, e sembra studiare come si fa.",
+		"lascia ricadere le mani lungo i fianchi, ora che tra {g:lui|lei} e le terre selvagge ci sono mura e sentinelle.",
+	},
+	["rest_enter.w15.town.003"] = {
+		"Qualcuno grida un prezzo. Qualcun altro gliene grida uno più basso. Pace, in un certo senso.",
+		"Contrattazioni, pettegolezzi, un carretto con una ruota storta. Il rumore di chi conta di arrivare vivo a cena.",
+		"Due voci che litigano per due spiccioli. Qui l'unica cosa che si tira fuori è il borsellino. Meraviglioso.",
+	},
+	["rest_enter.w15.town.004"] = {
+		"Mura da ogni lato, e dentro gente che conta di esserci ancora l'anno prossimo. Ne prendo in prestito un po'.",
+		"Gente che ha intenzione di restare. In mezzo a loro posso quasi fingere di restare anch'io.",
+	},
+	["rest_enter.w15.town.005"] = {
+		"Gente, rumore, e qualcosa su cui sedersi che non sia un sasso. Splendido.",
+		"Guarda un po': tutta questa gente, e nessuno che cerchi rissa.",
+	},
+	["rest_enter.w15.town.006"] = {
+		"fa un cenno alla guardia più vicina, che non ricambia, e prosegue senza offendersi.",
+		"passa davanti alle guardie con un piccolo cenno del capo che nessuna ricambia.",
+		"rivolge a una guardia un cenno educato e riceve in cambio un'occhiata lunga e minuziosa.",
+	},
+	["rest_enter.w15.town.007"] = {
+		"Qui vicino qualcuno ripara qualcosa, un colpo paziente dopo l'altro. Il suono di un lavoro che non è una lotta.",
+		"Martelli, seghe, un'asse da sistemare. Lavoro qualunque, di quello che costruisce invece di rompere.",
+		"Qualcuno, qui vicino, sta costruendo qualcosa. Mi ero {g:dimenticato|dimenticata} che il rumore potesse voler dire anche questo.",
+	},
+	["rest_enter.w15.town.008"] = {
+		"Qui una lite finisce con una guardia che si mette in mezzo, non con qualcuno a terra. Che civiltà.",
+		"In un posto così, il peggio che capita a uno sciocco è una multa. Lo trovo stranamente commovente.",
+	},
+	["rest_enter.w15.town.009"] = {
+		"sosta un attimo al margine del viavai, poi ci si immerge.",
+		"indugia al bordo della folla, poi entra nel rumore come in un bagno caldo.",
+		"aspetta, dove comincia l'andirivieni, come chi attende un varco in una danza, e ci scivola dentro.",
+	},
+	["rest_enter.w15.town.010"] = {
+		"Per tutti qui è un'ora qualsiasi. Per me è un regalo. Cerco di non darlo a vedere.",
+		"Qui nessuno conta la propria fortuna. Io conto la mia, in silenzio.",
+	},
+	["rest_enter.w15.town.011"] = {
+		"Odore di gente, rumore di gente. Era ora.",
+		"Un posto dove smettere di sobbalzare a ogni rumore. Che bellezza.",
+	},
+	["rest_enter.w15.town.012"] = {
+		"si scansa per un passante frettoloso senza voltarsi a guardare dove va.",
+		"si lascia urtare da un passante senza nemmeno voltarsi, cosa che in terre selvagge sarebbe stata impensabile.",
+		"viene {g:urtato|urtata} da uno sconosciuto di fretta, e si limita a spostare il peso per lasciarlo passare.",
+	},
+	["rest_enter.w15.town.013"] = {
+		"Qualcuno fischietta stonato qui vicino. Là fuori l'avrei preso per un segnale. Qui è solo un pessimo fischio.",
+		"Qualcuno grida poco lontano, e non giro neanche la testa. È così che capisco di essere {g:arrivato|arrivata}.",
+	},
+	["rest_enter.w15.town.014"] = {
+		"Ogni luogo cinto di mura è un vecchio patto: molte mani a tener fuori quello che due sole non potrebbero.",
+		"Le mura sono l'accordo più vecchio che esista. Nessuno lo firma, tutti lo rispettano.",
+		"La gente si è radunata, ha alzato un muro e ha chiamato sicuro quello che c'era dentro. Quasi ogni pace è cominciata così.",
+	},
+	["rest_enter.w15.town.015"] = {
+		"sente odore di qualcosa che arrostisce e ci va dietro per qualche passo, naso in avanti.",
+		"volta la testa verso l'odore di cucina come l'ago di una bussola che trova il nord.",
+	},
+	["rest_enter.w15.town.016"] = {
+		"Mura, guardie, e nessuno che sanguina. Per me è un buon posto.",
+		"Nessuno che corre, nessuno che urla. Questo posto mi piace già.",
+		"Guardie in servizio e nessuno che sanguina. Il miglior genere di posto che ci sia.",
+	},
+	["rest_enter.w15.town.017"] = {
+		"Gente che si saluta per nome. Nessuno di quei nomi è il mio, e mi piace sentirli lo stesso.",
+		"Vicini che si chiamano tra loro. Qui non sono {g:vicino|vicina} di nessuno, ma fa bene sentirli.",
+	},
+	["weather_change.w15.look.001"] = {
+		"piega la testa all'indietro, concede al cielo un'occhiata lunga e senza fretta, e non ne ricava granché.",
+		"accenna col mento al cambiamento lassù, ci riflette un attimo e pare archiviarlo per più tardi.",
+		"solleva lo sguardo per il tempo di un pensiero, poi lo riporta alle faccende del momento.",
+	},
+	["weather_change.w15.look.002"] = {
+		"si ferma a guardare in su, come se qualcuno lassù l'avesse {g:chiamato|chiamata} per nome.",
+		"resta un istante col viso rivolto all'insù, come chi ha sentito aprirsi una porta in un'altra stanza.",
+	},
+	["weather_change.w15.look.003"] = {
+		"osserva il cielo con la diffidenza paziente che di solito si riserva ai mercanti dal sorriso facile.",
+		"rivolge al cambiamento lassù l'occhiata stretta di chi ricontrolla monete già contate.",
+		"studia il cielo come si studia un cane di umore incerto: con educazione, e da lontano.",
+	},
+	["weather_change.w15.look.004"] = {
+		"segue il cambiamento che prende piede lassù con l'attenzione quieta di chi guarda uno sconosciuto fare i bagagli.",
+		"tiene d'occhio per un po' la novità, senza fretta, come si guarda un bollitore che non ha ancora deciso di bollire.",
+	},
+	["weather_change.w15.look.005"] = {
+		"Un'occhiata, cielo. È tutto quello che avrai.",
+		"Questa è l'unica occhiata che ti concedo. Fattela bastare.",
+	},
+	["weather_change.w15.look.006"] = {
+		"alza il viso verso il cielo mutato e resta così, {g:fermo|ferma} come una pietra miliare, finché il momento non passa.",
+		"si raccoglie in silenzio sotto il cielo che gira, come una sala piena che tace quando si alza a parlare qualcuno d'importante.",
+	},
+	["weather_change.w15.look.007"] = {
+		"legge il cielo per un po' come un avviso appeso a un palo, muovendo appena le labbra, poi annuisce.",
+		"esamina il mutamento lassù con autentico interesse, come se dopo dovesse rispondere a qualche domanda.",
+		"considera la novità in alto con un cipiglio da studioso, di quelli che lasciano pensare a qualche appunto.",
+	},
+	["weather_change.w15.look.008"] = {
+		"fa un cenno al cielo, come si saluta un vicino da sopra la staccionata, e torna alle sue cose.",
+		"rivolge al cielo un piccolo saluto con la mano, come se avesse fatto qualcosa che merita un riconoscimento.",
+	},
+	["weather_change.w15.look.009"] = {
+		"guarda in alto il cambiamento e ci indugia un po' troppo, come se {g:gli|le} avesse ricordato qualcosa.",
+		"tiene lo sguardo sul cielo più a lungo del necessario, {g:perso|persa} in qualcosa che sta molto dietro i suoi occhi.",
+	},
+	["weather_change.w15.look.010"] = {
+		"attende che il cambiamento si posi tutt'intorno, come una stanza che torna quieta dopo una porta sbattuta.",
+		"resta lì un istante mentre l'aria trova la sua nuova forma, poi decide che può conviverci.",
+		"concede al mondo il tempo di finire di cambiare, con la cortesia di chi aspetta che l'altro termini di parlare.",
+	},
+	["weather_change.w15.look.011"] = {
+		"dà un'occhiata in alto, poi agli stivali, come per controllare chi dei due sia cambiato.",
+		"passa con lo sguardo dal cielo allo zaino e ritorno, chiedendosi palesemente se dare la colpa a uno dei due.",
+	},
+	["weather_change.w15.look.012"] = {
+		"prende le misure al cielo con uno sguardo, non aggiusta nulla e prosegue come prima.",
+		"registra il cambiamento lassù come una guardia registra un passante: visto, soppesato, lasciato passare.",
+	},
+	["weather_change.w15.look.013"] = {
+		"si volta lentamente sul posto, saggiando l'aria cambiata da ogni lato, come un cane in un cortile nuovo.",
+		"compie un lento mezzo giro, leggendo il cambiamento da una parte e poi dall'altra, come se potesse essere diverso.",
+	},
+	["weather_change.w15.look.014"] = {
+		"inarca un sopracciglio verso il cielo, che in cambio non abbassa un bel niente.",
+		"aggrotta la fronte verso l'alto, poi sembra ricordare che col cielo non ha mai funzionato.",
+		"guarda il cielo con l'aria di chi si sente un po' {g:tradito|tradita}: i suoi piani, in effetti, non li aveva concordati con lui.",
+	},
+	["weather_change.w15.look.015"] = {
+		"prende atto del cambiamento con un cenno minimo, di quelli che si rivolgono a una faccia nota dall'altra parte del mercato.",
+		"prende nota del mutamento nell'aria con una rapida occhiata di sbieco, e la cosa finisce lì.",
+	},
+	["weather_change.w15.look.016"] = {
+		"china brevemente il capo verso il cielo, l'antica cortesia dei viandanti verso un potere con cui non si tratta.",
+		"rivolge al cielo che cambia un lento cenno di rispetto, come si fa con un anziano che ha preso la parola.",
+		"resta in silenzio sotto il cambiamento per un momento, come se si stesse leggendo una sentenza.",
+	},
+	["weather_change.w15.look.017"] = {
+		"passa una mano veloce su ogni fibbia e ogni cinghia, l'abitudine di chi risponde a un cambiamento controllando l'equipaggiamento.",
+		"si tasta tasche e borse una per una, come se il cielo potesse essersi preso qualcosa.",
+	},
+	["weather_change.w15.look.018"] = {
+		"alza gli occhi e, per una volta, guarda e basta, senza nessun posto in cui dover essere finché dura.",
+		"lascia riposare lo sguardo sul cielo per un po', il viso tranquillo e disteso.",
+	},
+	["weather_change.w15.look.019"] = {
+		"borbotta qualcosa verso il cielo che sembra una lamentela e potrebbe anche essere un complimento.",
+		"rivolge in alto qualche parola sottovoce, col tono che si usa con un mulo fermo senza motivo.",
+	},
+	["weather_change.w15.look.020"] = {
+		"Da una parte il cielo, dall'altra la distanza. Faccio i conti e il risultato è sempre quello: proseguire.",
+		"Quanta strada manca, e questo la cambia? Poco. Non abbastanza da contare.",
+	},
+	["weather_change.w15.look.021"] = {
+		"Strano come l'aria possa cambiare carattere da un'occhiata all'altra.",
+		"Alzo gli occhi e il cielo ha un'espressione nuova. Qualunque cosa stia pensando, non lo dice.",
+		"Il mondo sposta il suo umore di qualche grado, e me ne accorgo prima ancora di vederlo.",
+	},
+	["weather_change.w15.look.022"] = {
+		"Diamo un'occhiata. Ecco: cambiato. Buono a sapersi, e tanto non ci si può far niente.",
+		"Basta uno sguardo verso l'alto. È diverso, resterà diverso per un po', e il rapporto finisce qui.",
+	},
+	["weather_change.w15.look.023"] = {
+		"Guarda un po'. Lassù qualcuno ha deciso di cambiare l'arredamento.",
+		"Oh, questa è nuova. Chiederei chi l'ha approvata, ma so già la risposta.",
+		"Qualcosa di diverso, lassù. Scelta audace.",
+	},
+	["weather_change.w15.look.024"] = {
+		"Cambiato. Preso nota.",
+		"Adesso è diverso, eh. Va bene. L'ho visto essere un po' di tutto.",
+	},
+	["weather_change.w15.look.025"] = {
+		"alza gli occhi al cielo con l'aria rassegnata di chi si vede correggere i piani di continuo.",
+		"emette un breve grugnito verso il cambiamento lassù, e pare che basti a dire tutto quel che c'era da dire.",
+	},
+	["weather_change.w15.look.026"] = {
+		"sorride appena al cambiamento, il sorriso privato che si riserva alle piccole sorprese.",
+		"pare {g:contento|contenta}, in silenzio, del cambiamento, o almeno del fatto che qualcosa sia cambiato.",
+	},
+	["weather_change.w15.look.027"] = {
+		"Uh. Questo l'ho sentito fino agli stivali.",
+		"Qualcosa, lassù, si è rigirato. L'ho sentito prima ancora di alzare gli occhi.",
+	},
+	["weather_change.w15.look.028"] = {
+		"piega la testa di lato come chi sente una melodia cambiare tonalità a metà, e aspetta di vedere dove va a parare.",
+		"si immobilizza un istante, l'attenzione rivolta in alto, come un cervo che si blocca a un rumore che nessun altro ha colto.",
+		"interrompe quel che stava facendo, un orecchio rivolto al cielo come se avesse detto qualcosa.",
+	},
+	["weather_change.w15.look.029"] = {
+		"Uh, che teatro.",
+		"Questo sì che è un cambio di scena, e non mi sono nemmeno {g:spostato|spostata}.",
+	},
+	["weather_change.w15.mind.001"] = {
+		"Il cielo non risponde a nessuno. C'è qualcosa di riposante nel ricordarselo.",
+		"Nessun re e nessun consiglio ha mai votato sul cielo. Fa quel che fa, e chi ci sta sotto si arrangia.",
+		"Con certi poteri si può trattare. Il cielo non è tra quelli.",
+	},
+	["weather_change.w15.mind.002"] = {
+		"I pastori dicono che un cielo che cambia in fretta torna indietro in fretta. I pastori parlano anche con le pecore, però.",
+		"Ogni contadino ha un proverbio per questo. Metà contraddicono l'altra metà, e tutti suonano sicurissimi.",
+		"Chiedi a dieci viandanti che cosa significa un cambiamento così, e avrai undici risposte e una scommessa.",
+	},
+	["weather_change.w15.mind.003"] = {
+		"Cambiamenti così mi mandano sempre la testa altrove, in un posto dove sono {g:stato|stata} una volta, sotto un altro cielo.",
+		"Curioso quel che un cambio d'aria riesce a riportare. Niente di preciso, solo la sensazione di essere {g:stato|stata} altrove.",
+	},
+	["weather_change.w15.mind.004"] = {
+		"Qualcuno, chissà dove, avrà desiderato proprio questo. Mi piacerebbe scambiarci due parole.",
+		"C'è chi ha appena avuto esattamente il cielo che voleva. Spero sia riconoscente: io non sono {g:stato|stata} {g:consultato|consultata}.",
+		"Lassù non si chiede permesso. Ho smesso di aspettarmelo, ma tengo comunque un elenco di lamentele.",
+	},
+	["weather_change.w15.mind.005"] = {
+		"Niente resta com'è. Di solito mi fa paura. In questo momento, chissà perché, mi consola.",
+		"Se il cielo può girare così facilmente, forse possono farlo anche altre cose. Vale la pena tenerselo in tasca.",
+	},
+	["weather_change.w15.mind.006"] = {
+		"Il mondo ha i suoi umori, e nessuno è stato tagliato su misura per me.",
+		"Molto prima che ci fosse qualcuno ad alzare gli occhi, il cielo faceva già così. Lo farà anche molto dopo.",
+		"L'aria non ricorda niente e non promette niente. Gira, e il mondo gira con lei.",
+	},
+	["weather_change.w15.mind.007"] = {
+		"Chissà chi decide queste cose. Probabilmente nessuno, e in un certo senso è peggio.",
+		"Vorrei proprio sapere che cosa fa girare le cose lassù. Un momento è così, quello dopo è altrimenti, e nessuno suona una campana.",
+	},
+	["weather_change.w15.mind.008"] = {
+		"Non si può accontentare tutti. Il cielo non ci prova nemmeno.",
+		"Mezzo mondo è contento e l'altra metà no. Io resto neutrale.",
+		"Deciditi, cielo. Anzi, no. Tanto cambieresti idea.",
+	},
+	["weather_change.w15.mind.009"] = {
+		"È strano pensare che anche le persone che ho lasciato stanno sotto un cielo, e che il loro starà facendo tutt'altro.",
+		"Ovunque siano le persone che ho lasciato, hanno un cielo sopra la testa. Spero che il loro sia più gentile, qualunque cosa voglia dire.",
+	},
+	["weather_change.w15.mind.010"] = {
+		"Lamentarsi del cielo è una bella tradizione antica. Ha un primato perfetto: non ha mai cambiato niente.",
+		"Potrei brontolare. Io starei meglio, e il cielo non cambierebbe di una virgola.",
+	},
+	["weather_change.w15.mind.011"] = {
+		"Qualunque cosa faccia il cielo, la fa per tutti nello stesso momento. È l'unica giustizia che conosce.",
+		"Lassù non ci sono favoriti. Chi ci sta sotto riceve lo stesso trattamento.",
+	},
+	["weather_change.w15.mind.012"] = {
+		"C'è una lezione in quanto poco al cielo importi essere coerente. Continuo a ripromettermi di impararla.",
+		"Essere volubile non sembra nuocere alla reputazione del cielo. Forse sono troppo {g:severo|severa} con me per la stessa cosa.",
+		"Nessuno dà del debole al cielo perché cambia. Me ne ricorderò, la prossima volta che cambierò idea io.",
+	},
+	["weather_change.w15.mind.013"] = {
+		"I viandanti parlano del cielo come i mercanti parlano dei prezzi: di continuo, e come se servisse.",
+		"Alla prossima locanda qualcuno mi racconterà tutto di questo cambiamento, come se io non ci fossi {g:stato|stata} in mezzo.",
+	},
+	["weather_change.w15.mind.014"] = {
+		"Per una settimana ogni sconosciuto me ne parlerà.",
+		"E adesso tutti hanno qualcosa di cui parlare.",
+		"Bene. Argomenti nuovi per le chiacchiere di circostanza.",
+	},
+	["weather_change.w15.mind.015"] = {
+		"Tutto quel che vive qui intorno se n'è accorto prima di me. Sono sempre {g:l'ultimo|l'ultima} a saperlo.",
+		"Qui vicino, piccole bestie si stanno già adattando. Non ne fanno un dramma; avrei da imparare.",
+	},
+	["weather_change.w15.mind.016"] = {
+		"La gente alza gli occhi in momenti come questo da quando esiste la gente. Faccio parte di una fila lunghissima.",
+		"Ogni viandante mai esistito si è trovato sotto un cambiamento così e ha pensato qualcosa. Chissà che cosa pensava, la maggior parte.",
+	},
+	["weather_change.w15.mind.017"] = {
+		"Tipico.",
+		"Ma certo.",
+		"Ovvio. Perché no, del resto.",
+	},
+	["weather_change.w15.mind.018"] = {
+		"Quel che era non è più. Quel che è non durerà molto. C'è una libertà in questo, se la lascio esserci.",
+		"Niente, lassù, viene trattenuto. Mi farebbe bene imparare un po' da questo.",
+		"Lascia una cosa e ne prende un'altra senza voltarsi indietro. Quel talento lo vorrei anch'io.",
+	},
+	["weather_change.w15.mind.019"] = {
+		"È un segno? Probabilmente no. Tutto sembra un segno, se lo si cerca.",
+		"C'è chi lo chiamerebbe un presagio. Io direi che è il cielo che fa il suo mestiere, e terrei i presagi per quando servono.",
+	},
+	["weather_change.w15.mind.020"] = {
+		"Il cielo gira. Lascialo fare.",
+		"Fa quel che deve, il cielo. Inutile mettersi di traverso.",
+	},
+	["weather_change.w15.mind.021"] = {
+		"Continuerà a cambiare così molto dopo che avrò smesso di alzare gli occhi. Non è triste, di preciso. È vero e basta.",
+		"Un giorno cambierà e io non ci sarò ad accorgermene. Fino ad allora, me ne accorgo.",
+	},
+	["weather_change.w15.mind.022"] = {
+		"Se l'avessi saputo, mi sarei {g:organizzato|organizzata} diversamente. Non lo sapevo. Nessuno lo sa, e al cielo va bene così.",
+		"Chiunque comandi lassù ha un senso del tempo che posso solo definire teatrale.",
+		"Tempismo perfetto, come sempre. Il cielo sa fare le sue entrate.",
+	},
+	["weather_change.w15.mind.023"] = {
+		"Mi fa bene, un cambiamento. Anche uno che non ho chiesto. Impedisce alla testa di ammuffire.",
+		"Mi ero {g:abituato|abituata} a com'era prima. Abituarsi è un vizio che ogni tanto conviene perdere.",
+	},
+	["weather_change.w15.mind.024"] = {
+		"Qualcuno lo scriva: il cielo ha fatto qualcosa.",
+		"Grande notizia. Il cielo si è mosso. Seguiranno dettagli.",
+	},
+	["weather_change.w15.mind.025"] = {
+		"Lo dico a me {g:stesso|stessa}, tanto per dirlo: il cielo è cambiato. Sembra l'inizio di qualcosa, o la fine.",
+		"Un piccolo giro del mondo, e un piccolo giro in me per andargli incontro. Mi pare giusto.",
+	},
+	["weather_change.w15.mind.026"] = {
+		"Certi popoli leggono il cielo come una lettera degli spiriti. Se lo è, la calligrafia è pessima.",
+		"C'è chi dice che gli elementi litighino fra loro, e che questo sia un litigio visto da sotto.",
+		"Gli sciamani sostengono che il cielo abbia umori come ogni cosa viva. A guardarlo adesso, sono quasi {g:tentato|tentata} di dar loro ragione.",
+	},
+	["weather_change.w15.mind.027"] = {
+		"Prima era quel che era, adesso è questo. Ci posso lavorare.",
+		"Qualcosa è girato. Lo prenderò come viene.",
+	},
+	["weather_change.w15.mind.028"] = {
+		"Ogni cambiamento così spezza il cammino in due: prima e dopo. Del prima adesso mi ricorderò con un po' più di affetto.",
+		"Strano come un intero tratto di viaggio prenda il nome da quel che faceva il cielo. Questo è appena diventato due tratti.",
+		"Più avanti, ripensando a questo pezzo, dirò: e poi è cambiato. Così vanno sempre queste storie.",
+	},
+	["weather_change.w15.mind.029"] = {
+		"Un'opinione me la farò più tardi. Adesso ho cose migliori su cui farmi un'opinione.",
+		"Certa gente ci tira fuori una conversazione intera. Io faccio una smorfia, ed è tutto il mio contributo.",
+	},
+	["weather_change.w15.walk.001"] = {
+		"Qualunque cosa faccia lassù, il prossimo passo resta il prossimo passo.",
+		"La meta non si sposta di un palmo. Si continua.",
+		"Non riscrivo i miei piani per il cielo. Che si adegui, o faccia come crede.",
+	},
+	["weather_change.w15.walk.002"] = {
+		"sposta lo zaino da una spalla all'altra, dà uno strattone a una cinghia e sembra {g:soddisfatto|soddisfatta} della sistemazione.",
+		"fa tre piccoli aggiustamenti all'equipaggiamento che a chi guarda non direbbero niente, e a {g:lui|lei} dicono tutto.",
+		"rifà un nodo che non era allentato: a quanto pare è così che si affronta un cambio di tempo.",
+	},
+	["weather_change.w15.walk.003"] = {
+		"Sono {g:partito|partita} sapendo che poteva cambiare. È cambiato. Fa parte dei patti.",
+		"Nessuno ha promesso lo stesso cielo dall'inizio alla fine. Mi prendo quello che c'è.",
+	},
+	["weather_change.w15.walk.004"] = {
+		"mantiene il passo di prima, né più svelto né più lento, come se il cielo non meritasse né l'uno né l'altro.",
+		"non rallenta né accelera, anche se un sopracciglio si alza un attimo in onore del cielo.",
+	},
+	["weather_change.w15.walk.005"] = {
+		"Se mi fermassi ogni volta che il cielo ha un'opinione, sarei ancora al punto di partenza.",
+		"Ricevuto, cielo. Archiviato con le altre tue lamentele.",
+		"Cambia quanto ti pare. Io ho da fare.",
+	},
+	["weather_change.w15.walk.006"] = {
+		"Primo: c'è qualcosa nello zaino che ne soffrirà? No. Secondo: ne soffro io? Neanche.",
+		"Conto veloce. L'equipaggiamento va, i piedi vanno, il piano va. Il cielo faccia come gli pare.",
+		"Ripasso l'elenco che ripasso sempre quando l'aria gira, e non ci trovo niente da fare.",
+	},
+	["weather_change.w15.walk.007"] = {
+		"si ferma giusto il tempo di mettere via quel che penzola, poi riprende esattamente da dove aveva lasciato.",
+		"ferma alla cieca un paio di cose allentate dell'equipaggiamento: le mani conoscono la procedura meglio della testa.",
+	},
+	["weather_change.w15.walk.008"] = {
+		"Cielo nuovo, stivali vecchi. Niente che non si possa attraversare a piedi.",
+		"Qualunque cosa ci sia lassù, i miei piedi non ne sanno niente. Meglio non dirglielo.",
+	},
+	["weather_change.w15.walk.009"] = {
+		"Sono troppo {g:stanco|stanca} per provare qualcosa per il cielo. Dovrà farne a meno.",
+		"In certi tratti mi importerebbe di quel che fa il cielo. Questo non è uno di quelli.",
+		"Le mie gambe hanno un compito e il cielo un altro. Nessuno dei due accetta consigli.",
+	},
+	["weather_change.w15.walk.010"] = {
+		"va avanti come se il cambiamento fosse capitato a qualcun altro.",
+		"continua con le sue faccende con l'indifferenza studiata di un gatto chiamato per nome.",
+	},
+	["weather_change.w15.walk.011"] = {
+		"Bene. Sistemarsi, e via.",
+		"Cinghie, zaino, stivali. Fatto. Il cielo non avrà altro del mio tempo.",
+		"Uno strattone qui, una piega là. Tutta la cerimonia che si merita.",
+	},
+	["weather_change.w15.walk.012"] = {
+		"Il mio calendario ha meno impegni di quello del cielo, e intendo rispettarli tutti.",
+		"Me ne preoccuperò se si mette in mezzo. Per ora sta lassù, dove deve stare.",
+	},
+	["weather_change.w15.walk.013"] = {
+		"raddrizza le spalle davanti al cambiamento, come davanti a una lunga fila, e si rimette all'opera.",
+		"serra la mascella per un istante, poi la scioglie. Il lavoro non aspetta il cielo.",
+		"fa un breve cenno deciso, come se si fosse votato e il risultato fosse: si prosegue.",
+	},
+	["weather_change.w15.walk.014"] = {
+		"Potrei fermarmi a pensarci. Preferisco continuare e pensarci strada facendo, che è la stessa cosa fatta meglio.",
+		"Si pensa altrettanto bene camminando. Il cielo lo si può considerare tra un passo e l'altro.",
+	},
+	["weather_change.w15.walk.015"] = {
+		"Oh, non badare a me. Continua pure lassù. Io continuo quaggiù.",
+		"Tu fai il tuo lavoro, cielo, io faccio il mio. Vediamo chi finisce prima.",
+	},
+	["weather_change.w15.walk.016"] = {
+		"passa un momento a riordinare quel che sta in cima allo zaino, il genere di cura a cui invita un cambio d'aria.",
+		"fruga un attimo in una borsa, sposta una cosa in un posto migliore e sembra considerare chiusa la questione.",
+	},
+	["weather_change.w15.walk.017"] = {
+		"Va bene, è cambiato. Non mi fermo certo ad ammirarlo.",
+		"Se il cielo vuole un pubblico, se lo cerchi tra chi ha meno strada davanti.",
+		"Può cambiare altre due volte, per quel che m'importa. Ho del terreno da coprire.",
+	},
+	["weather_change.w15.walk.018"] = {
+		"si adatta al cambiamento come chi dorme si gira nel letto: senza commenti, e del tutto.",
+		"si accomoda alla novità senza nemmeno accorgersene, che è il modo migliore di adattarsi.",
+	},
+	["weather_change.w15.walk.019"] = {
+		"Non importa. Si va.",
+		"Ha da fare, il cielo. E anch'io.",
+	},
+	["weather_change.w15.walk.020"] = {
+		"Ho preparato lo zaino per ogni cielo possibile. Quello che mi serve adesso sarà sul fondo. Lo è sempre.",
+		"In questo zaino c'è proprio la cosa giusta. La troverò quando il cielo sarà tornato com'era.",
+		"Ho scelto l'equipaggiamento con gran cura, per un cielo che non esiste più.",
+	},
+	["weather_change.w15.walk.021"] = {
+		"sceglie una linea leggermente diversa sul terreno davanti, la piccola deviazione di chi prende sul serio le condizioni.",
+		"corregge la rotta di mezzo passo, come se il terreno davanti fosse diventato un po' più interessante.",
+	},
+	["weather_change.w15.walk.022"] = {
+		"E va bene. Qualcosa di nuovo in cui camminare.",
+		"Cambiare fa bene alle gambe. Le tiene sveglie.",
+	},
+	["weather_change.w15.walk.023"] = {
+		"Cambiare è come riposarsi, dice la gente. Lo prendo come riposo, allora, e vado avanti.",
+		"Qualcosa di nuovo lassù. Qualunque cosa sia, il cammino ha aperto un capitolo nuovo.",
+	},
+	["weather_change.w15.walk.024"] = {
+		"prosegue senza nemmeno un'occhiata in su, come se gli affari del cielo non {g:lo|la} riguardassero.",
+		"non alza la testa. Certi cambiamenti si affrontano meglio negando loro l'onore di uno sguardo.",
+		"tiene gli occhi su quel che ha davanti, e lascia che il cielo si arrangi.",
+	},
+	["weather_change.w15.walk.025"] = {
+		"E il cielo cambia così. Nessun riguardo per chi è in viaggio.",
+		"Un bel cambiamento, lassù. Avviso le autorità.",
+		"Eccolo che cambia senza chiedere permesso. Che maleducato.",
+	},
+	["weather_change.w15.walk.026"] = {
+		"Cambia qualcosa di quel che sto per fare? Ci penso, onestamente. No. Bene.",
+		"Una sola domanda: mi rallenterà? Per ora la risposta è che ci sta pensando.",
+	},
+	["weather_change.w15.walk.027"] = {
+		"riprende il cammino sotto il cielo mutato, con la semplice ostinazione di chiunque si sia mai messo in viaggio.",
+		"lascia che il cambiamento {g:gli|le} scivoli addosso come una parola in una lingua che non conosce, e prosegue.",
+	},
+	["weather_change.w15.walk.028"] = {
+		"Proprio quando mi ci ero {g:abituato|abituata}. Ovvio.",
+		"Non importa che cosa faccia. Lo zaino pesa uguale.",
+		"Cambiamento registrato. Piani invariati.",
+	},
+	["weather_change.w15.walk.029"] = {
+		"dà una pacca allo zaino, come per rassicurarlo che fra loro due non deve cambiare niente.",
+		"mormora qualcosa di rassicurante al proprio equipaggiamento, il che è segno di buon senso oppure preoccupante.",
+	},
 }, "base_world")

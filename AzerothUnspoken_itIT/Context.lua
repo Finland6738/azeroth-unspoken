@@ -2706,4 +2706,577 @@ NS:AddTexts("itIT", {
 		"fa un breve cenno di saluto, quello che i viaggiatori e chi li serve si scambiano senza pensarci.",
 		"saluta {other} con una cortesia semplice, di quelle che non costano niente e aprono quasi tutte le porte.",
 	},
+	["encounter_end.w15.after.001"] = {
+		"Quanto è durato? Un'eternità e un attimo, tutto insieme.",
+		"Non ho idea di quanto sia durato. Abbastanza da cambiarmi un poco.",
+	},
+	["encounter_end.w15.after.002"] = {
+		"Ho le orecchie ancora piene dello scontro. Il silenzio dovrà fare la fila.",
+		"Mi fischia tutto. Il silenzio è arrivato, le orecchie non se ne sono accorte.",
+		"C'è un fischio che non viene da niente. Passerà.",
+	},
+	["encounter_end.w15.after.003"] = {
+		"resta {g:fermo|ferma} e lascia che il frastuono {g:gli|le} scoli piano dalla testa.",
+		"aspetta, immobile, che il rumore nella testa si posi.",
+	},
+	["encounter_end.w15.after.004"] = {
+		"Vincere non è come dicono le canzoni. È sentirsi {g:stanco|stanca} e {g:fortunato|fortunata}.",
+		"Niente trombe. Solo stanchezza e fortuna, e saperlo bene.",
+	},
+	["encounter_end.w15.after.005"] = {
+		"guarda gli altri ridere, e si unisce con un attimo di ritardo.",
+		"sente gli altri cominciare a ridere e, dopo un istante, ride con loro.",
+		"lascia che il sollievo degli altri {g:lo|la} raggiunga, prima di aggiungere il suo.",
+	},
+	["encounter_end.w15.after.006"] = {
+		"Ogni scontro finisce. È l'unica promessa che mantengono tutti.",
+		"Per quanto duri, uno scontro finisce. Ricordarselo, quando sembra di no.",
+	},
+	["encounter_end.w15.after.007"] = {
+		"piega le dita rigide una a una, come a contare quanto è costato lo scontro.",
+		"apre e chiude piano le mani, saggiandole come attrezzi presi in prestito.",
+	},
+	["encounter_end.w15.after.008"] = {
+		"La sete, tra tutte le cose. È la prima che sento.",
+		"Sete. Indolenzimento. Soddisfazione. Più o meno in quest'ordine.",
+	},
+	["encounter_end.w15.after.009"] = {
+		"I dettagli se ne vanno già. Fra poco ricorderò solo che è finita.",
+		"Metà è un'unica macchia confusa. La metà che terrò è la fine.",
+	},
+	["encounter_end.w15.after.010"] = {
+		"Senti qua. Niente che cerchi di colpire qualcuno.",
+		"Sentito? Niente. Che meraviglia, il niente.",
+		"Nessun rumore. Strano quanto si faccia sentire.",
+	},
+	["encounter_end.w15.after.011"] = {
+		"sta nella quiete dopo {encounter}, come da sempre chi vince.",
+		"lascia che la quiete si richiuda intorno, come intorno a ogni vincitore dal primo in poi.",
+	},
+	["encounter_end.w15.after.012"] = {
+		"Perdere è più silenzioso che vincere. Nessuno esulta, nessuno vuole rompere il silenzio.",
+		"Niente esultanze. Solo ognuno che aspetta che sia un altro a dirlo.",
+	},
+	["encounter_end.w15.after.013"] = {
+		"Lo scontro continua a girarmi in testa, e continuo a perderlo.",
+		"Gira e rigira, e finisce sempre allo stesso modo.",
+		"Continuo a riavvolgerlo. Il finale non cambia.",
+	},
+	["encounter_end.w15.after.014"] = {
+		"rimane un poco con la sconfitta, senza fretta di lasciarsela alle spalle.",
+		"lascia che la sconfitta si posi, senza fretta, come si lascia guardare una ferita.",
+	},
+	["encounter_end.w15.after.015"] = {
+		"Essere {g:battuto|battuta} pesa. Più di qualunque zaino.",
+		"La sconfitta pesa più dell'equipaggiamento. E si porta in un altro modo.",
+	},
+	["encounter_end.w15.after.016"] = {
+		"Ogni scontro che qualcuno ha vinto, qualcun altro l'aveva perso prima. Stavolta tocca a me.",
+		"C'è sempre chi perde prima che arrivi la vittoria. Per ora, tocca a me.",
+	},
+	["encounter_end.w15.after.017"] = {
+		"rigira gli ultimi istanti senza sosta, come una moneta che non vuole cadere dal verso giusto.",
+		"continua a rimuginare sullo scontro, come si tormenta un dente che dondola.",
+	},
+	["encounter_end.w15.after.018"] = {
+		"Strano. Il silenzio dopo una sconfitta suona uguale a quello dopo una vittoria. Pesa diverso, tutto qui.",
+		"Al silenzio non importa chi ha vinto. Importa solo a me.",
+	},
+	["encounter_end.w15.after.019"] = {
+		"Prendetevi un momento. Le parole possono aspettare.",
+		"Non serve che qualcuno parli. Non subito.",
+	},
+	["encounter_end.w15.after.020"] = {
+		"Troppo {g:stanco|stanca} per arrabbiarmi. La rabbia arriverà dopo, con gli interessi.",
+		"Troppo {g:sfinito|sfinita} per la furia. Le serve tempo.",
+		"Più tardi sarò {g:arrabbiato|arrabbiata}. Adesso sono solo {g:vuoto|vuota}.",
+	},
+	["encounter_end.w15.after.021"] = {
+		"accoglie la sconfitta in silenzio, come una brutta notizia mezza attesa.",
+		"riceve la sconfitta come una lettera di cui conosceva già il contenuto.",
+	},
+	["encounter_end.w15.after.022"] = {
+		"Colpa di nessuno e di tutti. Funziona così.",
+		"Sconfitta comune, colpa comune. È giusto così.",
+	},
+	["encounter_end.w15.after.023"] = {
+		"Ecco quanto è vicino il bordo. Più di quanto sembri da lontano.",
+		"Il precipizio era lì. Preferirei non conoscerlo così bene.",
+	},
+	["encounter_end.w15.lost.001"] = {
+		"Istruttivo. Dolorosamente istruttivo.",
+		"Lezione ricevuta. Lividi compresi, senza sovrapprezzo.",
+		"Istruttivo, nel peggiore dei modi.",
+	},
+	["encounter_end.w15.lost.002"] = {
+		"Qualcosa mi è sfuggito. Va trovato prima di riprovare qualunque cosa.",
+		"Lì in mezzo c'è un errore. Forse mio. Prima di tutto, trovarlo.",
+	},
+	["encounter_end.w15.lost.003"] = {
+		"E va bene. Questa la vince {encounter}. Solo questa.",
+		"Tienitela, allora. Goditela. È l'ultima che ti concedo.",
+		"Il giro è tuo. Non abituartici.",
+	},
+	["encounter_end.w15.lost.004"] = {
+		"Nessuno punti il dito. Prima capiamo cos'è successo, poi lo puntiamo.",
+		"Le colpe dopo. Prima i fatti.",
+		"Prima che qualcuno dia la colpa a qualcuno: cos'è successo davvero?",
+	},
+	["encounter_end.w15.lost.005"] = {
+		"resta in silenzio, come chi rivede ogni istante dall'inizio.",
+		"non dice nulla per un bel pezzo, lo sguardo altrove, a ripercorrere tutto.",
+	},
+	["encounter_end.w15.lost.006"] = {
+		"borbotta qualcosa di irripetibile all'indirizzo di {encounter}.",
+		"ha qualche parolina scelta per tutta la faccenda, nessuna educata.",
+	},
+	["encounter_end.w15.lost.007"] = {
+		"La sconfitta ha un sapore: metallo e cenere. Preferirei non farci l'abitudine.",
+		"Perdere lascia qualcosa di amaro dietro i denti. Non va via in fretta.",
+	},
+	["encounter_end.w15.lost.008"] = {
+		"Radunatevi. Quella era la prova generale.",
+		"Prendetela come una prova. Adesso i passi li conosciamo.",
+		"Consideratela una ricognizione. Molto accurata, molto dolorosa.",
+	},
+	["encounter_end.w15.lost.009"] = {
+		"Non è crollato tutto di colpo. Prima un poco, poi tutto.",
+		"Un piccolo errore, poi un altro, poi più niente a cui aggrapparsi.",
+	},
+	["encounter_end.w15.lost.010"] = {
+		"Stesso piano, meno errori. Quanto sarà mai difficile?",
+		"Come prima, ma senza le parti andate storte.",
+		"Da capo, ma stavolta per bene.",
+	},
+	["encounter_end.w15.lost.011"] = {
+		"Era più di quanto potessi reggere. Per ora. Quel 'per ora' conta.",
+		"Fuori dalla mia portata, stavolta. La portata cresce.",
+	},
+	["encounter_end.w15.lost.012"] = {
+		"china il capo verso {encounter}, come si concede una mano migliore a carte.",
+		"fa un piccolo cenno riluttante, il saluto dovuto a chi ha vinto il giro.",
+	},
+	["encounter_end.w15.lost.013"] = {
+		"Perdere è imparare a voce alta. Ho sentito. Al prossimo tentativo, rispondo.",
+		"Una batosta è una lezione a cui nessuno si iscrive. Va bene. Stavo {g:attento|attenta}.",
+	},
+	["encounter_end.w15.lost.014"] = {
+		"Annotato. Archiviato. Prossimo tentativo.",
+		"D'accordo. Capito. Un'altra volta, con giudizio.",
+		"Capito. Si corregge.",
+	},
+	["encounter_end.w15.lost.015"] = {
+		"Nessuna vergogna. Di rabbia, invece, ce n'è parecchia.",
+		"Vergogna no. Rabbia, un po'. Soprattutto rabbia.",
+		"Imbarazzo? No. Rabbia? Ci sto arrivando.",
+	},
+	["encounter_end.w15.lost.016"] = {
+		"Se qualcuno ha visto cosa ho combinato là dietro: no, non l'ha visto.",
+		"Qualunque cosa mi abbiate visto fare, dimenticatela. Vi prego.",
+		"Diciamo che quel momento non è mai esistito.",
+	},
+	["encounter_end.w15.lost.017"] = {
+		"si lascia sfuggire un lungo lamento stanco, più eloquente di un discorso.",
+		"si lamenta a lungo, di cuore, con nessuno in particolare.",
+	},
+	["encounter_end.w15.lost.018"] = {
+		"Lo scontro l'ha vinto {encounter}. Cosa succede adesso, lo decido io.",
+		"Lo scontro è andato com'è andato. Il dopo è mio.",
+	},
+	["encounter_end.w15.lost.019"] = {
+		"Tutto quel lavoro insieme, disfatto in una manciata di secondi.",
+		"Tutto ciò che tenevamo in piedi, sparito in pochi istanti.",
+	},
+	["encounter_end.w15.lost.020"] = {
+		"Raccontatemi. Chi ha visto cosa, e quando?",
+		"Dall'inizio, uno per volta. Cosa avete visto?",
+	},
+	["encounter_end.w15.lost.021"] = {
+		"incassa la sconfitta con una dignità che dura quasi tre secondi.",
+		"accetta la sconfitta con grazia, poi rovina tutto con una sola parola, secca e sentita.",
+		"annuisce piano, come d'accordo con la sconfitta, poi scuote la testa.",
+	},
+	["encounter_end.w15.lost.022"] = {
+		"In mezzo a quel caos c'è l'attimo in cui è scivolata via. Trovarlo.",
+		"C'è stato un istante in cui è girata. Voglio riaverlo davanti, per guardarlo bene.",
+	},
+	["encounter_end.w15.lost.023"] = {
+		"Con {encounter} non è finita qui.",
+		"Questa partita resta aperta. Contateci.",
+		"Non abbiamo finito, noi.",
+	},
+	["encounter_end.w15.lost.024"] = {
+		"resta con il silenzio particolare di uno scontro andato male.",
+		"resta immobile nella quiete che solo uno scontro perso sa lasciare.",
+	},
+	["encounter_end.w15.lost.025"] = {
+		"Ecco cosa succede quando succede quello. Utile saperlo. Pessimo impararlo.",
+		"Adesso so cosa fa. Avrei preferito leggerlo in un libro.",
+	},
+	["encounter_end.w15.lost.026"] = {
+		"La sconfitta insegna ciò che la vittoria non si prende mai la briga di insegnare.",
+		"Fra i maestri, la sconfitta è il più anziano. Ascoltala.",
+	},
+	["encounter_end.w15.lost.027"] = {
+		"Almeno abbiamo perso insieme. Molto insieme.",
+		"Almeno nessuno potrà dire che abbiamo fatto le cose a metà.",
+	},
+	["encounter_end.w15.won.001"] = {
+		"Appello. Rispondete col vostro nome, o almeno con un lamento.",
+		"Fatevi sentire, uno per uno. Anche un brontolio vale come presente.",
+		"Chi non risponde, qualcuno vada a controllare.",
+	},
+	["encounter_end.w15.won.002"] = {
+		"stringe la prima mano che trova e la tiene un attimo più del necessario.",
+		"afferra con forza l'avambraccio di chi ha accanto, poi lo lascia senza dire nulla.",
+	},
+	["encounter_end.w15.won.003"] = {
+		"ride una volta, breve, come se la vittoria l'avesse {g:colto|colta} alla sprovvista.",
+		"si lascia scappare una risata secca, più sorpresa che trionfo.",
+		"sorride, un sorriso largo che non c'è verso di trattenere.",
+	},
+	["encounter_end.w15.won.004"] = {
+		"E adesso la parte davvero pericolosa: decidere a chi tocca cosa.",
+		"Il bottino, allora. Cerchiamo di restare in buoni rapporti.",
+		"Il bottino. Ricordiamoci che siamo tutte persone molto generose.",
+	},
+	["encounter_end.w15.won.005"] = {
+		"L'equipaggiamento ne ha prese parecchie. L'equipaggiamento si ripara.",
+		"Ammaccature, graffi, una cinghia appesa a un filo. Tutto aggiustabile.",
+	},
+	["encounter_end.w15.won.006"] = {
+		"Uno scontro da raccontare. Lo racconterò male, e spesso.",
+		"Questo finisce nei racconti. La mia versione sarà più lunga.",
+		"Questa la racconterò per un pezzo. Qualcosa potrebbe perfino essere vero.",
+	},
+	["encounter_end.w15.won.007"] = {
+		"{encounter}. Un nome che posso smettere di portarmi dietro.",
+		"Un pensiero in meno da rimuginare.",
+	},
+	["encounter_end.w15.won.008"] = {
+		"Nessuno dica che è stato facile. Le cose ascoltano.",
+		"Guai a chiamarlo facile. Qualcosa, chissà dove, se la legherebbe al dito.",
+	},
+	["encounter_end.w15.won.009"] = {
+		"Ha funzionato? Ha funzionato. Meglio non farsi domande.",
+		"È andata bene. Tutta quanta. Non mi fido, ma me la prendo.",
+		"È andata bene sul serio. Piano, prima che se ne accorga.",
+	},
+	["encounter_end.w15.won.010"] = {
+		"Esattamente come da piano. Grosso modo. Salvo tutto il resto.",
+		"Da manuale. Con qualche pagina strappata, ma da manuale.",
+	},
+	["encounter_end.w15.won.011"] = {
+		"Lo si dica pure: con {encounter} il conto è chiuso.",
+		"A chi lo chiede lo dirò chiaro: questa è vinta.",
+	},
+	["encounter_end.w15.won.012"] = {
+		"Grazie. A ognuno di voi. Davvero.",
+		"Da {g:solo|sola} non ce l'avrei mai fatta. Grazie.",
+		"Vi ringrazio. Sono in debito con ciascuno di voi.",
+	},
+	["encounter_end.w15.won.013"] = {
+		"Noi uno, {encounter} zero. Tengo il conto.",
+		"Un punto per noi. Me lo segno.",
+	},
+	["encounter_end.w15.won.014"] = {
+		"conta i volti intorno a sé, poi li riconta per sicurezza.",
+		"passa da un volto all'altro, spuntandoli uno per uno in silenzio.",
+	},
+	["encounter_end.w15.won.015"] = {
+		"Le spalle mi scendono finalmente dalle orecchie.",
+		"Sciogliti. Mascella, mani, tutto. È finita.",
+		"Giù le spalle. Aperte le mani. Fatto.",
+	},
+	["encounter_end.w15.won.016"] = {
+		"alza un pugno, e per una volta non {g:gli|le} importa chi guarda.",
+		"leva in alto il pugno chiuso, il gesto più antico che ci sia.",
+	},
+	["encounter_end.w15.won.017"] = {
+		"Qualunque cosa ne facciano i bardi, la racconteranno sbagliata.",
+		"Un giorno qualcuno ci canterà sopra, e nella canzone nessuno avrà l'aria stanca.",
+	},
+	["encounter_end.w15.won.018"] = {
+		"Sistemata. Bene.",
+		"Questa è fatta. Cosa c'è dopo?",
+		"Bene. Una di meno.",
+	},
+	["encounter_end.w15.won.019"] = {
+		"Medicatevi, bevete qualcosa, controllate l'equipaggiamento. Poi si parla.",
+		"Prima ci si rimette in sesto, poi si festeggia. Chi ha bisogno di cure?",
+	},
+	["encounter_end.w15.won.020"] = {
+		"si tasta da capo a piedi in cerca di pezzi mancanti, e pare quasi {g:sorpreso|sorpresa} di non trovarne.",
+		"fa un rapido inventario degli arti. A quanto pare, ci sono tutti.",
+		"si controlla le braccia, poi le gambe, poi sogghigna.",
+	},
+	["encounter_end.w15.won.021"] = {
+		"Che se lo ricordi chi c'era. Basta questo, come monumento.",
+		"Non serve inciderlo da nessuna parte. Ce l'ho inciso dentro.",
+	},
+	["encounter_end.w15.won.022"] = {
+		"Un po' di fortuna c'è stata. La ringrazio piano, e non ci conto.",
+		"In parte era bravura, in parte no. So bene quale parte allenare.",
+	},
+	["encounter_end.w15.won.023"] = {
+		"Qualcuno, chissà dove, riposa più tranquillo per questo e non saprà mai perché.",
+		"Gente che non conoscerò mai è più al sicuro. Non lo saprà. Va bene così.",
+	},
+	["encounter_end.w15.won.024"] = {
+		"Ah! Risposta data, e con gli interessi!",
+		"Questa è per ogni livido preso per arrivare fin qui!",
+		"Questo sì che è un lavoro fatto bene!",
+	},
+	["encounter_end.w15.won.025"] = {
+		"Chi ha battuto le palpebre si è perso il meglio. Cioè la mia parte, ovviamente.",
+		"Avete visto? Ditemi che qualcuno ha visto.",
+		"Qualcuno lo scriva, prima che cominci a migliorarlo io.",
+	},
+	["encounter_end.w15.won.026"] = {
+		"si siede lì dov'è e lascia che siano gli altri a esultare.",
+		"si lascia cadere sul primo appoggio a portata e incoraggia la festa con un cenno, senza alzarsi.",
+	},
+	["encounter_end.w15.won.027"] = {
+		"Contro {encounter} ha vinto la testardaggine. Tutta qui la storia.",
+		"Testardaggine: ancora imbattuta.",
+	},
+	["other_action.w15.duel.001"] = {
+		"Una sfida, così, dal nulla. C'è chi saluta e c'è chi vuole sapere chi finisce a terra per primo.",
+		"Nessuno sfida qualcuno che trova noioso. Lo prendo come un complimento, qualunque cosa risponda.",
+	},
+	["other_action.w15.duel.002"] = {
+		"Vuoi mettermi alla prova? Che coraggio. O che noia, chissà.",
+		"Un duello. Dammi un momento per capire se la fortuna è dalla mia.",
+		"È una sfida o un modo molto cerimonioso di chiedere un livido?",
+	},
+	["other_action.w15.duel.003"] = {
+		"Il duello pone una domanda piccola e pulita. Senza rancore, senza premio: solo una risposta.",
+		"Strano come basti una sfida per affilare tutto in un colpo: lo sguardo, le mani, il silenzio attorno.",
+	},
+	["other_action.w15.duel.004"] = {
+		"fa rotolare le spalle davanti alla sfida, soppesandola come una moneta di dubbio valore.",
+		"esamina la sfida con l'aria di chi rilegge un conto per la seconda volta.",
+	},
+	["other_action.w15.duel.005"] = {
+		"Hai chiesto come si deve. Avrai una risposta come si deve.",
+		"Una sfida leale merita una risposta leale. Concedimi un istante.",
+	},
+	["other_action.w15.duel.006"] = {
+		"{other}, con la voglia di chiudere il conto. Come se tra due rivali un conto restasse mai chiuso.",
+		"Certo che sei tu a chiederlo. Vinca chi vinca, non sarà l'ultima parola, e lo sai.",
+	},
+	["other_action.w15.duel.007"] = {
+		"Un duello, proprio da quella persona. Una lotta leale è l'ultima cosa che mi aspetto, quindi mi aspetto tutto il resto.",
+		"Le regole di un duello proteggono poco. Con questa persona mi fido più delle regole che della mano che le offre.",
+	},
+	["other_action.w15.duel.008"] = {
+		"Perché proprio io? Prima rispondi a questo.",
+		"Vorrei sapere che cosa stai chiedendo davvero.",
+	},
+	["other_action.w15.duel.009"] = {
+		"C'è qualcosa di quasi riposante in uno scontro che non conta niente. Nessuno deve odiare nessuno.",
+		"Una lotta senza cattive intenzioni. Al mondo ne servirebbero di più, e molte meno dell'altro tipo.",
+	},
+	["other_action.w15.duel.010"] = {
+		"Se si fa, chi perde dice una cosa gentile su chi vince. Ad alta voce.",
+		"Ah! La tua faccia tosta la accetto. Sul duello ci devo ancora pensare.",
+		"Una regola sola: dopo, nessuno tiene il broncio. Da nessuna delle due parti.",
+	},
+	["other_action.w15.duel.011"] = {
+		"accoglie la sfida con un cenno lento e formale, di quelli che per ora non promettono nulla.",
+		"prende atto della sfida con una lieve inclinazione del capo, senza lasciar trasparire niente.",
+	},
+	["other_action.w15.invite.001"] = {
+		"Qualcuno mi vuole con sé. Già questo rende lo zaino un po' più leggero, qualunque cosa decida.",
+		"Un invito. Fa piacere che qualcuno ci abbia pensato, prima ancora di sapere a che scopo.",
+		"Essere {g:invitato|invitata} è una cosa piccola. Ci faccio caso ogni volta.",
+	},
+	["other_action.w15.invite.002"] = {
+		"Qual è il piano, e quanto è brutto?",
+		"Prima di rispondere: dove si va, e per quanto?",
+		"Dimmi a cosa ti servo. Poi ti dirò se sono la persona giusta.",
+	},
+	["other_action.w15.invite.003"] = {
+		"Ogni gruppo ha bisogno di qualcuno. Il difficile è capire quale qualcuno pensano che io sia.",
+		"{g:Invitato|Invitata}. O il mio nome corre più veloce di me, o mancano braccia.",
+	},
+	["other_action.w15.invite.004"] = {
+		"guarda l'invito, poi il proprio zaino, poi torna a guardare l'invito.",
+		"indugia sull'invito col pollice sospeso, come a saggiare il peso della compagnia.",
+	},
+	["other_action.w15.invite.005"] = {
+		"In solitudine è tutto semplice. E anche molto silenzioso. L'invito resta lì, in attesa che io scelga.",
+		"Compagnia vuol dire il passo degli altri, gli errori degli altri. E qualcuno che ti guarda le spalle, mentre tu guardi le sue.",
+	},
+	["other_action.w15.invite.006"] = {
+		"Io? Ci penso volentieri. Dammi un attimo per fingere di avere da fare.",
+		"Lo chiedi a me? Cercherò di non sembrare troppo {g:contento|contenta}.",
+	},
+	["other_action.w15.invite.007"] = {
+		"{other} mi invita. Forse in buona fede. Vorrei comunque sapere perché proprio adesso.",
+		"Fra tutte le persone che potevano chiedermelo. O qualcosa è cambiato, o qualcosa vogliono.",
+	},
+	["other_action.w15.invite.008"] = {
+		"sorride all'invito di {other}, come se lo aspettasse da un po'.",
+		"scuote la testa con affetto: è ovvio che sull'invito ci sia quel nome.",
+	},
+	["other_action.w15.invite.009"] = {
+		"Avrò voce in capitolo sul piano, o solo su chi porta il bottino?",
+		"Gentile da parte tua. Spero non sia perché nessun altro ha risposto.",
+	},
+	["other_action.w15.invite.010"] = {
+		"Ogni strada che valga la pena è stata aperta da gente che si chiedeva di camminare insieme. Difficile liquidarlo alla leggera.",
+		"Una persona sola fa molto. Un pugno di persone che si fidano l'una dell'altra fa qualcosa che si ricorda.",
+	},
+	["other_action.w15.invite.011"] = {
+		"lascia l'invito sospeso per un momento, come si lascia aperta una porta prima di varcarla, o no.",
+		"considera l'invito a labbra strette, senza fretta in un senso o nell'altro.",
+	},
+	["other_action.w15.nod.001"] = {
+		"Un gesto verso di me. Amichevole o no, qualcuno mi ha {g:notato|notata}, ed è metà di quel che tutti vogliono.",
+		"Qualunque cosa volesse dire, era per me. Non è poco.",
+	},
+	["other_action.w15.nod.002"] = {
+		"risponde al gesto con uno dei suoi, misurato sulla stessa scala.",
+		"ricambia il gesto con la stessa moneta, né più né meno.",
+	},
+	["other_action.w15.nod.003"] = {
+		"Altrettanto a te!",
+		"Ah! L'ho visto. Consideralo ricambiato.",
+		"Ricevuto, e gradito.",
+	},
+	["other_action.w15.nod.004"] = {
+		"Piccole cortesie, fatte quando nulla è dovuto. Sono quelle che durano.",
+		"Nessuno era obbligato. Per questo conta.",
+	},
+	["other_action.w15.nod.005"] = {
+		"Facciamo che era un gesto educato. Risparmia un sacco di guai.",
+		"Delizioso. Qualunque cosa fosse.",
+	},
+	["other_action.w15.nod.006"] = {
+		"inclina la testa verso {other}: messaggio ricevuto, e restituito con gli interessi.",
+		"alza una mano verso il volto noto, la piccola risposta di chi conosce le abitudini dell'altro.",
+	},
+	["other_action.w15.nod.007"] = {
+		"Un gesto di {other}. Mi piacerebbe sapere quanto mi costa.",
+		"Quando quella persona fa un gesto, cerco prima che cosa c'è sotto.",
+	},
+	["other_action.w15.nod.008"] = {
+		"La gente parla in mille modi senza dire una parola. Qualcosa è gentile, qualcosa è rumore, e si impara a distinguere.",
+		"Neanche una parola, solo quello. Quasi tutto ciò che passa tra le persone non viene mai detto.",
+	},
+	["other_action.w15.nod.009"] = {
+		"Era per me? Allora lo prendo.",
+		"Per me? {g:Lusingato|Lusingata} od {g:offeso|offesa}, non ho deciso quale delle due.",
+	},
+	["other_action.w15.nod.010"] = {
+		"china il capo in risposta, con la stessa gravità che si riserva ai saluti tra ambasciatori.",
+		"risponde con un piccolo inchino cerimonioso, perché il momento non passi inosservato.",
+	},
+	["other_action.w15.nod.011"] = {
+		"Mi resterà addosso per un po'. Buffo quanto poco basti.",
+		"Strano quanto poco serva per sollevare l'umore.",
+	},
+	["other_action.w15.nod.012"] = {
+		"inarca un sopracciglio davanti al gesto, e lo mette da parte per dopo.",
+		"sbatte le palpebre davanti al gesto, poi fa un cenno lento e indecifrabile.",
+	},
+	["other_action.w15.quest.001"] = {
+		"Accettato. Adesso è mio, ed è strano dirlo di un guaio che era di qualcun altro.",
+		"Un attimo fa era un problema di qualcun altro. Basta un sì, e cambia tutto.",
+	},
+	["other_action.w15.quest.002"] = {
+		"Lascia fare a me.",
+		"Consideralo fatto. Prima o poi.",
+		"Me ne occupo io. Nel frattempo, niente pensieri.",
+	},
+	["other_action.w15.quest.003"] = {
+		"ripete la richiesta muovendo appena le labbra, per essere {g:sicuro|sicura} di averla capita.",
+		"archivia la richiesta con un cenno breve, da persona d'affari.",
+	},
+	["other_action.w15.quest.004"] = {
+		"Sembra sempre semplice, quando lo spiega qualcun altro. Sempre.",
+		"Nessuno affida un incarico dicendo 'sarà terribile'. Lasciano che tu lo scopra per conto tuo.",
+	},
+	["other_action.w15.quest.005"] = {
+		"Chi chiede aiuto ammette di non farcela da sé. Anche questo richiede qualcosa.",
+		"Chiedere costa orgoglio. Essere {g:interpellato|interpellata} costa tempo. Mi pare uno scambio equo.",
+	},
+	["other_action.w15.quest.006"] = {
+		"E se va storto, io qui non ci sono mai {g:stato|stata}.",
+		"C'è qualche clausola nascosta che dovrei conoscere?",
+	},
+	["other_action.w15.quest.007"] = {
+		"fa un cenno verso {other}, mentre pensa già da dove cominciare.",
+		"si sistema lo zaino più in alto, come si fa quando all'improvviso c'è più da portare.",
+	},
+	["other_action.w15.quest.008"] = {
+		"Qualcuno mi ha appena affidato qualcosa che ha a cuore. Preferirei non tradire quella fiducia.",
+		"Una richiesta è un piccolo atto di fede. Merita più di un'alzata di spalle.",
+	},
+	["other_action.w15.quest.009"] = {
+		"Chiesto con garbo o abbaiato, un compito pesa uguale una volta che è mio.",
+		"Che {other} abbia sorriso o fatto il muso conta poco, ormai. Il lavoro se ne infischia delle buone maniere.",
+	},
+	["other_action.w15.quest.010"] = {
+		"Affare fatto. Torno con buone notizie, o almeno con una bella storia.",
+		"D'accordo. Con un po' di fortuna tornerò con notizie che valga la pena di sentire.",
+	},
+	["other_action.w15.quest.011"] = {
+		"Una promessa fatta, per piccola che sia. Hanno il vizio di pesare più di quanto sembri.",
+		"Dire di sì è un attimo. Mantenerlo è la parte lunga.",
+	},
+	["other_action.w15.quest.012"] = {
+		"accoglie l'incarico con l'espressione solenne di chi non ha ancora sentito i dettagli.",
+		"annuisce con gravità, l'immagine stessa dell'affidabilità, almeno per ora.",
+	},
+	["other_action.w15.trade.001"] = {
+		"Uno scambio offerto. Mani tese, occhi sulla merce, la fiducia tenuta da parte.",
+		"Prima lo scambio, l'amicizia dopo, se mai. Alla merce non importa.",
+	},
+	["other_action.w15.trade.002"] = {
+		"Che cosa offri, e che cosa credi che io abbia?",
+		"Prima mostra il tuo. Non per sfiducia. Per abitudine.",
+		"Vediamo. E non sventolarlo come se fosse l'ultimo al mondo.",
+	},
+	["other_action.w15.trade.003"] = {
+		"si sporge a esaminare l'offerta, con gli occhi socchiusi di chi sa contrattare.",
+		"controlla l'offerta, poi la ricontrolla, come fa sempre chi è prudente.",
+	},
+	["other_action.w15.trade.004"] = {
+		"Tutti hanno qualcosa di cui liberarsi e qualcosa da avere al suo posto. Uno scambio è solo l'incontro di due desideri così.",
+		"In ogni scambio qualcuno è convinto di averci guadagnato. Nel migliore dei casi, tutti e due.",
+	},
+	["other_action.w15.trade.005"] = {
+		"Vediamo che cos'hai. Se è giusto, è giusto.",
+		"Guardo volentieri. Uno scambio onesto rende facili i saluti.",
+	},
+	["other_action.w15.trade.006"] = {
+		"Buffo come uno scambio di cose possa sembrare uno scambio d'altro. Un po' di fiducia che passa di mano.",
+		"Qualunque cosa passi di mano, di solito si porta dietro un po' di buona volontà.",
+	},
+	["other_action.w15.trade.007"] = {
+		"Uno scambio con {other}. Contare tutto due volte, sorridere una volta sola.",
+		"Controllerò ogni oggetto come se potesse mordere. Con questa persona è solo buon senso.",
+	},
+	["other_action.w15.trade.008"] = {
+		"si tasta le tasche in una scena di miseria che non convince nessuno.",
+		"sfodera la sua faccia più innocente da contrattazione, che di innocente ha ben poco.",
+	},
+	["other_action.w15.trade.009"] = {
+		"Occhio al conto. Ci guardo anch'io, ma tu occhio.",
+		"Con calma, così dopo nessuno deve discutere.",
+	},
+	["other_action.w15.trade.010"] = {
+		"Ogni scambio è una piccola tregua: finché la merce sta nel mezzo, nessuno dei due allunga la mano verso altro.",
+		"Il baratto è una conversazione in cui nessuno deve parlare la stessa lingua.",
+	},
+	["other_action.w15.trade.011"] = {
+		"Qualcuno vuole qualcosa che ho io. Una sensazione rara, e lusinghiera.",
+		"Un'offerta. Bello essere utile senza dover combattere nessuno.",
+	},
+	["other_action.w15.trade.012"] = {
+		"Si scambia? Mostrami qualcosa che valga il disturbo.",
+		"Affari, eh? Dai, stupiscimi.",
+	},
 }, "base_context")

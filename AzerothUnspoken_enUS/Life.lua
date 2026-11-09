@@ -362,4 +362,213 @@ NS:AddTexts("enUS", {
 		"That's it? No higher? Then I'd better find better boots.",
 		"As strong as I'm going to get. From here on it's all about the gear, apparently.",
 	},
+	["levelup.w15.grow.001"] = {
+		"As if I'd been wearing a coat a size too big, and just grew into a little more of it.",
+		"The shape I'm meant to fill is still larger than me. The gap just narrowed.",
+	},
+	["levelup.w15.grow.002"] = {
+		"The dangers are the same size they were a moment ago. I'm the one who got bigger.",
+		"Nothing out there shrank. I simply measure a little more against it.",
+		"The world hasn't gone easy on me. I've gone a little harder on it.",
+	},
+	["levelup.w15.grow.003"] = {
+		"shifts {g:his|her} feet, and something in the way {g:he|she} stands has quietly become harder to move.",
+		"stands a fraction steadier, the way a post stands once it has been driven all the way in.",
+	},
+	["levelup.w15.grow.004"] = {
+		"Whatever comes now finds a little more of me waiting.",
+		"Felt that. Bring on the next thing.",
+		"Something just got stronger in here. Good. I'll need it.",
+	},
+	["levelup.w15.grow.005"] = {
+		"No moment I could point to. Just a quiet difference, and no undoing it.",
+		"It didn't arrive. It was simply there when I looked, the way a knack is there once you stop forcing it.",
+	},
+	["levelup.w15.grow.006"] = {
+		"goes very still, like a bell just struck and listening to itself.",
+		"stands quiet while something settles deep inside {g:him|her}, slow as silt in still water.",
+		"holds motionless a moment, like a bell after the stroke, while the change hums its way out to the edges.",
+	},
+	["levelup.w15.grow.007"] = {
+		"I was someone a moment ago. Now I'm one pace further on.",
+		"A moment ago my limits were right here. They've moved. Not far. Far enough.",
+		"The line where I give out has shifted outward. Only a little. It counts.",
+	},
+	["levelup.w15.grow.008"] = {
+		"Steadier. That's new.",
+		"Huh. Everything just got a little lighter to carry.",
+		"Feels like someone took a pebble out of my boot. Everywhere.",
+	},
+	["levelup.w15.grow.009"] = {
+		"Growth is a quiet animal. It doesn't announce itself; it just takes up more room.",
+		"Nothing grows by shouting. It grows by not stopping.",
+	},
+	["levelup.w15.grow.010"] = {
+		"looks down at {g:his|her} own hands as though they had just learned a new trick.",
+		"turns one palm up and studies it, as if the change might be written there.",
+	},
+	["levelup.w15.grow.011"] = {
+		"Whatever just grew in me, I want it put to work.",
+		"A measure more than before. I want to see what it can move.",
+		"Fresh strength sitting idle is a waste. Point me at something heavy.",
+	},
+	["levelup.w15.grow.012"] = {
+		"Let it be marked: I am more than I was.",
+		"Mark it, whoever keeps such tallies. I have grown.",
+	},
+	["levelup.w15.grow.013"] = {
+		"It isn't strength, exactly. It's one less reason to be afraid.",
+		"Not power, quite. More like a fear I can finally set down.",
+		"What I feel isn't mightier. It's less frightened, and that may be better.",
+	},
+	["levelup.w15.grow.014"] = {
+		"stands motionless a beat; afterward, {g:his|her} movements waste nothing.",
+		"moves on with a step that wastes nothing, as if someone had trimmed the clumsy parts away.",
+	},
+	["levelup.w15.grow.015"] = {
+		"From here on, every struggle starts a little more in my favor.",
+		"The odds just tipped, ever so slightly, toward me. I'll take every grain of that.",
+		"Every fight ahead just shifted a hair my way. Hairs add up.",
+	},
+	["levelup.w15.grow.016"] = {
+		"More than I was a moment ago. Let's find out what for.",
+		"That's more than I had a blink ago. I intend to use it.",
+	},
+	["levelup.w15.weigh.001"] = {
+		"Strength isn't a reward. It's a larger bill, paid in advance.",
+		"Whatever I can carry now, someone will ask me to carry.",
+		"This isn't a prize. It's a receipt for something I haven't been asked for yet.",
+	},
+	["levelup.w15.weigh.002"] = {
+		"Every bit I grow takes me a bit further from whoever I was before all this.",
+		"I'm becoming someone. I hope I'll recognize them when they arrive.",
+	},
+	["levelup.w15.weigh.003"] = {
+		"pauses in silence, as one does before a task too large to take in at a single look.",
+		"goes quiet, with the face of someone weighing a gift that came with conditions.",
+	},
+	["levelup.w15.weigh.004"] = {
+		"Then let me be worth it.",
+		"If I'm given more, I'll answer for more.",
+		"More is mine now. So is the reckoning for it.",
+	},
+	["levelup.w15.weigh.005"] = {
+		"The more I'm able for, the more I can see that needs doing. The list never shrinks.",
+		"Each bit of strength shows me a little more of the world's trouble. Clearer sight, longer list.",
+	},
+	["levelup.w15.weigh.006"] = {
+		"Stronger, yes. Not one bit less mortal. Mustn't mix the two up.",
+		"Growing tougher isn't growing out of reach. Death keeps pace with anyone.",
+		"However much I grow, my end grows right alongside. It's the one companion that never falls behind.",
+	},
+	["levelup.w15.weigh.007"] = {
+		"is quiet for a moment, like someone tallying what this cost and choosing not to finish the sum.",
+		"looks back the way {g:he|she} came, briefly, then ahead, and keeps looking ahead.",
+	},
+	["levelup.w15.weigh.008"] = {
+		"Others will start expecting more of me. I'd rather expect it first.",
+		"More will be asked now. I'd rather be the one asking.",
+	},
+	["levelup.w15.weigh.009"] = {
+		"Stronger. So the next burden will be heavier. Fair.",
+		"A little more to give, then. Let's see who needs it.",
+		"More strength means more to lift. There's always someone waiting to be lifted.",
+	},
+	["levelup.w15.weigh.010"] = {
+		"A whetstone gives an edge by taking metal off. Growing is never only gain.",
+		"Every gain is weighed against something. I just don't always see the other pan of the scale.",
+	},
+	["levelup.w15.weigh.011"] = {
+		"lowers {g:his|her} gaze for a moment, as though the new strength were also a new weight.",
+		"draws {g:himself|herself} up, and the set of {g:his|her} shoulders is at once prouder and more tired.",
+		"seems for an instant both larger and heavier, like a pack that has just been loaded.",
+	},
+	["levelup.w15.weigh.012"] = {
+		"Somewhere ahead is a moment all this was for. I hope I know it when I see it.",
+		"This strength is for something. I don't know what yet. It'll find me.",
+	},
+	["levelup.w15.weigh.013"] = {
+		"I can do more. I'm not sure I know more. Those were never the same thing.",
+		"Power came quick. Sense comes slower, and I'll need it more.",
+	},
+	["levelup.w15.weigh.014"] = {
+		"Whatever's out there waiting, it'll find me a little harder to stop.",
+		"Let what's ahead know: it gets a tougher fight now.",
+	},
+	["levelup.w15.weigh.015"] = {
+		"I'll need every scrap of this, and more. I know that much already.",
+		"This won't be enough. It never is. But it's more than it was.",
+		"Not enough for what's coming. Nothing ever is. Still, closer.",
+	},
+	["levelup.w15.weigh.016"] = {
+		"stands very straight for a moment, like someone taking an oath that nobody administers.",
+		"gives a single short nod to whatever lies ahead, as one acknowledges a summons.",
+	},
+	["levelup.w15.wry.001"] = {
+		"Somewhere there ought to be a doorframe with a fresh notch in it for this.",
+		"Someone should be marking this on a doorpost. I'll have to make do with feeling smug.",
+	},
+	["levelup.w15.wry.002"] = {
+		"Did anyone see that? No? Then I'll tell it bigger later.",
+		"Nobody saw? Excellent. The story improves already.",
+		"No witnesses. A shame. I'd have described it modestly, too.",
+	},
+	["levelup.w15.wry.003"] = {
+		"Tougher, apparently. Wiser hasn't arrived yet. Perhaps it's in the next parcel.",
+		"The strength came. The wisdom must have taken the long road.",
+	},
+	["levelup.w15.wry.004"] = {
+		"pats {g:himself|herself} down, as if checking whether anything fell off.",
+		"checks {g:his|her} hands, then {g:his|her} feet, as if the change ought to have left a mark somewhere obvious.",
+		"glances down at {g:himself|herself} with suspicion, as if expecting a label to have appeared.",
+	},
+	["levelup.w15.wry.005"] = {
+		"Wonderful. From now on my mistakes will be slightly more impressive.",
+		"Now I can make the very same mistakes with more conviction.",
+		"Excellent: I can now get into trouble I couldn't even have reached before.",
+	},
+	["levelup.w15.wry.006"] = {
+		"I'd like to thank my feet, my stubbornness, and everything that missed.",
+		"My thanks to everything that tried and missed. Couldn't have done it without you.",
+	},
+	["levelup.w15.wry.007"] = {
+		"No ribbon, no speech, no certificate. Getting stronger in this world is a quiet business.",
+		"Nobody hands out a certificate for this. A pity: I'd hang it somewhere.",
+	},
+	["levelup.w15.wry.008"] = {
+		"mutters something smug to {g:himself|herself}, then glances around to see if anyone heard.",
+		"allows {g:himself|herself} one small, private nod of approval.",
+	},
+	["levelup.w15.wry.009"] = {
+		"My pack weighs exactly what it did. So much for being stronger.",
+		"Stronger, and yet the pack still pulls at exactly the same spot.",
+		"All that growth, and the strap still digs in where it always has. Some things are beyond improvement.",
+	},
+	["levelup.w15.wry.010"] = {
+		"Ah. Didn't see that coming. I never do.",
+		"Oh, that's nice. Does it come with a chair?",
+		"Huh. Nobody warned me. Nobody ever does.",
+	},
+	["levelup.w15.wry.011"] = {
+		"To celebrate, I'll go on doing exactly what I was doing, a shade better.",
+		"A celebration is in order. I'll hold it later, if I remember.",
+	},
+	["levelup.w15.wry.012"] = {
+		"pauses mid-step, frowns like someone hunting for a word, then shrugs and carries on.",
+		"blinks, rubs {g:his|her} eyes, and looks twice at nothing at all.",
+		"tilts {g:his|her} head as though listening for something just said, and hears nothing more.",
+	},
+	["levelup.w15.wry.013"] = {
+		"Somewhere, something I haven't met yet just became a little less lucky.",
+		"Far off, some trouble of mine still to come has just had its odds trimmed.",
+	},
+	["levelup.w15.wry.014"] = {
+		"Same me, only more of it. The world will have to cope.",
+		"More of me than before. Plan accordingly, world.",
+	},
+	["levelup.w15.wry.015"] = {
+		"If only my purse grew as willingly as I do.",
+		"More muscle, and my purse still hasn't caught the habit.",
+		"Everything about me grows except the coin I carry. There's a lesson in that, and I resent it.",
+	},
 }, "base_life")

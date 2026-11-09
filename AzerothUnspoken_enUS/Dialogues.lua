@@ -1690,4 +1690,53 @@ NS:AddTexts("enUS", {
 		"Ready to learn? Good. The Horde needs its fighters sharper every season, and you're one of them.",
 		"Stand there and show me. Whatever people you come from, the Horde trains you the same: hard, and honestly.",
 	},
+	["npcd.merchant.bye.w15.001"] = {
+		"Mind how you go. I like my customers in one piece; they buy more.",
+		"Off you go. Spend wisely out there, and come back to spend the rest here.",
+	},
+	["npcd.merchant.bye.w15.002"] = {
+		"Leaving already? The good stuff was just about to come out from the back.",
+		"So soon? I'll pretend that doesn't hurt.",
+		"Already? I'd only just started to like you.",
+	},
+	["npcd.merchant.bye.w15.003"] = {
+		"Take care of yourself. Good customers are hard to replace, and you're one of the easy ones to like.",
+		"Look after yourself. The counter will be here when you need it.",
+	},
+	["npcd.merchant.bye.w15.004"] = {
+		"Safe travels. And if anyone asks where you got that, say my name nicely.",
+		"Go well. Tell people I don't bite, at least not across the counter.",
+	},
+	["npcd.merchant.bye.w15.005"] = {
+		"Goodbye, and remember: I never saw you haggle that hard. Nobody would believe me anyway.",
+		"Off with you, then. My purse needs a rest after that.",
+	},
+	["npcd.merchant.news.w15.001"] = {
+		"Folk passing through talk a lot and pay little. What I've gathered: everyone's tired, and everyone's in a hurry.",
+		"News? Mostly complaints about prices, from people buying from me. I listen politely.",
+	},
+	["npcd.merchant.news.w15.002"] = {
+		"A rumor's like a coin from nobody knows where: worth something until you try to spend it.",
+		"I hear plenty and believe little. That's how I've stayed in business.",
+	},
+	["npcd.merchant.news.w15.003"] = {
+		"The latest is that someone heard something from someone. That's about as solid as news gets over a counter.",
+		"Word is, trouble's brewing somewhere. Word always says that. Word is rarely wrong, either.",
+	},
+	["npcd.merchant.thanks.w15.001"] = {
+		"My pleasure. Fair dealing is the only kind that brings people back.",
+		"No need. Just remember the way back here.",
+	},
+	["npcd.merchant.thanks.w15.002"] = {
+		"Thanks are kind. Coins are kinder. I'll take both, naturally.",
+		"Oh, go on. Thank me by not buying from the competition.",
+	},
+	["npcd.merchant.wares.w15.001"] = {
+		"Have a look. If it's on the counter, it's for sale; if it's under the counter, ask nicely.",
+		"Things that keep you going, mostly. Nothing fancy, nothing that falls apart the first time you use it.",
+	},
+	["npcd.merchant.wares.w15.002"] = {
+		"Whatever you're short of, I probably have. Whatever you've too much of, I'll probably buy.",
+		"Useful things at honest prices, and a couple of bargains for anyone who knows how to look.",
+	},
 }, "base_dialogues")

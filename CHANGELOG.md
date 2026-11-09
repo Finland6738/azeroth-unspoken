@@ -8,6 +8,69 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### Content wave W15: the generic attacks, griefs, recognitions, skies, rests, blessings and the other small pools (issue #138)
+
+The fifteenth content wave of [docs/content/WAVES.md](docs/content/WAVES.md), random need only. Its pools were the
+first row of the table after W14: nineteen small generic pools of 2,569 texts per language in all, from `attack`
+(267), `ally_death` (237), `relation_player` (209), `weather_change` (189) and `buff` (339: 213 on oneself, 126 on
+someone else, ADR 0055) down to the merchant's dialogue (18). **1,196 intentions, 2,854 texts per language** (5,708
+in both), written by twelve parallel writer subagents (authors `ai-w15-<unit>`), each with a group of events so that
+the lines do not converge on the same images, openings and closings, and passed through the archive (drafts,
+`cli dups --state draft` with no exact and no near duplicate and no over-used opening or closing, submit, owner sample,
+approve, export; the round trip is an empty diff). No literary piece, no invented saying and no `tier` field. The
+addon goes from 18,353 to **19,549 intentions** and from 44,059 to **46,913 texts per language**.
+
+- **Added: combat lines.** 126 `attack` (`attack.w15.<cry|wit|focus|grim>.NNN`, 295 texts, `base_spells`): the
+  moment of acting, with no means (no blade, arrow, bolt, element, spell), no range and no kind of foe; 68 `threat`
+  (`threat.w15.<cold|loud|wry>.NNN`, 170 texts, `base_combat`), said aloud by the manual command. Never the everyday
+  register.
+- **Added: 105 griefs for an ally** (`ally_death.w15.<mourn|steel|vow|small>.NNN`, 260 texts, `base_relations`,
+  `grief = "ally"`), all in the inner voice as ADR 0046 requires and tagged `topic:death`: no claim of how the ally
+  died, how well they were known or where; Italian never genders them.
+- **Added: 96 recognitions of a listed player** (`relation_player.w15.<bond|edge|time|tie>.NNN`, 228 texts,
+  `base_relations`), each on one selector of the existing lines (`relation`, `feeling`, `relDaysSince`, `relMetHere`,
+  `relShared`, `isKnown`) and claiming nothing beyond it; all in the inner voice, so a recognition stays private;
+  the two lines of a beloved carry `topic:romance`.
+- **Added: the world.** 87 `weather_change` (207 texts, `indoors = false`) that never name the new weather or the old;
+  15 `travel` (36 texts: 8 hearthstone lines, 7 true of any travel spell); 52 `rest_enter` (127 texts: an inn, an
+  outdoor resting place, or both); 47 `levelup` (115 texts, true at any level from 2 to 60); 58 `landmark` (144 texts,
+  never the kind of place); 62 `quest_progress` (150 texts, half one step further, half ready to turn in).
+- **Added: 156 generic buff lines** (`buff.w15.<family>.NNN`, 379 texts, `base_spells`) in the two halves of ADR
+  0055: **98 on oneself** (`castOnSelf = true`: readiness, never the means or the class) and **58 on someone else**
+  (`castOnSelf = false`, never who they are; the 37 that speak to them write `hasTarget` and `friendly`); and **59
+  resurrections** of a companion (`rezother.w15.<call|vigil>.NNN`, 141 texts; Revive Pet and the soulstone excluded as
+  W06 did, the 26 that speak to the one raised write `hasTarget`).
+- **Added: 77 ends of a boss fight** (`encounter_end.w15.<won|lost|after>.NNN`, 180 texts, `base_context`): 38 after
+  a win, 39 after a wipe; the 21 that speak of the group write `group = { "party", "raid" }`; never what the boss was
+  or what the place looks like.
+- **Added: people.** 83 story-arc beats (`arc_open.w15.<arc>.NNN` 53, `arc_step.w15.<arc>.NNN` 30, 199 texts,
+  `base_arcs`) over the five arcs, every choice of every step (every variant of a familiar face names the NPC); 58 `other_action` (123 texts, `base_context`: a duel,
+  an invitation, a trade, an emote, a quest just accepted); 12 merchant dialogue lines (`npcd.merchant.<wares|news|bye|
+  thanks>.w15.NNN`, 25 texts, `base_dialogues`); 24 `thanks` and 11 `farewell` (75 texts, `base_social`).
+- **Short lines in a fight.** Every rule of `attack`, `threat`, `buff`, `rezother`, `ally_death` and
+  `encounter_end` has a variant of 80 bytes or less in both languages (ADR 0056).
+- **Generic means true for everyone.** No place, sky, hour, weather, season, race, class, faction, level or invented
+  past, and nothing a Forsaken's body cannot do. Italian agreement uses whole-word forms.
+- **The gap after W15** (per language): soft and strict need met (gap **0**); random need 276,398, gap **231,729**
+  (was 234,298). **80 waves** left (the next is the first row of WAVES.md: the generic `pet_call`, `pet_dismiss` and
+  the other small generic pools).
+- **Measured.** `run_tests` M2: pick 53.9 → **56.8** thousand Lua instructions (p95 85.5 → 88.3; reference 42.7, fails
+  at 64.1). `bench_scale` (every line loaded): memory 36.6 → 37.3 MB, bytes per synthetic rule at 10,000 rules
+  1,274 → 1,298, at 50,000 rules 1,178 → 1,199, pick 30.5 → 31.6 thousand Lua instructions (p95 64.7 → 65.0).
+  `bench_trial --long 20` over seeds 1-5 (main → W15): first exact repetition orc 7.3 → 7.4 h, troll 7.7 → 7.4 h,
+  human 7.5 → 8.1 h; repeated share orc 3.6% → 3.7%, troll 3.3% → 3.9%, human 3.6% → 3.7%. No W15 line repeats in the
+  20-hour runs looked at (seed 4, all three characters): the first repetitions are the zones' own speak-key lines
+  (`dur.muse.*`, `elw.muse.*`, as #270), which this wave does not touch.
+- **Tests:** counts: base intentions 19506, lines loaded 19513, `base_combat` 2064, `base_context` 764, `base_life`
+  131, `base_arcs` 128 in `TestArcs` (135 in the archive), `base_dialogues` 415, the companion's inner lines 226
+  (`TestCompanion`). Made robust to pick order, with no floor loosened: `TestPlayers` judges a generic recognition
+  line of a wave by the rule it already used for the race lines (its feeling, a relation that goes with it, an
+  acquaintance, or none), and searches 1,000 picks (was 200) and 400 (was 150) in a pool that grew; `TestOtherPlace`
+  accepts a W14 meeting line that fits every role for an innkeeper; `TestCompanion` accepts the hunter's own unhappy
+  pet lines of W06.
+- **Owner sample:** [docs/content/reviews/W15.md](docs/content/reviews/W15.md) (`cli sample --state review --share
+  0.02`: 24 intentions).
+
 ### Content wave W14: the generic flights, wounds, heals and NPC meetings (issue #138)
 
 The fourteenth content wave of [docs/content/WAVES.md](docs/content/WAVES.md), random need only. Its pools were the

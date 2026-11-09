@@ -707,4 +707,149 @@ NS:AddTexts("itIT", {
 		"Grazie. La gentilezza al buio vale doppio: è più difficile da trovare.",
 		"Ti ringrazio. A quest'ora avevo smesso di aspettarmi qualsiasi aiuto.",
 	},
+	["farewell.w15.light.001"] = {
+		"Vai pure. Cerca di non cacciarti in guai di cui dovrei sentir parlare.",
+		"Ciao! Non fare niente che non farei io. Il che ti lascia parecchio margine.",
+	},
+	["farewell.w15.light.002"] = {
+		"Ci si vede! Cerca di non perdere pezzi per strada.",
+		"A presto. Tieni tutti i pezzi al loro posto.",
+	},
+	["farewell.w15.light.003"] = {
+		"Vai, vai. Farò finta che non mi dispiaccia vederti partire.",
+		"Su, sparisci. Me la caverò. Credo. Quasi di sicuro.",
+	},
+	["farewell.w15.light.004"] = {
+		"saluta con la mano, con molto più entusiasmo di quanto l'occasione richieda.",
+		"fa un saluto allegro, un tantino esagerato.",
+	},
+	["farewell.w15.light.005"] = {
+		"Ciao, per ora. È stato bello, questo. Qualunque cosa fosse.",
+		"Arrivederci, allora. Mi è piaciuto più di quanto pensassi.",
+		"Arrivederci, e grazie della compagnia.",
+	},
+	["farewell.w15.road.001"] = {
+		"Buon cammino, e che ogni strada sia gentile con i tuoi piedi.",
+		"Che le miglia ti siano lievi, ovunque tu vada.",
+		"Stammi bene, e che ogni svolta ti tratti con giustizia.",
+	},
+	["farewell.w15.road.002"] = {
+		"Abbi cura di te, là fuori. Dico sul serio.",
+		"Bada a te. Il mondo è sbadato; tu non esserlo.",
+	},
+	["farewell.w15.road.003"] = {
+		"Va', allora. Tieni la testa sveglia e lo zaino leggero.",
+		"Bada alla strada, e che la strada badi a te.",
+		"Vai, dunque. Dovunque porti il cammino, tieni gli occhi aperti.",
+	},
+	["farewell.w15.road.004"] = {
+		"si porta due dita alla fronte in un saluto di commiato, poi si volta.",
+		"saluta con un breve gesto da sopra la spalla, già in cammino.",
+	},
+	["farewell.w15.road.005"] = {
+		"Un congedo è solo lo spazio tra due incontri. Stammi bene.",
+		"Ogni addio lascia una porta aperta. Bada di ritrovarla.",
+	},
+	["farewell.w15.road.006"] = {
+		"Stammi bene, {target}. Guarda dove cammini.",
+		"Occhio a dove vai, e non farti masticare da niente.",
+	},
+	["thanks.w15.plain.001"] = {
+		"Lo apprezzo.",
+		"Lo apprezzo molto. Davvero.",
+	},
+	["thanks.w15.plain.002"] = {
+		"Grazie. È una gentilezza.",
+		"Gentile da parte tua, davvero.",
+		"Grazie. Un gesto garbato.",
+	},
+	["thanks.w15.plain.003"] = {
+		"Grazie. Però non abituarti a sentirmelo dire.",
+		"Grazie. E adesso non parliamone mai più.",
+	},
+	["thanks.w15.plain.004"] = {
+		"Lasciami almeno stringerti la mano. Te lo sei meritato.",
+		"Dammi la mano. Questo merita un grazie fatto bene.",
+	},
+	["thanks.w15.plain.005"] = {
+		"Ti sono {g:obbligato|obbligata}.",
+		"Te ne sono {g:obbligato|obbligata}. Non lo scordo.",
+	},
+	["thanks.w15.plain.006"] = {
+		"Grazie. Ti darei una mancia, ma ho visto la mia borsa ed è imbarazzante.",
+		"Grazie mille. La mia borsa vorrebbe aggiungere qualcosa, ma è timida.",
+	},
+	["thanks.w15.plain.007"] = {
+		"Un bel gesto. Non lo dico tanto per dire.",
+		"È stato un gesto onesto. Non fingerò il contrario.",
+	},
+	["thanks.w15.plain.008"] = {
+		"Sei un tesoro. Grazie!",
+		"Sei una meraviglia, lo sai? Grazie!",
+	},
+	["thanks.w15.plain.009"] = {
+		"Ti ringrazio, e volentieri.",
+		"Accetta il mio grazie, detto senza fronzoli.",
+	},
+	["thanks.w15.plain.010"] = {
+		"Grazie. Ne avevo un bisogno che non ammetterei mai.",
+		"Mi è servito. Niente discorsi, ma mi è servito.",
+	},
+	["thanks.w15.plain.011"] = {
+		"ringrazia con un cenno veloce e un sorriso storto.",
+		"annuisce, riconoscente, con un mezzo sorriso sghembo.",
+	},
+	["thanks.w15.plain.012"] = {
+		"Grazie, {target}. Davvero.",
+		"Grazie mille. Sei una brava persona.",
+	},
+	["thanks.w15.warm.001"] = {
+		"Avevi tutte le ragioni per passare oltre. Grazie di non averlo fatto.",
+		"Potevi tirare dritto. Mi fa piacere che tu non l'abbia fatto.",
+	},
+	["thanks.w15.warm.002"] = {
+		"Ha contato più di quanto immagini. Grazie.",
+		"Non hai idea di quanto mi abbia aiutato. Davvero.",
+		"È stato importante. Più di quanto riesca a dire.",
+	},
+	["thanks.w15.warm.003"] = {
+		"Di quello che diventerò, un pezzetto sarà merito tuo.",
+		"Se mai combinerò qualcosa di buono, ricordati che ci hai messo mano anche tu.",
+	},
+	["thanks.w15.warm.004"] = {
+		"Considerami in debito. Intendo saldarlo per bene.",
+		"Il mio grazie, dato di cuore, e un debito che intendo onorare.",
+	},
+	["thanks.w15.warm.005"] = {
+		"Una gentilezza così rende il mondo un po' più sopportabile.",
+		"Sono le piccole gentilezze come questa a tenerti in piedi. Grazie.",
+	},
+	["thanks.w15.warm.006"] = {
+		"posa una mano sul cuore e china il capo in segno di gratitudine.",
+		"si porta una mano al petto e abbassa la testa, {g:grato|grata}.",
+	},
+	["thanks.w15.warm.007"] = {
+		"Grazie. Così mi rendi difficile restare {g:cinico|cinica}.",
+		"Occhio, o mi rovini la pessima opinione che ho della gente. Grazie.",
+	},
+	["thanks.w15.warm.008"] = {
+		"Certi debiti pesano. Questo lo porto volentieri.",
+		"Questo debito lo porto con piacere. Non pesa niente.",
+	},
+	["thanks.w15.warm.009"] = {
+		"Grazie! Se mai capiti in una taverna mentre ci sono anch'io, il primo boccale è mio.",
+		"Grazie! Ti devo da bere, e i miei debiti li pago.",
+	},
+	["thanks.w15.warm.010"] = {
+		"Grazie, sul serio. Cercherò di valere la fatica che hai fatto.",
+		"Farò del mio meglio per meritarlo. Grazie.",
+	},
+	["thanks.w15.warm.011"] = {
+		"si piega in un inchino lento e profondo, come per saldare un debito.",
+		"s'inchina a fondo, e resta giù un istante più di quanto chieda l'educazione.",
+	},
+	["thanks.w15.warm.012"] = {
+		"{target}, grazie. Il nome me lo tengo stretto, e quello che significa.",
+		"Mi ricorderò a chi devo essere {g:grato|grata}.",
+	},
 }, "base_social")
