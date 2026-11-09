@@ -5712,4 +5712,2115 @@ NS:AddTexts("enUS", {
 		"Don't look at me. I didn't start it.",
 		"For once it wasn't me. Probably.",
 	},
+	["victory.w13.pride.001"] = {
+		"Ha! Let that be heard as far as it carries.",
+		"Let that ring out as far as it cares to go.",
+		"Ha! Let the echo go wherever it pleases.",
+	},
+	["victory.w13.pride.002"] = {
+		"Send the next. I'm not finished being stubborn.",
+		"Whatever follows can come. I have stubbornness to spare.",
+		"Stubborn as ever, and proud of it. Whoever's next, take note.",
+	},
+	["victory.w13.pride.003"] = {
+		"Fallen or fled, you have my salute.",
+		"A salute to you, gone whichever way you went. You met me, and that is something.",
+		"Whichever way you left, I salute the meeting.",
+	},
+	["victory.w13.pride.004"] = {
+		"That's going in the memoirs. Big letters.",
+		"Put that in the memoirs, with a nice drawing beside it.",
+		"Memoirs, page whatever: a triumph. Underline it twice.",
+	},
+	["victory.w13.pride.005"] = {
+		"Send what you like, world. I'll meet it at the door.",
+		"Whatever the world has in mind, send it. I'll be the one answering.",
+		"Your move, world. Mine was that.",
+	},
+	["victory.w13.pride.006"] = {
+		"I swore I'd walk away from this. Sworn and kept.",
+		"A promise to myself: walk out of it on my own feet. Kept.",
+		"My word to myself held firm. So did I.",
+	},
+	["victory.w13.pride.007"] = {
+		"My trade. I know it.",
+		"That is my trade, and I know my trade.",
+		"This is the work I'm for, and it shows.",
+	},
+	["victory.w13.pride.008"] = {
+		"Applause would be welcome. From anyone. From anything.",
+		"I'd clap for myself, but it looks bad. I'm clapping on the inside.",
+		"No cheering? Fine. I'll cheer, quietly, in my own honor.",
+	},
+	["victory.w13.pride.009"] = {
+		"Next turn's open. Who wants it?",
+		"Who wants the turn after this one? I'm in the mood.",
+		"There's room for one more. Step up.",
+	},
+	["victory.w13.pride.010"] = {
+		"Say what you like of me. Not that I ran.",
+		"They can call me many things. Coward won't be one of them.",
+		"Talk all you want. My back never showed.",
+	},
+	["victory.w13.pride.011"] = {
+		"Let the record show: I gave no ground.",
+		"For the record, my feet went forward, never back.",
+		"Mark it plainly: forward, every step.",
+	},
+	["victory.w13.pride.012"] = {
+		"Oh, that felt good. That felt very good.",
+		"Now that is a feeling worth bottling.",
+		"Oh, I needed that. More than I knew.",
+	},
+	["victory.w13.pride.013"] = {
+		"Here's to me. Somebody has to say it.",
+		"A toast to me, with no cup to raise. The thought counts.",
+		"To me, then. The only one here to raise a toast.",
+	},
+	["victory.w13.pride.014"] = {
+		"I'm getting better at this. The next one will see.",
+		"Sharper than I was. The next fight gets the sharper version.",
+		"Better with each fight, and this one is the proof.",
+	},
+	["victory.w13.pride.015"] = {
+		"That earns a nod of approval. Two nods, even.",
+		"Approved. By me, the only judge that matters.",
+		"I'd frame that, if fights fit in frames.",
+	},
+	["victory.w13.pride.016"] = {
+		"That's my answer to anything that tries me.",
+		"Whoever tests me gets that same reply.",
+		"Try me, and that's what comes back.",
+	},
+	["victory.w13.pride.017"] = {
+		"The ground to me; to you, my respect.",
+		"My respect goes with you. The ground stays with me.",
+		"You leave with my respect. I stay with the ground.",
+	},
+	["victory.w13.pride.018"] = {
+		"Let the next thing come. It'll find me ready.",
+		"Ready for whatever's next. Let it hurry up.",
+		"Bring the next. My feet are set.",
+	},
+	["victory.w13.pride.019"] = {
+		"Look at that! I'm good at this.",
+		"Would you look at that. Fine work.",
+		"Look at me, being good at things.",
+	},
+	["victory.w13.pride.020"] = {
+		"Let the horns sound, if anyone has one.",
+		"Somebody blow a horn. I've earned a horn.",
+		"A fanfare would suit this. Hum one, someone.",
+	},
+	["victory.w13.pride.021"] = {
+		"And that, for the curious, is how it's done.",
+		"Take notes, anyone listening. That's the method.",
+		"Lesson over. There won't be a test.",
+	},
+	["victory.w13.pride.022"] = {
+		"I am not done. I am never done.",
+		"Finished? Not by a long way.",
+		"Finished? Me? Ask again later.",
+	},
+	["victory.w13.pride.023"] = {
+		"Honor to you for facing me. The rest of the honor is mine.",
+		"Some honor for you. Most of it stays with me.",
+		"The honor is split between you and me. I take the larger slice.",
+	},
+	["victory.w13.pride.024"] = {
+		"Let it be known: that was my doing.",
+		"Let it be known far and wide. My work, that.",
+		"Spread the word. That was me.",
+	},
+	["victory.w13.pride.025"] = {
+		"Good. That's how I like it.",
+		"Good. Exactly as I wanted it.",
+		"Yes. Like that. Precisely like that.",
+	},
+	["victory.w13.pride.026"] = {
+		"Line them up. I've all the time in the world.",
+		"Form a queue, whoever's next. I'm in no hurry.",
+		"Singly or in a crowd, send them. I'll take either.",
+	},
+	["victory.w13.pride.027"] = {
+		"Modesty forbids me to comment. Luckily I have none.",
+		"I'd be modest about it, but why start now?",
+	},
+	["victory.w13.pride.028"] = {
+		"Let it be written somewhere. Anywhere. A wall will do.",
+		"Someone write that down. On anything at all.",
+	},
+	["victory.w13.pride.029"] = {
+		"If Death wants me, it can book an appointment. Not before.",
+		"Death can wait in line. My calendar is full.",
+		"Not on Death's list yet. I checked.",
+	},
+	["victory.w13.pride.030"] = {
+		"I said I'd win, and I won. Keep your doubts.",
+		"Said I would. Did. Next question.",
+	},
+	["victory.w13.pride.031"] = {
+		"There's no feeling quite like it. None at all.",
+		"Nothing in this world compares. Nothing.",
+		"Of all the feelings going, this one's the best.",
+	},
+	["victory.w13.pride.032"] = {
+		"I raise my hand to you. Go well, wherever you are now.",
+		"A hand raised to you, wherever you've gone.",
+	},
+	["victory.w13.pride.033"] = {
+		"Whoever comes after, take a good look first.",
+		"The next one would do well to remember how this went.",
+		"Anything watching, learn from that.",
+	},
+	["victory.w13.pride.034"] = {
+		"I'll take a bow. A small one. Fine, a big one.",
+		"A bow for the winner. That's me. Thank you, thank you.",
+	},
+	["victory.w13.pride.035"] = {
+		"I don't break. Pass it on.",
+		"Nothing breaks me. Remember that, whatever you are.",
+	},
+	["victory.w13.pride.036"] = {
+		"Now that's what I call a proper finish.",
+		"A proper ending, that. Neat and square.",
+	},
+	["victory.w13.pride.037"] = {
+		"That one's mine. Nobody takes it from me.",
+		"Mine. That victory is mine, and it stays mine.",
+	},
+	["victory.w13.pride.038"] = {
+		"Whoever saw that, tell it straight.",
+		"If anyone saw that, tell it as it was. No need to embellish.",
+	},
+	["victory.w13.pride.039"] = {
+		"Hah. That's what anger is for.",
+		"That fire was useful. Let it stay lit.",
+		"Good fury, that. It earned its keep.",
+	},
+	["victory.w13.pride.040"] = {
+		"Hm. Satisfying.",
+		"Hm. I'll allow myself a moment of smugness.",
+		"Hm. Pleased with that. Genuinely pleased.",
+	},
+	["victory.w13.pride.041"] = {
+		"A bit stronger than an hour ago. I can tell.",
+		"Stronger than a moment back. I feel it in my hands.",
+	},
+	["victory.w13.pride.042"] = {
+		"Victory. Say it slowly. Vic-to-ry.",
+		"Victory. I like the taste of that word.",
+	},
+	["victory.w13.pride.043"] = {
+		"No grudge. The win is mine, the grudge nobody's.",
+		"I keep the win and leave the grudge behind.",
+		"Grudges are heavy. I'll carry the win instead.",
+	},
+	["victory.w13.pride.044"] = {
+		"And they'll say I was lucky. Let them.",
+		"Luck? Call it what you like. I call it mine.",
+		"Lucky? Maybe. Luck tends to stand beside the stubborn.",
+	},
+	["victory.w13.pride.045"] = {
+		"Chin up. I've earned the right to strut.",
+		"A little strutting is allowed. I looked it up.",
+	},
+	["victory.w13.pride.048"] = {
+		"Close. But close goes in my column.",
+		"Battered, yes. Beaten, no.",
+		"It came near. Near is still on my side of the line.",
+	},
+	["victory.w13.pride.049"] = {
+		"Hurt, and proud of every bit of it.",
+		"Every bruise from this one, I'll wear like a medal.",
+	},
+	["victory.w13.pride.050"] = {
+		"Won. Ow. But won.",
+		"I win. I'd celebrate, if anything stopped hurting.",
+	},
+	["victory.w13.pride.051"] = {
+		"Fine work, every one of you. That win is ours.",
+		"That belongs to all of us. Heads high.",
+		"Every one of us earned that. Wear it.",
+	},
+	["victory.w13.pride.052"] = {
+		"Raise a fist, everyone. We earned this.",
+		"Fists up. That one's ours for good.",
+	},
+	["victory.w13.pride.053"] = {
+		"Not bad, us. Not bad at all.",
+		"We're rather good together, aren't we?",
+	},
+	["victory.w13.pride.054"] = {
+		"I did that. I want to remember the feel of it.",
+		"Mine, that. I'll keep the feeling for later.",
+		"My doing. Let me hold on to how this feels.",
+	},
+	["victory.w13.pride.055"] = {
+		"Something out there just learned my name. Good.",
+		"Word will get around. Let it.",
+		"Somewhere, something is making a note of me. As it should.",
+	},
+	["victory.w13.pride.056"] = {
+		"A small glow somewhere inside. Pride, I think. I'll allow it.",
+		"That quiet glow inside has a name. Pride. Let it stay a while.",
+	},
+	["victory.w13.pride.057"] = {
+		"Every win teaches the hands something. Mine are learning fast.",
+		"My hands are learning. I can feel them getting surer.",
+		"The hands know more than they did. Good hands.",
+	},
+	["victory.w13.pride.058"] = {
+		"The anger can cool slowly. I want to enjoy it.",
+		"The fury's ebbing. I'll miss it a little.",
+	},
+	["victory.w13.pride.059"] = {
+		"I hope that looked as good as it felt.",
+		"If anything was watching, I hope it caught my good side.",
+	},
+	["victory.w13.pride.060"] = {
+		"Whatever's next will meet the version of me that just won.",
+		"The rest can wait. For now, the win is mine.",
+	},
+	["victory.w13.pride.061"] = {
+		"You tested me, and I passed. My thanks, in a strange way.",
+		"I'll remember you as the one who made me prove it.",
+		"A test, and a pass. I'll take the grade.",
+	},
+	["victory.w13.pride.062"] = {
+		"There's a person I mean to become. That was a step toward them.",
+		"Closer to who I mean to be. A little closer.",
+	},
+	["victory.w13.pride.063"] = {
+		"Fear came, and I told it to wait outside. It did.",
+		"Fear knocked. I didn't let it in.",
+		"Fear asked for a word. I said later.",
+	},
+	["victory.w13.pride.064"] = {
+		"No need to shout it. A nod to myself says enough.",
+		"Quiet pride is pride all the same. I nod, once.",
+	},
+	["victory.w13.pride.065"] = {
+		"The stories never say how sweet this moment is.",
+		"This is the part they leave out of the tales: how good it feels.",
+	},
+	["victory.w13.pride.066"] = {
+		"The world keeps sending things at me. I keep sending them back.",
+		"It throws, I answer. That's the arrangement.",
+	},
+	["victory.w13.pride.067"] = {
+		"I'm going to be insufferable about this. I can feel it coming.",
+		"Fair warning to whoever I meet next: I'll be mentioning this.",
+	},
+	["victory.w13.pride.068"] = {
+		"My knees didn't fold. My nerve didn't either.",
+		"I held. Every part of me held.",
+		"Nothing in me gave way. Not one piece.",
+	},
+	["victory.w13.pride.069"] = {
+		"Pride, yes. But I'll keep the pride gentle.",
+		"Pride's fine. Gloating isn't. I know the difference.",
+		"Proud, but softly. There's no need to crow.",
+	},
+	["victory.w13.pride.070"] = {
+		"Trouble has my address now. Let it call.",
+		"Anything wanting trouble knows where to find it.",
+	},
+	["victory.w13.pride.071"] = {
+		"No herald, no trumpet. The win counts just the same.",
+		"Nobody announced it. The win is here regardless, and it's mine.",
+	},
+	["victory.w13.pride.072"] = {
+		"That's the measure of me, for now. Not a bad measure.",
+		"So that's what I'm worth just now. I can live with that number.",
+	},
+	["victory.w13.pride.073"] = {
+		"The promise was not to give ground. Kept.",
+		"Don't give ground, I told myself. I listened.",
+		"Not an inch, I promised. Not an inch it was.",
+	},
+	["victory.w13.pride.074"] = {
+		"I'd like a statue. Modest. Life-size. Maybe a little taller.",
+		"A statue would be excessive. A plaque, then.",
+	},
+	["victory.w13.pride.075"] = {
+		"It nearly had me. Nearly is the most beautiful word I know.",
+		"Almost isn't enough to beat me. Remember that, world.",
+	},
+	["victory.w13.pride.076"] = {
+		"Where I come from, they'd be proud. I'm proud for them.",
+		"The people I left would nod at that. I'll nod for them.",
+	},
+	["victory.w13.pride.077"] = {
+		"The whole fight, I was certain. I like being certain.",
+		"There was no doubt in me. Not a flicker.",
+	},
+	["victory.w13.pride.078"] = {
+		"I'll give this win a moment of its own before I move.",
+		"A win deserves a pause in its honor. This is the pause.",
+	},
+	["victory.w13.pride.079"] = {
+		"Good company. I'd stand beside these ones any time.",
+		"Proud to be counted among them. Truly.",
+	},
+	["victory.w13.pride.081"] = {
+		"Nothing in me wanted to quit. I'll remember that about myself.",
+		"Learned something: I don't quit. Good to know.",
+		"Quitting never crossed my mind. Good to learn that about myself.",
+	},
+	["victory.w13.pride.082"] = {
+		"lifts {g:his|her} chin and lets a slow, satisfied grin spread.",
+		"straightens up, a grin tugging at one corner of {g:his|her} mouth.",
+		"grins, broad and unhurried, at nothing at all.",
+	},
+	["victory.w13.pride.083"] = {
+		"raises a fist toward nothing in particular and holds it there a moment.",
+		"punches the air once, short and sharp.",
+		"pumps a fist, once, then lowers it with a satisfied nod.",
+	},
+	["victory.w13.pride.084"] = {
+		"gives a small, formal bow toward the spot where it all happened.",
+		"sketches a courteous bow toward where the foe last stood.",
+	},
+	["victory.w13.pride.085"] = {
+		"plants {g:his|her} feet wide and looks around like the owner of everything in sight.",
+		"stands with feet set wide, looking about as if daring anything else to try.",
+	},
+	["victory.w13.pride.086"] = {
+		"nods once, firmly, the way one signs a finished letter.",
+		"gives a single sharp nod of approval to no one in particular.",
+		"nods to {g:himself|herself}, a small seal of approval.",
+	},
+	["victory.w13.pride.087"] = {
+		"throws back {g:his|her} head and lets out a short, ringing laugh.",
+		"laughs aloud, once, a clear and unashamed sound.",
+	},
+	["victory.w13.pride.088"] = {
+		"squares {g:his|her} shoulders and looks around, as if waiting for whatever comes.",
+		"rolls {g:his|her} shoulders back and turns to face whatever might come next.",
+	},
+	["victory.w13.pride.089"] = {
+		"lays two fingers against {g:his|her} temple, a quick salute to the moment.",
+		"offers a crisp salute to the spot where it ended.",
+		"raises an open hand toward where it ended, palm out, a moment's salute.",
+	},
+	["victory.w13.pride.090"] = {
+		"dusts off {g:his|her} gear with exaggerated care, as if for an audience.",
+		"brushes {g:his|her} kit down with a showy flourish.",
+	},
+	["victory.w13.pride.091"] = {
+		"stands tall a moment longer than needed before moving on.",
+		"holds a proud stance for a long moment, then lets it go.",
+	},
+	["victory.w13.pride.093"] = {
+		"turns to {g:his|her} companions with a fierce, approving grin.",
+		"claps the nearest shoulder and nods to each companion in turn.",
+	},
+	["victory.w13.pride.094"] = {
+		"draws {g:himself|herself} up to full height and takes in the moment.",
+		"stretches tall, arms wide, then lets them fall.",
+	},
+	["victory.w13.pride.095"] = {
+		"taps a fist twice against {g:his|her} chest, a small private salute.",
+		"thumps {g:his|her} chest once with a closed hand.",
+	},
+	["victory.w13.pride.096"] = {
+		"hums a few bars of something triumphant, badly.",
+		"hums a handful of proud, tuneless notes.",
+	},
+	["victory.w13.still.001"] = {
+		"The hands wait until it's finished to start trembling. Polite of them, really.",
+		"Now they shake, these hands. Not one tremor while it mattered.",
+	},
+	["victory.w13.still.002"] = {
+		"stands quite still, head tilted, listening to the small sounds come back one by one.",
+		"holds still and listens, as if waiting for the quiet to say something.",
+		"keeps very still, head cocked, like someone counting the noises as they return.",
+	},
+	["victory.w13.still.003"] = {
+		"Quiet comes back in layers. First my own noise, then the world's.",
+		"The ringing goes, and under it there's a whole quiet I hadn't heard.",
+		"Sound returns slowly, the way feeling comes back to a numb hand.",
+	},
+	["victory.w13.still.004"] = {
+		"Give me a moment. Let everything stop moving first.",
+		"Hold on. The world needs a moment to stop tilting.",
+		"Not a word for a while. Not even from me.",
+	},
+	["victory.w13.still.005"] = {
+		"opens and closes {g:his|her} hands slowly, waiting for the tremor to pass.",
+		"presses both palms flat against {g:his|her} knees until they stop shaking.",
+		"rubs {g:his|her} palms together slowly until the trembling eases.",
+	},
+	["victory.w13.still.006"] = {
+		"Somewhere close, something tiny starts chirring. It knows the fight's over.",
+		"A small noise starts up nearby, an insect perhaps. The world's all-clear signal.",
+	},
+	["victory.w13.still.007"] = {
+		"An itch on my neck, right now, of all moments. Ten seconds ago it wouldn't have dared.",
+		"Now my nose itches. It waited politely through the whole fight.",
+		"Of course my ear itches now. It had the decency to wait, at least.",
+	},
+	["victory.w13.still.008"] = {
+		"sits down right where {g:he|she} stands, without ceremony, and stays there.",
+		"lowers {g:himself|herself} to the ground and sits a while, doing nothing at all.",
+		"settles onto the ground with a grunt and makes no move to rise.",
+	},
+	["victory.w13.still.009"] = {
+		"Whatever happened, the quiet after belongs to me. Nobody else hears it the same.",
+		"Everyone hears a different quiet after a fight. This one is mine.",
+		"However it went, this hush afterwards is a private thing. I keep it.",
+	},
+	["victory.w13.still.010"] = {
+		"Was that long or short? It felt like an age and a blink, both at once.",
+		"I couldn't say how long that lasted. Time went somewhere and is only now coming back.",
+		"Seconds or minutes, I couldn't tell you. The fight keeps its own clock.",
+	},
+	["victory.w13.still.011"] = {
+		"tugs a twisted strap back into place, then stops and just looks at it.",
+		"straightens a crooked strap with fingers that are not quite steady.",
+		"fiddles with a buckle that needs no fixing, just to give the hands a task.",
+	},
+	["victory.w13.still.012"] = {
+		"Shh. Listen. There. Everything's carrying on.",
+		"Hear that? Nothing. Lovely, isn't it.",
+		"Quiet now. Just for a little while, let it be quiet.",
+	},
+	["victory.w13.still.013"] = {
+		"The aches turn up one by one, like guests who all knocked at the same door.",
+		"First the shoulder, then the knee, then something in the back. They introduce themselves in turn.",
+		"The aches arrive in order of importance. The knee insists it's first.",
+	},
+	["victory.w13.still.014"] = {
+		"Everything is so ordinary again, so fast. The world doesn't keep the moment for me.",
+		"A moment ago everything mattered. Now it's just a place, and I'm standing in it.",
+		"So quickly it all turns plain again. Nobody marks the spot.",
+	},
+	["victory.w13.still.015"] = {
+		"takes a first step, then a second, testing each as if the ground might have changed.",
+		"walks a few slow paces, checking that the legs still agree to carry on.",
+	},
+	["victory.w13.still.016"] = {
+		"This is the best part, if I'm honest. Not the winning. The stillness after.",
+		"Funny. The bit I like most is this one, where nothing happens at all.",
+		"Ask me what I'd keep from all this, and it's the minute where nothing moves.",
+	},
+	["victory.w13.still.017"] = {
+		"There's a tune stuck in my head. Where did that come from, and why now?",
+		"Some silly tune is going round my head. Apparently that's how my head recovers.",
+		"My mind's humming something. Not a song I know. Just humming.",
+	},
+	["victory.w13.still.018"] = {
+		"closes {g:his|her} eyes for a moment and simply listens to nothing.",
+		"shuts {g:his|her} eyes and stands like that a while, letting the world tidy itself.",
+		"lowers {g:his|her} eyelids and stays like that, taking in only sound.",
+	},
+	["victory.w13.still.019"] = {
+		"Knees, you can stop now. It's finished. Really.",
+		"All right, legs, the shaking is noted. Thank you.",
+		"Hands, settle down. Nobody's asking anything more of you.",
+	},
+	["victory.w13.still.020"] = {
+		"My ears still have the fight in them. Everything else has moved on.",
+		"The noise left, but nobody has told my ears yet.",
+		"The din is gone from everywhere except the inside of my head.",
+	},
+	["victory.w13.still.021"] = {
+		"shakes {g:his|her} hands loose at the wrists, flicking the stiffness out of them.",
+		"flexes each hand in turn until the fingers move the way they should.",
+		"spreads {g:his|her} fingers wide, holds them there, and watches them settle.",
+	},
+	["victory.w13.still.022"] = {
+		"Odd, what I notice now. A scuff on my sleeve. A loose thread. A color.",
+		"All at once the small things jump out: a frayed edge, a new nick in my kit, a stain I can't place.",
+		"My eyes are greedy for little things now. Every crease, every speck.",
+	},
+	["victory.w13.still.023"] = {
+		"There. Quiet. I'll take it.",
+		"And now the quiet. That's the part worth having.",
+		"Quiet at last. Good.",
+	},
+	["victory.w13.still.024"] = {
+		"Let it go quiet. Let all of it go quiet, me included.",
+		"I want nothing for a moment. Not even to win. Just this.",
+		"Nothing to do. Nothing to be. Just this minute, and me in it.",
+	},
+	["victory.w13.still.025"] = {
+		"turns slowly in place, taking in everything around {g:him|her} as if seeing it fresh.",
+		"looks around with a slow, almost puzzled care, like someone just woken.",
+		"blinks a few times and looks about, as though the world had been moved slightly while {g:he|she} was busy.",
+	},
+	["victory.w13.still.026"] = {
+		"That was close. Everything is too sharp, too loud, and wonderfully here.",
+		"Too near the edge. Now every little thing looks painted on.",
+		"Near thing. The world's gone so vivid it almost hurts to look at.",
+	},
+	["victory.w13.still.027"] = {
+		"My hands won't stop. They know better than I do how near that came.",
+		"The shaking isn't fear now. It's the rest of me catching up with the news.",
+	},
+	["victory.w13.still.028"] = {
+		"sinks to one knee and stays there, eyes half closed, until the world stops lurching.",
+		"bends over, hands on knees, and waits before trusting {g:his|her} legs.",
+	},
+	["victory.w13.still.029"] = {
+		"Not yet, it seems. Not this time.",
+		"So the world keeps me a while longer. Good to know.",
+		"Slowly. Slowly. It's over, and I'm on the right side of it.",
+	},
+	["victory.w13.still.030"] = {
+		"Everyone moving? Everyone. Then I can let the quiet in.",
+		"I count the voices around me before I let myself go still.",
+	},
+	["victory.w13.still.031"] = {
+		"catches the eye of someone nearby and shares a small, tired nod.",
+		"sits among the others without a word, in the shared quiet.",
+	},
+	["victory.w13.still.032"] = {
+		"Listen to that. Nothing. We earned a bit of nothing.",
+		"Let's all just stand here a moment. Nobody say anything clever.",
+	},
+	["victory.w13.still.035"] = {
+		"My first clear thought afterwards: this strap's been loose all along. Heroic.",
+		"All that, and the first thing my mind offers is that my collar is twisted.",
+		"First thing I notice, now it's over, is a crease in my sleeve. Priorities.",
+	},
+	["victory.w13.still.036"] = {
+		"picks a speck of something off {g:his|her} sleeve with great seriousness.",
+		"brushes at {g:his|her} shoulder, frowning at a mark that will not come off.",
+		"tucks a loose end back in with fussy care, as if it mattered greatly.",
+	},
+	["victory.w13.still.037"] = {
+		"Stillness isn't empty. It's full of small things waiting their turn to be heard.",
+		"This isn't silence. It's a crowd of tiny noises the fight was talking over.",
+		"Listen long enough and the stillness turns out to be busy.",
+	},
+	["victory.w13.still.038"] = {
+		"Sit down before you fall down. Good advice. Taking it.",
+		"Down I go. The ground's been patient; it can hold me a while.",
+		"My legs have voted, and the vote is to sit.",
+	},
+	["victory.w13.still.039"] = {
+		"The ground under me hasn't noticed a thing. It's held quieter moments and louder ones.",
+		"Whatever happened on it, the ground took no side. It simply held.",
+	},
+	["victory.w13.still.040"] = {
+		"lays a palm flat on the ground for a moment, as if to feel it settle too.",
+		"rests a hand on the ground nearby, steadying, waiting.",
+		"touches the ground with the tips of {g:his|her} fingers, lightly, as one touches a sleeper.",
+	},
+	["victory.w13.still.041"] = {
+		"Everything was at stake a moment ago. Now it's just an ordinary minute.",
+		"Strange how quickly a life-or-death moment becomes a minute like any other.",
+		"From everything to nothing much, in the space of a moment.",
+	},
+	["victory.w13.still.042"] = {
+		"Wherever you are now, I hope it's this quiet.",
+		"Let it be quiet for you too, wherever that is.",
+		"May your side of things be as still as mine.",
+	},
+	["victory.w13.still.043"] = {
+		"The tiredness waited outside the fight. Now it's walking in, wiping its boots.",
+		"Weariness was kept at the door the whole time. It's just let itself in.",
+	},
+	["victory.w13.still.044"] = {
+		"smiles at nothing for a moment, then seems to notice and stops.",
+		"gives a small, crooked smile to nobody in particular.",
+		"chuckles quietly at some private thought.",
+	},
+	["victory.w13.still.045"] = {
+		"Colors look louder after a fight. Or I'm only now looking at them.",
+		"Everything has edges again. During the fight there was only the one thing.",
+		"The world widens out. A moment ago it was the width of one foe.",
+	},
+	["victory.w13.still.046"] = {
+		"Did everything go this quiet, or did I go a bit deaf?",
+		"Either the world went very quiet, or my ears quit on me.",
+	},
+	["victory.w13.still.047"] = {
+		"lifts {g:his|her} face a little, as if the air itself had changed.",
+		"raises {g:his|her} head and stays like that, attentive to every small sound.",
+		"turns {g:his|her} head slowly toward a small sound, then away.",
+	},
+	["victory.w13.still.048"] = {
+		"I'm allowed this. A minute of nothing. Nobody's going to take it off me.",
+		"This minute is mine, and it asks nothing of me. Rare enough to notice.",
+		"Nobody needs anything from me for one whole minute. I'll treasure it.",
+	},
+	["victory.w13.still.049"] = {
+		"Legs like wet rope. They held when it counted, so I'll forgive them.",
+		"My knees have gone soft as bread. Loyal bread, though; they held.",
+		"These legs are wobbling like a newborn's. Fine. They earned the wobble.",
+	},
+	["victory.w13.still.050"] = {
+		"And that's all. A little quiet, and then the rest of the world.",
+		"Funny how it ends. Not with anything. Just a gap where the noise was.",
+	},
+	["victory.w13.still.051"] = {
+		"works the stiffness out of {g:his|her} neck, slow tilt by slow tilt.",
+		"kneads the back of {g:his|her} neck with one hand, eyes on nothing.",
+		"rolls {g:his|her} head in a slow circle, wincing at one stiff spot.",
+	},
+	["victory.w13.still.052"] = {
+		"There is a hush that comes only after. Nothing else makes it.",
+		"This kind of quiet can't be found. It has to be fought for, and then it simply arrives.",
+	},
+	["victory.w13.still.053"] = {
+		"For a moment there, I was all teeth and nerves. Now I'm mostly knees.",
+		"A moment ago I was pure edge. Now I'm a pile of loose joints.",
+		"Moments ago I was wound tight. Now everything's come unspooled.",
+	},
+	["victory.w13.still.054"] = {
+		"stays exactly where {g:he|she} is, as though moving might spoil something.",
+		"holds still a long moment, as if reluctant to be the first to make a sound.",
+		"goes on standing motionless for a long while, as though the quiet were fragile.",
+	},
+	["victory.w13.still.055"] = {
+		"I don't remember half of it. Bits are missing, like pages torn from a book.",
+		"The fight's already blurring. I'll never quite know what my hands did in there.",
+		"Already it's going hazy at the edges, like a dream after waking.",
+	},
+	["victory.w13.still.056"] = {
+		"Let the quiet have it now. It was always going to.",
+		"Rest, all of it. Let the stillness take its turn.",
+		"Come in, quiet. You've been patient long enough.",
+	},
+	["victory.w13.still.057"] = {
+		"Wide awake, and every part of me tired. Odd pairing.",
+		"My mind is still running long after my legs have sat down.",
+		"Too tired to move, too awake to rest. So I'll just stand here being both.",
+	},
+	["victory.w13.still.058"] = {
+		"plants both hands on {g:his|her} hips and surveys the stillness with a frown.",
+		"scratches the back of {g:his|her} head, squints at nothing, and grunts.",
+		"folds {g:his|her} arms and stands there, eyeing the quiet as if it owed {g:him|her} something.",
+	},
+	["victory.w13.still.059"] = {
+		"Everything has slid back where it belongs. Near enough, anyway.",
+		"The world clicks back into place like a joint that's been set.",
+		"Slowly the world settles back into its proper shape.",
+	},
+	["victory.w13.still.060"] = {
+		"Steady. It's finished. Let the hands go loose.",
+		"Nothing left to do now but stand here. So I'll stand.",
+	},
+	["victory.w13.still.061"] = {
+		"In the quiet afterwards I feel very small. Not in a bad way.",
+		"The stillness makes everything bigger, and me smaller. It's oddly restful.",
+	},
+	["victory.w13.still.062"] = {
+		"lets {g:his|her} head drop back and looks straight up for a long moment.",
+		"tips {g:his|her} head back, eyes half closed, and waits for nothing in particular.",
+	},
+	["victory.w13.still.063"] = {
+		"Something is digging into my side. It's been there the whole fight, apparently.",
+		"A buckle's been biting into my ribs all along. Only now does it bother to hurt.",
+	},
+	["victory.w13.still.064"] = {
+		"Oh. Oh, that's very quiet.",
+		"How quiet it's gone. Almost rude.",
+		"That's quiet. That's proper quiet.",
+	},
+	["victory.w13.still.065"] = {
+		"Only in the quiet afterwards do I notice I'm alive. During, there's no room.",
+		"Being alive is something I only hear once everything else stops.",
+		"During, there's no time to be alive. Afterwards there's nothing else.",
+	},
+	["victory.w13.still.066"] = {
+		"unclenches {g:his|her} jaw, which seems to take some effort.",
+		"loosens {g:his|her} clenched jaw at last, working it side to side.",
+	},
+	["victory.w13.still.067"] = {
+		"Count to ten. Then decide whether to move. No rush on either.",
+		"Ten slow counts before anything else. The world can wait for ten.",
+	},
+	["victory.w13.still.068"] = {
+		"Everything's so calm now. Suspiciously calm. I'll allow it.",
+		"Calm. Very calm. I don't trust it, but I'll sit in it.",
+	},
+	["victory.w13.still.069"] = {
+		"watches a tiny insect wander past, and lets it go about its business.",
+		"notices a small insect close by and follows its progress with odd attention.",
+		"bends to watch some small crawling thing go by, entirely absorbed.",
+	},
+	["victory.w13.still.070"] = {
+		"Whatever lives around here is coming back out. It waited for the noise to end, same as me.",
+		"Little lives nearby pick up where they left off. Braver than they look.",
+	},
+	["victory.w13.still.071"] = {
+		"Whatever the fight was about, the quiet doesn't care. It forgives everyone equally.",
+		"The quiet takes no side. It covers winner and loser the same.",
+	},
+	["victory.w13.still.072"] = {
+		"pats {g:his|her} sides absently, then seems to forget what for.",
+		"reaches for something, stops halfway, and lets the hand drop back.",
+		"seems about to speak, then lets the quiet keep its place.",
+	},
+	["victory.w13.still.073"] = {
+		"My shoulders are up around my ears. I didn't put them there. Down you go.",
+		"Only now do I notice how hunched I am. Unwind, shoulders. Slowly.",
+	},
+	["victory.w13.still.074"] = {
+		"Huh. Look at that. Everything's normal.",
+		"Funny, isn't it, how quickly things go back to normal?",
+	},
+	["victory.w13.still.075"] = {
+		"The quiet after a fight is old. Older than anyone who ever fought.",
+		"Every fight in the world has ended in this same hush. Mine joins the line.",
+	},
+	["victory.w13.still.076"] = {
+		"bows {g:his|her} head briefly toward where it all happened, then turns away.",
+		"inclines {g:his|her} head once to the stillness, the way one greets an elder.",
+		"stands for a moment with lowered eyes, as at the end of a ceremony.",
+	},
+	["victory.w13.still.077"] = {
+		"Once it's over, the small things come back. They always have, so far.",
+		"What stays with me won't be the fight. It'll be this quiet, and some sound I can't name.",
+	},
+	["victory.w13.still.078"] = {
+		"Slowly. No sudden moves. Let it all catch up.",
+		"Gently now. Let things find their places.",
+		"Softly, softly. Nothing needs doing yet.",
+	},
+	["victory.w13.still.079"] = {
+		"drops into a crouch, forearms on knees, and lets the moment stretch.",
+		"squats down and stays there a while, gaze drifting from one thing to the next.",
+	},
+	["victory.w13.still.080"] = {
+		"My head's gone blank as a fresh page. Not one thought. Restful, honestly.",
+		"Nothing in my head at all. Empty as a swept floor. I could get used to it.",
+	},
+	["victory.w13.still.081"] = {
+		"follows nothing with {g:his|her} eyes, the way one watches water move.",
+		"gazes at nothing, unfocused, letting the eyes rest where they fall.",
+	},
+	["victory.w13.still.082"] = {
+		"Everything kept happening the whole time. I just wasn't listening.",
+		"Nothing paused for it, not really. Only my head stepped out for a moment.",
+	},
+	["victory.w13.still.083"] = {
+		"Hm. And then nothing. Always surprises me, the nothing.",
+		"All that noise, and it just stops. Every time, it just stops.",
+	},
+	["victory.w13.still.084"] = {
+		"Too close. I'll sit here and be amazed for a bit before anything else.",
+		"That came near. Everything looks precious and slightly ridiculous now.",
+	},
+	["victory.w13.still.085"] = {
+		"lies back flat on the ground and stares upward, unmoving, for a long moment.",
+		"lets {g:himself|herself} fall to sit, hard, and does not try to get up yet.",
+	},
+	["victory.w13.still.086"] = {
+		"Nobody move. Especially not me.",
+		"Ground, hold me a minute. Then I'll leave you be.",
+	},
+	["victory.w13.still.087"] = {
+		"Someone's laughing nearby, shakily. I'd join in if my knees would let me.",
+		"The others are talking already. I'll catch up once the world stops humming.",
+	},
+	["victory.w13.still.089"] = {
+		"A smell comes back that I'd stopped noticing. Plain air, and whatever is in it.",
+		"Smells first, oddly. Then sounds. Sight takes its time, as if it's sulking.",
+		"The air smells ordinary again. I'd never noticed ordinary had a smell.",
+	},
+	["victory.w13.still.090"] = {
+		"hums a few aimless notes, then trails off into the quiet.",
+		"murmurs something to nobody, too low to make out, and lets it fade.",
+		"clicks {g:his|her} tongue softly, a small sound to test the quiet with.",
+	},
+	["victory.w13.still.091"] = {
+		"The stillness feels like a promise. Not a big one. Just that the next minute might be kind.",
+		"This quiet is the world's way of saying: for now, that's enough.",
+	},
+	["victory.w13.still.092"] = {
+		"Hush, now. It is ended, and the quiet is owed its due.",
+		"Peace, for a little. Let the stillness speak first.",
+	},
+	["victory.w13.still.093"] = {
+		"stretches both arms high until something in {g:his|her} back gives a satisfying click.",
+		"stretches, slowly and thoroughly, like someone getting up from a long sleep.",
+		"arches {g:his|her} back in a long, contented stretch.",
+	},
+	["victory.w13.still.094"] = {
+		"I talk to myself more after a fight. Somebody has to say something.",
+		"My own voice sounds strange afterwards, like someone else's in the next room.",
+		"Saying anything at all feels strange. My voice comes out rusty.",
+	},
+	["victory.w13.still.095"] = {
+		"Listen to me, all calm and talking to myself. Lovely.",
+		"Here I am, chatting to nobody. The fight must be over.",
+	},
+	["victory.w13.tally.001"] = {
+		"Hands, feet, pack. All accounted for.",
+		"Quick count: both hands, both feet, one pack. That'll serve.",
+		"Let me count what's left of me. Hands, yes. Wits, mostly.",
+	},
+	["victory.w13.tally.002"] = {
+		"Let it run back once, slowly. Where did I lose the first second?",
+		"Go over it while it's fresh: the opening, the middle, the moment it turned.",
+		"Walk back through it piece by piece while the memory's still sharp.",
+	},
+	["victory.w13.tally.003"] = {
+		"tugs at each strap of {g:his|her} gear in turn, testing which ones gave.",
+		"runs a thumb along every buckle, one after another, looking for the loose one.",
+		"checks the fastenings of {g:his|her} gear with quick, methodical fingers.",
+	},
+	["victory.w13.tally.004"] = {
+		"Food. Then opinions.",
+		"I'm not discussing anything until I've eaten something.",
+		"Feed me first. I'll be pleasant afterward. Probably.",
+	},
+	["victory.w13.tally.005"] = {
+		"Thirsty. That's the first honest thing I've felt in a while.",
+		"My mouth is dry as old leather. Water first; the rest can queue.",
+		"Water. I want water more than I want to think about anything.",
+	},
+	["victory.w13.tally.006"] = {
+		"Lesson: my own footing first. Everything else comes after.",
+		"Note for next time: plant the feet before anything clever.",
+		"Settle the feet first. The rest follows from there.",
+	},
+	["victory.w13.tally.007"] = {
+		"finds something solid to sit on and stays there a minute, elbows on knees.",
+		"sits down where {g:he|she} stands and allows one plain minute, no more.",
+	},
+	["victory.w13.tally.008"] = {
+		"Somebody ought to invent a fight that tidies up after itself.",
+		"The fighting part's quick. It's the tidying after that takes all the time.",
+	},
+	["victory.w13.tally.009"] = {
+		"Something in the pack rattled that shouldn't rattle. Check it before moving.",
+		"That clink from the pack wasn't there before. Better look now than later.",
+	},
+	["victory.w13.tally.010"] = {
+		"dabs at a fresh scrape with the corner of a cloth, frowning at it like a bad bill.",
+		"inspects a new graze on one forearm, decides it can wait, and lets the sleeve fall back.",
+		"licks a grazed knuckle and shakes the hand out, unimpressed.",
+	},
+	["victory.w13.tally.011"] = {
+		"Let's see the damage. Elbows... knees... yes, that one's going to complain.",
+		"Damage report: one knee, one elbow, and a shoulder that's sulking.",
+		"Bruises in three places. Four, if you count my pride.",
+	},
+	["victory.w13.tally.012"] = {
+		"The tiredness waits until it's safe. Polite of it, I suppose.",
+		"Funny how the weariness holds off until the work is finished, then arrives all at once.",
+		"Now that it's over, the tired arrives. It always knocks after the work.",
+	},
+	["victory.w13.tally.013"] = {
+		"Which way was I headed before all that? Think.",
+		"I've lost my bearings. Find them before taking a single step.",
+		"First, which way I'm facing. Then, which way I was going.",
+	},
+	["victory.w13.tally.014"] = {
+		"Won the fight. Lost a button. Fair trade, I suppose.",
+		"One victory, minus a button and most of my composure.",
+		"Tally: one fight won, one sleeve torn, one temper slightly frayed.",
+	},
+	["victory.w13.tally.015"] = {
+		"makes one slow turn, checking each side in order, before allowing {g:himself|herself} to relax.",
+		"looks left, right and behind, the way one checks that a door is locked.",
+	},
+	["victory.w13.tally.016"] = {
+		"Kit first. Feelings later, if there's time.",
+		"Gear before anything. I can have a thought or two once the straps are sorted.",
+		"Gear, then water, then thoughts. Thoughts last.",
+	},
+	["victory.w13.tally.017"] = {
+		"I waited too long to start. Next time, first move is mine.",
+		"Hesitated at the start. That moment cost more than anything after it.",
+		"Too much thinking before the first move. Decide faster.",
+	},
+	["victory.w13.tally.018"] = {
+		"Bandages: some. Water: enough. Food: less than I'd like. Noted.",
+		"Supplies check. Water fine, bandages fine, food running thin.",
+		"Count the supplies before the next trouble finds me. Food's the short one.",
+	},
+	["victory.w13.tally.019"] = {
+		"flexes one hand open and shut until the stiffness gives, then does the other.",
+		"works a cramp out of {g:his|her} fingers, knuckle by knuckle.",
+	},
+	["victory.w13.tally.020"] = {
+		"Water. Then more water. Then I'll consider being clever.",
+		"First a drink. Cleverness can come after the drink.",
+		"My mouth tastes like the whole fight. Water, please, anybody.",
+	},
+	["victory.w13.tally.021"] = {
+		"No sense judging it while my hands still shake. Judge it in an hour.",
+		"Too soon to say what I did wrong. Give it an hour and it'll be obvious.",
+		"Lessons keep. Let them cool first, then pick them over.",
+	},
+	["victory.w13.tally.022"] = {
+		"Nobody's coming to tidy this up for me. On with it.",
+		"No squire, no servant, no one to fetch my things. Just me. Fine.",
+	},
+	["victory.w13.tally.023"] = {
+		"Kept my distance well that time. Remember how that felt.",
+		"The spacing was right. Whatever I did with my feet there, keep doing it.",
+	},
+	["victory.w13.tally.024"] = {
+		"wraps a strip of cloth around a scraped knuckle, tying it off with {g:his|her} teeth.",
+		"binds a small cut with plain, unhurried care and tucks the end in.",
+		"ties off a bandage around one wrist and gives the knot a hard tug.",
+	},
+	["victory.w13.tally.025"] = {
+		"Lesson learned, and I'd have preferred to learn it from a book.",
+		"That's one I'll remember. I'd rather have read it somewhere, honestly.",
+	},
+	["victory.w13.tally.026"] = {
+		"If anything worth keeping got left behind, I'll have it. If not, no loss.",
+		"A quick look around for anything useful. Then away.",
+	},
+	["victory.w13.tally.027"] = {
+		"Good. Where was I going? Ah. Yes. Onward.",
+		"Back to what I was doing before this rude interruption.",
+		"Where was I? Something about getting somewhere. Time to find out.",
+	},
+	["victory.w13.tally.028"] = {
+		"Everything I carry feels heavier than it did a minute ago. Same pack. Different bearer.",
+		"The pack has put on weight somehow. It hasn't; I've just spent something.",
+	},
+	["victory.w13.tally.029"] = {
+		"rolls an ankle in slow circles, testing it, and grunts at the answer.",
+		"puts weight on one leg, then the other, as if asking each for a report.",
+		"stamps each foot once, testing for anything twisted.",
+	},
+	["victory.w13.tally.030"] = {
+		"Fine. Someone write down that I won, and also that it was untidy.",
+		"For the record: a win. Ugly, but a win.",
+		"Put it in the ledger. A win, with notes.",
+	},
+	["victory.w13.tally.031"] = {
+		"I turned my back too early once. Only once. Once is how it goes wrong.",
+		"Turned away before it was really over. That habit has to go.",
+		"Never turn away until it's truly finished. Write that somewhere.",
+	},
+	["victory.w13.tally.032"] = {
+		"Next: somewhere to sit, something to eat, then decide.",
+		"Plan: eat, mend, then pick a direction. In that order.",
+		"Order of business: patch, eat, walk.",
+	},
+	["victory.w13.tally.033"] = {
+		"gathers up whatever fell from {g:his|her} pack during the scuffle, item by item.",
+		"stoops to collect a few things that spilled out in the fight and stows them where they belong.",
+	},
+	["victory.w13.tally.034"] = {
+		"Fighting gives me an appetite. Most things give me an appetite, to be fair.",
+		"Hungry. Fighting does that. So does walking. So does sitting, honestly.",
+		"My stomach's made it very clear what comes next.",
+	},
+	["victory.w13.tally.035"] = {
+		"Not perfect. Good enough to learn from, which is the useful kind.",
+		"Some of that was right and some of it wasn't. Keep the first, drop the second.",
+	},
+	["victory.w13.tally.036"] = {
+		"Straps. Buckles. Pack. Good. Moving.",
+		"Tighten this, loosen that, and off I go.",
+		"Everything fastened? Everything fastened. Off.",
+	},
+	["victory.w13.tally.037"] = {
+		"Whatever's next won't wait for me to feel ready. Get ready anyway.",
+		"The next thing comes when it likes. Better be patched up before it does.",
+	},
+	["victory.w13.tally.038"] = {
+		"fishes something to eat out of {g:his|her} pack and chews it standing up.",
+		"digs through the pack with the single-mindedness of someone suddenly very hungry.",
+		"chews on something from {g:his|her} pack while still looking around.",
+	},
+	["victory.w13.tally.039"] = {
+		"And now the glamorous part: picking things up off the ground.",
+		"Heroics over. Time for housekeeping.",
+		"Somebody has to pick all this up. That somebody is me.",
+	},
+	["victory.w13.tally.040"] = {
+		"It set the pace and I followed. Next time, I set it.",
+		"I fought to its rhythm instead of mine. Fix that.",
+	},
+	["victory.w13.tally.041"] = {
+		"A shoulder that won't lift all the way. I'll have to work around it for a while.",
+		"Something pulled in my side. Not torn, I think. Just pulled. Go gently.",
+		"That wrist turned the wrong way for a moment. Keep it easy for a while.",
+	},
+	["victory.w13.tally.042"] = {
+		"Sit, drink, stand. Two minutes. No more than that.",
+		"Two minutes off my feet, a mouthful of water, and I'm moving.",
+	},
+	["victory.w13.tally.043"] = {
+		"rinses a scrape with a splash from a waterskin and shakes the sting out of {g:his|her} hand.",
+		"pours a little water over a cut, watches it, and decides it's clean enough.",
+	},
+	["victory.w13.tally.044"] = {
+		"Slower start, cleaner finish. Remember that.",
+		"Patience at the start paid off at the end. Worth repeating.",
+		"Took my time and it paid. Keep that.",
+	},
+	["victory.w13.tally.045"] = {
+		"Something in my kit will want mending. Something always does.",
+		"Every fight costs a stitch or a strap. Find out which this time.",
+		"Check the seams. Seams go first, always.",
+	},
+	["victory.w13.tally.046"] = {
+		"Fight's done. Now it's me against the knot in this strap.",
+		"Of course the buckle jammed. It waits for the fight to end, every time.",
+		"The fight I can manage. This knot is beyond me.",
+	},
+	["victory.w13.tally.047"] = {
+		"Nobody tells you how much of this life is cleaning up afterward.",
+		"The stories skip this part. The sitting, the sorting, the small aches.",
+	},
+	["victory.w13.tally.048"] = {
+		"shoulders the pack, settles it, and looks for the way {g:he|she} was going.",
+		"hitches the pack higher, picks a direction, and sets off without ceremony.",
+	},
+	["victory.w13.tally.049"] = {
+		"That's a thing I know now that I didn't know before. Useful.",
+		"Learned something. Couldn't tell you what yet, but I felt it go in.",
+		"Every fight's a lesson, people say. This one I actually paid attention to.",
+	},
+	["victory.w13.tally.050"] = {
+		"Too eager. Went in before I'd seen enough. Cost nothing this time; it might next.",
+		"I rushed it. It worked, which is the dangerous part of rushing.",
+	},
+	["victory.w13.tally.051"] = {
+		"Handled. What's the next thing?",
+		"Handled. Now, what else needs doing?",
+		"Good. Next thing, then.",
+	},
+	["victory.w13.tally.052"] = {
+		"Hands steady first. Then walk. Nobody ever gained anything by stumbling off early.",
+		"Wait for the shake to leave the hands. It always does, if I let it.",
+	},
+	["victory.w13.tally.053"] = {
+		"brushes off {g:his|her} gear with brisk, irritated swipes, as if the mess were a personal insult.",
+		"slaps the grime from sleeves and knees, unimpressed by the result.",
+	},
+	["victory.w13.tally.054"] = {
+		"Everything still bends the way it should. I checked twice, just to be sure.",
+		"All joints present and bending in the correct directions. A good result.",
+		"Counted the bits. All present.",
+	},
+	["victory.w13.tally.055"] = {
+		"Before I trust this quiet, give it a long look all around.",
+		"Trust the quiet only after looking at it from every side.",
+	},
+	["victory.w13.tally.056"] = {
+		"My knee says no. My knee can file a complaint.",
+		"That knee is going to talk to me for a while. I'll listen when I've time.",
+		"Elbow's complaining. Noted. Ignored, for now.",
+	},
+	["victory.w13.tally.057"] = {
+		"opens {g:his|her} pack and checks that nothing inside has broken.",
+		"peers into the pack, shakes it gently, and listens for anything cracked.",
+		"empties a side pocket into one palm, sorts it, and puts it all back.",
+	},
+	["victory.w13.tally.058"] = {
+		"Watched the wrong thing for half of it. Eyes on what matters, next time.",
+		"I kept looking at the obvious danger and missed the quiet one. Note it.",
+	},
+	["victory.w13.tally.059"] = {
+		"Enough standing about. Things to do, ground to cover.",
+		"No point lingering here. There's ground to cover.",
+	},
+	["victory.w13.tally.060"] = {
+		"Hungry, thirsty, sore, and alive. Three problems and a blessing.",
+		"Sore, hungry, and very much alive. The first two I can fix.",
+	},
+	["victory.w13.tally.061"] = {
+		"takes a long pull of water and wipes {g:his|her} mouth on a sleeve.",
+		"drinks deep from a waterskin, stops, and then drinks some more.",
+		"uncorks a waterskin and drinks without bothering to sit.",
+	},
+	["victory.w13.tally.062"] = {
+		"Good footing, good timing. One out of two would've done; I'll take both.",
+		"Timing was right. Footing was right. Don't get used to it.",
+	},
+	["victory.w13.tally.063"] = {
+		"Bandage it now, while it's small. Small things grow when ignored.",
+		"A scratch left alone becomes a problem by the end of the week. Tend it now.",
+		"Clean it, wrap it, and only then forget it.",
+	},
+	["victory.w13.tally.064"] = {
+		"I'll be shaking bits of that fight out of my kit for days.",
+		"Somehow half of that fight ended up inside my collar.",
+		"My kit looks like it lost. I won, for the record.",
+	},
+	["victory.w13.tally.065"] = {
+		"replays a moment of the fight with small movements of {g:his|her} hands, correcting the angle.",
+		"mimes a step from the fight, adjusts it slightly, and nods as if taking a note.",
+	},
+	["victory.w13.tally.066"] = {
+		"Whatever I was doing before, it still needs doing. Pick it back up.",
+		"The errand doesn't care that I was interrupted. Back to it.",
+	},
+	["victory.w13.tally.067"] = {
+		"Keep moving before it all stiffens up.",
+		"If I sit too long, everything sets like glue. Better walk it off.",
+	},
+	["victory.w13.tally.068"] = {
+		"A bit better than before. I can feel it in the hands. Small, but there.",
+		"Something's getting smoother. Not much. Enough to notice.",
+		"Better than I was. Not by much, but better.",
+	},
+	["victory.w13.tally.069"] = {
+		"presses a palm to {g:his|her} side, waits, and decides nothing's broken.",
+		"prods a sore rib, winces, prods it once more, and gives up on finding out more.",
+	},
+	["victory.w13.tally.070"] = {
+		"One problem fewer, one bruise more. Fair enough.",
+		"Lighter by a problem, heavier by a bruise. Even trade.",
+	},
+	["victory.w13.tally.071"] = {
+		"Stopped thinking halfway and just reacted. Sometimes that's right.",
+		"The part where I stopped planning went better than the part where I planned. Worth thinking about.",
+	},
+	["victory.w13.tally.072"] = {
+		"No time to admire it. Pack up and go.",
+		"Nothing to admire here. Gather up and get going.",
+		"Pack up. Admiring things is for later.",
+	},
+	["victory.w13.tally.073"] = {
+		"takes quick stock of the pack's contents, lips moving silently as the count goes on.",
+		"lays a few supplies out on the ground, counts them, and packs them back.",
+	},
+	["victory.w13.tally.074"] = {
+		"Every part of me wants a long sit. It can have a short one.",
+		"Everything in me votes for lying down. The vote is noted and overruled.",
+	},
+	["victory.w13.tally.075"] = {
+		"Survived the fight. Now to survive the walk to somewhere with food.",
+		"Victory's fine, but I'd trade it for a hot meal right now.",
+		"I won. Where's the food that's supposed to come with winning?",
+	},
+	["victory.w13.tally.076"] = {
+		"Count what worked. Count what didn't. Don't lie to the count.",
+		"Honest tally: two good moves, one poor one, and luck for the rest.",
+	},
+	["victory.w13.tally.077"] = {
+		"scans the ground nearby for anything dropped, then straightens with a small nod.",
+		"checks the spot where the fight began, as if something might have been left there.",
+	},
+	["victory.w13.tally.078"] = {
+		"Rest when it's safe. It's safe enough. So: rest.",
+		"Safe enough to sit. So I'm sitting.",
+	},
+	["victory.w13.tally.079"] = {
+		"Torn stitching on the strap. Mend it at the first quiet stop, or it'll go for good.",
+		"That seam's gone. Needle and thread at the next halt.",
+		"A buckle's bent. It'll hold for now, and then it won't.",
+	},
+	["victory.w13.tally.080"] = {
+		"Learn it once, properly, so it doesn't need teaching twice.",
+		"Whatever that taught me, I'd rather not pay for the lesson twice.",
+	},
+	["victory.w13.tally.081"] = {
+		"sits back on {g:his|her} heels and stares at nothing for a while, then gets on with it.",
+		"pauses, hands on knees, then straightens up and gets on with things.",
+	},
+	["victory.w13.tally.082"] = {
+		"Get up, gather up, go on. Most of life fits in those three.",
+		"Most of this life is getting up and gathering one's things. The fights are the short bits between.",
+	},
+	["victory.w13.tally.083"] = {
+		"Something to eat. Anything. I'm not choosy just now.",
+		"I could eat anything just now. Preferably food.",
+	},
+	["victory.w13.tally.084"] = {
+		"Spent too much too early. Keep something back for the end.",
+		"Went all in at the start and had little left at the finish. Pace it.",
+		"Measure it out next time. A fight has an end, and I'd like to reach it with something left.",
+	},
+	["victory.w13.tally.085"] = {
+		"rebuckles a strap that came undone, muttering about whoever made the buckle.",
+		"knots a frayed lace back together with more force than skill.",
+	},
+	["victory.w13.tally.086"] = {
+		"Good. Pace back up, eyes ahead.",
+		"Back to walking pace. Eyes open.",
+		"Enough of that. Eyes up, feet moving.",
+	},
+	["victory.w13.tally.087"] = {
+		"Bandage first. Thinking second. Walking a distant third.",
+		"That needs binding before anything else. Everything else can wait.",
+		"Sit before falling. Bind before walking.",
+	},
+	["victory.w13.tally.088"] = {
+		"Too close. Sit, patch, eat, and don't go looking for more trouble until all three are done.",
+		"Close call. The rule after a close call: no new trouble until I'm whole.",
+	},
+	["victory.w13.tally.089"] = {
+		"lowers {g:himself|herself} carefully to the ground and starts sorting out which hurt to treat first.",
+		"sinks down to sit, unrolls a bandage, and begins with the worst of it.",
+	},
+	["victory.w13.tally.090"] = {
+		"That got far too close. Next time I step out sooner, not later.",
+		"I stayed in too long. Back off sooner next time; pride heals slower than cuts.",
+	},
+	["victory.w13.tally.091"] = {
+		"I'll need a moment. And a bandage. And possibly a new everything.",
+		"Status: upright, leaking slightly, open to suggestions.",
+	},
+	["victory.w13.tally.092"] = {
+		"Everyone check your kit. Speak up now if something's broken, not later.",
+		"Gear check, all of you. Better to find the torn strap here than in the next fight.",
+	},
+	["victory.w13.tally.093"] = {
+		"Water, bandages, a short sit. Then we move. Nobody wanders off.",
+		"Patch up quick. We leave when the last one's ready.",
+	},
+	["victory.w13.tally.094"] = {
+		"Before anything else, look at the others. Someone's hiding a limp; someone always is.",
+		"Count the others, then count their scrapes. Mine can wait a minute.",
+	},
+	["victory.w13.tally.095"] = {
+		"looks over each of the others in turn, checking for limps before saying a word.",
+		"passes a waterskin to the nearest companion and waits to have it back.",
+	},
+	["victory.w13.weight.001"] = {
+		"You wanted to live as much as I did. That's the whole of it.",
+		"Same wish on both sides: to walk away from it. Only mine was granted.",
+		"Two wishes for the same thing. Only one could come true.",
+	},
+	["victory.w13.weight.002"] = {
+		"Nothing in me feels victorious. Only like what was left over.",
+		"Winning is a big word for this. I'm what remained when the fighting stopped.",
+		"Call it a win if you like. To me it feels like being the leftover.",
+	},
+	["victory.w13.weight.003"] = {
+		"lowers {g:his|her} head toward the fallen and lets a moment pass without a word.",
+		"goes quiet over the spot where the fight ended, chin down, before moving on.",
+	},
+	["victory.w13.weight.004"] = {
+		"If you'd turned your back, I'd have let you go. I want you to know that.",
+		"There was a way out of this for you. I'd have left it open.",
+		"Running would have been fine by me. I'd not have followed.",
+	},
+	["victory.w13.weight.005"] = {
+		"When my turn comes, I hope whoever's left standing pauses like this.",
+		"Someday I'll be the one who doesn't get up. I hope the one who does is gentle about it.",
+		"May whoever finishes me stop a moment after. That's all I'd ask.",
+	},
+	["victory.w13.weight.006"] = {
+		"Don't let this turn ordinary. Don't you dare.",
+		"The day this feels like nothing, I stop. That's the rule.",
+		"If it ever stops weighing anything, something in me has gone bad.",
+	},
+	["victory.w13.weight.007"] = {
+		"I'd rather it hadn't come to this. It came anyway, and I answered it.",
+		"Not something I went looking for. But it found me, and I didn't turn away.",
+	},
+	["victory.w13.weight.008"] = {
+		"May what comes next sit lightly on you. I'll speak no ill of you.",
+		"Whatever waits past this, may it be gentler than I was.",
+		"Let what lies beyond be kind to you. Kinder than this hour.",
+	},
+	["victory.w13.weight.009"] = {
+		"A moment ago there were two lives in this. Now there's only mine, and it feels borrowed.",
+		"Alive. I keep turning the word over as if it might be a mistake.",
+	},
+	["victory.w13.weight.010"] = {
+		"looks back once at the fallen, then a second time, longer.",
+		"throws the fallen one long look with no anger left in it.",
+		"turns to go, stops, and looks back over {g:his|her} shoulder for a while.",
+	},
+	["victory.w13.weight.011"] = {
+		"Nobody wins these. Somebody just loses less.",
+		"Won? Lost less. Call it by its name.",
+		"Victory. Fancy word for being the one who lost a little less.",
+	},
+	["victory.w13.weight.012"] = {
+		"A single misstep would have turned it around. Mine or the other's. It wasn't mine.",
+		"Not courage, not justice. A moment's luck decided it, and it fell my way.",
+	},
+	["victory.w13.weight.013"] = {
+		"If the spirits gather what falls, let them gather this gently.",
+		"Whoever keeps watch over the fallen, keep watch over this one too.",
+		"If anything tends the fallen, the Light or the spirits, let it come here.",
+	},
+	["victory.w13.weight.014"] = {
+		"Mercy wasn't on offer this time. I'd like to think I'd have given it.",
+		"There was no moment for mercy in that. I looked for one.",
+		"Mercy needs a moment to live in. That fight never offered one.",
+	},
+	["victory.w13.weight.015"] = {
+		"Sorry. For what it's worth, which isn't much now.",
+		"I'm sorry it went like that. I'd say it louder if it helped.",
+		"For whatever comfort it brings, and it brings little: I'm sorry.",
+	},
+	["victory.w13.weight.016"] = {
+		"Why does it always have to come to this? I never get an answer, only the next fight.",
+		"Someone should ask why fights begin. Never anyone holding a weapon, it seems.",
+		"Why always this? No answer. Only the next one.",
+	},
+	["victory.w13.weight.017"] = {
+		"touches two fingers to {g:his|her} brow, a small, private salute to the fallen.",
+		"lifts a hand, palm out, toward the fallen: a farewell without words.",
+	},
+	["victory.w13.weight.018"] = {
+		"I don't fight because I like it. Let that be said, here.",
+		"Not for the joy of it. Never for that.",
+		"Whatever this was, it was never for the pleasure of it.",
+	},
+	["victory.w13.weight.019"] = {
+		"Every fight I walk out of is one fewer between me and the last. I don't know the count.",
+		"There's a last fight waiting somewhere. This wasn't it. That's all I ever get to know.",
+		"One fewer between me and the last one. No telling how many remain.",
+	},
+	["victory.w13.weight.020"] = {
+		"Alive. No congratulations, please. I'm not sure what I did to earn it.",
+		"Got through. Ask me later whether I deserved to.",
+	},
+	["victory.w13.weight.021"] = {
+		"The hush after a fight is the plainest reminder I know: this ends, for everyone.",
+		"Everything that lives gets a last fight. I just watched one. Maybe more than one.",
+		"All that lives comes to its last fight. Someone's came just now. Not mine.",
+	},
+	["victory.w13.weight.022"] = {
+		"Go on ahead. One of these years I'll follow, and it'll be even.",
+		"Lead the way. I'll come too, in time. Nobody stays.",
+		"Save me a place. No hurry on my side.",
+	},
+	["victory.w13.weight.023"] = {
+		"Something that wanted to go on living, now doesn't. And the reason is me.",
+		"It wanted the next hour as much as I did. I took it.",
+		"Somewhere in all that was a will to keep going. I'm the one who ended it.",
+	},
+	["victory.w13.weight.024"] = {
+		"flexes {g:his|her} fingers one by one, looking at them as though they belonged to a stranger.",
+		"crouches a moment, very still, as if listening for something that does not come.",
+	},
+	["victory.w13.weight.025"] = {
+		"No anger left. There never is, after. Odd, that.",
+		"All that fury, and afterward nothing. Not even dislike.",
+		"Funny how the hate drains out first. What's left is just tired and sorry.",
+	},
+	["victory.w13.weight.026"] = {
+		"I tell myself it was needed. Some days I even believe it.",
+		"Necessary. I'll keep using that word until it stops sounding thin.",
+		"It had to be done. Saying so doesn't make it lighter, only true.",
+	},
+	["victory.w13.weight.027"] = {
+		"Not yet. Not me. Not this time.",
+		"Not my turn. Someone's keeping a list, and I'm not on it. For now.",
+		"Whoever's calling names, mine wasn't one of them. Not this round.",
+	},
+	["victory.w13.weight.028"] = {
+		"All that lives is lent. Mine was not called in. Not this hour.",
+		"Life is a loan, and the lender keeps no schedule I can read.",
+		"Borrowed time, all of it. The lender let me keep mine a while longer.",
+	},
+	["victory.w13.weight.029"] = {
+		"murmurs a few low words over the fallen, the kind anyone might say for anyone.",
+		"speaks a short word for the fallen, too low to carry, and lets it go.",
+	},
+	["victory.w13.weight.030"] = {
+		"Better if nobody had fallen at all. I mean that.",
+		"Two ways a fight can end, and I'd have picked the one where no one falls.",
+		"Best fight is the one where everybody walks off. This wasn't that one.",
+	},
+	["victory.w13.weight.031"] = {
+		"Every fight is a coin tossed. This one came down my way, and that's all it was.",
+		"Luck has a long memory and short patience. I try not to lean on it.",
+		"Heads for me, this time. The coin doesn't care who's calling.",
+	},
+	["victory.w13.weight.032"] = {
+		"Wrong place, wrong moment, on both sides. Only I get to regret it.",
+		"Bad luck on both sides. Mine was a shade better.",
+	},
+	["victory.w13.weight.033"] = {
+		"Maybe something waits for that one to come back. Maybe nothing does. I'll never know which.",
+		"If anything was waiting on its return, it waits now for nothing.",
+	},
+	["victory.w13.weight.034"] = {
+		"stays very still, as if listening to make sure the world has kept {g:him|her}.",
+		"closes {g:his|her} eyes for a few slow counts, then opens them on the world.",
+		"stands with eyes shut a moment, like someone checking a door is still locked.",
+	},
+	["victory.w13.weight.035"] = {
+		"I'll remember. That's the most I can give you, and I'm giving it.",
+		"I won't learn your name. The fight I'll keep. It's what I have to offer.",
+		"Somebody ought to remember you. It may as well be me.",
+	},
+	["victory.w13.weight.036"] = {
+		"It took so little for it to end. That's the part I can't stop looking at.",
+		"How little it takes. A moment, a bad step, and a whole life is closed.",
+		"So little stands between going on and not. A hair. Less.",
+	},
+	["victory.w13.weight.037"] = {
+		"Walking away's a privilege. I try to remember that.",
+		"Walking off afterward is a gift. Not everyone gets one.",
+		"Leaving under my own power. Plenty never do. I'll not forget it.",
+	},
+	["victory.w13.weight.038"] = {
+		"There's a part of me that wants to feel nothing after these. I keep it on a short leash.",
+		"Some piece of me would like to stop caring. I won't give it the run of the place.",
+		"Feeling nothing would be easier. Easier is how it starts.",
+	},
+	["victory.w13.weight.039"] = {
+		"steps carefully around the fallen, as one would around something asleep.",
+		"gives the fallen a wide berth, unwilling to tread too near.",
+	},
+	["victory.w13.weight.040"] = {
+		"You'll have to wait for me, Death. I've errands left.",
+		"Death, make an appointment. I'm busy.",
+		"Not you, Death. Not yet. Go bother someone with less to do.",
+	},
+	["victory.w13.weight.041"] = {
+		"Every life ends somewhere. Mine is still looking for the spot. I won't help it.",
+		"My end is out there, choosing its ground. It didn't choose this one.",
+	},
+	["victory.w13.weight.042"] = {
+		"Easy now. It's over. Nothing more's coming from me.",
+		"Enough. I'm finished with you. Go wherever you're going.",
+		"It's finished between you and me. Let it be finished.",
+	},
+	["victory.w13.weight.043"] = {
+		"Somewhere in me a tally is kept, and it isn't of victories.",
+		"What I'm counting isn't wins. I don't know what it is. Something heavier.",
+	},
+	["victory.w13.weight.044"] = {
+		"lets a long moment pass before turning away, the way one leaves a graveside.",
+		"takes one slow step back from the fallen, then another, before turning.",
+	},
+	["victory.w13.weight.045"] = {
+		"It had to be someone. It was me. I'll carry it.",
+		"Somebody had to. I wasn't going to hand it to anyone else.",
+		"Mine to do, mine to carry. No one else's.",
+	},
+	["victory.w13.weight.046"] = {
+		"The Light, the spirits, the Earth Mother: someone must be keeping account. I'd rather not see the ledger.",
+		"Many believe something weighs each life. If so, may it weigh gently.",
+	},
+	["victory.w13.weight.047"] = {
+		"Nearly went the other way. I felt it lean.",
+		"So that's how close it can come. I didn't need to know.",
+		"That was the edge. I've seen it now. I'd rather not have.",
+	},
+	["victory.w13.weight.048"] = {
+		"I was nearly the one left behind. I don't think I'll forget how near.",
+		"Half a moment more and someone else would be thinking this. Or no one at all.",
+	},
+	["victory.w13.weight.049"] = {
+		"sinks to one knee and stays there, a hand pressed to the ground as if to hold on to it.",
+		"stands on uncertain legs, waiting for the world to stop tilting.",
+	},
+	["victory.w13.weight.050"] = {
+		"Count heads. All here? Then spare a word for the ones on the other side.",
+		"All of us walking. Hold on to that. It isn't owed to anyone.",
+	},
+	["victory.w13.weight.051"] = {
+		"Every face I know is still with us. I'll not pretend that's anything but luck.",
+		"Nobody of ours missing. On the other side, the count runs different.",
+	},
+	["victory.w13.weight.052"] = {
+		"We fought for each other. Let that be the reason, if anyone asks.",
+		"If we had a reason, it was standing right next to us.",
+	},
+	["victory.w13.weight.053"] = {
+		"Something that strong should be remembered by more than me.",
+		"A great thing fell here. Whatever else, that's worth a moment's quiet.",
+	},
+	["victory.w13.weight.054"] = {
+		"Something that strong didn't expect to fall. Neither will I, when my time comes.",
+		"A greater foe, and a greater quiet after it. I don't know why one follows the other.",
+	},
+	["victory.w13.weight.055"] = {
+		"stands a long while before what fell, as one stands before something that will not come again.",
+		"inclines {g:his|her} head, slow and deep, toward the mighty thing that fell.",
+	},
+	["victory.w13.weight.056"] = {
+		"Some bard will make this sound noble one day. It wasn't. It was only this.",
+		"If anyone sings of this, they'll leave out the part where something stopped living.",
+	},
+	["victory.w13.weight.057"] = {
+		"I didn't hate it. I want that clear, even if only to myself.",
+		"No hatred in it, on my side. Just the fight, and then the end of it.",
+		"No grudge on my side. Let the record show that much.",
+	},
+	["victory.w13.weight.058"] = {
+		"Nobody's promised the next hour. I've got this one, and I'll spend it well.",
+		"One more hour, unearned. Better make it count for something.",
+		"An hour I wasn't owed. I'd best not waste it brooding.",
+	},
+	["victory.w13.weight.059"] = {
+		"The oldest rule there is: one goes on, one stops. Nobody's found a kinder one.",
+		"One walks on, one rests. The rule is older than anyone living, and no gentler.",
+	},
+	["victory.w13.weight.060"] = {
+		"rubs {g:his|her} face with both hands, as if to wipe off something that will not come away.",
+		"presses the heels of {g:his|her} hands against {g:his|her} eyes for a long moment.",
+		"drags both hands down {g:his|her} face and holds them there, unmoving.",
+	},
+	["victory.w13.weight.061"] = {
+		"This wasn't for glory. If it was for anything, let it be for something good.",
+		"Let it have been for something. That's all I ask of it.",
+		"Glory had nothing to do with it. I hope something better did.",
+	},
+	["victory.w13.weight.062"] = {
+		"I'm alive because of things I didn't choose: a footing, a moment, a stroke of luck.",
+		"Half of why I'm alive, I can't take credit for. The other half I'm not proud of.",
+	},
+	["victory.w13.weight.063"] = {
+		"Let the ground take you gently.",
+		"Nobody's chasing you anymore. Rest, if you can.",
+		"No more hurry for you. Lie easy.",
+	},
+	["victory.w13.weight.064"] = {
+		"Who decided this had to happen? Not me. Not the other side either, I think. Yet it did.",
+		"Nobody chose this, not really. It just arrived, the way these things do.",
+	},
+	["victory.w13.weight.065"] = {
+		"takes a moment before moving, eyes lowered, as if waiting for leave to go on.",
+		"is slow to turn away, and slower still to take the first step.",
+		"lingers, eyes down, longer than the moment strictly needs.",
+	},
+	["victory.w13.weight.066"] = {
+		"I'll take being alive and not ask too many questions of it.",
+		"Odd gift, to be handed life by a fight. I'll keep it all the same.",
+	},
+	["victory.w13.weight.067"] = {
+		"If there's a next time, let it end with someone backing away. I'd let them.",
+		"I'd always rather someone walked off. Fewer of these quiets to sit in.",
+		"Next time, may one side think better of it. I'd not mind if it were the other.",
+	},
+	["victory.w13.weight.068"] = {
+		"Whatever you answered to, the Light or the spirits or nothing at all, go to it now.",
+		"Back to whatever made you, then. Whatever it was, it's waiting.",
+	},
+	["victory.w13.weight.069"] = {
+		"There's an emptiness exactly the size of what fell. I can almost see its edges.",
+		"The space it filled is still there. Just nothing in it now.",
+	},
+	["victory.w13.weight.070"] = {
+		"lays a palm flat on the ground a moment, as if to feel whether it is still turning.",
+		"crouches and presses a hand to the ground, briefly, then rises.",
+	},
+	["victory.w13.weight.071"] = {
+		"Nobody comes out of one of these better than they went in. Out, is all.",
+		"Out of it. Not better, not worse. Just out.",
+	},
+	["victory.w13.weight.072"] = {
+		"Only when there's no other way: that's the rule I try to keep. Was there one?",
+		"There's always the question: was there another way? I'll keep asking, even when the answer's no.",
+		"Was there another way? There's always that question, after.",
+	},
+	["victory.w13.weight.073"] = {
+		"One less in the world. I don't get to be glad about it.",
+		"The world's a little emptier. I did that. I'll own it.",
+	},
+	["victory.w13.weight.074"] = {
+		"Whether anyone marks this or not, something ended here, and it mattered.",
+		"It mattered. Small, unsung, and it mattered all the same.",
+		"No one keeps a record of fights like this one. Something ended in it anyway.",
+	},
+	["victory.w13.weight.075"] = {
+		"stands without moving, with the stillness of one keeping a short vigil.",
+		"keeps a brief vigil, unmoving, before letting the world back in.",
+	},
+	["victory.w13.weight.076"] = {
+		"Glad to be alive. Sorry for what it cost. Both at once, somehow.",
+		"Relief and regret, in the same mouthful. Odd taste.",
+	},
+	["victory.w13.weight.077"] = {
+		"Every walk ends at the same door. Mine has a few more steps in it. That is all.",
+		"There's a door at the end of everything. I passed close enough to read the latch.",
+	},
+	["victory.w13.weight.078"] = {
+		"There. No more pain for you. That much I could give.",
+		"It's over for you now. No more hurting.",
+		"Whatever hurt you, it can't reach you anymore.",
+	},
+	["victory.w13.weight.079"] = {
+		"Hunger, fear, ground, orders. Fights start for small reasons and end in big ones.",
+		"Most fights begin over something small. They all end in something that isn't.",
+	},
+	["victory.w13.weight.080"] = {
+		"Forgive me. Or don't. Either way, I'm sorry.",
+		"I'm not asking your pardon. Only saying I'd have liked another way.",
+		"If there's pardon to be had, I'll take it. If not, I understand.",
+	},
+	["victory.w13.weight.081"] = {
+		"Some would say a prayer now. A moment of quiet will have to do for this one.",
+		"Whatever the faithful say at times like this, let this quiet stand in for it.",
+	},
+	["victory.w13.weight.082"] = {
+		"Let it be on me, not on anyone who comes after.",
+		"Mine to bear. Better me than someone with less to spare.",
+		"Put it on my account. Nobody else has to pay this one.",
+	},
+	["victory.w13.weight.083"] = {
+		"sits down heavily where {g:he|she} stands and looks at the place of the fight for a long while.",
+		"lowers {g:himself|herself} to the ground and stays there, elbows on knees, quiet.",
+		"sits where {g:he|she} is, and for a while does nothing at all.",
+	},
+	["victory.w13.weight.084"] = {
+		"Every life I see end makes my own look smaller and dearer at once.",
+		"Funny how losing one makes the other worth more. Mine, I mean.",
+	},
+	["victory.w13.weight.085"] = {
+		"Didn't want it. Finished it all the same. Both are mine to keep.",
+		"Wanted it or not, it's finished, and it's mine to answer for.",
+	},
+	["victory.w13.weight.086"] = {
+		"I'll forget this one. That's what bothers me most: how many I'll forget.",
+		"In a week this will be one fight among many. It deserves better than that, and won't get it.",
+	},
+	["victory.w13.weight.087"] = {
+		"What lives, ends. What ends is remembered, or is not. Go, either way.",
+		"Living ends. That was never in question. Only the when.",
+	},
+	["victory.w13.weight.088"] = {
+		"I won't make a story of this. It doesn't belong to me enough to tell.",
+		"Some things aren't mine to boast of. This is one of them.",
+		"Not a tale for the fireside, this. I'll keep it to myself.",
+	},
+	["victory.w13.weight.089"] = {
+		"pauses, then gives a slight bow toward what fell, the kind one gives an equal.",
+		"offers a small, stiff bow in the direction of the fallen, unhurried and plain.",
+	},
+	["victory.w13.weight.090"] = {
+		"Too close. I could feel the end reaching for me.",
+		"Something put a hand on my shoulder just then. I didn't turn to see what.",
+		"That near to the end, and it let go. I'll not waste what it gave back.",
+	},
+	["victory.w13.weight.091"] = {
+		"Whatever kept me standing, the Light or luck or plain stubbornness, I owe it something.",
+		"A debt was run up just now. I don't know to whom, but I mean to pay it.",
+	},
+	["victory.w13.weight.092"] = {
+		"Before we go: a moment for what fell. It's the least we owe.",
+		"We go on. They don't. Take a moment on that before moving.",
+	},
+	["victory.w13.weight.093"] = {
+		"My hands are steady. I'd almost rather they shook. It would seem more decent.",
+		"Steady hands after that. I don't know what that says about me.",
+	},
+	["victory.w13.weight.094"] = {
+		"Let that be the last one for a while. Please.",
+		"Enough for a while. I mean it, whoever's listening.",
+	},
+	["victory.w13.weight.095"] = {
+		"touches {g:his|her} own chest, then {g:his|her} face, as if making sure of {g:himself|herself}.",
+		"runs a hand slowly along {g:his|her} arm, the way one checks that something is still there.",
+		"lays a hand on {g:his|her} own shoulder, briefly, almost kindly.",
+	},
+	["victory.w13.wit.001"] = {
+		"Let the record show I won. Let it not show how.",
+		"Write it down: victory. Leave the details blank, please.",
+		"For the chronicle: I prevailed. Method withheld.",
+	},
+	["victory.w13.wit.002"] = {
+		"Thank you for coming. Please don't come back.",
+		"Thanks for stopping by. The way out is anywhere but here.",
+		"Lovely visit. Let's not repeat it.",
+	},
+	["victory.w13.wit.003"] = {
+		"I'll be accepting compliments now. From anyone. Anything.",
+		"Compliments may be left at my feet. Whenever suits.",
+		"Admiration is welcome. I'm not fussy about the source.",
+	},
+	["victory.w13.wit.004"] = {
+		"Very educational. For somebody, anyway.",
+		"A lesson for both parties, there. I'm just not sure what it was.",
+	},
+	["victory.w13.wit.005"] = {
+		"I'd like to file a complaint. With whom, I've no idea.",
+		"Somebody owes me an apology. I'll accept it from anyone.",
+		"Who's in charge of all this? I have notes.",
+	},
+	["victory.w13.wit.006"] = {
+		"Farewell. No need to keep in touch.",
+		"Goodbye, then. Let's not make a habit of this.",
+		"Off you go, then. Don't bother writing.",
+	},
+	["victory.w13.wit.007"] = {
+		"Is it over? It feels over. I'm calling it over.",
+		"I hereby declare this concluded. Objections in writing.",
+		"Over? Over. Good. It was starting to bore me.",
+	},
+	["victory.w13.wit.008"] = {
+		"Lovely. Truly. I'll skip the second helping.",
+		"A memorable experience. I'd prefer not to repeat it in full.",
+		"Thank you, no. One serving was quite sufficient.",
+	},
+	["victory.w13.wit.009"] = {
+		"Nobody needs to know how that went. Not even me.",
+		"How it went is a private matter between me and my bruises.",
+	},
+	["victory.w13.wit.010"] = {
+		"So. Anyone else? No? Wonderful.",
+		"Any further business? None? Then this meeting is closed.",
+		"Next, please. Nobody? How restful.",
+	},
+	["victory.w13.wit.011"] = {
+		"Every move was deliberate. Some were deliberately bad.",
+		"I meant all of that. Especially the bits that worked.",
+		"Pure technique. Some of it mine.",
+	},
+	["victory.w13.wit.012"] = {
+		"I'm fine. Parts of me are fine. Some parts.",
+		"Fine, fine. I'll just lie down a moment and go on being fine.",
+		"Don't fuss. Most of me is still here.",
+	},
+	["victory.w13.wit.013"] = {
+		"Won. On points. Very few points.",
+		"A victory, technically. And 'technically' is working very hard there.",
+		"Won by a whisker. A thin, scruffy whisker.",
+	},
+	["victory.w13.wit.014"] = {
+		"Well fought. Whoever was shrieking, that was not me.",
+		"Good work, all. Nobody tell me what my face was doing.",
+	},
+	["victory.w13.wit.015"] = {
+		"Excellent teamwork. I assume. I wasn't watching any of you.",
+		"Lovely coordination, everyone. Mostly by accident, I suspect.",
+	},
+	["victory.w13.wit.017"] = {
+		"No hard feelings. Well. Some. Small ones.",
+		"I bear no grudge. A modest grievance, perhaps. Pocket-sized.",
+		"Nothing personal. Fairly personal, actually. Moving on.",
+	},
+	["victory.w13.wit.018"] = {
+		"Splendid. I was headed somewhere before all that. Somewhere.",
+		"Excellent. I had a plan before all that. It's gone now.",
+		"Lovely. What was I doing before the interruption?",
+	},
+	["victory.w13.wit.019"] = {
+		"Steady now. You won. Act like it.",
+		"Composure, please. You're the victor here. Look the part.",
+		"Chin up. Victors don't slouch. Much.",
+	},
+	["victory.w13.wit.020"] = {
+		"Somebody fetch a chronicler. A cheap one.",
+		"Have it written up as a heroic deed. A short one.",
+	},
+	["victory.w13.wit.021"] = {
+		"Thank you, thank you. Hold the applause.",
+		"Please, no applause. Or some. A little would be nice.",
+		"Too kind, too kind. Nobody's said anything, but too kind.",
+	},
+	["victory.w13.wit.022"] = {
+		"Could have used more dignity and fewer elbows.",
+		"Next time: same result, fewer elbows.",
+	},
+	["victory.w13.wit.023"] = {
+		"I have won. Someone ring something.",
+		"Victory! Ring a bell, somebody. Any bell. Fine, I'll hum.",
+	},
+	["victory.w13.wit.024"] = {
+		"Not my finest work. Possibly not even work.",
+		"A masterpiece it wasn't. A rough sketch, at best.",
+		"Effective. Pretty, it was not.",
+	},
+	["victory.w13.wit.025"] = {
+		"Enough of that, thank you. Truly, plenty.",
+		"I've had my fill of that, thanks. No more for me.",
+	},
+	["victory.w13.wit.026"] = {
+		"Call it even. You won't, but I will.",
+		"Pleasure doing business. Mostly mine.",
+		"Even, then. By my count, not yours.",
+	},
+	["victory.w13.wit.027"] = {
+		"Ow. Victory. Ow.",
+		"Victorious, certainly. Emotionally, I'm in several pieces.",
+	},
+	["victory.w13.wit.028"] = {
+		"Who had money against me? Pay up. You lost.",
+		"Anyone who bet I'd go down first owes the rest of us.",
+	},
+	["victory.w13.wit.029"] = {
+		"Ha. Ha ha. Yes. I'll stop now.",
+		"Heh. Sorry. It's the nerves. They find this hilarious.",
+	},
+	["victory.w13.wit.030"] = {
+		"This will not be spoken of. By me, at least.",
+		"Consider that unrecorded. Officially, I was elsewhere.",
+		"That goes in the drawer of things I don't discuss.",
+	},
+	["victory.w13.wit.031"] = {
+		"Ah, the glamour of adventure.",
+		"This is the bit nobody puts in the recruiting speeches.",
+		"Adventure and glamour. One of the two showed up.",
+	},
+	["victory.w13.wit.032"] = {
+		"Anything else? I'm in the mood now.",
+		"More, was it? I've warmed to the idea.",
+	},
+	["victory.w13.wit.033"] = {
+		"And they said I'd never amount to anything. Nobody said it. Still.",
+		"Who doubted me? Nobody? Fine. I'll gloat at nobody, then.",
+	},
+	["victory.w13.wit.034"] = {
+		"Credit where due: you tried. Credit stops there.",
+		"You were very persistent. I'll grant you that and nothing more.",
+		"Points for effort. None for the outcome.",
+	},
+	["victory.w13.wit.035"] = {
+		"I must look a fright. Don't tell me. I can feel it.",
+		"Is my face on straight? It feels like it's on sideways.",
+	},
+	["victory.w13.wit.036"] = {
+		"Sorry about the shouting. All of it was strictly necessary.",
+		"Pardon the noise. I'm told it helps.",
+		"The yelling was tactical. Most of it.",
+	},
+	["victory.w13.wit.037"] = {
+		"You owe me a nap. I'll collect it myself.",
+		"My nerves would like a word with you. Several words.",
+	},
+	["victory.w13.wit.038"] = {
+		"Splendid work, me. I'll be thanking myself in person.",
+		"Nicely done. Modesty forbids me to say more. Modesty is outvoted.",
+		"My compliments to me. Sincerely meant.",
+	},
+	["victory.w13.wit.039"] = {
+		"If that's heroism up close, the songs are very generous.",
+		"The songs leave out the flailing. I can see why now.",
+		"Nobody sings the part where you're just trying not to drop things.",
+	},
+	["victory.w13.wit.040"] = {
+		"Victory achieved. Dignity pending.",
+		"Won. Dignity to follow, at its own pace.",
+	},
+	["victory.w13.wit.041"] = {
+		"At some point in there I made a noise I will never admit to.",
+		"There was a sound in the middle of that. Not a brave sound. Mine.",
+		"Something squeaked in there. It stays between me and the squeak.",
+	},
+	["victory.w13.wit.042"] = {
+		"My plan was to win. Plan complete. I'm a tactician.",
+		"Strategy: come out on top. Execution: flawless, if you squint.",
+		"Tactics: keep at it until it stops. Genius, really.",
+	},
+	["victory.w13.wit.043"] = {
+		"My kit looks like it lost. I'll explain otherwise.",
+		"Everything I'm wearing sits a little crooked now. So does the wearer.",
+	},
+	["victory.w13.wit.044"] = {
+		"I'd tell them about it back home, but I'd have to explain the middle.",
+		"Worth a story, if I skip the part where it got untidy.",
+	},
+	["victory.w13.wit.045"] = {
+		"My face is doing something. I'd rather not know what.",
+		"There ought to be a word for the face I'm making. Not a kind one.",
+		"I'm making the face. The one I'd rather not see.",
+	},
+	["victory.w13.wit.046"] = {
+		"Something aches. My pride, however, is doing splendidly.",
+		"A few sore spots. None of them on my ego.",
+	},
+	["victory.w13.wit.047"] = {
+		"Verdict on fighting, after due thought: still not a fan.",
+		"It's over, and my opinion of fights hasn't budged. Low, and holding.",
+		"Fighting: still overrated.",
+	},
+	["victory.w13.wit.048"] = {
+		"Passed, I think. The examiner left without comment.",
+		"If that was a test, I'd like to see the marks before I celebrate.",
+	},
+	["victory.w13.wit.049"] = {
+		"Rule one: win. Rule two: look as if I meant to. Halfway there.",
+		"Winning, done. Looking effortless about it, still in progress.",
+	},
+	["victory.w13.wit.050"] = {
+		"I'd celebrate, but I'd have to stand up straight first.",
+		"Celebrations are postponed until my spine agrees to them.",
+		"Triumph. Any moment now I'll look triumphant.",
+	},
+	["victory.w13.wit.051"] = {
+		"Out there, people are sitting in chairs doing nothing. Lucky them.",
+		"Someone, somewhere, is having a dull and peaceful moment. I envy them.",
+	},
+	["victory.w13.wit.052"] = {
+		"Won by stubbornness. Not glamorous. Effective.",
+		"My chief contribution was refusing to stop. It counts.",
+		"Stubbornness: undefeated, if not admired.",
+	},
+	["victory.w13.wit.053"] = {
+		"Whatever you were, your timing was terrible.",
+		"Wrong moment, wrong person. Bad luck all round, mostly yours.",
+		"Of all the moments to cross my path, you chose that one.",
+	},
+	["victory.w13.wit.054"] = {
+		"Thrilling, they call it. I'd call it a strong case for chairs.",
+		"I'm told this part should feel exhilarating. It feels like wanting a chair.",
+	},
+	["victory.w13.wit.055"] = {
+		"Heroism: ninety parts nerve, ten parts not falling over.",
+		"Half of bravery is simply staying upright. I managed that half.",
+	},
+	["victory.w13.wit.056"] = {
+		"Everything seems to be attached. I'll do a proper count later.",
+		"Close enough to read the small print. I didn't care for the small print.",
+		"Inventory: me, mostly. Details to follow.",
+	},
+	["victory.w13.wit.057"] = {
+		"Note: getting hit is less fun than the alternative.",
+		"I've learned something about taking blows. Chiefly that I'm against it.",
+	},
+	["victory.w13.wit.058"] = {
+		"We won. I'll let the others think it was their idea.",
+		"My part: stand where I was told. Crucial, I'm sure.",
+		"Victory by committee. I was on the committee.",
+	},
+	["victory.w13.wit.060"] = {
+		"Special thanks to my knees, which mostly cooperated.",
+		"Thanks to my left foot. My right foot knows what it did.",
+		"My feet did their best. Their best was uneven.",
+	},
+	["victory.w13.wit.061"] = {
+		"In the official version, I was magnificent.",
+		"I'll be editing that one before I tell it. Heavily.",
+		"When I tell it, there'll be more grace in it. A lot more.",
+	},
+	["victory.w13.wit.062"] = {
+		"Of all the ways to spend a moment, not in my top ten.",
+		"I've had better moments, and worse. I'd like a duller one next.",
+	},
+	["victory.w13.wit.063"] = {
+		"Who decides these things happen to me? I'd like a word.",
+		"There must be an office that arranges my fights. It's badly run.",
+	},
+	["victory.w13.wit.064"] = {
+		"Courage, they say, is doing it anyway. Very courageous. Very reluctant.",
+		"Brave, yes. Willing, not especially.",
+	},
+	["victory.w13.wit.065"] = {
+		"Some warning would have been polite. I'll mention it to nobody.",
+		"No notice, no introductions. Shocking manners all round.",
+		"Not even a hello first. The manners on some things.",
+	},
+	["victory.w13.wit.066"] = {
+		"And for my next trick: standing very still and complaining.",
+		"Next on the program: a long sit and a short grumble.",
+	},
+	["victory.w13.wit.067"] = {
+		"Victory tastes of embarrassment and a little relief.",
+		"Triumph, they call it. Mine has a faintly sheepish flavor.",
+	},
+	["victory.w13.wit.068"] = {
+		"That counts as a story, I suppose. Short, with no good lines.",
+		"If it's a tale, it's a thin one. Nobody will ask for it twice.",
+		"A story, yes. The kind listeners wander off from halfway.",
+	},
+	["victory.w13.wit.069"] = {
+		"Hero, provisionally. Pending review.",
+		"I'll call myself a hero until somebody corrects me.",
+		"Hero, until further notice.",
+	},
+	["victory.w13.wit.070"] = {
+		"If anyone asks, calm never left me for a moment.",
+		"Cool and collected throughout. That's how I'll remember it, true or not.",
+		"Unflappable. That's the word I'll use. Nobody can prove otherwise.",
+	},
+	["victory.w13.wit.071"] = {
+		"There's something in my ear. I don't want to know what.",
+		"Something got into my collar during all that. It's staying out of spite.",
+	},
+	["victory.w13.wit.072"] = {
+		"On reflection, I'd have preferred a strongly worded letter.",
+		"A firmly raised eyebrow would have been my first choice.",
+		"A polite note would have done. Or a cough.",
+	},
+	["victory.w13.wit.073"] = {
+		"I lost a perfectly good thought in all that. It was about food.",
+		"I was thinking of something pleasant before that. Gone. Thanks so much.",
+	},
+	["victory.w13.wit.074"] = {
+		"Now the tricky part: walking off as if it were nothing.",
+		"Next challenge: a casual exit. Nobody saw anything. Least of all me.",
+	},
+	["victory.w13.wit.075"] = {
+		"I should charge admission. Then again, who would pay?",
+		"Quite a show. The ticket sales, sadly, were nil.",
+	},
+	["victory.w13.wit.076"] = {
+		"My quota of excitement is full. Please send boredom.",
+		"That's enough thrills to last me a while. I'll take some tedium now.",
+		"Excitement: received in full. No more needed, thanks.",
+	},
+	["victory.w13.wit.077"] = {
+		"Survived, with minor damage to my opinion of myself.",
+		"All in one piece. My self-esteem took a small dent.",
+	},
+	["victory.w13.wit.078"] = {
+		"bows to nobody in particular, and nobody bows back.",
+		"offers a small bow to the empty air, then frowns at its poor manners.",
+		"makes a small bow to the world at large, which takes no notice.",
+	},
+	["victory.w13.wit.079"] = {
+		"checks every piece of gear, finds it all present, and seems faintly let down.",
+		"pats down {g:his|her} kit and finds nothing missing, which seems to spoil a good complaint.",
+	},
+	["victory.w13.wit.080"] = {
+		"straightens up with great dignity, which lasts until the next step.",
+		"assumes a noble posture and holds it for almost a full moment.",
+		"stands tall with great ceremony, then settles a little lower.",
+	},
+	["victory.w13.wit.081"] = {
+		"glances around, as if hoping someone saw. Or hoping nobody did.",
+		"checks for witnesses with an expression that could go either way.",
+	},
+	["victory.w13.wit.082"] = {
+		"nods once at the empty space where trouble used to be.",
+		"gives the spot where the trouble stood a curt little nod of dismissal.",
+	},
+	["victory.w13.wit.083"] = {
+		"raises a hand in farewell to the fight, as to a guest who overstayed.",
+		"waves the fight goodbye, politely, the way one sees off a tiresome visitor.",
+	},
+	["victory.w13.wit.084"] = {
+		"fishes a small, unexplained object out of {g:his|her} gear and eyes it with suspicion.",
+		"shakes out a sleeve, frowns at what falls from it, and decides not to ask.",
+	},
+	["victory.w13.wit.085"] = {
+		"mutters a complaint to no one, in some detail.",
+		"starts to grumble, thinks better of it, and grumbles anyway.",
+		"lists a few grievances to nobody, counting them off on {g:his|her} fingers.",
+	},
+	["victory.w13.wit.086"] = {
+		"tidies {g:his|her} gear with exaggerated care, like a host after unwelcome guests.",
+		"straightens every strap with fussy precision, as if company might call.",
+	},
+	["victory.w13.wit.087"] = {
+		"pats {g:himself|herself} down, counting, and the count comes out right.",
+		"does a quick inventory of limbs and looks pleased with the total.",
+	},
+	["victory.w13.wit.088"] = {
+		"regards {g:his|her} own hands like a prize handed over by mistake.",
+		"looks at {g:his|her} hands with mild surprise, as if they had acted without asking.",
+	},
+	["victory.w13.wit.089"] = {
+		"attempts a heroic pose, holds it, and lets it go with a shrug.",
+		"strikes a triumphant stance, finds nobody admiring it, and gives it up.",
+		"tries for a victorious look, gets about halfway, and settles for that.",
+	},
+	["victory.w13.wit.090"] = {
+		"clears {g:his|her} throat as if for a speech, then thinks better of it.",
+		"draws {g:himself|herself} up to say something memorable, and says nothing at all.",
+	},
+	["victory.w13.wit.091"] = {
+		"inspects the damage sternly, as though it could be told off.",
+		"gives each new bruise a disapproving look, one at a time and at length.",
+		"lists the new aches aloud, in order of rudeness.",
+	},
+	["victory.w13.wit.092"] = {
+		"gives the others a nod that means well done, and forget what you saw.",
+		"shares a look with the others that says nobody mentions the middle part.",
+	},
+	["victory.w13.wit.094"] = {
+		"brushes off {g:his|her} shoulders with ceremony, though there is nothing on them.",
+		"flicks an imaginary speck off {g:his|her} sleeve with great formality.",
+		"adjusts an imaginary crown, then remembers there isn't one.",
+	},
+	["victory.w13.wit.095"] = {
+		"taps a foot, waiting for something else to happen. Nothing does.",
+		"waits a moment for an encore that never comes, and seems relieved.",
+		"glances about, half expecting applause, half expecting more trouble. Neither arrives.",
+	},
+	["victory.w13.wit.096"] = {
+		"surveys the aftermath like someone reading an unexpected bill.",
+		"considers the whole affair with the face of someone tasting a bad soup.",
+		"takes in the scene with the patience of someone who will complain later.",
+	},
 }, "base_combat")
