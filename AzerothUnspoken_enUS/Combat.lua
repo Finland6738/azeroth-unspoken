@@ -7823,4 +7823,923 @@ NS:AddTexts("enUS", {
 		"considers the whole affair with the face of someone tasting a bad soup.",
 		"takes in the scene with the patience of someone who will complain later.",
 	},
+	["lowhp.w14.fade.001"] = {
+		"Everything past arm's reach has gone soft. Arm's reach will have to do.",
+		"The edges blur. Whatever is right in front of me stays sharp. Keep it there.",
+		"Past my reach, the world's gone to smudges. Inside it, I can still work.",
+	},
+	["lowhp.w14.fade.002"] = {
+		"The noise of the fight has moved somewhere else. No. It hasn't. I have.",
+		"Sounds are arriving late, like news from a long way off. Listen anyway.",
+		"Muffled. All of it, muffled. Listen harder.",
+	},
+	["lowhp.w14.fade.003"] = {
+		"Fear can sit in the corner. It doesn't get a vote.",
+		"I'm afraid. Noted. Now give the hands something useful to do.",
+		"Let the fear shout. I'm the one holding the reins.",
+	},
+	["lowhp.w14.fade.004"] = {
+		"What's left: two legs, two hands, one head. Use the head first.",
+		"Inventory. Legs work. Hands work. Eyes, mostly. Enough to choose with.",
+		"What still answers? Feet, yes. Grip, yes. Head, sort of. Go.",
+	},
+	["lowhp.w14.fade.005"] = {
+		"Footing first. A fall now costs more than any hit.",
+		"Watch the ground. Don't trip over something stupid now, of all moments.",
+		"Feet under me. Everything else comes after that.",
+	},
+	["lowhp.w14.fade.006"] = {
+		"So this is the edge. No trumpets, no voices. Only a great deal of tiredness.",
+		"Dying, if that's what this is, looks a lot like being very tired. Tired I can manage.",
+		"Is this what the edge is? Just a long, heavy tiredness?",
+	},
+	["lowhp.w14.fade.007"] = {
+		"There's a loose buckle on my gear. Of all things to notice right now.",
+		"Something in my eye, on top of everything. Now. Naturally, now.",
+		"My nose itches. Wonderful. That's the problem I needed.",
+	},
+	["lowhp.w14.fade.008"] = {
+		"The fight has become very small: this patch of ground, this moment, the next move.",
+		"Nothing exists past the next move. Good. Fewer things to get wrong.",
+		"The whole world is three paces wide now. Mind those three paces.",
+	},
+	["lowhp.w14.fade.009"] = {
+		"Strange how clear it gets. Every choice laid out, plain as tools on a bench.",
+		"Clear-headed, suddenly. Danger does that. Use it before it wears off.",
+		"Fear has swept the clutter out of my head. Good. Room to think.",
+	},
+	["lowhp.w14.fade.010"] = {
+		"My hands are shaking. Let them. They can shake and still do the work.",
+		"Shaking hands. Doesn't matter. A shaking hand still closes.",
+	},
+	["lowhp.w14.fade.011"] = {
+		"Panic wants me to run in any direction. If I run, pick one, at least.",
+		"If I go, I go somewhere. Not merely away.",
+	},
+	["lowhp.w14.fade.012"] = {
+		"Every road has its last mile. I'd like to think this isn't mine.",
+		"Everyone walks up to the same door eventually. I'm in no hurry to knock.",
+		"That door opens for every mortal. It needn't open for me yet.",
+	},
+	["lowhp.w14.fade.013"] = {
+		"My legs have stopped asking my opinion. Ask them nicely.",
+		"Knees, listen. Not now. Later you can fold all you like.",
+		"My feet have their own ideas about staying put. Overrule them.",
+	},
+	["lowhp.w14.fade.014"] = {
+		"A high thin ringing, and everything else behind it. Watch, then. Eyes still work.",
+		"Can't hear much past the ringing. Fine. Watch instead.",
+		"My ears are full of a long, thin whine. Let it whine. Keep looking.",
+	},
+	["lowhp.w14.fade.015"] = {
+		"Too many thoughts. Throw them all out but one. The useful one.",
+		"One clear thought. Just one. Find it and keep it close.",
+		"Quiet, all of you. I need to hear the one thought that matters.",
+	},
+	["lowhp.w14.fade.016"] = {
+		"Everything's slowed down. Or I've sped up. Either way, there's time to think.",
+		"Time has gone thick as honey. Use the extra moment.",
+		"Every moment stretches long. Strange gift. Take it.",
+	},
+	["lowhp.w14.fade.017"] = {
+		"Someone would want to know how this ended. Give them a better ending to hear.",
+		"Somewhere, someone expects me back. That's worth one more effort.",
+		"There are people who'd miss me. Odd thing to remember now. Useful, though.",
+	},
+	["lowhp.w14.fade.018"] = {
+		"There's a small voice saying lie down. It is very convincing. It is wrong.",
+		"Part of me wants to stop. That part doesn't get to steer.",
+		"Something inside is whispering that it's fine to stop. It isn't fine.",
+	},
+	["lowhp.w14.fade.019"] = {
+		"Health: very little. Options: a few. Dignity: long gone. Proceed.",
+		"Status report: bad. Further report: still able to make reports.",
+		"Assessment: alarming. Second assessment: still assessing, so not done.",
+	},
+	["lowhp.w14.fade.020"] = {
+		"I could die here. There. Said it. It's smaller now.",
+		"Death is close enough to name. Naming it doesn't bring it closer.",
+		"It might end here. Fine. Now that's out of the way, work.",
+	},
+	["lowhp.w14.fade.021"] = {
+		"Everything I am has come down to the next few moments. Spend them well.",
+		"Whatever I have left fits in my two hands. Use both.",
+		"All of me, down to a handful of moments. Don't waste a single one.",
+	},
+	["lowhp.w14.fade.022"] = {
+		"Where's room to move? Where's cover? Look, quickly.",
+		"Gaps. Ways out. Anything that isn't straight ahead. Look.",
+		"Find the open side. There's always an open side.",
+	},
+	["lowhp.w14.fade.023"] = {
+		"The ground keeps tilting. It isn't. I am. Lean against it.",
+		"Everything leans to the left. Lean right, then.",
+	},
+	["lowhp.w14.fade.024"] = {
+		"I'm frightened. Good. Frightened people pay attention.",
+		"Fear's here. Let it sharpen me instead of hollowing me out.",
+		"This fear has a use. It keeps me awake. Let it.",
+	},
+	["lowhp.w14.fade.025"] = {
+		"My arms weigh twice what they did. Lift them anyway.",
+		"Everything's heavy. Hands, head, eyelids. Carry it a little longer.",
+		"Lead in the arms, sand in the eyes. Move regardless.",
+	},
+	["lowhp.w14.fade.026"] = {
+		"Nobody writes songs about this part. The part where it simply hurts.",
+		"In the tales, this is where someone says something fine. I've nothing fine. Only stubbornness.",
+	},
+	["lowhp.w14.fade.027"] = {
+		"Distance. Get some distance, then think.",
+		"Step out of reach. Everything is easier a few paces away.",
+		"Too close to all of it. A few steps back, then decide.",
+	},
+	["lowhp.w14.fade.028"] = {
+		"I can hear my own teeth grinding. Didn't know they did that.",
+		"Funny, what you notice. There's a scratch on my sleeve I'd never noticed.",
+		"There's a button on the ground. Why am I looking at a button?",
+	},
+	["lowhp.w14.fade.029"] = {
+		"Don't count the hurts. Counting makes them louder.",
+		"Know how bad it is. Then ignore how bad it is.",
+		"Don't look down at it. It will still be there later. Look up.",
+	},
+	["lowhp.w14.fade.030"] = {
+		"Down to the dregs. The dregs will do.",
+		"Not much left in the cup. Drink what there is.",
+		"Scraping the bottom of the pot. There's still a spoonful.",
+	},
+	["lowhp.w14.fade.031"] = {
+		"How small a person gets, at the edge. Small enough to slip away, maybe.",
+		"I'm a small thing right now. Small things are hard to catch.",
+	},
+	["lowhp.w14.fade.032"] = {
+		"Gently. You can manage this. Or part of it. Part is a lot.",
+		"Kind and quick, both at once. It can be done.",
+		"It's all right to be scared. Just be scared and quick.",
+	},
+	["lowhp.w14.fade.033"] = {
+		"The colors have gone thin, like old cloth. Squint. Keep going.",
+		"Everything looks washed out. My eyes are giving up before I do.",
+		"Gray creeping into everything. Eyes, stay with me.",
+	},
+	["lowhp.w14.fade.034"] = {
+		"Survive first. Win if I can. Look good never.",
+		"Stay alive. That's the whole plan. It's a good plan.",
+		"Plan, in full: don't die. Details to follow.",
+	},
+	["lowhp.w14.fade.035"] = {
+		"Every life is a small flame. Mine is guttering. Guttering is not out.",
+		"A flame low on the wick still burns. Mind the wick.",
+	},
+	["lowhp.w14.fade.036"] = {
+		"Sleep sounds wonderful. Sleep is a liar right now.",
+		"A great soft tiredness, offering to take over. No, thank you.",
+		"Lie down, says everything. Everything is wrong.",
+	},
+	["lowhp.w14.fade.037"] = {
+		"My stomach's gone to water. The rest of me hasn't. Lead with the rest.",
+		"Hollow inside. Doesn't matter. Hollow things still stand.",
+		"My insides have turned to jelly. My outsides can still work.",
+	},
+	["lowhp.w14.fade.038"] = {
+		"There are things I never said to people I won't name. Later. Survive first.",
+		"Funny which faces come to mind. Put them away. Look at what's in front of me.",
+	},
+	["lowhp.w14.fade.039"] = {
+		"Trade ground for time. Ground's cheap. Time isn't.",
+		"Give a step, gain a moment. Fair bargain.",
+		"Every step back buys a moment. Spend the moments wisely.",
+	},
+	["lowhp.w14.fade.040"] = {
+		"Keep the pieces together a little longer. Then fall apart properly.",
+		"Don't come undone here. Afterward, in private, as much as you like.",
+		"Fall apart later. There'll be time. Not now.",
+	},
+	["lowhp.w14.fade.041"] = {
+		"It would be such an ordinary way to go. That alone is reason enough not to.",
+		"Too plain an ending. I'd like a better one, much further on.",
+		"What a dull ending this would make. Refuse it on taste alone.",
+	},
+	["lowhp.w14.fade.042"] = {
+		"It's like watching through a keyhole. Then pick from what's in the keyhole.",
+		"My view's gone narrow as a slit. What I need is still inside it.",
+	},
+	["lowhp.w14.fade.043"] = {
+		"Terror, it turns out, makes very clear lists. Item one: move.",
+		"Fear is a terrible friend and an excellent clerk. Every danger, neatly listed.",
+		"Fright makes a fine sergeant. Shouts, but always the right order.",
+	},
+	["lowhp.w14.fade.044"] = {
+		"Last one more moment. And then the one after it. That's all enduring is.",
+		"Last a little. Then last a little more. Stack them up.",
+		"Endure this moment. The next one will ask the same. Answer it too.",
+	},
+	["lowhp.w14.fade.045"] = {
+		"Everything hurts in one voice now. A choir is easier to ignore than a soloist.",
+		"The pain has spread everywhere at once. At least it isn't pointing anywhere.",
+		"Pain everywhere, so loud it's become a hum. Work over the hum.",
+	},
+	["lowhp.w14.fade.046"] = {
+		"I haven't finished being myself. There's more of me to do.",
+		"Too much of my life still lies ahead. That's not a feeling. It's a plan.",
+	},
+	["lowhp.w14.fade.047"] = {
+		"That lurch in the gut. That's when it turned serious. Act like it.",
+		"Ah. That's the real fear arriving. Thank it, and work.",
+		"There it is, the moment it all turns real. Good. Real can be worked with.",
+	},
+	["lowhp.w14.fade.048"] = {
+		"Forget the whole fight. What's the very next thing? Do that.",
+		"Next move. Only the next move. The rest can wait in line.",
+		"Small. Think small. One task, finished, then the next one.",
+	},
+	["lowhp.w14.fade.049"] = {
+		"The ground waits for everyone, patient as stone. It can wait a while longer for me.",
+		"Earth takes all things back in the end. It has no need to hurry.",
+		"The ground is very patient. I'll ask it to be patient a while more.",
+	},
+	["lowhp.w14.fade.050"] = {
+		"So that's what badly hurt feels like from the inside. Very educational.",
+		"Lesson learned: this hurts. Lesson two pending.",
+		"Found the limit. It's here. Interesting. Step back from it.",
+	},
+	["lowhp.w14.fade.051"] = {
+		"Thoughts are coming slowly, one by one, like stragglers. Wait for the right one.",
+		"My head's full of wool. Pull one thread. Follow it.",
+		"Thinking through mud. Fine. Mud can be walked through.",
+	},
+	["lowhp.w14.fade.052"] = {
+		"sways where {g:he|she} stands, then catches {g:himself|herself} on nothing.",
+		"lists sideways like a badly loaded cart, and rights {g:himself|herself} with a jolt.",
+	},
+	["lowhp.w14.fade.053"] = {
+		"squints, as though the fight had suddenly moved a long way off.",
+		"narrows {g:his|her} eyes against a blur only {g:he|she} can see.",
+		"peers ahead as if through smoked glass.",
+	},
+	["lowhp.w14.fade.054"] = {
+		"looks down at {g:his|her} own hands for a moment, as if checking they are still there.",
+		"flexes {g:his|her} fingers one by one, counting them.",
+		"opens and closes one fist, slowly, testing whether it still answers.",
+	},
+	["lowhp.w14.fade.055"] = {
+		"feels {g:his|her} knees start to fold, and locks them through sheer stubbornness.",
+		"buckles at the knees, and somehow the buckle stops halfway.",
+	},
+	["lowhp.w14.fade.056"] = {
+		"shakes {g:his|her} head hard, like someone trying to wake from a bad dream.",
+		"gives {g:his|her} head a sharp shake, and the world settles back, slightly askew.",
+		"jerks {g:his|her} head up, as though someone had called {g:his|her} name.",
+	},
+	["lowhp.w14.fade.057"] = {
+		"tilts {g:his|her} head, as if the sounds of the fight had gone muffled behind a door.",
+		"seems to hear the clamor late, as though it came from another room.",
+	},
+	["lowhp.w14.fade.058"] = {
+		"staggers two steps, three, and on the fourth finds the ground again.",
+		"reels, arms out for balance, and finds it at the last possible moment.",
+		"lurches, sways, and somehow lands the next step squarely.",
+	},
+	["lowhp.w14.fade.059"] = {
+		"sets {g:his|her} jaw and stops looking at the damage.",
+		"grimaces once, then wipes the expression away like dust.",
+		"presses {g:his|her} lips tight and puts the pain somewhere out of sight.",
+	},
+	["lowhp.w14.fade.060"] = {
+		"stares at a fixed point until the world stops swimming around it.",
+		"fixes {g:his|her} gaze on one spot and waits for everything else to stop drifting.",
+	},
+	["lowhp.w14.fade.061"] = {
+		"glances left, right and behind in quick jerks, measuring the ways out.",
+		"throws a quick look over {g:his|her} shoulder, counting the room left to give.",
+	},
+	["lowhp.w14.fade.062"] = {
+		"folds an arm across {g:his|her} middle and keeps going, a little bent.",
+		"moves on curled around the hurt, the way one shelters a candle.",
+	},
+	["lowhp.w14.fade.063"] = {
+		"straightens by inches, as if lifting something very heavy, which in a way {g:he|she} is.",
+		"pulls {g:himself|herself} upright slowly, the way a rusty gate opens.",
+		"unbends with visible effort, and does not bend back.",
+	},
+	["lowhp.w14.fade.064"] = {
+		"swallows hard and keeps {g:his|her} eyes on the fight.",
+		"swallows something bitter and does not look away.",
+		"gives one sharp shudder, then holds very still.",
+	},
+	["lowhp.w14.fade.065"] = {
+		"goes very still in the face, the way people do when they refuse to show fear.",
+		"wears an expression of great calm that fools no one, {g:himself|herself} least of all.",
+	},
+	["lowhp.w14.fade.066"] = {
+		"tries to steady a trembling hand with the other, and both tremble together.",
+		"watches {g:his|her} own hands shake with a kind of distant interest.",
+		"holds up a trembling hand, regards it, and closes it into a fist.",
+	},
+	["lowhp.w14.fade.067"] = {
+		"trips on nothing, catches the fall, and pretends it was a step.",
+		"stumbles, and turns the stumble into a sidestep with more luck than grace.",
+	},
+	["lowhp.w14.fade.068"] = {
+		"sags, then refuses to sag any further, as though a line had been drawn.",
+		"slackens all at once like a loosened rope, then pulls taut once more.",
+	},
+	["lowhp.w14.fade.069"] = {
+		"moves more slowly now, every gesture weighed before it is spent.",
+		"spends each movement carefully, like the last coins in a purse.",
+		"stops wasting motion entirely, each step chosen like a word in a short letter.",
+	},
+	["lowhp.w14.fade.070"] = {
+		"stares for a moment at nothing; then the eyes find their mark once more.",
+		"loses focus for the space of a blink, and drags it back.",
+	},
+	["lowhp.w14.fade.071"] = {
+		"settles low on bent legs, like a stone deciding not to roll.",
+		"sinks lower but not down, held there by plain obstinacy.",
+	},
+	["lowhp.w14.fade.072"] = {
+		"murmurs something too low to hear, maybe a count, maybe a name.",
+		"moves {g:his|her} lips silently, as if counting something.",
+	},
+	["lowhp.w14.fade.073"] = {
+		"looks briefly offended by how much this hurts.",
+		"gives the damage a look of mild reproach, as if it had turned up uninvited.",
+	},
+	["lowhp.w14.fade.074"] = {
+		"puts out a hand for a support that isn't there, and does without.",
+		"reaches for something to lean on, finds only air, and stands regardless.",
+	},
+	["lowhp.w14.fade.075"] = {
+		"drags the back of a hand across {g:his|her} eyes and looks hard at the fight.",
+		"rubs {g:his|her} eyes with a knuckle, impatient with them.",
+		"squeezes {g:his|her} eyes shut and open again, as if wringing them clear.",
+	},
+	["lowhp.w14.fade.076"] = {
+		"seems, for one moment, to be listening to something nobody else can hear.",
+		"goes quiet in a way that has nothing to do with calm.",
+		"wears a strange, faraway look, as if weighing something very large.",
+	},
+	["lowhp.w14.fade.077"] = {
+		"plants one foot, then the other, slowly, like someone laying foundation stones.",
+		"shifts {g:his|her} weight until the ground agrees to hold it.",
+	},
+	["lowhp.w14.fade.078"] = {
+		"hunches {g:his|her} shoulders, making {g:himself|herself} a smaller, harder thing to hit.",
+		"draws in tight, elbows close, giving the hurt as little room as possible.",
+	},
+	["lowhp.w14.fade.079"] = {
+		"turns {g:his|her} head too quickly and has to wait for the world to catch up.",
+		"moves, and the world lags half a step behind.",
+	},
+	["lowhp.w14.fade.080"] = {
+		"wipes {g:his|her} mouth with the back of a wrist and squares up once more.",
+		"drags a sleeve across {g:his|her} face and is ready, or close enough.",
+	},
+	["lowhp.w14.fade.081"] = {
+		"stops dead for half a moment, as if the body had to be talked into continuing.",
+		"freezes, briefly, then lurches back into motion like a stuck wheel coming free.",
+	},
+	["lowhp.w14.fade.082"] = {
+		"doesn't seem to hear the din for a moment; then it comes rushing back.",
+		"flinches as the noise of the fight returns all at once, like a door flung open.",
+	},
+	["lowhp.w14.fade.083"] = {
+		"touches a fingertip to the wound, the way one checks fresh paint, and winces.",
+		"probes the hurt with two fingers, briefly, and decides never to do that twice.",
+	},
+	["lowhp.w14.fade.084"] = {
+		"stands the way the hurt and the stubborn have always stood: badly, and upright.",
+		"holds on with the old, plain obstinacy of every mortal thing.",
+	},
+	["lowhp.w14.fade.085"] = {
+		"weaves a little on {g:his|her} feet, a slow drunken sway without any of the fun.",
+		"rocks back and forth like a pendulum running down.",
+	},
+	["lowhp.w14.fade.086"] = {
+		"closes {g:his|her} eyes for an instant, and opens them harder.",
+		"shuts {g:his|her} eyes, just briefly, and comes back from wherever that was.",
+	},
+	["lowhp.w14.fade.087"] = {
+		"Eyes open. Feet down. Hands up. Good.",
+		"Stay awake. Stay awake, thick head.",
+	},
+	["lowhp.w14.fade.088"] = {
+		"Ah. That's... not ideal.",
+		"Oh, that's bad. That's properly bad.",
+	},
+	["lowhp.w14.fade.089"] = {
+		"Think, think, think.",
+		"Don't panic. Don't panic. Fine, panic a little, but quietly.",
+	},
+	["lowhp.w14.fade.090"] = {
+		"Huh. So this is how close it gets.",
+		"Closer than I'd like. Much closer.",
+	},
+	["lowhp.w14.fade.091"] = {
+		"Back. Back. Make room. Then think.",
+		"Out of the thick of it. Now.",
+	},
+	["lowhp.w14.fade.092"] = {
+		"Legs, please. Just a little longer.",
+		"Hands, stop shaking. I need you.",
+	},
+	["lowhp.w14.fade.093"] = {
+		"Everything's spinning. I'd like to get off now, please.",
+		"I'd sit down, if sitting down weren't such a terrible idea.",
+	},
+	["lowhp.w14.fade.094"] = {
+		"Head up. Whatever's coming, see it come.",
+		"Eyes front. I want to see it, whatever it is.",
+	},
+	["lowhp.w14.fade.095"] = {
+		"This isn't how I pictured it. I'd like to keep picturing.",
+		"Too soon. Much too soon for this.",
+	},
+	["lowhp.w14.fade.096"] = {
+		"Getting thin over here. Anyone with a spare hand?",
+		"I'm fading. Someone keep an eye on me.",
+	},
+	["lowhp.w14.fade.097"] = {
+		"I can't see straight. Somebody tell me where to go.",
+		"Eyes are going. Call out where you are!",
+	},
+	["lowhp.w14.fade.098"] = {
+		"drifts back toward the others without quite deciding to.",
+		"ends up nearer the group than before, pulled by an instinct older than thought.",
+	},
+	["lowhp.w14.fade.099"] = {
+		"The others are close. That helps more than it should.",
+		"Someone near me is fighting too. Hold on to that.",
+	},
+	["lowhp.w14.fade.100"] = {
+		"I'm in a bad way. Don't wait for me to say it twice.",
+		"Low. Very low. If anyone's got something, now's the time.",
+	},
+	["lowhp.w14.fade.101"] = {
+		"Don't make them carry me. Stay up so they don't have to.",
+		"If I drop, someone has to stop and pick me up. Don't drop.",
+	},
+	["lowhp.w14.grit.001"] = {
+		"You'll have to knock me down properly. Half measures won't do it.",
+		"Knocked about, yes. Knocked flat, no. There's a gap between those, and I live in it.",
+		"It takes more than this to put me on the floor. Keep trying, I suppose.",
+	},
+	["lowhp.w14.grit.002"] = {
+		"Oh, good. Pain. I was starting to worry this would be easy.",
+		"Splendid. And just when I'd begun to relax.",
+		"Excellent. I was getting bored.",
+	},
+	["lowhp.w14.grit.003"] = {
+		"That's it. Now you've made it personal.",
+		"Fine. You wanted my full attention. You have it.",
+		"Every hit you land, I'm keeping. Every single one.",
+	},
+	["lowhp.w14.grit.004"] = {
+		"Knees, you do not bend. Hands, you do not open. That's the whole plan.",
+		"Feet stay put. Fists stay shut. The rest of me can complain all it likes.",
+	},
+	["lowhp.w14.grit.005"] = {
+		"If I die here, I'm haunting you. You've been warned.",
+		"Finish me and I'll make the most tiresome ghost you ever met.",
+		"Go on, kill me. I'll come back just to sigh at you for a hundred years.",
+	},
+	["lowhp.w14.grit.006"] = {
+		"Good. Make it hard. The hard part is the only part worth telling.",
+		"Make it hard, then. Nobody sings about the easy ones.",
+		"Good. I'd hate for this to be forgettable.",
+	},
+	["lowhp.w14.grit.007"] = {
+		"Luck, you and I haven't always got along. This would be a fine time to make up.",
+		"Luck, if you were saving yourself for something, this is the something.",
+		"Luck, I've never asked you for much. I'm asking now.",
+	},
+	["lowhp.w14.grit.008"] = {
+		"Hit me again. I dare you. See what it buys you.",
+		"Go on. Every blow just makes me harder to finish.",
+		"That all? I've more in reserve than you have in hand.",
+	},
+	["lowhp.w14.grit.009"] = {
+		"shakes {g:his|her} head hard, once, and turns back to the fight.",
+		"squares {g:his|her} shoulders, as if the hurt were an insult that needs answering.",
+	},
+	["lowhp.w14.grit.010"] = {
+		"Ow. Rude. Very rude.",
+		"That was uncalled for, and I'll be returning it with interest.",
+		"Hey! I was using that.",
+	},
+	["lowhp.w14.grit.011"] = {
+		"If I go down, I go down facing it. That much is still mine to choose.",
+		"Whatever comes next, it won't find my back turned.",
+		"Facing front. If it ends, it ends facing front.",
+	},
+	["lowhp.w14.grit.012"] = {
+		"That's your best? I've had splinters that argued harder.",
+		"Was that meant to end it? Then you've some practice ahead of you.",
+		"That's meant to frighten me? Try harder.",
+	},
+	["lowhp.w14.grit.013"] = {
+		"Good. Hurt is fuel, and I've just been handed plenty.",
+		"Anger, come up. I need you more than I need the calm right now.",
+		"Feed the anger. It's the one thing in me that isn't tired.",
+	},
+	["lowhp.w14.grit.014"] = {
+		"I want this written down somewhere: I did not agree to this part.",
+		"Noted, and filed under 'things I'll be paying back'.",
+	},
+	["lowhp.w14.grit.015"] = {
+		"I don't kneel. Not to pain, and certainly not to you.",
+		"Kneel? I've a stubborn pair of knees, and they both say no.",
+		"Kneeling is for those who've decided. I haven't.",
+	},
+	["lowhp.w14.grit.016"] = {
+		"Dying would be terribly inconvenient right now. I have things to do.",
+		"Death can make an appointment like everyone else. I'm busy.",
+		"I've no time to die. Ask again in some other year.",
+	},
+	["lowhp.w14.grit.017"] = {
+		"My turn. You had yours, and it wasn't enough.",
+		"Enough taking. Time to give some back.",
+		"My patience just ran out. Yours will follow.",
+	},
+	["lowhp.w14.grit.018"] = {
+		"glares at the wound with deep personal offense, then back at whatever caused it.",
+		"takes the hurt as a personal insult, and it shows in every line of {g:his|her} face.",
+	},
+	["lowhp.w14.grit.019"] = {
+		"If this is how it ends, it ends with me on my feet.",
+		"Whatever happens, I stay upright. That one thing I insist on.",
+	},
+	["lowhp.w14.grit.020"] = {
+		"I've a stubborn streak a mile wide, and you just walked into it.",
+		"Congratulations. You've found the stubborn part of me. It's most of me.",
+		"Stubborn is the only thing I'm rich in. Let's spend it.",
+	},
+	["lowhp.w14.grit.021"] = {
+		"Pain is a voice. Let it shout. I'm not obliged to listen.",
+		"Let it hurt. A hurt is not a verdict.",
+		"Pain is news, not orders. Read, and set aside.",
+	},
+	["lowhp.w14.grit.022"] = {
+		"Ha! Missed my vitals. Mostly. I think.",
+		"All the important bits are still here. Probably. Let's not check.",
+		"Nothing vital. Well, nothing too vital. Moving on.",
+	},
+	["lowhp.w14.grit.023"] = {
+		"Finish it, then. If you think you can.",
+		"Here I am. Still in the way. Do something about it.",
+		"I'm right here. What are you waiting for?",
+	},
+	["lowhp.w14.grit.024"] = {
+		"sets {g:his|her} feet wider, as though daring the ground itself to take {g:him|her}.",
+		"straightens slowly, and the slowness itself looks like a threat.",
+	},
+	["lowhp.w14.grit.025"] = {
+		"Remind me to be proud of this later. Assuming there's a later.",
+		"Someday I'll call this character-building. For now it just hurts.",
+		"This will make a fine story. If I'm the one telling it.",
+	},
+	["lowhp.w14.grit.026"] = {
+		"Mark this moment. This is where I stop giving ground.",
+		"From here, not one more step back. Not one.",
+		"This spot is mine. Come and take it, if you can.",
+	},
+	["lowhp.w14.grit.027"] = {
+		"I refuse to die. The paperwork alone would kill me.",
+		"Dying is off the table. I'd never live it down.",
+		"Death? Not on my schedule. Not even pencilled in.",
+	},
+	["lowhp.w14.grit.028"] = {
+		"Plenty of people have been hurt worse and kept going. I can be one of them.",
+		"Others have stood up from worse than this. Join them.",
+	},
+	["lowhp.w14.grit.029"] = {
+		"Good hit. Truly. I'll be sure to return the compliment.",
+		"Nicely done. Now watch me be very ungracious about it.",
+	},
+	["lowhp.w14.grit.030"] = {
+		"You want me down? Then you'll have to earn it. Every bit of it.",
+		"I'm going nowhere. You'll have to drag me, and I bite.",
+		"Down? Me? You'll need a lot more than that, and a lot more patience.",
+	},
+	["lowhp.w14.grit.031"] = {
+		"laughs once, short and harsh, at nothing anyone else can see.",
+		"grins, which is quite the wrong face to make at a moment like this.",
+	},
+	["lowhp.w14.grit.032"] = {
+		"Death's close enough to touch. I'll spend the time hitting back instead.",
+		"So it's close. Fine. Close isn't the same as here.",
+	},
+	["lowhp.w14.grit.033"] = {
+		"Hurt? Yes. Beaten? That's a different word, and nobody's said it.",
+		"Wounded is a long way from finished.",
+		"Battered, yes. Beaten is another matter.",
+	},
+	["lowhp.w14.grit.034"] = {
+		"That's going on the list. The long list. With you at the top.",
+		"Into the ledger with that one. You're running up quite a debt.",
+	},
+	["lowhp.w14.grit.035"] = {
+		"There it is. The anger. Took its time, but it's here now, and it's mine.",
+		"Something sharp and stubborn is waking up in me. Let's see what it does.",
+	},
+	["lowhp.w14.grit.036"] = {
+		"Nobody tells me when I'm done. Least of all you.",
+		"I decide when I've had enough. And I haven't.",
+		"My own say-so ends this. Not yours.",
+	},
+	["lowhp.w14.grit.037"] = {
+		"Ouch. That's one for the collection.",
+		"A fresh scar for the collection, then. Lucky me.",
+	},
+	["lowhp.w14.grit.038"] = {
+		"lets out a low, furious sound and does not give a single step back.",
+		"goes very still for a moment, and when {g:he|she} moves again, it is with intent.",
+	},
+	["lowhp.w14.grit.039"] = {
+		"If I'm to fall, I'll make it cost you dearly.",
+		"You'll take me, maybe. You won't take me cheap.",
+		"Have me if you can. The price is everything you've got.",
+	},
+	["lowhp.w14.grit.040"] = {
+		"I've had better moments. Staying alive is still an excellent idea, though.",
+		"On the bright side, this can't last long. One way or the other.",
+		"Things could be worse. I can't think how, but I'm sure they could.",
+	},
+	["lowhp.w14.grit.041"] = {
+		"Stay upright. That's the only order that matters now.",
+		"Upright. Whatever else happens, upright.",
+	},
+	["lowhp.w14.grit.042"] = {
+		"Try to kill me, then. I've been told I'm very bad at dying.",
+		"Dying takes a talent I simply don't have.",
+		"Kill me? With whose luck, exactly?",
+	},
+	["lowhp.w14.grit.043"] = {
+		"rolls {g:his|her} neck once, slowly, like someone about to start real work.",
+		"draws {g:himself|herself} up to full height, as if height alone could hold the line.",
+	},
+	["lowhp.w14.grit.044"] = {
+		"Push. And push. Leave the tally of hurts for afterwards.",
+		"The wounds can wait their turn. The fight can't.",
+		"Fight first. Hurt later. That's the order of things.",
+	},
+	["lowhp.w14.grit.045"] = {
+		"Ha. Is this the part where I'm supposed to give up? Skipping it.",
+		"Usually this is where people give up. I've never been good at usually.",
+	},
+	["lowhp.w14.grit.046"] = {
+		"You've woken the worst of my temper. Good luck with it.",
+		"Bad move. I fight better furious.",
+		"There goes my temper. Nobody's ever caught it.",
+	},
+	["lowhp.w14.grit.047"] = {
+		"Everyone falls someday. I'm only asking that it not be in this fight.",
+		"Someday, perhaps. This time doesn't get the honor.",
+	},
+	["lowhp.w14.grit.048"] = {
+		"Luck, I'll owe you. Name your price, just not right now.",
+		"Any spare luck lying about? I'm buying. I'll pay later.",
+		"Luck, put this one on my tab. I'm good for it. Mostly.",
+	},
+	["lowhp.w14.grit.049"] = {
+		"I am not finished. Not by a long road.",
+		"Done? I've only just started being serious about this.",
+	},
+	["lowhp.w14.grit.050"] = {
+		"tuts at the damage as if at a ruined shirt, and gets on with it.",
+		"gives the wound a look of pure disgust, then dismisses it entirely.",
+	},
+	["lowhp.w14.grit.051"] = {
+		"Death, if you're listening: wrong address. Try down the road.",
+		"Not in. Come back never.",
+		"Death, take a number. A large one.",
+	},
+	["lowhp.w14.grit.052"] = {
+		"Remember this. Whatever happens, remember I didn't back down.",
+		"Let it be said I didn't make it easy.",
+		"Tell it as it was: I didn't bend.",
+	},
+	["lowhp.w14.grit.053"] = {
+		"Stubbornness is a kind of strength too. Use it. There's plenty of that left.",
+		"When the strength runs thin, spite will do. Spite never runs out.",
+	},
+	["lowhp.w14.grit.054"] = {
+		"All right, that one landed. The next one's mine.",
+		"Fair hit. Good for you. Now duck.",
+	},
+	["lowhp.w14.grit.055"] = {
+		"I've no intention of being the one who stops.",
+		"Someone has to give up first here. It won't be me.",
+		"There's no stopping in me. Look all you like.",
+	},
+	["lowhp.w14.grit.056"] = {
+		"You know what I hate most? Being interrupted. And you keep doing it.",
+		"I was in the middle of something. Several somethings. Go away.",
+		"Can't a person get through a fight in peace?",
+	},
+	["lowhp.w14.grit.057"] = {
+		"A small, very sensible voice in me suggests running. I'm ignoring it. For now.",
+		"The sensible part of me has packed and left. The rest stays and argues.",
+	},
+	["lowhp.w14.grit.058"] = {
+		"Pride's fine, but staying alive is better. If there's a way out, take it.",
+		"Getting out is not losing. Getting out is choosing the next fight.",
+		"Stand or go, but choose it. Nothing gets to choose for me.",
+	},
+	["lowhp.w14.grit.059"] = {
+		"I mean to get out of this. Not for glory. Out of pure contrariness.",
+		"I mean to walk away from this on my own legs. Limping, if I must.",
+	},
+	["lowhp.w14.grit.060"] = {
+		"sways, catches {g:himself|herself}, and stays upright through what looks like pure obstinacy.",
+		"staggers, and turns the stagger into a step forward.",
+	},
+	["lowhp.w14.grit.061"] = {
+		"Good news: I can still feel my feet. Bad news: I can feel everything else, too.",
+		"Upside: still feeling things. Downside: all of them hurt.",
+		"I've still got all my fingers. That's the good news. That's all the news.",
+	},
+	["lowhp.w14.grit.062"] = {
+		"You'll regret every one of those. I promise you that.",
+		"That's the last free hit you get. The rest cost.",
+		"Keep count of those. I'm going to want them all back.",
+	},
+	["lowhp.w14.grit.063"] = {
+		"If I'm going, I want the last thing I do to be something rude.",
+		"Should this be the end, let the last of me be a no.",
+	},
+	["lowhp.w14.grit.064"] = {
+		"Let it be witnessed: I stood here, and I did not yield.",
+		"Whoever hears this: I gave no ground I could keep.",
+	},
+	["lowhp.w14.grit.065"] = {
+		"Stone does not hurry to break. Neither shall I.",
+		"Worn I may be, like any stone. Moved, I am not.",
+		"Roots hold when the trunk is struck. Hold, then.",
+	},
+	["lowhp.w14.grit.066"] = {
+		"Should I survive this, I'll be insufferable about it. Fair warning.",
+		"Live through this and I'll never stop talking about it. Motivation enough.",
+		"Get me through this and the story grows every time I tell it.",
+	},
+	["lowhp.w14.grit.067"] = {
+		"lets the pain show for one moment, and then turns it into a snarl.",
+		"bares {g:his|her} teeth, and it is not a smile.",
+	},
+	["lowhp.w14.grit.068"] = {
+		"Whatever you've got left, bring it. I've got more.",
+		"Empty yourself out, then. I'll still have something left.",
+		"You'll tire long before I quit.",
+	},
+	["lowhp.w14.grit.069"] = {
+		"Here's where it's decided what I'm made of. Let it be something hard.",
+		"Whatever I'm made of, this is where it shows. Let it be iron.",
+	},
+	["lowhp.w14.grit.070"] = {
+		"Of course. Of course it's now. Why wouldn't it be now.",
+		"Perfect timing, as usual. Brilliant.",
+		"Naturally. When else would it be.",
+	},
+	["lowhp.w14.grit.071"] = {
+		"You've hurt me. You haven't stopped me. Those are different things.",
+		"Hurt and stopped aren't the same word. Look it up.",
+	},
+	["lowhp.w14.grit.072"] = {
+		"Stop looking at how much is gone. Look at how much is left, and spend it well.",
+		"What's left is what I've got. It'll have to be enough. It will be.",
+	},
+	["lowhp.w14.grit.073"] = {
+		"Death keeps trying to introduce itself. I keep not shaking hands.",
+		"No, thank you, death. I'm just looking.",
+		"Death came calling. I'm pretending I'm not home.",
+	},
+	["lowhp.w14.grit.074"] = {
+		"This is where it gets good. Watch.",
+		"Pay attention now. This next part, I do well.",
+		"Now you'll see what I'm like when it matters.",
+	},
+	["lowhp.w14.grit.075"] = {
+		"says something unrepeatable through clenched teeth and keeps right on going.",
+		"rolls {g:his|her} eyes at the size of the hurt, as one might at a bad joke.",
+	},
+	["lowhp.w14.grit.076"] = {
+		"Every part of me says stop. Every part of me can be outvoted.",
+		"My body's begging for a rest. Request denied.",
+		"Legs, I know. Hush. A little more.",
+	},
+	["lowhp.w14.grit.077"] = {
+		"In hindsight, this was perhaps not my finest idea. Still, it's mine, and I'm keeping it.",
+		"Somewhere a wiser version of me is shaking its head. Ignore it.",
+	},
+	["lowhp.w14.grit.078"] = {
+		"Enough! Enough of this!",
+		"No more of this. My turn to set the pace.",
+		"That's enough out of you!",
+	},
+	["lowhp.w14.grit.079"] = {
+		"Pain, you're a terrible guest. You never knock and you never leave.",
+		"Hello, pain. Sit down. Don't get comfortable.",
+		"Oh, it's you, pain. Make yourself useful or go.",
+	},
+	["lowhp.w14.grit.080"] = {
+		"Get angry later. Get clever now. Then get angry.",
+		"Fury's good. Fury with a plan is better.",
+	},
+	["lowhp.w14.grit.081"] = {
+		"I'll not beg. Not you, not luck, not anyone.",
+		"No pleading. Whatever comes, it comes to someone standing straight.",
+		"Mercy? I'll not ask. Keep it.",
+	},
+	["lowhp.w14.grit.082"] = {
+		"presses on, each movement smaller and harder than the one before, but each one made.",
+		"closes {g:his|her} hands into fists so tight they shake, and does not let go.",
+	},
+	["lowhp.w14.grit.083"] = {
+		"On the list of bad ideas, hitting me twice is near the top.",
+		"You've just met someone with a very long memory.",
+		"That one I'll remember. In detail. At length.",
+	},
+	["lowhp.w14.grit.084"] = {
+		"I swear it on my own two hands: they keep fighting.",
+		"On whatever I hold dear: I don't stop here.",
+		"By every hurt I carry: I am not done.",
+	},
+	["lowhp.w14.grit.085"] = {
+		"Of all the ways to go, this one isn't even interesting. Refuse it on principle.",
+		"If I'm to die, I'd like a better story than this. So, no.",
+	},
+	["lowhp.w14.grit.086"] = {
+		"Something in me just went hard and quiet. You won't like it.",
+		"I've stopped being afraid. There's only anger now. Much worse for you.",
+	},
+	["lowhp.w14.grit.087"] = {
+		"Ow! What did I ever do to you? Besides that. And that.",
+		"Yes, yes, I felt that. No need to show off.",
+		"Ow! I'm going to be very cross about that in a moment.",
+	},
+	["lowhp.w14.grit.088"] = {
+		"Staying up is a habit. Keep the habit.",
+		"Stay in it. Whatever happens next happens to someone who stayed.",
+	},
+	["lowhp.w14.grit.089"] = {
+		"Oh, I'm going to enjoy the rest of this.",
+		"Now it's interesting. Now I'm awake.",
+		"Ah. Here's where I start enjoying myself.",
+	},
+	["lowhp.w14.grit.090"] = {
+		"refuses to look at the wound at all, as if it belonged to somebody else.",
+		"keeps {g:his|her} eyes up, never down at the damage.",
+	},
+	["lowhp.w14.grit.091"] = {
+		"Doing great. Never better. Ignore the swaying.",
+		"Perfectly fine. That stagger was on purpose.",
+		"I'm completely fine. Some of me is just less fine than the rest.",
+	},
+	["lowhp.w14.grit.092"] = {
+		"I'm hurt. I'm furious. And I'm still in your way.",
+		"What's left of me is small, mean and stubborn. Enjoy.",
+	},
+	["lowhp.w14.grit.093"] = {
+		"A quiet part of me is very calm about all this. I'm letting the loud part drive.",
+		"Some part of me is already making peace. The rest tells it to shut up.",
+	},
+	["lowhp.w14.grit.094"] = {
+		"If you're trying to impress me, it's working. Stop.",
+		"Very impressive. Truly. Please never do that a second time.",
+		"You've made your point. Loudly. Now I'll make mine.",
+	},
+	["lowhp.w14.grit.095"] = {
+		"Iron bends before it breaks, and I've not finished bending.",
+		"What will not bend can still be broken. So bend, and stay whole.",
+	},
+	["lowhp.w14.grit.096"] = {
+		"shakes out one hand as if the hurt were water to be flicked off, then closes it again.",
+		"makes a small, annoyed sound, like someone interrupted mid-sentence.",
+	},
+	["lowhp.w14.grit.097"] = {
+		"I'm low! Somebody mend me, I'll handle the rest!",
+		"Need a hand here! I'm not done, just badly dented!",
+	},
+	["lowhp.w14.grit.098"] = {
+		"Anyone feel like saving me? No pressure. Some pressure. Quite a lot, actually.",
+		"Friends! Remember how fond you are of me? Now's the time!",
+	},
+	["lowhp.w14.grit.099"] = {
+		"Hold your ground! I'm hurt, not out!",
+		"Keep at it! Don't mind me, I'm too stubborn to drop!",
+		"Don't you dare stop for me! Finish it!",
+	},
+	["lowhp.w14.grit.100"] = {
+		"Cover me a moment! I need to pull myself together!",
+		"Buy me a moment, someone! Just one!",
+	},
+	["lowhp.w14.grit.101"] = {
+		"If anyone's got a trick up their sleeve, I'm accepting gifts!",
+		"Help gladly accepted! Applause later!",
+	},
+	["lowhp.w14.grit.102"] = {
+		"calls out over the noise, one sharp word, and keeps fighting without waiting for an answer.",
+		"glances toward {g:his|her} companions, then back to the fight, jaw set.",
+	},
 }, "base_combat")

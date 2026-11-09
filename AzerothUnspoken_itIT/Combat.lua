@@ -7823,4 +7823,923 @@ NS:AddTexts("itIT", {
 		"considera l'intera faccenda con la faccia di chi assaggia una minestra riuscita male.",
 		"contempla la scena con la pazienza di chi si lamenterà dopo.",
 	},
+	["lowhp.w14.fade.001"] = {
+		"Oltre la portata del braccio è tutto sfocato. Basterà quella portata.",
+		"I contorni si sfaldano. Quello che ho davanti resta nitido. Tienilo lì.",
+		"Oltre il braccio il mondo è una macchia. Qui dentro posso ancora lavorare.",
+	},
+	["lowhp.w14.fade.002"] = {
+		"Il rumore dello scontro si è spostato altrove. No. Non lui. Io.",
+		"I suoni arrivano in ritardo, come notizie da molto lontano. Ascolta comunque.",
+		"Ovattato. È tutto ovattato. Ascolta meglio.",
+	},
+	["lowhp.w14.fade.003"] = {
+		"La paura può stare nell'angolo. Non ha diritto di voto.",
+		"Ho paura. Registrato. Adesso dai alle mani qualcosa di utile da fare.",
+		"Che urli pure, la paura. Le redini le tengo io.",
+	},
+	["lowhp.w14.fade.004"] = {
+		"Cosa resta: due gambe, due mani, una testa. Usa prima la testa.",
+		"Inventario. Le gambe vanno. Le mani vanno. Gli occhi, quasi. Abbastanza per scegliere.",
+		"Cosa risponde ancora? I piedi, sì. La presa, sì. La testa, più o meno. Vai.",
+	},
+	["lowhp.w14.fade.005"] = {
+		"Prima l'appoggio. Una caduta, adesso, costa più di qualsiasi colpo.",
+		"Guarda dove metti i piedi. Non inciampare in una sciocchezza proprio adesso.",
+		"I piedi sotto di me. Tutto il resto viene dopo.",
+	},
+	["lowhp.w14.fade.006"] = {
+		"Ecco com'è, il ciglio. Niente trombe, niente voci. Solo una gran stanchezza.",
+		"Morire, se è questo, somiglia molto a una grande stanchezza. E con la stanchezza so come fare.",
+		"È questo, l'orlo? Solo una stanchezza lunga e pesante?",
+	},
+	["lowhp.w14.fade.007"] = {
+		"Ho una fibbia allentata sull'equipaggiamento. Tra tutte le cose da notare, proprio adesso.",
+		"Ho qualcosa in un occhio, per giunta. Adesso. Ovvio che sia adesso.",
+		"Mi prude il naso. Splendido. Mi mancava giusto questo problema.",
+	},
+	["lowhp.w14.fade.008"] = {
+		"Lo scontro si è fatto piccolissimo: questo pezzo di terra, questo istante, la prossima mossa.",
+		"Oltre la prossima mossa non esiste niente. Bene. Meno cose da sbagliare.",
+		"Il mondo intero adesso è largo tre passi. Bada a quei tre passi.",
+	},
+	["lowhp.w14.fade.009"] = {
+		"Strano quanto diventi tutto chiaro. Ogni scelta in fila, come attrezzi su un banco.",
+		"Lucidità improvvisa. Il pericolo fa questo. Usala prima che svanisca.",
+		"Lo spavento mi ha sgombrato la testa. Bene. C'è spazio per pensare.",
+	},
+	["lowhp.w14.fade.010"] = {
+		"Mi tremano le mani. Che tremino. Possono tremare e fare il loro lavoro lo stesso.",
+		"Mani che tremano. Non importa. Anche una mano che trema si chiude.",
+	},
+	["lowhp.w14.fade.011"] = {
+		"Il panico vuole farmi scappare in una direzione qualsiasi. Se scappo, almeno scegline una.",
+		"Se me ne vado, vado verso qualcosa. Non soltanto via.",
+	},
+	["lowhp.w14.fade.012"] = {
+		"Ogni strada ha il suo ultimo miglio. Mi piace pensare che non sia questo.",
+		"Prima o poi si arriva tutti alla stessa porta. Io non ho fretta di bussare.",
+		"Quella porta si apre per ogni mortale. Per me può restare chiusa ancora a lungo.",
+	},
+	["lowhp.w14.fade.013"] = {
+		"Le gambe hanno smesso di chiedermi il parere. Chiediglielo con gentilezza.",
+		"Ginocchia, ascoltate. Non adesso. Dopo potrete piegarvi quanto vi pare.",
+		"I piedi hanno idee tutte loro sul restare fermi. Non dargli retta.",
+	},
+	["lowhp.w14.fade.014"] = {
+		"Un fischio sottile e acuto, e tutto il resto dietro. Guarda, allora. Gli occhi funzionano.",
+		"Oltre il fischio sento poco. Va bene. Usa gli occhi.",
+		"Ho le orecchie piene di un sibilo lungo e sottile. Che sibili. Continua a guardare.",
+	},
+	["lowhp.w14.fade.015"] = {
+		"Troppi pensieri. Buttali via tutti tranne uno. Quello utile.",
+		"Un pensiero chiaro. Uno solo. Trovalo e tienilo stretto.",
+		"Silenzio, tutti quanti. Devo sentire l'unico pensiero che conta.",
+	},
+	["lowhp.w14.fade.016"] = {
+		"Tutto si è rallentato. O sono io ad accelerare. In ogni caso, c'è tempo per pensare.",
+		"Il tempo si è fatto denso come miele. Sfrutta l'istante in più.",
+		"Ogni istante si allunga. Strano regalo. Prendilo.",
+	},
+	["lowhp.w14.fade.017"] = {
+		"C'è chi vorrebbe sapere come è finita. Dagli un finale migliore da ascoltare.",
+		"Qualcuno, lontano, aspetta il mio ritorno. Vale un altro sforzo.",
+		"C'è chi sentirebbe la mia mancanza. Strano pensarci adesso. Però aiuta.",
+	},
+	["lowhp.w14.fade.018"] = {
+		"C'è una vocina che dice di sdraiarmi. È molto convincente. E ha torto.",
+		"Una parte di me vuole fermarsi. Quella parte non tiene il timone.",
+		"Qualcosa, dentro, sussurra che fermarsi va bene. Non va bene.",
+	},
+	["lowhp.w14.fade.019"] = {
+		"Salute: pochissima. Possibilità: qualcuna. Dignità: andata da un pezzo. Procedi.",
+		"Rapporto: male. Rapporto successivo: ancora in grado di fare rapporti.",
+		"Valutazione: allarmante. Seconda valutazione: sto ancora valutando, quindi non è finita.",
+	},
+	["lowhp.w14.fade.020"] = {
+		"Potrei morire qui. Ecco, l'ho detto. Adesso fa meno paura.",
+		"La morte è abbastanza vicina da chiamarla per nome. Nominarla non la avvicina.",
+		"Potrebbe finire qui. D'accordo. Tolto questo di mezzo, lavora.",
+	},
+	["lowhp.w14.fade.021"] = {
+		"Tutto quello che sono si è ridotto ai prossimi istanti. Spendili bene.",
+		"Quello che mi resta sta tutto in due mani. Usale entrambe.",
+		"Tutto di me, ridotto a una manciata di istanti. Non sprecarne nemmeno uno.",
+	},
+	["lowhp.w14.fade.022"] = {
+		"Dov'è lo spazio per muovermi? Dove posso ripararmi? Guarda, in fretta.",
+		"Varchi. Uscite. Qualsiasi cosa che non sia davanti. Guarda.",
+		"Trova il lato scoperto. Un lato scoperto c'è sempre.",
+	},
+	["lowhp.w14.fade.023"] = {
+		"Il terreno continua a inclinarsi. Non è vero. Sono io. Fai da contrappeso.",
+		"Pende tutto a sinistra. E allora pendi a destra.",
+	},
+	["lowhp.w14.fade.024"] = {
+		"Ho paura. Bene. Chi ha paura sta attento.",
+		"Paura? Eccola. Che mi affili, invece di svuotarmi.",
+		"Questo spavento serve a qualcosa. Mi tiene all'erta. Lascialo fare.",
+	},
+	["lowhp.w14.fade.025"] = {
+		"Le braccia pesano il doppio. Alzale comunque.",
+		"È tutto pesante. Mani, testa, palpebre. Porta il peso ancora un po'.",
+		"Piombo nelle braccia, polvere negli occhi. Muoviti lo stesso.",
+	},
+	["lowhp.w14.fade.026"] = {
+		"Nessuno scrive canzoni su questa parte. Quella in cui fa male e basta.",
+		"Nei racconti, a questo punto, qualcuno dice una bella frase. Io non ne ho. Ho solo testardaggine.",
+	},
+	["lowhp.w14.fade.027"] = {
+		"Distanza. Prendi un po' di distanza, poi pensa.",
+		"Esci dalla portata. A qualche passo di distanza è tutto più facile.",
+		"Tutto è troppo vicino. Qualche passo indietro, poi decidi.",
+	},
+	["lowhp.w14.fade.028"] = {
+		"Sento i miei denti che stridono. Non sapevo lo facessero.",
+		"Buffo, cosa si nota. C'è un graffio sulla manica che non avevo mai notato.",
+		"C'è un bottone per terra. Perché sto guardando un bottone?",
+	},
+	["lowhp.w14.fade.029"] = {
+		"Non contare le ferite. A contarle fanno più rumore.",
+		"Sappi quanto è grave. Poi dimentica quanto è grave.",
+		"Non abbassare lo sguardo sulla ferita. Sarà ancora lì dopo. Guarda avanti.",
+	},
+	["lowhp.w14.fade.030"] = {
+		"Sono alla feccia. Anche la feccia serve.",
+		"Nella coppa è rimasto poco. Bevi quello che c'è.",
+		"Sto raschiando il fondo della pentola. Un cucchiaio ci scappa ancora.",
+	},
+	["lowhp.w14.fade.031"] = {
+		"Quanto si diventa piccoli, sull'orlo. Abbastanza da sgusciare via, forse.",
+		"Adesso sono una cosa piccola. Le cose piccole sono difficili da afferrare.",
+	},
+	["lowhp.w14.fade.032"] = {
+		"Con calma. Ce la puoi fare. O almeno in parte. Una parte è già molto.",
+		"Con dolcezza, e in fretta. Si possono fare tutte e due le cose.",
+		"Va bene avere paura. Ma abbi paura in fretta.",
+	},
+	["lowhp.w14.fade.033"] = {
+		"I colori si sono fatti sottili, come stoffa vecchia. Strizza gli occhi. Avanti.",
+		"Sembra tutto sbiadito. Gli occhi si arrendono prima di me.",
+		"Il grigio si insinua dappertutto. Occhi, restate con me.",
+	},
+	["lowhp.w14.fade.034"] = {
+		"Prima sopravvivere. Vincere, se si può. Fare bella figura, mai.",
+		"Restare in vita. Tutto il piano è questo. Ed è un buon piano.",
+		"Il piano, per intero: non morire. Dettagli a seguire.",
+	},
+	["lowhp.w14.fade.035"] = {
+		"Ogni vita è una piccola fiamma. La mia vacilla. Vacillare non è spegnersi.",
+		"Una fiamma bassa sullo stoppino brucia ancora. Bada allo stoppino.",
+	},
+	["lowhp.w14.fade.036"] = {
+		"Dormire sembra meraviglioso. Adesso il sonno è un bugiardo.",
+		"Una grande stanchezza morbida, che si offre di pensarci lei. No, grazie.",
+		"Sdraiati, dice tutto il corpo. Tutto il corpo sbaglia.",
+	},
+	["lowhp.w14.fade.037"] = {
+		"Ho lo stomaco sottosopra. Il resto di me no. Fai guidare il resto.",
+		"Vuoto, dentro. Non importa. Anche le cose vuote stanno su.",
+		"Dentro sono gelatina. Fuori posso ancora lavorare.",
+	},
+	["lowhp.w14.fade.038"] = {
+		"Ci sono cose mai dette a persone che non nomino. Dopo. Prima sopravvivi.",
+		"Buffo, quali volti tornano in mente. Mettili via. Guarda cosa hai davanti.",
+	},
+	["lowhp.w14.fade.039"] = {
+		"Scambia terreno con tempo. Il terreno costa poco. Il tempo no.",
+		"Cedi un passo, guadagni un istante. Buon affare.",
+		"Ogni passo indietro compra un istante. Usali con giudizio.",
+	},
+	["lowhp.w14.fade.040"] = {
+		"Tieni insieme i pezzi ancora un poco. Poi potrai crollare come si deve.",
+		"Non andare in pezzi adesso. Dopo, in privato, quanto vuoi.",
+		"Crollerai dopo. Ci sarà tempo. Non adesso.",
+	},
+	["lowhp.w14.fade.041"] = {
+		"Sarebbe un modo così ordinario di andarsene. Già questo basta per non farlo.",
+		"Un finale troppo semplice. Ne vorrei uno migliore, molto più in là.",
+		"Che finale noioso sarebbe. Rifiutalo anche solo per buon gusto.",
+	},
+	["lowhp.w14.fade.042"] = {
+		"Come guardare dal buco della serratura. Scegli tra quello che ci passa.",
+		"La vista si è fatta stretta come una feritoia. Quello che serve ci sta ancora dentro.",
+	},
+	["lowhp.w14.fade.043"] = {
+		"Il terrore, a quanto pare, compila elenchi chiarissimi. Primo punto: muoviti.",
+		"La paura è una pessima amica e un'ottima scrivana. Ogni pericolo, in bell'ordine.",
+		"Lo spavento è un ottimo sergente. Urla, ma dà sempre l'ordine giusto.",
+	},
+	["lowhp.w14.fade.044"] = {
+		"Resisti un istante. E poi quello dopo. Resistere non è altro.",
+		"Tieni un poco. Poi un altro poco. Mettili in pila.",
+		"Reggi questo istante. Il prossimo chiederà la stessa cosa. Rispondi anche a lui.",
+	},
+	["lowhp.w14.fade.045"] = {
+		"Ormai fa male tutto all'unisono. Un coro si ignora meglio di un solista.",
+		"Il dolore si è sparso dappertutto. Almeno non indica un punto preciso.",
+		"Dolore ovunque, tanto forte da diventare un ronzio. Lavora sopra il ronzio.",
+	},
+	["lowhp.w14.fade.046"] = {
+		"Non ho finito di essere me. C'è ancora parecchio da fare.",
+		"Ho ancora troppa vita davanti. Non è una sensazione. È un programma.",
+	},
+	["lowhp.w14.fade.047"] = {
+		"Quel tuffo allo stomaco. È lì che si è fatto sul serio. Comportati di conseguenza.",
+		"Ah. Ecco che arriva la paura vera. Ringraziala, e lavora.",
+		"Eccolo, il momento in cui tutto si fa vero. Bene. Col vero si può lavorare.",
+	},
+	["lowhp.w14.fade.048"] = {
+		"Lascia perdere lo scontro intero. Qual è la prossima cosa? Fai quella.",
+		"La prossima mossa. Solo quella. Il resto può fare la fila.",
+		"In piccolo. Pensa in piccolo. Un compito, finito, poi quello dopo.",
+	},
+	["lowhp.w14.fade.049"] = {
+		"La terra aspetta tutti, paziente come la pietra. Per me può aspettare ancora un po'.",
+		"Alla fine la terra si riprende ogni cosa. Non c'è bisogno che si affretti.",
+		"La terra è molto paziente. Le chiederò di esserlo ancora un po'.",
+	},
+	["lowhp.w14.fade.050"] = {
+		"Ecco com'è una brutta ferita vista da dentro. Molto istruttivo.",
+		"Lezione imparata: fa male. Seconda lezione in arrivo.",
+		"Trovato il limite. È qui. Interessante. Fai un passo indietro.",
+	},
+	["lowhp.w14.fade.051"] = {
+		"I pensieri arrivano lenti, uno per uno, come ritardatari. Aspetta quello giusto.",
+		"Ho la testa piena di lana. Tira un filo. Seguilo.",
+		"Penso come chi cammina nel fango. Va bene. Nel fango si cammina.",
+	},
+	["lowhp.w14.fade.052"] = {
+		"ondeggia sul posto, poi si riprende appoggiandosi al nulla.",
+		"si inclina di lato come un carro caricato male, e si raddrizza con uno strattone.",
+	},
+	["lowhp.w14.fade.053"] = {
+		"strizza gli occhi, come se lo scontro si fosse spostato d'un tratto molto lontano.",
+		"socchiude gli occhi contro un velo che vede solo {g:lui|lei}.",
+		"scruta avanti come attraverso un vetro affumicato.",
+	},
+	["lowhp.w14.fade.054"] = {
+		"si guarda le mani per un istante, come per controllare che ci siano ancora.",
+		"muove le dita una per una, contandole.",
+		"apre e chiude un pugno, adagio, per vedere se risponde ancora.",
+	},
+	["lowhp.w14.fade.055"] = {
+		"sente le ginocchia cedere, e le blocca a forza di testardaggine.",
+		"si piega sulle ginocchia, e in qualche modo la piega si ferma a metà.",
+	},
+	["lowhp.w14.fade.056"] = {
+		"scuote forte la testa, come chi cerca di svegliarsi da un brutto sogno.",
+		"dà una scrollata secca alla testa, e il mondo torna al suo posto, un po' storto.",
+		"alza di scatto la testa, come se qualcuno avesse fatto il suo nome.",
+	},
+	["lowhp.w14.fade.057"] = {
+		"piega la testa, come se i rumori dello scontro fossero finiti dietro una porta.",
+		"sembra sentire il frastuono in ritardo, come se venisse da un'altra stanza.",
+	},
+	["lowhp.w14.fade.058"] = {
+		"barcolla due passi, tre, e al quarto ritrova il terreno.",
+		"vacilla, braccia larghe in cerca d'equilibrio, e lo trova all'ultimo istante.",
+		"sbanda, ondeggia, e in qualche modo il passo dopo cade giusto.",
+	},
+	["lowhp.w14.fade.059"] = {
+		"serra la mascella e smette di guardare il danno.",
+		"fa una smorfia, una sola, poi la cancella come polvere.",
+		"stringe le labbra e mette il dolore da qualche parte, lontano dagli occhi.",
+	},
+	["lowhp.w14.fade.060"] = {
+		"fissa un punto finché il mondo smette di nuotarci intorno.",
+		"pianta lo sguardo su un punto e aspetta che tutto il resto smetta di scivolare.",
+	},
+	["lowhp.w14.fade.061"] = {
+		"lancia occhiate rapide a sinistra, a destra e alle spalle, misurando le vie d'uscita.",
+		"getta un rapido sguardo alle spalle, contando lo spazio che resta da cedere.",
+	},
+	["lowhp.w14.fade.062"] = {
+		"si stringe un braccio sul ventre e va avanti, un po' {g:curvo|curva}.",
+		"si muove curvandosi attorno alla ferita, come si ripara una candela.",
+	},
+	["lowhp.w14.fade.063"] = {
+		"si raddrizza poco a poco, come chi solleva un peso enorme. In un certo senso, è proprio così.",
+		"si tira su lentamente, come si apre un cancello arrugginito.",
+		"si raddrizza con fatica evidente, e non si piega più.",
+	},
+	["lowhp.w14.fade.064"] = {
+		"deglutisce a fatica e tiene gli occhi sullo scontro.",
+		"manda giù qualcosa di amaro e non distoglie lo sguardo.",
+		"ha un unico brivido secco, poi resta immobile.",
+	},
+	["lowhp.w14.fade.065"] = {
+		"si fa immobile in volto, come chi si rifiuta di mostrare paura.",
+		"sfoggia un'espressione di gran calma che non inganna nessuno, men che meno {g:sé stesso|sé stessa}.",
+	},
+	["lowhp.w14.fade.066"] = {
+		"cerca di fermare con l'altra una mano che trema, e tremano insieme.",
+		"osserva le proprie mani tremare con una sorta di distaccato interesse.",
+		"alza una mano che trema, la osserva, e la chiude a pugno.",
+	},
+	["lowhp.w14.fade.067"] = {
+		"inciampa nel nulla, si riprende e finge che fosse un passo.",
+		"incespica, e trasforma l'inciampo in un passo di lato, con più fortuna che grazia.",
+	},
+	["lowhp.w14.fade.068"] = {
+		"si affloscia, poi si rifiuta di afflosciarsi oltre, come se avesse tracciato una linea.",
+		"cede di colpo come una corda allentata, poi torna a tendersi.",
+	},
+	["lowhp.w14.fade.069"] = {
+		"si muove più adagio, ogni gesto pesato prima di spenderlo.",
+		"spende ogni movimento con cura, come le ultime monete della borsa.",
+		"non spreca più un solo movimento: ogni passo scelto come le parole di una lettera breve.",
+	},
+	["lowhp.w14.fade.070"] = {
+		"fissa per un attimo il vuoto; poi gli occhi ritrovano il bersaglio.",
+		"perde la messa a fuoco per un istante, e la riacciuffa.",
+	},
+	["lowhp.w14.fade.071"] = {
+		"si abbassa sulle gambe piegate, come un sasso che decide di non rotolare.",
+		"scende più in basso, ma non tocca terra: {g:trattenuto|trattenuta} da pura ostinazione.",
+	},
+	["lowhp.w14.fade.072"] = {
+		"mormora qualcosa troppo piano per sentirlo, forse un conto, forse un nome.",
+		"muove le labbra in silenzio, come contando qualcosa.",
+	},
+	["lowhp.w14.fade.073"] = {
+		"ha per un attimo l'aria offesa da quanto fa male.",
+		"rivolge al danno uno sguardo di blando rimprovero, come a un ospite non invitato.",
+	},
+	["lowhp.w14.fade.074"] = {
+		"allunga una mano verso un appoggio che non c'è, e ne fa a meno.",
+		"cerca qualcosa a cui appoggiarsi, trova solo aria, e sta su comunque.",
+	},
+	["lowhp.w14.fade.075"] = {
+		"si passa il dorso della mano sugli occhi e torna a guardare.",
+		"si strofina gli occhi con una nocca, con l'impazienza di chi è stato tradito dai propri occhi.",
+		"chiude forte gli occhi e li riapre, come per strizzarli puliti.",
+	},
+	["lowhp.w14.fade.076"] = {
+		"sembra per un istante ascoltare qualcosa che nessun altro sente.",
+		"cade in un silenzio che con la calma non ha niente a che fare.",
+		"ha uno sguardo strano e lontano, come chi soppesa qualcosa di molto grande.",
+	},
+	["lowhp.w14.fade.077"] = {
+		"pianta un piede, poi l'altro, piano, come chi posa pietre di fondazione.",
+		"sposta il peso finché il terreno accetta di reggerlo.",
+	},
+	["lowhp.w14.fade.078"] = {
+		"stringe le spalle, facendosi un bersaglio più piccolo e più duro.",
+		"si raccoglie, gomiti stretti ai fianchi, lasciando al dolore meno spazio possibile.",
+	},
+	["lowhp.w14.fade.079"] = {
+		"gira la testa troppo in fretta e deve aspettare che il mondo le stia dietro.",
+		"si muove, e il mondo resta indietro di mezzo passo.",
+	},
+	["lowhp.w14.fade.080"] = {
+		"si pulisce la bocca col dorso del polso e torna a mettersi in posizione.",
+		"si passa una manica sul viso ed è {g:pronto|pronta}, o quasi.",
+	},
+	["lowhp.w14.fade.081"] = {
+		"si blocca per mezzo istante, come se il corpo andasse convinto a continuare.",
+		"si irrigidisce, un attimo, poi riparte come una ruota incastrata che si libera.",
+	},
+	["lowhp.w14.fade.082"] = {
+		"per un istante sembra non sentire il frastuono; poi torna tutto d'un colpo.",
+		"trasale quando il rumore dello scontro torna tutto insieme, come una porta spalancata.",
+	},
+	["lowhp.w14.fade.083"] = {
+		"sfiora la ferita con un polpastrello, come si controlla una vernice fresca, e fa una smorfia.",
+		"tasta il punto dolente con due dita, un attimo, e decide di non farlo più.",
+	},
+	["lowhp.w14.fade.084"] = {
+		"sta come da sempre stanno i feriti e i testardi: male, ma dritti.",
+		"tiene duro con l'ostinazione antica e semplice di ogni cosa mortale.",
+	},
+	["lowhp.w14.fade.085"] = {
+		"ondeggia un poco sulle gambe, un lento barcollare da ubriaco, ma senza il piacere del vino.",
+		"oscilla avanti e indietro, come un pendolo che si scarica.",
+	},
+	["lowhp.w14.fade.086"] = {
+		"chiude gli occhi per un istante, e li riapre più duri.",
+		"serra gli occhi, solo per un attimo, e torna indietro da chissà dove.",
+	},
+	["lowhp.w14.fade.087"] = {
+		"Occhi aperti. Piedi giù. Mani su. Bene.",
+		"Resta {g:sveglio|sveglia}. Resta {g:sveglio|sveglia}, testa dura.",
+	},
+	["lowhp.w14.fade.088"] = {
+		"Ah. Questo... non è l'ideale.",
+		"Oh, questo è grave. Grave sul serio.",
+	},
+	["lowhp.w14.fade.089"] = {
+		"Pensa, pensa, pensa.",
+		"Niente panico. Niente panico. Va bene, un po' di panico, ma in silenzio.",
+	},
+	["lowhp.w14.fade.090"] = {
+		"Uh. Ecco quanto si arriva vicino.",
+		"Più vicino di quanto vorrei. Molto più vicino.",
+	},
+	["lowhp.w14.fade.091"] = {
+		"Indietro. Indietro. Fatti spazio. Poi pensa.",
+		"Fuori dalla mischia. Subito.",
+	},
+	["lowhp.w14.fade.092"] = {
+		"Gambe, vi prego. Ancora un poco.",
+		"Mani, smettete di tremare. Mi servite.",
+	},
+	["lowhp.w14.fade.093"] = {
+		"Gira tutto. Vorrei scendere, grazie.",
+		"Mi siederei, se sedersi non fosse un'idea pessima.",
+	},
+	["lowhp.w14.fade.094"] = {
+		"Testa alta. Qualunque cosa arrivi, guardala arrivare.",
+		"Occhi avanti. Voglio vederla, qualunque cosa sia.",
+	},
+	["lowhp.w14.fade.095"] = {
+		"Non me lo immaginavo così. Vorrei continuare a immaginarlo.",
+		"Troppo presto. Davvero troppo presto per questo.",
+	},
+	["lowhp.w14.fade.096"] = {
+		"Qui mi sto assottigliando. Qualcuno ha una mano libera?",
+		"Sto cedendo. Qualcuno mi tenga d'occhio.",
+	},
+	["lowhp.w14.fade.097"] = {
+		"Non vedo bene. Qualcuno mi dica dove andare.",
+		"La vista se ne va. Ditemi dove siete!",
+	},
+	["lowhp.w14.fade.098"] = {
+		"scivola verso gli altri senza averlo davvero deciso.",
+		"finisce più accosto al gruppo, come per un istinto più vecchio del pensiero.",
+	},
+	["lowhp.w14.fade.099"] = {
+		"Gli altri sono vicini. Aiuta più di quanto dovrebbe.",
+		"Qui vicino c'è chi combatte con me. Aggrappati a questo.",
+	},
+	["lowhp.w14.fade.100"] = {
+		"Mi resta poco. Non aspettate che lo ripeta.",
+		"Poco. Pochissimo. Se qualcuno ha qualcosa, è il momento.",
+	},
+	["lowhp.w14.fade.101"] = {
+		"Non costringerli a portarmi a braccia. Resta su, così non serve.",
+		"Se cado, qualcuno deve fermarsi a raccogliermi. Non cadere.",
+	},
+	["lowhp.w14.grit.001"] = {
+		"Dovrai buttarmi giù sul serio. Le mezze misure non bastano.",
+		"Ammaccature sì. A terra no. In mezzo c'è uno spazio, e io ci abito.",
+		"Per mettermi al tappeto ci vuole ben altro. Continua pure a provarci.",
+	},
+	["lowhp.w14.grit.002"] = {
+		"Oh, bene. Il dolore. Cominciavo a temere che fosse tutto facile.",
+		"Splendido. E io che cominciavo a rilassarmi.",
+		"Ottimo. Cominciavo ad annoiarmi.",
+	},
+	["lowhp.w14.grit.003"] = {
+		"Basta così. Adesso è una faccenda personale.",
+		"E va bene. Volevi tutta la mia attenzione? L'hai avuta.",
+		"Ogni colpo che mi dai, me lo tengo a mente. Uno per uno.",
+	},
+	["lowhp.w14.grit.004"] = {
+		"Ginocchia, non vi piegate. Mani, non vi aprite. Il piano è tutto qui.",
+		"I piedi restano dove sono, i pugni chiusi. Il resto di me si lamenti pure.",
+	},
+	["lowhp.w14.grit.005"] = {
+		"Se muoio qui, ti perseguito da fantasma. Ti ho avvertito.",
+		"Fammi fuori e sarò il fantasma più seccante che tu abbia mai incontrato.",
+		"Ammazzami pure. Tornerò a sospirarti addosso per cent'anni.",
+	},
+	["lowhp.w14.grit.006"] = {
+		"Bene. Rendila difficile. È l'unica parte che valga la pena raccontare.",
+		"E allora rendila dura. Nessuno canta le lotte facili.",
+		"Bene. Mi dispiacerebbe se fosse una lotta da dimenticare.",
+	},
+	["lowhp.w14.grit.007"] = {
+		"Fortuna, tra noi due non è sempre filata liscia. Sarebbe il momento di fare pace.",
+		"Fortuna, se ti stavi tenendo da parte per qualcosa, quel qualcosa è adesso.",
+		"Fortuna, non ti ho mai chiesto granché. Adesso te lo chiedo.",
+	},
+	["lowhp.w14.grit.008"] = {
+		"Colpiscimi ancora. Ti sfido. Vediamo cosa ci guadagni.",
+		"Forza. Ogni colpo mi rende solo più difficile da finire.",
+		"Tutto qui? Io di riserva ne ho più di quanto tu abbia in mano.",
+	},
+	["lowhp.w14.grit.009"] = {
+		"scuote forte la testa, una volta sola, e torna alla lotta.",
+		"raddrizza le spalle, come se la ferita fosse un insulto a cui rispondere.",
+	},
+	["lowhp.w14.grit.010"] = {
+		"Ahi. Che maleducazione. Davvero.",
+		"Questa non era necessaria. Te la rendo con gli interessi.",
+		"Ehi! Quello mi serviva.",
+	},
+	["lowhp.w14.grit.011"] = {
+		"Se cado, cado di fronte. Almeno questo posso ancora sceglierlo.",
+		"Qualunque cosa venga dopo, non mi troverà di spalle.",
+		"Guardare avanti. Se deve finire, finirà guardando avanti.",
+	},
+	["lowhp.w14.grit.012"] = {
+		"Questo è il tuo meglio? Certe schegge si sono fatte valere di più.",
+		"Doveva bastare a chiudere la faccenda? Allora ti serve parecchio esercizio.",
+		"Dovrebbe farmi paura? Impegnati di più.",
+	},
+	["lowhp.w14.grit.013"] = {
+		"Bene. Il dolore è legna da ardere, e me ne hanno appena portata parecchia.",
+		"Rabbia, vieni su. Adesso mi servi più della calma.",
+		"Nutri la rabbia. È l'unica cosa in me che non è stanca.",
+	},
+	["lowhp.w14.grit.014"] = {
+		"Che resti scritto da qualche parte: a questa parte non ho dato il consenso.",
+		"Annotato, e archiviato alla voce 'cose da restituire'.",
+	},
+	["lowhp.w14.grit.015"] = {
+		"Io non mi inginocchio. Non al dolore, e di certo non a te.",
+		"In ginocchio? Ho due ginocchia testarde, e dicono di no tutte e due.",
+		"Si inginocchia chi ha già deciso. Io no.",
+	},
+	["lowhp.w14.grit.016"] = {
+		"Morire adesso sarebbe scomodissimo. Ho delle cose da fare.",
+		"Che la morte prenda appuntamento come tutti. Sono {g:occupato|occupata}.",
+		"Non ho tempo per morire. Riprova fra qualche anno.",
+	},
+	["lowhp.w14.grit.017"] = {
+		"Tocca a me. Il tuo turno l'hai avuto, e non ti è bastato.",
+		"Basta prendere. È ora di restituire qualcosa.",
+		"La mia pazienza è finita. Presto finirà anche la tua.",
+	},
+	["lowhp.w14.grit.018"] = {
+		"fissa la ferita con aria profondamente offesa, poi torna a guardare ciò che l'ha causata.",
+		"prende il colpo come un insulto personale, e si vede in ogni tratto del viso.",
+	},
+	["lowhp.w14.grit.019"] = {
+		"Se finisce così, finisce con me in piedi.",
+		"Qualunque cosa succeda, resto su. Su questo non transigo.",
+	},
+	["lowhp.w14.grit.020"] = {
+		"Ho una testardaggine larga un miglio, e tu ci sei appena finito contro.",
+		"Complimenti. Hai trovato la parte testarda di me. È quasi tutta.",
+		"La testardaggine è l'unica ricchezza che ho. Spendiamola.",
+	},
+	["lowhp.w14.grit.021"] = {
+		"Il dolore è una voce. Urli pure. Nessuno mi obbliga ad ascoltarlo.",
+		"Che faccia male. Il male non è una sentenza.",
+		"Il dolore è una notizia, non un ordine. Letta, e messa da parte.",
+	},
+	["lowhp.w14.grit.022"] = {
+		"Ha! Hai mancato i punti vitali. Più o meno. Credo.",
+		"Le parti importanti ci sono tutte. Probabilmente. Meglio non controllare.",
+		"Niente di vitale. Niente di troppo vitale, diciamo. Andiamo oltre.",
+	},
+	["lowhp.w14.grit.023"] = {
+		"Finiscila, allora. Se credi di riuscirci.",
+		"Eccomi. Ancora tra i piedi. Fai qualcosa.",
+		"Sono qui. Cosa aspetti?",
+	},
+	["lowhp.w14.grit.024"] = {
+		"allarga i piedi, come a sfidare la terra stessa a {g:prenderselo|prendersela}.",
+		"si raddrizza piano, e quella lentezza ha qualcosa di minaccioso.",
+	},
+	["lowhp.w14.grit.025"] = {
+		"Ricordami di andarne {g:fiero|fiera} dopo. Sempre che ci sia un dopo.",
+		"Un giorno lo chiamerò esperienza formativa. Per ora fa solo male.",
+		"Ne verrà fuori una bella storia. Se a raccontarla sarò io.",
+	},
+	["lowhp.w14.grit.026"] = {
+		"Segnati questo momento. Qui smetto di cedere terreno.",
+		"Da qui, neanche un passo indietro. Neanche uno.",
+		"Questo punto è mio. Vieni a prendertelo, se ci riesci.",
+	},
+	["lowhp.w14.grit.027"] = {
+		"Mi rifiuto di morire. Solo le scartoffie mi ammazzerebbero.",
+		"Morire è fuori discussione. Non me lo perdonerei mai.",
+		"La morte? Non è in agenda. Nemmeno a matita.",
+	},
+	["lowhp.w14.grit.028"] = {
+		"Tanti sono stati feriti peggio e sono andati avanti. Posso essere {g:uno|una} di loro.",
+		"Altri si sono rialzati da peggio di così. Unisciti a loro.",
+	},
+	["lowhp.w14.grit.029"] = {
+		"Bel colpo. Davvero. Mi assicurerò di ricambiare il complimento.",
+		"Ben fatto. Adesso guardami mentre la prendo malissimo.",
+	},
+	["lowhp.w14.grit.030"] = {
+		"Mi vuoi a terra? Allora te lo devi guadagnare. Fino in fondo.",
+		"Io non mi muovo. Dovrai trascinarmi, e io mordo.",
+		"Buttarmi giù? Ti servirà molto di più, e molta più pazienza.",
+	},
+	["lowhp.w14.grit.031"] = {
+		"ride una volta, breve e aspro, di qualcosa che nessun altro vede.",
+		"sorride, ed è proprio la smorfia sbagliata per un momento come questo.",
+	},
+	["lowhp.w14.grit.032"] = {
+		"La morte è a portata di mano. Il tempo che resta lo uso per rispondere ai colpi.",
+		"È vicina, d'accordo. Ma vicina non vuol dire qui.",
+	},
+	["lowhp.w14.grit.033"] = {
+		"Le ferite ci sono. La sconfitta, quella no. Nessuno l'ha nominata.",
+		"Tra una ferita e la fine c'è ancora parecchia strada.",
+		"Le botte le ho prese. Le batoste, ancora no.",
+	},
+	["lowhp.w14.grit.034"] = {
+		"Questa finisce sulla lista. Quella lunga. E tu in cima.",
+		"Anche questa nel registro. Stai accumulando un bel debito.",
+	},
+	["lowhp.w14.grit.035"] = {
+		"Arriva, la rabbia. Se l'è presa comoda, ma adesso c'è, ed è mia.",
+		"Qualcosa di aspro e testardo si sveglia dentro di me. Vediamo cosa fa.",
+	},
+	["lowhp.w14.grit.036"] = {
+		"Nessuno mi dice quando ho finito. Tu meno di tutti.",
+		"Decido io quando ne ho abbastanza. E non è adesso.",
+		"La parola fine la metto io. Non tu.",
+	},
+	["lowhp.w14.grit.037"] = {
+		"Ahi. Bella. Questa va nella collezione.",
+		"Cicatrice nuova per la collezione, allora. Che fortuna.",
+	},
+	["lowhp.w14.grit.038"] = {
+		"emette un suono basso e furioso, e non arretra di un solo passo.",
+		"resta immobile per un istante, e quando torna a muoversi lo fa con uno scopo preciso.",
+	},
+	["lowhp.w14.grit.039"] = {
+		"Se devo cadere, ti costerà caro.",
+		"Forse mi prenderai. Ma non a buon mercato.",
+		"Prendimi, se ci riesci. Il prezzo è tutto quello che hai.",
+	},
+	["lowhp.w14.grit.040"] = {
+		"Ho avuto momenti migliori. Restare in vita, però, resta un'ottima idea.",
+		"Il lato buono: non può durare molto. In un senso o nell'altro.",
+		"Potrebbe andare peggio. Non saprei dire come, ma di sicuro potrebbe.",
+	},
+	["lowhp.w14.grit.041"] = {
+		"Resta {g:dritto|dritta}. È l'unico ordine che conta, adesso.",
+		"In piedi. Qualunque cosa succeda, in piedi.",
+	},
+	["lowhp.w14.grit.042"] = {
+		"Prova pure a farmi fuori. Dicono che morire non sia il mio forte.",
+		"Per morire ci vuole un talento che io proprio non ho.",
+		"Farmi fuori? Con quale fortuna, esattamente?",
+	},
+	["lowhp.w14.grit.043"] = {
+		"ruota il collo una volta, lentamente, come chi si prepara al lavoro vero.",
+		"si raddrizza in tutta la sua altezza, come se bastasse quella a tenere la posizione.",
+	},
+	["lowhp.w14.grit.044"] = {
+		"Spingi. E spingi ancora. Il conto delle ferite lo fai dopo.",
+		"Le ferite aspettino il loro turno. La lotta no.",
+		"Prima la lotta. Il dolore dopo. Così vanno le cose.",
+	},
+	["lowhp.w14.grit.045"] = {
+		"Ah. È questa la parte in cui dovrei arrendermi? La salto.",
+		"Di solito qui la gente si arrende. Ma il 'di solito', con me, non ha mai funzionato.",
+	},
+	["lowhp.w14.grit.046"] = {
+		"Hai svegliato il peggio del mio carattere. Auguri.",
+		"Mossa sbagliata. Con la rabbia combatto meglio.",
+		"Il mio carattere è appena scappato. Nessuno l'ha mai ripreso.",
+	},
+	["lowhp.w14.grit.047"] = {
+		"Prima o poi cadiamo tutti. Chiedo solo che non sia in questa lotta.",
+		"Un giorno, forse. Questa volta non avrà l'onore.",
+	},
+	["lowhp.w14.grit.048"] = {
+		"Fortuna, avrò un debito con te. Fai tu il prezzo, ma non adesso.",
+		"C'è della fortuna avanzata in giro? Compro io. Pago dopo.",
+		"Fortuna, segnamelo sul conto. Pago sempre. Quasi sempre.",
+	},
+	["lowhp.w14.grit.049"] = {
+		"Non ho finito. Ci manca ancora tanto.",
+		"Basta? Comincio adesso a fare sul serio.",
+	},
+	["lowhp.w14.grit.050"] = {
+		"schiocca la lingua davanti al danno, come per una camicia rovinata, e va avanti.",
+		"lancia alla ferita un'occhiata di puro disgusto, poi la ignora del tutto.",
+	},
+	["lowhp.w14.grit.051"] = {
+		"Morte, se stai ascoltando: hai sbagliato indirizzo. Prova più avanti.",
+		"Non ci sono. Ripassa mai.",
+		"Morte, prendi il numero. Uno bello alto.",
+	},
+	["lowhp.w14.grit.052"] = {
+		"Ricordatelo. Qualunque cosa succeda, ricorda che non ho ceduto.",
+		"Che si dica almeno che non l'ho resa facile.",
+		"Che lo si racconti com'è andata: non mi sono {g:piegato|piegata}.",
+	},
+	["lowhp.w14.grit.053"] = {
+		"Anche la testardaggine è una forza. Usala. Di quella ne resta parecchia.",
+		"Quando le forze si assottigliano, basta la ripicca. Quella non finisce mai.",
+	},
+	["lowhp.w14.grit.054"] = {
+		"Questa è andata a segno, d'accordo. La prossima è mia.",
+		"Colpo pulito. Complimenti. Adesso abbassati.",
+	},
+	["lowhp.w14.grit.055"] = {
+		"A fermarmi non ci penso nemmeno.",
+		"Qualcuno qui dovrà mollare. Non sarò io.",
+		"Di resa, in me, non ce n'è. Cerca pure.",
+	},
+	["lowhp.w14.grit.056"] = {
+		"Sai cosa odio di più? Le interruzioni. E tu continui a farne.",
+		"Ero nel mezzo di qualcosa. Di parecchie cose. Sparisci.",
+		"Non si può nemmeno lottare in pace?",
+	},
+	["lowhp.w14.grit.057"] = {
+		"Una vocina piccola e assennata mi suggerisce di scappare. La ignoro. Per adesso.",
+		"La parte assennata di me ha fatto i bagagli. Il resto rimane e discute.",
+	},
+	["lowhp.w14.grit.058"] = {
+		"L'orgoglio va bene, ma restare in vita è meglio. Se c'è una via d'uscita, prendila.",
+		"Andarsene non è perdere. Andarsene è scegliere la prossima lotta.",
+		"Restare o andare, ma lo scelgo io. Nessun altro sceglie per me.",
+	},
+	["lowhp.w14.grit.059"] = {
+		"Ne voglio uscire. Non per la gloria: per pura ostinazione.",
+		"Intendo andarmene sulle mie gambe. Zoppicando, se serve.",
+	},
+	["lowhp.w14.grit.060"] = {
+		"vacilla, si riprende, e resta su per quella che ha tutta l'aria di pura ostinazione.",
+		"barcolla, e trasforma il barcollare in un passo avanti.",
+	},
+	["lowhp.w14.grit.061"] = {
+		"La buona notizia: sento ancora i piedi. La cattiva: sento anche tutto il resto.",
+		"Il lato positivo: sento ancora tutto. Quello negativo: fa tutto male.",
+		"Ho ancora tutte le dita. Ecco la buona notizia. L'unica.",
+	},
+	["lowhp.w14.grit.062"] = {
+		"Di ognuno di questi colpi ti pentirai. Te lo prometto.",
+		"Quello era l'ultimo colpo gratis. Gli altri si pagano.",
+		"Tieni il conto. Li rivoglio indietro tutti quanti.",
+	},
+	["lowhp.w14.grit.063"] = {
+		"Se me ne vado, voglio che l'ultima cosa che faccio sia una scortesia.",
+		"Se questa è la fine, che l'ultima cosa di me sia un no.",
+	},
+	["lowhp.w14.grit.064"] = {
+		"Sia testimone chi guarda: qui sono {g:rimasto|rimasta}, e non ho ceduto.",
+		"Chi mi sente lo sappia: non ho ceduto un palmo che potessi tenere.",
+	},
+	["lowhp.w14.grit.065"] = {
+		"La pietra non ha fretta di spezzarsi. Neanch'io.",
+		"Come ogni pietra, forse mi consumo. Ma non mi sposto.",
+		"Le radici reggono quando il tronco viene colpito. Reggi, allora.",
+	},
+	["lowhp.w14.grit.066"] = {
+		"Se ne esco, diventerò insopportabile. Te lo dico prima.",
+		"Se sopravvivo, non smetterò mai di raccontarla. Bella motivazione.",
+		"Se ne esco, questa storia crescerà ogni volta che la racconto.",
+	},
+	["lowhp.w14.grit.067"] = {
+		"lascia trasparire il dolore per un attimo, poi lo trasforma in un ringhio.",
+		"scopre i denti, e non è un sorriso.",
+	},
+	["lowhp.w14.grit.068"] = {
+		"Qualunque cosa ti resti, tirala fuori. Io ne ho di più.",
+		"Svuotati pure. A me qualcosa resterà comunque.",
+		"Ti stancherai molto prima che io molli.",
+	},
+	["lowhp.w14.grit.069"] = {
+		"È qui che si decide di che pasta sono {g:fatto|fatta}. Che sia dura.",
+		"Di qualunque cosa io sia {g:fatto|fatta}, si vede adesso. Che sia ferro.",
+	},
+	["lowhp.w14.grit.070"] = {
+		"Ma certo. Certo che è adesso. Perché mai non dovrebbe essere adesso.",
+		"Tempismo perfetto, come sempre. Magnifico.",
+		"Naturalmente. E quando, se no.",
+	},
+	["lowhp.w14.grit.071"] = {
+		"Male me ne hai fatto. Fermarmi, no. Sono due cose diverse.",
+		"Ferire e fermare non sono la stessa parola. Controlla pure.",
+	},
+	["lowhp.w14.grit.072"] = {
+		"Smettila di guardare quanto se n'è andato. Guarda quanto resta, e spendilo bene.",
+		"Quel che resta è quel che ho. Dovrà bastare. Basterà.",
+	},
+	["lowhp.w14.grit.073"] = {
+		"La morte continua a volersi presentare. E io continuo a non stringerle la mano.",
+		"No, grazie, morte. Sto solo guardando.",
+		"Ha bussato la morte. Faccio finta di non essere in casa.",
+	},
+	["lowhp.w14.grit.074"] = {
+		"Adesso viene il bello. Guarda.",
+		"Fai attenzione adesso. La parte che viene, la so fare bene.",
+		"Adesso vedrai come sono quando conta davvero.",
+	},
+	["lowhp.w14.grit.075"] = {
+		"dice qualcosa di irripetibile a denti stretti e tira dritto.",
+		"fa roteare gli occhi davanti all'entità del danno, come per una battuta pessima.",
+	},
+	["lowhp.w14.grit.076"] = {
+		"Ogni parte di me dice basta. Ogni parte di me può essere messa in minoranza.",
+		"Il corpo implora una pausa. Richiesta respinta.",
+		"Gambe, lo so. Zitte. Ancora un poco.",
+	},
+	["lowhp.w14.grit.077"] = {
+		"Col senno di poi, forse non era la mia idea migliore. Però è mia, e me la tengo.",
+		"Una versione più saggia di me, da qualche parte, scuote la testa. Ignorala.",
+	},
+	["lowhp.w14.grit.078"] = {
+		"Adesso basta! Basta davvero!",
+		"Finito, questo gioco. Adesso il ritmo lo decido io.",
+		"Ne ho abbastanza di te!",
+	},
+	["lowhp.w14.grit.079"] = {
+		"Dolore, sei un pessimo ospite. Non bussi mai e non te ne vai mai.",
+		"Ciao, dolore. Siediti. Ma non metterti comodo.",
+		"Ah, sei tu, dolore. Renditi utile o vattene.",
+	},
+	["lowhp.w14.grit.080"] = {
+		"Arrabbiati dopo. Adesso ragiona. Poi arrabbiati.",
+		"La furia va bene. La furia con un piano va meglio.",
+	},
+	["lowhp.w14.grit.081"] = {
+		"Non supplicherò. Né te, né la fortuna, né nessuno.",
+		"Niente suppliche. Qualunque cosa arrivi, troverà qualcuno a schiena dritta.",
+		"Pietà? Non la chiedo. Tienitela.",
+	},
+	["lowhp.w14.grit.082"] = {
+		"va avanti, ogni movimento più piccolo e più duro del precedente, ma ognuno compiuto.",
+		"stringe i pugni tanto da farli tremare, e non molla la presa.",
+	},
+	["lowhp.w14.grit.083"] = {
+		"Nella lista delle pessime idee, colpirmi due volte sta quasi in cima.",
+		"Hai appena trovato qualcuno dalla memoria molto lunga.",
+		"Questa me la ricorderò. Nei dettagli. A lungo.",
+	},
+	["lowhp.w14.grit.084"] = {
+		"Lo giuro sulle mie stesse mani: continueranno a lottare.",
+		"Su tutto ciò che ho di caro: qui non mi fermo.",
+		"Per ogni ferita che porto: non ho finito.",
+	},
+	["lowhp.w14.grit.085"] = {
+		"Fra tutti i modi di andarsene, questo non è nemmeno interessante. Rifiutalo per principio.",
+		"Se devo morire, voglio una storia migliore di questa. Quindi no.",
+	},
+	["lowhp.w14.grit.086"] = {
+		"Qualcosa dentro di me è diventato duro e silenzioso. Non ti piacerà.",
+		"Ho smesso di avere paura. Adesso c'è solo rabbia. Per te è molto peggio.",
+	},
+	["lowhp.w14.grit.087"] = {
+		"Ahi! Ma cosa ti ho fatto? A parte quello. E quello.",
+		"Sì, sì, l'ho sentito. Smettila di darti arie.",
+		"Ahi! Fra un attimo me la prenderò parecchio, per questa.",
+	},
+	["lowhp.w14.grit.088"] = {
+		"Restare in piedi è un'abitudine. Non perderla.",
+		"Resta dentro. Qualunque cosa accada, accadrà a qualcuno che è rimasto.",
+	},
+	["lowhp.w14.grit.089"] = {
+		"Oh, il resto me lo godrò.",
+		"Adesso sì che si fa interessante. Adesso sono {g:sveglio|sveglia}.",
+		"Ah. È qui che comincio a divertirmi.",
+	},
+	["lowhp.w14.grit.090"] = {
+		"si rifiuta di guardare la ferita, come se appartenesse a qualcun altro.",
+		"tiene gli occhi alti, mai sul danno.",
+	},
+	["lowhp.w14.grit.091"] = {
+		"Va tutto a meraviglia. Ignora il barcollare.",
+		"Tutto a posto. Quel barcollare era voluto.",
+		"Sto benissimo. Solo che certe parti di me stanno meno bene di altre.",
+	},
+	["lowhp.w14.grit.092"] = {
+		"Ho male, ho rabbia, e sono ancora tra i piedi.",
+		"Quel che resta di me è poco, cattivo e testardo. Auguri.",
+	},
+	["lowhp.w14.grit.093"] = {
+		"C'è una parte di me, silenziosa, molto calma davanti a tutto questo. Lascio guidare quella rumorosa.",
+		"Una parte di me sta già facendo pace. Il resto le dice di stare zitta.",
+	},
+	["lowhp.w14.grit.094"] = {
+		"Se volevi fare colpo, missione compiuta. Basta così.",
+		"Davvero notevole. Ti prego, non rifarlo mai più.",
+		"Il concetto è chiaro. Molto chiaro. Adesso tocca al mio.",
+	},
+	["lowhp.w14.grit.095"] = {
+		"Il ferro si piega prima di spezzarsi, e io non ho finito di piegarmi.",
+		"Ciò che non si piega può spezzarsi. Allora piegati, e resta {g:intero|intera}.",
+	},
+	["lowhp.w14.grit.096"] = {
+		"scuote una mano come per scrollarsi di dosso il dolore a gocce, poi la richiude.",
+		"emette un piccolo verso infastidito, come chi viene interrotto a metà di una frase.",
+	},
+	["lowhp.w14.grit.097"] = {
+		"Sto finendo le forze! Qualcuno mi rimetta in sesto, al resto penso io!",
+		"Una mano qui! Non ho finito, ho solo parecchie ammaccature!",
+	},
+	["lowhp.w14.grit.098"] = {
+		"Qualcuno ha voglia di salvarmi? Senza fretta. Anzi, con un po' di fretta. Parecchia.",
+		"Amici! Ricordate quanto mi volete bene? È il momento di dimostrarlo!",
+	},
+	["lowhp.w14.grit.099"] = {
+		"Tenete la posizione! Ho male, ma ci sono!",
+		"Continuate! Non badate a me, la testardaggine mi tiene su!",
+		"Non azzardatevi a fermarvi per me! Chiudete la faccenda!",
+	},
+	["lowhp.w14.grit.100"] = {
+		"Copritemi un attimo! Devo rimettermi in sesto!",
+		"Qualcuno mi dia un momento! Uno solo!",
+	},
+	["lowhp.w14.grit.101"] = {
+		"Se qualcuno ha un asso nella manica, accetto regali!",
+		"Ogni aiuto è ben accetto! Gli applausi dopo!",
+	},
+	["lowhp.w14.grit.102"] = {
+		"grida una sola parola secca sopra il frastuono, e continua a combattere senza aspettare risposta.",
+		"lancia un'occhiata ai compagni, poi torna alla lotta, la mascella serrata.",
+	},
 }, "base_combat")

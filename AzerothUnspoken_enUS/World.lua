@@ -6041,4 +6041,973 @@ NS:AddTexts("enUS", {
 		"Worry when there's cause. Watch in the meantime.",
 		"No sense fretting over nothing. Plenty of sense in looking.",
 	},
+	["journey.w14.down.001"] = {
+		"My legs spent the whole trip dangling. Now they're being asked to have opinions about the ground, and they're slow to form them.",
+		"First step: careful. Second step: less careful. By the third my legs remember they've done this before.",
+		"The legs come back last, like guests who stayed too long at someone else's table.",
+	},
+	["journey.w14.down.002"] = {
+		"presses both fists into the small of {g:his|her} back and leans until something in there agrees to move.",
+		"bends forward, hands on knees, and lets the stiffness of the saddle drain out the long way.",
+		"arches backward with both hands on {g:his|her} hips, slowly, like someone unbending an old hinge.",
+	},
+	["journey.w14.down.003"] = {
+		"Landing: abrupt. Scenery: excellent. Legroom: none. I'd fly again, but I'd complain.",
+		"Seven out of ten. Points off for the last turn, which I felt in my teeth.",
+		"Speed, admirable. Comfort, a rumor. The descent, a matter for my lawyer.",
+	},
+	["journey.w14.down.004"] = {
+		"Up there, whole roads fit under my thumb. Down here a single step is a step again, and the world takes its weight back.",
+		"Things had gone small and tidy while I was up there. Now they're big again, and untidy, and close enough to touch.",
+		"The world's back to its own size. So am I, I suppose: not a speck over a map, just someone standing somewhere.",
+	},
+	["journey.w14.down.005"] = {
+		"Off you go, then. Thanks for not dropping me; I noticed, and I appreciate it.",
+		"My thanks. You did all the work and I did all the worrying. Fair split.",
+		"Go on, back the way you came. You've earned an empty saddle.",
+	},
+	["journey.w14.down.006"] = {
+		"has to talk {g:his|her} fingers off the strap one by one, as if they had grown fond of it.",
+		"lets go of the harness at last, and looks at {g:his|her} own hands with mild surprise at how hard they were holding on.",
+		"pries one hand loose, then the other, and flexes them both as if returning borrowed tools.",
+	},
+	["journey.w14.down.007"] = {
+		"Up there it was just the rush of air and my own thoughts. Down here everything wants a word at once.",
+		"Voices, footsteps, the clink of somebody's gear. The ground is loud; the quiet up there had let me forget.",
+		"All that quiet, and now noise from every side. It takes a moment to work out which of it is mine to answer.",
+	},
+	["journey.w14.down.008"] = {
+		"Right way up, feet down. Now, which way was I going?",
+		"One look all the way round, and then I'll know what's where.",
+		"Give me a moment to find north, and then my wits.",
+	},
+	["journey.w14.down.009"] = {
+		"All that ground, and none of it ever underfoot. It feels like reading the last page first.",
+		"I've come a long way without earning a single step of it. The road will want that back some day.",
+		"A great deal of distance happened to me just now, and I didn't lift a foot for any of it.",
+	},
+	["journey.w14.down.010"] = {
+		"watches the mount climb away until it is hard to tell from anything else up there, then turns back to the ground at hand.",
+		"looks up once, the way one looks back at a door just closed, and then gets on with things.",
+		"follows the shrinking wings with {g:his|her} eyes for a moment, then shrugs and lets them belong to someone else.",
+	},
+	["journey.w14.down.011"] = {
+		"My ears are still up there somewhere. They'll come down when they're ready.",
+		"Everything sounds a little muffled, as if the world were talking through a wall. Give it a minute.",
+		"There's a hum in my ears that wasn't invited. It came along for the ride and hasn't noticed the ride is over.",
+	},
+	["journey.w14.down.012"] = {
+		"That was a graceful dismount. Nobody saw the other version.",
+		"I meant to land like that. The stumble was a flourish.",
+		"Elegant, wasn't it? Don't answer.",
+	},
+	["journey.w14.down.013"] = {
+		"First things first: find out where I am, then where I'm needed, then whether I care.",
+		"I had no errands in the air. The ground hands them back the moment I step on it, like a coat at the door.",
+		"Plans made in the air never survive the landing. Time to make the real ones.",
+	},
+	["journey.w14.down.014"] = {
+		"sets foot on the earth once more, and for a moment stands as travelers have always stood at a journey's end: still, and taking stock.",
+		"steps down into the ordinary world and lets it close around {g:him|her}, sounds and smells and all.",
+	},
+	["journey.w14.down.015"] = {
+		"I miss it already, that stretch of nobody wanting anything. The ground has a long memory for what I owe it.",
+		"For a while nothing could reach me. Now everything can. I'll take it, but I'll take it slowly.",
+		"The quiet up there was the kind nobody can interrupt. Down here, every quiet comes with a door that opens.",
+	},
+	["journey.w14.down.016"] = {
+		"Enough sitting. My legs want work and I've got plenty for them.",
+		"Good. Something to stand on, and things to do. In that order.",
+		"Legs, you've had your rest. Now earn it.",
+	},
+	["journey.w14.down.017"] = {
+		"Half the map went by under me. My legs know nothing about it; they think they've been sitting in a chair.",
+		"So many leagues without moving. My body hasn't decided whether it's tired or merely bored.",
+		"Leagues and leagues, and the only part of me that traveled any distance was my patience.",
+	},
+	["journey.w14.down.018"] = {
+		"unfolds from the saddle in stages, like a map that has been folded wrong for too long.",
+		"comes down after the long haul and takes the first few steps with the careful gait of someone who has forgotten where the knees bend.",
+	},
+	["journey.w14.down.019"] = {
+		"That was long enough to grow roots in the saddle. Somebody pry me loose.",
+		"If anyone asks, I'll be walking for the next while. Walking, and nothing else.",
+		"That flight had a beginning, a very long middle, and finally an end. I liked the end best.",
+	},
+	["journey.w14.down.020"] = {
+		"I think I dozed somewhere in the middle. I hope I didn't miss anything worth seeing. I hope I didn't snore at it.",
+		"Somewhere along the way I stopped watching and started drifting. Coming back to myself at the landing is a strange way to arrive.",
+	},
+	["journey.w14.down.021"] = {
+		"Easy now. You're down. Let the world stop swaying before you trust it.",
+		"All right. Feet, meet ground. Ground, be patient with them.",
+		"Slowly does it. Nobody's timing this.",
+	},
+	["journey.w14.down.022"] = {
+		"I'll try to keep a little of that height with me. Not the view; the way nothing down here seemed worth a quarrel.",
+		"From up there, every argument I'm carrying looked the size of a crumb. I'd like to remember that for a while.",
+		"Something of the high view stays behind the eyes after a landing. It fades fast; I'll use it before it does.",
+	},
+	["journey.w14.down.023"] = {
+		"shrugs the pack higher on {g:his|her} shoulders and gives it a shake, listening for anything that has come loose.",
+		"sets {g:his|her} bags down for a moment, just to see them stay where they are put.",
+	},
+	["journey.w14.down.024"] = {
+		"Whatever I'm walking like right now, it'll pass. Probably.",
+		"If I walk a little sideways for a while, that's my own affair.",
+		"This is a perfectly normal walk. It's just shy about it.",
+	},
+	["journey.w14.down.025"] = {
+		"The sky doesn't notice I've gone. It never noticed I was there. That's the restful thing about it.",
+		"I've left the open air to whoever's up there now. I'm not sure it was ever mine to leave.",
+		"Nothing up there will remember me passing. I find I don't mind being forgotten by something so large.",
+	},
+	["journey.w14.down.026"] = {
+		"takes three steps, stops, takes three more, as if testing whether the ground can be trusted with anything bigger.",
+		"walks a few paces in a straight line with great concentration, like someone proving a point to an invisible judge.",
+		"sets one foot down with exaggerated care, then the other, like someone trying a rope bridge that turns out to be a floor.",
+	},
+	["journey.w14.down.027"] = {
+		"Is it just me, or does flying make anyone else hungry? Something about watching the world go by for free.",
+		"Sitting the whole way, and I could eat a horse. Explain that to me.",
+		"Not one honest stride the whole way, and I'm famished. The body keeps strange accounts.",
+	},
+	["journey.w14.down.028"] = {
+		"Walking speed. Slower than I remembered, and I like it better than I expected.",
+		"My own pace again, slow enough to notice things. Up there everything went by too fast to belong to anyone.",
+		"A walk is a small speed, but it's mine, and it stops when I do.",
+	},
+	["journey.w14.down.029"] = {
+		"rests a hand on the mount's neck a moment longer than needed, then steps back and lets it go.",
+		"murmurs something to the mount, too low for anyone else to catch, and gives the harness a last pat.",
+		"lingers beside the mount long enough to be thanked, if mounts thanked anyone, and then steps clear.",
+	},
+	["journey.w14.down.030"] = {
+		"You fly like you've got somewhere better to be. Fair enough. So do I.",
+		"No offense, but I'm glad to watch you go.",
+		"Go on, then. I won't tell anyone how you took that last turn.",
+	},
+	["journey.w14.down.031"] = {
+		"Strange how tired doing nothing can make me. All I did was hold on, and every part of me is reporting in.",
+		"Stillness the whole way, and somehow I'm worn through. Holding on is work; nobody tells you that.",
+		"Being carried turns out to be a job, with all the aches of one and none of the pay.",
+	},
+	["journey.w14.down.032"] = {
+		"plants {g:his|her} feet, takes a long look around, and seems to set the whole place in order before taking a single step into it.",
+		"stands at the edge of the landing a moment, measuring the ground ahead with the patience of someone about to cross it on foot.",
+		"pauses with one hand on the strap of {g:his|her} pack, reading the lay of the ground like an opening move on a board.",
+	},
+	["journey.w14.down.033"] = {
+		"Made it. The rest is walking, and walking I can do.",
+		"Off the saddle and back on the job.",
+		"Arrived, unpacked from the air, and ready to be useful.",
+	},
+	["journey.w14.down.034"] = {
+		"The old roads below never saw me pass. Somewhere down there, the way I didn't take is still waiting, patient as stone.",
+		"Every road I flew over is still down there, without my footprints on it. I like knowing they'll keep.",
+		"Down there the roads are still keeping their distances. I owe them the walk I didn't take, and they know it.",
+	},
+	["journey.w14.down.035"] = {
+		"brushes {g:himself|herself} down with both hands, putting back everything the rush of air rearranged.",
+		"straightens {g:his|her} gear piece by piece, with the care of someone reassembling a clockwork toy.",
+		"tucks, tightens and smooths every loose end the flight worked free, and looks a little less like something delivered.",
+	},
+	["journey.w14.down.036"] = {
+		"I'd like to know who decided the landing should be the sudden part.",
+		"Why does the end of a flight come so much faster than the middle? Somebody should have warned the ground.",
+		"All that gliding, and then the whole matter is settled in two jolts. Flying has no sense of proportion.",
+	},
+	["journey.w14.down.037"] = {
+		"Go well. You carried me farther than I could have walked in many days, and asked nothing of me but to hold on.",
+		"My thanks, wings. May your next rider sit lighter than I did.",
+	},
+	["journey.w14.down.038"] = {
+		"The first thing that comes back is smell: dust, people, whatever happens to be nearby. Up there I'd stopped noticing I had a nose.",
+		"The air aloft tasted of nothing. Down here everything has a smell again, and not all of it is welcome.",
+		"My nose wakes up before the rest of me. Whatever this place is, it announces itself to that first.",
+	},
+	["journey.w14.down.039"] = {
+		"shakes out one leg, then the other, like someone checking that both came along.",
+		"kicks each foot out in turn, twice, until the pins and needles agree to leave.",
+		"hops lightly on the spot a few times, coaxing feeling back into feet that dozed off somewhere along the way.",
+	},
+	["journey.w14.down.040"] = {
+		"Every arrival has the same small moment: the place doesn't know I've come yet. I like to stand in it a little.",
+		"For a moment nobody here knows I've arrived. It's the closest thing to being invisible.",
+		"A short while of nobody noticing me. I'll spend it looking around.",
+	},
+	["journey.w14.down.041"] = {
+		"Now then. Which of all these directions is the one I want?",
+		"It all looked so obvious from above. Down here, every direction looks like every other.",
+		"Hm. The map in my head was drawn from up there. It doesn't fit the ground yet.",
+	},
+	["journey.w14.down.042"] = {
+		"A long flight leaves a hole in my reckoning. I watched, I waited, and somehow it's later than it has any right to be.",
+		"So much time spent being carried. I'd like to say I thought deep thoughts. I mostly thought about my legs.",
+		"Somewhere in the middle of that crossing I ran out of things to think. The rest was just sitting, very high up.",
+	},
+	["journey.w14.down.043"] = {
+		"lands after the long crossing and limps the first dozen steps, rubbing feeling back into a leg that went to sleep somewhere along the way.",
+		"comes off the mount with slow, deliberate care, testing each joint as if the long stretch aloft might have left one behind.",
+	},
+	["journey.w14.down.044"] = {
+		"Not that I was worried. I just enjoy unclenching every muscle I own at once.",
+		"Look at that, my hands work again. They'd been holding on with real conviction.",
+		"Nothing to it. I'll stop holding on to things in a minute.",
+	},
+	["journey.w14.down.045"] = {
+		"From up there I saw how much world there is. Down here I only have to deal with the next piece.",
+		"There's more world than any one life could walk. I skipped a piece of it just now, and I'm not ashamed.",
+		"So much land, all of it busy with its own troubles. Mine are only one patch of it, and that's a comfort.",
+	},
+	["journey.w14.down.046"] = {
+		"squints at the near things, eyes still set for distances, and waits for them to come back into focus.",
+		"rubs {g:his|her} eyes, which still seem to be looking for the horizon, and makes them settle on what is close.",
+		"blinks at the nearest things a few times, like someone stepping in from a long view into a small room.",
+	},
+	["journey.w14.down.047"] = {
+		"Flights end too cleanly. One moment I'm above it all, the next I'm a person with a pack and somewhere to be.",
+		"No ceremony to it. The wings go, the earth stays, and I'm left standing there like anyone with a bag on their back.",
+	},
+	["journey.w14.down.048"] = {
+		"Feet, you're back on duty. Sorry about the long holiday.",
+		"Right foot, left foot. I remember how this goes.",
+		"Walking. Yes. That's the one where the legs take turns.",
+	},
+	["journey.w14.down.049"] = {
+		"Somewhere behind me a mount is enjoying the lighter load. Good for it.",
+		"My weight is somebody else's relief now. I'd be offended if standing didn't feel so pleasant.",
+		"Whatever carried me is already thinking about something else. I wish I could do that so quickly.",
+	},
+	["journey.w14.down.050"] = {
+		"touches the ground with the flat of one hand, briefly, the way one greets something old and patient, and rises.",
+		"bows {g:his|her} head a moment at the landing, a small private courtesy to whatever kept watch over the flight.",
+	},
+	["journey.w14.down.051"] = {
+		"I came down with less than I took up. Not in the bags; something got left up there, and I don't think I'll miss it.",
+		"Some worry of mine is still flying. Let it. I have no intention of going back for it.",
+		"Whatever I was fretting about when I took off, it didn't make the landing. Good riddance.",
+	},
+	["journey.w14.down.052"] = {
+		"My compliments to the ground. Punctual, sturdy, right where I left it.",
+		"Reliable thing, the ground. Never once flown off on me.",
+		"Behold the ground. Doesn't flap, doesn't bank, doesn't drop. A masterpiece.",
+	},
+	["journey.w14.down.053"] = {
+		"turns slowly in a full circle, fitting what {g:he|she} sees now to what {g:he|she} saw from above.",
+		"looks one way and then the other, matching the land at eye level to the map it was a moment ago.",
+		"picks out one or two things {g:he|she} remembers seeing from above, and nods to them like acquaintances.",
+	},
+	["journey.w14.down.054"] = {
+		"Flying gets me close. The last stretch is always on foot; nobody's ever found a way around that.",
+		"The air did the long part. The short part, the part that matters, still takes legs.",
+		"Wings bring me near. Arriving properly is something feet have to finish.",
+	},
+	["journey.w14.down.055"] = {
+		"I watched a great deal of the world go by and never once had to ask the way. I'm not sure what I learned, but it was plenty.",
+		"After a crossing that long, the land feels less like a list of places and more like one thing, all of it joined.",
+		"Long enough aloft to see how everything below runs into everything else. Down here the borders come back.",
+	},
+	["journey.w14.down.056"] = {
+		"Just a moment. Let me stand here and be somewhere.",
+		"A moment, please. I've been passing over things all this while; let me be in one.",
+		"Wait. Let my head land too.",
+	},
+	["journey.w14.down.057"] = {
+		"watches the mount go with a look that is equal parts gratitude and relief, and does not try to decide between them.",
+		"gives the departing wings a small wave, then glances around quickly to see whether anyone saw the wave.",
+	},
+	["journey.w14.down.058"] = {
+		"There's a plain pleasure in weight. Up there I was cargo. Down here I lean on the world and it leans back.",
+		"Being carried is fine. Carrying myself is better; it's the one job I never have to explain.",
+		"Down here I have weight, and weight means I can push. That's a better feeling than flying.",
+	},
+	["journey.w14.down.059"] = {
+		"Whoever made that saddle never sat in it. I'd like a word with them, standing up.",
+		"I'll be feeling the shape of that saddle for a while. It was a very particular shape.",
+		"That saddle and I have reached an understanding. It wins, and I walk it off.",
+	},
+	["journey.w14.down.060"] = {
+		"Note for the next flight: sit back, loosen the grip, and stop bracing for the landing three leagues early.",
+		"Next time I'll eat something first. And hold the strap a little less hard. And maybe enjoy it.",
+		"Lesson of the flight: the landing is not the moment to start enjoying the view.",
+	},
+	["journey.w14.down.061"] = {
+		"rolls {g:his|her} head from one shoulder to the other, slow as a millstone, until the neck gives up its grudge.",
+		"works {g:his|her} shoulders round in wide circles, loosening the shape the straps pressed into them.",
+		"rubs the back of {g:his|her} neck with one hand and grimaces at whatever the flight did to it.",
+	},
+	["journey.w14.down.062"] = {
+		"Wherever the wings set me down, the work starts from here. I'd rather meet it on my feet than from a saddle.",
+		"Whatever waits here, it waited without knowing I was coming. That gives me the first move.",
+		"The flight bought me time. What I do with it starts on this patch of ground.",
+	},
+	["journey.w14.down.063"] = {
+		"That's the fast part over with. The rest I'll do on foot.",
+		"Fast part done. Slow part, here I come.",
+		"Quick bit finished. The long bit is mine.",
+	},
+	["journey.w14.down.064"] = {
+		"My legs have the shape of the saddle and my hands the shape of the strap. It will take some walking to be my own shape again.",
+		"That crossing went on long enough to stop being a flight and become a place I lived for a while. Now I've moved out.",
+	},
+	["journey.w14.down.065"] = {
+		"steps down at the end of the long crossing and stands quiet a moment, as if letting all that distance catch up with {g:him|her}.",
+		"comes down from the long flight slowly, and for a while seems to carry the whole width of the land behind {g:his|her} eyes.",
+	},
+	["journey.w14.down.066"] = {
+		"That's a lot of world to sit through. My back says it was all very interesting.",
+		"I'd walk a league right now just to remember I can.",
+	},
+	["journey.w14.down.067"] = {
+		"My life was in someone else's wings all that while. Nice to have it back in my own clumsy hands.",
+		"For the whole flight my fate was somebody else's job. Now it's mine again, and I'm not sure I've improved its odds.",
+		"I gave up all say in where I went for the whole flight. Taking it back is a small pleasure.",
+	},
+	["journey.w14.down.068"] = {
+		"starts off a little unsteady, and by the tenth step walks as if {g:he|she} had never left the ground at all.",
+		"walks off with a slight roll in the first few strides that fades with each one, until nothing is left of the flight but a look upward.",
+	},
+	["journey.w14.down.069"] = {
+		"From above I saw a dozen ways I could go. Down here I can see two, and one of them is behind me.",
+		"Up there every path was plain. At eye level they hide behind each other once more.",
+		"The high view showed me shortcuts. The ground will show me why nobody takes them.",
+	},
+	["journey.w14.down.070"] = {
+		"Hello? Hello. Good, my voice works. My ears will catch up.",
+		"Ears still full of air. If anyone's talking to me, try later.",
+	},
+	["journey.w14.down.071"] = {
+		"There's no graceful way to be delivered like a sack of flour. I'll recover my dignity on foot.",
+		"My arrival was the arrival of luggage. From here on I intend to arrive like a person.",
+		"I came down like cargo. I'd like to walk off like someone with a purpose.",
+	},
+	["journey.w14.down.072"] = {
+		"stays where {g:he|she} landed a moment longer than needed, looking at nothing in particular, letting the quiet of the flight drain away.",
+		"lingers by the landing a little while, unhurried, as if the flight were a room {g:he|she} is not quite ready to leave.",
+	},
+	["journey.w14.down.073"] = {
+		"The ground isn't moving. I know it isn't. My inner ear has its doubts.",
+		"Everything's still. Too still. Give me a minute and I'll stop leaning into turns that aren't there.",
+		"Part of me is still banking left. The rest of me has filed a complaint.",
+	},
+	["journey.w14.down.074"] = {
+		"The ground and I have business. Let's see what it wants first.",
+		"Here I stand. Whatever's next can come and find me, or I'll go and find it.",
+	},
+	["journey.w14.down.075"] = {
+		"Wings cover distance. Feet are for knowing a place. I've done the first; the second starts now.",
+		"Flying shows the shape of things. Walking shows what they're made of. Time to find out.",
+		"A place seen from above is only a rumor of itself. The truth of it is at ankle height.",
+	},
+	["journey.w14.down.076"] = {
+		"closes {g:his|her} eyes for a moment, feet planted, and listens to the ground's ordinary noise come back.",
+		"stands with eyes shut a while, letting the world settle into place around {g:him|her} without having to watch it happen.",
+	},
+	["journey.w14.down.077"] = {
+		"Sitting so long that standing feels like a bold new idea. I'm warming to it.",
+		"Long enough up there to forget what my legs were for. They're reminding me, loudly.",
+		"I could do with a short walk. Then a long one. Then possibly a third, to be sure.",
+	},
+	["journey.w14.down.078"] = {
+		"Remind me why I was so keen to skip the walking. My backside has questions.",
+		"Next time I'll remember that a saddle is just a chair that doesn't like you.",
+	},
+	["journey.w14.down.079"] = {
+		"Nobody down here saw the flight. As far as anyone knows, I've simply appeared. I'll let them think it was on purpose.",
+		"Every thought I had up there was mine alone. It's like stepping out of a small private room.",
+		"In the air I was nobody's business. Down here I'll be somebody's soon enough.",
+	},
+	["journey.w14.down.080"] = {
+		"drops the last little distance from the saddle and lands with a grunt that is more surprise than pain.",
+		"lets go of the harness and slithers down, with less dignity than intended and more speed.",
+	},
+	["journey.w14.down.081"] = {
+		"Easy, easy. Let me get my foot clear before you go anywhere.",
+		"Wait until I'm all the way off. All the way. Thank you.",
+	},
+	["journey.w14.down.082"] = {
+		"An arrival is a small clean page. Whatever I did elsewhere stayed elsewhere, for a moment at least.",
+		"The flight couldn't settle my debts, but it put a fair distance between me and them.",
+		"Each landing is a door opened from the other side. I like the draft it lets in.",
+	},
+	["journey.w14.down.083"] = {
+		"descends from the open air like a traveler of the old days stepping off a long road, and the ground accepts {g:him|her} without remark.",
+		"sets foot down, and the land takes up {g:his|her} weight as patiently as it has taken every traveler's before.",
+	},
+	["journey.w14.down.084"] = {
+		"My fingers ache from holding on. I didn't know I'd been gripping that hard until I let go.",
+		"Hands stiff as old leather. All that worry had to go somewhere, and it went into my grip.",
+	},
+	["journey.w14.down.085"] = {
+		"And I paid for that. Willingly. I want that noted.",
+		"Worth every coin, I suppose. My legs would like a refund.",
+		"Money well spent. Ask me again when I can feel my feet.",
+	},
+	["journey.w14.down.086"] = {
+		"Somewhere back there are a hundred places I passed over and may never stand in. The long flights make me feel that most.",
+		"So much land went by below, and I couldn't name half of it. I'm carrying a view I have no words for.",
+	},
+	["journey.w14.down.087"] = {
+		"yawns hugely once {g:his|her} feet are down, as though the flight had been a long, slightly uncomfortable nap.",
+		"stretches both arms high overhead, then seems to decide that reaching upward can wait a while, and lowers them.",
+	},
+	["journey.w14.down.088"] = {
+		"After all that air, the ground feels very personal. Every pebble has something to say to my feet.",
+		"Aloft, nothing touched me but the rush of air. Down here everything presses up, pushes back, gets in the way. It's good.",
+	},
+	["journey.w14.down.089"] = {
+		"Steady. You've done harder things than standing up.",
+		"Up you get. The ground's not going anywhere, and neither, it seems, are your legs.",
+	},
+	["journey.w14.down.090"] = {
+		"takes one last look upward, settles the pack, and strides off as if the ground had been waiting for exactly this.",
+		"turns from the landing without ceremony and walks into whatever comes next, the flight already behind {g:him|her}.",
+	},
+	["journey.w14.down.091"] = {
+		"Days of walking folded into one long sit. I can't decide whether I've cheated the road or the road has cheated me.",
+		"The distance is real. I just didn't feel any of it, and that seems like something I'll pay for somehow.",
+	},
+	["journey.w14.down.092"] = {
+		"Whoa. The ground's fine. It's me that's tilted.",
+		"Steady, legs. Steady. That's it. Look at you, walking.",
+	},
+	["journey.w14.down.093"] = {
+		"I look up and the whole road I just took is gone without a mark. The air keeps no footprints.",
+		"Overhead runs a road with no ruts and no signs. I traveled it and left nothing on it. Strange kind of road.",
+	},
+	["journey.w14.down.094"] = {
+		"works the buckles loose with fingers still clumsy from the grip, and slides free of the harness with a small sound of thanks.",
+		"unhooks the last strap, and for a moment seems unsure what to do with hands that have nothing to hold.",
+	},
+	["journey.w14.down.095"] = {
+		"I saw something odd down there on the way, a little off to one side. I'll never find it again on foot, and I'll keep wondering.",
+		"There was a moment over the middle stretch when I wanted to jump off and go look at something. Glad I didn't. Still curious.",
+	},
+	["journey.w14.down.096"] = {
+		"Ground, I greet you. You were missed, a little.",
+		"Hello, ground. Let's not be strangers.",
+	},
+	["journey.w14.down.097"] = {
+		"My body arrived. The rest of me is still somewhere over the middle of the trip, and it's in no hurry.",
+		"A crossing that long leaves me feeling as if I'd slept in the wrong bed. Nothing hurts exactly; nothing's quite where I left it.",
+	},
+	["journey.w14.down.098"] = {
+		"climbs out of the saddle after the long haul with all the grace of a folding chair that has rusted shut.",
+		"needs three tries to get a leg over the saddle after so long a flight, and pretends the first two were for warming up.",
+	},
+	["journey.w14.down.099"] = {
+		"People again. I'll need a moment to remember how to look like I know where I'm going.",
+		"Faces, voices, someone wanting past. The world down here is crowded with things that aren't me.",
+	},
+	["journey.w14.down.100"] = {
+		"Delivered. Mostly intact. Sign here.",
+		"Parcel arrived. Slightly dented.",
+	},
+	["journey.w14.down.101"] = {
+		"Coming down, I'm a little surprised the world went on without me watching it. It never needs me as much as I think.",
+		"The world got along fine while I was over it. A useful thing to remember, now and then.",
+	},
+	["journey.w14.down.102"] = {
+		"glances back up with a faintly accusing look, as if the sky had kept something of {g:his|hers}.",
+		"gives the open air above a last nod, as between two parties who have done business and need not meet again soon.",
+	},
+	["journey.w14.down.103"] = {
+		"The heights are behind me. Let the earth bring whatever it has.",
+		"The air had its turn. Now it's the earth's.",
+	},
+	["journey.w14.down.104"] = {
+		"My legs have called a meeting. The motion: never sit still that long again. It carries.",
+		"Report from the lower half: tingling, mild outrage, otherwise functional.",
+	},
+	["journey.w14.down.105"] = {
+		"Faster than walking, and twice as dizzy. A fair trade.",
+		"Less time on the road means more time for the trouble at the end of it. I'm not sure that's a bargain.",
+	},
+	["journey.w14.up.001"] = {
+		"My whole say in this was paying the fare and climbing on. Everything after that belongs to the wings.",
+		"I picked where to go. Every other decision was never mine to make, and I find I don't miss them.",
+		"Somebody else steers, somebody else knows the turns. All that's asked of me is not to fall off.",
+	},
+	["journey.w14.up.002"] = {
+		"No errand fits in a saddle. For once, doing nothing is the most useful thing I can do.",
+		"A stretch with nothing to carry, nothing to fetch, no one to answer. I could grow fond of this kind of idleness.",
+		"Idle hands, and not one soul to scold me for them. This is the best part of any trip.",
+	},
+	["journey.w14.up.003"] = {
+		"A list, while there's time. Mend what's torn, sell what's useless, sleep somewhere with a door.",
+		"Plenty of room to think up here. First thing after landing: find out what I've forgotten to do.",
+		"I'll plan the next few days in the saddle. Plans made this high always look tidier than they turn out.",
+	},
+	["journey.w14.up.004"] = {
+		"Hands, stop that. These straps have held heavier fools than me.",
+		"My fingers have locked around the strap. They'll unlock when they're ready, and not one moment sooner.",
+		"Nobody falls off these things. I've decided that, and I'm clinging to it, along with everything else.",
+	},
+	["journey.w14.up.005"] = {
+		"That first jolt catches the body unwarned, as if nobody had bothered to tell it what was coming.",
+		"The lurch, a drop in the stomach, then the long pull upward. The body protests first and admires later.",
+		"For a moment everything in me wants to grab the ground back. Then it's much too far away to grab.",
+	},
+	["journey.w14.up.006"] = {
+		"From here the land stops being a list of dangers and turns into a pattern. Pretty, and quite unable to reach me.",
+		"Everything that kept my guard up down there is a smudge from here. Distance is a kind of mercy.",
+		"Height takes the teeth out of things. Whatever prowls below is a speck among specks.",
+	},
+	["journey.w14.up.007"] = {
+		"Whatever I was carrying when I climbed on, it can't hold on at this speed. Let it fall where it likes.",
+		"Some worries weigh more than a full pack. Funny how they never make it into the saddle.",
+		"The trouble I left behind will be waiting somewhere. Up here, though, it has no vote.",
+	},
+	["journey.w14.up.008"] = {
+		"No messenger flies this fast. Whatever anyone wants of me, they'll have to wait until I land.",
+		"Nobody can hail me, flag me down, or ask a favor. It's the most private place in the world, and it's moving.",
+		"For the length of this ride I can't be found. It's not hiding if nobody's looking, but it feels like it.",
+	},
+	["journey.w14.up.009"] = {
+		"Lovely view. Still lovely. Yes, still. How long does lovely last?",
+		"Awe lasts about as long as the first turn. After that it's a long sit with a draft.",
+		"I could count wingbeats. I could. I won't, but the fact that I'm weighing it says enough.",
+	},
+	["journey.w14.up.010"] = {
+		"So much world, and all of it going about its business without a glance upward. I feel like a secret.",
+		"Whatever the land is made of, from up here it looks as if it was worth the making.",
+		"It's all down there, every bit of it at once, and none of it knows it's being looked at.",
+	},
+	["journey.w14.up.011"] = {
+		"This mount has flown the route more times than I've crossed a room. Trust the one who knows the way.",
+		"It doesn't look down, it doesn't hesitate. If the one flying isn't worried, I've no right to be.",
+		"Good. The wingbeats have found something steady. Steady I can trust.",
+	},
+	["journey.w14.up.012"] = {
+		"Whoever is down there never looks up. I could pass right over a head and its owner would only notice the draft.",
+		"Somewhere under me someone is haggling, someone is lost, someone is napping. Not one of them knows I'm passing.",
+		"Not a single face turned upward. Being overlooked has never felt this pleasant.",
+	},
+	["journey.w14.up.013"] = {
+		"Paid good coin for this seat. I mean to enjoy every bit of it, even the parts that make me grip harder.",
+		"Cheapest way to cover ground without spending a single step. Worth every copper I handed over.",
+		"The fare is gone and can't be got back, so I may as well get my money's worth by looking at everything.",
+	},
+	["journey.w14.up.014"] = {
+		"The rush of air fills my ears until there's no room left for my own thoughts. A rare quiet, made of noise.",
+		"Up here the air roars so evenly that it turns into silence. I hadn't known noise could do that.",
+		"So loud up here that thinking takes effort, so I've stopped. Restful, in a battering sort of way.",
+	},
+	["journey.w14.up.015"] = {
+		"Did I leave anything behind? Too late to check. Whatever it was, it's someone else's treasure now.",
+		"Pack's on, straps are tight, and if I forgot something, it'll have to learn to live without me.",
+	},
+	["journey.w14.up.016"] = {
+		"The mount doesn't care who I am or what I've done. To it I'm a weight on the left side, slightly too far back.",
+		"Whatever I think of myself, the wings see a parcel. Honest creatures.",
+		"Titles, deeds, debts: none of it counts in the saddle. Up here I'm freight with opinions.",
+	},
+	["journey.w14.up.017"] = {
+		"Don't doze. Don't doze. The rocking is very persuasive, but sleeping in a saddle is a story with a bad end.",
+		"My eyes keep closing on their own. I'll rest them a moment and hold on with everything else.",
+		"Rocking, humming, nothing to do. Whoever designed this ride wanted me asleep, and I won't give them the pleasure.",
+	},
+	["journey.w14.up.018"] = {
+		"Every people that ever looked upward must have wished for this. And here I sit, wishing for a cushion.",
+		"How many generations stood on the ground and envied the birds? I'm borrowing their wish for the length of a ride.",
+		"Wings were the oldest wish, older than gold. I've got them on loan, and my main complaint is the seat.",
+	},
+	["journey.w14.up.019"] = {
+		"Down there I measure the way in steps and sore feet. Up here it's measured in wingbeats, and none of them are mine.",
+		"Distance means something else in the air. The land slides past and I haven't moved a muscle to earn it.",
+		"Leagues go by without my say. It feels a little like cheating, and I don't mind at all.",
+	},
+	["journey.w14.up.020"] = {
+		"For a little while nothing below can touch me. I'll keep this feeling in a pocket for later.",
+		"Lighter. Not in the body, which weighs what it always weighed, but somewhere behind the ribs.",
+		"Nothing down there has a claim on me for now. I could grow used to being unclaimed.",
+	},
+	["journey.w14.up.021"] = {
+		"If anything goes wrong at this height, at least I won't have long to regret it. Strange comfort, but it's mine.",
+		"One loose buckle between me and a very short career as a bird. I've checked it twice. A third time won't hurt.",
+		"Falling would be quick, at least. I mention it only so my nerves know I've considered their point.",
+	},
+	["journey.w14.up.022"] = {
+		"I didn't look back when I climbed on. I'm looking now, and whatever I left is already too small to wave at.",
+		"One glance over the shoulder. The place I stood a moment ago has gone into the blur, and that's that.",
+	},
+	["journey.w14.up.023"] = {
+		"Those wings are doing all the work while I sit here like a sack of flour. The least I can do is keep still.",
+		"The muscles under the saddle work and work. I'm being carried by someone's labor, and I'd do well to remember it.",
+		"Every stroke costs the mount something and costs me nothing. Someone should say thank you. It'll be me.",
+	},
+	["journey.w14.up.024"] = {
+		"The land was here long before anyone flew over it, and it will be here when the last wing folds. It doesn't mind the traffic.",
+		"From this high, the ground looks patient. It has seen every traveler and remembers none of them.",
+		"Under all the roads and quarrels, the land just lies there, being land. There's a calm in that worth taking along.",
+	},
+	["journey.w14.up.025"] = {
+		"All those roads I'd otherwise be walking, and there they go, without me. They'll forgive me.",
+		"Roads down there, curling and doubling back. From up here I can see every place they wasted their time.",
+		"A road looks so sure of itself from the ground. From above, half of them seem to be making it up as they go.",
+	},
+	["journey.w14.up.026"] = {
+		"Strap, buckle, pack, strap. My own small rite before I hand myself over to the air.",
+		"Hands on the front of the saddle, eyes ahead. There's a proper way to begin a flight, even if I invented it.",
+		"Grip firm, back straight, a nod to nobody. Every journey deserves a beginning with some shape to it.",
+	},
+	["journey.w14.up.027"] = {
+		"With any sense I'd have bought something to eat before climbing on. Sense and I parted ways at the counter.",
+		"No telling how long this lasts, and my stomach is already asking. Bread in the pocket first next time, then adventure.",
+		"A bit of cheese would turn this flight into a feast. Instead I have the view, which is less filling.",
+	},
+	["journey.w14.up.028"] = {
+		"I feel smaller up here, and it isn't unpleasant. Most of what I worry about was sized for the ground.",
+		"Whatever I am down there, up here I'm a passenger. There's a lesson in that somewhere. I'll find it later.",
+		"Being carried is its own small humility. Good for me, now and then.",
+	},
+	["journey.w14.up.029"] = {
+		"For the record, I'd have gone a different way. Nobody asked. Nobody ever asks the cargo.",
+		"It banks left for no reason I can see. Fine. It's the one with wings; I'm only the one with opinions.",
+		"Whoever plans these routes has never asked my advice. Judging by this detour, they should start.",
+	},
+	["journey.w14.up.030"] = {
+		"Thoughts come clearer up here. Maybe it's the distance. Maybe it's that nothing can interrupt them.",
+		"On the ground a dozen small things tug at my sleeve. In the saddle, only the thoughts heavy enough not to blow away remain.",
+		"Something about the height puts problems in order. The big ones in front, the petty ones falling off the back.",
+	},
+	["journey.w14.up.031"] = {
+		"Everything that wanted a piece of me down there will have to get in line, and learn to fly first.",
+		"Below me there are things with teeth and grudges. Above them is me, owing nobody anything for a while.",
+		"No ambush can be laid in empty air. The only thing up here with designs on me is my own hunger.",
+	},
+	["journey.w14.up.032"] = {
+		"Each wingbeat lifts me like a hand under the ribs. I can feel the strength of it right through the saddle.",
+		"The beat of those wings is the strongest thing I've ever sat on. Respect is the only reasonable feeling.",
+		"Such power, spent on carrying me. I'll try to be worth the effort when I get wherever this is going.",
+	},
+	["journey.w14.up.033"] = {
+		"The noise of the ground thins out fast: voices, footsteps, someone's argument. What's left is air and wings.",
+		"A moment ago there was chatter all around. Now the loudest thing in my life is the wing beside my knee.",
+		"Behind me, all that clamor. Ahead, nothing but the rush and the wings, and I'm in no hurry to trade back.",
+	},
+	["journey.w14.up.034"] = {
+		"My head's gone blank. Not empty in a bad way. Swept, like a floor before guests.",
+		"No plans, no worries, no lists. Just the air going by. I didn't know I could still do this.",
+		"Nothing in my head but the rush and the rhythm. If this is what idle feels like, I've been missing out.",
+	},
+	["journey.w14.up.035"] = {
+		"Wherever this ends, something will be waiting that I haven't seen coming. I find I'm glad.",
+		"Every flight lands somewhere new, even when it's somewhere old. Whoever climbs off won't be quite who climbed on.",
+	},
+	["journey.w14.up.036"] = {
+		"My feet have gone quiet. They think this is their reward, and I won't argue.",
+		"Every ache from the ground came along for the ride, but at least none of them are getting worse.",
+		"Sitting down and moving fast at once. Whoever thought of it deserves a statue, or at least a nap.",
+	},
+	["journey.w14.up.037"] = {
+		"Heights don't bother me as long as I don't think about them. So: thinking about something else. Anything. Soup.",
+		"Look ahead, not under. Ahead there's only air, and air never hurt anyone who stayed in it.",
+		"If I keep my eyes on the mount's neck, the drop is only a rumor. I'm good at ignoring rumors.",
+	},
+	["journey.w14.up.038"] = {
+		"Down there everything hurries. Up here I'm the only thing that doesn't, and I'm moving faster than any of it.",
+		"Strange to sit perfectly still and cover ground faster than any walker.",
+	},
+	["journey.w14.up.039"] = {
+		"No one can see my face up here. If it does something unguarded, the air will keep the secret.",
+		"A good place to think the thoughts I don't say aloud. The rush of air would carry them off anyway.",
+		"Whatever I'm feeling, nobody's here to read it. I can let it show for once, all the way to wherever this lands.",
+	},
+	["journey.w14.up.040"] = {
+		"Somewhere down there is every mistake I've made on foot. From this height none of them look fatal.",
+		"Perspective comes cheap at this altitude. I'll try to bring a little of it down with me.",
+	},
+	["journey.w14.up.041"] = {
+		"Afraid? A little. Enough to hold on properly, which is the useful amount.",
+		"Some fear is only good sense with a loud voice. I'll let it shout, and keep my grip.",
+		"Fear has climbed on too. As long as it sits behind me and keeps its hands to itself, it can stay.",
+	},
+	["journey.w14.up.042"] = {
+		"Rise, glide, rise. The rhythm settles into my bones like the rocking of a cradle.",
+		"There's a sway to it, up and down and forward, that the body learns quickly. Mine is learning.",
+		"Once the climb is over the motion turns gentle, almost polite, as if the mount knew I'd been nervous.",
+	},
+	["journey.w14.up.043"] = {
+		"Carried off like a sack of mail. At least the mail doesn't have to pay for the trip.",
+		"Somewhere a merchant ships crates this way. This time the crate is me.",
+	},
+	["journey.w14.up.044"] = {
+		"This is the road with no dust and no ruts, the one no boot has ever worn. I'm on it, for a little while.",
+		"The highest road in the world, and the only one that asks nothing of my legs.",
+		"No tolls, no crossroads, no mud. If roads could dream, they'd dream of this.",
+	},
+	["journey.w14.up.045"] = {
+		"When I land, the next move is mine. Until then I'm off duty, and I intend to take that seriously.",
+		"Off duty, by order of the wings. I'll pick everything up once there's ground under me.",
+		"Whatever waits for me can wait a little longer. I'm being carried, and the carried have no obligations.",
+	},
+	["journey.w14.up.046"] = {
+		"The people I left behind are getting smaller, but no less mine. Height doesn't change that.",
+		"Whoever I said goodbye to, or didn't, is down there somewhere. The air carries no messages, so I'll keep this one.",
+	},
+	["journey.w14.up.047"] = {
+		"gives every strap a last tug as the ground falls away, then a second tug, just in case.",
+		"checks the buckle at {g:his|her} hip, finds it fastened, and checks it anyway.",
+		"runs a thumb along the harness, buckle by buckle, while the mount climbs.",
+	},
+	["journey.w14.up.048"] = {
+		"lurches back in the saddle as the wings bite the air, and grabs the nearest strap with both hands.",
+		"is pressed hard into the seat by the first great stroke of the wings, and makes a small, undignified sound.",
+		"rocks backward as the mount springs up, one hand flailing until it finds a strap to hold.",
+	},
+	["journey.w14.up.049"] = {
+		"risks one look straight down, and then finds the space ahead very interesting for a good long while.",
+		"peers over the side, goes very still, and decides that straight ahead is the better view.",
+	},
+	["journey.w14.up.050"] = {
+		"lets the grip on the straps ease a little with each steady wingbeat, until only one hand is still holding on.",
+		"relaxes by degrees: first the shoulders, then the jaw, then, reluctantly, the hands.",
+	},
+	["journey.w14.up.051"] = {
+		"shifts {g:his|her} weight until the saddle stops arguing, and settles in like someone with nowhere to be.",
+		"finds the one comfortable way to sit, and refuses to give it up for anything.",
+		"wriggles once, twice, and then goes still with the look of a traveler who has finally got the seat right.",
+	},
+	["journey.w14.up.052"] = {
+		"glances back just once at the place where the flight began, though there is nothing left to see but distance.",
+		"twists in the saddle for a last look behind, then turns forward and does not look back a second time.",
+		"looks back over one shoulder for a long moment, as if telling the place something no one else needs to hear.",
+	},
+	["journey.w14.up.053"] = {
+		"pats the mount's neck once, firmly, the way one thanks a ferryman in advance.",
+		"leans forward to lay a hand on the beast's neck, and feels the steady work of the muscles beneath.",
+		"gives the mount a quiet word and a scratch along the neck, where the harness meets it.",
+	},
+	["journey.w14.up.054"] = {
+		"closes {g:his|her} eyes for the climb and opens them only once the mount has leveled out.",
+		"keeps both eyes shut through the steep part, and pretends afterward to have been admiring the view all along.",
+	},
+	["journey.w14.up.055"] = {
+		"reaches back to make sure the pack is still there, and a few moments later repeats the gesture.",
+		"hugs the pack closer as the air starts to pull at it, as if it might decide to leave on its own.",
+	},
+	["journey.w14.up.056"] = {
+		"leans out as far as the straps allow, taking in the whole wide world below with open curiosity.",
+		"sits up tall in the saddle as the land opens out underneath, eyes moving from one far edge of it to the other.",
+		"cranes over the mount's shoulder to follow the ground as it falls away, not wanting to miss a thing.",
+	},
+	["journey.w14.up.057"] = {
+		"murmurs something to the mount that the rushing air takes away before anyone could hear it.",
+		"says a few quiet words into the air ahead, meant for the wings, or perhaps for no one.",
+		"talks to the mount in a low, even voice through the whole climb, as one talks to the nervous; it is unclear which of them is.",
+	},
+	["journey.w14.up.058"] = {
+		"yawns hugely once the climb ends, and settles back with the air of someone who has paid for a nap.",
+		"tucks {g:his|her} hands against the harness and lets {g:his|her} head nod with the rhythm of the wings.",
+	},
+	["journey.w14.up.059"] = {
+		"sways with the first long turn, overcorrects, sways back, and finally gives up and lets the mount handle it.",
+		"tilts with the banking wings, looking faintly betrayed, then straightens when the turn is done.",
+		"leans the wrong way into the first bank, catches the mistake, and leans the right way with immense composure.",
+	},
+	["journey.w14.up.060"] = {
+		"squints into the rushing air, eyes stinging, and decides the view is worth it.",
+		"ducks {g:his|her} head behind the mount's neck to escape the push of the air, and watches the land slide by from there.",
+	},
+	["journey.w14.up.061"] = {
+		"counts the coins left in {g:his|her} purse with one hand, holding on with the other, and winces at the total.",
+		"pats the lighter purse at {g:his|her} belt and decides, on balance, that the fare was fair.",
+	},
+	["journey.w14.up.062"] = {
+		"tries to keep a straight face as the mount climbs, and fails, and stops trying.",
+		"lets out a short laugh as the ground drops away, surprised at the sound of it.",
+		"grins like a fool at nothing in particular as the wings carry {g:him|her} higher.",
+	},
+	["journey.w14.up.063"] = {
+		"sets {g:his|her} jaw as the mount launches, determined to enjoy this whether {g:he|she} likes it or not.",
+		"takes a firm hold, plants both knees against the saddle, and fixes {g:his|her} eyes ahead like someone accepting a dare.",
+		"squares {g:his|her} shoulders at the moment of lift-off, as if the air were an opponent to be met head on.",
+	},
+	["journey.w14.up.064"] = {
+		"catches a loose strap end before the air can whip it away, and ties it down with exaggerated care.",
+		"tucks away everything that could fly off, one item after another, until nothing flaps.",
+	},
+	["journey.w14.up.065"] = {
+		"hums something tuneless once the climb is over, too low for anyone but the mount to notice.",
+		"drums {g:his|her} fingers on the saddle in time with the wingbeats, idly, contentedly.",
+	},
+	["journey.w14.up.066"] = {
+		"props {g:his|her} chin on one fist and watches the world go past with a spectator's patience.",
+		"leans an elbow on the saddle's edge and watches the land go by, unhurried and unbothered.",
+		"settles into watching, chin low, while the land goes by in no particular hurry.",
+	},
+	["journey.w14.up.067"] = {
+		"lifts a hand in a small salute to the ground as it falls away, the way one takes leave of an elder.",
+		"bows {g:his|her} head briefly at the moment of lifting off, a private courtesy to the earth being left behind.",
+	},
+	["journey.w14.up.068"] = {
+		"rolls {g:his|her} shoulders once the climb levels out, and lets them drop, loose at last.",
+		"shakes out one hand, then the other, cramped from gripping, and settles them back on the straps more gently.",
+	},
+	["journey.w14.up.069"] = {
+		"points at something far below, opens {g:his|her} mouth to remark on it, and realizes there is no one to tell.",
+		"follows a tiny moving speck along a road far below until the mount's course leaves it behind.",
+		"turns to share a remark with someone, remembers there is only the mount, and tells it to the mount instead.",
+	},
+	["journey.w14.up.070"] = {
+		"spreads one arm wide into the rushing air for a moment, then thinks better of it and grabs the strap.",
+		"tips {g:his|her} face into the rush of the climb and lets it scour away whatever was weighing on {g:him|her}.",
+	},
+	["journey.w14.up.071"] = {
+		"waves back at the flight master, who is already busy with the next customer.",
+		"gives the flight master a confident nod at take-off, and loses the confidence somewhere over the first drop.",
+	},
+	["journey.w14.up.072"] = {
+		"tries several ways of sitting before finding the one that moves with the wings instead of against them.",
+		"learns the mount's rhythm within a dozen strokes and begins, almost, to ride it rather than suffer it.",
+	},
+	["journey.w14.up.073"] = {
+		"watches the ground recede with an expression caught halfway between wonder and second thoughts.",
+		"looks down with wide eyes as the land opens up, and then, slowly, begins to smile.",
+		"goes quiet as the land opens below, every busy thought set aside for a moment.",
+	},
+	["journey.w14.up.074"] = {
+		"flattens against the mount's neck as it climbs, making {g:himself|herself} small against the rush of air.",
+		"leans low and forward over the saddle, the way riders do when they want to be part of the speed.",
+	},
+	["journey.w14.up.075"] = {
+		"fishes a crust out of a pocket as soon as the climb is over, and eats it with the satisfaction of someone on holiday.",
+		"unwraps a bit of food with great care, well aware that anything dropped from here is gone for good.",
+		"takes out something to chew the moment the mount levels off, like a traveler who knows how to use idle time.",
+	},
+	["journey.w14.up.076"] = {
+		"lets go with one hand, as an experiment, holds the pose for a moment, and puts the hand back with great dignity.",
+		"tries riding with no hands at all, very briefly, and does not mention it to anyone afterward.",
+	},
+	["journey.w14.up.077"] = {
+		"watches the wing beside {g:him|her} rise and fall, rise and fall, with the attention of someone learning a trade.",
+		"can't stop watching the wings at work: the reach, the push, the fold. It is a long while before {g:he|she} looks anywhere else.",
+		"tilts {g:his|her} head to follow each downstroke, fascinated, as though counting them were a skill worth learning.",
+	},
+	["journey.w14.up.078"] = {
+		"Off you go, then. I'll be up here, holding on and trying to look calm.",
+		"Your wings, my weight. Fair trade, I think.",
+		"All yours. Try to keep the bumpy bits to a minimum.",
+	},
+	["journey.w14.up.079"] = {
+		"That's high. That's very high. I'll stop describing it now.",
+		"Higher, higher, still higher. Is there a top to this?",
+		"That's a long way to the ground. I'll keep noticing that quietly to myself.",
+	},
+	["journey.w14.up.080"] = {
+		"I trust you completely. Please don't make me regret saying that out loud.",
+		"You know where you're going. I'm just the luggage that agrees.",
+	},
+	["journey.w14.up.081"] = {
+		"Ha! Would you look at that. Everything, all at once.",
+		"Oh, that's something. That's really something.",
+		"Look at it all! No, really, look.",
+	},
+	["journey.w14.up.082"] = {
+		"Wake me if anything interesting happens. Actually, don't. Nothing should happen up here.",
+		"If anything exciting happens on this trip, I'd like to be warned. Then I'd like it not to happen.",
+	},
+	["journey.w14.up.083"] = {
+		"Farewell, ground. Keep my spot warm.",
+		"See you later, ground. Try not to move while I'm gone.",
+	},
+	["journey.w14.up.084"] = {
+		"It's only sitting. I'm good at sitting. This is sitting, but high.",
+		"Just a chair with opinions. A chair that flies. Fine. Fine.",
+	},
+	["journey.w14.up.085"] = {
+		"Smooth start. Very smooth. I'd recommend you to anyone.",
+		"Fine work on that climb. I'd tip, but you'd only drop it.",
+		"Lovely lift. If there's a form for compliments, I'll fill one in.",
+	},
+	["journey.w14.up.086"] = {
+		"Now that's how to leave somewhere. No walking, no looking back.",
+		"Ha! Out of reach of everything. Feels marvelous.",
+	},
+	["journey.w14.up.087"] = {
+		"Is it a long one? Not that I mind. My legs might.",
+		"Any idea how far this goes? No? Neither have I. Good, then.",
+	},
+	["journey.w14.up.088"] = {
+		"No tricks, all right? No swoops, no dives. A dull flight is a good flight.",
+		"Straight lines, please. Curves are for people with better stomachs.",
+		"Keep this one quiet, please. No surprises, no showing off.",
+	},
+	["journey.w14.up.089"] = {
+		"Carry me true, wings, and I'll speak well of you on the ground.",
+		"Bear me safely, and wherever I come down you'll have a good word from me.",
+	},
+	["journey.w14.up.090"] = {
+		"At last, a journey where somebody else does the hard part.",
+		"Somebody else's turn to do the work. About time.",
+	},
+	["journey.w14.up.091"] = {
+		"If I fall off, I'd like it noted that I was enjoying myself until then.",
+		"If I go over the side, tell them I was having a lovely time.",
+		"Should I slip off, remember me fondly. I had a very good seat until then.",
+	},
+	["journey.w14.up.092"] = {
+		"And off. Nothing to do now but hold on and look important.",
+		"Off and away. Everyone below, carry on without me.",
+	},
+	["journey.w14.up.093"] = {
+		"I wasn't going to look down. I looked. It was worth it.",
+		"Promised myself I wouldn't look down. Broke that promise in no time. Worth it.",
+		"Oh, I looked. Of course I looked. Who wouldn't?",
+	},
+	["journey.w14.up.094"] = {
+		"Ha. Try and reach me now, all of you.",
+		"Let them call. I can't hear a thing up here, and I'm glad.",
+	},
+	["journey.w14.up.095"] = {
+		"So. Fly this way often?",
+		"Nice work, if you can get it. Do they pay you? They should.",
+		"You're very good at this, you know. Has anyone told you?",
+	},
+	["journey.w14.up.096"] = {
+		"I'm not frightened. I'm paying very close attention. It's different.",
+		"Not scared. Watchful. Extremely watchful.",
+	},
+	["journey.w14.up.097"] = {
+		"Straps tight, pack on, eyes forward. Off to wherever.",
+		"Strap, pack, grip. That's all the checking I'm doing.",
+		"Buckles shut, pack loaded, pointed the right way. Probably.",
+	},
+	["journey.w14.up.098"] = {
+		"Steady. Steady. That's it, nice and level.",
+		"Good, good. Keep it smooth like that and you'll have no complaints from me.",
+	},
+	["journey.w14.up.099"] = {
+		"Listen to that. Nothing. Wonderful nothing.",
+		"Hear that? No one asking me for anything. Lovely.",
+		"Quiet at last. Nobody's going to spoil this, not even me.",
+	},
+	["journey.w14.up.100"] = {
+		"Whoa! Fine. That was the start. I knew that. I absolutely knew that.",
+		"Oof. Yes. Lifting off. Very good. Carry on.",
+	},
+	["journey.w14.up.101"] = {
+		"Nothing to fix, nothing to fetch, nothing to fight. I'll take it.",
+		"No chores in the air. None. I checked.",
+		"No one needs me up here. Bliss.",
+	},
+	["journey.w14.up.102"] = {
+		"Higher, then. Show me all of it.",
+		"Go on, climb. I want to see how big this world really is.",
+	},
+	["journey.w14.up.103"] = {
+		"Sorry about the weight. Half of it's things I keep meaning to sell.",
+		"Heavy, aren't I? Blame the pack. Never blame the rider.",
+		"Hope I'm not too much of a load. That last meal was a big one.",
+	},
+	["journey.w14.up.104"] = {
+		"From up here every path looks as if it leads somewhere worth going. The ground will correct that soon enough.",
+		"Whatever is down there, from this height it all looks like a promise. Later I'll learn which ones were kept.",
+	},
+	["journey.w14.up.105"] = {
+		"sits back once the climb is done and does the rarest thing of all: absolutely nothing.",
+		"folds {g:his|her} hands in {g:his|her} lap as the mount levels out, as if waiting for a curtain to rise.",
+	},
 }, "base_world")
