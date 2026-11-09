@@ -6708,4 +6708,356 @@ NS:AddTexts("enUS", {
 		"makes a small, wry bow to no one in particular, as if thanking luck for the last stretch.",
 		"tips an imaginary hat to the world at large, for reasons {g:he|she} keeps to {g:himself|herself}.",
 	},
+	["muse.w12.coin.013"] = {
+		"holds {g:his|her} purse up to one ear and shakes it gently, listening like a healer to a weak chest.",
+		"gives {g:his|her} purse a little shake beside one ear, and the faint answer does not seem to reassure {g:him|her}.",
+	},
+	["muse.w12.coin.032"] = {
+		"splits a handful of coins into two small heaps, what must be spent and what might be saved, and the second heap loses every argument.",
+		"sorts {g:his|her} coins into one pile for needs and one for hopes, then quietly slides most of the hopes across.",
+	},
+	["muse.w12.coin.051"] = {
+		"rubs a tarnished coin against {g:his|her} sleeve until a worn face shows through, and studies it as if trying to place it.",
+		"polishes a dull coin on {g:his|her} cuff, squinting at whatever was once stamped there.",
+	},
+	["muse.w12.coin.052"] = {
+		"reties the strings of {g:his|her} purse with a double knot, then a third, as if the coins inside had been plotting something.",
+		"pulls the cord of {g:his|her} purse tighter than it needs and fastens it with a stubborn knot, plainly distrusting the contents.",
+	},
+	["muse.w12.coin.053"] = {
+		"holds one small thing in each hand, weighing them against each other with the grave face of someone deciding which to sell.",
+		"turns a trinket over, then another, plainly working out which of the two a merchant would pay more for, and which {g:he|she} would miss less.",
+	},
+	["muse.w12.coin.054"] = {
+		"looks from a worn boot to {g:his|her} purse and back, as if the two were haggling and neither would give way.",
+		"glances at a split seam, then at the purse at {g:his|her} belt, and seems to referee a quarrel between them.",
+	},
+	["muse.w12.coin.055"] = {
+		"smooths out a crumpled scrap of paper with a sum written on it, reads it, and folds it away with a long face.",
+		"unfolds a small note with a figure scrawled across it, sighs at the figure, and folds it smaller, as if that might shrink it.",
+	},
+	["muse.w12.coin.056"] = {
+		"turns out a pocket, finds a lone copper caught in the seam, and greets it like an old acquaintance.",
+		"digs a stray coin out of the corner of a pocket and looks at it with real affection, as though it had come back of its own accord.",
+	},
+	["muse.w12.coin.057"] = {
+		"closes {g:his|her} fist around the last few coins and holds it a moment, the way one might hold a small bird.",
+		"folds {g:his|her} fingers over a few remaining coins and keeps the hand still for a while, careful, as if they could fly off.",
+	},
+	["muse.w12.coin.058"] = {
+		"draws a quick column of figures in the air with one finger, adds them up, and frowns at the total hanging there.",
+		"writes a sum on nothing with a fingertip, carries the one, and glares at the invisible answer.",
+	},
+	["muse.w12.coin.059"] = {
+		"puts {g:his|her} purse away with the firm, final gesture of someone who has just said no to something tempting.",
+		"tucks the purse back at {g:his|her} belt with a decisive pat, the matter of some small luxury plainly closed.",
+	},
+	["muse.w12.coin.060"] = {
+		"stares at a single coin in {g:his|her} palm for a long moment, as if the coin were the one deciding something.",
+		"looks down at one coin resting in {g:his|her} open hand, very still, like someone waiting for it to give an opinion.",
+	},
+	["muse.w12.coin.061"] = {
+		"glances about with lips moving, pricing everything in sight out of sheer habit, and arrives at a total {g:he|she} plainly dislikes.",
+		"runs an appraising eye over everything nearby, as merchants do, and seems unimpressed by the sum.",
+	},
+	["muse.w12.coin.062"] = {
+		"grins briefly at nothing, with the look of someone remembering a bargain that went very well.",
+		"chuckles to {g:himself|herself}, quietly pleased, like someone who got a fair price and a little more.",
+	},
+	["muse.w12.craft.004"] = {
+		"lays a few small tools out in a neat row, uses each in turn, and puts them back in the order they came out.",
+		"sets out a modest kit of odds and ends, works through it piece by piece, and packs it away exactly as it was.",
+	},
+	["muse.w12.craft.010"] = {
+		"works a stubborn knot loose with a fingernail, patient as someone with nowhere else to be.",
+		"teases apart a knot pulled far too tight, strand by strand, without once losing {g:his|her} temper.",
+	},
+	["muse.w12.craft.015"] = {
+		"tries to thread a needle, misses, squints, misses once more, and finally succeeds with an air of having meant it all along.",
+		"jabs a thread at the eye of a needle several times, mutters something unkind, and gets it through on the next go.",
+	},
+	["muse.w12.craft.024"] = {
+		"rubs a little grease into a stiff buckle until it moves without a sound.",
+		"works a dab of grease into a squeaking clasp, testing it open and shut until it falls silent.",
+	},
+	["muse.w12.craft.032"] = {
+		"tugs at each strap in turn, firmly, as though asking every one of them a question.",
+		"runs a hand down the line of buckles, testing each with a short pull before moving on.",
+	},
+	["muse.w12.craft.040"] = {
+		"holds a freshly mended strap up for inspection, turns it this way and that, and gives a small nod of approval.",
+		"finishes a repair, gives it a hard tug, and looks quietly pleased when it holds.",
+	},
+	["muse.w12.craft.044"] = {
+		"empties out a pouch, frowns at a tangle of string, wire and thread, and spends a long moment unpicking it.",
+		"pulls a hopeless snarl of cord from a pocket and sets about untangling it with grim determination.",
+	},
+	["muse.w12.craft.051"] = {
+		"turns a small worn tool over in {g:his|her} fingers, thumb resting in the hollow that other thumbs wore into it long ago.",
+		"studies the smooth dip in the handle of an old tool, and fits {g:his|her} own thumb into it.",
+	},
+	["muse.w12.craft.058"] = {
+		"bites off the end of a thread, ties it off, and sits for a moment looking at nothing in particular.",
+		"finishes the last stitch, snaps the thread with {g:his|her} teeth, and lets the work rest across {g:his|her} knees.",
+	},
+	["muse.w12.craft.064"] = {
+		"notices a fraying end on a strap and pinches it between finger and thumb, as if making a note to deal with it.",
+		"spots a frayed edge on {g:his|her} gear, frowns, and tucks it out of sight for now.",
+	},
+	["muse.w12.craft.069"] = {
+		"re-ties a loose lace with quick, practiced fingers, without even looking down.",
+		"bends to fix a slipping lace and is upright before the knot has quite settled.",
+	},
+	["muse.w12.craft.075"] = {
+		"repacks {g:his|her} bag with great care, steps back, and finds one small item still lying on the ground.",
+		"fits the last thing into the pack with a satisfied pat, then notices something else that was supposed to go in first.",
+	},
+	["muse.w12.craft.080"] = {
+		"smooths a patch flat with the palm of {g:his|her} hand, slowly, the way one might settle a sleeping animal.",
+		"presses a fresh patch down with {g:his|her} palm and holds it there a moment longer than it needs.",
+	},
+	["muse.w12.craft.087"] = {
+		"glares at a buckle that has just come undone, as if it had said something rude.",
+		"looks down at a strap hanging loose and gives it the long, flat stare of an unimpressed sergeant.",
+	},
+	["muse.w12.doubt.013"] = {
+		"takes a step, stops, and looks back the way {g:he|she} came as if something there had asked a question.",
+		"half turns to go back, thinks better of it, and then thinks better of that.",
+	},
+	["muse.w12.doubt.019"] = {
+		"lifts a hand as if to raise an objection to something, holds it there, and slowly lowers it.",
+		"starts to say something, weighs it, and swallows it instead.",
+	},
+	["muse.w12.doubt.027"] = {
+		"rubs the back of {g:his|her} neck with the sheepish air of someone conceding a point to nobody in particular.",
+		"winces at some private thought, mutters 'fair enough' to no one, and lets it go.",
+	},
+	["muse.w12.doubt.039"] = {
+		"sits very still, turning over something in {g:his|her} mind that will clearly not be settled quickly.",
+		"frowns at the ground for a long moment, like someone rereading a verdict passed on {g:himself|herself}.",
+	},
+	["muse.w12.doubt.046"] = {
+		"takes a few steps one way, stops, and turns around with the air of someone overruled by {g:himself|herself}.",
+		"starts off in one direction, hesitates, and changes course with a small, resigned shake of the head.",
+	},
+	["muse.w12.doubt.054"] = {
+		"gives a short, rueful laugh, as if {g:he|she} had just caught {g:himself|herself} in a small lie.",
+		"shakes {g:his|her} head slowly at some private foolishness, half amused and half not.",
+	},
+	["muse.w12.doubt.063"] = {
+		"chews at the inside of {g:his|her} cheek, plainly arguing both sides of something and winning neither.",
+		"turns {g:his|her} hands palm up, then palm down, like a scale that will not settle.",
+	},
+	["muse.w12.doubt.073"] = {
+		"goes back a few steps to set right some small thing left askew, then carries on with a lighter step.",
+		"stops, retraces a pace or two to put something where it belongs, and only then moves on.",
+	},
+	["muse.w12.doubt.081"] = {
+		"counts on {g:his|her} fingers, pros on one hand and cons on the other, and frowns at the result.",
+		"holds up one hand, then the other, weighing two things that aren't there, and sighs at the tie.",
+	},
+	["muse.w12.doubt.089"] = {
+		"raises a finger to make a point, thinks better of it halfway, and turns the gesture into scratching an ear.",
+		"draws {g:himself|herself} up to argue, then deflates, conceding with a shrug to someone who isn't there.",
+	},
+	["muse.w12.doubt.094"] = {
+		"picks up a pebble, weighs it in {g:his|her} palm as though it were a question, and sets it down exactly where it was.",
+		"turns a pebble over in {g:his|her} fingers, as if one side said yes and the other no, and pockets it without deciding.",
+	},
+	["muse.w12.doubt.095"] = {
+		"flinches at a thought that seems to have arrived uninvited, lets it stay a moment, and then sends it on its way.",
+		"goes quiet with the uncomfortable patience of someone listening to {g:his|her} own conscience.",
+	},
+	["muse.w12.doubt.096"] = {
+		"draws a line in the dirt with the toe of a boot, studies it, and steps over it with a shrug.",
+		"scuffs a line on the ground with one boot, looks at it a long time, and finally crosses it.",
+	},
+	["muse.w12.doubt.097"] = {
+		"unclenches {g:his|her} fists one finger after another, as if letting go of something that was never worth the grip.",
+		"slowly opens {g:his|her} hands, the way one drops an argument nobody won.",
+	},
+	["muse.w12.humor.092"] = {
+		"trips over nothing at all, turns to inspect the nothing, and walks on with great dignity.",
+		"stumbles on perfectly flat ground and gives the spot a long, accusing look.",
+	},
+	["muse.w12.humor.093"] = {
+		"swats at a fly, misses, and turns the movement into a stretch, as if that had been the plan.",
+		"waves off some buzzing pest, then another, and finally concedes the field.",
+	},
+	["muse.w12.humor.094"] = {
+		"unhooks a thorn from {g:his|her} sleeve, studies it, and flicks it away like a servant dismissed.",
+		"picks a burr off one sleeve, finds it stuck to the other hand, and spends a while losing to it.",
+	},
+	["muse.w12.humor.095"] = {
+		"tests the ground ahead with one toe, the way people test a bridge that has lied to them before.",
+		"presses a boot cautiously onto the next patch of ground, as if it might not be there.",
+	},
+	["muse.w12.humor.096"] = {
+		"bows gravely to the ground, then sits down on it with full ceremony.",
+		"sits down with the slow solemnity of someone accepting a throne, though the throne is only bare ground.",
+	},
+	["muse.w12.humor.097"] = {
+		"practices a stern, heroic expression, holds it a moment, and lets it collapse into a grin.",
+		"tries on a noble frown, decides it doesn't fit, and puts it away.",
+	},
+	["muse.w12.humor.098"] = {
+		"steps on something that squelches, freezes, and decides not to look down.",
+		"feels something give wetly underfoot, and walks on with eyes fixed firmly ahead.",
+	},
+	["muse.w12.humor.099"] = {
+		"jumps lightly over nothing at all, lands, and looks around to see whether anyone noticed.",
+		"gives a small hop in mid-stride for no reason, and carries on pretending it never happened.",
+	},
+	["muse.w12.humor.100"] = {
+		"salutes a passing beetle with complete seriousness.",
+		"steps carefully around a small crawling thing, with the courtesy due to a fellow traveler.",
+	},
+	["muse.w12.humor.101"] = {
+		"announces {g:his|her} own arrival with a small fanfare, hummed for nobody.",
+		"hums a brief, pompous fanfare to {g:himself|herself}, then looks around as though expecting applause.",
+	},
+	["muse.w12.humor.102"] = {
+		"leans casually against something, which shifts, and recovers with as much dignity as can be found at short notice.",
+		"props an elbow on what turns out to be nothing, and turns the lurch into a thoughtful stroll.",
+	},
+	["muse.w12.humor.103"] = {
+		"glares at a small stone underfoot as if it had been placed there on purpose, then steps over it with enormous dignity.",
+		"regards a small obstacle in {g:his|her} way with deep suspicion, then goes the long way round it.",
+	},
+	["muse.w12.humor.104"] = {
+		"mutters 'never again' to nobody, in the tone of someone who has said it often.",
+		"shakes {g:his|her} head slowly and mouths the words 'never again', without much conviction.",
+	},
+	["muse.w12.hunger.004"] = {
+		"peels an apple in one long unbroken curl, and looks faintly proud when it reaches the end.",
+		"turns an apple slowly in {g:his|her} fingers, working the peel off in a single ribbon.",
+		"takes great care over peeling a piece of fruit, as if the whole day depended on the peel staying in one piece.",
+	},
+	["muse.w12.hunger.026"] = {
+		"brushes a scatter of crumbs off {g:his|her} front, finds more in a fold of {g:his|her} clothes, and gives up.",
+		"shakes crumbs out of one sleeve, then the other, with the air of someone who has stopped asking how they got there.",
+	},
+	["muse.w12.hunger.040"] = {
+		"scatters a few crumbs on the ground, an offering to whatever small creature might want them.",
+		"drops the last crumbs of {g:his|her} meal for whatever small mouths might be watching.",
+	},
+	["muse.w12.hunger.062"] = {
+		"finishes eating and licks {g:his|her} fingers clean, one by one, without the slightest shame.",
+		"wipes {g:his|her} fingers on a sleeve after the last bite, glances around, and then licks them clean anyway.",
+	},
+	["muse.w12.hunger.077"] = {
+		"tests a hot drink with the very tip of {g:his|her} tongue, winces, and sets it down to wait.",
+		"sips something far too hot, puts it aside with a look of betrayal, and waits.",
+	},
+	["muse.w12.hunger.078"] = {
+		"pulls the stopper from a waterskin, drinks, and closes it again with care, as if the water were precious.",
+		"takes a long drink of water, then a second, smaller one, and puts the rest away for later.",
+	},
+	["muse.w12.hunger.079"] = {
+		"shakes the waterskin beside {g:his|her} ear, listening to how much is left.",
+		"tilts the waterskin, judges its weight, and decides to wait a little before drinking.",
+	},
+	["muse.w12.hunger.080"] = {
+		"checks what's left to eat, divides it in {g:his|her} head into meals, and comes up one short.",
+		"unwraps the last of the bread, looks at it for a while, and wraps it up again for a worse moment.",
+	},
+	["muse.w12.hunger.081"] = {
+		"breaks a piece of cheese in two and studies the inside, as though it might hold a secret.",
+		"cuts a sliver of cheese, tastes it slowly, and nods as if it had answered a question well.",
+	},
+	["muse.w12.hunger.082"] = {
+		"eats slowly, eyes half closed, as if the plainest food deserved {g:his|her} full attention.",
+		"chews each mouthful properly, unhurried, giving the meal the attention of a guest at a good table.",
+	},
+	["muse.w12.hunger.083"] = {
+		"wipes the last of a meal from the bowl with a crust and leaves the wood shining.",
+		"runs a crust of bread around the inside of the bowl until there's nothing left to argue about.",
+	},
+	["muse.w12.hunger.084"] = {
+		"pops a berry into {g:his|her} mouth, makes a face at the sourness, and reaches for another.",
+		"eats a handful of something small and sour, wincing at each one and stopping at none.",
+	},
+	["muse.w12.hunger.085"] = {
+		"sniffs the air hopefully, as if supper might be somewhere close, and is disappointed.",
+		"lifts {g:his|her} head and sniffs, the way hungry people do when they imagine they smell bread.",
+	},
+	["muse.w12.rest.010"] = {
+		"stifles a yawn behind one fist, then a second, and gives up on dignity for the third.",
+		"tries to hide a yawn, fails, and lets the next one out in full.",
+	},
+	["muse.w12.rest.011"] = {
+		"blinks slowly, the long heavy blink of someone losing a quiet argument with sleep, then forces {g:his|her} eyes wide.",
+		"lets {g:his|her} eyelids droop, catches them halfway, and hauls them up with visible effort.",
+		"keeps {g:his|her} eyes open by sheer stubbornness, though they plainly have other plans.",
+	},
+	["muse.w12.rest.021"] = {
+		"sits cross-legged, hands loose on {g:his|her} knees, and does absolutely nothing with great care.",
+		"settles down on the ground and stays there, doing nothing at all, and doing it thoroughly.",
+	},
+	["muse.w12.rest.029"] = {
+		"nods off for a moment where {g:he|she} sits, chin dipping, then jerks upright and looks around as if nothing happened.",
+		"dozes off briefly, head sagging forward, and wakes with a start and a very innocent expression.",
+	},
+	["muse.w12.rest.037"] = {
+		"lets {g:his|her} eyes close and listens to whatever is happening far away, as though it were being told for {g:his|her} benefit.",
+		"shuts {g:his|her} eyes for a while and simply listens, face easing as the distant noises sort themselves out.",
+	},
+	["muse.w12.rest.045"] = {
+		"stretches both arms high overhead until something pops, then lets them fall with a contented grunt.",
+		"reaches up in a long, shameless stretch, holds it, and lets go all at once.",
+		"stretches until every joint has had its say, and comes out of it looking two fingers taller.",
+	},
+	["muse.w12.rest.055"] = {
+		"shifts {g:his|her} weight onto one leg and settles into the patient slouch of someone who expects to wait a while.",
+		"props {g:himself|herself} against the nearest solid thing and waits, arms folded, in no particular hurry.",
+		"leans on whatever is handy, crosses one ankle over the other, and gives every sign of being prepared to wait all day.",
+	},
+	["muse.w12.rest.063"] = {
+		"lies down flat on {g:his|her} back, arms spread wide, and stays there as though the ground had asked for company.",
+		"stretches out full length on the ground and lies perfectly still, eyes half closed, a picture of deliberate laziness.",
+	},
+	["muse.w12.rest.069"] = {
+		"lays out three pebbles and plays some game against {g:himself|herself} with them, and seems to be losing.",
+		"invents a small game with whatever lies within reach and plays it with complete seriousness until it stops being interesting.",
+	},
+	["muse.w12.rest.075"] = {
+		"props {g:his|her} feet up on the nearest thing that will hold them and sighs like someone who has finally been understood.",
+		"finds something to rest {g:his|her} feet on and puts them there with enormous satisfaction.",
+	},
+	["muse.w12.rest.084"] = {
+		"leans back on {g:his|her} hands and watches the world go about its business, with no intention whatsoever of joining in.",
+		"watches whatever moves nearby with the mild, unhurried interest of someone who has nowhere to be.",
+	},
+	["muse.w12.rest.089"] = {
+		"settles into an attitude of profound idleness, then glances around as if daring anyone to object.",
+		"makes {g:himself|herself} comfortable with the air of someone who intends to stay that way, whatever the world has planned.",
+	},
+	["muse.w12.sayings.106"] = {
+		"murmurs half of a dwarven saying about stone and patience, loses the end of it, and shrugs.",
+		"mutters a few words of some dwarven proverb, something about stone and waiting, and can't seem to recall how it ends.",
+	},
+	["muse.w12.sayings.107"] = {
+		"repeats a goblin trader's saying quietly, counting on {g:his|her} fingers as if checking whether the arithmetic holds.",
+		"says a goblin proverb half aloud, something about profit and patience, then frowns as though doing the sums.",
+	},
+	["muse.w12.sayings.108"] = {
+		"nods slowly to {g:himself|herself}, turning over some tauren saying about the earth, and seems to find it heavier than expected.",
+		"goes quiet over a half-remembered tauren proverb, lips moving on the words, and gives a small, slow nod.",
+	},
+	["muse.w12.sayings.109"] = {
+		"snorts at some sailors' saying that has surfaced from nowhere, the sort that's only funny after a long voyage.",
+		"laughs once, low, at a sailors' proverb come back from who knows where, and doesn't explain it to anyone.",
+	},
+	["muse.w12.sayings.110"] = {
+		"mouths a troll saying about patience, very slowly, as if the slowness were part of it.",
+		"repeats a troll proverb about waiting, unhurried, as though rushing it would spoil the point.",
+	},
+	["muse.w12.sayings.111"] = {
+		"squares {g:his|her} shoulders at the memory of some orcish saying about honor, as if it had been addressed to {g:him|her} personally.",
+		"straightens at an orc proverb about honor that seems to have come to mind, and looks faintly challenged by it.",
+	},
+	["muse.w12.sayings.112"] = {
+		"recalls some kaldorei saying about how long a forest remembers, and moves on a little more carefully.",
+		"seems to remember a kaldorei proverb about the long memory of trees, and goes on a touch more gently.",
+	},
 }, "base_exploration")

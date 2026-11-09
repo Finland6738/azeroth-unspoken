@@ -3301,4 +3301,2415 @@ NS:AddTexts("enUS", {
 		"steps back from the remains and waits a moment, to be sure they stay still.",
 		"watches the remains a breath longer than needed. With the dead, one learns to.",
 	},
+	["battle.w12.cries.001"] = {
+		"I've planted my feet. You'll need a lever.",
+		"Feet down, chin up. Bring a lever if you mean to shift me.",
+		"Rooted. Go fetch a lever, I'll wait.",
+	},
+	["battle.w12.cries.002"] = {
+		"Hear that? Does that sound like trembling to you?",
+		"Listen close. Is that the voice of someone shaking?",
+	},
+	["battle.w12.cries.003"] = {
+		"Meet me halfway! I've already walked my half!",
+		"Halfway, then! My half's done, the rest is yours to cover!",
+	},
+	["battle.w12.cries.004"] = {
+		"Step for step! Every one you take, I take one too!",
+		"Match me step for step, if you've the nerve!",
+		"You move, I move. Pace for pace, all the way!",
+	},
+	["battle.w12.cries.005"] = {
+		"Stand and be counted! ...Just me? Then count me twice!",
+		"All who'll stand, step up! ...Fine. I'll count as several.",
+	},
+	["battle.w12.cries.006"] = {
+		"My answer is no! Whatever the question was, no!",
+		"No! Whatever you came to ask, the answer's no!",
+		"However you put it, the answer's the same: no!",
+	},
+	["battle.w12.cries.007"] = {
+		"You want this ground? Pay for every inch of it!",
+		"This ground isn't for sale. You'll pay for every inch anyway!",
+	},
+	["battle.w12.cries.008"] = {
+		"Here! Over here! Yes, the one shouting!",
+		"Over here! No, not there. Here, where all the noise is!",
+		"This way! Follow the racket, it's me!",
+	},
+	["battle.w12.cries.009"] = {
+		"Good! I've been saving this temper for someone!",
+		"Finally, somewhere to put all this anger!",
+		"At last! All this anger had nowhere to go!",
+	},
+	["battle.w12.cries.010"] = {
+		"Somebody keep count! I want this one remembered properly!",
+		"Is anyone watching? Good. Watch closely!",
+	},
+	["battle.w12.cries.011"] = {
+		"Loud and plain, so there's no mistake: I'm not leaving!",
+		"Let there be no misunderstanding: I stay, and you deal with it!",
+	},
+	["battle.w12.cries.012"] = {
+		"I've got a voice and two hands, and you're about to meet all three!",
+		"Two hands and one big mouth. You'll meet them all!",
+	},
+	["battle.w12.cries.013"] = {
+		"If I fall, I'll fall shouting!",
+		"Whatever happens, nobody will say I went quietly!",
+		"Quietly? Never. Whatever comes, it comes loud!",
+	},
+	["battle.w12.cries.014"] = {
+		"Nobody hands me this fight. I'm taking it!",
+		"This fight wasn't given to me. I'm claiming it, loudly!",
+	},
+	["battle.w12.cries.015"] = {
+		"I don't back down, I don't bargain, and I don't quit early!",
+		"No backing down, no bargaining, no quitting!",
+	},
+	["battle.w12.cries.016"] = {
+		"A challenge? Accepted before you'd finished making it!",
+		"Accepted! Whatever that was, I accept!",
+		"Challenge received, challenge taken, no take-backs!",
+	},
+	["battle.w12.cries.017"] = {
+		"You've drawn a line. I'm standing right on it!",
+		"There's your line. I've just stepped over it.",
+	},
+	["battle.w12.cries.018"] = {
+		"Stand tall! Or don't. I'll meet you at whatever height you are!",
+		"Tower or pebble, I'll face you just the same!",
+	},
+	["battle.w12.cries.019"] = {
+		"One or many, any size, the answer's the same: no further!",
+		"However many, however big, this is where it stops!",
+	},
+	["battle.w12.cries.020"] = {
+		"Let the ground remember who held it!",
+		"Let the earth keep the memory of who would not give way!",
+	},
+	["battle.w12.cries.021"] = {
+		"To the last ounce of me!",
+		"Down to the last ounce, and a little past it!",
+		"Everything I am, to the last scrap!",
+	},
+	["battle.w12.cries.022"] = {
+		"Fair warning, given once, out loud. That's all the courtesy left.",
+		"Hear my one warning. After this, no more courtesy!",
+	},
+	["battle.w12.cries.023"] = {
+		"Anyone nearby trying to sleep? Sorry! This will be loud!",
+		"Apologies to every ear around! This won't be quiet!",
+	},
+	["battle.w12.cries.024"] = {
+		"I didn't come all this way to stop for you!",
+		"I've walked too far to be stopped here!",
+		"All that road behind me, and you think this is where I halt?",
+	},
+	["battle.w12.cries.025"] = {
+		"Every bruise you give me comes back with interest!",
+		"Bruise me and I'll pay it back, with interest!",
+	},
+	["battle.w12.cries.026"] = {
+		"One will, two hands, no retreat!",
+		"Two hands, one will, and no way back!",
+	},
+	["battle.w12.cries.027"] = {
+		"Courage, you fool! ...That was for me, not you.",
+		"Be brave, idiot! ...I meant myself.",
+		"Chin up, you coward! ...Talking to myself, sorry.",
+	},
+	["battle.w12.cries.028"] = {
+		"Raise the alarm! Oh, wait. I'm the alarm.",
+		"Someone sound the alarm! Never mind, I've got a voice.",
+	},
+	["battle.w12.cries.029"] = {
+		"Plain as bread: you or me, and I'd rather it was me!",
+		"Plain as bread and twice as honest: I'm here to fight you!",
+	},
+	["battle.w12.cries.030"] = {
+		"Not here, not past me, not while I can lift a hand!",
+		"Nothing gets past while I can still raise a hand!",
+	},
+	["battle.w12.cries.031"] = {
+		"By my own word and nothing else, I stand against you!",
+		"On nobody's word but my own, I set myself against you!",
+	},
+	["battle.w12.cries.032"] = {
+		"I've too much left to do to stop here for you!",
+		"Plenty left to do, and none of it waits on you!",
+		"Busy life, this. You'll have to fit around it!",
+	},
+	["battle.w12.cries.033"] = {
+		"Got a cry of your own? Let's hear it! Mine's louder!",
+		"Shout back, growl, hiss, whatever you do! I'll do it louder!",
+		"Make whatever noise you make. Then hear mine!",
+	},
+	["battle.w12.cries.034"] = {
+		"Hold nothing back on my account! I'm certainly not!",
+		"Give it everything. I'm keeping nothing for later either!",
+	},
+	["battle.w12.cries.035"] = {
+		"Last chance to walk away! ...No? Good. I didn't want you to.",
+		"Turn back now! ...No? I hoped you'd say that.",
+	},
+	["battle.w12.cries.036"] = {
+		"Earn it! Whatever you want from me, earn every bit!",
+		"Nothing's free here! You'll earn every scrap you take!",
+	},
+	["battle.w12.cries.037"] = {
+		"First blow's mine! ...Or yours. I'm not fussy!",
+		"First blow to whoever wants it! I'm not proud!",
+	},
+	["battle.w12.cries.038"] = {
+		"My hands are steady and my temper isn't! Pick which you'd rather meet!",
+		"Steady hands, short temper. You'll get both!",
+	},
+	["battle.w12.cries.039"] = {
+		"Hear the racket of my gear? That's the sound of me not running!",
+		"All this clatter? That's me, not taking to my heels!",
+	},
+	["battle.w12.cries.040"] = {
+		"Whatever you came for, you'll take it through me!",
+		"Anything you want past here goes through me first!",
+		"You want past? The way goes through me!",
+	},
+	["battle.w12.cries.041"] = {
+		"You've used up the last of my patience. All of it, just now!",
+		"There goes my patience. You'll get what comes after!",
+	},
+	["battle.w12.cries.042"] = {
+		"Mark the spot! Something worth remembering is about to happen!",
+		"Remember this spot. I intend to make it famous!",
+	},
+	["battle.w12.cries.043"] = {
+		"Get ready, because I already am!",
+		"Ready or not, it doesn't matter. I am!",
+		"Take your time getting set. I'm set already!",
+	},
+	["battle.w12.cries.044"] = {
+		"Let anyone within earshot know: I did not flinch!",
+		"Let it carry far: I didn't take one step back!",
+	},
+	["battle.w12.cries.045"] = {
+		"Teeth bared and temper up! You asked for the noise!",
+		"Grinning like a lunatic and twice as loud! There!",
+	},
+	["battle.w12.cries.046"] = {
+		"Loudest one wins! ...That's not how it works? Too late, I've started!",
+		"I've decided the loudest wins. Objections? Speak up!",
+	},
+	["battle.w12.cries.047"] = {
+		"Somebody has to stand in the way. It's going to be me!",
+		"Someone's got to say no. I volunteer, loudly!",
+		"Somebody had to be the wall. Hello!",
+	},
+	["battle.w12.cries.048"] = {
+		"Better a loud fool than a quiet coward! Here I am!",
+		"Call me a fool if you like. At least I'm a loud one!",
+	},
+	["battle.w12.cries.049"] = {
+		"That was your mistake! This is my answer!",
+		"You've made your move. Here's my reply, loud and clear!",
+	},
+	["battle.w12.cries.050"] = {
+		"Never learned to run away. Too late to start now!",
+		"Running away was never my talent. Fighting, though!",
+	},
+	["battle.w12.cries.051"] = {
+		"I'm awake, I'm angry, and I'm right here!",
+		"Wide awake, foul-tempered, and standing right in front of you!",
+	},
+	["battle.w12.cries.052"] = {
+		"I won't be the one who blinks first!",
+		"Blink first? Not me. Never me!",
+	},
+	["battle.w12.cries.053"] = {
+		"You've woken something you should have let lie!",
+		"Bad idea, poking this! Very bad idea!",
+		"Should've left this one alone! Too late now!",
+	},
+	["battle.w12.cries.054"] = {
+		"Witness it, whoever's near: I was challenged, and I answered!",
+		"Let it be known: a challenge came, and I came to meet it!",
+	},
+	["battle.w12.cries.055"] = {
+		"First the cry, then the clash. That's how it was always done.",
+		"Cry first, clash after. The oldest order there is.",
+	},
+	["battle.w12.cries.056"] = {
+		"I had a better war cry ready. This one will have to do: HAH!",
+		"I rehearsed something grand. It came out as 'HEY!'",
+	},
+	["battle.w12.cries.057"] = {
+		"Wherever you're going, I'm in the way of it!",
+		"Whatever your plan was, I'm the part you didn't count on!",
+	},
+	["battle.w12.cries.058"] = {
+		"That's enough! Now you hear from me!",
+		"Enough! My turn to be heard!",
+		"Quiet's over! Listen to this!",
+	},
+	["battle.w12.cries.059"] = {
+		"I'm afraid of plenty of things. You didn't make the list!",
+		"Plenty frightens me. You'll have to try harder!",
+	},
+	["battle.w12.cries.060"] = {
+		"Hear me, all who can: I stand, and I do not kneel!",
+		"I will not kneel. Let that be heard by any who can hear!",
+	},
+	["battle.w12.cries.061"] = {
+		"Head-on or sideways, try me any way you like!",
+		"Any angle you like. I'll be facing it!",
+		"From the front, from the side, I'm here either way!",
+	},
+	["battle.w12.cries.062"] = {
+		"This moment needs a cry. Here's mine!",
+		"A moment like this deserves a proper roar! There!",
+	},
+	["battle.w12.cries.063"] = {
+		"Doubts are for later! Right now I'm all certainty and noise!",
+		"No room for second thoughts! Only first ones, and they're loud!",
+	},
+	["battle.w12.cries.064"] = {
+		"You wanted trouble? Trouble's here, and it's shouting!",
+		"Looking for trouble? It just found you, and it's loud!",
+	},
+	["battle.w12.cries.065"] = {
+		"Once, clearly, so it's said: I will not yield!",
+		"Said aloud, so it binds me: no yielding!",
+		"Out loud, so there's no taking it back: I hold!",
+	},
+	["battle.w12.cries.066"] = {
+		"Interrupting my thoughts? Rude! Here's a loud one instead!",
+		"I was thinking! Now I'm shouting! Your doing!",
+	},
+	["battle.w12.cries.067"] = {
+		"No hiding, no running, no whispering! Here I am, at full voice!",
+		"Out in the open and loud about it! Here!",
+	},
+	["battle.w12.cries.068"] = {
+		"If this is the hard way, then the hard way it is!",
+		"Hard way, then! I never trusted the easy one anyway!",
+	},
+	["battle.w12.cries.069"] = {
+		"Make it a good one! I hate wasting a proper shout!",
+		"Be worth the noise! I don't roar for just anything!",
+	},
+	["battle.w12.cries.070"] = {
+		"You knocked! I'm answering! Loudly!",
+		"Knock on this door and see who answers!",
+		"Somebody knocked? Here's who opens!",
+	},
+	["battle.w12.cries.071"] = {
+		"Ha! Finally, a conversation I'm good at!",
+		"At last, something I don't have to say politely!",
+	},
+	["battle.w12.cries.072"] = {
+		"Temper loose and hands ready! Let's see it!",
+		"Off the leash, all of it! Have this!",
+	},
+	["battle.w12.cries.073"] = {
+		"Look at the size of you! Good, harder to miss!",
+		"Now that's a proper challenge! All the more to shout at!",
+	},
+	["battle.w12.cries.074"] = {
+		"A worthy one at last! Let's make this loud!",
+		"Finally, something that deserves a proper cry!",
+	},
+	["battle.w12.cries.075"] = {
+		"Stronger than me? Then I'll be louder, and I won't let go!",
+		"You outmatch me. You don't outshout me!",
+	},
+	["battle.w12.cries.076"] = {
+		"Stronger than me? Good. I'd hate to waste a cry on less!",
+		"Strength on your side, nerve on mine. Let's see!",
+	},
+	["battle.w12.cries.077"] = {
+		"No shame in a small challenge. I'll answer it in full!",
+		"Outmatched, and you came anyway? Then you get my whole cry!",
+	},
+	["battle.w12.cries.078"] = {
+		"{target}! I'm talking to you! Face me!",
+		"Hey! You! This way, and quickly!",
+	},
+	["battle.w12.cries.079"] = {
+		"Hear me, {target}! Your quarrel is with me now!",
+		"Leave the rest! Your quarrel's with me now!",
+	},
+	["battle.w12.cries.080"] = {
+		"{target}! I'll remember that name, however this ends!",
+		"However this ends, I'll remember this one!",
+	},
+	["battle.w12.cries.081"] = {
+		"{target}, is it? Good. Now I know what to shout!",
+		"There! Now I know who to shout at!",
+	},
+	["battle.w12.cries.082"] = {
+		"On me! Make some noise, all of you!",
+		"Everyone, your loudest! Let them hear us coming!",
+	},
+	["battle.w12.cries.083"] = {
+		"Shout it with me! One voice, all of us!",
+		"Together and loud! If we go in, we go in roaring!",
+	},
+	["battle.w12.cries.084"] = {
+		"Shout. It isn't for the foe. It's for my legs, so they stay put.",
+		"Make noise. The legs believe it even when I don't.",
+	},
+	["battle.w12.cries.085"] = {
+		"A cry is just courage said out loud before it can change its mind.",
+		"Say the brave thing first. The rest of me can catch up.",
+	},
+	["battle.w12.cries.086"] = {
+		"Louder than I feel. That's the whole trick.",
+		"Make the voice bigger than me. Old trick, and it works on me too.",
+		"Sound braver than I am. The sound won't know the difference.",
+	},
+	["battle.w12.cries.087"] = {
+		"Whatever comes out of my mouth now, let it at least sound brave.",
+		"First sound out of me, make it a brave one. The rest can be whatever.",
+	},
+	["battle.w12.cries.088"] = {
+		"No clever words. One loud one, and go.",
+		"Forget speeches. One good shout, and in.",
+	},
+	["battle.w12.cries.089"] = {
+		"There's a war cry in me somewhere. Now would be a good time for it.",
+		"Wherever my war cry is hiding, it had better show up now.",
+	},
+	["battle.w12.cries.090"] = {
+		"Shouting doesn't make me stronger. It makes me forget to be afraid, which is close.",
+		"The yell won't hit any harder. It just keeps the fear busy.",
+	},
+	["battle.w12.cries.091"] = {
+		"Loud enough that the doubt can't hear itself think.",
+		"Drown the doubt. Roar right over it.",
+	},
+	["battle.w12.cries.092"] = {
+		"My voice goes in first. The rest of me follows it.",
+		"Send the shout ahead like a scout. Follow where it lands.",
+		"The shout leads. All I have to do is keep up with it.",
+	},
+	["battle.w12.cries.093"] = {
+		"If I'm going to be foolish, I'll be foolish at full volume.",
+		"A fool, maybe. A loud one, certainly.",
+		"Loud foolishness beats the quiet kind.",
+	},
+	["battle.w12.cries.094"] = {
+		"Say it like I mean it, and maybe I will.",
+		"Shout it as if I believe it. Belief can come along after.",
+	},
+	["battle.w12.cries.095"] = {
+		"Too late for silence. Might as well roar.",
+		"Quiet's gone. Better fill the space with something fierce.",
+		"Silence had its chance. Now, noise.",
+	},
+	["battle.w12.cries.096"] = {
+		"Name myself to it, even if it won't understand. I'll understand.",
+		"It needn't know my name. I need to hear myself say it.",
+	},
+	["battle.w12.cries.097"] = {
+		"One clean cry. If anything of this is remembered, let it be that.",
+		"Make the cry a good one. It might be the part people recall.",
+	},
+	["battle.w12.cries.098"] = {
+		"Let the anger out through the mouth, before it gets into the hands.",
+		"Anger goes out as noise first. Better there than in my grip.",
+	},
+	["battle.w12.cries.099"] = {
+		"Every war cry I know is too long or somebody else's. Improvise.",
+		"No borrowed cries. Whatever comes out is mine.",
+	},
+	["battle.w12.cries.100"] = {
+		"throws back {g:his|her} head and lets loose a cry that carries a long way.",
+		"tips {g:his|her} head back and sends a long cry out ahead.",
+	},
+	["battle.w12.cries.101"] = {
+		"thumps a fist against {g:his|her} chest and shouts something wordless and fierce.",
+		"strikes {g:his|her} own chest twice and bellows.",
+	},
+	["battle.w12.cries.102"] = {
+		"stamps once, hard, and roars a challenge.",
+		"brings a foot down hard and yells for the foe to come.",
+		"stamps the ground and lets out a short, defiant bark.",
+	},
+	["battle.w12.cries.103"] = {
+		"spreads {g:his|her} arms wide, an open dare, and shouts for the foe to try.",
+		"opens {g:his|her} arms as if to say 'here I am', then yells exactly that.",
+	},
+	["battle.w12.cries.104"] = {
+		"bares {g:his|her} teeth in a grin that is mostly challenge.",
+		"shows {g:his|her} teeth and growls back, louder.",
+		"draws back {g:his|her} lips and snarls, low at first, then loud.",
+	},
+	["battle.w12.cries.105"] = {
+		"lets out a whoop that's half laughter, half challenge.",
+		"gives a wild, whooping yell, somewhere between a laugh and a dare.",
+		"laughs out loud, and halfway through the laugh becomes a challenge.",
+	},
+	["battle.w12.cries.106"] = {
+		"bellows a single word, and it sounds very much like 'no'.",
+		"shouts one short word at the foe. It is not a polite one.",
+	},
+	["battle.w12.cries.107"] = {
+		"beckons the foe on with two curled fingers and a shout.",
+		"crooks a finger at the foe and calls out a cheerful insult.",
+	},
+	["battle.w12.cries.108"] = {
+		"lifts {g:his|her} chin and calls the foe out, loud enough to carry.",
+		"squares up, chin high, and shouts a challenge with no waver in it.",
+	},
+	["battle.w12.cries.109"] = {
+		"gives a hoarse yell that leaves no doubt about what comes next.",
+		"lets out a rough shout, and with it the fight has begun.",
+	},
+	["battle.w12.cries.110"] = {
+		"raises an open hand, then closes it into a fist with a shout.",
+		"holds a palm up toward the foe, then clenches it, yelling.",
+	},
+	["battle.w12.cries.111"] = {
+		"draws {g:himself|herself} up to full height and announces {g:himself|herself} to the foe.",
+		"stands as tall as {g:he|she} can and calls out in a clear, carrying voice.",
+	},
+	["battle.w12.cries.112"] = {
+		"lets the challenge out in one ragged, furious cry.",
+		"puts everything into a single furious shout.",
+	},
+	["battle.w12.cries.113"] = {
+		"claps {g:his|her} hands once, sharp as a slammed door, and calls the foe on.",
+		"claps once, loud, and shouts for the foe to get on with it.",
+	},
+	["battle.w12.cries.114"] = {
+		"grins and shouts something unfit for polite company.",
+		"yells a challenge that no one would repeat at a table.",
+	},
+	["battle.w12.cries.115"] = {
+		"roars, louder than anyone nearby would have expected.",
+		"lets loose a roar much bigger than the moment needs.",
+	},
+	["battle.w12.dread.001"] = {
+		"I'm afraid, and I'm staying. Both of those are true.",
+		"Scared, yes. Leaving, no.",
+		"Frightened and not going anywhere. Funny how that works.",
+	},
+	["battle.w12.dread.002"] = {
+		"You frighten me. It changes nothing.",
+		"I'm frightened of you. And yet here I am, aren't I?",
+		"Yes, you scare me. Doesn't move my feet an inch.",
+	},
+	["battle.w12.dread.003"] = {
+		"My knees have voted to leave. Their vote is overruled.",
+		"Legs, I hear you. Request denied.",
+		"The knees want out. The knees don't get a say.",
+	},
+	["battle.w12.dread.004"] = {
+		"Should this be my last fight, it won't be a quiet one.",
+		"If I'm to end here, nobody will call it a whisper.",
+	},
+	["battle.w12.dread.005"] = {
+		"Luck, stay close. Closer than that.",
+		"Luck, if you're anywhere near, now would be lovely.",
+		"Any luck going spare? I'd take it now, please.",
+	},
+	["battle.w12.dread.006"] = {
+		"Whatever happens, somebody remember: I didn't run.",
+		"Somebody mark this down. I stayed.",
+	},
+	["battle.w12.dread.007"] = {
+		"Easy, now. Nobody panics. Least of all me.",
+		"Calm. Calm. I did say calm, didn't I?",
+		"No panicking. I'm the calm one here, apparently.",
+	},
+	["battle.w12.dread.008"] = {
+		"I don't know if I walk away from you. Let's find out.",
+		"Can't say whether I'll leave this on my own feet. Time to learn.",
+	},
+	["battle.w12.dread.009"] = {
+		"Not fearless. Just here.",
+		"No hero. Only someone who didn't leave.",
+		"Fearless? Hardly. Present, though.",
+	},
+	["battle.w12.dread.010"] = {
+		"Light, spirits, Earth Mother, whoever's listening: a little help.",
+		"To whatever watches over fools like me: watch closely now.",
+	},
+	["battle.w12.dread.011"] = {
+		"Any scream from me is a battle cry. Officially.",
+		"Any screaming you hear is strictly tactical.",
+	},
+	["battle.w12.dread.012"] = {
+		"Death can wait its turn. It's a long line.",
+		"Death can queue like everybody else.",
+		"Get in line, Death. You're not first.",
+	},
+	["battle.w12.dread.013"] = {
+		"I could still walk away. Remember that I didn't.",
+		"There's still time to turn back. I'm choosing not to.",
+		"The way out is open. I'm not taking it.",
+	},
+	["battle.w12.dread.014"] = {
+		"Fear, meet my stubbornness. You two won't get along.",
+		"Fear, say hello to stubborn. You'll hate each other.",
+	},
+	["battle.w12.dread.015"] = {
+		"I'd like to be bored again soon. Very soon.",
+		"Here's to boredom, and may it hurry up.",
+	},
+	["battle.w12.dread.016"] = {
+		"Quick question before this starts: who gets my things?",
+		"If this goes badly, somebody do something kind with my pack.",
+		"Before this starts: I never decided who inherits the socks.",
+	},
+	["battle.w12.dread.017"] = {
+		"Feet, stay where I put you.",
+		"Steady, feet. You're not going anywhere.",
+		"Feet, you're staying. That's an order.",
+	},
+	["battle.w12.dread.018"] = {
+		"All right, little voice that wants to run. Noted. Ignored.",
+		"Yes, yes, the part of me that wants to flee. I heard you.",
+	},
+	["battle.w12.dread.019"] = {
+		"If you're the one who ends me, you'll have earned it.",
+		"Ending me will cost you. That much I promise.",
+		"Finishing me won't come cheap. Count on it.",
+	},
+	["battle.w12.dread.020"] = {
+		"Fear's the price of standing here. Paid in full.",
+		"Being afraid is just the fee. Consider it paid.",
+	},
+	["battle.w12.dread.021"] = {
+		"Not ready. Nobody ever is. Begin.",
+		"No one is ever ready for this. Start anyway.",
+		"Ready? No. Starting? Yes.",
+	},
+	["battle.w12.dread.022"] = {
+		"There's a quiet hour waiting on the far side of this. I want it.",
+		"Past this fight there's some peace and quiet. I mean to collect it.",
+	},
+	["battle.w12.dread.023"] = {
+		"This might hurt. Me, I mean. Let's go.",
+		"Fair to say this will sting. Mostly me. Begin.",
+	},
+	["battle.w12.dread.024"] = {
+		"Whoever keeps the names of the fallen, leave mine off a while.",
+		"To whoever counts the fallen: not me. Not yet.",
+		"If someone tallies the dead, skip my name for now.",
+	},
+	["battle.w12.dread.025"] = {
+		"I'm scared of you. I'm more scared of running.",
+		"Facing you frightens me. Fleeing frightens me worse.",
+		"Running scares me more than you do. So, here I am.",
+	},
+	["battle.w12.dread.026"] = {
+		"Hold. Hold. The fear passes. You don't.",
+		"Stay put. The fear will leave before you do.",
+	},
+	["battle.w12.dread.027"] = {
+		"Let this be one of the easy ones. Please.",
+		"Just once, let it be easier than it looks.",
+		"Easy, please. Just this one time.",
+	},
+	["battle.w12.dread.028"] = {
+		"You could end me. You'll still have to do it.",
+		"Strong enough to finish me, maybe. Then earn it.",
+		"Yes, you're stronger. Strength still has to do the work.",
+	},
+	["battle.w12.dread.029"] = {
+		"You're out of my league. I know. I'm here anyway.",
+		"Stronger than me by a mile. My feet didn't get the message.",
+	},
+	["battle.w12.dread.030"] = {
+		"That one ends people. Eyes open.",
+		"Careful. This is how stories stop.",
+		"That's the sort that ends people. Watch it.",
+	},
+	["battle.w12.dread.031"] = {
+		"If I go down, don't stop for me. Finish it.",
+		"Should I fall, keep going. Don't you dare stop.",
+	},
+	["battle.w12.dread.032"] = {
+		"Stay close. I'm braver with someone near.",
+		"Keep near me. My courage likes company.",
+	},
+	["battle.w12.dread.033"] = {
+		"{target}, is it? I'd hate for that to be the last name I learn.",
+		"So that's what I'm facing. I'd rather it weren't the last thing I learn.",
+	},
+	["battle.w12.dread.034"] = {
+		"Mortal, and knowing it. Then let it count.",
+		"Only mortal. That's enough. Let it count for something.",
+	},
+	["battle.w12.dread.035"] = {
+		"I'd faint, but the timing is terrible.",
+		"Fainting would be so convenient. Not now, though.",
+		"Bad moment for a swoon. I'll put it off.",
+	},
+	["battle.w12.dread.036"] = {
+		"Brave isn't a feeling. It's this step. Watch.",
+		"Courage? I don't have it. I'm doing it. Different thing.",
+		"Courage isn't something I own. It's something I do. Like so.",
+	},
+	["battle.w12.dread.037"] = {
+		"I won't be the story people tell as a warning.",
+		"Don't let me end up as somebody's cautionary tale.",
+	},
+	["battle.w12.dread.038"] = {
+		"One more ordinary day after this. That's all I ask.",
+		"Grant me a dull, ordinary tomorrow. That's the whole wish.",
+	},
+	["battle.w12.dread.039"] = {
+		"Everyone's last fight starts like any other. That's the trouble.",
+		"Nobody is told which fight will be the final one.",
+		"The last fight never announces itself. It just begins, like this.",
+	},
+	["battle.w12.dread.040"] = {
+		"Fear is loud. Being loud doesn't make it right.",
+		"The fear shouts. Shouting isn't the same as being right.",
+		"Loud doesn't mean right. Fear never learned that.",
+	},
+	["battle.w12.dread.041"] = {
+		"Brave people are frightened people who moved first.",
+		"Courage is just fear that went ahead and took a step.",
+	},
+	["battle.w12.dread.042"] = {
+		"There's a version of this where I don't get up. Don't look at it.",
+		"Somewhere ahead is the way this ends badly. Eyes elsewhere.",
+		"One way this goes, I stay down. Don't think about that way.",
+	},
+	["battle.w12.dread.043"] = {
+		"All the things I meant to do are standing very close right now.",
+		"Every plan I never finished just crowded in behind me.",
+	},
+	["battle.w12.dread.044"] = {
+		"Being afraid only means I care how this ends.",
+		"Scared. Of course. It'd be strange not to care.",
+		"Afraid, because it matters. Fair enough.",
+	},
+	["battle.w12.dread.045"] = {
+		"The Light, the spirits, the Earth Mother. Surely one of them is looking this way.",
+		"So many powers in this world. One could glance over here.",
+		"Elune, the loa, the Light. Somebody out there must be bored enough to watch.",
+	},
+	["battle.w12.dread.046"] = {
+		"If this is where it stops, I'd have liked a better view.",
+		"Not much of a spot to end in. So let's not.",
+	},
+	["battle.w12.dread.047"] = {
+		"I could be somewhere quiet, doing nothing at all. One day I will be. Not like this.",
+		"Someday I'll lie still for good. Not here. Not this way.",
+	},
+	["battle.w12.dread.048"] = {
+		"Make the fear useful: let it keep my eyes open.",
+		"Fine, fear. Make yourself useful and watch the edges.",
+	},
+	["battle.w12.dread.049"] = {
+		"Whatever I'm made of, I'm about to find out.",
+		"This is where I learn what's inside me. Let it be something good.",
+	},
+	["battle.w12.dread.050"] = {
+		"Let me be someone I'm not ashamed of, for the next little while.",
+		"Small wish: that I don't disappoint myself.",
+		"Just this: let me look myself in the eye afterward.",
+	},
+	["battle.w12.dread.051"] = {
+		"Everything that dies thought it had more time.",
+		"Nothing that falls ever thinks its time is up.",
+	},
+	["battle.w12.dread.052"] = {
+		"Someone might be waiting to see me walk in. Don't make them a fool.",
+		"If anyone's expecting me, let them not wait for nothing.",
+	},
+	["battle.w12.dread.053"] = {
+		"Fear tells the truth about the danger. It lies about me.",
+		"Fear's right about the danger and wrong about what I'll do.",
+	},
+	["battle.w12.dread.054"] = {
+		"Strange thought, right now: who would even notice?",
+		"If it went wrong, how long before anyone knew?",
+		"Odd, what comes to mind: would anyone hear of it?",
+	},
+	["battle.w12.dread.055"] = {
+		"The fear is as old as people. So is stepping forward anyway.",
+		"Mortals have quailed at this edge forever, and stepped over it.",
+	},
+	["battle.w12.dread.056"] = {
+		"There goes my good sense, out the back door. My feet stayed.",
+		"My good sense just slipped out the door. The rest of me didn't.",
+	},
+	["battle.w12.dread.057"] = {
+		"Ah. There it is: the little voice asking if this is the one.",
+		"And here's that quiet question: is this the fight?",
+	},
+	["battle.w12.dread.058"] = {
+		"Nobody's promised me I walk away from this. Then I'll promise myself.",
+		"No guarantees. Fine. I'll make my own.",
+	},
+	["battle.w12.dread.059"] = {
+		"Afraid after. No room for it now.",
+		"Later I can fall apart. Not yet.",
+		"Fear goes on the list for later. Right now it doesn't fit.",
+	},
+	["battle.w12.dread.060"] = {
+		"Funny how sharp the world gets right before.",
+		"Everything goes very clear at the edge. Every small thing.",
+	},
+	["battle.w12.dread.061"] = {
+		"I'd like a long, dull life. This is in the way of it.",
+		"A long life, mostly boring. That's the plan. This isn't.",
+	},
+	["battle.w12.dread.062"] = {
+		"The world won't stop for my fear. Neither will I.",
+		"Nothing pauses because I'm scared. So I won't pause either.",
+		"No one halts the world for a frightened person. Keep up.",
+	},
+	["battle.w12.dread.063"] = {
+		"Falling here would at least stop my knees complaining.",
+		"Upside of dying: no more aching back. Still, I'll pass.",
+		"The one perk of an ending: no more sore feet. No, thank you.",
+	},
+	["battle.w12.dread.064"] = {
+		"Death is patient. Let it practice.",
+		"Death waits for everyone. It can wait for me a while longer.",
+		"All the time there is belongs to death. It can spare me some.",
+	},
+	["battle.w12.dread.065"] = {
+		"Fear makes everything faster except me. Move.",
+		"Everything's racing but my feet. Move them.",
+	},
+	["battle.w12.dread.066"] = {
+		"No shame in being scared. Only in letting it decide.",
+		"Afraid is allowed. Letting it choose isn't.",
+		"Fear may speak. Fear may not choose.",
+	},
+	["battle.w12.dread.067"] = {
+		"Let the next moment be kind. Just the next one.",
+		"One kind moment. Then I'll ask for another.",
+		"A gentle next moment, that's all. I'll worry about the one after.",
+	},
+	["battle.w12.dread.068"] = {
+		"Mortals fight because they can lose. That's what gives it weight.",
+		"If I couldn't fall, none of this would mean a thing.",
+	},
+	["battle.w12.dread.069"] = {
+		"Nobody sees the fear but me. It stays that way.",
+		"My face can lie a little longer. The fear is my business.",
+	},
+	["battle.w12.dread.070"] = {
+		"Whatever's after the end can keep waiting. I'm busy.",
+		"Whatever lies beyond, it's going home empty-handed this time.",
+	},
+	["battle.w12.dread.071"] = {
+		"Steady. The worst part is the moment before. This is it.",
+		"This bit, right here, before it starts, is the worst of it.",
+		"The moment before is always the heaviest. Here it is, then.",
+	},
+	["battle.w12.dread.072"] = {
+		"Remember: I chose to be here. Nobody dragged me.",
+		"My own feet brought me here. I'll trust them a bit longer.",
+	},
+	["battle.w12.dread.073"] = {
+		"Ah, terror. You never knock.",
+		"Terror walks in without knocking. Rude.",
+	},
+	["battle.w12.dread.074"] = {
+		"Somebody walks away from every fight. Might as well be me.",
+		"Someone always comes out of these. I like my odds of being someone.",
+	},
+	["battle.w12.dread.075"] = {
+		"Too strong for me, maybe. I'll hang everything on that maybe.",
+		"It's beyond me, probably. Probably isn't certainly.",
+	},
+	["battle.w12.dread.076"] = {
+		"I can feel how outmatched I am. Feeling isn't losing.",
+		"Outmatched. Felt it at once. Doesn't make it over.",
+		"Too much for me, says every instinct. Instincts aren't the verdict.",
+	},
+	["battle.w12.dread.077"] = {
+		"That's the kind of thing that ends people. I'm people. Careful.",
+		"Foes like this one write short endings. Don't hand it the pen.",
+	},
+	["battle.w12.dread.078"] = {
+		"If one of us falls here, let it not be because I froze.",
+		"Whoever goes down, don't let it be my hesitation that did it.",
+	},
+	["battle.w12.dread.079"] = {
+		"My name isn't carved on anything yet. Keep the stone clean.",
+		"No stone with my name on it so far. I'd like it to stay blank.",
+	},
+	["battle.w12.dread.080"] = {
+		"Panic is a door. Don't open it.",
+		"Panic is right there, a door left ajar. Keep it shut.",
+		"There's a door marked panic. Walk past it.",
+	},
+	["battle.w12.dread.081"] = {
+		"Brave for one moment. Then the next. That's the whole trick.",
+		"Courage only has to last a moment. Then one more.",
+	},
+	["battle.w12.dread.082"] = {
+		"After this: something to eat, somewhere to sit. Hold on to that.",
+		"Food and a place to sit, after. Keep that in mind.",
+		"Bread and a bench on the far side of this. Think of the bread.",
+	},
+	["battle.w12.dread.083"] = {
+		"Strange how small a life looks from here.",
+		"A whole life, and it all fits into this moment.",
+	},
+	["battle.w12.dread.084"] = {
+		"Fear can't fight for me. It can only get in the way. Move it.",
+		"Fear doesn't help with any of this. Step around it.",
+	},
+	["battle.w12.dread.085"] = {
+		"Whatever comes for me, let it find me facing it.",
+		"If something means to take me, it will have to meet my eyes.",
+	},
+	["battle.w12.dread.086"] = {
+		"Luck owes me nothing. I'll ask nicely anyway.",
+		"Luck doesn't keep accounts. Still, a small loan, please.",
+	},
+	["battle.w12.dread.087"] = {
+		"The heroes of the old tales were frightened right here too. The tales leave it out.",
+		"Every brave tale skips this part, where the hero wants to run.",
+	},
+	["battle.w12.dread.088"] = {
+		"If there's any mercy loose in the world, a little could land here.",
+		"Of all the mercy going round, I'd take a crumb.",
+	},
+	["battle.w12.dread.089"] = {
+		"I hate this part. I always will. Here it is.",
+		"I'll never like this moment. It comes anyway.",
+	},
+	["battle.w12.dread.090"] = {
+		"If I fall, I hope it's facing forward.",
+		"Should I go down, let it be face to the front, not half turned.",
+	},
+	["battle.w12.dread.091"] = {
+		"Too late to be sensible. Might as well be brave.",
+		"Sensible would have been earlier. Now it's brave or nothing.",
+	},
+	["battle.w12.dread.092"] = {
+		"There's too much I haven't done for this to be the end.",
+		"Far too much left undone to stop here.",
+	},
+	["battle.w12.dread.093"] = {
+		"Under the fear there's a quiet place. Stand in it.",
+		"Beneath all the noise of fear, a still spot. Go there.",
+		"The fear has a calm floor under it. Put your feet on that.",
+	},
+	["battle.w12.dread.094"] = {
+		"glances once toward the way out, then not again.",
+		"looks over {g:his|her} shoulder a single time, then keeps {g:his|her} eyes ahead.",
+	},
+	["battle.w12.dread.095"] = {
+		"closes {g:his|her} eyes for a moment, opens them, and steps in.",
+		"squeezes {g:his|her} eyes shut, just briefly, and opens them on the fight.",
+	},
+	["battle.w12.dread.096"] = {
+		"takes half a step back, stops, and does not take another.",
+		"gives ground by a hand's width, then claims it back.",
+		"sways back a fraction, then leans forward into the fight.",
+	},
+	["battle.w12.dread.097"] = {
+		"mutters a few words that could be a wish or a curse.",
+		"says something under {g:his|her} voice, too low to tell a plea from an oath.",
+	},
+	["battle.w12.dread.098"] = {
+		"touches a strap at {g:his|her} chest, as some do for luck.",
+		"taps the nearest buckle once, the way people touch things for luck.",
+	},
+	["battle.w12.dread.099"] = {
+		"lets out a short sound that might be a laugh, and might not.",
+		"makes a small noise, half laugh, half something else.",
+	},
+	["battle.w12.dread.100"] = {
+		"stands very still, then makes {g:himself|herself} move.",
+		"goes rigid for an instant, then forces {g:his|her} feet forward.",
+		"freezes, just for an instant, and then moves anyway.",
+	},
+	["battle.w12.dread.101"] = {
+		"lifts {g:his|her} chin a fraction, the way people do before something hard.",
+		"raises {g:his|her} chin and holds it there.",
+	},
+	["battle.w12.dread.102"] = {
+		"touches two fingers to {g:his|her} brow, a small private sign, and steps in.",
+		"presses a knuckle to {g:his|her} forehead for a moment, some private habit, and looks up.",
+	},
+	["battle.w12.dread.103"] = {
+		"looks at the foe the way one looks at a steep drop, and steps forward anyway.",
+		"eyes the foe like the lip of a cliff, then moves toward it.",
+	},
+	["battle.w12.dread.104"] = {
+		"flexes {g:his|her} fingers until they stop curling, and squares up.",
+		"opens and closes {g:his|her} hands until they obey.",
+		"shakes out {g:his|her} hands as if to rid them of something, and squares up.",
+	},
+	["battle.w12.dread.105"] = {
+		"shapes a single word without a sound, meant for no one at all.",
+		"says one word to no one, so quietly it barely exists.",
+	},
+	["battle.w12.dread.106"] = {
+		"glances down at the earth as if measuring it for something, and looks away fast.",
+		"looks at the ground a moment longer than needed, then up.",
+	},
+	["battle.w12.dread.107"] = {
+		"looks the foe up and down, and for one honest moment does not move at all.",
+		"takes in the size of the thing ahead and, for a moment, simply stares.",
+	},
+	["battle.w12.dread.108"] = {
+		"lets {g:his|her} shoulders drop, as if setting down a fear too heavy to fight with.",
+		"lowers {g:his|her} shoulders, shrugging off something heavier than gear.",
+	},
+	["battle.w12.dread.109"] = {
+		"glances at the others as if to fix their faces in mind, then turns to the foe.",
+		"takes one quick look at each companion before facing front.",
+	},
+	["battle.w12.grit.001"] = {
+		"Tired, yes. Tired isn't finished.",
+		"My legs are tired. The rest of me hasn't been told.",
+		"Worn down is one thing. Worn out is another, and I'm not that.",
+	},
+	["battle.w12.grit.002"] = {
+		"Put me down and I get up. That's all there is to it.",
+		"I'll stand up as often as I'm knocked down. Count them if you like.",
+		"Flat on my back is only ever a pause.",
+	},
+	["battle.w12.grit.003"] = {
+		"I'm not shouting. That should worry you.",
+		"Hear how quiet I am? That's the angry part.",
+		"Notice I've stopped talking. That's not a good sign for you.",
+	},
+	["battle.w12.grit.004"] = {
+		"Someone has to deal with you. It may as well be me.",
+		"This needs doing, and I'm the one standing here.",
+		"Somebody's got to. Looks like the somebody is me.",
+	},
+	["battle.w12.grit.005"] = {
+		"Every step you want, you'll have to take from me.",
+		"This bit of footing is mine. Come and argue for it.",
+	},
+	["battle.w12.grit.006"] = {
+		"I was about to sit down. Now I'm angry and on my feet.",
+		"You cost me a rest. I intend to collect.",
+		"I had a seat picked out. Now I've a temper instead.",
+	},
+	["battle.w12.grit.007"] = {
+		"Enough. I've had my fill of being pushed.",
+		"That's the last shove I take from anyone.",
+		"Push, push, push. My turn now.",
+	},
+	["battle.w12.grit.008"] = {
+		"Go ahead and try. I've stubbornness to spare.",
+		"Try me. Stubborn is the one thing I never run short of.",
+		"Stubborn is my best feature. You're about to meet it.",
+	},
+	["battle.w12.grit.009"] = {
+		"Duty doesn't ask if I'm in the mood. Neither do you.",
+		"Not my choice of moment. Doesn't matter. I'm here.",
+		"Inconvenient, unwanted, and mine to do. In I go.",
+	},
+	["battle.w12.grit.010"] = {
+		"You'll have to work for every inch.",
+		"Nothing here comes cheap. Least of all me.",
+		"Each handspan of this costs you. I'm setting the price.",
+	},
+	["battle.w12.grit.011"] = {
+		"You started this. Don't expect me to let it go.",
+		"Your idea, this fight. Now it's mine as well, every bit of it.",
+		"You picked this up. I'm not putting it down.",
+	},
+	["battle.w12.grit.012"] = {
+		"Knees hurt, back hurts, and I'm coming anyway.",
+		"Everything aches. Good. It keeps me awake.",
+		"Sore all over. Not sore enough to stop.",
+	},
+	["battle.w12.grit.013"] = {
+		"Bend me if you can. Breaking isn't on my list.",
+		"I bend. I don't snap. Learn the difference.",
+		"Things that bend come back up. Watch.",
+	},
+	["battle.w12.grit.014"] = {
+		"I don't stop halfway. Not for you, not for anyone.",
+		"Half-done isn't something I leave behind me.",
+		"Whatever I start, I see to the end. This included.",
+	},
+	["battle.w12.grit.015"] = {
+		"Calm and angry at once. The worst of both, for you.",
+		"Cold-headed and furious. Pick which one you'd rather meet.",
+	},
+	["battle.w12.grit.016"] = {
+		"However long this takes, I've got longer.",
+		"Take as long as you need. I'm not going anywhere.",
+		"Drag it out if you like. Patience is cheaper than you think.",
+	},
+	["battle.w12.grit.017"] = {
+		"I'm not leaving. You might as well start.",
+		"Waiting won't make me go away. Get on with it.",
+		"I'm staying put. Your move.",
+	},
+	["battle.w12.grit.018"] = {
+		"Down is a direction I don't take kindly to.",
+		"If you want me on the ground, you'll have to earn it.",
+		"The ground can wait for me. It'll be waiting a while.",
+	},
+	["battle.w12.grit.019"] = {
+		"Too stubborn to fall, too tired to run. That leaves forward.",
+		"Running takes strength I haven't got. Fighting, it seems, I can manage.",
+	},
+	["battle.w12.grit.020"] = {
+		"This is the work, and it doesn't wait for a good moment.",
+		"Nobody asked if it was convenient. The job is the job.",
+		"Grumble later. Do the job now.",
+	},
+	["battle.w12.grit.021"] = {
+		"You just made this personal.",
+		"Now it's personal. Remember that you chose that.",
+		"Fine. From here on, this is between you and my temper.",
+	},
+	["battle.w12.grit.022"] = {
+		"Every blow you land gets an answer. Every single one.",
+		"Hit me. I'm keeping count, and I pay back in full.",
+		"I return what I'm given, with interest.",
+	},
+	["battle.w12.grit.023"] = {
+		"There's always a last bit of fight at the bottom. You found it.",
+		"Scrape the barrel and there's still some grit in it. Here it is.",
+	},
+	["battle.w12.grit.024"] = {
+		"Stronger, sure. Strength gets tired. Stubbornness doesn't.",
+		"You've got the weight. I've got the will to stay. Let's see which counts.",
+		"More muscle than me, granted. Muscle isn't the same thing as staying power.",
+	},
+	["battle.w12.grit.025"] = {
+		"I know how much stronger you are. I'm going in anyway.",
+		"Too much for me? Perhaps. My feet didn't get the message.",
+		"Stronger than me. Noted. Ignored.",
+	},
+	["battle.w12.grit.026"] = {
+		"This one's going to be heavy work. In I go regardless.",
+		"Hard going ahead. Hard going is what I'm good for.",
+		"Heavy lifting, this. Shoulders, you know the drill.",
+	},
+	["battle.w12.grit.027"] = {
+		"Hold here with me. Nobody gives an inch.",
+		"Dig in, all of you. We leave when it's done, not before.",
+	},
+	["battle.w12.grit.028"] = {
+		"If you're worn out, lean on me. So am I, and I'm still going.",
+		"Weary? So are we all. Keep your feet under you.",
+	},
+	["battle.w12.grit.029"] = {
+		"Nobody steps back until I do, and I don't plan to.",
+		"First one to give ground buys the round. It won't be me.",
+	},
+	["battle.w12.grit.030"] = {
+		"My feet are set. Let the rest follow.",
+		"Here I set my feet, and here they stay.",
+		"Rooted here. Try moving a root.",
+	},
+	["battle.w12.grit.031"] = {
+		"{target}. A long day, and you're the end of my patience.",
+		"You're the last stone on a heavy load. Brace yourself.",
+	},
+	["battle.w12.grit.032"] = {
+		"{target}, you'll get no ground from me.",
+		"No ground for you, {target}. Not a handspan.",
+		"Whatever you came for, none of it comes easy.",
+	},
+	["battle.w12.grit.033"] = {
+		"Fine, {target}. You've woken the stubborn part of me.",
+		"You've woken the stubborn part of me. It doesn't nod off easily.",
+	},
+	["battle.w12.grit.034"] = {
+		"My patience just ran out. You happened to be nearest.",
+		"That was the end of my patience. Bad luck, being closest.",
+	},
+	["battle.w12.grit.035"] = {
+		"I'm not built for quitting.",
+		"Quitting isn't something I know how to do.",
+		"Give up? I never learned the trick of it.",
+	},
+	["battle.w12.grit.036"] = {
+		"Bruises fade. Backing down stays with you.",
+		"Knocks heal. Giving in doesn't.",
+		"Pain passes. Yielding sticks.",
+	},
+	["battle.w12.grit.037"] = {
+		"Somebody's expecting me. You won't keep me from that.",
+		"There are people waiting on me. You're not one of them, so step aside.",
+	},
+	["battle.w12.grit.038"] = {
+		"Whatever you've got, I'll meet it standing.",
+		"All of it, then. You'll find me on my feet for every bit.",
+		"Give me your worst. I'll take it upright.",
+	},
+	["battle.w12.grit.039"] = {
+		"Push me and find out what pushes back.",
+		"Shove me. I shove back.",
+		"Lay a hand on me and see what it costs.",
+	},
+	["battle.w12.grit.040"] = {
+		"I'd rather be resting. I'll rest after.",
+		"Rest later. Later is such a lovely word.",
+		"There's a nap with my name on it. Afterwards.",
+	},
+	["battle.w12.grit.041"] = {
+		"Quick isn't what I need. Done is.",
+		"Slow or fast, I'll see it through.",
+	},
+	["battle.w12.grit.042"] = {
+		"Politeness is over. What's left isn't polite.",
+		"I tried patience. Patience is spent.",
+	},
+	["battle.w12.grit.043"] = {
+		"I'll not turn my back. Call it a promise to myself.",
+		"My face stays toward you. That's a promise.",
+	},
+	["battle.w12.grit.044"] = {
+		"Chin up. No retreat.",
+		"Head high, heels dug in.",
+		"Eyes front, heels down, no backing off.",
+	},
+	["battle.w12.grit.045"] = {
+		"Worn thin, not worn out.",
+		"Frayed at the edges. Sound in the middle.",
+		"Threadbare, maybe. Holding together all the same.",
+	},
+	["battle.w12.grit.046"] = {
+		"You want a fight. You'll get one with no quit in it.",
+		"Fine. You'll find no give in me.",
+	},
+	["battle.w12.grit.047"] = {
+		"If I fall, I fall forward.",
+		"Should I go down, it'll be facing you.",
+		"Whatever happens, nobody sees my back.",
+	},
+	["battle.w12.grit.048"] = {
+		"This isn't about you. It's about not letting go.",
+		"I hold nothing against you. I just don't let go of things.",
+	},
+	["battle.w12.grit.049"] = {
+		"Weaker than me changes nothing. I don't do things by halves.",
+		"Smaller fight, same effort. That's how I'm made.",
+	},
+	["battle.w12.grit.050"] = {
+		"Long fight or short, I'm in it to the last.",
+		"However it goes, I stay to the end of it.",
+	},
+	["battle.w12.grit.051"] = {
+		"I hold grudges. This one I'll hold a long while.",
+		"You've just earned a grudge. I keep mine well.",
+		"Congratulations. You're on the list of things I don't forgive.",
+	},
+	["battle.w12.grit.052"] = {
+		"Retreats aren't for me. Pauses, barely.",
+		"Backing off isn't in me. Neither, sadly, is sitting still.",
+	},
+	["battle.w12.grit.053"] = {
+		"I said I'd see this through. Saying it was the easy part.",
+		"Words are cheap. Standing here is the payment.",
+		"My word got me here. My feet will do the rest.",
+	},
+	["battle.w12.grit.054"] = {
+		"You'll have to pry me loose. I don't let go.",
+		"I grip and I keep gripping. That's the whole of my art.",
+		"Shake all you like. I hang on.",
+	},
+	["battle.w12.grit.055"] = {
+		"Legs like wet rope. Doesn't matter. They'll carry me.",
+		"Heavy everywhere. Arms, eyes, the lot. Go regardless.",
+		"Lead in the boots. Walk anyway.",
+	},
+	["battle.w12.grit.056"] = {
+		"It doesn't get to see my back. Not this time.",
+		"Whatever this is, it sees my face, not my heels.",
+	},
+	["battle.w12.grit.057"] = {
+		"Keep the anger cold. Cold anger lasts.",
+		"Let it burn slow, not bright. Slow outlasts bright.",
+		"Hot anger spills. Hold it cold and steady.",
+	},
+	["battle.w12.grit.058"] = {
+		"Nobody's going to do this for me.",
+		"This one's mine to carry. Pick it up.",
+		"My load. My lift. Nobody else's.",
+	},
+	["battle.w12.grit.059"] = {
+		"Count nothing. Keep going until it stops.",
+		"Don't think about the end of it. Think about the next bit.",
+		"Next moment. Then the next. Nothing more.",
+	},
+	["battle.w12.grit.060"] = {
+		"Scared and furious. Furious wins.",
+		"Fear says go. Anger says stay. I listen to anger.",
+	},
+	["battle.w12.grit.061"] = {
+		"If I'm going to be stubborn about anything, let it be this.",
+		"Be stubborn now. Save the good sense for later.",
+		"Stubborn has its uses. Here's one.",
+	},
+	["battle.w12.grit.062"] = {
+		"There it is, the hot little knot behind the eyes. Use it.",
+		"Anger, right where I left it. Good. Point it forward.",
+	},
+	["battle.w12.grit.063"] = {
+		"My body's filing complaints. Noted. Denied.",
+		"Every joint has something to say about this. Later.",
+	},
+	["battle.w12.grit.064"] = {
+		"I don't want this. Wanting has nothing to do with it.",
+		"Nobody asked what I wanted. Nobody usually does.",
+	},
+	["battle.w12.grit.065"] = {
+		"Hold. Just hold. The rest can follow.",
+		"Root yourself. Be the thing that doesn't move.",
+		"Stay. Whatever pushes, stay.",
+	},
+	["battle.w12.grit.066"] = {
+		"There's a little left. A little is enough to start.",
+		"Scraps of strength. Scraps will do.",
+		"Dregs are still something to drink.",
+	},
+	["battle.w12.grit.067"] = {
+		"The angrier I get, the lower my voice goes. Keep it low.",
+		"Rage that shouts burns out. Rage that waits keeps.",
+	},
+	["battle.w12.grit.068"] = {
+		"So tired of this. All of it. And in I go, as ever.",
+		"Weary to the bone, and going in regardless. Of course.",
+	},
+	["battle.w12.grit.069"] = {
+		"Whatever comes, take it with the chin up.",
+		"Take the first one standing. That's all I ask of myself.",
+	},
+	["battle.w12.grit.070"] = {
+		"If not me, who? Fine. Me.",
+		"I could walk away. I won't. That's the whole of it.",
+	},
+	["battle.w12.grit.071"] = {
+		"Sleep later. Sleep is a prize for afterwards.",
+		"Bed's a long way off. This is right here.",
+	},
+	["battle.w12.grit.072"] = {
+		"Sick of fights I never chose. Then I'll do this one properly.",
+		"If I must, then all the way.",
+	},
+	["battle.w12.grit.073"] = {
+		"Something in me does not kneel. Let it lead.",
+		"There's a stubborn root in me. Lean on it.",
+	},
+	["battle.w12.grit.074"] = {
+		"Outlast it. Whatever else happens, outlast it.",
+		"Endure first. Everything else after.",
+	},
+	["battle.w12.grit.075"] = {
+		"Too annoyed to be scared. Lucky me.",
+		"Irritation beats fear. And I'm full of irritation.",
+		"No room for fear. Annoyance took all the space.",
+	},
+	["battle.w12.grit.076"] = {
+		"Promises don't keep themselves.",
+		"Every promise I've made is standing right behind me.",
+	},
+	["battle.w12.grit.077"] = {
+		"Shaking hands, steady feet. That'll do.",
+		"Let the hands shake. The feet stay put.",
+		"Trembling's allowed. Stepping back isn't.",
+	},
+	["battle.w12.grit.078"] = {
+		"Grit your teeth. That's what teeth are for.",
+		"Jaw set. Mind set. Go.",
+		"Bite down on it and go.",
+	},
+	["battle.w12.grit.079"] = {
+		"Tired hands still close into fists.",
+		"Tired doesn't mean empty.",
+	},
+	["battle.w12.grit.080"] = {
+		"Let it come. I've decided not to be moved.",
+		"The deciding is done. Now there's only the holding.",
+	},
+	["battle.w12.grit.081"] = {
+		"More anger than I ought to have. Fine. Spend it here.",
+		"Too much temper for one day. Here's somewhere to put it.",
+	},
+	["battle.w12.grit.082"] = {
+		"Fair or not, this falls to me.",
+		"Not fair, not easy, still mine.",
+		"Mine, like it or not.",
+	},
+	["battle.w12.grit.083"] = {
+		"Whatever it costs, pay it and keep walking.",
+		"Pay the price, keep going. Haggle afterwards.",
+	},
+	["battle.w12.grit.084"] = {
+		"Running is for when there's nothing left. There's plenty left.",
+		"Nothing in the tank? Wrong. Look again, there's plenty.",
+	},
+	["battle.w12.grit.085"] = {
+		"Every part of me wants to sit. The part that decides says no.",
+		"The body votes to rest. The will has a veto.",
+	},
+	["battle.w12.grit.086"] = {
+		"They're counting on me holding. So I hold.",
+		"Someone behind me needs this to go right. Dig in.",
+	},
+	["battle.w12.grit.087"] = {
+		"Be the rock the water argues with.",
+		"Water pushes; rock stays. Be rock.",
+	},
+	["battle.w12.grit.088"] = {
+		"I'll remember this. Every bit.",
+		"Mark it down: I don't forget who started it.",
+		"Every slight gets written down. In here.",
+	},
+	["battle.w12.grit.089"] = {
+		"This is where I don't give up. Right here.",
+		"If there's a line, it's this one, and I'm not crossing back over it.",
+	},
+	["battle.w12.grit.090"] = {
+		"Hungry, sore and in no mood. Perfect.",
+		"Empty stomach, short temper. Bad mix for whatever that is.",
+	},
+	["battle.w12.grit.091"] = {
+		"Shoulders back. Show it nothing but resolve.",
+		"Give it nothing to work with. No doubt, no wobble.",
+	},
+	["battle.w12.grit.092"] = {
+		"squares {g:his|her} shoulders like someone taking up a load that is far from light.",
+		"sets {g:his|her} jaw and does not step back.",
+		"rolls {g:his|her} shoulders back as if shrugging off a heavy coat, and stays put.",
+	},
+	["battle.w12.grit.093"] = {
+		"grinds {g:his|her} teeth once, slowly, and stops looking tired.",
+		"lets the weariness drop from {g:his|her} face like a cloak set aside.",
+	},
+	["battle.w12.grit.094"] = {
+		"straightens up slowly, every ache put aside for later.",
+		"pushes off from a tired stance into a ready one.",
+	},
+	["battle.w12.grit.095"] = {
+		"goes very still, and the stillness looks a lot like anger.",
+		"says nothing at all; the set of {g:his|her} mouth says enough.",
+	},
+	["battle.w12.grit.096"] = {
+		"digs in {g:his|her} heels and leans forward into whatever comes.",
+		"lowers {g:his|her} head and goes in, stubborn as a mule.",
+	},
+	["battle.w12.grit.097"] = {
+		"clenches and unclenches {g:his|her} fists, once, twice, and keeps them closed.",
+		"closes both hands into fists and holds them there, unhurried.",
+	},
+	["battle.w12.grit.098"] = {
+		"lets out a tired laugh and goes forward anyway.",
+		"shakes {g:his|her} head at the timing, then lifts it to meet the fight.",
+	},
+	["battle.w12.grit.099"] = {
+		"rubs a sore shoulder, then forgets it entirely.",
+		"works a stiff shoulder loose and squares up.",
+	},
+	["battle.w12.grit.100"] = {
+		"fixes the foe with a flat, unblinking stare and gives not an inch.",
+		"meets the foe's approach with a look that has nothing left to bargain with.",
+	},
+	["battle.w12.grit.101"] = {
+		"tucks the chin down and leans in, like someone shouldering a stuck door.",
+		"drops a shoulder forward as if there were a jammed door to force.",
+	},
+	["battle.w12.grit.102"] = {
+		"mutters something short and unrepeatable, then gets on with it.",
+		"growls low, a sound with no give in it.",
+	},
+	["battle.w12.grit.103"] = {
+		"stands a little straighter than tiredness should allow.",
+		"pulls {g:himself|herself} upright by sheer refusal.",
+	},
+	["battle.w12.grit.104"] = {
+		"turns to face the trouble squarely, with no hurry and no doubt.",
+		"faces the trouble full on, as if stepping aside had never been invented.",
+	},
+	["battle.w12.grit.105"] = {
+		"nods once, grimly, like someone accepting a chore.",
+		"accepts the fight with a short nod, the way one takes on a heavy errand.",
+	},
+	["battle.w12.grit.106"] = {
+		"narrows {g:his|her} eyes to slits; the face around them is very calm.",
+		"takes on a hard, patient look that promises nothing kind.",
+	},
+	["battle.w12.grit.107"] = {
+		"sets the tiredness down like a pack left by a door, and steps up.",
+		"puts weariness aside the way one sheds a load, and comes forward.",
+	},
+	["battle.w12.measure.001"] = {
+		"Slow is fine. Rushed is how people end up on the ground.",
+		"Don't hurry the first move. Hurry is where mistakes are born.",
+	},
+	["battle.w12.measure.002"] = {
+		"Check the ground once. Roots, stones, a slope. Then trust it.",
+		"Soft spots, loose spots. Find them now, not halfway through.",
+		"Know what's underfoot before it decides to have an opinion.",
+	},
+	["battle.w12.measure.003"] = {
+		"Everything has a rhythm. Find this one's before it finds mine.",
+		"There's a beat under every fight. Listen for it first.",
+	},
+	["battle.w12.measure.004"] = {
+		"Patience is a move too. Possibly the best one I've got.",
+		"Waiting counts. Waiting well counts double.",
+	},
+	["battle.w12.measure.005"] = {
+		"Quiet in the head. The noise can stay outside.",
+		"Let everything go quiet but this.",
+		"Turn the rest of the world down. Just this, now.",
+	},
+	["battle.w12.measure.006"] = {
+		"How many? Where? Which one moves first? Then go.",
+		"Count, place, choose. In that order.",
+	},
+	["battle.w12.measure.007"] = {
+		"Nothing stands perfectly balanced. Find which way this one leans.",
+		"Everything favors one side. Find which.",
+		"There's a lean somewhere. There always is.",
+	},
+	["battle.w12.measure.008"] = {
+		"Not the first move. The second one tells the truth.",
+		"Ignore the opener. It's the follow-up that shows what's real.",
+		"Openers are for show. Wait for whatever comes after.",
+	},
+	["battle.w12.measure.009"] = {
+		"Don't spend everything at the start. Keep a reserve.",
+		"Hold a little back. Fights run longer than they look.",
+	},
+	["battle.w12.measure.010"] = {
+		"Steady hands. Nothing else needs to be steady.",
+		"Hands quiet. The rest can shake if it likes.",
+		"Keep the hands calm. Everything else may do as it pleases.",
+	},
+	["battle.w12.measure.011"] = {
+		"What's behind me? Good. Now forget it.",
+		"One glance back. Clear. Eyes front.",
+	},
+	["battle.w12.measure.012"] = {
+		"Not every opening is real. Some are left there on purpose.",
+		"An open door can be a trap. Look at the hinges first.",
+	},
+	["battle.w12.measure.013"] = {
+		"I don't need to win the first moment. Only not to lose it.",
+		"The first moment isn't for winning. It's for not losing.",
+	},
+	["battle.w12.measure.014"] = {
+		"Feet under me. Eyes open. Everything else is detail.",
+		"Footing and eyes. The rest can wait its turn.",
+	},
+	["battle.w12.measure.015"] = {
+		"The ones who rush are easy to read. Don't be easy to read.",
+		"Hurry writes your next move all over you. Don't hand it out.",
+	},
+	["battle.w12.measure.016"] = {
+		"Every part of me says now. Not yet. Not quite yet.",
+		"Not yet. Not yet. ...There.",
+	},
+	["battle.w12.measure.017"] = {
+		"Small steps keep the balance. Big ones are for later.",
+		"Little steps for now. Long strides when it's decided.",
+	},
+	["battle.w12.measure.018"] = {
+		"Whatever it does twice, it'll do a third time. Wait for the third.",
+		"Habits show by the second try. Wait for them to show.",
+	},
+	["battle.w12.measure.019"] = {
+		"Angry is fast. Calm is faster, in the end.",
+		"Anger gets there first. Calm gets there right.",
+		"Temper runs. Calm arrives.",
+	},
+	["battle.w12.measure.020"] = {
+		"Unclench the jaw. Nobody thinks well through gritted teeth.",
+		"Jaw soft. Shoulders soft. Head sharp.",
+	},
+	["battle.w12.measure.021"] = {
+		"One job right now: see clearly. The rest comes after.",
+		"Seeing comes first. Everything else waits in line.",
+	},
+	["battle.w12.measure.022"] = {
+		"Every fight has a shape. Find the edges of this one.",
+		"Find the edges first. The middle sorts itself out.",
+	},
+	["battle.w12.measure.023"] = {
+		"Ground first. Whoever owns the footing owns the next moment.",
+		"Good footing is half an answer. Find it.",
+		"Get the ground right and the rest has somewhere to stand.",
+	},
+	["battle.w12.measure.024"] = {
+		"Whatever happens, don't get boxed in. Keep a way to move.",
+		"Leave myself room. Always leave myself room.",
+		"Room to move is worth more than any clever idea.",
+	},
+	["battle.w12.measure.025"] = {
+		"Count to three. Not out loud. Just enough to settle.",
+		"One, two, three. There. Settled.",
+		"A short count in the head, and the shaking finds somewhere else to be.",
+	},
+	["battle.w12.measure.026"] = {
+		"Don't watch the noise. Watch what's quiet.",
+		"The loud part is rarely the dangerous part.",
+		"Whatever's making the racket, the trouble is usually elsewhere.",
+	},
+	["battle.w12.measure.027"] = {
+		"Wider. See the whole field, not just the nearest thing.",
+		"Don't stare. Staring narrows. Look wide.",
+	},
+	["battle.w12.measure.028"] = {
+		"The plan lasts until it moves. Fine. Then I'll have the next one.",
+		"Plan just far enough to be wrong usefully.",
+		"Every plan meets the first move and loses. Make a cheap one.",
+	},
+	["battle.w12.measure.029"] = {
+		"Learn something. However it goes, learn something from this.",
+		"Pay attention. This one's a lesson, whatever else it is.",
+	},
+	["battle.w12.measure.030"] = {
+		"Too eager. Pull it back a notch. There.",
+		"Easy. Keen gets careless. Ease it off.",
+	},
+	["battle.w12.measure.031"] = {
+		"Mind where it wants me to go. Then go somewhere else.",
+		"If it wants me there, I want to be anywhere else.",
+	},
+	["battle.w12.measure.032"] = {
+		"I'm not here to be brave. I'm here to be right.",
+		"Courage is cheap. Being right costs more and pays better.",
+	},
+	["battle.w12.measure.033"] = {
+		"The fight's already telling me things. Hush, and listen.",
+		"Every fight starts with a little confession. Listen for it.",
+	},
+	["battle.w12.measure.034"] = {
+		"Something always gives itself away. A favored side, a habit, a hurry.",
+		"There's always a tell. Find it before it finds a way to hide.",
+	},
+	["battle.w12.measure.035"] = {
+		"I don't have to be fast. I have to be on time.",
+		"Fast is overrated. On time is everything.",
+		"Speed is a boast. Timing is a craft.",
+	},
+	["battle.w12.measure.036"] = {
+		"Let it show me its best. Then I'll know where the ceiling is.",
+		"Its best effort first. Then I'll know how high the ceiling goes.",
+	},
+	["battle.w12.measure.037"] = {
+		"Easy to start. Hard to stop well. Think about the ending now.",
+		"Begin with the end in mind. Where do I want to be when it stops?",
+	},
+	["battle.w12.measure.038"] = {
+		"Two things to know: how it moves, and how I'll answer. Nothing else.",
+		"How it moves. How I'll answer. That's the whole list.",
+	},
+	["battle.w12.measure.039"] = {
+		"Corner of the eye on everything else. There's always an everything else.",
+		"Mind the sides. What's in front is rarely all there is.",
+		"Front, yes. Sides too. Surprises like sides.",
+	},
+	["battle.w12.measure.040"] = {
+		"I can be stubborn later. Right now I have to be clever.",
+		"Clever first. Stubborn is for when clever runs out.",
+	},
+	["battle.w12.measure.041"] = {
+		"The first thing it does is the thing it trusts most. Note it.",
+		"Whatever it opens with, it trusts. Remember that.",
+	},
+	["battle.w12.measure.042"] = {
+		"Set the pace, or have it set for me. I'd rather set it.",
+		"Whoever sets the pace sets most of the rest.",
+	},
+	["battle.w12.measure.043"] = {
+		"Quiet hands, quiet feet, loud eyes.",
+		"Hands still, feet still, eyes busy.",
+	},
+	["battle.w12.measure.044"] = {
+		"Don't flinch at the first sound. Sounds lie.",
+		"The first noise of a fight means nothing. Don't jump at it.",
+	},
+	["battle.w12.measure.045"] = {
+		"Think of the second move now, while the first is still cheap.",
+		"Two moves ahead. The first is already late.",
+	},
+	["battle.w12.measure.046"] = {
+		"Fear wants a fast answer. The fight wants a right one.",
+		"Fright rushes. I don't have to rush with it.",
+	},
+	["battle.w12.measure.047"] = {
+		"Whatever this costs, let it cost what I chose, not what I missed.",
+		"Pay for what I decide, not for what I failed to see.",
+	},
+	["battle.w12.measure.048"] = {
+		"Loose, loose. A tight body moves late.",
+		"Stiff is slow. Shake it off and stay soft.",
+	},
+	["battle.w12.measure.049"] = {
+		"Go on. Show me how you move.",
+		"Let's see how you move first.",
+		"Move. I want to watch you do it.",
+	},
+	["battle.w12.measure.050"] = {
+		"No rush. I've got all the time this takes.",
+		"Take your time. I'm taking mine.",
+		"I'm not in a hurry. Are you?",
+	},
+	["battle.w12.measure.051"] = {
+		"Steady. Steady... there.",
+		"Easy. Easy now. Now.",
+		"Hold it. Hold it... yes.",
+	},
+	["battle.w12.measure.052"] = {
+		"You first. I want to see what you lead with.",
+		"Go ahead and open. I'd like to know what you rely on.",
+	},
+	["battle.w12.measure.053"] = {
+		"Mind the ground. I already have.",
+		"Careful where you put yourself. I chose my spot.",
+	},
+	["battle.w12.measure.054"] = {
+		"All right. I've taken your measure. Let's begin.",
+		"Measure taken. Time to start.",
+	},
+	["battle.w12.measure.055"] = {
+		"Patience costs me nothing. How about you?",
+		"I can wait. Can you?",
+		"Waiting's free. Let's see who can afford it.",
+	},
+	["battle.w12.measure.056"] = {
+		"Hold. Hold it... hold.",
+		"Wait for it. Wait for it.",
+	},
+	["battle.w12.measure.057"] = {
+		"Calm down. Not you, me. You do whatever you like.",
+		"Easy, easy. I was talking to myself, not you.",
+	},
+	["battle.w12.measure.058"] = {
+		"Good ground here. I'll keep it.",
+		"This spot will do. I'm keeping it.",
+		"Decent footing. Mine now.",
+	},
+	["battle.w12.measure.059"] = {
+		"Slow and careful. Let's see what you know.",
+		"A careful start. I'd like to learn you before I trust anything.",
+	},
+	["battle.w12.measure.060"] = {
+		"I see you. Every move of you.",
+		"Oh, I see you. Down to the smallest twitch.",
+	},
+	["battle.w12.measure.061"] = {
+		"One look, then the work.",
+		"A look first. Then the work.",
+		"Looking done. Working now.",
+	},
+	["battle.w12.measure.062"] = {
+		"I'll take it as it comes. All of it, in order.",
+		"One thing after the next. I can keep things in order.",
+	},
+	["battle.w12.measure.063"] = {
+		"Fine. I know where I'm standing. Do you?",
+		"I know my ground. Do you know yours?",
+	},
+	["battle.w12.measure.064"] = {
+		"Hm. Let me look at you a moment.",
+		"Hold still a moment. I'm looking.",
+	},
+	["battle.w12.measure.065"] = {
+		"Ready when you are. Possibly before.",
+		"Whenever you like. I'm set.",
+	},
+	["battle.w12.measure.066"] = {
+		"I don't make the first move. I make the right one.",
+		"First move's yours. The right one's mine.",
+	},
+	["battle.w12.measure.067"] = {
+		"Careful. Careful is how people get to be old.",
+		"Careful's not cowardly. Careful's how you live long enough to gray.",
+	},
+	["battle.w12.measure.068"] = {
+		"Easy does it. Nothing's decided in the first moment.",
+		"Slow down. Nothing gets settled in the first instant.",
+		"No need to win the opening. It's only the opening.",
+	},
+	["battle.w12.measure.069"] = {
+		"You've got a pattern. Everybody does. I'll find it.",
+		"There's a pattern in there. Give me a moment.",
+		"Patterns everywhere. Yours won't take long.",
+	},
+	["battle.w12.measure.070"] = {
+		"Watch the edges, I'll watch the middle. Call what you see.",
+		"Eyes everywhere. Call out what moves.",
+	},
+	["battle.w12.measure.071"] = {
+		"Nobody rush in. Let it show us what it does.",
+		"Hold back a moment. We learn it first, then we move.",
+	},
+	["battle.w12.measure.072"] = {
+		"Spread out a little. One target is an easy target.",
+		"Don't bunch up. Bunched up is easy.",
+	},
+	["battle.w12.measure.073"] = {
+		"That's a big one. Learn its rhythm before you test it.",
+		"Bigger than most. Watch a while before you trust a move.",
+	},
+	["battle.w12.measure.074"] = {
+		"Stronger than me. Fine. Strength still has to land.",
+		"You've got the strength. Let's see if you've got the timing.",
+	},
+	["battle.w12.measure.075"] = {
+		"The odds say I'm ahead. Not a reason to get sloppy.",
+		"Weaker or not, I'm not cutting corners.",
+	},
+	["battle.w12.measure.076"] = {
+		"{target}. I'm watching how you carry yourself.",
+		"I see how you carry yourself. That's plenty to go on.",
+	},
+	["battle.w12.measure.077"] = {
+		"First I learn you. Then the rest.",
+		"Learning first. Doing after.",
+	},
+	["battle.w12.measure.078"] = {
+		"Fine. My ground, my pace. Your move.",
+		"My pace, my ground. Go on.",
+		"I've picked where and how fast. You pick the when.",
+	},
+	["battle.w12.measure.079"] = {
+		"Not so fast. Let's both have a proper look first.",
+		"Easy there. No sense rushing this.",
+	},
+	["battle.w12.measure.080"] = {
+		"You're telling me plenty already. Keep it up.",
+		"Every move you make tells me something. Thanks.",
+	},
+	["battle.w12.measure.081"] = {
+		"Don't mind me. I'm just counting.",
+		"Ignore me. Doing a little arithmetic.",
+	},
+	["battle.w12.measure.082"] = {
+		"Hm. Interesting. Very well.",
+		"Interesting. All right, then.",
+	},
+	["battle.w12.measure.083"] = {
+		"Firm ground, firm hands.",
+		"Ground's holding. So am I.",
+	},
+	["battle.w12.measure.084"] = {
+		"Whatever you've got, show me. I'll sort it into piles.",
+		"Bring it all out. I'll sort it as it comes.",
+	},
+	["battle.w12.measure.085"] = {
+		"Ground beneath, eyes ahead, patience between.",
+		"Earth below me, the foe before me, and time enough for both.",
+	},
+	["battle.w12.measure.086"] = {
+		"Careful now. Nobody gets a second first move.",
+		"There's only one beginning. Let's not waste it.",
+	},
+	["battle.w12.measure.087"] = {
+		"Quiet, now. I need to hear myself think.",
+		"Hush. Thinking.",
+	},
+	["battle.w12.measure.088"] = {
+		"scuffs the ground once with a foot, testing what it will hold.",
+		"tests the ground with one foot before trusting it with both.",
+	},
+	["battle.w12.measure.089"] = {
+		"glances back once, then not again.",
+		"takes a single look behind, and after that only ahead.",
+		"checks what lies behind with one quick turn of the head, and is done with it.",
+	},
+	["battle.w12.measure.090"] = {
+		"goes perfectly still, everything gathered into waiting.",
+		"becomes very still and very attentive, like a held note.",
+	},
+	["battle.w12.measure.091"] = {
+		"shakes out {g:his|her} hands, then lets them hang loose and ready.",
+		"gives both hands a quick shake and lets them settle.",
+		"opens and closes {g:his|her} hands a few times, then leaves them easy.",
+	},
+	["battle.w12.measure.092"] = {
+		"tilts {g:his|her} head a fraction, watching how the foe moves.",
+		"cocks {g:his|her} head and follows the foe's first motion with care.",
+	},
+	["battle.w12.measure.093"] = {
+		"lowers {g:his|her} chin and turns a little sideways, offering less.",
+		"turns half aside to the foe, chin down, giving away as little as possible.",
+	},
+	["battle.w12.measure.094"] = {
+		"edges along a step or two, eyes down for a moment, choosing where to stand.",
+		"picks a spot with a quick downward glance and claims it.",
+	},
+	["battle.w12.measure.095"] = {
+		"moves {g:his|her} lips silently, counting something only {g:he|she} knows.",
+		"mouths a silent count, eyes on the foe.",
+	},
+	["battle.w12.measure.096"] = {
+		"waits without hurry for the foe to commit to something.",
+		"lets the foe be the first to commit, and watches closely.",
+		"holds back, unhurried, until the foe shows what it means to do.",
+	},
+	["battle.w12.measure.097"] = {
+		"unclenches {g:his|her} jaw with an effort and lets {g:his|her} shoulders drop.",
+		"lets {g:his|her} shoulders fall an inch, and the stiffness goes with them.",
+	},
+	["battle.w12.measure.098"] = {
+		"looks the foe over from top to bottom, like someone pricing a horse.",
+		"gives the foe a long, appraising look, the way a buyer looks at a mule.",
+	},
+	["battle.w12.measure.099"] = {
+		"half-closes {g:his|her} eyes for an instant, then opens them, clear.",
+		"blinks once, slowly, and the eyes that open again are calm.",
+	},
+	["battle.w12.measure.100"] = {
+		"tightens a loose strap with one quick tug, without looking down.",
+		"gives a strap a final tug, making sure nothing hangs loose.",
+		"checks a buckle by touch alone, never looking away.",
+	},
+	["battle.w12.measure.101"] = {
+		"takes in the ground, the foe and the space between in one long look.",
+		"measures the space between {g:himself|herself} and the foe with a single look.",
+	},
+	["battle.w12.measure.102"] = {
+		"bends {g:his|her} knees slightly, ready to go any way the fight goes.",
+		"sinks an inch at the knees, ready to move in any direction.",
+	},
+	["battle.w12.measure.103"] = {
+		"lets the first moment pass without moving, reading it.",
+		"lets a moment go by untouched, studying the foe.",
+	},
+	["battle.w12.measure.104"] = {
+		"rubs {g:his|her} hands together once, briskly, and gets to work.",
+		"claps the dust from {g:his|her} hands and turns to face the foe.",
+	},
+	["battle.w12.measure.105"] = {
+		"follows the foe with {g:his|her} eyes alone, the rest of {g:him|her} perfectly still.",
+		"tracks the foe with nothing but {g:his|her} gaze, every other part at rest.",
+	},
+	["battle.w12.measure.106"] = {
+		"frowns, not in anger, but the way one frowns at a sum.",
+		"wrinkles {g:his|her} brow, working out the foe like a sum.",
+		"purses {g:his|her} lips, as over a ledger that refuses to balance.",
+	},
+	["battle.w12.measure.107"] = {
+		"nods slowly to {g:himself|herself}, as if something had been confirmed.",
+		"gives a small nod, to no one in particular, and moves into position.",
+	},
+	["battle.w12.measure.108"] = {
+		"glances left, glances right, and only then looks at the foe.",
+		"checks both sides before giving the foe {g:his|her} full attention.",
+	},
+	["battle.w12.measure.109"] = {
+		"gathers {g:himself|herself} without hurry, like a word chosen with care.",
+		"takes a moment to gather {g:himself|herself}, in no visible haste.",
+	},
+	["battle.w12.measure.110"] = {
+		"keeps {g:his|her} hands low and loose, giving nothing away.",
+		"lets {g:his|her} hands rest low and quiet, betraying nothing.",
+	},
+	["battle.w12.measure.111"] = {
+		"looks once past the foe, at whatever lies beyond, then back.",
+		"spares a look for what lies beyond the foe, then returns to it.",
+	},
+	["battle.w12.measure.112"] = {
+		"rocks once on {g:his|her} feet, testing the balance.",
+		"sways a little, forward and back, feeling for the point of balance.",
+		"finds {g:his|her} center with a small shift and holds it there.",
+	},
+	["battle.w12.measure.113"] = {
+		"watches hard, catching each small movement before it finishes.",
+		"squints, catching every small shift the foe makes.",
+	},
+	["battle.w12.measure.114"] = {
+		"makes no first move, and makes no secret of it.",
+		"stays where {g:he|she} is and lets the opening belong to the foe.",
+	},
+	["battle.w12.measure.115"] = {
+		"sets {g:his|her} shoulders square and {g:his|her} gaze level.",
+		"squares {g:his|her} shoulders and levels a steady gaze at the foe.",
+	},
+	["battle.w12.wit.001"] = {
+		"Pardon the mess. I wasn't expecting company.",
+		"Excuse the state of me. Nobody said there'd be visitors.",
+		"Visitors? And nobody tidied up.",
+	},
+	["battle.w12.wit.002"] = {
+		"Do you have an appointment? I don't see you in my book.",
+		"Appointments only, I'm afraid. Nobody told you?",
+	},
+	["battle.w12.wit.003"] = {
+		"Was it something I said? I haven't said anything yet.",
+		"Did I say something wrong? I'm fairly sure I said nothing.",
+	},
+	["battle.w12.wit.004"] = {
+		"I said 'what else could go wrong' out loud. That one's on me.",
+		"Never wonder aloud whether things could get worse. Lesson taken.",
+		"Somebody asked what could possibly happen. Me. I asked.",
+	},
+	["battle.w12.wit.005"] = {
+		"rolls {g:his|her} eyes so thoroughly it nearly counts as limbering up.",
+		"rolls {g:his|her} eyes at the interruption, then gets on with it.",
+	},
+	["battle.w12.wit.006"] = {
+		"Do I owe you money? I feel I'd remember that.",
+		"If this is about a debt, I'd like to see the paperwork first.",
+		"Whatever I owe you, there's been a mistake somewhere.",
+	},
+	["battle.w12.wit.007"] = {
+		"My luck took one look at this and left early.",
+		"Luck's gone off for a walk. Never around when the bill arrives.",
+	},
+	["battle.w12.wit.008"] = {
+		"Ah. A volunteer.",
+		"Look at that, a volunteer. Nobody asked for one.",
+		"Stepping forward so keenly. Touching, really.",
+	},
+	["battle.w12.wit.009"] = {
+		"I was in the middle of a very important nothing.",
+		"Busy doing nothing, and doing it beautifully. Ruined.",
+		"Doing nothing was going so well, too.",
+	},
+	["battle.w12.wit.010"] = {
+		"I'd say it's a pleasure. It isn't, but I'd say it.",
+		"Delighted, I'm sure. Not really, but manners are manners.",
+	},
+	["battle.w12.wit.011"] = {
+		"Every fight starts with a small 'oh no' in my head. Tradition.",
+		"There it is, the little inner 'oh no'. Never misses.",
+	},
+	["battle.w12.wit.012"] = {
+		"Robbery, feud or hobby? Asking for my records.",
+		"Grudge, hunger or plain boredom? I like to keep track.",
+		"Is this business or pleasure for you?",
+	},
+	["battle.w12.wit.013"] = {
+		"holds up one finger, as if to raise an objection, then thinks better of it.",
+		"opens {g:his|her} mouth to complain, shuts it, and squares up instead.",
+	},
+	["battle.w12.wit.014"] = {
+		"Hang on, I wasn't ready. ...Fine. Ready. Ish.",
+		"Wait, wait, I hadn't... no, never mind. Go on.",
+	},
+	["battle.w12.wit.015"] = {
+		"Calm. Perfectly calm. The calmest anyone has ever been about this.",
+		"All fine. Completely, suspiciously fine.",
+	},
+	["battle.w12.wit.016"] = {
+		"I accept your invitation. With reservations. Many.",
+		"Invitation accepted, under protest. Write that down.",
+	},
+	["battle.w12.wit.017"] = {
+		"Brain, something useful, please. Brain? ...Improvising, then.",
+		"Thoughts, line up. Thoughts? Gone. Instinct it is.",
+	},
+	["battle.w12.wit.018"] = {
+		"There goes my good mood. It had a short life.",
+		"So much for the good mood. I barely knew it.",
+	},
+	["battle.w12.wit.019"] = {
+		"Small mercies: at least it isn't stairs.",
+		"Could be worse. Could be a ladder.",
+		"At least it isn't a locked door. Those always beat me.",
+	},
+	["battle.w12.wit.020"] = {
+		"Introductions later. Grievances first.",
+		"Names can wait. I've a list of complaints to get through.",
+	},
+	["battle.w12.wit.021"] = {
+		"Now? Truly? Of all the moments there are?",
+		"Every moment in the world to choose from, and it's this one.",
+		"This minute? This exact one?",
+	},
+	["battle.w12.wit.022"] = {
+		"gives the foe the look usually saved for a pebble in a boot.",
+		"regards the trouble as one regards a stone in a shoe: with tired contempt.",
+	},
+	["battle.w12.wit.023"] = {
+		"Is it too late to pretend I didn't see you?",
+		"Could I just not have noticed you? Too late. Noticed.",
+	},
+	["battle.w12.wit.024"] = {
+		"Whoever keeps count of my bad days, add one.",
+		"The tally of my bad days just gained a line.",
+	},
+	["battle.w12.wit.025"] = {
+		"My offer: you leave, I forget this happened. Refused? Noted.",
+		"Generous terms: turn around now and I'll hold no grudge.",
+		"Walk away and I'll tell everyone you won. Deal?",
+	},
+	["battle.w12.wit.026"] = {
+		"I'll give you three coppers to go away. Four, if you hurry.",
+		"Three coppers says you leave right now. No takers?",
+	},
+	["battle.w12.wit.027"] = {
+		"Note to self: stop looking so approachable.",
+		"I must have a friendly face. I'll work on that.",
+	},
+	["battle.w12.wit.028"] = {
+		"Ever thought of a quieter hobby? Embroidery, say?",
+		"Have you considered other interests? Pottery is very calming.",
+	},
+	["battle.w12.wit.029"] = {
+		"You've got timing. Terrible timing, but timing.",
+		"Impeccable timing. Impeccably awful.",
+		"Your sense of timing is a gift. A cursed one.",
+	},
+	["battle.w12.wit.030"] = {
+		"In the retelling I'll be taller and a great deal calmer.",
+		"I'll tell this braver than it was. Might as well start now.",
+	},
+	["battle.w12.wit.031"] = {
+		"I hope you're in shape for this. I'm not.",
+		"Did you prepare for this? Because I didn't.",
+	},
+	["battle.w12.wit.032"] = {
+		"Ow. In advance. Just so it's said.",
+		"Getting the complaining done early: ow.",
+	},
+	["battle.w12.wit.033"] = {
+		"Look confident. Look confident. Look... well, look something.",
+		"Face, do something brave. That's... near enough.",
+	},
+	["battle.w12.wit.034"] = {
+		"Don't mind my face. It's my thinking face. Also my worried one.",
+		"This expression? Concentration. Mostly.",
+	},
+	["battle.w12.wit.035"] = {
+		"Not in the mood. Evidently that changes nothing.",
+		"Nobody asked if I was in the mood. Nobody ever does.",
+		"Mood: absent. Fight: present. Typical.",
+	},
+	["battle.w12.wit.036"] = {
+		"Every decent story starts with somebody's bad idea.",
+		"Good stories begin with a poor decision. This one's off to a strong start.",
+	},
+	["battle.w12.wit.037"] = {
+		"I'll get to you. There's a list, but I'll get to you.",
+		"Join the list of this week's problems. Near the bottom, sorry.",
+		"You're on the list now. It's not a good list.",
+	},
+	["battle.w12.wit.038"] = {
+		"mutters a short, sincere complaint to nobody in particular.",
+		"grumbles something about timing that nobody is meant to hear.",
+	},
+	["battle.w12.wit.039"] = {
+		"Shall I yell first, or would you like to?",
+		"Who screams first? I'm happy to go second.",
+	},
+	["battle.w12.wit.040"] = {
+		"If I get out of this, I'm buying myself something nice.",
+		"Live through this, then a treat. That's the deal.",
+	},
+	["battle.w12.wit.041"] = {
+		"No warning at all? Not even a cough?",
+		"A little notice would have been nice. A rustle, anything.",
+	},
+	["battle.w12.wit.042"] = {
+		"Fine, have your fight. I'll be sulking through all of it.",
+		"Very well. But know that I'm sulking.",
+	},
+	["battle.w12.wit.043"] = {
+		"Why is it always me? Is there a sign on my back?",
+		"There's a sign on my back, isn't there. 'Trouble, inquire here.'",
+	},
+	["battle.w12.wit.044"] = {
+		"Civil, if possible. Brief, if not.",
+		"A little courtesy would be nice. Brevity, nicer still.",
+	},
+	["battle.w12.wit.045"] = {
+		"bows, very slightly and very sarcastically.",
+		"offers the foe a small, crooked bow that means nothing kind.",
+		"sketches a mocking little bow.",
+	},
+	["battle.w12.wit.046"] = {
+		"Applause for the entrance. Very dramatic.",
+		"Lovely entrance. A bit much, but lovely.",
+	},
+	["battle.w12.wit.047"] = {
+		"Wonderful. The day was missing a disaster.",
+		"Good. For a moment I feared things might go smoothly.",
+		"Splendid. Things were going far too well.",
+	},
+	["battle.w12.wit.048"] = {
+		"Let me guess: you've had a long day too.",
+		"Rough day? Same here. Small world.",
+	},
+	["battle.w12.wit.049"] = {
+		"If this is a misunderstanding, now's the moment.",
+		"Any chance this is a mix-up? Speak now.",
+	},
+	["battle.w12.wit.050"] = {
+		"I could run. I won't. But I'm keeping the thought in my pocket.",
+		"Running is still an option. A shameful one. Filed for later.",
+	},
+	["battle.w12.wit.051"] = {
+		"If you're selling something, I'm not buying.",
+		"No thank you, I don't want any. Whatever it is.",
+	},
+	["battle.w12.wit.052"] = {
+		"I'll need that interruption back, with interest.",
+		"You owe me a quiet moment. I'm collecting it now.",
+		"That was my peace and quiet you just broke.",
+	},
+	["battle.w12.wit.053"] = {
+		"Whatever this is about, it isn't worth it. But fine.",
+		"I doubt this is worth it for anyone. Still. Here it is.",
+	},
+	["battle.w12.wit.054"] = {
+		"Don't make a face. ...Made a face.",
+		"Keep a straight face. Straight. Oh, never mind.",
+	},
+	["battle.w12.wit.055"] = {
+		"One idea in my head, and it's a bad one. Using it.",
+		"My only plan is terrible. Excellent, at least there's a plan.",
+	},
+	["battle.w12.wit.056"] = {
+		"Don't take it personally. Or do. Your choice.",
+		"Personal, impersonal, take it however you like.",
+	},
+	["battle.w12.wit.057"] = {
+		"I was promised a quiet walk. By me. I lied.",
+		"Who said this would be a peaceful walk? Oh, right. Me.",
+		"A gentle outing, I told myself. Gullible.",
+	},
+	["battle.w12.wit.058"] = {
+		"Careful. I get bitey when interrupted. Figuratively. Mostly.",
+		"Interrupt me and I get snappish. Consider yourself told.",
+	},
+	["battle.w12.wit.059"] = {
+		"This is the part where you leave. You missed your cue.",
+		"Here's where you turn and go. No? Not good with cues.",
+	},
+	["battle.w12.wit.060"] = {
+		"Hold that pose. Actually, don't. It's alarming.",
+		"Interesting stance. Unsettling, but interesting.",
+	},
+	["battle.w12.wit.061"] = {
+		"Someone, somewhere, finds me hilarious.",
+		"Whoever arranges my days has a cruel sense of humor.",
+	},
+	["battle.w12.wit.062"] = {
+		"Lucky me. Lucky, lucky me.",
+		"What luck. What tremendous luck.",
+		"Fortune smiles on me. With all its teeth.",
+	},
+	["battle.w12.wit.063"] = {
+		"Snack first, fight after, I said. Nobody listens.",
+		"I had a snack halfway to my mouth. Halfway!",
+	},
+	["battle.w12.wit.064"] = {
+		"Of course. Of course this happens now.",
+		"Naturally. Naturally it's now.",
+		"Obviously now. When else?",
+	},
+	["battle.w12.wit.065"] = {
+		"pats {g:his|her} pockets as if looking for patience, and finds very little.",
+		"checks a pocket for patience, comes up nearly empty, and makes do.",
+	},
+	["battle.w12.wit.066"] = {
+		"shakes {g:his|her} head slowly, the picture of someone who had hoped for better.",
+		"gives a slow shake of the head, like an innkeeper watching mud tracked across a clean floor.",
+		"wears the long-suffering look of someone interrupted far too often.",
+	},
+	["battle.w12.wit.067"] = {
+		"wrinkles {g:his|her} nose at the interruption, then gets down to business.",
+		"makes the face of someone handed an unpaid bill, and turns to settle it.",
+	},
+	["battle.w12.wit.068"] = {
+		"mouths a silent, rather rude remark at the foe.",
+		"says something very impolite without making a sound.",
+	},
+	["battle.w12.wit.069"] = {
+		"Yes, yes, I see you. Hard not to.",
+		"I see you. No need to make such a fuss about it.",
+	},
+	["battle.w12.wit.070"] = {
+		"Could you have picked a worse moment? Honestly, try.",
+		"If a worse moment existed, you'd have found it.",
+	},
+	["battle.w12.wit.071"] = {
+		"Stop narrating and do something.",
+		"Less commentary, more doing. Says the commentary.",
+	},
+	["battle.w12.wit.072"] = {
+		"Can this skip straight to the ending? I'd pay.",
+		"Is there a short version of this? I'll take the short version.",
+	},
+	["battle.w12.wit.073"] = {
+		"I'd like a word with whoever's in charge of you.",
+		"Who sent you? I'd like to lodge a complaint.",
+	},
+	["battle.w12.wit.074"] = {
+		"Let the record show I was minding my own business.",
+		"For the record: I was here first, and quietly.",
+	},
+	["battle.w12.wit.075"] = {
+		"Hear ye: I object. That is all.",
+		"Let it be known that I object, loudly and for nothing.",
+		"Formal objection lodged. By me. With me.",
+	},
+	["battle.w12.wit.076"] = {
+		"Ah. A complication.",
+		"Hm. A setback. A lively one.",
+		"Mm. An obstacle. With opinions.",
+	},
+	["battle.w12.wit.077"] = {
+		"This could have been a letter.",
+		"Honestly, a stern note would have settled this.",
+	},
+	["battle.w12.wit.078"] = {
+		"Must everything be a fight? Apparently, yes.",
+		"Is there nothing in this world that just says hello?",
+	},
+	["battle.w12.wit.079"] = {
+		"Should never have got up. Noted for next time.",
+		"Getting up was the mistake. Everything since has followed from it.",
+	},
+	["battle.w12.wit.080"] = {
+		"I'd like a refund on this whole outing.",
+		"Can I return this trip? It arrived damaged.",
+	},
+	["battle.w12.wit.081"] = {
+		"Heroic music would help. Heroic anything would help.",
+		"This would go better with drums. Most things would.",
+	},
+	["battle.w12.wit.082"] = {
+		"Patience is a virtue, they tell me. Mine just ran out.",
+		"I had patience earlier. Spent it all on something smaller.",
+	},
+	["battle.w12.wit.083"] = {
+		"Ah, it's you. Whoever you are.",
+		"There you are. No idea who you are, but there you are.",
+	},
+	["battle.w12.wit.084"] = {
+		"Courage, report to the front. Courage? Anyone?",
+		"Bravery, front and center, please. ...It'll catch up.",
+	},
+	["battle.w12.wit.085"] = {
+		"Interesting decision. I'd have made a different one.",
+		"Not the choice I'd have made. But it's yours.",
+	},
+	["battle.w12.wit.086"] = {
+		"After you. No, really, I insist.",
+		"You first. I'd hate to be rude.",
+		"Age before beauty. Go on, then.",
+	},
+	["battle.w12.wit.087"] = {
+		"So much room in the world, and you chose right here.",
+		"The world's a big place. Not big enough to miss you, apparently.",
+		"Endless roads out there, and you picked mine.",
+	},
+	["battle.w12.wit.088"] = {
+		"No. No, thank you. ...Oh, it wasn't a question.",
+		"I decline. Politely. What, declining isn't allowed?",
+	},
+	["battle.w12.wit.089"] = {
+		"I'll complain about this for days. Something to look forward to.",
+		"Days of grumbling ahead. At least I'll have material.",
+	},
+	["battle.w12.wit.090"] = {
+		"No panicking. That goes double for me.",
+		"Steady. Nobody panic. Especially not me.",
+	},
+	["battle.w12.wit.091"] = {
+		"You've been practicing that look, haven't you? It's good.",
+		"Very menacing. Full marks for menace.",
+	},
+	["battle.w12.wit.092"] = {
+		"Things wanting to hurt me: rising. Things offering me tea: none.",
+		"Plenty of things want a fight with me. Nothing ever wants a chat.",
+	},
+	["battle.w12.wit.093"] = {
+		"Too tired for this. And yet, here it is.",
+		"Tired enough to sleep standing. Apparently not allowed.",
+	},
+	["battle.w12.wit.094"] = {
+		"My feet filed a complaint. Overruled.",
+		"Legs, I know. I know. Just this one.",
+	},
+	["battle.w12.wit.095"] = {
+		"I'm braver than I look. I'd have to be.",
+		"Looks can deceive. Mine certainly hope so.",
+	},
+	["battle.w12.wit.096"] = {
+		"Ah, the welcome committee. Where's the cake?",
+		"A welcome party. How thoughtful. No cake, though.",
+		"A reception, just for me? You shouldn't have. Truly.",
+	},
+	["battle.w12.wit.097"] = {
+		"I asked for something to happen. I should have been specific.",
+		"Wished for a bit of excitement. Must word my wishes better.",
+	},
+	["battle.w12.wit.098"] = {
+		"Think of a clever line. Nothing? Straight to business, then.",
+		"Witty remark, witty remark... gone. Never mind.",
+	},
+	["battle.w12.wit.099"] = {
+		"Give it time. People grow fond of me. Eventually. Some.",
+		"I'm told I improve on acquaintance. Slowly.",
+	},
+	["battle.w12.wit.100"] = {
+		"cracks {g:his|her} knuckles with a flourish that is mostly for show.",
+		"cracks {g:his|her} knuckles, winces, and plainly regrets it.",
+	},
+	["battle.w12.wit.101"] = {
+		"brushes a speck of dust from {g:his|her} sleeve, as if the fight should at least find {g:him|her} tidy.",
+		"straightens a crooked strap with great care before looking up.",
+	},
+	["battle.w12.wit.102"] = {
+		"lets out a short, unamused laugh.",
+		"gives a dry little laugh with no joy in it at all.",
+	},
+	["battle.w12.wit.103"] = {
+		"glances about for someone to complain to, then gives up and faces the foe.",
+		"looks around for a witness to this injustice, finds none worth the bother, and turns back.",
+	},
+	["battle.w12.wit.104"] = {
+		"raises both eyebrows at the foe, a whole speech in one look.",
+		"lifts a single eyebrow, unimpressed by the welcome.",
+	},
+	["battle.w12.wit.105"] = {
+		"Ah, {target}. I'd been hoping to miss you.",
+		"You. Of everyone I might have met, you.",
+	},
+	["battle.w12.wit.106"] = {
+		"{target}. I'll remember the name, for the complaint.",
+		"A name would help. For the complaint, you understand.",
+	},
+	["battle.w12.wit.107"] = {
+		"{target}, is it? I'd pictured something different.",
+		"Funny. I'd pictured you quite differently.",
+	},
+	["battle.w12.wit.108"] = {
+		"Stronger than me? Show-off.",
+		"Oh, you're the tough sort. Wonderful. Truly wonderful.",
+	},
+	["battle.w12.wit.109"] = {
+		"Fine, you're stronger. I'm far more annoying. That counts too.",
+		"Strength is yours. Pure stubborn nuisance is mine.",
+	},
+	["battle.w12.wit.110"] = {
+		"Admirable spirit. Questionable arithmetic.",
+		"Love the enthusiasm. Less sure about the sums.",
+	},
+	["battle.w12.wit.111"] = {
+		"Have you thought this through? Asking for your sake.",
+		"Take a moment, think it over. ...That was the moment.",
+	},
+	["battle.w12.wit.112"] = {
+		"Oh. Oh, that's a lot of trouble in one bundle.",
+		"That's... rather more than I ordered.",
+	},
+	["battle.w12.wit.113"] = {
+		"You're the large version, aren't you. Of course you are.",
+		"Of all the sizes on offer, the biggest. Naturally.",
+	},
+	["battle.w12.wit.114"] = {
+		"Who poked it? Somebody poked it.",
+		"Own up, then. Whose idea was this?",
+	},
+	["battle.w12.wit.115"] = {
+		"Don't look at me. I didn't start it.",
+		"For once it wasn't me. Probably.",
+	},
 }, "base_combat")
