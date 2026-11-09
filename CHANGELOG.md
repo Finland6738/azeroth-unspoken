@@ -8,6 +8,12 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### CI: more time for the Tests job
+
+- **Changed:** the `Tests` job of `.github/workflows/ci.yml` may now run for 40 minutes instead of 20. The whole suite
+  grows with every content wave: after W11 it took 12 minutes on a fast runner, and in W12 (#268) a slow runner needed
+  19-20 minutes, so one run was cancelled during its cleanup after the suite had passed. ADR 0022 records the limit.
+
 ### Content wave W12: the generic thoughts and the first moment of a fight (issue #138)
 
 The twelfth content wave of [docs/content/WAVES.md](docs/content/WAVES.md), the first of the random need only. Its
