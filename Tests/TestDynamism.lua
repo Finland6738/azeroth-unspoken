@@ -39,9 +39,11 @@ local function Offer(ev, extra) Director:Offer(ev, extra); ADVANCE(0.2) end
 ---------------------------------------------------------------------------
 -- picks of an event until a monologue comes (time passes, as in a session). The monologues are generic lines: since W01
 -- the class, race, faction and zone lines of the speak key are more than the window of 30 picks, and the generic level
--- still keeps its share of the picks (#138, ADR 0051)
+-- still keeps its share of the picks (#138, ADR 0051). The search is a budget, not a floor: after W12 a muse monologue
+-- comes about once in 2,600 picks (median 1,800 over 20 seeds, 4 of them past 3,000), so 3,000 tries failed about one
+-- run in five, whichever the random stream (Linux and Windows draw differently); 20,000 fail about once in 2,000 runs
 local function FindMonologue(event, form, tries)
-	for _ = 1, tries or 3000 do
+	for _ = 1, tries or 20000 do
 		local rec = Engine:PickEntry(event, NS:BuildContext(), form)
 		if rec and rec.kind == "monologue" then return rec end
 		ADVANCE(600)

@@ -5712,4 +5712,2115 @@ NS:AddTexts("itIT", {
 		"Non guardate me. Non ho cominciato io.",
 		"Per una volta non è colpa mia. Credo.",
 	},
+	["victory.w13.pride.001"] = {
+		"Ah! Che si senta fin dove arriva.",
+		"Che risuoni pure fin dove ha voglia di arrivare.",
+		"Ah! Che l'eco vada dove le pare.",
+	},
+	["victory.w13.pride.002"] = {
+		"Venga il prossimo. La testardaggine non mi è ancora passata.",
+		"Arrivi pure il seguito. Di ostinazione ne ho da vendere.",
+		"Testardaggine intatta, e me ne vanto. Il prossimo prenda nota.",
+	},
+	["victory.w13.pride.003"] = {
+		"A terra o in fuga, hai il mio saluto.",
+		"Ti saluto, comunque sia finita. Mi hai affrontato, ed è già qualcosa.",
+		"Qualunque strada tu abbia preso, saluto l'incontro.",
+	},
+	["victory.w13.pride.004"] = {
+		"Questa finisce nelle memorie. A lettere grandi.",
+		"Da mettere nelle memorie, con un bel disegno accanto.",
+		"Memorie, pagina chissà: un trionfo. Sottolineato due volte.",
+	},
+	["victory.w13.pride.005"] = {
+		"Manda quello che vuoi, mondo. Ti aspetto sulla soglia.",
+		"Il mondo mandi pure ciò che ha in mente. A rispondere ci sarò io.",
+		"Tocca a te, mondo. La mia mossa era questa.",
+	},
+	["victory.w13.pride.006"] = {
+		"Avevo giurato di uscirne sulle mie gambe. Giuramento rispettato.",
+		"Una promessa fatta a me: andarmene coi miei piedi. Rispettata.",
+		"La parola che mi ero data ha tenuto. E io con lei.",
+	},
+	["victory.w13.pride.007"] = {
+		"Il mio mestiere. Lo conosco.",
+		"Questo è il mio mestiere, e il mestiere lo so.",
+		"È il lavoro per cui esisto, e si vede.",
+	},
+	["victory.w13.pride.008"] = {
+		"Un applauso sarebbe gradito. Da chiunque. Da qualunque cosa.",
+		"Mi applaudirei da me, ma non sta bene. Applaudo dentro.",
+		"Nessuna ovazione? Pazienza. Mi festeggio da me, a bassa voce.",
+	},
+	["victory.w13.pride.009"] = {
+		"Il prossimo turno è libero. Chi lo vuole?",
+		"Chi vuole il turno dopo? Sono in vena.",
+		"C'è posto per un altro. Fatti sotto.",
+	},
+	["victory.w13.pride.010"] = {
+		"Di me si dica quel che si vuole, ma non che ho voltato le spalle.",
+		"Mi diano pure mille nomi: nessuno vorrà dire fuga.",
+		"Parlate pure. La schiena non l'ho mai mostrata.",
+	},
+	["victory.w13.pride.011"] = {
+		"Sia messo agli atti: non ho ceduto terreno.",
+		"Per la cronaca: i piedi sono andati avanti, mai indietro.",
+		"Scrivetelo chiaro: avanti, a ogni passo.",
+	},
+	["victory.w13.pride.012"] = {
+		"Oh, che soddisfazione. Che soddisfazione davvero.",
+		"Questa sensazione andrebbe messa in bottiglia.",
+		"Oh, ne avevo bisogno. Più di quanto sapessi.",
+	},
+	["victory.w13.pride.013"] = {
+		"Alla mia salute. Qualcuno deve pur dirlo.",
+		"Un brindisi a me, senza un boccale da alzare. Conta il pensiero.",
+		"A me, allora. Il brindisi lo faccio io.",
+	},
+	["victory.w13.pride.014"] = {
+		"Sto migliorando. Il prossimo se ne accorgerà.",
+		"Ho più filo di prima. Il prossimo scontro avrà la versione migliore.",
+		"Meglio a ogni scontro, e questo ne è la prova.",
+	},
+	["victory.w13.pride.015"] = {
+		"Merita un cenno di approvazione. Anzi, due.",
+		"Approvato. Da me, l'unico giudice che conti.",
+		"Lo metterei in cornice, se gli scontri ci entrassero.",
+	},
+	["victory.w13.pride.016"] = {
+		"Ecco la mia risposta a chi mi mette alla prova.",
+		"Chi mi mette alla prova riceve la stessa replica.",
+		"Provaci, e torna indietro questo.",
+	},
+	["victory.w13.pride.017"] = {
+		"A me il terreno, a te il mio rispetto.",
+		"Il mio rispetto ti accompagna. Il terreno resta a me.",
+		"Tu te ne vai col mio rispetto. Io resto col terreno.",
+	},
+	["victory.w13.pride.018"] = {
+		"Qualunque cosa venga, mi troverà con i piedi ben piantati.",
+		"Sono {g:pronto|pronta} a quello che viene. Che si sbrighi.",
+		"Che arrivi il seguito. Ho i piedi piantati.",
+	},
+	["victory.w13.pride.019"] = {
+		"Ma guarda! Sono {g:bravo|brava}, eh.",
+		"Lavoro fatto come si deve, guardate qua.",
+		"Guardatemi, a fare le cose per bene.",
+	},
+	["victory.w13.pride.020"] = {
+		"Suonino i corni, se qualcuno ne ha uno.",
+		"Qualcuno suoni un corno. Me lo sono guadagnato.",
+		"Qui ci starebbe una fanfara. Qualcuno la canticchi.",
+	},
+	["victory.w13.pride.021"] = {
+		"E questo, per i curiosi, è il modo giusto di farlo.",
+		"Prendete appunti, se c'è chi ascolta. Il metodo è questo.",
+		"Lezione finita. Non ci sarà interrogazione.",
+	},
+	["victory.w13.pride.022"] = {
+		"Non ho finito. Non finisco mai.",
+		"Finito? Nemmeno per idea.",
+		"{g:Stanco|Stanca}? Io? Chiedimelo più tardi.",
+	},
+	["victory.w13.pride.023"] = {
+		"Onore a te, che mi hai affrontato. Il resto dell'onore lo tengo io.",
+		"Un po' d'onore anche a te. Il grosso me lo tengo.",
+		"L'onore lo dividiamo, io e te. La fetta grossa la prendo io.",
+	},
+	["victory.w13.pride.024"] = {
+		"Che si sappia: questa è opera mia.",
+		"Lo si sappia ovunque: opera mia.",
+		"Fatelo sapere in giro. Questa porta la mia firma.",
+	},
+	["victory.w13.pride.025"] = {
+		"Bene. Mi piace così.",
+		"Bene. Proprio come volevo.",
+		"Sì. Così. Esattamente così.",
+	},
+	["victory.w13.pride.026"] = {
+		"Mettetevi in fila. Di tempo ne ho quanto ne voglio.",
+		"In fila, chiunque sia il prossimo. Non ho fretta.",
+		"Da soli o in folla, che vengano. Mi va bene in tutti e due i modi.",
+	},
+	["victory.w13.pride.027"] = {
+		"La modestia mi vieterebbe di commentare. Per fortuna non ne ho.",
+		"Sarei {g:modesto|modesta}, ma perché cominciare proprio adesso?",
+	},
+	["victory.w13.pride.028"] = {
+		"Che venga scritto da qualche parte. Ovunque. Va bene anche un muro.",
+		"Qualcuno lo metta per iscritto. Su qualsiasi cosa.",
+	},
+	["victory.w13.pride.029"] = {
+		"Se la morte mi vuole, prenda appuntamento. Prima no.",
+		"La morte si metta in coda. Ho l'agenda piena.",
+		"Sulla lista della morte non ci sono ancora. Ho controllato.",
+	},
+	["victory.w13.pride.030"] = {
+		"Avevo detto che avrei vinto, e ho vinto. I dubbi teneteveli.",
+		"L'avevo detto. L'ho fatto. Prossima domanda.",
+	},
+	["victory.w13.pride.031"] = {
+		"Non c'è niente di paragonabile. Proprio niente.",
+		"Nessuna sensazione al mondo è come questa.",
+		"Tra tutte le sensazioni che esistono, questa vince.",
+	},
+	["victory.w13.pride.032"] = {
+		"Alzo la mano per te. Buon cammino, ovunque tu sia adesso.",
+		"Una mano alzata per te, ovunque ti trovi ora.",
+	},
+	["victory.w13.pride.033"] = {
+		"Chiunque venga dopo, guardi bene prima.",
+		"Il prossimo si ricordi com'è andata a questo.",
+		"Chi sta guardando, impari da questo.",
+	},
+	["victory.w13.pride.034"] = {
+		"Faccio un inchino. Piccolo. Va bene, grande.",
+		"Un inchino per chi ha vinto. Sarei io. Grazie, grazie.",
+	},
+	["victory.w13.pride.035"] = {
+		"Io non mi spezzo. Spargi la voce.",
+		"Niente mi spezza. Ricordatelo, qualunque cosa tu sia.",
+	},
+	["victory.w13.pride.036"] = {
+		"Questo sì che è un finale come si deve.",
+		"Un bel finale. Preciso, a regola d'arte.",
+	},
+	["victory.w13.pride.037"] = {
+		"Questa è mia. Nessuno me la toglie.",
+		"Mia. Questa vittoria è mia e resta mia.",
+	},
+	["victory.w13.pride.038"] = {
+		"Chi ha visto, lo racconti giusto.",
+		"Se qualcuno ha visto, lo racconti com'è stato. Non serve abbellirlo.",
+	},
+	["victory.w13.pride.039"] = {
+		"Ah. Ecco a cosa serve la rabbia.",
+		"Quella furia è servita. Che non si spenga.",
+		"Una buona collera. Si è guadagnata il pane.",
+	},
+	["victory.w13.pride.040"] = {
+		"Mh. Soddisfacente.",
+		"Mh. Mi concedo un attimo di compiacimento.",
+		"Mh. Contento di così. Contento davvero.",
+	},
+	["victory.w13.pride.041"] = {
+		"Un po' più forte di un'ora fa. Me ne accorgo.",
+		"Più forte di un attimo fa. Lo sento nelle mani.",
+	},
+	["victory.w13.pride.042"] = {
+		"Vittoria. Detta piano: vit-to-ria.",
+		"Vittoria. Mi piace il sapore di questa parola.",
+	},
+	["victory.w13.pride.043"] = {
+		"Nessun rancore. La vittoria è mia, il rancore di nessuno.",
+		"La vittoria me la tengo, il rancore lo lascio qui.",
+		"I rancori pesano. Preferisco portarmi la vittoria.",
+	},
+	["victory.w13.pride.044"] = {
+		"E diranno che è stata fortuna. Lascia che lo dicano.",
+		"Fortuna? Chiamala come vuoi. Io la chiamo mia.",
+		"Fortuna? Può darsi. La fortuna sta spesso accanto ai testardi.",
+	},
+	["victory.w13.pride.045"] = {
+		"Mento alto. Ho il diritto di pavoneggiarmi un po'.",
+		"Un po' di pavoneggiamento è concesso. Ho verificato le regole.",
+	},
+	["victory.w13.pride.048"] = {
+		"Di poco. Ma il poco va nella mia colonna.",
+		"{g:Malconcio|Malconcia}, sì. {g:Battuto|Battuta}, no.",
+		"C'è andato vicino. Ma vicino resta dalla mia parte della linea.",
+	},
+	["victory.w13.pride.049"] = {
+		"Fa male dappertutto, e ne vado {g:fiero|fiera}.",
+		"Ogni livido di questo scontro lo porterò come una medaglia.",
+	},
+	["victory.w13.pride.050"] = {
+		"Vinto. Ahi. Però vinto.",
+		"Ho vinto. Festeggerei, se qualcosa smettesse di fare male.",
+	},
+	["victory.w13.pride.051"] = {
+		"Bel lavoro, tutti quanti. Questa vittoria è nostra.",
+		"È di tutti noi. A testa alta.",
+		"Ce la siamo meritata uno per uno. Portiamola con orgoglio.",
+	},
+	["victory.w13.pride.052"] = {
+		"Pugni in alto, tutti quanti. Ce la siamo guadagnata.",
+		"In alto i pugni. Questa resta nostra per sempre.",
+	},
+	["victory.w13.pride.053"] = {
+		"Mica male, noi. Mica male davvero.",
+		"Insieme ce la caviamo piuttosto bene, no?",
+	},
+	["victory.w13.pride.054"] = {
+		"L'ho fatto io. Voglio ricordarmi questa sensazione.",
+		"Opera mia. Questa sensazione la conservo per dopo.",
+		"Merito mio. Voglio tenermi stretta questa sensazione.",
+	},
+	["victory.w13.pride.055"] = {
+		"Qualcosa, là fuori, ha appena imparato il mio nome. Bene.",
+		"La voce girerà. Che giri pure.",
+		"Da qualche parte, qualcosa si sta segnando il mio nome. Giusto così.",
+	},
+	["victory.w13.pride.056"] = {
+		"Un piccolo bagliore, da qualche parte dentro. Orgoglio, credo. Me lo concedo.",
+		"Quella luce quieta, dentro, ha un nome: orgoglio. Che si trattenga un po'.",
+	},
+	["victory.w13.pride.057"] = {
+		"Ogni vittoria insegna qualcosa alle mani. Le mie imparano in fretta.",
+		"Le mani stanno imparando. Le sento più sicure.",
+		"Le mani sanno più di prima. Brave mani.",
+	},
+	["victory.w13.pride.058"] = {
+		"Che la rabbia si spenga piano: voglio godermela.",
+		"La furia si ritira. Un po' mi mancherà.",
+	},
+	["victory.w13.pride.059"] = {
+		"Spero che da fuori sembrasse bello quanto lo era da dentro.",
+		"Se qualcosa guardava, spero abbia colto il mio profilo migliore.",
+	},
+	["victory.w13.pride.060"] = {
+		"Qualunque cosa arrivi, troverà la versione di me che ha appena vinto.",
+		"Il seguito aspetterà. Per adesso, la vittoria è mia.",
+	},
+	["victory.w13.pride.061"] = {
+		"Mi hai messo alla prova, e l'ho superata. Grazie, in un certo senso.",
+		"Ti ricorderò come chi mi ha costretto a dimostrarlo.",
+		"Una prova, superata. Il voto me lo tengo.",
+	},
+	["victory.w13.pride.062"] = {
+		"C'è una persona che voglio diventare. Questo era un passo verso di lei.",
+		"Un passo in più verso chi voglio essere.",
+	},
+	["victory.w13.pride.063"] = {
+		"La paura è venuta, e le ho detto di aspettare fuori. Ha obbedito.",
+		"La paura ha bussato. Non le ho aperto.",
+		"La paura voleva parlarmi. Le ho detto dopo.",
+	},
+	["victory.w13.pride.064"] = {
+		"Non serve gridarlo. Basta un cenno, tra me e me.",
+		"Anche l'orgoglio silenzioso è orgoglio. Un cenno, uno solo.",
+	},
+	["victory.w13.pride.065"] = {
+		"I racconti non dicono mai quanto sia dolce questo momento.",
+		"Questa è la parte che nei racconti non mettono mai: quanto è bello.",
+	},
+	["victory.w13.pride.066"] = {
+		"Il mondo continua a mandarmi contro qualcosa. Io continuo a rimandarlo indietro.",
+		"Lui lancia, io rispondo. Questi sono i patti.",
+	},
+	["victory.w13.pride.067"] = {
+		"Sarò insopportabile, con questa storia. Lo sento arrivare.",
+		"Avviso per chiunque incontri da qui in poi: ne sentirà parlare.",
+	},
+	["victory.w13.pride.068"] = {
+		"Le ginocchia non hanno ceduto. Nemmeno il coraggio.",
+		"Ho retto. Ogni parte di me ha retto.",
+		"In me non ha ceduto niente. Neanche un pezzo.",
+	},
+	["victory.w13.pride.069"] = {
+		"Orgoglio sì, ma un orgoglio gentile.",
+		"L'orgoglio va bene. Il gongolare no. Conosco la differenza.",
+		"Orgoglio, ma sottovoce. Non serve cantare vittoria.",
+	},
+	["victory.w13.pride.070"] = {
+		"I guai conoscono il mio indirizzo. Che passino pure.",
+		"Chi cerca guai sa dove trovarli, adesso.",
+	},
+	["victory.w13.pride.071"] = {
+		"Niente araldi, niente trombe. La vittoria conta lo stesso.",
+		"Nessuno l'ha annunciata, ma la vittoria c'è, ed è mia.",
+	},
+	["victory.w13.pride.072"] = {
+		"Ecco quanto valgo, almeno per ora. Non è una cattiva misura.",
+		"Questo è il mio valore, adesso. Mi va bene.",
+	},
+	["victory.w13.pride.073"] = {
+		"La promessa era di non cedere. Mantenuta.",
+		"Non cedere, mi dicevo. Ho dato retta.",
+		"Neanche un palmo, avevo promesso. E palmo non è stato.",
+	},
+	["victory.w13.pride.074"] = {
+		"Vorrei una statua. Modesta. A grandezza naturale. Magari un filo più alta.",
+		"Una statua sarebbe troppo. Una targa, allora.",
+	},
+	["victory.w13.pride.075"] = {
+		"Per poco non mi ha preso. «Per poco» è la parola più bella che conosca.",
+		"Quasi non basta, per battermi. Ricordatelo, mondo.",
+	},
+	["victory.w13.pride.076"] = {
+		"Da dove vengo, sarebbero orgogliosi. Lo sono io per loro.",
+		"La gente che ho lasciato approverebbe con un cenno. Lo faccio io al posto loro.",
+	},
+	["victory.w13.pride.077"] = {
+		"Per tutto lo scontro ho avuto certezza. Mi piace averne.",
+		"Nessun dubbio, in me. Nemmeno un guizzo.",
+	},
+	["victory.w13.pride.078"] = {
+		"Concedo a questa vittoria un momento tutto suo, prima di muovermi.",
+		"Una vittoria merita una pausa in suo onore. Eccola.",
+	},
+	["victory.w13.pride.079"] = {
+		"Bella compagnia. Starei accanto a loro in qualunque momento.",
+		"Mi fa onore stare fra loro. Davvero.",
+	},
+	["victory.w13.pride.081"] = {
+		"Niente in me voleva arrendersi. Me lo ricorderò.",
+		"Ho imparato una cosa: non mollo. Buono a sapersi.",
+		"Arrendermi non mi è mai passato per la testa. Bello scoprirlo.",
+	},
+	["victory.w13.pride.082"] = {
+		"alza il mento e lascia che un sorriso soddisfatto si allarghi piano.",
+		"si raddrizza, con un mezzo sorriso all'angolo della bocca.",
+		"sorride, largo e senza fretta, a niente in particolare.",
+	},
+	["victory.w13.pride.083"] = {
+		"alza un pugno verso niente di preciso e lo tiene lì un istante.",
+		"dà un pugno all'aria, uno solo, secco.",
+		"scuote il pugno una volta, poi lo abbassa con un cenno soddisfatto.",
+	},
+	["victory.w13.pride.084"] = {
+		"fa un piccolo inchino formale verso il punto dove tutto è successo.",
+		"accenna un inchino cortese verso il punto in cui l'avversario stava poco fa.",
+	},
+	["victory.w13.pride.085"] = {
+		"pianta i piedi ben larghi e si guarda intorno come se tutto ciò che vede fosse suo.",
+		"resta a gambe larghe e si guarda attorno, come a sfidare chiunque altro a provarci.",
+	},
+	["victory.w13.pride.086"] = {
+		"annuisce una volta, con decisione, come chi firma una lettera finita.",
+		"fa un solo cenno secco di approvazione, rivolto a nessuno in particolare.",
+		"annuisce tra sé, un piccolo sigillo di approvazione.",
+	},
+	["victory.w13.pride.087"] = {
+		"getta indietro la testa e lancia una risata breve e squillante.",
+		"ride ad alta voce, una volta sola, un suono limpido e senza vergogna.",
+	},
+	["victory.w13.pride.088"] = {
+		"raddrizza le spalle e si guarda attorno, come in attesa di quel che verrà.",
+		"porta indietro le spalle e si volta verso qualunque cosa possa arrivare.",
+	},
+	["victory.w13.pride.089"] = {
+		"si tocca la tempia con due dita, un rapido saluto al momento.",
+		"rivolge un saluto netto al punto in cui tutto è finito.",
+		"alza la mano aperta verso il punto in cui è finita, palmo in avanti: un saluto.",
+	},
+	["victory.w13.pride.090"] = {
+		"si spolvera l'equipaggiamento con cura esagerata, come davanti a un pubblico.",
+		"si dà una ripassata all'equipaggiamento con un gesto teatrale.",
+	},
+	["victory.w13.pride.091"] = {
+		"resta {g:dritto|dritta} un momento più del necessario, prima di muoversi.",
+		"mantiene a lungo una posa fiera, poi la lascia andare.",
+	},
+	["victory.w13.pride.093"] = {
+		"si volta verso i compagni con un sorriso fiero, di approvazione.",
+		"batte una mano sulla spalla più vicina e fa un cenno a ogni compagno.",
+	},
+	["victory.w13.pride.094"] = {
+		"si erge in tutta la sua altezza e si prende il momento.",
+		"si allunga verso l'alto, braccia larghe, poi le lascia ricadere.",
+	},
+	["victory.w13.pride.095"] = {
+		"si batte due volte il pugno sul petto, un piccolo saluto privato.",
+		"si dà un colpo sul petto, con la mano chiusa.",
+	},
+	["victory.w13.pride.096"] = {
+		"canticchia qualche nota trionfale, stonata.",
+		"canticchia tra sé un pugno di note fiere e senza melodia.",
+	},
+	["victory.w13.still.001"] = {
+		"Le mani aspettano che sia finita per mettersi a tremare. Gentili, a modo loro.",
+		"Adesso tremano, queste mani. Neanche un fremito quando serviva.",
+	},
+	["victory.w13.still.002"] = {
+		"resta immobile, la testa inclinata, ad ascoltare i piccoli rumori che tornano uno a uno.",
+		"non si muove e ascolta, come se aspettasse che la quiete dicesse qualcosa.",
+		"non muove un muscolo, la testa piegata, come chi conta i rumori man mano che tornano.",
+	},
+	["victory.w13.still.003"] = {
+		"Il silenzio torna a strati. Prima il mio rumore, poi quello del mondo.",
+		"Il fischio se ne va, e sotto c'è tutta una quiete che non avevo sentito.",
+		"I suoni tornano piano, come la sensibilità in una mano intorpidita.",
+	},
+	["victory.w13.still.004"] = {
+		"Un momento. Prima tutto deve smettere di muoversi.",
+		"Aspetta. Il mondo deve smettere di pendere da una parte.",
+		"Per un po', nemmeno una parola. Neanche da parte mia.",
+	},
+	["victory.w13.still.005"] = {
+		"apre e chiude le mani, piano, aspettando che il tremito passi.",
+		"preme i palmi contro le ginocchia finché non smettono di tremare.",
+		"si strofina i palmi, piano, finché il tremito non si calma.",
+	},
+	["victory.w13.still.006"] = {
+		"Qui vicino qualcosa di minuscolo ricomincia a frinire. Ha capito che è finita.",
+		"Riparte un rumorino lì accanto, un insetto forse. Il segnale del mondo che è tutto a posto.",
+	},
+	["victory.w13.still.007"] = {
+		"Proprio adesso mi prude il collo. Dieci secondi fa non avrebbe osato.",
+		"Adesso mi prude il naso. Ha aspettato educatamente la fine.",
+		"Ovvio che adesso mi prude un orecchio. Almeno ha avuto il buon gusto di aspettare.",
+	},
+	["victory.w13.still.008"] = {
+		"si siede lì dove si trova, senza cerimonie, e ci resta.",
+		"si lascia andare a terra e resta lì un poco, senza fare assolutamente nulla.",
+		"si siede a terra con un grugnito e non accenna a rialzarsi.",
+	},
+	["victory.w13.still.009"] = {
+		"Comunque sia andata, la quiete di dopo è solo mia. Nessun altro la sente uguale.",
+		"Ognuno sente un silenzio diverso, dopo uno scontro. Questo è il mio.",
+		"In qualunque modo sia andata, questo silenzio di dopo è una faccenda privata. Me lo tengo.",
+	},
+	["victory.w13.still.010"] = {
+		"È durata tanto o poco? Un'eternità e un attimo, tutte e due insieme.",
+		"Non saprei dire quanto sia durata. Il tempo è andato chissà dove e solo adesso torna.",
+		"Secondi o minuti, non saprei. Lo scontro ha un orologio tutto suo.",
+	},
+	["victory.w13.still.011"] = {
+		"rimette a posto una cinghia attorcigliata, poi si ferma e resta a guardarla.",
+		"raddrizza una cinghia storta con dita non del tutto ferme.",
+		"armeggia con una fibbia che non ha bisogno di niente, solo per dare un compito alle mani.",
+	},
+	["victory.w13.still.012"] = {
+		"Sst. Ascolta. Ecco. Tutto riprende.",
+		"Senti? Niente. Bellissimo, no?",
+		"Piano, adesso. Lascia che per un po' ci sia silenzio.",
+	},
+	["victory.w13.still.013"] = {
+		"I dolori si presentano uno per uno, come ospiti arrivati tutti alla stessa porta.",
+		"Prima la spalla, poi il ginocchio, poi qualcosa nella schiena. Si presentano a turno.",
+		"I dolori arrivano in ordine di importanza. Il ginocchio insiste per passare davanti.",
+	},
+	["victory.w13.still.014"] = {
+		"Tutto torna normale, e così in fretta. Il mondo non mi tiene da parte l'attimo.",
+		"Un attimo fa contava tutto. Adesso è solo un posto, e io ci sto in piedi in mezzo.",
+		"Torna tutto semplice così in fretta. Nessuno segna il punto.",
+	},
+	["victory.w13.still.015"] = {
+		"fa un primo passo, poi un secondo, saggiandoli come se la terra potesse essere cambiata.",
+		"fa qualche passo lento, per controllare che le gambe accettino ancora di andare avanti.",
+	},
+	["victory.w13.still.016"] = {
+		"La parte migliore, a dirla tutta, è questa. Non la vittoria: la quiete dopo.",
+		"Buffo. Il momento che preferisco è questo, quando non succede proprio niente.",
+		"Se dovessi tenere una cosa sola di tutto questo, terrei il minuto in cui niente si muove.",
+	},
+	["victory.w13.still.017"] = {
+		"Ho un motivetto in testa. Da dove arriva, e perché proprio adesso?",
+		"Mi gira in testa una canzoncina sciocca. A quanto pare la mia testa si riprende così.",
+		"La testa canticchia qualcosa. Non una canzone che conosco. Canticchia e basta.",
+	},
+	["victory.w13.still.018"] = {
+		"chiude gli occhi per un momento e ascolta il niente.",
+		"tiene gli occhi chiusi e resta così un poco, lasciando che il mondo si rimetta in ordine.",
+		"abbassa le palpebre e resta così, lasciando entrare solo i suoni.",
+	},
+	["victory.w13.still.019"] = {
+		"Ginocchia, potete smettere. È finita. Davvero.",
+		"D'accordo, gambe: il tremito è stato registrato. Grazie.",
+		"Mani, calmatevi. Nessuno vi chiede altro.",
+	},
+	["victory.w13.still.020"] = {
+		"Le orecchie hanno ancora dentro lo scontro. Tutto il resto è già andato avanti.",
+		"Il rumore se n'è andato, ma alle orecchie non l'ha detto nessuno.",
+		"Il frastuono è sparito dappertutto, tranne che dentro la mia testa.",
+	},
+	["victory.w13.still.021"] = {
+		"scuote le mani dai polsi, scrollandosi di dosso la rigidità.",
+		"piega e distende le dita, una mano per volta, finché non rispondono come devono.",
+		"allarga le dita, le tiene così e le guarda calmarsi.",
+	},
+	["victory.w13.still.022"] = {
+		"Strano, cosa noto adesso. Un graffio sulla manica. Un filo che pende. Un colore.",
+		"Tutt'a un tratto saltano fuori le piccole cose: un orlo sfilacciato, un taglietto nuovo nell'equipaggiamento, una macchia di chissà cosa.",
+		"Adesso gli occhi sono avidi di piccolezze. Ogni piega, ogni granello.",
+	},
+	["victory.w13.still.023"] = {
+		"Così. Silenzio. Me lo tengo.",
+		"E adesso la quiete. È la parte che vale.",
+		"Quiete, finalmente. Bene.",
+	},
+	["victory.w13.still.024"] = {
+		"Che si faccia silenzio. Fuori, e anche dentro di me.",
+		"Per un momento non voglio niente. Nemmeno vincere. Solo questo.",
+		"Niente da fare. Niente da essere. Solo questo minuto, e io dentro.",
+	},
+	["victory.w13.still.025"] = {
+		"si volta lentamente tutt'intorno, guardando ogni cosa come se la vedesse per la prima volta.",
+		"si guarda attorno con una cura lenta, quasi perplessa, come chi si è appena svegliato.",
+		"sbatte le palpebre un paio di volte e si guarda intorno, come se il mondo fosse stato spostato di poco mentre aveva da fare.",
+	},
+	["victory.w13.still.026"] = {
+		"C'è mancato poco. Tutto è troppo nitido, troppo forte, e meravigliosamente qui.",
+		"Troppo vicino al limite. Adesso ogni piccola cosa sembra dipinta.",
+		"Per un pelo. Il mondo si è fatto così vivido che quasi fa male guardarlo.",
+	},
+	["victory.w13.still.027"] = {
+		"Le mani non si fermano. Sanno meglio di me quanto ci è mancato poco.",
+		"Il tremito adesso non è paura. È il resto di me che si mette in pari con la notizia.",
+	},
+	["victory.w13.still.028"] = {
+		"si lascia cadere su un ginocchio e resta lì, gli occhi socchiusi, finché il mondo smette di ondeggiare.",
+		"si piega in avanti, le mani sulle ginocchia, e aspetta prima di fidarsi delle gambe.",
+	},
+	["victory.w13.still.029"] = {
+		"Non è il momento, a quanto pare. Non stavolta.",
+		"Quindi il mondo mi tiene ancora un po'. Buono a sapersi.",
+		"Piano. Piano. È finita, e io sono dalla parte giusta.",
+	},
+	["victory.w13.still.030"] = {
+		"Si muovono tutti? Tutti. Allora posso lasciar entrare la quiete.",
+		"Conto le voci attorno a me prima di concedermi di stare {g:fermo|ferma}.",
+	},
+	["victory.w13.still.031"] = {
+		"incrocia lo sguardo di qualcuno lì vicino e si scambiano un piccolo cenno stanco.",
+		"si siede in mezzo agli altri senza dire una parola, nella quiete di tutti.",
+	},
+	["victory.w13.still.032"] = {
+		"Sentite? Niente. Un po' di niente ce lo siamo guadagnato.",
+		"Stiamo qui un momento, tutti. E nessuno dica niente di spiritoso.",
+	},
+	["victory.w13.still.035"] = {
+		"Il primo pensiero lucido, dopo: questa cinghia era allentata da prima. Eroico.",
+		"Tutto questo, e la prima cosa che mi viene in mente è che ho il colletto storto.",
+		"La prima cosa che noto, a cose fatte, è una piega sulla manica. Che priorità.",
+	},
+	["victory.w13.still.036"] = {
+		"si toglie un granello di qualcosa dalla manica con estrema serietà.",
+		"si spazzola una spalla, accigliandosi per una macchia che non vuole andare via.",
+		"rimbocca un lembo sfuggito con una cura pignola, come se fosse importantissimo.",
+	},
+	["victory.w13.still.037"] = {
+		"La quiete non è vuota. È piena di piccole cose che aspettano il loro turno per farsi sentire.",
+		"Non è silenzio. È una folla di rumorini che lo scontro copriva con la sua voce.",
+		"Ascolta abbastanza a lungo e scopri che la quiete è piena di faccende.",
+	},
+	["victory.w13.still.038"] = {
+		"Siediti prima di cadere. Ottimo consiglio. Lo seguo.",
+		"Giù. La terra è stata paziente; può reggermi per un po'.",
+		"Le gambe hanno votato, e hanno deciso di sedersi.",
+	},
+	["victory.w13.still.039"] = {
+		"La terra sotto di me non si è accorta di niente. Ne ha retti di momenti, più quieti e più rumorosi.",
+		"Qualunque cosa sia successa, la terra non ha preso le parti di nessuno. Ha retto e basta.",
+	},
+	["victory.w13.still.040"] = {
+		"posa il palmo sulla terra per un momento, come per sentirla calmarsi anche lei.",
+		"appoggia una mano a terra lì accanto, per tenersi, e aspetta.",
+		"sfiora la terra con la punta delle dita, leggera come si tocca chi dorme.",
+	},
+	["victory.w13.still.041"] = {
+		"Un attimo fa era tutto in gioco. Adesso è solo un minuto qualunque.",
+		"Strano quanto in fretta un momento di vita o di morte diventa un minuto come gli altri.",
+		"Da tutto a quasi niente, nel giro di un momento.",
+	},
+	["victory.w13.still.042"] = {
+		"Dovunque tu sia adesso, spero che ci sia questa stessa quiete.",
+		"Che ci sia silenzio anche per te, ovunque tu sia.",
+		"Che dalla tua parte ci sia la stessa calma che c'è dalla mia.",
+	},
+	["victory.w13.still.043"] = {
+		"La stanchezza aspettava fuori dallo scontro. Adesso entra, pulendosi le scarpe.",
+		"La fatica è rimasta alla porta per tutto il tempo. Adesso è entrata da sola.",
+	},
+	["victory.w13.still.044"] = {
+		"sorride al niente per un momento, poi sembra accorgersene e smette.",
+		"fa un piccolo sorriso storto, rivolto a nessuno in particolare.",
+		"ridacchia piano, per qualche pensiero tutto suo.",
+	},
+	["victory.w13.still.045"] = {
+		"Dopo uno scontro i colori sembrano più forti. O forse solo ora li guardo.",
+		"Le cose hanno di nuovo i loro contorni. Durante lo scontro ce n'era una sola.",
+		"Il mondo torna largo. Un attimo fa era grande quanto un avversario.",
+	},
+	["victory.w13.still.046"] = {
+		"Si è fatto tutto così silenzioso, o sono io che ci sento meno?",
+		"O il mondo si è zittito di colpo, o le mie orecchie si sono licenziate.",
+	},
+	["victory.w13.still.047"] = {
+		"alza appena il viso, come se l'aria stessa fosse cambiata.",
+		"solleva la testa e resta così, in ascolto di ogni piccolo rumore.",
+		"volta piano la testa verso un piccolo rumore, poi la distoglie.",
+	},
+	["victory.w13.still.048"] = {
+		"Questo me lo concedo. Un minuto di niente. Nessuno me lo porta via.",
+		"Questo minuto è mio, e non mi chiede niente. Abbastanza raro da accorgersene.",
+		"Un minuto intero in cui nessuno ha bisogno di niente da me. Me lo tengo stretto.",
+	},
+	["victory.w13.still.049"] = {
+		"Gambe come corda bagnata. Hanno tenuto quando serviva, quindi le perdono.",
+		"Le ginocchia sono diventate molli come pane. Pane fedele, però: hanno retto.",
+		"Queste gambe traballano come quelle di un puledro appena nato. Va bene: il traballare se lo sono meritato.",
+	},
+	["victory.w13.still.050"] = {
+		"E basta così. Un po' di silenzio, e poi il resto del mondo.",
+		"Buffo come finisce. Non con qualcosa: con un vuoto dove c'era il rumore.",
+	},
+	["victory.w13.still.051"] = {
+		"scioglie la rigidità del collo, una lenta inclinazione dopo l'altra.",
+		"si massaggia la nuca con una mano, lo sguardo perso nel vuoto.",
+		"fa ruotare piano la testa, con una smorfia a un punto rigido.",
+	},
+	["victory.w13.still.052"] = {
+		"C'è una quiete che arriva solo dopo. Nient'altro la produce.",
+		"Questo silenzio non si trova. Bisogna lottare per averlo, e poi arriva da sé.",
+	},
+	["victory.w13.still.053"] = {
+		"Poco fa ero solo denti e nervi. Adesso sono quasi soltanto ginocchia.",
+		"Un attimo fa ero una corda tesa. Adesso sono un mucchio di giunture sciolte.",
+		"Pochi istanti fa avevo ogni nervo teso. Adesso si è srotolato tutto.",
+	},
+	["victory.w13.still.054"] = {
+		"resta esattamente dov'è, come se muoversi potesse rovinare qualcosa.",
+		"rimane immobile a lungo, come se non volesse essere la causa del primo rumore.",
+		"resta immobile a lungo, come se la quiete fosse fragile.",
+	},
+	["victory.w13.still.055"] = {
+		"Non ne ricordo metà. Mancano dei pezzi, come pagine strappate da un libro.",
+		"Lo scontro si sta già sfocando. Non saprò mai bene cosa abbiano fatto le mie mani, là dentro.",
+		"Si sta già annebbiando ai bordi, come un sogno appena svegli.",
+	},
+	["victory.w13.still.056"] = {
+		"Che adesso se lo prenda la quiete. Doveva andare così.",
+		"Riposa, tutto quanto. Che la quiete faccia il suo turno.",
+		"Entra pure, quiete. Sei stata paziente abbastanza.",
+	},
+	["victory.w13.still.057"] = {
+		"La testa è sveglissima, il resto è sfinito. Strana coppia.",
+		"La testa corre ancora, molto dopo che le gambe si sono sedute.",
+		"Troppo sfinimento per muovermi, troppa lucidità per riposare. Resto qui con entrambi.",
+	},
+	["victory.w13.still.058"] = {
+		"si pianta le mani sui fianchi e osserva la quiete con la fronte aggrottata.",
+		"si gratta la testa, strizza gli occhi verso il niente e borbotta qualcosa.",
+		"incrocia le braccia e resta lì, a squadrare la quiete come se fosse in debito.",
+	},
+	["victory.w13.still.059"] = {
+		"Ogni cosa è scivolata di nuovo al suo posto. Più o meno, almeno.",
+		"Il mondo torna al suo posto come una spalla rimessa in sede.",
+		"Piano piano il mondo riprende la sua forma giusta.",
+	},
+	["victory.w13.still.060"] = {
+		"Calma. È finita. Lascia andare le mani.",
+		"Non resta altro da fare che stare qui. E allora ci sto.",
+	},
+	["victory.w13.still.061"] = {
+		"Nella quiete di dopo tutto mi pare enorme, e io poca cosa. Non in senso brutto.",
+		"Tutto si ingrandisce, in questa quiete, e io rimpicciolisco. Stranamente, riposa.",
+	},
+	["victory.w13.still.062"] = {
+		"lascia ricadere la testa all'indietro e guarda in alto a lungo.",
+		"piega la testa all'indietro, gli occhi socchiusi, e non aspetta niente di preciso.",
+	},
+	["victory.w13.still.063"] = {
+		"Qualcosa mi preme sul fianco. A quanto pare c'era per tutto lo scontro.",
+		"Una fibbia mi morde le costole da chissà quanto. Solo adesso si degna di far male.",
+	},
+	["victory.w13.still.064"] = {
+		"Oh. Oh, che silenzio.",
+		"Com'è diventato silenzioso. Quasi maleducato.",
+		"Questo sì che è silenzio. Silenzio vero.",
+	},
+	["victory.w13.still.065"] = {
+		"Solo nella quiete di dopo mi accorgo di vivere. Durante, non c'è spazio.",
+		"La vita la sento solo quando tutto il resto si ferma.",
+		"Durante, non c'è tempo per vivere. Dopo, non c'è altro.",
+	},
+	["victory.w13.still.066"] = {
+		"scioglie la mascella serrata, e sembra richiedere un certo sforzo.",
+		"allenta finalmente i denti stretti, muovendo la mascella da una parte all'altra.",
+	},
+	["victory.w13.still.067"] = {
+		"Conto fino a dieci. Poi decido se muovermi. Nessuna fretta, né per l'una né per l'altra.",
+		"Dieci conti lenti prima di tutto il resto. Il mondo può aspettare fino a dieci.",
+	},
+	["victory.w13.still.068"] = {
+		"Adesso è tutto così calmo. Sospettosamente calmo. Lo concedo.",
+		"Calma. Tanta calma. Non me ne fido, ma me la godo lo stesso.",
+	},
+	["victory.w13.still.069"] = {
+		"osserva un insetto minuscolo che passa, e lo lascia andare per la sua strada.",
+		"nota un piccolo insetto lì vicino e ne segue il cammino con un'attenzione curiosa.",
+		"si china a guardare qualcosa di piccolo che zampetta via, e per un po' non guarda altro.",
+	},
+	["victory.w13.still.070"] = {
+		"Quel che vive qui intorno ricomincia a uscire. Aspettava che il rumore finisse, come me.",
+		"Le piccole vite qui vicino riprendono da dove avevano lasciato. Più coraggiose di quanto sembrino.",
+	},
+	["victory.w13.still.071"] = {
+		"Qualunque fosse il motivo dello scontro, alla quiete non importa. Perdona tutti allo stesso modo.",
+		"Non sta con nessuno, la quiete. Copre allo stesso modo chi vince e chi perde.",
+	},
+	["victory.w13.still.072"] = {
+		"si tasta i fianchi distrattamente, poi sembra dimenticare perché.",
+		"allunga una mano verso qualcosa, si ferma a metà e la lascia ricadere.",
+		"sembra sul punto di parlare, poi lascia alla quiete il suo posto.",
+	},
+	["victory.w13.still.073"] = {
+		"Ho le spalle all'altezza delle orecchie. Non ce le ho messe io. Giù.",
+		"Solo adesso mi accorgo di avere le spalle tutte contratte. Scioglietevi, piano.",
+	},
+	["victory.w13.still.074"] = {
+		"Toh. Guarda un po'. È tutto normale.",
+		"Incredibile come torna tutto normale, e in fretta.",
+	},
+	["victory.w13.still.075"] = {
+		"La quiete dopo uno scontro è antica. Più antica di chiunque abbia mai combattuto.",
+		"Ogni scontro del mondo è finito in questo stesso silenzio. Il mio si mette in fila.",
+	},
+	["victory.w13.still.076"] = {
+		"china brevemente il capo verso il punto dove tutto è successo, poi si volta.",
+		"rivolge un cenno del capo alla quiete, come si saluta un anziano.",
+		"resta un momento con gli occhi bassi, come alla fine di una cerimonia.",
+	},
+	["victory.w13.still.077"] = {
+		"Quando finisce, il mondo mi restituisce le piccole cose. Finora l'ha sempre fatto.",
+		"Quello che mi resterà non sarà lo scontro. Sarà questa quiete, e un rumore che non so nominare.",
+	},
+	["victory.w13.still.078"] = {
+		"Adagio. Niente movimenti bruschi. Lascia che tutto si rimetta in pari.",
+		"Con calma. Lascia che le cose ritrovino il loro posto.",
+		"Calma, calma. Per ora non c'è niente da fare.",
+	},
+	["victory.w13.still.079"] = {
+		"si accovaccia, gli avambracci sulle ginocchia, e lascia che il momento si allunghi.",
+		"si abbassa sulle gambe e resta lì un poco, lo sguardo che vaga da una cosa all'altra.",
+	},
+	["victory.w13.still.080"] = {
+		"Ho la testa bianca come una pagina nuova. Neanche un pensiero. Riposante, a dire il vero.",
+		"In testa non c'è niente. Vuota come un pavimento appena spazzato. Potrei abituarmici.",
+	},
+	["victory.w13.still.081"] = {
+		"segue il niente con lo sguardo, come si guarda scorrere l'acqua.",
+		"lascia vagare lo sguardo, sfocato, finché non si posa su niente.",
+	},
+	["victory.w13.still.082"] = {
+		"Tutto ha continuato a succedere per tutto il tempo. Ero io a non ascoltare.",
+		"Il mondo non si è mai fermato. L'unica a uscire per un momento è stata la mia testa.",
+	},
+	["victory.w13.still.083"] = {
+		"Mh. E poi niente. Mi sorprende sempre, quel niente.",
+		"Tutto quel rumore, e poi si ferma. Ogni volta, si ferma e basta.",
+	},
+	["victory.w13.still.084"] = {
+		"Troppo vicino. Mi siedo qui a stupirmi per un po', prima di qualunque altra cosa.",
+		"Ci è andata vicina. Adesso tutto sembra prezioso, e un po' ridicolo.",
+	},
+	["victory.w13.still.085"] = {
+		"si stende sulla schiena e guarda in alto, immobile, per un lungo momento.",
+		"si lascia cadere a sedere, di peso, e per ora non prova a rialzarsi.",
+	},
+	["victory.w13.still.086"] = {
+		"Nessuno si muova. Soprattutto io.",
+		"Terra, tienimi un minuto. Poi ti lascio stare.",
+	},
+	["victory.w13.still.087"] = {
+		"Qualcuno qui vicino ride, con la voce che trema. Mi unirei, se le ginocchia me lo permettessero.",
+		"Gli altri parlano già. Li raggiungo appena il mondo smette di ronzare.",
+	},
+	["victory.w13.still.089"] = {
+		"Torna un odore che avevo smesso di sentire. L'aria e basta, con quel che porta.",
+		"Prima gli odori, stranamente. Poi i suoni. La vista se la prende comoda, come se tenesse il broncio.",
+		"L'aria ha di nuovo un odore normale. Non sapevo che il normale avesse un odore.",
+	},
+	["victory.w13.still.090"] = {
+		"canticchia qualche nota senza meta, poi si perde nel silenzio.",
+		"mormora qualcosa a nessuno, troppo piano per capirlo, e lascia che svanisca.",
+		"fa schioccare piano la lingua, un rumorino per mettere alla prova la quiete.",
+	},
+	["victory.w13.still.091"] = {
+		"Sembra una promessa, questa quiete. Niente di grande: solo che il prossimo minuto potrebbe essere gentile.",
+		"Questo silenzio è il modo del mondo per dire: per adesso, basta così.",
+	},
+	["victory.w13.still.092"] = {
+		"Silenzio, ora. È terminato, e alla quiete va dato ciò che le spetta.",
+		"Pace, per un poco. Che parli prima la quiete.",
+	},
+	["victory.w13.still.093"] = {
+		"si stira con le braccia in alto finché qualcosa nella schiena non fa un clic soddisfacente.",
+		"si stiracchia, piano e con cura, come chi si alza da un lungo sonno.",
+		"inarca la schiena in una lunga stiracchiata soddisfatta.",
+	},
+	["victory.w13.still.094"] = {
+		"Dopo uno scontro parlo più da {g:solo|sola}. Qualcuno dovrà pur dire qualcosa.",
+		"La mia voce, dopo, suona strana, come quella di qualcun altro nella stanza accanto.",
+		"Dire qualsiasi cosa fa uno strano effetto. La voce esce arrugginita.",
+	},
+	["victory.w13.still.095"] = {
+		"Senti un po': calma piatta, e io che parlo da {g:solo|sola}. Che bellezza.",
+		"Chiacchiero con nessuno. Dev'essere proprio finita.",
+	},
+	["victory.w13.tally.001"] = {
+		"Mani, piedi, zaino. C'è tutto.",
+		"Conta veloce: due mani, due piedi, uno zaino. Può bastare.",
+		"Vediamo cosa resta di me. Le mani, sì. Il senno, più o meno.",
+	},
+	["victory.w13.tally.002"] = {
+		"Rivediamola una volta, piano. Dove ho perso il primo secondo?",
+		"Ripassala finché è fresca: l'inizio, il mezzo, il momento in cui è girata.",
+		"Ripercorrila pezzo per pezzo, finché il ricordo è nitido.",
+	},
+	["victory.w13.tally.003"] = {
+		"tira una dopo l'altra le cinghie dell'equipaggiamento, per sentire quale ha ceduto.",
+		"passa il pollice su ogni fibbia, una per una, in cerca di quella allentata.",
+		"controlla le chiusure dell'equipaggiamento con dita rapide e metodiche.",
+	},
+	["victory.w13.tally.004"] = {
+		"Prima si mangia. Poi si discute.",
+		"Non parlo di niente finché non ho messo qualcosa sotto i denti.",
+		"Prima datemi da mangiare. Dopo sarò di compagnia. Forse.",
+	},
+	["victory.w13.tally.005"] = {
+		"Ho sete. È la prima cosa sincera che sento da un pezzo.",
+		"Ho la bocca secca come cuoio vecchio. Prima l'acqua; il resto si metta in fila.",
+		"Acqua. Ho più voglia d'acqua che di pensare a qualsiasi cosa.",
+	},
+	["victory.w13.tally.006"] = {
+		"Lezione: prima i miei piedi ben piantati. Tutto il resto viene dopo.",
+		"Appunto per la prossima: piantare bene i piedi prima di fare i furbi.",
+		"Prima sistema i piedi. Il resto viene da lì.",
+	},
+	["victory.w13.tally.007"] = {
+		"trova qualcosa di solido su cui sedersi e ci resta un minuto, i gomiti sulle ginocchia.",
+		"si siede dov'è e si concede un minuto, niente di più.",
+	},
+	["victory.w13.tally.008"] = {
+		"Qualcuno dovrebbe inventare uno scontro che si rimette in ordine da solo.",
+		"Lo scontro dura poco. È il riordino di dopo che si mangia tutto il tempo.",
+	},
+	["victory.w13.tally.009"] = {
+		"Nello zaino c'è qualcosa che sbatacchia e non dovrebbe. Controllo prima di ripartire.",
+		"Quel tintinnio nello zaino prima non c'era. Meglio guardare adesso che dopo.",
+	},
+	["victory.w13.tally.010"] = {
+		"tampona un graffio fresco con l'angolo di un panno, guardandolo storto come un conto salato.",
+		"esamina una sbucciatura nuova sull'avambraccio, decide che può aspettare e riabbassa la manica.",
+		"si lecca una nocca sbucciata e scuote la mano con aria di sufficienza.",
+	},
+	["victory.w13.tally.011"] = {
+		"Vediamo i danni. Gomiti... ginocchia... sì, quello si lamenterà.",
+		"Rapporto danni: un ginocchio, un gomito e una spalla che fa il broncio.",
+		"Lividi in tre punti. Quattro, se contiamo l'orgoglio.",
+	},
+	["victory.w13.tally.012"] = {
+		"La stanchezza aspetta che sia tutto tranquillo. Gentile da parte sua, immagino.",
+		"Strano come la fatica se ne stia in disparte finché il lavoro non è finito, e poi piombi addosso tutta insieme.",
+		"Adesso che è finita, arriva la stanchezza. Bussa sempre a lavoro fatto.",
+	},
+	["victory.w13.tally.013"] = {
+		"Da che parte stavo andando, prima di tutto questo? Ragiona.",
+		"Ho perso l'orientamento. Ritrovalo prima di fare un passo.",
+		"Primo: capire dove guardo. Secondo: ricordare dove andavo.",
+	},
+	["victory.w13.tally.014"] = {
+		"Vinto lo scontro, perso un bottone. Scambio onesto, direi.",
+		"Una vittoria, al netto di un bottone e di buona parte del mio contegno.",
+		"Bilancio: uno scontro vinto, una manica strappata, la pazienza un po' sfilacciata.",
+	},
+	["victory.w13.tally.015"] = {
+		"fa un lento giro d'orizzonte, un lato dopo l'altro, prima di concedersi di rilassarsi.",
+		"guarda a sinistra, a destra e alle spalle, come chi controlla di aver chiuso la porta.",
+	},
+	["victory.w13.tally.016"] = {
+		"Prima l'equipaggiamento. I sentimenti dopo, se avanza tempo.",
+		"Prima la roba. Un pensiero o due me lo concedo quando le cinghie sono a posto.",
+		"L'equipaggiamento, poi l'acqua, poi i pensieri. I pensieri per ultimi.",
+	},
+	["victory.w13.tally.017"] = {
+		"Ho aspettato troppo a cominciare. La prossima volta la prima mossa è mia.",
+		"Ho esitato all'inizio. Quell'attimo è costato più di tutto il resto.",
+		"Troppi pensieri prima della prima mossa. Decidi più in fretta.",
+	},
+	["victory.w13.tally.018"] = {
+		"Bende: qualcuna. Acqua: abbastanza. Cibo: meno di quanto vorrei. Preso nota.",
+		"Controllo provviste. Acqua a posto, bende a posto, cibo agli sgoccioli.",
+		"Conta le provviste prima che arrivi il prossimo guaio. È il cibo che scarseggia.",
+	},
+	["victory.w13.tally.019"] = {
+		"apre e chiude una mano finché la rigidità non cede, poi passa all'altra.",
+		"si scioglie un crampo dalle dita, nocca dopo nocca.",
+	},
+	["victory.w13.tally.020"] = {
+		"Acqua. Poi altra acqua. Poi, forse, tornerò a ragionare.",
+		"Prima si beve. L'intelligenza arriva dopo il sorso.",
+		"In bocca ho il sapore di tutto lo scontro. Acqua, per favore, chiunque.",
+	},
+	["victory.w13.tally.021"] = {
+		"Inutile giudicarla mentre le mani tremano ancora. Fra un'ora ci penso.",
+		"Troppo presto per dire cosa ho sbagliato. Fra un'ora sarà evidente.",
+		"Le lezioni si conservano. Lasciale raffreddare, poi passale al setaccio.",
+	},
+	["victory.w13.tally.022"] = {
+		"Nessuno verrà a sistemare al posto mio. Diamoci da fare.",
+		"Niente scudiero, niente servitù, nessuno che raccolga la mia roba. Solo io. Va bene.",
+	},
+	["victory.w13.tally.023"] = {
+		"Stavolta la distanza l'ho tenuta bene. Ricordati com'era.",
+		"Le distanze erano giuste. Qualunque cosa abbia fatto con i piedi, continua così.",
+	},
+	["victory.w13.tally.024"] = {
+		"avvolge una striscia di stoffa attorno a una nocca sbucciata e la annoda coi denti.",
+		"fascia un piccolo taglio con cura semplice e senza fretta, e ne rimbocca il capo.",
+		"chiude una benda attorno al polso e dà al nodo uno strattone deciso.",
+	},
+	["victory.w13.tally.025"] = {
+		"Lezione imparata. Avrei preferito impararla da un libro.",
+		"Questa me la ricorderò. Sinceramente, avrei preferito leggerla da qualche parte.",
+	},
+	["victory.w13.tally.026"] = {
+		"Se è rimasto indietro qualcosa che valga la pena, lo prendo. Se no, niente di perso.",
+		"Un'occhiata in giro per qualcosa di utile. Poi via.",
+	},
+	["victory.w13.tally.027"] = {
+		"Bene. Dove stavo andando? Ah, sì. Si riparte.",
+		"Torno a quello che stavo facendo prima di questa interruzione così maleducata.",
+		"A che punto ero? Qualcosa a proposito di arrivare da qualche parte. Vado a scoprirlo.",
+	},
+	["victory.w13.tally.028"] = {
+		"Tutto ciò che porto pesa più di un minuto fa. Stesso zaino; è cambiato chi lo porta.",
+		"Lo zaino sembra ingrassato. Non è vero: sono io che ho speso qualcosa.",
+	},
+	["victory.w13.tally.029"] = {
+		"fa ruotare piano una caviglia, la mette alla prova e brontola alla risposta.",
+		"carica il peso su una gamba, poi sull'altra, come per chiedere a ciascuna un rapporto.",
+		"batte una volta ogni piede per terra, per sentire se c'è qualcosa di storto.",
+	},
+	["victory.w13.tally.030"] = {
+		"Va bene. Qualcuno scriva che ho vinto, e anche che è stato un pasticcio.",
+		"Agli atti: una vittoria. Brutta, ma una vittoria.",
+		"Mettetelo a registro. Una vittoria, con annotazioni.",
+	},
+	["victory.w13.tally.031"] = {
+		"Ho voltato le spalle troppo presto, una volta. Una sola. Basta una volta perché vada storta.",
+		"Mi sono {g:girato|girata} prima che fosse davvero finita. Quel vizio devo togliermelo.",
+		"Mai voltarsi finché non è finita davvero. Scrivilo da qualche parte.",
+	},
+	["victory.w13.tally.032"] = {
+		"Prossima cosa: un posto per sedermi, qualcosa da mangiare, poi decido.",
+		"Piano: mangiare, rattoppare, poi scegliere una direzione. In quest'ordine.",
+		"Ordine del giorno: rattoppare, mangiare, camminare.",
+	},
+	["victory.w13.tally.033"] = {
+		"raccoglie quello che è caduto dallo zaino durante la mischia, un oggetto dopo l'altro.",
+		"si china a raccattare qualche cosa caduta durante lo scontro e la rimette al suo posto.",
+	},
+	["victory.w13.tally.034"] = {
+		"Combattere mi mette appetito. A dire il vero, quasi tutto mi mette appetito.",
+		"Ho fame. Lo scontro fa questo effetto. Anche camminare. Anche stare seduti, a dirla tutta.",
+		"Lo stomaco ha messo in chiaro cosa viene dopo.",
+	},
+	["victory.w13.tally.035"] = {
+		"Non perfetto. Abbastanza buono da insegnarmi qualcosa, che è il genere utile.",
+		"Qualcosa era giusto e qualcosa no. Tieni il primo, butta il secondo.",
+	},
+	["victory.w13.tally.036"] = {
+		"Cinghie. Fibbie. Zaino. Bene. Si va.",
+		"Stringi qui, allenta là, e si riparte.",
+		"Tutto allacciato? Tutto allacciato. Via.",
+	},
+	["victory.w13.tally.037"] = {
+		"Quello che viene dopo non aspetterà i miei comodi. Preparati lo stesso.",
+		"La prossima cosa arriva quando le pare. Meglio rimettersi in sesto prima.",
+	},
+	["victory.w13.tally.038"] = {
+		"pesca dallo zaino qualcosa da mangiare e lo mastica in piedi.",
+		"fruga nello zaino con la determinazione di chi, all'improvviso, ha una gran fame.",
+		"mastica qualcosa preso dallo zaino, continuando a guardarsi intorno.",
+	},
+	["victory.w13.tally.039"] = {
+		"E adesso la parte affascinante: raccattare roba da terra.",
+		"Finito l'eroismo. Si passa alle faccende di casa.",
+		"Qualcuno deve raccogliere tutto questo. Quel qualcuno sono io.",
+	},
+	["victory.w13.tally.040"] = {
+		"Il ritmo l'ha deciso l'altro e io l'ho seguito. La prossima volta lo decido io.",
+		"Ho combattuto al suo ritmo invece che al mio. Da correggere.",
+	},
+	["victory.w13.tally.041"] = {
+		"Una spalla che non si alza fino in fondo. Per un po' dovrò lavorarci intorno.",
+		"Qualcosa si è tirato nel fianco. Non strappato, credo. Solo tirato. Con calma.",
+		"Quel polso si è girato male per un attimo. Trattalo con riguardo per un po'.",
+	},
+	["victory.w13.tally.042"] = {
+		"Sedersi, bere, rialzarsi. Due minuti. Non di più.",
+		"Due minuti a riposo, un sorso d'acqua, e riparto.",
+	},
+	["victory.w13.tally.043"] = {
+		"sciacqua un graffio con un goccio dalla borraccia e scuote la mano per scacciare il bruciore.",
+		"versa un po' d'acqua su un taglio, lo osserva e decide che è abbastanza pulito.",
+	},
+	["victory.w13.tally.044"] = {
+		"Partenza più lenta, chiusura più pulita. Ricordatelo.",
+		"La pazienza all'inizio ha pagato alla fine. Da rifare.",
+		"Me la sono presa con calma, e ha pagato. Tienilo a mente.",
+	},
+	["victory.w13.tally.045"] = {
+		"Qualcosa nell'equipaggiamento andrà rattoppato. C'è sempre qualcosa.",
+		"Ogni scontro costa un punto di cucitura o una cinghia. Vediamo quale stavolta.",
+		"Controlla le cuciture. Sono sempre le prime a cedere.",
+	},
+	["victory.w13.tally.046"] = {
+		"Lo scontro è finito. Adesso tocca a me contro il nodo di questa cinghia.",
+		"Ma certo che la fibbia si è incastrata. Aspetta sempre che lo scontro sia finito.",
+		"Lo scontro lo gestisco. Questo nodo no.",
+	},
+	["victory.w13.tally.047"] = {
+		"Nessuno ti dice quanto di questa vita sia rimettere in ordine dopo.",
+		"I racconti saltano questa parte. Lo stare seduti, il riordinare, i piccoli dolori.",
+	},
+	["victory.w13.tally.048"] = {
+		"si mette lo zaino in spalla, lo assesta e cerca la direzione che stava seguendo.",
+		"si tira su lo zaino, sceglie una direzione e riparte senza cerimonie.",
+	},
+	["victory.w13.tally.049"] = {
+		"Adesso so una cosa che prima non sapevo. Utile.",
+		"Ho imparato qualcosa. Non saprei ancora dire cosa, ma l'ho sentito entrare.",
+		"Ogni scontro è una lezione, si dice. Stavolta ho anche prestato attenzione.",
+	},
+	["victory.w13.tally.050"] = {
+		"Troppo slancio. Sono {g:entrato|entrata} prima di aver visto abbastanza. Stavolta non è costato niente; la prossima, chissà.",
+		"Ho avuto fretta. Ha funzionato, ed è questo il guaio della fretta.",
+	},
+	["victory.w13.tally.051"] = {
+		"Sistemato. Qual è la prossima cosa?",
+		"Sistemato. Allora, cos'altro c'è da fare?",
+		"Bene. Avanti la prossima cosa.",
+	},
+	["victory.w13.tally.052"] = {
+		"Prima le mani ferme. Poi si cammina. Nessuno ha mai guadagnato niente a ripartire barcollando.",
+		"Aspetta che il tremito lasci le mani. Se ne va sempre, se lo lascio fare.",
+	},
+	["victory.w13.tally.053"] = {
+		"si spazzola via lo sporco di dosso con colpi secchi e seccati, come se fosse un'offesa personale.",
+		"si scuote lo sporco da maniche e ginocchia, senza grande entusiasmo per il risultato.",
+	},
+	["victory.w13.tally.054"] = {
+		"Tutto si piega ancora nel verso giusto. Ho controllato due volte, per sicurezza.",
+		"Articolazioni tutte presenti, e si piegano dalla parte giusta. Ottimo risultato.",
+		"Contati i pezzi. Ci sono tutti.",
+	},
+	["victory.w13.tally.055"] = {
+		"Prima di fidarmi di questa calma, un'occhiata lunga tutt'intorno.",
+		"Della quiete fidati solo dopo averla guardata da ogni lato.",
+	},
+	["victory.w13.tally.056"] = {
+		"Il ginocchio dice di no. Il ginocchio può presentare reclamo.",
+		"Quel ginocchio avrà parecchio da dirmi. Lo ascolterò quando avrò tempo.",
+		"Il gomito protesta. Preso nota. Ignorato, per ora.",
+	},
+	["victory.w13.tally.057"] = {
+		"apre lo zaino e controlla che dentro non si sia rotto niente.",
+		"sbircia nello zaino, lo scuote piano e tende l'orecchio a qualcosa di incrinato.",
+		"svuota una tasca nel palmo, ne fa la cernita e rimette tutto a posto.",
+	},
+	["victory.w13.tally.058"] = {
+		"Per metà del tempo ho guardato la cosa sbagliata. La prossima volta, occhi su ciò che conta.",
+		"Fissavo il pericolo evidente e mi è sfuggito quello silenzioso. Da annotare.",
+	},
+	["victory.w13.tally.059"] = {
+		"Basta stare impalati. C'è da fare e da camminare.",
+		"Inutile trattenersi. C'è parecchio cammino da fare.",
+	},
+	["victory.w13.tally.060"] = {
+		"Fame, sete, dolori, e la vita. Tre guai e una fortuna.",
+		"Dolori, fame, e la vita ancora addosso. Ai primi due posso rimediare.",
+	},
+	["victory.w13.tally.061"] = {
+		"beve un lungo sorso d'acqua e si pulisce la bocca con la manica.",
+		"beve a fondo dalla borraccia, si ferma, poi ne manda giù un altro po'.",
+		"stappa la borraccia e beve senza nemmeno sedersi.",
+	},
+	["victory.w13.tally.062"] = {
+		"Buon appoggio, buon tempismo. Ne bastava uno su due; me li prendo tutti e due.",
+		"Tempo giusto, appoggio giusto. Non abituartici.",
+	},
+	["victory.w13.tally.063"] = {
+		"Bendalo adesso, finché è piccolo. Le cose piccole crescono se le ignori.",
+		"Un graffio lasciato a sé diventa un guaio entro la settimana. Curalo subito.",
+		"Pulisci, fascia, e solo dopo dimenticalo.",
+	},
+	["victory.w13.tally.064"] = {
+		"Mi ritroverò pezzi di questo scontro nell'equipaggiamento per giorni.",
+		"Non so come, mezzo scontro mi è finito dentro il colletto.",
+		"L'equipaggiamento ha l'aria di chi ha perso. Ho vinto io, sia chiaro.",
+	},
+	["victory.w13.tally.065"] = {
+		"ripete un momento dello scontro con piccoli movimenti delle mani, correggendo l'angolo.",
+		"rifà un passo dello scontro, lo corregge di poco e annuisce, come chi prende un appunto.",
+	},
+	["victory.w13.tally.066"] = {
+		"Qualunque cosa stessi facendo prima, va ancora fatta. Riprendila.",
+		"La faccenda non si cura dell'interruzione. Rimettiti sotto.",
+	},
+	["victory.w13.tally.067"] = {
+		"Muoviti, prima che s'irrigidisca tutto.",
+		"Se mi fermo troppo, si incolla tutto. Meglio smaltirlo camminando.",
+	},
+	["victory.w13.tally.068"] = {
+		"Un po' meglio di prima. Lo sento nelle mani. Poco, ma c'è.",
+		"Qualcosa sta diventando più fluido. Non molto. Abbastanza da accorgermene.",
+		"Meglio di com'ero. Non di molto, ma meglio.",
+	},
+	["victory.w13.tally.069"] = {
+		"si preme il palmo sul fianco, aspetta e conclude che non c'è niente di rotto.",
+		"si tasta una costola dolente, fa una smorfia, la tasta un'altra volta e rinuncia a saperne di più.",
+	},
+	["victory.w13.tally.070"] = {
+		"Un problema in meno, un livido in più. Mi sta bene.",
+		"Tolto un guaio, guadagnato un livido. Siamo pari.",
+	},
+	["victory.w13.tally.071"] = {
+		"A metà ho smesso di pensare e ho solo reagito. A volte è la cosa giusta.",
+		"La parte in cui ho smesso di fare piani è andata meglio di quella in cui li facevo. C'è da rifletterci.",
+	},
+	["victory.w13.tally.072"] = {
+		"Non c'è tempo per ammirare. Raccogli e vai.",
+		"Non c'è niente da ammirare. Si raccatta e si va.",
+		"Rimetti tutto nello zaino. Ammirare si fa dopo.",
+	},
+	["victory.w13.tally.073"] = {
+		"fa un rapido inventario delle provviste, muovendo le labbra in silenzio mentre conta.",
+		"dispone qualche provvista per terra, la conta e la rimette nello zaino.",
+	},
+	["victory.w13.tally.074"] = {
+		"Ogni parte di me vuole una lunga sosta. Si accontenti di una breve.",
+		"Tutto in me vota per sdraiarsi. Voto registrato e respinto.",
+	},
+	["victory.w13.tally.075"] = {
+		"Sopravvivere allo scontro: fatto. Ora sopravvivere fino a un posto dove si mangia.",
+		"La vittoria va benissimo, ma adesso la scambierei con un piatto caldo.",
+		"Ho vinto. Dov'è il cibo che dovrebbe venire con la vittoria?",
+	},
+	["victory.w13.tally.076"] = {
+		"Conta quello che ha funzionato. Conta quello che no. Non barare col conto.",
+		"Bilancio onesto: due mosse buone, una scarsa, e per il resto fortuna.",
+	},
+	["victory.w13.tally.077"] = {
+		"scruta il terreno intorno in cerca di qualcosa di caduto, poi si raddrizza con un breve cenno.",
+		"controlla il punto dove è cominciato lo scontro, come se lì potesse esserci ancora qualcosa.",
+	},
+	["victory.w13.tally.078"] = {
+		"Si riposa quando si è al sicuro. Qui lo si è abbastanza. Dunque: riposo.",
+		"È abbastanza tranquillo per sedersi. E io mi siedo.",
+	},
+	["victory.w13.tally.079"] = {
+		"Cucitura strappata sulla cinghia. Da rammendare alla prima sosta tranquilla, o cede del tutto.",
+		"Quella cucitura è andata. Ago e filo alla prossima fermata.",
+		"Una fibbia si è piegata. Per ora regge, poi smetterà di farlo.",
+	},
+	["victory.w13.tally.080"] = {
+		"Imparala una volta, per bene, così non serve rinsegnartela.",
+		"Qualunque cosa mi abbia insegnato, la lezione preferisco non pagarla due volte.",
+	},
+	["victory.w13.tally.081"] = {
+		"si accovaccia e fissa il vuoto per un po', poi si rimette all'opera.",
+		"si ferma con le mani sulle ginocchia, poi si raddrizza e torna alle sue faccende.",
+	},
+	["victory.w13.tally.082"] = {
+		"Alzarsi, raccogliere, andare avanti. Quasi tutta la vita sta in queste tre cose.",
+		"Gran parte di questa vita è rialzarsi e raccattare le proprie cose. Gli scontri sono i pezzetti brevi in mezzo.",
+	},
+	["victory.w13.tally.083"] = {
+		"Qualcosa da mangiare. Qualsiasi cosa. Adesso non sto a fare storie.",
+		"Mangerei di tutto, in questo momento. Possibilmente cibo.",
+	},
+	["victory.w13.tally.084"] = {
+		"Ho speso troppo e troppo presto. Tieni qualcosa da parte per la fine.",
+		"Ho dato tutto all'inizio e alla fine mi restava poco. Dosati.",
+		"La prossima volta dosati. Uno scontro ha una fine, e vorrei arrivarci in forze.",
+	},
+	["victory.w13.tally.085"] = {
+		"riallaccia una fibbia che si era sganciata, borbottando contro chi l'ha fabbricata.",
+		"riannoda un laccio sfilacciato con più forza che abilità.",
+	},
+	["victory.w13.tally.086"] = {
+		"Bene. Si riprende il passo, occhi avanti.",
+		"Si torna al passo di marcia. Occhi aperti.",
+		"Chiusa lì. Occhi su, gambe in moto.",
+	},
+	["victory.w13.tally.087"] = {
+		"Prima le bende. Poi si pensa. Camminare viene molto dopo.",
+		"Questo va fasciato prima di tutto. Il resto può aspettare.",
+		"Sederti prima di cadere. Fasciarti prima di camminare.",
+	},
+	["victory.w13.tally.088"] = {
+		"Troppo vicino. Siediti, rattoppati, mangia, e non cercare altri guai finché non hai fatto tutte e tre le cose.",
+		"Ci è mancato poco. La regola, dopo uno così: niente guai nuovi finché le ferite non sono chiuse.",
+	},
+	["victory.w13.tally.089"] = {
+		"si lascia scendere a terra con cautela e comincia a stabilire quale ferita curare per prima.",
+		"si siede a fatica, srotola una benda e comincia dalla ferita peggiore.",
+	},
+	["victory.w13.tally.090"] = {
+		"Si è arrivati troppo vicino. La prossima volta mi tiro indietro prima, non dopo.",
+		"Sono {g:rimasto|rimasta} dentro troppo a lungo. La prossima volta mi sfilo prima: l'orgoglio guarisce più piano dei tagli.",
+	},
+	["victory.w13.tally.091"] = {
+		"Mi serve un momento. E una benda. E forse un ricambio di tutto.",
+		"Situazione: in piedi, qualche perdita, suggerimenti graditi.",
+	},
+	["victory.w13.tally.092"] = {
+		"Controllate tutti l'equipaggiamento. Se qualcosa è rotto, ditelo adesso, non dopo.",
+		"Controllo dell'equipaggiamento, tutti quanti. Meglio scoprire la cinghia rotta qui che nel prossimo scontro.",
+	},
+	["victory.w13.tally.093"] = {
+		"Acqua, bende, una breve sosta. Poi si riparte. Nessuno si allontana.",
+		"Rattoppatevi in fretta. Si parte quando è pronto l'ultimo.",
+	},
+	["victory.w13.tally.094"] = {
+		"Prima di tutto, guarda gli altri. Qualcuno nasconde un'andatura zoppicante; c'è sempre qualcuno.",
+		"Conta gli altri, poi conta i loro graffi. I miei possono aspettare un minuto.",
+	},
+	["victory.w13.tally.095"] = {
+		"squadra gli altri a uno a uno, in cerca di chi zoppica, prima di dire una parola.",
+		"passa la borraccia alla persona più vicina e aspetta che gliela restituisca.",
+	},
+	["victory.w13.weight.001"] = {
+		"Volevi vivere quanto me. Tutto qui.",
+		"Lo stesso desiderio da entrambe le parti: uscirne. È stato esaudito solo il mio.",
+		"Due desideri per la stessa cosa. Poteva avverarsene uno solo.",
+	},
+	["victory.w13.weight.002"] = {
+		"Di vittorioso, in me, non sento niente. Solo ciò che è avanzato.",
+		"Vincere è una parola grossa, per questo. Sono ciò che restava quando la lotta si è fermata.",
+		"Chiamatela vittoria, se volete. A me pare di essere l'avanzo.",
+	},
+	["victory.w13.weight.003"] = {
+		"china il capo verso chi è caduto e lascia passare un momento senza una parola.",
+		"si fa silenzioso sul punto in cui la lotta è finita, il mento basso, prima di riprendere il cammino.",
+	},
+	["victory.w13.weight.004"] = {
+		"Se avessi girato le spalle, ti avrei lasciato andare. Vorrei che lo sapessi.",
+		"C'era una via d'uscita, per te. Te l'avrei lasciata libera.",
+		"Scappare mi sarebbe andato benissimo. Non ti avrei inseguito.",
+	},
+	["victory.w13.weight.005"] = {
+		"Quando toccherà a me, spero che chi resta in piedi si fermi un momento così.",
+		"Un giorno a non rialzarmi sarò io. Spero che chi resta sappia essere gentile.",
+		"Chi mi darà la fine, si fermi un attimo dopo. Non chiederei altro.",
+	},
+	["victory.w13.weight.006"] = {
+		"Che non diventi mai una cosa normale. Guai.",
+		"Il giorno in cui questo non mi farà più niente, smetto. Questa è la regola.",
+		"Se un giorno smetterà di pesare, vorrà dire che in me qualcosa è andato a male.",
+	},
+	["victory.w13.weight.007"] = {
+		"Avrei preferito che non si arrivasse a questo. Ci si è arrivati comunque, e ho risposto.",
+		"Non l'avevo cercato. Ma è venuto a cercarmi, e non ho voltato le spalle.",
+	},
+	["victory.w13.weight.008"] = {
+		"Che ciò che viene dopo ti sia lieve. Non dirò male di te.",
+		"Qualunque cosa ci sia oltre, che sia più mite di me.",
+		"Ciò che sta oltre ti tratti con bontà. Meglio di quest'ora.",
+	},
+	["victory.w13.weight.009"] = {
+		"Poco fa, in questa faccenda, le vite erano due. Adesso c'è solo la mia, e sembra presa in prestito.",
+		"{g:Vivo|Viva}. Continuo a rigirarmi la parola, come se potesse essere uno sbaglio.",
+	},
+	["victory.w13.weight.010"] = {
+		"si volta una volta verso chi è caduto, poi una seconda, più a lungo.",
+		"lancia a chi è caduto uno sguardo lungo, senza più traccia di rabbia.",
+		"fa per andarsene, si ferma, e resta a guardare indietro da sopra la spalla.",
+	},
+	["victory.w13.weight.011"] = {
+		"Queste non le vince nessuno. Qualcuno perde solo un po' meno.",
+		"Vinto? Diciamo perso di meno. Chiamiamo le cose col loro nome.",
+		"Vittoria. Parola elegante per chi ha perso un po' meno dell'altro.",
+	},
+	["victory.w13.weight.012"] = {
+		"Sarebbe bastato un passo falso per ribaltare tutto. Mio o dell'altra parte. Non è stato mio.",
+		"Non il coraggio, non la giustizia. L'ha deciso un attimo di fortuna, ed è caduto dalla mia parte.",
+	},
+	["victory.w13.weight.013"] = {
+		"Se gli spiriti raccolgono ciò che cade, che lo raccolgano con mano leggera.",
+		"Chiunque vegli su chi cade, vegli anche su chi è caduto adesso.",
+		"Se qualcosa si prende cura dei caduti, la Luce o gli spiriti, che passi di qui.",
+	},
+	["victory.w13.weight.014"] = {
+		"Stavolta non c'era spazio per la pietà. Mi piace pensare che l'avrei concessa.",
+		"In quella lotta non c'è stato un attimo per la clemenza. L'ho cercato.",
+		"La pietà ha bisogno di un attimo in cui stare. Quella lotta non ne ha offerto nessuno.",
+	},
+	["victory.w13.weight.015"] = {
+		"Mi dispiace. Per quel che vale, e adesso vale poco.",
+		"Mi dispiace che sia andata così. Lo direi più forte, se servisse.",
+		"Per quel poco di conforto che porta: mi dispiace.",
+	},
+	["victory.w13.weight.016"] = {
+		"Perché deve sempre finire così? Non ho mai una risposta, solo la prossima lotta.",
+		"Qualcuno dovrebbe chiedersi perché cominciano, le lotte. Mai chi ha un'arma in mano, a quanto pare.",
+		"Perché sempre questo? Nessuna risposta. Solo il prossimo.",
+	},
+	["victory.w13.weight.017"] = {
+		"si porta due dita alla fronte: un piccolo saluto, tutto privato, a chi è caduto.",
+		"alza una mano, il palmo aperto, verso chi è caduto: un congedo senza parole.",
+	},
+	["victory.w13.weight.018"] = {
+		"Non combatto perché mi piace. Che resti detto, qui.",
+		"Non per il gusto di farlo. Mai per quello.",
+		"Di qualsiasi cosa si trattasse, non era per divertimento.",
+	},
+	["victory.w13.weight.019"] = {
+		"Ogni lotta da cui esco è una in meno tra me e l'ultima. Il conto non lo conosco.",
+		"Un'ultima lotta mi aspetta, prima o poi. Non era questa. È tutto quel che mi è dato sapere.",
+		"Una in meno tra me e l'ultima. Quante ne restino, non si sa.",
+	},
+	["victory.w13.weight.020"] = {
+		"In vita. Niente congratulazioni, per favore: non so bene cosa ho fatto per meritarlo.",
+		"L'ho scampata. Se me lo meritassi, chiedimelo più tardi.",
+	},
+	["victory.w13.weight.021"] = {
+		"Il silenzio dopo una lotta è il promemoria più chiaro che conosca: finisce, per tutti.",
+		"Tutto ciò che vive ha un'ultima lotta. Ne ho appena vista una. Forse più d'una.",
+		"Ogni vita arriva alla sua ultima lotta. Per qualcuno è arrivata adesso. Non per me.",
+	},
+	["victory.w13.weight.022"] = {
+		"Va' avanti. Uno di questi anni ti seguirò, e saremo pari.",
+		"Fai strada. Arriverò anch'io, col tempo. Non resta nessuno.",
+		"Tienimi un posto. Da parte mia, nessuna fretta.",
+	},
+	["victory.w13.weight.023"] = {
+		"Qualcosa che voleva continuare a vivere adesso non vive più. E la ragione sono io.",
+		"Voleva l'ora successiva quanto la volevo io. Me la sono presa.",
+		"In tutto quello c'era una gran voglia di andare avanti. Sono io ad averla spenta.",
+	},
+	["victory.w13.weight.024"] = {
+		"piega le dita una a una, guardandole come se appartenessero a un estraneo.",
+		"si accovaccia un momento, immobile, come in ascolto di qualcosa che non arriva.",
+	},
+	["victory.w13.weight.025"] = {
+		"Non è rimasta rabbia. Dopo non ce n'è mai. Strano.",
+		"Tutta quella furia, e dopo niente. Nemmeno antipatia.",
+		"Curioso come l'odio se ne vada per primo. Resta solo stanchezza, e un po' di dispiacere.",
+	},
+	["victory.w13.weight.026"] = {
+		"Mi dico che era necessario. Certi giorni ci credo perfino.",
+		"Necessario. Continuerò a usare questa parola finché non smetterà di suonare vuota.",
+		"Andava fatto. Dirlo non lo rende più leggero, solo vero.",
+	},
+	["victory.w13.weight.027"] = {
+		"Non ancora. Non io. Non stavolta.",
+		"Non tocca a me. Qualcuno tiene una lista, e il mio nome non c'è. Per ora.",
+		"Chiunque stia facendo l'appello, il mio nome non l'ha chiamato. Non stavolta.",
+	},
+	["victory.w13.weight.028"] = {
+		"Tutto ciò che vive è in prestito. Il mio non è stato reclamato. Non in quest'ora.",
+		"La vita è un prestito, e chi presta non segue un calendario che io sappia leggere.",
+		"Tempo in prestito, tutto quanto. Chi l'ha prestato mi lascia il mio ancora per un po'.",
+	},
+	["victory.w13.weight.029"] = {
+		"mormora qualche parola sommessa su chi è caduto, di quelle che chiunque direbbe per chiunque.",
+		"dice una breve parola per chi è caduto, troppo bassa per arrivare lontano, e la lascia andare.",
+	},
+	["victory.w13.weight.030"] = {
+		"Meglio se non fosse caduto nessuno. Lo dico sul serio.",
+		"Una lotta può finire in due modi, e io avrei scelto quello in cui non cade nessuno.",
+		"La lotta migliore è quella da cui se ne vanno tutti. Questa no.",
+	},
+	["victory.w13.weight.031"] = {
+		"Ogni lotta è una moneta lanciata. Questa è caduta dalla mia parte, e non era altro.",
+		"La fortuna ha la memoria lunga e la pazienza corta. Cerco di non appoggiarmici.",
+		"Stavolta è uscita la mia faccia. Alla moneta non importa chi la chiama.",
+	},
+	["victory.w13.weight.032"] = {
+		"Posto sbagliato, momento sbagliato, per tutti e due. Solo io posso pentirmene.",
+		"Sfortuna da entrambe le parti. La mia era appena un po' migliore.",
+	},
+	["victory.w13.weight.033"] = {
+		"Forse qualcosa aspetta che torni. Forse niente. Non saprò mai quale delle due.",
+		"Se qualcosa aspettava il suo ritorno, adesso aspetta il nulla.",
+	},
+	["victory.w13.weight.034"] = {
+		"resta immobile, come in ascolto, per accertarsi che il mondo l'abbia {g:tenuto|tenuta} con sé.",
+		"chiude gli occhi per il tempo di qualche lenta conta, poi li riapre sul mondo.",
+		"resta un momento a occhi chiusi, come chi controlla che una porta sia ancora sbarrata.",
+	},
+	["victory.w13.weight.035"] = {
+		"Ti ricorderò. È il massimo che posso darti, e te lo do.",
+		"Il tuo nome non lo saprò. La lotta, quella, la terrò. È ciò che ho da offrire.",
+		"Qualcuno dovrebbe ricordarti. Tanto vale che sia io.",
+	},
+	["victory.w13.weight.036"] = {
+		"È bastato così poco, perché finisse. È questa la parte che continuo a guardare.",
+		"Quanto poco ci vuole. Un attimo, un passo sbagliato, e un'intera vita è chiusa.",
+		"Tra andare avanti e smettere c'è così poco. Un capello. Meno.",
+	},
+	["victory.w13.weight.037"] = {
+		"Andarsene sulle proprie gambe è un privilegio. Cerco di ricordarmelo.",
+		"Andarsene, dopo, è un regalo. Non tutti lo ricevono.",
+		"Me ne vado con le mie forze. Molti non ci riescono. Non lo dimenticherò.",
+	},
+	["victory.w13.weight.038"] = {
+		"C'è una parte di me che vorrebbe non sentire niente, dopo. La tengo al guinzaglio corto.",
+		"Un pezzo di me smetterebbe volentieri di farci caso. Non gli lascio campo libero.",
+		"Non sentire niente sarebbe più comodo. È così che comincia.",
+	},
+	["victory.w13.weight.039"] = {
+		"gira con cura attorno a chi è caduto, come si fa con qualcosa che dorme.",
+		"passa alla larga da chi è caduto, senza volersi avvicinare troppo.",
+	},
+	["victory.w13.weight.040"] = {
+		"Dovrai aspettarmi, Morte. Ho ancora delle faccende da sbrigare.",
+		"Morte, prendi appuntamento. Ho da fare.",
+		"Tu no, Morte. Non ancora. Va' a disturbare qualcuno con meno impegni.",
+	},
+	["victory.w13.weight.041"] = {
+		"Ogni vita finisce in un punto preciso. La mia lo sta ancora cercando. Non la aiuterò.",
+		"La mia fine è là fuori, che sceglie il suo terreno. Non ha scelto questo.",
+	},
+	["victory.w13.weight.042"] = {
+		"Piano. È finita. Da me non arriva più niente.",
+		"Basta. Con te ho chiuso. Va' dove devi andare.",
+		"Tra te e me è chiusa. Che resti chiusa.",
+	},
+	["victory.w13.weight.043"] = {
+		"Dentro di me qualcuno tiene un conto, e non è quello delle vittorie.",
+		"Quello che conto non sono le vittorie. Non so cosa sia. Qualcosa di più pesante.",
+	},
+	["victory.w13.weight.044"] = {
+		"lascia passare un lungo momento prima di voltarsi, come ci si allontana da una tomba.",
+		"fa un passo lento all'indietro da chi è caduto, poi un altro, prima di girarsi.",
+	},
+	["victory.w13.weight.045"] = {
+		"Doveva farlo qualcuno. L'ho fatto io. Me lo porto addosso.",
+		"Qualcuno doveva. Non l'avrei lasciato fare a un altro.",
+		"Toccava a me farlo, tocca a me portarlo. A nessun altro.",
+	},
+	["victory.w13.weight.046"] = {
+		"La Luce, gli spiriti, la Madre Terra: qualcuno deve pur tenere il conto. Preferisco non vedere il registro.",
+		"Molti credono che qualcosa pesi ogni vita. Se è così, che pesi con mano leggera.",
+	},
+	["victory.w13.weight.047"] = {
+		"Per poco non è andata dall'altra parte. L'ho sentita pendere.",
+		"Così vicino può arrivare, dunque. Non avevo bisogno di saperlo.",
+		"Quello era l'orlo. Adesso l'ho visto. Avrei preferito di no.",
+	},
+	["victory.w13.weight.048"] = {
+		"Per poco a restare indietro ero io. Non credo che dimenticherò quanto poco.",
+		"Mezzo attimo in più, e a pensare questo ci sarebbe qualcun altro. O nessuno.",
+	},
+	["victory.w13.weight.049"] = {
+		"si lascia andare su un ginocchio e resta così, una mano premuta a terra come per tenersi al mondo.",
+		"resta lì, sulle gambe incerte, ad aspettare che il mondo smetta di pendere da un lato.",
+	},
+	["victory.w13.weight.050"] = {
+		"Contiamoci. Ci siamo tutti? Allora una parola per chi stava dall'altra parte.",
+		"Camminiamo tutti. Tenetevelo stretto. Non è dovuto a nessuno.",
+	},
+	["victory.w13.weight.051"] = {
+		"Tutti i volti che conosco sono ancora qui. Non fingerò che sia altro che fortuna.",
+		"Dei nostri non manca nessuno. Dall'altra parte, il conto è diverso.",
+	},
+	["victory.w13.weight.052"] = {
+		"Abbiamo combattuto l'uno per l'altro. Se qualcuno lo chiede, che sia questa la ragione.",
+		"Se avevamo un motivo, ci stava proprio accanto.",
+	},
+	["victory.w13.weight.053"] = {
+		"Qualcosa di così forte meriterebbe di essere ricordato da più di una persona.",
+		"Qui è caduto qualcosa di grande. Comunque la si pensi, merita un attimo di silenzio.",
+	},
+	["victory.w13.weight.054"] = {
+		"Qualcosa di così forte non si aspettava di cadere. Nemmeno io me lo aspetterò, quando toccherà a me.",
+		"Un avversario più grande, e dopo un silenzio più grande. Non so perché l'uno porti l'altro.",
+	},
+	["victory.w13.weight.055"] = {
+		"resta a lungo davanti a ciò che è caduto, come si sta davanti a qualcosa che non tornerà.",
+		"china il capo, piano e a fondo, verso la cosa possente che è caduta.",
+	},
+	["victory.w13.weight.056"] = {
+		"Qualche bardo, un giorno, la farà sembrare nobile. Non lo era. Era solo questo.",
+		"Se qualcuno la canterà, lascerà fuori il punto in cui qualcosa ha smesso di vivere.",
+	},
+	["victory.w13.weight.057"] = {
+		"Non provavo odio. Voglio che sia chiaro, anche solo a me.",
+		"Nessun odio, da parte mia. Solo la lotta, e poi la sua fine.",
+		"Rancore non ne avevo. Che almeno questo resti agli atti.",
+	},
+	["victory.w13.weight.058"] = {
+		"A nessuno è promessa l'ora successiva. Questa ce l'ho, e la spenderò bene.",
+		"Un'ora in più, non meritata. Meglio che valga qualcosa.",
+		"Un'ora che non mi spettava. Meglio non sprecarla a rimuginare.",
+	},
+	["victory.w13.weight.059"] = {
+		"La regola più antica che ci sia: uno prosegue, uno si ferma. Nessuno ne ha trovata una più gentile.",
+		"Uno riprende il cammino, uno riposa. La regola è più vecchia di chiunque viva, e non più mite.",
+	},
+	["victory.w13.weight.060"] = {
+		"si strofina il viso con entrambe le mani, come per togliersi di dosso qualcosa che non viene via.",
+		"si preme a lungo la base dei palmi sugli occhi.",
+		"si passa le mani sul viso, dall'alto in basso, e le tiene lì, ferme.",
+	},
+	["victory.w13.weight.061"] = {
+		"Non era per la gloria. Se era per qualcosa, che fosse per qualcosa di buono.",
+		"Che sia servito a qualcosa. È tutto ciò che gli chiedo.",
+		"La gloria non c'entrava. Spero che c'entrasse qualcosa di meglio.",
+	},
+	["victory.w13.weight.062"] = {
+		"Sono {g:vivo|viva} grazie a cose che non ho scelto: un appoggio, un istante, un colpo di fortuna.",
+		"Di metà del perché sono in vita non ho alcun merito. Dell'altra metà non c'è da vantarsi.",
+	},
+	["victory.w13.weight.063"] = {
+		"Che la terra ti accolga con dolcezza.",
+		"Nessuno ti insegue più. Riposa, se ci riesci.",
+		"Niente più fretta, per te. Riposa in pace.",
+	},
+	["victory.w13.weight.064"] = {
+		"Chi ha deciso che doveva succedere? Non io. Nemmeno dall'altra parte, credo. Eppure è successo.",
+		"Nessuno l'ha scelto, non davvero. È arrivato e basta, come arrivano queste cose.",
+	},
+	["victory.w13.weight.065"] = {
+		"si prende un momento prima di muoversi, lo sguardo basso, come in attesa del permesso di andare avanti.",
+		"tarda a voltarsi, e tarda ancora di più a muovere il primo passo.",
+		"indugia, gli occhi a terra, più a lungo di quanto servirebbe.",
+	},
+	["victory.w13.weight.066"] = {
+		"Mi tengo il fatto di essere in vita e non gli faccio troppe domande.",
+		"Strano regalo, ricevere la vita da una lotta. Me lo tengo lo stesso.",
+	},
+	["victory.w13.weight.067"] = {
+		"Se ci sarà una prossima volta, che finisca con qualcuno che indietreggia. Lo lascerei fare.",
+		"Preferisco sempre che qualcuno se ne vada. Meno silenzi come questo in cui stare.",
+		"La prossima volta, che una delle due parti ci ripensi. Non mi offenderei se fosse l'altra.",
+	},
+	["victory.w13.weight.068"] = {
+		"A chi rispondevi, la Luce, gli spiriti o nessuno: va' da loro, adesso.",
+		"Torna a ciò che ti ha fatto, allora. Qualunque cosa sia, ti aspetta.",
+	},
+	["victory.w13.weight.069"] = {
+		"C'è un vuoto grande esattamente quanto ciò che è caduto. Ne vedo quasi i contorni.",
+		"Lo spazio che occupava è ancora lì. Solo che adesso dentro non c'è niente.",
+	},
+	["victory.w13.weight.070"] = {
+		"posa per un momento il palmo aperto a terra, come per sentire se gira ancora.",
+		"si accovaccia e preme una mano sul terreno, appena un attimo, poi si rialza.",
+	},
+	["victory.w13.weight.071"] = {
+		"Nessuno esce da queste cose migliore di come c'è entrato. Esce, e basta.",
+		"Fuori. Né meglio né peggio. Solo fuori.",
+	},
+	["victory.w13.weight.072"] = {
+		"Solo quando non c'è altro modo: è la regola che cerco di rispettare. C'era, stavolta?",
+		"La domanda c'è sempre: c'era un'altra via? Continuerò a farmela, anche quando la risposta è no.",
+		"C'era un'altra via? Dopo, arriva sempre questa domanda.",
+	},
+	["victory.w13.weight.073"] = {
+		"Uno in meno al mondo. Non mi è concesso rallegrarmene.",
+		"Il mondo è un po' più vuoto. L'ho fatto io. Me ne prendo carico.",
+	},
+	["victory.w13.weight.074"] = {
+		"Che qualcuno lo noti o no, qui è finito qualcosa, e contava.",
+		"Contava. Piccolo, senza canzoni, eppure contava lo stesso.",
+		"Nessuno tiene memoria di lotte come questa. Qualcosa, però, ci è finito dentro.",
+	},
+	["victory.w13.weight.075"] = {
+		"resta senza muoversi, nell'immobilità di chi veglia per poco.",
+		"veglia un breve istante, immobile, prima di lasciar rientrare il mondo.",
+	},
+	["victory.w13.weight.076"] = {
+		"Felice di essere in vita. Mi dispiace per quel che è costato. Le due cose insieme, chissà come.",
+		"Sollievo e rimpianto nello stesso boccone. Strano sapore.",
+	},
+	["victory.w13.weight.077"] = {
+		"Ogni cammino finisce alla stessa porta. Il mio ha ancora qualche passo. Tutto qui.",
+		"C'è una porta in fondo a ogni cosa. Le sono {g:passato|passata} accanto, abbastanza vicino da vederne il chiavistello.",
+	},
+	["victory.w13.weight.078"] = {
+		"Ecco. Niente più dolore, per te. Almeno questo potevo dartelo.",
+		"Per te è finita, adesso. Niente più sofferenza.",
+		"Ciò che ti faceva male adesso non può più raggiungerti.",
+	},
+	["victory.w13.weight.079"] = {
+		"Fame, paura, terreno, ordini. Le lotte cominciano per motivi piccoli e finiscono in cose grandi.",
+		"Quasi tutte le lotte cominciano per qualcosa di piccolo. Finiscono tutte in qualcosa che non lo è.",
+	},
+	["victory.w13.weight.080"] = {
+		"Perdonami. O no, come preferisci. In ogni caso, mi dispiace.",
+		"Non ti chiedo perdono. Dico solo che avrei voluto un altro modo.",
+		"Se c'è un perdono da avere, lo accetto. Se no, capisco.",
+	},
+	["victory.w13.weight.081"] = {
+		"C'è chi direbbe una preghiera, adesso. Per questa volta, dovrà bastare un momento di silenzio.",
+		"Le parole che i devoti dicono in momenti così: che le sostituisca questo silenzio.",
+	},
+	["victory.w13.weight.082"] = {
+		"Che pesi su di me, non su chi verrà dopo.",
+		"Spetta a me portarlo. Meglio io che chi ha meno forza da spendere.",
+		"Mettilo sul mio conto. Questa non deve pagarla nessun altro.",
+	},
+	["victory.w13.weight.083"] = {
+		"si siede pesantemente lì dov'è e resta a lungo a guardare il punto della lotta.",
+		"si lascia scendere a terra e resta così, i gomiti sulle ginocchia, in silenzio.",
+		"si siede lì dov'è e per un po' non fa proprio niente.",
+	},
+	["victory.w13.weight.084"] = {
+		"Ogni vita che vedo finire rende la mia più piccola e più cara, nello stesso momento.",
+		"Strano come una vita persa dia più valore all'altra. Alla mia, intendo.",
+	},
+	["victory.w13.weight.085"] = {
+		"Non lo volevo. L'ho finito lo stesso. Tutte e due le cose restano mie.",
+		"Che lo volessi o no, è chiusa, e tocca a me risponderne.",
+	},
+	["victory.w13.weight.086"] = {
+		"Questa me la dimenticherò. È la cosa che mi turba di più: quante ne dimenticherò.",
+		"Fra una settimana sarà una lotta tra tante. Meriterebbe di più, e non lo avrà.",
+	},
+	["victory.w13.weight.087"] = {
+		"Ciò che vive finisce. Ciò che finisce si ricorda, oppure no. Va', in ogni caso.",
+		"La vita finisce. Questo non è mai stato in dubbio. Solo il quando.",
+	},
+	["victory.w13.weight.088"] = {
+		"Non ne farò un racconto. Non mi appartiene abbastanza da poterlo narrare.",
+		"Certe cose non sono mie da vantare. Questa è una di quelle.",
+		"Non è una storia da raccontare accanto al fuoco. La tengo per me.",
+	},
+	["victory.w13.weight.089"] = {
+		"si ferma, poi accenna un leggero inchino verso ciò che è caduto, quello che si fa a un proprio pari.",
+		"rivolge un piccolo inchino rigido verso chi è caduto, senza fretta e senza enfasi.",
+	},
+	["victory.w13.weight.090"] = {
+		"Troppo vicino. Sentivo la fine allungare la mano verso di me.",
+		"Qualcosa mi ha messo una mano sulla spalla, poco fa. Non mi sono {g:voltato|voltata} a guardare.",
+		"Così vicino alla fine, e mi ha lasciato andare. Non sprecherò quello che mi ha reso.",
+	},
+	["victory.w13.weight.091"] = {
+		"Qualunque cosa mi abbia tenuto in piedi, la Luce, la fortuna o la pura testardaggine, le devo qualcosa.",
+		"Ho appena contratto un debito. Non so con chi, ma intendo pagarlo.",
+	},
+	["victory.w13.weight.092"] = {
+		"Prima di andare: un momento per ciò che è caduto. È il minimo che dobbiamo.",
+		"Noi andiamo avanti. Chi è caduto no. Pensateci un istante, prima di muovervi.",
+	},
+	["victory.w13.weight.093"] = {
+		"Le mani sono ferme. Quasi preferirei che tremassero: sembrerebbe più giusto.",
+		"Mani ferme, dopo una cosa così. Non so cosa dica di me.",
+	},
+	["victory.w13.weight.094"] = {
+		"Che sia l'ultima per un po'. Per favore.",
+		"Basta per un po'. Dico sul serio, a chiunque stia ascoltando.",
+	},
+	["victory.w13.weight.095"] = {
+		"si tocca il petto, poi il viso, come per accertarsi di sé.",
+		"si passa lentamente una mano lungo il braccio, come si controlla che qualcosa ci sia ancora.",
+		"si posa una mano sulla spalla, per un attimo, quasi con gentilezza.",
+	},
+	["victory.w13.wit.001"] = {
+		"Sia messo agli atti che ho vinto. Il come, lasciamolo fuori.",
+		"Scrivete pure: vittoria. I particolari, per favore, lasciateli in bianco.",
+		"Per la cronaca: ho prevalso. Sul metodo, nessun commento.",
+	},
+	["victory.w13.wit.002"] = {
+		"Grazie della visita. Non tornare, per favore.",
+		"Grazie di esserti fatto vivo. L'uscita è ovunque, tranne qui.",
+		"Bella visita. Evitiamo di ripeterla.",
+	},
+	["victory.w13.wit.003"] = {
+		"Da adesso accetto complimenti. Da chiunque. Da qualunque cosa.",
+		"I complimenti si depongono ai miei piedi. Quando fa comodo.",
+		"L'ammirazione è gradita. Sulla provenienza non faccio storie.",
+	},
+	["victory.w13.wit.004"] = {
+		"Molto istruttivo. Per uno dei due, perlomeno.",
+		"Una lezione per tutti e due. Solo che non ho capito quale.",
+	},
+	["victory.w13.wit.005"] = {
+		"Vorrei sporgere reclamo. A chi, non saprei.",
+		"Qualcuno mi deve delle scuse. Va bene da parte di chiunque.",
+		"Chi è il responsabile di tutto questo? Avrei delle osservazioni.",
+	},
+	["victory.w13.wit.006"] = {
+		"Addio. Non sentirti in obbligo di scrivere.",
+		"Arrivederci, allora. Meglio non farne un'abitudine.",
+		"Vai pure. Non serve che scrivi.",
+	},
+	["victory.w13.wit.007"] = {
+		"È finita? Sembra finita. Decido io che è finita.",
+		"Con la presente dichiaro chiusa la faccenda. Obiezioni per iscritto.",
+		"Finita? Finita. Bene, cominciava ad annoiarmi.",
+	},
+	["victory.w13.wit.008"] = {
+		"Delizioso, davvero. Il bis lo lascio volentieri ad altri.",
+		"Un'esperienza indimenticabile. Preferirei non replicarla per intero.",
+		"Grazie, no. Una porzione è stata più che sufficiente.",
+	},
+	["victory.w13.wit.009"] = {
+		"Nessuno ha bisogno di sapere com'è andata. Nemmeno io.",
+		"Com'è andata è una faccenda privata fra me e i miei lividi.",
+	},
+	["victory.w13.wit.010"] = {
+		"Dunque. Qualcun altro? No? Splendido.",
+		"Altre questioni all'ordine del giorno? Nessuna? Allora la seduta è tolta.",
+		"Il prossimo, prego. Nessuno? Che pace.",
+	},
+	["victory.w13.wit.011"] = {
+		"Ogni mossa era voluta. Qualcuna voluta male, ma voluta.",
+		"Tutto calcolato. Soprattutto le parti venute bene.",
+		"Tecnica pura. In parte perfino mia.",
+	},
+	["victory.w13.wit.012"] = {
+		"Sto bene. Alcune parti di me stanno bene. Qualcuna.",
+		"Tutto a posto. Mi stendo un attimo qui e continuo a stare bene.",
+		"Niente storie. Sono qui, in buona parte.",
+	},
+	["victory.w13.wit.013"] = {
+		"Vinto. Ai punti. Pochissimi punti.",
+		"Una vittoria, tecnicamente. E quel 'tecnicamente' sta faticando parecchio.",
+		"Vinto per un pelo. Un pelo sottile e malconcio.",
+	},
+	["victory.w13.wit.014"] = {
+		"Ben combattuto. Chiunque fosse a strillare, non ero io.",
+		"Bel lavoro, tutti quanti. Non ditemi che faccia facevo.",
+	},
+	["victory.w13.wit.015"] = {
+		"Ottimo lavoro di squadra. Suppongo. Non stavo guardando nessuno di voi.",
+		"Che bella coordinazione, gente. Quasi tutta per caso, sospetto.",
+	},
+	["victory.w13.wit.017"] = {
+		"Nessun rancore. Be', un pochino. Piccolo piccolo.",
+		"Rancore, nessuno. Una lagnanza modesta, forse. Formato tascabile.",
+		"Niente di personale. Anzi, un po' personale. Passiamo oltre.",
+	},
+	["victory.w13.wit.018"] = {
+		"Splendido. Prima di tutto questo stavo andando da qualche parte. Chissà dove.",
+		"Ottimo. Prima di tutto questo avevo un programma. Adesso è sparito.",
+		"Bene. Che stavo facendo prima dell'interruzione?",
+	},
+	["victory.w13.wit.019"] = {
+		"Calma, su. Hai vinto. Comportati di conseguenza.",
+		"Contegno, per favore. La vittoria è tua. Datti un tono.",
+		"Su la testa. Chi vince non si ingobbisce. Non troppo.",
+	},
+	["victory.w13.wit.020"] = {
+		"Qualcuno chiami un cronista. Uno che costi poco.",
+		"Che lo si registri come impresa eroica. Breve.",
+	},
+	["victory.w13.wit.021"] = {
+		"Grazie, grazie. Niente applausi.",
+		"Vi prego, niente applausi. O qualcuno. Un pochino non guasterebbe.",
+		"Troppo gentili, troppo gentili. Nessuno ha detto niente, ma troppo gentili.",
+	},
+	["victory.w13.wit.022"] = {
+		"Serviva più dignità e qualche gomito in meno.",
+		"La prossima volta: stesso risultato, meno gomiti.",
+	},
+	["victory.w13.wit.023"] = {
+		"Ho vinto. Qualcuno suoni qualcosa.",
+		"Vittoria! Una campana, qualcuno. Una qualsiasi. Va bene, canticchio io.",
+	},
+	["victory.w13.wit.024"] = {
+		"Non è il mio capolavoro. Forse non è nemmeno un lavoro.",
+		"Capolavoro, no di certo. Uno schizzo alla buona, semmai.",
+		"Efficace. Bello da vedere, no di certo.",
+	},
+	["victory.w13.wit.025"] = {
+		"Basta così, grazie. Davvero, ne ho a sufficienza.",
+		"Per me è abbastanza, grazie. Non ne prendo più.",
+	},
+	["victory.w13.wit.026"] = {
+		"Diciamo che siamo pari. Tu non lo dirai, ma io sì.",
+		"È stato un piacere. Soprattutto mio.",
+		"Pari, allora. Secondo i miei conti, non i tuoi.",
+	},
+	["victory.w13.wit.027"] = {
+		"Ahi. Vittoria. Ahi.",
+		"Vittoria, certo. Emotivamente, però, sono a pezzi.",
+	},
+	["victory.w13.wit.028"] = {
+		"Chi aveva scommesso contro di me? Pagate. Avete perso.",
+		"Chi ha scommesso che toccava prima a me, adesso paga da bere a tutti.",
+	},
+	["victory.w13.wit.029"] = {
+		"Ah. Ah ah. Sì. Ora la smetto.",
+		"Eh eh. Scusa, eh. Sono i nervi. Li fa molto ridere.",
+	},
+	["victory.w13.wit.030"] = {
+		"Di questo non si parlerà. Da parte mia, perlomeno.",
+		"Consideratelo mai avvenuto. Ufficialmente, avevo altro da fare.",
+		"Questa finisce nel cassetto delle cose di cui non parlo.",
+	},
+	["victory.w13.wit.031"] = {
+		"Ah, il fascino dell'avventura.",
+		"Questa è la parte che nei discorsi di reclutamento si guardano bene dal dire.",
+		"Avventura e fascino. Almeno uno dei due si è presentato.",
+	},
+	["victory.w13.wit.032"] = {
+		"Altro? Adesso ci ho preso gusto.",
+		"Ce n'è altro? L'idea comincia a piacermi.",
+	},
+	["victory.w13.wit.033"] = {
+		"E dicevano che non avrei combinato niente. Nessuno l'ha mai detto. Comunque.",
+		"Chi dubitava di me? Nessuno? Bene. Allora gongolo davanti a nessuno.",
+	},
+	["victory.w13.wit.034"] = {
+		"Onore al merito: ci hai provato. Il merito finisce lì.",
+		"Hai insistito parecchio. Questo te lo concedo, e nient'altro.",
+		"Punti per l'impegno. Nessuno per il risultato.",
+	},
+	["victory.w13.wit.035"] = {
+		"Devo avere un aspetto spaventoso. Non dirmelo, me lo sento.",
+		"Ho la faccia al suo posto? Mi sembra montata di traverso.",
+	},
+	["victory.w13.wit.036"] = {
+		"Scusate le urla. Erano tutte strettamente necessarie.",
+		"Perdonate il baccano. Pare che aiuti.",
+		"Le urla erano tattiche. Quasi tutte.",
+	},
+	["victory.w13.wit.037"] = {
+		"Mi devi un pisolino. Me lo riscuoto per conto mio.",
+		"I miei nervi vorrebbero dirti due parole. Anzi, parecchie.",
+	},
+	["victory.w13.wit.038"] = {
+		"Ottimo lavoro, io. Mi ringrazierò di persona.",
+		"Ben fatto. La modestia mi impedirebbe di aggiungere altro. La modestia è in minoranza.",
+		"Complimenti a me. Sinceri.",
+	},
+	["victory.w13.wit.039"] = {
+		"Se l'eroismo da vicino è questo, le canzoni sono molto generose.",
+		"Le canzoni non parlano di quel gran sbracciarsi. Adesso capisco perché.",
+		"Nessuno canta la parte in cui si cerca soltanto di non far cadere niente.",
+	},
+	["victory.w13.wit.040"] = {
+		"Vittoria ottenuta. Dignità in arrivo.",
+		"Vinto. La dignità arriverà poi, con calma sua.",
+	},
+	["victory.w13.wit.041"] = {
+		"A un certo punto ho fatto un verso che non ammetterò mai.",
+		"Lì in mezzo c'è stato un suono. Non un suono coraggioso. Il mio.",
+		"Lì in mezzo mi è scappato uno squittio. Resta fra me e lo squittio.",
+	},
+	["victory.w13.wit.042"] = {
+		"Il piano era vincere. Piano eseguito. Che stratega.",
+		"Strategia: uscirne in piedi. Esecuzione: impeccabile, a guardarla di sbieco.",
+		"Tattica: insistere finché non è finita. Geniale, davvero.",
+	},
+	["victory.w13.wit.043"] = {
+		"La mia roba ha l'aria di chi ha perso. Le spiegherò io come stanno le cose.",
+		"Tutto quello che porto addosso adesso è un po' storto. Anche chi lo porta.",
+	},
+	["victory.w13.wit.044"] = {
+		"Lo racconterei a casa, ma poi dovrei spiegare la parte di mezzo.",
+		"Vale un racconto, se salto il pezzo in cui le cose si sono fatte disordinate.",
+	},
+	["victory.w13.wit.045"] = {
+		"La mia faccia sta facendo qualcosa. Preferisco non sapere cosa.",
+		"Dovrebbe esserci una parola per la faccia che sto facendo. Non una parola gentile.",
+		"Sto facendo quella faccia. Quella che preferirei non vedere.",
+	},
+	["victory.w13.wit.046"] = {
+		"Qualcosa fa male. L'orgoglio, invece, gode di ottima salute.",
+		"Qualche punto dolente. Nessuno sull'amor proprio.",
+	},
+	["victory.w13.wit.047"] = {
+		"Verdetto sul combattere, dopo attenta riflessione: continua a non piacermi.",
+		"È finita, e la mia opinione sulle zuffe non si è mossa. Bassa, e stabile.",
+		"Combattere: resta sopravvalutato.",
+	},
+	["victory.w13.wit.048"] = {
+		"Superato, credo. La commissione se n'è andata senza commenti.",
+		"Se era un esame, prima di festeggiare voglio vedere il voto.",
+	},
+	["victory.w13.wit.049"] = {
+		"Regola uno: vincere. Regola due: sembrare che fosse voluto. Sono a metà strada.",
+		"Vincere: fatto. Sembrare che non sia costato fatica: ci sto lavorando.",
+	},
+	["victory.w13.wit.050"] = {
+		"Festeggerei, ma prima dovrei raddrizzarmi.",
+		"I festeggiamenti sono rinviati finché la schiena non dà il suo consenso.",
+		"Trionfo. Da un momento all'altro avrò anche l'aria trionfante.",
+	},
+	["victory.w13.wit.051"] = {
+		"C'è gente, in giro, seduta a non far niente. Beata lei.",
+		"In questo preciso istante qualcuno si sta annoiando in pace. Lo invidio.",
+	},
+	["victory.w13.wit.052"] = {
+		"Vinto per testardaggine. Poco elegante. Efficace.",
+		"Il mio contributo principale è stato non smettere. Vale lo stesso.",
+		"Testardaggine: imbattuta, anche se poco ammirata.",
+	},
+	["victory.w13.wit.053"] = {
+		"Qualunque cosa fossi, avevi un tempismo pessimo.",
+		"Momento sbagliato, persona sbagliata. Sfortuna per tutti, soprattutto per te.",
+		"Fra tutti i momenti per incrociarmi, hai scelto proprio quello.",
+	},
+	["victory.w13.wit.054"] = {
+		"Lo chiamano emozionante. Io lo chiamerei un ottimo argomento a favore delle sedie.",
+		"Dicono che a questo punto ci si senta euforici. Io sento il bisogno di una sedia.",
+	},
+	["victory.w13.wit.055"] = {
+		"L'eroismo: novanta parti di fegato e dieci di non cadere per terra.",
+		"Metà del coraggio è restare in piedi. Quella metà mi è riuscita.",
+	},
+	["victory.w13.wit.056"] = {
+		"Sembra tutto ancora attaccato. Il conteggio preciso lo faccio dopo.",
+		"Così vicino da leggere le clausole in piccolo. Non mi sono piaciute per niente.",
+		"Inventario: io, per la maggior parte. Dettagli a seguire.",
+	},
+	["victory.w13.wit.057"] = {
+		"Appunto: prenderle è meno divertente dell'alternativa.",
+		"Ho imparato una cosa sul prendere colpi: non fa per me.",
+	},
+	["victory.w13.wit.058"] = {
+		"Abbiamo vinto. Lascerò credere agli altri che sia stato merito loro.",
+		"Il mio ruolo: stare dove mi dicevano. Fondamentale, senza dubbio.",
+		"Vittoria per comitato. Io ero nel comitato.",
+	},
+	["victory.w13.wit.060"] = {
+		"Un ringraziamento alle ginocchia, che hanno collaborato quasi sempre.",
+		"Grazie al piede sinistro. Il destro sa benissimo cosa ha fatto.",
+		"I piedi hanno fatto del loro meglio. Un meglio un po' altalenante.",
+	},
+	["victory.w13.wit.061"] = {
+		"Nella versione ufficiale ero {g:magnifico|magnifica}.",
+		"Prima di raccontarla, la rivedrò. E parecchio.",
+		"Quando lo racconterò, ci sarà molta più grazia. Molta, molta di più.",
+	},
+	["victory.w13.wit.062"] = {
+		"Fra tutti i modi di passare un momento, non è tra i miei dieci preferiti.",
+		"Ho avuto momenti migliori, e peggiori. Il prossimo lo vorrei più noioso.",
+	},
+	["victory.w13.wit.063"] = {
+		"Chi decide che queste cose capitino proprio a me? Vorrei scambiarci due parole.",
+		"Deve esistere un ufficio che organizza le mie zuffe. Ed è gestito malissimo.",
+	},
+	["victory.w13.wit.064"] = {
+		"Il coraggio, dicono, è farlo comunque. Tanto coraggio. Pochissima voglia.",
+		"Coraggio, sì. Entusiasmo, non particolarmente.",
+	},
+	["victory.w13.wit.065"] = {
+		"Un preavviso sarebbe stato gentile. Lo farò presente a nessuno.",
+		"Nessun preavviso, nessuna presentazione. Che maniere, da ogni parte.",
+		"Nemmeno un saluto, prima. Che maniere.",
+	},
+	["victory.w13.wit.066"] = {
+		"E come prossimo numero: starmene immobile a lamentarmi.",
+		"Prossimo punto del programma: una lunga seduta e un breve brontolio.",
+	},
+	["victory.w13.wit.067"] = {
+		"La vittoria sa d'imbarazzo, con un filo di sollievo.",
+		"Trionfo, lo chiamano. Il mio ha un retrogusto vagamente imbarazzato.",
+	},
+	["victory.w13.wit.068"] = {
+		"Immagino che valga come storia. Corta, e senza battute memorabili.",
+		"Se è un racconto, è un racconto magro. Nessuno chiederà il bis.",
+		"Una storia, sì. Di quelle che chi ascolta pianta a metà.",
+	},
+	["victory.w13.wit.069"] = {
+		"{g:Eroe|Eroina}, in via provvisoria. In attesa di verifica.",
+		"Mi chiamerò {g:eroe|eroina} finché qualcuno non mi corregge.",
+		"{g:Eroe|Eroina}, fino a nuovo avviso.",
+	},
+	["victory.w13.wit.070"] = {
+		"Se qualcuno lo chiede, la calma non mi ha mai lasciato.",
+		"Calma e nervi saldi dall'inizio alla fine. Così lo ricorderò, vero o no che sia.",
+		"Imperturbabile. Userò questa parola. Nessuno può dimostrare il contrario.",
+	},
+	["victory.w13.wit.071"] = {
+		"Ho qualcosa nell'orecchio. Non voglio sapere cosa.",
+		"Durante la mischia mi è entrato qualcosa nel colletto. Ci resta per dispetto.",
+	},
+	["victory.w13.wit.072"] = {
+		"A pensarci bene, avrei preferito una lettera di protesta.",
+		"Io avrei preferito chiudere la questione con un sopracciglio alzato.",
+		"Sarebbe bastato un biglietto cortese. O un colpo di tosse.",
+	},
+	["victory.w13.wit.073"] = {
+		"In mezzo a tutto ho perso un pensiero bellissimo. Riguardava il cibo.",
+		"Prima stavo pensando a qualcosa di piacevole. Sparito. Grazie tante.",
+	},
+	["victory.w13.wit.074"] = {
+		"Ora viene il difficile: andarsene come se niente fosse.",
+		"Prossima prova: un'uscita disinvolta. Nessuno ha visto niente. Io meno di tutti.",
+	},
+	["victory.w13.wit.075"] = {
+		"Dovrei far pagare il biglietto. Anche se poi chi pagherebbe?",
+		"Un bello spettacolo. Biglietti venduti, purtroppo, zero.",
+	},
+	["victory.w13.wit.076"] = {
+		"La mia razione di emozioni è al completo. Mandatemi un po' di noia.",
+		"Di brividi ne ho fatto scorta per un pezzo. Adesso gradirei un po' di tedio.",
+		"Emozioni: ricevute per intero. Altre non servono, grazie.",
+	},
+	["victory.w13.wit.077"] = {
+		"Superata, con danni lievi solo all'opinione che ho di me.",
+		"Tutto intero, più o meno. L'autostima ha preso una piccola ammaccatura.",
+	},
+	["victory.w13.wit.078"] = {
+		"fa un inchino a nessuno in particolare, e nessuno ricambia.",
+		"rivolge un piccolo inchino all'aria, poi ne disapprova la maleducazione.",
+		"si inchina appena al mondo in generale, che non se ne accorge.",
+	},
+	["victory.w13.wit.079"] = {
+		"controlla l'equipaggiamento pezzo per pezzo, trova tutto e sembra quasi {g:deluso|delusa}.",
+		"si tasta l'equipaggiamento senza trovare nulla che manchi, e una bella lamentela va sprecata.",
+	},
+	["victory.w13.wit.080"] = {
+		"si raddrizza con grande dignità, che dura fino al passo successivo.",
+		"assume una posa nobile e la mantiene per quasi un istante intero.",
+		"si erge con gran cerimonia, poi si assesta un po' più in basso.",
+	},
+	["victory.w13.wit.081"] = {
+		"si guarda intorno, come sperando che qualcuno abbia visto. O che nessuno abbia visto.",
+		"cerca testimoni con un'espressione che potrebbe voler dire tutto e il contrario.",
+	},
+	["victory.w13.wit.082"] = {
+		"fa un cenno secco verso lo spazio vuoto dove prima c'erano guai.",
+		"congeda con un breve cenno il punto in cui prima stavano i guai.",
+	},
+	["victory.w13.wit.083"] = {
+		"alza una mano in saluto allo scontro, come a un ospite che si è trattenuto troppo.",
+		"saluta lo scontro con garbo, come si accompagna alla porta una visita noiosa.",
+	},
+	["victory.w13.wit.084"] = {
+		"pesca dall'equipaggiamento un oggettino inspiegabile e lo guarda con sospetto.",
+		"scuote una manica, fissa con sospetto quel che ne cade e decide di non indagare.",
+	},
+	["victory.w13.wit.085"] = {
+		"borbotta una lamentela a nessuno, con dovizia di particolari.",
+		"comincia a brontolare, ci ripensa, e brontola lo stesso.",
+		"elenca qualche lagnanza a nessuno, contandole sulle dita.",
+	},
+	["victory.w13.wit.086"] = {
+		"riordina l'equipaggiamento con cura esagerata, come chi rassetta dopo ospiti sgraditi.",
+		"sistema ogni cinghia con pignoleria, come se dovessero arrivare visite.",
+	},
+	["victory.w13.wit.087"] = {
+		"si tasta dalla testa ai piedi, contando, e il conto torna.",
+		"passa in rassegna gli arti, con evidente soddisfazione per il totale.",
+	},
+	["victory.w13.wit.088"] = {
+		"si guarda le mani come un premio ricevuto per sbaglio.",
+		"si osserva le mani con lieve stupore, come se avessero agito senza chiedere il permesso.",
+	},
+	["victory.w13.wit.089"] = {
+		"tenta una posa eroica, la tiene un istante e la lascia andare con un'alzata di spalle.",
+		"prende una posa trionfale, non trova nessuno ad ammirarla e ci rinuncia.",
+		"prova ad assumere un'aria vittoriosa, arriva più o meno a metà e se ne accontenta.",
+	},
+	["victory.w13.wit.090"] = {
+		"si schiarisce la gola come per un discorso, poi ci ripensa.",
+		"si raddrizza per dire qualcosa di memorabile, e non dice proprio niente.",
+	},
+	["victory.w13.wit.091"] = {
+		"esamina i danni con aria severa, come se si potessero rimproverare.",
+		"squadra ogni livido nuovo con disapprovazione, uno dopo l'altro e con calma.",
+		"elenca ad alta voce i nuovi dolori, in ordine di maleducazione.",
+	},
+	["victory.w13.wit.092"] = {
+		"fa agli altri un cenno che vuol dire ben fatto, e dimenticate quel che avete visto.",
+		"scambia con gli altri uno sguardo che dice: della parte centrale non si parla.",
+	},
+	["victory.w13.wit.094"] = {
+		"si spolvera le spalle con solennità, anche se non c'è niente da spolverare.",
+		"toglie dalla manica un granello immaginario con grande formalità.",
+		"si aggiusta una corona immaginaria, poi si ricorda che non c'è.",
+	},
+	["victory.w13.wit.095"] = {
+		"batte un piede, aspettando che succeda qualcos'altro. Non succede niente.",
+		"aspetta un attimo un bis che non arriva, con aria sollevata.",
+		"si guarda attorno, in attesa per metà di applausi e per metà di altri guai. Non arriva né l'una né l'altra cosa.",
+	},
+	["victory.w13.wit.096"] = {
+		"osserva il risultato con l'espressione di chi legge un conto inatteso.",
+		"considera l'intera faccenda con la faccia di chi assaggia una minestra riuscita male.",
+		"contempla la scena con la pazienza di chi si lamenterà dopo.",
+	},
 }, "base_combat")
