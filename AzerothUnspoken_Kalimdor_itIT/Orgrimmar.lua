@@ -1668,4 +1668,1437 @@ AU:RegisterRegionalTexts("durotar", "itIT", "kalimdor_orgrimmar", [==[
 		"Notte limpida. Le torce sulle mura sembrano piccole contro tutto quel cielo.",
 		"L'aria si fa tagliente e limpida, e le stelle spuntano sull'orlo a una a una, come grunt che prendono posto.",
 	},
+	["org.muse.w17.canyon.001"] = {
+		"La parete del canyon è a strisce come una pagnotta tagliata: rosso, rosso più scuro, una sottile linea chiara, di nuovo rosso. Ogni striscia un'età del mondo, deposta molto prima che qualcuno avesse un nome per lei.",
+		"A guardarle bene le rupi sono a strati, una fascia sull'altra, come pelli impilate in una conceria. La roccia aveva una storia lunga prima che gli orchi le dessero quella corta.",
+	},
+	["org.muse.w17.canyon.002"] = {
+		"In alto sulla rupe un solo cespuglio stentato spunta da una crepa, dove nessuno potrebbe mai annaffiarlo. Ha l'aria testarda quanto tutti quelli che stanno quaggiù.",
+		"C'è un groviglio di rovo aggrappato alla parete del canyon, molto più su di dove arriva una mano. Si è scelto il terreno come gli orchi si sono scelti Durotar.",
+	},
+	["org.muse.w17.canyon.003"] = {
+		"alza lo sguardo mentre un rivolo di sassolini scende lungo la parete del canyon e rimbalza su un tetto; nessun altro gira nemmeno la testa.",
+		"sobbalza a un piccolo crepitio di sassi che cadono da qualche punto alto della rupe, e nota che intorno nessuno batte ciglio.",
+		"nota una piccola cascata di ghiaino che scende da una sporgenza sopra la strada, e si sposta di un passo, come tutti intorno hanno già fatto senza pensarci.",
+	},
+	["org.muse.w17.canyon.004"] = {
+		"Sulla roccia c'è una venatura scura da cui l'acqua trasuda goccia a goccia, e qualcuno ci ha messo sotto un secchio. A Durotar non si spreca niente.",
+		"Una macchia umida sulla parete del canyon, verde di muschio ai bordi, e sotto una pentola di coccio che raccoglie quello che cade. Qualcuno viene a controllarla spesso, a giudicare dal sentiero.",
+	},
+	["org.muse.w17.canyon.005"] = {
+		"Alcune stanze della città sono scavate dritte nella roccia. Ci entri e il caldo resta fuori, come un cane a cui hanno detto di aspettare.",
+		"Il canyon il fresco se lo tiene dentro. Le stanze scavate nella rupe sembrano cantine, e il caldo aspetta sulla porta, imbronciato.",
+	},
+	["org.muse.w17.canyon.006"] = {
+		"Dentro il canyon il resto di Durotar smette di esistere. Niente orizzonte, niente terreno aperto: solo roccia, e quello che la città ci ha appoggiato contro.",
+		"Quaggiù tutto si ferma alle rupi. Dopo il paese rosso e aperto là fuori, c'è uno strano sollievo nel vedere dove stanno i bordi.",
+		"Fuori, Durotar è tutto orizzonte. Qui dentro l'orizzonte è un muro, e scopro che non mi dispiace.",
+	},
+	["org.muse.w17.canyon.007"] = {
+		"Un troll tra la folla giura che il canyon è il solco lasciato dalla coda di un vecchio loa. Gli orchi preferiscono dire che l'hanno trovato vuoto e se lo sono tenuto.",
+		"Chiedi a un Darkspear come si è formato questo canyon e ti parlerà di un loa che andava di fretta. Chiedilo a un orco e alzerà le spalle: c'era, e l'hanno usato.",
+	},
+	["org.muse.w17.canyon.008"] = {
+		"nota una lucertola spiaccicata su una sporgenza tiepida sopra la folla, immobile, l'unica creatura di Orgrimmar che non ha nessun posto dove andare.",
+		"sorprende qualcosa di piccolo e squamoso che guarda la strada da una crepa della roccia, prima che decida che la città è troppo rumorosa e sparisca.",
+		"scruta uno scarabeo che risale la parete del canyon con grande determinazione, per niente turbato dall'Orda intera che gli passa sotto.",
+	},
+	["org.muse.w17.canyon.009"] = {
+		"I gradini tagliati nella roccia sono già consumati a conca. Una città giovane, e i suoi piedi hanno lavorato parecchio.",
+		"Ogni scala scavata nel canyon si avvalla nel mezzo, lucidata da stivali, zoccoli e artigli. La pietra tiene il conto del traffico meglio di qualsiasi scrivano.",
+	},
+	["org.muse.w17.canyon.010"] = {
+		"Di notte il canyon restituisce il caldo che ha messo da parte. Le pareti restano tiepide a lungo dopo che l'aria si è rinfrescata, come la pietra del focolare a fuoco spento.",
+		"Quaggiù di notte l'aria si raffredda in fretta, ma la roccia no. Appoggiarsi a un muro è come appoggiarsi a un forno che qualcuno si è dimenticato.",
+	},
+	["org.muse.w17.canyon.011"] = {
+		"strizza gli occhi verso una sporgenza alta sulla parete del canyon, dove un grosso nido disordinato pende sulla città come un rancore.",
+		"segue con lo sguardo un rapace che si lascia cadere dalla sua sporgenza sulla parete del canyon e scivola sopra i tetti, incurante del chiasso.",
+	},
+	["org.muse.w17.canyon.012"] = {
+		"Tutta questa città è in pendenza. Ti cade una moneta e rotola in discesa verso qualcuno più fortunato.",
+		"Niente sta in piano, a Orgrimmar. Perfino i carri hanno bisogno di un peon dietro che tiri al contrario e imprechi.",
+	},
+	["org.muse.w17.canyon.013"] = {
+		"Guarda quella rupe. Stava lì prima che a qualcuno venisse in mente di piantarci uno spuntone.",
+		"Questo canyon è più vecchio di tutte le liti della città messe insieme. Strano conforto.",
+	},
+	["org.muse.w17.canyon.014"] = {
+		"La sabbia scende dal ciglio come farina dal tavolo di un fornaio. Il canyon si prende il peggio; fuori, in piena Durotar, ti scorticherebbe.",
+		"La sabbia scavalca il bordo del canyon in veli sottili e chiari e si posa su tutto. Il resto lo fermano le mura, che servono proprio a questo.",
+	},
+	["org.muse.w17.canyon.015"] = {
+		"segue una goccia di pioggia che si raccoglie sulla punta di uno spuntone, resta sospesa e cade; lungo tutto il muro gli spuntoni gocciolano a turno.",
+		"nota che la pioggia ha trovato ogni spuntone del muro e ci ha appeso una perla d'acqua, una fila di piccole lanterne.",
+	},
+	["org.muse.w17.canyon.016"] = {
+		"Una tempesta sopra il canyon, e io riesco solo a pensare a quanti spuntoni di ferro questa città tiene puntati verso il cielo.",
+		"Lampi oltre il ciglio. La città è irta di punte di ferro, e per una volta preferirei che non ci fossero.",
+	},
+	["org.muse.w17.canyon.017"] = {
+		"socchiude gli occhi nel riverbero della roccia rossa, come se il canyon stesso ricambiasse lo sguardo.",
+		"tira avanti il cappuccio contro la luce che rimbalza su ogni parete, finché la strada sembra illuminata dal basso.",
+	},
+	["org.muse.w17.canyon.018"] = {
+		"Roccia rossa sotto gli stivali, e nessuno steccato intorno. Non il vecchio mondo, non i campi. Nostra, ogni sasso duro.",
+		"Il mio popolo ha vissuto su terra prestata e dietro le sbarre degli altri. Questo canyon è la prima pietra che risponde a noi.",
+	},
+	["org.muse.w17.cleft.001"] = {
+		"La luce arriva tardi nella Cleft of Shadow e se ne va presto, come un ospite che sa che mestiere fanno i padroni di casa.",
+		"La luce, nella Cleft of Shadow, non si trattiene mai a lungo. Dà un'occhiata, vede chi c'è, e trova un posto migliore dove stare.",
+		"Perfino le torce della Cleft of Shadow ardono basse, come se qualcuno avesse chiesto loro di parlare piano.",
+	},
+	["org.muse.w17.cleft.002"] = {
+		"Qualcuno, nella Cleft of Shadow, vende il veleno a fiale e l'antidoto a bottiglie. Non ho mai visto i due prezzi sulla stessa tavola.",
+		"Veleni a un banco, rimedi a quello accanto, e dietro tutti e due, giurerei, le stesse mani. La Cleft ha la testa per gli affari.",
+		"Nella Cleft il veleno si paga subito, l'antidoto quando puoi. Sanno che i soldi li troverai.",
+	},
+	["org.muse.w17.cleft.003"] = {
+		"Nella Cleft of Shadow si addestrano i ladri, e a guardarla non lo diresti mai. Immagino che la lezione sia proprio questa.",
+		"Gli addestratori dei ladri, nella Cleft, sono qui intorno, ne sono {g:sicuro|sicura}. Solo che non ne ho ancora visto uno, ed è proprio questo il loro mestiere.",
+	},
+	["org.muse.w17.cleft.004"] = {
+		"Una volta gli orchi bevvero il sangue dei demoni, e giurarono: mai più. Giù nella Cleft gli stregoni tengono i demoni al guinzaglio, e giurano di essere loro a reggerlo.",
+		"Un popolo che per i patti coi demoni ha rischiato di bruciare, e ancora gli stregoni della Cleft li evocano. Con prudenza, dicono. Hanno sempre detto con prudenza.",
+		"Gli stregoni girano per la Cleft con i demoni alle calcagna, e ogni orco abbastanza vecchio da ricordare il sangue rivolge loro la stessa lunga occhiata.",
+	},
+	["org.muse.w17.cleft.005"] = {
+		"La Burning Blade si è rintanata nell'abisso sotto la Cleft per tenere acceso il vecchio fuoco. La città continua i suoi affari un piano più su, e tiene d'occhio le scale.",
+		"Cultisti della Burning Blade sotto la città, ancora innamorati del fuoco che per poco non divorò gli orchi. Certi debiti si riscuotono ancora, poco sotto il livello della strada.",
+		"Sotto la Cleft la Burning Blade intona ancora i suoi canti ai vecchi padroni. Il resto di Orgrimmar dorme tranquillo, più o meno.",
+	},
+	["org.muse.w17.cleft.006"] = {
+		"Un grunt dice che sotto la Cleft scavano i trogg. Se qualcosa gratta sotto i miei stivali, prima scappo e poi chiedo.",
+		"Trogg sotto la città, mi dicono. Magnifico. Adesso ogni sassolino che rotola mi sembra un artiglio.",
+	},
+	["org.muse.w17.cleft.007"] = {
+		"abbassa la voce senza deciderlo, mentre le pareti della Cleft of Shadow si stringono ai due lati.",
+		"si accorge di parlare più piano scendendo nella Cleft, come se la pietra prendesse appunti.",
+	},
+	["org.muse.w17.cleft.008"] = {
+		"si fa da parte per lasciar passare una figura incappucciata nella strettoia della Cleft; la tunica sa di zolfo e di carta vecchia.",
+		"si schiaccia contro la roccia mentre uno stregone incappucciato passa di gran carriera, lasciandosi dietro un odore di zolfo e di cera di candela.",
+	},
+	["org.muse.w17.cleft.009"] = {
+		"Un voidwalker scivola dietro al suo stregone attraverso la Cleft, senza portare niente, senza dire niente, lasciando una chiazza di freddo dove è passato.",
+		"I voidwalker della Cleft non hanno volti da leggere. Seguono i padroni come ombre staccatesi, e l'aria si raffredda al loro passaggio.",
+		"Un voidwalker aspetta fuori da una porta della Cleft come un cane paziente fatto di fumo e di lividi.",
+	},
+	["org.muse.w17.cleft.010"] = {
+		"Se qualcosa giù nella Cleft mi propone un affare, la risposta è no. Lo dirò prima che finisca la frase.",
+		"Promemoria: nella Cleft of Shadow non annuire a niente, non firmare niente, e non comprare niente che sussurra.",
+	},
+	["org.muse.w17.cleft.011"] = {
+		"Chi ha illuminato la Cleft of Shadow ci ha messo giusto le torce indispensabili. Neanche una di più.",
+		"Qualcuno risparmia sulle torce, giù nella Cleft. Sarà per l'atmosfera, di sicuro.",
+		"Mi sono {g:portato|portata} una torcia nella Cleft. Quelli del posto mi hanno guardato come se avessi portato un tamburo a un funerale.",
+	},
+	["org.muse.w17.cleft.012"] = {
+		"Gli orchi che per primi si volsero alla magia degli stregoni ci persero un mondo intero. Nella Cleft alcuni dei loro nipoti la studiano di nuovo, con grande cautela, e con la porta socchiusa.",
+		"Un mondo intero, dicono gli anziani, è andato perduto per la magia degli stregoni. La Cleft tiene vivo il mestiere lo stesso, come si tiene un lupo: nutrito, incatenato, sorvegliato.",
+	},
+	["org.muse.w17.cleft.013"] = {
+		"Il suono entra nella Cleft e non ne esce. Qualunque cosa si dica laggiù, la roccia se la tiene, come un usuraio che non rivende mai.",
+		"La Cleft inghiotte i rumori. Una moneta caduta, un'imprecazione, un passo: la pietra se li prende uno per uno e non restituisce niente.",
+		"Giù nella Cleft perfino i miei passi sembrano custodire un segreto.",
+	},
+	["org.muse.w17.cleft.014"] = {
+		"In fondo alla Cleft un goblin e un orco incappucciato parlano a voce bassissima. A Orgrimmar il silenzio è il suono più sospetto che esista.",
+		"Due figure nella Cleft parlano sottovoce. Altrove sarebbe educazione. In questa città è quasi una confessione.",
+		"Nella Cleft più le voci sono basse, più l'affare è grosso. Qualcuno là in fondo sta comprando qualcosa di enorme.",
+	},
+	["org.muse.w17.cleft.015"] = {
+		"Dalla discesa verso Ragefire Chasm sale aria calda che sa di zolfo e di pietra rovente. Sembra che la roccia stessa abbia la febbre.",
+		"Vicino all'imbocco di Ragefire Chasm la pietra è tiepida al tatto, come se dall'altra parte dormisse qualcosa di grosso, con la schiena appoggiata.",
+		"La discesa verso Ragefire Chasm odora di una forgia che nessuno sorveglia. Il calore sale lungo la pietra a ondate lente e irregolari.",
+	},
+	["org.muse.w17.cleft.016"] = {
+		"Qui nella Cleft of Shadow nessuno ti chiede come ti chiami, e sarebbe scortese dirlo.",
+		"I nomi, nella Cleft of Shadow, non si scambiano. Le facce, a malapena.",
+		"Nessuno, nella Cleft of Shadow, guarda nessuno dritto in faccia. È considerata buona educazione, e buon senso.",
+	},
+	["org.muse.w17.cleft.017"] = {
+		"Le pareti, qui, sono così vicine che le tocco da tutti e due i lati, e ho l'impressione che tutti e due i lati ascoltino.",
+		"Roccia a sinistra, roccia a destra, e ogni pochi passi una soglia con qualcuno che finge di non vedermi.",
+	},
+	["org.muse.w17.cleft.018"] = {
+		"Ho chiesto la strada tre volte, nella Cleft, e ho avuto tre risposte. Tutte gentilissime. Tutte diverse.",
+		"Chiedi la strada nella Cleft e te la indicano, con calore e leggermente sbagliata. Credo sia una specie di prova.",
+	},
+	["org.muse.w17.cleft.019"] = {
+		"Di tutta Orgrimmar, la Cleft of Shadow è il posto che mi spaventa meno. Laggiù sono tutti estranei con qualcosa da nascondere, e mi confondo benissimo.",
+		"Strana consolazione: nella Cleft nessuno guarda due volte una faccia sconosciuta. Laggiù ce l'hanno tutti.",
+		"Se un grunt deve fermarmi da qualche parte a Orgrimmar, che sia nella Cleft. Laggiù fanno meno domande e si aspettano risposte peggiori.",
+	},
+	["org.muse.w17.cleft.020"] = {
+		"guarda giù per il pendio buio verso Ragefire Chasm, dove un bagliore rosso e sordo cresce e svanisce come qualcosa che si rigira nel sonno.",
+		"si attarda in cima alla discesa verso Ragefire Chasm, osservando una luce rossa che va e viene sulla roccia di sotto.",
+		"sente sul viso il calore che sale dalla discesa verso Ragefire Chasm, e si allontana dal bordo.",
+	},
+	["org.muse.w17.cleft.021"] = {
+		"Chiunque sia il padrone del vilsegugio che mi annusa gli stivali: bestia deliziosa. Richiamala.",
+		"Quel vilsegugio mi segue dal fondo della Cleft. Vuole qualcosa, o vuole me?",
+	},
+	["org.muse.w17.crowd.001"] = {
+		"A Orgrimmar si cammina di spalla e non si chiede mai scusa. Ci ho messo un po' a impararlo. Adesso lo faccio senza pensarci, e a nessuno dà fastidio.",
+		"Il trucco, in queste strade, è andare avanti di spalla con gli occhi dritti davanti. Chi chiede scusa, per la folla, o è debole o non sa dove va.",
+	},
+	["org.muse.w17.crowd.002"] = {
+		"Qui la folla ha tre altezze: corna di tauren in alto, spalle d'orco nel mezzo, e goblin all'altezza della cintura, che imprecano.",
+		"Guardo la calca e vedo corna, poi spalle, poi un varco dove qualcosa di basso e rumoroso si fa largo all'altezza delle ginocchia. Sarà un goblin.",
+		"Da dove sto io la folla è un paesaggio: corna per vette, spalle per colline, e giù nelle valli un goblin che sgomita contro gli stinchi.",
+	},
+	["org.muse.w17.crowd.003"] = {
+		"viene {g:trascinato|trascinata} dalla folla per una dozzina di passi nella direzione sbagliata prima di riuscire a girarsi, e ricomincia con un sospiro.",
+		"si ritrova in mezzo a una calca, rinuncia per un momento a opporsi e lascia decidere alla corrente.",
+	},
+	["org.muse.w17.crowd.004"] = {
+		"Ho imparato una dozzina di parole della lingua troll solo stando in mezzo a questa folla. Metà farei bene a non usarle mai davanti a un troll.",
+		"La folla insegna le lingue gratis. Adesso so dire «spostati» in orchesco, in taur-ahe e nella lingua dei troll, più tre cose molto meno educate.",
+		"Ogni lite in questa calca è una lezione di una lingua che non avevo chiesto di imparare. Le mie imprecazioni in orchesco migliorano a vista d'occhio.",
+	},
+	["org.muse.w17.crowd.005"] = {
+		"Gomiti in fuori, allora. A quanto pare è l'usanza del posto.",
+		"Si va di gomito, mi dicono. Paese che vai, usanza che trovi.",
+	},
+	["org.muse.w17.crowd.006"] = {
+		"In una folla così fitta tengo una mano sulla borsa. Qui nessuno è un ladro, si capisce. È la mia borsa che non lo sa.",
+		"Mano sulla borsa, occhi avanti. Io della gente di Orgrimmar mi fido; è la borsa a essere di carattere nervoso.",
+		"Ogni volta che la ressa si stringe, la mia mano trova la borsa da sola. Non che sospetti di qualcuno. È la mano che di folle ne ha già viste.",
+	},
+	["org.muse.w17.crowd.007"] = {
+		"Un Reietto se ne sta perfettamente immobile ai margini della folla, a guardare. Di tutta Orgrimmar, i morti sembrano gli unici a non avere nessuna fretta.",
+		"La folla gira intorno a un Reietto che si è semplicemente fermato a guardare qualcosa. Nessuno lo urta. La gente aggira quell'immobilità come se fosse una colonna.",
+	},
+	["org.muse.w17.crowd.008"] = {
+		"Attraversando la folla colgo una parola di ogni vita: un debito, un cucciolo appena nato, una lite con un fratello, un lupo azzoppato. Cento storie, e nessuna è la mia.",
+		"Pezzi delle giornate degli altri mi passano accanto nella calca: un matrimonio la settimana prossima, uno zio malato, un fabbro che ha imbrogliato qualcuno. Me li porto dietro per qualche passo, poi li lascio andare.",
+		"La folla mi lascia addosso le sue storie come polvere: mezza lamentela, mezza battuta, un nome chiamato a voce alta e mai risposto. Non ne tengo nessuna.",
+	},
+	["org.muse.w17.crowd.009"] = {
+		"Quando perdo l'orientamento nella folla mi regolo sul tauren più vicino. Spunta sopra tutti come una collina, e si muove più o meno con la stessa velocità.",
+		"Un tauren in mezzo alla calca vale più di un cartello. Tieni gli occhi sulle corna e segui: prima o poi arriverai da qualche parte, con calma.",
+	},
+	["org.muse.w17.crowd.010"] = {
+		"In questa folla tutti camminano come se fossero in ritardo per qualcosa d'importante. Vorrei che qualcuno mi dicesse per cosa.",
+		"Tanta gente con tanta fretta. In città ci dev'essere un appuntamento importantissimo, e a me nessuno ha mandato l'invito.",
+		"Dove corrono tutti quanti? Se si mangia gratis, ci sto anch'io.",
+	},
+	["org.muse.w17.crowd.011"] = {
+		"Gli orchi marciano, i troll avanzano a lunghe falcate dondolanti, i tauren fanno un passo per ogni tre di un goblin, e i Reietti si muovono come se avessero già contato ogni pietra. La folla tiene una dozzina di ritmi insieme.",
+		"Guarda i piedi in questa folla e riconosci i popoli senza alzare gli occhi: il passo lungo e dondolante dei troll, quello pesante degli orchi, il calpestio lento degli zoccoli.",
+	},
+	["org.muse.w17.crowd.012"] = {
+		"Tutti i popoli dell'Orda in un'unica calca, che spingono e imprecano in cinque lingue, e nessuno mette mano alle armi. Non molto tempo fa una cosa così l'avrebbero chiamata battaglia.",
+		"Spalla a spalla con tutti i popoli dell'Orda, e il mio gomito nelle costole di un tauren. Nessuno se la prende. Ecco com'è, da vicino, stare dalla stessa parte.",
+	},
+	["org.muse.w17.crowd.013"] = {
+		"Qui la folla è il mantello migliore che ho. Finché tutti sono occupati a spingere, nessuno si ferma a chiedersi che cosa sono.",
+		"Resto nel punto più fitto della calca. In una ressa così nessuno guarda le facce, solo i gomiti.",
+	},
+	["org.muse.w17.crowd.014"] = {
+		"Un altro tallone pestato e comincio a farmi pagare a passo.",
+		"Qualcuno mi sta pestando il piede da un bel pezzo. Puoi spostarti quando vuoi. Davvero, quando vuoi.",
+		"Di chi è lo zoccolo sulle mie dita? Fai pure con calma. Non le stavo usando.",
+	},
+	["org.muse.w17.crowd.015"] = {
+		"si accovaccia per aiutare un goblin a raccogliere bulloni e rondelle sparsi fra i piedi della gente, e riceve in cambio una lunga occhiata sospettosa.",
+		"si china a raccogliere una manciata di chiodi caduti a un mercante goblin, che se li riprende, controlla se nella folla ci sono complici e solo allora borbotta un grazie.",
+	},
+	["org.muse.w17.crowd.016"] = {
+		"si abbassa insieme a tutti gli altri quando un peone con una lunga asse si gira per rispondere a qualcuno, e l'intero cerchio di folla si china nello stesso istante, come se l'avessero provato.",
+		"abbassa la testa a tempo con una dozzina di altri mentre una trave passa girando sopra la folla, e chi la porta non si accorge di niente.",
+	},
+	["org.muse.w17.crowd.017"] = {
+		"Sentita da un po' più in là, la folla sembra la risacca sulla costa di Durotar: nessuna voce sua, solo il lungo boato di tutti insieme.",
+		"Fai un passo indietro dalla calca e le voci si fondono in un solo suono, che sale e scende come il mare contro gli scogli di Durotar.",
+	},
+	["org.muse.w17.crowd.018"] = {
+		"viene {g:superato|superata} da una troll che porta in equilibrio sulla testa una cesta di pesce, e attraversa tutta la folla senza mai alzare una mano per tenerla.",
+		"guarda una troll scivolare nella calca con una cesta pesante sulla testa, ferma come una lanterna appesa al gancio.",
+	},
+	["org.muse.w17.crowd.019"] = {
+		"Svuota le strade e Orgrimmar sarebbe solo una fortezza in fondo a un canyon. È la folla, che spinge, contratta e litiga, a farne una città.",
+		"Le mura fanno una roccaforte. Per farne una città serve questa calca che spinge e urla.",
+		"Senza la ressa della gente, questo sarebbe pietra e ferro e niente di più. La folla è la malta che nessun muratore ha steso.",
+	},
+	["org.muse.w17.crowd.020"] = {
+		"Se tutta questa folla smettesse di parlare nello stesso istante, credo che le mura cadrebbero per lo spavento.",
+		"Immagina questa gente che tace tutta insieme. Il canyon penserebbe di essere diventato sordo.",
+	},
+	["org.muse.w17.crowd.021"] = {
+		"guarda la folla correre verso la tettoia più vicina alle prime gocce grosse, e poi restare lì pigiata a ridere della stranezza della pioggia.",
+		"si ripara sotto una tenda che cede insieme a una mezza dozzina di sconosciuti mentre viene giù la pioggia, e li sente concordare tutti che qui non piove mai.",
+	},
+	["org.muse.w17.crowd.022"] = {
+		"posa lo zaino per un momento sotto un tetto, lontano dalla ressa, e ascolta il commercio della città che continua oltre la porta.",
+		"si concede un momento lontano dalla calca, al chiuso, e lascia che il rumore della folla diventi una cosa che succede agli altri.",
+	},
+	["org.muse.w17.crowd.023"] = {
+		"riceve spintoni da tre lati insieme e semplicemente si ferma, lasciando che la folla si risistemi da sola tutt'intorno.",
+		"si prende tre gomitate di fila, sospira, e decide di aspettare un varco che non arriva mai.",
+	},
+	["org.muse.w17.crowd.024"] = {
+		"cede il passo a una madre tauren che guida tre vitelli attraverso la calca in una piccola fila solenne.",
+		"sorride senza volerlo mentre una fila di piccoli tauren segue la madre nella folla, ognuno attaccato alla coda di quello davanti.",
+	},
+	["org.muse.w17.drag.001"] = {
+		"Qui nel Drag riconosci i tintori dall'altra parte della strada: blu fino al gomito, e per niente dispiaciuti.",
+		"I tintori del Drag portano il mestiere sulle braccia, macchiate fino al gomito. Uno mi saluta con una mano del colore dell'acqua profonda.",
+	},
+	["org.muse.w17.drag.002"] = {
+		"si ferma accanto a un conciatore che raschia una pelle tesa con passate lunghe e regolari, un suono costante come una scopa sulla pietra.",
+		"resta un momento a guardare una pelle che viene raschiata sul telaio, una passata paziente dopo l'altra.",
+		"indugia accanto al telaio di un conciatore, dove una pelle viene lisciata con un raschietto smussato e senza la minima fretta.",
+	},
+	["org.muse.w17.drag.003"] = {
+		"Metà delle botteghe lungo il Drag appende un disegno invece di una parola: un'incudine, un ago, una fiaschetta. Un'insegna che chiunque sa leggere, qualunque lingua parli.",
+		"Sopra quasi tutte le porte del Drag, nessuna scritta: un martello dipinto, un rocchetto, una bottiglia. Orco, troll o tauren, lo leggono tutti allo stesso modo.",
+		"Le insegne del Drag sono disegni, non scritte. Uno stivale vuol dire stivali, una pentola vuol dire stufato, e nessuno deve discutere di ortografia.",
+	},
+	["org.muse.w17.drag.004"] = {
+		"Prima regola del Drag: se lo prendi in mano, hai già cominciato a trattare.",
+		"Qui non toccare niente, a meno che tu non voglia discuterne. Nel Drag una mano sulla merce è già un'offerta.",
+	},
+	["org.muse.w17.drag.005"] = {
+		"Un apprendista alchimista risale la strada di corsa reggendo una fiaschetta incrinata a braccio teso, e tutto il Drag si scansa senza che nessuno lo chieda.",
+		"Un ragazzo di una delle botteghe di pozioni passa correndo con qualcosa che frigge in una fiaschetta, tenuta il più lontano possibile dalla faccia. Non serve dire a nessuno di fargli strada.",
+		"Qualcosa fuma in una fiaschetta incrinata, nella mano tesa di un apprendista. Non ho mai visto questa strada svuotarsi così in fretta.",
+	},
+	["org.muse.w17.drag.006"] = {
+		"Una cuoca del Drag giura che la sua pentola di stufato non è mai stata vuota da quando hanno alzato le mura. Continua solo ad aggiungere. Non chiedo cosa ci sia sul fondo.",
+		"Nel Drag c'è uno stufato che, a sentire il cuoco, sobbolle dalla fondazione della città: rabboccato ogni giorno, mai svuotato. Sa di storia, e un po' di stivale.",
+	},
+	["org.muse.w17.drag.007"] = {
+		"passa una mano su una rastrelliera di cinture e cinghie finite, appese fuori da una bottega, e le fibbie tintinnano come campanelli.",
+		"sfiora una fila di finimenti appesi alla porta di una bottega, e una dozzina di fibbie sbattono fra loro con un suono di monete sciolte.",
+	},
+	["org.muse.w17.drag.008"] = {
+		"Potrei percorrere il Drag a occhi chiusi e sapere comunque dove mi trovo: il raschiare di una lima, un mazzuolo che batte sul cuoio, il ferro che sibila nella tempra, un venditore d'aghi che ripete sempre le stesse tre parole.",
+		"Ogni bottega del Drag ha il suo rumore. Il graffio di una lima, un mazzuolo sul cuoio bagnato, il sibilo del ferro rovente immerso nel barile. Anche con una benda sugli occhi, ritroverei la strada a orecchio.",
+	},
+	["org.muse.w17.drag.009"] = {
+		"Il garzone di un fabbro spazza la limatura di ferro in un secchio e la rivende al fabbro a peso. Quello lì un giorno si comprerà mezzo Drag.",
+		"Ho visto un apprendista raccogliere la limatura dal pavimento di una forgia e farla pagare al suo stesso maestro. E il fabbro ha pagato, con l'aria fiera.",
+	},
+	["org.muse.w17.drag.010"] = {
+		"Sulla soglia di una bottega del Drag un vecchio orco lavora con un martello il cui manico ha preso la forma della sua presa. Venderebbe la bottega, piuttosto che quel martello.",
+		"Lungo il Drag c'è un vecchio fabbro col manico del martello lucido e scuro, incavato dove vanno le dita. Gli attrezzi durano più dei maestri, dice lui, se i maestri ci stanno attenti.",
+		"Un vecchio artigiano del Drag usa lo stesso martello da così tanto che il legno ha preso l'impronta della sua mano. Dice che è l'unico socio che non l'abbia mai imbrogliato.",
+	},
+	["org.muse.w17.drag.011"] = {
+		"In una porta lungo il Drag pendono a seccare mazzi di erbe raccolte sulle colline di Durotar, e per qualche passo l'aria sa di verde, come se fosse tutto un altro posto.",
+		"Un erborista del Drag ha appeso a seccare le sue erbe argentate, di traverso sulla porta. Passarci davanti è come intravedere un prato in mezzo a tutto questo ferro.",
+	},
+	["org.muse.w17.drag.012"] = {
+		"Senti? Qualcuno nel Drag sta cercando di raddrizzare un'ammaccatura a martellate, e l'ammaccatura sta vincendo.",
+		"Quel clangore giù per il Drag va avanti da un pezzo. Qualunque cosa stia combattendo il fabbro, per ora è in vantaggio lei.",
+	},
+	["org.muse.w17.drag.013"] = {
+		"Certi conciatori del Drag trattano ancora le pelli alla vecchia maniera, col fumo e con la pazienza, come facevano i clan prima dei campi. I giovani alzano gli occhi al cielo, e non si perdono una mossa.",
+		"Un vecchio conciatore del Drag lavora le pelli come faceva il suo clan prima dei campi. Dice che i giovani hanno mani svelte e memoria corta. Ma insegna lo stesso.",
+		"Pelli affumicate, lavorate con la lentezza che i clan conoscevano prima dei campi d'internamento. Qualche vecchio conciatore ha tenuto vivo il mestiere nella testa, per tutti quegli anni dietro i recinti.",
+	},
+	["org.muse.w17.drag.014"] = {
+		"Qui un sarto sta prendendo le misure a un tauren per un mantello, in piedi su una cassa, borbottando numeri. Il tauren sta immobile, paziente come una rupe.",
+		"In una bottega del Drag un sarto sale su uno sgabello per far passare la cordicella intorno alle spalle di un tauren, poi scende e ne chiede una più lunga.",
+	},
+	["org.muse.w17.drag.015"] = {
+		"guarda le scintille schizzare da una mola dove un grunt si fa rifare il filo dell'ascia, la ruota che geme sotto l'acciaio.",
+		"si ferma accanto a una mola che morde un'ascia, e si tira indietro davanti al ventaglio di scintille arancioni.",
+		"aspetta che passi una cascata di scintille da una mola, dove un'ascia riprende il suo filo un giro dopo l'altro.",
+	},
+	["org.muse.w17.drag.016"] = {
+		"Le botteghe del Drag appendono fuori la merce buona e tengono quella migliore sul retro, per chi ha l'idea di chiederla. Quasi nessuno ci pensa.",
+		"Quello che pende fuori da una bottega del Drag è l'esca. Il lavoro vero sta sotto il banco, avvolto in un panno, in attesa di qualcuno che sappia fare la domanda giusta.",
+	},
+	["org.muse.w17.drag.017"] = {
+		"Chi vende in questa città del filo che non si spezza? Lo chiedo per conto dei miei calzoni.",
+		"Mi serve un sarto, in fretta, e uno che non rida. In quest'ordine.",
+		"Indicatemi l'ago e il filo più vicini. E nessuno guardi in basso.",
+	},
+	["org.muse.w17.drag.018"] = {
+		"Gli artigiani qui mangiano al banco di lavoro, un tozzo di pane in una mano e il lavoro nell'altra. Nel Drag un pasto è una cosa che si fa fra un punto e l'altro.",
+		"Nel Drag nessuno si ferma a mangiare. Masticano chini sul lavoro, con le briciole che cadono sul cuoio, e si puliscono le dita sul grembiule.",
+	},
+	["org.muse.w17.drag.019"] = {
+		"Metà delle botteghe lungo il Drag tiene un vecchio lupo che sonnecchia di traverso sulla soglia. Costa meno di una serratura, e si corrompe solo con la carne.",
+		"I bottegai del Drag non si fidano granché delle serrature. Si fidano del lupo dal muso grigio sdraiato sulla porta, con un occhio socchiuso.",
+		"Una porta sì e una no, nel Drag, c'è un lupo addormentato di traverso. Scavalcalo con educazione. Il vero padrone della bottega è lui, e lo sa.",
+	},
+	["org.muse.w17.drag.020"] = {
+		"Chiedi a tre persone perché si chiami il Drag e avrai tre risposte. Per come serpeggia, dice un grunt. Per come ti trascina via i soldi, dice un goblin. Il conciatore indica soltanto una pelle che qualcuno sta trascinando per terra.",
+		"Sul nome nessuno è d'accordo. Un peone giura che il Drag si chiama così per i tronchi trascinati lungo la via quando la città era giovane; un mercante giura che si chiama così per quello che fa alle borse.",
+	},
+	["org.muse.w17.drag.021"] = {
+		"Il tuono rotola giù per il canyon e tutti i mercanti della città ritirano la merce nello stesso momento. Per un attimo, all'aperto, restano solo le forge e io.",
+		"La tempesta schiocca sopra le mura, e una bancarella dopo l'altra si richiude come una mano. I fabbri non alzano nemmeno la testa.",
+	},
+	["org.muse.w17.drag.022"] = {
+		"si ferma davanti a una bottega aperta dove un pellettiere fora una cintura, un colpo secco dopo l'altro, e si sorprende a contarli.",
+		"guarda una lesina attraversare il cuoio spesso con un colpetto secco, e poi un altro e un altro, finché la cintura non ha buchi abbastanza per qualunque vita della città.",
+	},
+	["org.muse.w17.drag.023"] = {
+		"si tura il naso passando accanto alle vasche dei conciatori, come fanno quasi tutti, mentre i conciatori guardano senza scomporsi.",
+		"passa in fretta davanti alla porta di una conceria con una manica sulla faccia, e sente un vecchio conciatore ridacchiare alle sue spalle.",
+	},
+	["org.muse.w17.folk.001"] = {
+		"osserva due grunt che si danno il cambio a un posto di guardia: un cenno, una parola troppo bassa per sentirla, e quello che smonta fa scrocchiare il collo.",
+		"nota un grunt che passa il turno a un altro con un solo grugnito e un colpo di mento. A quanto pare basta e avanza.",
+		"vede un grunt fresco prendere il posto di uno stanco, che però si attarda a indicare qualcosa più in là, poi alza le spalle e se ne va.",
+	},
+	["org.muse.w17.folk.002"] = {
+		"guarda un grunt che mangia in servizio, la ciotola in un pugno e l'ascia nell'altro, senza staccare gli occhi dalla folla, masticando come se anche quello facesse parte del turno.",
+		"segue con una certa ammirazione un grunt che finisce una ciotola intera di stufato senza guardarla nemmeno una volta.",
+	},
+	["org.muse.w17.folk.003"] = {
+		"Un piccolo orco sta di guardia a una porta con un bastone al posto dell'ascia e chiede a tutti la parola d'ordine. I grunt gliela danno, serissimi, e lui li lascia passare.",
+		"Una bambina si è nominata guardia della porta di una capanna e pretende la parola d'ordine da chiunque passi. Un grunt vero gliel'ha appena mormorata. Approvata.",
+		"Un bambino con un bastone difende una porta contro tutta la città. Senza parola d'ordine non passa nessuno, e i grunt stanno al gioco senza un sorriso.",
+	},
+	["org.muse.w17.folk.004"] = {
+		"guarda un addestratore di lupi che porta una fila di bestie tra la folla, parlando loro piano e senza fretta, gli avambracci segnati da vecchi morsi.",
+		"gira intorno a un'addestratrice che si è fermata a grattare un suo lupo dietro le orecchie; le cicatrici sulle braccia dicono che non è sempre andata così liscia.",
+	},
+	["org.muse.w17.folk.005"] = {
+		"Un tauren appena arrivato da Mulgore fissa le mura come si fisserebbe una rupe che qualcuno ha costruito apposta.",
+		"I tauren che vengono dalle praterie si riconoscono subito: continuano a guardare in su, come se la città potesse cadergli addosso, con educazione.",
+		"La gente delle praterie si ferma sempre almeno una volta a fissare tutta questa pietra. A Mulgore le colline ci sono, ma nessuno ci ha mai inchiodato sopra del ferro.",
+	},
+	["org.muse.w17.folk.006"] = {
+		"In città le notizie le portano i messaggeri, quasi sempre ragazzi, che sgusciano tra le gambe con un pezzo di pelle piegato nel pugno. Metà degli affari di Orgrimmar viaggia alla loro velocità.",
+		"Un messaggero per poco non mi butta a terra, grida qualcosa che forse era una scusa, e sparisce verso le valli più lontane. Il messaggio di qualcuno ha fretta.",
+		"Qui le notizie vanno a piedi: ragazzi svelti che corrono da una valle all'altra, e non camminano mai se possono scattare.",
+	},
+	["org.muse.w17.folk.007"] = {
+		"Forza alla guardia. Non scomodarti.",
+		"Tu tieni il portale, grunt. Io mi tengo fuori dai guai. Più o meno.",
+		"Buon turno. C'è qualcosa che dovrei sapere prima di andare a fare una sciocchezza?",
+	},
+	["org.muse.w17.folk.008"] = {
+		"Un vecchio orco con una mano sola siede contro un muro e racconta una battaglia a chiunque rallenti. Al terzo ascoltatore i nemici sono già raddoppiati.",
+		"Lungo la strada c'è un veterano con una mano sola che racconta la sua guerra ai bambini di passaggio. Loro lo correggono sui dettagli. Lui li lascia fare.",
+	},
+	["org.muse.w17.folk.009"] = {
+		"si scosta per far passare un'orchessa che porta una pentola fumante verso il portale, dove i grunt di guardia si raddrizzano appena ne sentono l'odore.",
+		"guarda una cuoca portare una pentola di stufato ai grunt di guardia, che smettono di fare paura giusto il tempo di mangiare.",
+	},
+	["org.muse.w17.folk.010"] = {
+		"Basta un'ora a Orgrimmar e si vede che attacca: la voce si alza, i gomiti si allargano, il passo somiglia un po' di più a quello di un grunt.",
+		"I viaggiatori entrano dal portale parlando piano ed escono gridando. Questa lezione la città la dà gratis.",
+		"Un'ora in questa città e anche chi borbotta comincia a sbraitare. Lo sento succedere anche a me.",
+	},
+	["org.muse.w17.folk.011"] = {
+		"passa accanto a tre peon che si dividono una panca e un solo otre d'acqua, brontolando del sorvegliante in perfetto accordo.",
+		"sguscia oltre una fila di peon a riposo, spalle contro un muro e piedi contro l'altro, che si passano le lamentele lungo la fila come una pipa.",
+	},
+	["org.muse.w17.folk.012"] = {
+		"Fuori servizio i grunt sono un'altra gente: armatura slacciata, risate, braccio di ferro su un barile rovesciato. Si rimettono di guardia, e la faccia si chiude come un portone.",
+		"Un grunt con una faccia da rupe ride così forte a un tavolo che il tavolo va tenuto fermo. Fuori servizio, a quanto pare, è permesso.",
+	},
+	["org.muse.w17.folk.013"] = {
+		"Piano, piccolo. Anche quel lupo ha avuto una giornata lunga.",
+		"Occhio a dove corri, piccolo guerriero. I grunt non si spostano: rimbalzi.",
+	},
+	["org.muse.w17.folk.014"] = {
+		"si fa da parte per una madre orchessa che attraversa con un neonato su un fianco e un sacco di ferro sull'altro, e non rallenta per nessuno.",
+		"rallenta a guardare una donna con un bambino legato sulla schiena che spacca legna davanti alla porta, un colpo netto dopo l'altro, mentre il piccolo dorme per tutto il tempo.",
+	},
+	["org.muse.w17.folk.015"] = {
+		"vede un grunt raccogliere un bambino caduto, rimetterlo in piedi e proseguire, senza perdere il passo né cambiare faccia.",
+		"nota un bambino che inciampa davanti a una pattuglia; il grunt più vicino lo tira su per il colletto e la pattuglia non perde un passo.",
+	},
+	["org.muse.w17.folk.016"] = {
+		"I Reietti che scendono a Orgrimmar tengono il cappuccio alzato e gli affari brevi. Il chiasso pare strano a loro quanto loro sembrano strani a tutti gli altri.",
+		"Un Reietto è seduto su un gradino in mezzo a tutto questo caldo e questa vita, immobile, e la guarda come si guarda un fuoco che non si ha intenzione di toccare.",
+	},
+	["org.muse.w17.folk.017"] = {
+		"Qui l'acqua vale la fatica di portarla. I portatori passano curvi sotto i gioghi coi secchi che sciabordano, e nessuno li urta, nemmeno i grunt.",
+		"Di tutta la gente della città, i portatori d'acqua sono quelli a cui si fa più spazio. Rovesciare un secchio a Durotar è rovesciare qualcosa di vero.",
+	},
+	["org.muse.w17.folk.018"] = {
+		"Tutti i grunt di questa città hanno la stessa faccia. Credo se la passino al cambio della guardia.",
+		"Ho contato una dozzina di grunt e un'espressione sola in tutto. Gente parsimoniosa.",
+	},
+	["org.muse.w17.folk.019"] = {
+		"Un vitello tauren e due piccoli orchi giocano nella polvere, a un gioco le cui regole sembrano inventarsi in tre man mano. Nessuno gli ha detto che l'Orda è una faccenda complicata.",
+		"Bambini di tre popoli si rincorrono intorno a un palo, strillando in un miscuglio di lingue. Qualunque patto abbiano stretto i grandi, questi qui ci credono davvero.",
+	},
+	["org.muse.w17.haggle.001"] = {
+		"A Orgrimmar anche gli affari ti ringhiano contro.",
+		"In questa città pure gli affari buoni prima ti mostrano i denti.",
+	},
+	["org.muse.w17.haggle.002"] = {
+		"Ho passato quasi un'ora a strappare due rame di sconto, poi per festeggiare ho preso da bere per tre rame. Il commercio è un'arte strana.",
+		"Due rame risparmiati dopo una lunga e dura discussione. Ho celebrato la vittoria con un boccale che ne costava tre. La mia borsa e io ne stiamo ancora parlando.",
+	},
+	["org.muse.w17.haggle.003"] = {
+		"Un goblin mi ha venduto una mappa della città. Metà delle strade passano dove piacerebbe a lui, e ogni bottega segnata è della sua famiglia.",
+		"La mia nuova mappa di Orgrimmar, disegnata da un goblin, mostra una scorciatoia dentro la roccia viva e sei botteghe della stessa famiglia. Vale ogni rame, come barzelletta.",
+	},
+	["org.muse.w17.haggle.004"] = {
+		"Affare fatto! Aspetta. Stavo comprando o vendendo?",
+		"Andata. Un momento: chi dei due doveva pagare?",
+	},
+	["org.muse.w17.haggle.005"] = {
+		"Ogni mercante di Orgrimmar ha un cugino che lo farebbe a meno. Il cugino non c'è mai.",
+		"Chiedi uno sconto a un mercante qualunque e ti parlerà del cugino che vende a meno. Nessuno ha mai conosciuto il cugino.",
+		"Dietro ogni bancarella di questa città c'è un cugino, più economico, più bravo, e mai presente. Comincio a pensare che sia sempre lo stesso cugino.",
+	},
+	["org.muse.w17.haggle.006"] = {
+		"Qui i mercanti mi comprano gli stivali vecchi per un rame e mi vendono l'acqua per dieci. Un goblin, chissà dove, ha fatto il conto su una lavagnetta e ha riso fino a cadere per terra.",
+		"Vendere un paio di stivali: un rame. Comprare un otre d'acqua: dieci. Non so chi faccia i prezzi in questa città, ma di sicuro non ha mai avuto sete.",
+	},
+	["org.muse.w17.haggle.007"] = {
+		"Volevo una borsa. Esco con una borsa e con tutto quello che c'è da sapere sulle ginocchia del conciatore.",
+		"Mi serviva solo una sacca. Ho avuto la sacca, più mezz'ora sul mal di schiena del pellettiere, gratis.",
+	},
+	["org.muse.w17.haggle.008"] = {
+		"rovescia con gran cerimonia tutte e due le tasche vuote sotto lo sguardo di un imbonitore, e può tirare dritto in pace.",
+		"risponde allo sguardo speranzoso di un bottegaio scuotendo tristemente una borsa vuota, e se la cava con un grugnito di comprensione.",
+	},
+	["org.muse.w17.haggle.009"] = {
+		"C'è qualcosa in questa città che non sia in vendita? No, non rispondere. Mi faresti un prezzo.",
+		"Ho chiesto che cosa non fosse in vendita a Orgrimmar. Il goblin mi ha chiesto quanto offrivo.",
+	},
+	["org.muse.w17.haggle.010"] = {
+		"Trattare con un tauren è molto riposante. Lui dice un prezzo, io dico il mio, e poi aspettiamo tutti e due di vedere chi invecchia prima.",
+		"Un mercante tauren non discute. Ti guarda e basta, con gentilezza, finché la tua offerta non sale da sola fino alla sua.",
+		"Ho provato a tirare sul prezzo con un pellettiere tauren. Ha ascoltato ogni parola, ha annuito e ha ripetuto lo stesso prezzo, calmo come l'erba.",
+	},
+	["org.muse.w17.haggle.011"] = {
+		"Qualcuno ha messo all'asta una semplice camicia di lino al prezzo di un buon lupo da cavalcare. O è uno scherzo, o è un sarto molto ottimista.",
+		"Alla casa d'aste c'è una camicia di lino in vendita per una piccola fortuna. Ci ho già dato un'occhiata due volte per vedere se qualcuno abbocca.",
+	},
+	["org.muse.w17.haggle.012"] = {
+		"La mia borsa è entrata in città grassa e allegra. Guardala adesso, poverina.",
+		"Questa borsa pesava, al portale. Orgrimmar se n'è presa molta cura.",
+		"All'arrivo avevo delle monete. Ne conservo un ricordo affettuoso.",
+	},
+	["org.muse.w17.haggle.013"] = {
+		"A sentire i mercanti, ogni pelle di questa città è la più resistente di Kalimdor e ogni ascia la più affilata. Kalimdor dev'essere molto piccola.",
+		"Mi hanno già mostrato la cintura più bella di tutta Kalimdor quattro volte, in quattro bancarelle diverse. Ognuna più bella della precedente, pare.",
+	},
+	["org.muse.w17.haggle.014"] = {
+		"accetta di annusare la merce dal vasetto di un mercante zelante, e glielo rende subito con gli occhi che lacrimano.",
+		"si china ad annusare un barattolo d'unguento offerto da un mercante, e si ritrae di scatto, come davanti a un pugno, mentre il mercante annuisce soddisfatto.",
+	},
+	["org.muse.w17.haggle.015"] = {
+		"La locanda si fa pagare in buon argento una scodella di stufato e la rissa te la regala. Onesto, tutto sommato.",
+		"Una scodella di stufato alla locanda costa più del dovuto. La scazzottata al tavolo accanto è compresa nel prezzo.",
+	},
+	["org.muse.w17.haggle.016"] = {
+		"Un goblin ha appena provato a vendermi un mantello identico al mio. Era il mio. L'avevo lasciato su un gancio.",
+		"Quel goblin era a metà dell'opera per vendermi il mio stesso mantello quando ce ne siamo accorti. Voleva comunque una mancia per averlo trovato.",
+	},
+	["org.muse.w17.haggle.017"] = {
+		"A sentire gli imbonitori, in questo mercato è tutto fresco: conciato di fresco, forgiato di fresco, pescato di fresco. La mia pagnotta sfornata di fresco potrebbe tenere chiusa una porta.",
+		"Pane fresco, giurava il venditore. Poi l'ho usato per piantare un picchetto della tenda. Ha funzionato benissimo.",
+	},
+	["org.muse.w17.haggle.018"] = {
+		"Qualcuno in questa folla mi deve dei soldi. Non so chi. È solo questione di probabilità.",
+		"Con tutta questa gente in giro, almeno uno mi deve dell'argento. Comincio a chiedere a caso.",
+	},
+	["org.muse.w17.haggle.019"] = {
+		"ascolta con educazione il lungo racconto di un mercante su una caccia famosa, e capisce solo alla fine che era la pubblicità di una cintura.",
+		"annuisce per tutta la storia di un mercante su un vecchio guerriero e il suo portafortuna, e alla fine si ritrova il portafortuna in mano.",
+	},
+	["org.muse.w17.haggle.020"] = {
+		"Le tariffe del maestro di volo sono l'unica cosa di questa città che sale più in fretta delle viverne.",
+		"Chiedi un prezzo al maestro di volo e capirai perché le viverne hanno sempre l'aria così soddisfatta.",
+	},
+	["org.muse.w17.haggle.021"] = {
+		"si vede offrire un portafortuna da un mercante e un amuleto contro la sfortuna da quello dopo, e per principio non compra nessuno dei due.",
+		"rifiuta con garbo un amuleto, poi un amuleto più economico, poi un amuleto che a quanto pare fa funzionare gli altri amuleti, e alla fine riesce a scappare.",
+	},
+	["org.muse.w17.history.001"] = {
+		"Chiedi ai grunt del portale e ti raccontano di come l'Orda attraversò il mare su navi prese agli umani, stipati così stretti che metà di loro l'acqua non la vide mai.",
+		"Gli orchi arrivarono a Kalimdor per mare, raccontano i veterani, su scafi rubati, malati come cani e cantando lo stesso. Nessuno di loro era mai stato un marinaio.",
+		"Un veterano della locanda giura di aver passato tutta la traversata sottocoperta con una capra e un troll. Non dice quale fosse la compagnia peggiore.",
+	},
+	["org.muse.w17.history.002"] = {
+		"Nei campi il mio popolo si era dimenticato come si fa a volere qualcosa. È la parte che nessuno mette nelle canzoni. Questa città è la voglia che si è svegliata.",
+		"Steccati, giorni grigi, guardie che si annoiavano a guardarli. I campi non hanno ucciso gli orchi: li hanno svuotati. Ogni strada chiassosa di qui è quel vuoto riempito fino all'orlo.",
+	},
+	["org.muse.w17.history.003"] = {
+		"Thrall avrebbe potuto mettere il suo nome sopra il portale. Ha dato invece la città a Orgrim, il vecchio Capoguerra che gli aveva insegnato tutto ed era morto prima di vederla costruita.",
+		"Un Capoguerra che chiama la sua capitale col nome del suo maestro e non col proprio. Non sono molti i sovrani che si lascerebbero sfuggire un'occasione così.",
+		"Il nome di questa città appartiene a un orco morto, per scelta di uno vivo. Quel piccolo gesto di modestia dice di Thrall più della sua armatura.",
+	},
+	["org.muse.w17.history.004"] = {
+		"Prima delle mura, dicono quelli che c'erano dall'inizio, c'erano un fossato, una fila di pali appuntiti e un sacco di orchi che facevano a turno a non dormire.",
+		"Un orco che c'era dall'inizio ti racconterà di tende nella polvere, uno steccato di pali e un pozzo che si è seccato due volte. Le mura sono venute molto dopo.",
+	},
+	["org.muse.w17.history.005"] = {
+		"Kul Tiras mandò una flotta a bruciare Durotar quando queste mura erano appena tirate su, ricordano ancora i grunt. Tiragarde Keep è ancora lì sulla costa, accucciata, a ricordarglielo.",
+		"La città si reggeva appena in piedi quando arrivarono le navi di Kul Tiras, raccontano i veterani. Ne parlano come di una febbre che alla fine è passata.",
+	},
+	["org.muse.w17.history.006"] = {
+		"Non molto tempo fa orchi, umani ed elfi tennero insieme una montagna contro i demoni. A Orgrimmar questa storia si racconta a bassa voce, in fretta, e mai davanti a tutti.",
+		"Hyjal è un nome che qui nessuno sa bene dove mettere. Lì l'Orda combatté al fianco dell'Alleanza, e la città preferisce ricordarsi della battaglia, non di chi aveva accanto.",
+	},
+	["org.muse.w17.history.007"] = {
+		"I Darkspear lo raccontano senza giri di parole: gli orchi li trovarono nelle loro isole messi male, si fermarono a combattere e se li portarono dietro. Da allora i troll ripagano il favore, a gran voce.",
+		"Chiedi a un troll perché i Darkspear seguono un Capoguerra orco e ti becchi una storia lunga, con dentro streghe del mare, e un finale corto: lui è rimasto quando non era obbligato.",
+	},
+	["org.muse.w17.history.008"] = {
+		"I tauren raccontano che gli orchi combatterono i centauri al loro fianco quando le mandrie venivano cacciate per le pianure, e Cairne non dimentica un debito. Thunder Bluff ne è la prova.",
+		"La gente di Cairne gira per queste strade come vecchi amici di famiglia, e in un certo senso lo è. Gli orchi le restarono accanto quando aveva i centauri alle calcagna.",
+	},
+	["org.muse.w17.history.009"] = {
+		"Scegli una terra che nessuno vuole, dicono gli anziani, e nessuno verrà a prendertela. Ecco Durotar: scelta per le sue spine.",
+		"Roccia rossa, terra magra, scorpidi sotto ogni sasso. Thrall ha scelto questo paese a occhi aperti, dicono i grunt, perché nessun altro l'avrebbe mai desiderato.",
+		"Nessuno fa una guerra per Durotar, amano dire gli anziani. Era proprio questo il punto.",
+	},
+	["org.muse.w17.history.010"] = {
+		"Questa città è più giovane di quasi tutti i grunt che la sorvegliano. Ricordatelo, quando si dà delle arie.",
+		"Orgrimmar ha meno anni del grunt medio di guardia al portale. Solo che si comporta da vecchia.",
+		"Quasi tutti quelli che girano per queste strade si ricordano il canyon vuoto. La città fa finta di esserci sempre stata.",
+	},
+	["org.muse.w17.history.011"] = {
+		"rallenta accanto a un vecchio orco che racconta dei campi a un cerchio di bambini; per una volta nessuno di loro si agita.",
+		"si attarda ai margini di un capannello che ascolta un veterano descrivere la traversata del mare, con le mani che mostrano quanto erano alte le onde.",
+	},
+	["org.muse.w17.history.012"] = {
+		"Orgrim questa città non l'ha mai vista. Spero che qualcuno glielo racconti lo stesso.",
+		"La città di Doomhammer. Avrebbe odiato la folla e amato le mura, ci scommetto.",
+		"A Orgrim, che avrebbe brontolato per il nome e ne sarebbe stato contento in segreto.",
+	},
+	["org.muse.w17.history.013"] = {
+		"Recinti e steccati, non tanto tempo fa. Adesso forge, una banca e un portale che teniamo noi. Quando il chiasso mi stanca, penso a che suono doveva avere il silenzio dei campi.",
+		"Gli umani pensavano che avremmo perso la capacità di costruire. Pochi anni fuori dai campi, ed ecco Orgrimmar. Spero che a Stormwind qualcuno lo sappia.",
+	},
+	["org.muse.w17.history.014"] = {
+		"Per gli anziani i vecchi clan contano ancora: un Warsong te lo dice forte, un Frostwolf te lo dice piano. I loro figli dicono solo Orgrimmar.",
+		"Domanda a un vecchio orco di che clan è e avrai un nome e una storia. Fallo con uno giovane e avrai il nome di una valle.",
+	},
+	["org.muse.w17.history.015"] = {
+		"La prima cosa che costruirono in questo canyon fu una forgia, mi ha detto un grunt, prima ancora delle mura. Senza chiodi, un muro non lo fai.",
+		"Secondo un peon che giura di esserci stato, il primo fuoco acceso a Orgrimmar fu per il ferro e il secondo per la cena. Quell'ordine non l'ha ancora digerito.",
+	},
+	["org.muse.w17.history.016"] = {
+		"Niente male, per gente che pochi anni fa stava dietro uno steccato.",
+		"Guarda cosa hanno tirato fuori da un canyon e da un rancore.",
+		"Tutto questo da un pugno di orchi liberati e da un pezzo di terra infame. Notevole.",
+	},
+	["org.muse.w17.history.017"] = {
+		"resta un momento a guardare lungo le mura, come se cercasse di immaginare il canyon spoglio, prima che qualcuno ci posasse la prima pietra.",
+		"si guarda intorno, pietra e legno della città, come se provasse a vederla con gli occhi dei primi orchi: una spaccatura vuota in un paese duro.",
+	},
+	["org.muse.w17.history.018"] = {
+		"Gli anziani nominano il vecchio mondo oltre il Dark Portal come si nomina un amico morto: di rado, e mai ad alta voce. Orgrimmar è quello che hanno costruito al posto del lutto.",
+		"C'era un mondo prima di questo, dicono i vecchi orchi, e non c'è più. Non lo descrivono granché. Indicano le mura, piuttosto.",
+	},
+	["org.muse.w17.history.019"] = {
+		"Thrall ha trovato una crepa nel terreno e ne ha fatto una capitale. Certi re hanno fatto di meno con molto di più.",
+		"Un canyon, qualche clan liberato e un Capoguerra testardo. Ecco tutta la fondazione di Orgrimmar, ed è bastata.",
+	},
+	["org.muse.w17.hold.001"] = {
+		"Dentro Grommash Hold ogni passo si sente due volte: una sul pavimento, e una dai Kor'kron.",
+		"Entri in Grommash Hold e i tuoi passi ti annunciano molto prima di chiunque altro. I Kor'kron si sono già fatti un'idea.",
+		"Ogni stivale che attraversa la sala di Grommash Hold viene soppesato da una dozzina di sguardi. I miei sembrano più pesanti del solito.",
+	},
+	["org.muse.w17.hold.002"] = {
+		"Niente tende, niente anticamera, nessuno scrivano col registro. Il Capoguerra siede dove chiunque entri può vederlo, in fondo a un lungo tragitto sotto gli occhi di ogni guardia.",
+		"Il trono di Grommash Hold è in piena vista. Per arrivare al Capoguerra attraversi tutta la sala sotto gli sguardi della sua guardia, e quella camminata è l'unico cancello.",
+	},
+	["org.muse.w17.hold.003"] = {
+		"passa accanto ai postulanti in attesa fuori da Grommash Hold: un peone con una lagnanza, un goblin con un contratto, un tauren con tutto il tempo del mondo.",
+		"costeggia la fila di chi aspetta l'orecchio del Capoguerra, un capotribù, una vedova, un mercante col mal di denti, e non ne trova due dello stesso popolo.",
+	},
+	["org.muse.w17.hold.004"] = {
+		"Thrall porta ancora il nome che gli diedero i suoi carcerieri. Gli ha fatto significare tutt'altro, e questo nessuno potrà toglierglielo.",
+		"Thrall: un nome da schiavo, dato dagli umani che lo tenevano prigioniero. Lo porta alla testa dell'Orda, e ormai suona come un avvertimento per chiunque voglia riprovare con le catene.",
+		"I carcerieri gliel'avevano dato come un guinzaglio. Lui l'ha tenuto, e ora i capotribù chinano il capo davanti a quel nome.",
+	},
+	["org.muse.w17.hold.005"] = {
+		"Grom Hellscream morì nelle foreste di Ashenvale con un signore dei demoni abbattuto ai suoi piedi, lontano da qualsiasi sala. Thrall gliene ha data una lo stesso, e il mio popolo ci entra ogni giorno.",
+		"La sala del Capoguerra porta il nome di un orco che non l'ha mai vista. Grom cadde in Ashenvale per liberarci, e Grommash Hold tiene pronto quel nome finché non ne saremo degni.",
+	},
+	["org.muse.w17.hold.006"] = {
+		"Abbassa la voce vicino alla sala del Capoguerra. I Kor'kron hanno già sentito tutte le battute, e non hanno riso a nessuna.",
+		"Non così forte. Siamo a portata d'orecchio della sala del Capoguerra, e preferirei che si ricordassero di me per altro.",
+	},
+	["org.muse.w17.hold.007"] = {
+		"sosta dove il sentiero sale verso Grommash Hold per lasciar passare due Kor'kron, con le armature che non fanno un rumore più del necessario.",
+		"si scosta per una pattuglia di Kor'kron sul pendio sotto la sala del Capoguerra, e riceve uno sguardo che soppesa e congeda in un colpo solo.",
+	},
+	["org.muse.w17.hold.008"] = {
+		"si tiene a rispettosa distanza dal trono, con le mani bene in vista, come sembrano preferire i Kor'kron.",
+		"rimane ai margini della grande sala, fuori dai piedi dei postulanti, e alza gli occhi alle travi perse nel fumo sotto il tetto.",
+	},
+	["org.muse.w17.hold.009"] = {
+		"Il Capoguerra ascolta peoni e capotribù nella stessa sala, dallo stesso seggio. Ho sentito dire che ai peoni concede più tempo: sono meno abituati a essere brevi.",
+		"Capotribù e peoni aspettano nella stessa fila fuori da Grommash Hold. A Orgrimmar nessuno lo trova più strano, ed è questa la cosa più strana.",
+	},
+	["org.muse.w17.hold.010"] = {
+		"Qualunque cosa si decida in Grommash Hold arriva ai confini di Durotar prima che il lupo del messaggero si sia raffreddato.",
+		"Una parola detta in Grommash Hold viaggia più veloce di qualunque cavaliere. Quando arriva alle Barrens, le sono già cresciuti i denti.",
+		"Thrall decide in Grommash Hold, e alla carovana successiva tutta Durotar ha già un'opinione.",
+	},
+	["org.muse.w17.hold.011"] = {
+		"I Kor'kron non guardano mai il Capoguerra. Guardano tutti gli altri, tutti insieme, e chissà come proprio me in particolare.",
+		"Gli occhi di un Kor'kron non sono mai sul Capoguerra. Sono sulle tue mani, sulla cintura, sulla faccia, e poi da capo sulle mani.",
+	},
+	["org.muse.w17.hold.012"] = {
+		"Che la sala di Grommash non resti mai muta per mancanza di voci.",
+		"Che Grommash Hold resti aperto a lungo, e chi vi siede tenga sempre l'orecchio a terra.",
+		"Forza e pazienza a chi siede sotto quel tetto. Della seconda gliene servirà di più.",
+	},
+	["org.muse.w17.hold.013"] = {
+		"Il posto più tranquillo di Orgrimmar, dicono. Qualche decina di voci e un fuoco. Non oso immaginare quello rumoroso.",
+		"Il cuore tranquillo della città, quella sala. Tranquillo per la misura di Orgrimmar: nessuno sta martellando niente.",
+	},
+	["org.muse.w17.hold.014"] = {
+		"Il Capoguerra porta le scelte di un popolo intero su un solo paio di spalle. Da qui sembra che le stia ascoltando tutte insieme.",
+		"Lassù sul trono Thrall sta immobile, e non è calma. È l'immobilità di chi tiene in equilibrio un grande peso.",
+		"Dal pavimento della sala il trono sembra meno un seggio di potere che il posto dove qualcuno deve continuare ad ascoltare.",
+	},
+	["org.muse.w17.hold.015"] = {
+		"Orchi, troll, tauren, Reietti: vengono tutti nella stessa sala per farsi ascoltare. Il seggio del Capoguerra è l'unico posto di Orgrimmar verso cui ogni popolo deve camminare.",
+		"Ogni strada di Orgrimmar, prima o poi, piega verso Grommash Hold. Anche quelle che sembrano dirette alla banca.",
+		"Inviati Reietti, anziani troll, guerrieri tauren: la porta di Grommash Hold li vede passare tutti. La tavola di Thrall è affollata.",
+	},
+	["org.muse.w17.hold.016"] = {
+		"si volta al suono basso di un corno dalla parte della sala del Capoguerra, aspetta, e si rigira quando non segue altro.",
+		"alza la testa a un richiamo di corno dalla Valley of Wisdom, poi lascia perdere quando lo fa anche la folla.",
+	},
+	["org.muse.w17.hold.017"] = {
+		"Il nostro Capoguerra non tiene oro sul trono né corona sul capo. Un seggio, un martello, e una sala piena di chiunque abbia bisogno di lui.",
+		"Nessuna corona in Grommash Hold. L'Orda non ha mai voluto un re; voleva qualcuno che si mettesse davanti quando contava.",
+		"Altri popoli coprono d'oro i loro re. Noi abbiamo dato al nostro Capoguerra una sala di legno e pelli, e lui sembra preferirla.",
+	},
+	["org.muse.w17.hold.018"] = {
+		"Grommash Hold. Non riesco a guardarlo senza raddrizzare la schiena. La schiena ha presentato un reclamo.",
+		"Basta un'occhiata alla sala del Capoguerra e controllo se ho gli stivali impolverati. Come se a Orgrimmar qualcuno li avesse puliti.",
+	},
+	["org.muse.w17.hold.019"] = {
+		"osserva un postulante inginocchiarsi davanti al trono, dire poche parole stentate e rialzarsi, più leggero a vederlo.",
+		"vede i Kor'kron accanto al trono spostare il peso tutti insieme, come se il pavimento si fosse inclinato sotto di loro nello stesso istante.",
+	},
+	["org.muse.w17.hold.020"] = {
+		"Le mura di Orgrimmar furono innalzate per tenere fuori i nemici. Grommash Hold per il contrario: per far entrare tutti i popoli della città e farli sedere intorno a un solo fuoco.",
+		"A una città servono mura per stare in piedi e una sala per restare unita. Thrall ha costruito le mura per i nemici e Grommash Hold per gli amici, e sospetto che la seconda cosa sia stata la più difficile.",
+		"Mura per i nemici, una sala per gli amici. Delle due, Orgrimmar spende di più per le mura e ha più bisogno della sala.",
+	},
+	["org.muse.w17.honor.001"] = {
+		"Un cacciatore della Valley of Honor cerca di insegnare a uno scorpide a stare seduto. Lo scorpide ci sta pensando, molto lentamente, con la coda.",
+		"Nell'angolo dei cacciatori della Valley of Honor qualcuno insegna le buone maniere a uno scorpide. Nessuno dei due sembra fiducioso.",
+	},
+	["org.muse.w17.honor.002"] = {
+		"Gli addestratori di guerrieri della Valley of Honor hanno tutti qualcosa in meno: un dito, un orecchio, mezzo dente. Ogni lezione arriva con la sua prova.",
+		"Fra gli addestratori e gli allievi della Valley of Honor la differenza è in quello che manca. Un orecchio intaccato, due dita perdute. Insegnano per esperienza.",
+		"Più l'addestratore della Valley of Honor è vecchio, meno dita gli restano. Io do retta soprattutto a quelli che ne hanno tre.",
+	},
+	["org.muse.w17.honor.003"] = {
+		"Guarda quei due. Discutono di guardia da più tempo di quanto sarebbe durato lo scontro.",
+		"Hanno smesso di allenarsi per litigare sulla tecnica. A gesti. L'addestratore li lascia sfogare finché non crollano.",
+		"Due grunt, una guardia, una dozzina di opinioni. È un pezzo che nessuno tira un pugno.",
+	},
+	["org.muse.w17.honor.004"] = {
+		"La Hall of Legends non si apre alla curiosità. Il grado, guadagnato sui campi di battaglia, è l'unica chiave che la sua porta accetti.",
+		"Nessuna moneta compra l'ingresso alla Hall of Legends, e nessun amico alla porta serve a qualcosa. Solo il grado, conquistato sul campo, e il campo non si lascia corrompere.",
+		"A Orgrimmar l'oro apre quasi tutte le porte. La Hall of Legends è l'eccezione testarda.",
+	},
+	["org.muse.w17.honor.005"] = {
+		"Silenzio, dentro la Hall of Legends. Chi si è guadagnato un posto fra queste mura non ha bisogno di gridarlo.",
+		"Nella Hall of Legends le voci si abbassano senza che nessuno lo chieda. Gli stendardi alle pareti si vantano per tutti.",
+	},
+	["org.muse.w17.honor.006"] = {
+		"Se qualcuno nella Valley of Honor chiede, sto solo guardando. Questi lividi vengono da un'altra parte.",
+		"Guardo soltanto l'allenamento. Davvero. Lo zoppicare non c'entra.",
+	},
+	["org.muse.w17.honor.007"] = {
+		"indugia ai margini del campo d'addestramento a guardare due grunt che si scambiano colpi, e fa una smorfia ogni volta che il più grosso va a segno.",
+		"si appoggia a un palo ai bordi del cortile della Valley of Honor e segue un incontro d'allenamento con gli occhi socchiusi di chi tiene il punteggio.",
+		"tiene il conto in silenzio di un incontro nel cortile, muovendo le labbra, e lo perde quando il grunt più piccolo vince all'improvviso.",
+	},
+	["org.muse.w17.honor.008"] = {
+		"rallenta accanto a un cacciatore che spazzola via la polvere dal manto di un grosso felino, che sopporta a occhi chiusi con la coda che freme.",
+		"si accosta a un cacciatore che toglie i lappoloni dal collo di un lupo; il lupo si appoggia al pettine con la gioia sfacciata di un cucciolo.",
+		"resta a vedere un cacciatore controllare gli zoccoli di un cinghiale uno per uno, parlandogli per tutto il tempo con voce bassa e ragionevole.",
+	},
+	["org.muse.w17.honor.009"] = {
+		"Ogni guerriero che lascia la Valley of Honor si porta via un po' della sua polvere nelle pieghe dell'armatura. Metà dei campi di battaglia di Kalimdor devono averne un pizzico.",
+		"La polvere rossa del cortile viaggia. Salta fuori a cento leghe da Orgrimmar, amano dire gli addestratori, negli stivali di chi hanno istruito.",
+		"Un po' della Valley of Honor parte sempre con i suoi guerrieri: polvere rossa nelle fibbie, la voce degli addestratori nelle orecchie.",
+	},
+	["org.muse.w17.honor.010"] = {
+		"Un tempo il mio popolo combatteva con il fuoco del demone nel sangue. Nella Valley of Honor i giovani imparano a combattere senza, e combattono meglio.",
+		"I nostri anziani hanno imparato la guerra con una maledizione che bruciava loro dentro. Gli addestratori della Valley of Honor la insegnano pulita. Guardo i giovani e penso: ecco cosa dovevamo essere.",
+	},
+	["org.muse.w17.honor.011"] = {
+		"Per il caldo, nella Valley of Honor, non si ferma nessuno. Il caldo, dicono gli addestratori, è solo un nemico che non puoi colpire, tanto vale ignorarlo.",
+		"Gli addestratori della Valley of Honor trattano il caldo come uno che fischia dagli spalti: non merita risposta.",
+		"Nel cortile nessun addestratore concede riposo per il caldo, la polvere o la sete. I grunt si lamentano di tutti e tre e continuano a esercitarsi.",
+	},
+	["org.muse.w17.honor.012"] = {
+		"L'addestratore di bestie della Valley of Honor parla agli animali come un buon fabbro parla al ferro: con pazienza, e aspettandosi di essere capito.",
+		"C'è chi addestra le bestie, nella Valley of Honor, senza mai alzare la voce. Gli animali si sporgono per sentire, e forse il trucco è tutto lì.",
+	},
+	["org.muse.w17.honor.013"] = {
+		"Guardali. La Valley of Honor potrebbe mettere in campo un esercito solo con quelli che stanno a guardare.",
+		"Metà di questa valle si allena, l'altra metà dà consigli urlando. So bene in quale metà sto io.",
+		"Più gente a guardare che ad allenarsi. Come al solito. Nessuno si offre mai per fare il fantoccio.",
+	},
+	["org.muse.w17.honor.014"] = {
+		"Qui tutti contano a voce alta: colpi, giri, passi, punti. L'intera Valley of Honor tiene il tempo come un unico, enorme istruttore.",
+		"Qualcuno, nella Valley of Honor, conta sempre ad alta voce. Altri dieci. Da capo. Altri cinque. I numeri non sembrano mai scendere.",
+	},
+	["org.muse.w17.honor.015"] = {
+		"si abbassa di scatto quando un bastone d'allenamento sfugge di mano a qualcuno e vola via sferragliando a un passo di distanza, tra le risate fragorose del cortile.",
+		"si scansa in fretta quando una coppia di lottatori rotola fuori dal cortile fin sul sentiero, ancora avvinghiata, scusandosi a denti stretti.",
+		"schiva una coppia di grunt che lottano nella polvere del cortile, e si guadagna un grugnito d'approvazione da un addestratore per il gioco di gambe.",
+	},
+	["org.muse.w17.honor.016"] = {
+		"Alcuni di quelli che escono dalla Hall of Legends portano il loro grado come altri portano una zoppia: guadagnato, e non se ne discute.",
+		"Gli ufficiali che entrano ed escono dalla Hall of Legends raccontano di rado come ci sono arrivati. Il loro silenzio è il vanto più rumoroso della Valley of Honor.",
+		"La Hall of Legends lascia entrare pochi, e quei pochi, quando escono, non si vantano mai. Vantarsi è roba da cortile.",
+	},
+	["org.muse.w17.honor.017"] = {
+		"Colpisci il palo, non l'addestratore. A meno che non abbia cominciato lui.",
+		"Tieni su quel gomito! Scusa. Non è il mio cortile, non sono affari miei.",
+	},
+	["org.muse.w17.honor.018"] = {
+		"Raptor, felini, cinghiali e una tartaruga molto offesa. Il lato dei cacciatori di questa valle è un'aia dove morde tutto.",
+		"Fra bestie, cacciatori e odore di stalla, questa è la cosa più simile a un'aia che abbia Orgrimmar. Un'aia con i denti.",
+		"Il raptor di qualcuno ha appena rubato il pasto a un cinghiale, e i cacciatori scommettono già sulla rivincita.",
+	},
+	["org.muse.w17.honor.019"] = {
+		"Ogni grunt nel cortile d'addestramento combatte contro qualcuno che non c'è: il nemico della prossima campagna, della prossima guerra. Colpiscono il palo come se avesse una faccia.",
+		"I compagni d'allenamento della Valley of Honor si guardano oltre le spalle. Ciascuno vede un nemico diverso, lontano, al di là delle mura.",
+		"Gli scontri più feroci del cortile si combattono contro nessuno: un grunt da solo che martella l'aria, e chi lo aspetta al di là delle mura.",
+	},
+	["org.muse.w17.honor.020"] = {
+		"socchiude gli occhi nella sabbia che vola e guarda il cortile della Valley of Honor, dove l'allenamento prosegue come se la polvere facesse parte della lezione.",
+		"guarda gli addestratori tenere gli allievi al lavoro nella sabbia che sibila, ogni grido mezzo inghiottito dal vento.",
+		"si ripara gli occhi dalla sabbia e guarda un addestratore continuare a gridare il conto, come se il vento avesse solo fatto una domanda.",
+	},
+	["org.muse.w17.order.001"] = {
+		"assiste a una spinta tra due orchi che finisce prima di cominciare: compare un grunt in mezzo, dice una parola sola, e tutti e due si ricordano di avere affari urgenti altrove.",
+		"vede scoppiare una zuffa davanti a una porta e due grunt chiuderla quasi prima che cominci, senza sguainare niente.",
+	},
+	["org.muse.w17.order.002"] = {
+		"La legge di Orgrimmar ci sta sull'unghia di un pollice: niente ferro sguainato contro un cittadino, niente mani nella borsa degli altri. Le note a margine le scrivono i grunt.",
+		"Da quel che capisco, la città ha due leggi, e le fanno rispettare orchi grossi come porte.",
+		"Qui nessuno legge le leggi ad alta voce. Non serve: i grunt sono proprio lì.",
+	},
+	["org.muse.w17.order.003"] = {
+		"si ferma a guardare un grunt che ascolta un orco e un troll litigare per un debito, poi fissa una cifra che lascia tutti e due ugualmente scontenti.",
+		"resta lì mentre un grunt risolve una lite tra un goblin e un tauren, soprattutto lasciando che il goblin finisca le parole per primo.",
+	},
+	["org.muse.w17.order.004"] = {
+		"Troll in una valle, tauren in un'altra, orchi dappertutto in mezzo. Una parte della pace del Capoguerra sta nel dare a ciascuno un posto dove tenere il muso.",
+		"La città tiene i suoi popoli abbastanza separati e abbastanza vicini. Qualcuno ci ha pensato a lungo.",
+		"Dai a ogni popolo una valle e una lamentela tutta sua, e saranno troppo occupati per litigare tra loro. Chi ha pensato Orgrimmar l'aveva capito.",
+	},
+	["org.muse.w17.order.005"] = {
+		"Un avviso inchiodato a un palo: la parola del Capoguerra su qualcosa, in orchesco, e sotto un disegno della stessa cosa per chi non sa leggere. Nel disegno c'è un'ascia.",
+		"Qualcuno ha appeso gli ordini del Capoguerra a una trave, con una figura sotto per chi non legge. La figura è più chiara.",
+	},
+	["org.muse.w17.order.006"] = {
+		"In questa folla tutti portano ferro, e nessuno lo tocca. È la legge di Orgrimmar, scritta nel modo in cui la gente cammina.",
+		"Un'ascia su ogni schiena, un coltello a ogni cintura, e nemmeno uno sfoderato. La pace della città è mille persone che scelgono la stessa cosa nello stesso momento.",
+		"Una folla armata fino ai denti, e il peggio che succede è un piede pestato. È una disciplina che nessuno ha dovuto urlare.",
+	},
+	["org.muse.w17.order.007"] = {
+		"A Orgrimmar i ladri sono rari, dice il grunt. Soprattutto perché la punizione è lui.",
+		"Qui nessuno ruba, mi ha detto un grunt. Gli ho chiesto perché. Si è solo fatto scrocchiare le nocche.",
+	},
+	["org.muse.w17.order.008"] = {
+		"guarda due orchi chiudere un accordo stringendosi l'avambraccio, e basta: niente carte, nessun testimone se non la strada.",
+		"assiste a un patto concluso con una sola stretta d'avambracci, e le due parti si separano come se avessero firmato un contratto nel ferro.",
+	},
+	["org.muse.w17.order.009"] = {
+		"Pace nelle strade, ferro al portale. È questo l'accordo, e funziona.",
+		"Tieniti stretti la calma e la borsa, e i grunt non sapranno mai come ti chiami.",
+		"Il modo migliore per restare in buoni rapporti con le guardie, qui? Non dargli niente da scrivere.",
+	},
+	["org.muse.w17.order.010"] = {
+		"Non siamo un popolo solo. Siamo una promessa che più popoli si sono fatti a vicenda, e il Capoguerra è quello che ce la fa mantenere.",
+		"L'Orda non è una razza, è una stretta di mano. A Orgrimmar la vedi tenere salda tutto il giorno, in mezzo alla folla.",
+	},
+	["org.muse.w17.order.011"] = {
+		"osserva due grunt fermare un carro, frugare tra i sacchi col manico dell'ascia e farlo ripartire senza dire una parola.",
+		"coglie un grunt che solleva il telo dal carro di un goblin, guarda, annusa e lo lascia ricadere, mentre il goblin sorride per tutto il tempo.",
+	},
+	["org.muse.w17.order.012"] = {
+		"Il Capoguerra esce di rado dalla sua sala, dicono, eppure la sua parola sta in ogni strada: nel modo in cui stanno i grunt, in chi si sposta per chi.",
+		"Thrall per le strade non si vede granché. Si vedono le sue regole ovunque, e forse è meglio così.",
+		"La pace di Thrall cammina per le strade anche senza di lui, sulle spalle di ogni grunt in vista.",
+	},
+	["org.muse.w17.order.013"] = {
+		"I grunt mantengono la pace in questa città per chiunque ci si trovi, mi dicono. Preferisco non essere io a verificare se quel chiunque comprende anche me.",
+		"Qui l'ordine è severo e giusto, per quel che vedo. Giusto per chi, è la domanda che mi tengo in tasca.",
+	},
+	["org.muse.w17.order.014"] = {
+		"I grunt si ricordano le facce. Resta in città abbastanza e uno di loro ti concede il più piccolo dei cenni: conosciuto, innocuo, per ora.",
+		"Essere riconosciuti da un grunt è uno strano onore. Niente sorriso, solo uno sguardo che si allenta un poco, come una porta lasciata senza sbarra.",
+	},
+	["org.muse.w17.order.015"] = {
+		"Strade tranquille, grunt? Allora stai facendo il tuo lavoro, e io me ne tengo fuori.",
+		"Bel lavoro, tutti quanti. Non hanno accoltellato nessuno da almeno un'ora.",
+	},
+	["org.muse.w17.order.016"] = {
+		"Certe liti i Darkspear le sistemano a modo loro, nella loro valle, e i grunt trovano qualcos'altro da guardare. Anche sapere quando non vedere fa parte della legge.",
+		"Non tutte le dispute di Orgrimmar arrivano a un grunt. I tauren hanno i loro anziani e i troll le loro usanze, e la città ha il buon senso di lasciarli fare.",
+	},
+	["org.muse.w17.order.017"] = {
+		"si raddrizza un poco al passaggio di una pattuglia, come fanno tutti a Orgrimmar, senza che nessuno lo chieda.",
+		"porta le mani bene in vista quasi senza accorgersene mentre passano due grunt, poi le lascia ricadere lungo i fianchi.",
+	},
+	["org.muse.w17.order.018"] = {
+		"Il portale è aperto a chiunque venga in pace, e chi lo sia lo decidono i grunt a colpo d'occhio. Mi dicono che sbagliano di rado.",
+		"Al portale nessuno ti chiede cosa vieni a fare. I grunt guardano e basta, e in qualche modo quella è insieme la domanda e la risposta.",
+	},
+	["org.muse.w17.spirits.001"] = {
+		"Le maschere sui pali delle capanne, nella Valley of Spirits, hanno la bocca aperta, come colte a metà di una parola. Darei parecchio per sentire come va a finire.",
+		"Maschere dipinte sorvegliano il sentiero della Valley of Spirits, tutte a bocca spalancata. Qualunque cosa avessero cominciato a dire, la stanno dicendo da molto tempo.",
+		"Ogni maschera della valle dei troll sembra intagliata a metà di una frase. Continuo ad aspettarmi che una di loro la finisca.",
+	},
+	["org.muse.w17.spirits.002"] = {
+		"Giù nella Valley of Spirits c'è una pozza d'acqua ferma, l'unica acqua di Orgrimmar che nessuno cerca di vendermi.",
+		"Nella valle dei troll c'è una pozza, piatta e silenziosa, in una città dove ogni altra goccia arriva in un secchio e si paga.",
+		"Acqua ferma, in un canyon di polvere rossa. I Darkspear tengono la loro pozza come altri tengono un focolare: qualcosa intorno a cui ritrovarsi.",
+	},
+	["org.muse.w17.spirits.003"] = {
+		"Un vecchio Darkspear della Valley of Spirits, quando parla, volge sempre il viso verso la costa. Verso le isole perdute, immagino. Dubito che se ne accorga.",
+		"Alcuni dei troll più anziani continuano a guardare a sud-est, oltre le mura, verso le Echo Isles. Un'abitudine, come la lingua che va a cercare un dente che non c'è più.",
+		"I troll della Valley of Spirits parlano poco delle Echo Isles. Non ne hanno bisogno: metà dei loro amuleti pende rivolta verso il mare.",
+	},
+	["org.muse.w17.spirits.004"] = {
+		"resta a guardare un piccolo troll che batte un ritmo su una pentola rovesciata, mentre un anziano gli corregge il tempo senza alzare gli occhi dal lavoro.",
+		"indugia accanto a una capanna della Valley of Spirits, dove una bambina tamburella male su una pentola e un vecchio le batte il tempo giusto sul ginocchio finché non lo trova.",
+		"sorride suo malgrado davanti a un trollino che pesta su una pentola, e alla mano adulta che ogni tanto si allunga a rallentarlo.",
+	},
+	["org.muse.w17.spirits.005"] = {
+		"Vicino all'acqua, nella Valley of Spirits, un sacerdote e uno sciamano discutono su da dove venga davvero la guarigione. Nessuno dei due la spunterà, ed entro la settimana rattopperanno gli stessi grunt.",
+		"Accanto alla pozza dei troll un sacerdote e uno sciamano dissentono, con garbo e a lungo, su chi chiuda una ferita: la Luce o gli spiriti. Alla ferita, intanto, non importa a chi vada il merito.",
+		"Luce o spiriti? I due guaritori accanto alla pozza dei troll ci stanno dietro da un pezzo. Chiunque vinca, i grunt in fila alle loro spalle zoppicano lo stesso.",
+	},
+	["org.muse.w17.spirits.006"] = {
+		"osserva uno stregone vudù scuotere una zucca secca contro un lupo di passaggio, e il lupo, molto saggiamente, prendere il giro lungo.",
+		"nota che perfino i lupi lasciano parecchio spazio agli stregoni vudù della Valley of Spirits, e segue il loro esempio.",
+		"gira alla larga da uno stregone vudù che scuote una zucca contro niente di preciso, come fanno i lupi del posto.",
+	},
+	["org.muse.w17.spirits.007"] = {
+		"Occhio ai vasi, da queste parti. Nella Valley of Spirits metà di loro hanno qualcuno che ci abita dentro.",
+		"Non prendere a calci quel vaso. Giù nella valle dei troll non sai mai chi ci sta di casa.",
+		"Piano coi vasi. I troll dicono che alcuni sono abitati.",
+	},
+	["org.muse.w17.spirits.008"] = {
+		"vede i riflessi delle capanne tremare sulla pozza della Valley of Spirits ogni volta che lì vicino attacca un tamburo.",
+		"si trattiene accanto alla pozza dei troll quanto basta per vedere un colpo di tamburo attraversare l'acqua in un anello di increspature.",
+		"si sporge sulla pozza dei troll e vede le maschere dipinte delle capanne alle sue spalle appese a testa in giù nell'acqua, con gli occhi sgranati.",
+	},
+	["org.muse.w17.spirits.009"] = {
+		"passa chinandosi sotto una corda di radici messe a seccare fra due capanne della Valley of Spirits, e si rialza starnutendo per l'odore di pepe.",
+		"rallenta accanto a una fila di radici, cortecce e una cosa secca con le zampe, e decide di non chiedere quale sia la medicina e quale la cena.",
+		"arriccia il naso davanti a una corda di radici a seccare nella Valley of Spirits, poi, per curiosità, annusa una seconda volta.",
+	},
+	["org.muse.w17.spirits.010"] = {
+		"I troll lasciano fuori ciotoline di cibo che nessuno mangia. Quando le mosche hanno finito, dicono gli stregoni vudù, anche gli spiriti hanno avuto la loro parte.",
+		"Davanti alle capanne della Valley of Spirits ci sono ciotoline di farina e frutta. Per gli spiriti, mi ha spiegato un Darkspear, come si tiene da parte un piatto per un ospite in ritardo.",
+		"Una piccola troll ha appena preso un fico da una delle ciotole per gli spiriti. La nonna le ha dato uno scappellotto e ne ha messo al suo posto uno più grosso.",
+	},
+	["org.muse.w17.spirits.011"] = {
+		"I tamburi degli orchi marciano. Quelli della Valley of Spirits invece vagano: girano in tondo, si fermano, ripartono altrove, come una voce anziana che racconta una storia saputa a memoria.",
+		"I tamburi dei troll non vanno mai al passo. Divagano, esitano, riattaccano da un'altra parte, e dopo un po' le marce degli orchi, al confronto, sembrano un po' rigide.",
+		"Ascolta abbastanza a lungo i tamburi della valle dei troll e i ritmi di guerra della città cominciano a sembrare qualcuno che conta sulle dita.",
+	},
+	["org.muse.w17.spirits.012"] = {
+		"Un amuleto contro i serpenti, uno contro la sfortuna, uno contro i goblin. Indovinate quale finisce per primo, alla bancarella di quella troll.",
+		"Quella troll ha un amuleto per ogni cosa. Gliene ho chiesto uno contro i prezzi. Ha riso per un bel pezzo.",
+		"Ho comprato un amuleto portafortuna da una troll. Me ne ha regalato un secondo, contro qualunque cosa attiri il primo.",
+	},
+	["org.muse.w17.spirits.013"] = {
+		"Qui nella Valley of Spirits la strada diventa terra battuta, e il ferro degli orchi lascia il posto a ossa, piume e legno dipinto.",
+		"La Valley of Spirits costruisce con ciò che gli orchi buttano via: ossa, piume, zucche secche, moltissima vernice. Sembra più antica del resto della città, anche se non può esserlo.",
+		"Meno punte e più piume, da queste parti. La Valley of Spirits ha gusti tutti suoi.",
+	},
+	["org.muse.w17.spirits.014"] = {
+		"aggira un cerchio di pietre dipinte posato a terra, e non domanda a cosa serva.",
+		"passa alla larga da un cerchio di sassolini disposti nella polvere fra le capanne, come si gira intorno al cane addormentato di qualcun altro.",
+	},
+	["org.muse.w17.spirits.015"] = {
+		"guarda una sciamana seduta accanto alla pozza dei troll a occhi chiusi, immobile come un palo, mentre tre trollini fanno di tutto per farla ridere.",
+		"sosta vicino all'acqua della Valley of Spirits, dove una sciamana siede assorta e una banda di piccoli troll fa del suo meglio per farla crollare. Per ora vince la sciamana.",
+	},
+	["org.muse.w17.spirits.016"] = {
+		"Pioggia sulla pozza dei troll, e ogni Darkspear in vista ci sta sotto col viso all'insù. Acqua che cade sull'acqua: pare che lo prendano per un buon segno.",
+		"Pioggia nella Valley of Spirits. Le maschere dipinte colano colore, e i vecchi troll restano accanto alla pozza a guardarla riempirsi, come se contassero le gocce.",
+	},
+	["org.muse.w17.spirits.017"] = {
+		"In quella capanna bolle qualcosa. Medicina, maledizione o zuppa? Nella Valley of Spirits non lo chiedo.",
+		"Quell'odore o è una cura o è una maledizione. L'assaggio lo lascio a qualcuno più coraggioso.",
+	},
+	["org.muse.w17.spirits.018"] = {
+		"I Darkspear arrivarono a Kalimdor sulle navi di Thrall con poco più delle loro lance e dei loro spiriti. La valle che hanno ricevuto è piccola, e l'hanno riempita fino all'orlo.",
+		"Thrall portò via i Darkspear dalle loro isole quando ormai non restava niente a trattenerli. Lo ripagarono con l'unica moneta che avevano, la parola data, ed è nella Valley of Spirits che la custodiscono.",
+		"I Darkspear devono la vita a Thrall, e lo sanno tutti. Nella valle dei troll non c'è bisogno di ripeterlo.",
+	},
+	["org.muse.w17.spirits.019"] = {
+		"si scosta mentre alcuni troll in tunica passano diretti all'acqua, senza fretta, con gli orli che spazzano la polvere come scope.",
+		"fa strada a due sacerdoti troll che scendono verso la pozza, e che ringraziano con la stessa lenta inclinazione del capo.",
+	},
+	["org.muse.w17.spirits.020"] = {
+		"Alcuni amuleti dei troll, nella Valley of Spirits, pendono rivolti verso fuori, verso il resto della città. Non si sa mai, mi ha detto un Darkspear con un sogghigno.",
+		"I troll si fidano dei loro vicini orchi, mi ha spiegato uno stregone vudù. Gli amuleti inchiodati in direzione del Drag sono lì solo per buona educazione.",
+		"Metà degli amuleti dei troll puntano verso il resto della città. Cortesia, l'ha chiamata uno stregone vudù. Io la chiamerei prudenza.",
+	},
+	["org.muse.w17.spirits.021"] = {
+		"Tranquilla, questa valle. Solo tre tamburi alla volta. Per Orgrimmar è una ninna nanna.",
+		"Ecco un angolo tranquillo: un tamburo, una pozza, e nessuno che vende niente. Potrei schiacciare un pisolino.",
+		"Mi piace questa valle. I tamburi non ti urlano addosso: borbottano fra sé.",
+	},
+	["org.muse.w17.strength.001"] = {
+		"Chi entra dal portale principale si ferma qui un momento, a decidere che cosa sarà Orgrimmar per lui. Glielo leggi in faccia, mentre decide.",
+		"In questa valle i viaggiatori si fermano davvero, dopo giorni di cammino. Hanno ancora la strada addosso; la città non è ancora cominciata.",
+		"Appena dentro il portale la gente si ferma e fa il punto: la banca, la locanda, il Drag più in là. Si vede la strada scivolargli giù dalle spalle.",
+	},
+	["org.muse.w17.strength.002"] = {
+		"si scansa per lasciar passare un carro che entra dal portale principale, le ruote bianche di polvere e il conducente già a discutere con una guardia su dove fermarsi.",
+		"guarda una carovana entrare dal portale, le casse che ondeggiano, mentre le guardie le fanno cenno di passare con la noia di chi lo fa da sempre.",
+		"lascia sfilare oltre il portale una fila di portatori carichi, ognuno col collo allungato per vedere se la banca è lontana quanto temeva.",
+	},
+	["org.muse.w17.strength.003"] = {
+		"In un registro della banca un impiegato tiene il mio nome accanto a un numero. Quella pagina sa di me più di tanta gente con cui ho viaggiato.",
+		"Nei libri della banca c'è una riga d'inchiostro che è soltanto mia: un nome e una cifra. Forse è il ritratto più sincero che mi abbiano mai fatto.",
+		"Il mio nome sta in un registro della Valley of Strength, accanto a una cifra che cresce di rado. Chi l'ha scritto non mi riconoscerebbe in faccia.",
+	},
+	["org.muse.w17.strength.004"] = {
+		"La casa d'aste mi fa comprare da gente che non incontrerò mai. Qualcuno, giù nei Barrens, ha deciso il prezzo di questa pelliccia e se n'è andato fischiettando.",
+		"Ogni lotto della casa d'aste l'ha messo in vendita uno sconosciuto che non vedrò mai. Sto trattando con un fantasma che ha già lasciato la città.",
+	},
+	["org.muse.w17.strength.005"] = {
+		"I banditori d'asta non alzano mai la voce. In una città dove tutti urlano, è così che capisci chi comanda davvero.",
+		"Alla casa d'aste nessuno grida. I banditori mormorano le offerte come uno sciamano che legge le ossa, e intanto le monete di mezza città cambiano mano.",
+		"Di tutte le voci di Orgrimmar, le più sommesse sono quelle dei banditori. Chi grida vende pelli; chi sussurra sposta patrimoni.",
+	},
+	["org.muse.w17.strength.006"] = {
+		"guarda un addetto salire sulla torre di volo con un secchio di carne cruda, e sente le bestie lassù azzuffarsi molto prima che arrivi in cima.",
+		"alza gli occhi alla torre di volo mentre un addetto tira su un secchio di avanzi che sciaborda; da qualche parte sulla piattaforma una bestia lancia un verso affamato e roco.",
+	},
+	["org.muse.w17.strength.007"] = {
+		"Gli habitué della locanda giurano che le tacche sullo stipite contano le risse. La locandiera dice che contano i conti non pagati. Nessuno ha chiesto quale lista sia più lunga.",
+		"Sullo stipite della locanda ci sono cento tacche incise. Risse, dicono i clienti fissi. Debiti, dice la locandiera, e non sorride quando lo dice.",
+		"Chiedi delle tacche sullo stipite della locanda e senti due storie: le zuffe, secondo chi beve, e le scodelle di stufato mai pagate, secondo la locandiera.",
+	},
+	["org.muse.w17.strength.008"] = {
+		"Portale, banca, locanda. Orgrimmar mette i suoi tre argomenti migliori proprio all'ingresso.",
+		"Appena passato il portale: un posto dove tenere i soldi e uno dove spenderli. Questa città conosce i suoi ospiti.",
+	},
+	["org.muse.w17.strength.009"] = {
+		"Il portale principale ha visto più addii che benvenuti. Chi esce da lì marcia verso qualche guerra in fondo a una strada.",
+		"Dal portale le strade partono verso tutti i guai di Kalimdor. Metà di quelli che ci passano sotto stanno salutando qualcuno, e fanno finta di niente.",
+	},
+	["org.muse.w17.strength.010"] = {
+		"Ci vediamo alla banca, dicono tutti. Guarda qui: mezza Orgrimmar ferma davanti alla banca ad aspettare l'altra metà.",
+		"Qui davanti alla banca stanno tutti aspettando qualcuno. Potrei vendere i posti a sedere.",
+		"I gradini della banca sono il punto di ritrovo della città. Nessuno ha ancora trovato nessuno, ma tutti aspettano con grande pazienza.",
+	},
+	["org.muse.w17.strength.011"] = {
+		"Un viaggiatore è appena entrato dal portale con uno zaino grande il doppio di lui e la faccia di chi ha fatto a piedi tutta la strada da Razor Hill per puntiglio.",
+		"Dal portale arriva arrancando un venditore ambulante piegato sotto un fagotto grande come una tenda. Lo molla accanto alla banca e ci si siede sopra, e per un po' è l'anima più felice della valle.",
+	},
+	["org.muse.w17.strength.012"] = {
+		"Ogni volta che passo il portale ed entro nella valle, qualcosa nelle mie spalle si scioglie. Non è proprio sicurezza. È qualcosa di più vicino all'appartenenza.",
+		"Oltre il portale principale, e il frastuono della valle mi si chiude intorno come una porta che lascia fuori la strada. È tutto nostro, chiasso compreso.",
+	},
+	["org.muse.w17.strength.013"] = {
+		"Alla banca il guerriero più ricco della città e il peone più povero aspettano allo stesso bancone. L'impiegato li tratta tutti e due con lo stesso educato disprezzo.",
+		"La banca è l'unico posto di Orgrimmar dove un nome famoso non riceve inchini. Un rame è un rame, dice la faccia dell'impiegato, chiunque lo posi.",
+		"Eroi, peoni, mercanti goblin: gli impiegati della banca li guardano tutti allo stesso modo, come una colonna di cifre che per caso parla.",
+	},
+	["org.muse.w17.strength.014"] = {
+		"Ogni volta che fuori passa qualcosa di pesante, dal soffitto scende una polvere rossa sottile. Anche al chiuso, la città non si lascia dimenticare.",
+		"Sotto questo tetto la strada è solo un brontolio, ma ogni carro che passa fa cadere dall'alto un po' di terriccio rosso.",
+	},
+	["org.muse.w17.strength.015"] = {
+		"Offerta, rilancio, sospiro. La casa d'aste è solo un duello più lento.",
+		"Qualcuno mi ha superato all'asta per un solo rame. Mi piacerebbe conoscerlo. Per poco.",
+		"Battuto all'asta per un rame. Chiunque tu sia, spero che arrugginisca.",
+	},
+	["org.muse.w17.strength.016"] = {
+		"La strada dal portale alla banca è consumata, liscia e chiara, lucidata da tutti gli stivali entrati in città per affari. Le abitudini di una città si vedono prima di tutto nella sua pietra.",
+		"Fra il portale e la banca la roccia è scavata in un solco poco profondo. Nessuno ha tracciato quel sentiero: l'hanno fatto diecimila commissioni.",
+	},
+	["org.muse.w17.strength.017"] = {
+		"Qui le notizie corrono più in fretta di chi le porta. Al portale qualcuno accenna a una scaramuccia nei Barrens, e quando arriva alla banca la scaramuccia è raddoppiata.",
+		"Una voce, in questa valle, entra con le carovane e cresce di una taglia a ogni bancarella che passa. Arrivata alla porta della locanda, ci passa a malapena.",
+		"Ogni carovana che entra dal portale porta una voce, e la valle la ingrassa. Quello che a Ratchet era un asse rotto, alla locanda arriva come una flotta affondata.",
+	},
+	["org.muse.w17.strength.018"] = {
+		"Gli orchi sono usciti dai campi d'internamento con addosso soltanto stracci. Adesso accanto al loro portale c'è una banca piena di monete. Certe vittorie non fanno rumore.",
+		"Fino a poco fa gli orchi non avevano niente che valesse la pena chiudere a chiave. Adesso questa città ha una banca. È una vittoria più silenziosa di qualunque battaglia, e forse più grande.",
+	},
+	["org.muse.w17.strength.019"] = {
+		"Lupi, carri, viaggiatori e un peone con un rotolo di tela, tutti diretti alla stessa porta. In questa valle nessuno sta fermo a lungo.",
+		"Fermati qui un attimo e qualcuno ti appoggerà addosso una cassa.",
+		"Bisogna muoversi, in questa valle. L'ultimo che si è fermato a pensare si è ritrovato un lupo seduto sui piedi.",
+	},
+	["org.muse.w17.strength.020"] = {
+		"In un angolo della locanda c'è una partita agli aliossi che dura da così tanto che nessuno ricorda chi stia vincendo, solo chi deve da bere a chi.",
+		"C'è un angolo della locanda dove gli stessi quattro vecchi grunt tirano gli ossi e litigano, e non li ho mai visti né cominciare né smettere. Forse fanno parte dei muri.",
+	},
+	["org.muse.w17.strength.021"] = {
+		"Un tetto e quattro muri fra me e gli imbonitori. La mia borsa e io possiamo riposare un momento.",
+		"Fuori dal mercato, finalmente. Qui dentro nessuno cerca di vendermi niente, e continuo ad aspettare la fregatura.",
+	},
+	["org.muse.w17.strength.022"] = {
+		"si lascia portare dalla lenta marea di viaggiatori fra la banca e la locanda, salutando con un cenno nessuno in particolare.",
+		"attraversa la valle dalla banca verso la locanda, schivando un lupo, due peoni e una lite senza rallentare il passo.",
+	},
+	["org.muse.w17.strength.023"] = {
+		"guarda un corriere goblin schizzare fuori dalla banca con una borsa stretta al petto e sparire nella folla prima che qualcuno possa chiedergli qualcosa.",
+		"nota un fattorino uscire di corsa dalla casa d'aste, con un atto di vendita arrotolato tenuto alto come uno stendardo.",
+	},
+	["org.muse.w17.trade.001"] = {
+		"Un sarto del Drag pagherebbe in monete sonanti gli scampoli di lino con cui mi pulisco gli stivali. Dovrei guardare più spesso nelle mie borse.",
+		"Tutto quello che butto via qui ha un prezzo. Il lino strappato, la zanna spaiata, la pelle conciata a metà: a Orgrimmar qualcuno vuole tutto.",
+	},
+	["org.muse.w17.trade.002"] = {
+		"Paga a un mercante orco il primo prezzo che dice e ti guarderà come se gli avessi rifiutato la mano. Qui contrattare non è avidità: è buona educazione.",
+		"A Orgrimmar un affare concluso senza discutere è un piccolo insulto per chi vende. Si litiga per rispetto della merce.",
+		"Una volta ho pagato il prezzo chiesto, senza una parola. Il mercante ci è rimasto male. Gli avevo rubato la parte migliore della giornata.",
+	},
+	["org.muse.w17.trade.003"] = {
+		"I mercanti goblin vendono a tutti e non combattono per nessuno. In una città fatta per la guerra, sono gli unici che guardano la pace e ci vedono un mercato.",
+		"Un mercante goblin mi ha spiegato che il cartello di Steamwheedle non ha nemici, solo clienti che non hanno ancora pagato. Credo volesse essere gentile.",
+	},
+	["org.muse.w17.trade.004"] = {
+		"Quindici rame? A quel prezzo dovrebbe arrivare a casa con le sue gambe.",
+		"Così tanto? Per quello? Deve come minimo cantarmi una canzone e fare l'inchino.",
+		"Quanto vuoi? Ho comprato lupi interi per meno. Piccoli, d'accordo.",
+	},
+	["org.muse.w17.trade.005"] = {
+		"rigira un ninnolo fra le mani, dice un prezzo e guarda il mercante ridere come a una bella battuta, prima di dirne un altro.",
+		"fa un'offerta per una fibbia e riceve in risposta un'occhiata scandalizzata, un lungo sospiro e, finalmente, una controproposta.",
+		"rimette giù qualcosa sul telo di un mercante, a malincuore, e si sente chiamare indietro prima del terzo passo.",
+	},
+	["org.muse.w17.trade.006"] = {
+		"I mercanti qui comprano qualunque cosa abbia ancora un briciolo d'uso: una zanna scheggiata, una pelle strappata, uno stivale spaiato. Ci sarà pure un guerriero con una gamba sola che ringrazia per quello stivale.",
+		"Ho venduto a un mercante uno stivale, uno solo, e ha pagato senza battere ciglio. Per ogni cosa c'è un compratore, in qualche angolo di Kalimdor.",
+		"Un mercante si è preso il mio stivale spaiato senza domande e me l'ha pagato due rame. Ho smesso di chiedermi chi compri queste cose. Le vendo e basta.",
+	},
+	["org.muse.w17.trade.007"] = {
+		"Il rame delle colline di Durotar entra in città a ceste ed esce in forma di fibbie, rivetti e chiodi. Lungo la strada fra le due cose diventa dieci volte più caro.",
+		"Il minerale in quelle ceste è stato scavato qualche giorno fa nelle colline rosse. Quando diventa la fibbia sulla cintura di un grunt costa dieci volte tanto, e ha imparato a luccicare.",
+	},
+	["org.muse.w17.trade.008"] = {
+		"Non ci sono due bilance d'accordo su niente, in questa città. Ogni mercante giura che la sua è quella onesta, e che le altre sbagliano di un pollice.",
+		"Ho pesato lo stesso pugno d'argento a tre bancarelle e ho avuto tre risposte. Ogni mercante sembrava molto dispiaciuto per gli altri due.",
+	},
+	["org.muse.w17.trade.009"] = {
+		"Ti do la metà. No? Allora la metà, più un complimento per la bancarella.",
+		"Metà prezzo, e a tutta la locanda racconto che qui si tratta bene. No? Valeva la pena provarci.",
+	},
+	["org.muse.w17.trade.010"] = {
+		"Sul telo di un mercante: cuoio tauren, perline troll, le polveri tappate di uno speziale dei Reietti, ferro orco. Su tutto il resto litighiamo, ma su un prezzo giusto andiamo d'accordo.",
+		"Pelli di Mulgore, amuleti delle Echo Isles, ferro di Durotar e qualcosa di tappato che viene da Tirisfal, tutto su un solo banco. I nostri popoli si sono divisi un mercato prima di dividersi quasi ogni altra cosa.",
+	},
+	["org.muse.w17.trade.011"] = {
+		"Un vecchio orco tiene una bancarella di semplici tazze d'argilla. Nei campi non aveva niente da vendere, nemmeno il lavoro delle sue mani. Dispone ogni tazza come se fosse la prova di qualcosa.",
+		"C'è una bancarella di vasaio dove un vecchio orco allinea le tazze ben dritte. Mi hanno detto che ha passato metà della vita in un campo d'internamento. Adesso tutto quello che c'è su quel telo è suo.",
+		"Tazze semplici, ciotole semplici, e un vecchio orco che le tocca una per una prima di venderle. Dietro i recinti, mi dicono, niente di quello che faceva restava suo.",
+	},
+	["org.muse.w17.trade.012"] = {
+		"Ho venduto un anello a un mercante per un pugno d'argento. Adesso è sul suo telo al doppio, e lì fa più figura di quanta ne abbia mai fatta al mio dito.",
+		"Il bracciale che ho venduto un'ora fa è già sul banco del mercante, a prezzo doppio. Ho quasi voglia di ricomprarlo, solo per vedere che faccia fa.",
+	},
+	["org.muse.w17.trade.013"] = {
+		"Un goblin mi ha offerto credito. Condizioni facili, ha detto, e ha srotolato un contratto più lungo del mio braccio. Ho affrontato ogre che mi facevano meno paura.",
+		"Credito facile, ha detto il goblin, battendo il dito su una pagina di scrittura minuscola. Ho letto tre righe e mi sono tremate le ginocchia. Pago in contanti, grazie.",
+		"Mai farsi prestare soldi da un goblin, dicono i grunt. Gli ho chiesto le condizioni giusto per curiosità. Il contratto aveva una clausola sui miei nipoti.",
+	},
+	["org.muse.w17.trade.014"] = {
+		"Qui non tutto si paga in monete. Un troll ha appena pagato una cinghia rammendata con due pesci e una storia, e al conciatore sembrava piacere soprattutto la storia.",
+		"Ho visto una cinghia cambiare mano per un paio di pesci e un lungo racconto su uno squalo grande come una barca. Il conciatore ha detto che il racconto valeva più dei pesci.",
+	},
+	["org.muse.w17.trade.015"] = {
+		"Comprare è facile. Vendere è un'arte. In tutte e due me la cavo male, ma di buon umore.",
+		"Per comprare basta poco. Vendere bene è un mestiere, e io ci sto ancora facendo l'apprendistato.",
+	},
+	["org.muse.w17.trade.016"] = {
+		"morde una moneta ricevuta di resto, come fanno i peoni, e cerca di avere l'aria di chi ha capito qualcosa.",
+		"saggia un pezzo d'argento fra i denti, come in questo mercato sembrano fare tutti, senza la minima idea di che sapore dovrebbe avere.",
+	},
+	["org.muse.w17.trade.017"] = {
+		"fa un conto veloce sulle dita, aggrotta la fronte al risultato e lo rifà da capo, nella speranza che sia cambiato.",
+		"conta quel che deve e quel che resta, muovendo le labbra in silenzio, e arriva a una cifra che nessuno vorrebbe.",
+		"ripassa gli acquisti fatti contandoli su una mano, finisce le dita e decide di non cominciare con l'altra.",
+	},
+	["org.muse.w17.trade.018"] = {
+		"Metà di quello che si vende in questa città riparte dentro le casse: chiodi per Splintertree Post, sale per Crossroads, cuoio per chiunque abbia una guerra in corso. Le monete di Orgrimmar viaggiano più lontano di tanti grunt.",
+		"I mercanti qui non vendono solo alla città. Le loro casse partono in groppa ai kodo verso Crossroads e oltre, dovunque ci sia un avamposto da tenere e un muro da riparare.",
+	},
+	["org.muse.w17.trade.019"] = {
+		"Le monete sono monete, anche qui. Il goblin della bancarella mi ha servito senza battere ciglio, più di quanto avrebbero fatto i grunt alle mie spalle.",
+		"Il mio argento, un mercante l'ha preso senza guardarmi due volte in faccia. In questa città i mercanti sono gli unici a cui non importa da che parte sto.",
+	},
+	["org.muse.w17.trade.020"] = {
+		"Un tempo gli orchi non avevano altro da scambiare che la prossima guerra. Adesso la mia gente discute sul prezzo dei chiodi come qualunque popolo del mondo, e potrei starla a sentire tutto il giorno.",
+		"Per una generazione il mio popolo ha commerciato in sangue. A sentire un fabbro orco che tira sul prezzo di due cardini, penso che fosse l'abitudine più dura da perdere, e l'abbiamo persa.",
+	},
+	["org.muse.w17.trade.021"] = {
+		"Con la sabbia nell'aria gli imbonitori smettono di gridare e cominciano a indicare. Il mercato diventa quasi silenzioso, ed è la cosa più inquietante che abbia sentito in questa città.",
+		"Sabbia nell'aria, e ogni mercante tira un telo sulla merce e una sciarpa sulla bocca. Trattare a colpi di sopracciglia è più lento, ma funziona.",
+	},
+	["org.muse.w17.trade.022"] = {
+		"Sotto un tetto le grida degli imbonitori arrivano dalla porta a pezzi: fresco, metà prezzo, per te, amico. Anche attutite, stanno vendendo.",
+		"Qui dentro il mercato mi arriva solo a brandelli, gridato attraverso la porta. In questa città nemmeno un muro riesce a tenere zitto un buon affare.",
+	},
+	["org.muse.w17.trade.023"] = {
+		"soppesa due cinture quasi identiche, una per mano, mentre il venditore aspetta con la pazienza di un gatto a caccia.",
+		"alza un paio di guanti verso la luce, poi un altro paio, poi di nuovo il primo, mentre il sorriso del mercante si assottiglia.",
+	},
+	["org.muse.w17.walls.001"] = {
+		"Le travi grosse delle mura della città vengono da Ashenvale, dicono i grunt. Gli elfi lassù a nord non hanno perdonato nemmeno un'asse.",
+		"Mezzo portale grande sta in piedi su legname di Ashenvale, mi ha detto un grunt tutto fiero. In quella foresta i kaldorei stanno ancora contando i ceppi.",
+		"Ogni trave del portale grande è cresciuta in una foresta che la rivuole indietro, si dice al portale, e i grunt la trovano una cosa molto divertente.",
+	},
+	["org.muse.w17.walls.002"] = {
+		"si ferma a guardare un peon in cima a una scala che lima la punta di uno spuntone delle mura, colpi lenti, serissimo.",
+		"piega la testa verso un peon in alto sulle mura che raddrizza a martellate uno spuntone storto, poi ne prova la punta col pollice e fa una smorfia.",
+		"alza gli occhi su un peon appollaiato sulle mura con una cote, intento ad affilare uno spuntone con la cura che di solito si riserva a un'ascia.",
+	},
+	["org.muse.w17.walls.003"] = {
+		"Il portale grande non l'ho mai visto chiuso. Non so se qualcuno si ricorda ancora come si fa.",
+		"Il portale resta spalancato, come se chiuderlo fosse un'offesa per i grunt che ci stanno davanti. Forse lo sarebbe.",
+		"Un portale così, e nessuno si prende la briga di chiuderlo. La serratura sono i grunt.",
+	},
+	["org.muse.w17.walls.004"] = {
+		"Da ogni fascia di ferro delle mura scende la ruggine a lunghe strisce, e ormai non si capisce dove finisce la roccia e comincia il ferro.",
+		"Il ferro delle mura piange ruggine nella pietra rossa. Ancora qualche anno e la città sarà tutta di un colore solo.",
+	},
+	["org.muse.w17.walls.005"] = {
+		"Su un palo del portale grande qualcuno ha inciso una lunga fila di tacche, una per ogni turno di guardia, immagino. Nessuno ne ha mai cancellata una.",
+		"Al portale grande c'è un palo segnato da centinaia di taccheline. Turni di guardia, mi ha detto un grunt. Non ha detto quanti fossero suoi.",
+		"Qualcuno tiene il conto dei turni sul legno del portale, una tacca per volta, e alle tacche ormai sta finendo il palo.",
+	},
+	["org.muse.w17.walls.006"] = {
+		"Dalla strada, le mura dicono: state fuori. Da dentro dicono l'altra metà: qui non è entrato nessuno.",
+		"Viste da Durotar, le mura sono una minaccia. Viste da dentro, una promessa. La pietra è la stessa.",
+		"Chi viene da fuori legge le mura come un avvertimento. Chi ci vive dietro legge la stessa pietra come un tetto.",
+	},
+	["org.muse.w17.walls.007"] = {
+		"Chi ha costruito il portale grande l'ha pensato per i giganti, e poi ci ha messo di guardia degli orchi.",
+		"Dal portale grande passerebbe un kodo col cappello in testa. Chi aspettavano, di preciso?",
+	},
+	["org.muse.w17.walls.008"] = {
+		"In cima alle torri delle mura, piccole come pali di uno steccato, le vedette guardano Durotar perché il resto della città non debba farlo.",
+		"Sulle torri delle mura ci sono delle sentinelle, scure contro il cielo. Me ne accorgo solo quando una sposta il peso, cioè quasi mai.",
+		"Su quelle torri c'è qualcuno a ogni ora, a fissare un gran mucchio di niente. La città dorme più tranquilla per questo.",
+	},
+	["org.muse.w17.walls.009"] = {
+		"Passando sotto il portale grande tutti chinano un po' la testa, perfino i goblin che ci passerebbero dieci volte. L'ho fatto anch'io, e non saprei dire perché.",
+		"Strana cosa, il portale grande: la gente abbassa la testa quando ci passa sotto, e lì potrebbe entrare un tauren sulle spalle di un altro tauren.",
+	},
+	["org.muse.w17.walls.010"] = {
+		"Una toppa d'argilla fresca su un muro vecchio, più chiara del resto. Qualcuno sta ancora finendo Orgrimmar.",
+		"Qua e là sulle mura si vede malta nuova, pallida contro il rosso. La città non ha finito di farsi, e non finge il contrario.",
+		"Peon con secchi d'argilla bagnata vanno da una crepa all'altra lungo le mura. Orgrimmar si ricuce come si ricuce un guerriero: spesso, e senza storie.",
+	},
+	["org.muse.w17.walls.011"] = {
+		"Un uccellaccio da carogne si è preso lo spuntone più alto delle mura e se ne sta lì, come se la città intera fosse un pasto che vale la pena aspettare.",
+		"In cima a uno spuntone delle mura c'è un grosso uccello spelacchiato che ci guarda tutti con interesse professionale.",
+		"Ogni spuntone di quelle mura è fatto per tenere lontani i nemici, e un solo uccello arruffato ha trasformato il più alto in un posatoio.",
+	},
+	["org.muse.w17.walls.012"] = {
+		"Belle mura. Non vorrei mai doverle scalare.",
+		"Guarda che mura. Chi attacca Orgrimmar ci arriva in salita, contro il ferro.",
+		"Bel lavoro di pietra. Ogni palmo dice di no.",
+	},
+	["org.muse.w17.walls.013"] = {
+		"Chi ha costruito non ha fatto la guerra al canyon. Dove la roccia era alta l'ha lasciata stare, e dove calava ha riempito il buco di legno e ferro.",
+		"Metà delle mura della città è solo canyon, così com'era. Gli orchi hanno rattoppato i punti in cui la roccia si era scordata di fare da muro.",
+	},
+	["org.muse.w17.walls.014"] = {
+		"Là fuori nelle Barrens sono solo un viandante come tanti. Dietro queste mura sono Orda, e sembra saperlo perfino la pietra.",
+		"C'è una calma tutta particolare nel camminare sotto mura che stanno dalla tua parte. Non sapevo che mi mancasse finché non l'ho sentita.",
+	},
+	["org.muse.w17.walls.015"] = {
+		"piega la testa all'indietro per seguire il muro fino agli spuntoni, e deve continuare a piegarla più a lungo del previsto.",
+		"misura a occhio l'altezza delle mura, rinuncia a metà e si accontenta di un fischio sommesso.",
+	},
+	["org.muse.w17.walls.016"] = {
+		"Perfino le capanne sono fatte come piccoli fortini: pelli su travi pesanti, spuntoni lungo il colmo, una porta da tenere chiusa con una spalla.",
+		"Qui le case sono mura in miniatura. Pali grossi, pelli tese, ferro agli angoli. A Orgrimmar nessuno costruisce niente che non regga un colpo.",
+		"Guarda una capanna abbastanza a lungo e ci ritrovi le mura della città: lo stesso legname, gli stessi spuntoni, la stessa forma semplice e testarda.",
+	},
+	["org.muse.w17.walls.017"] = {
+		"Ehi, lassù sulle mura! Arriva qualcosa? No? Bene. Continua ad annoiarti.",
+		"Bella salita per una vedetta. Spero che la zuppa gliela mandino su con una corda.",
+	},
+	["org.muse.w17.walls.018"] = {
+		"passa una mano lungo un grosso palo d'angolo, levigato all'altezza delle spalle da tutti i carichi che ci sono strisciati contro.",
+		"si ferma accanto a un palo fasciato di ferro dove il passaggio svolta, col legno sbiancato da mille spalle di passaggio.",
+	},
+	["org.muse.w17.walls.019"] = {
+		"Qui nessuno ha alzato una mano contro di me. Eppure ogni grunt che incrocio mi guarda un attimo più a lungo del troll che mi sta accanto, e non posso dargli torto.",
+		"Le mura sono belle, in un modo brutale. Le ammirerei di più se non stessi dalla parte sbagliata della guerra che le ha fatte costruire.",
+	},
+	["org.muse.w17.wisdom.001"] = {
+		"Un vecchio tauren siede accanto al sentiero della Valley of Wisdom senza fare assolutamente niente, e lo fa meglio di chiunque altro a Orgrimmar.",
+		"Un tauren anziano, nella Valley of Wisdom, siede sulla stessa pietra da che si ricordi. Non aspetta. È lì e basta, come il canyon.",
+		"Lungo il sentiero per la sala del Capoguerra, un anziano tauren non si è mosso da quando l'ho notato. Un lupo gli si è acciambellato contro, come se fosse una roccia.",
+	},
+	["org.muse.w17.wisdom.002"] = {
+		"I Kor'kron sono la guardia personale di Thrall, scelti uno per uno. Un grunt mi ha detto che li prendono non tanto per la forza, quanto per quello che non fanno quando nessuno li guarda.",
+		"Non tutti i grunt possono stare fra i Kor'kron. Quelli a cui l'ho chiesto dicono che il Capoguerra cerca una testa fredda prima di un braccio forte. Quelli scartati la raccontano diversamente.",
+		"Un grunt pronuncia la parola Kor'kron come altri dicono il nome di una montagna: un po' più piano, un po' più lento.",
+	},
+	["org.muse.w17.wisdom.003"] = {
+		"Dal fondo della Valley of Wisdom, Grommash Hold sembra meno un palazzo che un accampamento di guerra che ha deciso di mettere radici.",
+		"Non è fatto per essere ammirato, Grommash Hold. Se ne sta in cima alla sua valle come un capo seduto su un tronco, e ti sfida a chiamarlo modesto.",
+	},
+	["org.muse.w17.wisdom.004"] = {
+		"Hanno dedicato una valle alla saggezza e ci hanno messo la sala del Capoguerra. Saggio da parte loro.",
+		"Valley of Wisdom. Bel nome. Peccato che non regalino un assaggio.",
+	},
+	["org.muse.w17.wisdom.005"] = {
+		"Thrall e i suoi orchi attraversarono il mare senza niente; i tauren di Cairne erano braccati per le pianure dai centauri da più tempo di quanto si potesse contare. Ognuno sapeva cosa vuol dire aver bisogno di un posto dove stare.",
+		"Gli orchi aiutarono i tauren a spezzare la morsa dei centauri, e i tauren hanno buona memoria per l'aiuto ricevuto. Si vede nella Valley of Wisdom, da come un vecchio toro saluta col capo un grunt alto la metà di lui.",
+		"Grunt e tauren si incrociano sul sentiero verso la sala del Capoguerra con un cenno che contiene i debiti saldati di un'intera guerra.",
+	},
+	["org.muse.w17.wisdom.006"] = {
+		"guarda una tauren piantare dritto un piccolo totem accanto al sentiero e raddrizzarlo due volte, come si sistema il colletto a un amico.",
+		"rallenta per guardare una tauren che s'inginocchia sul sentiero, affonda nella polvere un totem intagliato e poi si siede sui talloni a giudicarlo.",
+		"passa con cura attorno a un piccolo totem piantato accanto al sentiero, come i tauren della valle sembrano aspettarsi.",
+	},
+	["org.muse.w17.wisdom.007"] = {
+		"aspetta mentre un kodo sdraiato nella polvere della Valley of Wisdom valuta se spostarsi, e decide di no.",
+		"aggira un kodo che si è sdraiato in mezzo alla Valley of Wisdom, come fa tutto il resto del traffico, come un ruscello aggira un macigno.",
+		"scambia una lunga occhiata con un kodo che rumina nella polvere vicino alla sala del Capoguerra; vince il kodo.",
+	},
+	["org.muse.w17.wisdom.008"] = {
+		"I tauren parlano della Madre Terra come se ascoltasse appena sotto il selciato. In una città scavata nella roccia rossa, non è difficile immaginare che abbia orecchie.",
+		"Un'anziana tauren tocca terra prima di parlare, ogni volta. Per la Madre Terra, mi dicono. Anche su una pietra lavorata dagli orchi, a quanto pare, vale lo stesso.",
+		"Perfino gli orchi della Valley of Wisdom camminano più leggeri vicino ai totem dei tauren. Nessuno vuole essere quello che ha svegliato la Madre Terra.",
+	},
+	["org.muse.w17.wisdom.009"] = {
+		"Rallenta, mi ha detto un tauren. A Orgrimmar. Ho riso, poi ci ho provato, e nessuno mi è venuto addosso. Strano.",
+		"I tauren continuano a dirmi di prendermela con calma. In questa città? E dove la metto, la calma?",
+		"Fai con calma, dice il tauren. Facile per lui: tutti gli fanno strada.",
+	},
+	["org.muse.w17.wisdom.010"] = {
+		"Prima sciamano, poi Capoguerra: così gli anziani della Valley of Wisdom descrivono Thrall. Forse è per questo che il terreno intorno alla sua sala sembra avere meno fretta del resto.",
+		"Thrall ascolta gli spiriti della terra, dicono gli sciamani, come un buon capo ascolta i suoi esploratori. La valle intorno alla sua sala pare averne preso l'abitudine.",
+		"Thrall parla con gli elementi prima che con i suoi capi, sostengono gli sciamani. Mi piacerebbe sapere chi dei due discute di più.",
+	},
+	["org.muse.w17.wisdom.011"] = {
+		"Qui nella Valley of Wisdom la folla si dirada e le voci si abbassano. Perfino i lupi sembrano camminare più piano, come se qualcuno glielo avesse chiesto con garbo.",
+		"Il chiasso della città arriva nella Valley of Wisdom stanco e dimezzato, e mi sorprendo a rallentare per non essere la cosa più rumorosa che c'è.",
+		"La Valley of Wisdom ha un passo suo, e non è quello di Orgrimmar. Perfino i miei stivali sembrano essersene accorti.",
+	},
+	["org.muse.w17.wisdom.012"] = {
+		"Qui il terreno è spazzato. Nel resto di Orgrimmar la polvere fa come le pare; nella Valley of Wisdom qualcuno le dice dove posarsi.",
+		"Qualcuno spazza questa valle: si vedono i segni della scopa. In una città di polvere rossa, è quanto di più vicino ci sia a una dichiarazione di rispetto.",
+		"Niente sterco, niente mucchi di rottami: la Valley of Wisdom è l'angolo più ordinato di Orgrimmar, e i tauren ne sembrano compiaciuti, in silenzio.",
+	},
+	["org.muse.w17.wisdom.013"] = {
+		"rallenta senza volerlo sulla salita verso la sala del Capoguerra, come pare faccia quasi chiunque, e sistema una cinghia che non era storta.",
+		"si accorge che il passo si accorcia risalendo la Valley of Wisdom, e lo lascia fare.",
+	},
+	["org.muse.w17.wisdom.014"] = {
+		"Un vecchio tauren mi ha detto che la terra è paziente perché ha visto finire ogni fretta. Credo che lo dicesse con gentilezza. Ci sto ancora rimuginando.",
+		"Gli anziani della Valley of Wisdom dicono che ciò che ha radici profonde non ha bisogno di gridare. A Orgrimmar suona quasi come una sfida.",
+		"Vedendomi passare di fretta, un anziano tauren ha detto soltanto: la pietra sarà ancora lì. Ho rallentato. Non so bene perché.",
+	},
+	["org.muse.w17.wisdom.015"] = {
+		"Forza a te, Kor'kron. No? Neanche un grugnito? Va bene così.",
+		"Salute, Kor'kron. Prendo quel silenzio per un caloroso benvenuto.",
+	},
+	["org.muse.w17.wisdom.016"] = {
+		"Qualcuno mi ha giurato che i Kor'kron sbattono le palpebre a turno, così la porta del Capoguerra non resta mai senza sguardi. Li sto osservando. Ci credo.",
+		"Ho provato a cogliere un Kor'kron mentre sbatte le palpebre. Ho perso. Pare che facciano a turno.",
+	},
+	["org.muse.w17.wisdom.017"] = {
+		"La sabbia scende soffiando per la Valley of Wisdom e i tauren chiudono gli occhi e aspettano che passi, come macigni. Io ho metà della loro pazienza e il doppio della sabbia fra i denti.",
+		"La sabbia attraversa la valle sibilando, e i tauren le voltano senza una parola le loro larghe schiene. Io mi accuccio dietro al più vicino e la chiamo saggezza.",
+	},
+	["org.muse.w17.wisdom.018"] = {
+		"Thunder Bluff è lontana, oltre le Barrens, ma i tauren della Valley of Wisdom se ne portano dietro un pezzetto: un campanello d'osso, un sacchetto d'erba delle pianure, un modo più lento di stare in piedi.",
+		"I tauren della valle del Capoguerra camminano come se le pianure di Mulgore continuassero sotto la pietra. Forse, per loro, è così.",
+		"Una tauren della Valley of Wisdom ha piantato un ciuffo d'erba delle pianure in un vaso crepato accanto alla porta. In questa polvere è la cosa più verde nel raggio di un miglio.",
+	},
+	["org.muse.w17.wisdom.019"] = {
+		"osserva un vecchio orco e un vecchio tauren che dividono una panca nella Valley of Wisdom, senza dirsi niente così a lungo che diventa una conversazione.",
+		"passa accanto a due anziani seduti insieme vicino alla sala del Capoguerra, un orco e un tauren, entrambi muti, che ogni tanto annuiscono nello stesso istante.",
+	},
+	["org.muse.w17.wisdom.020"] = {
+		"Dalla Valley of Wisdom vedo la sala del nostro Capoguerra sopra le teste della folla. Ovunque mi porti la strada, mi piace sapere esattamente dove si trova.",
+		"La sala del nostro Capoguerra sta in cima alla sua valle, semplice e salda. Qualunque cosa succeda là fuori nel mondo, c'è un tetto che tutta l'Orda può indicare.",
+		"Per quanto lontano io vada, l'Orda ha una sala con un fuoco acceso e un Capoguerra che ascolta. Dalla Valley of Wisdom ne vedo il tetto.",
+	},
+	["org.muse.w17.wry.001"] = {
+		"Ho chiesto la strada a un grunt. Ha indicato con l'ascia, e io ho seguito l'ascia, di buon passo.",
+		"Le indicazioni, a Orgrimmar, arrivano con un'arma attaccata. Chiedi, un grunt indica con l'ascia, e smetti di chiedere.",
+	},
+	["org.muse.w17.wry.002"] = {
+		"Si dice che a Orgrimmar ci sia un angolo tranquillo, da qualche parte. Ogni grunt a cui lo chiedo mi guarda come se gli avessi chiesto dove tengono il mare.",
+		"Sto cercando un posto tranquillo in questa città. Un peon mi ha detto che ce n'è uno, ma al momento è occupato.",
+	},
+	["org.muse.w17.wry.003"] = {
+		"Adesso ho peli di lupo su tutto quello che possiedo. Non ho toccato nemmeno un lupo. È la città che ti perde il pelo addosso.",
+		"Posso spazzolare il mantello quanto voglio, resta mezzo lupo. A Orgrimmar è praticamente un'uniforme.",
+	},
+	["org.muse.w17.wry.004"] = {
+		"Ancora non distinguo la chiamata alle armi da quella per la cena. A giudicare da quanto corre la folla, non ci riesce nessuno.",
+		"Un tamburo ha appena attaccato, chissà dove. Battaglia o stufato? In questa città la folla corre nella stessa direzione per entrambi.",
+		"Ogni rullo di tamburo in questa città può voler dire guerra, festa o un tamburino con troppo tempo libero. Ho smesso di indovinare.",
+	},
+	["org.muse.w17.wry.005"] = {
+		"Un orco mi ha appena ringraziato con un pugno sulla spalla. Credo che adesso siamo amici. La spalla non ne è convinta.",
+		"Quella era una pacca amichevole, eh? Allora non voglio conoscere l'altro tipo.",
+	},
+	["org.muse.w17.wry.006"] = {
+		"si blocca insieme a mezza strada quando un grunt starnutisce; tre mani vanno a tre cinture, e poi ridono tutti un po' troppo forte.",
+		"sussulta quando qualcuno lì vicino fa cadere una pentola, e vede mezza folla mettere mano alle armi prima ancora che la pentola smetta di rotolare.",
+	},
+	["org.muse.w17.wry.007"] = {
+		"Ho provato a fischiettare camminando. Mi ha risposto un lupo, poi un grunt, e a nessuno dei due piaceva il motivo.",
+		"Fischiettare a Orgrimmar è un errore. Ogni lupo a portata d'orecchio la prende come una cosa personale.",
+		"Promemoria: niente fischi vicino ai recinti dei lupi. Né vicino ai grunt. Né da nessuna parte, a dirla tutta.",
+	},
+	["org.muse.w17.wry.008"] = {
+		"Non trovi qualcosa a Orgrimmar? Fermati in mezzo. Prima o poi qualcuno ti viene addosso, e a quel punto chiedi a lui la strada.",
+		"Il modo migliore per trovare qualcosa in questa città: fermarsi in mezzo alla strada e aspettare che qualcuno ti spinga nella direzione giusta.",
+	},
+	["org.muse.w17.wry.009"] = {
+		"Ho il forte sospetto che i grunt del portale li scelgano in base alla larghezza. Non ce n'è uno che si possa aggirare in meno di tre passi.",
+		"Di guardia al portale ci mettono grunt fatti come il portale. Immagino sia quella tutta la prova.",
+	},
+	["org.muse.w17.wry.010"] = {
+		"risponde al cenno di un grunt con un cenno della stessa identica profondità, come se lo scambio avesse delle regole e le conoscessero entrambi.",
+		"scambia un cenno secco con un grunt di passaggio, misurato al dito, poi ha l'aria vagamente soddisfatta del risultato.",
+	},
+	["org.muse.w17.wry.011"] = {
+		"A Orgrimmar una richiesta educata è qualsiasi cosa detta senza mostrare le zanne. Su questa misura, la mia cortesia è stata impeccabile.",
+		"Ho imparato le buone maniere del posto: per favore lo dici con la voce, non coi denti, e stai un passo più indietro di quanto sembri necessario.",
+	},
+	["org.muse.w17.wry.012"] = {
+		"Come? No, dicevo... lascia stare. Te lo scrivo dopo.",
+		"Ripetilo più forte. No, più forte. Va bene, faccio di sì con la testa.",
+	},
+	["org.muse.w17.wry.013"] = {
+		"Ogni peon di questa città ha un piano per vincere la prossima guerra. Nessuno gliel'ha chiesto, e tutti l'hanno sentito.",
+		"Ascolta i peon abbastanza a lungo e imparerai come si manda avanti l'Orda come si deve. Quasi sempre con meno tronchi da portare.",
+	},
+	["org.muse.w17.wry.014"] = {
+		"si mette al passo con un grunt che brontola dei suoi stivali e annuisce come fossero vecchi compagni d'armi; il grunt non si volta neanche una volta.",
+		"si ritrova a camminare accanto a un grunt che borbotta per mezza strada, dandogli ragione con garbo su tutto: i lupi, la polvere, il prezzo dei chiodi.",
+	},
+	["org.muse.w17.wry.015"] = {
+		"Il grunt più feroce che abbia visto in questa città ha appena perso una gara di sguardi con un bambino di quattro anni. L'ha presa bene. Ha sbattuto le palpebre per primo e se n'è andato.",
+		"Un piccolo orco fissa un grunt da un bel po'. Il grunt lo fissa a sua volta. Nessuno dei due cede, e la strada comincia a fare il tifo.",
+	},
+	["org.muse.w17.wry.016"] = {
+		"Perfino i muri qui sembrano volermi dire due parole.",
+		"Giuro che quel muro mi ha appena guardato storto. A Orgrimmar ha il muso lungo tutto, perfino la muratura.",
+	},
+	["org.muse.w17.wry.017"] = {
+		"Nessuno ha mai disegnato una mappa di Orgrimmar. La città la impari facendoti spingere in giro finché gli spintoni non cominciano ad avere un senso.",
+		"Chiedi una mappa della città e un grunt si batte un dito sulla fronte. A quanto pare la tengono lì.",
+	},
 ]==])
