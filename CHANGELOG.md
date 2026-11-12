@@ -8,6 +8,49 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### Content wave W18: the capital Orgrimmar, its thoughts, its quest turn-ins and its flights (issue #138)
+
+The eighteenth content wave of [docs/content/WAVES.md](docs/content/WAVES.md), random need only. Its pools were the
+first row of the table after W17, all with the `zone` condition: the capital **Orgrimmar**, its `muse` (1,769), its
+`quest_complete` (993) and its `journey` (238), 3,000 texts per language in all. **1,320 intentions, 3,127 texts per
+language** (6,254 in both), written by thirteen parallel writer subagents (authors `ai-w18-<unit>`), each on its own
+angle of the city and its own id families, and passed through the archive (drafts, `cli dups --state draft` with no
+exact and no near duplicate and no over-used opening or closing, submit, owner sample, approve, export; the round trip
+is an empty diff). No literary piece and no `tier` field; the invented sayings and customs are attributed to a voice.
+The addon goes from 22,043 to **23,363 intentions** and from 52,975 to **56,102 texts per language**.
+
+- **Added: Orgrimmar thoughts** (`org.muse.w18.<family>.NNN`, 801 intentions, 1,854 texts, `kalimdor_orgrimmar`),
+  eight angles: the crafts and workshops; the races who live in or pass through the city; its history and founding,
+  told by voices; order and law (the Kor'kron, patrols, quarrels, the peace between races, strangers watched); the
+  Valley of Spirits and the Cleft of Shadow; the Valley of Wisdom, Grommash Hold and the Valley of Honor; daily life
+  and the canyon's hours and skies; the gates, the roads, the zeppelin towers and the travelers.
+- **Added: Orgrimmar quest turn-ins** (`org.quest_complete.w18.<family>.NNN`, 406 intentions, 1,026 texts): the
+  moment of the turn-in and how the city says thanks; the streets around it and where the feet go next; what the work
+  means; the humor and weariness of a war capital. No line names the quest, the giver or the reward, or says where the
+  work was done.
+- **Added: Orgrimmar flights** (`org.journey.w18.<family>.NNN`, 113 intentions, 247 texts): 57 take-offs from the wind
+  rider tower (the city from the air) and 56 landings. A bare line names no mount kind; the wind rider is named only
+  under `faction = "Horde"`.
+- **A zone line holds for the whole city and nothing more**, as in W16 and W17: no "our people" or home ground
+  without `faction = "Horde"` or `race = "Orc"` (at most 1 line in 8), no claim that the character is new, no hour or
+  falling weather without `time` or `weather` (the daily-life writer wrote most of them), no district named as "here"
+  without its `subzone` (at most 1 thought in 5), a line that looks at the canyon writes `indoors = false`, no fight
+  against the citizens, and nothing a Forsaken's body cannot do. District names stay English in Italian.
+- **The gap after W18** (per language): soft and strict need met (gap **0**); random need 276,398, gap **222,998**
+  (was 226,007). **77 waves** left. The next row of WAVES.md is now Stormwind City; the rest of Orgrimmar's random need
+  (3,164 texts) comes back in rows W04 and W05.
+- **Measured.** `run_tests` M2: pick 34.4 → **35.8** thousand Lua instructions (p95 62.0 → 61.5; reference 36.4,
+  fails at 54.6); `bench_pool` (C0j): a pick on pools grown 16 times costs **35.8** against **35.5** on today's (1.01
+  times; gate 1.25). `bench_scale`: memory 41.8 → 44.1 MB, pick 25.5 → 25.5 thousand instructions (p95 54.1); bytes per
+  synthetic rule 1,290 → 1,758 at 10,000 rules (the same on a second run), 1,223 → 1,232 at 50,000. `bench_trial --long 20`, seeds 1-5, first exact repetition (mean) and
+  repeated share: orc (Durotar) 8.3 → **10.9** h, 1.6% → **1.3%**; troll 10.5 → **12.0** h, 1.6% → **1.3%**; human
+  (Elwynn) 10.2 → **10.2** h, 1.7% → **1.7%**. On the traced seeds (2, 4, 5) the first repeats are W16 Durotar
+  thoughts, W17 Elwynn thoughts and generic close-call and memory lines; one W18 thought repeats, later (orc seed 2,
+  9.6 h).
+- **Tests:** counts: base intentions 23320, lines loaded 23327; README totals. No test needed a change of logic.
+- **Owner sample:** [docs/content/reviews/W18.md](docs/content/reviews/W18.md) (`cli sample --state review --share
+  0.02`: 26 intentions).
+
 ### Content wave W17: the starting zones Teldrassil, Tirisfal Glades and Elwynn Forest, and the capital Orgrimmar (issue #138)
 
 The seventeenth content wave of [docs/content/WAVES.md](docs/content/WAVES.md), random need only. Its pools were the
