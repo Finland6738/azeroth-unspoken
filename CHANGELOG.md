@@ -8,6 +8,55 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### Content wave W17: the starting zones Teldrassil, Tirisfal Glades and Elwynn Forest, and the capital Orgrimmar (issue #138)
+
+The seventeenth content wave of [docs/content/WAVES.md](docs/content/WAVES.md), random need only. Its pools were the
+first row of the table after W16, all with the `zone` condition: the starting zones **Teldrassil** (800), **Tirisfal
+Glades** (800) and **Elwynn Forest** (662), and the thoughts of the capital **Orgrimmar** (`muse`, 738): 3,000 texts
+per language in all. **1,271 intentions, 3,101 texts per language** (6,202 in both), written by twelve parallel writer
+subagents (authors `ai-w17-<unit>`): three for each starting zone (its thoughts, its fights, its roads) and three for
+Orgrimmar (the Valley of Strength and the Drag; the other districts; the walls, people and history of the city), and
+passed through the archive (drafts, `cli dups --state draft` with no exact and no near duplicate and no over-used
+opening or closing, submit, owner sample, approve, export; the round trip is an empty diff). No literary piece and no
+`tier` field; the invented sayings are attributed to a voice. The addon goes from 20,772 to **22,043 intentions** and
+from 49,874 to **52,975 texts per language**.
+
+- **Added: Teldrassil** (`tel.<event>.w17.<family>.NNN`, 341 intentions, 820 texts, `kalimdor_teldrassil`): 105
+  `muse` (273 texts), 6 `weather_change`, 50 `battle`, 45 `victory`, 19 `lowhp`, 10 `attack`, 39 `quest_complete`,
+  22 `npc_meet`, 13 `subzone_enter`, 14 `journey` (Rut'theran's hippogryphs named only under `faction = "Alliance"`),
+  8 `landmark` (Shadowglen and Dolanaar), 10 `quest_progress`.
+- **Added: Tirisfal Glades** (`tir.<event>.w17.<family>.NNN`, 333 intentions, 825 texts, `eastern_tirisfal`): 114
+  `muse` (275 texts), 6 `weather_change`, 44 `battle`, 40 `victory`, 18 `lowhp`, 11 `attack`, 37 `quest_complete`, 17
+  `npc_meet`, 16 `subzone_enter`, 12 `journey`, 9 `landmark` (Deathknell and Brill), 9 `quest_progress`. Forsaken
+  land: a bare line claims neither a living body nor a dead one; the undead body is said only under `race =
+  "Scourge"`.
+- **Added: Elwynn Forest** (`elw.<event>.w17.<family>.NNN`, 271 intentions, 675 texts, `eastern_elwynn`): 93 `muse`
+  (242 texts), 3 `weather_change`, 41 `battle`, 33 `victory`, 17 `lowhp`, 11 `attack`, 35 `quest_complete`, 15
+  `npc_meet`, 14 `journey`, 9 `quest_progress`.
+- **Added: Orgrimmar** (`org.muse.w17.<family>.NNN`, 326 intentions, 781 texts, `kalimdor_orgrimmar`): the city's
+  thoughts, its districts (the Valley of Strength, the Drag, the Valleys of Spirits, Wisdom and Honor, the Cleft of
+  Shadow, Grommash Hold), its trade, its people and its history; a line that stands in a district writes its `subzone`
+  (at most 1 in 5), a line that looks up at the canyon writes `indoors = false`.
+- **A zone line holds for the whole zone and nothing more**, as in W16: no "our people" or home ground without a
+  `race` or `faction` of the zone's own side (at most 1 line in 8), no claim that the character is new to the road, no
+  hour or falling weather without `time` or `weather`, no village or district named as "here" without its `subzone`
+  or `landmark`, no mount kind without the side, and nothing a Forsaken's body cannot do. Subzone lines avoid the
+  landmark subzones. The zones' own names stay English in Italian.
+- **Short lines in a fight.** Every rule of `battle`, `attack`, `lowhp` and `victory` has a variant of 80 bytes or
+  less in both languages (ADR 0056).
+- **The gap after W17** (per language): soft and strict need met (gap **0**); random need 276,398, gap **226,007**
+  (was 229,050). **78 waves** left (the next is the first row of WAVES.md: the capital Orgrimmar).
+- **Measured.** `run_tests` M2: pick 36.6 → **34.4** thousand Lua instructions (p95 59.3 → 62.0; reference 36.4,
+  fails at 54.6); `bench_pool` (C0j): a pick on pools grown 16 times costs **36.2** against **35.2** on today's (1.03
+  times; gate 1.25). `bench_scale`: memory 39.3 → 41.8 MB, pick 25.5 → 25.5 thousand instructions (p95 54.1).
+  `bench_trial --long 20`, seeds 1-5, first exact repetition and repeated share: human (Elwynn) 8.1 → **10.2** h, 3.7%
+  → **1.7%** (the early repeats of #270, old `elw.muse.*` lines, are gone); orc 10.0 → 8.3 h, 1.5% → 1.6%; troll 11.5
+  → 10.5 h, 1.2% → 1.6% (their first repeats are W16 Durotar thoughts and generic lines, not W17 lines: the larger
+  Orgrimmar pool shifts the random stream).
+- **Tests:** counts: base intentions 22000, lines loaded 22007; README totals. No test needed a change of logic.
+- **Owner sample:** [docs/content/reviews/W17.md](docs/content/reviews/W17.md) (`cli sample --state review --share
+  0.02`: 25 intentions).
+
 ### Content wave W16: the last small generic pools and the first zone pools, Dun Morogh, Durotar and Mulgore (issue #138)
 
 The sixteenth content wave of [docs/content/WAVES.md](docs/content/WAVES.md), random need only. Its pools were the
