@@ -8,6 +8,54 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### Content wave W20: the capital Ironforge, its thoughts, its quest turn-ins, its flights and its NPC meetings (issue #138)
+
+The twentieth content wave of [docs/content/WAVES.md](docs/content/WAVES.md), random need only. Its pools were the
+first row of the table after W19, all with the `zone` condition: the capital **Ironforge**, its `muse` (1,590), its
+`quest_complete` (617), its `journey` (571) and its `npc_meet` (222), 3,000 texts per language in all. **1,319
+intentions, 3,002 texts per language** (6,004 in both), written by fifteen parallel writer subagents (authors
+`ai-w20-<unit>`), each on its own angle of the city and its own id families, trimmed to each pool's need (no text over
+it), and passed through the archive (drafts, `cli dups --state draft` with no exact and no near duplicate and no
+over-used opening or closing, submit, owner sample, approve, export; the round trip is an empty diff). No literary
+piece and no `tier` field; the invented sayings and customs are attributed to a voice. The addon goes from 24,693 to
+**26,012 intentions** and from 59,253 to **62,255 texts per language**.
+
+- **Added: Ironforge thoughts** (`ifo.muse.w20.<family>.NNN`, 716 intentions, 1,590 texts, `eastern_ironforge`), nine
+  angles: the Great Forge; the Commons (the Vault, the auction house, the mail, the crowd); the Military Ward and the
+  Ironforge Guard; the Mystic Ward and the Forlorn Cavern; Tinker Town and the gnomes in exile; the Hall of Explorers
+  and the Explorers' League; the High Seat and the clans' past, told by voices; daily life under the mountain (most of
+  the wave's `time`/`weather` lines, always as word or signs from the gate); its people, the Stonefire Tavern and ale.
+- **Added: Ironforge quest turn-ins** (`ifo.quest_complete.w20.<family>.NNN`, 261 intentions, 617 texts): the moment
+  and the manner of thanks and pay; the halls after it and where the feet go next; what the work is worth in a city
+  that keeps accounts and grudges. No line names the quest, the giver or the reward, or says where the work was done.
+- **Added: Ironforge flights** (`ifo.journey.w20.<family>.NNN`, 258 intentions, 571 texts): the gryphon's climb from
+  the Great Forge, through the halls and out of the gate (`journey = "start"`, in flight), and the way in and down to
+  the roost (`journey = "arrival"`). No line names where the flight goes or comes from.
+- **Added: Ironforge NPC meetings** (`ifo.npc_meet.w20.<family>.NNN`, 84 intentions, 224 texts): the guard, the
+  innkeeper, the merchant, the trainer, the questgiver, the banker and the gryphon master, 32 texts each.
+- **A zone line holds for the whole city and nothing more**, as in W16-W19: no "our people" or home ground without
+  `race = "Dwarf"`/`"Gnome"` or `faction = "Alliance"` (at most 1 line in 8; a few lines give the view of a Horde
+  intruder under `faction = "Horde"`), no claim that the character is new, no hour or falling weather without `time`
+  or `weather`, no district named as "here" without its `subzone` (at most 1 thought in 5), no gryphon as the
+  character's own mount without `faction`, no fight against the citizens, and nothing a Forsaken's body cannot do.
+  **The whole zone is under the mountain**: no line outside a flight sees the sky, and no line writes `indoors` (the
+  client's indoors flag is unreliable in Ironforge, where mounts are allowed). Muradin is not named. District names stay
+  English in Italian.
+- **The gap after W20** (per language): soft and strict need met (gap **0**); random need 276,398, gap **216,961**
+  (was 219,963, exactly 3,002 less). **75 waves** left. Ironforge's `muse`, `quest_complete` and `journey` pools are
+  now full; the rest of Ironforge (1,266: its smaller events and 70 more NPC meetings) comes back in rows W07-W08. The
+  next row of WAVES.md is now **Orgrimmar** (3,000).
+- **Measured.** `run_tests` M2: pick 35.8 → **35.9** thousand Lua instructions (p95 61.5 → **61.5**; reference 36.4,
+  fails at 54.6); `bench_pool` (C0j): a pick on pools grown 16 times costs **33.5** against **35.4** on today's (**0.95**
+  times; gate 1.25). `bench_scale`: memory 46.7 → 49.1 MB, pick 25.5 → 25.5 thousand instructions (p95 54.1); bytes
+  per synthetic rule 1,812 → 1,826 at 10,000 rules, 1,255 → 1,269 at 50,000. `bench_trial --long 20`, seeds 1-5,
+  first exact repetition (mean) and repeated share: orc (Durotar) **10.9** h and **1.3%**, troll **12.0** h and
+  **1.3%**, human (Elwynn) **10.5** h and **1.4%**, all identical seed by seed to W19: the trial's routes (Durotar,
+  Orgrimmar, Elwynn, Stormwind) never reach Ironforge.
+- **Tests:** counts: base intentions 25969, lines loaded 25976; README totals. No test needed a change of logic.
+- **Owner sample:** [docs/content/reviews/W20.md](docs/content/reviews/W20.md) (`cli sample --state review --share
+  0.02`: 26 intentions).
+
 ### Content wave W19: the capital Stormwind City, its thoughts and its quest turn-ins (issue #138)
 
 The nineteenth content wave of [docs/content/WAVES.md](docs/content/WAVES.md), random need only. Its pools were the
