@@ -6,7 +6,7 @@ Welcome to the player's manual for **Azeroth Unspoken**, a roleplay addon for **
 
 Azeroth Unspoken is a quiet narrator that walks beside your character. It notices where you are and what happens to you, such as a new zone, a hard fight, a serious wound, a level gained or a greeting. Now and then it shows you a short, hand-written line that fits the moment. Some lines are your character's thoughts, some are a narrator's voice, and some are words your character could say out loud, if you choose to.
 
-> **Before you start.** Azeroth Unspoken is young (version 0.2.0). So far it has only been tested outside the game, against a simulated client, and not yet in the real WoW Forever client. Most things should just work, but some details may look or behave a little differently in game. If you find something odd, please [[tell us|Reporting-Bugs-and-Feedback]].
+> **Before you start.** Azeroth Unspoken is young (version 0.2.1). So far it has only been tested outside the game, against a simulated client, and not yet in the real WoW Forever client. Most things should just work, but some details may look or behave a little differently in game. If you find something odd, please [[tell us|Reporting-Bugs-and-Feedback]].
 
 ![Illustrative mockup: an animated tour of the windows of Azeroth Unspoken](../design/mockups/interface-tour.gif)
 
