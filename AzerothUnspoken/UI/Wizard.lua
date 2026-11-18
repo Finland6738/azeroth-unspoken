@@ -133,7 +133,7 @@ pages[1] = { title = "wiz_step_language", build = function(p)
 		head()
 		intro:SetText(NS:L("wiz_welcome_text"))
 		voice:SetText("|cffb9a1ff" .. NS:L("voice_narrator") .. "|r")
-		local name = NS.Compat.SafeCall(UnitName, "player")
+		local name = NS:PlayerName()   -- #281: as the setting `names.player` names the character
 		sample:SetText(NS:L("wiz_sample", type(name) == "string" and name ~= "" and name or NS:L("wiz_sample_name")))
 		label:SetText(NS:L("wiz_language_label"))
 		for code, c in pairs(cards) do c:SetCard(NS.languages[code].name, NS:L("wiz_language_card"), NS.db.locale == code) end

@@ -489,7 +489,7 @@ for f_ in ("Widgets.lua", "JournalFrame.lua", "RelationsFrame.lua", "ProfileFram
     if f_ != "Widgets.lua" and f_ != "DialogueFrame.lua":
         check("W.Window(" in "\n".join(src_), f"{f_}: the window is made by W.Window (#187)")
 check(win_frames_ == 2, f"the named frames of the windows: W.Window and the dialogue window ({win_frames_})")
-for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContext", "TestChatGateway", "TestNarrator", "TestWizardConsent", "TestWindows",
+for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContext", "TestNames", "TestChatGateway", "TestNarrator", "TestWizardConsent", "TestWindows",
              "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestEmotion", "TestMemory", "TestRelations", "TestPlayers", "TestNPCLevels", "TestNPCRomance", "TestPromises", "TestFavours", "TestLocalReputation", "TestHostility", "TestProximityShared",
              "TestOtherPlace", "TestNPCAlive", "TestArcs", "TestCommands", "TestProfile", "TestProbeCombat", "TestContent", "TestScale",
              "TestSelection", "TestWorld", "TestDynamism", "TestKeyClaims", "TestPacks", "TestKeyboard", "TestLiterary",

@@ -77,6 +77,13 @@ NS:RegisterLanguage("en", {
 		literary_now = "literary forms: %s",
 		values_literary = "never, rare, normal",
 		help_literary = "how often verses, songs and tales come (private narrator only)",
+		-- #281: how the character is named
+		opt_namestyle = "Character's name",
+		opt_namestyle_tip = "How the addon names your character before an emote: in the narrator, in an emote proposed for a channel other than /e, in the /au test preview. The name comes from Total RP 3 (first and last name) when \"Name from Total RP 3\" is on and your profile has a first name, else from your character's name, whose first word is the first name and the rest the surname. Both (default), first name or last name; without a surname you are always named by the first name. On /e the game itself writes your character's name, whatever this setting says.",
+		namestyle_first = "first name", namestyle_last = "last name", namestyle_both = "both names",
+		namestyle_now = "character's name: %s (%s)",
+		values_namestyle = "first, last, both",
+		help_name = "how your character is named before an emote: first name, last name or both",
 		gw_combat_improvise = "in combat the speak key does not make up a new line. /au battlecry asks for one.",
 		gw_combat_held = "%d line(s) wait for the end of the fight.",
 		gw_combat_editor = "the editor never opens in combat. The proposal: %s\nPress again to send it as it is, or /au cancel.",

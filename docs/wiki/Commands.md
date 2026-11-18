@@ -34,6 +34,7 @@ Every command of Azeroth Unspoken. Type them in the chat box, like any other sla
 | `/au intensity <0-100>` | how often the narrator speaks |
 | `/au depth <style>` | how elevated the language is |
 | `/au literary <value>` | how often verses and songs come: never, rare, normal |
+| `/au name <value>` | how your character is named before an emote: first, last, both |
 | `/au mode <mode>` | what may reach chat |
 | `/au speak` | sends the waiting proposal, or makes a new one |
 | `/au soul` | your character's personality |
@@ -68,6 +69,7 @@ Every command of Azeroth Unspoken. Type them in the chat box, like any other sla
 |---|---|
 | `/au intensity [0-100]` | Sets how often the narrator speaks. 0 = silent for spontaneous events, 50 = balanced (default), 100 = intense. With no number, shows the current value. |
 | `/au depth [natural\|literary\|elevated]` | Sets the style depth (default: literary). With no value, shows the current one. |
+| `/au name [first\|last\|both]` | How the addon names your character before an emote (narrator box, emotes proposed outside `/emote`, the `/au test` preview): the first name, the last name, or both (the default). The name comes from Total RP 3 (first and last name) when *Name from Total RP 3* is on and your profile has a first name, else from your character's name, split at the first space. Without a surname every value gives the first name. With no value, shows the current choice and the name it gives. The game always writes your WoW name before an emote sent on `/emote`. See [[Settings|Settings#privacy-and-total-rp-3]]. |
 | `/au literary [never\|rare\|normal]` | How often [[literary forms|Literary-Forms]] (verses, songs, inscriptions, tales) come in the private narrator: rare (the default, about one every 20-30 minutes at intensity 50), normal (about twice as often) or never (none, not even with `/au event lore_test`). Never in combat. With no value, shows the current one. |
 | `/au cooldown <seconds>` | The minimum pause between two spontaneous lines, 0 to 3600 seconds (default 45). |
 | `/au chance [<event> <0-100>]` | The probability, in percent, that an event produces a line. With no values, lists every event and its probability. Example: `/au chance zone 60`. |

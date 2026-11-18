@@ -143,11 +143,12 @@ A preset sets several modules at once. Choose one in the wizard. Changing a sing
 
 ## Privacy and Total RP 3
 
-The panel's **Privacy** section has the three choices about what may leave your screen or be read from others: **Automatic sending** (see [Chat](#chat)), **Read others' Total RP 3** and **Name from Total RP 3**. Under them, in the normal text size, the panel explains the chat mode you chose and any consent that waits for something.
+The panel's **Privacy** section has the three choices about what may leave your screen or be read from others: **Automatic sending** (see [Chat](#chat)), **Read others' Total RP 3** and **Name from Total RP 3**, then **Character's name**. Under them, in the normal text size, the panel explains the chat mode you chose and any consent that waits for something.
 
 | Setting | Default | Where | What it does |
 |---|---|---|---|
-| Name from Total RP 3 | on | panel **Name from Total RP 3**, wizard | Uses your own RP profile's first name in lines. |
+| Name from Total RP 3 | on | panel **Name from Total RP 3**, wizard | Uses your own RP profile's name (first name and last name) in lines. |
+| Character's name | both names | panel **Character's name** (click to cycle: first name, last name, both names), `/au name first\|last\|both` | How the addon names your character before an emote: in the narrator box, in an emote proposed for a channel other than `/emote`, in the `/au test` preview. The name comes from your Total RP 3 profile (first name and last name) when *Name from Total RP 3* is on and the profile has a first name; otherwise from your character's name, whose first word is the first name and the rest the surname (on WoW Forever a name may be "Arthas" or "Arthas Menethil"). Without a surname every choice gives the first name. On the real `/emote` channel the game itself writes your character's WoW name before the emote, and no addon can change it (Total RP 3 users see your RP name there, through Total RP 3). |
 | Traits from Total RP 3 | off | `/au soul trp3 on`, personality window | Uses your own profile's public personality traits where you made no choice. |
 | Read others' Total RP 3 | off | panel **Read others' Total RP 3**, wizard, `/au who trp3 on` | Reads race, class and traits from other players' public profiles. Turning it on asks for a confirmation (like automatic sending). Needs *Name from Total RP 3* on too: with that off the row says *on, needs name* and a line under the panel explains it. |
 

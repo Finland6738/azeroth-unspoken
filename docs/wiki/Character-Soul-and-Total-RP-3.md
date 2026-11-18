@@ -142,10 +142,19 @@ Total RP 3 is a popular roleplay profile addon. **Azeroth Unspoken works fully w
 
 | What | Default | How to turn it on or off | Reads |
 |---|---|---|---|
-| **Name from Total RP 3** | on | panel, wizard | the first name of **your own** profile, used in lines |
+| **Name from Total RP 3** | on | panel, wizard | the first name and last name of **your own** profile, used in lines |
 | **Traits from Total RP 3** | off | `/au soul trp3 on\|off`, personality window | the public personality traits of **your own** profile |
 | **Read others' Total RP 3** | off | panel, wizard, `/au who trp3 on\|off` | race, class and personality traits of **other players'** public profiles |
 | **Stay private when out of character** | on | `/au trp3 ooc on\|off` | whether **your own** status is *in character* or *out of character* |
+
+### Your name: first, last or both
+
+With *Name from Total RP 3* on and a first name in your profile, the addon names your character from the profile: by
+default the first name and the last name together ("Uther Lightbringer"). The **Character's name** row of the
+[[settings panel|Settings]], or `/au name first|last|both`, picks the first name only, the last name only, or both. A
+profile with no last name is always named by its first name; a profile with no first name falls back to your character's
+name. The name is used before an emote: in the narrator box, in an emote proposed for `/say` or a group channel, and in
+the `/au test` preview. On the real `/emote` channel the game itself writes your character's WoW name before the emote, and no addon can change it (Total RP 3 users see your RP name there, through Total RP 3).
 
 ### Your own traits
 
@@ -188,10 +197,11 @@ RP 3, or when Total RP 3 gives no clear status, nothing is held. A row in the se
 ### How the addon talks to Total RP 3
 
 The addon uses only Total RP 3's **public** player model (`AddOn_TotalRP3.Player`): your own profile through
-`GetCurrentUser`, other players through `CreateFromUnit`, and plain questions to them (first name, traits, custom race
+`GetCurrentUser`, other players through `CreateFromUnit`, and plain questions to them (first name and last name, traits, custom race
 and class, roleplay status). It does not use Total RP 3's internal functions. Every call is protected: if a Total RP 3
 update renames or breaks something, the answer is simply "nothing", never an error and never a different field.
-`/au debug full` shows each part as a capability: `integration:totalRP3`, `:traits`, `:status` and `:others`.
+`/au debug full` shows each part as a capability: `integration:totalRP3`, `:traits`, `:status` and `:others`. An older
+Total RP 3 without the last name is still used: `integration:totalRP3` then says *GetLastName missing: first name only*.
 
 If Total RP 3 is missing, or changes in a way the addon does not understand, the integration simply switches itself off. `/au soul trp3` then says that Total RP 3 is not installed.
 

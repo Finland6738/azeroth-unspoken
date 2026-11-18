@@ -56,7 +56,7 @@ Modules marked with `*` are not active yet. *Social* and *Audio* are placeholder
 
 Two separate choices:
 
-- **Name from Total RP 3** (on by default): the narrator may use your RP profile's first name in lines. It reads your own profile only, and only the name.
+- **Name from Total RP 3** (on by default): the narrator may use your RP profile's name in lines, first name and last name (`/au name` chooses first, last or both). It reads your own profile only, and only the name.
 - **Read others' Total RP 3** (off by default): with your consent, the addon reads only race, class and personality traits from **other players'** public profiles, so the narrator can react to who is in front of you. Never notes or history. **Turning it on asks for a confirmation in a dialog** (see below), and it does nothing unless *Name from Total RP 3* is on too: the card says "on, needs Name from Total RP 3" in that case.
 
 See [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3]].

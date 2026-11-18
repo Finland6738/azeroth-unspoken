@@ -1,10 +1,11 @@
 -- Azeroth Unspoken: adattatore facoltativo per Total RP 3 (ADR 0004, GDD §8).
 -- Senza TRP3, o se le sue API cambiano, l'addon funziona lo stesso: ogni lettura è protetta e, se qualcosa non
 -- torna, risponde nil. È l'unico file che tocca TRP3, e solo tramite l'API pubblica `AddOn_TotalRP3.Player`
--- (verificata sul codice di TRP3 installato, Core/Player.lua): GetCurrentUser(), :GetFirstName(), :GetInfo(path).
+-- (verificata sul codice di TRP3 installato, Core/Player.lua): GetCurrentUser(), :GetFirstName(), :GetLastName(),
+-- :GetInfo(path).
 --
 -- Cosa legge, e solo del PROPRIO profilo:
---   - il nome (GetFirstName): con l'opzione `modules.totalRP3`;
+--   - il nome (GetFirstName) e, #281, il cognome (GetLastName): con l'opzione `modules.totalRP3`;
 --   - i tratti psicologici pubblici (`characteristics/PS`, quelli che TRP3 mostra agli altri giocatori), mappati sui
 --     tratti del Character Soul: in più serve il consenso del personaggio (`personality.trp3`, /au soul trp3 on).
 -- Non legge note, informazioni fuori dal personaggio, storia o altri campi, e non scrive mai nulla in TRP3.
@@ -92,6 +93,12 @@ function TotalRP3:Probe()
 	if user then
 		if type(user.GetFirstName) == "function" then
 			state, detail = Compat.AVAILABLE, "Player.GetCurrentUser():GetFirstName"
+			-- #281: the last name is read too; without the method the character is named by the first name only
+			if type(Field(user, "GetLastName")) == "function" then
+				detail = detail .. ", :GetLastName"
+			else
+				detail = detail .. " (GetLastName missing: first name only)"
+			end
 		else
 			state, detail = Compat.MISSING, "GetFirstName missing"
 		end
@@ -162,6 +169,20 @@ function TotalRP3:GetFirstName()
 	local ok, first = pcall(user.GetFirstName, user)
 	first = ok and Compat.Readable(first) or nil
 	if type(first) == "string" and first ~= "" then return first end
+	return nil
+end
+
+---#281: the last name of the player's own RP profile (characteristics.LN), with the same guards as the first name: the
+---module on, the call inside pcall, a secret value unreadable, an empty field nil. Without the method (an older or
+---changed Total RP 3) the answer is nil, and the character is named by the first name only.
+---@return string?
+function TotalRP3:GetLastName()
+	if not (NS.db and NS.db.modules.totalRP3) then return nil end
+	local user = CurrentUser()
+	if not user then return nil end
+	local found, last = Call(user, "GetLastName")
+	last = found and Compat.Readable(last) or nil
+	if type(last) == "string" and last ~= "" then return last end
 	return nil
 end
 
