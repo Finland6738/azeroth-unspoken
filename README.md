@@ -109,6 +109,7 @@ The addon answers to `/au` and `/unspoken`. Each command has one English name; t
 | `/au intensity <0-100>` | how often the narrator speaks: 0 = silent for spontaneous events, 50 = balanced, 100 = intense |
 | `/au depth natural\|literary\|elevated` | style depth: lines written for that tone weigh more (the others stay possible) |
 | `/au literary never\|rare\|normal` | literary forms (verses, songs, tales, only in the private narrator): rare by default, about one every 20-30 minutes |
+| `/au name first\|last\|both` | how your character is named before an emote (narrator box, emotes proposed outside `/e`): first name, last name or both (the default). On `/e` the game itself writes your WoW name |
 | `/au mode private\|preview\|confirm\|auto` | what may reach chat; default: `private`. `auto` does not turn on with the first command: it shows a warning and must be repeated after a couple of seconds (within 30) |
 | `/au channel auto\|say\|emote\|party\|raid\|guild\|instance` | default channel for proposals (short forms `s`, `e`, `p`, `g`, `i`) |
 | `/au speak` | same as the "speak" key: confirms the pending proposal, or makes a new one |
@@ -155,7 +156,7 @@ The panel opens with `/au options` (it is also registered among the game's addon
 - **Chat**: the mode and the default channel.
 - **Narrator box**: text duration, opacity, size, locked position, history, test.
 - **Modules**: Personal, World, NPC dialogues, Memory, Emotions, Relationships, Stories, Social, Chat proposals, Audio (those not yet active, *Social* and *Audio*, are marked `*`), plus the presets *Complete*, *Personal RPG*, *Narrative world* and *Social RP*.
-- The "speak" button, the name from Total RP 3 and, with a separate consent, reading other players' public profiles (*Read others' Total RP 3*), the character's personality (`/au soul`), the immediate pause, the wizard.
+- The "speak" button, the name from Total RP 3, how the character is named (*Character's name*: first name, last name or both) and, with a separate consent, reading other players' public profiles (*Read others' Total RP 3*), the character's personality (`/au soul`), the immediate pause, the wizard.
 - Some choices are made **by command only**: the relationship axes and people (`/au relationships`), attraction and automatic registration of players (`/au relationships attraction|auto`), the automatic NPC dialogue offer (`/au talk offer`) and the maximum number of active stories (`/au stories max`).
 
 ## Privacy and chat
@@ -184,7 +185,7 @@ The decisions behind this behavior are in the [ADRs](docs/adr/README.md), notabl
 
 The integration is **optional**: the addon works at 100% without it. If Total RP 3 is present, the addon can read three things, each with its own switch:
 
-1. **Your profile's first name** (*Name from Total RP 3* in the settings, on by default) to use it in lines.
+1. **Your profile's name**, first name and last name (*Name from Total RP 3* in the settings, on by default) to use it in lines; *Character's name* in the settings, or `/au name`, picks the first name, the last name or both (the default).
 2. **The public personality traits of your profile** (`/au soul trp3 on`, off by default) for the character's personality; a choice you make by hand always comes first.
 3. **The public data of other players** (`/au who trp3 on`, or *Read others' Total RP 3* in the settings, off by default; point 1 must be on too): only race, class and personality traits, so the narrator can react to whoever is in front of you. Never notes, history or private fields, and nothing it reads is saved.
 

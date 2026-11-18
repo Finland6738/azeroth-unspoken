@@ -8,6 +8,30 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### Character's name: first name, last name or both (issue #281)
+
+A player asked on CurseForge for the addon to use both names. A new setting chooses how the addon names your own
+character before an emote (the narrator box, an emote proposed for a channel other than `/e`, the `/au test` preview):
+the first name, the last name, or both.
+
+- **Added**: the setting `names.player` (`first`, `last`, `both`; default `both`), the **Character's name** row in the
+  Privacy section of the settings panel (EN and IT), and `/au name first|last|both` (with no value it shows the choice
+  and the name it gives).
+- **Added**: `TotalRP3:GetLastName()` reads the last name of your own Total RP 3 profile, with the same guards as the
+  first name (the module on, a protected call, a secret value unreadable, an empty field ignored). Without the method
+  the capability `integration:totalRP3` says *GetLastName missing: first name only*.
+- **Changed**: on WoW Forever a character's name may be one or two strings ("Arthas Menethil"): the first word is the
+  first name, the rest the surname. With the default `both` a WoW name is written whole, as before.
+- **Changed, for Total RP 3 users**: with *Name from Total RP 3* on, the character is now named by the profile's first
+  name **and last name** (before: the first name only). `/au name first` brings back the first name only.
+- A profile with no last name, or a WoW name of one word, gives the first name with every choice; a profile with no
+  first name falls back to the WoW name. Saved files without the setting get `both`; an unknown saved value goes back
+  to `both`.
+- Not changeable: on the real `/e` channel the game itself writes your WoW name before the emote.
+- Tests: `Tests/TestNames.lua` (the split of WoW names, Total RP 3 with first and last name, first name only, none and
+  a broken `GetLastName`, the three choices, saved values, the narrator and the chat with a two-word name, the
+  settings row and `/au name`).
+
 ## [0.2.0] - 2026-11-18
 
 The second development preview. Content waves W10 to W20 take the lines from about 30,000 to about 62,000 per language (12,450 → **26,012 intentions**, 29,980 → **62,255 texts** per language): the factions, moods, hours, weather and endgame places, the raids and battlegrounds, the generic pools of every frequent event, the starting zones, and the capitals Orgrimmar, Stormwind City and Ironforge. C0j keeps the cost of a pick flat as the pools grow (ADR 0057), the Tests job may run for 40 minutes, and `assets/` holds a mockup for every case of the interface. It has still not been played through in game: the G1 checklist is the owner's to run.

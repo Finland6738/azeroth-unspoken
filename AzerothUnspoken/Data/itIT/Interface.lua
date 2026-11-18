@@ -82,6 +82,13 @@ NS:RegisterLanguage("it", {
 		literary_now = "forme letterarie: %s",
 		values_literary = "never, rare, normal",
 		help_literary = "quanto spesso arrivano versi, canzoni e racconti (solo nel narratore privato)",
+		-- #281: come si chiama il personaggio
+		opt_namestyle = "Nome del personaggio",
+		opt_namestyle_tip = "Come l'addon chiama il tuo personaggio davanti a un'emote: nel narratore, in un'emote proposta per un canale diverso da /e, nell'anteprima di /au test. Il nome viene da Total RP 3 (nome e cognome) quando \"Nome da Total RP 3\" è acceso e il tuo profilo ha un nome, altrimenti dal nome del personaggio, la cui prima parola è il nome e il resto il cognome. Entrambi (predefinito), solo il nome o solo il cognome; senza cognome resta sempre il nome. Su /e il nome del personaggio lo scrive il gioco, qualunque sia questa scelta.",
+		namestyle_first = "solo il nome", namestyle_last = "solo il cognome", namestyle_both = "nome e cognome",
+		namestyle_now = "nome del personaggio: %s (%s)",
+		values_namestyle = "first, last, both",
+		help_name = "come si chiama il tuo personaggio davanti a un'emote: nome, cognome o entrambi",
 		gw_combat_improvise = "in combattimento il tasto 'pronuncia' non inventa una frase nuova. /au battlecry ne chiede una.",
 		gw_combat_held = "%d frasi aspettano la fine dello scontro.",
 		gw_combat_editor = "in combattimento l'editor non si apre mai. La proposta: %s\nPremi di nuovo per inviarla così com'è, oppure /au cancel.",

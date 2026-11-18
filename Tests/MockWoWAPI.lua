@@ -733,6 +733,7 @@ end
 -- objects with the methods the adapter calls. It sets AddOn_TotalRP3 and clears the internal TRP3_API.
 --   spec.status    the player's own roleplay status: 1 in character, 2 out of character, nil none
 --   spec.first     the first name of the player's own profile
+--   spec.last      #281: the last name of that profile (spec.noLastName: no GetLastName; spec.lastBroken: it raises)
 --   spec.profiles  [characterID] = characteristics ({ RA, CL, PS, ... }) of the profiles Total RP 3 knows
 --   spec.unitID    function(unit) -> characterID (default: name-realm of the mock unit)
 --   spec.broken    CreateFromUnit raises, like an API that changed
@@ -746,7 +747,7 @@ function FAKE_TRP3(spec)
 	local Player = {}
 	Player.__index = Player
 	local function Data(obj)
-		if obj.own then return { FN = spec.first } end
+		if obj.own then return { FN = spec.first, LN = spec.last } end
 		state.reads = state.reads + 1
 		return profiles[obj.id]
 	end
@@ -757,6 +758,13 @@ function FAKE_TRP3(spec)
 	function Player:GetCustomRace() local c = Data(self); return c and c.RA end
 	function Player:GetCustomClass() local c = Data(self); return c and c.CL end
 	function Player:GetFirstName() return spec.first end
+	-- #281: the last name; `noLastName` = an older Total RP 3 without the method, `lastBroken` = a method that raises
+	if not spec.noLastName then
+		function Player:GetLastName()
+			if spec.lastBroken then error("API changed") end
+			return spec.last
+		end
+	end
 	function Player:GetInfo(path)
 		local c = Data(self)
 		if path == "characteristics/PS" then return c and c.PS end

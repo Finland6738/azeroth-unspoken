@@ -18,6 +18,7 @@ local WAITS = { 25, 60, 120 }          -- seconds a proposal waits; after the lo
 local SPEEDS = { 8, 11, 14, 18, 24 }   -- reading speed, characters a second (#177)
 local COMBAT = NS.Config.COMBAT_SETTINGS   -- #185: show, chat frame only, hold until the fight ends, silent
 local LITERARY = NS.Config.LITERARY_FREQUENCIES   -- #118: literary forms never, rare, normal
+local NAME_STYLES = NS.Config.NAME_STYLES   -- #281: the character's name: first, last, both
 local CONTENT_W = 600                  -- width of the scrolling content
 local LABEL_X, CONTROL_X, CONTROL_W = 16, 250, 220
 local ROW = 28                         -- a row: 24 units of control and 4 of space
@@ -324,6 +325,10 @@ local function CreatePanel()
 	Next()
 	Toggle("opt_rpname", function() return OnOff(NS.db.modules.totalRP3) end,
 		function() NS.db.modules.totalRP3 = not NS.db.modules.totalRP3 end)
+	Next()
+	-- #281: how the character is named before an emote: first name, last name or both (the default)
+	Toggle("opt_namestyle", function() return NS:L("namestyle_" .. NS.db.names.player) end,
+		function() NS.Config:Set("names.player", Cycle(NAME_STYLES, NS.db.names.player)) end, "opt_namestyle_tip")
 	Next()
 
 	-- what each choice means, the consents that wait for something, the content: the text of a consent, 12 units (#182),

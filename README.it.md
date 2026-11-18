@@ -107,6 +107,7 @@ L'addon risponde a `/au` e a `/unspoken`. Ogni comando ha un solo nome, inglese;
 | `/au intensity <0-100>` | quanto spesso parla il narratore: 0 = muto per gli eventi spontanei, 50 = bilanciato, 100 = intenso |
 | `/au depth natural\|literary\|elevated` | profondità dello stile: le frasi scritte per quel tono pesano di più (le altre restano possibili) |
 | `/au literary never\|rare\|normal` | forme letterarie (versi, canzoni, racconti, solo nel narratore privato): rare di base, circa una ogni 20-30 minuti |
+| `/au name first\|last\|both` | come si chiama il tuo personaggio davanti a un'emote (riquadro del narratore, emote proposte fuori da `/e`): solo il nome, solo il cognome o entrambi (predefinito). Su `/e` il nome WoW lo scrive il gioco |
 | `/au mode private\|preview\|confirm\|auto` | che cosa può arrivare in chat; predefinito: `private`. `auto` non si attiva al primo comando: mostra un avviso e va ripetuto dopo un paio di secondi (entro 30) |
 | `/au channel auto\|say\|emote\|party\|raid\|guild\|instance` | canale predefinito delle proposte (forme brevi `s`, `e`, `p`, `g`, `i`) |
 | `/au speak` | come il tasto "pronuncia": conferma la proposta in attesa, oppure ne propone una nuova |
@@ -153,7 +154,7 @@ Il pannello si apre con `/au options` (è registrato anche tra le opzioni degli 
 - **Chat**: la modalità e il canale predefinito.
 - **Riquadro del narratore**: durata del testo, opacità, dimensione, posizione bloccata, cronologia, prova.
 - **Moduli**: Personale, Mondo, Dialoghi NPC, Memoria, Emozioni, Relazioni, Storie, Social, Proposte in chat, Audio (quelli non ancora attivi, *Social* e *Audio*, sono segnati con `*`), più i preset *Completo*, *RPG personale*, *Mondo narrativo* e *Social RP*.
-- Il pulsante "pronuncia", il nome da Total RP 3 e, con un consenso a parte, la lettura dei profili pubblici degli altri (*Leggi il Total RP 3 degli altri*), il carattere del personaggio (`/au soul`), la pausa immediata, la procedura guidata.
+- Il pulsante "pronuncia", il nome da Total RP 3, come si chiama il personaggio (*Nome del personaggio*: solo il nome, solo il cognome o entrambi) e, con un consenso a parte, la lettura dei profili pubblici degli altri (*Leggi il Total RP 3 degli altri*), il carattere del personaggio (`/au soul`), la pausa immediata, la procedura guidata.
 - Alcune scelte si fanno **solo da comando**: gli assi e le persone delle relazioni (`/au relationships`), l'attrazione e la registrazione automatica dei giocatori (`/au relationships attraction|auto`), l'offerta automatica del dialogo NPC (`/au talk offer`) e il numero massimo di storie attive (`/au stories max`).
 
 ## Privacy e chat
@@ -182,7 +183,7 @@ Le decisioni dietro a questi comportamenti sono nelle [ADR](docs/adr/README.md),
 
 L'integrazione è **facoltativa**: l'addon funziona al 100% anche senza. Se Total RP 3 è presente, può leggere tre cose, ciascuna con un suo interruttore:
 
-1. **Il nome del tuo profilo** (*Nome da Total RP 3* nelle impostazioni, acceso per impostazione predefinita) per usarlo nelle frasi.
+1. **Il nome del tuo profilo**, nome e cognome (*Nome da Total RP 3* nelle impostazioni, acceso per impostazione predefinita) per usarlo nelle frasi; *Nome del personaggio* nelle impostazioni, o `/au name`, sceglie solo il nome, solo il cognome o entrambi (predefinito).
 2. **I tratti psicologici pubblici del tuo profilo** (`/au soul trp3 on`, spento per impostazione predefinita) per il carattere del personaggio; una scelta fatta a mano ha sempre la precedenza.
 3. **I dati pubblici di altri giocatori** (`/au who trp3 on`, o *Leggi il Total RP 3 degli altri* nelle impostazioni, spento per impostazione predefinita; serve anche il punto 1): solo razza, classe e tratti caratteriali, per far reagire il narratore a chi hai davanti. Mai note, storia o campi privati, e non si salva nulla di ciò che si legge.
 

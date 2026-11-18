@@ -20,6 +20,8 @@ local COMBAT_WORDS = K.Register("combat", { show = "show", chat = "chatframe", c
 	silent = "silent" })
 -- #118: the "Literary forms" setting
 local LITERARY_WORDS = K.Register("literary", { never = "never", off = "never", rare = "rare", normal = "normal" })
+-- #281: how the character is named
+local NAME_WORDS = K.Register("name", { first = "first", last = "last", both = "both", full = "both" })
 
 -- eventi richiamabili a mano: il nome del comando (e dell'argomento di test/event/chance) -> l'evento
 local MANUAL = K.Register("manual_events", {
@@ -256,6 +258,17 @@ local function Literary(rest, db)
 	NS:Print(NS:L("literary_now", NS:L("literary_" .. db.literary.frequency)))
 end
 
+-- #281: /au name first / last / both; without an argument it says the choice and the name it gives
+local function Name(rest, db)
+	local v = NAME_WORDS[NS.Lower(rest)]
+	if v then
+		NS.Config:Set("names.player", v)
+	elseif rest ~= "" then
+		NS:Print(NS:L("invalid_value", rest, NS:L("values_namestyle")))
+	end
+	NS:Print(NS:L("namestyle_now", NS:L("namestyle_" .. db.names.player), NS:PlayerName() or "?"))
+end
+
 local function Intensity(rest, db)
 	local n = tonumber(rest)
 	if n then NS.Config:Set("intensity", n) end
@@ -349,6 +362,7 @@ Commands.list = {
 	{ name = "intensity", fn = Intensity, usage = "intensity <0-100>", desc = "help_intensity", group = "narrator" },
 	{ name = "depth", fn = Depth, usage = "depth natural / literary / elevated", desc = "help_depth", group = "narrator" },
 	{ name = "literary", fn = Literary, usage = "literary never / rare / normal", desc = "help_literary", group = "start" },
+	{ name = "name", fn = Name, usage = "name [first / last / both]", desc = "help_name", group = "start" },
 	{ name = "mode", fn = Mode, usage = "mode private / preview / confirm / auto", desc = "help_mode", group = "chat" },
 	{ name = "channel", fn = Channel, usage = "channel auto / say / emote / party / raid / guild / instance / next",
 		desc = "help_channel", group = "chat" },
@@ -474,7 +488,7 @@ Commands.HINTS = {
 	pulsante = "button", pacchetti = "packs", pacchetto = "pack", valida = "validate", controlla = "validate",
 	info = "stats", memoria = "memory", opzioni = "options", lingua = "language", canale = "channel", modo = "mode",
 	chat = "mode", intensita = "intensity", ["intensità"] = "intensity", profondita = "depth", ["profondità"] = "depth",
-	letterarie = "literary", poesia = "literary",
+	letterarie = "literary", poesia = "literary", nome = "name", cognome = "name",
 	pausa = "pause", narratore = "narrator", anima = "soul", profilo = "soul", saluto = "greet", addio = "farewell",
 	brindisi = "toast", pensiero = "muse", minaccia = "threat", grido = "battlecry", preghiera = "pray",
 	vittoria = "victory", ringrazia = "thanks", grazie = "thanks", scherzo = "jest", prob = "chance",

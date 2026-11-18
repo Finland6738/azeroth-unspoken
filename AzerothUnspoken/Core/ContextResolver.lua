@@ -88,8 +88,62 @@ local function TimeOfDay(h)
 	return "night"
 end
 
+---------------------------------------------------------------------------
+-- #281: the character's own name, as the setting `names.player` asks (first | last | both)
+---------------------------------------------------------------------------
+-- Only ASCII spaces and tabs in the patterns: %s and %S could split an accented letter (see UI/Commands.lua).
+---A name with its spaces trimmed and repeated spaces collapsed into one; nil for a value that is not a string or is
+---blank.
+---@param name any
+---@return string?
+function NS.CleanName(name)
+	if type(name) ~= "string" then return nil end
+	name = name:gsub("[ \t]+", " "):gsub("^ ", ""):gsub(" $", "")
+	if name == "" then return nil end
+	return name
+end
+
+---A WoW name split into the first name and the surname. On WoW Forever a character's name may be one or two strings
+---("Arthas" or "Arthas Menethil"): the first word is the first name, the rest the surname (nil when there is none).
+---@param name any
+---@return string? first
+---@return string? last
+function NS.SplitName(name)
+	name = NS.CleanName(name)
+	if not name then return nil, nil end
+	local first, last = name:match("^([^ ]+) (.+)$")
+	if first then return first, last end
+	return name, nil
+end
+
+---The first name and the surname of the character: from the Total RP 3 profile when the module is on and the profile
+---has a first name (its first name is never split: it is what the user wrote in that field), else from the WoW name.
+---@return string? first nil only when the WoW name cannot be read
+---@return string? last
+function NS:PlayerNameParts()
+	local T = NS.TotalRP3
+	local rpFirst = T and NS.CleanName(T:GetFirstName())
+	if rpFirst then return rpFirst, NS.CleanName(T:GetLastName()) end
+	return NS.SplitName(SafeCall(UnitName, "player"))
+end
+
+---How the addon names the character before an emote (narrator, emote proposals outside /e, the /au test preview):
+---the first name, the last name or both, as `names.player` says (or as `style` asks). Without a surname every choice
+---gives the first name; never an empty string (nil only when the WoW name cannot be read).
+---@param style? string first | last | both
+---@return string?
+function NS:PlayerName(style)
+	local first, last = self:PlayerNameParts()
+	if not first then return nil end
+	if not last then return first end
+	style = style or (NS.db and type(NS.db.names) == "table" and NS.db.names.player) or "both"
+	if style == "first" then return first end
+	if style == "last" then return last end
+	return first .. " " .. last
+end
+
 local function PlayerName()
-	return (NS.TotalRP3 and NS.TotalRP3:GetFirstName()) or SafeCall(UnitName, "player")
+	return NS:PlayerName()
 end
 
 -- nomi localizzati nella lingua scelta dall'utente (non in quella del client)

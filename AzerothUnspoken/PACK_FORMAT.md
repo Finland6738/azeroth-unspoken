@@ -1163,7 +1163,7 @@ registry = {
 
 | Placeholder | Value |
 |---|---|
-| `{player}` | the character's name (the Total RP 3 one, if active) |
+| `{player}` | the character's name, as the setting `names.player` asks (`/au name first\|last\|both`, default both): the first name, the last name or both, from Total RP 3 (first and last name) if active and the profile has a first name, else from the WoW name split at the first space. Without a surname it is the first name. No base line uses it today; the name appears before an emote |
 | `{target}` | target |
 | `{spell}` | the spell just cast, **as the game client names it** (an English client gives English names, whatever the phrase language). The base Italian lines avoid it; a pack in another language than the client's should word the line so the name can stand out (a quoted name, "the spell") or leave it out |
 | `{zone}`, `{subzone}` | place |

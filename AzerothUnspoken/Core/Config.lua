@@ -30,6 +30,10 @@ Config.COMBAT_SETTINGS = { "show", "chatframe", "hold", "silent" }
 Config.CHAT_CHANNELS = { "auto", "SAY", "EMOTE", "PARTY", "RAID", "GUILD", "INSTANCE_CHAT" }
 -- #118, D15: how often the literary forms speak (literary.frequency): never, rare (the default), normal
 Config.LITERARY_FREQUENCIES = { "never", "rare", "normal" }
+-- #281: how the addon names the player's own character (names.player): the first name, the last name, or both (the
+-- default). The name comes from Total RP 3 (first and last name) or from the WoW name, whose first word is the first name
+-- and the rest the surname (Core/ContextResolver.lua, NS:PlayerName)
+Config.NAME_STYLES = { "first", "last", "both" }
 
 -- Byte massimi di un messaggio, per canale: la fonte unica del Chat Gateway (che taglia) e del validatore
 -- (che segnala le frasi troppo lunghe). SendChatMessage accetta 255 byte. PRIVATE non è un canale: è il
@@ -129,6 +133,7 @@ Config.CHAT_LIMITS = {
 ---@field npcAlive AUNPCAliveSettings NPC Alive (S8)
 ---@field arcs AUArcSettings Story Arcs (S9)
 ---@field literary { frequency: string } #118: literary forms never | rare | normal (Config.LITERARY_FREQUENCIES)
+---@field names { player: string } #281: the character's own name: first | last | both (Config.NAME_STYLES)
 ---@field ui AUUISettings
 
 Config.defaults = {
@@ -224,6 +229,12 @@ Config.defaults = {
 	literary = {
 		frequency = "rare",
 	},
+	-- #281: how the character is named before an emote (narrator, emote proposals outside /e, /au test): the first name,
+	-- the last name or both (the default: the whole WoW name, or the Total RP 3 first and last name). Without a surname
+	-- every choice gives the first name. The game itself writes the WoW name before an emote sent on /e
+	names = {
+		player = "both",
+	},
 	ui = {
 		showButton = true,
 		wizardDone = false,
@@ -294,6 +305,7 @@ Config.rules = {
 	["pacing.recentPhraseWindow"] = { min = 1, max = 200, integer = true },
 	["pacing.inCombat"] = { enum = Config.COMBAT_SETTINGS },
 	["literary.frequency"] = { enum = Config.LITERARY_FREQUENCIES },
+	["names.player"] = { enum = Config.NAME_STYLES },
 }
 
 -- tabelle libere: si controllano le singole voci

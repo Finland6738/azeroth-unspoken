@@ -280,7 +280,7 @@ end
 ---@param form string say | emote
 ---@param text string testo della frase, senza nome né virgolette
 ---@param channel string
----@param player? string nome del personaggio (anche da Total RP 3)
+---@param player? string nome del personaggio (anche da Total RP 3), come chiede `names.player` (#281)
 ---@return string
 function Gateway:TextFor(form, text, channel, player)
 	text = OneLine(Trim(text or ""))
@@ -294,7 +294,8 @@ function Gateway:TextFor(form, text, channel, player)
 			return "*" .. Clip(text, limit) .. "*"
 		end
 		local name = player
-		if name == nil or name == "" then name = Compat.SafeCall(UnitName, "player") end
+		-- #281: the name as the setting `names.player` asks (first, last or both), as in the narrator
+		if name == nil or name == "" then name = NS:PlayerName() end
 		return Trim((name or "") .. " " .. text)
 	end
 	if channel == "EMOTE" then return NS:L("emote_says", text) end
