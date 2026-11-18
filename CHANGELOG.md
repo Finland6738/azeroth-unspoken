@@ -8,6 +8,12 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### CI: 75 minutes for the Tests job
+
+- **Changed:** the `Tests` job of `.github/workflows/ci.yml` may now run for 75 minutes instead of 40. After W20 the
+  whole suite took 31 minutes on the release PR (#280), and it grows with every content wave; the next ten waves would
+  reach the old limit. ADR 0022 records it.
+
 ### Character's name: first name, last name or both (issue #281)
 
 A player asked on CurseForge for the addon to use both names. A new setting chooses how the addon names your own
