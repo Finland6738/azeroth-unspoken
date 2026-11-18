@@ -4,9 +4,19 @@ All notable changes to this project are recorded here.
 
 The format follows [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/) and the project intends to follow [semantic versioning](https://semver.org/) from version 1.0 onwards. Until then, 0.x versions may change in ways that are not backward compatible. The v2 data schema of the phrase packs (step S3) is now stable and described in [PACK_FORMAT.md](AzerothUnspoken/PACK_FORMAT.md), but it may still change before 1.0: any changes will be announced here.
 
-Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspoken/releases). Each one has a zip with only the addon folders, built by `tools/package_release.py`. The first is `0.1.0` and the latest is `0.2.0`, both development previews.
+Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspoken/releases). Each one has a zip with only the addon folders, built by `tools/package_release.py`. The first is `0.1.0` and the latest is `0.2.1`, all development previews.
 
 ## [Unreleased]
+
+## [0.2.1] - 2026-11-18
+
+A small update to 0.2.0: a setting chooses how the addon names your character before an emote, first name, last name or both (`/au name`), and the CI Tests job may run for 75 minutes. The lines are the same as in 0.2.0.
+
+### CI: 75 minutes for the Tests job
+
+- **Changed:** the `Tests` job of `.github/workflows/ci.yml` may now run for 75 minutes instead of 40. After W20 the
+  whole suite took 31 minutes on the release PR (#280), and it grows with every content wave; the next ten waves would
+  reach the old limit. ADR 0022 records it.
 
 ### Character's name: first name, last name or both (issue #281)
 
@@ -3110,6 +3120,7 @@ Tools for the owner to run in the real client, so that the decisions D3 (memory 
 - A pack that registers a key that already exists (script, NPC, place, arc) replaces the base one without a warning ([#69](https://github.com/Finland6738/azeroth-unspoken/issues/69)).
 - License to be defined ([issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2)).
 
-[Unreleased]: https://github.com/Finland6738/azeroth-unspoken/compare/v0.2.0...main
+[Unreleased]: https://github.com/Finland6738/azeroth-unspoken/compare/v0.2.1...main
+[0.2.1]: https://github.com/Finland6738/azeroth-unspoken/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/Finland6738/azeroth-unspoken/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/Finland6738/azeroth-unspoken/releases/tag/v0.1.0
