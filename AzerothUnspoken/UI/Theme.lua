@@ -388,7 +388,8 @@ function Theme.FontName(id) return "AzerothUnspokenFont" .. id end
 -- A FontString of `parent` in font `id` and colour `token` (registered).
 function Theme.NewText(parent, id, token, layer)
 	local fs = parent:CreateFontString(nil, layer or "OVERLAY")
-	if Theme.fontObjects[id] then fs:SetFontObject(Theme.fontObjects[id]) end
+	-- UI-3: a client without CreateFont still gets a font on every text (a FontString with no font cannot show one)
+	if Theme.fontObjects[id] then fs:SetFontObject(Theme.fontObjects[id]) else fs:SetFontObject("GameFontHighlight") end
 	Theme.Text(fs, token or "text-1")
 	return fs
 end
