@@ -237,7 +237,8 @@ end
 
 -- the channel chip (#186): a ghost button edged in the voice colour, with a small arrow that says it changes
 local function Chip(parent, onClick)
-	local b = W.FlatButton(parent, "/s", 40, 24, onClick, "ghost")
+	-- the narrator keeps its own look until UI-4 rebuilds it on the theme (W.LegacyFlatButton)
+	local b = W.LegacyFlatButton(parent, "/s", 40, 24, onClick, "ghost")
 	b.label:ClearAllPoints()
 	b.label:SetPoint("LEFT", 9, 0)
 	b.arrow = {}
@@ -1047,7 +1048,7 @@ local function Build()
 	frame.channelBtn:SetPoint("LEFT", 0, 0)
 	W.Tooltip(frame.channelBtn, function() return NS:L("tip_channel") end)
 	local function Btn(text, kind, onClick)
-		return W.FlatButton(bar, text, 60, 24, onClick, kind)
+		return W.LegacyFlatButton(bar, text, 60, 24, onClick, kind)
 	end
 	frame.sendBtn = Btn(NS:L("btn_send"), "primary", function()
 		NS.Gateway:PlayerAction(function() NS.Gateway:SendPending() end)

@@ -28,6 +28,8 @@ local function Rect(f)
 	if type(f) ~= "table" or not f.GetLeft then return nil end
 	local l, b, r, t = f:GetLeft(), f:GetBottom(), f:GetRight(), f:GetTop()
 	if type(l) ~= "number" or type(b) ~= "number" or type(r) ~= "number" or type(t) ~= "number" then return nil end
+	-- UI-3: the title bar of W.Window rises above the frame; the window is that much taller on screen
+	if type(f.auTopExtra) == "number" then t = t + f.auTopExtra end
 	local k = 1
 	local s, u = f.GetEffectiveScale and f:GetEffectiveScale(), UIParent.GetEffectiveScale and UIParent:GetEffectiveScale()
 	if type(s) == "number" and type(u) == "number" and u ~= 0 then k = s / u end

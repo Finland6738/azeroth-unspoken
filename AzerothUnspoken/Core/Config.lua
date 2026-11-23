@@ -2,7 +2,7 @@
 --   AzerothUnspokenDB          (account)       = { schemaVersion, settings = { ... }, sharedPlayers = { version, players } }
 --     sharedPlayers: the opt-in list of people shared by the account's characters (#114), created only when the user
 --     turns the option on; its own version, shape and rules are in Systems/Relationships.lua
---   AzerothUnspokenCharacterDB (personaggio)   = { schemaVersion, memory, personality, emotion, memories, relationships, arcs, history }
+--   AzerothUnspokenCharacterDB (personaggio)   = { schemaVersion, memory, personality, emotion, memories, relationships, arcs, history, windows }
 --     personality = { version, archetype, base, traits = { [tratto] = valore }, trp3, legacy }  (Systems/Personality.lua)
 --     emotion = { version, values = { [emozione] = { v, at } } }                   (Systems/Emotion.lua)
 --     memories = { version, nextId, entries, places, flags, stats }                (Systems/LivingMemory.lua)
@@ -293,6 +293,9 @@ Config.characterDefaults = {
 	-- shape, bounds and migrations in Systems/Songbook.lua
 	songbook = { version = 1, heard = {}, learned = {}, muted = {}, favourite = {} },
 	history = {},
+	-- UI-ECO UI-3: where this character left each window, by its global name: { point, relativePoint, x, y } on UIParent
+	-- (UI/Widgets.lua W.Window). A window never moved has no entry and opens at its first place.
+	windows = {},
 }
 
 -- regole oltre al tipo, per percorso
@@ -325,7 +328,15 @@ Config.rules = {
 }
 
 -- tabelle libere: si controllano le singole voci
+-- a saved window position (UI-ECO UI-3): two anchor names and two finite offsets
+local function WindowPosition(v)
+	if type(v) ~= "table" or type(v[1]) ~= "string" or type(v[2]) ~= "string" then return false end
+	local x, y = v[3], v[4]
+	return type(x) == "number" and type(y) == "number" and x == x and y == y and math.abs(x) < 100000 and math.abs(y) < 100000
+end
+
 Config.maps = {
+	["character.windows"] = WindowPosition,
 	chance = function(v) return type(v) == "number" and v >= 0 and v <= 100 end,
 	ignored = function(v) return v == true end,
 	disabledPacks = function(v) return v == true end,

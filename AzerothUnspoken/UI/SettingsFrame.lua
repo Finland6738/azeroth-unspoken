@@ -1,11 +1,14 @@
 -- Azeroth Unspoken: pannello delle impostazioni (GDD §12.2)
--- Five sections under their headers (#187): General, Chat, Narrator, Modules, Privacy. Every row is a plain label next
+-- Six sections under their headers (#187): General, Appearance (UI-ECO UI-3), Chat, Narrator, Modules, Privacy. The
+-- page follows the theme: a `bg` surface of its own inside the client's frame, the labels and headings in the theme's
+-- text colours (W.Adopt), the buttons of UI/Widgets.lua. Every row is a plain label next
 -- to its control: a button that shows the value and changes it, or "-", the value and "+" (the value is text, never a
 -- button that does nothing). The sections scroll inside the client's settings canvas. Every change sends the one
 -- "settings changed" notice (Config:Changed, #192), which the panel, the open windows, the narrator and the NPC dialogue
 -- window follow.
 local ADDON, NS = ...
 local W = NS.Widgets
+local Theme = NS.Theme
 local SettingsFrame = NS:RegisterModule("settings")
 NS.SettingsFrame = SettingsFrame
 
@@ -19,6 +22,7 @@ local SPEEDS = { 8, 11, 14, 18, 24 }   -- reading speed, characters a second (#1
 local COMBAT = NS.Config.COMBAT_SETTINGS   -- #185: show, chat frame only, hold until the fight ends, silent
 local LITERARY = NS.Config.LITERARY_FREQUENCIES   -- #118: literary forms never, rare, normal
 local NAME_STYLES = NS.Config.NAME_STYLES   -- #281: the character's name: first, last, both
+local THEMES, FONT_SOURCES = NS.Config.THEMES, NS.Config.FONT_SOURCES   -- UI-ECO UI-3: the Appearance rows
 local CONTENT_W = 600                  -- width of the scrolling content
 local LABEL_X, CONTROL_X, CONTROL_W = 16, 250, 220
 local ROW = 28                         -- a row: 24 units of control and 4 of space
@@ -80,6 +84,10 @@ local function CreatePanel()
 	panel = CreateFrame("Frame")
 	panel.name = NS.name
 	SettingsFrame.panel = panel
+	-- UI-3: the page has the theme's surface, so its texts keep their contrast in Nebula and in Aurora
+	panel.bg = panel:CreateTexture(nil, "BACKGROUND")
+	panel.bg:SetAllPoints(panel)
+	Theme.Fill(panel.bg, "bg")
 
 	local title = panel:CreateFontString(nil, "ARTWORK", W.TITLE_FONT)
 	title:SetPoint("TOPLEFT", 16, -16)
@@ -111,7 +119,7 @@ local function CreatePanel()
 		local rule = content:CreateTexture(nil, "ARTWORK")
 		rule:SetPoint("TOPLEFT", LABEL_X, -(y + 32))
 		rule:SetSize(CONTENT_W - 2 * LABEL_X, 1)
-		W.Tint(rule, W.PALETTE.rule)
+		Theme.Fill(rule, "border")
 		table.insert(headers, { fs = h, key = key })
 		y = y + 42
 	end
@@ -218,6 +226,30 @@ local function CreatePanel()
 		{ "opt_wizard", function() NS.Wizard:Open() end },
 	})
 
+	-- Appearance (UI-ECO UI-3, ADR 0058): theme, neon effects, animations, fonts; each one changes the open windows at once,
+	-- without /reload (Config:Set tells UI/Theme.lua). "Animations" is the one switch for every motion of the addon: it
+	-- also writes the narrator's older "reduce motion" (ui.narrator.reduceMotion, #177), which the narrator box reads
+	-- until UI-4, so the two never disagree.
+	Header("opt_section_look")
+	Toggle("opt_theme", function() return NS:L("theme_" .. Theme.Current()) end,
+		function() NS.Config:Set("ui.theme", Cycle(THEMES, NS.db.ui.theme)) end, "opt_theme_tip")
+	Next()
+	Toggle("opt_neon", function() return OnOff(NS.db.ui.neon) end,
+		function() NS.Config:Set("ui.neon", not NS.db.ui.neon) end, "opt_neon_tip")
+	Next()
+	Toggle("opt_motion", function() return OnOff(Theme.AnimationsOn()) end, function()
+		local on = not Theme.AnimationsOn()
+		NS.db.ui.narrator.reduceMotion = not on
+		NS.Config:Set("ui.animations", on)
+	end, "opt_motion_tip")
+	Next()
+	Toggle("opt_font", function() return NS:L("font_" .. Theme.FontSource()) end,
+		function() NS.Config:Set("ui.fontSource", Cycle(FONT_SOURCES, Theme.FontSource())) end, "opt_font_tip")
+	Next()
+	Actions({
+		{ "opt_resetwindows", function() W.ResetPositions() end, nil, "opt_resetwindows_tip" },
+	})
+
 	-- Chat
 	Header("opt_section_chat")
 	Toggle("opt_chatmode", function() return NS:L("chatmode_" .. NS.db.chat.mode .. "_short") end,
@@ -255,9 +287,6 @@ local function CreatePanel()
 		function() StepNumber("ui.narrator.alpha", -0.05, 2) end, function() StepNumber("ui.narrator.alpha", 0.05, 2) end)
 	Stepper("opt_fontsize", function() return tostring(NS.db.ui.narrator.fontSize) end,
 		function() StepNumber("ui.narrator.fontSize", -1) end, function() StepNumber("ui.narrator.fontSize", 1) end)
-	Toggle("opt_motion", function() return OnOff(NS.db.ui.narrator.reduceMotion) end,
-		function() NS.db.ui.narrator.reduceMotion = not NS.db.ui.narrator.reduceMotion end, "opt_motion_tip")
-	Next()
 	Toggle("opt_locked", function() return OnOff(NS.db.ui.narrator.locked) end,
 		function() NS.db.ui.narrator.locked = not NS.db.ui.narrator.locked end)
 	Next()
@@ -369,6 +398,7 @@ local function CreatePanel()
 			.. ((NS.db.interlocutor.trp3Others and not NS.db.modules.totalRP3) and (NS:L("consent_trp3_idle") .. "\n\n") or "")
 			.. NS:L("panel_help", total, #NS.Engine.packOrder))
 		if content ~= panel then content:SetHeight(helpTop + math.ceil(help:GetStringHeight() or 0) + 16) end
+		W.Adopt(panel)
 	end
 	-- il cambio di lingua ritraduce le etichette fisse
 	function panel:Rebuild() self:Refresh() end

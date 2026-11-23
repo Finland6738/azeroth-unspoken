@@ -377,6 +377,92 @@ function Compat:FontLoads(path, size)
 end
 
 ---------------------------------------------------------------------------
+-- Liste lunghe: ScrollBox con DataProvider, poi FauxScrollFrame (UI-ECO UI-3, UI/Widgets/DataTable.lua)
+---------------------------------------------------------------------------
+-- CreateScrollBoxListLinearView, CreateDataProvider e FauxScrollFrame_* sono nel dump di Forever (globali di FrameXML); i
+-- modelli WowScrollBoxList e FauxScrollFrameTemplate e i metodi del ScrollBox (Init, SetDataProvider, ForEachFrame...) sono
+-- XML e mixin di FrameXML, non nel dump. Ogni passo è dentro pcall: chi chiama passa al ripiego successivo se ottiene nil
+-- o false. Nulla di questo è stato provato nel client.
+
+---@return boolean
+function Compat:HasScrollBox()
+	return type(Resolve("CreateScrollBoxListLinearView")) == "function" and type(Resolve("CreateDataProvider")) == "function"
+end
+
+---@return boolean
+function Compat:HasFauxScroll()
+	return type(Resolve("FauxScrollFrame_Update")) == "function" and type(Resolve("FauxScrollFrame_OnVerticalScroll")) == "function"
+		and type(Resolve("FauxScrollFrame_GetOffset")) == "function"
+end
+
+---Un ScrollBox con una vista lineare a righe di `rowHeight`: `initializer(row, data)` riempie una riga (un Button del
+---client). nil se il client non lo offre o un passo fallisce.
+---@param parent table
+---@param rowHeight number
+---@param initializer fun(row: table, data: any)
+---@return table? box
+function Compat:ScrollBoxList(parent, rowHeight, initializer)
+	if not self:HasScrollBox() then return nil end
+	local newView = Resolve("CreateScrollBoxListLinearView")
+	local ok, box = pcall(function()
+		local b = CreateFrame("Frame", nil, parent, "WowScrollBoxList")
+		local view = newView()
+		view:SetElementExtent(rowHeight)
+		view:SetElementInitializer("Button", initializer)
+		local init = Resolve("ScrollUtil.InitScrollBoxList")
+		if type(init) == "function" then init(b, view) else b:Init(view) end
+		return b
+	end)
+	if not ok or type(box) ~= "table" then return nil end
+	return box
+end
+
+---Gives a list to a ScrollBox (a new DataProvider), keeping the scroll position when the client has the constant.
+---@param box table
+---@param list table
+---@return boolean ok
+---@return any? err
+function Compat:SetTableData(box, list)
+	local new = Resolve("CreateDataProvider")
+	if type(box) ~= "table" or type(new) ~= "function" then return false, "no ScrollBox" end
+	return pcall(function()
+		local provider = new(list)
+		box:SetDataProvider(provider, Resolve("ScrollBoxConstants.RetainScrollPosition"))
+	end)
+end
+
+---Un FauxScrollFrame (con la sua barra) dentro `parent`; il nome globale serve al modello per le parti. nil se manca.
+---@param parent table
+---@param name string
+---@return table? scroll
+function Compat:FauxScrollFrame(parent, name)
+	if not self:HasFauxScroll() then return nil end
+	local ok, scroll = pcall(CreateFrame, "ScrollFrame", name, parent, "FauxScrollFrameTemplate")
+	if not ok or type(scroll) ~= "table" then return nil end
+	return scroll
+end
+
+---FauxScrollFrame_Update dentro pcall.
+function Compat:FauxUpdate(scroll, total, shown, rowHeight)
+	local fn = Resolve("FauxScrollFrame_Update")
+	if type(fn) == "function" and scroll then pcall(fn, scroll, total, shown, rowHeight) end
+end
+
+---FauxScrollFrame_OnVerticalScroll dentro pcall: `update` ridisegna le righe.
+function Compat:FauxScrolled(scroll, value, rowHeight, update)
+	local fn = Resolve("FauxScrollFrame_OnVerticalScroll")
+	if type(fn) ~= "function" or not pcall(fn, scroll, value, rowHeight, update) then update() end
+end
+
+---La prima riga mostrata da un FauxScrollFrame (0 se il client non risponde).
+---@return number
+function Compat:FauxOffset(scroll)
+	local state, offset = Compat.Query("FauxScrollFrame_GetOffset", scroll)
+	if state ~= AVAILABLE or type(offset) ~= "number" or offset ~= offset or offset < 0 then return 0 end
+	return math.floor(offset)
+end
+
+---------------------------------------------------------------------------
 -- Il mondo: meteo, giorno e notte, volo (R3, #92 #93 #121)
 ---------------------------------------------------------------------------
 -- Nessuna di queste API è stata provata nel client (si prova con /au probe, #82): ogni lettura restituisce "non lo so"
@@ -492,6 +578,8 @@ local APIS = {
 	{ "C_Reputation.GetNumFactions" }, { "C_Reputation.GetFactionDataByIndex" },
 	-- aspetto (UI-ECO UI-2)
 	{ "C_ClassColor.GetClassColor" }, { "GetPhysicalScreenSize" }, { "CreateFont" },
+	-- liste e colori dei widget (UI-ECO UI-3)
+	{ "CreateScrollBoxListLinearView" }, { "CreateDataProvider" }, { "FauxScrollFrame_Update" }, { "CreateColor" },
 }
 
 function Compat:Probe()

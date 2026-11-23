@@ -852,7 +852,7 @@ Solo aspetto e clic, nessuna API nuova; provato solo con il client finto. Serve 
     - **Cosa riportare:** testi tagliati o sovrapposti (screenshot).
 - **N5 · La linea del tempo.** Fai comparire una frase e guarda il bordo in basso.
     - **Cosa aspettarti:** una linea sottile nel colore della voce si accorcia; quando finisce il riquadro sparisce, senza
-      dissolvenza. Con «Riduci il movimento» acceso la linea non c'è.
+      dissolvenza. Con «Animazioni» spente (Impostazioni > Aspetto, ex «Riduci il movimento») la linea non c'è.
 - **N6 · Testo grande.** `/au options`, **Dimensione del testo** a 28.
     - **Cosa aspettarti:** la scritta in alto non finisce sotto i pulsanti e non tocca la frase; la striscia in alto
       cresce.
@@ -1311,7 +1311,7 @@ non va, apri una issue con quello che hai visto.
       riquadro segue l'ultima riga finché non lo muovi tu. Un clic sul testo passa al gioco (per esempio muove la
       visuale) anche mentre il riquadro scorre.
     - **Cosa riportare:** se la rotellina non fa nulla, o se il testo blocca i clic.
-- **L2.3 · Riduci il movimento.** Accendi **Riduci il movimento** e ripeti L2.1.
+- **L2.3 · Animazioni spente.** Spegni **Animazioni** (Impostazioni > Aspetto, ex Riduci il movimento) e ripeti L2.1.
     - **Cosa aspettarti:** il pezzo compare tutto insieme e resta lo stesso tempo.
 - **L2.4 · La cronologia.** Apri la cronologia (**H** sul riquadro, o `/au narrator history`).
     - **Cosa aspettarti:** il pezzo su più righe, la prima con l'ora e la voce, le altre rientrate.

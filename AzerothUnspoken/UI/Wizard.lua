@@ -102,11 +102,13 @@ pages[1] = { title = "wiz_step_language", build = function(p)
 	-- a live sample of the narrator: the voice, then a line, before any setting
 	local box = CreateFrame("Frame", nil, p)
 	box:SetSize(INNER, 46)
+	-- the sample has the narrator's own dark surface and colours until UI-4 rebuilds the narrator on the theme
 	W.Background(box, 0.03, 0.025, 0.015, 0.95)
+	box.auKeepColours = true
 	local bar = box:CreateTexture(nil, "ARTWORK")
 	bar:SetSize(3, 46)
 	bar:SetPoint("TOPLEFT", 0, 0)
-	W.Tint(bar, W.BRAND)   -- the brand violet (#187); the voice keeps the colour of the narrator's voice
+	NS.Theme.Fill(bar, "accent")
 	local voice = box:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
 	voice:SetPoint("TOPLEFT", 12, -6)
 	local sample = box:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
@@ -425,14 +427,12 @@ function Wizard:Render()
 	local total, number = self:NumberOfPages(), 0
 	for i = 1, step do if Visible(i) then number = number + 1 end end
 	frame.title:SetText(NS:L("wiz_title"))
-	frame.count:SetText(NS:L("wiz_step", number, total))
+	frame:SetStatus(NS:L("wiz_step", number, total), "accent")
 	for i, dot in ipairs(frame.dots) do
 		dot:SetShown(i <= total)
-		if dot.SetColorTexture then
-			if i == number then dot:SetColorTexture(1, 0.82, 0, 1)
-			elseif i < number then dot:SetColorTexture(0.79, 0.64, 0.15, 1)
-			else dot:SetColorTexture(0.3, 0.26, 0.18, 1) end
-		end
+		-- UI-3: the current step in the accent, the done ones in text-3, the next ones in border-strong; the count
+		-- "step n of N" says it in words too
+		NS.Theme.Fill(dot, i == number and "accent" or (i < number and "text-3" or "border-strong"))
 	end
 	frame.skip:SetText(NS:L("wiz_skip"))
 	frame.back:SetText(NS:L("wiz_back"))
@@ -442,6 +442,7 @@ function Wizard:Render()
 	W.FitButton(frame.next, 90, 120)
 	W.FitButton(frame.back, 80, 100)
 	W.FitButton(frame.skip, 120, WIDTH - 32 - 16 - 120 - 100, 14)
+	W.Adopt(frame)   -- UI-3: a page built now takes the theme's text colours
 end
 
 function Wizard:Next()
@@ -476,9 +477,8 @@ local function Build()
 	frame = W.Window(UIParent, WIDTH, HEIGHT, "wiz_title", { name = "AzerothUnspokenWizard", point = { "CENTER", 0, 40 },
 		onClose = function() Wizard:Finish() end, refresh = function() Wizard:Render() end })
 
-	-- title band: the name, "step n of N", the close box; the progress dots under it
-	frame.count = frame:CreateFontString(nil, "ARTWORK", "GameFontNormalSmall")
-	frame.count:SetPoint("TOPRIGHT", -44, -15)
+	-- title bar: the name, "step n of N" in its status chip (UI-3), the close box; the progress dots under it
+	frame.count = frame.titleBar.status.label
 	frame.close = frame.closeBox
 	W.Tooltip(frame.close, function() return NS:L("wiz_skip_tip") end)
 	frame.dots = {}
@@ -492,7 +492,7 @@ local function Build()
 	rule:SetPoint("BOTTOMLEFT", 1, 52)
 	rule:SetPoint("BOTTOMRIGHT", -1, 52)
 	rule:SetHeight(1)
-	if rule.SetColorTexture then rule:SetColorTexture(0.33, 0.27, 0.1, 1) end
+	NS.Theme.Fill(rule, "border")
 
 	frame.content = CreateFrame("Frame", nil, frame)
 	frame.content:SetPoint("TOPLEFT", 0, -CONTENT_TOP)

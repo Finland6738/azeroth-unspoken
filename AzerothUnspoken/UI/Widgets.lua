@@ -1,11 +1,25 @@
--- Azeroth Unspoken: piccoli componenti dell'interfaccia, solo con elementi presenti in tutti i client
--- (nessun backdrop, nessun modello di cursore, nessuna grafica di Blizzard: texture colorate). Ogni finestra nasce da
--- W.Window (#187): un solo guscio, con bordo, fascia del titolo, pulsante di chiusura, Esc e scala.
+-- Azeroth Unspoken: the widgets of the NEBULA look (UI-ECO step UI-3, ADR 0058, docs/specs/ui-style.md; adapted from the
+-- sister addon's UI/Widgets.lua). Every widget is made of ordinary frames and the white textures of Media/, tinted with a
+-- token of UI/Theme.lua, so a change of theme recolours it without /reload; motion comes from UI/Motion.lua.
+-- This file holds the shell of every window (W.Window: the 52-unit title bar with the round logo, the window's name in
+-- Orbitron, a mono subtitle, a status chip, the close box, Esc, the scale, the position kept per character), the
+-- buttons (W.FlatButton: primary, secondary, ghost, neon, and AU's danger and text kinds), the selectable Card, the
+-- addon's own tooltip and the helpers the windows already use. Tabs, Segmented, Badge, Chip, TitleBar, Dialog, Toast,
+-- EditBox, ChoiceList, Select, Switch and Slider are in UI/Widgets/Controls.lua, the DataTable and the ThinBar in their
+-- own files. Text comes in already translated (NS:L): a widget never holds a sentence. Unprotected frames only.
+-- Nothing here has run in the game client: the look, the fonts, the 9-slice shapes, the glows and the motion are
+-- predictions until the owner tries them.
 local ADDON, NS = ...
 local W = {}
 NS.Widgets = W
 
--- sfondo a tinta unita
+local Theme, Motion, Assets = NS.Theme, NS.Motion, NS.Assets
+
+---------------------------------------------------------------------------
+-- Helpers kept for the frames that are rebuilt in a later step (narrator, dialogue, speak button: UI-4)
+---------------------------------------------------------------------------
+
+-- a solid colour behind a frame (the narrator box and the NPC dialogue keep their own colours until UI-4)
 ---@param frame table
 ---@param r number
 ---@param g number
@@ -29,6 +43,7 @@ function W.SetFontSize(fs, size, flags)
 	fs:SetFont(path or STANDARD_TEXT_FONT, size, flags or f or "")
 end
 
+-- the client's own button, for the NPC dialogue window until UI-4 rebuilds it
 ---@param parent table
 ---@param text? string
 ---@param width number
@@ -43,159 +58,19 @@ function W.Button(parent, text, width, height, onClick)
 	return b
 end
 
-function W.Tooltip(frame, text)
-	frame:SetScript("OnEnter", function(self)
-		GameTooltip:SetOwner(self, "ANCHOR_TOP")
-		GameTooltip:SetText(type(text) == "function" and text() or text, 1, 1, 1, 1, true)
-		GameTooltip:Show()
-	end)
-	frame:SetScript("OnLeave", function() GameTooltip:Hide() end)
-end
-
--- casella di testo su una riga: prova il modello standard, altrimenti una casella semplice
----@param parent table
----@param width number
----@param height? number
----@return table editBox
-function W.EditBox(parent, width, height)
-	local ok, box = pcall(CreateFrame, "EditBox", nil, parent, "InputBoxTemplate")
-	if not ok or not box then
-		box = CreateFrame("EditBox", nil, parent)
-		W.Background(box, 0, 0, 0, 0.6)
-	end
-	box:SetSize(width, height or 22)
-	box:SetAutoFocus(false)
-	box:SetFontObject(ChatFontNormal or GameFontHighlight)
-	box:SetTextInsets(6, 6, 0, 0)
-	return box
-end
-
--- The slider track (#183): (0.55, 0.50, 0.70) is 5.4:1 against the window surface, above the 3:1 that a control needs
--- (it was 1.7:1). The test computes the ratio from these values.
-W.SLIDER_TRACK = { 0.55, 0.5, 0.7 }
-W.SLIDER_STEP_BUTTON, W.SLIDER_GAP = 24, 4   -- the "-" and "+" of a slider: 24x24 targets (#183)
-
--- Cursore a trascinamento, solo con texture colorate (nessun modello): una barra, un indicatore e, per le scale con
--- valori negativi, un segno sullo zero. `onChange(valore, finale)` parte a ogni movimento (finale = false) e al rilascio
--- del mouse (finale = true): chi salva i dati lo fa nel secondo caso. Anche i test e la tastiera usano :Set(v, final).
--- #183: the mouse wheel moves it by one step; with `opts.buttons` it carries its own "-" and "+" (24x24) at the ends of
--- `width`, and the track is the space between them; `:Step(n)` moves by n steps, saved at once (final). The frame
--- follows the cursor (OnUpdate) only while the mouse button is down.
----@param parent table
----@param width number the whole width, buttons included
----@param min number
----@param max number
----@param onChange? fun(value: number, final: boolean)
----@param opts? { step?: number, buttons?: boolean }
----@return table slider
-function W.Slider(parent, width, min, max, onChange, opts)
-	opts = opts or {}
-	local s = CreateFrame("Frame", nil, parent)
-	s:SetSize(width, opts.buttons and W.SLIDER_STEP_BUTTON or 16)
-	s:EnableMouse(true)
-	local inset = opts.buttons and (W.SLIDER_STEP_BUTTON + W.SLIDER_GAP + 4) or 0
-	s.min, s.max, s.value, s.width, s.inset = min, max, min, width - 2 * inset, inset
-	s.step = opts.step or math.max(1, math.floor((max - min) / 20 + 0.5))
-	local bar = s:CreateTexture(nil, "BACKGROUND")
-	bar:SetPoint("LEFT", s, "LEFT", inset, 0)
-	bar:SetSize(s.width, 4)
-	W.SetBackgroundAlpha(bar, W.SLIDER_TRACK[1], W.SLIDER_TRACK[2], W.SLIDER_TRACK[3], 1)
-	s.bar = bar
-	if min < 0 and max > 0 then
-		local zero = s:CreateTexture(nil, "ARTWORK")
-		zero:SetPoint("CENTER", s, "LEFT", inset + s.width * (-min) / (max - min), 0)
-		zero:SetSize(2, 12)
-		if zero.SetColorTexture then zero:SetColorTexture(0.9, 0.9, 0.95, 0.9) end
-	end
-	local thumb = s:CreateTexture(nil, "OVERLAY")
-	thumb:SetSize(8, 16)
-	if thumb.SetColorTexture then thumb:SetColorTexture(W.BRAND[1], W.BRAND[2], W.BRAND[3], 1) end
-	s.thumb = thumb
-
-	local function Place()
-		local f = (s.value - s.min) / (s.max - s.min)
-		thumb:ClearAllPoints()
-		thumb:SetPoint("CENTER", s, "LEFT", s.inset + s.width * f, 0)
-	end
-
-	---@param v number
-	---@param final? boolean
-	function s:Set(v, final)
-		v = math.max(self.min, math.min(self.max, math.floor((tonumber(v) or self.min) + 0.5)))
-		self.value = v
-		Place()
-		if onChange then onChange(v, final == true) end
-	end
-	---Imposta il valore senza chiamare onChange (per ridisegnare la finestra).
-	---@param v number
-	function s:SetQuiet(v)
-		self.value = math.max(self.min, math.min(self.max, tonumber(v) or self.min))
-		Place()
-	end
-	---Moves by `n` steps (the "-" and "+", the wheel) and saves at once.
-	---@param n number
-	function s:Step(n)
-		self:Set(self.value + n * self.step, true)
-	end
-	local function FromCursor()
-		local x = NS.Compat.SafeCall("GetCursorPosition")
-		local scale = s:GetEffectiveScale()
-		local left = s:GetLeft()
-		if type(x) ~= "number" or type(scale) ~= "number" or type(left) ~= "number" or scale == 0 then return nil end
-		local f = math.max(0, math.min(1, (x / scale - left - s.inset) / s.width))
-		return s.min + f * (s.max - s.min)
-	end
-	-- #183: follows the cursor only while dragging; idle, the slider costs nothing per frame
-	local function Follow()
-		local v = FromCursor()
-		if v then s:Set(v, false) end
-	end
-	local function StopFollowing()
-		s.dragging = false
-		s:SetScript("OnUpdate", nil)
-	end
-	s:SetScript("OnMouseDown", function()
-		s.dragging = true
-		s:SetScript("OnUpdate", Follow)
-		Follow()
-	end)
-	s:SetScript("OnMouseUp", function()
-		if not s.dragging then return end
-		StopFollowing()
-		local v = FromCursor()
-		s:Set(v or s.value, true)
-	end)
-	-- a window closed while the button is down ends the drag where it is
-	s:SetScript("OnHide", function()
-		if s.dragging then
-			StopFollowing()
-			s:Set(s.value, true)
-		end
-	end)
-	if s.EnableMouseWheel then s:EnableMouseWheel(true) end
-	s:SetScript("OnMouseWheel", function(_, delta) s:Step(delta > 0 and 1 or -1) end)
-	if opts.buttons then
-		s.minus = W.FlatButton(s, "-", W.SLIDER_STEP_BUTTON, W.SLIDER_STEP_BUTTON, function() s:Step(-1) end)
-		s.minus:SetPoint("LEFT", s, "LEFT", 0, 0)
-		s.plus = W.FlatButton(s, "+", W.SLIDER_STEP_BUTTON, W.SLIDER_STEP_BUTTON, function() s:Step(1) end)
-		s.plus:SetPoint("RIGHT", s, "RIGHT", 0, 0)
-	end
-	Place()
-	return s
-end
-
----Contrast ratio of two colours (WCAG relative luminance), for the tests of the 3:1 rule of controls (#183).
+---Contrast ratio of two opaque colours (WCAG relative luminance): the formula of UI/Theme.lua.
 ---@param a number[] { r, g, b } 0-1
 ---@param b number[]
 ---@return number ratio
-function W.Contrast(a, b)
-	local function L(c)
-		local function ch(v) return v <= 0.03928 and v / 12.92 or ((v + 0.055) / 1.055) ^ 2.4 end
-		return 0.2126 * ch(c[1]) + 0.7152 * ch(c[2]) + 0.0722 * ch(c[3])
-	end
-	local la, lb = L(a), L(b)
-	if la < lb then la, lb = lb, la end
-	return (la + 0.05) / (lb + 0.05)
+function W.Contrast(a, b) return Theme.Contrast(a, b) end
+
+---The colour code of a token in the current theme ("|cffRRGGBB"), for a word coloured inside a longer text. A window
+---that uses it builds its text again when the theme changes (W.Window calls its refresh).
+---@param token string
+---@return string
+function W.Hex(token)
+	local r, g, b = Theme.Color(token)
+	return ("|cff%02x%02x%02x"):format(math.floor(r * 255 + 0.5), math.floor(g * 255 + 0.5), math.floor(b * 255 + 0.5))
 end
 
 -- Saved position (#192): the frame's bottom-left corner, read with GetLeft/GetBottom, as { "BOTTOMLEFT", "BOTTOMLEFT",
@@ -212,38 +87,30 @@ function W.SavePosition(frame)
 	return { point, relPoint, x, y }
 end
 
+---@param pos any
+---@return boolean ok a position W.SavePosition could have written
+function W.IsPosition(pos)
+	return type(pos) == "table" and type(pos[1]) == "string" and type(pos[2]) == "string"
+		and type(tonumber(pos[3])) == "number" and type(tonumber(pos[4])) == "number"
+		and tonumber(pos[3]) == tonumber(pos[3]) and tonumber(pos[4]) == tonumber(pos[4])
+		and math.abs(tonumber(pos[3])) < 100000 and math.abs(tonumber(pos[4])) < 100000
+end
+
 function W.RestorePosition(frame, pos, default)
 	frame:ClearAllPoints()
-	if type(pos) == "table" and pos[1] and pos[2] and tonumber(pos[3]) and tonumber(pos[4]) then
-		frame:SetPoint(pos[1], UIParent, pos[2], pos[3], pos[4])
+	if W.IsPosition(pos) then
+		frame:SetPoint(pos[1], UIParent, pos[2], tonumber(pos[3]), tonumber(pos[4]))
 	else
 		frame:SetPoint(default[1], UIParent, default[2], default[3], default[4])
 	end
 end
 
--- The look of every window (#187, the "proposed" design of the UI review): warm dark surfaces, a thin bronze edge, a
--- title band, flat buttons. Only coloured textures, so it works in every client and uses no Blizzard art.
-W.PALETTE = {
-	surface = { 0.06, 0.05, 0.03 },   -- window
-	band = { 0.09, 0.07, 0.04 },      -- title band
-	edge = { 0.42, 0.33, 0.13 },      -- outer edge of a window
-	rule = { 0.33, 0.27, 0.1 },
-	gold = { 1, 0.82, 0 },
-	goldDim = { 0.79, 0.64, 0.15 },
-	card = { 0.1, 0.085, 0.06 },
-	cardEdge = { 0.27, 0.23, 0.15 },
-	cardOn = { 0.17, 0.14, 0.04 },
-	muted = { 0.3, 0.26, 0.18 },
-	danger = { 0.8, 0.3, 0.24 },      -- an action that loses data: outline and label
-	dangerOn = { 0.45, 0.1, 0.07 },   -- the same action waiting for its confirmation
+-- The narrator's flat button, as it was before UI-3 (#187): only coloured textures, its own warm colours. The narrator
+-- box is not a window and keeps its look until UI-4 rebuilds it on the theme; nothing else uses this.
+local LEGACY = {
+	gold = { 1, 0.82, 0 }, goldDim = { 0.79, 0.64, 0.15 }, cardOn = { 0.17, 0.14, 0.04 },
+	danger = { 0.8, 0.3, 0.24 }, dangerOn = { 0.45, 0.1, 0.07 },
 }
--- The one brand violet (#187): the addon's name in chat, the slider thumb, the highlight of a row.
-W.BRAND = { 0.706, 0.549, 1 }
-W.BRAND_HEX = "b48cff"
-W.TITLE_FONT = "GameFontNormalLarge"   -- one title style, in the band of every window
-W.TEXT_FONT = "GameFontHighlight"      -- 12 units: the text of a consent or of a privacy note is never smaller (#182)
-W.BAND = 36                            -- height of the title band
-W.TOP = 46                             -- where the content of a window starts, from the top
 
 -- four 1-unit edges around a frame, each anchored on two corners so that it follows a later change of size
 local function Edges(frame)
@@ -262,90 +129,226 @@ end
 local function Tint(texture, c, a)
 	if texture.SetColorTexture then texture:SetColorTexture(c[1], c[2], c[3], a or 1) end
 end
-W.Tint = Tint
 
----Window chrome of the flat design: a surface, a bronze edge and, with `band` units, a darker title band and a rule
----under it.
----@param frame table
----@param width number
----@param height number
----@param band? number height of the title band
----@return table parts { bg, edges, band, rule }
-function W.FlatWindow(frame, width, height, band)
-	local P = W.PALETTE
-	local parts = { bg = W.Background(frame, P.surface[1], P.surface[2], P.surface[3], 0.97) }
-	parts.edges = Edges(frame)
-	for _, t in ipairs(parts.edges) do Tint(t, P.edge) end
-	if band then
-		parts.band = frame:CreateTexture(nil, "BORDER")
-		parts.band:SetPoint("TOPLEFT", 1, -1)
-		parts.band:SetPoint("TOPRIGHT", -1, -1)
-		parts.band:SetHeight(band)
-		Tint(parts.band, P.band)
-		parts.rule = frame:CreateTexture(nil, "BORDER")
-		parts.rule:SetPoint("TOPLEFT", 1, -(band + 1))
-		parts.rule:SetPoint("TOPRIGHT", -1, -(band + 1))
-		parts.rule:SetHeight(1)
-		Tint(parts.rule, P.rule)
+---The narrator's button until UI-4 (see LEGACY). kind: "primary", "ghost" (default), "danger", "text".
+---@return table button with .edges, .label, :SetText, :GetText, :SetEnabled, :Paint
+function W.LegacyFlatButton(parent, text, width, height, onClick, kind)
+	local P = LEGACY
+	kind = kind or "ghost"
+	local b = CreateFrame("Button", nil, parent)
+	b:SetSize(width, height or 24)
+	b.style = kind
+	b.bg = W.Background(b, 0, 0, 0, 0)
+	b.edges = kind == "text" and {} or Edges(b)
+	b.label = b:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+	if kind == "text" then b.label:SetPoint("LEFT", 2, 0) else b.label:SetPoint("CENTER", 0, 0) end
+	function b:Paint()
+		local off = self.disabled == true
+		local hover = self.hover and not off
+		local dim = off and 0.45 or 1
+		if self.style == "primary" then
+			Tint(self.bg, hover and { 0.58, 0.44, 0.08 } or { 0.45, 0.34, 0.06 }, off and 0.5 or 1)
+			for _, t in ipairs(self.edges) do Tint(t, P.goldDim, dim) end
+			self.label:SetTextColor(1, 0.95, 0.77, dim)
+		elseif self.style == "danger" then
+			Tint(self.bg, { 0.3, 0.08, 0.05 }, hover and 0.8 or 0)
+			for _, t in ipairs(self.edges) do Tint(t, P.danger, off and 0.4 or 0.8) end
+			self.label:SetTextColor(1, 0.62, 0.55, dim)
+		elseif self.style == "ghost" then
+			Tint(self.bg, hover and { 0.2, 0.16, 0.06 } or { 0, 0, 0 }, hover and 1 or 0)
+			for _, t in ipairs(self.edges) do Tint(t, hover and P.gold or P.goldDim, off and 0.3 or (hover and 1 or 0.55)) end
+			self.label:SetTextColor(0.9, 0.85, 0.72, dim)
+		else
+			self.label:SetTextColor(hover and 1 or 0.72, hover and 0.82 or 0.66, hover and 0 or 0.6, dim)
+		end
 	end
-	return parts
+	function b:SetText(t) self.label:SetText(t or "") end
+	function b:GetText() return self.label:GetText() end
+	local enable = b.SetEnabled
+	function b:SetEnabled(on)
+		if enable then enable(self, on) end
+		self.disabled = not on
+		self:Paint()
+	end
+	b:SetText(text)
+	if onClick then b:SetScript("OnClick", onClick) end
+	b:HookScript("OnEnter", function(self) self.hover = true; self:Paint() end)
+	b:HookScript("OnLeave", function(self) self.hover = false; self:Paint() end)
+	b:Paint()
+	return b
 end
 
----A flat button. kind: "primary" (gold fill), "ghost" (gold outline, the default), "danger" (red outline: an action
----that loses data; `:SetArmed(true)` fills it while it waits for its confirmation) or "text" (no box, left aligned).
----`:SetSelected(on)` marks the chosen tab or option with a full gold edge and a bar under the label, never by colour
----alone (#187). `:SetText`, `:GetText` and `:SetEnabled` work as on any button. `:SetStyle(kind)` changes the kind of a
----boxed button (a row button that is sometimes an action that loses data).
+---------------------------------------------------------------------------
+-- Tooltip: the addon's own (docs/specs/ui-style.md: FDCP §3), inverted (text-1 surface, bg text). GameTooltip is
+-- kept for the game's items only, and the addon shows none today.
+---------------------------------------------------------------------------
+W.TIP_WIDTH = 280   -- the widest line of the tooltip before it wraps
+
+local tip
+local function TipFrame()
+	if tip then return tip end
+	tip = CreateFrame("Frame", nil, UIParent)
+	tip:Hide()
+	tip:SetFrameStrata("TOOLTIP")
+	tip:SetClampedToScreen(true)
+	tip.parts = Theme.Panel(tip, { radius = 8, fill = "text-1", border = "border-strong", shadow = true, shadowAlpha = 0.4 })
+	tip.text = Theme.NewText(tip, "Body", "bg")
+	tip.text:SetPoint("TOPLEFT", tip, "TOPLEFT", 10, -8)
+	tip.text:SetJustifyH("LEFT")
+	if tip.text.SetWordWrap then tip.text:SetWordWrap(true) end
+	return tip
+end
+
+---Shows the addon's tooltip over `owner` with `text` (nothing for an empty text).
+---@param owner table
+---@param text? string
+function W.ShowTip(owner, text)
+	if type(text) ~= "string" or text == "" then W.HideTip(); return end
+	local t = TipFrame()
+	t.owner = owner
+	t.text:SetWidth(W.TIP_WIDTH)
+	t.text:SetText(text)
+	local w = math.min(W.TIP_WIDTH, math.ceil(t.text:GetStringWidth() or W.TIP_WIDTH))
+	t.text:SetWidth(math.max(w, 24))
+	t:SetSize(math.max(w, 24) + 20, math.ceil(t.text:GetStringHeight() or 14) + 16)
+	t:ClearAllPoints()
+	t:SetPoint("BOTTOM", owner, "TOP", 0, 6)
+	t:Show()
+	Motion.FadeIn(t, Motion.FAST)
+end
+
+function W.HideTip()
+	if tip and tip:IsShown() then tip:Hide() end
+end
+
+---The text the addon's tooltip shows now, "" when it is hidden (for the tests).
+---@return string
+function W.TipText()
+	if not tip or not tip:IsShown() then return "" end
+	return tip.text:GetText() or ""
+end
+
+---A tooltip on `frame`: a text or a function that returns one (empty: no tooltip). Calling it again changes the text;
+---the frame's own OnEnter and OnLeave are kept (hooks).
+---@param frame table
+---@param text string|fun(): string
+function W.Tooltip(frame, text)
+	frame.auTip = text
+	if frame.auTipHooked then return end
+	frame.auTipHooked = true
+	frame:HookScript("OnEnter", function(self)
+		local t = self.auTip
+		if type(t) == "function" then t = t() end
+		W.ShowTip(self, t)
+	end)
+	frame:HookScript("OnLeave", function() W.HideTip() end)
+	frame:HookScript("OnHide", function(self) if tip and tip.owner == self then W.HideTip() end end)
+end
+
+---------------------------------------------------------------------------
+-- Buttons
+---------------------------------------------------------------------------
+-- The kinds (docs/specs/ui-style.md §2.2-§2.3): fill token, label token, ring token, gradient, glow. "danger" is an action
+-- that loses data: the `err` token on the ring and the label, never a fill until it waits for its confirmation (armed).
+-- "text" is a link-like button with no box. The default kind is "secondary" (a boxed button).
+W.BUTTON_KINDS = {
+	primary   = { fill = "accent",    ink = "on-accent",   gradient = true, glow = "accent", glowAlpha = 0.3 },
+	secondary = { fill = "surface-3", ink = "text-1",      ring = "border" },
+	ghost     = { ink = "text-2" },
+	neon      = { fill = "surface-1", ink = "text-1",      ring = "neon", glow = "neon", glowAlpha = 0.5 },
+	danger    = { ink = "err",        ring = "err" },
+	text      = { ink = "accent-text" },
+}
+W.HOVER, W.PRESSED = 0.08, 0.12   -- the white layers of the states (FDCP §3)
+W.DISABLED_ALPHA = 0.45
+
+local function GradientOf(region)
+	local b = region.auButton
+	if b and b.style == "primary" and region.SetGradient then
+		local create = NS.Compat.Resolve("CreateColor")
+		local function col(token)
+			local r, g, bl, a = Theme.Color(token)
+			if type(create) == "function" then return create(r, g, bl, a) end
+			return { r = r, g = g, b = bl, a = a }
+		end
+		region:SetGradient("HORIZONTAL", col("accent"), col("accent-2"))
+	end
+end
+
+---A button of the theme. kind: "primary" | "secondary" (default) | "ghost" | "neon" | "danger" | "text".
+---`:SetSelected(on)` marks the chosen tab or option with the accent ring and a bar under the label, never by colour
+---alone (#187). `:SetArmed(on)` fills a danger button while it waits for its confirmation. `:SetStyle(kind)` changes the
+---kind. `:SetText`, `:GetText` and `:SetEnabled` work as on any button. Hover lays 8 % white over the shape, pressed 12 %,
+---a press shrinks it to 0.97 (Motion.Press).
 ---@param parent table
 ---@param text? string
 ---@param width number
 ---@param height? number
 ---@param onClick? fun(self: table, button: string)
----@param kind? "primary"|"ghost"|"danger"|"text"
+---@param kind? "primary"|"secondary"|"ghost"|"neon"|"danger"|"text"
 ---@return table button
 function W.FlatButton(parent, text, width, height, onClick, kind)
-	local P = W.PALETTE
-	kind = kind or "ghost"
-	height = height or 24
+	kind = W.BUTTON_KINDS[kind or "secondary"] and (kind or "secondary") or "secondary"
 	local b = CreateFrame("Button", nil, parent)
-	b:SetSize(width, height)
+	b:SetSize(width, height or 24)
 	b.style = kind
-	b.bg = W.Background(b, 0, 0, 0, 0)
-	b.edges = kind == "text" and {} or Edges(b)
-	b.bar = b:CreateTexture(nil, "ARTWORK")   -- the bar under the label of a selected tab or option
-	b.bar:SetPoint("BOTTOMLEFT", 4, 2)
-	b.bar:SetPoint("BOTTOMRIGHT", -4, 2)
+	b.fill = Theme.Slice(b, "rr_fill_8", "surface-3", "BACKGROUND")
+	b.fill:SetAllPoints(b)
+	b.fill.auButton = b
+	Theme.Call(b.fill, GradientOf)
+	b.ring = Theme.Slice(b, "rr_ring_8", "border", "BORDER")
+	b.ring:SetAllPoints(b)
+	b.over = Theme.Slice(b, "rr_fill_8", nil, "ARTWORK")
+	b.over:SetAllPoints(b)
+	b.over:SetVertexColor(1, 1, 1, 1)   -- the white of the hover and pressed layers, the same in every theme
+	b.over:SetAlpha(0)
+	b.overTo = 0
+	b.bar = b:CreateTexture(nil, "ARTWORK", nil, 2)   -- the bar under the label of a selected tab or option
+	b.bar:SetPoint("BOTTOMLEFT", 6, 2)
+	b.bar:SetPoint("BOTTOMRIGHT", -6, 2)
 	b.bar:SetHeight(2)
-	Tint(b.bar, P.gold)
+	Theme.Fill(b.bar, "accent")
 	b.bar:Hide()
-	b.label = b:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-	if kind == "text" then
-		b.label:SetPoint("LEFT", 2, 0)
-	else
-		b.label:SetPoint("CENTER", 0, 0)
+	b.label = Theme.NewText(b, "Button", "text-1")
+
+	local function Layer(self)
+		if self.disabled then return 0 end
+		if self.pressed then return W.PRESSED end
+		return self.hover and W.HOVER or 0
 	end
+
 	function b:Paint()
-		local off = self.disabled == true
-		local hover = self.hover and not off
-		local dim = off and 0.45 or 1
-		local kind = self.style
-		if kind == "primary" then
-			Tint(self.bg, hover and { 0.58, 0.44, 0.08 } or { 0.45, 0.34, 0.06 }, off and 0.5 or 1)
-			for _, t in ipairs(self.edges) do Tint(t, P.goldDim, dim) end
-			self.label:SetTextColor(1, 0.95, 0.77, dim)
-		elseif kind == "danger" then
-			Tint(self.bg, self.armed and P.dangerOn or { 0.3, 0.08, 0.05 }, self.armed and 1 or (hover and 0.8 or 0))
-			for _, t in ipairs(self.edges) do Tint(t, P.danger, off and 0.4 or (self.armed and 1 or 0.8)) end
-			self.label:SetTextColor(1, self.armed and 0.85 or 0.62, self.armed and 0.8 or 0.55, dim)
-		elseif kind == "ghost" then
-			local on = self.selected == true
-			Tint(self.bg, on and P.cardOn or (hover and { 0.2, 0.16, 0.06 } or { 0, 0, 0 }), (on or hover) and 1 or 0)
-			for _, t in ipairs(self.edges) do Tint(t, on and P.gold or P.goldDim, off and 0.3 or ((on or hover) and 1 or 0.55)) end
-			if on then self.label:SetTextColor(1, 1, 1, 1) else self.label:SetTextColor(0.9, 0.85, 0.72, dim) end
-		else
-			self.label:SetTextColor(hover and 1 or 0.72, hover and 0.82 or 0.66, hover and 0 or 0.6, dim)
+		local k = W.BUTTON_KINDS[self.style] or W.BUTTON_KINDS.secondary
+		local boxed = self.style ~= "text"
+		self.label:ClearAllPoints()
+		if boxed then self.label:SetPoint("CENTER", self, "CENTER", 0, 0) else self.label:SetPoint("LEFT", self, "LEFT", 2, 0) end
+		local fill, ring, ink = k.fill, k.ring, k.ink
+		if self.style == "danger" and self.armed then fill, ink = "err", "on-accent" end
+		if self.selected then ring = "accent" end
+		if self.style == "ghost" and (self.hover or self.selected) and not self.disabled then fill = "surface-3" end
+		if fill then Theme.Tint(self.fill, fill); self.fill:Show() else self.fill:Hide() end
+		GradientOf(self.fill)
+		if ring then Theme.Tint(self.ring, ring); self.ring:Show() else self.ring:Hide() end
+		if self.style == "text" and self.hover and not self.disabled then ink = "accent-hover" end
+		if self.selected and (self.style == "ghost" or self.style == "secondary") then ink = "text-1" end
+		Theme.Text(self.label, ink)
+		self.over:SetShown(boxed)
+		if k.glow and not self.glow then
+			self.glow = Theme.Glow(self, "glow_s", k.glow, { alpha = k.glowAlpha or 0.5 })
+			self.glow:SetPoint("TOPLEFT", self, "TOPLEFT", -18, 18)
+			self.glow:SetPoint("BOTTOMRIGHT", self, "BOTTOMRIGHT", 18, -18)
+		end
+		if self.glow then
+			if k.glow then Theme.Tint(self.glow, k.glow, k.glowAlpha or 0.5) end
+			Theme.GlowShow(self.glow, k.glow ~= nil and not self.disabled)
 		end
 		self.bar:SetShown(self.selected == true)
+		self:SetAlpha(self.disabled and W.DISABLED_ALPHA or 1)
+		local to = Layer(self)
+		if self.overTo ~= to then
+			self.overTo = to
+			Motion.Fade(self.over, to, Motion.FAST)
+		end
 	end
 	function b:SetText(t) self.label:SetText(t or "") end
 	function b:GetText() return self.label:GetText() end
@@ -358,7 +361,7 @@ function W.FlatButton(parent, text, width, height, onClick, kind)
 		self:Paint()
 	end
 	function b:SetStyle(k)
-		if self.style == "text" or k == "text" then return end
+		if not W.BUTTON_KINDS[k] or self.style == "text" or k == "text" then return end
 		self.style = k
 		self:Paint()
 	end
@@ -366,21 +369,26 @@ function W.FlatButton(parent, text, width, height, onClick, kind)
 	function b:SetEnabled(on)
 		if enable then enable(self, on) end
 		self.disabled = not on
+		if self.disabled then self.hover, self.pressed = false, false end
 		self:Paint()
 	end
 	b:SetText(text)
 	if onClick then b:SetScript("OnClick", onClick) end
-	-- hooks, so a tooltip set later with W.Tooltip does not replace the hover colour
+	-- hooks, so a tooltip set later with W.Tooltip keeps the hover state
 	b:HookScript("OnEnter", function(self) self.hover = true; self:Paint() end)
-	b:HookScript("OnLeave", function(self) self.hover = false; self:Paint() end)
+	b:HookScript("OnLeave", function(self) self.hover, self.pressed = false, false; self:Paint() end)
+	b:HookScript("OnMouseDown", function(self) self.pressed = true; self:Paint() end)
+	b:HookScript("OnMouseUp", function(self) self.pressed = false; self:Paint() end)
+	Motion.Press(b)
 	b:Paint()
 	return b
 end
 
--- Card (#188): a clickable panel with a title, a description inside it and a marker; the choice is shown with a gold
--- border and a filled marker, never by colour alone (the description can also say it in words). Only coloured
--- textures, like everything here. `:SetCard(title, sub, on, tag)` redraws; `:GetText()` is the title.
--- `font` is the description's font: W.TEXT_FONT for the text of a consent (#182).
+---------------------------------------------------------------------------
+-- Card (#188): a clickable panel with a title, a description inside it and a marker; the choice is a filled marker (a
+-- hollow ring otherwise), the accent ring and the raised surface, never colour alone. `:SetCard(title, sub, on, tag)`
+-- redraws; `:GetText()` is the title. `font` asks for the description at body size (the text of a consent, #182).
+---------------------------------------------------------------------------
 ---@param parent table
 ---@param width number
 ---@param height number
@@ -388,38 +396,41 @@ end
 ---@param font? string
 ---@return table card
 function W.Card(parent, width, height, onClick, font)
-	local P = W.PALETTE
 	local b = CreateFrame("Button", nil, parent)
 	b:SetSize(width, height)
 	b.auCard = true
-	b.bg = W.Background(b, P.card[1], P.card[2], P.card[3], 1)
-	b.edges = Edges(b)
+	b.parts = Theme.Panel(b, { radius = 12, fill = "surface-1", border = "border-subtle", highlight = true })
+	b.bg = b.parts.fill
+	b.markOff = Theme.Slice(b, "rr_ring_8", "text-3", "ARTWORK")
+	b.markOff:SetSize(12, 12)
+	b.markOff:SetPoint("TOPRIGHT", -12, -12)
 	b.mark = b:CreateTexture(nil, "ARTWORK")
-	b.mark:SetSize(10, 10)
+	b.mark:SetTexture(Assets.textures.circle.path)
+	b.mark:SetSize(12, 12)
 	b.mark:SetPoint("TOPRIGHT", -12, -12)
-	b.title = b:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+	Theme.Tint(b.mark, "accent")
+	b.title = Theme.NewText(b, "BodyMedium", "text-1")
 	b.title:SetPoint("TOPLEFT", 12, -8)
 	b.title:SetWidth(width - 42)   -- up to the marker; a width of its own, so that GetStringHeight() is what is drawn
 	b.title:SetJustifyH("LEFT")
-	b.sub = b:CreateFontString(nil, "OVERLAY", font or "GameFontHighlightSmall")
+	b.sub = Theme.NewText(b, font and "Body" or "Small", "text-2")
 	b.sub:SetPoint("TOPLEFT", b.title, "BOTTOMLEFT", 0, -4)
 	b.sub:SetWidth(width - 24)
 	b.sub:SetJustifyH("LEFT")
 	b.sub:SetJustifyV("TOP")
 	if onClick then b:SetScript("OnClick", onClick) end
-	b:HookScript("OnEnter", function(self)
-		if not self.on then Tint(self.bg, { 0.14, 0.12, 0.08 }, 1) end
-	end)
-	b:HookScript("OnLeave", function(self) self:SetCard(nil, nil, self.on) end)
+	b:HookScript("OnEnter", function(self) self.hover = true; self:SetCard(nil, nil, self.on) end)
+	b:HookScript("OnLeave", function(self) self.hover = false; self:SetCard(nil, nil, self.on) end)
 	function b:SetText(text) self.title:SetText(text or "") end
 	function b:GetText() return self.title:GetText() end
 	function b:SetCard(title, sub, on, tag)
-		if title then self.title:SetText(tag and (title .. "  |cffffd100(" .. tag .. ")|r") or title) end
+		if title then self.title:SetText(tag and (title .. "  " .. W.Hex("accent-text") .. "(" .. tag .. ")|r") or title) end
 		if sub then self.sub:SetText(sub) end
 		self.on = on == true
-		for _, t in ipairs(self.edges) do Tint(t, self.on and P.gold or P.cardEdge, 1) end
-		Tint(self.mark, self.on and P.gold or P.muted, 1)
-		Tint(self.bg, self.on and P.cardOn or P.card, 1)
+		Theme.Tint(self.parts.ring, self.on and "accent" or (self.hover and "border-strong" or "border-subtle"))
+		Theme.Tint(self.parts.fill, self.on and "raised" or "surface-1")
+		self.mark:SetShown(self.on)
+		self.markOff:SetShown(not self.on)
 	end
 	---#179: the height the card needs for what it says now: the title, the description measured with GetStringHeight(),
 	---and the margins; never under `min`. Call it after SetCard; the page lays the next block under the new height.
@@ -458,21 +469,82 @@ function W.FitButton(b, min, max, pad)
 		if not b.auTipSet then
 			b.auTipSet = true
 			b:HookScript("OnEnter", function(self)
-				if not self.auClipped then return end
-				GameTooltip:SetOwner(self, "ANCHOR_TOP")
-				GameTooltip:SetText(self.label:GetText() or "", 1, 1, 1, 1, true)
-				GameTooltip:Show()
+				if self.auClipped and not self.auTip then W.ShowTip(self, self.label:GetText() or "") end
 			end)
-			b:HookScript("OnLeave", function(self) if self.auClipped then GameTooltip:Hide() end end)
+			b:HookScript("OnLeave", function(self) if self.auClipped and not self.auTip then W.HideTip() end end)
 		end
 	end
 	return width
 end
 
 ---------------------------------------------------------------------------
--- Windows (#174, #187, #182, #192)
+-- Text colours of the window contents that are not rebuilt yet (UI-5, UI-6)
+---------------------------------------------------------------------------
+-- The contents of the journal, relationships, character soul, wizard and settings still use the game's font objects
+-- (gold headings, white text). On the light theme they would be white on white, so every text of a window that the theme
+-- does not colour yet takes the token of its font object: the game's gold becomes accent-text, the game's white text-1,
+-- the small white text-2. A frame marked `auKeepColours` (the narrator's sample in the wizard, which
+-- has the narrator's own dark surface) is left as it is.
+-- (the font objects the windows use today; any other one, GameFontHighlight included, becomes text-1)
+W.ADOPT = {
+	GameFontNormal = "accent-text", GameFontNormalSmall = "accent-text", GameFontNormalLarge = "accent-text",
+	GameFontHighlightSmall = "text-2",
+}
+
+local function FontObjectName(region)
+	local f = region.GetFontObject and region:GetFontObject()
+	if type(f) == "string" then return f end
+	if type(f) == "table" and f.GetName then
+		local ok, name = pcall(f.GetName, f)
+		if ok and type(name) == "string" then return name end
+	end
+	return nil
+end
+
+local function Adopt(frame, depth)
+	if type(frame) ~= "table" or frame.auKeepColours or depth > 16 then return 0 end
+	local n = 0
+	if frame.GetRegions then
+		for _, r in ipairs({ frame:GetRegions() }) do
+			if type(r) == "table" and not r.auThemed and r.GetObjectType and r:GetObjectType() == "FontString" then
+				Theme.Text(r, W.ADOPT[FontObjectName(r) or ""] or "text-1")
+				n = n + 1
+			end
+		end
+	end
+	if not frame.auThemed and frame.GetObjectType and frame:GetObjectType() == "EditBox" then
+		Theme.Text(frame, "text-1")
+		n = n + 1
+	end
+	if frame.GetChildren then
+		for _, c in ipairs({ frame:GetChildren() }) do n = n + Adopt(c, depth + 1) end
+	end
+	return n
+end
+
+---Gives the theme's colours to the texts of `frame` that do not have one yet (see W.ADOPT). Cheap to call again: a
+---text adopted once is skipped. Returns the number of texts adopted now.
+---@param frame table
+---@return number
+function W.Adopt(frame)
+	local ok, n = pcall(Adopt, frame, 0)
+	if not ok then
+		if NS.Diagnostics then NS.Diagnostics:Error("widgets:adopt", tostring(n)) end
+		return 0
+	end
+	return n
+end
+
+---------------------------------------------------------------------------
+-- Windows (#174, #187, #182, #192; UI-3: the NEBULA shell)
 ---------------------------------------------------------------------------
 W.windows = {}   -- every window made by W.Window, in the order it was made
+W.TEXT_FONT = "GameFontHighlight"   -- 12 units: the text of a consent or of a privacy note is never smaller (#182)
+W.TITLE_FONT = "GameFontNormalLarge"  -- the title of the settings page (the client draws that frame)
+W.TITLEBAR = 52                     -- the height of the title bar (FDCP §3)
+W.BAND = 36                         -- the part of the title bar inside the window's frame: the contents start under it
+W.BAR_ABOVE = W.TITLEBAR - W.BAND   -- the title bar rises this much above the frame, so the contents keep their place
+W.TOP = 46                          -- where the content of a window starts, from the top of its frame
 
 ---The scale of the addon's windows (#182): ui.windowScale, 0.8-1.5.
 ---@return number
@@ -487,7 +559,7 @@ function W.ApplyScale(frame)
 	if frame and frame.SetScale then frame:SetScale(W.WindowScale()) end
 end
 
--- the open windows follow a change of the settings (#192): scale, title, then their own redraw
+-- the open windows follow a change of the settings (#192): scale, title, then their own redraw and the text colours
 local function FollowSettings()
 	for _, f in ipairs(W.windows) do
 		if f:IsShown() then
@@ -497,6 +569,7 @@ local function FollowSettings()
 				local ok, err = pcall(f.auRefresh)
 				if not ok and NS.Diagnostics then NS.Diagnostics:Error("window:" .. tostring(f.auName), tostring(err)) end
 			end
+			W.Adopt(f)
 		end
 	end
 end
@@ -512,50 +585,128 @@ function W.CloseOnEscape(name)
 	table.insert(list, name)
 end
 
----One window shell for the addon (#187): hidden at once (#192), movable, a surface with a bronze edge, a title band
----with the title and a close box, Esc (#174), the window scale (#182) and a redraw when the settings change (#192).
----opts: name (the global name, needed for Esc), onClose (what the close box does; default: hide; Esc always hides, so a
----window that must do more on Esc does it in OnHide), refresh (the window's redraw, called when the settings change
----while it is open), noEscape, point ({ point, x, y } on UIParent). The content starts W.TOP units from the top.
+-- Positions per character (AzerothUnspokenCharacterDB.windows[global name]); nil before the saved data is loaded.
+local function Positions()
+	local c = NS.cdb
+	if type(c) ~= "table" then return nil end
+	if type(c.windows) ~= "table" then c.windows = {} end
+	return c.windows
+end
+
+---Saves where a window is, for this character.
+---@param f table a window made by W.Window
+function W.SaveWindow(f)
+	local list = Positions()
+	if list and f.auName then list[f.auName] = W.SavePosition(f) end
+end
+
+---Every window goes back to its first place, and the places saved for this character are forgotten.
+function W.ResetPositions()
+	local list = Positions()
+	if list then for k in pairs(list) do list[k] = nil end end
+	for _, f in ipairs(W.windows) do
+		local h = f.auHomePoint
+		if h then
+			f:ClearAllPoints()
+			f:SetPoint(h[1], UIParent, h[1], h[2], h[3])
+		end
+		f.auMoved, f.auPlaced = nil, true
+	end
+	if NS.Windows and NS.Windows.Avoid then NS.Windows:Avoid() end
+end
+
+---The shell of every window of the addon (#187, UI-3): hidden at once (#192), movable, the 12-unit window shape with
+---ring and shadow, the 52-unit title bar (round logo, the window's name in Orbitron, a mono subtitle, a status chip
+---shown with :SetStatus, the close box), Esc (#174), the window scale (#182), a redraw when the settings change (#192),
+---the position kept per character. The title bar rises W.BAR_ABOVE units above the frame, so the contents start
+---W.TOP units from the frame's top as before.
+---opts: name (the global name, needed for Esc and for the saved position), onClose (what the close box does; default:
+---hide; Esc always hides, so a window that must do more on Esc does it in OnHide), refresh (the window's redraw, called
+---when the settings change while it is open), noEscape, point ({ point, x, y } on UIParent).
 ---@param parent? table
 ---@param width number
 ---@param height number
 ---@param title? string key of the title
 ---@param opts? { name?: string, onClose?: fun(), refresh?: fun(), noEscape?: boolean, point?: table }
----@return table frame with .title, .closeBox, .chrome
+---@return table frame with .title, .subtitle, .closeBox, .titleBar, .chrome, :SetStatus(text, tone)
 function W.Window(parent, width, height, title, opts)
 	opts = opts or {}
 	local f = CreateFrame("Frame", opts.name, parent or UIParent)
 	f:Hide()   -- #192: hidden before anything else can fail, so a broken build never leaves a frame that blocks clicks
 	f.auName = opts.name
+	f.auTopExtra = W.BAR_ABOVE   -- Windows.lua counts the title bar above the frame when the narrator steps aside
 	f:SetSize(width, height)
 	local pt = opts.point or { "CENTER", 0, 0 }
+	f.auHomePoint = { pt[1], pt[2], pt[3] }
 	f:SetPoint(pt[1], pt[2], pt[3])
 	f:SetMovable(true)
 	f:EnableMouse(true)
 	f:SetClampedToScreen(true)
 	f:RegisterForDrag("LeftButton")
-	f:SetScript("OnDragStart", f.StartMoving)
-	f:SetScript("OnDragStop", f.StopMovingOrSizing)
-	f.chrome = W.FlatWindow(f, width, height, W.BAND)
+
+	-- the window's shape: fill, ring and shadow from the top of the title bar to the frame's bottom
+	f.chrome = Theme.Panel(f, { radius = 12, fill = "bg", border = "border", shadow = true })
+	for _, key in ipairs({ "fill", "ring" }) do
+		local t = f.chrome[key]
+		t:ClearAllPoints()
+		t:SetPoint("TOPLEFT", f, "TOPLEFT", 0, W.BAR_ABOVE)
+		t:SetPoint("BOTTOMRIGHT", f, "BOTTOMRIGHT", 0, 0)
+	end
+	if f.chrome.shadow then
+		f.chrome.shadow:ClearAllPoints()
+		f.chrome.shadow:SetPoint("TOPLEFT", f, "TOPLEFT", -24, W.BAR_ABOVE + 16)
+		f.chrome.shadow:SetPoint("BOTTOMRIGHT", f, "BOTTOMRIGHT", 24, -32)
+	end
+
+	local close = opts.onClose or function() f:Hide() end
+	local bar = W.TitleBar(f, { onClose = function() close() end })
+	bar:SetPoint("TOPLEFT", f, "TOPLEFT", 0, W.BAR_ABOVE)
+	bar:SetPoint("TOPRIGHT", f, "TOPRIGHT", 0, W.BAR_ABOVE)
+	f.titleBar = bar
+	f.chrome.band = bar
+	f.title, f.subtitle, f.closeBox = bar.title, bar.subtitle, bar.close
+	f.title:SetWidth(math.max(width - 140, 40))
+	f.subtitle:SetText(NS.name .. "  " .. NS.version)
+	W.Tooltip(f.closeBox, function() return NS:L("win_close_tip") end)
+	---A short state in the title bar (a Badge left of the close box): text "" or nil hides it.
+	---@param text? string
+	---@param tone? string accent | ok | warn | err | neutral
+	function f:SetStatus(text, tone) self.titleBar:SetStatus(text, tone) end
+
+	-- moved by the frame or by its title bar; the place is kept for this character
+	local function Dragged()
+		f:StopMovingOrSizing()
+		f.auMoved = true
+		W.SaveWindow(f)
+		if NS.Windows and NS.Windows.Avoid then NS.Windows:Avoid() end
+	end
+	f:SetScript("OnDragStart", function(self) self:StartMoving() end)
+	f:SetScript("OnDragStop", Dragged)
+	bar:EnableMouse(true)
+	bar:RegisterForDrag("LeftButton")
+	bar:SetScript("OnDragStart", function() f:StartMoving() end)
+	bar:SetScript("OnDragStop", Dragged)
+	bar:SetScript("OnMouseDown", function() if NS.Windows and NS.Windows.Raise then NS.Windows:Raise(f) end end)
 
 	f.titleKey = title
-	f.title = f:CreateFontString(nil, "ARTWORK", W.TITLE_FONT)
-	f.title:SetPoint("TOPLEFT", 16, -11)
-	f.title:SetWidth(width - 72)
-	f.title:SetJustifyH("LEFT")
-	if f.title.SetWordWrap then f.title:SetWordWrap(false) end
-	local close = opts.onClose or function() f:Hide() end
-	f.closeBox = W.FlatButton(f, "X", 24, 24, function() close() end)
-	f.closeBox:SetPoint("TOPRIGHT", -8, -6)
-	W.Tooltip(f.closeBox, function() return NS:L("win_close_tip") end)
-
 	if opts.name and not opts.noEscape then W.CloseOnEscape(opts.name) end
 	f.auRefresh = opts.refresh
 	f:HookScript("OnShow", function(self)
 		W.ApplyScale(self)
 		if self.titleKey then self.title:SetText(NS:L(self.titleKey)) end
+		-- the first time it opens in a session: the place this character left it in
+		if not self.auPlaced then
+			self.auPlaced = true
+			local list = Positions()
+			local saved = list and self.auName and list[self.auName]
+			if W.IsPosition(saved) then
+				W.RestorePosition(self, saved, { pt[1], pt[1], pt[2], pt[3] })
+				self.auMoved = true
+			end
+		end
+		W.Adopt(self)
 	end)
+	f:HookScript("OnHide", function() W.HideTip() end)
 	table.insert(W.windows, f)
 	if not W.following and NS.Config and NS.Config.OnChange then
 		W.following = true
@@ -566,6 +717,7 @@ end
 
 -- Two-click confirmation (#190): `:Arm(key)` starts one with a token of its own, `:Disarm()` ends it; the timer ends
 -- only the arming that started it, never a newer one. Windows call `:Disarm()` in OnHide, so nothing stays armed.
+-- An irreversible action asks through W.Dialog from UI-5 on; this stays for the buttons that use it today.
 ---@param seconds number
 ---@param onExpire? fun() the redraw when an arming expires
 ---@return table confirm
