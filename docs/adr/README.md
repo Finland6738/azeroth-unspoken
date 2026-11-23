@@ -65,6 +65,7 @@ They exist to remember *why* the project is built a certain way, not only *how*.
 | [0055](0055-a-cast-on-oneself-and-a-cast-on-someone-else.md) | A cast on oneself and a cast on someone else | accepted (offline; the shares are hypotheses, the target of a potion untested in game) |
 | [0056](0056-pool-shares-the-npc-voice-and-short-lines-in-battle.md) | Pool shares: the NPC's voice and the short lines in battle | accepted (offline; the shares 0.6 and 0.85 are hypotheses, untested in game) |
 | [0057](0057-a-pick-that-does-not-grow-with-its-pools.md) | A pick that does not grow with its pools: weights read where the pick needs them, and the tiers of a large group kept as it loads | accepted (offline; untested in game) |
+| [0058](0058-nebula-ecosystem-look-and-credits.md) | The interface adopts the look and credits of the NEBULA ecosystem (FDCP), and replaces the flat bronze look | accepted (a plan, UI-ECO #284; supersedes the flat bronze look of #187; nothing built or seen in game yet) |
 
 ## Pending decisions
 
