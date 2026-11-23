@@ -107,8 +107,10 @@ FDCP mostra i crediti in una scheda About della sua finestra principale. AU non 
 pagina della categoria dell'addon, costruita da `UI/Windows/About.lua`). Un comando chiamato `about` (previsto in UI-7, quindi non citato ancora come comando) apre le Impostazioni su di essa, e la sua forma `chat` stampa gli stessi
 crediti nella chat. La pagina mostra il nome, la versione, la licenza (codice GPL-3.0-or-later, frasi e dati narrativi tutti i diritti riservati, pacchetto
 d'esempio MIT, documenti CC BY 4.0), il sito NEBULA, il repository GitHub e le issue, e Ko-fi, ognuno in una casella di sola lettura da copiare con Ctrl+C. L'avviso
-di opera di fan (non affiliata né approvata da Blizzard Entertainment) c'è. **Ko-fi compare solo lì e nei documenti, mai come richiesta.** Il
-logo della gilda si usa con il permesso del suo proprietario e non è coperto dalla licenza del codice; lo dice `docs/third-party.md`.
+di opera di fan (non affiliata né approvata da Blizzard Entertainment) c'è. **Ko-fi compare solo lì e nei documenti, mai come richiesta.** La
+pagina Info mostra anche il **logo della community NEBULA**, un'immagine a sé (non il logo tondo della gilda nella barra del titolo): a colori pieni e mai tinta, in una variante scura
+per Nebula e una chiara per Aurora, scambiate con il tema senza `/reload` ([ADR 0058](../adr/0058-nebula-ecosystem-look-and-credits.md), decisione 7). Entrambi i loghi si usano con il permesso del proprietario
+e non sono coperti dalla licenza del codice; lo dice `docs/third-party.md`. I file delle immagini arrivano nel passo UI-7.
 
 ### 2.7 Invarianti di accessibilità
 
@@ -131,5 +133,5 @@ i bagliori e le animazioni sono previsioni fino ad allora.
 | UI-4 | riquadro del narratore, pulsante "parla", proposta e editor del Chat Gateway, finestra di dialogo | | da fare |
 | UI-5 | Diario e Relazioni | | da fare |
 | UI-6 | procedura guidata, Anima del personaggio, il canvas delle Impostazioni | | da fare |
-| UI-7 | crediti: la pagina Info, il comando `about`, README, pagina About del wiki, testo di CurseForge | | da fare |
+| UI-7 | crediti: la pagina Info con il logo della community NEBULA (scuro e chiaro), il comando `about`, README, pagina About del wiki, testo di CurseForge | | da fare |
 | UI-8 | anteprime e asset rigenerati, GIF del README, Interface Tour del wiki, stato finale di questa specifica | | da fare |

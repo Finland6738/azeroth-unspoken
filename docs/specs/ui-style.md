@@ -108,7 +108,9 @@ page of the addon's category, built from `UI/Windows/About.lua`). A command name
 credits to the chat. The page shows the name, the version, the licence (code GPL-3.0-or-later, phrases and narrative data all rights reserved, example
 pack MIT, documents CC BY 4.0), the NEBULA site, the GitHub repository and issues, and Ko-fi, each as a read-only box to copy with Ctrl+C. The fan-made
 notice (not affiliated with or endorsed by Blizzard Entertainment) is on it. **Ko-fi appears only there and in the documents, never as a prompt.** The
-guild logo is used with its owner's permission and is not covered by the code licence; `docs/third-party.md` says so.
+Info page also shows the **NEBULA community logo**, a picture of its own (not the round guild logo of the title bar): full-colour and never tinted, in a dark variant
+for Nebula and a light variant for Aurora, swapped with the theme without `/reload` ([ADR 0058](../adr/0058-nebula-ecosystem-look-and-credits.md), decision 7). Both logos are used with their owner's permission
+and are not covered by the code licence; `docs/third-party.md` says so. The image files arrive in step UI-7.
 
 ### 2.7 Accessibility invariants
 
@@ -131,5 +133,5 @@ shapes, the glows and the animations are predictions until then.
 | UI-4 | narrator box, speak button, Chat Gateway proposal and editor, dialogue frame | | to do |
 | UI-5 | Journal and Relationships | | to do |
 | UI-6 | Wizard, Character soul, the Settings canvas | | to do |
-| UI-7 | credits: the Info page, the `about` command, README, wiki About page, CurseForge text | | to do |
+| UI-7 | credits: the Info page with the NEBULA community logo (dark and light), the `about` command, README, wiki About page, CurseForge text | | to do |
 | UI-8 | mockups and assets regenerated, README GIF, wiki Interface Tour, final status of this spec | | to do |
