@@ -15,7 +15,7 @@ The constraints are the project's own: no Blizzard art, no text written in code 
 
 Azeroth Unspoken adopts the NEBULA look of FDCP: the **same tokens** (names and values), **fonts**, **components** and **animations**, with **Nebula** (dark) as the default theme and **Aurora** (light). The code is copied from FDCP and adapted (names, prefixes, SavedVariables `AzerothUnspokenDB` and `AzerothUnspokenCharacterDB`); there is **no shared library** between the two addons. The look replaces the flat bronze look of #187: `W.PALETTE` and the 36-unit band go away, while the names `W.Window`, `W.FlatButton` and `W.Card` stay, rebuilt on the theme, so that every window takes the new look at once.
 
-The owner approved six decisions on 2026-11-23:
+The owner approved seven decisions on 2026-11-23 (the seventh was added later the same day):
 
 1. **Separate windows, not one tabbed window.** Azeroth Unspoken keeps its own windows (journal, relationships, character soul, wizard, the narrator and its companions), each on the new shell with a 52-point title bar. FDCP's single main window with tabs does not fit an addon whose centre is a box on the screen.
 2. **Logo.** The NEBULA guild logo, round, sits in the title bar. It is used with its owner's permission and is **not covered by the code licence**; `docs/third-party.md` says so.
@@ -23,6 +23,7 @@ The owner approved six decisions on 2026-11-23:
 4. **Languages.** The wiki stays in English, except the About page, which has an Italian twin (`About-it.md`). The UI spec has an Italian twin as well (`docs/specs/ui-style.it.md`). `README.md` and `README.it.md` are both updated.
 5. **Ko-fi** appears only on the in-game Info page and in the documents, never as a prompt or a pop-up. The README sentence that says the addon never asks for anything in the game is reworded to say exactly that.
 6. **Credits** state the mixed licence of the project ([ADR 0034](0034-licensing-gpl-code-reserved-phrases.md)) and use the public name **Finland**. The ROADMAP rule "in the credits, use Finland6738" becomes "Finland"; the `## Author:` line of the toc stays `Finland6738`, as in FDCP. Real names, emails and personal paths never appear.
+7. **The NEBULA community logo in the credits.** The Settings > Info page shows the community logo, in two variants supplied by the owner: a dark-theme one for Nebula and a light-theme one for Aurora, the variant following the active theme and changing with it without `/reload`. It is a different picture from the guild logo of decision 2 (the round one in the title bar): full-colour, never tinted, unlike the white shapes of the theme. It is also used in the READMEs, the wiki About page and the CurseForge text, with the owner's permission, and like the guild logo it is not covered by the code licence (`docs/third-party.md`). The image files enter the repository in step UI-7.
 
 The specification is [`docs/specs/ui-style.md`](../specs/ui-style.md) (Italian twin [`ui-style.it.md`](../specs/ui-style.it.md)). It does not copy FDCP's spec: it points to it as the source and lists only the differences. The work is nine steps, one session and one pull request each, in order (UI-0 to UI-8, in [ROADMAP.md](../../ROADMAP.md)).
 

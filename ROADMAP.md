@@ -188,7 +188,7 @@ Approved by the owner on 2026-11-23: the addon takes the interface look and the 
 | UI-4 | Narrator box, speak button, Chat Gateway proposal and editor, dialogue frame | to do |
 | UI-5 | Journal and Relationships | to do |
 | UI-6 | Wizard, Character soul, the Settings canvas content | to do |
-| UI-7 | Credits and NEBULA: the Info page of the Settings canvas, the `about` command, copy boxes, README credits, wiki About page (`About.md` and `About-it.md`), CurseForge text | to do |
+| UI-7 | Credits and NEBULA: the Info page of the Settings canvas with the NEBULA community logo (a dark variant for Nebula, a light one for Aurora, full-colour and never tinted, swapped with the theme; the image files are added in this step), the `about` command, copy boxes, README credits, wiki About page (`About.md` and `About-it.md`), CurseForge text | to do |
 | UI-8 | Mockups generator, `docs/specs/mockups/`, the regenerated `docs/design/mockups`, the `assets/` PNGs, README GIF and wiki Interface Tour; final status of the spec | to do |
 
 ### GitHub issues

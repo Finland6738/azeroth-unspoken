@@ -34,6 +34,8 @@ in the steps UI-1 to UI-8, one pull request each.
   per step.
 - **Changed**: ROADMAP has a "UI-ECO" section with the steps UI-0 to UI-8, and its credits rule now says the public name
   Finland instead of Finland6738.
+- **Decision 7 added later the same day**: the Settings > Info page will show the NEBULA community logo, a dark variant for
+  Nebula and a light one for Aurora (ADR 0058, the spec, ROADMAP UI-7). The image files arrive in UI-7.
 
 ## [0.2.1] - 2026-11-18
 
