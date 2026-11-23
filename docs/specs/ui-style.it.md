@@ -127,7 +127,7 @@ i bagliori e le animazioni sono previsioni fino ad allora.
 | Passo | Che cosa | Pull request | Stato |
 |---|---|---|---|
 | UI-0 | ADR 0058, questa specifica e il suo gemello inglese, la sezione del ROADMAP, l'issue #284 | questa | fatto (solo documenti) |
-| UI-1 | media: `make_media.py`, `make_fonts.py`, texture, font e testi OFL, `UI/Assets.lua`, pacchetto, `docs/third-party.md` | UI-1 | fatto: file generati e controllati fuori dal gioco; **non provati nel client** (caricamento dei TGA, glifi dei font) |
+| UI-1 | media: `make_media.py`, `make_fonts.py`, texture, font e testi OFL, `UI/Assets.lua`, pacchetto, `docs/third-party.md` | [#289](https://github.com/Finland6738/azeroth-unspoken/pull/289) | fatto: file generati e controllati fuori dal gioco; **non provati nel client** (caricamento dei TGA, glifi dei font) |
 | UI-2 | `UI/Theme.lua`, `UI/Motion.lua`, chiavi di configurazione, prove del tema, il controllo del testo scritto nel codice | | da fare |
 | UI-3 | widget, barra del titolo di 52 punti, `W.Window`, impostazioni di aspetto | | da fare |
 | UI-4 | riquadro del narratore, pulsante "parla", proposta e editor del Chat Gateway, finestra di dialogo | | da fare |
