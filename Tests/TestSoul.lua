@@ -924,7 +924,7 @@ end)
 ---------------------------------------------------------------------------
 local function ProfileButtons()
 	local f = _G.AzerothUnspokenProfile
-	local out = {}
+	local out = { f.closeBox }   -- UI-3: the close box is in the title bar
 	for _, c in ipairs(f.children) do
 		if c.kind == "Button" then table.insert(out, c) end
 	end
@@ -939,7 +939,7 @@ T.run("finestra del profilo", function()
 	local f, b = ProfileButtons()
 	T.eq(#b, 28, "pulsanti: chiusura in alto, archetipo, una x per scala, voce interiore, cultura d'origine e la sua x (#124), argomenti, consenso, neutro, chiudi")
 	T.ok(b[1] == f.closeBox, "#174: the close box at the top right comes first")
-	T.ok(f.title:GetText():find("Anima del personaggio", 1, true), "titolo")
+	T.ok(f.title:GetText():find("ANIMA DEL PERSONAGGIO", 1, true), "titolo")
 	-- archetipo: ogni clic passa al successivo e vale subito
 	local seen = { [NS.cdb.personality.archetype] = true }
 	for i = 1, #Personality.archetypes do
@@ -1022,7 +1022,7 @@ T.run("finestra del profilo", function()
 	-- inglese
 	NS.db.locale = "en"
 	Cmd("soul")
-	T.ok(f.title:GetText():find("Character soul", 1, true), "titolo in inglese")
+	T.ok(f.title:GetText():find("CHARACTER SOUL", 1, true), "titolo in inglese")
 	f.close:Click()
 	NS.db.locale = "it"
 	T.eq(#NS.Diagnostics.errors, 0, "nessun errore")

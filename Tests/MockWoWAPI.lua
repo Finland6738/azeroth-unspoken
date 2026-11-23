@@ -363,6 +363,9 @@ FONT_SIZES = { GameFontNormalSmall = 10, GameFontHighlightSmall = 10, GameFontNo
 function Widget:FontSize()
 	local f = self._s.font
 	if f and tonumber(f[2]) then return f[2] end
+	-- UI-ECO UI-3: a font object of the theme (CreateFont) carries its own size
+	local o = self._s.fontObj
+	if o and o._s and o._s.font and tonumber(o._s.font[2]) then return o._s.font[2] end
 	return FONT_SIZES[self._s.fontObject or ""] or 12
 end
 function Widget:CharUnits() return 6.3 * self:FontSize() / 12 end
@@ -466,6 +469,19 @@ function Widget:SetTexelSnappingBias(v) self._s.bias = v end
 function Widget:SetRotation(r) self._s.rotation = r end
 function Widget:GetRotation() return self._s.rotation or 0 end
 function Widget:GetFontObject() return self._s.fontObj or self._s.fontObject end
+-- UI-ECO UI-3: the regions (textures, texts) and the child frames of a frame, and its type, as the client gives them
+local REGION_KINDS = { FontString = true, Texture = true, MaskTexture = true, Line = true }
+function Widget:GetObjectType() return self.kind end
+function Widget:GetRegions()
+	local out = {}
+	for _, c in ipairs(self.children or {}) do if REGION_KINDS[c.kind] then table.insert(out, c) end end
+	return unpack(out)
+end
+function Widget:GetChildren()
+	local out = {}
+	for _, c in ipairs(self.children or {}) do if not REGION_KINDS[c.kind] then table.insert(out, c) end end
+	return unpack(out)
+end
 -- Animations (UI-ECO UI-2): a group and its animations record what Motion sets; PLAYING_GROUPS lists the running groups and
 -- FINISH_ANIMATIONS() ends them like the client does (OnFinished), so a test sees the end state.
 PLAYING_GROUPS = {}

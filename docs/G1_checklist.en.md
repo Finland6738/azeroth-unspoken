@@ -444,7 +444,7 @@ chose not to stop for in-game tests. It needs the `AzerothUnspoken_Versi` folder
   lines). **Expect:** the box stops at twelve lines and the text scrolls with the **mouse wheel** over it; the box
   follows the last line until you scroll it. A click on the text still reaches the game. **Report:** a wheel that does
   nothing, or a text that blocks clicks.
-- **L2.3 · Reduce motion.** Turn **Reduce motion** on and repeat L2.1. **Expect:** the whole piece at once, for the same
+- **L2.3 · Animations off.** Turn **Animations** off (Settings > Appearance, formerly Reduce motion) and repeat L2.1. **Expect:** the whole piece at once, for the same
   time.
 - **L2.4 · The history.** Open the history. **Expect:** the piece on several lines, the first with the time and the
   voice, the others indented.

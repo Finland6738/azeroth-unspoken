@@ -148,7 +148,17 @@ NS:RegisterLanguage("it", {
 		opt_resetpos = "Riporta il riquadro al centro", opt_history = "Cronologia", opt_test = "Prova il narratore",
 		opt_waits = "Attesa proposta", waits_forever = "finché la chiudi",
 		opt_reading = "Velocità di lettura", reading_cps = "%d caratteri/s",
-		opt_motion = "Riduci il movimento", opt_motion_tip = "Il riquadro del narratore compare e scompare senza dissolvenza.",
+		-- Aspetto (UI-ECO UI-3): tema, effetti neon, animazioni (vi confluisce il vecchio "riduci il movimento" del narratore), caratteri
+		opt_section_look = "Aspetto",
+		opt_theme = "Tema", opt_theme_tip = "Nebula è scuro, Aurora è chiaro. Le finestre cambiano subito.",
+		theme_nebula = "Nebula", theme_aurora = "Aurora",
+		opt_neon = "Effetti neon", opt_neon_tip = "I bagliori e le ombre morbide di finestre e pulsanti. Spenti: un aspetto piatto.",
+		opt_motion = "Animazioni",
+		opt_motion_tip = "Dissolvenze e brevi movimenti di finestre, pulsanti e riquadro del narratore. Spente: tutto cambia subito.",
+		opt_font = "Caratteri", opt_font_tip = "I caratteri dell'addon (Outfit, JetBrains Mono, Orbitron) o quelli del gioco.",
+		font_addon = "Addon", font_game = "Gioco",
+		opt_resetwindows = "Riposiziona le finestre",
+		opt_resetwindows_tip = "Le finestre dell'addon tornano al loro posto iniziale sullo schermo, per questo personaggio.",
 		-- il pannello delle impostazioni in sezioni (#187) e la scala delle finestre (#182)
 		opt_section_general = "Generale", opt_section_chat = "Chat", opt_section_narrator = "Narratore",
 		opt_section_modules = "Moduli", opt_section_privacy = "Privacy",

@@ -278,4 +278,54 @@ T.run("#180 #182: journal tabs, the songbook and the soul window, in English and
 	Restore()
 end)
 
+-- UI-ECO UI-3: the contrast of the widgets in both themes (the rules of the UI review, ADR 0058 "Invariants"): every text
+-- of a widget 4.5:1 on the surface it sits on, every control's edge or track 3:1 against the window. The pairs are the
+-- ones UI/Widgets.lua and UI/Widgets/*.lua draw; a token with alpha is laid over its surface first.
+T.run("UI-3: the widgets keep their contrast in Nebula and in Aurora", function()
+	local Th = NS.Theme
+	local function C(token, id, over)
+		local c = { Th.Color(token, id) }
+		if over then c = Th.Over(c, over) end
+		return c
+	end
+	local TEXT = {
+		-- label, on (surface)
+		{ "on-accent", "accent", "primary button" }, { "text-1", "surface-3", "secondary button" },
+		{ "text-2", "bg", "ghost button" }, { "text-1", "surface-1", "neon button" }, { "err", "bg", "danger button" },
+		{ "on-accent", "err", "danger button, armed" }, { "accent-text", "bg", "text button" },
+		{ "text-1", "surface-1", "title bar" }, { "text-3", "surface-1", "subtitle" }, { "bg", "text-1", "tooltip" },
+		{ "text-1", "surface-1", "card title" }, { "text-2", "surface-1", "card text" }, { "text-1", "raised", "chosen card" },
+		{ "text-1", "bg", "active tab" }, { "text-3", "bg", "other tabs" }, { "text-1", "raised", "chosen segment" },
+		{ "text-3", "surface-2", "other segments" }, { "on-accent", "accent", "chosen chip" }, { "text-2", "bg", "chip" },
+		{ "text-1", "surface-2", "edit box" }, { "text-1", "raised", "chosen row of a list" }, { "text-2", "surface-2", "row of a list" },
+		{ "text-1", "raised", "toast" }, { "text-1", "surface-1", "dialog title" }, { "text-2", "surface-1", "dialog text" },
+		{ "text-3", "surface-2", "table header" }, { "accent-text", "surface-2", "sorted header" }, { "accent-text", "bg", "table numbers" },
+		{ "text-1", "bg", "window text (adopted)" }, { "accent-text", "bg", "window heading (adopted)" }, { "text-2", "bg", "small text (adopted)" },
+		{ "text-3", "bg", "muted words (W.Hex)" }, { "ok", "bg", "a chosen answer (W.Hex)" }, { "warn", "bg", "a warning (W.Hex)" },
+	}
+	for _, id in ipairs(Th.ORDER) do
+		for _, pair in ipairs(TEXT) do
+			local bg = C(pair[2], id, C("bg", id))
+			local ratio = Th.Contrast(C(pair[1], id, bg), bg)
+			T.ok(ratio >= 4.5, ("%s, %s: %s on %s %.2f"):format(id, pair[3], pair[1], pair[2], ratio))
+		end
+		-- the badge: the tone's text on its own pill (16 % dark, 12 % light) over a card
+		for tone, token in pairs(W.BADGE_TONES) do
+			local card = C("surface-1", id)
+			local pill = Th.Over({ Th.Color(token, id) }, card)
+			pill = Th.Over({ pill[1], pill[2], pill[3], W.BadgeAlpha(id) }, card)
+			local ratio = Th.Contrast(C(token, id), pill)
+			T.ok(ratio >= 4.5, ("%s, badge %s: %.2f"):format(id, tone, ratio))
+		end
+		-- controls: 3:1 against the window
+		for _, pair in ipairs({ { W.SLIDER_TRACK, "bg", "slider track" }, { "text-1", "bg", "slider thumb" },
+			{ "text-3", "surface-3", "switch ring, off" }, { "accent", "bg", "switch, on" }, { "err", "bg", "danger ring" },
+			{ "accent", "bg", "selected ring and bar" }, { "accent", "bg", "tab indicator" } }) do
+			local bg = C(pair[2], id)
+			local ratio = Th.Contrast(C(pair[1], id, bg), bg)
+			T.ok(ratio >= 3, ("%s, %s: %.2f"):format(id, pair[3], ratio))
+		end
+	end
+end)
+
 REALISTIC_TEXT = false

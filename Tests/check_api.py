@@ -78,6 +78,8 @@ EXCEPTIONS = {
     "MouseIsOver": "assente nel dump: solo ripiego di Compat:IsMouseOver, che prima prova il metodo del frame IsMouseOver (nel dump; issue #17)",
     "RAID_CLASS_COLORS": "FrameXML: the table of the class colours; Compat:ClassColor reads it only as the fallback of C_ClassColor.GetClassColor, through Compat.Resolve (UI-ECO UI-2)",
     "InterfaceOptionsFrame_OpenToCategory": "FrameXML del pannello vecchio: chiamata solo dopo `if InterfaceOptionsFrame_OpenToCategory and`",
+    "ScrollUtil.*": "FrameXML (Lua): ScrollUtil.InitScrollBoxList is read through Compat.Resolve in Compat:ScrollBoxList, inside pcall; without it the ScrollBox's own Init is called (UI-ECO UI-3); DA PROVARE in game",
+    "ScrollBoxConstants.*": "FrameXML (Lua) constants: Compat:SetTableData reads RetainScrollPosition through Compat.Resolve; nil keeps the client's default (UI-ECO UI-3)",
 }
 
 
@@ -112,6 +114,14 @@ METHODS = {
     "ScrollToBottom": "ScrollingMessageFrame (mixin di FrameXML): come ScrollUp",
     "GetInfo": "Total RP 3 (optional): method of its public player object (AddOn_TotalRP3.Player), called inside pcall only when it exists",
     "GetFirstName": "Total RP 3 (optional): as GetInfo",
+    # UI-ECO UI-3: the ScrollBox of the DataTable (mixins of FrameXML, not in the dump); every call is inside pcall and a
+    # failure moves the table to the FauxScrollFrame, then to the pool of rows (UI/Widgets/DataTable.lua)
+    "Init": "ScrollBox mixin (FrameXML): Compat:ScrollBoxList inside pcall, only when ScrollUtil is missing; DA PROVARE in game",
+    "SetElementExtent": "ScrollBox linear view mixin (FrameXML): Compat:ScrollBoxList inside pcall; DA PROVARE in game",
+    "SetElementInitializer": "ScrollBox linear view mixin (FrameXML): Compat:ScrollBoxList inside pcall; DA PROVARE in game",
+    "SetDataProvider": "ScrollBox mixin (FrameXML): Compat:SetTableData inside pcall; a failure moves the table to the next backend",
+    "ForEachFrame": "ScrollBox mixin (FrameXML): UI/Widgets/DataTable.lua inside pcall, only on the ScrollBox backend",
+    "ScrollToElementDataIndex": "ScrollBox mixin (FrameXML): UI/Widgets/DataTable.lua inside pcall, only on the ScrollBox backend",
 }
 
 # (#165) FrameXML frames named in strings and read with `_G[name]` or `_G.X`: not in the dump (they are XML)
@@ -150,6 +160,8 @@ TEMPLATES = {
     "UIPanelButtonTemplate": "XML di FrameXML: DA PROVARE in G1 (UI/Widgets.lua)",
     "InputBoxTemplate": "XML di FrameXML: UI/Widgets.lua lo prova dentro pcall e ripiega su una casella semplice",
     "UIPanelScrollFrameTemplate": "XML di FrameXML: UI/JournalFrame.lua (export) and UI/SettingsFrame.lua create it inside pcall and fall back to a frame without a bar",
+    "FauxScrollFrameTemplate": "XML di FrameXML: Compat:FauxScrollFrame creates it inside pcall, only when FauxScrollFrame_Update is there; else the DataTable uses its pool of rows (UI-ECO UI-3)",
+    "WowScrollBoxList": "XML di FrameXML: Compat:ScrollBoxList creates it inside pcall, only when CreateScrollBoxListLinearView is there; else the DataTable falls back (UI-ECO UI-3)",
 }
 
 # Metodi delle stringhe di Lua (`s:match(...)`): non sono API di WoW

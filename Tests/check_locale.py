@@ -7,7 +7,7 @@ Rules:
      nested table) and every string has the same printf placeholders (%s %d ...), in any order.
   2. Keys exist. Every literal key given to NS:L("key", ...) or Q:L("key") in the UI files exists in the English table (a
      missing key would show the key itself and hide the typo).
-  3. No visible text is written in AzerothUnspoken/UI/*.lua: a string literal that is an argument of a text call
+  3. No visible text is written in AzerothUnspoken/UI/*.lua and UI/Widgets/*.lua: a string literal that is an argument of a text call
      (SetText, Print, AddLine, AddMessage, SendChatMessage...), the value of a field such as text/title/label/tooltip,
      or that reads like a sentence (two words with a space), fails. A key shaped like `help_depth` is not text. The
      syntax of a slash command (`usage = "mode private / preview"`) is English by ADR 0023 and not translated.
@@ -234,14 +234,21 @@ def check_parity(langs):
     return total
 
 
+def ui_files():
+    """The UI files: UI/*.lua and the widget files of UI/Widgets/*.lua (UI-ECO UI-3), as names relative to UI/."""
+    out = [n for n in sorted(os.listdir(UI_DIR)) if n.endswith(".lua")]
+    sub = os.path.join(UI_DIR, "Widgets")
+    if os.path.isdir(sub):
+        out += ["Widgets/" + n for n in sorted(os.listdir(sub)) if n.endswith(".lua")]
+    return out
+
+
 def check_keys_exist(langs):
     keys = set()
     for table in langs["en"].values():
         keys.update(k.split(".")[0] for k in table)
     unknown = []
-    for name in sorted(os.listdir(UI_DIR)):
-        if not name.endswith(".lua"):
-            continue
+    for name in ui_files():
         for m in re.finditer(r"[:.]L\(\s*\"([A-Za-z0-9_]+)\"\s*[,)]", read(os.path.join(UI_DIR, name))):
             if m.group(1) not in keys:
                 unknown.append(f"UI/{name}: {m.group(1)}")
@@ -250,10 +257,9 @@ def check_keys_exist(langs):
 
 def check_hardcoded():
     files, problems = 0, []
-    for name in sorted(os.listdir(UI_DIR)):
-        if name.endswith(".lua"):
-            files += 1
-            problems.extend(find_hardcoded(read(os.path.join(UI_DIR, name)), "UI/" + name))
+    for name in ui_files():
+        files += 1
+        problems.extend(find_hardcoded(read(os.path.join(UI_DIR, name)), "UI/" + name))
     for p in problems:
         print("    " + p)
     check(not problems, f"no visible text written in the {files} UI files ({len(problems)} problem(s))")

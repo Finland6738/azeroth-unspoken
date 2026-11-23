@@ -260,6 +260,7 @@ function ProfileFrame:Refresh()
 	frame.reset:SetText(NS:L(confirmReset:Is() and "soul_reset_confirm" or "soul_reset"))
 	frame.reset:SetArmed(confirmReset:Is())
 	frame.close:SetText(NS:L("soul_close"))
+	W.Adopt(frame)   -- UI-3: texts made by this redraw take the theme's text colours
 end
 
 function ProfileFrame:IsOpen()

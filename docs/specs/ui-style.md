@@ -98,9 +98,29 @@ Components are those of FDCP §3 (the Button kinds *primary*, *secondary*, *ghos
 | Tools | `tools/make_media.py`, `make_fonts.py`, `mockup_lib.py`, `make_mockups.py`, `check_addon.py`, `check_locale.py` | copied and adapted into `tools/` and `Tests/` (the checks join the suite) |
 | Text | locale keys | every visible string is a locale key, enUS and itIT ([ADR 0023](../adr/0023-english-first-addon-and-english-command-names.md)); nothing is written in code |
 
-| Personal look settings (UI-2) | the profile of its database (`theme`, `effects`, `animations`, `fontSource`) | `AzerothUnspokenDB.settings.ui`, **in the account** like `windowScale` and not per character: `ui.theme` (`nebula` \| `aurora`), `ui.neon` (glows and shadows, `effects` in FDCP), `ui.animations`, `ui.fontSource` (`addon` \| `game`). Defaults Nebula, on, on, addon; `Config.THEMES` lists the theme ids and `Tests/TestTheme.lua` checks them against `Theme.ORDER`. `Theme.Set(id)` or `Config:Set("ui.theme", id)` switches live. The Settings rows come in UI-3 |
+| Personal look settings (UI-2) | the profile of its database (`theme`, `effects`, `animations`, `fontSource`) | `AzerothUnspokenDB.settings.ui`, **in the account** like `windowScale` and not per character: `ui.theme` (`nebula` \| `aurora`), `ui.neon` (glows and shadows, `effects` in FDCP), `ui.animations`, `ui.fontSource` (`addon` \| `game`). Defaults Nebula, on, on, addon; `Config.THEMES` lists the theme ids and `Tests/TestTheme.lua` checks them against `Theme.ORDER`. `Theme.Set(id)` or `Config:Set("ui.theme", id)` switches live. The Settings rows are in Settings > Appearance since UI-3 (below) |
+| Window positions (UI-3) | per character | `AzerothUnspokenCharacterDB.windows[<global name>]` = `{ point, relativePoint, x, y }`, written when a window is dragged (by its frame or its title bar), restored the first time it opens in a session; a broken entry is dropped by `Config:Validate`. Settings > Appearance > *Reset window positions* forgets them |
 
-The old `W.PALETTE`, `W.BRAND` and the 36-unit band are removed in UI-3.
+**Widgets and the shell (UI-3).** `UI/Widgets.lua` and `UI/Widgets/{Controls,DataTable,ThinBar}.lua` hold the components of FDCP §3,
+every one built on `NS.Theme` and `NS.Motion`: the Button kinds (`W.FlatButton(parent, text, width, height, onClick, kind)`, the default kind is
+*secondary*, a boxed button), Card, Badge, Chip, Tabs, Segmented, TitleBar, Dialog, Toast, DataTable, EditBox, ChoiceList, Select, Switch,
+Slider, ThinBar and the addon's own Tooltip (inverted: a `text-1` surface, `bg` text; `GameTooltip` stays for the game's items only). The flat
+bronze palette (`W.PALETTE`, `W.BRAND`) is gone; the narrator box keeps its own colours until UI-4 through `W.LegacyFlatButton`. The 36-unit
+band became the 52-unit title bar, which rises 16 units above a window's frame (`W.BAR_ABOVE`), so the contents of every window keep their place
+(`W.TOP`, 46 units from the frame's top) until UI-5 and UI-6 rebuild them; `Windows.lua` counts the bar when the narrator steps aside. The
+window's name is written in capitals in Orbitron; the mono subtitle is the addon's name and version; `:SetStatus(text, tone)` shows a status
+chip. Until UI-5 and UI-6, the texts of a window that still use the game's font objects take the theme's colours by their font (`W.Adopt`: the
+game's gold becomes `accent-text`, its white `text-1`, its small white `text-2`), and a coloured word inside a line uses `W.Hex(token)`; the
+Settings page has a `bg` surface of its own inside the client's frame, so its texts keep their contrast in Aurora. The narrator's sample in the
+wizard keeps the narrator's dark surface (`auKeepColours`) until UI-4. The DataTable takes the first backend the client has: the ScrollBox with a
+linear view and a DataProvider, then a FauxScrollFrame, then a pool of rows scrolled by the wheel (`Core/Compat.lua` makes each one inside
+`pcall`; a ScrollBox that fails while it is filled moves the table to the next one for good).
+
+**Animations: one setting (UI-3).** Settings > Appearance has *Theme* (Nebula, Aurora), *Neon effects*, *Animations* and *Fonts* (addon,
+game), each live through `Config:Set` without `/reload`. The narrator's older *Reduce motion* row is **folded into Animations**: the row writes
+`ui.animations` and keeps `ui.narrator.reduceMotion` as its opposite, which the narrator box reads until UI-4 moves it to `NS.Motion`.
+`Theme.AnimationsOn()` still reads both, so a file written before UI-3 behaves the same. One switch, because the reason to turn motion off
+(motion sickness, a slow client) is the same for the narrator and for the windows.
 
 **Migration (UI-2).** A player who had turned the narrator's fades off (`ui.narrator.reduceMotion`, [#177](https://github.com/Finland6738/azeroth-unspoken/issues/177)) starts with
 `ui.animations = false`: `Config:Load` sets it once, only when `ui.animations` is not in the file yet. The narrator setting still stops the
@@ -139,10 +159,10 @@ shapes, the glows and the animations are predictions until then.
 
 | Step | What | Pull request | Status |
 |---|---|---|---|
-| UI-0 | ADR 0058, this spec and its Italian twin, the ROADMAP section, issue #284 | this one | done (docs only) |
+| UI-0 | ADR 0058, this spec and its Italian twin, the ROADMAP section, issue #284 | [#285](https://github.com/Finland6738/azeroth-unspoken/pull/285) | done (docs only) |
 | UI-1 | media: `make_media.py`, `make_fonts.py`, textures, fonts and OFL texts, `UI/Assets.lua`, packaging, `docs/third-party.md` | [#289](https://github.com/Finland6738/azeroth-unspoken/pull/289) | done: files generated and checked offline; **not tried in the client** (TGA loading, font glyphs) |
-| UI-2 | `UI/Theme.lua`, `UI/Motion.lua`, config keys, theme tests, the check of text written in code | UI-2 (this step's pull request) | done: tokens equal FDCP's, switch without reload, contrast of both themes, `Tests/TestTheme.lua` and `Tests/check_locale.py`; **not tried in the client** (`SetFont` with the bundled fonts, 9-slice, ADD glows, gradients, animations) |
-| UI-3 | widgets, the 52-point title bar, `W.Window`, Appearance settings | | to do |
+| UI-2 | `UI/Theme.lua`, `UI/Motion.lua`, config keys, theme tests, the check of text written in code | [#290](https://github.com/Finland6738/azeroth-unspoken/pull/290) | done: tokens equal FDCP's, switch without reload, contrast of both themes, `Tests/TestTheme.lua` and `Tests/check_locale.py`; **not tried in the client** (`SetFont` with the bundled fonts, 9-slice, ADD glows, gradients, animations) |
+| UI-3 | widgets, the 52-point title bar, `W.Window`, Appearance settings | [#291](https://github.com/Finland6738/azeroth-unspoken/pull/291) | done: every widget of FDCP §3 on the theme, the windows on the new shell, positions per character, Settings > Appearance live, Reduce motion folded into Animations, contrast of every widget in both themes (`Tests/TestLayout.lua`), `Tests/TestWidgets.lua`; **not tried in the client** (the look, the fonts, the 9-slice shapes, the glows, the animations, the ScrollBox and the FauxScrollFrame, the position saving) |
 | UI-4 | narrator box, speak button, Chat Gateway proposal and editor, dialogue frame | | to do |
 | UI-5 | Journal and Relationships | | to do |
 | UI-6 | Wizard, Character soul, the Settings canvas | | to do |

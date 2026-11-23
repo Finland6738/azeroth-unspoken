@@ -956,6 +956,8 @@ local function JFrame() return _G.AzerothUnspokenJournal end
 
 local function Texts(frame)
 	local out = {}
+	-- UI-3: the title is in the window's title bar
+	if frame.titleBar then table.insert(out, frame.title:GetText()) end
 	for _, c in ipairs(frame.children) do
 		if c.kind == "FontString" then table.insert(out, c:GetText()) end
 	end
@@ -988,7 +990,7 @@ T.run("/au journal: finestra, schede, elenco", function()
 	T.ok(f ~= nil and f:IsShown(), "la finestra si apre")
 	T.ok(NS.JournalFrame:IsOpen(), "IsOpen")
 	local text = AllText(f)
-	T.ok(text:find("Diario del personaggio", 1, true), "titolo in italiano")
+	T.ok(text:find("DIARIO DEL PERSONAGGIO", 1, true), "titolo in italiano")
 	T.ok(text:find("Prima visita: Elwynn Forest", 1, true), "il ricordo di prima visita")
 	T.ok(text:find("Morte: Elwynn Forest", 1, true), "il ricordo di morte")
 	T.ok(text:find("Livello raggiunto 10", 1, true), "il livello")
@@ -1351,14 +1353,13 @@ T.run("diario: schede misurate, nota sotto le schede, righe intere nel suggerime
 	NS.JournalFrame:Refresh()
 	local hits = { JournalFrame.rows[1].hit, JournalFrame.rows[2].hit }
 	T.ok(#hits >= 2, "un'area del suggerimento per riga")
-	local shown
-	local old = rawget(GameTooltip, "SetText")
-	GameTooltip.SetText = function(_, text) shown = text end
+	-- UI-3: the addon's own tooltip (W.TipText: what it shows, "" when hidden)
+	local W_ = NS.Widgets
 	hits[1].scripts.OnEnter(hits[1])
-	T.eq(shown, long, "la riga tagliata ha il suggerimento con il testo intero")
+	T.eq(W_.TipText(), long, "la riga tagliata ha il suggerimento con il testo intero")
+	hits[1].scripts.OnLeave(hits[1])
 	hits[2].scripts.OnEnter(hits[2])
-	T.eq(shown, "", "la riga corta no")
-	GameTooltip.SetText = old
+	T.eq(W_.TipText(), "", "la riga corta no")
 	f.measure.GetStringWidth = nil
 	JournalFrame.tabs[#JournalFrame.tabs] = nil
 	NS.JournalFrame:Close()
@@ -1406,7 +1407,7 @@ T.run("diario in inglese e con la memoria spenta", function()
 	NS.JournalFrame:Open("memories")
 	local f = JFrame()
 	local text = AllText(f)
-	T.ok(text:find("Character journal", 1, true) and text:find("First visit: Elwynn Forest", 1, true), "diario in inglese")
+	T.ok(text:find("CHARACTER JOURNAL", 1, true) and text:find("First visit: Elwynn Forest", 1, true), "diario in inglese")
 	T.ok(#Buttons(f, "Export") == 1 and #Buttons(f, "Forget everything") == 1, "pulsanti in inglese")
 	NS.JournalFrame:Close()
 	NS.db.locale = "it"

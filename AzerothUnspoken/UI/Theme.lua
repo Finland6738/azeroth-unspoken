@@ -183,12 +183,13 @@ function Theme.Tint(region, token, alpha) return add(region, { kind = "vertex", 
 -- A solid-colour texture (SetColorTexture) in `token`.
 function Theme.Fill(region, token, alpha) return add(region, { kind = "color", token = token, alpha = alpha }) end
 -- A FontString (or font object) coloured with `token`.
-function Theme.Text(region, token) return add(region, { kind = "text", token = token }) end
+-- A text coloured by the theme is marked (`auThemed`), so UI/Widgets.lua W.Adopt leaves it as it is.
+function Theme.Text(region, token) region.auThemed = true; return add(region, { kind = "text", token = token }) end
 -- A FontString in a colour of the game (r, g, b in 0..1): the item quality. It survives Apply.
-function Theme.TextRGB(region, r, g, b) return add(region, { kind = "rgb", r = r, g = g, b = b }) end
+function Theme.TextRGB(region, r, g, b) region.auThemed = true; return add(region, { kind = "rgb", r = r, g = g, b = b }) end
 -- A player's name: the class colour (read from the client, never written here) on the dark theme when it stays legible,
 -- `text-1` otherwise.
-function Theme.ClassText(region, classFile) return add(region, { kind = "class", class = classFile }) end
+function Theme.ClassText(region, classFile) region.auThemed = true; return add(region, { kind = "class", class = classFile }) end
 -- A free function fn(region, themeId) that sets whatever a token cannot (a gradient, a blend mode); runs now and on Apply.
 function Theme.Call(region, fn) return add(region, { kind = "fn", fn = fn }) end
 
@@ -387,7 +388,8 @@ function Theme.FontName(id) return "AzerothUnspokenFont" .. id end
 -- A FontString of `parent` in font `id` and colour `token` (registered).
 function Theme.NewText(parent, id, token, layer)
 	local fs = parent:CreateFontString(nil, layer or "OVERLAY")
-	if Theme.fontObjects[id] then fs:SetFontObject(Theme.fontObjects[id]) end
+	-- UI-3: a client without CreateFont still gets a font on every text (a FontString with no font cannot show one)
+	if Theme.fontObjects[id] then fs:SetFontObject(Theme.fontObjects[id]) else fs:SetFontObject("GameFontHighlight") end
 	Theme.Text(fs, token or "text-1")
 	return fs
 end

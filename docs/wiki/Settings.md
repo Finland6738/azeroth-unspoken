@@ -4,9 +4,9 @@ Every setting of Azeroth Unspoken, its default value and where to change it.
 
 ## Where settings live
 
-- **The settings panel.** Open it with `/au options`. It is also listed among the game's addon options, under **Azeroth Unspoken**. It has five sections under their headers: **General**, **Chat**, **Narrator**, **Modules** and **Privacy**; scroll to see them all. Each row is a name, with its control next to it: a button that shows the value (click to switch or cycle it), or **-**, the value and **+** for a number. A value button grows to fit a long value. A row of buttons at the end of General and Narrator opens a window or acts once.
+- **The settings panel.** Open it with `/au options`. It is also listed among the game's addon options, under **Azeroth Unspoken**. It has six sections under their headers: **General**, **Appearance**, **Chat**, **Narrator**, **Modules** and **Privacy**; scroll to see them all. The page follows the theme you choose in Appearance. Each row is a name, with its control next to it: a button that shows the value (click to switch or cycle it), or **-**, the value and **+** for a number. A value button grows to fit a long value. A row of buttons at the end of General and Narrator opens a window or acts once.
 - **Commands.** Many settings also have a command. See the [[Commands Reference|Commands]].
-- **Windows.** Personality, journal, relationships and stories have their own windows, with their own choices. Every window has a close box (**X**) at the top right and closes with **Esc**; the NPC dialogue window is the exception, because Esc also closes the game's own NPC windows (see [[NPC Dialogues|NPC-Dialogues]]).
+- **Windows.** Personality, journal, relationships and stories have their own windows, with their own choices. Every window has a title bar with the addon's round logo and the window's name, a close box at the top right, and closes with **Esc**. Drag a window by its title bar or its body: it opens in the same place next time, for that character (**Reset window positions** in Appearance puts every window back). The NPC dialogue window is the exception to Esc, because Esc also closes the game's own NPC windows (see [[NPC Dialogues|NPC-Dialogues]]).
 - **The wizard.** The [[setup wizard|First-Run-Wizard]] sets the most important ones in one go.
 
 **Per account or per character?** General settings (everything on this page unless noted) are shared by all characters on your account. Personality, memories, relationships and stories belong to **each character**; the only exception is the optional **Share with the account** list of relationships (off by default), which keeps your choices about people in the account.
@@ -66,6 +66,18 @@ These are the chances before intensity is applied. Intensity 50 keeps them as th
 
 Events added by phrase packs have their own default (30% if the pack sets none).
 
+## Appearance
+
+The look of every window of the addon, shared by the characters of your account. Each change shows at once, without `/reload`.
+
+| Setting | Default | Panel row | What it does |
+|---|---|---|---|
+| Theme | Nebula | **Theme** (click to cycle) | **Nebula** is dark, **Aurora** is light. Both keep the text readable (4.5:1 contrast). |
+| Neon effects | on | **Neon effects** | The glows and soft shadows of the windows and buttons. Off: a flat look. |
+| Animations | on | **Animations** | Fades and short movements of the windows, the buttons and the narrator box. Off: everything changes at once. It replaces the narrator's older **Reduce motion**: off here is the same as Reduce motion on. |
+| Fonts | Addon | **Fonts** (click to cycle) | **Addon**: the addon's own fonts (Outfit, JetBrains Mono, Orbitron for the window titles). **Game**: the game's fonts. If a font file cannot be read, the game's font is used for it anyway. |
+| Window positions | first place | **Reset window positions** | The windows remember where you left them, per character. This button puts them all back. |
+
 ## Chat
 
 | Setting | Default | Panel row | Command | What it does |
@@ -97,7 +109,6 @@ See [[Chat Gateway]].
 | Reading speed | 14 characters/s | **Reading speed** (click to cycle) | 8, 11, 14, 18 or 24 characters a second. Each line stays the text duration plus its length divided by this speed: slower = longer on screen. |
 | Background opacity | 80% | **Background opacity** (- / + by 5%) | 55–100%. Only the box's background: the text always stays fully opaque, so it stays readable over bright scenes. |
 | Text size | 14 | **Text size** (- / + by 1) | 10–28. The voice label is 12 or more. |
-| Reduce motion | off | **Reduce motion** | On: the box appears and disappears without fading. |
 | Position locked | no | **Position locked** | Locked: the box cannot be dragged. |
 | In combat | hold until combat ends | **In combat** (click to cycle) | `/au combat show\|chat\|hold\|silent`. What a spontaneous line does during a fight. **Show**: as before, in the box. **Chat frame only**: written in your chat window (visible only to you) and in the history, not in the box. **Hold until combat ends** (default): nothing on screen during the fight; the last three lines come after it, one after the other. **Silent**: no spontaneous line during any fight. In every setting a chat proposal waits for the end of the fight, the editor never opens in combat, and lines you ask for yourself (a command) are never held. See [[The Narrator and the Four Voices\|The-Narrator#in-combat]]. |
 | Position | near the bottom centre | **Move the box back to the middle** | Drag the box to move it. `/au narrator reset` also resets it. The place is saved by the box's bottom-left corner, so a longer line makes the box grow upwards, never down over the action bars. |

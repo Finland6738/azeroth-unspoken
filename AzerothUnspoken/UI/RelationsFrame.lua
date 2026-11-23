@@ -58,7 +58,8 @@ local function DisarmAll()
 	for _, c in pairs(arm) do c:Disarm() end
 end
 
-local function Muted(text) return "|cff9d9d9d" .. text .. "|r" end
+-- UI-3: a token of the current theme (W.Hex); a theme change redraws the window
+local function Muted(text) return W.Hex("text-3") .. text .. "|r" end
 
 local function Stamp(t)
 	if date and type(t) == "number" and t > 0 then return date("%Y-%m-%d", t) end
@@ -250,10 +251,14 @@ local function BuildList()
 		row.btn:SetScript("OnClick", function()
 			if row.row then RelationsFrame:SelectSubject(row.row.kind, row.row.key) end
 		end)
-		if i % 2 == 0 then W.Background(row.btn, 1, 1, 1, 0.04) end
+		if i % 2 == 0 then
+			local stripe = row.btn:CreateTexture(nil, "BACKGROUND")
+			stripe:SetAllPoints()
+			NS.Theme.Fill(stripe, "surface-2")
+		end
 		local hl = row.btn:CreateTexture(nil, "HIGHLIGHT")
 		hl:SetAllPoints()
-		if hl.SetColorTexture then hl:SetColorTexture(W.BRAND[1], W.BRAND[2], W.BRAND[3], 0.18) end
+		NS.Theme.Fill(hl, "accent", 0.18)
 		-- the cells are cut with "..."; the tooltip has the whole row (#180)
 		W.Tooltip(row.btn, function() return row.row and RowTip(row.row) or "" end)
 		row.cells = {}
@@ -820,6 +825,7 @@ function RelationsFrame:Refresh()
 	Fit(frame.reset, NS:L(arm.reset:Is() and "rel_reset_confirm_btn" or "rel_reset"), 150, 220)
 	frame.reset:SetArmed(arm.reset:Is())
 	Fit(frame.close, NS:L("rel_close"), 100, 160)
+	W.Adopt(frame)   -- UI-3: rows made by this redraw take the theme's text colours
 end
 
 ---------------------------------------------------------------------------

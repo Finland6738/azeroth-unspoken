@@ -143,7 +143,17 @@ NS:RegisterLanguage("en", {
 		opt_resetpos = "Move the box back to the middle", opt_history = "History", opt_test = "Try the narrator",
 		opt_waits = "Proposal waits", waits_forever = "until dismissed",
 		opt_reading = "Reading speed", reading_cps = "%d characters/s",
-		opt_motion = "Reduce motion", opt_motion_tip = "The narrator box appears and disappears without fading.",
+		-- Appearance (UI-ECO UI-3): theme, neon effects, animations (the narrator's older "reduce motion" is folded in), fonts
+		opt_section_look = "Appearance",
+		opt_theme = "Theme", opt_theme_tip = "Nebula is dark, Aurora is light. The windows change at once.",
+		theme_nebula = "Nebula", theme_aurora = "Aurora",
+		opt_neon = "Neon effects", opt_neon_tip = "The glows and soft shadows of the windows and buttons. Off: a flat look.",
+		opt_motion = "Animations",
+		opt_motion_tip = "Fades and short movements of the windows, the buttons and the narrator box. Off: everything changes at once.",
+		opt_font = "Fonts", opt_font_tip = "The addon's own fonts (Outfit, JetBrains Mono, Orbitron) or the game's fonts.",
+		font_addon = "Addon", font_game = "Game",
+		opt_resetwindows = "Reset window positions",
+		opt_resetwindows_tip = "The addon's windows go back to their first place on the screen, for this character.",
 		-- the settings panel in sections (#187) and the window scale (#182)
 		opt_section_general = "General", opt_section_chat = "Chat", opt_section_narrator = "Narrator",
 		opt_section_modules = "Modules", opt_section_privacy = "Privacy",

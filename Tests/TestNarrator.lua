@@ -877,12 +877,15 @@ T.run("#177, #179, #187: the settings rows, their sections and the help under th
 	T.ok(reading ~= nil and reading.button:GetText() == "14 characters/s", "riga della velocità di lettura")
 	reading.button:Click()
 	T.eq(NS.db.ui.narrator.readingSpeed, 18, "più veloce")
+	-- UI-3: "Reduce motion" is folded into Appearance > Animations, which writes both settings
 	local motion = Row("opt_motion")
-	T.ok(motion ~= nil and motion.label:GetText() == "Reduce motion", "riga 'Reduce motion'")
+	T.ok(motion ~= nil and motion.label:GetText() == "Animations", "riga 'Animations'")
+	T.eq(motion.button:GetText(), "on", "on by default")
 	motion.button:Click()
-	T.eq(NS.db.ui.narrator.reduceMotion, true, "accesa")
+	T.ok(NS.db.ui.narrator.reduceMotion == true and NS.db.ui.animations == false, "spente: anche il narratore senza dissolvenza")
+	T.eq(motion.button:GetText(), "off", "the button says it")
 	motion.button:Click()
-	T.eq(NS.db.ui.narrator.reduceMotion, false, "spenta")
+	T.ok(NS.db.ui.narrator.reduceMotion == false and NS.db.ui.animations == true, "accese")
 	T.eq(Row("opt_alpha").label:GetText(), "Background opacity", "l'opacità dice che è dello sfondo")
 	-- #187: a stepper's value is text, never a button that does nothing
 	for _, key in ipairs({ "opt_intensity", "opt_duration", "opt_alpha", "opt_fontsize", "opt_scale", "opt_dialogue_size", "opt_dialogue_alpha" }) do
@@ -896,7 +899,7 @@ T.run("#177, #179, #187: the settings rows, their sections and the help under th
 	Row("opt_fontsize").minus:Click()
 	T.eq(#NS.Config:Validate(NS.db), 0, "valori validi")
 
-	-- #187: five sections with their headers, in this order
+	-- #187: six sections with their headers, in this order (UI-3 adds Appearance)
 	local heads = {}
 	for _, h in ipairs(panel.headers) do
 		T.eq(h.fs:GetText(), NS:L(h.key), h.key .. ": the header says its name")
@@ -905,7 +908,7 @@ T.run("#177, #179, #187: the settings rows, their sections and the help under th
 	table.sort(heads, function(a, b) return a.y > b.y end)
 	local order = {}
 	for _, h in ipairs(heads) do table.insert(order, h.key:sub(13)) end
-	T.eq(table.concat(order, ","), "general,chat,narrator,modules,privacy", "the five sections, top to bottom")
+	T.eq(table.concat(order, ","), "general,look,chat,narrator,modules,privacy", "the six sections, top to bottom")
 
 	-- no two controls on the same spot, every label left of its control
 	local spots, clash = {}, {}

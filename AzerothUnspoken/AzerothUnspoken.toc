@@ -62,6 +62,9 @@ UI\Assets.lua
 UI\Theme.lua
 UI\Motion.lua
 UI\Widgets.lua
+UI\Widgets\Controls.lua
+UI\Widgets\DataTable.lua
+UI\Widgets\ThinBar.lua
 UI\Windows.lua
 UI\NarratorFrame.lua
 UI\SpeakButton.lua

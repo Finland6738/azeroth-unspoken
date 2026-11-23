@@ -102,14 +102,15 @@ end
 ---------------------------------------------------------------------------
 -- Schede di base
 ---------------------------------------------------------------------------
-local function Muted(text) return "|cff9d9d9d" .. text .. "|r" end
+-- UI-3: the colours of words inside a line are tokens of the current theme (W.Hex); a theme change redraws the window
+local function Muted(text) return W.Hex("text-3") .. text .. "|r" end
 
 JournalFrame:RegisterTab("memories", { label = "mem_tab_memories", memory = true, rows = function()
 	local out = {}
 	for _, e in ipairs(LM:List()) do
 		local id = e.id
 		table.insert(out, {
-			text = ("%s%s  %s"):format(e.perm and "|cffffd200[P]|r " or "", LM:Describe(e), Muted(LM.Stamp(e.t))),
+			text = ("%s%s  %s"):format(e.perm and W.Hex("accent-text") .. "[P]|r " or "", LM:Describe(e), Muted(LM.Stamp(e.t))),
 			actions = {
 				{ label = NS:L("act_keep"), tip = NS:L("mem_perm_tip"), fn = function()
 					local ok, why = LM:SetPermanent(id)
@@ -183,7 +184,7 @@ local function Wrap(text, indent)
 	return out
 end
 
-local function Heading(text) return { text = "|cffffd200" .. text .. "|r" } end
+local function Heading(text) return { text = W.Hex("accent-text") .. text .. "|r" } end
 
 -- #183: an action is a short word ("Open", "Pause"), not a symbol explained only by its tooltip
 local function ArcAction(labelKey, tipKey, fn) return { label = NS:L(labelKey), tip = NS:L(tipKey), fn = fn } end
@@ -201,17 +202,17 @@ local function ArcRows()
 			if rec.subject then table.insert(out, { text = Muted(NS:L("arc_detail_about", rec.subject)) }) end
 			-- il racconto: gli stati attraversati, in ordine, con la scelta fatta in ciascuno
 			for _, h in ipairs(rec.history) do
-				table.insert(out, { text = "|cffcfcfcf" .. h.label .. "|r  " .. Muted(LM.Stamp(h.t)) })
+				table.insert(out, { text = W.Hex("text-2") .. h.label .. "|r  " .. Muted(LM.Stamp(h.t)) })
 				for _, l in ipairs(Wrap(h.line, "   ")) do table.insert(out, { text = l }) end
 			end
 			for _, c in ipairs(rec.choices) do
-				table.insert(out, { text = "|cff7fff7f" .. NS:L("arc_detail_chosen", c.prompt) .. "|r" })
+				table.insert(out, { text = W.Hex("ok") .. NS:L("arc_detail_chosen", c.prompt) .. "|r" })
 				for _, l in ipairs(Wrap(c.label .. (c.note and (" – " .. c.note) or ""), "   ")) do table.insert(out, { text = l }) end
 			end
 			local id = rec.id
 			if rec.offer then
 				if rec.offer.prompt and #rec.offer.options > 0 then
-					for _, l in ipairs(Wrap(rec.offer.prompt, "")) do table.insert(out, { text = "|cffffd200" .. l .. "|r" }) end
+					for _, l in ipairs(Wrap(rec.offer.prompt, "")) do table.insert(out, { text = W.Hex("accent-text") .. l .. "|r" }) end
 				end
 				if #rec.offer.options == 0 then
 					table.insert(out, { text = NS:L("arc_detail_go"),
@@ -381,7 +382,7 @@ local function SongRows()
 		if e.muted then table.insert(marks, NS:L("song_mark_muted")) end
 		local title = e.present and e.title or NS:L("song_missing", id)
 		if e.muted or not e.present then title = Muted(title) end
-		local text = ("%s%s  %s"):format(e.favourite and "|cffffd200*|r " or "", title, SongStamp(e))
+		local text = ("%s%s  %s"):format(e.favourite and (W.Hex("accent-text") .. "*|r ") or "", title, SongStamp(e))
 		if #marks > 0 then text = text .. "  " .. Muted("[" .. table.concat(marks, ", ") .. "]") end
 		table.insert(out, { text = text, actions = {
 			ArcAction("act_open", "song_tip_open", function() selectedPiece = id end),
@@ -602,7 +603,7 @@ function JournalFrame:Refresh()
 	-- quante ne stanno sopra le pagine
 	local top = LayoutTabs(tab, W.TOP + math.ceil(frame.intro:GetStringHeight() or 14) + 10)
 	local note = tab and tab.note and NS:L(tab.note) or ""
-	if tabLock then note = "|cffff9040" .. NS:L(tabLock) .. "|r" .. (note ~= "" and ("\n" .. note) or "") end
+	if tabLock then note = W.Hex("warn") .. NS:L(tabLock) .. "|r" .. (note ~= "" and ("\n" .. note) or "") end
 	frame.note:ClearAllPoints()
 	frame.note:SetPoint("TOPLEFT", 16, -(top + 2))
 	frame.note:SetText(note)
@@ -629,12 +630,12 @@ function JournalFrame:Refresh()
 			if a then
 				local armed = a.confirm ~= nil and state.confirm == row.keys[k]
 				-- an action that cannot be undone has the style of the destructive actions (#187)
-				b:SetStyle(a.confirm and "danger" or "ghost")
+				b:SetStyle(a.confirm and "danger" or "secondary")
 				b:SetArmed(armed)
 				b:SetText(armed and NS:L("mem_confirm_btn") or a.label)
 				b:SetEnabled(tabLock == nil)
 				row.tips[k] = tabLock and NS:L(tabLock) or (armed and NS:L("mem_confirm_tip") or a.tip)
-				if armed then text = "|cffff9040" .. NS:L(a.confirm) .. "|r " .. text end
+				if armed then text = W.Hex("warn") .. NS:L(a.confirm) .. "|r " .. text end
 			end
 		end
 		PlaceActions(row)
@@ -655,6 +656,7 @@ function JournalFrame:Refresh()
 	frame.reset:SetArmed(state.armed)
 	frame.reset:SetEnabled(lock == nil)
 	frame.close:SetText(NS:L("mem_close"))
+	W.Adopt(frame)   -- UI-3: rows made by this redraw take the theme's text colours
 end
 
 ---@return boolean

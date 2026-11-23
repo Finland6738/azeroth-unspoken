@@ -8,6 +8,42 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### UI-ECO step UI-3: the widgets, the new window shell and the Appearance settings (issue #284)
+
+The windows take the NEBULA look for the first time (step UI-3 of [ADR 0058](docs/adr/0058-nebula-ecosystem-look-and-credits.md)): every
+window of the addon is drawn on the new shell and its buttons, cards and sliders on the theme, with no per-window rewrite (the contents are
+rebuilt in UI-4 to UI-6). Spec: [docs/specs/ui-style.md](docs/specs/ui-style.md).
+
+- **Changed**: `AzerothUnspoken/UI/Widgets.lua` is rebuilt on `NS.Theme` and `NS.Motion`. `W.Window` keeps its name and options and draws
+  the FDCP shell: the 12-unit window shape with ring and shadow, a **52-unit title bar** with the addon's round logo (`Media/logo_64.tga`), the
+  window's name in **Orbitron capitals**, a mono subtitle (the addon's name and version), a status chip (`:SetStatus`), the close box; Esc,
+  the window scale and the redraw on a settings change as before. The bar rises 16 units above the frame, so the contents keep their place.
+- **Added**: the window's place is **saved per character** (`AzerothUnspokenCharacterDB.windows`) when it is dragged by its frame or its title
+  bar, and restored the next time it opens; Settings > Appearance > **Reset window positions** forgets them.
+- **Changed**: `W.FlatButton(parent, text, width, height, onClick, kind)` draws the FDCP kinds **primary** (accent gradient and glow),
+  **secondary** (the default, boxed), **ghost**, **neon** and AU's **danger** (the `err` token, filled only while it waits for its
+  confirmation) and **text**; hover 8 %, pressed 12 % and the 0.97 press. `W.Card`, `W.Slider`, `W.EditBox`, `W.FitButton`, `W.Confirm` and
+  `W.Tooltip` keep their names; the selection is still a ring and a bar or a filled marker, never a colour only.
+- **Added**: `AzerothUnspoken/UI/Widgets/Controls.lua` (TitleBar, Badge, Chip, Tabs with the sliding indicator, Segmented, Dialog, Toast,
+  EditBox, ChoiceList, Select without `UIDropDownMenu`, Switch, Slider), `UI/Widgets/DataTable.lua` (sortable header outside the list, mono
+  numbers in `accent-text`, the client's **ScrollBox with a DataProvider**, then a **FauxScrollFrame**, then a pool of rows) and
+  `UI/Widgets/ThinBar.lua`. The tooltip is the addon's own (inverted); `GameTooltip` is kept for items only.
+- **Removed**: the flat bronze palette `W.PALETTE` and the brand violet `W.BRAND` (#187). The narrator box keeps its own colours until UI-4
+  (`W.LegacyFlatButton`); the wizard's narrator sample keeps its dark surface.
+- **Added**: Settings > **Appearance**: Theme (Nebula, Aurora), Neon effects, Animations, Fonts (addon, game), all live without `/reload`.
+  The settings page has a surface of the theme inside the client's frame.
+- **Changed**: the narrator's **Reduce motion** row is folded into **Animations**: one switch for every motion of the addon, which also
+  keeps `ui.narrator.reduceMotion` in step for the narrator box (until UI-4).
+- **Changed**: until UI-5 and UI-6 rebuild them, the texts of the journal, relationships, character soul, wizard and settings take the
+  theme's colours by their font (`W.Adopt`), and the coloured words inside a line follow the theme (`W.Hex`), so Aurora stays readable.
+- **Added**: locale keys of the Appearance section in English and Italian. `Core/Compat.lua` makes the ScrollBox and the FauxScrollFrame inside
+  `pcall`; `Tests/check_api.py` lists the FrameXML mixins and templates with a reason; `Tests/check_locale.py` also reads `UI/Widgets/*.lua`.
+- **Added**: `Tests/TestWidgets.lua` (kinds, the shell, positions, the theme switch recolouring every widget, the adopted texts, the tooltip,
+  Esc on the Dialog, the Toast, the controls, Animations off, the three DataTable backends) and a contrast test of every widget in both themes
+  in `Tests/TestLayout.lua`. The window tests read the new shell.
+- **Not verified in the game**: the look, the fonts, the 9-slice shapes, the glows, the animations, the ScrollBox and the FauxScrollFrame,
+  the position saving (the tests run on the mock client).
+
 ### UI-ECO step UI-2: the theme and motion foundations, and the "no text written in code" check (issue #284)
 
 The windows do not change yet: the look is added to the addon folder and tested before any window uses it (step UI-2 of

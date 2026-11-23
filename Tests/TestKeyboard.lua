@@ -107,8 +107,15 @@ end)
 
 T.run("#183: sliders: - and +, the mouse wheel, a 3:1 track, OnUpdate only while dragging", function()
 	Reset()
-	T.ok(W.Contrast(W.SLIDER_TRACK, W.PALETTE.surface) >= 3,
-		"the track against the window: " .. string.format("%.2f", W.Contrast(W.SLIDER_TRACK, W.PALETTE.surface)))
+	-- UI-3: the track is a token; it keeps 3:1 against the window and the card surfaces in both themes
+	local Th = NS.Theme
+	for _, id in ipairs(Th.ORDER) do
+		for _, surface in ipairs({ "bg", "surface-1", "surface-2" }) do
+			local bg = { Th.Color(surface, id) }
+			local track = Th.Over({ Th.Color(W.SLIDER_TRACK, id) }, bg)
+			T.ok(W.Contrast(track, bg) >= 3, ("the track against %s in %s: %.2f"):format(surface, id, W.Contrast(track, bg)))
+		end
+	end
 	T.ok(W.Contrast({ 1, 1, 1 }, { 0, 0, 0 }) > 20.9, "the contrast formula")
 	local P_ = NS.Personality
 	NS.ProfileFrame:Open()
