@@ -34,6 +34,10 @@ Config.LITERARY_FREQUENCIES = { "never", "rare", "normal" }
 -- default). The name comes from Total RP 3 (first and last name) or from the WoW name, whose first word is the first name
 -- and the rest the surname (Core/ContextResolver.lua, NS:PlayerName)
 Config.NAME_STYLES = { "first", "last", "both" }
+-- UI-ECO UI-2 (ADR 0058): the look. Two themes with the token names of the sister addon (UI/Theme.lua checks that its table
+-- has the same ids), and the font the windows use: the addon's own files (Media/Fonts) or the game's
+Config.THEMES = { "nebula", "aurora" }
+Config.FONT_SOURCES = { "addon", "game" }
 
 -- Byte massimi di un messaggio, per canale: la fonte unica del Chat Gateway (che taglia) e del validatore
 -- (che segnala le frasi troppo lunghe). SendChatMessage accetta 255 byte. PRIVATE non è un canale: è il
@@ -88,6 +92,10 @@ Config.CHAT_LIMITS = {
 ---@field buttonPos? table
 ---@field buttonOpensEditor boolean il clic sul pulsante "pronuncia" apre l'editor invece di inviare (#189)
 ---@field windowScale number scale of the addon's windows and of the NPC dialogue window, 0.8-1.5 (#182)
+---@field theme string nebula (dark, the default) | aurora (light), Config.THEMES (UI-ECO UI-2)
+---@field neon boolean glows and shadows; off is flat (UI-ECO UI-2)
+---@field animations boolean transitions of 120-320 ms; off: every change is immediate (UI-ECO UI-2)
+---@field fontSource string addon (the files of Media/Fonts) | game (the game's fonts), Config.FONT_SOURCES (UI-ECO UI-2)
 
 ---@class AUOutputSettings
 ---@field privateNarrator boolean riquadro del narratore (false: ripiego sulla chat locale)
@@ -255,6 +263,12 @@ Config.defaults = {
 		-- #182: the scale of the journal, export, relationships, character soul, setup guide and NPC dialogue windows
 		-- (SetScale); the narrator box has its own text size
 		windowScale = 1,
+		-- UI-ECO UI-2 (ADR 0058): the personal look, kept in the account like windowScale. A first run starts in the
+		-- dark theme Nebula with the effects on. `animations` is filled from the old narrator.reduceMotion in Config:Load.
+		theme = "nebula",
+		neon = true,
+		animations = true,
+		fontSource = "addon",
 	},
 }
 
@@ -301,6 +315,8 @@ Config.rules = {
 	["ui.dialogue.fontSize"] = { min = 10, max = 24, integer = true },
 	["ui.dialogue.alpha"] = { min = 0.3, max = 1 },
 	["ui.windowScale"] = { min = 0.8, max = 1.5 },
+	["ui.theme"] = { enum = Config.THEMES },
+	["ui.fontSource"] = { enum = Config.FONT_SOURCES },
 	["pacing.globalCooldownSeconds"] = { min = 0, max = 3600 },
 	["pacing.recentPhraseWindow"] = { min = 1, max = 200, integer = true },
 	["pacing.inCombat"] = { enum = Config.COMBAT_SETTINGS },
@@ -620,6 +636,12 @@ function Config:Load()
 	elseif type(settings) ~= "table" then
 		settings = {}
 		g.settings = settings
+	end
+	-- UI-ECO UI-2: a player who had turned the narrator's fades off (reduceMotion, #177) keeps that choice: the new
+	-- general setting `animations` starts off for them. Only when `animations` is not there yet, so it runs once.
+	local ui = settings.ui
+	if type(ui) == "table" and ui.animations == nil and type(ui.narrator) == "table" and ui.narrator.reduceMotion == true then
+		ui.animations = false
 	end
 	Config.Merge(self.defaults, settings)
 	self.issues = self:Validate(settings)

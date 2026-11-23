@@ -98,8 +98,21 @@ I componenti sono quelli di FDCP §3 (i tipi di Button *primary*, *secondary*, *
 | Strumenti | `tools/make_media.py`, `make_fonts.py`, `mockup_lib.py`, `make_mockups.py`, `check_addon.py`, `check_locale.py` | copiati e adattati in `tools/` e `Tests/` (i controlli entrano nella suite) |
 | Testo | chiavi di localizzazione | ogni stringa visibile è una chiave di localizzazione, enUS e itIT ([ADR 0023](../adr/0023-english-first-addon-and-english-command-names.md)); niente è scritto nel codice |
 
-Le chiavi che tengono il tema, gli effetti neon, le animazioni e il font passano da `Config` e si nominano nel passo UI-2; questa tabella si
-completa allora. Il vecchio `W.PALETTE`, `W.BRAND` e la fascia di 36 unità si tolgono in UI-3.
+| Impostazioni personali dell'aspetto (UI-2) | il profilo del suo database (`theme`, `effects`, `animations`, `fontSource`) | `AzerothUnspokenDB.settings.ui`, **nell'account** come `windowScale` e non per personaggio: `ui.theme` (`nebula` \| `aurora`), `ui.neon` (bagliori e ombre, `effects` in FDCP), `ui.animations`, `ui.fontSource` (`addon` \| `game`). Predefiniti Nebula, sì, sì, addon; `Config.THEMES` elenca gli id dei temi e `Tests/TestTheme.lua` li confronta con `Theme.ORDER`. `Theme.Set(id)` o `Config:Set("ui.theme", id)` cambia tema dal vivo. Le righe delle Impostazioni arrivano in UI-3 |
+
+Il vecchio `W.PALETTE`, `W.BRAND` e la fascia di 36 unità si tolgono in UI-3.
+
+**Migrazione (UI-2).** Chi aveva spento le dissolvenze del narratore (`ui.narrator.reduceMotion`, [#177](https://github.com/Finland6738/azeroth-unspoken/issues/177)) parte con
+`ui.animations = false`: lo fa `Config:Load` una volta sola, solo quando `ui.animations` non è ancora nel file. L'impostazione del narratore ferma
+comunque le animazioni (`Theme.AnimationsOn()` legge entrambe), quindi nulla di ciò che il giocatore ha scelto si disfa. La versione dello schema non cambia:
+`Merge` aggiunge le chiavi nuove e `Validate` riporta un tema o una sorgente di font sbagliati al predefinito.
+
+**Testo scritto nel codice (UI-2).** `Tests/check_locale.py` (lo esegue `Tests/run_tests.py`) fallisce quando una stringa di `AzerothUnspoken/UI/*.lua` è
+testo visibile: argomento di `SetText`, `Print`, `AddMessage` e simili, valore di un campo come `text`, `title`, `label` o `tooltip`, o
+qualunque cosa che sembri una frase (due parole con uno spazio). Una chiave come `help_depth` non è testo. La sintassi di un comando
+(`usage = "mode private / preview"`) è in inglese per l'ADR 0023. Una riga che non ha testo da tradurre (il formato di una riga di comando, una
+diagnostica per chi sviluppa) lo dice con `-- nolocale: il motivo`; senza motivo fallisce. Lo stesso controllo confronta le tabelle `ui` di
+`Data/enUS/*UI.lua` e `Data/itIT/*UI.lua` (le stesse chiavi, gli stessi segnaposto `%s`) e che ogni `NS:L("chiave")` dell'interfaccia esista.
 
 ### 2.6 La pagina Info e i crediti
 
@@ -128,7 +141,7 @@ i bagliori e le animazioni sono previsioni fino ad allora.
 |---|---|---|---|
 | UI-0 | ADR 0058, questa specifica e il suo gemello inglese, la sezione del ROADMAP, l'issue #284 | questa | fatto (solo documenti) |
 | UI-1 | media: `make_media.py`, `make_fonts.py`, texture, font e testi OFL, `UI/Assets.lua`, pacchetto, `docs/third-party.md` | [#289](https://github.com/Finland6738/azeroth-unspoken/pull/289) | fatto: file generati e controllati fuori dal gioco; **non provati nel client** (caricamento dei TGA, glifi dei font) |
-| UI-2 | `UI/Theme.lua`, `UI/Motion.lua`, chiavi di configurazione, prove del tema, il controllo del testo scritto nel codice | | da fare |
+| UI-2 | `UI/Theme.lua`, `UI/Motion.lua`, chiavi di configurazione, prove del tema, il controllo del testo scritto nel codice | UI-2 (la pull request di questo passo) | fatto: token uguali a quelli di FDCP, cambio di tema senza ricarica, contrasto dei due temi, `Tests/TestTheme.lua` e `Tests/check_locale.py`; **non provato nel client** (`SetFont` con i font inclusi, 9-slice, bagliori ADD, gradienti, animazioni) |
 | UI-3 | widget, barra del titolo di 52 punti, `W.Window`, impostazioni di aspetto | | da fare |
 | UI-4 | riquadro del narratore, pulsante "parla", proposta e editor del Chat Gateway, finestra di dialogo | | da fare |
 | UI-5 | Diario e Relazioni | | da fare |
