@@ -35,7 +35,7 @@ Che cosa si prende senza cambiarlo:
 FDCP ha una finestra principale con schede orizzontali (FDCP §6). AU **no**: tiene le sue finestre separate, perché il narratore deve restare
 visibile accanto ad esse e ogni finestra si apre da sola, con un comando o un pulsante
 ([#181](https://github.com/Finland6738/azeroth-unspoken/issues/181)). Ogni finestra è costruita da `W.Window` (il nome resta) sul guscio di FDCP:
-barra del titolo di 52 punti (logo NEBULA tondo, il nome della finestra in Orbitron, un sottotitolo mono, un chip di stato quando la finestra ne ha uno, il pulsante di chiusura), forma
+barra del titolo di 52 punti (il logo tondo di Azeroth Unspoken, `assets/logo-source.webp`, il nome della finestra in Orbitron, un sottotitolo mono, un chip di stato quando la finestra ne ha uno, il pulsante di chiusura), forma
 della finestra a 12 con il suo anello e l'ombra, trascinabile, trattenuta nello schermo, Esc la chiude, la scala delle finestre di
 [#182](https://github.com/Finland6738/azeroth-unspoken/issues/182). `Windows.lua` continua a impilarle, a portarle in primo piano e a spostare il narratore. Una finestra con
 sezioni usa le Schede (FDCP §3) *dentro* di sé, mai per contenere altre finestre. La posizione si ricorda per personaggio.
@@ -108,9 +108,9 @@ pagina della categoria dell'addon, costruita da `UI/Windows/About.lua`). Un coma
 crediti nella chat. La pagina mostra il nome, la versione, la licenza (codice GPL-3.0-or-later, frasi e dati narrativi tutti i diritti riservati, pacchetto
 d'esempio MIT, documenti CC BY 4.0), il sito NEBULA, il repository GitHub e le issue, e Ko-fi, ognuno in una casella di sola lettura da copiare con Ctrl+C. L'avviso
 di opera di fan (non affiliata né approvata da Blizzard Entertainment) c'è. **Ko-fi compare solo lì e nei documenti, mai come richiesta.** La
-pagina Info mostra anche il **logo della community NEBULA**, un'immagine a sé (non il logo tondo della gilda nella barra del titolo): a colori pieni e mai tinta, in una variante scura
-per Nebula e una chiara per Aurora, scambiate con il tema senza `/reload` ([ADR 0058](../adr/0058-nebula-ecosystem-look-and-credits.md), decisione 7). Entrambi i loghi si usano con il permesso del proprietario
-e non sono coperti dalla licenza del codice; lo dice `docs/third-party.md`. I file delle immagini arrivano nel passo UI-7.
+pagina Info mostra anche il **logo della community NEBULA**, un'immagine a sé (non il logo tondo dell'addon della barra del titolo): a colori pieni e mai tinta, in una variante scura
+per Nebula e una chiara per Aurora, scambiate con il tema senza `/reload` ([ADR 0058](../adr/0058-nebula-ecosystem-look-and-credits.md), decisione 7). Il logo della community si usa con il permesso del proprietario
+e non è coperto dalla licenza del codice; lo dice `docs/third-party.md`. I file delle immagini arrivano nel passo UI-7.
 
 ### 2.7 Invarianti di accessibilità
 
