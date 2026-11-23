@@ -6,7 +6,7 @@ local A = NS.Assets
 
 T.run("the Assets table exists and every path points into the addon's Media folder", function()
 	T.ok(A ~= nil, "NS.Assets exists")
-	T.eq(A.MEDIA, "Interface\AddOns\AzerothUnspoken\Media\\", "the media folder")
+	T.eq(A.MEDIA, "Interface\\AddOns\\AzerothUnspoken\\Media\\", "the media folder")
 	local paths = A.AllPaths()
 	T.ok(#paths >= 21, "at least the 15 textures and the 6 fonts: " .. #paths)
 	for _, p in ipairs(paths) do
@@ -39,6 +39,6 @@ T.run("IconCoords gives the cell of an icon of the 16-per-row sheet", function()
 	T.eq(#A.icons, 44, "44 icons")
 	Cell("chevron", 0, 1 / 16, 0, 1 / 16)
 	Cell("info", 0, 1 / 16, 1 / 16, 2 / 16)
-	Cell("scroll", 3 / 16, 4 / 16, 2 / 16, 3 / 16)
+	Cell("scroll", 11 / 16, 12 / 16, 2 / 16, 3 / 16)
 	T.eq(A.IconCoords("no_such_icon"), nil, "an unknown icon has no cell")
 end)
