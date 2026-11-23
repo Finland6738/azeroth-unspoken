@@ -182,7 +182,7 @@ Approved by the owner on 2026-11-23: the addon takes the interface look and the 
 | Step | Content | Status |
 |---|---|---|
 | UI-0 | ADR 0058, `docs/specs/ui-style.md` and `.it.md`, this section, issue #284. Docs only | done on 2026-11-23 (docs only; nothing to verify in game) |
-| UI-1 | Media: `tools/make_media.py`, `tools/make_fonts.py`, `AzerothUnspoken/Media/` (textures, logo, icons, fonts with their OFL texts), `UI/Assets.lua`, packaging, `docs/third-party.md`, a check that every media file is listed and every font has its licence. Nothing on screen changes | to do |
+| UI-1 | Media: `tools/make_media.py`, `tools/make_fonts.py`, `AzerothUnspoken/Media/` (textures, `logo_256`/`logo_64` made from `assets/logo-source.webp`, the addon's own logo, icons, fonts with their OFL texts), `UI/Assets.lua`, packaging, `docs/third-party.md`, a check that every media file is listed and every font has its licence. Nothing on screen changes | to do |
 | UI-2 | `UI/Theme.lua` (tokens, weak-key registry, 9-slice, fonts with fallback, glow in the dark theme only), `UI/Motion.lua`, config keys, theme tests, the check of text written in code | to do |
 | UI-3 | `UI/Widgets.lua` and `UI/Widgets/*` (Button, Card, Badge, Chip, Tabs, Segmented, TitleBar, Dialog, Toast, DataTable, EditBox, ChoiceList, Slider, Switch, ThinBar, own Tooltip); `W.Window`, `W.FlatButton` and `W.Card` rebuilt on the theme; 52-point title bar with the logo; Appearance settings | to do |
 | UI-4 | Narrator box, speak button, Chat Gateway proposal and editor, dialogue frame | to do |

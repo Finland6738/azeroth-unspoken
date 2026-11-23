@@ -35,7 +35,7 @@ What is taken over unchanged:
 FDCP has one main window with horizontal tabs (FDCP §6). AU does **not**: it keeps its separate windows, because the narrator
 has to stay visible beside them and each window is opened on its own by a command or a button
 ([#181](https://github.com/Finland6738/azeroth-unspoken/issues/181)). Each window is built by `W.Window` (the name stays) on the FDCP
-shell: the 52-point title bar (round NEBULA logo, the window's name in Orbitron, a mono subtitle, a status chip when the
+shell: the 52-point title bar (the addon's own round logo, `assets/logo-source.webp`, the window's name in Orbitron, a mono subtitle, a status chip when the
 window has one, the close box), the 12-unit window shape with its ring and shadow, movable, clamped to the screen, Esc closes it, the window scale
 of [#182](https://github.com/Finland6738/azeroth-unspoken/issues/182). `Windows.lua` still stacks and raises them and moves the narrator out of the way. A window with
 sections uses Tabs (FDCP §3) *inside* itself, never to hold other windows. The position is remembered per character.
@@ -108,9 +108,9 @@ page of the addon's category, built from `UI/Windows/About.lua`). A command name
 credits to the chat. The page shows the name, the version, the licence (code GPL-3.0-or-later, phrases and narrative data all rights reserved, example
 pack MIT, documents CC BY 4.0), the NEBULA site, the GitHub repository and issues, and Ko-fi, each as a read-only box to copy with Ctrl+C. The fan-made
 notice (not affiliated with or endorsed by Blizzard Entertainment) is on it. **Ko-fi appears only there and in the documents, never as a prompt.** The
-Info page also shows the **NEBULA community logo**, a picture of its own (not the round guild logo of the title bar): full-colour and never tinted, in a dark variant
-for Nebula and a light variant for Aurora, swapped with the theme without `/reload` ([ADR 0058](../adr/0058-nebula-ecosystem-look-and-credits.md), decision 7). Both logos are used with their owner's permission
-and are not covered by the code licence; `docs/third-party.md` says so. The image files arrive in step UI-7.
+Info page also shows the **NEBULA community logo**, a picture of its own (not the addon's own round logo of the title bar): full-colour and never tinted, in a dark variant
+for Nebula and a light variant for Aurora, swapped with the theme without `/reload` ([ADR 0058](../adr/0058-nebula-ecosystem-look-and-credits.md), decision 7). The community logo is used with its owner's permission
+and is not covered by the code licence; `docs/third-party.md` says so. The image files arrive in step UI-7.
 
 ### 2.7 Accessibility invariants
 

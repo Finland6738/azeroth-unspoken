@@ -34,6 +34,8 @@ in the steps UI-1 to UI-8, one pull request each.
   per step.
 - **Changed**: ROADMAP has a "UI-ECO" section with the steps UI-0 to UI-8, and its credits rule now says the public name
   Finland instead of Finland6738.
+- **Decision 2 revised later the same day**: the title bar shows the addon's own logo (`assets/logo-source.webp`, #286), not
+  FDCP's guild logo (ADR 0058, the spec, ROADMAP UI-1).
 - **Decision 7 added later the same day**: the Settings > Info page will show the NEBULA community logo, a dark variant for
   Nebula and a light one for Aurora (ADR 0058, the spec, ROADMAP UI-7). The image files arrive in UI-7.
 
