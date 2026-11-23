@@ -74,7 +74,7 @@ The look of every window of the addon, shared by the characters of your account.
 |---|---|---|---|
 | Theme | Nebula | **Theme** (click to cycle) | **Nebula** is dark, **Aurora** is light. Both keep the text readable (4.5:1 contrast). |
 | Neon effects | on | **Neon effects** | The glows and soft shadows of the windows and buttons. Off: a flat look. |
-| Animations | on | **Animations** | Fades and short movements of the windows, the buttons and the narrator box. Off: everything changes at once. It replaces the narrator's older **Reduce motion**: off here is the same as Reduce motion on. |
+| Animations | on | **Animations** | Fades and short movements of the windows, the buttons and the narrator box. Off: everything changes at once. It replaces the narrator's older **Reduce motion** (that setting is no longer used; if you had it on, Animations started off). With Animations off the narrator box appears at once, with no time line. |
 | Fonts | Addon | **Fonts** (click to cycle) | **Addon**: the addon's own fonts (Outfit, JetBrains Mono, Orbitron for the window titles). **Game**: the game's fonts. If a font file cannot be read, the game's font is used for it anyway. |
 | Window positions | first place | **Reset window positions** | The windows remember where you left them, per character. This button puts them all back. |
 

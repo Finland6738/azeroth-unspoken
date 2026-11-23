@@ -47,11 +47,11 @@ Components are those of FDCP §3 (the Button kinds *primary*, *secondary*, *ghos
 
 | Window or frame (global name) | Shell | Components | Step |
 |---|---|---|---|
-| Narrator box (`AzerothUnspokenNarrator`) | own frame, not the shell | Panel (translucent, §2.3), voice label and accent bar, ghost buttons, Badge (channel), proposal bar with one primary and one quiet button, ThinBar (time) | UI-4 |
-| Narrator history (`AzerothUnspokenNarratorHistory`) | shell, no tabs | DataTable (time, voice, text), ghost buttons | UI-4 |
-| Speak button (`AzerothUnspokenButton`) | own frame | circle texture, Badge, own Tooltip, paused state also in words | UI-4 |
-| Chat Gateway proposal and editor | inside the narrator box | Badge, EditBox with a byte counter, Button kinds | UI-4 |
-| NPC dialogue (`AzerothUnspokenDialogue`) | own frame, **does not close with Esc** (ADR 0020) | Panel, NPC title band labelled "addon ambient dialogue", ChoiceList for the answers | UI-4 |
+| Narrator box (`AzerothUnspokenNarrator`) | own frame, not the shell | Panel (translucent, §2.3), voice label and accent bar, ghost icon buttons, Chip (channel), proposal bar with one primary button and quiet ones, ThinBar (time) | UI-4 |
+| Narrator history (`AzerothUnspokenNarratorHistory`) | own frame (Panel), Esc closes it | a ScrollingMessageFrame (one message per verse; a DataTable would break the verses), a handle to drag it, a ghost close button | UI-4 |
+| Speak button (`AzerothUnspokenButton`) | own frame | a disc and a ring (`circle`), the sheet's quill icon, Badge, own Tooltip, paused state also in words | UI-4 |
+| Chat Gateway proposal and editor | inside the narrator box | Chip, FlatButtons, EditBox with a byte counter | UI-4 |
+| NPC dialogue (`AzerothUnspokenDialogue`) | own frame, **does not close with Esc** (ADR 0020) | Panel, a Badge "addon ambient dialogue" that is always there, the NPC's title in the voice token, FlatButtons for the answers (a ChoiceList is a radio list: an answer acts at once, so it does not fit) | UI-4 |
 | Journal (`AzerothUnspokenJournal`) | shell | Tabs (seven, with the sliding indicator), DataTable of memories and places, Segmented sub-tabs, Button, Dialog for irreversible actions, Toast for results | UI-5 |
 | Journal export (`AzerothUnspokenJournalExport`) | shell | read-only EditBox with Ctrl+C, Button | UI-5 |
 | Relationships (`AzerothUnspokenRelations`) | shell | Tabs (list, people, options), sortable DataTable, Segmented, EditBox, ChoiceList, Chip, Dialog, Toast, the player's detail in two columns | UI-5 |
@@ -64,13 +64,29 @@ Components are those of FDCP §3 (the Button kinds *primary*, *secondary*, *ghos
 
 - **The narrator is not a window.** It sits over the game world, with the opacity the player chose. FDCP's rule for a glass look,
   a nearly opaque surface, does not fit it. The narrator keeps the rules of the UI review: the opacity setting applies to the
-  background only, the text stays fully opaque, the effective background is at least 0.55 ([#173](https://github.com/Finland6738/azeroth-unspoken/issues/173)), and the
-  contrast is computed against a white scene in both themes, as in `docs/design/UI_REVIEW.md`.
-- **The four voices** (narrator, inner voice, character, NPC) are AU's only addition to FDCP's token list: one colour token per voice per theme,
+  background only (a Panel in the `bg` token whose fill carries the opacity; the ring, the shadow and the text keep their own),
+  the text stays fully opaque, and the effective background is at least 0.55 ([#173](https://github.com/Finland6738/azeroth-unspoken/issues/173)) **and at least what the theme's text
+  needs** to keep 4.5:1 over the brightest and the darkest world (`Narrator:Floor()`, worked out from the tokens: 0.6 in Nebula, whose light text
+  needs a darker surface; 0.55 in Aurora). The contrast is computed over a white scene in both themes, as in `docs/design/UI_REVIEW.md`, and over a
+  black one, which is the worst for Aurora (`Narrator.WorstContrast`).
+- **The four voices** (narrator, inner voice, character, NPC) are AU's only addition to FDCP's token list (UI-4): one colour token per voice per theme,
   chosen to differ in lightness as well as in hue, and passing the contrast test in Nebula and in Aurora. A voice is
-  also told by its written label and by the shape of its accent bar, and the inner voice by italics
+  also told by its written label, by its accent bar and by the typeface of the inner voice
   ([#186](https://github.com/Finland6738/azeroth-unspoken/issues/186)); a colour is never the only difference. The Character and NPC colours must be
-  told apart by a protanope.
+  told apart by a protanope (their luminance ratio is at least 1.8:1 in both themes, `Tests/TestNarrator.lua`).
+
+  | Token | Nebula (dark) | Aurora (light) | Used for |
+  |---|---|---|---|
+  | `voice-narrator` | `#C4B0FF` | `#4B2BB3` | the bar, the time line, the label and the text of the narrator's lines |
+  | `voice-inner` | `#7FD4FF` | `#005F8F` | the inner voice |
+  | `voice-character` | `#FFE08A` | `#935E00` | the character's words |
+  | `voice-npc` | `#5BBF66` | `#0E5A28` | the NPC's words, and the NPC title of the ambient dialogue |
+
+  The tokens are **4.5:1 or more on the opaque `bg` surface** in both themes (the lowest is Aurora's Character, 5.1). Over a translucent box the
+  text is the voice's token **only where it keeps 4.5:1 over the brightest and the darkest world at that opacity** (`Narrator:Ink`), and `text-1`
+  otherwise, which the floor above keeps at 4.5:1: Nebula's four voices read in their own colour from 0.8 up, a lower opacity gives `text-1`, and
+  Aurora's give `text-1` over a dark world unless the box is opaque. The bar and the time line are always the voice's token (a graphic, 3:1). The
+  muted words (`text-2`) follow the same rule. UI-8 compares the mockup tokens with `Theme.TOKENS`, which now has 31 names: FDCP's 27 and these four.
 - **Button kinds.** *danger* (an action that loses data: the `err` token for outline and label, never a fill) and *text* (a link-like
   button, for Skip in the wizard). They add no colour token: *danger* uses `err`.
 - **Consents.** The text a player reads to give a consent, and every privacy note, is 12 units or more. A consent that is on shows the
@@ -105,22 +121,41 @@ Components are those of FDCP §3 (the Button kinds *primary*, *secondary*, *ghos
 every one built on `NS.Theme` and `NS.Motion`: the Button kinds (`W.FlatButton(parent, text, width, height, onClick, kind)`, the default kind is
 *secondary*, a boxed button), Card, Badge, Chip, Tabs, Segmented, TitleBar, Dialog, Toast, DataTable, EditBox, ChoiceList, Select, Switch,
 Slider, ThinBar and the addon's own Tooltip (inverted: a `text-1` surface, `bg` text; `GameTooltip` stays for the game's items only). The flat
-bronze palette (`W.PALETTE`, `W.BRAND`) is gone; the narrator box keeps its own colours until UI-4 through `W.LegacyFlatButton`. The 36-unit
+bronze palette (`W.PALETTE`, `W.BRAND`) is gone; the narrator box and the NPC dialogue were rebuilt in UI-4 and `W.LegacyFlatButton`, `W.Button`, `W.Background`, `W.SetBackgroundAlpha` and
+`W.SetFontSize` are gone. The 36-unit
 band became the 52-unit title bar, which rises 16 units above a window's frame (`W.BAR_ABOVE`), so the contents of every window keep their place
 (`W.TOP`, 46 units from the frame's top) until UI-5 and UI-6 rebuild them; `Windows.lua` counts the bar when the narrator steps aside. The
 window's name is written in capitals in Orbitron; the mono subtitle is the addon's name and version; `:SetStatus(text, tone)` shows a status
 chip. Until UI-5 and UI-6, the texts of a window that still use the game's font objects take the theme's colours by their font (`W.Adopt`: the
 game's gold becomes `accent-text`, its white `text-1`, its small white `text-2`), and a coloured word inside a line uses `W.Hex(token)`; the
 Settings page has a `bg` surface of its own inside the client's frame, so its texts keep their contrast in Aurora. The narrator's sample in the
-wizard keeps the narrator's dark surface (`auKeepColours`) until UI-4. The DataTable takes the first backend the client has: the ScrollBox with a
+wizard is the narrator's own look since UI-4 (a Panel, the accent bar, the text in `voice-narrator`). The DataTable takes the first backend the client has: the ScrollBox with a
 linear view and a DataProvider, then a FauxScrollFrame, then a pool of rows scrolled by the wheel (`Core/Compat.lua` makes each one inside
 `pcall`; a ScrollBox that fails while it is filled moves the table to the next one for good).
 
 **Animations: one setting (UI-3).** Settings > Appearance has *Theme* (Nebula, Aurora), *Neon effects*, *Animations* and *Fonts* (addon,
 game), each live through `Config:Set` without `/reload`. The narrator's older *Reduce motion* row is **folded into Animations**: the row writes
-`ui.animations` and keeps `ui.narrator.reduceMotion` as its opposite, which the narrator box reads until UI-4 moves it to `NS.Motion`.
-`Theme.AnimationsOn()` still reads both, so a file written before UI-3 behaves the same. One switch, because the reason to turn motion off
-(motion sickness, a slow client) is the same for the narrator and for the windows.
+`ui.animations` only. Since UI-4 the narrator box takes its motion from `NS.Motion` (the short fade of its entrance, the time line, the verses
+that appear one at a time), and `ui.narrator.reduceMotion` is **neither written nor read any more**: `Theme.AnimationsOn()` reads `ui.animations`
+alone, and the migration of `Config:Load` (below) moved a player who had the old setting on to `ui.animations = false`, once. One switch, because
+the reason to turn motion off (motion sickness, a slow client) is the same for the narrator and for the windows. The narrator had no fade of
+its own to replace since #186 (the box goes when its time line has run out, the frame alpha stays 1: #173); UI-4 adds only the entrance.
+
+**Narrator, speak button, Chat Gateway and dialogue (UI-4).** The narrator box (`UI/NarratorFrame.lua`) is a Panel (radius 12, `bg`, ring, shadow)
+with the voice's accent bar along the left edge inside the corners, a label (the voice's name in its colour, then the muted proposal countdown or
+channel), three 24-unit ghost icon buttons (pause, history, hide: drawn with textures in `text-2`, `text-1` on hover; the sheet has no pause or
+history icon, and the cross is the sheet's), the text in a scroll box as before, a ThinBar for the time (2 units, the voice's token), and for a
+proposal a Chip with an arrow for the channel (click: next channel), a quiet *Discard* (kind *text*), *Another*, *Edit* and *To chat* (*ghost*) and
+the one primary *Send* with the speak key. The proposal editor is a themed EditBox with a **byte counter** on its right: the bytes the line will take in chat
+(`Gateway:TextFor`, so an emote's name or asterisks count) over the channel's limit, in `text-3`, in `err` and with the words "(cut)" over it (never
+colour alone); Enter sends and Esc closes it as before. The history (`AzerothUnspokenNarratorHistory`) has the same surface at least 0.8 opaque, a handle, a ghost
+close button, Esc, and its inline colours (the voice's name and text, the times) follow the theme. A change of theme or of the font setting
+paints the box, the label and the history again (`Theme.OnChange`, `Config:OnChange`). The speak button (`UI/SpeakButton.lua`) is a 36-unit disc
+in a ring (`circle`), the sheet's **quill** instead of the game's book icon, an accent ring, a lit icon and an accent glow while a proposal waits,
+the addon's own **tooltip** (`W.Tooltip`, the lines one under the other) and a Badge *Paused* under it. The NPC dialogue
+(`UI/DialogueFrame.lua`) is a Panel with the NPC's accent bar, the Badge *addon ambient dialogue* in its header (always visible), the title in
+`voice-npc`, the answers as *secondary* FlatButtons ("1. ..." and the key as before), *Listen* as the *primary* one, and a fade-in from `NS.Motion`;
+it is still not in `UISpecialFrames`: **no Esc** (ADR 0020). Its opacity setting (0.3-1, times 0.85) is raised to the narrator's floor.
 
 **Migration (UI-2).** A player who had turned the narrator's fades off (`ui.narrator.reduceMotion`, [#177](https://github.com/Finland6738/azeroth-unspoken/issues/177)) starts with
 `ui.animations = false`: `Config:Load` sets it once, only when `ui.animations` is not in the file yet. The narrator setting still stops the
@@ -163,7 +198,7 @@ shapes, the glows and the animations are predictions until then.
 | UI-1 | media: `make_media.py`, `make_fonts.py`, textures, fonts and OFL texts, `UI/Assets.lua`, packaging, `docs/third-party.md` | [#289](https://github.com/Finland6738/azeroth-unspoken/pull/289) | done: files generated and checked offline; **not tried in the client** (TGA loading, font glyphs) |
 | UI-2 | `UI/Theme.lua`, `UI/Motion.lua`, config keys, theme tests, the check of text written in code | [#290](https://github.com/Finland6738/azeroth-unspoken/pull/290) | done: tokens equal FDCP's, switch without reload, contrast of both themes, `Tests/TestTheme.lua` and `Tests/check_locale.py`; **not tried in the client** (`SetFont` with the bundled fonts, 9-slice, ADD glows, gradients, animations) |
 | UI-3 | widgets, the 52-point title bar, `W.Window`, Appearance settings | [#291](https://github.com/Finland6738/azeroth-unspoken/pull/291) | done: every widget of FDCP §3 on the theme, the windows on the new shell, positions per character, Settings > Appearance live, Reduce motion folded into Animations, contrast of every widget in both themes (`Tests/TestLayout.lua`), `Tests/TestWidgets.lua`; **not tried in the client** (the look, the fonts, the 9-slice shapes, the glows, the animations, the ScrollBox and the FauxScrollFrame, the position saving) |
-| UI-4 | narrator box, speak button, Chat Gateway proposal and editor, dialogue frame | | to do |
+| UI-4 | narrator box, speak button, Chat Gateway proposal and editor, dialogue frame, the four voice tokens | [#PRNUM](https://github.com/Finland6738/azeroth-unspoken/pull/PRNUM) | done: the narrator, the speak button, the proposal bar and editor (with a byte counter) and the NPC dialogue on the theme, `voice-*` tokens in both themes, the floor of the box worked out from the tokens, Reduce motion no longer written or read, `W.LegacyFlatButton`, `W.Button`, `W.Background`, `W.SetBackgroundAlpha` and `W.SetFontSize` removed, contrast of every voice in both themes (`Tests/TestLayout.lua`), `Tests/TestNarrator.lua`; **not tried in the client** (the look, the fonts, the fades, the voice colours on real scenes, the translucency, the editor and its counter, the speak button's tooltip) |
 | UI-5 | Journal and Relationships | | to do |
 | UI-6 | Wizard, Character soul, the Settings canvas | | to do |
 | UI-7 | credits: the Info page with the NEBULA community logo (dark and light), the `about` command, README, wiki About page, CurseForge text | | to do |

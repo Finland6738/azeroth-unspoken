@@ -17,7 +17,7 @@ For each moment it decides whether to speak. Most of the time it stays silent: s
 
 ## The four voices
 
-Every line belongs to one of four voices. The box tells them apart in more than one way, so that colour is never the only cue: a thin **bar in the voice's colour** along the left edge, the **text tinted** in that colour, the voice's name at the top, and the **inner voice in a different typeface** (narrower, like handwriting in the margin). The four colours also differ in **lightness**, so Character (light gold) and NPC (a darker green) stay apart for players who do not see red and green well.
+Every line belongs to one of four voices. The box tells them apart in more than one way, so that colour is never the only cue: a thin **bar in the voice's colour** along the left edge, the **text and the voice's name in that colour**, and the **inner voice in a different typeface** (narrower, like handwriting in the margin). The four colours also differ in **lightness**, so Character (gold) and NPC (green) stay apart for players who do not see red and green well. Each of the two themes (**Nebula**, dark, and **Aurora**, light: Settings > Appearance) has its own four colours, light ones on the dark box and dark ones on the light box, and the box follows a change of theme at once.
 
 | Voice | What it is | Example | Can it go to chat? |
 |---|---|---|---|
@@ -96,8 +96,8 @@ These pieces are private: they are never offered for chat.
 | Narrator box | on (off: lines appear in your chat window, visible only to you) |
 | Text duration | 8 seconds, plus the time to read the line (2–30) |
 | Reading speed | 14 characters a second (8, 11, 14, 18 or 24): a 140-character line stays 8 + 10 = 18 seconds. A piece with several lines adds a short pause (0.8 s) after each line |
-| Background opacity | 80% (55–100%); the text itself is always fully opaque |
-| Animations (Settings > Appearance; was Reduce motion) | on (off: no time line; the box appears and disappears; verses appear all at once) |
+| Background opacity | 80% (55–100%); the text itself is always fully opaque. The box is never thinner than 55%, and not thinner than 60% in the dark theme, where its light text needs a darker box to stay readable over a bright scene |
+| Animations (Settings > Appearance; was Reduce motion) | on (the box fades in for a moment, a thin time line runs down; off: the box appears at once, no time line, verses appear all at once) |
 | Text size | 14 (10–28) |
 | Position locked | no |
 | In combat | hold until combat ends (show, chat frame only, hold, silent) |
@@ -107,19 +107,19 @@ See the [[Settings Reference|Settings]].
 
 ## What you will see
 
-- A dark, semi-transparent box near the bottom centre of the screen, with a thin bar in the voice's colour on its left
-  edge.
+- A semi-transparent box with rounded corners near the bottom centre of the screen (dark in Nebula, light in Aurora),
+  with a thin bar in the voice's colour on its left edge. It fades in for a moment (not with **Animations** off).
 - At the top of the box, the voice: *Narrator*, *Inner voice*, *Character* or *NPC*. The top strip grows with the text
   size, so a large label never runs under the buttons or into the line.
-- The line, tinted in the voice's colour (white when the background is lighter than 60%, where a tint would be harder
-  to read). It stays long enough to be read; a **thin time line** along the bottom edge shows how long it has left,
-  and when it runs out the box goes. Nothing fades: the darkness of the box is a setting, applied once, and the text is
-  never faded by it.
+- The line, in the voice's colour (in the ordinary text colour where the voice's colour would be harder to read over
+  the scene behind a thin box). It stays long enough to be read; a **thin time line** in the voice's colour along the
+  bottom edge shows how long it has left, and when it runs out the box goes at once. The darkness of the box is a
+  setting, applied once, and the text is never faded by it.
 - Three quiet icon buttons at the top right, light grey until you point at them: **pause** (two bars; a triangle while
   paused), **history** (three lines) and **x** (hide). Each is a 24-unit square, with a little space between them.
 - When a chat proposal is waiting, a bar appears under the line: on the left a **chip** with the channel (click it to
-  change channel), then a quiet **Discard**, **Another**, **Edit**, **To chat** and **Send**, the one gold button,
-  which also shows the speak key when you have bound one. The label says *proposal* and counts down the seconds it
+  change channel), then a quiet **Discard**, **Another**, **Edit**, **To chat** and **Send**, the one coloured button
+  (the theme's accent), which also shows the speak key when you have bound one. The label says *proposal* and counts down the seconds it
   still waits. See [[Chat Gateway]].
 - While a proposal waits, it stays in the box: other lines (a thought, a story notice) go to the history at once, the label says how many (for example *+1 in history*), and they come to the box after you send or discard the proposal, or when it expires. A line kept waiting more than two minutes stays only in the history.
 - Now and then a discreet notice, for example when a [[personal story|Story-Arcs]] can begin. It stays as long as any other line and is kept in the history.

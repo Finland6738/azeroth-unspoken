@@ -56,7 +56,7 @@ local function Reset()
 	NS.db.pacing.inCombat = "show"
 	NS.db.chance = {}
 	NS.db.ui.narrator.duration, NS.db.ui.narrator.readingSpeed = 8, 14
-	NS.db.ui.narrator.reduceMotion, NS.db.ui.narrator.fontSize = false, 14
+	NS.db.ui.animations, NS.db.ui.narrator.fontSize = true, 14   -- UI-4: "Animations" is the one switch (it was reduceMotion)
 	NS.db.ui.narrator.historySize = 1000
 	Gateway.sendLog = {}
 	Gateway.combatHeld = { lines = {} }
@@ -330,11 +330,11 @@ T.run("#126, D20: verses appear one at a time, the box is as tall as the whole t
 	T.ok(frame:IsShown(), "still on screen to be read")
 	UPDATE(Narrator:ReadingTime(VERSE_EN))
 	T.ok(not frame:IsShown(), "gone after its reading time")
-	-- reduce motion: all at once, the same time
+	-- "Animations: off": all at once, the same time
 	Reset()
-	NS.db.ui.narrator.reduceMotion = true
+	NS.db.ui.animations = false
 	Gateway:Propose(Rec("inner", VERSE_EN), CTX, {})
-	T.eq(frame.text:GetText(), VERSE_EN, "reduce motion: the whole text at once")
+	T.eq(frame.text:GetText(), VERSE_EN, "animations off: the whole text at once")
 	-- one line: as before
 	Reset()
 	Gateway:Propose(Rec("inner", "One line only."), CTX, {})

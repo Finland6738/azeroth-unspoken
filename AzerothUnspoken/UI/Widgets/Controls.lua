@@ -56,6 +56,7 @@ function W.Badge(parent, text, tone)
 		self:SetSize(math.max(24, math.ceil(self.label:GetStringWidth() or 0) + 20), 24)
 	end
 	f:SetBadge(text, tone or "neutral")
+	function f:GetText() return self.label:GetText() end
 	return f
 end
 

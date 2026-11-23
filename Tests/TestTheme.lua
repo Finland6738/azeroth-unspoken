@@ -23,8 +23,13 @@ end
 ---------------------------------------------------------------------------
 -- tokens and settings
 ---------------------------------------------------------------------------
-T.run("both themes define every token, with the names of the sister addon, and nothing else", function()
-	T.eq(#Theme.TOKENS, 27, "27 tokens")
+T.run("both themes define every token, with the names of the sister addon plus the four voices, and nothing else", function()
+	-- the sister addon's 27 tokens, then this addon's only addition (UI-4, spec section 2.3): one colour per voice
+	T.eq(#Theme.TOKENS, 31, "27 tokens of the sister addon and 4 voices")
+	for i, speaker in ipairs({ "narrator", "inner", "character", "npc" }) do
+		T.eq(Theme.TOKENS[27 + i], "voice-" .. speaker, "token " .. 27 + i .. " is the voice of the " .. speaker)
+		T.eq(Theme.VOICE_TOKENS[speaker], "voice-" .. speaker, "Theme.VOICE_TOKENS maps " .. speaker)
+	end
 	T.eq(table.concat(Theme.ORDER, ","), "nebula,aurora", "two themes, Nebula first")
 	T.eq(table.concat(Config.THEMES, ","), table.concat(Theme.ORDER, ","), "Config.THEMES lists the same ids")
 	T.eq(Theme.DEFAULT, "nebula", "the dark theme is the default")
@@ -83,7 +88,7 @@ T.run("a player who turned the narrator fades off starts with animations off (mi
 	AzerothUnspokenDB = { schemaVersion = 7, settings = { ui = { animations = true, narrator = { reduceMotion = true } } } }
 	Config:Load()
 	T.eq(NS.db.ui.animations, true, "a choice already made is not overwritten")
-	T.ok(not Theme.AnimationsOn(), "but the narrator's own setting still stops the animations")
+	T.ok(Theme.AnimationsOn(), "the old narrator setting is not read any more (UI-4): ui.animations alone decides")
 	AzerothUnspokenDB = { schemaVersion = 7, settings = { ui = { theme = "aurora", neon = false, fontSource = "game" } } }
 	Config:Load()
 	T.ok(NS.db.ui.theme == "aurora" and NS.db.ui.neon == false and NS.db.ui.fontSource == "game", "saved values are kept")
@@ -553,11 +558,11 @@ T.run("with animations off every call finishes at once and no group is played", 
 	pulse.Start()
 	T.ok(Near(f:GetAlpha(), 0.5), "a pulse stays still at the middle alpha")
 	T.eq(Running(), 0, "no group played in all of this")
-	-- the narrator's older setting counts too
+	-- the narrator's older setting is no longer read (UI-4): the one switch is ui.animations
 	Config:Set("ui.animations", true)
 	T.ok(Motion.On(), "animations on again")
 	NS.db.ui.narrator.reduceMotion = true
-	T.ok(not Motion.On(), "reduceMotion (#177) also stops them")
+	T.ok(Motion.On(), "reduceMotion (#177) is only read by the migration of Config:Load")
 	NS.db.ui.narrator.reduceMotion = false
 	-- a client without AnimationGroups behaves the same
 	local plain = { _alpha = 1, SetAlpha = function(self, a) self._alpha = a end, GetAlpha = function(self) return self._alpha end,

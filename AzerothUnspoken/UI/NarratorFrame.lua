@@ -5,13 +5,17 @@
 -- Le proposte per la chat compaiono qui, con la barra: canale, Scarta, Un'altra, Modifica, Nella chat, Invia.
 -- One source of truth (#176): while the Gateway holds a proposal, the box shows it. Other lines go to the history at
 -- once and to the box after the proposal is sent, discarded or expired.
--- The look (#186): a voice accent bar, voice-tinted text, another typeface for the inner voice, ghost icon buttons and
--- a thin time line. Only coloured textures and the client's fonts: no Blizzard art.
+-- The look (#186, UI-ECO UI-4): the NEBULA look of UI/Theme.lua and the widgets of UI/Widgets: a rounded Panel surface in
+-- the `bg` token whose opacity is the player's setting (the text is never faded), a voice accent bar, a voice label and
+-- text in the voice's colour token, another typeface for the inner voice, ghost icon buttons, a Chip for the channel,
+-- FlatButtons in the proposal bar and a ThinBar for the time. Colours are tokens (Theme.TOKENS, voice-*): a change of
+-- theme recolours the box at once. Motion comes from NS.Motion and stops with the setting "Animations".
 -- Long private reading (#126, D20): a text with line breaks (a verse, a song, a tale) keeps them (#117), appears one line
 -- at a time (the time to read the line before, and a short pause) and scrolls with the mouse wheel inside a box of at
 -- most MAX_LINES lines. The history keeps the line breaks too.
 local ADDON, NS = ...
 local W = NS.Widgets
+local Theme, Motion = NS.Theme, NS.Motion
 ---@class AUNarratorEntry
 ---@field time string
 ---@field speaker string
@@ -26,29 +30,26 @@ local DEFAULT_POS = { "BOTTOM", "BOTTOM", 0, 240 }
 local GRACE = 1.5             -- once the mouse leaves, the box stays at least this long (#21)
 local HELD_MAX = 3            -- #176: lines held back while a proposal waits (the most recent ones)
 local HELD_MAX_AGE = 120      -- a held line older than this stays only in the history
-local MIN_BACKGROUND = 0.55   -- #173: white text keeps 4.5:1 or more even over a white scene
-local TINT_BACKGROUND = 0.6   -- #186: a tinted text keeps 4.5:1 over a white scene from here; under it the text is white
+local MIN_BACKGROUND = 0.55   -- #173: the box is never thinner than this (Narrator:Floor() raises it where the theme's text needs it)
 local ACCENT = 3              -- #186: the bar in the voice colour along the left edge
-local PAD = 12                -- text margin from the left edge (after the accent bar) and from the right edge
+local PAD = 14                -- text margin from the left edge (after the accent bar) and from the right edge
+local RADIUS = 12             -- the Panel's corner (FDCP: the window shape is 12)
+local MIN_CONTRAST = 4.5      -- UI review and ADR 0058: body text over the box
 local ICON, ICON_GAP = 24, 6  -- #183: header buttons are 24x24 targets, 6 units apart
 local BAR_GAP = 6             -- between the buttons of the proposal bar
 local HISTORY_LINES = 8       -- the history is as tall as eight lines of the narrator text (#182)
 local MAX_LINES = 12          -- #126: the text box grows up to this many lines, then the text scrolls
 local VERSE_PAUSE = 0.8       -- #126: seconds between a line read and the next one appearing
 local HISTORY_INDENT = "    " -- #117: the lines after the first of an entry in the history
-local EDGE = { 0.26, 0.21, 0.32 }
 local INNER_FONT = "Fonts\\ARIALN.TTF"   -- #186: the inner voice in another typeface, a cue that needs no colour
 
--- colore di ogni voce (GDD §5.3): the accent (label, bar, time line) and a light tint for the text. The accents differ
--- in lightness too (L* 87 character, 81 inner, 72 narrator, 65 NPC): for protanopes Character and NPC were 6.5 apart
--- (ΔE), now 19 (#186).
-local VOICE_COLOR = {
-	narrator = "b9a1ff", inner = "7fd4ff", character = "ffd36b", npc = "4fb354",
-}
-local VOICE_TINT = {
-	narrator = "ece6ff", inner = "ddf3ff", character = "fff1cc", npc = "e3f7d6",
-}
-local MUTED = "c8c2d0"        -- the rest of the header label and the times in the history
+-- the colour of each voice (GDD §5.3) is a theme token: Theme.VOICE_TOKENS (voice-narrator, voice-inner, voice-character,
+-- voice-npc), a pair per theme that differs in lightness too and keeps 4.5:1 on the box (Tests/TestLayout.lua). The rest
+-- of the header label and the times in the history are text-2.
+local VOICE_TOKEN = NS.Theme.VOICE_TOKENS
+local MUTED = "text-2"
+-- a translucent box lets the world through: the contrast is worked out over the brightest and the darkest world there is
+local SCENES = { { 1, 1, 1, 1 }, { 0, 0, 0, 1 } }
 local CHANNEL_NAME = {
 	SAY = "/s", EMOTE = "/e", YELL = "/y", PARTY = "/p", RAID = "/raid", GUILD = "/g", INSTANCE_CHAT = "/i",
 }
@@ -72,12 +73,16 @@ function Narrator:VoiceLabel(speaker)
 	return NS:L("voice_" .. tostring(speaker))
 end
 
-local function Colored(speaker, text)
-	return "|cff" .. (VOICE_COLOR[speaker] or "ffffff") .. text .. "|r"
+-- a word in the colour of a token, as an inline colour code (the label and the history are one FontString each); the
+-- label and the history are written again when the theme changes (Narrator:ApplySettings)
+local function Colored(token, text)
+	return W.Hex(token) .. text .. "|r"
 end
 
-local function RGB(hex)
-	return tonumber(hex:sub(1, 2), 16) / 255, tonumber(hex:sub(3, 4), 16) / 255, tonumber(hex:sub(5, 6), 16) / 255
+-- the size of a text the player chose (narrator text size, #182), the typeface kept
+local function SetSize(fs, size, flags)
+	local path, _, f = fs:GetFont()
+	fs:SetFont(path or STANDARD_TEXT_FONT, size, flags or f or "")
 end
 
 -- caratteri UTF-8, non byte: "è" conta uno
@@ -134,19 +139,66 @@ function Narrator:MaxTextHeight()
 	return MAX_LINES * LineHeight()
 end
 
----The background opacity actually drawn: the setting, never under MIN_BACKGROUND (#173). The text is not faded.
----@return number alpha
-function Narrator:BackgroundAlpha()
-	return math.max(MIN_BACKGROUND, Cfg().alpha)
+---The contrast of a token's colour over the box when its surface has opacity `alpha`, in the worse of the two worlds a
+---translucent box can sit over (the brightest and the darkest: UI review, ADR 0058).
+---@param token string
+---@param alpha number
+---@return number ratio
+function Narrator.WorstContrast(token, alpha)
+	local r, g, b = Theme.Color(token)
+	local br, bg, bb = Theme.Color("bg")
+	local worst = math.huge
+	for _, scene in ipairs(SCENES) do
+		worst = math.min(worst, Theme.Contrast({ r, g, b, 1 }, Theme.Over({ br, bg, bb, alpha }, scene)))
+	end
+	return worst
 end
 
----The colours of a voice (#186): the accent and the text. Under TINT_BACKGROUND the text is white, which keeps 4.5:1.
+local floors = {}   -- theme id -> the least opacity at which text-1 keeps MIN_CONTRAST
+
+---The least opacity of the background (#173): MIN_BACKGROUND, or more where the theme's text needs it to keep 4.5:1 over the
+---world (Nebula's light text needs 0.6 over a white scene). Worked out from the tokens, once per theme.
+---@return number alpha
+function Narrator:Floor()
+	local id = Theme.Current()
+	if not floors[id] then
+		local pct = math.floor(MIN_BACKGROUND * 100 + 0.5)
+		while pct < 100 and Narrator.WorstContrast("text-1", pct / 100) < MIN_CONTRAST do pct = pct + 1 end
+		floors[id] = pct / 100
+	end
+	return floors[id]
+end
+
+---The background opacity actually drawn: the setting, never under the floor (#173). The text is not faded.
+---@return number alpha
+function Narrator:BackgroundAlpha()
+	return math.max(self:Floor(), Cfg().alpha)
+end
+
+---The history is a little more opaque than the box (#174, #182): at least 0.8.
+---@return number alpha
+function Narrator:HistoryAlpha()
+	return math.max(self:Floor(), 0.8, Cfg().alpha)
+end
+
+---A text colour over the box: `token` where it keeps 4.5:1 at this opacity, text-1 (which the floor guarantees) where not.
+---@param token string
+---@param alpha? number the surface's opacity (the box's, by default)
+---@return string token
+function Narrator:Ink(token, alpha)
+	if Narrator.WorstContrast(token, alpha or self:BackgroundAlpha()) >= MIN_CONTRAST then return token end
+	return "text-1"
+end
+
+---The colours of a voice (#186, spec section 2.3): the token of its accent (bar, time line) and the token of its text and label,
+---which is the voice's own where it reads over the box and text-1 where not.
 ---@param speaker string
----@return string accent hex colour
----@return string text hex colour
-function Narrator:VoiceColors(speaker)
-	local text = self:BackgroundAlpha() >= TINT_BACKGROUND and VOICE_TINT[speaker] or "ffffff"
-	return VOICE_COLOR[speaker] or "ffffff", text or "ffffff"
+---@param alpha? number the surface's opacity (the box's, by default)
+---@return string accent token
+---@return string ink token
+function Narrator:VoiceColors(speaker, alpha)
+	local accent = VOICE_TOKEN[speaker] or "text-1"
+	return accent, self:Ink(accent, alpha)
 end
 
 ---The font of a voice's text (#186): the inner voice in another typeface, a unit larger (its letters are narrower).
@@ -160,32 +212,19 @@ function Narrator:BodyFont(speaker)
 end
 
 ---------------------------------------------------------------------------
--- Pezzi del riquadro (#186): only coloured textures; local until the window style of u-windows is shared
+-- Pezzi del riquadro (#186, UI-4): the buttons and the chip on the widgets of the theme
 ---------------------------------------------------------------------------
--- a 1-unit edge on four sides, anchored on two points so that it follows the frame's height
-local function Outline(f)
-	for _, e in ipairs({ { "TOPLEFT", "TOPRIGHT", "h" }, { "BOTTOMLEFT", "BOTTOMRIGHT", "h" },
-		{ "TOPLEFT", "BOTTOMLEFT", "w" }, { "TOPRIGHT", "BOTTOMRIGHT", "w" } }) do
-		local t = f:CreateTexture(nil, "BORDER")
-		t:SetPoint(e[1])
-		t:SetPoint(e[2])
-		if e[3] == "h" then t:SetHeight(1) else t:SetWidth(1) end
-		W.SetBackgroundAlpha(t, EDGE[1], EDGE[2], EDGE[3], 0.9)
-	end
-end
-
--- A ghost icon button (#186): no box until hovered, an icon drawn with textures or a plain glyph. Its text names the
--- icon: "II" pause, ">" resume, "H" history, "x" close. 24x24, the target size of #183.
-local ICON_REST, ICON_HOVER = { 0.72, 0.68, 0.78 }, { 1, 1, 1 }
+-- A ghost icon button (#186): no box until hovered, an icon drawn with textures. Its text names the icon: "II" pause, ">"
+-- resume, "H" history, "x" close. 24x24, the target size of #183. Built on W.FlatButton (ghost): hover and press come with it.
+local ICON_REST, ICON_HOVER = "text-2", "text-1"
 local function IconButton(parent, icon, tip, onClick)
-	local b = CreateFrame("Button", nil, parent)
-	b:SetSize(ICON, ICON)
-	b.bg = W.Background(b, 1, 1, 1, 0)
+	local b = W.FlatButton(parent, "", ICON, ICON, onClick, "ghost")
 	b.parts = {}
 	local function Bar(w, h, x, y)
-		local t = b:CreateTexture(nil, "ARTWORK")
+		local t = b:CreateTexture(nil, "ARTWORK", nil, 3)
 		t:SetSize(w, h)
 		t:SetPoint("CENTER", x, y)
+		Theme.Fill(t, ICON_REST)
 		table.insert(b.parts, t)
 		return t
 	end
@@ -196,14 +235,16 @@ local function IconButton(parent, icon, tip, onClick)
 		[">"] = { Bar(2, 12, -5, 0), Bar(2, 10, -3, 0), Bar(2, 8, -1, 0), Bar(2, 6, 1, 0), Bar(2, 4, 3, 0),
 			Bar(2, 2, 5, 0) },
 	}
-	b.glyph = b:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+	-- "x" is the sheet's cross, tinted like the bars
+	b.cross = W.Icon(b, "cross", 16, ICON_REST, "ARTWORK")
+	b.cross:SetPoint("CENTER", 0, 0)
+	b.glyph = Theme.NewText(b, "Button", ICON_REST)
 	b.glyph:SetPoint("CENTER", 0, 1)
-	W.SetFontSize(b.glyph, 15)
 	local function Paint(hover)
-		local c = hover and ICON_HOVER or ICON_REST
-		W.SetBackgroundAlpha(b.bg, 1, 1, 1, hover and 0.12 or 0)
-		for _, t in ipairs(b.parts) do W.SetBackgroundAlpha(t, c[1], c[2], c[3], 1) end
-		b.glyph:SetTextColor(c[1], c[2], c[3])
+		local token = hover and ICON_HOVER or ICON_REST
+		for _, t in ipairs(b.parts) do Theme.Fill(t, token) end
+		Theme.Tint(b.cross, token)
+		Theme.Text(b.glyph, token)
 	end
 	function b:SetText(name)
 		self.icon = name
@@ -212,11 +253,11 @@ local function IconButton(parent, icon, tip, onClick)
 				if key == name then t:Show() else t:Hide() end
 			end
 		end
-		self.glyph:SetText(self.shapes[name] and "" or name)
+		self.cross:SetShown(name == "x")
+		self.glyph:SetText((self.shapes[name] or name == "x") and "" or name)
 	end
 	function b:GetText() return self.icon end
 	b:SetText(icon)
-	b:SetScript("OnClick", onClick)
 	W.Tooltip(b, tip)
 	b:HookScript("OnEnter", function() Paint(true) end)
 	b:HookScript("OnLeave", function() Paint(false) end)
@@ -224,41 +265,24 @@ local function IconButton(parent, icon, tip, onClick)
 	return b
 end
 
--- a flat button resized to its text (W.FlatButton draws its top and bottom edges at the width it was made with)
+-- a button resized to its text (the proposal bar fits its buttons side by side)
 local function FitButton(b, extra)
 	local w = math.ceil(b.label:GetStringWidth()) + extra
 	b:SetWidth(w)
-	if b.edges and b.edges[1] then
-		b.edges[1]:SetWidth(w)
-		b.edges[2]:SetWidth(w)
-	end
 	return w
 end
 
--- the channel chip (#186): a ghost button edged in the voice colour, with a small arrow that says it changes
-local function Chip(parent, onClick)
-	-- the narrator keeps its own look until UI-4 rebuilds it on the theme (W.LegacyFlatButton)
-	local b = W.LegacyFlatButton(parent, "/s", 40, 24, onClick, "ghost")
-	b.label:ClearAllPoints()
-	b.label:SetPoint("LEFT", 9, 0)
-	b.arrow = {}
-	for i, w in ipairs({ 7, 5, 3, 1 }) do
-		local t = b:CreateTexture(nil, "ARTWORK")
-		t:SetSize(w, 1)
-		t:SetPoint("RIGHT", -9 - (7 - w) / 2, 2 - i)
-		table.insert(b.arrow, t)
-	end
-	function b:Tint(hex, hover)
-		local r, g, bl = RGB(hex)
-		self.hex = hex
-		for _, t in ipairs(self.edges) do W.SetBackgroundAlpha(t, r, g, bl, hover and 1 or 0.6) end
-		for _, t in ipairs(self.arrow) do W.SetBackgroundAlpha(t, r, g, bl, 1) end
-		self.label:SetTextColor(r, g, bl)
-	end
-	-- after the hover colours of W.FlatButton
-	b:HookScript("OnEnter", function(self) self:Tint(self.hex or "ffffff", true) end)
-	b:HookScript("OnLeave", function(self) self:Tint(self.hex or "ffffff", false) end)
-	return b
+-- the channel chip (#186): a Chip of the theme with a small arrow that says it changes the channel
+local function ChannelChip(parent, onClick)
+	local c = W.Chip(parent, { text = "/s", onClick = onClick, height = 24, pad = 40 })
+	c.label:ClearAllPoints()
+	c.label:SetPoint("LEFT", c, "LEFT", 10, 0)
+	c.arrow = W.Icon(c, "chevron", 12, "text-2")
+	c.arrow:SetPoint("RIGHT", c, "RIGHT", -8, 0)
+	Motion.Rotate(c.arrow, -math.pi / 2, 0)   -- the chevron points right in the sheet: down, "this opens a choice"
+	function c:SetText(text) self:SetLabel(text) end
+	function c:GetText() return self.label:GetText() end
+	return c
 end
 
 -- the key bound to "speak", shown on Send (#186)
@@ -288,16 +312,18 @@ function Narrator:RefreshHistory()
 	if not h or not h:IsShown() then return end
 	h.title:SetText(NS:L("tip_history"))
 	h.messages:Clear()
+	local alpha = self:HistoryAlpha()
+	local muted = W.Hex(self:Ink(MUTED, alpha))
 	for _, e in ipairs(self.history) do
-		local tag = e.sentTo and (" |cff" .. MUTED .. "(" .. NS:L("sent_to", CHANNEL_NAME[e.sentTo] or e.sentTo) .. ")|r")
-			or ""
-		local _, tint = self:VoiceColors(e.speaker)
+		local tag = e.sentTo and (" " .. muted .. "(" .. NS:L("sent_to", CHANNEL_NAME[e.sentTo] or e.sentTo) .. ")|r") or ""
+		local _, ink = self:VoiceColors(e.speaker, alpha)
+		local tint = W.Hex(ink)
 		-- #117: a text with line breaks keeps them, one message per line, the later ones indented
 		local lines = self.Lines(e.text)
-		h.messages:AddMessage(("|cff%s%s|r %s |cff%s%s|r%s"):format(MUTED, e.time,
-			Colored(e.speaker, self:VoiceLabel(e.speaker)), tint, lines[1], tag))
+		h.messages:AddMessage(("%s%s|r %s %s%s|r%s"):format(muted, e.time,
+			tint .. self:VoiceLabel(e.speaker) .. "|r", tint, lines[1], tag))
 		for i = 2, #lines do
-			h.messages:AddMessage(("|cff%s%s%s|r"):format(tint, HISTORY_INDENT, lines[i] ~= "" and lines[i] or " "))
+			h.messages:AddMessage(("%s%s%s|r"):format(tint, HISTORY_INDENT, lines[i] ~= "" and lines[i] or " "))
 		end
 	end
 	h.messages:ScrollToBottom()
@@ -362,29 +388,36 @@ end
 
 -- the accent bar, the time line, the text colour and the typeface of the voice on screen (#186)
 local function PaintVoice(speaker)
-	local accent, tint = Narrator:VoiceColors(speaker)
-	local r, g, b = RGB(accent)
-	W.SetBackgroundAlpha(frame.accent, r, g, b, 1)
-	W.SetBackgroundAlpha(frame.timeline, r, g, b, 0.55)
-	frame.text:SetTextColor(RGB(tint))
+	local accent, ink = Narrator:VoiceColors(speaker)
+	Theme.Fill(frame.accent, accent)
+	frame.timeline:SetToken(accent)
+	Theme.Text(frame.text, ink)
+	-- the typeface follows the font setting (Theme.SetupFonts changes the font object, not the texts that had a size set)
+	local fontObject = Theme.Font("Body")
+	local bodyPath = fontObject and fontObject.GetFont and fontObject:GetFont()
+	frame.bodyFont = bodyPath or frame.bodyFont or STANDARD_TEXT_FONT
 	local path, size = Narrator:BodyFont(speaker)
 	local _, _, flags = frame.text:GetFont()
 	-- a client without the typeface keeps the standard one
 	if frame.text:SetFont(path, size, flags or "") == false then frame.text:SetFont(frame.bodyFont, size, flags or "") end
 end
 
+---Paints the box again: its surface, the voice on screen, the label and the history. Called by the settings (opacity, text
+---size, the font) and by a change of theme (Theme.OnChange), so the colours written inline follow the theme.
 function Narrator:ApplySettings()
 	if not frame then return end
 	local cfg = Cfg()
-	W.SetFontSize(frame.label, math.max(12, cfg.fontSize - 2))
+	SetSize(frame.label, math.max(12, cfg.fontSize - 2))
 	PaintVoice(self.current and self.current.speaker or "narrator")
 	-- #173: the setting is the background's opacity only, applied once; the frame alpha is never changed
-	W.SetBackgroundAlpha(frame.bg, 0, 0, 0, self:BackgroundAlpha())
+	Theme.Tint(frame.bg, "bg", self:BackgroundAlpha())
+	frame.labelText = nil
+	self:UpdateLabel()
 	local h = self.historyFrame
 	if h then
 		-- #182: the history follows the narrator's text size, and its height follows the lines
-		W.SetBackgroundAlpha(frame.historyBg, 0, 0, 0, math.max(0.8, cfg.alpha))
-		W.SetFontSize(h.messages, cfg.fontSize)
+		Theme.Tint(frame.historyBg, "bg", self:HistoryAlpha())
+		SetSize(h.messages, cfg.fontSize)
 		h:SetHeight(ICON + 4 + HISTORY_LINES * math.ceil(cfg.fontSize * 1.25) + 12)
 		self:RefreshHistory()
 	end
@@ -414,18 +447,18 @@ function Narrator:UpdateLayer()
 end
 
 ---The thin time line along the bottom edge (#186): it shrinks as the line's time runs out and stops while the box is
----hovered. Not drawn for a waiting proposal (its label counts down) or with "reduce motion".
+---hovered. Not drawn for a waiting proposal (its label counts down) or with "Animations: off".
 function Narrator:UpdateTimeLine()
 	if not frame then return end
 	local t = frame.timeline
 	local remaining = self.remaining or 0
 	local waiting = self.proposal ~= nil and NS.Gateway:GetPending() ~= nil
 	local left = remaining > 0 and math.max(0, math.min(1, 1 - (self.elapsed or 0) / remaining)) or 0
-	local w = math.floor((WIDTH - ACCENT) * left)
-	if waiting or Cfg().reduceMotion or w < 1 then
+	local w = math.floor((WIDTH - 2 * PAD) * left)
+	if waiting or not Motion.On() or w < 1 then
 		t:Hide()
 	else
-		t:SetWidth(w)
+		t:SetFraction(left)
 		t:Show()
 	end
 end
@@ -433,18 +466,15 @@ end
 -- the proposal bar (#186): the channel chip on the left; on the right Discard (quiet), Another, Edit, To chat and Send,
 -- the one primary action, with its key when it fits
 local function LayoutBar(p)
-	local speaker = Narrator.current and Narrator.current.speaker or "character"
 	local chip = frame.channelBtn
 	chip:SetText(CHANNEL_NAME[p.channel] or p.channel)
-	FitButton(chip, 34)
-	chip:Tint(VOICE_COLOR[speaker] or "ffffff")
 	-- senza una casella della chat da riempire il pulsante non c'è (GDD §3.8)
 	frame.copyBtn:SetShown(NS.Compat:CanOpenChat())
 	local room = WIDTH - PAD - 8 - chip:GetWidth() - BAR_GAP
 	local key = SpeakKey()
 	local function Arrange(withKey)
 		local send = NS:L("btn_send")
-		frame.sendBtn:SetText(withKey and (send .. "  |cffd8c79a" .. withKey .. "|r") or send)
+		frame.sendBtn:SetText(withKey and (send .. "  " .. withKey) or send)
 		local x = 0
 		for _, b in ipairs({ frame.sendBtn, frame.copyBtn, frame.editBtn, frame.anotherBtn, frame.discardBtn }) do
 			if b:IsShown() then
@@ -539,8 +569,9 @@ local function LabelText(cur)
 	if #Narrator.held > 0 then table.insert(meta, NS:L("narrator_held", #Narrator.held)) end
 	-- #183: a line asked for while paused says so in words, not only through the dimmed speak button
 	if NS.paused then table.insert(meta, NS:L("narrator_paused")) end
-	local label = Colored(cur.speaker, Narrator:VoiceLabel(cur.speaker))
-	if #meta > 0 then label = label .. "|cff" .. MUTED .. " · " .. table.concat(meta, " · ") .. "|r" end
+	local _, ink = Narrator:VoiceColors(cur.speaker)
+	local label = Colored(ink, Narrator:VoiceLabel(cur.speaker))
+	if #meta > 0 then label = label .. Colored(Narrator:Ink(MUTED), " · " .. table.concat(meta, " · ")) end
 	return label
 end
 
@@ -663,13 +694,17 @@ local function Reveal(rec, seconds)
 	-- #126: a text with line breaks appears one line at a time, unless motion is reduced (then all at once, with the
 	-- same reading time); the box starts at the top
 	Narrator.verses = nil
-	if not rec.proposal and not Cfg().reduceMotion then
+	if not rec.proposal and Motion.On() then
 		local lines, at = Narrator:RevealTimes(rec.display)
 		if lines then Narrator.verses = { rec = rec, lines = lines, at = at, shown = 0 } end
 	end
 	Narrator.userScrolled, Narrator.scrollOffset = false, 0
 	frame.scroll:SetVerticalScroll(0)
+	-- the box comes in with a short fade (NS.Motion; at once with "Animations: off"). It leaves without one: its time line
+	-- has run out, and #173 keeps the frame at alpha 1 for as long as it is read
+	local was = frame:IsShown()
 	frame:Show()
+	if not was then Motion.FadeIn(frame, Motion.FAST) end
 	Narrator:Refresh()
 	Narrator:ApplySettings()
 end
@@ -834,6 +869,7 @@ function Narrator:OpenEditor()
 	frame.editor:Show()
 	frame.editor:SetFocus()
 	frame.editor:HighlightText()
+	self:UpdateCounter()
 	-- con l'editor aperto la proposta non scade e non viene sostituita da frasi spontanee
 	NS.Gateway:SetEditing(true)
 	self:Layout()
@@ -876,6 +912,22 @@ function AzerothUnspoken_History()
 	if NS.db then Narrator:ToggleHistory() end
 end
 
+---The count of bytes the editor's line will take in chat (what Gateway:TextFor makes of it) over the channel's limit, on the
+---right of the editor; the colour of an excess is `err`, and the words say it as well (never colour alone).
+---@return number? used
+---@return number? limit
+function Narrator:UpdateCounter()
+	if not frame or not frame.editor:IsShown() then return nil end
+	local p = NS.Gateway:GetPending()
+	local limit = p and (NS.Config.CHAT_LIMITS[p.channel] or 255) or 255
+	local typed = frame.editor:GetText() or ""
+	local used = #(p and NS.Gateway:TextFor(p.form, typed, p.channel, p.player) or typed)
+	local over = used > limit
+	frame.counter:SetText(NS:L(over and "gw_bytes_over" or "gw_bytes", used, limit))
+	Theme.Text(frame.counter, over and "err" or "text-3")
+	return used, limit
+end
+
 ---------------------------------------------------------------------------
 -- Costruzione
 ---------------------------------------------------------------------------
@@ -886,14 +938,14 @@ local function BuildHistory()
 	h:SetFrameStrata("MEDIUM")
 	h:SetClampedToScreen(true)
 	h:SetMovable(true)
-	frame.historyBg = W.Background(h, 0, 0, 0, 0.8)
-	Outline(h)
+	h.parts = Theme.Panel(h, { radius = RADIUS, fill = "bg", border = "border", shadow = true, shadowAlpha = 0.5 })
+	frame.historyBg = h.parts.fill
 	h:Hide()
 
 	local handle = CreateFrame("Frame", nil, h)
 	handle:SetPoint("TOPLEFT", 0, 0)
-	handle:SetPoint("TOPRIGHT", -(ICON + 4), 0)
-	handle:SetHeight(ICON + 4)
+	handle:SetPoint("TOPRIGHT", -(ICON + 8), 0)
+	handle:SetHeight(ICON + 8)
 	handle:EnableMouse(true)
 	handle:RegisterForDrag("LeftButton")
 	handle:SetScript("OnDragStart", function()
@@ -911,21 +963,22 @@ local function BuildHistory()
 	for i = 0, 5 do
 		local dot = handle:CreateTexture(nil, "ARTWORK")
 		dot:SetSize(2, 2)
-		dot:SetPoint("LEFT", 8 + (i % 2) * 4, 4 - math.floor(i / 2) * 4)
-		W.SetBackgroundAlpha(dot, ICON_REST[1], ICON_REST[2], ICON_REST[3], 1)
+		dot:SetPoint("LEFT", 12 + (i % 2) * 4, 4 - math.floor(i / 2) * 4)
+		Theme.Fill(dot, ICON_REST)
 	end
-	h.title = handle:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-	h.title:SetPoint("LEFT", 22, 0)
+	h.title = Theme.NewText(handle, "BodyMedium", "text-1")
+	h.title:SetPoint("LEFT", 26, 0)
 	h.title:SetText(NS:L("tip_history"))
 	h.handle = handle
 	h.close = IconButton(h, "x", function() return NS:L("tip_history_close") end, function() h:Hide() end)
-	h.close:SetPoint("TOPRIGHT", -2, -2)
+	h.close:SetPoint("TOPRIGHT", -6, -6)
 
 	local m = CreateFrame("ScrollingMessageFrame", nil, h)
-	m:SetPoint("TOPLEFT", PAD, -(ICON + 6))
-	m:SetPoint("BOTTOMRIGHT", -8, 8)
+	m:SetPoint("TOPLEFT", PAD, -(ICON + 10))
+	m:SetPoint("BOTTOMRIGHT", -10, 10)
 	-- the narrator's own font, at its size (ApplySettings)
-	m:SetFontObject(GameFontHighlight)
+	m:SetFontObject(Theme.Font("Body") or GameFontHighlight)
+	Theme.Text(m, "text-1")
 	m:SetJustifyH("LEFT")
 	m:SetMaxLines(400)   -- #117: an entry with line breaks takes one line per verse
 	m:SetFading(false)
@@ -946,19 +999,21 @@ local function Build()
 	frame:SetFrameStrata("MEDIUM")
 	frame:SetMovable(true)
 	frame:SetClampedToScreen(true)
-	frame.bg = W.Background(frame, 0, 0, 0, 0.55)
-	Outline(frame)
+	-- the surface: a rounded Panel in `bg` whose opacity is the player's setting (ApplySettings); the ring and the shadow
+	-- keep their own strength
+	frame.parts = Theme.Panel(frame, { radius = RADIUS, fill = "bg", border = "border", shadow = true, shadowAlpha = 0.5 })
+	frame.bg = frame.parts.fill
 	W.RestorePosition(frame, Cfg().pos, DEFAULT_POS)
 	frame:Hide()
 
-	-- #186: the voice's accent bar along the left edge and the time line along the bottom
+	-- #186: the voice's accent bar along the left edge (inside the corners) and the time line along the bottom
 	frame.accent = frame:CreateTexture(nil, "ARTWORK")
-	frame.accent:SetPoint("TOPLEFT", 0, 0)
-	frame.accent:SetPoint("BOTTOMLEFT", 0, 0)
+	frame.accent:SetPoint("TOPLEFT", 0, -RADIUS)
+	frame.accent:SetPoint("BOTTOMLEFT", 0, RADIUS)
 	frame.accent:SetWidth(ACCENT)
-	frame.timeline = frame:CreateTexture(nil, "ARTWORK")
-	frame.timeline:SetPoint("BOTTOMLEFT", ACCENT, 0)
-	frame.timeline:SetHeight(2)
+	Theme.Fill(frame.accent, VOICE_TOKEN.narrator)
+	frame.timeline = W.ThinBar(frame, { height = 2, width = WIDTH - 2 * PAD, token = VOICE_TOKEN.narrator })
+	frame.timeline:SetPoint("BOTTOMLEFT", frame, "BOTTOMLEFT", PAD, 3)
 
 	-- intestazione: voce, pausa, cronologia, chiudi. È l'unica parte che riceve il mouse.
 	local header = CreateFrame("Frame", nil, frame)
@@ -977,16 +1032,16 @@ local function Build()
 	end)
 	frame.header = header
 
-	frame.label = header:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+	frame.label = Theme.NewText(header, "BodyMedium", "text-2")
 	frame.label:SetPoint("LEFT", PAD, 0)
 	-- stops before the three buttons; a longer label is cut, not drawn under them
-	frame.label:SetPoint("RIGHT", -(4 + 3 * ICON + 2 * ICON_GAP + 6), 0)
+	frame.label:SetPoint("RIGHT", -(8 + 3 * ICON + 2 * ICON_GAP + 6), 0)
 	frame.label:SetJustifyH("LEFT")
 	frame.label:SetWordWrap(false)
 
 	local function Icon(icon, tip, onClick, slot)
 		local b = IconButton(header, icon, tip, onClick)
-		b:SetPoint("RIGHT", -4 - slot * (ICON + ICON_GAP), 0)
+		b:SetPoint("RIGHT", -8 - slot * (ICON + ICON_GAP), 0)
 		return b
 	end
 	frame.closeBtn = Icon("x", function() return NS:L("tip_close") end, function() Narrator:Dismiss() end, 0)
@@ -1005,18 +1060,23 @@ local function Build()
 	frame.body = CreateFrame("Frame", nil, frame.scroll)
 	frame.body:SetSize(WIDTH - 2 * PAD, 1)
 	frame.scroll:SetScrollChild(frame.body)
-	frame.text = frame.body:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+	frame.text = Theme.NewText(frame.body, "Body", "text-1")
 	frame.text:SetPoint("TOPLEFT", frame.body, "TOPLEFT", 0, 0)
 	frame.text:SetWidth(WIDTH - 2 * PAD)
 	frame.text:SetJustifyH("LEFT")
 	frame.text:SetJustifyV("TOP")
 	frame.text:SetWordWrap(true)
-	frame.bodyFont = frame.text:GetFont() or STANDARD_TEXT_FONT
+	frame.bodyFont = frame.text:GetFont() or STANDARD_TEXT_FONT   -- read again from the font object by PaintVoice
 
-	-- editor della proposta: the template's edge reaches 5 units left of the box, so 17 and 411 leave 12 on each side
-	frame.editor = W.EditBox(frame, WIDTH - 2 * PAD - 5, 22)
-	frame.editor:SetPoint("BOTTOMLEFT", PAD + 5, 40)
+	-- editor della proposta: the themed EditBox (UI-4), with the count of bytes the line will take in chat on its right
+	frame.editor = W.EditBox(frame, WIDTH - 2 * PAD, 24)
+	frame.editor:SetPoint("BOTTOMLEFT", PAD, 40)
 	frame.editor:SetMaxLetters(240)
+	frame.editor:SetTextInsets(8, 130, 0, 0)
+	frame.counter = Theme.NewText(frame.editor, "MonoSmall", "text-3")
+	frame.counter:SetPoint("RIGHT", frame.editor, "RIGHT", -8, 0)
+	frame.counter:SetJustifyH("RIGHT")
+	frame.editor:HookScript("OnTextChanged", function() Narrator:UpdateCounter() end)
 	frame.editor:Hide()
 	frame.editor:SetScript("OnEnterPressed", function(self)
 		local text = self:GetText()
@@ -1042,13 +1102,13 @@ local function Build()
 	local rule = bar:CreateTexture(nil, "BORDER")
 	rule:SetPoint("TOPLEFT", ACCENT - PAD, 5)
 	rule:SetPoint("TOPRIGHT", 8, 5)
-	rule:SetHeight(1)
-	W.SetBackgroundAlpha(rule, EDGE[1], EDGE[2], EDGE[3], 0.7)
-	frame.channelBtn = Chip(bar, function() NS.Gateway:CycleChannel() end)
+	rule:SetHeight(Theme.Px(1))
+	Theme.Fill(rule, "border")
+	frame.channelBtn = ChannelChip(bar, function() NS.Gateway:CycleChannel() end)
 	frame.channelBtn:SetPoint("LEFT", 0, 0)
 	W.Tooltip(frame.channelBtn, function() return NS:L("tip_channel") end)
 	local function Btn(text, kind, onClick)
-		return W.LegacyFlatButton(bar, text, 60, 24, onClick, kind)
+		return W.FlatButton(bar, text, 60, 24, onClick, kind)
 	end
 	frame.sendBtn = Btn(NS:L("btn_send"), "primary", function()
 		NS.Gateway:PlayerAction(function() NS.Gateway:SendPending() end)
@@ -1089,6 +1149,7 @@ local function Build()
 	frame:SetScript("OnHide", function()
 		-- a hidden box is not under the mouse: the proposal's waiting time goes on
 		NS.Gateway:SetHovered(false)
+		frame:SetAlpha(1)   -- a hidden box is not left half-faded by an entrance that was still running
 		-- #174: the history that sits above the box hides with it; one dragged to its own place stays
 		local h = Narrator.historyFrame
 		if h and not OwnPlace() then h:Hide() end
@@ -1117,4 +1178,10 @@ function Narrator:OnInit()
 		return
 	end
 	self:ApplySettings()
+	-- a change of theme paints the box and the history again (the inline colours of the label and of the history too); a
+	-- change of the font setting (Theme.SetupFonts runs first, it is registered earlier) gives the texts their new typeface
+	Theme.OnChange(function() Narrator:ApplySettings() end)
+	NS.Config:OnChange(function(path)
+		if path == nil or path == "ui.fontSource" then Narrator:ApplySettings() end
+	end)
 end

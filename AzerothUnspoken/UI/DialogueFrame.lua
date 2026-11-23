@@ -10,8 +10,13 @@
 -- #182: the window follows the window scale, its text size and opacity are in the settings panel, and each text sits
 -- under the one above (the line under the title, the answers under the line), so nothing overlaps at large sizes.
 -- #183: the answers are numbered and have keys (NPC answer 1-3 in Bindings.xml); every button is 24 units high.
+-- UI-ECO UI-4: the NEBULA look: a rounded Panel surface in the `bg` token (its opacity is the setting, never under the
+-- narrator's floor), the label "addon ambient dialogue" as a Badge that is always there, the NPC's title in the
+-- voice-npc token, the answers as FlatButtons (primary for "Listen", secondary for the answers), a fade-in from NS.Motion.
+-- It still has no Esc (ADR 0020). Not tried in the client.
 local ADDON, NS = ...
 local W = NS.Widgets
+local Theme, Motion = NS.Theme, NS.Motion
 
 ---@class AUDialogueFrame
 local F = NS:RegisterModule("dialogue")
@@ -21,7 +26,7 @@ local WIDTH = 380
 local MARGIN = 8
 local OVERLAP_PAD = 6
 local CHECK_EVERY = 0.5
-local BADGE_COLOR, NPC_COLOR = "ffd060", "4fb354"   -- the NPC voice of the narrator (#186)
+local NPC_TOKEN = Theme.VOICE_TOKENS.npc   -- the NPC voice of the narrator (#186)
 
 -- finestre di Blizzard che la nostra non deve coprire (nomi di FrameXML: si controllano solo se esistono)
 F.BLIZZARD_FRAMES = { "GossipFrame", "QuestFrame", "MerchantFrame", "TaxiFrame", "ClassTrainerFrame", "BankFrame",
@@ -137,16 +142,20 @@ function F:GetPlacement() return self.placed end
 ---------------------------------------------------------------------------
 -- Disegno
 ---------------------------------------------------------------------------
-local function Colored(color, text) return "|cff" .. color .. text .. "|r" end
+-- the size of a text the player chose (#182), the typeface kept
+local function SetSize(fs, size)
+	local path, _, flags = fs:GetFont()
+	fs:SetFont(path or STANDARD_TEXT_FONT, size, flags or "")
+end
 
 local function Title(view)
 	local role = view.roleLabel or ""
 	local name = view.name and view.name ~= "" and (" · " .. view.name) or ""
 	local tag = view.test and (" · " .. NS:L("npc_test_tag")) or ""
-	return Colored(NPC_COLOR, role .. name) .. tag
+	return role .. name .. tag
 end
 
-local HEADER_H = 28   -- #183: room for a 24-unit close button
+local HEADER_H = 36   -- #183: room for a 24-unit close button and the Badge
 local BUTTON_H = 24
 
 -- from the top: the header, the title, the line, then the answers, each under the one above (#182)
@@ -180,7 +189,7 @@ function F:Render(view)
 		return
 	end
 	HideAllButtons()
-	frame.badge:SetText(Colored(BADGE_COLOR, NS:L("npc_badge")))
+	frame.badge:SetBadge(NS:L("npc_badge"), "accent")
 	frame.title:SetText(Title(view))
 	frame.endBtn:SetText(NS:L("npc_btn_close"))
 	frame.openBtn:SetText(NS:L("npc_btn_open"))
@@ -198,6 +207,7 @@ function F:Render(view)
 			if b then
 				-- #183: the number is the key that answers (NPC answer 1-3)
 				b:SetText(i .. ". " .. c.text)
+				W.FitButton(b, WIDTH - 2 * MARGIN, WIDTH - 2 * MARGIN, 24)   -- a long answer is cut, the tooltip says it whole
 				b.choiceIndex = i
 				table.insert(buttons, b)
 			end
@@ -207,16 +217,21 @@ function F:Render(view)
 	end
 	self:ApplySettings(true)
 	Layout(buttons)
+	local was = frame:IsShown()
 	frame:Show()
+	if not was then Motion.FadeIn(frame, Motion.FAST) end
 	self:Place(true)
 end
 
 function F:ApplySettings(skipLayout)
 	if not frame then return end
 	local cfg = Cfg()
-	W.SetFontSize(frame.text, cfg.fontSize)
-	W.SetFontSize(frame.title, cfg.fontSize)
-	W.SetBackgroundAlpha(frame.bg, 0.04, 0.04, 0.07, 0.85 * cfg.alpha)
+	SetSize(frame.text, cfg.fontSize)
+	SetSize(frame.title, cfg.fontSize)
+	-- the surface is as opaque as the setting says, never under the narrator's floor (text-1 keeps 4.5:1); the text is not faded
+	local alpha = math.max(NS.Narrator and NS.Narrator:Floor() or 0.6, 0.85 * cfg.alpha)
+	Theme.Tint(frame.bg, "bg", alpha)
+	Theme.Text(frame.title, NS.Narrator and NS.Narrator:Ink(NPC_TOKEN, alpha) or "text-1")
 	frame:SetAlpha(1)
 	W.ApplyScale(frame)
 	if not skipLayout and frame:IsShown() and frame.shownButtons then
@@ -270,16 +285,27 @@ local function Build()
 	frame:SetMovable(true)
 	frame:SetClampedToScreen(true)
 	frame:EnableMouse(true)
-	frame.bg = W.Background(frame, 0.04, 0.04, 0.07, 0.85)
+	frame.parts = Theme.Panel(frame, { radius = 12, fill = "bg", border = "border", shadow = true, shadowAlpha = 0.5 })
+	frame.bg = frame.parts.fill
+	-- the NPC's accent bar along the left edge, inside the corners (the voice of the narrator's NPC, #186)
+	frame.accent = frame:CreateTexture(nil, "ARTWORK")
+	frame.accent:SetPoint("TOPLEFT", 0, -12)
+	frame.accent:SetPoint("BOTTOMLEFT", 0, 12)
+	frame.accent:SetWidth(3)
+	Theme.Fill(frame.accent, NPC_TOKEN)
 
-	-- la fascia dell'etichetta: sempre visibile, con un colore che si distingue dal resto della finestra
+	-- la fascia dell'etichetta: sempre visibile (the Badge "addon ambient dialogue"), under it a thin rule
 	local header = CreateFrame("Frame", nil, frame)
 	header:SetPoint("TOPLEFT", 0, 0)
 	header:SetPoint("TOPRIGHT", 0, 0)
 	header:SetHeight(HEADER_H)
 	header:EnableMouse(true)
 	header:RegisterForDrag("LeftButton")
-	W.Background(header, 0.30, 0.20, 0.03, 0.95)
+	local rule = header:CreateTexture(nil, "BORDER")
+	rule:SetPoint("BOTTOMLEFT", header, "BOTTOMLEFT", MARGIN + 4, 0)
+	rule:SetPoint("BOTTOMRIGHT", header, "BOTTOMRIGHT", -(MARGIN + 4), 0)
+	rule:SetHeight(Theme.Px(1))
+	Theme.Fill(rule, "border")
 	header:SetScript("OnDragStart", function()
 		if not Cfg().locked then frame:StartMoving() end
 	end)
@@ -293,23 +319,22 @@ local function Build()
 	end)
 	frame.header = header
 
-	frame.badge = header:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-	frame.badge:SetPoint("LEFT", 8, 0)
-	frame.badge:SetJustifyH("LEFT")
+	frame.badge = W.Badge(header, NS:L("npc_badge"), "accent")
+	frame.badge:SetPoint("LEFT", header, "LEFT", MARGIN + 6, 0)
 	-- #183: a 24-unit target with a word, not a small "x"
-	local close = W.Button(header, NS:L("npc_btn_close"), 64, BUTTON_H, function() NS.NPCAlive:Close("closed") end)
-	close:SetPoint("RIGHT", -2, 0)
+	local close = W.FlatButton(header, NS:L("npc_btn_close"), 64, BUTTON_H, function() NS.NPCAlive:Close("closed") end, "secondary")
+	close:SetPoint("RIGHT", -MARGIN, 0)
 	W.Tooltip(close, function() return NS:L("npc_tip_close") end)
 	W.Tooltip(header, function() return NS:L("npc_badge_tip") end)
 	frame.closeBtn = close
 
-	frame.title = frame:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
-	frame.title:SetPoint("TOPLEFT", MARGIN, -(HEADER_H + 6))
+	frame.title = Theme.NewText(frame, "BodyMedium", NPC_TOKEN)
+	frame.title:SetPoint("TOPLEFT", MARGIN + 6, -(HEADER_H + 6))
 	frame.title:SetPoint("TOPRIGHT", -MARGIN, -(HEADER_H + 6))
 	frame.title:SetJustifyH("LEFT")
 
 	-- the line under the title, whatever the size of the text (#182)
-	frame.text = frame:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+	frame.text = Theme.NewText(frame, "Body", "text-1")
 	frame.text:SetPoint("TOPLEFT", frame.title, "BOTTOMLEFT", 0, -6)
 	frame.text:SetPoint("TOPRIGHT", frame.title, "BOTTOMRIGHT", 0, -6)
 	frame.text:SetJustifyH("LEFT")
@@ -319,18 +344,18 @@ local function Build()
 	frame.choiceButtons = {}
 	for i = 1, NS.NPCAlive.MAX_CHOICES do
 		local index = i
-		frame.choiceButtons[i] = W.Button(frame, "", WIDTH - 2 * MARGIN, BUTTON_H, function()
+		frame.choiceButtons[i] = W.FlatButton(frame, "", WIDTH - 2 * MARGIN, BUTTON_H, function()
 			local ok, why = NS.NPCAlive:Choose(index)
 			if not ok and why then NS.NPCAlive:Explain("npc_refused_", why) end
-		end)
+		end, "secondary")
 		frame.choiceButtons[i]:Hide()
 	end
-	frame.openBtn = W.Button(frame, "", WIDTH - 2 * MARGIN, BUTTON_H, function()
+	frame.openBtn = W.FlatButton(frame, "", WIDTH - 2 * MARGIN, BUTTON_H, function()
 		local ok, why = NS.NPCAlive:Open()
 		if not ok and why then NS.NPCAlive:Explain("npc_refused_", why) end
-	end)
+	end, "primary")
 	frame.openBtn:Hide()
-	frame.endBtn = W.Button(frame, "", WIDTH - 2 * MARGIN, BUTTON_H, function() NS.NPCAlive:Close("finished") end)
+	frame.endBtn = W.FlatButton(frame, "", WIDTH - 2 * MARGIN, BUTTON_H, function() NS.NPCAlive:Close("finished") end, "secondary")
 	frame.endBtn:Hide()
 
 	-- controllo leggero ogni mezzo secondo: se una finestra di Blizzard si apre sotto la nostra, ci si sposta

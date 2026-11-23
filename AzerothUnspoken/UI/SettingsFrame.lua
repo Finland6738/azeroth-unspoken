@@ -227,9 +227,9 @@ local function CreatePanel()
 	})
 
 	-- Appearance (UI-ECO UI-3, ADR 0058): theme, neon effects, animations, fonts; each one changes the open windows at once,
-	-- without /reload (Config:Set tells UI/Theme.lua). "Animations" is the one switch for every motion of the addon: it
-	-- also writes the narrator's older "reduce motion" (ui.narrator.reduceMotion, #177), which the narrator box reads
-	-- until UI-4, so the two never disagree.
+	-- without /reload (Config:Set tells UI/Theme.lua). "Animations" is the one switch for every motion of the addon, the
+	-- narrator's fades included (UI-4): the narrator's older "reduce motion" (ui.narrator.reduceMotion, #177) is no longer
+	-- written nor read; Config:Load moved a player who had it on to ui.animations = false once.
 	Header("opt_section_look")
 	Toggle("opt_theme", function() return NS:L("theme_" .. Theme.Current()) end,
 		function() NS.Config:Set("ui.theme", Cycle(THEMES, NS.db.ui.theme)) end, "opt_theme_tip")
@@ -237,11 +237,8 @@ local function CreatePanel()
 	Toggle("opt_neon", function() return OnOff(NS.db.ui.neon) end,
 		function() NS.Config:Set("ui.neon", not NS.db.ui.neon) end, "opt_neon_tip")
 	Next()
-	Toggle("opt_motion", function() return OnOff(Theme.AnimationsOn()) end, function()
-		local on = not Theme.AnimationsOn()
-		NS.db.ui.narrator.reduceMotion = not on
-		NS.Config:Set("ui.animations", on)
-	end, "opt_motion_tip")
+	Toggle("opt_motion", function() return OnOff(Theme.AnimationsOn()) end,
+		function() NS.Config:Set("ui.animations", not Theme.AnimationsOn()) end, "opt_motion_tip")
 	Next()
 	Toggle("opt_font", function() return NS:L("font_" .. Theme.FontSource()) end,
 		function() NS.Config:Set("ui.fontSource", Cycle(FONT_SOURCES, Theme.FontSource())) end, "opt_font_tip")

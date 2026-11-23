@@ -101,19 +101,20 @@ pages[1] = { title = "wiz_step_language", build = function(p)
 	local intro = Text(p, -30)
 	-- a live sample of the narrator: the voice, then a line, before any setting
 	local box = CreateFrame("Frame", nil, p)
-	box:SetSize(INNER, 46)
-	-- the sample has the narrator's own dark surface and colours until UI-4 rebuilds the narrator on the theme
-	W.Background(box, 0.03, 0.025, 0.015, 0.95)
-	box.auKeepColours = true
+	box:SetSize(INNER, 52)
+	-- the sample is the narrator's own look (UI-4): the same Panel surface, the accent bar and the text in the voice's
+	-- colour token, on the window as it is (the box over the game world is as opaque as the setting says)
+	box.parts = NS.Theme.Panel(box, { radius = 12, fill = "bg", border = "border-strong" })
 	local bar = box:CreateTexture(nil, "ARTWORK")
-	bar:SetSize(3, 46)
-	bar:SetPoint("TOPLEFT", 0, 0)
-	NS.Theme.Fill(bar, "accent")
-	local voice = box:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-	voice:SetPoint("TOPLEFT", 12, -6)
-	local sample = box:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
-	sample:SetPoint("TOPLEFT", 12, -22)
-	sample:SetWidth(INNER - 24)
+	bar:SetWidth(3)
+	bar:SetPoint("TOPLEFT", 0, -12)
+	bar:SetPoint("BOTTOMLEFT", 0, 12)
+	NS.Theme.Fill(bar, NS.Theme.VOICE_TOKENS.narrator)
+	local voice = NS.Theme.NewText(box, "BodyMedium", NS.Theme.VOICE_TOKENS.narrator)
+	voice:SetPoint("TOPLEFT", 14, -8)
+	local sample = NS.Theme.NewText(box, "Body", NS.Theme.VOICE_TOKENS.narrator)
+	sample:SetPoint("TOPLEFT", 14, -28)
+	sample:SetWidth(INNER - 28)
 	sample:SetJustifyH("LEFT")
 	local label = Text(p, -134, "GameFontNormalSmall")
 	local cards, byRow = {}, {}
@@ -134,16 +135,15 @@ pages[1] = { title = "wiz_step_language", build = function(p)
 	return function()
 		head()
 		intro:SetText(NS:L("wiz_welcome_text"))
-		voice:SetText("|cffb9a1ff" .. NS:L("voice_narrator") .. "|r")
+		voice:SetText(NS:L("voice_narrator"))
 		local name = NS:PlayerName()   -- #281: as the setting `names.player` names the character
 		sample:SetText(NS:L("wiz_sample", type(name) == "string" and name ~= "" and name or NS:L("wiz_sample_name")))
 		label:SetText(NS:L("wiz_language_label"))
 		for code, c in pairs(cards) do c:SetCard(NS.languages[code].name, NS:L("wiz_language_card"), NS.db.locale == code) end
 		note:SetText(NS:L("wiz_language_help"))
 		-- the sample box grows with a sample that takes a second line
-		local boxH = math.max(46, 22 + math.ceil(sample:GetStringHeight() or 14) + 8)
+		local boxH = math.max(52, 28 + math.ceil(sample:GetStringHeight() or 14) + 10)
 		box:SetHeight(boxH)
-		bar:SetHeight(boxH)
 		local rows = { { intro, gap = 12 }, { box, gap = 12 }, { label, gap = 6 } }
 		for _, row in ipairs(byRow) do table.insert(rows, row) end
 		table.insert(rows, { note })

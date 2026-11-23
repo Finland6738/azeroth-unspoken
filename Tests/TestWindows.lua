@@ -154,6 +154,62 @@ T.run("#182: the dialogue window's text size and opacity follow the panel, and t
 	F:Hide()
 end)
 
+T.run("UI-4: the NPC dialogue is on the theme: a Panel, the Badge that is always there, the NPC voice token, FlatButtons, no Esc", function()
+	Reset()
+	local F = NS.DialogueFrame
+	local Th = NS.Theme
+	local frame = F:GetFrame()
+	local function Is(c, token, id)
+		local r, g, b = Th.Color(token, id)
+		return c ~= nil and math.abs(c[1] - r) < 1e-6 and math.abs(c[2] - g) < 1e-6 and math.abs(c[3] - b) < 1e-6
+	end
+	NS.db.locale = "en"
+	-- an offer: the Badge says it is the addon's, and "Listen" is the primary button
+	F:Render({ state = "offered", roleLabel = "Guard", name = "Tom" })
+	T.ok(frame:IsShown() and frame.badge:IsShown(), "the label is on screen")
+	T.eq(frame.badge:GetText(), NS:L("npc_badge"), "it says: addon ambient dialogue")
+	T.eq(frame.openBtn.style, "primary", "Listen is the primary button")
+	T.ok(frame.parts and frame.parts.fill and frame.parts.ring and frame.parts.shadow, "a Panel with a ring and a shadow")
+	T.ok(Is(frame.accent._s.colorTex, "voice-npc"), "the NPC's accent bar in the voice token")
+	-- a line with three answers: numbered FlatButtons of 24 units, never the game's button template
+	F:Render({ state = "opened", roleLabel = "Guard", name = "Tom", line = "Stay a while.",
+		choices = { { text = "Why?" }, { text = "Where?" }, { text = "Who?" } } })
+	for i = 1, 3 do
+		local b = frame.choiceButtons[i]
+		T.eq(b.style, "secondary", "answer " .. i .. ": a secondary button")
+		T.ok(b:IsShown() and b:GetHeight() >= 24, "shown, 24 units")
+		T.ok(b.fill ~= nil and b.ring ~= nil and b.label ~= nil, "built by W.FlatButton")
+	end
+	T.eq(frame.closeBtn.style, "secondary", "Close is a button with a word")
+	T.ok(frame.closeBtn:GetHeight() >= 24 and frame.closeBtn:GetWidth() >= 24, "24 units")
+	-- the title is in the NPC voice's token (or text-1 where the voice would not read over a thin surface)
+	local title = frame.title._s.textColor
+	T.ok(Is(title, "voice-npc") or Is(title, "text-1"), "the title: the NPC voice or text-1")
+	T.ok(frame.title.auThemed and frame.text.auThemed, "every text has a token")
+	-- opacity: the setting, never under the narrator's floor (text-1 keeps 4.5:1)
+	NS.db.ui.dialogue.alpha = 0.3
+	F:ApplySettings()
+	T.eq(select(4, frame.bg:GetVertexColor()), NS.Narrator:Floor(), "a thin setting is raised to the floor")
+	NS.db.ui.dialogue.alpha = 1
+	F:ApplySettings()
+	T.ok(math.abs(select(4, frame.bg:GetVertexColor()) - 0.85) < 1e-6, "full opacity is 0.85, as before")
+	NS.db.ui.dialogue.alpha = 0.92
+	-- the theme changes it without /reload
+	Th.Set("aurora")
+	T.ok(Is(frame.bg._s.vertex, "bg", "aurora"), "Aurora: the surface")
+	T.ok(Is(frame.accent._s.colorTex, "voice-npc", "aurora"), "and the bar of Aurora's NPC voice")
+	Th.Set("nebula")
+	-- no Esc: it is not in UISpecialFrames (ADR 0020), and Esc on a button does nothing to it
+	T.ok(not Named("AzerothUnspokenDialogue"), "no Esc")
+	-- the keys answer as before
+	local seen, original = nil, NS.NPCAlive.Choose
+	NS.NPCAlive.Choose = function(_, n) seen = n; return true end
+	T.ok(F:Press(2) and seen == 2, "the key 2 presses the second answer")
+	NS.NPCAlive.Choose = original
+	NS.db.locale = "it"
+	F:Hide()
+end)
+
 T.run("#182: consent and privacy text is 12 units or more", function()
 	Reset()
 	NS.RelationsFrame:Open("options")

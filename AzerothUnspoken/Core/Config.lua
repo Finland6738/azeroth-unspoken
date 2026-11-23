@@ -65,7 +65,7 @@ Config.CHAT_LIMITS = {
 ---@field duration number secondi di lettura di base
 ---@field readingSpeed number caratteri al secondo per il tempo di lettura
 ---@field alpha number opacità dello sfondo, 0.55-1 (il testo resta pieno)
----@field reduceMotion boolean nessuna dissolvenza
+---@field reduceMotion boolean legacy (#177): no longer read since UI-4; Config:Load turned it into ui.animations = false once
 ---@field fontSize integer
 ---@field historySize integer
 ---@field locked boolean il riquadro non si sposta
@@ -250,7 +250,7 @@ Config.defaults = {
 			duration = 8,        -- secondi di lettura di base, più il tempo per leggere il testo (readingSpeed)
 			readingSpeed = 14,   -- caratteri al secondo (#177): circa 0.07 s per carattere UTF-8
 			alpha = 0.8,         -- opacità dello sfondo, 0.55-1; il testo resta sempre pieno (#173)
-			reduceMotion = false, -- true: nessuna dissolvenza, il riquadro compare e sparisce (#177)
+			reduceMotion = false, -- legacy (#177), only read by the migration in Config:Load; ui.animations replaced it (UI-4)
 			fontSize = 14,
 			historySize = 30,
 			locked = false,      -- true: il riquadro non si sposta
