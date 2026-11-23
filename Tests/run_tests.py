@@ -493,7 +493,7 @@ for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContex
              "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestEmotion", "TestMemory", "TestRelations", "TestPlayers", "TestNPCLevels", "TestNPCRomance", "TestPromises", "TestFavours", "TestLocalReputation", "TestHostility", "TestProximityShared",
              "TestOtherPlace", "TestNPCAlive", "TestArcs", "TestCommands", "TestProfile", "TestProbeCombat", "TestContent", "TestScale",
              "TestSelection", "TestWorld", "TestDynamism", "TestKeyClaims", "TestPacks", "TestKeyboard", "TestLiterary",
-             "TestLiteraryMeta", "TestSongbook", "TestNemesis", "TestCompanion", "TestIdentity", "TestLayout"):
+             "TestLiteraryMeta", "TestSongbook", "TestNemesis", "TestCompanion", "TestIdentity", "TestLayout", "TestAssets"):
     # TestPacks: the folders of the download are loaded by Core/Packs.lua like in the client (#85, #101)
     lt, nst = load_addon(packs="lazy" if name == "TestPacks" else "all")
     # un'installazione nuova parte in inglese (#132); i test dei testi sono scritti in italiano, quindi la lingua si
@@ -1319,7 +1319,7 @@ check(proc.returncode == 0, "check_versi.py: il pacchetto dei versi si carica, Ã
 
 # 12) regole automatiche (R1): regola dei documenti per le PR, privacy dei file tracciati, forma dei workflow
 print("\nREGOLE DEL PROGETTO")
-for script in ("check_rules.py", "check_privacy.py", "check_user_block.py"):
+for script in ("check_rules.py", "check_privacy.py", "check_user_block.py", "check_media.py"):
     proc = subprocess.run([sys.executable, "-I", "-X", "utf8", os.path.join(HERE, script)],
                           capture_output=True, text=True, encoding="utf-8")
     print("\n".join("  " + l for l in proc.stdout.rstrip().split("\n") if "  ok  " not in l))

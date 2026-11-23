@@ -276,7 +276,7 @@ Azeroth Unspoken è gratuito e il suo codice è aperto. Le sue frasi sono protet
 - **Codice:** [GPL-3.0 o successiva](LICENSE). Puoi studiarlo, modificarlo e condividerlo; le versioni condivise restano aperte con la stessa licenza. I pacchetti di frasi che usano solo l'interfaccia pubblica dei pacchetti possono avere qualunque licenza.
 - **Frasi e dati narrativi:** [tutti i diritti riservati](LICENSE-CONTENT.md). Puoi giocarci, citarne brevi estratti, mostrarle in screenshot, video e dirette, e proporre correzioni e traduzioni. Copiarle in altre opere, ripubblicarle o usarle per addestrare sistemi di IA richiede un permesso scritto.
 - **Pacchetto di esempio e guida ai pacchetti:** [MIT](AzerothUnspoken_Example/LICENSE), liberi da copiare per il tuo pacchetto.
-- **Documentazione:** CC BY 4.0.
+- **Font, icone e logo** inclusi nella cartella dell'addon (`AzerothUnspoken/Media/`): i font sono sotto la SIL Open Font License, le icone e le forme sono disegnate dallo strumento del progetto e non si usa nessuna grafica di Blizzard. L'origine di ognuno è in [docs/third-party.md](docs/third-party.md) (in inglese).
 - **Il nome "Azeroth Unspoken"** non è concesso in licenza: una versione modificata condivisa con altri deve avere un altro nome.
 
 ## Crediti

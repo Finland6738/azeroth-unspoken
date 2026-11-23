@@ -279,6 +279,7 @@ Azeroth Unspoken is free, and its code is open. Its phrases are protected. The f
 - **Phrases and narrative data:** [all rights reserved](LICENSE-CONTENT.md). You may play with them, quote short extracts, show them in screenshots, videos and streams, and propose corrections and translations. Copying them into other works, re-uploading them or using them to train AI systems needs written permission.
 - **Example pack and pack guide:** [MIT](AzerothUnspoken_Example/LICENSE), free to copy for your own pack.
 - **Documentation:** CC BY 4.0.
+- **Fonts, icons and the logo** that ship in the addon folder (`AzerothUnspoken/Media/`): the fonts are under the SIL Open Font License, the icons and shapes are drawn by the project's own tool, and no Blizzard art is used. Where each comes from is in [docs/third-party.md](docs/third-party.md).
 - **The name "Azeroth Unspoken"** is not licensed: a modified version shared with others needs another name.
 
 ## Credits

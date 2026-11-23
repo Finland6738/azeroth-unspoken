@@ -23,6 +23,9 @@ PATHS = [
 ]
 # addresses that are not personal: GitHub noreply, and the reserved example domains
 ALLOWED_EMAIL = re.compile(r"@(?:users\.noreply\.github\.com|example\.(?:com|org|net))$", re.IGNORECASE)
+# a third-party licence text that ships as it is: the copyright line of the Orbitron font names its author's published
+# contact address, and the licence forbids changing the notice (docs/third-party.md). Only this file and this address.
+ALLOWED_IN_FILE = {("AzerothUnspoken/Media/Fonts/Orbitron-OFL.txt", "matt" + "@" + "pixelspread.com")}
 # GitHub Actions runner paths in the workflows are not personal
 ALLOWED_PATH_TEXT = ("/home/runner/",)
 TEXT_EXTENSIONS = (".md", ".lua", ".toc", ".xml", ".py", ".yml", ".yaml", ".json", ".ini", ".txt", ".luarc", ".gitignore",
@@ -46,7 +49,7 @@ def scan_text(name, text):
     problems = []
     for number, line in enumerate(text.split("\n"), 1):
         for m in EMAIL.finditer(line):
-            if not ALLOWED_EMAIL.search(m.group(0)):
+            if not ALLOWED_EMAIL.search(m.group(0)) and (name, m.group(0)) not in ALLOWED_IN_FILE:
                 problems.append(f"{name}:{number}: email address ({m.group(0)})")
         clean = line
         for allowed in ALLOWED_PATH_TEXT:
