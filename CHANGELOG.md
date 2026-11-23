@@ -15,6 +15,26 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 - **Changed:** `Tests/check_docs.py` no longer asks a wiki image named `logo*` to say "illustrative mockup" in its
   alternative text: a logo is not a mockup of the interface.
 
+### UI-ECO step UI-0: the look and credits of the NEBULA ecosystem, decided and specified (issue #284)
+
+The addon will take the interface look and the credits of Finland Dragon Credit Points (FDCP), the sister addon of the
+NEBULA community: the same tokens, fonts, components and animations, with the Nebula theme (dark, default) and Aurora
+(light). This step is **documents only**: no addon code or data changes and nothing on screen changes. The look arrives
+in the steps UI-1 to UI-8, one pull request each.
+
+- **Added**: [ADR 0058](docs/adr/0058-nebula-ecosystem-look-and-credits.md), the decision, with the six choices the owner
+  approved on 2026-11-23 (separate windows on a 52-point title bar, the guild logo used by permission, only Nebula and
+  Aurora, the wiki in English with an Italian About page, Ko-fi only on the Info page and in the documents, credits with
+  the public name Finland) and the accessibility rules of the UI review that every step must keep. It replaces the flat
+  bronze look of #187.
+- **Added**: [docs/specs/ui-style.md](docs/specs/ui-style.md) and its Italian twin
+  [docs/specs/ui-style.it.md](docs/specs/ui-style.it.md): FDCP's spec is the source, and these files list only the
+  differences (separate windows, the list of windows and the components each uses, no third theme, no text under 12
+  units, file names and saved variables, the Info page in the Settings canvas, the narrator's voices) and a status table
+  per step.
+- **Changed**: ROADMAP has a "UI-ECO" section with the steps UI-0 to UI-8, and its credits rule now says the public name
+  Finland instead of Finland6738.
+
 ## [0.2.1] - 2026-11-18
 
 A small update to 0.2.0: a setting chooses how the addon names your character before an emote, first name, last name or both (`/au name`), and the CI Tests job may run for 75 minutes. The lines are the same as in 0.2.0.

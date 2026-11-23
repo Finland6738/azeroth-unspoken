@@ -2,7 +2,7 @@
 
 Index of everything in `docs/` and of the related documents in the project root. **The authoritative source of the documentation is this folder**, versioned together with the code ([ADR 0013](adr/0013-github-wiki.md)).
 
-**The documentation is in English**, except for two files, which are in Italian:
+**The documentation is in English**, except for two files, which are in Italian (the UI spec also has an Italian twin, [specs/ui-style.it.md](specs/ui-style.it.md)):
 
 - [G1_checklist.md](G1_checklist.md): the in-game checklist for the Italian-speaking tester (the English counterpart [G1_checklist.en.md](G1_checklist.en.md) covers the sections R0, R1, R3a, R3b, R4b, R4b2, R4 and R3c);
 - [Immersion_Director_GDD_v1.0.md](Immersion_Director_GDD_v1.0.md): the original design spec, a historical source.
@@ -36,6 +36,7 @@ The documentation describes only what exists on `main` or is planned in [ROADMAP
 |---|---|
 | [ARCHITECTURE.md](ARCHITECTURE.md) | modules and responsibilities, flow of an event, data and SavedVariables, extension points (with Mermaid diagrams) |
 | [adr/README.md](adr/README.md) | the project decisions (ADRs), with an index |
+| [specs/ui-style.md](specs/ui-style.md) · [specs/ui-style.it.md](specs/ui-style.it.md) | the interface style (the NEBULA look of the sister addon FDCP, [ADR 0058](adr/0058-nebula-ecosystem-look-and-credits.md)): only the differences from FDCP's spec, the window list and the status of the steps UI-1 to UI-8; tracking issue [#284](https://github.com/Finland6738/azeroth-unspoken/issues/284) |
 | [REFERENCES.md](REFERENCES.md) | technical sources for WoW Forever and the API dump |
 | [../ROADMAP.md](../ROADMAP.md) | milestones, steps, progress status, notes between one step and the next |
 | [../CONTRIBUTING.md](../CONTRIBUTING.md) | working rules, tests, Lua and EmmyLua style, git |
