@@ -19,7 +19,7 @@ The fonts are the same files that Finland Dragon Credit Points (FDCP), the siste
 
 The OFL allows bundling the fonts in software under any licence provided the fonts are not sold on their own, the licence
 text accompanies them and a modified version does not reuse a Reserved Font Name. The licence texts are copied as they
-are. The logo font of the NEBULA community site (Atomed) has no licence that allows redistribution and is **not**
+are (the copyright line of `Orbitron-OFL.txt` names its author's published contact address; `Tests/check_privacy.py` allows exactly that file and address). The logo font of the NEBULA community site (Atomed) has no licence that allows redistribution and is **not**
 included. The addon falls back to the game's own fonts when a file cannot be loaded, and a setting will let the player
 choose them (step UI-3). Nothing uses the fonts yet: the widgets that do arrive in steps UI-2 and UI-3.
 
