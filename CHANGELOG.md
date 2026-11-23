@@ -8,6 +8,13 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### The addon's logo in the README and the wiki
+
+- **Added:** `assets/logo-source.webp`, the addon's logo (an open scroll with a green wisp rising from it). The README (EN
+  and IT) shows it at the top right, and the wiki's Home page under the title, as Finland Dragon Credit Points does.
+- **Changed:** `Tests/check_docs.py` no longer asks a wiki image named `logo*` to say "illustrative mockup" in its
+  alternative text: a logo is not a mockup of the interface.
+
 ### UI-ECO step UI-0: the look and credits of the NEBULA ecosystem, decided and specified (issue #284)
 
 The addon will take the interface look and the credits of Finland Dragon Credit Points (FDCP), the sister addon of the

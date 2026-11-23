@@ -9,7 +9,8 @@
 3. Wiki (`docs/wiki`, la sola fonte del wiki di GitHub, ADR 0013): ogni link `[[Testo|Pagina]]` o `[testo](Pagina#àncora)`
    punta a una pagina di docs/wiki (e all'àncora, se c'è), ogni pagina è nella barra laterale, e nessuna pagina contiene
    percorsi personali, indirizzi email o parole da sviluppatori. Ogni immagine `![testo](percorso)` è un file del
-   repository, mai una proposta `proposed-*`, e il suo testo alternativo dice "illustrative mockup" (U2).
+   repository, mai una proposta `proposed-*`, e il suo testo alternativo dice "illustrative mockup" (U2); un logo
+   (`logo*`, per esempio `assets/logo-source.webp`) non è un mockup e non lo dice.
 4. (#162) Commands: every `/au ...` quoted in README, the pack guide, CONTRIBUTING and docs/ (not the logs: CHANGELOG,
    ROADMAP, docs/design) is a command of `Commands.list`, with words its keyword table accepts and no old Italian word
    (the deny list of Tests/TestCommands.lua). A line that talks about Italian words may quote one as the example.
@@ -210,7 +211,7 @@ def check_wiki():
                     bad.append(where + " (immagine inesistente)")
                 elif os.path.basename(target).startswith("proposed-"):
                     bad.append(where + " (una proposta della revisione, non l'interfaccia)")
-                elif "illustrative mockup" not in alt.lower():
+                elif not os.path.basename(target).lower().startswith("logo") and "illustrative mockup" not in alt.lower():
                     bad.append(where + " (il testo alternativo non dice 'illustrative mockup')")
             l = re.sub(r"!\[[^\]]*\]\([^)\s]+\)", "", l)
             # [[Pagina]], [[Testo|Pagina]] e i link Markdown relativi: sul wiki il percorso è il nome della pagina
