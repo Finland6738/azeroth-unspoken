@@ -117,9 +117,9 @@ local function PrintHelp(rest)
 		if word ~= "" then NS:Print(NS:L("help_unknown", rest)) end
 		NS:Print(NS:L("help_title"))
 		for _, g in ipairs(Commands.GROUPS) do
-			NS:Print(("/au help %s - %s"):format(g, NS:L("help_group_" .. g)))
+			NS:Print(("/au help %s - %s"):format(g, NS:L("help_group_" .. g)))   -- nolocale: the command syntax is English (ADR 0023), the group text is a key
 		end
-		NS:Print("/au help all - " .. NS:L("help_group_all"))
+		NS:Print("/au help all - " .. NS:L("help_group_all"))   -- nolocale: the command syntax is English (ADR 0023), the group text is a key
 	end
 end
 
@@ -459,7 +459,7 @@ function Commands.Build()
 	local problems, by = {}, {}
 	local function Add(word, spec)
 		if by[word] then
-			table.insert(problems, ("'%s' is used by both '%s' and '%s'"):format(word, by[word].name, spec.name))
+			table.insert(problems, ("'%s' is used by both '%s' and '%s'"):format(word, by[word].name, spec.name))   -- nolocale: a developer diagnostic, shown by the tests and /au debug only
 		else
 			by[word] = spec
 		end

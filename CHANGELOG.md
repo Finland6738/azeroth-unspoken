@@ -8,6 +8,38 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### UI-ECO step UI-2: the theme and motion foundations, and the "no text written in code" check (issue #284)
+
+The windows do not change yet: the look is added to the addon folder and tested before any window uses it (step UI-2 of
+[ADR 0058](docs/adr/0058-nebula-ecosystem-look-and-credits.md); the windows move to it in UI-3 to UI-6).
+
+- **Added**: `AzerothUnspoken/UI/Theme.lua` (in the toc after `UI\Assets.lua`), adapted from Finland Dragon Credit Points: the 27
+  colour tokens of **Nebula** (dark, the default) and **Aurora** (light), with the same names and values as FDCP's; a weak-key
+  registry of tinted regions (`Theme.Tint`, `Fill`, `Text`, `TextRGB`, `ClassText`, `Call`, `Gradient`) that `Theme.Apply(id)` recolours
+  **without `/reload`**, telling the listeners; `Theme.Px()`; the 9-slice `Theme.Panel` (fill, ring, shadow, 1 px highlight);
+  `Theme.Glow` (blend ADD in the dark theme only, hidden with neon off); 14 font objects from `Assets.fonts` that **fall back to the
+  game's fonts** when a file does not load or the player chose them; class colours read from the client (`C_ClassColor`, then
+  `RAID_CLASS_COLORS`), used for a name only where they keep 4.5:1; WCAG contrast helpers. No text under 12 units.
+- **Added**: `AzerothUnspoken/UI/Motion.lua`: `AnimationGroup` only (Alpha, Scale, Translation, Rotation), 120, 200 and 320 ms,
+  OUT curve; with animations off every call finishes at once and no group is played.
+- **Added**: four personal settings, kept in the account under `ui`: `theme` (`nebula` or `aurora`), `neon` (glows and shadows),
+  `animations` and `fontSource` (`addon` or `game`), with rules in `Core/Config.lua`. Their Settings rows come in UI-3.
+- **Changed**: a player who had turned the narrator's fades off (`ui.narrator.reduceMotion`) starts with `ui.animations` off, once, and
+  that older setting still stops the animations.
+- **Added**: `Core/Compat.lua` guards the new client calls: `Compat:ClassColor`, `PhysicalScreenHeight`, `CreateFont`, `GameFontPath`,
+  `FontLoads` (the load test of a font file, on a hidden FontString, because the dump gives a font object's `SetFont` no result). The
+  three APIs are in `Tests/check_api.py`'s dump check; `RAID_CLASS_COLORS`, `UNIT_NAME_FONT` and the prefix of the addon's font names are
+  listed there with a reason.
+- **Added**: `Tests/TestTheme.lua` (the theme switch recolours without a reload, both themes keep the contrast rules of the UI review:
+  text 4.5:1, controls 3:1, the font fallback paths, neon and animations off, class colours, the settings and the migration) and
+  `Tests/check_locale.py`, run by the suite: **no visible text is written in `UI/*.lua`**, every literal `NS:L` key exists, and the
+  English and Italian `ui` tables have the same keys and placeholders. `Tests/MockWoWAPI.lua` records colours, blend modes, fonts and
+  animation groups.
+- **Changed**: three strings of `UI/Commands.lua` that hold no text to translate (the syntax of `/au help`, a developer diagnostic)
+  now say so with `-- nolocale: the reason`. No existing violation needed a new locale key.
+- **Not verified in the game**: `SetFont` with the bundled fonts and the fallback, the 9-slice shapes, the ADD glows, the gradients
+  and the animations (the tests run on the mock client).
+
 ### UI-ECO step UI-1: the media foundations (issue #284)
 
 Nothing changes on screen: the pictures and fonts of the new look are added to the addon folder and listed, before any

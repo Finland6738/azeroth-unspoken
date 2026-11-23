@@ -59,6 +59,8 @@ Systems\Companion.lua
 
 # --- interfaccia ---
 UI\Assets.lua
+UI\Theme.lua
+UI\Motion.lua
 UI\Widgets.lua
 UI\Windows.lua
 UI\NarratorFrame.lua

@@ -76,6 +76,7 @@ EXCEPTIONS = {
     "InterfaceOptions_AddCategory": "FrameXML: ripiego per il pannello vecchio, chiamato da UI/SettingsFrame.lua solo dopo `elseif InterfaceOptions_AddCategory then`",
     "GetSpellInfo": "assente nel dump di Forever: usata solo come ripiego di C_Spell.GetSpellName, dentro Compat.SafeCall",
     "MouseIsOver": "assente nel dump: solo ripiego di Compat:IsMouseOver, che prima prova il metodo del frame IsMouseOver (nel dump; issue #17)",
+    "RAID_CLASS_COLORS": "FrameXML: the table of the class colours; Compat:ClassColor reads it only as the fallback of C_ClassColor.GetClassColor, through Compat.Resolve (UI-ECO UI-2)",
     "InterfaceOptionsFrame_OpenToCategory": "FrameXML del pannello vecchio: chiamata solo dopo `if InterfaceOptionsFrame_OpenToCategory and`",
 }
 
@@ -91,6 +92,7 @@ OBJECTS = {
     "Enum.*": "costanti di FrameXML (Enum.AddOnRestrictionType, Enum.UIMapType): lette solo dopo aver controllato che esistano",
     "LE_PARTY_CATEGORY_INSTANCE": "costante di FrameXML: ripiego su un valore fisso se manca",
     "STANDARD_TEXT_FONT": "costante di FrameXML con il carattere standard",
+    "UNIT_NAME_FONT": "FrameXML constant with the game's title font: Compat:GameFontPath reads it through Compat.Resolve and falls back to a fixed path (UI-ECO UI-2)",
     "UISpecialFrames": "FrameXML table of the frames Esc hides: the narrator history adds its name only when the table exists (#174)",
     "WOW_PROJECT_*": "costanti di FrameXML (WOW_PROJECT_ID, WOW_PROJECT_CAMELOT): lette da Compat per riconoscere il client",
     "TRP3_API": "Total RP 3, facoltativo: letto solo se presente (Integration/TotalRP3.lua)",
@@ -140,6 +142,7 @@ FONTS = {
     "GameFontHighlight": "FrameXML font object; also a fallback of the font",
     "GameFontHighlightSmall": "FrameXML font object",
     "ChatFontNormal": "FrameXML font object, the fallback of the font",
+    "AzerothUnspokenFont": "not a FrameXML object: the prefix of the font objects the addon makes itself with CreateFont (UI/Theme.lua)",
 }
 
 # Modelli di CreateFrame che il dump non può elencare (XML di FrameXML)

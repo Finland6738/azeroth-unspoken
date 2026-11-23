@@ -302,6 +302,81 @@ function Compat:GetSpellName(spellID)
 end
 
 ---------------------------------------------------------------------------
+-- Aspetto: colori di classe, schermo, font (UI-ECO UI-2, UI/Theme.lua)
+---------------------------------------------------------------------------
+-- Nessuna di queste API è stata provata nel client: ognuna risponde "non lo so" (nil) se manca o fallisce.
+
+---Il colore della classe del giocatore (r, g, b in 0-1) dal client: C_ClassColor.GetClassColor, poi RAID_CLASS_COLORS.
+---Non si scrive mai a mano (docs/specs/ui-style.md §2.1). Un nome di classe sconosciuto, un valore segreto o un'API
+---assente danno nil: chi chiama usa allora il colore del testo.
+---@param classFile string WARRIOR | PALADIN | HUNTER | ROGUE | PRIEST | SHAMAN | MAGE | WARLOCK | DRUID
+---@return number? r
+---@return number? g
+---@return number? b
+function Compat:ClassColor(classFile)
+	if type(classFile) ~= "string" or IsSecret(classFile) then return nil end
+	local state, color = Compat.Query("C_ClassColor.GetClassColor", classFile)
+	if state ~= AVAILABLE then color = nil end
+	if color == nil then
+		local table_ = Resolve("RAID_CLASS_COLORS")
+		color = type(table_) == "table" and table_[classFile] or nil
+	end
+	if type(color) ~= "table" then return nil end
+	local r, g, b = color.r, color.g, color.b
+	if IsSecret(r) or IsSecret(g) or IsSecret(b) then return nil end
+	if type(r) ~= "number" or type(g) ~= "number" or type(b) ~= "number" then return nil end
+	return r, g, b
+end
+
+---L'altezza dello schermo in pixel fisici (GetPhysicalScreenSize), oppure nil se il client non la dà.
+---@return number? height
+function Compat:PhysicalScreenHeight()
+	local state, _, h = Compat.Query("GetPhysicalScreenSize")
+	if state == AVAILABLE and type(h) == "number" and h > 0 and h == h and h < math.huge then return h end
+	return nil
+end
+
+---Un oggetto font del client (CreateFont): nil se la funzione manca o fallisce.
+---@param name string nome globale dell'oggetto
+---@return table? font
+function Compat:CreateFont(name)
+	local state, font = Compat.Query("CreateFont", name)
+	if state ~= AVAILABLE or type(font) ~= "table" then return nil end
+	return font
+end
+
+-- Il percorso di un carattere del gioco (ripiego quando un file dell'addon non si carica o il giocatore sceglie i font
+-- del gioco): "FRIZQT" è il carattere dei titoli del gioco, "STANDARD" quello del testo
+Compat.GAME_FONT_FALLBACK = "Fonts\\FRIZQT__.TTF"
+
+---@param kind string "FRIZQT" | "STANDARD"
+---@return string path un percorso, mai nil
+function Compat:GameFontPath(kind)
+	local path = Resolve(kind == "FRIZQT" and "UNIT_NAME_FONT" or "STANDARD_TEXT_FONT")
+	if type(path) == "string" and path ~= "" and not IsSecret(path) then return path end
+	return Compat.GAME_FONT_FALLBACK
+end
+
+---Il file di carattere `path` si carica? Lo prova su un FontString nascosto, il cui SetFont dice se è riuscito (il SetFont di un
+---oggetto font, nel dump, non restituisce nulla). true/false se il client risponde, nil se non c'è modo di saperlo.
+---@param path string
+---@param size number
+---@return boolean? loads
+function Compat:FontLoads(path, size)
+	local parent = UIParent
+	if type(parent) ~= "table" or type(parent.CreateFontString) ~= "function" then return nil end
+	if not Compat.fontProbe then
+		local ok, fs = pcall(parent.CreateFontString, parent, nil, "OVERLAY")
+		if not ok or type(fs) ~= "table" or type(fs.SetFont) ~= "function" then return nil end
+		Compat.fontProbe = fs
+	end
+	local ok, loaded = pcall(Compat.fontProbe.SetFont, Compat.fontProbe, path, size, "")
+	if not ok then return false end
+	if loaded == nil then return nil end
+	return loaded and true or false
+end
+
+---------------------------------------------------------------------------
 -- Il mondo: meteo, giorno e notte, volo (R3, #92 #93 #121)
 ---------------------------------------------------------------------------
 -- Nessuna di queste API è stata provata nel client (si prova con /au probe, #82): ogni lettura restituisce "non lo so"
@@ -415,6 +490,8 @@ local APIS = {
 	{ "C_Map.GetPlayerMapPosition" }, { "C_QuestLog.GetNumQuestLogEntries" }, { "C_QuestLog.GetInfo" },
 	{ "C_QuestLog.IsComplete" }, { "C_QuestLog.GetQuestObjectives" },
 	{ "C_Reputation.GetNumFactions" }, { "C_Reputation.GetFactionDataByIndex" },
+	-- aspetto (UI-ECO UI-2)
+	{ "C_ClassColor.GetClassColor" }, { "GetPhysicalScreenSize" }, { "CreateFont" },
 }
 
 function Compat:Probe()

@@ -386,7 +386,10 @@ function Widget:RealisticHeight()
 	end
 	return lines * (self:FontSize() + 2)
 end
-function Widget:SetFontObject(f) self._s.fontObject = type(f) == "string" and f or nil end
+function Widget:SetFontObject(f)
+	self._s.fontObject = type(f) == "string" and f or nil
+	self._s.fontObj = type(f) == "table" and f or nil   -- UI-ECO UI-2: a font object made by CreateFont
+end
 function Widget:SetWordWrap(v) self._s.wrap = v and true or false end
 -- #126: scroll frames and the history's message frame keep what the addon gave them
 function Widget:SetVerticalScroll(v) self._s.scroll = v end
@@ -414,7 +417,17 @@ end
 function Widget:SetScript(k, fn) self.scripts[k] = fn end
 function Widget:GetScript(k) return self.scripts[k] end
 function Widget:HookScript(k, fn) local old = self.scripts[k]; self.scripts[k] = function(...) if old then old(...) end fn(...) end end
-function Widget:SetFont(path, size, flags) self._s.font = { path, size, flags } end
+-- UI-ECO UI-2: SetFont on a FontString answers true or false like the client (the dump documents a result there); a path in
+-- FONT_FAIL does not load: the font stays as it was and a FontString answers false. A font object ("Font", from CreateFont)
+-- answers nothing (the dump documents no result) unless a test sets FONT_OBJECT_ANSWERS.
+FONT_FAIL = {}
+FONT_OBJECT_ANSWERS = false
+function Widget:SetFont(path, size, flags)
+	local loads = not FONT_FAIL[path]
+	if loads then self._s.font = { path, size, flags } end
+	if self.kind == "Font" and not FONT_OBJECT_ANSWERS then return nil end
+	return loads
+end
 function Widget:GetFont() local f = self._s.font or { "Fonts/FRIZQT__.TTF", 12, "" }; return f[1], f[2], f[3] end
 function Widget:SetEnabled(v) self._s.enabled = v end
 function Widget:IsEnabled() return self._s.enabled ~= false end
@@ -434,6 +447,70 @@ function Widget:CreateFontString(_, _, template)
 	return f
 end
 function Widget:CreateTexture() return CreateWidget("Texture", self) end
+-- UI-ECO UI-2: what the theme sets on a region is kept, so a test can read the colour a theme gave it
+function Widget:SetVertexColor(r, g, b, a) self._s.vertex = { r, g, b, a or 1 } end
+function Widget:GetVertexColor() local c = self._s.vertex or { 1, 1, 1, 1 }; return c[1], c[2], c[3], c[4] end
+function Widget:SetColorTexture(r, g, b, a) self._s.colorTex = { r, g, b, a or 1 } end
+function Widget:SetTextColor(r, g, b, a) self._s.textColor = { r, g, b, a or 1 } end
+function Widget:GetTextColor() local c = self._s.textColor or { 1, 1, 1, 1 }; return c[1], c[2], c[3], c[4] end
+function Widget:SetShadowColor(r, g, b, a) self._s.shadowColor = { r, g, b, a or 1 } end
+function Widget:SetShadowOffset(x, y) self._s.shadowOffset = { x, y } end
+function Widget:SetGradient(orientation, from, to) self._s.gradient = { orientation, from, to } end
+function Widget:SetBlendMode(m) self._s.blend = m end
+function Widget:GetBlendMode() return self._s.blend or "BLEND" end
+function Widget:SetTexture(path) self._s.texture = path end
+function Widget:SetTextureSliceMargins(l, t, r, b) self._s.slice = { l, t, r, b } end
+function Widget:SetTextureSliceMode(m) self._s.sliceMode = m end
+function Widget:SetSnapToPixelGrid(v) self._s.snap = v end
+function Widget:SetTexelSnappingBias(v) self._s.bias = v end
+function Widget:SetRotation(r) self._s.rotation = r end
+function Widget:GetRotation() return self._s.rotation or 0 end
+function Widget:GetFontObject() return self._s.fontObj or self._s.fontObject end
+-- Animations (UI-ECO UI-2): a group and its animations record what Motion sets; PLAYING_GROUPS lists the running groups and
+-- FINISH_ANIMATIONS() ends them like the client does (OnFinished), so a test sees the end state.
+PLAYING_GROUPS = {}
+local function NewAnimation(kind)
+	local a = CreateWidget("Animation", nil)
+	a._s.animKind = kind
+	function a:SetDuration(d) self._s.duration = d end
+	function a:GetDuration() return self._s.duration end
+	function a:SetSmoothing(m) self._s.smoothing = m end
+	function a:GetSmoothing() return self._s.smoothing end
+	function a:SetFromAlpha(v) self._s.fromAlpha = v end
+	function a:SetToAlpha(v) self._s.toAlpha = v end
+	function a:SetOffset(x, y) self._s.offset = { x, y } end
+	function a:SetRadians(v) self._s.radians = v end
+	function a:SetScaleFrom(x, y) self._s.scaleFrom = { x, y } end
+	function a:SetScaleTo(x, y) self._s.scaleTo = { x, y } end
+	function a:SetOrigin(...) self._s.origin = { ... } end
+	function a:SetOrder(v) self._s.order = v end
+	return a
+end
+function Widget:CreateAnimationGroup()
+	local g = CreateWidget("AnimationGroup", nil)
+	g.owner = self
+	g.animations = {}
+	function g:CreateAnimation(kind)
+		local a = NewAnimation(kind)
+		table.insert(self.animations, a)
+		return a
+	end
+	function g:SetLooping(v) self._s.looping = v end
+	function g:Play() self._s.playing = true; PLAYING_GROUPS[self] = true end
+	function g:Stop() self._s.playing = false; PLAYING_GROUPS[self] = nil end
+	function g:IsPlaying() return self._s.playing == true end
+	return g
+end
+function FINISH_ANIMATIONS()
+	local running = {}
+	for g in pairs(PLAYING_GROUPS) do table.insert(running, g) end
+	for _, g in ipairs(running) do
+		g._s.playing = false
+		PLAYING_GROUPS[g] = nil
+		if g.scripts.OnFinished then g.scripts.OnFinished(g) end
+	end
+	return #running
+end
 function Widget:StartMoving() self._s.moving = true end
 function Widget:StopMovingOrSizing() self._s.moving = false end
 function Widget:RegisterEvent(e)
@@ -509,6 +586,25 @@ function CreateFrame(kind, name, parent)
 end
 UIParent = CreateWidget("Frame")
 UIParent._s.w, UIParent._s.h = 1024, 768
+-- UI-ECO UI-2: font objects, the physical screen, the class colours and the game's fonts
+function CreateFont(name)
+	local f = CreateWidget("Font", nil)
+	f.name = name
+	if name then _G[name] = f end
+	return f
+end
+PHYSICAL_SCREEN = { 1024, 768 }
+function GetPhysicalScreenSize() return PHYSICAL_SCREEN[1], PHYSICAL_SCREEN[2] end
+-- the colours of the nine classes of the game (test data; the addon never writes them: it asks the client)
+RAID_CLASS_COLORS = {
+	WARRIOR = { r = 0.78, g = 0.61, b = 0.43 }, PALADIN = { r = 0.96, g = 0.55, b = 0.73 },
+	HUNTER = { r = 0.67, g = 0.83, b = 0.45 }, ROGUE = { r = 1, g = 0.96, b = 0.41 },
+	PRIEST = { r = 1, g = 1, b = 1 }, SHAMAN = { r = 0, g = 0.44, b = 0.87 },
+	MAGE = { r = 0.25, g = 0.78, b = 0.92 }, WARLOCK = { r = 0.53, g = 0.53, b = 0.93 },
+	DRUID = { r = 1, g = 0.49, b = 0.04 },
+}
+C_ClassColor = { GetClassColor = function(class) return RAID_CLASS_COLORS[class] end }
+UNIT_NAME_FONT = "Fonts\\FRIZQT__.TTF"
 -- tutti i widget creati, per i test (cerca per tipo e testo)
 function FindWidgets(pred)
 	local out = {}

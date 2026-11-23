@@ -98,8 +98,21 @@ Components are those of FDCP §3 (the Button kinds *primary*, *secondary*, *ghos
 | Tools | `tools/make_media.py`, `make_fonts.py`, `mockup_lib.py`, `make_mockups.py`, `check_addon.py`, `check_locale.py` | copied and adapted into `tools/` and `Tests/` (the checks join the suite) |
 | Text | locale keys | every visible string is a locale key, enUS and itIT ([ADR 0023](../adr/0023-english-first-addon-and-english-command-names.md)); nothing is written in code |
 
-The keys that hold the theme, the neon effects, the animations and the font go through `Config` and are named in step UI-2; this table
-is completed then. The old `W.PALETTE`, `W.BRAND` and the 36-unit band are removed in UI-3.
+| Personal look settings (UI-2) | the profile of its database (`theme`, `effects`, `animations`, `fontSource`) | `AzerothUnspokenDB.settings.ui`, **in the account** like `windowScale` and not per character: `ui.theme` (`nebula` \| `aurora`), `ui.neon` (glows and shadows, `effects` in FDCP), `ui.animations`, `ui.fontSource` (`addon` \| `game`). Defaults Nebula, on, on, addon; `Config.THEMES` lists the theme ids and `Tests/TestTheme.lua` checks them against `Theme.ORDER`. `Theme.Set(id)` or `Config:Set("ui.theme", id)` switches live. The Settings rows come in UI-3 |
+
+The old `W.PALETTE`, `W.BRAND` and the 36-unit band are removed in UI-3.
+
+**Migration (UI-2).** A player who had turned the narrator's fades off (`ui.narrator.reduceMotion`, [#177](https://github.com/Finland6738/azeroth-unspoken/issues/177)) starts with
+`ui.animations = false`: `Config:Load` sets it once, only when `ui.animations` is not in the file yet. The narrator setting still stops the
+animations after that (`Theme.AnimationsOn()` reads both), so nothing the player chose is undone. The schema version does not change: `Merge`
+adds the new keys and `Validate` brings a wrong theme or font source back to the default.
+
+**Text written in code (UI-2).** `Tests/check_locale.py` (run by `Tests/run_tests.py`) fails when a string literal in `AzerothUnspoken/UI/*.lua` is
+visible text: an argument of `SetText`, `Print`, `AddMessage` and the like, the value of a field such as `text`, `title`, `label` or `tooltip`, or
+anything that reads like a sentence (two words with a space). A locale key such as `help_depth` is not text. The syntax of a slash command
+(`usage = "mode private / preview"`) is English by ADR 0023. A line that holds no text to translate (a format of a command line, a developer
+diagnostic) says so with `-- nolocale: the reason`; without a reason it fails. The same check compares the `ui` tables of
+`Data/enUS/*UI.lua` and `Data/itIT/*UI.lua` (the same keys, the same `%s` placeholders) and that every `NS:L("key")` of the UI exists.
 
 ### 2.6 The Info page and the credits
 
@@ -128,7 +141,7 @@ shapes, the glows and the animations are predictions until then.
 |---|---|---|---|
 | UI-0 | ADR 0058, this spec and its Italian twin, the ROADMAP section, issue #284 | this one | done (docs only) |
 | UI-1 | media: `make_media.py`, `make_fonts.py`, textures, fonts and OFL texts, `UI/Assets.lua`, packaging, `docs/third-party.md` | [#289](https://github.com/Finland6738/azeroth-unspoken/pull/289) | done: files generated and checked offline; **not tried in the client** (TGA loading, font glyphs) |
-| UI-2 | `UI/Theme.lua`, `UI/Motion.lua`, config keys, theme tests, the check of text written in code | | to do |
+| UI-2 | `UI/Theme.lua`, `UI/Motion.lua`, config keys, theme tests, the check of text written in code | UI-2 (this step's pull request) | done: tokens equal FDCP's, switch without reload, contrast of both themes, `Tests/TestTheme.lua` and `Tests/check_locale.py`; **not tried in the client** (`SetFont` with the bundled fonts, 9-slice, ADD glows, gradients, animations) |
 | UI-3 | widgets, the 52-point title bar, `W.Window`, Appearance settings | | to do |
 | UI-4 | narrator box, speak button, Chat Gateway proposal and editor, dialogue frame | | to do |
 | UI-5 | Journal and Relationships | | to do |
