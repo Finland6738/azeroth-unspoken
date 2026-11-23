@@ -8,6 +8,13 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### The addon's logo in the README and the wiki
+
+- **Added:** `assets/logo-source.webp`, the addon's logo (an open scroll with a green wisp rising from it). The README (EN
+  and IT) shows it at the top right, and the wiki's Home page under the title, as Finland Dragon Credit Points does.
+- **Changed:** `Tests/check_docs.py` no longer asks a wiki image named `logo*` to say "illustrative mockup" in its
+  alternative text: a logo is not a mockup of the interface.
+
 ## [0.2.1] - 2026-11-18
 
 A small update to 0.2.0: a setting chooses how the addon names your character before an emote, first name, last name or both (`/au name`), and the CI Tests job may run for 75 minutes. The lines are the same as in 0.2.0.

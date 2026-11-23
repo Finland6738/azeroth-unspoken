@@ -1,5 +1,7 @@
 # Azeroth Unspoken
 
+<img src="assets/logo-source.webp" alt="Azeroth Unspoken logo" width="160" align="right">
+
 *An immersive roleplay companion for World of Warcraft*
 
 > 🇮🇹 [Versione italiana](README.it.md)

@@ -1,5 +1,7 @@
 # Azeroth Unspoken
 
+![Azeroth Unspoken logo](../../assets/logo-source.webp)
+
 *An immersive roleplay companion for World of Warcraft*
 
 Welcome to the player's manual for **Azeroth Unspoken**, a roleplay addon for **World of Warcraft: Forever**.
