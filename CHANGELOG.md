@@ -8,6 +8,28 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### UI-ECO step UI-1: the media foundations (issue #284)
+
+Nothing changes on screen: the pictures and fonts of the new look are added to the addon folder and listed, before any
+widget uses them (step UI-1 of [ADR 0058](docs/adr/0058-nebula-ecosystem-look-and-credits.md)).
+
+- **Added**: `tools/make_media.py` (adapted from Finland Dragon Credit Points) and `AzerothUnspoken/Media/`: the white
+  shapes the theme will tint (`rr_fill_8/12/18`, `rr_ring_8/12/18`, `pill`, `circle`, `shadow`, `glow_s`, `glow_l`,
+  `blob_radial`), `icons.tga` with 44 drawn icons (FDCP's 40, plus heart, quill, chat and scroll), and `logo_256.tga` /
+  `logo_64.tga`, the addon's own logo (`assets/logo-source.webp`) cut round and in full colour. 905 KB of textures.
+- **Added**: `AzerothUnspoken/Media/Fonts/` with Outfit (Regular, Medium, SemiBold), JetBrains Mono (Regular, Medium) and
+  Orbitron Bold (whole and unmodified), each family with its SIL OFL text (285 KB), and `tools/make_fonts.py`, which
+  rebuilds them. The whole `Media/` folder is 1.2 MB, 330 KB in the zip.
+- **Added**: `AzerothUnspoken/UI/Assets.lua` (in the toc before `UI\Widgets.lua`): the one table of textures and fonts,
+  with `Assets.AllPaths()`, `Assets.IconCoords(name)` and a game-font fallback for each font. Nothing uses it yet.
+- **Added**: `Tests/check_media.py` (run by `Tests/run_tests.py`): every file of `Media/` is listed in `Assets.lua` and every
+  listed path exists, every font family has its OFL text, the TGA files are uncompressed 32-bit with the size the table says,
+  the icon names equal those of the tool, the files are binary for git and travel in the release package and the installer.
+  `Tests/TestAssets.lua` loads the table in the mock client.
+- **Added**: [docs/third-party.md](docs/third-party.md): where each font and picture comes from and under which licence,
+  linked from the README and from LICENSING.md. `.gitattributes` marks `*.ttf` and `*.webp` binary.
+- **Not verified**: that the client loads the TGA files and the fonts, and the glyphs, since the tests do not run the game.
+
 ### The addon's logo in the README and the wiki
 
 - **Added:** `assets/logo-source.webp`, the addon's logo (an open scroll with a green wisp rising from it). The README (EN

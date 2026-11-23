@@ -67,6 +67,12 @@ that allows them to be distributed with the addon and relicensed in the future. 
 
 This is not legal advice: if the project gains commercial value, a specialist should review these terms.
 
+## Fonts, icons and pictures in the addon folder
+
+`AzerothUnspoken/Media/` holds three fonts under the SIL Open Font License 1.1 (each with its licence text), icons and shapes
+drawn by the project's own tool (covered by the code licence) and the addon's own logo. The list, with the origin and the
+licence of each, is [docs/third-party.md](docs/third-party.md). No Blizzard artwork is included.
+
 ## Third-party names
 
 World of Warcraft®, Azeroth and the names of places and characters of the game are trademarks or works of Blizzard

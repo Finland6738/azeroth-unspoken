@@ -7,6 +7,8 @@
 
 # Binari
 *.tga binary
+*.ttf binary
+*.webp binary
 *.blp binary
 *.png binary
 *.jpg binary

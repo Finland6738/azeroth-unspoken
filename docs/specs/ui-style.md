@@ -127,7 +127,7 @@ shapes, the glows and the animations are predictions until then.
 | Step | What | Pull request | Status |
 |---|---|---|---|
 | UI-0 | ADR 0058, this spec and its Italian twin, the ROADMAP section, issue #284 | this one | done (docs only) |
-| UI-1 | media: `make_media.py`, `make_fonts.py`, textures, fonts and OFL texts, `UI/Assets.lua`, packaging, `docs/third-party.md` | | to do |
+| UI-1 | media: `make_media.py`, `make_fonts.py`, textures, fonts and OFL texts, `UI/Assets.lua`, packaging, `docs/third-party.md` | UI-1 | done: files generated and checked offline; **not tried in the client** (TGA loading, font glyphs) |
 | UI-2 | `UI/Theme.lua`, `UI/Motion.lua`, config keys, theme tests, the check of text written in code | | to do |
 | UI-3 | widgets, the 52-point title bar, `W.Window`, Appearance settings | | to do |
 | UI-4 | narrator box, speak button, Chat Gateway proposal and editor, dialogue frame | | to do |
