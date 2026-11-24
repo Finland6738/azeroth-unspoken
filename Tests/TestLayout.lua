@@ -490,4 +490,54 @@ T.run("UI-6: the settings page's controls fit their sections, in English and Ita
 	NS.db.locale = "en"
 end)
 
+-- #296: the date column of the journal holds the whole stamp "%Y-%m-%d %H:%M" (16 mono characters, 0.6 em each in the 13-unit
+-- Mono font, plus the 8 units a cell keeps), and the text column still has room in every tab
+T.run("#296: the journal's date column fits the 16-character stamp, and every tab fits the window", function()
+	local LM = NS.LivingMemory
+	LM:Record({ kind = "first_visit", zone = "Elwynn Forest" })
+	local stamp = LM.Stamp(os.time())
+	T.eq(#stamp, 16, "the stamp has 16 characters")
+	local need = math.floor(#stamp * 0.6 * 13) + 8   -- 124.8 units of Mono 13 plus the cell's 8: 132
+	for _, tab in ipairs(NS.JournalFrame.tabs) do
+		NS.JournalFrame:Open(tab.id)
+		local j = _G.AzerothUnspokenJournal
+		local tbl = j.table
+		tbl:SetWidth(j:GetWidth() - 32); tbl:Layout()
+		local pos = tbl.pos
+		local total = 0
+		for i = 1, #pos do total = total + pos[i].w end
+		T.ok(total <= j:GetWidth() - 32 + 1, tab.id .. ": the columns fit the window (" .. total .. ")")
+		if pos[2] and pos[2].w > 0 then
+			T.ok(pos[2].w >= need, tab.id .. ": the date column (" .. pos[2].w .. ") holds the stamp (" .. need .. ")")
+		end
+		T.ok(pos[1].w >= 300, tab.id .. ": the text column keeps its room (" .. pos[1].w .. ")")
+		T.eq(W.Adopt(j), 0, tab.id .. ": W.Adopt still finds nothing")
+	end
+	NS.JournalFrame:Close()
+end)
+
+-- #297: the traits title of a person's detail is one line, so the first trait button does not sit on a second line, in both
+-- languages; the explanation moved to the buttons' tooltip
+T.run("#297: the traits title is one line and the buttons are below it", function()
+	NS.Relationships:AddPlayer("Dara-Stormrage", "user")
+	for _, lang in ipairs({ "en", "it" }) do
+		NS.db.locale = lang
+		NS.RelationsFrame:Open({ kind = "player", key = "Dara-Stormrage" })
+		local f = _G.AzerothUnspokenRelations
+		local title = f.dTraitsTitle
+		T.ok(title:GetStringHeight() <= title:FontSize() + 2, lang .. ": the title is one line")
+		T.ok(Units(title:GetText()) <= title:GetWidth(), lang .. ": the title fits its 332 units")
+		local ty = select(5, title:GetPoint())
+		for trait, b in pairs(f.dTraitBtns) do
+			local by = select(5, b:GetPoint())
+			T.ok(-by >= -ty + title:GetStringHeight(), lang .. ": " .. trait .. " starts under the title")
+		end
+		T.ok(NS:L("rel_trait_tip"):find(lang == "en" and "leaves it to the addon" or "lascia decidere all'addon", 1, true) ~= nil,
+			lang .. ": the tooltip carries the explanation")
+		T.eq(W.Adopt(f), 0, lang .. ": W.Adopt still finds nothing")
+	end
+	NS.db.locale = "en"
+	NS.RelationsFrame:Close()
+end)
+
 REALISTIC_TEXT = false
