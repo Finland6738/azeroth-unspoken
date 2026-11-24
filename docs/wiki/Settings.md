@@ -4,7 +4,7 @@ Every setting of Azeroth Unspoken, its default value and where to change it.
 
 ## Where settings live
 
-- **The settings panel.** Open it with `/au options`. It is also listed among the game's addon options, under **Azeroth Unspoken**. It has six sections under their headers: **General**, **Appearance**, **Chat**, **Narrator**, **Modules** and **Privacy**; scroll to see them all. The page follows the theme you choose in Appearance. Each row is a name, with its control next to it: a button that shows the value (click to switch or cycle it), or **-**, the value and **+** for a number. A value button grows to fit a long value. A row of buttons at the end of General and Narrator opens a window or acts once.
+- **The settings panel.** Open it with `/au options`. It is also listed among the game's addon options, under **Azeroth Unspoken**. It has six sections under their headers: **General**, **Appearance**, **Chat**, **Narrator**, **Modules** and **Privacy**; scroll to see them all. The page follows the theme you choose in Appearance, and each section is a card with its own title. Each row is a name, with its control next to it: a **switch** for an on/off setting (it slides to the right when on, and the word *on* or *off* is written next to it), a row of **segments** for a choice among a few short words (the chosen segment is the raised, bright one), a **slider** with **-** and **+** for a number (its value is written beside it in the mono font; the mouse wheel scrolls the page and never moves a slider here), or a button that shows the value and goes to the next one when the choices are too many or too long for segments (the language, the chat mode, the channel, the pause, the reading speed, the combat behaviour, the character's name) and for the two consents, which say their state in words. A value button grows to fit a long value. A row of buttons at the end of General and Narrator opens a window or acts once.
 - **Commands.** Many settings also have a command. See the [[Commands Reference|Commands]].
 - **Windows.** Personality, journal, relationships and stories have their own windows, with their own choices. Every window has a title bar with the addon's round logo and the window's name, a close box at the top right, and closes with **Esc**. Drag a window by its title bar or its body: it opens in the same place next time, for that character (**Reset window positions** in Appearance puts every window back). The NPC dialogue window is the exception to Esc, because Esc also closes the game's own NPC windows (see [[NPC Dialogues|NPC-Dialogues]]).
 - **The wizard.** The [[setup wizard|First-Run-Wizard]] sets the most important ones in one go.
@@ -24,8 +24,8 @@ Changes take effect at once. There is no Save button.
 | Addon on/off | on | **Addon** | `/au on`, `/au off` | Off: no spontaneous lines, no NPC dialogues, stories stop. Commands still work. |
 | Phrase language | English (`en`) | **Phrase language** (click to cycle) | `/au language it` | Language of lines and interface. Choose it in the wizard or with the command. See [[Languages]]. |
 | Intensity | 50 | **Intensity** (- / + by 10) | `/au intensity <0-100>` | How often the narrator speaks. 0 = silent for spontaneous events. |
-| Style depth | Literary | **Style depth** (click to cycle) | `/au depth natural\|literary\|elevated` | Which style of line is preferred. |
-| Literary forms | Rare | **Literary forms** (click to cycle) | `/au literary never\|rare\|normal` | How often verses, songs, inscriptions and tales come, only in the private narrator and never in combat. Rare: about one every 20-30 minutes at intensity 50. Normal: about twice as often. Never: none at all. See [[Literary Forms|Literary-Forms]]. |
+| Style depth | Literary | **Style depth** (three segments) | `/au depth natural\|literary\|elevated` | Which style of line is preferred. |
+| Literary forms | Rare | **Literary forms** (three segments) | `/au literary never\|rare\|normal` | How often verses, songs, inscriptions and tales come, only in the private narrator and never in combat. Rare: about one every 20-30 minutes at intensity 50. Normal: about twice as often. Never: none at all. See [[Literary Forms|Literary-Forms]]. |
 | Pause between lines | 45 s | **Pause between lines** (cycles 15, 30, 45, 60, 90, 120, 180) | `/au cooldown <0-3600>` | Minimum pause between two spontaneous lines. |
 | Window scale | 100% | **Window scale** (- / + by 10%) | — | 80–150%. The size of the journal, export, relationships, character soul, setup guide and NPC dialogue windows. Open windows follow at once. The narrator box has its own **Text size**. |
 | Event probability | per event, see below | — | `/au chance <event> <0-100>` | Chance that an event produces a line. |
@@ -72,10 +72,10 @@ The look of every window of the addon, shared by the characters of your account.
 
 | Setting | Default | Panel row | What it does |
 |---|---|---|---|
-| Theme | Nebula | **Theme** (click to cycle) | **Nebula** is dark, **Aurora** is light. Both keep the text readable (4.5:1 contrast). |
+| Theme | Nebula | **Theme** (two segments) | **Nebula** is dark, **Aurora** is light. Both keep the text readable (4.5:1 contrast). |
 | Neon effects | on | **Neon effects** | The glows and soft shadows of the windows and buttons. Off: a flat look. |
 | Animations | on | **Animations** | Fades and short movements of the windows, the buttons and the narrator box. Off: everything changes at once. It replaces the narrator's older **Reduce motion** (that setting is no longer used; if you had it on, Animations started off). With Animations off the narrator box appears at once, with no time line. |
-| Fonts | Addon | **Fonts** (click to cycle) | **Addon**: the addon's own fonts (Outfit, JetBrains Mono, Orbitron for the window titles). **Game**: the game's fonts. If a font file cannot be read, the game's font is used for it anyway. |
+| Fonts | Addon | **Fonts** (two segments) | **Addon**: the addon's own fonts (Outfit, JetBrains Mono, Orbitron for the window titles). **Game**: the game's fonts. If a font file cannot be read, the game's font is used for it anyway. |
 | Window positions | first place | **Reset window positions** | The windows remember where you left them, per character. This button puts them all back. |
 
 ## Chat
@@ -86,7 +86,7 @@ The look of every window of the addon, shared by the characters of your account.
 | Automatic sending | off | **Automatic sending**, in the **Privacy** section (a confirmation dialog, then **Turn on**; or click again after a couple of seconds) | `/au mode auto` (twice, a few seconds apart) | Lets some lines go out by themselves, in your character's name, seen by everyone nearby. The row says *off, read first*, then *off, confirm*, then *on*. If the game client blocks an automatic send, nothing goes out by itself for the rest of the session: every line waits for you to confirm it, and the row says *on, held: confirm to send until /reload*. Choosing automatic sending again, or `/reload`, turns it back on. |
 | Default channel | automatic | **Default channel** (click to cycle) | `/au channel <channel>` | Where proposals go. Automatic = `/say` for your character's words, `/emote` for the narrator's. To change the channel of the proposal that is waiting, click its channel chip, use the **Next channel** key or type `/au channel next`. |
 | Speak button | shown | **'Speak' button** | `/au button` | Shows or hides the speak button. `/au button editor on` makes a click open the editor instead of sending (see [[Chat Gateway]]). |
-| Proposal waits | 25 s | **Proposal waits** (click to cycle: 25, 60, 120 s, until dismissed) | — | How long a proposal waits before it expires. The time stops while the mouse is over the narrator box and while you edit the proposal. *Until dismissed*: it waits until you send or discard it. |
+| Proposal waits | 25 s | **Proposal waits** (four segments: 25, 60, 120 s, until dismissed) | — | How long a proposal waits before it expires. The time stops while the mouse is over the narrator box and while you edit the proposal. *Until dismissed*: it waits until you send or discard it. |
 | Chat proposals module | on | module **Chat proposals** | — | Off: the same as private mode. |
 
 These limits are fixed and cannot be changed:
@@ -139,7 +139,7 @@ Modules are big switches for whole features. All are on by default, except Audio
 | **Chat proposals** | on | the [[Chat Gateway]]; off = private only |
 | **Audio** `*` | off | not active yet: a placeholder |
 
-Modules marked `*` do nothing in this version. In the panel each module is a name and an **on**/**off** button; a module that is on has a full gold edge and a bar under its state.
+Modules marked `*` do nothing in this version. In the panel each module is a name and a switch with *on* or *off* written next to it; the modules sit two on a line.
 
 ### Presets
 

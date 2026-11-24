@@ -1,11 +1,15 @@
 -- Azeroth Unspoken: pannello delle impostazioni (GDD §12.2)
--- Six sections under their headers (#187): General, Appearance (UI-ECO UI-3), Chat, Narrator, Modules, Privacy. The
--- page follows the theme: a `bg` surface of its own inside the client's frame, the labels and headings in the theme's
--- text colours (W.Adopt), the buttons of UI/Widgets.lua. Every row is a plain label next
--- to its control: a button that shows the value and changes it, or "-", the value and "+" (the value is text, never a
--- button that does nothing). The sections scroll inside the client's settings canvas. Every change sends the one
+-- Six sections (#187; Appearance since UI-ECO UI-3) in the client's Settings canvas. UI-6 (UI-ECO): the page is on the
+-- NEBULA look and needs no W.Adopt: a `bg` surface of its own inside the client's frame, every section a W.Section (a quiet
+-- card with its title and rule), every text a Theme font with a token. The rows use the controls of the theme: a W.Switch
+-- for an on/off setting (its state is also written in words), a W.Segmented for a choice of two to four short words, a
+-- W.Slider with its "-" and "+" for a number (its value in the mono font, `accent-text`), and a button that shows the value
+-- and goes to the next one for the choices too long or too many for a segment (language, chat mode, channel, cooldown, reading
+-- speed, combat, the character's name) and for the consents, which are asked in two steps and say their state in words.
+-- No UIDropDownMenu (it taints): a list that opens would be clipped by the scrolling canvas, so none is used here.
+-- The sections scroll inside the client's settings canvas (its scroll bar is the client's own). Every change sends the one
 -- "settings changed" notice (Config:Changed, #192), which the panel, the open windows, the narrator and the NPC dialogue
--- window follow.
+-- window follow. UI-7 adds the Info section (credits) after Privacy with the same Header(...) rows.
 local ADDON, NS = ...
 local W = NS.Widgets
 local Theme = NS.Theme
@@ -23,10 +27,13 @@ local COMBAT = NS.Config.COMBAT_SETTINGS   -- #185: show, chat frame only, hold 
 local LITERARY = NS.Config.LITERARY_FREQUENCIES   -- #118: literary forms never, rare, normal
 local NAME_STYLES = NS.Config.NAME_STYLES   -- #281: the character's name: first, last, both
 local THEMES, FONT_SOURCES = NS.Config.THEMES, NS.Config.FONT_SOURCES   -- UI-ECO UI-3: the Appearance rows
-local CONTENT_W = 600                  -- width of the scrolling content
-local LABEL_X, CONTROL_X, CONTROL_W = 16, 250, 220
-local ROW = 28                         -- a row: 24 units of control and 4 of space
+local CONTENT_W = 640                  -- width of the scrolling content
+local SECTION_W = CONTENT_W - 32       -- a section: 16 units from each edge
+local LABEL_X, CONTROL_X, CONTROL_W = 16, 240, 220   -- inside a section
+local ROW, ROW_SEG = 28, 36            -- a row: 24 units of control and 4 of space; a Segmented is 32 high
 local ACTION_W, ACTION_GAP = 280, 8    -- the buttons that open something or act once, two on a line
+local SLIDER_W = 220                   -- a slider with its "-" and "+"; its value in words is to the right of it
+local GAP = 10                         -- between two sections
 
 local function Cycle(list, current)
 	for i, v in ipairs(list) do
@@ -41,18 +48,12 @@ local function CycleLanguage()
 	NS.Packs:OnLanguageChanged()
 end
 
-local function StepNumber(path, delta, decimals)
-	local v = NS.Config:Get(path) + delta
-	if decimals then
-		local m = 10 ^ decimals
-		v = math.floor(v * m + 0.5) / m
-	end
-	NS.Config:Set(path, v)
-end
-
 local function OnOff(v) return v and NS:L("on") or NS:L("off") end
 
-local function Percent(v) return math.floor(v * 100 + 0.5) .. "%" end
+local function Percent(v) return v .. "%" end   -- a slider of a fraction counts in whole percent
+local function Seconds(v) return v .. " s" end
+local function Plain(v) return tostring(v) end
+local function Round(x) return math.floor(x * 100 + 0.5) end   -- 0.55 -> 55
 
 -- the state of a consent in words (#178): "on", "off", and for a question that is open "off, read the warning" or
 -- "off, click again to confirm"; `needs` adds the dependency of a consent that is on but does nothing yet
@@ -89,9 +90,10 @@ local function CreatePanel()
 	panel.bg:SetAllPoints(panel)
 	Theme.Fill(panel.bg, "bg")
 
-	local title = panel:CreateFontString(nil, "ARTWORK", W.TITLE_FONT)
+	local title = Theme.NewText(panel, "H1", "text-1")
 	title:SetPoint("TOPLEFT", 16, -16)
 	title:SetText(NS.name .. " " .. NS.version)
+	panel.title = title
 
 	-- the sections scroll; without the scroll template they are drawn on the panel itself
 	local scroll
@@ -108,63 +110,131 @@ local function CreatePanel()
 	end
 	panel.content = content
 
-	local y = 4                 -- the next free line, from the top of the content
-	local headers, rows = {}, {}
-	panel.rows = rows           -- [key] = { label, button | minus, text, plus } (the tests use them)
-	panel.headers = headers
+	local cy = scroll and 4 or 44   -- the next free line of the content, from its top: the top of the next section
+	local sec, sy                   -- the section being built, and the next free line inside it
+	local headers, rows, sections = {}, {}, {}
+	local modules = {}
+	local refreshing = false        -- the panel is setting its controls from the settings: they must not answer
+	panel.rows = rows           -- [key] = { label, button | switch | seg | slider + minus + plus + text } (the tests use them)
+	panel.headers = headers     -- { fs = the section's title, key, section }
+	panel.sections = sections   -- the W.Sections, top to bottom
 
+	local function EndSection()
+		if not sec then return end
+		sec:Fit(sy)
+		cy = cy + sec:GetHeight() + GAP
+		sec = nil
+	end
+
+	-- a section: a card with its title; the rows are laid out inside it, from W.SECTION_TOP down
 	local function Header(key)
-		local h = content:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
-		h:SetPoint("TOPLEFT", LABEL_X, -(y + 10))
-		local rule = content:CreateTexture(nil, "ARTWORK")
-		rule:SetPoint("TOPLEFT", LABEL_X, -(y + 32))
-		rule:SetSize(CONTENT_W - 2 * LABEL_X, 1)
-		Theme.Fill(rule, "border")
-		table.insert(headers, { fs = h, key = key })
-		y = y + 42
+		EndSection()
+		sec = W.Section(content, SECTION_W, 100)
+		sec:SetPoint("TOPLEFT", content, "TOPLEFT", 16, -cy)
+		sy = W.SECTION_TOP
+		table.insert(sections, sec)
+		table.insert(headers, { fs = sec.title, key = key, section = sec })
 	end
 
 	local function Label(key, x, width)
-		local fs = content:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
-		fs:SetPoint("TOPLEFT", x or LABEL_X, -(y + 6))
+		local fs = Theme.NewText(sec, "BodyMedium", "text-1")
+		fs:SetPoint("TOPLEFT", x or LABEL_X, -(sy + 5))
 		fs:SetWidth(width or (CONTROL_X - LABEL_X - 8))
 		fs:SetJustifyH("LEFT")
 		if fs.SetWordWrap then fs:SetWordWrap(false) end
 		return fs
 	end
 
-	-- a label and a button that shows the value; a click changes it. The button is as wide as its value (#180), from
-	-- `controlW` up to the right margin of the content, unless `fixed` (the language row has a button beside it).
+	-- the value of a row in words, next to its control
+	local function ValueText(x, w, font, token)
+		local fs = Theme.NewText(sec, font or "Body", token or "text-2")
+		fs:SetPoint("TOPLEFT", x, -(sy + 5))
+		fs:SetWidth(w)
+		fs:SetJustifyH("LEFT")
+		if fs.SetWordWrap then fs:SetWordWrap(false) end
+		return fs
+	end
+
+	local function Tip(frame, tip)
+		if tip then W.Tooltip(frame, function() return NS:L(tip) end) end
+	end
+
+	local function Next(h) sy = sy + (h or ROW) end
+
+	-- a label and a button that shows the value; a click goes to the next one. The button is as wide as its value (#180),
+	-- from `controlW` up to the right margin of the section, unless `fixed` (the language row has a button beside it).
 	local function Toggle(key, value, onClick, tip, x, labelW, controlX, controlW, fixed)
 		local row = { key = key, value = value }
 		row.label = Label(key, x, labelW)
-		row.button = W.FlatButton(content, "", controlW or CONTROL_W, 24, function()
+		row.button = W.FlatButton(sec, "", controlW or CONTROL_W, 24, function()
 			onClick()
 			NS.Config:Changed(key)
 		end)
-		row.button:SetPoint("TOPLEFT", controlX or CONTROL_X, -y)
+		row.button:SetPoint("TOPLEFT", controlX or CONTROL_X, -sy)
 		row.minW = controlW or CONTROL_W
-		row.maxW = fixed and row.minW or math.max(row.minW, CONTENT_W - (controlX or CONTROL_X) - LABEL_X)
+		row.maxW = fixed and row.minW or math.max(row.minW, SECTION_W - (controlX or CONTROL_X) - LABEL_X)
 		row.button.auMax = row.maxW
-		if tip then W.Tooltip(row.button, function() return NS:L(tip) end) end
+		Tip(row.button, tip)
 		rows[key] = row
 		return row
 	end
 
-	-- a label, then "-", the value as text and "+"
-	local function Stepper(key, value, minus, plus)
-		local row = { key = key, value = value }
-		row.label = Label(key)
-		row.minus = W.FlatButton(content, "-", 24, 24, function() minus(); NS.Config:Changed(key) end)
-		row.minus:SetPoint("TOPLEFT", CONTROL_X, -y)
-		row.text = content:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
-		row.text:SetPoint("TOPLEFT", CONTROL_X + 28, -(y + 6))
-		row.text:SetWidth(CONTROL_W - 56)
-		row.text:SetJustifyH("CENTER")
-		row.plus = W.FlatButton(content, "+", 24, 24, function() plus(); NS.Config:Changed(key) end)
-		row.plus:SetPoint("TOPLEFT", CONTROL_X + CONTROL_W - 24, -y)
+	-- an on/off setting: a switch (its position is the state) and the state in words next to it. `stay`: the caller moves
+	-- to the next line itself (the modules sit two on a line).
+	local function Switch(key, get, onClick, tip, x, labelW, controlX, stay)
+		local row = { key = key, get = get }
+		row.label = Label(key, x, labelW)
+		local cx = controlX or CONTROL_X
+		row.switch = W.Switch(sec, { on = false, onChange = function()
+			if refreshing then return end
+			onClick()
+			NS.Config:Changed(key)
+		end })
+		row.switch:SetPoint("TOPLEFT", cx, -(sy - 1))
+		row.text = ValueText(cx + 52, 90)
+		Tip(row.switch, tip)
 		rows[key] = row
-		y = y + ROW
+		if not stay then Next() end
+		return row
+	end
+
+	-- a choice of a few short words: a segmented control; `items` = { { id, textKey | textFn } }, `set(id)` stores it
+	local function Segment(key, items, get, set, tip)
+		local row = { key = key, get = get, items = items }
+		row.label = Label(key)
+		local list = {}
+		for i, it in ipairs(items) do list[i] = { id = it.id, text = it.text() } end
+		row.seg = W.Segmented(sec, list, function(id)
+			if refreshing then return end
+			set(id)
+			NS.Config:Changed(key)
+		end)
+		row.seg:SetPoint("TOPLEFT", CONTROL_X, -(sy - 3))
+		if tip then for _, b in pairs(row.seg.buttons) do Tip(b, tip) end end
+		rows[key] = row
+		Next(ROW_SEG)
+		return row
+	end
+
+	-- a number: a slider with "-" and "+" (24-unit targets, #183) and its value in the mono font, `accent-text`.
+	-- `get()` and `set(v)` count in whole units (percent for a fraction); the slider saves at the release or a step.
+	local function Slide(key, min, max, step, get, set, fmt)
+		local row = { key = key, get = get, fmt = fmt }
+		row.label = Label(key)
+		row.slider = W.Slider(sec, SLIDER_W, min, max, function(v, final)
+			row.text:SetText(fmt(v))
+			if final then
+				set(v)
+				NS.Config:Changed(key)
+			end
+		end, { step = step, buttons = true })
+		row.slider:SetPoint("TOPLEFT", CONTROL_X, -sy)
+		-- the wheel scrolls the page: over a slider it must not change a setting by accident
+		if row.slider.EnableMouseWheel then row.slider:EnableMouseWheel(false) end
+		row.minus, row.plus = row.slider.minus, row.slider.plus
+		row.text = ValueText(CONTROL_X + SLIDER_W + 12, 90, "Mono", "accent-text")
+		rows[key] = row
+		Next()
 		return row
 	end
 
@@ -172,42 +242,40 @@ local function CreatePanel()
 	local function Actions(list)
 		for i, a in ipairs(list) do
 			local col = (i - 1) % 2
-			if i > 1 and col == 0 then y = y + ROW end
+			if i > 1 and col == 0 then Next() end
 			local row = { key = a[1], value = a[3], action = true }
-			row.button = W.FlatButton(content, "", ACTION_W, 24, function()
+			row.button = W.FlatButton(sec, "", ACTION_W, 24, function()
 				a[2]()
 				NS.Config:Changed(a[1])
 			end)
-			row.button:SetPoint("TOPLEFT", LABEL_X + col * (ACTION_W + ACTION_GAP), -y)
+			row.button:SetPoint("TOPLEFT", LABEL_X + col * (ACTION_W + ACTION_GAP), -sy)
 			if a[4] then W.Tooltip(row.button, function() return NS:L(a[4]) end) end
 			rows[a[1]] = row
 		end
-		y = y + ROW
+		Next()
 	end
-
-	local function Next() y = y + ROW end
 
 	-- General
 	Header("opt_section_general")
-	Toggle("opt_enabled", function() return OnOff(NS.db.enabled) end, function() NS.db.enabled = not NS.db.enabled end)
-	Next()
-	local language = Toggle("opt_language", function() return NS.languages[NS:Lang()].name end, CycleLanguage, nil,
+	Switch("opt_enabled", function() return NS.db.enabled end, function() NS.db.enabled = not NS.db.enabled end)
+	Toggle("opt_language", function() return NS.languages[NS:Lang()].name end, CycleLanguage, nil,
 		nil, nil, nil, 130, true)
 	-- reload after a change of language (#85): shown only while the phrases are still in the previous language
-	panel.reload = W.FlatButton(content, "", CONTROL_W - 138, 24, function() NS.Packs:Reload() end, "primary")
-	panel.reload:SetPoint("TOPLEFT", CONTROL_X + 138, -y)
-	language.reload = panel.reload
+	panel.reload = W.FlatButton(sec, "", CONTROL_W - 138, 24, function() NS.Packs:Reload() end, "primary")
+	panel.reload:SetPoint("TOPLEFT", CONTROL_X + 138, -sy)
+	rows.opt_language.reload = panel.reload
 	Next()
-	Stepper("opt_intensity", function() return tostring(NS.db.intensity) end,
-		function() NS.Config:Set("intensity", NS.db.intensity - 10) end,
-		function() NS.Config:Set("intensity", NS.db.intensity + 10) end)
-	Toggle("opt_depth", function() return NS:L("depth_" .. NS.db.proseDepth) end,
-		function() NS.db.proseDepth = Cycle(DEPTHS, NS.db.proseDepth) end)
-	Next()
+	Slide("opt_intensity", 0, 100, 10, function() return NS.db.intensity end,
+		function(v) NS.Config:Set("intensity", v) end, Plain)
+	Segment("opt_depth", { { id = "natural", text = function() return NS:L("depth_natural") end },
+		{ id = "literary", text = function() return NS:L("depth_literary") end },
+		{ id = "elevated", text = function() return NS:L("depth_elevated") end } },
+		function() return NS.db.proseDepth end, function(id) NS.db.proseDepth = id end)
 	-- #118: how often the literary forms come (private narrator only): never, rare (default), normal
-	Toggle("opt_literary", function() return NS:L("literary_" .. NS.db.literary.frequency) end,
-		function() NS.Config:Set("literary.frequency", Cycle(LITERARY, NS.db.literary.frequency)) end, "opt_literary_tip")
-	Next()
+	local literaryItems = {}
+	for i, id in ipairs(LITERARY) do literaryItems[i] = { id = id, text = function() return NS:L("literary_" .. id) end } end
+	Segment("opt_literary", literaryItems, function() return NS.db.literary.frequency end,
+		function(id) NS.Config:Set("literary.frequency", id) end, "opt_literary_tip")
 	Toggle("opt_cooldown", function() return NS.db.pacing.globalCooldownSeconds .. " s" end, function()
 		local nxt = COOLDOWNS[1]
 		for _, s in ipairs(COOLDOWNS) do
@@ -216,9 +284,9 @@ local function CreatePanel()
 		NS.db.pacing.globalCooldownSeconds = nxt
 	end)
 	Next()
-	-- #182: the scale of the addon's windows and of the NPC dialogue window
-	Stepper("opt_scale", function() return Percent(NS.db.ui.windowScale) end,
-		function() StepNumber("ui.windowScale", -0.1, 1) end, function() StepNumber("ui.windowScale", 0.1, 1) end)
+	-- #182: the scale of the addon's windows and of the NPC dialogue window, in whole percent
+	Slide("opt_scale", 80, 150, 10, function() return Round(NS.db.ui.windowScale) end,
+		function(v) NS.Config:Set("ui.windowScale", v / 100) end, Percent)
 	Actions({
 		{ "opt_journal", function() if NS.JournalFrame then NS.JournalFrame:Toggle() end end },
 		{ "opt_relations", function() if NS.RelationsFrame then NS.RelationsFrame:Toggle() end end },
@@ -231,18 +299,18 @@ local function CreatePanel()
 	-- narrator's fades included (UI-4): the narrator's older "reduce motion" (ui.narrator.reduceMotion, #177) is no longer
 	-- written nor read; Config:Load moved a player who had it on to ui.animations = false once.
 	Header("opt_section_look")
-	Toggle("opt_theme", function() return NS:L("theme_" .. Theme.Current()) end,
-		function() NS.Config:Set("ui.theme", Cycle(THEMES, NS.db.ui.theme)) end, "opt_theme_tip")
-	Next()
-	Toggle("opt_neon", function() return OnOff(NS.db.ui.neon) end,
+	local themeItems = {}
+	for i, id in ipairs(THEMES) do themeItems[i] = { id = id, text = function() return NS:L("theme_" .. id) end } end
+	Segment("opt_theme", themeItems, function() return Theme.Current() end,
+		function(id) NS.Config:Set("ui.theme", id) end, "opt_theme_tip")
+	Switch("opt_neon", function() return NS.db.ui.neon end,
 		function() NS.Config:Set("ui.neon", not NS.db.ui.neon) end, "opt_neon_tip")
-	Next()
-	Toggle("opt_motion", function() return OnOff(Theme.AnimationsOn()) end,
+	Switch("opt_motion", function() return Theme.AnimationsOn() end,
 		function() NS.Config:Set("ui.animations", not Theme.AnimationsOn()) end, "opt_motion_tip")
-	Next()
-	Toggle("opt_font", function() return NS:L("font_" .. Theme.FontSource()) end,
-		function() NS.Config:Set("ui.fontSource", Cycle(FONT_SOURCES, Theme.FontSource())) end, "opt_font_tip")
-	Next()
+	local fontItems = {}
+	for i, id in ipairs(FONT_SOURCES) do fontItems[i] = { id = id, text = function() return NS:L("font_" .. id) end } end
+	Segment("opt_font", fontItems, function() return Theme.FontSource() end,
+		function(id) NS.Config:Set("ui.fontSource", id) end, "opt_font_tip")
 	Actions({
 		{ "opt_resetwindows", function() W.ResetPositions() end, nil, "opt_resetwindows_tip" },
 	})
@@ -256,46 +324,44 @@ local function CreatePanel()
 		function() NS.db.chat.channel = Cycle(NS.Config.CHAT_CHANNELS, NS.db.chat.channel) end)
 	Next()
 	-- #177: how long a proposal waits: 25, 60, 120 s or until it is closed
-	Toggle("opt_waits", function() return WaitLabel(NS.db.chat.pendingSeconds) end, function()
-		local cur = NS.db.chat.pendingSeconds
-		NS.Config:Set("chat.pendingSeconds", cur <= 0 and WAITS[1] or (NextAbove(WAITS, cur) or 0))
-	end)
-	Next()
-	Toggle("opt_button", function() return OnOff(NS.db.ui.showButton) end, function()
+	local waitItems = {}
+	for i, v in ipairs({ WAITS[1], WAITS[2], WAITS[3], 0 }) do
+		waitItems[i] = { id = v, text = function() return WaitLabel(v) end }
+	end
+	Segment("opt_waits", waitItems, function() return NS.db.chat.pendingSeconds end,
+		function(v) NS.Config:Set("chat.pendingSeconds", v) end)
+	Switch("opt_button", function() return NS.db.ui.showButton end, function()
 		NS.db.ui.showButton = not NS.db.ui.showButton
 		NS.UpdateButton()
 	end)
-	Next()
 
 	-- Narrator
 	Header("opt_section_narrator")
-	Toggle("opt_narrator", function() return OnOff(NS.db.output.privateNarrator) end,
+	Switch("opt_narrator", function() return NS.db.output.privateNarrator end,
 		function() NS.db.output.privateNarrator = not NS.db.output.privateNarrator end)
-	Next()
-	Stepper("opt_duration", function() return NS.db.ui.narrator.duration .. " s" end,
-		function() StepNumber("ui.narrator.duration", -1) end, function() StepNumber("ui.narrator.duration", 1) end)
+	Slide("opt_duration", 2, 30, 1, function() return NS.db.ui.narrator.duration end,
+		function(v) NS.Config:Set("ui.narrator.duration", v) end, Seconds)
 	-- #177: characters a second; 14 is about 0.07 s per character
 	Toggle("opt_reading", function() return NS:L("reading_cps", NS.db.ui.narrator.readingSpeed) end, function()
 		NS.Config:Set("ui.narrator.readingSpeed", NextAbove(SPEEDS, NS.db.ui.narrator.readingSpeed) or SPEEDS[1])
 	end)
 	Next()
 	-- #173: the opacity of the background only; the text stays at full opacity
-	Stepper("opt_alpha", function() return Percent(NS.db.ui.narrator.alpha) end,
-		function() StepNumber("ui.narrator.alpha", -0.05, 2) end, function() StepNumber("ui.narrator.alpha", 0.05, 2) end)
-	Stepper("opt_fontsize", function() return tostring(NS.db.ui.narrator.fontSize) end,
-		function() StepNumber("ui.narrator.fontSize", -1) end, function() StepNumber("ui.narrator.fontSize", 1) end)
-	Toggle("opt_locked", function() return OnOff(NS.db.ui.narrator.locked) end,
+	Slide("opt_alpha", 55, 100, 5, function() return Round(NS.db.ui.narrator.alpha) end,
+		function(v) NS.Config:Set("ui.narrator.alpha", v / 100) end, Percent)
+	Slide("opt_fontsize", 10, 28, 1, function() return NS.db.ui.narrator.fontSize end,
+		function(v) NS.Config:Set("ui.narrator.fontSize", v) end, Plain)
+	Switch("opt_locked", function() return NS.db.ui.narrator.locked end,
 		function() NS.db.ui.narrator.locked = not NS.db.ui.narrator.locked end)
-	Next()
 	-- #185: what a spontaneous line does during a fight; proposals for chat always wait for its end
 	Toggle("opt_combat", function() return NS:L("combat_" .. NS.Gateway:CombatSetting()) end,
 		function() NS.Config:Set("pacing.inCombat", Cycle(COMBAT, NS.Gateway:CombatSetting())) end, "opt_combat_tip")
 	Next()
 	-- #182: the NPC dialogue window's own text size and opacity
-	Stepper("opt_dialogue_size", function() return tostring(NS.db.ui.dialogue.fontSize) end,
-		function() StepNumber("ui.dialogue.fontSize", -1) end, function() StepNumber("ui.dialogue.fontSize", 1) end)
-	Stepper("opt_dialogue_alpha", function() return Percent(NS.db.ui.dialogue.alpha) end,
-		function() StepNumber("ui.dialogue.alpha", -0.05, 2) end, function() StepNumber("ui.dialogue.alpha", 0.05, 2) end)
+	Slide("opt_dialogue_size", 10, 24, 1, function() return NS.db.ui.dialogue.fontSize end,
+		function(v) NS.Config:Set("ui.dialogue.fontSize", v) end, Plain)
+	Slide("opt_dialogue_alpha", 30, 100, 5, function() return Round(NS.db.ui.dialogue.alpha) end,
+		function(v) NS.Config:Set("ui.dialogue.alpha", v / 100) end, Percent)
 	Actions({
 		{ "opt_pause", function() NS.Director:TogglePause() end, function() return NS:L(NS.paused and "opt_resume" or "opt_pause") end },
 		{ "opt_test", function() NS.Narrator:ShowTest() end },
@@ -305,23 +371,22 @@ local function CreatePanel()
 
 	-- Modules: two columns of a label and its switch
 	Header("opt_section_modules")
-	local modNote = content:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
-	modNote:SetPoint("TOPLEFT", LABEL_X, -y)
-	modNote:SetWidth(CONTENT_W - 2 * LABEL_X)
+	local modNote = Theme.NewText(sec, "Small", "text-2")
+	modNote:SetPoint("TOPLEFT", LABEL_X, -sy)
+	modNote:SetWidth(SECTION_W - 2 * LABEL_X)
 	modNote:SetJustifyH("LEFT")
-	y = y + 18
-	local modules = {}
+	Next(20)
 	for i, module in ipairs(MODULE_ORDER) do
 		local col = (i - 1) % 2
 		local x = LABEL_X + col * 292
-		local row = Toggle("module_" .. module, function() return OnOff(NS.db.modules[module]) end, function()
+		local row = Switch("module_" .. module, function() return NS.db.modules[module] == true end, function()
 			NS.db.modules[module] = not NS.db.modules[module]
 			NS.db.preset = "custom"
 			if module == "publicChat" and not NS.db.modules.publicChat then NS.Gateway:Discard() end
 			if module == "emotion" and not NS.db.modules.emotion and NS.Emotion then NS.Emotion:Reset() end
 			-- the proximity events are registered only while the relations module and the option are on (#164)
 			if module == "relations" and NS.Relationships then NS.Relationships:ApplyProximity() end
-		end, nil, x, 170, x + 176, 90)
+		end, nil, x, 170, x + 176, true)
 		row.module = module
 		table.insert(modules, row)
 		if col == 1 or i == #MODULE_ORDER then Next() end
@@ -349,40 +414,51 @@ local function CreatePanel()
 		elseif r == "wait" then NS:Print(NS:L("consent_wait")) end
 	end, "opt_trp3_others_tip")
 	Next()
-	Toggle("opt_rpname", function() return OnOff(NS.db.modules.totalRP3) end,
+	Switch("opt_rpname", function() return NS.db.modules.totalRP3 == true end,
 		function() NS.db.modules.totalRP3 = not NS.db.modules.totalRP3 end)
-	Next()
 	-- #281: how the character is named before an emote: first name, last name or both (the default)
 	Toggle("opt_namestyle", function() return NS:L("namestyle_" .. NS.db.names.player) end,
 		function() NS.Config:Set("names.player", Cycle(NAME_STYLES, NS.db.names.player)) end, "opt_namestyle_tip")
 	Next()
+	EndSection()
 
 	-- what each choice means, the consents that wait for something, the content: the text of a consent, 12 units (#182),
-	-- under the last row whatever the number of rows
-	local help = content:CreateFontString(nil, "ARTWORK", W.TEXT_FONT)
-	help:SetPoint("TOPLEFT", LABEL_X, -(y + 12))
+	-- under the last section whatever the number of rows
+	local help = Theme.NewText(content, "Body", "text-2")
+	help:SetPoint("TOPLEFT", content, "TOPLEFT", LABEL_X, -(cy + 2))
 	help:SetWidth(CONTENT_W - 2 * LABEL_X)
 	help:SetJustifyH("LEFT")
+	help:SetJustifyV("TOP")
 	panel.help = help
-	local helpTop = y + 12
+	local helpTop = cy + 2
 
 	-- the controls, labels and texts again, from the settings
 	function panel:Refresh()
-		for _, h in ipairs(headers) do h.fs:SetText(NS:L(h.key)) end
+		refreshing = true
+		for _, h in ipairs(headers) do h.section:SetTitle(NS:L(h.key)) end
 		for key, r in pairs(rows) do
 			if r.label then r.label:SetText(NS:L(key)) end
 			if r.action then
 				r.button:SetText(r.value and r.value() or NS:L(key))
+			elseif r.switch then
+				local on = r.get() and true or false
+				r.switch:SetOn(on, true)
+				r.text:SetText(OnOff(on))
+			elseif r.seg then
+				for _, it in ipairs(r.items) do r.seg:SetItemText(it.id, it.text()) end
+				if not r.seg:Select(r.get()) then r.seg:Clear() end
+			elseif r.slider then
+				local v = r.get()
+				r.slider:SetQuiet(v)
+				r.text:SetText(r.fmt(v))
 			elseif r.button then
 				r.button:SetText(r.value())
 				if r.maxW and r.maxW > r.minW then W.FitButton(r.button, r.minW, r.maxW) end
-			else
-				r.text:SetText(r.value())
 			end
 		end
+		refreshing = false
 		for _, r in ipairs(modules) do
 			if not MODULE_LIVE[r.module] then r.label:SetText(NS:L("module_" .. r.module) .. " *") end
-			r.button:SetSelected(NS.db.modules[r.module] == true)
 		end
 		modNote:SetText(NS:L("opt_modules_note"))
 		local total = NS.Engine:Stats(NS:TextLang())
@@ -395,7 +471,6 @@ local function CreatePanel()
 			.. ((NS.db.interlocutor.trp3Others and not NS.db.modules.totalRP3) and (NS:L("consent_trp3_idle") .. "\n\n") or "")
 			.. NS:L("panel_help", total, #NS.Engine.packOrder))
 		if content ~= panel then content:SetHeight(helpTop + math.ceil(help:GetStringHeight() or 0) + 16) end
-		W.Adopt(panel)
 	end
 	-- il cambio di lingua ritraduce le etichette fisse
 	function panel:Rebuild() self:Refresh() end

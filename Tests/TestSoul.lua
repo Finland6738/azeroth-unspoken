@@ -925,8 +925,11 @@ end)
 local function ProfileButtons()
 	local f = _G.AzerothUnspokenProfile
 	local out = { f.closeBox }   -- UI-3: the close box is in the title bar
-	for _, c in ipairs(f.children) do
-		if c.kind == "Button" then table.insert(out, c) end
+	-- UI-6: the window's own buttons sit in two Sections (archetype and traits, topics to avoid) and in the footer
+	for _, parent in ipairs({ f.traits, f.avoid, f }) do
+		for _, c in ipairs(parent.children) do
+			if c.kind == "Button" then table.insert(out, c) end
+		end
 	end
 	return f, out
 end
@@ -991,26 +994,32 @@ T.run("finestra del profilo", function()
 	f.trp3:Click()
 	T.eq(NS.cdb.personality.trp3, false, "e tolto")
 	AddOn_TotalRP3 = nil
-	-- profilo neutro (#190): il primo clic arma, il secondo azzera; un timer vecchio non disarma un armamento nuovo
+	-- profilo neutro (#190, UI-6): a click asks through a Dialog (Esc cancels it and only it), the answer says its result in a Toast
 	Personality:SetTrait("irony", 70)
+	local dlg = f.dialog
 	f.reset:Click()
-	T.ok(not Personality:IsNeutral(), "#190: the first click only arms")
-	T.eq(f.reset:GetText(), NS:L("soul_reset_confirm"), "the button asks for the second click")
-	T.ok(f.reset.armed and f.reset.style == "danger", "in the style of the destructive actions, filled while armed")
-	ADVANCE(4)
+	T.ok(dlg:IsShown() and not Personality:IsNeutral(), "#190: the click only asks")
+	T.eq(dlg.title:GetText(), NS:L("soul_reset_dlg"), "the question is in the dialog")
+	T.ok(dlg.confirm:GetText() == NS:L("soul_reset") and dlg.confirm.style == "danger" and dlg.confirm.armed,
+		"the confirm button is the action's own word, in the style of the destructive actions")
+	T.eq(dlg.cancel:GetText(), NS:L("dlg_cancel"), "and there is a way out")
+	dlg.cancel:Click()
+	T.ok(not dlg:IsShown() and not Personality:IsNeutral(), "cancel leaves the profile as it is")
 	f.reset:Click()
+	dlg.scripts.OnKeyDown(dlg, "ESCAPE")
+	T.ok(not dlg:IsShown() and not Personality:IsNeutral() and NS.ProfileFrame:IsOpen(), "Esc cancels the question and leaves the window open")
+	f.reset:Click()
+	dlg.confirm:Click()
 	T.ok(Personality:IsNeutral(), "profilo neutro dalla finestra")
+	T.ok(f.toast:IsShown() and f.toast:Message() == NS:L("soul_toast_reset"), "and a toast says it")
 	Personality:SetTrait("irony", 70)
-	f.reset:Click()                  -- arms again
-	ADVANCE(3)                       -- the first arming's timer (6 s from its click) has run out by now
-	T.ok(f.reset.armed, "#190: an old timer does not disarm a newer arming")
-	ADVANCE(4)
-	NS.ProfileFrame:Refresh()
-	T.ok(not f.reset.armed, "the arming expires by itself")
 	f.reset:Click()
+	T.ok(dlg:IsShown(), "asks again")
 	f.close:Click()
+	T.ok(not dlg:IsShown() and not f.toast:IsShown(), "#190: closing the window cancels the question and drops the toast")
+	T.ok(not Personality:IsNeutral(), "and nothing was cleared")
 	Cmd("soul")
-	T.ok(not f.reset.armed and not Personality:IsNeutral(), "#190: closing the window disarms it")
+	T.ok(not dlg:IsShown(), "it reopens without a question")
 	Cmd("soul")
 	Personality:Reset()
 	Cmd("soul")

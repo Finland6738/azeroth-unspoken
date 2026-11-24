@@ -5,7 +5,10 @@
 --   6 Total RP 3 (only when it is installed) · 7 what may reach chat and a test of the narrator
 --   8 keys, the speak button and where the settings are
 -- The pages are built once, the first time they are shown, and every text is set again on each render, so a change of
--- language is followed everywhere. The defaults the guide states are read from Config.defaults, never written twice.
+-- language is followed everywhere. UI-6: every text is a Theme font with a token (no W.Adopt), the step indicator is a
+-- W.Segmented under the title bar (a step is a numbered segment: the chosen one is raised and bright, and the status chip
+-- says "step n of N" in words), the language is a W.ChoiceList, the other answers are single-choice W.Cards (a marker,
+-- a ring and a raised fill: never colour alone). The defaults the guide states are read from Config.defaults, never written twice.
 -- It opens after PLAYER_ENTERING_WORLD, outside combat. A consent (automatic sending, reading others' Total RP 3)
 -- is asked in a confirmation dialog, never by a second click (Core/Consent.lua). The shell is W.Window (#187), like
 -- every other window; Esc does what Skip does (#174). The text of a consent is in the 12-unit font (#182).
@@ -18,12 +21,14 @@ local Wizard = NS:RegisterModule("wizard")
 NS.Wizard = Wizard
 
 local frame, pageFrames, step = nil, {}, 1
+local syncing = false   -- the step indicator follows the page: its own change must not go back to the page
 local MODULE_ORDER = { "personal", "world", "npc", "memory", "relations", "storyArcs", "social", "audio" }
 local MODULE_LIVE = NS.Config.MODULE_LIVE   -- modules that already have an effect (one list with the panel, #77)
-local WIDTH, HEIGHT = 520, 480
-local CONTENT_TOP, CONTENT_BOTTOM = 64, 56    -- the title band and the footer around the page
+local Theme = NS.Theme
+local WIDTH, HEIGHT = 520, 500
+local CONTENT_TOP, CONTENT_BOTTOM = 88, 56    -- the title band with the step indicator under it, and the footer around the page
 local INNER = WIDTH - 40                    -- 20 units of margin on each side
-local MAX_DOTS = 8
+local MAX_STEPS = 8                         -- the segments of the step indicator (one per page)
 local OPEN_DELAY = 3                        -- seconds after PLAYER_ENTERING_WORLD
 local RETRY = 5                             -- seconds before asking again while in combat
 
@@ -33,9 +38,19 @@ local function Defaults() return NS.Config.defaults end
 
 local function Words(on) return NS:L(on and "on" or "off") end
 
--- text of a page: a width, set again on every render; Flow gives it its place
-local function Text(parent, y, template, width)
-	local fs = parent:CreateFontString(nil, "ARTWORK", template or "GameFontHighlight")
+-- the looks of a page's texts: a Theme font and a token (Theme.NewText: the theme recolours it without /reload)
+local STYLE = {
+	body = { "Body", "text-1" },          -- 13 units: the text of a consent is never smaller than 12 (#182)
+	small = { "Small", "text-2" },        -- 12 units
+	label = { "Eyebrow", "accent-text" },
+	title = { "H1", "text-1" },
+	number = { "MonoMedium", "accent-text" },
+}
+
+-- text of a page: a style, a width, set again on every render; Flow gives it its place
+local function Text(parent, y, style, width)
+	local st = STYLE[style or "body"]
+	local fs = Theme.NewText(parent, st[1], st[2])
 	fs:SetPoint("TOPLEFT", 20, y)
 	fs:SetWidth(width or INNER)
 	fs:SetJustifyH("LEFT")
@@ -46,7 +61,7 @@ end
 
 -- the heading of a page
 local function Head(parent, key)
-	local h = Text(parent, -2, "GameFontNormalLarge")
+	local h = Text(parent, -2, "title")
 	return function() h:SetText(NS:L(key)) end
 end
 
@@ -116,22 +131,19 @@ pages[1] = { title = "wiz_step_language", build = function(p)
 	sample:SetPoint("TOPLEFT", 14, -28)
 	sample:SetWidth(INNER - 28)
 	sample:SetJustifyH("LEFT")
-	local label = Text(p, -134, "GameFontNormalSmall")
-	local cards, byRow = {}, {}
-	for i, code in ipairs(NS.languageOrder) do
-		local c = W.Card(p, (INNER - 8) / 2, 56, function()
+	local label = Text(p, -134, "label")
+	-- the language: one row for each, the chosen one with a dot and a raised background (a ChoiceList)
+	local listSync = false
+	local list = W.ChoiceList(p, { rows = math.max(2, math.min(#NS.languageOrder, 5)), rowHeight = 28, width = INNER,
+		onSelect = function(code)
+			if listSync then return end
 			NS.db.locale = code
 			-- the phrases of the new language come with the next reload (#85): a chat note now, the dialog at the end
 			NS.Packs:OnLanguageChanged(true)
 			Wizard:Render()
-		end)
-		c.minHeight = 56
-		cards[code] = c
-		local r = math.floor((i - 1) / 2) + 1
-		byRow[r] = byRow[r] or {}
-		table.insert(byRow[r], c)
-	end
-	local note = Text(p, -222, "GameFontHighlightSmall")
+		end })
+	p.languages = list
+	local note = Text(p, -222, "small")
 	return function()
 		head()
 		intro:SetText(NS:L("wiz_welcome_text"))
@@ -139,22 +151,24 @@ pages[1] = { title = "wiz_step_language", build = function(p)
 		local name = NS:PlayerName()   -- #281: as the setting `names.player` names the character
 		sample:SetText(NS:L("wiz_sample", type(name) == "string" and name ~= "" and name or NS:L("wiz_sample_name")))
 		label:SetText(NS:L("wiz_language_label"))
-		for code, c in pairs(cards) do c:SetCard(NS.languages[code].name, NS:L("wiz_language_card"), NS.db.locale == code) end
+		local choices = {}
+		for _, code in ipairs(NS.languageOrder) do table.insert(choices, { id = code, text = NS.languages[code].name }) end
+		listSync = true
+		list:SetChoices(choices)
+		list:Select(NS.db.locale)
+		listSync = false
 		note:SetText(NS:L("wiz_language_help"))
 		-- the sample box grows with a sample that takes a second line
 		local boxH = math.max(52, 28 + math.ceil(sample:GetStringHeight() or 14) + 10)
 		box:SetHeight(boxH)
-		local rows = { { intro, gap = 12 }, { box, gap = 12 }, { label, gap = 6 } }
-		for _, row in ipairs(byRow) do table.insert(rows, row) end
-		table.insert(rows, { note })
-		return Flow(rows)
+		return Flow({ { intro, gap = 12 }, { box, gap = 12 }, { label, gap = 6 }, { list, gap = 8 }, { note } })
 	end
 end }
 
 -- 2: preset
 pages[2] = { title = "wiz_step_preset", build = function(p)
 	local head = Head(p, "wiz_step_preset")
-	local intro = Text(p, -30, "GameFontHighlightSmall")
+	local intro = Text(p, -30, "small")
 	local cards = {}
 	for _, name in ipairs(NS.Config.PRESET_ORDER) do
 		local c = W.Card(p, INNER, 52, function()
@@ -187,7 +201,7 @@ pages[3] = { title = "wiz_step_intensity", build = function(p)
 		Wizard:Render()
 	end
 	local minus = W.FlatButton(p, "-", 30, 26, function() Step(-10) end)
-	local value = Text(p, -88, "GameFontNormalLarge", 60)
+	local value = Text(p, -88, "number", 60)
 	value:SetJustifyH("CENTER")
 	local plus = W.FlatButton(p, "+", 30, 26, function() Step(10) end)
 	local example = Text(p, -130)
@@ -207,7 +221,7 @@ end }
 -- 4: style
 pages[4] = { title = "wiz_step_depth", build = function(p)
 	local head = Head(p, "wiz_step_depth")
-	local intro = Text(p, -30, "GameFontHighlightSmall")
+	local intro = Text(p, -30, "small")
 	local cards = {}
 	for _, depth in ipairs({ "natural", "literary", "elevated" }) do
 		local c = W.Card(p, INNER, 70, function()
@@ -233,7 +247,7 @@ end }
 -- 5: modules (the state is also written in words)
 pages[5] = { title = "wiz_step_modules", build = function(p)
 	local head = Head(p, "wiz_step_modules")
-	local intro = Text(p, -30, "GameFontHighlightSmall")
+	local intro = Text(p, -30, "small")
 	local cards, byRow = {}, {}
 	for i, module in ipairs(MODULE_ORDER) do
 		local c = W.Card(p, (INNER - 8) / 2, 44, function()
@@ -247,7 +261,7 @@ pages[5] = { title = "wiz_step_modules", build = function(p)
 		byRow[r] = byRow[r] or {}
 		table.insert(byRow[r], c)
 	end
-	local consent = Text(p, -270, W.TEXT_FONT)
+	local consent = Text(p, -270, "body")
 	return function()
 		head()
 		intro:SetText(NS:L("wiz_modules_help"))
@@ -283,7 +297,7 @@ end, build = function(p)
 		local r = NS.Interlocutor:ChangeTRP3Consent()
 		if r == "wait" then NS:Print(NS:L("consent_wait")) end
 		Wizard:Render()
-	end, W.TEXT_FONT)
+	end, "Body")
 	others.minHeight = 112
 	NS.Consent:OnChange(function() if Wizard:IsOpen() then Wizard:Render() end end)
 	return function()
@@ -306,7 +320,7 @@ end }
 -- 7: what may reach chat, and a test of the narrator
 pages[7] = { title = "wiz_step_chat", build = function(p)
 	local head = Head(p, "wiz_step_chat")
-	local intro = Text(p, -26, W.TEXT_FONT)
+	local intro = Text(p, -26, "body")
 	local cards = {}
 	for _, mode in ipairs(NS.Gateway.MODES) do
 		-- what reaches chat is read in the 12-unit font; automatic sending has the longest text (#182)
@@ -318,13 +332,13 @@ pages[7] = { title = "wiz_step_chat", build = function(p)
 				NS.Gateway:SetMode(mode)
 			end
 			Wizard:Render()
-		end, W.TEXT_FONT)
+		end, "Body")
 		c.minHeight = mode == "AUTO_ONLY_IF_ALLOWED" and 74 or 50
 		cards[mode] = c
 	end
 	NS.Consent:OnChange(function() if Wizard:IsOpen() then Wizard:Render() end end)
 	local test = W.FlatButton(p, "", 200, 26, function() NS.Narrator:ShowTest() end)
-	local hint = Text(p, 0, "GameFontHighlightSmall", 240)
+	local hint = Text(p, 0, "small", 240)
 	return function()
 		head()
 		intro:SetText(NS:L("wiz_chat_help"))
@@ -358,7 +372,7 @@ pages[8] = { title = "wiz_step_keys", build = function(p)
 	local head = Head(p, "wiz_step_keys")
 	local keys = Text(p, -30)
 	local where = Text(p, -140)
-	local defaults = Text(p, -214, "GameFontHighlightSmall")
+	local defaults = Text(p, -214, "small")
 	local bind = W.FlatButton(p, "", 200, 26, function() Wizard:OpenKeyBindings() end)
 	local options = W.FlatButton(p, "", 200, 26, function() if NS.OpenSettings then NS.OpenSettings() end end)
 	return function()
@@ -428,12 +442,20 @@ function Wizard:Render()
 	for i = 1, step do if Visible(i) then number = number + 1 end end
 	frame.title:SetText(NS:L("wiz_title"))
 	frame:SetStatus(NS:L("wiz_step", number, total), "accent")
-	for i, dot in ipairs(frame.dots) do
-		dot:SetShown(i <= total)
-		-- UI-3: the current step in the accent, the done ones in text-3, the next ones in border-strong; the count
-		-- "step n of N" says it in words too
-		NS.Theme.Fill(dot, i == number and "accent" or (i < number and "text-3" or "border-strong"))
+	-- the step indicator: one numbered segment for each page the guide shows, the current one raised; "step n of N" in the
+	-- status chip says it in words too. A click on a segment goes to that page (the answers are all independent).
+	local n = 0
+	for i = 1, MAX_STEPS do
+		local shown = Visible(i)
+		if shown then
+			n = n + 1
+			frame.steps:SetItemText(i, tostring(n))
+		end
+		frame.steps:SetItemShown(i, shown)
 	end
+	syncing = true
+	frame.steps:Select(step)
+	syncing = false
 	frame.skip:SetText(NS:L("wiz_skip"))
 	frame.back:SetText(NS:L("wiz_back"))
 	frame.back:SetShown(Neighbour(step, -1) ~= nil)
@@ -442,7 +464,6 @@ function Wizard:Render()
 	W.FitButton(frame.next, 90, 120)
 	W.FitButton(frame.back, 80, 100)
 	W.FitButton(frame.skip, 120, WIDTH - 32 - 16 - 120 - 100, 14)
-	W.Adopt(frame)   -- UI-3: a page built now takes the theme's text colours
 end
 
 function Wizard:Next()
@@ -453,6 +474,16 @@ end
 function Wizard:Back()
 	local n = Neighbour(step, -1)
 	if n then step = n; self:Render() end
+end
+
+---Goes to a page of the guide (a click on a segment of the step indicator); a page the guide skips is not a destination.
+---@param page number
+---@return boolean moved
+function Wizard:GoTo(page)
+	if not frame or not Visible(page) or page == step then return false end
+	step = page
+	self:Render()
+	return true
 end
 
 -- the end of the guide, once per opening: the choices made so far stay, the rest stays at its default
@@ -477,16 +508,16 @@ local function Build()
 	frame = W.Window(UIParent, WIDTH, HEIGHT, "wiz_title", { name = "AzerothUnspokenWizard", point = { "CENTER", 0, 40 },
 		onClose = function() Wizard:Finish() end, refresh = function() Wizard:Render() end })
 
-	-- title bar: the name, "step n of N" in its status chip (UI-3), the close box; the progress dots under it
+	-- title bar: the name, "step n of N" in its status chip (UI-3), the close box; the step indicator under it (UI-6)
 	frame.count = frame.titleBar.status.label
 	frame.close = frame.closeBox
 	W.Tooltip(frame.close, function() return NS:L("wiz_skip_tip") end)
-	frame.dots = {}
-	for i = 1, MAX_DOTS do
-		local d = frame:CreateTexture(nil, "ARTWORK")
-		d:SetSize(8, 8)
-		d:SetPoint("TOP", frame, "TOP", (i - (MAX_DOTS + 1) / 2) * 16, -46)
-		frame.dots[i] = d
+	local items = {}
+	for i = 1, MAX_STEPS do items[i] = { id = i, text = tostring(i) } end
+	frame.steps = W.Segmented(frame, items, function(i) if not syncing then Wizard:GoTo(i) end end)
+	frame.steps:SetPoint("TOP", frame, "TOP", 0, -44)
+	for i = 1, MAX_STEPS do
+		W.Tooltip(frame.steps.buttons[i], function() return pages[i] and NS:L(pages[i].title) or "" end)
 	end
 	local rule = frame:CreateTexture(nil, "ARTWORK")
 	rule:SetPoint("BOTTOMLEFT", 1, 52)

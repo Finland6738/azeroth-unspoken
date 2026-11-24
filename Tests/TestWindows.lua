@@ -214,11 +214,11 @@ T.run("#182: consent and privacy text is 12 units or more", function()
 	Reset()
 	NS.RelationsFrame:Open("options")
 	local rel = _G.AzerothUnspokenRelations
-	-- the mock does not know the template's size: what counts is the template, W.TEXT_FONT (GameFontHighlight, 12)
-	T.eq(W.TEXT_FONT, "GameFontHighlight", "the text font is the 12-unit one")
+	-- UI-6: the texts are Theme fonts (every one is 12 units or more: Tests/TestTheme.lua) with a token
 	for _, fs in ipairs({ rel.intro, rel.privacy, rel.warning, rel.optionsHint }) do
-		T.ok(fs ~= nil, "a privacy or consent text of the relationships")
+		T.ok(fs ~= nil and fs.auThemed == true, "a privacy or consent text of the relationships, in a theme font")
 	end
+	for id, spec in pairs(NS.Theme.fontSpecs) do T.ok(spec[2] >= 12, id .. ": 12 units or more") end
 	Reset()
 end)
 
@@ -303,17 +303,9 @@ T.run("#192: the classic Interface Options are opened with two calls", function(
 	Settings = savedSettings
 end)
 
-T.run("#190: every armed confirmation disarms by token (W.Confirm); the windows' Dialogs end when the window closes (UI-5)", function()
+T.run("#190: the windows' Dialogs end when the window closes (UI-5; W.Confirm is gone since UI-6)", function()
 	Reset()
-	local c = W.Confirm(6)
-	c:Arm("a")
-	ADVANCE(4)
-	c:Disarm()
-	c:Arm("b")
-	ADVANCE(3)
-	T.ok(c:Is("b"), "an old timer does not disarm a newer arming")
-	ADVANCE(4)
-	T.ok(not c:Is(), "the newer one expires on its own time")
+	T.eq(W.Confirm, nil, "no two-click confirmation any more: every irreversible action asks through a Dialog")
 	-- UI-5: the relationships window asks through a Dialog; closing the window cancels the question, and it never comes back
 	NS.RelationsFrame:Open("list")
 	local rel = _G.AzerothUnspokenRelations
@@ -374,5 +366,59 @@ T.run("UI-5: the journal and the relationships window need no W.Adopt, and follo
 	Config:Set("ui.theme", "nebula")
 	NS.JournalFrame:Close()
 	NS.RelationsFrame:Close()
+	Reset()
+end)
+
+-- UI-ECO UI-6: the first-run guide, the character soul window and the Settings page need no W.Adopt either: every text has a
+-- theme font and a token, in every page and view, and they follow a theme change. After this step W.Adopt is only a net.
+T.run("UI-6: the guide, the soul window and the settings page need no W.Adopt, and follow the theme", function()
+	Reset()
+	local function Clean(f, where) T.eq(W.Adopt(f), 0, where .. ": no text is left for W.Adopt") end
+	-- the guide: every page, with and without Total RP 3, in both languages
+	for _, lang in ipairs({ "en", "it" }) do
+		for _, trp3 in ipairs({ false, true }) do
+			NS.db.locale = lang
+			AddOn_TotalRP3 = trp3 and {} or nil
+			NS.db.ui.wizardDone = false
+			Wizard:Open()
+			local f = Wizard:GetFrame()
+			for page = 1, Wizard:NumberOfPages() do
+				Clean(f, ("guide %s%s page %d"):format(lang, trp3 and " (Total RP 3)" or "", page))
+				f.next:Click()
+			end
+			if Wizard:IsOpen() then f.skip:Click() end
+		end
+	end
+	AddOn_TotalRP3 = nil
+	NS.db.locale = "it"
+	-- the soul window, with its question open
+	NS.ProfileFrame:Open()
+	local soul = _G.AzerothUnspokenProfile
+	Clean(soul, "soul window")
+	soul.reset:Click()
+	Clean(soul, "soul window with its question")
+	soul.dialog:Hide()
+	NS.ProfileFrame:Close()
+	-- the settings page, in both languages
+	local panel = NS.SettingsFrame.panel
+	for _, lang in ipairs({ "en", "it" }) do
+		NS.db.locale = lang
+		panel:Refresh()
+		Clean(panel, "settings page " .. lang)
+	end
+	NS.db.locale = "it"
+	-- a theme change recolours the page without /reload: a title of a section, a switch and a number in Aurora
+	local function Colour(fs) return table.concat({ fs._s.textColor and fs._s.textColor[1] or -1, fs._s.textColor and fs._s.textColor[2] or -1 }, ",") end
+	local title = panel.headers[1].fs
+	local before = Colour(title)
+	local number = panel.rows.opt_scale.text
+	local numberBefore = Colour(number)
+	Config:Set("ui.theme", "aurora")
+	T.ok(Colour(title) ~= before, "the section title follows the theme")
+	T.ok(Colour(number) ~= numberBefore, "and so does a number")
+	Config:Set("ui.theme", "nebula")
+	T.eq(Colour(title), before, "and back")
+	-- the segment that says the theme is the chosen one
+	T.eq(panel.rows.opt_theme.seg:Active(), "nebula", "the theme row shows the theme")
 	Reset()
 end)

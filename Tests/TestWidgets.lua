@@ -565,3 +565,52 @@ T.run("UI-3: the DataTable uses the ScrollBox and a DataProvider, and falls back
 	CreateScrollBoxListLinearView, CreateDataProvider = nil, nil
 	T.eq(W.TableBackend(), "pool", "the mock is clean again")
 end)
+
+---------------------------------------------------------------------------
+-- UI-6: Section, a Segmented that changes, a ChoiceList row that says its words
+---------------------------------------------------------------------------
+T.run("UI-6: Section is a quiet card with a title and a rule, sized from its rows", function()
+	Reset()
+	local s = W.Section(UIParent, 600, 80, "Chat")
+	T.ok(s.auSection and s.parts and s.parts.fill and s.parts.ring, "a Panel: fill and ring")
+	T.ok(Is(s.parts.fill._s.vertex, "surface-1"), "on the card surface")
+	T.eq(s.title:GetText(), "Chat", "its title")
+	T.ok(s.title.auThemed and s.rule:IsShown(), "a theme text, and the rule under it")
+	T.eq(s:Fit(100), 116, "the height is where the last row ends, plus 16")
+	s:SetTitle("")
+	T.ok(not s.title:IsShown() and not s.rule:IsShown(), "no title: no rule")
+	-- the card follows the theme
+	s:SetTitle("Again")
+	Config:Set("ui.theme", "aurora")
+	T.ok(Is(s.parts.fill._s.vertex, "surface-1", "aurora"), "and the theme")
+	Config:Set("ui.theme", "nebula")
+end)
+
+T.run("UI-6: a Segmented takes new words, hides a segment, and keeps the chosen one", function()
+	Reset()
+	local seen = {}
+	local seg = W.Segmented(UIParent, { { id = "a", text = "One" }, { id = "b", text = "Two" }, { id = "c", text = "Three" } },
+		function(id) table.insert(seen, id) end)
+	local w0 = seg:GetWidth()
+	seg:Select("b")
+	seg:SetItemText("a", "A much longer word than before")
+	T.ok(seg:GetWidth() > w0, "a longer word makes the control wider")
+	seg:SetItemShown("c", false)
+	T.ok(not seg.buttons.c:IsShown() and seg.buttons.a:IsShown(), "a hidden segment takes no room")
+	seg:SetItemShown("b", false)
+	T.ok(seg.buttons.b:IsShown(), "the chosen one is never hidden")
+	seg:SetItemShown("c", true)
+	T.ok(seg.buttons.c:IsShown(), "and comes back")
+	T.eq(seg:Active(), "b", "the choice stays through the changes")
+	T.eq(table.concat(seen, ","), "b", "the changes of words and layout never answer")
+	seg.buttons.a:Click()
+	T.eq(table.concat(seen, ","), "b,a", "a click does")
+end)
+
+T.run("UI-6: a ChoiceList row says its words", function()
+	Reset()
+	local list = W.ChoiceList(UIParent, { rows = 2, width = 200 })
+	list:SetChoices({ { id = "x", text = "Alpha" }, { id = "y", text = "Beta" } })
+	T.eq(list.rows[1]:GetText(), "Alpha", "the first row")
+	T.eq(list.rows[2]:GetText(), "Beta", "the second row")
+end)

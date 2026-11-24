@@ -27,17 +27,17 @@ Personality is saved **per character**. If you chose a personality before this v
 
 ### The personality window
 
-Open it with `/au soul` or the **Character soul...** button in the [[settings panel|Settings]]. Close it with **Esc**, the **X** at the top right of its title band or **Close**. There you can:
+Open it with `/au soul` or the **Character soul...** button in the [[settings panel|Settings]]. Close it with **Esc**, the **X** at the top right of its title band or **Close**. The window has two cards, **Archetype and traits** and **Topics to avoid**, drawn in the look you chose (Nebula, dark, or Aurora, light). There you can:
 
-- pick an **archetype** (click to go to the next one);
+- pick an **archetype** (click to go to the next one); a thin bar under it counts how many of the traits you have chosen yourself (*3 of 11 traits chosen*);
 - drag the **slider** of each trait (the value is saved when you let go), click its **-** and **+** (steps of 5) or turn the mouse wheel over it, or click **x** to clear it;
 - set the **inner voice**;
 - choose the **culture of origin** (click to go through them, **x** to clear it): the people your character grew up among. Only your choice counts, never race or class. It changes which [[verses and songs|Literary-Forms]] come: those of your culture more often, those of another only from someone else's mouth; with none chosen, only the pieces that belong to no culture;
-- tick topics to avoid (an avoided topic has a full gold edge and a bar under its name);
-- reset to a **neutral profile**: it removes every choice of the character (archetype, traits, inner voice, topics to avoid, culture of origin), so it asks twice. The button has the red outline of the actions that lose data; the first click turns it into **Click again: neutral profile**, and a second click within a few seconds confirms. Closing the window cancels;
+- tick topics to avoid (an avoided topic has a full accent edge and a bar under its name);
+- reset to a **neutral profile**: it removes every choice of the character (archetype, traits, inner voice, topics to avoid, culture of origin), so it asks first. The button has the red outline of the actions that lose data; a click opens a **question** ("Clear the whole profile?") with a red **Neutral profile** button and **Cancel**. **Esc** cancels the question and leaves the window open; confirming clears the profile and a short message at the top of the window says so. Closing the window cancels the question;
 - turn on **Traits from Total RP 3** (only if Total RP 3 is installed).
 
-Next to each trait, the window shows its value (for the two-sided traits, which side: *cynical*, *balanced*, *idealist*...) and where it comes from: *chosen* (by you), *Total RP 3*, *game* (a hint from game data) or *neutral*.
+Next to each trait, the window shows its value in the mono font (for the two-sided traits, which side: *cynical*, *balanced*, *idealist*...) and a small badge that says where it comes from: *chosen* (by you), *Total RP 3*, *game* (a hint from game data) or *neutral*. The source is always written in words; the badge's colour only helps.
 
 ### Archetypes
 

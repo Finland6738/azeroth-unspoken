@@ -333,6 +333,50 @@ function W.Card(parent, width, height, onClick, font)
 	return b
 end
 
+---------------------------------------------------------------------------
+-- Section (UI-6): a quiet surface that groups the rows of one window or page: the Card of FDCP §3 as a container, not
+-- clickable (a W.Card is the selectable one). A surface-1 Panel (radius 12, subtle ring) with a title in the H2 font
+-- and a 1-unit rule under it; the rows go inside, from SECTION_TOP down. :SetTitle(text), :Fit(bottom) sets the height
+-- from where the lowest row ends.
+---------------------------------------------------------------------------
+W.SECTION_TOP = 44   -- where the first row of a section starts, from its top
+
+---@param parent table
+---@param width number
+---@param height? number
+---@param title? string already translated
+---@return table section with .parts, .title, .rule
+function W.Section(parent, width, height, title)
+	local s = CreateFrame("Frame", nil, parent)
+	s:SetSize(width, height or 80)
+	s.auSection = true
+	s.parts = Theme.Panel(s, { radius = 12, fill = "surface-1", border = "border-subtle", highlight = true })
+	s.title = Theme.NewText(s, "H2", "text-1")
+	s.title:SetPoint("TOPLEFT", s, "TOPLEFT", 16, -14)
+	s.title:SetPoint("TOPRIGHT", s, "TOPRIGHT", -16, -14)
+	s.title:SetJustifyH("LEFT")
+	if s.title.SetWordWrap then s.title:SetWordWrap(false) end
+	s.rule = s:CreateTexture(nil, "ARTWORK")
+	s.rule:SetPoint("TOPLEFT", s, "TOPLEFT", 16, -(W.SECTION_TOP - 8))
+	s.rule:SetPoint("TOPRIGHT", s, "TOPRIGHT", -16, -(W.SECTION_TOP - 8))
+	s.rule:SetHeight(1)
+	Theme.Fill(s.rule, "border-subtle")
+	function s:SetTitle(text)
+		self.title:SetText(text or "")
+		self.title:SetShown(text ~= nil and text ~= "")
+		self.rule:SetShown(text ~= nil and text ~= "")
+	end
+	---The height of the section: `bottom` is where its lowest row ends, from the top (a margin of 16 is added).
+	---@param bottom number
+	---@return number height
+	function s:Fit(bottom)
+		self:SetHeight(math.ceil(bottom) + 16)
+		return self:GetHeight()
+	end
+	s:SetTitle(title)
+	return s
+end
+
 ---A button as wide as its label (#180): the label measured with GetStringWidth() in the font of the button, plus `pad`
 ---(24 by default), between `min` and `max` units. A label wider than `max` is cut (the width of the label is `max`
 ---minus the margins) and the whole text shows in the tooltip, which the caller can still replace with W.Tooltip.
@@ -366,14 +410,13 @@ function W.FitButton(b, min, max, pad)
 end
 
 ---------------------------------------------------------------------------
--- Text colours of the window contents that are not rebuilt yet (UI-5, UI-6)
+-- Text colours of a text that has no token: a safety net (UI-3 .. UI-6)
 ---------------------------------------------------------------------------
--- The contents of the journal, relationships, character soul, wizard and settings still use the game's font objects
--- (gold headings, white text). On the light theme they would be white on white, so every text of a window that the theme
--- does not colour yet takes the token of its font object: the game's gold becomes accent-text, the game's white text-1,
--- the small white text-2. A frame marked `auKeepColours` (a surface of its own that colours its texts itself) is left as
--- it is; the narrator's sample in the wizard no longer needs it since UI-4: its texts have tokens.
--- (the font objects the windows use today; any other one, GameFontHighlight included, becomes text-1)
+-- Since UI-6 every window and the Settings page build their texts with Theme.NewText (a theme font and a token), so
+-- W.Adopt finds nothing in any of them (Tests/TestWindows.lua proves it for each window and view). It stays in the window
+-- shell as a net for a text a later change forgets: a text of a window that the theme does not colour takes the token
+-- of its game font object (the game's gold becomes accent-text, its white text-1, the small white text-2), so it is never
+-- white on white in Aurora. A frame marked `auKeepColours` (a surface of its own that colours its texts itself) is left as it is.
 W.ADOPT = {
 	GameFontNormal = "accent-text", GameFontNormalSmall = "accent-text", GameFontNormalLarge = "accent-text",
 	GameFontHighlightSmall = "text-2",
@@ -427,8 +470,6 @@ end
 -- Windows (#174, #187, #182, #192; UI-3: the NEBULA shell)
 ---------------------------------------------------------------------------
 W.windows = {}   -- every window made by W.Window, in the order it was made
-W.TEXT_FONT = "GameFontHighlight"   -- 12 units: the text of a consent or of a privacy note is never smaller (#182)
-W.TITLE_FONT = "GameFontNormalLarge"  -- the title of the settings page (the client draws that frame)
 W.TITLEBAR = 52                     -- the height of the title bar (FDCP §3)
 W.BAND = 36                         -- the part of the title bar inside the window's frame: the contents start under it
 W.BAR_ABOVE = W.TITLEBAR - W.BAND   -- the title bar rises this much above the frame, so the contents keep their place
@@ -601,37 +642,4 @@ function W.Window(parent, width, height, title, opts)
 		NS.Config:OnChange(FollowSettings)
 	end
 	return f
-end
-
--- Two-click confirmation (#190): `:Arm(key)` starts one with a token of its own, `:Disarm()` ends it; the timer ends
--- only the arming that started it, never a newer one. Windows call `:Disarm()` in OnHide, so nothing stays armed.
--- An irreversible action asks through W.Dialog from UI-5 on; this stays for the buttons that use it today.
----@param seconds number
----@param onExpire? fun() the redraw when an arming expires
----@return table confirm
-function W.Confirm(seconds, onExpire)
-	local c = { armed = nil, token = 0 }
-	---@param key? any what is armed (default: true)
-	function c:Arm(key)
-		self.token = self.token + 1
-		local token = self.token
-		if key == nil then key = true end
-		self.armed = key
-		NS.Compat.After(seconds, function()
-			if self.token ~= token then return end
-			self.armed = nil
-			if onExpire then onExpire() end
-		end)
-	end
-	function c:Disarm()
-		self.token = self.token + 1
-		self.armed = nil
-	end
-	---@param key? any nil: is anything armed
-	---@return boolean
-	function c:Is(key)
-		if key == nil then return self.armed ~= nil end
-		return self.armed == key
-	end
-	return c
 end

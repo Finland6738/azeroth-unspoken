@@ -55,9 +55,9 @@ I componenti sono quelli di FDCP §3 (i tipi di Button *primary*, *secondary*, *
 | Diario (`AzerothUnspokenJournal`) | guscio | Tabs (una per ogni sezione registrata: otto oggi, con l'indicatore che scorre), DataTable ordinabile delle righe della sezione, Button, Dialog per le azioni irreversibili, Toast per gli esiti; nessun Segmented qui (nessuna sezione ha un filtro suo) | UI-5 |
 | Esportazione del diario (`AzerothUnspokenJournalExport`) | guscio | EditBox di sola lettura con Ctrl+C su un campo `surface-2`, Button, Toast | UI-5 |
 | Relazioni (`AzerothUnspokenRelations`) | guscio | Tabs (elenco, persone, opzioni), DataTable ordinabile, Segmented (filtro per tipo), EditBox, Dialog, Toast, il dettaglio del giocatore su due colonne | UI-5 |
-| Anima del personaggio (`AzerothUnspokenProfile`) | guscio | Card, ThinBar per i livelli dei tratti, ChoiceList, Chip, Button | UI-6 |
-| Procedura guidata del primo avvio (`AzerothUnspokenWizard`) | guscio | Segmented (lingua e passi), card ChoiceList per i consensi, Button primario, Dialog | UI-6 |
-| Impostazioni (il canvas delle Impostazioni del client) | **nessun guscio**: il frame lo disegna il client | Card per i gruppi, Switch, Slider, Segmented, Button, EditBox; il contenuto è rifatto sul tema (§2.5) | UI-6 |
+| Anima del personaggio (`AzerothUnspokenProfile`) | guscio | due Section (una scheda quieta con titolo e filetto), Slider per ogni tratto con il valore in mono, Badge per l'origine di un valore, ThinBar per quanti tratti sono scelti, Button (valori che girano, argomenti), Dialog per il profilo neutro, Toast | UI-6 |
+| Procedura guidata del primo avvio (`AzerothUnspokenWizard`) | guscio | Segmented (l'indicatore dei passi, numerato), ChoiceList (la lingua), Card (risposte a scelta singola e consensi), Button primario e secondario, l'esempio del narratore (UI-4) | UI-6 |
+| Impostazioni (il canvas delle Impostazioni del client) | **nessun guscio**: il frame lo disegna il client | una superficie `bg` sua, una Section per ogni gruppo, Switch, Segmented, Slider (con - e +), Button (le scelte troppo lunghe o troppo numerose per un segmento, e i consensi); il contenuto è sul tema (§2.5) | UI-6 |
 | Conferme, esiti | Dialog (strato `DIALOG`) e Toast, dalle finestre del guscio | Dialog, Toast | UI-3 |
 
 ### 2.3 Che cosa è proprio di AU
@@ -121,10 +121,9 @@ costruiti su `NS.Theme` e `NS.Motion`: i tipi di pulsante (`W.FlatButton(parent,
 Switch, Slider, ThinBar e il Tooltip dell'addon (invertito: superficie `text-1`, testo `bg`; `GameTooltip` resta solo per gli oggetti del gioco).
 La tavolozza piatta di bronzo (`W.PALETTE`, `W.BRAND`) non c'è più; il riquadro del narratore e il dialogo degli NPC sono stati rifatti in UI-4 e `W.LegacyFlatButton`, `W.Button`, `W.Background`,
 `W.SetBackgroundAlpha` e `W.SetFontSize` non ci sono più. La fascia di 36 unità è diventata la barra del titolo di 52, che sale di 16 unità sopra il frame della finestra
-(`W.BAR_ABOVE`), così il contenuto di ogni finestra resta al suo posto (`W.TOP`, 46 unità dalla cima del frame) finché UI-6 non rifà gli ultimi; `Windows.lua` conta la barra quando il narratore si sposta. Il nome della finestra è scritto in maiuscolo in Orbitron; il
-sottotitolo monospazio è il nome dell'addon con la versione; `:SetStatus(testo, tono)` mostra un chip di stato. Fino a UI-6, i testi di
-una finestra che usano ancora gli oggetti font del gioco (la finestra dell'anima, la guida e la pagina delle Impostazioni; il diario e le relazioni non ne hanno più da UI-5) prendono i colori del tema dal loro font (`W.Adopt`: l'oro del gioco diventa
-`accent-text`, il bianco `text-1`, il bianco piccolo `text-2`), e una parola colorata dentro una riga usa `W.Hex(token)`; la pagina delle
+(`W.BAR_ABOVE`), così il contenuto di ogni finestra resta al suo posto (`W.TOP`, 46 unità dalla cima del frame); `Windows.lua` conta la barra quando il narratore si sposta. Il nome della finestra è scritto in maiuscolo in Orbitron; il
+sottotitolo monospazio è il nome dell'addon con la versione; `:SetStatus(testo, tono)` mostra un chip di stato. Da UI-6 ogni testo di ogni finestra è un font del tema con un token (il diario e le relazioni da UI-5), quindi `W.Adopt`
+(l'oro del gioco diventa `accent-text`, il bianco `text-1`, il bianco piccolo `text-2`) non ha più nulla da fare; resta nel guscio come rete di sicurezza, e una parola colorata dentro una riga usa `W.Hex(token)`; la pagina delle
 Impostazioni ha una superficie `bg` sua dentro il frame del client, così i suoi testi tengono il contrasto anche in Aurora. L'esempio del
 narratore nella guida è, da UI-4, l'aspetto vero del narratore (un Panel, la barra d'accento, il testo in `voice-narrator`). La DataTable prende il primo motore che il client
 offre: lo ScrollBox con una vista lineare e un DataProvider, poi un FauxScrollFrame, poi un gruppo di righe che scorre con la rotella
@@ -174,7 +173,25 @@ e opzioni (la scheda delle persone porta il numero di proposte in attesa; il det
 `accent-text`; all'inizio ordinata per l'ultimo incontro, il più recente prima, poi l'ordine scelto dal giocatore); nella scheda delle persone la casella del nome e una DataTable ordinabile (nome,
 dove l'addon l'ha vista, i pulsanti **+** e **x**); il dettaglio e le opzioni tengono la loro disposizione con testi del tema. Dimentica le osservazioni, Rimuovi la persona e Dimentica
 tutto chiedono con il Dialog e dicono l'esito con un Toast. Le parole colorate dentro una riga usano `W.Hex(token)` e sono ridisegnate da `Refresh`, che la finestra esegue a ogni cambio di tema.
-`W.Confirm` resta per la finestra dell'anima (UI-6).
+
+**La guida, la finestra dell'anima e la pagina delle Impostazioni (UI-6).** Le ultime tre superfici sono rifatte con i widget di UI-3 e non hanno più bisogno
+di `W.Adopt` (`Tests/TestWindows.lua` controlla ogni pagina, nelle due lingue, con e senza Total RP 3). `W.Confirm` (il pulsante a due clic) non c'è più: ogni azione
+che non si può annullare chiede con un Dialog. I widget guadagnano `W.Section` (una scheda quieta `surface-1` con un titolo nel font H2 e un filetto, per i gruppi
+di una finestra; `W.Card` resta quella selezionabile), `W.Segmented:SetItemText/:SetItemShown/:Layout` (le parole cambiano con la lingua, una pagina che la
+guida salta non ha il segmento) e un testo su ogni riga di `W.ChoiceList`. *La guida* (`UI/Wizard.lua`, 520 per 500 unità, più alta quando una pagina lo chiede): l'indicatore
+dei passi è un `W.Segmented` di segmenti numerati sotto la barra del titolo (il passo scelto è quello rialzato e luminoso, il chip di stato dice "passo n di N" a parole,
+un clic su un numero va a quella pagina: le risposte sono indipendenti), la lingua è una `W.ChoiceList`, le altre risposte e i consensi sono `W.Card` a scelta singola
+(segno, bordo e fondo rialzato; portano una descrizione che una riga di elenco semplice non può), ogni testo è `Theme.NewText` con uno stile (titolo, corpo, piccolo,
+etichetta, numero), le pagine dei consensi tengono parole e dialoghi. *La finestra dell'anima* (`UI/ProfileFrame.lua`, larga 700, alta circa 715): due `W.Section`,
+*Archetipo e tratti* (l'archetipo, una `W.ThinBar` e "n tratti su 11 scelti", una riga per ogni tratto con uno `W.Slider` e i suoi "-" e "+", il valore in mono in
+`accent-text` e un `W.Badge` che dice a parole da dove viene, poi la voce interiore e la cultura d'origine) e *Argomenti da evitare*; il **profilo neutro** chiede con un
+`W.Dialog` (Esc lo annulla e nient'altro) e dice l'esito con un `W.Toast` in alto nella finestra. *La pagina delle Impostazioni* (`UI/SettingsFrame.lua`, contenuto largo 640):
+una `W.Section` per ognuna di Generale, Aspetto, Chat, Narratore, Moduli e Privacy; un'impostazione acceso/spento è uno `W.Switch` con *acceso* o *spento* scritto accanto,
+una scelta fra due e quattro parole brevi (tema, caratteri, profondità dello stile, forme letterarie, quanto attende una proposta) un `W.Segmented`, un numero uno
+`W.Slider` con "-" e "+" (percentuale intera per una frazione; la rotella fa scorrere la pagina e non muove mai questi cursori), e un pulsante che mostra il valore e passa
+al successivo per le scelte troppo numerose o troppo lunghe per un segmento (lingua, modalità della chat, canale, pausa, velocità di lettura, combattimento, il nome del
+personaggio) e per i due consensi, che si chiedono in due passi e dicono il loro stato a parole. Non c'è nessun `UIDropDownMenu`, e nemmeno `W.Select` qui: il suo elenco
+verrebbe tagliato dal canvas che scorre. `SettingsFrame.panel.sections` elenca le sezioni; UI-7 aggiunge la sua sezione Info dopo Privacy con le stesse righe `Header(...)`.
 
 **Migrazione (UI-2).** Chi aveva spento le dissolvenze del narratore (`ui.narrator.reduceMotion`, [#177](https://github.com/Finland6738/azeroth-unspoken/issues/177)) parte con
 `ui.animations = false`: lo fa `Config:Load` una volta sola, solo quando `ui.animations` non è ancora nel file. L'impostazione del narratore ferma
@@ -219,6 +236,6 @@ i bagliori e le animazioni sono previsioni fino ad allora.
 | UI-3 | widget, barra del titolo di 52 punti, `W.Window`, impostazioni di aspetto | [#291](https://github.com/Finland6738/azeroth-unspoken/pull/291) | fatto: ogni widget di FDCP §3 sul tema, le finestre sul nuovo guscio, posizione per personaggio, Impostazioni > Aspetto dal vivo, Riduci il movimento confluito in Animazioni, contrasto di ogni widget nei due temi (`Tests/TestLayout.lua`), `Tests/TestWidgets.lua`; **non provato nel client** (l'aspetto, i font, il 9-slice, i bagliori, le animazioni, lo ScrollBox e il FauxScrollFrame, il salvataggio della posizione) |
 | UI-4 | riquadro del narratore, pulsante "parla", proposta e editor del Chat Gateway, finestra di dialogo, i quattro token delle voci | [#292](https://github.com/Finland6738/azeroth-unspoken/pull/292) | fatto: narratore, pulsante "parla", barra e editor della proposta (con un contatore di byte) e dialogo degli NPC sul tema, token `voice-*` nei due temi, il minimo del riquadro calcolato dai token, Riduci il movimento non più scritto né letto, rimossi `W.LegacyFlatButton`, `W.Button`, `W.Background`, `W.SetBackgroundAlpha` e `W.SetFontSize`, contrasto di ogni voce nei due temi (`Tests/TestLayout.lua`), `Tests/TestNarrator.lua`; **non provato nel client** (l'aspetto, i font, le dissolvenze, i colori delle voci su scene vere, la traslucenza, l'editor e il suo contatore, il tooltip del pulsante "parla") |
 | UI-5 | Diario e Relazioni | [#293](https://github.com/Finland6738/azeroth-unspoken/pull/293) | fatto: schede con la barra che scorre, DataTable ordinabili con numeri mono (senza pagine), filtro per tipo con Segmented, Dialog e Toast per ciò che non si annulla e per gli esiti, ogni testo un font del tema (niente `W.Adopt` in queste due finestre), `Tests/TestWidgets.lua`, `Tests/TestMemory.lua`, `Tests/TestRelations.lua`, `Tests/TestLayout.lua`; **non provato nel client** (l'aspetto, i font, lo ScrollBox e il FauxScrollFrame, lo scorrere della barra, il dialogo e il suo Esc, il toast, l'ordinamento) |
-| UI-6 | procedura guidata, Anima del personaggio, il canvas delle Impostazioni | | da fare |
+| UI-6 | procedura guidata, Anima del personaggio, il canvas delle Impostazioni | [#PR_NUMBER](https://github.com/Finland6738/azeroth-unspoken/pull/PR_NUMBER) | fatto: la guida con un indicatore numerato e un elenco di lingue, l'anima su due Section con cursori, badge e una barra sottile, le Impostazioni su Section con interruttori, segmenti e cursori, un Dialog e un Toast per il profilo neutro, `W.Confirm` tolto, ogni testo un font del tema (nessuna finestra ha più lavoro per `W.Adopt`), `Tests/TestWindows.lua`, `Tests/TestLayout.lua`, `Tests/TestWidgets.lua`, `Tests/TestWizardConsent.lua`, `Tests/TestSoul.lua`, `Tests/TestNarrator.lua`; **non provato nel client** (l'aspetto, i caratteri, l'indicatore numerato e l'elenco delle lingue, cursori e interruttori nel canvas del client e la sua barra di scorrimento, il dialogo e il suo Esc, il toast) |
 | UI-7 | crediti: la pagina Info con il logo della community NEBULA (scuro e chiaro), il comando `about`, README, pagina About del wiki, testo di CurseForge | | da fare |
 | UI-8 | anteprime e asset rigenerati, GIF del README, Interface Tour del wiki, stato finale di questa specifica | | da fare |
