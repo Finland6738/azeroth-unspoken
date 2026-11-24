@@ -157,7 +157,16 @@ NS:RegisterLanguage("en", {
 		opt_resetwindows_tip = "The addon's windows go back to their first place on the screen, for this character.",
 		-- the settings panel in sections (#187) and the window scale (#182)
 		opt_section_general = "General", opt_section_chat = "Chat", opt_section_narrator = "Narrator",
-		opt_section_modules = "Modules", opt_section_privacy = "Privacy",
+		opt_section_modules = "Modules", opt_section_privacy = "Privacy", opt_section_info = "Info",
+		-- Settings > Info and /au about (UI-ECO UI-7): the credits, the licence, the fan-made notice and the links as copy boxes
+		info_made_by = "Azeroth Unspoken is made by Finland.",
+		info_nebula = "With thanks to the NEBULA community, whose look and logo this addon shares. The logo is used with its owner's permission and is not covered by the licence of the code.",
+		info_licence = "Licence: the code is GPL-3.0-or-later; the phrases and the narrative data are all rights reserved; the example pack is MIT; the documentation is CC BY 4.0.",
+		info_fanmade = "A fan-made addon. It is not affiliated with or endorsed by Blizzard Entertainment.",
+		info_copy_hint = "The game cannot open web pages: click a box and press Ctrl+C to copy its link.",
+		info_chat_title = "Credits and links",
+		opt_link_repo = "Source code", opt_link_issues = "Report a problem", opt_link_site = "NEBULA community",
+		opt_link_kofi = "Support (Ko-fi)",
 		opt_modules_note = "* = coming, not active yet.",
 		opt_scale = "Window scale", opt_dialogue_size = "NPC dialogue text size", opt_dialogue_alpha = "NPC dialogue opacity",
 		win_close_tip = "Close (Esc)",
@@ -369,6 +378,7 @@ NS:RegisterLanguage("en", {
 		help_memory = "clear the anti-repetition memory",
 		help_options = "open the settings panel",
 		help_wizard = "redo the first-run guide",
+		help_about = "credits and links (about chat: print them in the chat)",
 		cmd_unknown = "unknown command '%s'. /au help lists the commands (their names are always in English).",
 		cmd_unknown_hint = "unknown command '%s'. Did you mean /au %s? (command names are always in English; /au help lists them)",
 

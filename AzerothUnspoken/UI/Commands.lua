@@ -123,6 +123,16 @@ local function PrintHelp(rest)
 	end
 end
 
+-- /au about: opens the Settings on the Info section (credits, licence, links); `/au about chat` prints them in the chat
+-- instead (UI-ECO UI-7)
+local ABOUT_WORDS = K.Register("about", { chat = "chat" })
+
+local function About(rest)
+	local settings = NS.SettingsFrame
+	if not settings then return end
+	if ABOUT_WORDS[NS.Lower(rest or "")] == "chat" then settings:PrintCredits() else settings:OpenInfo() end
+end
+
 -- /au button: senza argomenti mostra o nasconde il pulsante, come prima; `editor on/off` sceglie se il clic apre
 -- l'editor invece di inviare (#189); `reset` lo rimette al suo posto
 local BUTTON_WORDS = K.Register("button", { on = "on", off = "off", editor = "editor", reset = "reset" })
@@ -425,6 +435,7 @@ Commands.list = {
 	end, usage = "memory", desc = "help_memory", group = "diagnostics" },
 	{ name = "options", fn = function() NS.OpenSettings() end, usage = "options", desc = "help_options", group = "start" },
 	{ name = "wizard", fn = function() NS.Wizard:Open() end, usage = "wizard", desc = "help_wizard", group = "start" },
+	{ name = "about", fn = function(rest) About(rest) end, usage = "about [chat]", desc = "help_about", group = "start" },
 }
 
 -- gli eventi a mano: /au greet, farewell, toast... (per macro: /cast X e poi /au greet X, così la frase arriva col tasto)

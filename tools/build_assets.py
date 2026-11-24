@@ -371,6 +371,32 @@ def build_gallery():
         _page("g-" + name, title, w, h, body, out_dir=BUILD, **kw)
 
 
+# UI-ECO UI-7: the credits for the project description on CurseForge (the logo is the NEBULA community's, used with its
+# owner's permission: docs/third-party.md). Paste the text of each fence; upload the two logos from assets/nebula/.
+CREDITS_EN = ("Made by Finland, with thanks to the NEBULA community, whose look and logo the addon shares "
+              "(https://nebula-community.github.io/giochi/wow-forever/). The logo is used with its owner's permission and is not "
+              "covered by the code licence. Licence: code GPL-3.0-or-later; phrases and narrative data all rights reserved; "
+              "example pack MIT; documentation CC BY 4.0. Fan-made: not affiliated with or endorsed by Blizzard Entertainment. "
+              "Source and issues: https://github.com/Finland6738/azeroth-unspoken . Optional support: https://ko-fi.com/finland6738")
+CREDITS_IT = ("Di Finland, con un ringraziamento alla community NEBULA, di cui l'addon condivide lo stile e il logo "
+              "(https://nebula-community.github.io/giochi/wow-forever/). Il logo è usato con il permesso del suo proprietario e non è "
+              "coperto dalla licenza del codice. Licenza: codice GPL-3.0 o successiva; frasi e dati narrativi tutti i diritti "
+              "riservati; pacchetto di esempio MIT; documentazione CC BY 4.0. Opera di fan: non affiliata a Blizzard "
+              "Entertainment né da essa approvata. Sorgente e issue: https://github.com/Finland6738/azeroth-unspoken . "
+              "Sostegno facoltativo: https://ko-fi.com/finland6738")
+CREDITS_SECTION = [
+    "## Credits\n",
+    "The credits for the project description, with the NEBULA community logo (the dark art for a dark page, the light art for "
+    "a light one). The logo files are in [assets/nebula](../nebula/); the logo is used with its owner's permission and is not "
+    "covered by the code licence ([docs/third-party.md](../../docs/third-party.md)).\n",
+    '<picture>\n  <source media="(prefers-color-scheme: dark)" srcset="../nebula/nebula-logo-dark.png">\n'
+    '  <source media="(prefers-color-scheme: light)" srcset="../nebula/nebula-logo-light.png">\n'
+    '  <img src="../nebula/nebula-logo-light.png" alt="NEBULA community logo" width="160">\n</picture>\n',
+    "**Credits**\n", "```text\n" + CREDITS_EN + "\n```\n",
+    "**Crediti**\n", "```text\n" + CREDITS_IT + "\n```\n",
+]
+
+
 def write_gallery_index():
     fence = lambda text: "```text\n" + text + "\n```\n"  # noqa: E731   GitHub shows a copy button on a fence
     out = ["# CurseForge gallery\n",
@@ -386,6 +412,7 @@ def write_gallery_index():
         out += [f"## {name}.png\n", f'<a href="{name}.png"><img src="{name}.png" width="480" alt="{title}"></a>\n',
                 "**Title**\n", fence(title), f"**Description** ({len(desc)} characters)\n", fence(desc),
                 "**Titolo**\n", fence(title_it), f"**Descrizione** ({len(desc_it)} caratteri)\n", fence(desc_it)]
+    out += CREDITS_SECTION
     with open(os.path.join(CURSEFORGE, "README.md"), "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(out))
 

@@ -30,6 +30,7 @@ Every command of Azeroth Unspoken. Type them in the chat box, like any other sla
 | `/au pause` | pauses the narrator at once |
 | `/au options` | opens the settings panel |
 | `/au wizard` | reopens the setup wizard |
+| `/au about` | opens the settings on the Info section (credits, licence, links) |
 | `/au language it` | switches to Italian |
 | `/au intensity <0-100>` | how often the narrator speaks |
 | `/au depth <style>` | how elevated the language is |
@@ -62,6 +63,8 @@ Every command of Azeroth Unspoken. Type them in the chat box, like any other sla
 | `/au language [code]` (short form `/au lang`) | Sets the language of lines and interface: `en` (English, the default) or `it` (Italian). With no code, lists the available languages. See [[Languages]]. |
 | `/au options` | Opens the [[settings panel|Settings]]. |
 | `/au wizard` | Reopens the [[setup wizard|First-Run-Wizard]]. |
+| `/au about` | Opens the [[settings panel|Settings]] on its **Info** section: the credits, the licence, the fan-made notice and four read-only boxes with the links. See [[About and Credits|About]]. |
+| `/au about chat` | Prints the same credits and the links in the chat, where you can select and copy them. |
 
 ## Narrator style and rhythm
 

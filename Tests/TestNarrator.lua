@@ -925,7 +925,7 @@ T.run("#177, #179, #187: the settings rows, their sections and the help under th
 	Row("opt_fontsize").minus:Click()
 	T.eq(#NS.Config:Validate(NS.db), 0, "valori validi")
 
-	-- #187: six sections with their headers, in this order (UI-3 adds Appearance)
+	-- #187: seven sections with their headers, in this order (UI-3 adds Appearance, UI-7 Info)
 	local heads = {}
 	for _, h in ipairs(panel.headers) do
 		T.eq(h.fs:GetText(), NS:L(h.key), h.key .. ": the header says its name")
@@ -934,12 +934,12 @@ T.run("#177, #179, #187: the settings rows, their sections and the help under th
 	table.sort(heads, function(a, b) return a.y > b.y end)
 	local order = {}
 	for _, h in ipairs(heads) do table.insert(order, h.key:sub(13)) end
-	T.eq(table.concat(order, ","), "general,look,chat,narrator,modules,privacy", "the six sections, top to bottom")
+	T.eq(table.concat(order, ","), "general,look,chat,narrator,modules,privacy,info", "the seven sections, top to bottom")
 
 	-- no two controls on the same spot, every label left of its control
 	local spots, clash = {}, {}
 	for key, r in pairs(panel.rows) do
-		for _, c in ipairs({ r.button or r.switch or r.seg or r.slider or false }) do
+		for _, c in ipairs({ r.button or r.switch or r.seg or r.slider or r.box or false }) do   -- UI-7: a copy box is a control too
 			if c then
 				local p = c._s.points[1]
 				local spot = tostring(c.parent) .. "," .. p[2] .. "," .. p[3]
@@ -957,7 +957,7 @@ T.run("#177, #179, #187: the settings rows, their sections and the help under th
 	for _, s in ipairs(panel.sections) do
 		lowest = math.min(lowest, select(5, s:GetPoint()) - s:GetHeight())
 		for _, r in pairs(panel.rows) do
-			local c = r.button or r.switch or r.seg or r.slider
+			local c = r.button or r.switch or r.seg or r.slider or r.box
 			if c.parent == s and c ~= panel.reload then
 				T.ok(-c._s.points[1][3] + 24 <= s:GetHeight(), r.key .. ": the row is inside its section")
 			end

@@ -162,7 +162,16 @@ NS:RegisterLanguage("it", {
 		opt_resetwindows_tip = "Le finestre dell'addon tornano al loro posto iniziale sullo schermo, per questo personaggio.",
 		-- il pannello delle impostazioni in sezioni (#187) e la scala delle finestre (#182)
 		opt_section_general = "Generale", opt_section_chat = "Chat", opt_section_narrator = "Narratore",
-		opt_section_modules = "Moduli", opt_section_privacy = "Privacy",
+		opt_section_modules = "Moduli", opt_section_privacy = "Privacy", opt_section_info = "Informazioni",
+		-- Impostazioni > Informazioni e /au about (UI-ECO UI-7): i crediti, la licenza, l'avviso dei fan e i link come caselle da copiare
+		info_made_by = "Azeroth Unspoken è opera di Finland.",
+		info_nebula = "Un ringraziamento alla community NEBULA, di cui questo addon condivide lo stile e il logo. Il logo è usato con il permesso del suo proprietario e non è coperto dalla licenza del codice.",
+		info_licence = "Licenza: il codice è GPL-3.0-or-later; le frasi e i dati narrativi sono tutti i diritti riservati; il pacchetto di esempio è MIT; la documentazione è CC BY 4.0.",
+		info_fanmade = "Un addon fatto dai fan. Non è affiliato a Blizzard Entertainment né da essa approvato.",
+		info_copy_hint = "Il gioco non può aprire pagine web: clicca una casella e premi Ctrl+C per copiare il suo link.",
+		info_chat_title = "Crediti e link",
+		opt_link_repo = "Codice sorgente", opt_link_issues = "Segnala un problema", opt_link_site = "Community NEBULA",
+		opt_link_kofi = "Sostieni (Ko-fi)",
 		opt_modules_note = "* = in arrivo, non ancora attivo.",
 		opt_scale = "Scala delle finestre", opt_dialogue_size = "Testo dei dialoghi NPC", opt_dialogue_alpha = "Opacità dei dialoghi NPC",
 		win_close_tip = "Chiudi (Esc)",
@@ -374,6 +383,7 @@ NS:RegisterLanguage("it", {
 		help_memory = "svuota la memoria anti-ripetizione",
 		help_options = "apre il pannello delle impostazioni",
 		help_wizard = "rifà la procedura guidata del primo avvio",
+		help_about = "crediti e link (about chat: li stampa in chat)",
 		cmd_unknown = "comando sconosciuto '%s'. /au help elenca i comandi (i nomi sono sempre in inglese).",
 		cmd_unknown_hint = "comando sconosciuto '%s'. Intendevi /au %s? (i nomi dei comandi sono sempre in inglese; /au help li elenca)",
 

@@ -16,6 +16,9 @@ file belongs to a theme. All files are 32-bit uncompressed TGA with power-of-two
                              the first 40 are FDCP's, the last four (heart, quill, chat, scroll) are this addon's;
                              all drawn with Pillow shapes (no third-party artwork; docs/third-party.md)
   logo_256, logo_64          the addon's own logo from assets/logo-source.webp, with a round mask (full colour, never tinted)
+  nebula_dark_256, nebula_light_256   the NEBULA community logo with its word, from assets/nebula/nebula-logo-dark.png (Nebula,
+                             the dark theme) and assets/nebula/nebula-logo-light.png (Aurora): the credits on Settings > Info.
+                             Full colour, never tinted; the 512x492 art is centred on a transparent square (UI-ECO step UI-7)
 
 Usage: python -X utf8 tools/make_media.py   (needs Pillow; rewrites the files; the committed result is what ships)
 The list of files and their slice margins is mirrored in AzerothUnspoken/UI/Assets.lua, which
@@ -271,6 +274,17 @@ def logo_round(size):
     return img
 
 
+def nebula_logo(variant, size=256):
+    """The NEBULA community logo (assets/nebula/nebula-logo-<variant>.png, the owner's art cropped to its content box, 512x492 RGBA):
+    centred on a transparent square, then scaled. Full colour, never tinted; the file is used with its owner's permission and is
+    not covered by the code licence (docs/third-party.md)."""
+    art = Image.open(os.path.join(ROOT, "assets", "nebula", f"nebula-logo-{variant}.png")).convert("RGBA")
+    side = max(art.size)
+    square = Image.new("RGBA", (side, side), (0, 0, 0, 0))
+    square.paste(art, ((side - art.width) // 2, (side - art.height) // 2))
+    return square.resize((size, size), Image.LANCZOS)
+
+
 def save(img, name):
     path = os.path.join(OUT, name + ".tga")
     img.save(path, compression=None)   # uncompressed 32-bit
@@ -295,6 +309,8 @@ def main():
     made.append(save(white(sheet), "icons"))
     for size in (256, 64):
         made.append(save(logo_round(size), f"logo_{size}"))
+    for variant in ("dark", "light"):
+        made.append(save(nebula_logo(variant), f"nebula_{variant}_256"))
     total = 0
     for p in made:
         n = os.path.getsize(p)

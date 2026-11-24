@@ -29,6 +29,7 @@
 - [[Literary Forms|Literary-Forms]]
 - [[Languages]]
 - [[Privacy and Data|Privacy-and-Data]]
+- [[About and Credits|About]] · [[Informazioni (italiano)|About-it]]
 
 **Help**
 - [[Troubleshooting]]
