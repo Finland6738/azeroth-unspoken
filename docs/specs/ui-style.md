@@ -218,7 +218,7 @@ diagnostic) says so with `-- nolocale: the reason`; without a reason it fails. T
 FDCP shows its credits on an About tab of its main window. AU has no such tab: the **Info page lives in the client's Settings canvas** (a
 last section of `UI/SettingsFrame.lua`, `SettingsFrame.LINKS`, `LogoKey` and `ApplyLogo`; AU has no `UI/Windows/About.lua`). `/au about` opens Settings and scrolls to it, and `/au about chat` prints the same
 credits and the links to the chat. The page shows the credit to Finland and to the NEBULA community, the licence (code GPL-3.0-or-later, phrases and narrative data all rights reserved, example
-pack MIT, documents CC BY 4.0), the fan-made notice (not affiliated with or endorsed by Blizzard Entertainment) and four links, the GitHub repository and its issues, the NEBULA site and Ko-fi, each as a read-only box (`W.EditBox`:
+pack MIT, documents CC BY 4.0), the fan-made notice (not affiliated with or endorsed by Blizzard Entertainment) and one link, Ko-fi (owner rule 2026-11-24: the addon carries no link to the NEBULA site or the GitHub pages), as a read-only box (`W.EditBox`:
 the text is selected when the box takes the keyboard, and a change is put back at once) to copy with Ctrl+C. The texts are laid out in `Refresh`, because their height depends on the language. **Ko-fi appears only there and in the documents, never as a prompt.** The
 Info page also shows the **NEBULA community logo**, a picture of its own (not the addon's own round logo of the title bar): full-colour and never tinted, in a dark variant
 for Nebula and a light variant for Aurora, swapped with the theme without `/reload` ([ADR 0058](../adr/0058-nebula-ecosystem-look-and-credits.md), decision 7). The community logo is used with its owner's permission

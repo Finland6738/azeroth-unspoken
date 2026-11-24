@@ -156,7 +156,7 @@ SCENES = [
               "Anima del personaggio: sezioni, cursori, badge della fonte, argomenti da evitare"), soul_scene, "neutral"),
     ("wizard", ("First-run guide: the numbered steps and the cards", "Guida al primo avvio: i passi numerati e le schede"),
      wizard_scene, "neutral"),
-    ("settings-info", ("Settings > Info: who made it, the NEBULA community and its logo, the links to copy",
+    ("settings-info", ("Settings > Info: who made it, the NEBULA community and its logo, the Ko-fi link to copy",
                        "Impostazioni > Info: chi l'ha fatto, la community NEBULA e il suo logo, i link da copiare"),
      settings_scene, "neutral"),
     ("dialogue", ("Ambient NPC dialogue: the badge, the NPC voice, numbered answers",

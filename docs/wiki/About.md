@@ -33,9 +33,8 @@ Azeroth Unspoken is a fan-made addon. It is not affiliated with or endorsed by B
 |---|---|
 | The source code | https://github.com/Finland6738/azeroth-unspoken |
 | Bugs and ideas | https://github.com/Finland6738/azeroth-unspoken/issues |
-| The NEBULA community | https://nebula-community.github.io/giochi/wow-forever/ |
 | Support the author (optional) | https://ko-fi.com/finland6738 |
 
-In the game these four are read-only boxes: the game cannot open a web page, so click a box and press Ctrl+C to copy the link. Ko-fi is optional and unlocks nothing; the addon never asks for it, and its link is only on this page of the settings.
+In the game only the Ko-fi link is shown, in a read-only box: the game cannot open a web page, so click the box and press Ctrl+C to copy the link. The addon carries no other link. Ko-fi is optional and unlocks nothing; the addon never asks for it, and its link is only on this page of the settings.
 
 Italian version of this page: [[Informazioni (italiano)|About-it]].
