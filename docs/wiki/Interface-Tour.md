@@ -137,7 +137,7 @@ wheel, Chat, Narrator, Modules, Privacy and Info.* See [[Settings Reference|Sett
 ![Illustrative mockup: the Info section of the settings, with the NEBULA community logo](../design/mockups/png/settings-info.png)
 
 *Illustrative mockup: the Info section, the last one: who made the addon, the thanks to the NEBULA community with its
-logo (dark art on Nebula, light art on Aurora), the licence, and four links to copy with Ctrl+C. `/au about` opens it.*
+logo (dark art on Nebula, light art on Aurora), the licence, and the Ko-fi link to copy with Ctrl+C. `/au about` opens it.*
 See [[About and Credits|About]].
 
 ![Illustrative mockup: the journal in the light theme Aurora](../design/mockups/png/journal-memories-aurora.png)

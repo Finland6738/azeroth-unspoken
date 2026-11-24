@@ -8,6 +8,14 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### Ko-fi is the only link in the addon
+
+- **Changed**: by the owner's rule of 2026-11-24, the addon carries one link only, **Ko-fi**. Settings > Info and
+  `/au about chat` no longer show the GitHub repository, its issues page or the NEBULA community's site; the NEBULA
+  thanks and logo stay. The NEBULA site link is also gone from the READMEs, the wiki's About page and the CurseForge
+  credits. The GitHub links stay in the documentation. Mockups of the Info section redrawn. Not verified in the game
+  client: the Info section with one box.
+
 ## [0.3.1] - 2026-11-24
 
 A small development preview on top of 0.3.0: it adds the **radial emote wheel** (ADR 0059), a round wheel of the game's emotes that opens while a key is held and plays the one the mouse points at when the key is released, with presets, its own Settings section and commands, and the regression tests of the two layout fixes of 0.3.0. The key ships unbound. The lines are the same as in 0.3.0. Nothing of the wheel has been tried in the game client yet.

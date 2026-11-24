@@ -145,7 +145,7 @@ The addon answers to `/au` and `/unspoken`. Each command has one English name; t
 | `/au wizard` | reopens the wizard |
 | `/au wheel [set <slice> <emote>\|reset\|bind\|unbind]` | the emote wheel: no argument says its key and its slices; `set` puts an emote in a slice (`/au wheel set 3 dance`), `reset` the defaults, `bind` gives it the middle mouse button (two steps in the settings; never in combat), `unbind` takes it back; `presets`, `save <name>`, `use <name>`, `next` and `delete <name>` manage the presets |
 | `/au emotes` | every emote the game lists, with its command |
-| `/au about [chat]` | opens the settings on the **Info** section (credits, licence, fan-made notice and four links to copy); `chat` prints the same credits and links in the chat instead |
+| `/au about [chat]` | opens the settings on the **Info** section (credits, licence, fan-made notice and the Ko-fi link to copy); `chat` prints the same credits and link in the chat instead |
 | `/au debug [full\|trace]` | diagnostics: client capabilities, latest events, trapped errors; `trace` prints every recognised event, for the session |
 | `/au prof [reset\|copy]` | profiling of the session: timings of the line picker, memory, how often the narrator spoke or stayed silent and why; `copy` opens a box to copy it |
 | `/au probe [reset\|stop\|copy]` | tries the client APIs the next features need and prints AVAILABLE / MISSING / RESTRICTED with a sample; counts their events for the session |
@@ -163,7 +163,7 @@ The panel opens with `/au options` (it is also registered among the game's addon
 - **Narrator box**: text duration, opacity, size, locked position, history, test.
 - **Modules**: Personal, World, NPC dialogues, Memory, Emotions, Relationships, Stories, Social, Chat proposals, Audio (those not yet active, *Social* and *Audio*, are marked `*`), plus the presets *Complete*, *Personal RPG*, *Narrative world* and *Social RP*.
 - **Emote wheel**: its key (the middle mouse button after a second click), the number of slices (4-12), the emote names, the cancel zone, the hold delay, the sounds, the presets (shown, new, deleted) and the emote of each slice, stepped through the game's list or typed.
-- **Info**: who made the addon, the NEBULA community with its logo, the licence, the fan-made notice and four read-only boxes with the links (the GitHub repository, its issues, the NEBULA site and Ko-fi): click a box and press Ctrl+C. Also `/au about`.
+- **Info**: who made the addon, the NEBULA community with its logo, the licence, the fan-made notice and one read-only box with the only link the addon carries, Ko-fi: click it and press Ctrl+C. Also `/au about`.
 - The "speak" button, the name from Total RP 3, how the character is named (*Character's name*: first name, last name or both) and, with a separate consent, reading other players' public profiles (*Read others' Total RP 3*), the character's personality (`/au soul`), the immediate pause, the wizard.
 - Some choices are made **by command only**: the relationship axes and people (`/au relationships`), attraction and automatic registration of players (`/au relationships attraction|auto`), the automatic NPC dialogue offer (`/au talk offer`) and the maximum number of active stories (`/au stories max`).
 
@@ -298,7 +298,7 @@ Azeroth Unspoken is free, and its code is open. Its phrases are protected. The f
 </picture>
 
 - Concept and development: Finland.
-- With thanks to the **NEBULA** community, whose look and logo the addon shares ([the NEBULA site](https://nebula-community.github.io/giochi/wow-forever/)). The logo above is used with its owner's permission and is not covered by the code licence ([docs/third-party.md](docs/third-party.md)). The same credits are in the game: **Settings → Info**, or `/au about`.
+- With thanks to the **NEBULA** community, whose look and logo the addon shares. The logo above is used with its owner's permission and is not covered by the code licence ([docs/third-party.md](docs/third-party.md)). The same credits are in the game: **Settings → Info**, or `/au about`.
 - Licence: the code is GPL-3.0-or-later, the phrases and narrative data are all rights reserved, the example pack is MIT and the documentation is CC BY 4.0 (see [Licence](#license)).
 - Technical references consulted (not copied): [Atraeau/WoW-Addons](https://github.com/Atraeau/WoW-Addons) for the Forever API dump; the [Warcraft Wiki](https://warcraft.wiki.gg/wiki/World_of_Warcraft_API) for general API documentation. Full list in [docs/REFERENCES.md](docs/REFERENCES.md).
 - [Total RP 3](https://totalrp3.info/) belongs to its authors; Azeroth Unspoken only uses it as an optional integration.
