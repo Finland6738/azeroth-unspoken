@@ -2,7 +2,7 @@
 ## Title: Azeroth Unspoken - English phrases
 ## Notes: Texts of the phrases in English. Loaded by Azeroth Unspoken only when English is the chosen language.
 ## Author: Finland6738
-## Version: 0.3.0
+## Version: 0.3.1
 ## Dependencies: AzerothUnspoken
 ## LoadOnDemand: 1
 ## X-AzerothUnspoken-Language: enUS

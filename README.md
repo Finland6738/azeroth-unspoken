@@ -14,7 +14,7 @@ A distinctive, mysterious narrative companion for World of Warcraft that calls b
 
 Azeroth Unspoken is an addon for **World of Warcraft: Forever** (Interface `16001`). It bundles a local narrative engine and a database of hand-written lines, in Italian and English, that react to places, events and what your character does: a new zone, a fight, a serious wound, a level gained, a greeting.
 
-> **Status: under development (version 0.3.0 in the `.toc`); features of milestones M0–M3 are written.** The code has only been exercised outside the game, against a simulated client. **No test in the real client has been done yet** (the [G1](docs/G1_checklist.md) checklist, in Italian: tests G1, G2 and G3, 108 numbered steps plus the R sections), so expect surprises. See [Project status](#project-status).
+> **Status: under development (version 0.3.1 in the `.toc`); features of milestones M0–M3 are written.** The code has only been exercised outside the game, against a simulated client. **No test in the real client has been done yet** (the [G1](docs/G1_checklist.md) checklist, in Italian: tests G1, G2 and G3, 108 numbered steps plus the R sections), so expect surprises. See [Project status](#project-status).
 >
 > The documentation is in English, except the in-game test checklist ([`docs/G1_checklist.md`](docs/G1_checklist.md)) and the original design specification ([`docs/Immersion_Director_GDD_v1.0.md`](docs/Immersion_Director_GDD_v1.0.md)), both in Italian.
 
@@ -78,7 +78,7 @@ Other clients (retail, Classic Era, etc.) are neither supported nor tested. The 
 
 ## Installation
 
-The latest release is **0.3.0**, a development preview like the first ones (0.1.0, 0.2.0, 0.2.1): it brings the new NEBULA look, the features are in, the lines are still growing (about 62,000 per language), and it has not been played through in game yet.
+The latest release is **0.3.1**, a development preview like the first ones (0.1.0, 0.2.0, 0.2.1, 0.3.0): it adds the radial emote wheel to the NEBULA look of 0.3.0, the features are in, the lines are still growing (about 62,000 per language), and it has not been played through in game yet.
 
 1. Download `AzerothUnspoken-<version>.zip` from the [Releases page](https://github.com/Finland6738/azeroth-unspoken/releases) and unzip it. It holds only the addon folders. (The latest development state is the repository itself: `Code` → `Download ZIP`, or `git clone https://github.com/Finland6738/azeroth-unspoken`.)
 2. Copy **every folder whose name starts with `AzerothUnspoken`** into `World of Warcraft\_forever_\Interface\AddOns\`: the addon (`AzerothUnspoken`), the lines of each language (`AzerothUnspoken_enUS`, `AzerothUnspoken_itIT`) and of each continent (`AzerothUnspoken_Kalimdor`, `AzerothUnspoken_EasternKingdoms` and their `_enUS`/`_itIT` folders). The addon loads by itself only the language you chose and only the continent you are on, outside combat: you never pick a folder.

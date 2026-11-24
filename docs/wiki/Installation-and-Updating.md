@@ -10,10 +10,10 @@ This page explains how to install Azeroth Unspoken, how to check that it loaded,
 
 ## Download
 
-The latest release is **0.3.0**, a development preview like the first ones (0.1.0, 0.2.0, 0.2.1): it brings the new NEBULA look, every feature is in, the lines are still growing wave by wave, and it has not been played through in game yet. To get it:
+The latest release is **0.3.1**, a development preview like the first ones (0.1.0, 0.2.0, 0.2.1, 0.3.0): it adds the radial emote wheel to the NEBULA look of 0.3.0, every feature is in, the lines are still growing wave by wave, and it has not been played through in game yet. To get it:
 
 1. Open the [Releases page](https://github.com/Finland6738/azeroth-unspoken/releases).
-2. Under the latest release, download **`AzerothUnspoken-<version>.zip`** (for example `AzerothUnspoken-0.3.0.zip`). It holds only the addon folders.
+2. Under the latest release, download **`AzerothUnspoken-<version>.zip`** (for example `AzerothUnspoken-0.3.1.zip`). It holds only the addon folders.
 3. Unzip the file somewhere on your computer, for example on your desktop.
 
 To try the newest lines before the next release, download the repository itself instead: open the [GitHub repository](https://github.com/Finland6738/azeroth-unspoken), click the green **Code** button, then **Download ZIP**. Only the `AzerothUnspoken` folders inside it go into the game.

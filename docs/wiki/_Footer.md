@@ -1,3 +1,3 @@
-Azeroth Unspoken 0.3.0 · Manual last updated on 2026-11-24 · [[Report a bug or share feedback|Reporting-Bugs-and-Feedback]]
+Azeroth Unspoken 0.3.1 · Manual last updated on 2026-11-24 · [[Report a bug or share feedback|Reporting-Bugs-and-Feedback]]
 
 This wiki is generated from the `docs/wiki` folder of the repository: changes made directly here are overwritten.
