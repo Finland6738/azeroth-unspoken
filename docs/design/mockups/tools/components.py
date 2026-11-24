@@ -231,7 +231,7 @@ def dialogue(left, top, title, line=None, choices=(), lang="en", font=13, alpha=
 
 # ---------------------------------------------------------------------------------------------------------------
 # Journal (UI/JournalFrame.lua): 760 x 540; the intro (Small text-2), W.Tabs fitted to 728, the note, one DataTable
-# (text flex / date 104 mono / actions 196, rows of 28) down to 100 above the bottom; the summary, Export, Forget
+# (text flex / date 132 mono / actions 196, rows of 28) down to 100 above the bottom; the summary, Export, Forget
 # everything (danger) and Close at the bottom; W.Dialog and W.Toast over it
 # ---------------------------------------------------------------------------------------------------------------
 J_W, J_H, J_INNER = 760, 540, 728
@@ -272,7 +272,7 @@ def journal(left, top, tab, rows, lang="en", note=None, lock=None, stats=(14, 2,
     has_acts = any(r[2] for r in rows)
     cols = [("text", L(lang, "mem_col_text"), None, False)]
     if has_when:
-        cols.append(("when", L(lang, "mem_col_when"), 104, True))
+        cols.append(("when", L(lang, "mem_col_when"), 132, True))
     if has_acts:
         cols.append(("acts", "", 196, False))
     data = []

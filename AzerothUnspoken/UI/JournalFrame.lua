@@ -39,7 +39,7 @@ NS.JournalFrame = JournalFrame
 local WIDTH, HEIGHT = 760, 540
 local INNER = WIDTH - 32            -- usable width of the window
 local ROW_H = 28                    -- 24-unit buttons with room around them
-local WHEN_W, ACT_W = 104, 196      -- the date column and the column of actions, when a section has them
+local WHEN_W, ACT_W = 132, 196      -- the date column (a 16-character mono stamp, #296) and the column of actions, when a section has them
 local FOOT = 100                    -- the table ends this high above the bottom: the summary and the toast live under it
 local WRAP = 76                     -- characters per line of a story or a song
 

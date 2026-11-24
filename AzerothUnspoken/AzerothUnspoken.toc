@@ -2,7 +2,7 @@
 ## Title: Azeroth Unspoken
 ## Notes: An immersive roleplay companion for World of Warcraft
 ## Author: Finland6738
-## Version: 0.2.1
+## Version: 0.3.0
 ## SavedVariables: AzerothUnspokenDB
 ## SavedVariablesPerCharacter: AzerothUnspokenCharacterDB
 ## OptionalDeps: totalRP3
