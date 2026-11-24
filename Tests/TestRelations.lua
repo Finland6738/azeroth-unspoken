@@ -94,17 +94,17 @@ local function Under(rootName, pred)
 	return out
 end
 
+-- UI-5: what is seen (a hidden row, dialog or toast hides what is inside it: Tests/MockWoWAPI.lua)
 local function Texts(pred, rootName)
 	local out = {}
-	for _, w in ipairs(Under(rootName or ROOT, function(x) return x.kind == "FontString" and x:IsShown() end)) do
-		local t = w:GetText()
-		if t ~= "" and (not pred or pred(t)) then table.insert(out, t) end
+	for _, t in ipairs(VISIBLE_TEXTS(rootName or ROOT)) do
+		if not pred or pred(t) then table.insert(out, t) end
 	end
 	return out
 end
 
 local function Buttons(rootName)
-	return Under(rootName or ROOT, function(x) return x.kind == "Button" and x:IsShown() end)
+	return VISIBLE_BUTTONS(rootName or ROOT)
 end
 
 local function ButtonWithText(text, plain, rootName)
@@ -1010,23 +1010,28 @@ T.run("finestra Relazioni: elenco, dettaglio, cursori, note", function()
 	local names = Texts(function(t) return t == "Aldo-Stormrage" or t == "Zeno-Stormrage" or t == "Pip" end)
 	T.eq(#names, 3, "tre righe nell'elenco")
 	T.ok(#Texts(function(t) return t:find("amico", 1, true) end) >= 1, "l'etichetta è nella tabella")
-	-- ordinamento dall'intestazione
-	local header = ButtonWithText("Nome")
-	T.ok(header ~= nil, "intestazione Nome")
-	header:Click()
+	-- UI-5: the table starts with the newest seen first (its "Vista" column marked), and sorts from its header
+	local tbl = _G[ROOT].listTable
+	T.eq(tbl:GetSort(), "last", "all'inizio: per ultimo incontro")
+	T.eq(#tbl.heads, 6, "sei colonne")
+	T.eq(tbl.heads[1].label:GetText(), "NOME", "intestazione Nome (in maiuscolo)")
+	tbl.heads[1]:Click()
 	names = Texts(function(t) return t == "Aldo-Stormrage" or t == "Zeno-Stormrage" or t == "Pip" end)
 	T.eq(table.concat(names, ","), "Aldo-Stormrage,Pip,Zeno-Stormrage", "ordinata per nome")
-	ButtonWithText("Nome"):Click()
+	tbl.heads[1]:Click()
 	names = Texts(function(t) return t == "Aldo-Stormrage" or t == "Zeno-Stormrage" or t == "Pip" end)
 	T.eq(table.concat(names, ","), "Zeno-Stormrage,Pip,Aldo-Stormrage", "un secondo clic inverte")
-	-- filtro per tipo
-	ButtonWithText("Tutti"):Click()
+	-- filtro per tipo: un Segmented, il segmento scelto è alzato (non solo colorato)
+	local seg = _G[ROOT].kindSeg
+	T.eq(seg:Active(), "all", "all'inizio: tutti")
+	seg.buttons.npc:Click()
 	names = Texts(function(t) return t == "Aldo-Stormrage" or t == "Zeno-Stormrage" or t == "Pip" end)
 	T.eq(table.concat(names, ","), "Pip", "solo NPC")
-	ButtonWithText("NPC", true):Click()
+	T.ok(seg.thumb:IsShown() and seg:Active() == "npc", "il segmento scelto ha la sua forma")
+	seg.buttons.player:Click()
 	T.eq(table.concat(Texts(function(t) return t == "Aldo-Stormrage" or t == "Zeno-Stormrage" or t == "Pip" end), ","),
-		"Zeno-Stormrage,Aldo-Stormrage", "solo giocatori")
-	ButtonWithText("Giocatori", true):Click()   -- torna a tutti
+		"Zeno-Stormrage,Aldo-Stormrage", "solo giocatori (l'ordine scelto resta)")
+	seg.buttons.all:Click()   -- torna a tutti
 	-- ricerca nel nome
 	local boxes = Boxes()
 	boxes[1]:SetText("zen"); boxes[1].scripts.OnTextChanged(boxes[1], true)
@@ -1068,12 +1073,25 @@ T.run("finestra Relazioni: elenco, dettaglio, cursori, note", function()
 	T.eq(R:Get("player", zeno).user.label, R:LabelIds()[1], "il pulsante passa alla prima etichetta")
 	for _ = 1, #R:LabelIds() do ButtonWithText("Scelta:"):Click() end
 	T.eq(R:Get("player", zeno).user.label, nil, "e torna all'automatica")
-	-- eliminazione con conferma
+	-- UI-5: the removal asks through the Dialog, and a Toast says it was done
+	local rf = _G[ROOT]
 	ButtonWithText("Rimuovi la persona"):Click()
-	T.ok(R:Get("player", zeno) ~= nil, "il primo clic arma soltanto")
-	ButtonWithText("Conferma: rimuovi"):Click()
-	T.eq(R:Get("player", zeno), nil, "il secondo elimina")
+	T.ok(R:Get("player", zeno) ~= nil, "il pulsante chiede soltanto")
+	T.ok(rf.dialog:IsShown() and rf.dialog.title:GetText() == "Rimuovere questa persona?", "la domanda")
+	T.ok(rf.dialog.confirm.style == "danger" and rf.dialog.confirm:GetText() == "Rimuovi la persona", "il bottone ha la parola dell'azione, in stile pericolo")
+	rf.dialog.cancel:Click()
+	T.ok(R:Get("player", zeno) ~= nil and not rf.dialog:IsShown(), "Annulla non toglie nessuno")
+	ButtonWithText("Rimuovi la persona"):Click()
+	rf.dialog.scripts.OnKeyDown(rf.dialog, "ESCAPE")
+	T.ok(R:Get("player", zeno) ~= nil and not rf.dialog:IsShown(), "Esc annulla (e non toglie nessuno)")
+	T.ok(rf:IsShown() and rf.dialog._s.propagate == false, "e la finestra resta aperta: il tasto non va oltre")
+	rf.dialog.scripts.OnKeyDown(rf.dialog, "A")
+	T.eq(rf.dialog._s.propagate, true, "un altro tasto va avanti")
+	ButtonWithText("Rimuovi la persona"):Click()
+	rf.dialog.confirm:Click()
+	T.eq(R:Get("player", zeno), nil, "Conferma elimina")
 	T.eq(RelationsFrame:CurrentView(), "list", "si torna all'elenco")
+	T.eq(rf.toast:Message(), "Persona rimossa.", "e un Toast lo dice")
 	-- l'attrazione, quando è accesa, ha il suo cursore
 	R:SetSetting("attraction", true)
 	local aldo = "Aldo-Stormrage"
@@ -1150,12 +1168,11 @@ T.run("accesso dal diario", function()
 	-- tutte le schede hanno un pulsante dentro la finestra
 	JournalFrame:Open("memories")
 	local tabsShown = 0
-	for _, b in ipairs(Buttons("AzerothUnspokenJournal")) do
-		for _, t in ipairs(JournalFrame.tabs) do
-			if b:GetText() == NS:L(t.label) or b:GetText():find(NS:L(t.label), 1, true) then tabsShown = tabsShown + 1; break end
-		end
+	for _, t in ipairs(JournalFrame.tabs) do
+		local b = _G.AzerothUnspokenJournal.tabBar.buttons[t.id]
+		if b and b:IsShown() and b.label:GetText() == NS:L(t.label) then tabsShown = tabsShown + 1 end
 	end
-	T.ok(tabsShown >= #JournalFrame.tabs, "ogni scheda ha il suo pulsante")
+	T.ok(tabsShown == #JournalFrame.tabs, "ogni scheda ha il suo pulsante")
 	JournalFrame:Close()
 end)
 
@@ -1300,22 +1317,28 @@ local function CheckLayout(where, maxHeight)
 	T.eq(table.concat(bad, "; "), "", where .. ": nothing outside, nothing overlapping, no label overflowing")
 end
 
-T.run("U1 #171: the list rows are plain buttons that own their cells", function()
+T.run("U1 #171, UI-5: the list rows are the table's rows, which own their cells", function()
 	Fresh()
 	local zeno = Person("Zeno-Stormrage", { familiarity = 30, trust = 40, affection = 40 })
 	Person("Aldo-Stormrage", { familiarity = 10 })
 	RelationsFrame:Open("list")
-	local cells = Under(ROOT, function(w) return w.kind == "FontString" and w:IsShown() and w:GetText() == zeno end)
+	local cells = VISIBLE(ROOT, function(w) return w.kind == "FontString" and w:GetText() == zeno end)
 	T.eq(#cells, 1, "the name is in one cell")
 	local row = cells[1]:GetParent()
 	T.ok(row.kind == "Button" and row:IsShown(), "the cell belongs to its row button, drawn with it and not under it")
-	T.ok(row:GetParent() == _G[ROOT], "and the row belongs to the window")
+	T.ok(row:GetParent() == _G[ROOT].listTable.list, "and the row belongs to the table's list, under the window's header")
+	T.eq(#row.cells, 6, "the six cells of the row")
 	local n = 0
 	for _, c in ipairs(row.children) do if c.kind == "FontString" and c:GetText() ~= "" then n = n + 1 end end
-	T.eq(n, 6, "the six cells of the row are on the row")
+	T.eq(n, 6, "all six have their text")
 	T.eq(row:GetText(), "", "the row has no label of its own")
 	T.ok(row.scripts.OnEnter ~= nil, "a tooltip shows the whole row")
-	row.scripts.OnEnter(row); row.scripts.OnLeave(row)
+	row.scripts.OnEnter(row)
+	T.ok(NS.Widgets.TipText():find(zeno, 1, true) ~= nil, "the tooltip has the name")
+	row.scripts.OnLeave(row)
+	-- the numbers are in the mono font, in accent-text (UI-5)
+	local last, count = row.cells[5], row.cells[6]
+	T.ok(last._s.fontObj == NS.Theme.Font("Mono") and count._s.fontObj == NS.Theme.Font("Mono"), "dates and counts are mono")
 	row:Click()
 	T.eq(RelationsFrame:CurrentView(), "detail", "a click opens the person")
 	T.eq(#Texts(function(t) return t:find(zeno, 1, true) == 1 end), 1, "the right one")
@@ -1384,15 +1407,15 @@ T.run("U1 #182: a longer intro pushes the tabs and the views down and the window
 	local function IntroBottomAndTabs()
 		local frame = _G[ROOT]
 		local intro = Rect(frame.intro, frame)
-		local tabY = frame.tabList._s.points[#frame.tabList._s.points][3]
+		local tabY = frame.tabBar._s.points[#frame.tabBar._s.points][3]
 		return frame, intro, tabY
 	end
 	-- the usual intro: two lines, the tabs where they have always been
 	RelationsFrame:Open("list")
 	local frame, intro, tabY = IntroBottomAndTabs()
 	T.eq(tabY, -84, "two lines: the tabs at -84")
-	T.eq(frame:GetHeight(), 660, "and the window at 660")
-	local kindY = frame.kindBtn._s.points[#frame.kindBtn._s.points][3]
+	T.eq(frame:GetHeight(), 680, "and the window at 680")
+	local kindY = frame.kindSeg._s.points[#frame.kindSeg._s.points][3]
 	-- a longer one, from a translation or a larger font: five lines
 	local saved = NS.languages.en.ui.rel_intro
 	NS.languages.en.ui.rel_intro = saved .. " " .. saved
@@ -1402,17 +1425,17 @@ T.run("U1 #182: a longer intro pushes the tabs and the views down and the window
 		local lines = math.ceil(intro.t - intro.b) / 14
 		T.ok(lines >= 3, view .. ": the intro takes " .. lines .. " lines")
 		T.ok(tabY <= intro.b, view .. (": the tabs (%d) start under the intro (%d)"):format(tabY, intro.b))
-		T.ok(frame:GetHeight() > 660, view .. ": the window grew to " .. frame:GetHeight())
+		T.ok(frame:GetHeight() > 680, view .. ": the window grew to " .. frame:GetHeight())
 		CheckLayout("long intro, " .. view, 760)
 	end
-	T.ok(frame.kindBtn._s.points[#frame.kindBtn._s.points][3] < kindY, "the views moved down with the tabs")
+	T.ok(frame.kindSeg._s.points[#frame.kindSeg._s.points][3] < kindY, "the views moved down with the tabs")
 	RelationsFrame:Open({ kind = "player", key = key })
 	CheckLayout("long intro, detail", 760)
 	RelationsFrame:Close()
 	NS.languages.en.ui.rel_intro = saved
 	RelationsFrame:Open("list")
-	T.eq(frame.tabList._s.points[#frame.tabList._s.points][3], -84, "back to a short intro: the tabs return")
-	T.eq(frame:GetHeight(), 660, "and the window")
+	T.eq(frame.tabBar._s.points[#frame.tabBar._s.points][3], -84, "back to a short intro: the tabs return")
+	T.eq(frame:GetHeight(), 680, "and the window")
 	RelationsFrame:Close()
 	NS.db.locale = "it"
 end)

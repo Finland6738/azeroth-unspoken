@@ -1,60 +1,61 @@
--- Azeroth Unspoken: il diario del personaggio (GDD §12.2): ricordi, luoghi visitati, flag e momenti della sessione, con
--- cancellazione selettiva, ricordi permanenti ed esportazione testuale manuale in una finestra copiabile (l'addon non
--- può scrivere file). Si apre con /au journal (alias /au journal) o dal pannello delle impostazioni.
--- Le schede sono dati: JournalFrame:RegisterTab(id, def) aggiunge una scheda (S6b ci mette le relazioni, S9 gli archi).
--- Il guscio è W.Window (#187): bordo, fascia del titolo, pulsante di chiusura, Esc e scala. Pulsanti piatti e un elenco
--- a pagine: nessun modello di scorrimento da cui dipendere, tranne la finestra dell'esportazione (con ripiego).
+-- Azeroth Unspoken: the character's journal (GDD §12.2): memories, visited places, flags and the moments of the session,
+-- with selective deletion, permanent memories and a manual text export in a copyable window (the addon cannot write
+-- files). It opens with /au journal or from the settings panel.
+-- The tabs are data: JournalFrame:RegisterTab(id, def) adds one (S6b puts the relationships here, S9 the arcs).
+-- UI-5 (UI-ECO): the shell is W.Window; the sections are W.Tabs (a 2-unit bar that slides under the chosen one) and the
+-- rows of a section are a sortable W.DataTable (a column of text, a column of dates in the mono font, a column of at
+-- most two actions). An action that cannot be undone asks through W.Dialog, a result is said by W.Toast, every text is a
+-- Theme font: the window needs no W.Adopt. The window is redrawn on a theme change (W.Window's `refresh`).
 local ADDON, NS = ...
 local W = NS.Widgets
 local LM = NS.LivingMemory
+local Theme = NS.Theme
 
 ---@class AUJournalAction
----@field label string testo del pulsante (breve)
----@field tip? string suggerimento
----@field confirm? string chiave della domanda: l'azione non si annulla, quindi chiede un secondo clic
----@field key? string identità stabile dell'azione armata (predefinita: il testo della riga)
----@field fn fun() cosa fare; l'elenco si aggiorna da solo
+---@field label string short text of the button
+---@field tip? string tooltip
+---@field confirm? string key of the question: the action cannot be undone, so it asks through a Dialog first
+---@field done? string key of the toast that says the action was done (after the confirmation)
+---@field key? string unused since UI-5 (the old armed-button identity); kept so older tabs still register
+---@field fn fun() what to do; the list redraws by itself
 
 ---@class AUJournalRow
 ---@field text string
----@field actions? AUJournalAction[] al massimo due
+---@field t? number time of the entry: shown in the date column and used to sort by date
+---@field actions? AUJournalAction[] at most two
 
 ---@class AUJournalTab
 ---@field id string
----@field label string chiave del testo dell'interfaccia
+---@field label string key of the interface text
 ---@field rows fun(): AUJournalRow[]
----@field note? string chiave di una nota sotto le schede
----@field memory? boolean scheda della memoria: spenta o in sola lettura, si legge e basta
+---@field note? string key of a note under the tabs
+---@field memory? boolean a tab of the memory: off or read-only, it can only be read
+---@field plain? boolean|fun(): boolean rows to read in their order (headings, a story, a song): no sorting, no header
 
 ---@class AUJournalFrame
 local JournalFrame = NS:RegisterModule("journal")
 NS.JournalFrame = JournalFrame
 
-local MAX_ROWS = 11             -- righe per pagina, al massimo: la nota e le schede su due file ne tolgono
-local ROW_H = 28
-local ROW_W = 500               -- larghezza iniziale del testo di una riga: PlaceActions la riduce ai pulsanti (#183)
-local INNER_W = 568             -- larghezza utile della finestra
-local TAB_H, TAB_GAP = 24, 4    -- the tabs start under the introduction, whatever its number of lines (#182)
-local TAB_PAD, TAB_MIN = 24, 48 -- margine del testo nei pulsanti delle schede; larghezza minima
-local HEIGHT = 520
-local LIST_TOP, LIST_BOTTOM = 112, 444  -- l'elenco sta tra questi due (le pagine iniziano a 444 dall'alto)
-local ARM_SECONDS = 6           -- dopo il primo clic di una conferma si ha questo tempo per il secondo
+local WIDTH, HEIGHT = 760, 540
+local INNER = WIDTH - 32            -- usable width of the window
+local ROW_H = 28                    -- 24-unit buttons with room around them
+local WHEN_W, ACT_W = 104, 196      -- the date column and the column of actions, when a section has them
+local FOOT = 100                    -- the table ends this high above the bottom: the summary and the toast live under it
+local WRAP = 76                     -- characters per line of a story or a song
 
 ---@type AUJournalTab[]
 JournalFrame.tabs = {}
 local frame, exportFrame
-local rows, tabButtons = {}, {}
-JournalFrame.rows = rows   -- per i test: { text, hit, b[1..2], width }
--- armed: "Dimentica tutto" armato; confirm: la chiave dell'azione di riga armata; token: l'ultimo armamento
-local state = { tab = "memories", page = 1, armed = false, confirm = nil, token = 0 }
-local pageSize = MAX_ROWS
+local state = { tab = "memories" }
+local sorts = {}                    -- per section: { column id, descending } the player chose
+local shownTab                      -- the section the table shows now
 
----Aggiunge o sostituisce una scheda.
+---Adds or replaces a tab.
 ---@param id string
----@param def { label: string, rows: fun(): AUJournalRow[], note?: string, memory?: boolean }
+---@param def { label: string, rows: fun(): AUJournalRow[], note?: string, memory?: boolean, plain?: boolean|fun(): boolean }
 function JournalFrame:RegisterTab(id, def)
 	if type(id) ~= "string" or type(def) ~= "table" or type(def.rows) ~= "function" then return false end
-	local tab = { id = id, label = def.label, rows = def.rows, note = def.note, memory = def.memory == true }
+	local tab = { id = id, label = def.label, rows = def.rows, note = def.note, memory = def.memory == true, plain = def.plain }
 	for i, t in ipairs(self.tabs) do
 		if t.id == id then
 			self.tabs[i] = tab
@@ -65,31 +66,12 @@ function JournalFrame:RegisterTab(id, def)
 	return true
 end
 
----La memoria si può cambiare? nil se sì, altrimenti la chiave del perché (sola lettura o modulo spento).
+---Can the memory be changed? nil if yes, else the key of the reason (read-only or module off).
 ---@return string?
 function JournalFrame:MemoryLock()
 	if LM.readOnly then return "mem_state_readonly" end
 	if NS.db and NS.db.modules and NS.db.modules.memory == false then return "mem_state_off" end
 	return nil
-end
-
--- Le conferme a due clic ("Dimentica tutto" e le cancellazioni di una riga): un solo armamento alla volta, ciascuno
--- con il suo gettone; il timer disarma soltanto l'armamento che l'ha avviato, mai uno più recente.
-local function Disarm()
-	state.armed, state.confirm = false, nil
-end
-
----@param what true|string true: "Dimentica tutto"; una stringa: la chiave dell'azione di riga
-local function Arm(what)
-	Disarm()
-	state.token = state.token + 1
-	local token = state.token
-	if what == true then state.armed = true else state.confirm = what end
-	NS.Compat.After(ARM_SECONDS, function()
-		if state.token ~= token then return end
-		Disarm()
-		JournalFrame:Refresh()
-	end)
 end
 
 local function CurrentTab()
@@ -100,7 +82,7 @@ local function CurrentTab()
 end
 
 ---------------------------------------------------------------------------
--- Schede di base
+-- The base tabs
 ---------------------------------------------------------------------------
 -- UI-3: the colours of words inside a line are tokens of the current theme (W.Hex); a theme change redraws the window
 local function Muted(text) return W.Hex("text-3") .. text .. "|r" end
@@ -110,13 +92,13 @@ JournalFrame:RegisterTab("memories", { label = "mem_tab_memories", memory = true
 	for _, e in ipairs(LM:List()) do
 		local id = e.id
 		table.insert(out, {
-			text = ("%s%s  %s"):format(e.perm and W.Hex("accent-text") .. "[P]|r " or "", LM:Describe(e), Muted(LM.Stamp(e.t))),
+			text = ("%s%s"):format(e.perm and W.Hex("accent-text") .. "[P]|r " or "", LM:Describe(e)), t = e.t,
 			actions = {
 				{ label = NS:L("act_keep"), tip = NS:L("mem_perm_tip"), fn = function()
 					local ok, why = LM:SetPermanent(id)
 					if not ok and why == "limit" then NS:Print(NS:L("mem_perm_limit")) end
 				end },
-				{ label = NS:L("act_delete"), tip = NS:L("mem_delete_tip"), confirm = "mem_confirm_delete", key = "memory:" .. id,
+				{ label = NS:L("act_delete"), tip = NS:L("mem_delete_tip"), confirm = "mem_confirm_delete", done = "mem_toast_deleted",
 					fn = function() LM:Delete(id) end },
 			},
 		})
@@ -129,8 +111,8 @@ JournalFrame:RegisterTab("places", { label = "mem_tab_places", memory = true, ro
 	for _, p in ipairs(LM:Places()) do
 		local name = p.key or p.name
 		table.insert(out, {
-			text = ("%s  %s"):format(LM:DescribePlace(p), Muted(LM.Stamp(p.last))),
-			actions = { { label = NS:L("act_forget"), tip = NS:L("mem_forget_tip"), confirm = "mem_confirm_forget", key = "place:" .. name,
+			text = LM:DescribePlace(p), t = p.last,
+			actions = { { label = NS:L("act_forget"), tip = NS:L("mem_forget_tip"), confirm = "mem_confirm_forget", done = "mem_toast_place",
 				fn = function() LM:ForgetPlace(name) end } },
 		})
 	end
@@ -142,8 +124,8 @@ JournalFrame:RegisterTab("flags", { label = "mem_tab_flags", memory = true, rows
 	local data = LM:Data()
 	for _, name in ipairs(LM:FlagNames()) do
 		table.insert(out, {
-			text = ("%s  %s"):format(name, Muted(LM.Stamp(data.flags[name].t))),
-			actions = { { label = NS:L("act_clear"), tip = NS:L("mem_flag_tip"), confirm = "mem_confirm_flag", key = "flag:" .. name,
+			text = name, t = data.flags[name].t,
+			actions = { { label = NS:L("act_clear"), tip = NS:L("mem_flag_tip"), confirm = "mem_confirm_flag", done = "mem_toast_flag",
 				fn = function() LM:ClearFlag(name) end } },
 		})
 	end
@@ -153,7 +135,7 @@ end })
 JournalFrame:RegisterTab("session", { label = "mem_tab_session", note = "mem_session_note", memory = true, rows = function()
 	local out = {}
 	for _, e in ipairs(LM:SessionList()) do
-		table.insert(out, { text = ("%s  %s"):format(LM:Describe(e), Muted(LM.Stamp(e.t))) })
+		table.insert(out, { text = LM:Describe(e), t = e.t })
 	end
 	return out
 end })
@@ -163,7 +145,6 @@ end })
 ---------------------------------------------------------------------------
 local SA = NS.StoryArcs
 local selectedArc            -- id dell'arco aperto nel dettaglio (solo sessione)
-local WRAP = 76              -- caratteri per riga del dettaglio
 
 local function Chars(s)
 	return #s - #(s:gsub("[\128-\191]", ""))
@@ -307,7 +288,8 @@ local function ArcRows()
 	return out
 end
 
-JournalFrame:RegisterTab("stories", { label = "arc_tab", note = "arc_note", rows = ArcRows })
+-- headings, a story told in lines: read in their order, never sorted
+JournalFrame:RegisterTab("stories", { label = "arc_tab", note = "arc_note", plain = true, rows = ArcRows })
 
 ---------------------------------------------------------------------------
 -- Songbook (#122, ADR 0044): the pieces heard or read, the whole text read from the loaded pack (the songbook keeps
@@ -322,10 +304,6 @@ local function SongMark(fn, id, on)
 		local ok, why = fn(SB, id, on)
 		if not ok then NS:Print(NS:L("song_why_" .. tostring(why))) end
 	end
-end
-
-local function SongStamp(e)
-	return e.t > 0 and Muted(LM.Stamp(e.t)) or ""
 end
 
 local function SongRows()
@@ -365,7 +343,7 @@ local function SongRows()
 				ArcAction(e.muted and "act_unmute" or "act_mute", e.muted and "song_tip_unmute" or "song_tip_mute",
 					SongMark(SB.SetMuted, id, not e.muted)) } })
 			table.insert(out, { text = Muted(NS:L("song_forget_row")), actions = {
-				{ label = NS:L("act_forget"), tip = NS:L("song_tip_forget"), confirm = "song_confirm_forget", key = "piece:" .. id,
+				{ label = NS:L("act_forget"), tip = NS:L("song_tip_forget"), confirm = "song_confirm_forget", done = "song_toast_forgot",
 					fn = function()
 						SB:Forget(id)
 						selectedPiece = nil
@@ -382,11 +360,11 @@ local function SongRows()
 		if e.muted then table.insert(marks, NS:L("song_mark_muted")) end
 		local title = e.present and e.title or NS:L("song_missing", id)
 		if e.muted or not e.present then title = Muted(title) end
-		local text = ("%s%s  %s"):format(e.favourite and (W.Hex("accent-text") .. "*|r ") or "", title, SongStamp(e))
+		local text = ("%s%s"):format(e.favourite and (W.Hex("accent-text") .. "*|r ") or "", title)
 		if #marks > 0 then text = text .. "  " .. Muted("[" .. table.concat(marks, ", ") .. "]") end
-		table.insert(out, { text = text, actions = {
+		table.insert(out, { text = text, t = e.t > 0 and e.t or nil, actions = {
 			ArcAction("act_open", "song_tip_open", function() selectedPiece = id end),
-			{ label = NS:L("act_forget"), tip = NS:L("song_tip_forget"), confirm = "song_confirm_forget", key = "piece:" .. id,
+			{ label = NS:L("act_forget"), tip = NS:L("song_tip_forget"), confirm = "song_confirm_forget", done = "song_toast_forgot",
 				fn = function() SB:Forget(id) end },
 		} })
 	end
@@ -396,7 +374,9 @@ local function SongRows()
 	return out
 end
 
-JournalFrame:RegisterTab("songbook", { label = "song_tab", note = "song_note", memory = true, rows = SongRows })
+-- the list of pieces sorts; one piece open (its verses) is read in order
+JournalFrame:RegisterTab("songbook", { label = "song_tab", note = "song_note", memory = true, rows = SongRows,
+	plain = function() return selectedPiece ~= nil end })
 
 ---Opens the journal on a piece of the songbook (its whole text and marks).
 ---@param id string
@@ -407,256 +387,244 @@ function JournalFrame:OpenPiece(id)
 end
 
 ---------------------------------------------------------------------------
--- Finestra
+-- The window
 ---------------------------------------------------------------------------
--- un'azione di riga: le azioni con conferma chiedono un secondo clic sulla stessa riga; ogni altro clic disarma
-local function RunAction(row, k)
-	local a = row.actions and row.actions[k]
-	if not a or row.locked then return end
-	if a.confirm and state.confirm ~= row.keys[k] then
-		Arm(row.keys[k])
-		JournalFrame:Refresh()
-		return
-	end
-	Disarm()
-	a.fn()
-	JournalFrame:Refresh()
-end
+local tbl         -- the DataTable of the sections (frame.table)
 
-local function BuildRow(i)
-	local row = { keys = {}, tips = {} }
-	row.text = frame:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
-	row.text:SetWidth(ROW_W)
-	row.text:SetJustifyH("LEFT")
-	if row.text.SetWordWrap then row.text:SetWordWrap(false) end
-	-- sopra il testo, per il suggerimento con la riga intera; prende il mouse solo quando la riga è tagliata
-	row.hit = CreateFrame("Frame", nil, frame)
-	row.hit:SetSize(ROW_W, ROW_H - 4)
-	row.hit:EnableMouse(false)
-	W.Tooltip(row.hit, function() return row.full or "" end)
-	row.b = {}
-	for k = 1, 2 do
-		local b = W.FlatButton(frame, "", 24, 24, function() RunAction(row, k) end)
-		W.Tooltip(b, function() return row.tips[k] or "" end)
-		row.b[k] = b
-	end
-	rows[i] = row
-end
-
-local function PlaceRow(row, y)
-	row.y = y
-	row.text:ClearAllPoints()
-	row.text:SetPoint("TOPLEFT", 16, -(y + 6))
-	row.hit:ClearAllPoints()
-	row.hit:SetPoint("TOPLEFT", 16, -(y + 2))
-end
-
-local function EnsureTabButtons()
-	for _, t in ipairs(JournalFrame.tabs) do
-		if not tabButtons[t.id] then
-			tabButtons[t.id] = W.FlatButton(frame, "", TAB_MIN, TAB_H, function()
-				Disarm()
-				state.tab, state.page = t.id, 1
-				JournalFrame:Refresh()
-			end)
-		end
-	end
-end
-
----Larghezza di un testo nel carattere delle righe e dei pulsanti (hanno la stessa misura).
+---Width of a text in the font of the rows (hidden measure, never seen).
 ---@param text string
 ---@return number
 local function TextWidth(text)
 	frame.measure:SetText(text)
 	local w = frame.measure:GetStringWidth() or 0
-	-- un client che non misura i testi nascosti: una stima di 7 unità per carattere
+	-- a client that does not measure hidden texts: an estimate of 7 units a character
 	if w <= 0 and text ~= "" then w = Chars(text) * 7 end
 	return w
 end
 
--- #183: the row's buttons are short words ("Open", "Keep"), each as wide as its word (24 at least), from the right
--- margin; the text of the row takes the rest, and a longer text is cut (its tooltip has it whole)
-local ACTION_PAD, ACTION_GAP = 16, 4
-local function PlaceActions(row)
-	local x = 16 + INNER_W
+local function Say(key, tone, ...)
+	if frame and frame.toast then frame.toast:Say(NS:L(key, ...), tone or "ok") end
+end
+
+-- an action of a row: one that cannot be undone asks through the Dialog (its Confirm button carries the action's own
+-- word), then says what happened in a Toast; the others just run
+local function Do(a)
+	a.fn()
+	if a.done then Say(a.done) end
+	JournalFrame:Refresh()
+end
+
+local function RunAction(data, k)
+	local a = data and data.item.actions and data.item.actions[k]
+	if not a or data.locked then return end
+	if a.confirm then
+		frame.dialog:Ask({ title = NS:L(a.confirm), text = NS:L("dlg_undone"), confirm = a.label, cancel = NS:L("dlg_cancel"),
+			danger = true, onConfirm = function() Do(a) end })
+	else
+		Do(a)
+	end
+end
+
+-- a row of the table: its two action buttons are made once with the row's frame
+local function RowSetup(r)
+	r.acts = {}
+	for k = 1, 2 do
+		local b = W.FlatButton(r, "", 24, 24, function() RunAction(r.data, k) end)
+		W.Tooltip(b, function() return r.tips and r.tips[k] or "" end)
+		r.acts[k] = b
+	end
+	-- the row's text is cut at the column: the tooltip has it whole
+	W.Tooltip(r, function() return r.full or "" end)
+end
+
+-- #183: the buttons are short words ("Open", "Keep"), each as wide as its word (24 at least), from the right margin
+local function RowUpdate(r, data)
+	r.tips = {}
+	local x = -8
 	for k = 2, 1, -1 do
-		local b = row.b[k]
-		if b:IsShown() then
-			local w = math.max(24, math.ceil(TextWidth(b:GetText() or "")) + ACTION_PAD)
-			b:SetWidth(w)
-			x = x - w
+		local a = data.item.actions and data.item.actions[k]
+		local b = r.acts[k]
+		b:SetShown(a ~= nil)
+		if a then
+			-- an action that cannot be undone has the style of the destructive actions (#187)
+			b:SetStyle(a.confirm and "danger" or "secondary")
+			b:SetText(a.label)
+			W.FitButton(b, 24, 110)
+			b:SetEnabled(not data.locked)
+			r.tips[k] = data.locked and NS:L(data.locked) or a.tip
 			b:ClearAllPoints()
-			b:SetPoint("TOPLEFT", x, -row.y)
-			x = x - ACTION_GAP
+			b:SetPoint("RIGHT", r, "RIGHT", x, 0)
+			x = x - b:GetWidth() - 4
 		end
 	end
-	row.width = math.min(INNER_W, x - 16 - 8)
-	row.text:SetWidth(row.width)
-	row.hit:SetSize(row.width, ROW_H - 4)
+	local room = tbl.pos and tbl.pos[1] and tbl.pos[1].w - 8 or INNER
+	r.full = data.text ~= "" and TextWidth(data.text) > room and data.text or nil
 end
 
--- Schede larghe quanto il loro testo, su più file quando non stanno in una; la scheda scelta ha il bordo pieno e la
--- barra sotto il testo (#187), non solo un colore. Restituisce dove finiscono, dall'alto.
----@param current? AUJournalTab
----@param tabTop number dove iniziano, dall'alto
----@return number bottom
-local function LayoutTabs(current, tabTop)
-	local x, line = 0, 0
-	for _, b in pairs(tabButtons) do b:Hide() end   -- anche quelli di una scheda tolta
-	for _, t in ipairs(JournalFrame.tabs) do
-		local b = tabButtons[t.id]
-		b:Show()
-		local label = NS:L(t.label)
-		local w = math.max(TAB_MIN, math.min(INNER_W, math.ceil(TextWidth(label)) + TAB_PAD))
-		if x > 0 and x + w > INNER_W then x, line = 0, line + 1 end
-		local top = tabTop + line * (TAB_H + TAB_GAP)
-		b:SetWidth(w)
-		b:ClearAllPoints()
-		b:SetPoint("TOPLEFT", 16 + x, -top)
-		b:SetText(label)
-		b:SetSelected(t == current)
-		x = x + w + TAB_GAP
-	end
-	return tabTop + (line + 1) * (TAB_H + TAB_GAP)
-end
+local COLUMNS = {
+	{ id = "text", title = "", flex = 1, text = function(d) return d.text end, value = function(d) return d.sortText end },
+	{ id = "when", title = "", width = WHEN_W, mono = true, text = function(d) return d.when end, value = function(d) return d.t or 0 end },
+	{ id = "acts", title = "", width = ACT_W, sortable = false, text = function() return "" end },
+}
 
 local function Build()
-	-- the shell (#187): hidden at once (#192), title band, close box, Esc (#174), scale (#182)
-	frame = W.Window(UIParent, 600, HEIGHT, "mem_title", { name = "AzerothUnspokenJournal", point = { "CENTER", 0, 10 },
+	-- the shell (#187): hidden at once (#192), title bar, close box, Esc (#174), scale (#182)
+	frame = W.Window(UIParent, WIDTH, HEIGHT, "mem_title", { name = "AzerothUnspokenJournal", point = { "CENTER", 0, 10 },
 		refresh = function() JournalFrame:Refresh() end })
-	-- chiusa la finestra (pulsante, Esc, comando), nessuna conferma resta armata
-	frame:SetScript("OnHide", Disarm)
+	-- the window closes (button, Esc, command): a question that was open is cancelled, the toast goes
+	frame:SetScript("OnHide", function()
+		if frame.dialog:IsShown() then frame.dialog:Hide() end
+		frame.toast:Dismiss()
+	end)
 
-	-- the introduction says what is kept and what never is: the font of a privacy note, 12 units (#182)
-	frame.intro = frame:CreateFontString(nil, "ARTWORK", W.TEXT_FONT)
+	-- the introduction says what is kept and what never is: 12 units (#182)
+	frame.intro = Theme.NewText(frame, "Small", "text-2")
 	frame.intro:SetPoint("TOPLEFT", 16, -W.TOP)
-	frame.intro:SetWidth(INNER_W)
+	frame.intro:SetWidth(INNER)
 	frame.intro:SetJustifyH("LEFT")
-	-- misura i testi e non si vede mai
-	frame.measure = frame:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
+	-- measures the texts of the rows and is never seen
+	frame.measure = Theme.NewText(frame, "Body", "text-1")
 	frame.measure:Hide()
 
-	-- la nota della scheda e lo stato della memoria: una riga propria sotto le schede, sopra l'elenco
-	frame.note = frame:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
-	frame.note:SetWidth(INNER_W)
+	-- the sections: a 2-unit bar slides under the chosen one (UI-5); a click changes the section
+	frame.tabBar = W.Tabs(frame, {}, function(id)
+		if frame.syncing then return end
+		state.tab = id
+		JournalFrame:Refresh()
+	end)
+	frame.tabBar:SetWidth(INNER)
+
+	-- the note of the section and the state of the memory: a line of its own under the tabs, above the table
+	frame.note = Theme.NewText(frame, "Small", "text-2")
+	frame.note:SetWidth(INNER)
 	frame.note:SetJustifyH("LEFT")
 
-	for i = 1, MAX_ROWS do BuildRow(i) end
+	frame.table = W.DataTable(frame, COLUMNS, { rowHeight = ROW_H, pool = 24, rowSetup = RowSetup, rowUpdate = RowUpdate })
+	tbl = frame.table
 
-	frame.prev = W.FlatButton(frame, "", 28, 24, function()
-		Disarm()
-		state.page = state.page - 1
-		JournalFrame:Refresh()
-	end)
-	frame.prev:SetPoint("BOTTOMLEFT", 16, 52)
-	frame.pageText = frame:CreateFontString(nil, "ARTWORK", "GameFontNormal")
-	frame.pageText:SetPoint("BOTTOMLEFT", 52, 57)
-	frame.pageText:SetWidth(140)
-	frame.pageText:SetJustifyH("LEFT")
-	frame.next = W.FlatButton(frame, "", 28, 24, function()
-		Disarm()
-		state.page = state.page + 1
-		JournalFrame:Refresh()
-	end)
-	frame.next:SetPoint("BOTTOMLEFT", 196, 52)
-	frame.stats = frame:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
-	frame.stats:SetPoint("BOTTOMRIGHT", -16, 58)
+	frame.stats = Theme.NewText(frame, "Small", "text-2")
+	frame.stats:SetPoint("BOTTOMLEFT", 16, 56)
 	frame.stats:SetWidth(340)
-	frame.stats:SetJustifyH("RIGHT")
+	frame.stats:SetJustifyH("LEFT")
+	if frame.stats.SetWordWrap then frame.stats:SetWordWrap(false) end
 
 	frame.export = W.FlatButton(frame, "", 110, 24, function()
-		Disarm()
-		JournalFrame:Refresh()
 		JournalFrame:ShowExport()
 	end)
 	frame.export:SetPoint("BOTTOMLEFT", 16, 16)
-	-- "Dimentica tutto" chiede conferma: il primo clic arma il pulsante, il secondo (entro pochi secondi) azzera.
-	-- Lo stile delle azioni che perdono dati (#187): bordo rosso, pieno mentre aspetta la conferma.
+	-- "Forget everything" asks through the Dialog; a destructive action, so the danger style (#187)
 	frame.reset = W.FlatButton(frame, "", 170, 24, function()
-		if state.armed then
-			Disarm()
-			LM:Reset("all")
-		else
-			Arm(true)
-		end
-		JournalFrame:Refresh()
+		frame.dialog:Ask({ title = NS:L("mem_reset_dlg_title"), text = NS:L("mem_reset_dlg_text"), confirm = NS:L("mem_reset"),
+			cancel = NS:L("dlg_cancel"), danger = true, onConfirm = function()
+				LM:Reset("all")
+				Say("mem_toast_reset")
+				JournalFrame:Refresh()
+			end })
 	end, "danger")
 	frame.reset:SetPoint("BOTTOMLEFT", 136, 16)
 	W.Tooltip(frame.reset, function() return NS:L(JournalFrame:MemoryLock() or "mem_reset_tip") end)
 	frame.close = W.FlatButton(frame, "", 110, 24, function() JournalFrame:Close() end)
 	frame.close:SetPoint("BOTTOMRIGHT", -16, 16)
+
+	frame.dialog = W.Dialog(frame, "AzerothUnspokenJournalDialog", { width = 440 })
+	frame.toast = W.Toast(frame)
+	frame.toast:ClearAllPoints()
+	frame.toast:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", -16, 48)
 	NS.Windows:Register(frame)   -- #181: raised on a click, cascaded, the narrator steps aside
 end
 
----Ridisegna l'elenco (se la finestra è aperta).
+-- the tabs of the window follow JournalFrame.tabs: a tab another module registered later is added, one removed is hidden
+local function SyncTabs()
+	local bar = frame.tabBar
+	frame.syncing = true
+	local seen = {}
+	for _, t in ipairs(JournalFrame.tabs) do
+		seen[t.id] = true
+		bar:AddTab(t.id, NS:L(t.label))
+		bar:SetTabText(t.id, NS:L(t.label))
+		bar:SetTabShown(t.id, true)
+	end
+	for id in pairs(bar.buttons) do
+		if not seen[id] then bar:SetTabShown(id, false) end
+	end
+	-- eight or more tabs with the names of a larger font take the room around their texts, never the window's width
+	bar:Fit(INNER)
+	local tab = CurrentTab()
+	if tab then bar:Select(tab.id) end
+	frame.syncing = false
+end
+
+local function Plain(tab)
+	local p = tab.plain
+	if type(p) == "function" then p = p() end
+	return p == true
+end
+
+---Redraws the window (if it is open).
 function JournalFrame:Refresh()
 	if not frame or not frame:IsShown() then return end
-	EnsureTabButtons()
 	frame.title:SetText(NS:L("mem_title"))
 	frame.intro:SetText(NS:L("mem_intro"))
+	SyncTabs()
 	local tab = CurrentTab()
 	local lock = self:MemoryLock()
 	local tabLock = tab and tab.memory and lock or nil
-	if lock then Disarm() end
 
-	-- dall'alto: l'introduzione, le schede sotto di essa (#182), la nota (con lo stato della memoria), poi tante righe
-	-- quante ne stanno sopra le pagine
-	local top = LayoutTabs(tab, W.TOP + math.ceil(frame.intro:GetStringHeight() or 14) + 10)
+	-- from the top: the introduction, the tabs under it (#182), the note (with the state of the memory), the table
+	local top = W.TOP + math.ceil(frame.intro:GetStringHeight() or 14) + 8
+	frame.tabBar:ClearAllPoints()
+	frame.tabBar:SetPoint("TOPLEFT", frame, "TOPLEFT", 16, -top)
+	top = top + frame.tabBar:GetHeight() + 6
 	local note = tab and tab.note and NS:L(tab.note) or ""
 	if tabLock then note = W.Hex("warn") .. NS:L(tabLock) .. "|r" .. (note ~= "" and ("\n" .. note) or "") end
 	frame.note:ClearAllPoints()
-	frame.note:SetPoint("TOPLEFT", 16, -(top + 2))
+	frame.note:SetPoint("TOPLEFT", 16, -top)
 	frame.note:SetText(note)
 	frame.note:SetShown(note ~= "")
-	if note ~= "" then top = top + 2 + math.ceil(frame.note:GetStringHeight() or 0) + 4 end
-	top = math.max(LIST_TOP, top)
-	pageSize = math.max(1, math.min(MAX_ROWS, math.floor((LIST_BOTTOM - top) / ROW_H)))
+	if note ~= "" then top = top + math.ceil(frame.note:GetStringHeight() or 0) + 6 end
+	tbl:ClearAllPoints()
+	tbl:SetPoint("TOPLEFT", frame, "TOPLEFT", 16, -top)
+	tbl:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", -16, FOOT)
 
-	local list = tab and tab.rows() or {}
-	local pages = math.max(1, math.ceil(#list / pageSize))
-	state.page = math.max(1, math.min(pages, state.page))
-	for i = 1, MAX_ROWS do
-		local row = rows[i]
-		local item = i <= pageSize and list[(state.page - 1) * pageSize + i] or nil
-		PlaceRow(row, top + (i - 1) * ROW_H)
-		row.actions = item and item.actions or nil
-		row.locked = tabLock ~= nil
-		local text = item and item.text or (i == 1 and #list == 0 and Muted(NS:L("mem_empty")) or "")
-		for k = 1, 2 do
-			local a = row.actions and row.actions[k]
-			local b = row.b[k]
-			row.keys[k] = a and (tab.id .. ":" .. (a.key or item.text) .. ":" .. k) or nil
-			b:SetShown(a ~= nil)
-			if a then
-				local armed = a.confirm ~= nil and state.confirm == row.keys[k]
-				-- an action that cannot be undone has the style of the destructive actions (#187)
-				b:SetStyle(a.confirm and "danger" or "secondary")
-				b:SetArmed(armed)
-				b:SetText(armed and NS:L("mem_confirm_btn") or a.label)
-				b:SetEnabled(tabLock == nil)
-				row.tips[k] = tabLock and NS:L(tabLock) or (armed and NS:L("mem_confirm_tip") or a.tip)
-				if armed then text = W.Hex("warn") .. NS:L(a.confirm) .. "|r " .. text end
-			end
-		end
-		PlaceActions(row)
-		row.text:SetText(text)
-		-- riga tagliata: il suggerimento la mostra intera
-		row.full = text ~= "" and TextWidth(text) > row.width and text or nil
-		row.hit:EnableMouse(row.full ~= nil)
+	-- the rows of the section as the table's data
+	local list, data = tab and tab.rows() or {}, {}
+	local hasWhen, hasActions = false, false
+	for i, item in ipairs(list) do
+		local plainText = tostring(item.text or ""):gsub("|c%x%x%x%x%x%x%x%x", ""):gsub("|r", "")
+		local when = item.t and item.t > 0 and LM.Stamp(item.t) or ""
+		hasWhen = hasWhen or when ~= ""
+		hasActions = hasActions or (item.actions ~= nil and #item.actions > 0)
+		data[i] = { item = item, text = item.text or "", sortText = plainText:lower(), t = item.t, when = when, locked = tabLock }
 	end
-	frame.pageText:SetText(NS:L("mem_page", state.page, pages))
-	frame.prev:SetText(NS:L("mem_prev"))
-	frame.next:SetText(NS:L("mem_next"))
-	frame.prev:SetEnabled(state.page > 1)
-	frame.next:SetEnabled(state.page < pages)
+	-- the columns the section has: the others give their room to the text
+	COLUMNS[2].width, COLUMNS[3].width = hasWhen and WHEN_W or 0, hasActions and ACT_W or 0
+	tbl:SetTitles({ text = NS:L("mem_col_text"), when = NS:L("mem_col_when") })
+	local plain = Plain(tab)
+	tbl:SetHeaderShown(not plain)
+	tbl:SetSortable(not plain)
+	tbl.heads[2]:SetShown(hasWhen and not plain)
+	tbl.heads[3]:Hide()
+	tbl:Layout()
+	tbl:SetEmptyText(NS:L("mem_empty"))
+	-- each section keeps the order the player chose; a view that is read in order has none
+	local same = shownTab == tab.id
+	if not same then
+		if shownTab then sorts[shownTab] = { tbl:GetSort() } end
+		tbl:ClearSort()
+	end
+	local keep = same and tbl:Backend() ~= "scrollbox" and tbl.offset or 0
+	tbl:SetData(data)
+	local saved = sorts[tab.id]
+	if not same and not plain and saved and saved[1] then tbl:SortBy(saved[1], saved[2]) end
+	if keep > 0 then tbl:SetOffset(keep) end
+	shownTab = tab.id
+
 	local st = LM:Stats()
 	frame.stats:SetText(NS:L("mem_summary", st.memories, st.permanent, st.places, st.flags))
 	frame.export:SetText(NS:L("mem_export"))
-	frame.reset:SetText(NS:L(state.armed and "mem_reset_confirm_btn" or "mem_reset"))
-	frame.reset:SetArmed(state.armed)
+	frame.reset:SetText(NS:L("mem_reset"))
 	frame.reset:SetEnabled(lock == nil)
 	frame.close:SetText(NS:L("mem_close"))
-	W.Adopt(frame)   -- UI-3: rows made by this redraw take the theme's text colours
 end
 
 ---@return boolean
@@ -664,7 +632,7 @@ function JournalFrame:IsOpen()
 	return frame ~= nil and frame:IsShown()
 end
 
----@param tab? string id di una scheda
+---@param tab? string id of a tab
 ---@return boolean opened
 function JournalFrame:Open(tab)
 	if not frame then
@@ -675,8 +643,8 @@ function JournalFrame:Open(tab)
 			return false
 		end
 	end
-	if tab then state.tab, state.page = tab, 1 end
-	Disarm()
+	if tab then state.tab = tab end
+	if frame.dialog:IsShown() then frame.dialog:Hide() end   -- a question left over from before is cancelled
 	frame:Show()
 	self:Refresh()
 	return true
@@ -687,7 +655,7 @@ function JournalFrame:Close()
 	if exportFrame then exportFrame:Hide() end
 end
 
----Apre o chiude la finestra. false se non si può costruire (i comandi ripiegano sul testo).
+---Opens or closes the window. false if it cannot be built (the commands fall back to text).
 ---@return boolean handled
 function JournalFrame:Toggle()
 	if self:IsOpen() then
@@ -697,13 +665,13 @@ function JournalFrame:Toggle()
 	return self:Open()
 end
 
--- tasto assegnato (#183): open or close the journal
+-- key binding (#183): open or close the journal
 function AzerothUnspoken_Journal()
 	if NS.db then JournalFrame:Toggle() end
 end
 
 ---------------------------------------------------------------------------
--- Esportazione: un testo da selezionare e copiare
+-- Export: a text to select and copy
 ---------------------------------------------------------------------------
 local EXPORT_W, EXPORT_H = 600, 440
 local BOX_W = EXPORT_W - 32 - 28   -- the scroll bar of the template sits right of the box
@@ -724,12 +692,16 @@ end
 local function BuildExport()
 	exportFrame = W.Window(UIParent, EXPORT_W, EXPORT_H, "mem_export", { name = "AzerothUnspokenJournalExport" })
 	exportFrame:SetFrameStrata("FULLSCREEN_DIALOG")
-	exportFrame.help = exportFrame:CreateFontString(nil, "ARTWORK", W.TEXT_FONT)
+	exportFrame.help = Theme.NewText(exportFrame, "Small", "text-2")
 	exportFrame.help:SetPoint("TOPLEFT", 16, -W.TOP)
 	exportFrame.help:SetWidth(EXPORT_W - 32)
 	exportFrame.help:SetJustifyH("LEFT")
 
-	-- casella di testo su più righe dentro un riquadro scorrevole; senza il modello standard, la casella da sola
+	-- the field the text sits in: a raised surface under the scroll frame
+	exportFrame.field = Theme.Slice(exportFrame, "rr_fill_8", "surface-2", "BACKGROUND")
+	exportFrame.field:SetPoint("TOPLEFT", exportFrame, "TOPLEFT", 12, -(BOX_TOP - 4))
+	exportFrame.field:SetPoint("BOTTOMRIGHT", exportFrame, "BOTTOMRIGHT", -12, BOX_BOTTOM - 4)
+	-- a multi-line box inside a scroll frame; without the standard template, the box alone
 	local scroll
 	pcall(function()
 		scroll = CreateFrame("ScrollFrame", "AzerothUnspokenJournalExportScroll", exportFrame, "UIPanelScrollFrameTemplate")
@@ -738,10 +710,14 @@ local function BuildExport()
 	local box = CreateFrame("EditBox", nil, scroll or exportFrame)
 	box:SetMultiLine(true)
 	box:SetAutoFocus(false)
+	-- the chat font covers every glyph a name can have; the theme gives it its colour
 	box:SetFontObject(ChatFontNormal or GameFontHighlight)
+	Theme.Text(box, "text-1")
+	box.auThemed = true
 	box:SetWidth(BOX_W)
 	-- measures the text in the font and width of the box, never shown
 	exportFrame.measure = exportFrame:CreateFontString(nil, "ARTWORK", "ChatFontNormal")
+	exportFrame.measure.auThemed = true   -- hidden, in the box's own font: it only measures
 	exportFrame.measure:SetWidth(BOX_W)
 	exportFrame.measure:Hide()
 	if scroll then
@@ -760,7 +736,7 @@ local function BuildExport()
 	else
 		box:SetPoint("TOPLEFT", 16, -BOX_TOP)
 	end
-	-- sola lettura: ciò che si scrive viene rimesso com'era, così resta solo da selezionare e copiare
+	-- read only: what is typed is put back as it was, so it can only be selected and copied
 	box:SetScript("OnTextChanged", function(self, byUser)
 		if byUser and exportFrame.text then
 			self:SetText(exportFrame.text)
@@ -771,13 +747,18 @@ local function BuildExport()
 	exportFrame.box = box
 	exportFrame.close = W.FlatButton(exportFrame, "", 110, 24, function() exportFrame:Hide() end)
 	exportFrame.close:SetPoint("BOTTOMRIGHT", -16, 16)
+	-- the toast says the text is ready (UI-5); it sits at the left of the footer, the Close button is at the right
+	exportFrame.toast = W.Toast(exportFrame)
+	exportFrame.toast:ClearAllPoints()
+	exportFrame.toast:SetPoint("BOTTOMLEFT", exportFrame, "BOTTOMLEFT", 16, 6)
+	exportFrame:HookScript("OnHide", function() exportFrame.toast:Dismiss() end)
 end
 
----Apre la finestra con un testo, già selezionato, pronto per Ctrl+C: il diario, o quello che altri moduli passano
----(le relazioni di S6b).
----@param text? string il testo (predefinito: l'esportazione del diario)
----@param titleKey? string chiave del titolo (predefinita: mem_export)
----@return boolean opened false se la finestra non si può costruire
+---Opens the window with a text, already selected, ready for Ctrl+C: the journal, or what other modules pass (the
+---relationships of S6b).
+---@param text? string the text (default: the journal's export)
+---@param titleKey? string key of the title (default: mem_export)
+---@return boolean opened false if the window cannot be built
 function JournalFrame:ShowExport(text, titleKey)
 	if not exportFrame then
 		local ok, err = pcall(BuildExport)
@@ -799,6 +780,7 @@ function JournalFrame:ShowExport(text, titleKey)
 	if exportFrame.scroll and exportFrame.scroll.SetVerticalScroll then exportFrame.scroll:SetVerticalScroll(0) end
 	exportFrame.box:HighlightText()
 	exportFrame.box:SetFocus()
+	exportFrame.toast:Say(NS:L("mem_toast_export"), "ok")
 	return true
 end
 

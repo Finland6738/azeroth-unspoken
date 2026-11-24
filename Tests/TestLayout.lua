@@ -328,6 +328,37 @@ T.run("UI-3: the widgets keep their contrast in Nebula and in Aurora", function(
 	end
 end)
 
+-- UI-ECO UI-5: the texts of the journal and of the relationships window, on the window and on the row under the mouse (a row
+-- of a table is surface-2 while hovered), in both themes. Every pair is 4.5:1; a bar or an edge is 3:1.
+T.run("UI-5: the journal's and the relationships' texts keep their contrast in Nebula and in Aurora", function()
+	local Th = NS.Theme
+	local function C(token, id) return { Th.Color(token, id) } end
+	local PAIRS = {
+		-- text, surface, what it is
+		{ "text-1", "bg", "a row's text" }, { "text-1", "surface-2", "a row's text, hovered" },
+		{ "accent-text", "bg", "a number in the mono font" }, { "accent-text", "surface-2", "a number, hovered" },
+		{ "text-3", "bg", "a muted word in a row" }, { "text-3", "surface-2", "a muted word, hovered" },
+		{ "ok", "surface-2", "a chosen answer in a row, hovered" }, { "warn", "surface-2", "a warning, hovered" },
+		{ "text-2", "bg", "the intro, a note, the summary" }, { "warn", "bg", "the memory state in a note" },
+		{ "text-2", "bg", "a tab under the mouse" }, { "text-1", "bg", "the tab chosen" }, { "text-3", "bg", "the other tabs" },
+		{ "text-3", "surface-2", "an empty table's message and the headers" }, { "accent-text", "surface-2", "the sorted header" },
+		{ "err", "bg", "a danger button in the footer" }, { "err", "surface-2", "a danger button in a row, hovered" },
+		{ "err", "surface-1", "the danger button of the dialog" }, { "text-1", "surface-3", "a secondary button" },
+		{ "text-2", "surface-1", "the dialog's question" }, { "text-1", "surface-1", "the dialog's title" },
+		{ "text-1", "raised", "the toast" }, { "text-1", "surface-2", "the search box and the copy box" },
+		{ "text-1", "raised", "the chosen segment of the kind filter" }, { "text-3", "surface-2", "the other segments" },
+	}
+	for _, id in ipairs(Th.ORDER) do
+		for _, pair in ipairs(PAIRS) do
+			local bg = Th.Over(C(pair[2], id), C("bg", id))
+			local ratio = Th.Contrast(Th.Over(C(pair[1], id), bg), bg)
+			T.ok(ratio >= 4.5, ("%s, %s: %s on %s %.2f"):format(id, pair[3], pair[1], pair[2], ratio))
+		end
+		-- the sliding bar of the tabs is a graphic: 3:1 against the window
+		T.ok(Th.Contrast(C("accent", id), C("bg", id)) >= 3, id .. ", the tab bar")
+	end
+end)
+
 -- UI-ECO UI-4: the voices of the narrator keep their contrast (spec section 2.3). A voice colour is a token (voice-*); the box
 -- is the `bg` surface, opaque or translucent over the world. Body text and the label are 4.5:1 on the opaque surface in
 -- both themes; over a translucent box the contrast is worked out over a white world (the rule of docs/design/UI_REVIEW.md)

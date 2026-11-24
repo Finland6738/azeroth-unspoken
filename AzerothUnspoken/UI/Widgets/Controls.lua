@@ -174,11 +174,14 @@ end
 
 ---tabs: { { id = "people", text = "People" }, ... }. The active tab is text-1 with a 2-unit accent bar under it (the bar
 ---marks the choice, not the colour only); the others text-3 (text-2 on hover). The bar fades in over 200 ms.
----:Select(id), :SetTabShown(id, bool), :SetTabText(id, text), :Active(), :Layout(). onSelect(id) runs after a change.
+---The 2-unit bar slides from the old tab to the new one in 200 ms (Motion.Slide; at once with animations off).
+---:Select(id), :SetTabShown(id, bool), :SetTabText(id, text), :AddTab(id, text), :Fit(maxWidth), :Active(), :Layout(), :Width() (what
+---the shown tabs take). onSelect(id) runs after a change.
 function W.Tabs(parent, tabs, onSelect)
 	local bar = CreateFrame("Frame", nil, parent)
 	bar:SetHeight(44)
 	bar.buttons, bar.order, bar.hidden = {}, {}, {}
+	bar.pad, bar.minW = 32, 64   -- a tab is its text and `pad` units (16 each side), at least `minW` wide; :Fit squeezes them
 	bar.line = bar:CreateTexture(nil, "BORDER")
 	Theme.Fill(bar.line, "border-subtle")
 	bar.line:SetPoint("BOTTOMLEFT", bar, "BOTTOMLEFT", 0, 0)
@@ -189,7 +192,16 @@ function W.Tabs(parent, tabs, onSelect)
 	bar.indicator:SetHeight(2)
 	bar.indicator:Hide()
 
-	local function layout()
+	-- the bar rests under the active tab, held by two anchors (so it follows the tab's width)
+	local function rest(active)
+		bar.indicator:ClearAllPoints()
+		bar.indicator:SetPoint("BOTTOMLEFT", active, "BOTTOMLEFT", 8, 0)
+		bar.indicator:SetPoint("BOTTOMRIGHT", active, "BOTTOMRIGHT", -8, 0)
+		bar.indicator:Show()
+	end
+
+	-- slideFrom: the x of the tab the bar leaves (a change of tab), nil when only the layout changed
+	local function layout(slideFrom)
 		local x = 0
 		for _, id in ipairs(bar.order) do
 			local b = bar.buttons[id]
@@ -199,15 +211,22 @@ function W.Tabs(parent, tabs, onSelect)
 				b:Show()
 				b:ClearAllPoints()
 				b:SetPoint("BOTTOMLEFT", bar, "BOTTOMLEFT", x, 0)
+				b.auX = x
 				x = x + b:GetWidth() + 4
 			end
 		end
+		bar.used = math.max(x - 4, 0)
 		local active = bar.active and bar.buttons[bar.active]
 		if active and not bar.hidden[bar.active] then
-			bar.indicator:ClearAllPoints()
-			bar.indicator:SetPoint("BOTTOMLEFT", active, "BOTTOMLEFT", 8, 0)
-			bar.indicator:SetPoint("BOTTOMRIGHT", active, "BOTTOMRIGHT", -8, 0)
-			bar.indicator:Show()
+			if slideFrom and slideFrom ~= active.auX and bar.indicator:IsShown() then
+				-- from the old tab's place to the new one: the animation moves it, the end re-anchors it
+				bar.indicator:ClearAllPoints()
+				bar.indicator:SetPoint("BOTTOMLEFT", bar, "BOTTOMLEFT", slideFrom + 8, 0)
+				bar.indicator:SetWidth(math.max(active:GetWidth() - 16, 8))
+				Motion.Slide(bar.indicator, active.auX - slideFrom, 0, Motion.BASE, function() rest(active) end)
+			else
+				rest(active)
+			end
 		else
 			bar.indicator:Hide()
 		end
@@ -220,9 +239,10 @@ function W.Tabs(parent, tabs, onSelect)
 	function bar:Select(id)
 		if not self.buttons[id] or self.hidden[id] then return false end
 		local changed = self.active ~= id
+		local old = changed and self.active and self.buttons[self.active]
 		self.active = id
-		paint(); layout()
-		if changed and self.indicator:IsShown() then Motion.FadeIn(self.indicator, Motion.BASE) end
+		paint()
+		layout(old and not self.hidden[old.id] and old.auX or nil)
 		if changed and onSelect then onSelect(id) end
 		return true
 	end
@@ -240,24 +260,54 @@ function W.Tabs(parent, tabs, onSelect)
 		local b = self.buttons[id]
 		if not b then return end
 		b.label:SetText(text or "")
-		b:SetWidth(math.max(64, math.ceil(b.label:GetStringWidth() or 0) + 32))
+		b:SetWidth(math.max(self.minW, math.ceil(b.label:GetStringWidth() or 0) + self.pad))
 		layout()
 	end
 	function bar:Layout() layout() end
 
-	for _, t in ipairs(tabs) do
+	---Makes the shown tabs fit in `maxWidth` units when their texts take more: the room around each text goes from 32 down
+	---to 16 units (and the least width from 64 to 48), no further; back to the roomy look when they fit. Call it after the
+	---texts are set.
+	function bar:Fit(maxWidth)
+		local n, text = 0, 0
+		for _, id in ipairs(self.order) do
+			if not self.hidden[id] then
+				n = n + 1
+				text = text + math.ceil(self.buttons[id].label:GetStringWidth() or 0)
+			end
+		end
+		if n == 0 then return end
+		local room = math.floor((maxWidth - 4 * (n - 1) - text) / n)
+		self.pad = math.max(16, math.min(32, room))
+		self.minW = self.pad < 32 and 48 or 64
+		for _, id in ipairs(self.order) do
+			local b = self.buttons[id]
+			b:SetWidth(math.max(self.minW, math.ceil(b.label:GetStringWidth() or 0) + self.pad))
+		end
+		layout()
+	end
+	---The width the shown tabs take (a window checks that they fit).
+	function bar:Width() return self.used or 0 end
+
+	---A tab made after the bar (a window whose tabs are registered by other modules); nothing happens if it exists.
+	function bar:AddTab(id, text)
+		if self.buttons[id] then return false end
 		local b = CreateFrame("Button", nil, bar)
-		b.id = t.id
+		b.id = id
 		b.label = Theme.NewText(b, "Tab", "text-3")
 		b.label:SetPoint("CENTER", b, "CENTER", 0, 1)
-		b.label:SetText(t.text or "")
-		b:SetSize(math.max(64, math.ceil(b.label:GetStringWidth() or 0) + 32), 44)
-		b:SetScript("OnClick", function() bar:Select(t.id) end)
+		b.label:SetText(text or "")
+		b:SetSize(math.max(self.minW, math.ceil(b.label:GetStringWidth() or 0) + self.pad), 44)
+		b:SetScript("OnClick", function() bar:Select(id) end)
 		b:HookScript("OnEnter", function(self) if bar.active ~= self.id then Theme.Text(self.label, "text-2") end end)
 		b:HookScript("OnLeave", function(self) if bar.active ~= self.id then Theme.Text(self.label, "text-3") end end)
-		bar.buttons[t.id] = b
-		bar.order[#bar.order + 1] = t.id
+		self.buttons[id] = b
+		self.order[#self.order + 1] = id
+		layout()
+		return true
 	end
+
+	for _, t in ipairs(tabs) do bar:AddTab(t.id, t.text) end
 	layout()
 	return bar
 end
@@ -327,7 +377,7 @@ end
 -- --- Dialog --------------------------------------------------------------------------------------------------------------
 
 ---A modal base: a dark veil (no blur: the engine has none) over `parent` with a centred card on the DIALOG strata; it
----enters with Motion.Rise (alpha and a 16-unit rise, 320 ms). Esc closes it (its name goes to UISpecialFrames).
+---enters with Motion.Rise (alpha and a 16-unit rise, 320 ms). Esc cancels it (its own key handler, so the window under it stays; its name is also in UISpecialFrames).
 ---:Ask{ title, text, confirm, cancel, danger, onConfirm, onCancel } fills it with a question and two buttons (the
 ---labels are locale texts given by the caller) and opens it; :Open(), :Close(), .card.
 ---@param parent? table
@@ -400,6 +450,15 @@ function W.Dialog(parent, name, opts)
 		local q = self.question
 		self.question = nil
 		if q and q.onCancel then q.onCancel() end
+	end)
+	-- Esc while it asks cancels the question and nothing else: the key does not go on to the game, so the window under the
+	-- dialog stays open (the client's own Esc closes every window in UISpecialFrames at once). Any other key goes on.
+	d:EnableKeyboard(true)
+	if d.SetPropagateKeyboardInput then d:SetPropagateKeyboardInput(true) end
+	d:SetScript("OnKeyDown", function(self, key)
+		local escape = key == "ESCAPE"
+		if self.SetPropagateKeyboardInput then self:SetPropagateKeyboardInput(not escape) end
+		if escape then self:Answer(false) end
 	end)
 	return d
 end

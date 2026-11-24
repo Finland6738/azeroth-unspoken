@@ -196,10 +196,15 @@ T.run("#183: the journal's row actions are short words, as wide as their word", 
 	local LM = NS.LivingMemory
 	LM:Record({ kind = "first_visit", zone = "Elwynn Forest" })
 	NS.JournalFrame:Open("memories")
-	local row = NS.JournalFrame.rows[1]
+	-- the mock has no layout engine: the table is given the width its two anchors give it in the client (728)
+	local tbl = _G.AzerothUnspokenJournal.table
+	tbl:SetWidth(728)
+	tbl:Layout()
+	NS.JournalFrame:Refresh()
+	local row = tbl:VisibleRows()[1]
 	local labels = {}
 	for k = 1, 2 do
-		local b = row.b[k]
+		local b = row.acts[k]
 		if b:IsShown() then
 			table.insert(labels, b:GetText())
 			T.ok(#b:GetText() > 1, "a word, not a symbol: " .. b:GetText())
@@ -207,7 +212,8 @@ T.run("#183: the journal's row actions are short words, as wide as their word", 
 		end
 	end
 	T.ok(#labels > 0, "the row has actions: " .. table.concat(labels, ", "))
-	T.ok(row.width < 568 and row.width > 300, "the text takes the rest of the row (" .. tostring(row.width) .. ")")
+	local textW = row.cells[1]:GetWidth()
+	T.ok(textW < 728 and textW > 300, "the text takes the rest of the row (" .. tostring(textW) .. ")")
 	-- the stories tab: Open, Skip, Pause instead of "...", "x", "II"
 	local text = {}
 	for _, t in ipairs(NS.JournalFrame.tabs) do

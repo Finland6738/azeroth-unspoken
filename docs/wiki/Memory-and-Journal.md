@@ -43,7 +43,7 @@ Open it with `/au journal` or the **Character journal...** button in the [[setti
 
 | Tab | Shows |
 |---|---|
-| **Memories** | your saved memories, newest first, with date and importance |
+| **Memories** | your saved memories, newest first, with their date |
 | **Places** | the places you remember, with visits and whether the last one ended badly |
 | **Flags** | narrative flags (small markers set by stories, dialogues or you) |
 | **Session** | the moments of this session only; forgotten when you log out |
@@ -51,7 +51,7 @@ Open it with `/au journal` or the **Character journal...** button in the [[setti
 | **Songbook** | the verses, songs and inscriptions your character heard or read (see [[Literary Forms|Literary-Forms]]): open one to read it whole, learn it by heart, mark it as a favourite, mute it or forget it |
 | **Relationships** and **People met** | a view of your [[relationships|Relationships]] |
 
-The tabs sit under the short introduction, however many lines it takes at your text size. They are as wide as their names and take a second line when they do not fit. The open tab has a full gold edge and a bar under its name, so it does not depend on colour alone. A tab's note, such as *"This session only"*, sits on its own line under the tabs. A row too long for the window is cut: point at it to read it whole in a tooltip.
+The tabs sit in one row under the short introduction, however many lines it takes at your text size. The open tab is brighter and has a **2-unit bar** under its name that slides from the tab you left to the one you chose (at once when **Animations** are off), so it does not depend on colour alone. A tab's note, such as *"This session only"*, sits on its own line under the tabs. The rows are a **table** that scrolls with the mouse wheel (there are no pages): the text of the entry, its date in the monospaced font, and the buttons of the row. Click a column title (**Entry**, **Date**) to sort by it; click it again to reverse the order, and the sorted column is marked with an arrow. Each tab keeps the order you chose while the window is open. The Stories tab and an open song are read in their own order, so they have no column titles and do not sort. A row too long for the window is cut: point at it to read it whole in a tooltip.
 
 On each row you can:
 
@@ -60,15 +60,15 @@ On each row you can:
 - **forget** a place (the next visit counts as a first visit again);
 - **clear** a flag.
 
-Deleting, forgetting and clearing cannot be undone, so they ask twice, and their **x** has the red outline of the actions that lose data. The first click on **x** turns it into **OK** and the row asks, for example, *"Delete this memory? Click OK:"*. Click **OK** within a few seconds to confirm. Any other click, or closing the window, cancels.
+Deleting, forgetting and clearing cannot be undone, so their buttons have the red outline of the actions that lose data and **ask in a dialog** over the window: *"Delete this memory?"* with *This cannot be undone.*, the action's own word as the red button (**Delete**, **Forget**, **Clear**) and **Cancel**. **Esc**, **Cancel** or closing the window cancels the question and changes nothing; **Esc** closes only the dialog, not the journal. When you confirm, a short **toast** says what happened (*Memory deleted.*, *Place forgotten.*, *Flag cleared.*)  and goes by itself after a few seconds. Keeping a memory, or opening a story, asks nothing: you can undo it.
 
 At the bottom:
 
-- **Export** shows the whole journal as text, in a window of its own that scrolls to the end however long the journal is. Select it and press **Ctrl+C** to copy it; **Esc** or the **X** closes it. The addon cannot write files, so copying is the way to keep a copy outside the game.
-- **Forget everything** (red outline) erases the memory. Click it, then **Confirm: forget** within a few seconds. It does not touch relationships. A second arming always gets its full few seconds, and closing the window cancels.
+- **Export** shows the whole journal as text, in a window of its own that scrolls to the end however long the journal is. The text is already selected: press **Ctrl+C** to copy it (a toast says so); **Esc** or the **X** closes it. The addon cannot write files, so copying is the way to keep a copy outside the game.
+- **Forget everything** (red outline) erases the memory. It asks in the same kind of dialog (*"Forget everything?"*, *Erases every memory, place and flag. The relationships stay. This cannot be undone.*) and confirms with a toast. It does not touch relationships.
 - **Close**.
 
-Use **<** and **>** to turn pages.
+A line under the table sums up what the journal holds. The colours of the window follow the theme you chose in **Settings > Appearance** at once, without `/reload`.
 
 ## Commands
 
@@ -142,7 +142,7 @@ The journal window can still be opened from the settings panel. Its memory tabs 
 
 ![Illustrative mockup: deleting a memory asks for a second click](../design/mockups/png/journal-delete-armed.png)
 
-*Illustrative mockup, not an in-game screenshot: Delete asks for a second click: the row says what will happen and the button turns into OK.*
+*Illustrative mockup of the earlier look, not an in-game screenshot: the old way of asking, a second click that turned the button into OK. Since UI-5 the window asks in a dialog instead (see above); the mockups are redrawn in the last step of the new look.*
 
 ![Illustrative mockup: the export window of the journal](../design/mockups/png/journal-export.png)
 

@@ -312,11 +312,11 @@ Pack authors: a line tagged `warm` in a greeting, farewell or reaction to an act
 
 Open the window with `/au relationships` or the **Relationships...** button in the [[settings panel|Settings]].
 
-The window is 660 units tall in every view, so it fits the screen at UI scale 1 and at the default **Window scale**. The tabs sit under the short note at the top; if that note ever takes more lines (a larger font, a longer translation), the tabs and the views move down and the window grows to fit. Close it with **Esc**, the **X** at the top right of its title band or **Close**; what you were typing is kept. It has three tabs: **Relationships**, **People met** and **Options**. The open tab has a full gold edge and a bar under its name.
+The window is 680 units tall in every view, so it fits the screen at UI scale 1 and at the default **Window scale**. The tabs sit under the short note at the top; if that note ever takes more lines (a larger font, a longer translation), the tabs and the views move down and the window grows to fit. Close it with **Esc**, the **X** at the top right of its title band or **Close**; what you were typing is kept. It has three tabs: **Relationships**, **People met** (with the number of suggestions waiting) and **Options**. The open tab is brighter and has a **2-unit bar** under its name that slides from the tab you left to the one you chose (at once when **Animations** are off).
 
-**The Relationships tab** is a table with **Name**, **Type** (NPC or Player), **Label**, **Disposition**, **Last seen** and **Encounters**. Click a column header to sort. Filter by **All**, **NPCs** or **Players**, by label, or type in **Search** (Enter gives the keyboard back to the game). A cell that is too long ends with "..."; point at the row to read all of it, and click it to open the person.
+**The Relationships tab** is a sortable table with **Name**, **Type** (NPC or Player), **Label**, **Disposition**, **Last seen** and **Encounters**. Click a column title to sort by it and again to reverse it: the sorted column is marked with an arrow, and the first time the newest meeting comes first. The dates and the number of encounters are in the monospaced font. The table scrolls with the mouse wheel (there are no pages). Filter by **All**, **NPCs** or **Players** with the three-part selector (the chosen part is raised and keeps its own shape, not only its colour), by label, or type in **Search** (Enter gives the keyboard back to the game); the order you chose stays while you filter. A cell that is too long ends with "..."; point at the row to read all of it, and click it to open the person. With nothing in the list the table says so.
 
-**The People met tab** lists this session's suggestions. Add with **+**, or dismiss.
+**The People met tab** is a table of this session's suggestions, with the name and where the addon saw them, sorted by either column; the questions about a changed identity come first. Add with **+**, or dismiss with **x**; a person can also be added by name above the table.
 
 **The detail view** (click a name) has two columns, and for a player a third block underneath. With the shared list on, a **Choices: shared / this character** button sits at the top right. **What you chose**:
 
@@ -333,7 +333,7 @@ For an NPC the block underneath is **What the addon knows**: the level, the temp
 - **Forget observations** (asks for confirmation) erases only what the addon observed: the counts, the encounters and the facts. The person stays in your list with everything you chose.
 - **Remove person** (asks for confirmation) deletes the person and everything about them.
 
-Both have the red outline of the actions that lose data. The first click arms the button (it fills and asks you to click again); a second click within a few seconds confirms. Each confirmation keeps its own few seconds even if you armed it before, and changing tab, opening another person or closing the window cancels it.
+Both have the red outline of the actions that lose data and **ask in a dialog** over the window: the question, a line saying what goes and that it cannot be undone, the action's own word as the red button and **Cancel**. **Esc**, **Cancel**, changing tab, opening another person or closing the window cancels the question and changes nothing (**Esc** closes only the dialog, not the window). When you confirm, a short **toast** says it was done (*Observations forgotten.*, *Person removed.*) and goes by itself after a few seconds; adding someone also gets one.
 
 **The Options tab** (point at an option to read what it does):
 
@@ -356,7 +356,7 @@ Both have the red outline of the actions that lose data. The first click arms th
 
 Under the options, a line about each consent and the privacy note, in the normal text size. Each button says its state **in words**: *on*, *off*, and, while a question is open, *off, read first* (the first couple of seconds) and then *off, confirm*. When you click **Share with the account** or **Recognise nearby**, the whole warning appears in a confirmation dialog and in the window, below the privacy note, in the normal font.
 
-The list, People met and Options tabs also have **Export** (text to copy, in a window that scrolls) and **Forget everything** (red outline, with confirmation; closing the window cancels it) at the bottom.
+The list, People met and Options tabs also have **Export** (text to copy, in a window that scrolls) and **Forget everything** (red outline; it asks in a dialog like the others, and closing the window cancels it) at the bottom, and a line with the counts under the tables. The colours follow the theme you chose in **Settings > Appearance** at once.
 
 ## Commands
 

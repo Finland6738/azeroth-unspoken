@@ -303,7 +303,7 @@ T.run("#192: the classic Interface Options are opened with two calls", function(
 	Settings = savedSettings
 end)
 
-T.run("#190: every armed confirmation disarms by token and when its window closes", function()
+T.run("#190: every armed confirmation disarms by token (W.Confirm); the windows' Dialogs end when the window closes (UI-5)", function()
 	Reset()
 	local c = W.Confirm(6)
 	c:Arm("a")
@@ -314,22 +314,65 @@ T.run("#190: every armed confirmation disarms by token and when its window close
 	T.ok(c:Is("b"), "an old timer does not disarm a newer arming")
 	ADVANCE(4)
 	T.ok(not c:Is(), "the newer one expires on its own time")
-	-- the relationships window: Forget everything armed, then closed
+	-- UI-5: the relationships window asks through a Dialog; closing the window cancels the question, and it never comes back
 	NS.RelationsFrame:Open("list")
 	local rel = _G.AzerothUnspokenRelations
 	rel.reset:Click()
-	T.eq(rel.reset:GetText(), NS:L("rel_reset_confirm_btn"), "armed")
-	T.ok(rel.reset.armed, "filled while armed")
+	T.ok(rel.dialog:IsShown() and rel.dialog.confirm.style == "danger", "asks")
 	rel:Hide()
+	T.ok(not rel.dialog:IsShown(), "closing the window cancelled the question")
 	NS.RelationsFrame:Open("list")
-	T.eq(rel.reset:GetText(), NS:L("rel_reset"), "closing the window disarmed it")
+	T.ok(not rel.dialog:IsShown(), "and it is not there when the window opens again")
+	local R = NS.Relationships
+	R:AddPlayer("Dara-Stormrage", "user")
 	rel.reset:Click()
-	ADVANCE(4)
-	rel.reset:Click()                 -- confirms: Forget everything
-	rel.reset:Click()                 -- arms again
-	ADVANCE(3)                        -- the first timer has run out
-	T.eq(rel.reset:GetText(), NS:L("rel_reset_confirm_btn"), "an old timer does not disarm the newer arming")
-	ADVANCE(4)
-	T.eq(rel.reset:GetText(), NS:L("rel_reset"), "then it expires")
+	rel.dialog.cancel:Click()
+	T.ok(R:Get("player", "Dara-Stormrage") ~= nil, "Cancel forgets nothing")
+	rel.reset:Click()
+	rel.dialog.confirm:Click()
+	T.ok(R:Get("player", "Dara-Stormrage") == nil, "Confirm forgets everything")
+	T.ok(rel.toast:IsShown() and rel.toast:Message() == NS:L("rel_toast_reset"), "and a Toast says so")
+	rel:Hide()
+	T.ok(not rel.toast:IsShown(), "closing the window takes the toast away")
+	Reset()
+end)
+
+-- UI-ECO UI-5: the journal, its export and the relationships window have a theme font and a token on every text, so W.Adopt
+-- (the bridge of UI-3) finds nothing to do in them, in any view; and what is drawn with W.Hex follows a theme change.
+T.run("UI-5: the journal and the relationships window need no W.Adopt, and follow the theme", function()
+	Reset()
+	local LM, R = NS.LivingMemory, NS.Relationships
+	LM:Record({ kind = "first_visit", zone = "Elwynn Forest" })
+	LM:SetPermanent(LM:List()[1].id)
+	R:AddPlayer("Dara-Stormrage", "user")
+	R:Propose("Brenna-Stormrage", "group")
+	local function Clean(f, where) T.eq(W.Adopt(f), 0, where .. ": no text is left for W.Adopt") end
+	for _, tab in ipairs(NS.JournalFrame.tabs) do
+		NS.JournalFrame:Open(tab.id)
+		Clean(_G.AzerothUnspokenJournal, "journal " .. tab.id)
+	end
+	NS.JournalFrame:ShowExport("text")
+	Clean(_G.AzerothUnspokenJournalExport, "the export window")
+	for _, where in ipairs({ "list", "people", "options", { kind = "player", key = "Dara-Stormrage" } }) do
+		NS.RelationsFrame:Open(where)
+		Clean(_G.AzerothUnspokenRelations, "relationships " .. (type(where) == "table" and "detail" or where))
+	end
+	-- the dialog and the toast are made of themed texts too
+	local rel = _G.AzerothUnspokenRelations
+	rel.dialog:Ask({ title = "a", text = "b", confirm = "c", cancel = "d" })
+	rel.dialog:Hide()
+	Clean(rel, "relationships with a dialog")
+	-- a theme change redraws the words coloured by W.Hex without a /reload (the window's refresh)
+	NS.JournalFrame:Open("memories")
+	local journal = _G.AzerothUnspokenJournal
+	local function FirstRowText() return journal.table:VisibleRows()[1].cells[1]:GetText() end
+	T.ok(FirstRowText():find(W.Hex("accent-text") .. "[P]", 1, true) ~= nil, "nebula: the [P] mark in nebula's accent-text")
+	local nebula = W.Hex("accent-text")
+	Config:Set("ui.theme", "aurora")
+	T.ok(W.Hex("accent-text") ~= nebula, "the two themes have different accent-text")
+	T.ok(FirstRowText():find(W.Hex("accent-text") .. "[P]", 1, true) ~= nil, "aurora: the same row, redrawn in aurora's accent-text")
+	Config:Set("ui.theme", "nebula")
+	NS.JournalFrame:Close()
+	NS.RelationsFrame:Close()
 	Reset()
 end)
