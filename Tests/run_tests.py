@@ -1319,7 +1319,8 @@ check(proc.returncode == 0, "check_versi.py: il pacchetto dei versi si carica, Ã
 
 # 12) regole automatiche (R1): regola dei documenti per le PR, privacy dei file tracciati, forma dei workflow
 print("\nREGOLE DEL PROGETTO")
-for script in ("check_rules.py", "check_privacy.py", "check_user_block.py", "check_media.py", "check_locale.py"):
+for script in ("check_rules.py", "check_privacy.py", "check_user_block.py", "check_media.py", "check_locale.py",
+               "check_theme_colors.py", "check_mockups.py"):
     proc = subprocess.run([sys.executable, "-I", "-X", "utf8", os.path.join(HERE, script)],
                           capture_output=True, text=True, encoding="utf-8")
     print("\n".join("  " + l for l in proc.stdout.rstrip().split("\n") if "  ok  " not in l))

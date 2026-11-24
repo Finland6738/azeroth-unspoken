@@ -49,7 +49,7 @@ local INNER_FONT = "Fonts\\ARIALN.TTF"   -- #186: the inner voice in another typ
 local VOICE_TOKEN = NS.Theme.VOICE_TOKENS
 local MUTED = "text-2"
 -- a translucent box lets the world through: the contrast is worked out over the brightest and the darkest world there is
-local SCENES = { { 1, 1, 1, 1 }, { 0, 0, 0, 1 } }
+local SCENES = { { 1, 1, 1, 1 }, { 0, 0, 0, 1 } }   -- colour-ok: the brightest and the darkest world, for the contrast only
 local CHANNEL_NAME = {
 	SAY = "/s", EMOTE = "/e", YELL = "/y", PARTY = "/p", RAID = "/raid", GUILD = "/g", INSTANCE_CHAT = "/i",
 }
@@ -745,7 +745,7 @@ function Narrator:Present(rec, opts)
 	self:RefreshHistory()
 	if not frame or not NS.db.output.privateNarrator or (opts and opts.chatFrame) then
 		-- ripiego: riquadro assente o disattivato, la frase compare nella chat locale, visibile solo a te
-		NS:Print(("|cffffffff[%s]|r %s"):format(self:VoiceLabel(rec.speaker), rec.display))
+		NS:Print(("|cffffffff[%s]|r %s"):format(self:VoiceLabel(rec.speaker), rec.display))   -- colour-ok: white in the chat frame, not a theme surface
 		return
 	end
 	-- #176: a waiting proposal is never pushed off the box, or the speak key would send a line no longer on screen.

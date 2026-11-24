@@ -8,6 +8,29 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### UI-ECO step UI-8: mockups, assets and the final status of the style (issue #284)
+
+- **Added**: `tools/mockup_lib.py`, the building blocks of every mockup (adapted from the sister addon's): the 31 tokens of `UI/Theme.lua` in Nebula and
+  Aurora, the fonts the addon ships, the widgets of `UI/Widgets.lua` as HTML and CSS (title bar, the six button kinds, badges, chips, tabs, segmented
+  controls, switches, sliders, thin bars, edit boxes, sections, cards, tables, dialogs, toasts, the addon's tooltip) and `L(lang, key)`, which reads the
+  locale files with the addon's own registration call: a mockup cannot show a text the addon does not have.
+- **Added**: `tools/make_mockups.py` and `docs/specs/mockups/`: the design system and every window (narrator, journal, relationships, character soul,
+  first-run guide, Settings > Info, NPC dialogue) in Nebula and Aurora, English and Italian, with an index that puts them side by side with the sister
+  addon's pictures.
+- **Changed**: `docs/design/mockups/tools/components.py` rewritten on the library: every window is drawn as the code lays it out now (the 52-unit title
+  bar, the Orbitron title in capitals, the sections, the voice colours, the Settings page in seven sections with the Info section and the NEBULA logo, dark
+  art on Nebula and light on Aurora). The old drawing referred to removed locale keys and could no longer run. The pages, their index, the PNGs of
+  `assets/` (101, three more than before: the Appearance and Info sections and the whole page in Aurora; 14 for CurseForge; the Credits section of the CurseForge text is kept), the README GIF,
+  `narrator-demo.gif` and the wiki's Interface Tour (which now shows the Info section and the Aurora theme) are regenerated. `mockups.css` is written by
+  the library; the UI review's proposals keep their old look in `review.css` as history.
+- **Added**: `Tests/check_mockups.py` (the mockup tokens equal `Theme.lua`'s, all 31 names in both themes; the stylesheet is current; every scene builds and
+  has its images) and `Tests/check_theme_colors.py` (no colour written in `UI/` outside `Theme.lua`; a justified exception carries `-- colour-ok: <reason>`;
+  five lines are annotated: the chat frame's own colours of `/s`, `/e` and the history print, the white hover layer of a button, and the two reference
+  worlds of the narrator's contrast). Both run in `Tests/run_tests.py`.
+- **Changed**: `docs/specs/ui-style.md` and `.it.md` are final: every step of UI-ECO is merged.
+- **Not verified in the game client**: the mockups are drawn from the code and the spec, not screenshots: the real fonts, 9-slice shapes, glows and
+  translucency may differ.
+
 ### UI-ECO step UI-7: credits and the NEBULA logo (issue #284)
 
 - **Added**: the **Info** section, last on the Settings page: who made the addon (Finland), thanks to the NEBULA community, the mixed licence (code

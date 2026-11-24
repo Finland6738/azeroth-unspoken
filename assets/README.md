@@ -18,7 +18,7 @@ For the CurseForge gallery: [curseforge/](curseforge/README.md) has fourteen of 
 - [Narrator box](#narrator-box) (15)
 - [Chat Gateway](#chat-gateway) (7)
 - [First-run wizard](#first-run-wizard) (9)
-- [Settings](#settings) (10)
+- [Settings](#settings) (13)
 - [Journal](#journal) (13)
 - [Story Arcs](#story-arcs) (3)
 - [Relationships](#relationships) (12)
@@ -79,11 +79,14 @@ For the CurseForge gallery: [curseforge/](curseforge/README.md) has fourteen of 
 |---|---|
 | <a href="settings-panel.png"><img src="settings-panel.png" width="320" alt="settings-panel"></a> | **[settings-panel.png](settings-panel.png)**<br>The settings panel as it opens in the client's options window. |
 | <a href="settings-section-general.png"><img src="settings-section-general.png" width="320" alt="settings-section-general"></a> | **[settings-section-general.png](settings-section-general.png)**<br>The General section: language, intensity, depth, literary forms, pause between lines, window scale. |
+| <a href="settings-section-appearance.png"><img src="settings-section-appearance.png" width="320" alt="settings-section-appearance"></a> | **[settings-section-appearance.png](settings-section-appearance.png)**<br>The Appearance section: the theme (Nebula or Aurora), neon effects, animations, the fonts, the window positions. |
 | <a href="settings-section-chat.png"><img src="settings-section-chat.png" width="320" alt="settings-section-chat"></a> | **[settings-section-chat.png](settings-section-chat.png)**<br>The Chat section: what may reach chat, the default channel, how long a proposal waits, the speak button. |
 | <a href="settings-section-narrator.png"><img src="settings-section-narrator.png" width="320" alt="settings-section-narrator"></a> | **[settings-section-narrator.png](settings-section-narrator.png)**<br>The Narrator section: duration, reading speed, opacity, text size, motion, combat, the dialogue window. |
 | <a href="settings-section-modules.png"><img src="settings-section-modules.png" width="320" alt="settings-section-modules"></a> | **[settings-section-modules.png](settings-section-modules.png)**<br>The Modules section: each part of the addon on or off. |
 | <a href="settings-section-privacy.png"><img src="settings-section-privacy.png" width="320" alt="settings-section-privacy"></a> | **[settings-section-privacy.png](settings-section-privacy.png)**<br>The Privacy section: automatic sending and the Total RP 3 consents. |
+| <a href="settings-section-info.png"><img src="settings-section-info.png" width="320" alt="settings-section-info"></a> | **[settings-section-info.png](settings-section-info.png)**<br>The Info section: who made the addon, the NEBULA community and its logo, the licence and the links to copy. |
 | <a href="settings-panel-unrolled.png"><img src="settings-panel-unrolled.png" width="320" alt="settings-panel-unrolled"></a> | **[settings-panel-unrolled.png](settings-panel-unrolled.png)**<br>The whole panel at once, unrolled. |
+| <a href="settings-panel-aurora.png"><img src="settings-panel-aurora.png" width="320" alt="settings-panel-aurora"></a> | **[settings-panel-aurora.png](settings-panel-aurora.png)**<br>The whole panel in the light theme Aurora; the NEBULA logo in its light art. |
 | <a href="settings-language-reload.png"><img src="settings-language-reload.png" width="320" alt="settings-language-reload"></a> | **[settings-language-reload.png](settings-language-reload.png)**<br>After a change of language, the panel asks for a reload. |
 | <a href="language-reload-dialog.png"><img src="language-reload-dialog.png" width="320" alt="language-reload-dialog"></a> | **[language-reload-dialog.png](language-reload-dialog.png)**<br>The reload dialog after a change of language. |
 | <a href="settings-total-rp-3-consent.png"><img src="settings-total-rp-3-consent.png" width="320" alt="settings-total-rp-3-consent"></a> | **[settings-total-rp-3-consent.png](settings-total-rp-3-consent.png)**<br>Reading other players' Total RP 3 profiles asks for consent. |

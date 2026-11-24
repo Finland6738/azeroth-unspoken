@@ -58,6 +58,15 @@ the GPL-3.0-or-later of the code does not grant a right to use it, and it is cov
 copy of the repository that is shared again must remove it or ask its owner. Everything else in this page is original or
 under a licence that allows bundling.
 
+## Mockups
+
+The mockups of `docs/design/mockups/`, `docs/specs/mockups/` and `assets/` are made by `tools/mockup_lib.py` and
+`tools/make_mockups.py`, adapted from FDCP's tools of the same name (same owner, GPL-3.0-or-later). They load the fonts
+above from `AzerothUnspoken/Media/Fonts/` and show the addon's own logo and the NEBULA community logo (under the terms
+just above); the landscapes are SVG drawings of `docs/design/mockups/tools/mockkit.py`, the icons line drawings of
+`mockup_lib.py`. The side-by-side page of `docs/specs/mockups/` links FDCP's own pictures from its repository; none is
+copied here.
+
 ## Game art
 
 No Blizzard artwork is copied into the repository: every shape and icon is drawn by the tools above, and the addon draws

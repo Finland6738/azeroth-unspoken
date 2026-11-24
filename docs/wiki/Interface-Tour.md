@@ -3,9 +3,13 @@
 Every window of Azeroth Unspoken, one picture each, with a line on what it is for and the page that explains it.
 
 > **These pictures are illustrative mockups, not in-game screenshots.** They are drawn from the addon's own code: the
-> sizes, colours, buttons and texts of each window, with invented characters and real lines from the phrase database.
-> The addon has not been tried in the real game client yet, so what you see in game may differ in small ways. The
-> backgrounds are simple drawings; no game art is used.
+> sizes, colours, buttons, fonts and texts of each window, with invented characters and real lines from the phrase
+> database. The addon has not been tried in the real game client yet, so what you see in game may differ in small ways.
+> The backgrounds are simple drawings; no game art is used.
+
+Every window has the same look: a title bar with the addon's round logo and the window's name in capitals, rounded
+panels, the same buttons and fonts. Two themes: **Nebula**, dark, the default, and **Aurora**, light (Settings >
+Appearance > Theme). The pictures show Nebula unless they say otherwise.
 
 ![Illustrative mockup: an animated tour of every window of the addon](../design/mockups/interface-tour.gif)
 
@@ -120,7 +124,19 @@ the town and your title there.*
 
 ![Illustrative mockup: the top of the settings panel](../design/mockups/png/settings-top.png)
 
-*Illustrative mockup: the settings panel in the game's options window.* See [[Settings Reference|Settings]].
+*Illustrative mockup: the settings page in the game's options window, in seven sections: General, Appearance, Chat,
+Narrator, Modules, Privacy and Info.* See [[Settings Reference|Settings]].
+
+![Illustrative mockup: the Info section of the settings, with the NEBULA community logo](../design/mockups/png/settings-info.png)
+
+*Illustrative mockup: the Info section, the last one: who made the addon, the thanks to the NEBULA community with its
+logo (dark art on Nebula, light art on Aurora), the licence, and four links to copy with Ctrl+C. `/au about` opens it.*
+See [[About and Credits|About]].
+
+![Illustrative mockup: the journal in the light theme Aurora](../design/mockups/png/journal-memories-aurora.png)
+
+*Illustrative mockup: the light theme Aurora, here on the journal. Every window and the narrator box follow the theme
+at once, without reloading.* See [[Settings Reference|Settings]].
 
 ![Illustrative mockup: the first-run guide, step 1](../design/mockups/png/wizard-1.png)
 

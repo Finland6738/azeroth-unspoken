@@ -41,8 +41,8 @@ local function Preview(event)
 		NS:Print(NS:L("no_phrase", event))
 		return
 	end
-	if say then NS:Print("|cffffffff/s|r " .. say) end
-	if emote then NS:Print("|cffff8040/e|r " .. (ctx.player or "") .. " " .. emote) end
+	if say then NS:Print("|cffffffff/s|r " .. say) end   -- colour-ok: the chat frame's own white for /s, not a theme surface
+	if emote then NS:Print("|cffff8040/e|r " .. (ctx.player or "") .. " " .. emote) end   -- colour-ok: the game's emote orange in the chat frame
 end
 
 local function SetChance(event, value)
