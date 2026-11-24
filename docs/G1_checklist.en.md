@@ -657,6 +657,32 @@ Built and tested outside the game only. Each step says what to look at; if somet
       without sounds, silence.
     - **Report:** a screenshot per theme, a sound that is missing or wrong.
 
+## BD: the Bard (ADR 0060)
+
+Built and tested outside the game only. Install the verses pack (`AzerothUnspoken_Versi`). If something goes wrong, open
+an issue with `/au debug` and a screenshot.
+
+- **BD.1 · The Bard's box.** `/au event lore_test` a few times, until a song or a verse comes (not an inscription).
+    - **Expect:** the box with a note before the label *Bard*, a rose colour (Nebula) or a wine red (Aurora), the verses one
+      at a time; an inscription stays in the inner voice, the innkeeper's rhyme in the NPC voice; the history says *Bard*.
+    - **Report:** a screenshot per theme; a colour that is hard to read over a bright or dark place.
+- **BD.2 · Share on /emote.** On a Bard piece, click the chip until it says */e*, then **Share**.
+    - **Expect:** in chat *<name> sings an old song:* (or *recites a few verses:*), then each verse in quotes, about 4 seconds
+      apart, without more clicks; the box stays until the last verse; nothing else is sent.
+    - **Report:** a missing or cut message, a message the game blocked (`/au debug`), the time between messages.
+- **BD.3 · Share on /say in the open world.** Choose */s* and click **Share**, then **Next verse** for each verse.
+    - **Expect:** the emote at once, then one verse per click (a click too early waits); **Stop** ends it; nothing is sent
+      without a click.
+    - **Report:** a verse sent without a click, or a click that sends nothing.
+- **BD.4 · /say in an instance, and the songbook.** Inside a dungeon, share on */s*; then open the journal's Songbook, a
+  piece you heard, and click */emote* on *Share it in chat, line by line*.
+    - **Expect:** in the dungeon the verses go by themselves; from the songbook the piece appears in the Bard's box and
+      the share starts.
+- **BD.5 · Never by itself.** With `/au mode auto` (and its consent), play for a while.
+    - **Expect:** no song or verse ever reaches chat without your click. A fight during a share stops it.
+- **BD.6 · The settings.** *Settings > General*: **Bard** off, **Share button** off, **Share on**; `/au bard`.
+    - **Expect:** Bard off: songs in the inner voice; Share off: no bar under the piece and no row in the songbook.
+
 ## Summary form (copy and fill in)
 
 ```
@@ -742,4 +768,5 @@ C0g own gestures ....... bandage on self heal? ___  on another silent? ___  Batt
 C0h cast on self ....... potion + friend: line to the friend? ___  self heal + friend: to the friend? ___  heal on friend ok? ___
 C0i voice and battle ... innkeeper sounds like herself? ___  too repetitive? ___  battleground lines short? ___
 C0j first picks ........ PickEntry mean/p95/max (ms) ______  loading slower? ___  KB ______
+BD Bard ................ colour ok? ___  /e by itself? ___  /s one click a verse? ___  never by itself? ___
 ```

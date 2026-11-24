@@ -342,6 +342,20 @@ local function SongRows()
 			table.insert(out, { text = NS:L(e.muted and "song_state_muted" or "song_state_speaks"), actions = {
 				ArcAction(e.muted and "act_unmute" or "act_mute", e.muted and "song_tip_unmute" or "song_tip_mute",
 					SongMark(SB.SetMuted, id, not e.muted)) } })
+			-- ADR 0060: a Bard piece can be shown again in the Bard's box and shared, on /say or /emote, by a click
+			local rule = NS.Engine.byId[id]
+			if e.present and NS.Bard and NS.Bard:Enabled() and NS.db.bard.share and NS.Bard.IsBardRule(rule)
+				and NS.Bard.Parts(text or "", rule.genre) then
+				local function Sing(channel)
+					return function()
+						local ok, why = NS.Gateway:PlayerAction(function() return NS.Bard:ShareFromSongbook(id, channel) end)
+						if not ok then NS.Bard:Explain(why) end
+					end
+				end
+				table.insert(out, { text = NS:L("song_share_row"), actions = {
+					ArcAction("channel_SAY", "song_tip_share_say", Sing("SAY")),
+					ArcAction("channel_EMOTE", "song_tip_share_emote", Sing("EMOTE")) } })
+			end
 			table.insert(out, { text = Muted(NS:L("song_forget_row")), actions = {
 				{ label = NS:L("act_forget"), tip = NS:L("song_tip_forget"), confirm = "song_confirm_forget", done = "song_toast_forgot",
 					fn = function()

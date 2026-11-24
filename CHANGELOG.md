@@ -8,6 +8,33 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### The Bard (ADR 0060)
+
+- **Added**: the **Bard** (*Bardo* in Italian). The songs, rhymes, hymns, laments, verses and tales the character
+  remembers (a literary piece of genre verse, song or tale, not in an NPC's voice) appear in the narrator box with the
+  Bard's look: the label "Bard", a note icon, and a colour of its own, the new token `voice-bard` (Nebula `#FF8FB8`,
+  Aurora `#9C1F5E`). The reveal one verse at a time, the scroll past twelve lines, the history and *Animations: off* work
+  as before. Inscriptions and formulas stay in the inner voice, an NPC's song in the NPC voice.
+- **Added**: **Share** on the Bard's box and on the songbook's open piece. Only on the player's click (or `/au bard
+  sing`), never by itself in any chat mode: the attribution becomes an emote on `/emote` (*sings an old song:*), then one
+  verse per message on `/say` or `/emote`, at least 4 seconds apart, through the Chat Gateway's byte limit, flood limits
+  and lockdown. On `/say` in the open world each verse needs a click (*Next verse 2/4*); **Stop** ends a share; a fight,
+  Total RP 3's out-of-character status or two minutes without a click stop it too. This relaxes owner decision D16 for an
+  explicit share only: the Gateway still never proposes or sends a literary line.
+- **Added**: a `share` icon on the Share button, from Google's Material Symbols (Outlined, weight 400, Apache-2.0,
+  `docs/third-party.md`): its path is filled into a cell of `Media/icons.tga` by `tools/make_media.py` (49 icons).
+- **Added**: settings in General: **Bard** (on), **Share button** (on), **Share on** (/say or /emote), saved as
+  `bard = { enabled, share, channel }`; the commands `/au bard [on|off | share on|off | channel say|emote | sing | next
+  | stop]`; a help group **Bard** (`/au help bard`) with `/au literary` and `/au songbook`.
+- **Docs**: ADR 0060; the wiki (Literary Forms, The Narrator, Settings, Commands, Chat Gateway), the README in English
+  and Italian, the UI spec's voice tokens, mockups of the Bard's box in both themes and both languages
+  (`docs/design/mockups/png/narrator-bard*.png`, `docs/specs/mockups/au-bard-*.webp`).
+- **Tests**: `Tests/TestBard.lua` (which pieces, the look, the tokens, the share: never automatic, the pacing, the
+  limits, the refusals; settings, commands, the songbook row, the locale keys); the voice contrast tests include the Bard.
+- **Not tried in the game client**: the Bard's colour and icon on real scenes, the share's messages (that `/emote` and
+  `/say` in an instance go from the timer, the server's own throttle, how other players and Total RP 3 see them), the
+  new Settings rows and the songbook's Share row.
+
 ## [0.3.1] - 2026-11-24
 
 A small development preview on top of 0.3.0: it adds the **radial emote wheel** (ADR 0059), a round wheel of the game's emotes that opens while a key is held and plays the one the mouse points at when the key is released, with presets, its own Settings section and commands, and the regression tests of the two layout fixes of 0.3.0. The key ships unbound. The lines are the same as in 0.3.0. Nothing of the wheel has been tried in the game client yet.

@@ -60,6 +60,8 @@ NEMESIS_SONG = song("versi.nemesis.song.01")
 LAMENT_PET = song("versi.lament.pet.01")
 LAMENT_ALLY = song("versi.lament.ally.01")
 DWARF_SONG = song("versi.culture.dwarf.01")
+BARD_SONG = song("versi.road.song.01")                    # the inner voice, a song: the Bard's (ADR 0060)
+BARD_SONG_IT = song("versi.road.song.01", "it")
 
 INDEX = []   # (file, title, group, meant for, kind)
 
@@ -116,6 +118,23 @@ def build_narrator():
                                  "just revealed.")
     stage_narrator("narrator-reading-it", "Narrator - a long private reading (Italian)", "Languages / Literary-Forms",
                    h=330, seed=15, lang="it", speaker="inner", s=RUIN_IT, remaining=0.6)
+    # ADR 0060: the Bard's box (a song the character remembers), its Share bar, a share under way; both themes, both languages
+    stage_narrator("narrator-bard", "Narrator - the Bard's box", "Literary-Forms / The-Narrator", h=330, scene="dusk",
+                   seed=21, speaker="bard", s=BARD_SONG, reveal=3, share={"channel": "SAY", "progress": None},
+                   caption_extra="A song in the Bard's colour (voice-bard), the note before the label, one verse at a time; "
+                                 "Share sings it in chat, only on a click.")
+    stage_narrator("narrator-bard-aurora", "Narrator - the Bard's box (Aurora)", "Literary-Forms / Interface-Tour", h=330,
+                   scene="neutral", seed=22, speaker="bard", s=BARD_SONG, share={"channel": "EMOTE", "progress": None},
+                   theme="aurora")
+    stage_narrator("narrator-bard-sharing", "Narrator - the Bard sharing a song", "Literary-Forms / Chat-Gateway", h=330,
+                   scene="warm", seed=23, speaker="bard", s=BARD_SONG, share={"channel": "SAY", "progress": (2, 5)},
+                   caption_extra="The emote and the first verse are in chat; on /say in the open world each next verse needs "
+                                 "a click, Stop ends the share.")
+    stage_narrator("narrator-bard-it", "Narrator - the Bard's box (Italian)", "Languages / Literary-Forms", h=330,
+                   seed=24, lang="it", speaker="bard", s=BARD_SONG_IT, share={"channel": "SAY", "progress": None})
+    stage_narrator("narrator-bard-it-aurora", "Narrator - the Bard sharing (Italian, Aurora)", "Languages / Literary-Forms",
+                   h=330, scene="neutral", seed=25, lang="it", speaker="bard", s=BARD_SONG_IT, theme="aurora",
+                   share={"channel": "EMOTE", "progress": (3, 5)})
     stage_narrator("narrator-large-font", "Narrator box - text size 20", "The-Narrator / Settings", h=330, seed=16,
                    speaker="narrator", s=f"{PLAYER} {L_DUSK_E}", font=20,
                    caption_extra="The header grows with the label of a larger text size: max(28, label + 12) units.")

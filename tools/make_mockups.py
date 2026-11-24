@@ -139,6 +139,23 @@ def dialogue_scene(lang, theme):
     return C.dialogue((W - 380) // 2, 260, title, line=NPC[lang], choices=answers, lang=lang, hover=0, theme=theme)
 
 
+def bard_piece(lang):
+    """The road song of the verses pack (AzerothUnspoken_Versi/Texts_<lang>.lua), its first variant: a Bard piece."""
+    import re
+    src = open(os.path.join(ROOT, "AzerothUnspoken_Versi", "Texts_%s.lua" % {"en": "enUS", "it": "itIT"}[lang]),
+               encoding="utf-8").read()
+    block = re.search(r'\["versi\.road\.song\.01"\] = \{(.*?)\n\t\},', src, re.S).group(1)
+    first = re.search(r'"((?:[^"\\]|\\.)*)"', block).group(1)
+    return first.replace("\\n", "\n").replace('\\"', '"')
+
+
+def bard_scene(lang, theme):
+    """ADR 0060: the Bard's box with its Share bar, and the same piece being shared (the second verse next)."""
+    s = bard_piece(lang)
+    return (C.narrator(380, 420, "bard", s, lang=lang, theme=theme, reveal=4, share={"channel": "SAY", "progress": None})
+            + C.narrator(380, 110, "bard", s, lang=lang, theme=theme, share={"channel": "EMOTE", "progress": (2, 5)}))
+
+
 def wheel_scene(lang, theme):
     return C.emote_wheel(W // 2, 120 + 140, lang=lang, theme=theme, slices=8, lit=2, cursor=(36, 48))
 
@@ -161,6 +178,9 @@ SCENES = [
      settings_scene, "neutral"),
     ("dialogue", ("Ambient NPC dialogue: the badge, the NPC voice, numbered answers",
                   "Dialogo ambientale con un PNG: il badge, la voce del PNG, risposte numerate"), dialogue_scene, "warm"),
+    ("bard", ("The Bard's box (ADR 0060): a song in its own colour, Share, and a share under way",
+              "Il riquadro del Bardo (ADR 0060): una canzone nel suo colore, Condividi, e una condivisione in corso"),
+     bard_scene, "dusk"),
     ("emote-wheel", ("The emote wheel (ADR 0059): held at the cursor, a slice lit, its emote said below",
                      "La ruota delle emote (ADR 0059): tenuta sul cursore, una fetta accesa, la sua emote scritta sotto"),
      wheel_scene, "dusk"),

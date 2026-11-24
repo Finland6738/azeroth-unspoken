@@ -8,7 +8,7 @@ For now these pieces come from an optional pack, **Azeroth Unspoken - Verses** (
 
 ## What they are like
 
-- **Private, always.** They appear only in your narrator, in your character's inner voice or in the voice of the NPC you are talking to. They are never offered for chat and nobody else sees them, whatever your [[Chat Gateway]] mode, even in automatic mode.
+- **Private, unless you share them.** They appear only in your narrator: the songs, verses and tales your character remembers in the **Bard**'s box (see [The Bard](#the-bard)), inscriptions and formulas in your character's inner voice, an NPC's song in that NPC's voice. They are never offered for chat by themselves, whatever your [[Chat Gateway]] mode, even in automatic mode. Only the Bard's **Share** button sends one, and only when you click it.
 - **Rare.** About one piece every 20 to 30 minutes at the default intensity (50), never two within ten minutes at any intensity, never in combat; and each piece comes back at most once every three to seven days. The setting **Literary forms** changes how often (see below).
 - **At the right moment only.** The first time you enter a ruin or a holy place; when you return to a place your character remembers; when you sit or ask for news in an innkeeper's [[NPC dialogue|NPC-Dialogues]]; when you use your Hearthstone or travel by spell; on a long ride; when someone you know (a friend, or someone you are wary of) acts toward you; when you pray with `/au pray`; after a lost boss fight; in a quiet moment, at dusk or dawn, or when you come in to rest (a tale, or a piece of your culture of origin).
 - **Told, not claimed.** Every song, legend or inscription says who carries it: "worn letters on a fallen lintel", "a proverb from the market stalls", "the kind told to children". These are local color, the sort of thing people say and sing in Azeroth, not the history of the world.
@@ -25,6 +25,48 @@ For now these pieces come from an optional pack, **Azeroth Unspoken - Verses** (
 ![Illustrative mockup: a reading longer than twelve lines](../design/mockups/png/narrator-reading-scroll.png)
 
 *Illustrative mockup, not an in-game screenshot: past twelve lines the text scrolls with the mouse wheel, and the box follows the line just revealed.*
+
+## The Bard
+
+The songs, rhymes, hymns, laments, verses and tales your character remembers appear in a box of their own: the **Bard** (*Bardo* in Italian). It is the narrator box in another colour, a rose on the dark theme and a wine red on the light one, with a small **note** before the label "Bard". Everything else works as for any line: the verses appear one at a time, a long piece scrolls past twelve lines, the history keeps it (labelled *Bard*, in its colour), the pause and the close button work, and with **Animations** off the whole piece appears at once.
+
+Not every literary piece is the Bard's. **Inscriptions** and solemn **formulas** are read, not sung: they stay in the inner voice. A song an **NPC** sings (the innkeeper's rhyme, for example) stays in that NPC's voice. A piece that comes back to mind later follows the same rule.
+
+![Illustrative mockup: the Bard's box with a song and its Share bar](../design/mockups/png/narrator-bard.png)
+
+*Illustrative mockup, not an in-game screenshot: a song in the Bard's colour, three of its lines shown so far; under it the Share bar.*
+
+![Illustrative mockup: the Bard's box on the Aurora theme](../design/mockups/png/narrator-bard-aurora.png)
+
+*Illustrative mockup, not an in-game screenshot: the same box on the light theme (Aurora), with /emote chosen.*
+
+### Sharing a piece in chat
+
+Under a Bard piece the box has a **Share** bar: on the left the channel, **/s** (`/say`) or **/e** (`/emote`) (click it to change), on the right **Share**. Nothing is sent until you click it. Then:
+
+1. the first line of the piece (who carries it, *"The pocket-stone song comes to mind..."*) is replaced by an **emote** on `/emote`: *Elyra sings an old song:* (or *recites a few verses:*, *tells an old tale:*);
+2. the verses follow, **one message per verse**, a few seconds apart (at least 4 seconds, or the Chat Gateway's own pause if it is longer); the empty line between two stanzas is skipped;
+3. on `/emote` each verse is written in quotes after your name, and the share goes on by itself until the last verse;
+4. on `/say` in the open world the game wants a click for every message: the button becomes **Next verse 2/4** and each click sends one. Inside an instance `/say` goes on by itself, like `/emote`.
+
+While a piece is being shared it stays in the box (other lines wait in the history), the label says *sharing on /s*, and **Stop** ends the share; so does the box's close button. A share also stops when a fight begins, when Total RP 3 says you are out of character, and after two minutes without a click. Each message obeys the Chat Gateway's rules: at most 255 bytes, never two within its pause, never more than its messages per minute (the share waits), nothing while the game holds chat. The Bard **never** shares by itself, in any mode, also in automatic mode. A piece of a single line has no Share bar: there is nothing to sing line by line.
+
+![Illustrative mockup: the Bard sharing a song on /say](../design/mockups/png/narrator-bard-sharing.png)
+
+*Illustrative mockup, not an in-game screenshot: the emote and the first verse are in chat; Next verse sends the second, Stop ends the share.*
+
+You can also share a piece you heard before: open it in the **Songbook** tab of the journal, and click **/say** or **/emote** on the row *Share it in chat, line by line*. The piece appears again in the Bard's box and the share starts.
+
+### The Bard's settings and commands
+
+| Setting | Default | Where | Command |
+|---|---|---|---|
+| **Bard** | on | Settings > General | `/au bard on\|off` (off: songs and verses appear in the inner voice, as before) |
+| **Share button** | on | Settings > General | `/au bard share on\|off` (off: no Share bar, no Share row in the songbook) |
+| **Share on** | /say | Settings > General, or the chip of the Share bar | `/au bard channel say\|emote` |
+| How often pieces come | rare | Settings > General, **Literary forms** | `/au literary never\|rare\|normal` |
+
+`/au bard` alone shows the three settings. `/au bard sing [say|emote]` shares the last Bard piece shown, `/au bard next` sends the next verse (a typed command counts as a click), `/au bard stop` ends a share.
 
 ## Trying them
 

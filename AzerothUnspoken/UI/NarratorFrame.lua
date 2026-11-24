@@ -13,6 +13,10 @@
 -- Long private reading (#126, D20): a text with line breaks (a verse, a song, a tale) keeps them (#117), appears one line
 -- at a time (the time to read the line before, and a short pause) and scrolls with the mouse wheel inside a box of at
 -- most MAX_LINES lines. The history keeps the line breaks too.
+-- The Bard (ADR 0060): a song, a verse or a tale (NS.Bard:Claims) is shown in the Bard's look: rec.voice = "bard", the
+-- label "Bard", the token voice-bard, the note icon before the label, and a Share bar (the channel chip, Share or "Next
+-- verse", Stop). The record keeps its speaker: the Gateway's privacy guard reads it. While a share runs, the box stays
+-- and other lines wait in the history, as behind a proposal.
 local ADDON, NS = ...
 local W = NS.Widgets
 local Theme, Motion = NS.Theme, NS.Motion
@@ -41,6 +45,7 @@ local HISTORY_LINES = 8       -- the history is as tall as eight lines of the na
 local MAX_LINES = 12          -- #126: the text box grows up to this many lines, then the text scrolls
 local VERSE_PAUSE = 0.8       -- #126: seconds between a line read and the next one appearing
 local HISTORY_INDENT = "    " -- #117: the lines after the first of an entry in the history
+local BARD_ICON = 16          -- ADR 0060: the Bard's note before the label
 local INNER_FONT = "Fonts\\ARIALN.TTF"   -- #186: the inner voice in another typeface, a cue that needs no colour
 
 -- the colour of each voice (GDD §5.3) is a theme token: Theme.VOICE_TOKENS (voice-narrator, voice-inner, voice-character,
@@ -67,11 +72,19 @@ local frame
 
 local function Cfg() return NS.db.ui.narrator end
 
----@param speaker string narrator | inner | character | npc
+---@param speaker string narrator | inner | character | npc | bard
 ---@return string
 function Narrator:VoiceLabel(speaker)
 	return NS:L("voice_" .. tostring(speaker))
 end
+
+---The voice a record is shown in: the Bard's for a Bard piece (ADR 0060), else its speaker.
+---@param rec { speaker: string, voice?: string }
+---@return string
+function Narrator.VoiceOf(rec)
+	return rec.voice or rec.speaker
+end
+local VoiceOf = Narrator.VoiceOf
 
 -- a word in the colour of a token, as an inline colour code (the label and the history are one FontString each); the
 -- label and the history are written again when the theme changes (Narrator:ApplySettings)
@@ -298,7 +311,7 @@ end
 local function AddHistory(rec)
 	local list = Narrator.history
 	local entry = {
-		time = date and date("%H:%M") or "", speaker = rec.speaker, text = rec.display, sentTo = rec.sentTo,
+		time = date and date("%H:%M") or "", speaker = VoiceOf(rec), text = rec.display, sentTo = rec.sentTo,
 		notice = rec.notice,
 	}
 	table.insert(list, entry)
@@ -390,6 +403,11 @@ end
 local function PaintVoice(speaker)
 	local accent, ink = Narrator:VoiceColors(speaker)
 	Theme.Fill(frame.accent, accent)
+	-- ADR 0060: the Bard's note before the label, in its accent; the label moves over to make room
+	local bard = speaker == "bard"
+	frame.bardIcon:SetShown(bard)
+	Theme.Tint(frame.bardIcon, accent)
+	frame.label:SetPoint("LEFT", bard and (PAD + BARD_ICON + 4) or PAD, 0)
 	frame.timeline:SetToken(accent)
 	Theme.Text(frame.text, ink)
 	-- the typeface follows the font setting (Theme.SetupFonts changes the font object, not the texts that had a size set)
@@ -408,7 +426,7 @@ function Narrator:ApplySettings()
 	if not frame then return end
 	local cfg = Cfg()
 	SetSize(frame.label, math.max(12, cfg.fontSize - 2))
-	PaintVoice(self.current and self.current.speaker or "narrator")
+	PaintVoice(self.current and VoiceOf(self.current) or "narrator")
 	-- #173: the setting is the background's opacity only, applied once; the frame alpha is never changed
 	Theme.Tint(frame.bg, "bg", self:BackgroundAlpha())
 	frame.labelText = nil
@@ -524,6 +542,63 @@ function Narrator:Scroll(delta)
 	return true
 end
 
+---ADR 0060: whether the box shows the Share bar: a Bard piece on screen, Share on in the settings, no proposal.
+---@return boolean
+function Narrator:ShowsShare()
+	local cur = self.current
+	return cur ~= nil and VoiceOf(cur) == "bard" and not cur.proposal and NS.db.bard.share == true
+		and NS.Bard ~= nil and NS.Bard.Parts(cur.display) ~= nil
+end
+
+---ADR 0060: the Share bar: the channel chip on the left; on the right Share, or "Next verse" and Stop while this piece
+---is being shared.
+function Narrator:LayoutShare()
+	local cur, Bard = self.current, NS.Bard
+	local sb = frame.shareBar
+	local sharing = cur and Bard:IsSharing(cur.display)
+	local channel = sharing and Bard.share.channel or NS.db.bard.channel
+	sb.chip:SetText(CHANNEL_NAME[channel] or channel)
+	if sharing then
+		local n, total = Bard:Progress()
+		sb.shareBtn:SetText(NS:L("btn_share_next", n - 1, total - 1))
+	else
+		sb.shareBtn:SetText(NS:L("btn_share"))
+	end
+	sb.stopBtn:SetText(NS:L("btn_share_stop"))
+	sb.stopBtn:SetShown(sharing and true or false)
+	local x = 0
+	for _, b in ipairs({ sb.shareBtn, sb.stopBtn }) do
+		if b:IsShown() then
+			FitButton(b, b == sb.stopBtn and 8 or 38)   -- Share: 18 more for its icon
+			b:ClearAllPoints()
+			b:SetPoint("RIGHT", -x, 0)
+			x = x + b:GetWidth() + BAR_GAP
+		end
+	end
+end
+
+---ADR 0060: Share (or "Next verse") clicked: the player's action, so the share may start or move on.
+---@return boolean ok
+function Narrator:ShareClick()
+	local cur, Bard = self.current, NS.Bard
+	if not cur or not Bard then return false end
+	local ok, why = NS.Gateway:PlayerAction(function()
+		if Bard:IsSharing(cur.display) then return Bard:Next() end
+		local rule = cur.id and NS.Engine.byId[cur.id]
+		return Bard:Share(cur.display, rule and rule.genre, NS.db.bard.channel)
+	end)
+	if not ok then Bard:Explain(why) end
+	self:Refresh()
+	return ok
+end
+
+---ADR 0060: the channel chip of the Share bar: /say and /emote in turn (not while a share runs).
+function Narrator:CycleShareChannel()
+	if NS.Bard:IsSharing() then return end
+	NS.Config:Set("bard.channel", NS.db.bard.channel == "SAY" and "EMOTE" or "SAY")
+	self:Refresh()
+end
+
 function Narrator:Layout()
 	if not frame then return end
 	local p = self.proposal and NS.Gateway:GetPending() or nil
@@ -545,10 +620,13 @@ function Narrator:Layout()
 	self:FollowText(shown)
 	local h = head + 2 + view + 12
 	if frame.editor:IsShown() then h = h + 30 end
-	if p then h = h + 34 end
+	local share = not p and self:ShowsShare()
+	if p or share then h = h + 34 end
 	frame:SetHeight(h)
 	frame.bar:SetShown(p ~= nil)
 	if p then LayoutBar(p) end
+	frame.shareBar:SetShown(share)
+	if share then self:LayoutShare() end
 	self:UpdateTimeLine()
 	self:UpdateLayer()
 	self:Avoid()
@@ -569,8 +647,14 @@ local function LabelText(cur)
 	if #Narrator.held > 0 then table.insert(meta, NS:L("narrator_held", #Narrator.held)) end
 	-- #183: a line asked for while paused says so in words, not only through the dimmed speak button
 	if NS.paused then table.insert(meta, NS:L("narrator_paused")) end
-	local _, ink = Narrator:VoiceColors(cur.speaker)
-	local label = Colored(ink, Narrator:VoiceLabel(cur.speaker))
+	-- ADR 0060: a share of this piece is under way, and on which channel (its progress is on the Next verse button)
+	if NS.Bard and NS.Bard:IsSharing(cur.display) then
+		local channel = NS.Bard.share.channel
+		table.insert(meta, NS:L("bard_sharing", CHANNEL_NAME[channel] or channel))
+	end
+	local voice = VoiceOf(cur)
+	local _, ink = Narrator:VoiceColors(voice)
+	local label = Colored(ink, Narrator:VoiceLabel(voice))
 	if #meta > 0 then label = label .. Colored(Narrator:Ink(MUTED), " · " .. table.concat(meta, " · ")) end
 	return label
 end
@@ -618,7 +702,7 @@ function Narrator:Refresh()
 			v.shown = 0
 			self:UpdateVerses()
 		end
-		PaintVoice(cur.speaker)
+		PaintVoice(VoiceOf(cur))
 	end
 	-- "|" is the client's escape character: the pause icon is drawn, its name is "II" (#175)
 	frame.pauseBtn:SetText(NS.paused and ">" or "II")
@@ -657,6 +741,8 @@ end
 ---proposal is never discarded here: it stays in the Gateway, comes back with the next line or the speak key
 ---(BringBack), and its bar has Discard. Text typed in the editor is kept as the proposal's edited text.
 function Narrator:Dismiss()
+	-- ADR 0060: "x" over a piece being shared ends the share
+	if NS.Bard and self.current and NS.Bard:IsSharing(self.current.display) then NS.Bard:Stop("stop") end
 	self.held = {}
 	self:KeepTyped()
 	if frame then frame:Hide() end
@@ -740,12 +826,17 @@ end
 ---@param rec AUPhraseRecord
 ---@param opts? { chatFrame?: boolean, queue?: boolean }
 function Narrator:Present(rec, opts)
+	-- ADR 0060: a song, a verse or a tale is shown in the Bard's look (the speaker stays: the Gateway reads it)
+	if NS.Bard and not rec.proposal and NS.Bard:Claims(rec) then
+		rec.voice = "bard"
+		NS.Bard:NoteShown(rec)
+	end
 	-- the entry is kept on the line: after a send it is marked even when held lines came after it (#176)
 	rec.historyEntry = AddHistory(rec)
 	self:RefreshHistory()
 	if not frame or not NS.db.output.privateNarrator or (opts and opts.chatFrame) then
 		-- ripiego: riquadro assente o disattivato, la frase compare nella chat locale, visibile solo a te
-		NS:Print(("|cffffffff[%s]|r %s"):format(self:VoiceLabel(rec.speaker), rec.display))   -- colour-ok: white in the chat frame, not a theme surface
+		NS:Print(("|cffffffff[%s]|r %s"):format(self:VoiceLabel(VoiceOf(rec)), rec.display))   -- colour-ok: white in the chat frame, not a theme surface
 		return
 	end
 	-- #176: a waiting proposal is never pushed off the box, or the speak key would send a line no longer on screen.
@@ -757,7 +848,9 @@ function Narrator:Present(rec, opts)
 		if self.proposal ~= pending or not frame:IsShown() then ShowPending(pending) else self:UpdateLabel() end
 		return
 	end
-	if opts and opts.queue and frame:IsShown() and self.current then
+	-- ADR 0060: while the piece on screen is being shared, the box keeps it; the other line waits like a queued one
+	local sharing = frame:IsShown() and self.current and NS.Bard and NS.Bard:IsSharing(self.current.display)
+	if (sharing or (opts and opts.queue)) and frame:IsShown() and self.current then
 		table.insert(self.held, { rec = rec, at = GetTime() })
 		while #self.held > HELD_MAX do table.remove(self.held, 1) end
 		self:UpdateLabel()
@@ -1032,6 +1125,10 @@ local function Build()
 	end)
 	frame.header = header
 
+	-- ADR 0060: the Bard's note, shown before the label of a Bard piece
+	frame.bardIcon = W.Icon(header, "note", BARD_ICON, VOICE_TOKEN.bard, "ARTWORK")
+	frame.bardIcon:SetPoint("LEFT", PAD, 0)
+	frame.bardIcon:Hide()
 	frame.label = Theme.NewText(header, "BodyMedium", "text-2")
 	frame.label:SetPoint("LEFT", PAD, 0)
 	-- stops before the three buttons; a longer label is cut, not drawn under them
@@ -1120,6 +1217,42 @@ local function Build()
 	W.Tooltip(frame.anotherBtn, function() return NS:L("tip_another") end)
 	frame.discardBtn = Btn(NS:L("btn_discard"), "text", function() NS.Gateway:Discard() end)
 
+	-- ADR 0060: the Share bar of a Bard piece, in the same place: the channel chip, Share (primary) and Stop (quiet)
+	local sb = CreateFrame("Frame", nil, frame)
+	sb:SetPoint("BOTTOMLEFT", PAD, 6)
+	sb:SetPoint("BOTTOMRIGHT", -8, 6)
+	sb:SetHeight(24)
+	sb:Hide()
+	frame.shareBar = sb
+	local srule = sb:CreateTexture(nil, "BORDER")
+	srule:SetPoint("TOPLEFT", ACCENT - PAD, 5)
+	srule:SetPoint("TOPRIGHT", 8, 5)
+	srule:SetHeight(Theme.Px(1))
+	Theme.Fill(srule, "border")
+	sb.chip = ChannelChip(sb, function() Narrator:CycleShareChannel() end)
+	sb.chip:SetPoint("LEFT", 0, 0)
+	W.Tooltip(sb.chip, function() return NS:L("tip_bard_channel") end)
+	sb.shareBtn = W.FlatButton(sb, NS:L("btn_share"), 60, 24, function() Narrator:ShareClick() end, "primary")
+	-- the Material Symbols `share` icon (ADR 0060, docs/third-party.md) before the label, in the primary button's ink
+	sb.shareIcon = W.Icon(sb.shareBtn, "share", 14, "on-accent", "OVERLAY")
+	sb.shareIcon:SetPoint("LEFT", sb.shareBtn, "LEFT", 9, 0)
+	-- the label moves right of the icon; Paint centres it again, so it is moved after every Paint
+	local paint = sb.shareBtn.Paint
+	function sb.shareBtn:Paint(...)
+		paint(self, ...)
+		self.label:ClearAllPoints()
+		self.label:SetPoint("CENTER", self, "CENTER", 9, 0)
+	end
+	sb.shareBtn:Paint()
+	W.Tooltip(sb.shareBtn, function()
+		return NS:L(NS.Bard and NS.Bard:IsSharing() and "tip_share_next" or "tip_share")
+	end)
+	sb.stopBtn = W.FlatButton(sb, NS:L("btn_share_stop"), 60, 24, function()
+		NS.Bard:Stop("stop")
+		Narrator:Refresh()
+	end, "text")
+	W.Tooltip(sb.stopBtn, function() return NS:L("tip_share_stop") end)
+
 	frame:SetScript("OnUpdate", function(self, dt)
 		Narrator.elapsed = (Narrator.elapsed or 0) + dt
 		local remaining = Narrator.remaining or 0
@@ -1129,6 +1262,9 @@ local function Build()
 		-- una proposta in attesa, un editor aperto o il mouse sul riquadro fermano il tempo
 		local waiting = Narrator.proposal and NS.Gateway:GetPending()
 		if waiting then Narrator:UpdateLabel() end   -- the countdown
+		-- ADR 0060: a piece being shared stays on screen until the share ends
+		local cur = Narrator.current
+		if not waiting and cur and NS.Bard and NS.Bard:IsSharing(cur.display) then waiting = true end
 		if waiting or self.editor:IsShown() or hovered then
 			-- il tempo (and the time line) stops GRACE seconds before the end: once the mouse leaves, the box stays a
 			-- moment longer instead of vanishing under the hand (#21)
@@ -1181,6 +1317,17 @@ function Narrator:OnInit()
 	-- a change of theme paints the box and the history again (the inline colours of the label and of the history too); a
 	-- change of the font setting (Theme.SetupFonts runs first, it is registered earlier) gives the texts their new typeface
 	Theme.OnChange(function() Narrator:ApplySettings() end)
+	-- ADR 0060: a share that starts, moves on or ends changes the label and the Share bar
+	if NS.Bard then
+		NS.Bard:OnChange(function()
+			if not frame:IsShown() then return end
+			-- a share just over: the piece stays three more seconds, like a proposal just sent
+			if not NS.Bard:IsSharing() and Narrator.current and VoiceOf(Narrator.current) == "bard" then
+				Narrator.remaining = math.max(Narrator.remaining or 0, (Narrator.elapsed or 0) + 3)
+			end
+			Narrator:Refresh()
+		end)
+	end
 	NS.Config:OnChange(function(path)
 		if path == nil or path == "ui.fontSource" then Narrator:ApplySettings() end
 	end)

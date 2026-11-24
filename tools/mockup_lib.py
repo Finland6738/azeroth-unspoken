@@ -29,7 +29,7 @@ ADDON = os.path.join(ROOT, "AzerothUnspoken")
 TOKENS = ["bg", "surface-1", "surface-2", "surface-3", "raised", "border-subtle", "border", "border-strong",
           "text-1", "text-2", "text-3", "on-accent", "accent", "accent-hover", "accent-text", "accent-2", "neon", "neon-core",
           "ok", "warn", "err", "highlight", "scrim", "grad-1", "grad-2", "grad-3", "grad-4",
-          "voice-narrator", "voice-inner", "voice-character", "voice-npc"]
+          "voice-narrator", "voice-inner", "voice-character", "voice-npc", "voice-bard"]
 
 THEMES = {
     "nebula": {
@@ -41,6 +41,7 @@ THEMES = {
         "highlight": "rgba(255,255,255,0.06)", "scrim": "rgba(5,2,10,0.72)",
         "grad-1": "#FC8C46", "grad-2": "#EE4662", "grad-3": "#9A2A9A", "grad-4": "#702AA8",
         "voice-narrator": "#C4B0FF", "voice-inner": "#7FD4FF", "voice-character": "#FFE08A", "voice-npc": "#5BBF66",
+        "voice-bard": "#FF8FB8",
     },
     "aurora": {
         "bg": "#F5F8FA", "surface-1": "#FFFFFF", "surface-2": "#EAF0F4", "surface-3": "#E1E9EF", "raised": "#FFFFFF",
@@ -51,11 +52,12 @@ THEMES = {
         "highlight": "rgba(255,255,255,0.6)", "scrim": "rgba(11,27,43,0.45)",
         "grad-1": "#0054B6", "grad-2": "#007EA8", "grad-3": "#00A89A", "grad-4": "#70C446",
         "voice-narrator": "#4B2BB3", "voice-inner": "#005F8F", "voice-character": "#935E00", "voice-npc": "#0E5A28",
+        "voice-bard": "#9C1F5E",
     },
 }
 THEME_NAMES = {"nebula": "Nebula", "aurora": "Aurora"}
 DARK = {"nebula": True, "aurora": False}
-VOICE_TOKENS = {"narrator": "voice-narrator", "inner": "voice-inner", "character": "voice-character", "npc": "voice-npc"}
+VOICE_TOKENS = {"narrator": "voice-narrator", "inner": "voice-inner", "character": "voice-character", "npc": "voice-npc", "bard": "voice-bard"}
 
 
 def rgba(value):
@@ -417,6 +419,9 @@ ICONS = {
     "hand": '<path d="M8 13V6.5a1.5 1.5 0 0 1 3 0V12"/><path d="M11 11.5V5a1.5 1.5 0 0 1 3 0v6.5"/>'
             '<path d="M14 11.5V6.5a1.5 1.5 0 0 1 3 0V14a6 6 0 0 1-6 6h-.5a6 6 0 0 1-4.8-2.4L4 15a1.6 1.6 0 0 1 2.4-2.1L8 14.5"/>',
     "note": '<path d="M10 18V5l8-2v4l-8 2"/><circle cx="7" cy="18" r="3"/>',
+    # ADR 0060: the Share button, Google's Material Symbols `share` (Apache-2.0, docs/third-party.md), its 0 -960 960 960
+    # path scaled into this 24-unit box and filled
+    "share": None,   # filled in below from tools/make_media.py MATERIAL, the one copy of the path
     "smile": '<circle cx="12" cy="12" r="8.5"/><path d="M8.5 14a4.5 4.5 0 0 0 7 0"/><path d="M9 9.5h.01"/><path d="M15 9.5h.01"/>',
     "train": '<rect x="3" y="10" width="11" height="6" rx="1"/><path d="M14 16V6h6v10z"/><path d="M5 10V7h3v3"/>'
              '<circle cx="6" cy="18" r="2"/><circle cx="11" cy="18" r="2"/><circle cx="17" cy="18" r="2"/>',
@@ -427,6 +432,19 @@ ICONS = {
     "warn": '<path d="M12 4 2.5 20h19z"/><path d="M12 10v4"/><path d="M12 17h.01"/>',
     "chat": '<path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H9l-4 4v-4H6a2 2 0 0 1-2-2z"/>',
 }
+
+def _material(name):
+    """A Material Symbols path of tools/make_media.py (MATERIAL), as a filled glyph of the 24-unit icon box."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("make_media", os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                                                             "make_media.py"))
+    mm = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mm)
+    return (f'<path transform="scale(0.025) translate(0 960)" fill="currentColor" stroke="none" fill-rule="evenodd" '
+            f'd="{mm.MATERIAL[name]}"/>')
+
+
+ICONS["share"] = _material("share")
 
 
 def icon(name, size=16, token="currentColor", stroke=2):

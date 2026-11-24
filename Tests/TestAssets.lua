@@ -36,7 +36,8 @@ local function Cell(name, l, r, t, b)
 end
 
 T.run("IconCoords gives the cell of an icon of the 16-per-row sheet", function()
-	T.eq(#A.icons, 48, "48 icons (UI-1 and the emote wheel, ADR 0059)")
+	T.eq(#A.icons, 49, "49 icons (UI-1, the emote wheel of ADR 0059, the Share of ADR 0060)")
+	Cell("share", 0, 1 / 16, 3 / 16, 4 / 16)
 	Cell("chevron", 0, 1 / 16, 0, 1 / 16)
 	Cell("info", 0, 1 / 16, 1 / 16, 2 / 16)
 	Cell("scroll", 11 / 16, 12 / 16, 2 / 16, 3 / 16)
