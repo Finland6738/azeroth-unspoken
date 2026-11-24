@@ -120,12 +120,19 @@ the town and your title there.*
 *Illustrative mockup: personality traits, the inner voice, the culture of origin and the topics to avoid.* See
 [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3]].
 
+## The emote wheel
+
+![Illustrative mockup: the emote wheel held at the cursor, Dance lit](../design/mockups/png/emote-wheel.png)
+
+*Illustrative mockup: hold the wheel's key, point at an emote, let go. Released in the centre, nothing is played.* See
+[[Emote Wheel|Emote-Wheel]].
+
 ## Settings and first run
 
 ![Illustrative mockup: the top of the settings panel](../design/mockups/png/settings-top.png)
 
-*Illustrative mockup: the settings page in the game's options window, in seven sections: General, Appearance, Chat,
-Narrator, Modules, Privacy and Info.* See [[Settings Reference|Settings]].
+*Illustrative mockup: the settings page in the game's options window, in eight sections: General, Appearance, Emote
+wheel, Chat, Narrator, Modules, Privacy and Info.* See [[Settings Reference|Settings]].
 
 ![Illustrative mockup: the Info section of the settings, with the NEBULA community logo](../design/mockups/png/settings-info.png)
 

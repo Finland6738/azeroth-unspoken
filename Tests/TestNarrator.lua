@@ -925,7 +925,7 @@ T.run("#177, #179, #187: the settings rows, their sections and the help under th
 	Row("opt_fontsize").minus:Click()
 	T.eq(#NS.Config:Validate(NS.db), 0, "valori validi")
 
-	-- #187: seven sections with their headers, in this order (UI-3 adds Appearance, UI-7 Info)
+	-- #187: eight sections with their headers, in this order (UI-3 adds Appearance, UI-7 Info, ADR 0059 the emote wheel)
 	local heads = {}
 	for _, h in ipairs(panel.headers) do
 		T.eq(h.fs:GetText(), NS:L(h.key), h.key .. ": the header says its name")
@@ -934,7 +934,7 @@ T.run("#177, #179, #187: the settings rows, their sections and the help under th
 	table.sort(heads, function(a, b) return a.y > b.y end)
 	local order = {}
 	for _, h in ipairs(heads) do table.insert(order, h.key:sub(13)) end
-	T.eq(table.concat(order, ","), "general,look,chat,narrator,modules,privacy,info", "the seven sections, top to bottom")
+	T.eq(table.concat(order, ","), "general,look,wheel,chat,narrator,modules,privacy,info", "the eight sections, top to bottom")
 
 	-- no two controls on the same spot, every label left of its control
 	local spots, clash = {}, {}

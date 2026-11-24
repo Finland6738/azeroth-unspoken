@@ -971,3 +971,42 @@ function T.sentContains(text)
 	end
 	return false
 end
+
+-- ADR 0059, the emote wheel: the cursor (screen pixels), the keys held, the emotes played, the sounds, the key bindings and a
+-- few of the client's emote strings (ChatFrame: EMOTE<n>_TOKEN and its commands), numbered with a gap like the client's.
+CURSOR = { 512, 384 }
+function GetCursorPosition() return CURSOR[1], CURSOR[2] end
+HELD = {}   -- [mouse button ("MiddleButton") or key ("F")] = true
+function IsMouseButtonDown(button) return HELD[button] == true end
+function IsKeyDown(key) return HELD[key] == true end
+EMOTES_DONE = {}
+C_ChatInfo.PerformEmote = function(token) table.insert(EMOTES_DONE, token); return true end
+function DoEmote(token) table.insert(EMOTES_DONE, "DoEmote:" .. tostring(token)) end
+SOUNDS_PLAYED = {}
+SOUNDKIT = { U_CHAT_SCROLL_BUTTON = 1115, IG_MAINMENU_OPTION_CHECKBOX_ON = 856 }
+function PlaySound(id, channel) table.insert(SOUNDS_PLAYED, id); return true end
+BINDINGS = {}   -- [key] = action
+BINDINGS_SAVED = 0
+function GetBindingKey(action)
+	local out = {}
+	for k, a in pairs(BINDINGS) do if a == action then out[#out + 1] = k end end
+	table.sort(out)
+	return out[1], out[2]
+end
+function GetBindingAction(key) return BINDINGS[key] or "" end
+function SetBinding(key, action)
+	if P.combat then error("SetBinding in combat") end
+	BINDINGS[key] = action
+	return true
+end
+function GetCurrentBindingSet() return 2 end
+function SaveBindings(set) BINDINGS_SAVED = BINDINGS_SAVED + 1; BINDINGS_SET = set end
+for i, e in ipairs({ { "AGREE", "/agree" }, { "BOW", "/bow" }, { "BYE", "/bye", "/goodbye", "/farewell" }, { "CHEER", "/cheer" },
+	{ "DANCE", "/dance" }, { "KISS", "/kiss" }, { "LAUGH", "/laugh", "/lol" }, { "MOO", "/moo" }, { "POINT", "/point" },
+	{ "ROAR", "/roar" }, { "SALUTE", "/salute" }, { "THANK", "/thank", "/thanks", "/ty" }, { "TRAIN", "/train" },
+	{ "WAVE", "/wave" }, { "FORTHEALLIANCE", "/forthealliance" } }) do
+	local n = i < 10 and i or i + 30   -- a gap, as in the client's list
+	_G["EMOTE" .. n .. "_TOKEN"] = e[1]
+	for k = 2, #e do _G["EMOTE" .. n .. "_CMD" .. (k - 1)] = e[k] end
+end
+for _, e in ipairs({ "PLAYER_LEAVING_WORLD", "CINEMATIC_START", "LOADING_SCREEN_ENABLED", "PLAY_MOVIE" }) do VALID_EVENTS[e] = true end

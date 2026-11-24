@@ -413,6 +413,19 @@ ICONS = {
     "minus": '<path d="M6 12h12"/>',
     "star": '<path d="m12 4 2.4 5 5.6.7-4.1 3.8 1 5.5L12 16.3 7.1 19l1-5.5L4 9.7l5.6-.7z"/>',
     "heart": '<path d="M12 19s-7-4.4-7-9.5A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 2.5C19 14.6 12 19 12 19z"/>',
+    # the emote wheel (ADR 0059): line versions of the sheet's cells the wheel uses
+    "hand": '<path d="M8 13V6.5a1.5 1.5 0 0 1 3 0V12"/><path d="M11 11.5V5a1.5 1.5 0 0 1 3 0v6.5"/>'
+            '<path d="M14 11.5V6.5a1.5 1.5 0 0 1 3 0V14a6 6 0 0 1-6 6h-.5a6 6 0 0 1-4.8-2.4L4 15a1.6 1.6 0 0 1 2.4-2.1L8 14.5"/>',
+    "note": '<path d="M10 18V5l8-2v4l-8 2"/><circle cx="7" cy="18" r="3"/>',
+    "smile": '<circle cx="12" cy="12" r="8.5"/><path d="M8.5 14a4.5 4.5 0 0 0 7 0"/><path d="M9 9.5h.01"/><path d="M15 9.5h.01"/>',
+    "train": '<rect x="3" y="10" width="11" height="6" rx="1"/><path d="M14 16V6h6v10z"/><path d="M5 10V7h3v3"/>'
+             '<circle cx="6" cy="18" r="2"/><circle cx="11" cy="18" r="2"/><circle cx="17" cy="18" r="2"/>',
+    "crown": '<path d="m4 8 4 4 4-6 4 6 4-4-1.5 10h-13z"/>',
+    "bell": '<path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20a2 2 0 0 0 4 0"/>',
+    "flag": '<path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/>',
+    "arrow_up": '<path d="M12 19V5"/><path d="m6 11 6-6 6 6"/>',
+    "warn": '<path d="M12 4 2.5 20h19z"/><path d="M12 10v4"/><path d="M12 17h.01"/>',
+    "chat": '<path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H9l-4 4v-4H6a2 2 0 0 1-2-2z"/>',
 }
 
 

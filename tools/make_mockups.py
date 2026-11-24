@@ -139,6 +139,10 @@ def dialogue_scene(lang, theme):
     return C.dialogue((W - 380) // 2, 260, title, line=NPC[lang], choices=answers, lang=lang, hover=0, theme=theme)
 
 
+def wheel_scene(lang, theme):
+    return C.emote_wheel(W // 2, 120 + 140, lang=lang, theme=theme, slices=8, lit=2, cursor=(36, 48))
+
+
 # name, caption (en, it), function, scenery of the world behind
 SCENES = [
     ("design-system", ("Tokens, widgets and fonts of the theme", "Token, widget e font del tema"), design_system, None),
@@ -157,6 +161,9 @@ SCENES = [
      settings_scene, "neutral"),
     ("dialogue", ("Ambient NPC dialogue: the badge, the NPC voice, numbered answers",
                   "Dialogo ambientale con un PNG: il badge, la voce del PNG, risposte numerate"), dialogue_scene, "warm"),
+    ("emote-wheel", ("The emote wheel (ADR 0059): held at the cursor, a slice lit, its emote said below",
+                     "La ruota delle emote (ADR 0059): tenuta sul cursore, una fetta accesa, la sua emote scritta sotto"),
+     wheel_scene, "dusk"),
 ]
 
 

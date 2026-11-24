@@ -651,7 +651,8 @@ def wizard(step, lang="en", trp3=False, left=0, top=0, mode=0, intensity=50, aut
 
 # ---------------------------------------------------------------------------------------------------------------
 # Settings (UI/SettingsFrame.lua): a canvas in the client's Settings window; the title (H1) at (16, 16), the content
-# (640 wide) scrolls under it in seven W.Sections (General, Appearance, Chat, Narrator, Modules, Privacy, Info): a label
+# (640 wide) scrolls under it in eight W.Sections (General, Appearance, Emote wheel, Chat, Narrator, Modules, Privacy,
+# Info): a label
 # (BodyMedium) at 16 and its control at 240 (a Switch with its word, a Segmented, a value button 220 wide, a slider 220
 # with its value in mono), the buttons that open something two on a line (280 wide). Info: the made-by line and the
 # NEBULA thanks beside the 96-unit NEBULA logo (dark art on Nebula, light on Aurora), licence, notice and hint, four
@@ -659,7 +660,7 @@ def wizard(step, lang="en", trp3=False, left=0, top=0, mode=0, intensity=50, aut
 # ---------------------------------------------------------------------------------------------------------------
 S_CONTENT, S_SEC, LABEL_X, CONTROL_X = 640, 608, 16, 240
 SECTION_TOP = {}
-SETTINGS_SECTIONS = ("general", "look", "chat", "narrator", "modules", "privacy", "info")
+SETTINGS_SECTIONS = ("general", "look", "wheel", "chat", "narrator", "modules", "privacy", "info")
 S_MODULES = ["personal", "world", "npc", "memory", "emotion", "relations", "storyArcs", "social", "publicChat", "audio"]
 S_MODULES_ON = {"personal", "world", "npc", "memory", "emotion", "relations", "storyArcs", "social"}
 S_LIVE = {"personal", "world", "npc", "memory", "storyArcs", "relations", "emotion", "publicChat"}
@@ -672,7 +673,8 @@ def _lines(s, width, size=13):
     return sum(max(1, math.ceil(len(part) * size * 0.5 / width)) for part in s.split("\n"))
 
 
-def settings_content(lang="en", theme="nebula", reload_needed=False, others_state=None, auto_state=None, rpname=True):
+def settings_content(lang="en", theme="nebula", reload_needed=False, others_state=None, auto_state=None, rpname=True,
+                     wheel_key=None):
     T = lambda key, *a: L(lang, key, *a)  # noqa: E731
     out, cy = [], 4
     on_off = lambda v: T("on" if v else "off")  # noqa: E731
@@ -740,6 +742,33 @@ def settings_content(lang="en", theme="nebula", reload_needed=False, others_stat
         p += seg("opt_font", [("addon", T("font_addon")), ("game", T("font_game"))], "addon", sy)
         sy += 36
         a, sy = actions(["opt_resetwindows"], sy)
+        return p + a, sy
+
+    def wheel(sy):
+        # ADR 0059: the key (unbound: one click arms, a second binds the middle button), the shape, one slice's emote
+        p = label("opt_wheel_key", sy) + button(wheel_key or T("wheel_key_none"), 352, 24, "secondary", left=CONTROL_X, top=sy)
+        sy += 28
+        p += slide("opt_wheel_slices", 8, 4, 12, "8", sy)
+        sy += 28
+        p += sw("opt_wheel_labels", True, sy)
+        sy += 28
+        p += slide("opt_wheel_deadzone", 30, 16, 80, "30", sy)
+        sy += 28
+        p += slide("opt_wheel_delay", 0, 0, 500, "0 ms", sy)
+        sy += 28
+        p += sw("opt_wheel_sounds", True, sy)
+        sy += 28
+        p += toggle("opt_wheel_preset", T("wheel_preset_default"), sy)
+        sy += 28
+        p += label("opt_wheel_preset_new", sy) + editbox("", 220, 24, left=CONTROL_X, top=sy, font="Body")
+        sy += 28
+        p += slide("opt_wheel_slot", 2, 1, 12, "2", sy)
+        sy += 28
+        p += toggle("opt_wheel_emote", T("emote_DANCE") + "  /dance", sy)
+        sy += 28
+        p += label("opt_wheel_type", sy) + editbox("", 220, 24, left=CONTROL_X, top=sy, font="Body")
+        sy += 28
+        a, sy = actions(["opt_wheel_prev", "opt_wheel_reset", "opt_wheel_preset_delete", "opt_wheel_unbind"], sy)
         return p + a, sy
 
     def chat(sy):
@@ -818,7 +847,7 @@ def settings_content(lang="en", theme="nebula", reload_needed=False, others_stat
             sy += 28
         return p, sy
 
-    for key, fn in (("general", general), ("look", look), ("chat", chat), ("narrator", narrator_), ("modules", modules),
+    for key, fn in (("general", general), ("look", look), ("wheel", wheel), ("chat", chat), ("narrator", narrator_), ("modules", modules),
                     ("privacy", privacy), ("info", info)):
         sec(key, fn)
     help_ = T("panel_help", 1291, 9)
@@ -851,3 +880,76 @@ def settings(left, top, lang="en", theme="nebula", view=None, scroll=0, over="",
     client = (f'<div class="client" style="left:{left}px;top:{top}px;width:{S_CONTENT + 30 + 180}px;height:{canvas_h + 46}px">'
               f'<div class="nav"><i></i><i></i><b>Azeroth Unspoken</b><i></i></div>{canvas}{bar}{over}</div>')
     return client, canvas_h + 46
+
+
+# ---------------------------------------------------------------------------------------------------------------
+# Emote wheel (UI/EmoteWheel.lua, ADR 0059): a disc of radius max(140, 16 x slices) in surface-1 at 86 %, a border-strong
+# ring, the dead zone (surface-3, its ring in border, the cross in text-3, text-1 when it is the choice), separators in
+# border-subtle from the dead zone to the edge, each slice's icon (24, text-2) and label (Small, text-2) at
+# dead + (r - dead) x 0.56 from the centre, slice 1 at the top and clockwise; the lit slice an accent shape (radius 12)
+# behind its icon and label in on-accent, with a soft accent glow; under the wheel a caption (surface-2, BodyMedium) with
+# the lit emote and its command, or "Cancel". The cursor is drawn as a small arrow.
+# ---------------------------------------------------------------------------------------------------------------
+WHEEL_EMOTES = ["WAVE", "DANCE", "BOW", "CHEER", "LAUGH", "TRAIN", "MOO", "SALUTE", "THANK", "KISS", "POINT", "ROAR"]
+WHEEL_ICONS = {"WAVE": "hand", "DANCE": "note", "BOW": "crown", "CHEER": "star", "LAUGH": "smile", "TRAIN": "train",
+               "MOO": "bell", "SALUTE": "flag", "THANK": "check", "KISS": "heart", "POINT": "arrow_up", "ROAR": "warn"}
+
+
+def emote_wheel(cx, cy, lang="en", theme="nebula", slices=8, lit=None, labels=True, dead=30, cursor=None, emotes=None,
+                preset=None):
+    """The wheel centred at (cx, cy) of the page. lit: the slice lit (1..slices) or None (the cursor in the dead zone).
+    cursor: (dx, dy) of the cursor from the centre, WoW style (y up), or None for no cursor. emotes: the tokens of the
+    slices (the default preset when None). preset: the preset's name written above the wheel (shown only when the player
+    has more than one)."""
+    WHEEL = emotes or WHEEL_EMOTES
+    T = lambda key, *a: L(lang, key, *a)  # noqa: E731
+    r = max(140, 16 * slices)
+    item_r = dead + (r - dead) * 0.56
+    arc = 2 * math.pi * item_r / slices
+    label_w = max(40, min(96, int(arc - 6)))
+    parts = [f'<div class="abs" style="left:0;top:0;width:{2 * r}px;height:{2 * r}px;border-radius:50%;'
+             f'background:{surface(theme, 0.86, "surface-1")};box-shadow:inset 0 0 0 1.5px var(--border-strong)"></div>']
+    for i in range(slices):
+        a = (i + 0.5) * 2 * math.pi / slices
+        length = r - dead - 12
+        mid = dead + 6 + length / 2
+        x, y = r + mid * math.sin(a), r - mid * math.cos(a)
+        deg = math.degrees(a) - 90
+        parts.append(f'<div class="abs" style="left:{x - length / 2:.1f}px;top:{y - 0.5:.1f}px;width:{length:.1f}px;height:1px;'
+                     f'background:var(--border-subtle);transform:rotate({deg:.2f}deg)"></div>')
+    if lit:
+        a = (lit - 1) * 2 * math.pi / slices
+        x, y = r + item_r * math.sin(a), r - item_r * math.cos(a)
+        w_, h_ = (label_w + 8, 56) if labels else (40, 40)
+        parts.append(f'<div class="abs" style="left:{x - w_ / 2 - 18:.1f}px;top:{y - h_ / 2 - 18:.1f}px;width:{w_ + 36}px;'
+                     f'height:{h_ + 36}px;border-radius:30px;background:radial-gradient(closest-side,var(--accent),transparent);'
+                     f'opacity:calc(var(--glow-a) * 1.1)"></div>')
+        parts.append(f'<div class="abs" style="left:{x - w_ / 2:.1f}px;top:{y - h_ / 2:.1f}px;width:{w_}px;height:{h_}px;'
+                     f'border-radius:12px;background:var(--accent)"></div>')
+    for i in range(slices):
+        token = WHEEL[i]
+        a = i * 2 * math.pi / slices
+        x, y = r + item_r * math.sin(a), r - item_r * math.cos(a)
+        on = lit == i + 1
+        tok = "on-accent" if on else "text-2"
+        iy = y - (8 if labels else 0)
+        parts.append(f'<div class="abs" style="left:{x - 12:.1f}px;top:{iy - 12:.1f}px">{icon(WHEEL_ICONS[token], 24, tok)}</div>')
+        if labels:
+            parts.append(text(T("emote_" + token), "Small", tok, mode="trunc", left=round(x - label_w / 2), top=round(iy + 15),
+                              width=label_w, extra=";text-align:center"))
+    parts.append(f'<div class="abs" style="left:{r - dead}px;top:{r - dead}px;width:{2 * dead}px;height:{2 * dead}px;'
+                 f'border-radius:50%;background:var(--surface-3);box-shadow:inset 0 0 0 1px var(--border);display:grid;'
+                 f'place-items:center">{icon("cross", 16, "text-3" if lit else "text-1")}</div>')
+    caption = (T("emote_" + WHEEL[lit - 1]) + "  /" + WHEEL[lit - 1].lower()) if lit else T("wheel_cancel")
+    cap_w = max(120, min(320, int(len(caption) * 7.2) + 32))
+    parts.append(f'<div class="abs" style="left:{r - cap_w / 2:.0f}px;top:{2 * r + 8}px;width:{cap_w}px;height:28px;'
+                 f'border-radius:8px;background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--border);display:grid;'
+                 f'place-items:center">{text(caption, "BodyMedium", "text-1", extra=";position:static")}</div>')
+    if preset:
+        parts.append(text(preset, "Eyebrow", "text-2", left=0, top=-22, width=2 * r, extra=";text-align:center"))
+    if cursor:
+        px, py = r + cursor[0], r - cursor[1]
+        parts.append(f'<svg class="abs" style="left:{px:.0f}px;top:{py:.0f}px" width="18" height="22" viewBox="0 0 18 22">'
+                     '<path d="M1 1v17l4.5-4.2 3 6.6 3-1.4-3-6.4H15z" fill="#fff" stroke="#000" stroke-width="1.2"/></svg>')
+    return (f'<div class="abs" data-theme="{theme}" style="left:{cx - r}px;top:{cy - r}px;width:{2 * r}px;'
+            f'height:{2 * r + 40}px">{"".join(parts)}</div>')

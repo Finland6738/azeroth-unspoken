@@ -18,7 +18,8 @@ For the CurseForge gallery: [curseforge/](curseforge/README.md) has fourteen of 
 - [Narrator box](#narrator-box) (15)
 - [Chat Gateway](#chat-gateway) (7)
 - [First-run wizard](#first-run-wizard) (9)
-- [Settings](#settings) (13)
+- [Settings](#settings) (14)
+- [Emote wheel](#emote-wheel) (5)
 - [Journal](#journal) (13)
 - [Story Arcs](#story-arcs) (3)
 - [Relationships](#relationships) (12)
@@ -80,6 +81,7 @@ For the CurseForge gallery: [curseforge/](curseforge/README.md) has fourteen of 
 | <a href="settings-panel.png"><img src="settings-panel.png" width="320" alt="settings-panel"></a> | **[settings-panel.png](settings-panel.png)**<br>The settings panel as it opens in the client's options window. |
 | <a href="settings-section-general.png"><img src="settings-section-general.png" width="320" alt="settings-section-general"></a> | **[settings-section-general.png](settings-section-general.png)**<br>The General section: language, intensity, depth, literary forms, pause between lines, window scale. |
 | <a href="settings-section-appearance.png"><img src="settings-section-appearance.png" width="320" alt="settings-section-appearance"></a> | **[settings-section-appearance.png](settings-section-appearance.png)**<br>The Appearance section: the theme (Nebula or Aurora), neon effects, animations, the fonts, the window positions. |
+| <a href="settings-section-emote-wheel.png"><img src="settings-section-emote-wheel.png" width="320" alt="settings-section-emote-wheel"></a> | **[settings-section-emote-wheel.png](settings-section-emote-wheel.png)**<br>The Emote wheel section: its key (the middle mouse button after a second click), the slices, the emote names, the cancel zone, the hold delay, the sounds, and the emote of each slice. |
 | <a href="settings-section-chat.png"><img src="settings-section-chat.png" width="320" alt="settings-section-chat"></a> | **[settings-section-chat.png](settings-section-chat.png)**<br>The Chat section: what may reach chat, the default channel, how long a proposal waits, the speak button. |
 | <a href="settings-section-narrator.png"><img src="settings-section-narrator.png" width="320" alt="settings-section-narrator"></a> | **[settings-section-narrator.png](settings-section-narrator.png)**<br>The Narrator section: duration, reading speed, opacity, text size, motion, combat, the dialogue window. |
 | <a href="settings-section-modules.png"><img src="settings-section-modules.png" width="320" alt="settings-section-modules"></a> | **[settings-section-modules.png](settings-section-modules.png)**<br>The Modules section: each part of the addon on or off. |
@@ -90,6 +92,16 @@ For the CurseForge gallery: [curseforge/](curseforge/README.md) has fourteen of 
 | <a href="settings-language-reload.png"><img src="settings-language-reload.png" width="320" alt="settings-language-reload"></a> | **[settings-language-reload.png](settings-language-reload.png)**<br>After a change of language, the panel asks for a reload. |
 | <a href="language-reload-dialog.png"><img src="language-reload-dialog.png" width="320" alt="language-reload-dialog"></a> | **[language-reload-dialog.png](language-reload-dialog.png)**<br>The reload dialog after a change of language. |
 | <a href="settings-total-rp-3-consent.png"><img src="settings-total-rp-3-consent.png" width="320" alt="settings-total-rp-3-consent"></a> | **[settings-total-rp-3-consent.png](settings-total-rp-3-consent.png)**<br>Reading other players' Total RP 3 profiles asks for consent. |
+
+## Emote wheel
+
+| Image | What it shows |
+|---|---|
+| <a href="emote-wheel.png"><img src="emote-wheel.png" width="320" alt="emote-wheel"></a> | **[emote-wheel.png](emote-wheel.png)**<br>Held on its key: the wheel at the cursor, the slice in the cursor's direction lit, its emote named below. |
+| <a href="emote-wheel-cancel.png"><img src="emote-wheel-cancel.png" width="320" alt="emote-wheel-cancel"></a> | **[emote-wheel-cancel.png](emote-wheel-cancel.png)**<br>The cursor in the centre: nothing lit, the release cancels. |
+| <a href="emote-wheel-twelve-slices.png"><img src="emote-wheel-twelve-slices.png" width="320" alt="emote-wheel-twelve-slices"></a> | **[emote-wheel-twelve-slices.png](emote-wheel-twelve-slices.png)**<br>Twelve slices: a wider wheel, the same gesture. |
+| <a href="emote-wheel-aurora.png"><img src="emote-wheel-aurora.png" width="320" alt="emote-wheel-aurora"></a> | **[emote-wheel-aurora.png](emote-wheel-aurora.png)**<br>The wheel in the light theme Aurora. |
+| <a href="emote-wheel-italian.png"><img src="emote-wheel-italian.png" width="320" alt="emote-wheel-italian"></a> | **[emote-wheel-italian.png](emote-wheel-italian.png)**<br>The wheel with the Italian names of the emotes. |
 
 ## Journal
 

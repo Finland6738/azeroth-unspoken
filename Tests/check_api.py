@@ -76,6 +76,7 @@ EXCEPTIONS = {
     "InterfaceOptions_AddCategory": "FrameXML: ripiego per il pannello vecchio, chiamato da UI/SettingsFrame.lua solo dopo `elseif InterfaceOptions_AddCategory then`",
     "GetSpellInfo": "assente nel dump di Forever: usata solo come ripiego di C_Spell.GetSpellName, dentro Compat.SafeCall",
     "MouseIsOver": "assente nel dump: solo ripiego di Compat:IsMouseOver, che prima prova il metodo del frame IsMouseOver (nel dump; issue #17)",
+    "SOUNDKIT": "FrameXML: the table of the client's sound kit ids by name; Core/Emotes.lua reads it through Compat.Resolve and falls back to fixed ids when it is missing (ADR 0059, the emote wheel's tick and confirm)",
     "RAID_CLASS_COLORS": "FrameXML: the table of the class colours; Compat:ClassColor reads it only as the fallback of C_ClassColor.GetClassColor, through Compat.Resolve (UI-ECO UI-2)",
     "InterfaceOptionsFrame_OpenToCategory": "FrameXML del pannello vecchio: chiamata solo dopo `if InterfaceOptionsFrame_OpenToCategory and`",
     "ScrollUtil.*": "FrameXML (Lua): ScrollUtil.InitScrollBoxList is read through Compat.Resolve in Compat:ScrollBoxList, inside pcall; without it the ScrollBox's own Init is called (UI-ECO UI-3); DA PROVARE in game",

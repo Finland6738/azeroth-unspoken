@@ -625,6 +625,38 @@ may say; the lines said are the same.
     times in the first two minutes, then `/au prof`. **Expect:** the max of `PickEntry` close to its p95 (no first pick
     of several ms), loading no slower than before. **Report:** the mean, p95 and max of `PickEntry`, and the memory.
 
+## EW: the emote wheel (ADR 0059)
+
+Built and tested outside the game only. Each step says what to look at; if something goes wrong, open an issue with
+`/au debug` and a screenshot.
+
+- **EW.1 · The key.** Under *Options → Keybindings → AddOns → Azeroth Unspoken* find *Emote wheel (hold, release to
+  choose)* and bind the middle mouse button (or, out of combat, *Settings > Emote wheel > Key*: two clicks).
+    - **Expect:** the action is there, unbound at first; the first click in the settings says what the middle button does
+      now, the second binds it; in combat it refuses.
+    - **Report:** a missing action, a key taken without asking, an error message.
+- **EW.2 · Hold and release.** Hold the key, move the mouse towards *Dance*, release.
+    - **Expect:** the wheel appears at the cursor (whole, even near an edge), the slice in the mouse's direction lights up
+      with a tick, its name is written below; on release the character dances with a confirm sound and the wheel fades.
+    - **Report:** if the wheel opens but does not close on release (the client does not pass the key state), if the lit
+      slice does not follow the mouse (the cursor scale), the interface scale you use.
+- **EW.3 · Cancel.** Hold, go back to the centre, release. Then hold and press Esc.
+    - **Expect:** no emote either time; *Cancel* written under the wheel while you are in the centre.
+- **EW.4 · The game's emotes.** `/au emotes`, then `/au wheel set 6 train` and `/au wheel set 7 moo`.
+    - **Expect:** a long list (*N emotes of the game*), not the built-in one; *Train* and *Moo* work from the wheel.
+    - **Report:** if it says *The game gave no emote list*, an emote the wheel does not play.
+- **EW.5 · The lost release.** Hold the key, move the mouse over an addon window or out of the game (Alt+Tab) and release
+  there.
+    - **Expect:** the wheel closes within a moment without playing anything; it never stays on screen.
+- **EW.6 · Presets.** *Settings > Emote wheel > New preset*: type `Tavern` and Enter, change two slices; bind the key
+  *Emote wheel: next preset* and press it with the wheel open.
+    - **Expect:** the wheel shows *Tavern* above itself and its emotes; the key changes the preset under the cursor without
+      closing the wheel; the default preset is unchanged; the presets are still there after `/reload`.
+- **EW.7 · Look and sounds.** Try the Nebula and Aurora themes, *Neon effects* and *Animations* off, 12 slices, *Sounds* off.
+    - **Expect:** the semi-transparent wheel legible in both themes; with animations off it appears and goes at once;
+      without sounds, silence.
+    - **Report:** a screenshot per theme, a sound that is missing or wrong.
+
 ## Summary form (copy and fill in)
 
 ```

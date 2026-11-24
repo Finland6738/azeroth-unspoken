@@ -26,6 +26,7 @@ Azeroth Unspoken is a quiet narrator that walks beside your character. It notice
 - **Who you meet and where you are.** Lines change with the person in front of you and the place: a capital, a dungeon, a raid, a battleground.
 - **NPC ambient dialogues.** A small, clearly labelled, simulated chat with innkeepers, merchants, guards, flight masters and trainers.
 - **Personal stories.** Small story arcs for your character that grow from real events, with choices that are yours.
+- **An emote wheel.** Hold a key, point at an emote, let go: wave, dance, bow or moo without typing. See [[Emote Wheel|Emote-Wheel]].
 - **Optional chat lines.** If you want, your character's lines can become proposals that you edit and send to chat with one key.
 
 ## What it never does

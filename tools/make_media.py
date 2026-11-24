@@ -12,8 +12,11 @@ file belongs to a theme. All files are 32-bit uncompressed TGA with power-of-two
   pill              64x32    pill (half-circle ends), 9-slice on the left and right
   circle            64x64    filled circle
   blob_radial       128x128  radial fall-off for generated covers and soft spots
-  icons             256x256  16 px cells, 44 drawn (ICON_NAMES): chevron, check, cross, skull, shield, sword, info, search, ...
-                             the first 40 are FDCP's, the last four (heart, quill, chat, scroll) are this addon's;
+  disc_256          256x256  filled circle, large: the emote wheel's disc and dead zone keep a sharp edge (ADR 0059)
+  ring_256          256x256  2 px ring of the same circle: the edge of the emote wheel and of its dead zone
+  icons             256x256  16 px cells, 48 drawn (ICON_NAMES): chevron, check, cross, skull, shield, sword, info, search, ...
+                             the first 40 are FDCP's, then heart, quill, chat, scroll (UI-1) and hand, note, smile, train
+                             (the emote wheel, ADR 0059) are this addon's;
                              all drawn with Pillow shapes (no third-party artwork; docs/third-party.md)
   logo_256, logo_64          the addon's own logo from assets/logo-source.webp, with a round mask (full colour, never tinted)
   nebula_dark_256, nebula_light_256   the NEBULA community logo with its word, from assets/nebula/nebula-logo-dark.png (Nebula,
@@ -87,7 +90,9 @@ ICON_NAMES = ["chevron", "check", "cross", "dashed", "skull", "shield", "heal", 
               "coin", "refresh", "download", "upload",
               "bell", "flag", "minus", "gem", "bag", "book", "link", "arrow_left",
               # UI-1: four more for this addon (mirrored in UI/Assets.lua)
-              "heart", "quill", "chat", "scroll"]
+              "heart", "quill", "chat", "scroll",
+              # ADR 0059: four more for the emote wheel (wave, dance, laugh, train)
+              "hand", "note", "smile", "train"]
 
 
 def draw_icon(name):
@@ -262,6 +267,28 @@ def draw_icon(name):
         d.ellipse([pt(10.6, 10.6), pt(14.2, 14.2)], outline=255, width=w)
         for y in (6, 8.2, 10.4):
             d.line([pt(6, y), pt(10.4, y)], fill=0, width=int(0.7 * u))
+    elif name == "hand":
+        d.rounded_rectangle([pt(4, 7), pt(12.2, 14.4)], radius=int(2.4 * u), fill=255)
+        for x, top in ((5.1, 3.2), (7.3, 1.8), (9.5, 2.2), (11.5, 3.8)):
+            d.line([pt(x, top), pt(x, 9)], fill=255, width=int(1.7 * u))
+            d.ellipse([pt(x - 0.85, top - 0.85), pt(x + 0.85, top + 0.85)], fill=255)
+        d.line([pt(4.4, 10.4), pt(2.2, 7.6)], fill=255, width=int(1.7 * u))
+    elif name == "note":
+        d.ellipse([pt(2.6, 10), pt(7.4, 14)], fill=255)
+        d.line([pt(6.6, 12), pt(6.6, 2.4)], fill=255, width=w)
+        d.polygon([pt(6.6, 2), pt(12.6, 4.4), pt(12.6, 7.6), pt(6.6, 5.4)], fill=255)
+    elif name == "smile":
+        d.ellipse([pt(1.8, 1.8), pt(14.2, 14.2)], outline=255, width=w)
+        d.ellipse([pt(5, 5.2), pt(6.8, 7.2)], fill=255)
+        d.ellipse([pt(9.2, 5.2), pt(11, 7.2)], fill=255)
+        d.arc([pt(4.6, 5.4), pt(11.4, 11.8)], start=20, end=160, fill=255, width=w)
+    elif name == "train":
+        d.rectangle([pt(1.6, 6.6), pt(10.6, 11.4)], fill=255)
+        d.rectangle([pt(9, 2.6), pt(14.4, 11.4)], fill=255)
+        d.rectangle([pt(10.4, 4), pt(13, 6.6)], fill=0)
+        d.rectangle([pt(3, 3.4), pt(5.4, 6.6)], fill=255)
+        for x in (4, 8.4, 12.2):
+            d.ellipse([pt(x - 1.8, 10.6), pt(x + 1.8, 14.2)], fill=255)
     return img.resize((CELL, CELL), Image.LANCZOS)
 
 
@@ -303,6 +330,8 @@ def main():
     made.append(save(white(rounded((64, 32), 16)), "pill"))
     made.append(save(white(circle(64)), "circle"))
     made.append(save(white(radial(128)), "blob_radial"))
+    made.append(save(white(circle(256)), "disc_256"))
+    made.append(save(white(rounded((256, 256), 128, ring=2.0)), "ring_256"))
     sheet = Image.new("L", (256, 256), 0)
     for i, name in enumerate(ICON_NAMES):
         sheet.paste(draw_icon(name), ((i % 16) * CELL, (i // 16) * CELL))

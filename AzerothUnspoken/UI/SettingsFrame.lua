@@ -351,6 +351,116 @@ local function CreatePanel()
 		{ "opt_resetwindows", function() W.ResetPositions() end, nil, "opt_resetwindows_tip" },
 	})
 
+	-- Emote wheel (ADR 0059): its key, its shape and the emote of each slice. The key ships unbound; the first row binds the
+	-- middle mouse button only on a second click, out of combat (the first click says what the button does now).
+	Header("opt_section_wheel")
+	local Emotes, wheel = NS.Emotes, function() return NS.db.ui.wheel end
+	local wheelSlot, armedAt = 1, nil
+	local function Armed() return armedAt ~= nil and (GetTime() - armedAt) < 10 end
+	local function ActionName(action)
+		local name = _G["BINDING_NAME_" .. action]
+		return type(name) == "string" and name or action
+	end
+	Toggle("opt_wheel_key", function()
+		if Emotes:MiddleBound() then return NS:L("wheel_key_middle") end
+		if Armed() then
+			local action = Emotes:ActionOf(Emotes.MIDDLE)
+			return action and NS:L("wheel_key_arm", ActionName(action)) or NS:L("wheel_key_arm_free")
+		end
+		local keys = Emotes:BoundKeys()
+		if #keys > 0 then return NS:L("wheel_key_other", table.concat(keys, ", ")) end
+		return NS:L("wheel_key_none")
+	end, function()
+		if Emotes:MiddleBound() then return end
+		if not Armed() then
+			armedAt = GetTime()
+			return
+		end
+		armedAt = nil
+		local r = Emotes:BindMiddleButton()
+		NS:Print(NS:L(r == "ok" and "wheel_bind_done" or (r == "combat" and "wheel_bind_combat" or "wheel_bind_failed")))
+	end, "opt_wheel_key_tip")
+	Next()
+	Slide("opt_wheel_slices", 4, 12, 1, function() return Emotes:Slices() end,
+		function(v) NS.Config:Set("ui.wheel.slices", v) end, Plain)
+	Switch("opt_wheel_labels", function() return wheel().labels ~= false end,
+		function() NS.Config:Set("ui.wheel.labels", wheel().labels == false) end)
+	Slide("opt_wheel_deadzone", 16, 80, 2, function() return wheel().deadZone end,
+		function(v) NS.Config:Set("ui.wheel.deadZone", v) end, Plain)
+	Slide("opt_wheel_delay", 0, 500, 50, function() return math.floor((tonumber(wheel().holdDelay) or 0) * 1000 + 0.5) end,
+		function(v) NS.Config:Set("ui.wheel.holdDelay", v / 1000) end, function(v) return v .. " ms" end)   -- nolocale: a unit
+	Switch("opt_wheel_sounds", function() return wheel().sounds ~= false end,
+		function() NS.Config:Set("ui.wheel.sounds", wheel().sounds == false) end)
+	-- a box that acts on Enter and empties itself (`url`: Refresh empties it like a copy box)
+	local function Box(key, tip, onEnter)
+		local row = { key = key, url = "" }
+		row.label = Label(key)
+		row.box = W.EditBox(sec, CONTROL_W, 24)
+		row.box:SetPoint("TOPLEFT", CONTROL_X, -sy)
+		row.box:SetScript("OnEnterPressed", function(self)
+			local word = self:GetText()
+			self:SetText("")
+			if self.ClearFocus then self:ClearFocus() end
+			if word ~= "" then onEnter(word) end
+		end)
+		Tip(row.box, tip)
+		rows[key] = row
+		Next()
+		return row
+	end
+	-- the presets: the one shown (a click shows the next), a new one by name (a copy of the one shown)
+	Toggle("opt_wheel_preset", function() return Emotes:PresetLabel(Emotes:Active()) end,
+		function() Emotes:NextPreset(1) end, "opt_wheel_preset_tip")
+	Next()
+	Box("opt_wheel_preset_new", "opt_wheel_preset_new_tip", function(word)
+		local r = Emotes:SavePreset(word)
+		if r == "full" then NS:Print(NS:L("wheel_preset_full", Emotes.MAX_SETS))
+		elseif r == "name" then NS:Print(NS:L("wheel_preset_badname", Emotes.MAX_NAME)) end
+	end)
+	-- the emote of one slice of the preset shown: which slice (1-12; past the number of slices it is kept but not shown),
+	-- then its emote
+	Slide("opt_wheel_slot", 1, Emotes.MAX_SLICES, 1, function() return wheelSlot end, function(v) wheelSlot = v end,
+		function(v) return v > Emotes:Slices() and NS:L("wheel_slot_hidden", v) or tostring(v) end)
+	Toggle("opt_wheel_emote", function()
+		local token = Emotes:SliceToken(wheelSlot)
+		local cmd = Emotes:Command(token)
+		return cmd and (Emotes:Label(token) .. "  " .. cmd) or Emotes:Label(token)
+	end, function()
+		Emotes:SetSlice(wheelSlot, Emotes:Step(Emotes:SliceToken(wheelSlot), 1))
+	end, "opt_wheel_emote_tip")
+	Next()
+	-- or typed: an emote's name or command ("dance", "/lol"), Enter puts it in the chosen slice; an unknown one is said in chat
+	Box("opt_wheel_type", "opt_wheel_type_tip", function(word)
+		local token = Emotes:Resolve(word)
+		if token then Emotes:SetSlice(wheelSlot, token) else NS:Print(NS:L("wheel_unknown", word)) end
+	end)
+	local deleteArmed = nil   -- the preset waiting for its second click, and when
+	Actions({
+		{ "opt_wheel_prev", function() Emotes:SetSlice(wheelSlot, Emotes:Step(Emotes:SliceToken(wheelSlot), -1)) end },
+		{ "opt_wheel_reset", function() Emotes:ResetSlices() end },
+		{ "opt_wheel_preset_delete", function()
+			local name = Emotes:Active()
+			if name == Emotes.DEFAULT_SET then deleteArmed = nil; return NS:Print(NS:L("wheel_preset_keep")) end
+			if deleteArmed and deleteArmed.name == name and GetTime() - deleteArmed.at < 10 then
+				deleteArmed = nil
+				if Emotes:DeletePreset(name) then NS:Print(NS:L("wheel_preset_deleted", name)) end
+			else
+				deleteArmed = { name = name, at = GetTime() }
+			end
+		end, function()
+			local name = Emotes:Active()
+			if deleteArmed and deleteArmed.name == name and GetTime() - deleteArmed.at < 10 then
+				return NS:L("opt_wheel_preset_delete_arm", name)
+			end
+			return NS:L("opt_wheel_preset_delete")
+		end, "opt_wheel_preset_delete_tip" },
+		{ "opt_wheel_unbind", function()
+			local r = Emotes:UnbindMiddleButton()
+			NS:Print(NS:L(r == "ok" and "wheel_unbind_done" or (r == "combat" and "wheel_bind_combat"
+				or (r == "none" and "wheel_unbind_none" or "wheel_bind_failed"))))
+		end, nil, "opt_wheel_unbind_tip" },
+	})
+
 	-- Chat
 	Header("opt_section_chat")
 	Toggle("opt_chatmode", function() return NS:L("chatmode_" .. NS.db.chat.mode .. "_short") end,

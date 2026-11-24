@@ -85,9 +85,10 @@ end
 -- /au help a gruppi (UI-19, #189): una finestra di chat predefinita mostra circa dieci righe, quindi `/au help`
 -- stampa solo i gruppi e `/au help <gruppo>` le righe di un gruppo (al massimo nove). `all` le stampa tutte, per
 -- gruppo, con la diagnostica in fondo; un nome di comando stampa la sua riga.
-Commands.GROUPS = { "start", "narrator", "chat", "character", "diagnostics" }
+Commands.GROUPS = { "start", "narrator", "chat", "character", "emotes", "diagnostics" }   -- emotes: ADR 0059
 local HELP_WORDS = K.Register("help_groups", {
-	start = "start", narrator = "narrator", chat = "chat", character = "character", diagnostics = "diagnostics", all = "all",
+	start = "start", narrator = "narrator", chat = "chat", character = "character", emotes = "emotes",
+	diagnostics = "diagnostics", all = "all",
 })
 
 local function UsageLine(spec)
@@ -400,6 +401,11 @@ Commands.list = {
 		usage = "relationships [list / people / add <name> / note <name> <text> / export / ...]", desc = "help_relationships",
 		group = "character" },
 	{ name = "place", fn = function() NS.Place:Command() end, usage = "place", desc = "help_place", group = "character" },
+	-- ADR 0059: the emote wheel from the chat (its slices, its key, the client's emote list)
+	{ name = "wheel", fn = function(rest) NS.EmoteWheel:Command(rest) end,
+		usage = "wheel [set <slice> <emote> / reset / bind / unbind / presets / use / save / delete <name> / next]",
+		desc = "help_wheel", group = "emotes" },
+	{ name = "emotes", fn = function() NS.EmoteWheel:Command("list") end, usage = "emotes", desc = "help_emotes", group = "emotes" },
 	{ name = "who", fn = function(rest) NS.Interlocutor:Command(rest) end,
 		usage = "who [trp3 on/off / trait <trait> <value>]", desc = "help_who", group = "character" },
 	{ name = "talk", fn = function(rest) NS.NPCAlive:Command(rest) end,

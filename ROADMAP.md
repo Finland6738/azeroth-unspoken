@@ -191,6 +191,14 @@ Approved by the owner on 2026-11-23: the addon takes the interface look and the 
 | UI-7 | Credits and NEBULA: the Info section of the Settings canvas (credit to Finland and the NEBULA community, the mixed licence, the fan-made notice, four read-only copy boxes for the GitHub repository, its issues, the NEBULA site and Ko-fi) with the NEBULA community logo (a dark variant for Nebula, a light one for Aurora, full-colour and never tinted, swapped with the theme; `assets/nebula/`, `Media/nebula_*_256.tga`), `/au about` and `/au about chat`, README credits, wiki About page (`About.md` and `About-it.md`), CurseForge text | done on 2026-11-24 ([#295](https://github.com/Finland6738/azeroth-unspoken/pull/295); tests in `Tests/TestWindows.lua`, `TestLayout.lua`, `TestNarrator.lua`; nothing tried in the client: the logo and its TGA loading, the copy boxes and Ctrl+C, the scroll to Info, the swap with the theme) |
 | UI-8 | Mockups generator, `docs/specs/mockups/`, the regenerated `docs/design/mockups`, the `assets/` PNGs, README GIF and wiki Interface Tour; final status of the spec | done on 2026-11-24 ([#298](https://github.com/Finland6738/azeroth-unspoken/pull/298); `tools/mockup_lib.py`, `tools/make_mockups.py`, every mockup redrawn from the code in both themes, `Tests/check_mockups.py` and `Tests/check_theme_colors.py`; not tried in the client: the mockups are not screenshots) |
 
+### The radial emote wheel
+
+Asked by the owner on 2026-11-24, after UI-ECO and release 0.3.0 (the content waves W21-W30 wait). Decision: [ADR 0059](docs/adr/0059-a-radial-emote-wheel-held-on-a-key.md).
+
+| Step | What | State |
+|---|---|---|
+| EW | The wheel held on an unbound key (`AZEROTHUNSPOKEN_WHEEL`, `runOnUp`), the client's emote list, the geometry in pure Lua, the NEBULA look in both themes, the watchdog and the closings, Settings > Emote wheel with presets (named wheels, a next-preset key), `/au wheel` and `/au emotes`, four icons and two textures, tests, docs and mockups | built in one pull request; **untested in the client** (G1 section EW: the key state, the emotes, the sounds, the cursor scale, the look, the timings) |
+
 ### GitHub issues
 
 - Labels: `bug`, `enhancement`, `docs`, `in-game` (to be verified in the client), `content` (lines), `good first issue`, `priority:high|medium|low`.

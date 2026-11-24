@@ -222,7 +222,7 @@ def settings_page(name, title, target, seed, view=None, scroll=0, theme="nebula"
 
 
 def build_settings():
-    settings_page("settings", "Settings - the seven sections (unrolled)", "Settings", 40,
+    settings_page("settings", "Settings - the eight sections (unrolled)", "Settings", 40,
                   caption_extra="The sections scroll inside the client's Settings window (a plain stand-in): shown unrolled.")
     settings_page("settings-reload", "Settings - language changed, reload needed (unrolled)", "Settings / Languages", 41,
                   reload_needed=True)
@@ -232,6 +232,34 @@ def build_settings():
     settings_page("settings-info", "Settings - the Info section (UI-7)", "Settings / About", 44, view=600,
                   scroll=components.SECTION_TOP["info"] - 4,
                   caption_extra="The NEBULA community logo in its dark art (Nebula); the light art shows in Aurora.")
+
+
+def build_wheel():
+    """The emote wheel (ADR 0059): held on its key, a slice lit, the cancel zone, twelve slices, Aurora, its Settings."""
+    import components
+    w, h = 900, 560
+    cases = [
+        ("emote-wheel", "Emote wheel - held, the cursor on Dance (eight slices)", "nebula", 8, 2, (36, 48), "en", 51),
+        ("emote-wheel-cancel", "Emote wheel - the cursor in the cancel zone", "nebula", 8, None, (8, -6), "en", 52),
+        ("emote-wheel-12", "Emote wheel - twelve slices, the cursor on Kiss", "nebula", 12, 10, (-72, 12), "en", 53),
+        ("emote-wheel-it", "Emote wheel - held, the cursor on Dance (Italian)", "nebula", 8, 2, (36, 48), "it", 54),
+        ("emote-wheel-aurora", "Emote wheel - held, the cursor on Dance (Aurora)", "aurora", 8, 2, (36, 48), "en", 55),
+        ("emote-wheel-preset", "Emote wheel - a preset of the player's, 'Tavern', the cursor on Cheer", "nebula", 8, 3,
+         (50, -8), "en", 57),
+    ]
+    TAVERN = ["WAVE", "BOW", "CHEER", "LAUGH", "DANCE", "KISS", "THANK", "MOO"]
+    for name, title, theme, n, lit, cursor, lang, seed in cases:
+        r = max(140, 16 * n)
+        add(name, title, w, h, components.emote_wheel(w // 2, 40 + r, lang=lang, theme=theme, slices=n, lit=lit,
+                                                      cursor=cursor,
+                                                      emotes=TAVERN if name == "emote-wheel-preset" else None,
+                                                      preset="Tavern" if name == "emote-wheel-preset" else None), "Emote wheel" if theme == "nebula" else "Aurora theme",
+            "Emote-Wheel", scene="dusk", seed=seed, theme=theme,
+            caption_extra="Released on a slice, it plays that emote; released in the centre, nothing. The cursor arrow is "
+                          "the game's; the wheel never takes the mouse.")
+    settings(0, 0)   # fills components.SECTION_TOP
+    settings_page("settings-wheel", "Settings - the Emote wheel section", "Settings / Emote-Wheel", 56, view=600,
+                  scroll=components.SECTION_TOP["wheel"] - 4)
 
 
 LETTER = L("en", "rel_letter_questgiver_2", "Sister Odile")
@@ -547,7 +575,7 @@ def build_aurora():
     build_dialogue("aurora", only={"dialogue-line"})
     add("wizard-1-aurora", "First-run guide - step 1 (Aurora)", 680, 680, wizard(1, left=80, top=60, theme="aurora"),
         "Aurora theme", "First-Run-Wizard", scene="neutral", seed=21, theme="aurora")
-    settings_page("settings-aurora", "Settings - the seven sections (Aurora, unrolled)", "Settings", 43, theme="aurora",
+    settings_page("settings-aurora", "Settings - the eight sections (Aurora, unrolled)", "Settings", 43, theme="aurora",
                   group="Aurora theme")
 
 
@@ -588,7 +616,7 @@ art, icon, font or screenshot is used. The design system and the comparison with
 def main():
     write_css(MOCKUPS)
     for build in (build_narrator, build_proposal, build_speak_button, build_wizard, build_settings, build_journal,
-                  build_relations, build_consent, build_profile, build_dialogue, build_chat, build_aurora):
+                  build_relations, build_consent, build_profile, build_dialogue, build_chat, build_wheel, build_aurora):
         build()
     write_index()
     print(f"{len(INDEX)} mockups written")
