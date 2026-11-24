@@ -8,6 +8,50 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### Content wave W21: the capital Orgrimmar, its flights, its NPCs, its districts, its rest, its weather, its commands and its dialogues (issue #138)
+
+The twenty-first content wave of [docs/content/WAVES.md](docs/content/WAVES.md), random need only. Its pools were the
+first row of the table after W20, all with the `zone` condition: the **small pools of the capital Orgrimmar** (its
+`muse` and `quest_complete` pools were already full after W17-W18), 3,000 texts per language in 27 events. **1,227
+intentions, 3,000 texts per language** (6,000 in both), written by fifteen parallel writer subagents (authors
+`ai-w21-<unit>`), each on its own angle of the city and its own id families, trimmed to each pool's need (no text over
+it: 19 third variants dropped), and passed through the archive (drafts, `cli dups --state draft` with no exact and no
+near duplicate and no over-used opening or closing, submit, owner sample, approve, export; the round trip is an empty
+diff). No literary piece and no `tier` field; the invented sayings and customs are attributed to a voice. The addon
+goes from 26,012 to **27,239 intentions** and from 62,255 to **65,255 texts per language**. All ids are
+`org.<event>.w21.<family>.NNN` in `kalimdor_orgrimmar`.
+
+- **Added: Orgrimmar flights** (`journey`, 322 intentions, 677 texts) in four angles: the climb from the tower in the
+  Valley of Strength with the city seen from above, leaving the canyon behind (`journey = "start"`, in flight); the
+  approach and the spiral down, and the first steps on the ground (`journey = "arrival"`). No line names where the
+  flight goes or comes from.
+- **Added: Orgrimmar NPC meetings** (`npc_meet`, 186 intentions, 474 texts): the guard, the innkeeper, the merchant,
+  the trainer, the questgiver, the flight master and the banker. A trainer's subject and a questgiver's task are never
+  named.
+- **Added: Orgrimmar districts** (`subzone_enter`, 185 intentions, 446 texts): the Valley of Strength, the Drag, the
+  Valley of Spirits, the Valley of Wisdom, the Valley of Honor, the Cleft of Shadow, Grommash Hold and the Hall of
+  Legends, each with its client subzone name. No line says from which side the character came; no line claims Thrall
+  watches the character or that the character holds a rank.
+- **Added: Orgrimmar rest and weather** (`rest_enter`, 107 intentions, 283 texts; `weather_change`, 106 intentions,
+  268 texts: clear, rain, sand and storm, 67 each, each line about its own weather and what the city does about it).
+- **Added: what is said aloud in Orgrimmar** (`greet` 107, `farewell` 86, `thanks` 64, `jest` 31, `pray` 31, `toast`
+  30 texts; 137 intentions), and **coming back, leaving and the light** (`memory_return` 76, `travel` 43,
+  `reputation_change` 21, `dawn` 31, `dusk` 30 texts; 76 intentions).
+- **Added: the NPCs' own words** (`npcd_*`, 108 intentions, 302 texts): the grunts' greetings, goodbyes and directions,
+  the wind rider master, the trainers, the innkeepers and the merchants, with their small news of the city.
+- **A zone line holds for the whole city and nothing more**, as in W16-W20: no "our people" or home ground without a
+  Horde `race` or `faction` (at most 1 line in 8; a few lines give the view of an Alliance visitor under `faction =
+  "Alliance"`), no claim that the character is new, no hour or falling weather without `time` or `weather`, no district
+  named as "here" without its `subzone`, no wind rider as the character's own mount without `faction`, no fight
+  against the citizens, and nothing a Forsaken's body cannot do. `indoors = true` only on a few lines plainly inside
+  the inn. District names stay English in Italian.
+- **The gap after W21** (per language): soft and strict need met (gap **0**); random need 276,398, gap **213,961**
+  (was 216,961, exactly 3,000 less). **74 waves** left. The next row of WAVES.md is now **Stormwind City** (3,000).
+- **Measured.** `run_tests` M2: pick 35.9 → **35.8** thousand Lua instructions (p95 61.5 → **61.5**; reference 36.4, fails at 54.6); `bench_pool` (C0j): a pick on pools grown 16 times costs **35.9** against **35.5** on today's (**1.01** times; gate 1.25; in `run_tests` 33.6 against 35.4). `bench_scale`: memory 49.1 → 53.2 MB, pick 25.5 → 25.5 thousand instructions (p95 54.1); bytes per synthetic rule 1,826 → 1,894 at 10,000 rules, 1,269 → 1,265 at 50,000. `bench_trial --long 20`, seeds 1-5, first exact repetition (mean) and repeated share, main → W21: orc (Durotar, Orgrimmar) 10.9 → **9.4** h and 1.3% → **1.2%**, troll 12.0 → **9.3** h and 1.3% → **1.6%**, human (Elwynn, Stormwind) **10.5** h and **1.4%**, identical seed by seed. On every orc and troll seed traced the first repeats are Durotar `muse` lines; no W21 line repeats and every Orgrimmar line spoken is distinct: the new lines shift the random stream onto Durotar's smaller pool (a birthday effect), not a change of the engine.
+- **Tests:** counts: base intentions 27196, lines loaded 27203; README totals. One measurement moved: the scale projection's memory per rule (`run_tests` 9a) measured 2,000 to 6,000 synthetic rules over the archive, and with 27,239 rules that span now crosses the Lua table doubling at 32,768 entries (2,524 B against the 2,500 B check; the memory jumps 5 MB between 5,000 and 6,000 synthetic rules), as its comment foresaw. The span is now 2,000 to 10,000 rules, which spreads a doubling over 8,000 (1,756 B). No other test needed a change of logic.
+- **Owner sample:** [docs/content/reviews/W21.md](docs/content/reviews/W21.md) (`cli sample --state review --share
+  0.02`: 25 intentions).
+
 ## [0.3.1] - 2026-11-24
 
 A small development preview on top of 0.3.0: it adds the **radial emote wheel** (ADR 0059), a round wheel of the game's emotes that opens while a key is held and plays the one the mouse points at when the key is released, with presets, its own Settings section and commands, and the regression tests of the two layout fixes of 0.3.0. The key ships unbound. The lines are the same as in 0.3.0. Nothing of the wheel has been tried in the game client yet.
