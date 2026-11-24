@@ -38,4 +38,7 @@
 	<Binding name="AZEROTHUNSPOKEN_WHEEL" runOnUp="true" category="ADDONS">
 		AzerothUnspoken_EmoteWheel(keystate)
 	</Binding>
+	<Binding name="AZEROTHUNSPOKEN_WHEEL_NEXT" category="ADDONS">
+		AzerothUnspoken_EmoteWheelNext()
+	</Binding>
 </Bindings>

@@ -269,15 +269,19 @@ Config.defaults = {
 		neon = true,
 		animations = true,
 		fontSource = "addon",
-		-- ADR 0059: the emote wheel, held on the key AZEROTHUNSPOKEN_WHEEL (unbound until the player binds it). `emotes` holds
-		-- one token per slice, clockwise from the top; the first `slices` are shown. `holdDelay` in seconds: 0 opens on press
+		-- ADR 0059: the emote wheel, held on the key AZEROTHUNSPOKEN_WHEEL (unbound until the player binds it). `sets` holds the
+		-- presets, each one token per slice, clockwise from the top (the first `slices` are shown); `active` names the preset
+		-- shown ("default" always exists, Core/Emotes.lua). `holdDelay` in seconds: 0 opens on press
 		wheel = {
 			slices = 8,
 			labels = true,
 			deadZone = 30,
 			holdDelay = 0,
 			sounds = true,
-			emotes = { "WAVE", "DANCE", "BOW", "CHEER", "LAUGH", "TRAIN", "MOO", "SALUTE", "THANK", "KISS", "POINT", "ROAR" },
+			active = "default",
+			sets = {
+				default = { "WAVE", "DANCE", "BOW", "CHEER", "LAUGH", "TRAIN", "MOO", "SALUTE", "THANK", "KISS", "POINT", "ROAR" },
+			},
 		},
 	},
 }
@@ -353,8 +357,16 @@ Config.maps = {
 	chance = function(v) return type(v) == "number" and v >= 0 and v <= 100 end,
 	ignored = function(v) return v == true end,
 	disabledPacks = function(v) return v == true end,
-	-- ADR 0059: one emote token per slice of the wheel ("DANCE"); a malformed one is dropped and the slice shows its default
-	["ui.wheel.emotes"] = function(v) return type(v) == "string" and v:match("^[A-Z][A-Z0-9_]*$") ~= nil and #v <= 40 end,
+	-- ADR 0059: a preset of the wheel is a list of at most 12 emote tokens ("DANCE"); anything else drops the preset (a
+	-- missing slice shows its default)
+	["ui.wheel.sets"] = function(v)
+		if type(v) ~= "table" then return false end
+		for k, t in pairs(v) do
+			if type(k) ~= "number" or k < 1 or k > 12 or k ~= math.floor(k) then return false end
+			if type(t) ~= "string" or not t:match("^[A-Z][A-Z0-9_]*$") or #t > 40 then return false end
+		end
+		return true
+	end,
 }
 
 -- Moduli che hanno già un effetto: l'impostazione e la guida iniziale mostrano un asterisco accanto agli altri (#77).

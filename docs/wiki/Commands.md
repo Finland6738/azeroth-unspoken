@@ -8,14 +8,14 @@ Every command of Azeroth Unspoken. Type them in the chat box, like any other sla
 - **Command names and their arguments are always in English, whatever language you chose.** The interface language (see [[Languages]]) changes the descriptions and messages, never the words you type. In Italian, for example, you still type `/au journal`; the addon answers in Italian.
 - Commands are not case-sensitive.
 - There are no aliases: each command has one name. The only extra spellings are a few short forms, listed in the tables (`/au lang` for `/au language`, `/au rel` for `/au relationships`, and `s`, `e`, `p`, `g`, `i` as channel names).
-- Typing `/au` alone or `/au help` prints the **groups of commands**: Start, Narrator, Chat, Character and Diagnostics. `/au help <group>` prints one group (for example `/au help chat`), `/au help <command>` one command (`/au help journal`) and `/au help all` every command. Each fits in a default chat window, except `all`: scroll the chat up to read it. Group names are typed in English, like the commands.
+- Typing `/au` alone or `/au help` prints the **groups of commands**: Start, Narrator, Chat, Character, Emotes and Diagnostics. `/au help <group>` prints one group (for example `/au help chat`), `/au help <command>` one command (`/au help journal`) and `/au help all` every command. Each fits in a default chat window, except `all`: scroll the chat up to read it. Group names are typed in English, like the commands.
 - A word the addon does not know gets a short answer with the closest command, for example "Did you mean `/au journal`?" if you type `/au diario`.
 - Commands do not send anything to chat by themselves. A command that produces a line shows it in the narrator box, or as a proposal if you turned chat proposals on (see [[Chat Gateway]]).
 - In the tables, `<this>` is a value you fill in, `[this]` is optional, and `a\|b` means "a or b". In the game, `/au help` writes `a / b` (or `a/b` inside an option): a bare `|` is the client's escape character, so the addon never prints one.
 
 ![Illustrative mockup: /au help in a chat window](../design/mockups/png/chat-help-window.png)
 
-*Illustrative mockup, not an in-game screenshot: /au help lists the five groups of commands.*
+*Illustrative mockup, not an in-game screenshot: /au help lists the groups of commands (the mockup predates the Emotes group).*
 
 ![Illustrative mockup: /au help all in the chat frame](../design/mockups/png/chat-help.png)
 
@@ -45,6 +45,8 @@ Every command of Azeroth Unspoken. Type them in the chat box, like any other sla
 | `/au relationships` | your relationships |
 | `/au stories` | your personal stories |
 | `/au talk` | the ambient dialogue with an NPC |
+| `/au wheel` | the emote wheel: its slices, its presets and its key |
+| `/au emotes` | every emote the game lists, with its command |
 | `/au debug` | the diagnostic report |
 | `/au prof` | measures the addon: timings, memory, how often the narrator spoke |
 | `/au probe` | tries the client functions the next features need |
@@ -157,6 +159,25 @@ Anything you write after the command is used as the target, for example `/au gre
 | `/au emotion reset` | Clears the current mood. |
 
 See [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3]] for every value.
+
+## Emotes
+
+The emote wheel opens on its own key (see [Key bindings](#key-bindings)); these commands set it up from the chat. See
+[[Emote Wheel|Emote-Wheel]].
+
+| Command | What it does |
+|---|---|
+| `/au wheel` | Says which key opens the wheel and lists its slices. |
+| `/au wheel set <slice> <emote>` | Puts an emote in a slice (1 to 12): its name or its command, for example `/au wheel set 3 dance` or `/au wheel set 5 /lol`. An emote the game does not list is refused. |
+| `/au wheel reset` | Puts the default emote back in every slice. |
+| `/au wheel bind` | Gives the middle mouse button to the wheel. Never in combat. |
+| `/au wheel unbind` | Takes the middle mouse button back from the wheel (it then does nothing until you bind it again). |
+| `/au wheel presets` | Lists the presets; the one shown on the wheel is marked with `>`. |
+| `/au wheel save <name>` | Saves the wheel shown as a new preset (a copy you can then change) and shows it. A name that exists just shows that preset. |
+| `/au wheel use <name>` | Shows a preset on the wheel (`/au wheel use default` for the default one). |
+| `/au wheel next` | Shows the next preset (also the key *Emote wheel: next preset*). |
+| `/au wheel delete <name>` | Deletes a preset; the default one cannot be deleted. |
+| `/au emotes` | Prints every emote the game lists, with its command. |
 
 ## Journal and memory
 
@@ -293,7 +314,7 @@ Earlier development builds also accepted Italian command names and a few English
 
 ## Key bindings
 
-Open the game menu, then **Options → Keybindings → AddOns → Azeroth Unspoken**. Twelve actions can be bound, so everything the proposal bar, the history, the journal and the NPC dialogue offer can be done without the mouse. None has a key by default.
+Open the game menu, then **Options → Keybindings → AddOns → Azeroth Unspoken**. Fourteen actions can be bound, so everything the proposal bar, the history, the journal and the NPC dialogue offer can be done without the mouse, and the emote wheel has its key. None has a key by default.
 
 | Action | What it does |
 |---|---|
@@ -306,6 +327,8 @@ Open the game menu, then **Options → Keybindings → AddOns → Azeroth Unspok
 | **Narrator history (open/close)** | the same as `/au narrator history` |
 | **Journal (open/close)** | the same as `/au journal` |
 | **Ambient dialogue with the NPC (open/close)** | opens or closes the NPC dialogue |
+| **Emote wheel (hold, release to choose)** | hold to open the [[emote wheel|Emote-Wheel]] at the cursor, release to play the emote towards which the mouse points; release in the centre to cancel. Bind the middle mouse button here, or with a second click in the settings (*Emote wheel > Key*) |
+| **Emote wheel: next preset** | shows the next preset of the emote wheel, even while you hold the wheel open; the same as `/au wheel next` |
 | **NPC dialogue: answer 1**, **2**, **3** | presses the first, second or third button of the NPC dialogue window: an answer (they are numbered 1, 2, 3), **Talk** on an offer, **Close** at the end |
 
 The names of the actions follow your game client's language (Italian clients see them in Italian).

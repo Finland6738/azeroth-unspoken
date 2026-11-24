@@ -78,6 +78,23 @@ The look of every window of the addon, shared by the characters of your account.
 | Fonts | Addon | **Fonts** (two segments) | **Addon**: the addon's own fonts (Outfit, JetBrains Mono, Orbitron for the window titles). **Game**: the game's fonts. If a font file cannot be read, the game's font is used for it anyway. |
 | Window positions | first place | **Reset window positions** | The windows remember where you left them, per character. This button puts them all back. |
 
+## Emote wheel
+
+The [[emote wheel|Emote-Wheel]]: hold its key, point at an emote, let go. Shared by the characters of your account; each
+change counts the next time the wheel opens.
+
+| Setting | Default | Panel row | What it does |
+|---|---|---|---|
+| Key | none | **Key** | The wheel has no key until you choose one. The first click says what the middle mouse button does now; a second click within ten seconds gives it to the wheel (never in combat). Any other key: the game's Key Bindings, *Emote wheel (hold, release to choose)*. |
+| Slices | 8 | **Slices** (4 to 12) | How many emotes the wheel shows; a wheel with more slices is a little wider. |
+| Emote names | on | **Emote names** | The name under each icon. |
+| Cancel zone | 30 | **Cancel zone** (16 to 80) | The size of the circle in the centre where letting go plays nothing. |
+| Hold delay | 0 ms | **Hold before opening** (0 to 500 ms) | 0: the wheel opens on the press. Longer: a short click does nothing, only a held key opens it. |
+| Sounds | on | **Sounds** | A tick when the lit slice changes and a sound when an emote is played. |
+| Presets | one, *Default* | **Preset**, **New preset**, **Delete this preset** | A preset is a whole wheel with its own emote in every slice. A click on *Preset* shows the next one; a name and Enter in *New preset* makes a copy of the one shown and shows it; *Delete this preset* asks for a second click (the default preset cannot be deleted). Up to 10. Also `/au wheel save`, `use`, `delete`, `presets`, and the key *Emote wheel: next preset*. |
+| The emote of each slice (of the preset shown) | Wave, Dance, Bow, Cheer, Laugh, Train, Moo, Salute (then Thank, Kiss, Point, Roar) | **Slice to change**, **Its emote**, **Or type one**, **Previous emote**, **Default emotes in every slice** | Choose a slice, then click its emote to go through the game's list, or type an emote's name or command and press Enter. Also `/au wheel set <slice> <emote>`. |
+| | | **Free the middle mouse button** | The middle button no longer opens the wheel. Also `/au wheel unbind`. |
+
 ## Chat
 
 | Setting | Default | Panel row | Command | What it does |

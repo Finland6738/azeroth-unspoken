@@ -71,7 +71,7 @@ WIZ_NAMES = {1: "language", 2: "experience", 3: "intensity", 4: "style", 5: "mod
              7: "chat-and-test", 8: "keys-and-button"}
 WIZ_TITLES = {1: "Welcome and language", 2: "Experience", 3: "Intensity", 4: "Style", 5: "Modules",
               6: "Total RP 3", 7: "Chat and test", 8: "Keys, button and settings"}
-SECTIONS = ("general", "look", "chat", "narrator", "modules", "privacy", "info")
+SECTIONS = ("general", "look", "wheel", "chat", "narrator", "modules", "privacy", "info")
 
 
 def stage(name, title, h, scene="dusk", seed=3, caption_extra="", **nk):
@@ -108,7 +108,7 @@ def build_settings_sections():
              scene="neutral", seed=43 + i, scale=1.25,
              caption_extra="The page scrolled to this section, inside the client's Settings window (a plain stand-in).")
     html_, h = settings(20, 20, theme="aurora")
-    page("x-settings-aurora", "Settings - the seven sections in the light theme Aurora (unrolled)", 900, h + 40, html_,
+    page("x-settings-aurora", "Settings - the eight sections in the light theme Aurora (unrolled)", 900, h + 40, html_,
          scene="neutral", seed=50, scale=1, theme="aurora")
 
 
@@ -198,6 +198,7 @@ ASSETS_LIST = [
     ("settings-panel", "settings-top", "Settings", "The settings panel as it opens in the client's options window."),
     ("settings-section-general", "x-settings-general", "Settings", "The General section: language, intensity, depth, literary forms, pause between lines, window scale."),
     ("settings-section-appearance", "x-settings-look", "Settings", "The Appearance section: the theme (Nebula or Aurora), neon effects, animations, the fonts, the window positions."),
+    ("settings-section-emote-wheel", "x-settings-wheel", "Settings", "The Emote wheel section: its key (the middle mouse button after a second click), the slices, the emote names, the cancel zone, the hold delay, the sounds, the presets, and the emote of each slice (stepped or typed)."),
     ("settings-section-chat", "x-settings-chat", "Settings", "The Chat section: what may reach chat, the default channel, how long a proposal waits, the speak button."),
     ("settings-section-narrator", "x-settings-narrator", "Settings", "The Narrator section: duration, reading speed, opacity, text size, motion, combat, the dialogue window."),
     ("settings-section-modules", "x-settings-modules", "Settings", "The Modules section: each part of the addon on or off."),
@@ -208,6 +209,13 @@ ASSETS_LIST = [
     ("settings-language-reload", "settings-reload", "Settings", "After a change of language, the panel asks for a reload."),
     ("language-reload-dialog", "consent-reload", "Settings", "The reload dialog after a change of language."),
     ("settings-total-rp-3-consent", "consent-trp3-others", "Settings", "Reading other players' Total RP 3 profiles asks for consent."),
+    # the emote wheel (ADR 0059)
+    ("emote-wheel", "emote-wheel", "Emote wheel", "Held on its key: the wheel at the cursor, the slice in the cursor's direction lit, its emote named below."),
+    ("emote-wheel-cancel", "emote-wheel-cancel", "Emote wheel", "The cursor in the centre: nothing lit, the release cancels."),
+    ("emote-wheel-twelve-slices", "emote-wheel-12", "Emote wheel", "Twelve slices: a wider wheel, the same gesture."),
+    ("emote-wheel-aurora", "emote-wheel-aurora", "Emote wheel", "The wheel in the light theme Aurora."),
+    ("emote-wheel-italian", "emote-wheel-it", "Emote wheel", "The wheel with the Italian names of the emotes."),
+    ("emote-wheel-preset", "emote-wheel-preset", "Emote wheel", "A preset of the player's (here 'Tavern'): its name above the wheel, its own emote in every slice."),
     # journal
     ("journal-memories", "journal-memories", "Journal", "`/au journal`: the Memories tab."),
     ("journal-places", "journal-places", "Journal", "The Places tab: where you have been, and how it went."),
@@ -500,7 +508,7 @@ def main(names):
     mockkit.write_css(BUILD)
     for build in (bm.build_narrator, bm.build_proposal, bm.build_speak_button, bm.build_wizard, bm.build_settings,
                   bm.build_journal, bm.build_relations, bm.build_consent, bm.build_profile, bm.build_dialogue,
-                  bm.build_chat, build_depths, build_italian, build_settings_sections, build_chat_more,
+                  bm.build_chat, bm.build_wheel, build_depths, build_italian, build_settings_sections, build_chat_more,
                   build_gallery):
         build()
     os.makedirs(CURSEFORGE, exist_ok=True)

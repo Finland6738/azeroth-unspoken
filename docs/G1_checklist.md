@@ -1497,6 +1497,41 @@ battaglia, in un'arena o contro un boss le frasi brevi tengono circa l'85% delle
     minuto. **Atteso:** le frasi di battaglia sono brevi (un respiro). **Da riportare:** ogni frase lunga, con
     `/au debug`.
 
+## EW: la ruota delle emote (ADR 0059)
+
+Costruita e provata solo fuori dal gioco. Ogni passo dice che cosa guardare; se qualcosa non va, apri una issue con
+`/au debug` e una schermata.
+
+- **EW.1 · Il tasto.** In *Opzioni → Comandi → AddOn → Azeroth Unspoken* cerca *Ruota delle emote (tieni premuto, rilascia
+  per scegliere)* e assegnale il tasto centrale del mouse (oppure, fuori combattimento, *Impostazioni > Ruota delle emote >
+  Tasto*: due clic).
+    - **Cosa aspettarti:** l'azione c'è, senza tasto all'inizio; il primo clic nelle impostazioni dice che cosa fa ora il
+      tasto centrale, il secondo lo assegna; in combattimento rifiuta.
+    - **Cosa riportare:** un'azione che manca, un tasto preso senza chiedere, un messaggio di errore.
+- **EW.2 · Tieni e rilascia.** Tieni premuto il tasto, muovi il mouse verso *Balla*, rilascia.
+    - **Cosa aspettarti:** la ruota appare sul cursore (anche vicino a un bordo, intera), la fetta nella direzione del
+      mouse si accende con un tic, il nome è scritto sotto; al rilascio il personaggio balla con un suono di conferma e
+      la ruota svanisce.
+    - **Cosa riportare:** se la ruota si apre ma non si chiude al rilascio (il client non passa lo stato del tasto), se
+      la fetta accesa non segue il mouse (scala del cursore), la scala dell'interfaccia che usi.
+- **EW.3 · Annulla.** Tieni premuto, torna al centro, rilascia. Poi tieni premuto e premi Esc.
+    - **Cosa aspettarti:** nessuna emote in entrambi i casi; la scritta *Annulla* sotto la ruota quando sei al centro.
+- **EW.4 · Le emote del gioco.** `/au emotes`, poi `/au wheel set 6 train` e `/au wheel set 7 moo`.
+    - **Cosa aspettarti:** un elenco lungo (*N emote del gioco*), non quello incluso nell'addon; *Treno* e *Muggisci*
+      funzionano dalla ruota.
+    - **Cosa riportare:** se dice *Il gioco non ha dato un elenco di emote*, un'emote che la ruota non esegue.
+- **EW.5 · Il rilascio perso.** Tieni premuto il tasto, porta il mouse sopra una finestra dell'addon o fuori dal gioco
+  (Alt+Tab) e rilascia lì.
+    - **Cosa aspettarti:** la ruota si chiude entro un attimo senza eseguire nulla; non resta mai sullo schermo.
+- **EW.6 · I preset.** *Impostazioni > Ruota delle emote > Nuovo preset*: scrivi `Taverna` e Invio, cambia due fette;
+  assegna il tasto *Ruota delle emote: preset successivo* e premilo con la ruota aperta.
+    - **Cosa aspettarti:** la ruota mostra *Taverna* sopra di sé e le sue emote; il tasto cambia preset sotto il cursore
+      senza chiudere la ruota; il preset predefinito resta com'era; i preset restano dopo `/reload`.
+- **EW.7 · Aspetto e suoni.** Prova i temi Nebula e Aurora, *Effetti neon* e *Animazioni* spenti, 12 fette, *Suoni* spenti.
+    - **Cosa aspettarti:** la ruota semitrasparente leggibile nei due temi; con le animazioni spente appare e svanisce
+      subito; senza suoni, silenzio.
+    - **Cosa riportare:** una schermata per tema, un suono che non si sente o che è sbagliato.
+
 ## Modulo riassuntivo (copia e compila)
 
 ```

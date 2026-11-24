@@ -8,6 +8,42 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### The emote wheel (ADR 0059)
+
+- **Added**: a **radial emote wheel**. Hold its key and a round, semi-transparent wheel of the game's emotes opens at the
+  cursor; the slice in the direction of the mouse lights up (with a tick) and is named under the wheel; releasing the key
+  plays it (with a confirm sound), releasing in the centre cancels. 8 slices by default (Wave, Dance, Bow, Cheer, Laugh,
+  Train, Moo, Salute), 4 to 12, any emote the game lists in any slice. It opens with a 0.15 s scale-in and fades out in
+  0.1 s (at once with *Animations* off), follows the Nebula and Aurora themes, the neon setting and the window scale.
+- **Added**: the key binding *Emote wheel (hold, release to choose)* (`AZEROTHUNSPOKEN_WHEEL`, run on press and release).
+  It ships **unbound**: bind any key in the game's Key Bindings, or give it the middle mouse button with two clicks in the
+  settings or `/au wheel bind` (never in combat; `/au wheel unbind` gives the button back). The addon never takes a key by
+  itself.
+- **Added**: Settings > **Emote wheel** (after Appearance): the key, slices, emote names, cancel zone, hold delay (0 by
+  default: it opens on press), sounds, and the emote of each slice: stepped through the game's list, or typed by name or
+  command (`dance`, `/lol`) and Enter. Saved in the account (`ui.wheel`).
+- **Added**: **presets** of the wheel: whole wheels with their own emote in every slice (up to 10; the default one always
+  exists). Settings: *Preset* (a click shows the next), *New preset* (a name and Enter: a copy of the one shown),
+  *Delete this preset* (two clicks); `/au wheel presets`, `save`, `use`, `next`, `delete`; the key *Emote wheel: next
+  preset* (`AZEROTHUNSPOKEN_WHEEL_NEXT`), which also works while the wheel is held. The wheel names the preset shown above
+  itself when there is more than one. Saved as `ui.wheel.sets` and `ui.wheel.active`.
+- **Added**: `/au wheel` (its key and slices; `set <slice> <emote>`, `reset`, `bind`, `unbind`) and `/au emotes` (every emote
+  the game lists, with its command), in a new group of `/au help`, *Emotes*.
+- **Added**: the emote list is read from the client's own strings (`EMOTE<n>_TOKEN` and its commands), with a built-in list
+  as the fallback; an emote is played with `C_ChatInfo.PerformEmote`, else `DoEmote`. The wheel closes without playing
+  anything on Esc, combat, a loading screen, a cinematic, a hidden interface, after 15 seconds, or when the client says
+  the key is no longer held (a lost release).
+- **Added**: four icons in the icon sheet (hand, note, smile, train) and two textures (`disc_256`, `ring_256`); emote names
+  in English and Italian; `Motion.PopIn` and `Motion.Stop` in `UI/Motion.lua`.
+- **Docs**: ADR 0059, the wiki page *Emote Wheel*, the Settings, Commands, Interface Tour and Home pages, both READMEs, the
+  UI spec, the in-game checklist (section EW), mockups of the wheel in both themes (`docs/design/mockups`, `assets/`,
+  `docs/specs/mockups`). Tests: `Tests/TestEmoteWheel.lua` (geometry, settings, emote list, binding, the wheel, watchdog,
+  closings, motion, sounds, themes, Settings, commands) and the binding check in `run_tests.py`.
+- **Not verified in the game client**: how 1.60.1 passes the key state to the binding and whether the release reaches it
+  over a frame; which emote strings the client defines and whether `PerformEmote` and `DoEmote` play them; the sound kits;
+  the cursor scale at interface scales other than 1; whether `IsKeyDown` and `IsMouseButtonDown` answer while the key is
+  held; the look of the wheel and the timing of its animations.
+
 - **Added**: two layout tests in `Tests/TestLayout.lua` for the fixes of #296 and #297 shipped in 0.3.0: the Journal's date column holds the
   16-character mono stamp (and the text column keeps its room in every tab), and the traits title of a person's detail is one line, with the
   trait buttons below it, in English and Italian. `W.Adopt` still finds nothing in either window. Not verified in the game client: the real

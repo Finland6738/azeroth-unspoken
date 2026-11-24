@@ -66,8 +66,13 @@ invariants apply (tokens only, both themes, no text in code, reduced motion, no 
    scale) into an offset from the centre, the offset into an angle (0 at the top, clockwise, in [0, 2π)) and the angle into
    a slice, with the dead zone; the tests prove the 0/360 boundary, the centred slices and the scale.
 9. **Settings** (account, `ui.wheel`): `slices` (4-12, 8), `labels` (on), `deadZone` (16-80 units, 30), `holdDelay`
-   (0-0.5 s, 0), `sounds` (on) and `emotes`, twelve tokens, one per slice (the first `slices` are used). The Settings page
-   has a section for them, after *Appearance*, with a slice picker and its emote; `/au wheel` sets and resets the slices
+   (0-0.5 s, 0), `sounds` (on), and the **presets** asked by the owner the same day: `sets`, named lists of twelve tokens,
+   one per slice (the first `slices` are used), and `active`, the one the wheel shows. The preset `default` always exists
+   (the saved settings complete it at every load) and can be reset, not deleted; a player keeps up to ten, with names of
+   1-24 bytes without `|`. A key, *Emote wheel: next preset* (`AZEROTHUNSPOKEN_WHEEL_NEXT`, unbound), shows the next one,
+   also while the wheel is held, and the wheel names the preset above itself when there is more than one. The Settings page
+   has a section for them, after *Appearance*, with a slice picker, its emote (a button that steps through the game's list
+   and a box where the player types an emote's name or command); `/au wheel` sets and resets the slices
    and binds or frees the middle button from the chat, and `/au emotes` prints the client's list. Both are in a new group
    of `/au help`, *Emotes* (a group holds at most nine lines and the four others were full).
 

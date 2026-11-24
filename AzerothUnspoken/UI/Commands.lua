@@ -403,7 +403,8 @@ Commands.list = {
 	{ name = "place", fn = function() NS.Place:Command() end, usage = "place", desc = "help_place", group = "character" },
 	-- ADR 0059: the emote wheel from the chat (its slices, its key, the client's emote list)
 	{ name = "wheel", fn = function(rest) NS.EmoteWheel:Command(rest) end,
-		usage = "wheel [set <slice> <emote> / reset / bind / unbind]", desc = "help_wheel", group = "emotes" },
+		usage = "wheel [set <slice> <emote> / reset / bind / unbind / presets / use / save / delete <name> / next]",
+		desc = "help_wheel", group = "emotes" },
 	{ name = "emotes", fn = function() NS.EmoteWheel:Command("list") end, usage = "emotes", desc = "help_emotes", group = "emotes" },
 	{ name = "who", fn = function(rest) NS.Interlocutor:Command(rest) end,
 		usage = "who [trp3 on/off / trait <trait> <value>]", desc = "help_who", group = "character" },

@@ -19,6 +19,7 @@
 - [[Memory and Journal|Memory-and-Journal]]
 - [[Relationships]]
 - [[Story Arcs|Story-Arcs]]
+- [[Emote Wheel|Emote-Wheel]]
 
 **The world around you**
 - [[Interlocutor and Place|Interlocutor-and-Place]]

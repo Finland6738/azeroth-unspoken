@@ -161,6 +161,10 @@ local function Build()
 	frame.captionText = Theme.NewText(frame.caption, "BodyMedium", "text-1")
 	frame.captionText:SetPoint("CENTER", frame.caption, "CENTER", 0, 0)
 	if frame.captionText.SetWordWrap then frame.captionText:SetWordWrap(false) end
+	-- the name of the preset shown, above the wheel, when there is more than one
+	frame.presetText = Theme.NewText(frame, "Eyebrow", "text-2")
+	frame.presetText:SetPoint("BOTTOM", frame, "TOP", 0, 6)
+	if frame.presetText.SetWordWrap then frame.presetText:SetWordWrap(false) end
 	frame:SetScript("OnUpdate", function(_, elapsed) Wheel:Update(elapsed) end)
 	-- hidden by anything while open (Esc, Alt+Z, a loading screen): the choice is cancelled, nothing is played
 	frame:SetScript("OnHide", function()
@@ -218,6 +222,9 @@ local function Layout(n, dead, labels)
 		end
 	end
 	st.r, st.itemR = r, itemR
+	local presets = Emotes:Presets()
+	frame.presetText:SetText(#presets > 1 and Emotes:PresetLabel(Emotes:Active()) or "")
+	frame.presetText:SetShown(#presets > 1)
 end
 
 -- Lights slice `i` (nil: none) and says it under the wheel.
@@ -414,6 +421,30 @@ function Wheel:Key(keystate)
 	end
 end
 
+---Shows the next preset (step -1: the previous one). An open wheel is laid out again at once; a closed one says which preset
+---it will show. Returns the preset's name.
+---@param step? number
+---@return string
+function Wheel:NextPreset(step)
+	local name = Emotes:NextPreset(step)
+	if st.open and frame then
+		Layout(st.n, st.dead, Labels())
+		Light(st.lit)
+	else
+		NS:Print(NS:L("wheel_preset_now", Emotes:PresetLabel(name)))
+	end
+	return name
+end
+
+-- Bindings.xml: AZEROTHUNSPOKEN_WHEEL_NEXT. Usable while the wheel is held (another key) or with the wheel closed.
+function AzerothUnspoken_EmoteWheelNext()
+	if NS.Diagnostics and NS.Diagnostics.Guard then
+		NS.Diagnostics:Guard("emoteWheel", Wheel.NextPreset, Wheel, 1)
+	else
+		Wheel:NextPreset(1)
+	end
+end
+
 -- Bindings.xml: AZEROTHUNSPOKEN_WHEEL, runOnUp="true". A modern client gives the body a local `keystate`; an old one a global.
 function AzerothUnspoken_EmoteWheel(keystate)
 	if NS.Diagnostics and NS.Diagnostics.Guard then
@@ -427,13 +458,14 @@ end
 
 local function Say(key, ...) NS:Print(NS:L(key, ...)) end
 
----`/au wheel [set <slice> <emote> / reset / bind / unbind]`; `list` (also `/au emotes`) prints the client's emotes.
+---`/au wheel [set <slice> <emote> / reset / bind / unbind / presets / use <name> / save <name> / delete <name> / next]`;
+---`list` (also `/au emotes`) prints the client's emotes.
 ---@param rest string
 function Wheel:Command(rest)
-	local word, args = (rest or ""):match("^%s*(%S*)%s*(.-)%s*$")
+	local word, args = (rest or ""):match("^[ %c]*([^ %c]*)[ %c]*(.-)[ %c]*$")
 	word = NS.Lower(word or "")
 	if word == "set" then
-		local slice, emote = args:match("^(%d+)%s+(%S+)$")
+		local slice, emote = args:match("^(%d+)[ %c]+([^ %c]+)$")
 		slice = tonumber(slice)
 		local token = emote and Emotes:Resolve(emote)
 		if not slice or slice < 1 or slice > Emotes.MAX_SLICES then return Say("wheel_set_usage") end
@@ -450,6 +482,31 @@ function Wheel:Command(rest)
 		local r = Emotes:UnbindMiddleButton()
 		return Say(r == "ok" and "wheel_unbind_done" or (r == "combat" and "wheel_bind_combat"
 			or (r == "none" and "wheel_unbind_none" or "wheel_bind_failed")))
+	elseif word == "presets" then
+		local names = {}
+		for i, name in ipairs(Emotes:Presets()) do
+			names[i] = (name == Emotes:Active() and "> " or "") .. Emotes:PresetLabel(name)   -- nolocale: a marker of the active one
+		end
+		return Say("wheel_presets", table.concat(names, ", "))
+	elseif word == "use" then
+		local name = Emotes:FindPreset(args)
+		if not name then return Say("wheel_preset_unknown", args) end
+		Emotes:UsePreset(name)
+		return Say("wheel_preset_now", Emotes:PresetLabel(name))
+	elseif word == "next" then
+		self:NextPreset(1)
+		return
+	elseif word == "save" then
+		local r, name = Emotes:SavePreset(args)
+		if r == "ok" then return Say("wheel_preset_saved", name) end
+		if r == "exists" then return Say("wheel_preset_now", Emotes:PresetLabel(name)) end
+		if r == "full" then return Say("wheel_preset_full", Emotes.MAX_SETS) end
+		return Say("wheel_preset_badname", Emotes.MAX_NAME)
+	elseif word == "delete" then
+		local name = Emotes:FindPreset(args)
+		if name == Emotes.DEFAULT_SET then return Say("wheel_preset_keep") end
+		if not name or not Emotes:DeletePreset(name) then return Say("wheel_preset_unknown", args) end
+		return Say("wheel_preset_deleted", name)
 	elseif word == "list" then
 		local l, fromClient = Emotes:List()
 		local names = {}
@@ -462,6 +519,7 @@ function Wheel:Command(rest)
 	Say(#keys > 0 and "wheel_status_bound" or "wheel_status_unbound", table.concat(keys, ", "))
 	local parts = {}
 	for i = 1, Emotes:Slices() do parts[i] = i .. " " .. Emotes:Label(Emotes:SliceToken(i)) end
+	Say("wheel_status_preset", Emotes:PresetLabel(Emotes:Active()), #Emotes:Presets())
 	Say("wheel_status_slices", table.concat(parts, " · "))   -- nolocale: a list separator, not text
 	Say("wheel_usage")
 end

@@ -83,7 +83,7 @@ function Emotes:List()
 		local token = global("EMOTE" .. i .. "_TOKEN")
 		if Emotes.IsToken(token) and not byToken[token] then
 			local cmd = global("EMOTE" .. i .. "_CMD1")
-			cmd = type(cmd) == "string" and cmd:match("^/?(%S+)$") or nil
+			cmd = type(cmd) == "string" and cmd:match("^/?([^ %c]+)$") or nil
 			local e = { token = token, command = cmd }
 			list[#list + 1] = e
 			byToken[token] = e
@@ -91,7 +91,7 @@ function Emotes:List()
 			-- every other command of the same emote ("/bye", "/goodbye", "/farewell") is accepted too
 			for k = 2, 6 do
 				local other = global("EMOTE" .. i .. "_CMD" .. k)
-				other = type(other) == "string" and other:match("^/?(%S+)$") or nil
+				other = type(other) == "string" and other:match("^/?([^ %c]+)$") or nil
 				if other then byCommand[NS.Lower and NS.Lower(other) or other:lower()] = e end
 			end
 		end
@@ -124,7 +124,7 @@ end
 ---@return string? token
 function Emotes:Resolve(word)
 	if type(word) ~= "string" then return nil end
-	word = word:match("^%s*/?(%S+)%s*$")
+	word = word:match("^[ %c]*/?([^ %c]+)[ %c]*$")
 	if not word then return nil end
 	self:List()
 	local e = byCommand[NS.Lower and NS.Lower(word) or word:lower()]
@@ -191,17 +191,161 @@ function Emotes:Slices()
 	return math.max(4, math.min(Emotes.MAX_SLICES, math.floor(n + 0.5)))
 end
 
----The token of a slice (1-12): the saved one, or the default of that slice when the saved one is missing or malformed.
+-- --- presets: named sets of slices -------------------------------------------------------------------------------------
+-- ui.wheel.sets[name] = { token, ... } (12 at most); ui.wheel.active names the one the wheel shows. The set "default"
+-- always exists (the saved settings complete it at every load): it can be changed and reset, never deleted. A name is the
+-- player's own text, 1-24 bytes, without "|" (the client's escape character) or a control character.
+
+Emotes.DEFAULT_SET = "default"
+Emotes.MAX_SETS = 10
+Emotes.MAX_NAME = 24
+
+---Whether a string can name a preset (after trimming the spaces around it).
+---@param name any
+---@return string? the trimmed name, or nil
+function Emotes.CleanName(name)
+	if type(name) ~= "string" then return nil end
+	name = name:match("^[ %c]*(.-)[ %c]*$")
+	if name == "" or #name > Emotes.MAX_NAME or name:find("[|%c]") then return nil end
+	return name
+end
+
+local function sets(w)
+	if type(w.sets) ~= "table" then w.sets = {} end
+	if type(w.sets[Emotes.DEFAULT_SET]) ~= "table" then
+		local d = {}
+		for i, t in ipairs(Emotes.DEFAULTS) do d[i] = t end
+		w.sets[Emotes.DEFAULT_SET] = d
+	end
+	return w.sets
+end
+
+---The names of the presets: "default" first, then the others in alphabetical order.
+---@return table names
+function Emotes:Presets()
+	local w = wheel()
+	local out = { Emotes.DEFAULT_SET }
+	if not w then return out end
+	local rest = {}
+	for name, list in pairs(sets(w)) do
+		if name ~= Emotes.DEFAULT_SET and type(list) == "table" and Emotes.CleanName(name) == name then rest[#rest + 1] = name end
+	end
+	table.sort(rest, function(x, y) return NS.Lower(x) < NS.Lower(y) end)
+	for _, name in ipairs(rest) do out[#out + 1] = name end
+	return out
+end
+
+---The preset the wheel shows (the saved one when it exists, else "default").
+---@return string
+function Emotes:Active()
+	local w = wheel()
+	if not w then return Emotes.DEFAULT_SET end
+	local name = w.active
+	if type(name) == "string" and type(sets(w)[name]) == "table" and Emotes.CleanName(name) == name then return name end
+	return Emotes.DEFAULT_SET
+end
+
+---The name of a preset to show: "default" in the interface language, any other as the player wrote it.
+---@param name string
+---@return string
+function Emotes:PresetLabel(name)
+	if name == Emotes.DEFAULT_SET then return NS:L("wheel_preset_default") end
+	return name
+end
+
+---Finds a preset by the name typed (any case); its saved name or nil. The word for "default" in either language works.
+---@param typed string
+---@return string?
+function Emotes:FindPreset(typed)
+	typed = Emotes.CleanName(typed)
+	if not typed then return nil end
+	local low = NS.Lower(typed)
+	if low == Emotes.DEFAULT_SET or low == NS.Lower(NS:L("wheel_preset_default")) then return Emotes.DEFAULT_SET end
+	for _, name in ipairs(self:Presets()) do
+		if NS.Lower(name) == low then return name end
+	end
+	return nil
+end
+
+local function changed() if NS.Config then NS.Config:Changed("ui.wheel.sets") end end
+
+---Shows a preset on the wheel. Returns ok.
+---@param name string
+---@return boolean
+function Emotes:UsePreset(name)
+	local w = wheel()
+	if not w or type(name) ~= "string" or type(sets(w)[name]) ~= "table" then return false end
+	w.active = name
+	changed()
+	return true
+end
+
+---The next preset after the active one (around), made active. Returns its name.
+---@param step? number 1 (default) or -1
+---@return string
+function Emotes:NextPreset(step)
+	local list, active = self:Presets(), self:Active()
+	local at = 1
+	for i, name in ipairs(list) do if name == active then at = i end end
+	local name = list[((at - 1 + (step or 1)) % #list) + 1]
+	self:UsePreset(name)
+	return name
+end
+
+---Saves the slices of the active preset under a new name and makes it active. Returns "ok", "exists" (the name is taken: it
+---is made active instead), "name" (not a valid name) or "full" (MAX_SETS presets already).
+---@param name string
+---@return string result
+---@return string? name the preset now active
+function Emotes:SavePreset(name)
+	local w = wheel()
+	name = Emotes.CleanName(name)
+	if not w or not name then return "name" end
+	local found = self:FindPreset(name)
+	if found then
+		self:UsePreset(found)
+		return "exists", found
+	end
+	if #self:Presets() >= Emotes.MAX_SETS then return "full" end
+	local copy = {}
+	for i = 1, Emotes.MAX_SLICES do copy[i] = self:SliceToken(i) end
+	sets(w)[name] = copy
+	w.active = name
+	changed()
+	return "ok", name
+end
+
+---Deletes a preset (never "default"); the wheel goes back to "default" if it was the active one. Returns ok.
+---@param name string
+---@return boolean
+function Emotes:DeletePreset(name)
+	local w = wheel()
+	if not w or name == Emotes.DEFAULT_SET or type(name) ~= "string" or type(sets(w)[name]) ~= "table" then return false end
+	sets(w)[name] = nil
+	if w.active == name then w.active = Emotes.DEFAULT_SET end
+	changed()
+	return true
+end
+
+local function activeList(w)
+	local all = sets(w)
+	local name = Emotes:Active()
+	if type(all[name]) ~= "table" then all[name] = {} end
+	return all[name]
+end
+
+---The token of a slice (1-12) of the active preset: the saved one, or the default of that slice when the saved one is
+---missing or malformed.
 ---@param i number
 ---@return string
 function Emotes:SliceToken(i)
 	local w = wheel()
-	local t = w and type(w.emotes) == "table" and w.emotes[i]
+	local t = w and activeList(w)[i]
 	if Emotes.IsToken(t) then return t end
 	return Emotes.DEFAULTS[i] or Emotes.DEFAULTS[1]
 end
 
----Puts an emote in a slice. Returns ok.
+---Puts an emote in a slice of the active preset. Returns ok.
 ---@param i number 1-12
 ---@param token string
 ---@return boolean
@@ -209,19 +353,18 @@ function Emotes:SetSlice(i, token)
 	local w = wheel()
 	i = tonumber(i)
 	if not w or not i or i ~= math.floor(i) or i < 1 or i > Emotes.MAX_SLICES or not Emotes.IsToken(token) then return false end
-	if type(w.emotes) ~= "table" then w.emotes = {} end
-	w.emotes[i] = token
-	if NS.Config then NS.Config:Changed("ui.wheel.emotes") end
+	activeList(w)[i] = token
+	changed()
 	return true
 end
 
----Puts the default emote back in every slice.
+---Puts the default emote back in every slice of the active preset.
 function Emotes:ResetSlices()
 	local w = wheel()
 	if not w then return end
-	w.emotes = {}
-	for i, t in ipairs(Emotes.DEFAULTS) do w.emotes[i] = t end
-	if NS.Config then NS.Config:Changed("ui.wheel.emotes") end
+	local list = activeList(w)
+	for i = 1, Emotes.MAX_SLICES do list[i] = Emotes.DEFAULTS[i] end
+	changed()
 end
 
 -- --- playing an emote ---------------------------------------------------------------------------------------------------
