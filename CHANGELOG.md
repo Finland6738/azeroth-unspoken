@@ -8,6 +8,11 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+- **Added**: two layout tests in `Tests/TestLayout.lua` for the fixes of #296 and #297 shipped in 0.3.0: the Journal's date column holds the
+  16-character mono stamp (and the text column keeps its room in every tab), and the traits title of a person's detail is one line, with the
+  trait buttons below it, in English and Italian. `W.Adopt` still finds nothing in either window. Not verified in the game client: the real
+  font widths.
+
 ## [0.3.0] - 2026-11-24
 
 The third development preview, and the first in the new look. The UI-ECO migration (UI-0 to UI-8, issue #284, ADR 0058) moves every window to the look of the NEBULA ecosystem shared with Finland Dragon Credit Points: two themes (Nebula, dark, the default, and Aurora, light), new textures, icons and fonts (Outfit, JetBrains Mono, Orbitron, under the OFL), a new window shell with the addon's own logo, gentle motion, and an Info section in the Settings with the credits (Finland, made for the NEBULA community, with its logo). Every mockup is redrawn from the code. Two layout bugs the new mockups showed are fixed. The lines are the same as in 0.2.1. Nothing of the new look has been tried in the game client yet.
