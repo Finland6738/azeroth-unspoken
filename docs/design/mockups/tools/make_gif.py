@@ -18,7 +18,7 @@ import tempfile
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from PIL import Image, ImageDraw, ImageFont  # noqa: E402
 
-from mockkit import MOCKUPS, chat_lines, page  # noqa: E402
+from mockkit import M, MOCKUPS, chat_lines, page  # noqa: E402
 from components import narrator  # noqa: E402
 from render import browser, render  # noqa: E402
 from build_mockups import L_BATTLE, L_DUSK_E, L_GREET, L_INNER, L_RETURN, PLAYER  # noqa: E402
@@ -36,16 +36,16 @@ def step_label(text):
 
 def frames():
     """(scene, seed, label, narrator kwargs, extra html, duration ms, time line runs out)"""
-    say = {"speaker": "character", "text": f"«{L_GREET}»", "proposal": "SAY"}
+    say = {"speaker": "character", "s": f"«{L_GREET}»", "proposal": "SAY"}
     return [
-        ("dusk", 3, "1 · Arriving in a forest at dusk", {"speaker": "narrator", "text": f"{PLAYER} {L_DUSK_E}"}, "", 3600, True),
-        ("battle", 5, "2 · A battle begins", {"speaker": "character", "text": f"«{L_BATTLE}»"}, "", 2800, True),
-        ("night", 6, "3 · Back where the last fight was lost", {"speaker": "inner", "text": L_RETURN}, "", 3800, True),
-        ("dusk", 7, "4 · An inner thought", {"speaker": "inner", "text": L_INNER}, "", 3200, True),
+        ("dusk", 3, "1 · Arriving in a forest at dusk", {"speaker": "narrator", "s": f"{PLAYER} {L_DUSK_E}"}, "", 3600, True),
+        ("battle", 5, "2 · A battle begins", {"speaker": "character", "s": f"«{L_BATTLE}»"}, "", 2800, True),
+        ("night", 6, "3 · Back where the last fight was lost", {"speaker": "inner", "s": L_RETURN}, "", 3800, True),
+        ("dusk", 7, "4 · An inner thought", {"speaker": "inner", "s": L_INNER}, "", 3200, True),
         ("dusk", 8, "5 · A line proposed for /say: nothing is sent yet", dict(say, hover_btn="edit"), "", 3000, False),
         ("dusk", 8, "6 · Edit: the line opens in the editor", dict(say, editor=L_GREET, editor_sel=True), "", 1400, False),
         ("dusk", 8, "6 · Edit: the line opens in the editor", dict(say, editor=EDITED), "", 2400, False),
-        ("dusk", 8, "7 · Enter confirms: sent to /say", {"speaker": "character", "text": f"«{EDITED}»", "sent": "SAY"},
+        ("dusk", 8, "7 · Enter confirms: sent to /say", {"speaker": "character", "s": f"«{EDITED}»", "sent": "SAY"},
          chat_lines([f"|cffffffff{PLAYER} says: {EDITED}|r"], left=10, top=48, width=520, height=40), 3600, True),
     ]
 
@@ -53,6 +53,7 @@ def frames():
 def build_narrator():
     exe = browser()
     tmp = tempfile.mkdtemp(prefix="au-gif-")
+    M.set_base(M.file_url(os.path.dirname(os.path.dirname(os.path.dirname(MOCKUPS)))))   # pages in a temporary folder
     css = "file:///" + os.path.join(MOCKUPS, "mockups.css").replace("\\", "/")
     images = []   # (PIL image, duration)
     n = 0
@@ -92,7 +93,9 @@ TOUR = [
     ("relations-detail-npc", "Relationships: an NPC's detail", 3.5, None),
     ("relations-options", "Relationships: options", 3.0, None),
     ("profile", "Character soul: personality and culture of origin", 3.5, None),
-    ("settings-top", "Settings panel", 3.0, None),
+    ("settings-top", "Settings: seven sections, from General to Info", 3.0, None),
+    ("settings-info", "Settings > Info: who made it, the NEBULA community, the links", 3.5, None),
+    ("journal-memories-aurora", "The light theme Aurora (Settings > Appearance)", 3.0, None),
     ("wizard-1", "First-run guide: welcome and language", 3.0, None),
     ("wizard-7", "First-run guide: what may reach chat", 3.0, None),
     ("consent-auto", "A consent: the whole warning, then Turn on", 3.0, None),

@@ -1,150 +1,52 @@
 """Small kit shared by the mockup generators (docs/design/mockups/tools).
 
-Everything here draws ORIGINAL stand-ins: an SVG landscape, plain CSS widgets. No Blizzard texture, icon, font or
+Everything here draws ORIGINAL stand-ins: an SVG landscape, the client's chat frame as a plain box. The addon's own
+widgets, tokens and fonts come from tools/mockup_lib.py (UI-ECO step UI-8). No Blizzard texture, icon, font or
 screenshot is used or copied. 1 CSS pixel = 1 unit of UIParent; positions follow the SetPoint/SetSize calls in
 AzerothUnspoken/UI/. Every page carries a caption saying it is an illustrative mockup, not an in-game screenshot.
 """
 import html
 import os
 import random
-import re
+import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 MOCKUPS = os.path.dirname(HERE)                      # docs/design/mockups
+ROOT = os.path.dirname(os.path.dirname(os.path.dirname(MOCKUPS)))
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+
+import mockup_lib as M  # noqa: E402
+from mockup_lib import esc, style, wow  # noqa: E402,F401
+
+M.set_base("../../../")   # the pages of docs/design/mockups load the fonts and logos of the repository by a relative path
 
 CAPTION = "Illustrative mockup built from the addon code - not an in-game screenshot."
-
-# colours of the four voices (UI/NarratorFrame.lua VOICE_COLOR)
-VOICE_COLOR = {"narrator": "b9a1ff", "inner": "7fd4ff", "character": "ffd36b", "npc": "4fb354"}
-VOICE = {
-    "en": {"narrator": "Narrator", "inner": "Inner voice", "character": "Character", "npc": "NPC"},
-    "it": {"narrator": "Narratore", "inner": "Voce interiore", "character": "Personaggio", "npc": "NPC"},
-}
 PREFIX = "|cffb48cffAzeroth Unspoken|r: "          # NS:Print (Core/Bootstrap.lua)
 
 
-# ---------------------------------------------------------------------------------------------------------------
-# text
-# ---------------------------------------------------------------------------------------------------------------
-def esc(s):
-    return html.escape(s, quote=False)
-
-
-def wow(s):
-    """Converts a WoW string to HTML the way the client reads its escapes: |cffRRGGBB ... |r colours, || is one bar,
-    |n and \\n break the line. A bare "|r" inside a word is swallowed and "|n" breaks it, as in the game (review UI-05)."""
-    out, depth = [], 0
-    for tok in re.split(r"(\|\||\|c[fF]{2}[0-9a-fA-F]{6}|\|r|\|n)", s):
-        if tok == "||":
-            out.append("|")
-        elif tok == "|n":
-            out.append("<br>")
-        elif re.fullmatch(r"\|c[fF]{2}[0-9a-fA-F]{6}", tok):
-            out.append(f'<span style="color:#{tok[4:]}">')
-            depth += 1
-        elif tok == "|r":
-            if depth:
-                out.append("</span>")
-                depth -= 1
-        else:
-            out.append(esc(tok).replace("\n", "<br>"))
-    out.append("</span>" * depth)
-    return "".join(out)
-
-
-def style(**p):
-    parts = []
-    for k, v in p.items():
-        if v is None:
-            continue
-        k = k.replace("_", "-")
-        parts.append(f"{k}:{v}px" if isinstance(v, (int, float)) else f"{k}:{v}")
-    return ";".join(parts)
+def write_css(folder):
+    """mockups.css, generated from tools/mockup_lib.py (the tokens of UI/Theme.lua)."""
+    with open(os.path.join(folder, "mockups.css"), "w", encoding="utf-8", newline="\n") as f:
+        f.write(M.css())
 
 
 # ---------------------------------------------------------------------------------------------------------------
-# widgets (positions in the parent's units; WoW TOPLEFT (x, y) -> left x, top -y)
+# text and the game's own pieces (the widgets of the addon are in tools/mockup_lib.py)
 # ---------------------------------------------------------------------------------------------------------------
-def fs(text, cls="gfh", mode=None, extra="", **p):
-    """A FontString. Without a width it stays on one line; mode='trunc' = SetWordWrap(false) with a width."""
-    klass = "fs " + cls
-    if mode == "trunc":
-        klass += " trunc"
-    elif "width" not in p and not ("left" in p and "right" in p):
-        klass += " nowrap"
-    return f'<div class="{klass}" style="{style(**p)}{extra}">{wow(text)}</div>'
-
-
-def btn(text, w, h=22, state="", font=12, **p):
-    return (f'<div class="btn {state}" style="{style(width=w, height=h, **p)};font-size:{font}px">'
-            f'<span class="lbl">{wow(text)}</span></div>')
-
-
-def edit(text, w, h=22, focus=False, selected=False, caret=False, placeholder=None, **p):
-    body = wow(text)
-    if selected:
-        body = f'<span class="sel">{body}</span>'
-    if placeholder and not text:
-        body = f'<span class="ph">{esc(placeholder)}</span>'
-    if caret:
-        body += '<span class="caret"></span>'
-    return f'<div class="edit{" focus" if focus else ""}" style="{style(width=w, height=h, **p)}">{body}</div>'
-
-
-def slider(value, lo, hi, width, **p):
-    f = (value - lo) / (hi - lo)
-    zero = ""
-    if lo < 0 < hi:
-        zero = f'<div class="zero" style="left:{width * (-lo) / (hi - lo) - 1:.1f}px"></div>'
-    return (f'<div class="slider" style="{style(width=width, **p)}"><div class="bar" style="width:{width}px"></div>'
-            f'{zero}<div class="thumb" style="left:{width * f - 4:.1f}px"></div></div>')
-
-
-def frame(inner, bg=None, opacity=None, cls="", **p):
-    o = f";opacity:{opacity}" if opacity is not None else ""
-    b = f'<div class="bg" style="background:rgba({bg[0] * 255:.0f},{bg[1] * 255:.0f},{bg[2] * 255:.0f},{bg[3]:.3f})"></div>' \
-        if bg else ""
-    return f'<div class="f {cls}" style="{style(**p)}{o}">{b}{inner}</div>'
-
-
-def tooltip(lines, **p):
-    """lines: list of (text, colour hex or None). The first line uses the larger header font."""
-    out = []
-    for i, (text, colour) in enumerate(lines):
-        c = f"color:#{colour}" if colour else "color:#ffd100"
-        out.append(f'<div class="{"t1" if i == 0 else "tl"}" style="{c}">{wow(text)}</div>')
-    return f'<div class="tooltip" style="{style(**p)}">{"".join(out)}</div>'
-
-
 def chat_lines(lines, **p):
+    """The client's chat frame, a plain stand-in: the lines the addon printed (|c colours read as in the game)."""
     body = "".join(f'<div class="line">{wow(l)}</div>' for l in lines)
     return f'<div class="chatframe" style="{style(**p)}">{body}</div>'
 
 
-def placeholder(text, **p):
-    return f'<div class="placeholder" style="{style(**p)}">{esc(text)}</div>'
+def placeholder(s, **p):
+    return (f'<div class="abs" style="{style(**p)};border:1px dashed rgba(255,255,255,.45);background:rgba(0,0,0,.25);'
+            f'display:grid;place-items:center;color:#ddd;font:12px Segoe UI,sans-serif">{esc(s)}</div>')
 
 
-BOOK_SVG = ("<svg viewBox='0 0 36 36' width='36' height='36' xmlns='http://www.w3.org/2000/svg'>"
-            "<defs><linearGradient id='bk' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#5a3b8c'/>"
-            "<stop offset='1' stop-color='#241238'/></linearGradient></defs>"
-            "<rect width='36' height='36' fill='url(#bk)'/>"
-            "<path d='M8 10 Q13 8 18 11 Q23 8 28 10 L28 27 Q23 25 18 28 Q13 25 8 27 Z' fill='#efe2c0' stroke='#3b2a14' stroke-width='1'/>"
-            "<path d='M18 11 L18 28' stroke='#8a6a3a' stroke-width='1'/>"
-            "<path d='M10 14 Q13 13 16 14 M10 17 Q13 16 16 17 M10 20 Q13 19 16 20 M20 14 Q23 13 26 14 M20 17 Q23 16 26 17' "
-            "stroke='#9a8a6a' stroke-width='0.8' fill='none'/>"
-            "<circle cx='27' cy='9' r='2.2' fill='#ffd36b'/></svg>")
-
-
-def speak_button(desat=False, glow=False, opacity=1.0, paused=False, **p):
-    """paused: the "Paused" badge under the button (#183), at full opacity while the button is dimmed."""
-    g = '<div class="glow"></div>' if glow else ""
-    btn_ = (f'<div class="speak{" desat" if desat else ""}" style="{style(**p)};opacity:{opacity}">'
-            f'<div class="icon">{BOOK_SVG}</div>{g}</div>')
-    if not paused:
-        return btn_
-    badge = f'<div class="speak" style="{style(**p)}"><div class="badge fs gfns">Paused</div></div>'
-    return btn_ + badge
+def note(s, **p):
+    """A note of the mockup itself (dashed, in the mockup's own font): never a text of the addon."""
+    return f'<div class="note" style="{style(**p)}">{esc(s)}</div>'
 
 
 # ---------------------------------------------------------------------------------------------------------------
@@ -217,20 +119,12 @@ def scene_svg(kind, w, h, seed=7, trees=True):
 # ---------------------------------------------------------------------------------------------------------------
 # pages
 # ---------------------------------------------------------------------------------------------------------------
-OVERFLOW_JS = """<script>
-// mark the button labels wider than their button: the client does not clip them, they spill over the edges
-document.querySelectorAll('.btn').forEach(function (b) {
-  var l = b.querySelector('.lbl');
-  if (l && l.getBoundingClientRect().width > b.getBoundingClientRect().width - 4) b.classList.add('overflows');
-});
-</script>"""
-
-
 def page(name, title, w, h, body, scene="neutral", seed=7, scale=1.5, kind="current", caption_extra="",
-         alt=None, out_dir=None, css_href="mockups.css"):
-    """Writes <name>.html. kind: current | proposed | none. The size and scale are read by render.py."""
-    badge = {"current": '<div class="badge-current">CURRENT (from the code)</div>',
-             "proposed": '<div class="badge-proposed">PROPOSED - not implemented</div>', "none": ""}[kind]
+         alt=None, out_dir=None, css_href="mockups.css", theme="nebula"):
+    """Writes <name>.html. kind: current | none. theme: nebula | aurora (the addon's two themes). The size and scale
+    are read by render.py."""
+    badge = {"current": f'<div class="badge-current">CURRENT (from the code) - {M.THEME_NAMES[theme].upper()}</div>',
+             "none": ""}[kind]
     cap = f'<div class="caption"><b>{esc(title)}</b> - {esc(CAPTION)}{(" " + esc(caption_extra)) if caption_extra else ""}</div>'
     alt = alt or f"{title}. {CAPTION}"
     doc = f"""<!doctype html>
@@ -245,13 +139,12 @@ def page(name, title, w, h, body, scene="neutral", seed=7, scale=1.5, kind="curr
 <link rel="stylesheet" href="{css_href}">
 </head>
 <body>
-<div class="stage" style="width:{w}px;height:{h}px" role="img" aria-label="{html.escape(alt)}">
+<div class="stage" data-theme="{theme}" style="width:{w}px;height:{h}px" role="img" aria-label="{html.escape(alt)}">
 {scene_svg(scene, w, h, seed) if scene else ""}
 {body}
 {badge}
 {cap}
 </div>
-{OVERFLOW_JS}
 </body>
 </html>
 """

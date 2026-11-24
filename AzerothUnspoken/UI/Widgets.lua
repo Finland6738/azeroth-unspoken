@@ -188,7 +188,7 @@ function W.FlatButton(parent, text, width, height, onClick, kind)
 	b.ring:SetAllPoints(b)
 	b.over = Theme.Slice(b, "rr_fill_8", nil, "ARTWORK")
 	b.over:SetAllPoints(b)
-	b.over:SetVertexColor(1, 1, 1, 1)   -- the white of the hover and pressed layers, the same in every theme
+	b.over:SetVertexColor(1, 1, 1, 1)   -- colour-ok: the white of the hover and pressed layers, the same in every theme
 	b.over:SetAlpha(0)
 	b.overTo = 0
 	b.bar = b:CreateTexture(nil, "ARTWORK", nil, 2)   -- the bar under the label of a selected tab or option

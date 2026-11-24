@@ -31,8 +31,15 @@ import build_mockups as bm  # noqa: E402
 import components  # noqa: E402
 import mockkit  # noqa: E402
 import render  # noqa: E402
-from components import narrator, settings, ui, wizard  # noqa: E402
+from components import narrator, settings, wizard  # noqa: E402
 from mockkit import chat_lines  # noqa: E402
+
+M = mockkit.M
+M.set_base(M.file_url(ROOT))   # the pages are written to a temporary folder: fonts and logos by absolute file URL
+
+
+def ui(lang, key, *args):
+    return M.L(lang, key, *args)
 
 BUILD = tempfile.mkdtemp(prefix="au-assets-")
 _page = mockkit.page
@@ -64,40 +71,45 @@ WIZ_NAMES = {1: "language", 2: "experience", 3: "intensity", 4: "style", 5: "mod
              7: "chat-and-test", 8: "keys-and-button"}
 WIZ_TITLES = {1: "Welcome and language", 2: "Experience", 3: "Intensity", 4: "Style", 5: "Modules",
               6: "Total RP 3", 7: "Chat and test", 8: "Keys, button and settings"}
-SECTIONS = ("general", "chat", "narrator", "modules", "privacy")
+SECTIONS = ("general", "look", "chat", "narrator", "modules", "privacy", "info")
 
 
 def stage(name, title, h, scene="dusk", seed=3, caption_extra="", **nk):
-    page(name, title, 640, h + 30, narrator(100, 70, **nk), scene=scene, seed=seed, caption_extra=caption_extra)
+    page(name, title, 640, h + 30, narrator(100, 70, **nk), scene=scene, seed=seed, caption_extra=caption_extra,
+         theme=nk.get("theme", "nebula"))
 
 
 def build_depths():
     for depth, line in DEPTH_LINES.items():
         stage(f"x-depth-{depth}", f"Narrator box - prose depth {depth.capitalize()}", 300, scene="dusk", seed=4,
-              speaker="inner", text=line,
+              speaker="inner", s=line,
               caption_extra=f"The same moment (arriving in a forest) with the line written for /au depth {depth}.")
 
 
 def build_italian():
     stage("x-it-narrator", "Narrator box - narrator voice (Italian)", 300, seed=3, lang="it", speaker="narrator",
-          text=f"{bm.PLAYER} {bm.IT_DUSK_E}")
+          s=f"{bm.PLAYER} {bm.IT_DUSK_E}")
     stage("x-it-character", "Narrator box - character voice (Italian)", 300, scene="battle", seed=5, lang="it",
-          speaker="character", text=f"«{IT_BATTLE}»")
+          speaker="character", s=f"«{IT_BATTLE}»")
     stage("x-it-npc", "Narrator box - NPC voice (Italian)", 300, scene="warm", seed=6, lang="it", speaker="npc",
-          text=IT_NPC)
+          s=IT_NPC)
     for step in range(1, 9):
-        page(f"x-it-wizard-{step}", f"First-run guide - {WIZ_TITLES[step]} (Italian)", 680, 600,
-             wizard(step, lang="it", trp3=step == 6, left=80, top=50, trp3_others="needs" if step == 6 else ""),
+        page(f"x-it-wizard-{step}", f"First-run guide - {WIZ_TITLES[step]} (Italian)", 680, 680,
+             wizard(step, lang="it", trp3=step == 6, left=80, top=60, trp3_others="needs" if step == 6 else ""),
              scene="neutral", seed=30 + step)
 
 
 def build_settings_sections():
-    settings(0, 0)   # fills SETTINGS_SECTION_TOP
+    settings(0, 0)   # fills components.SECTION_TOP
     for i, key in enumerate(SECTIONS):
-        top = components.SETTINGS_SECTION_TOP["opt_section_" + key]
-        page(f"x-settings-{key}", f"Settings panel - {ui('en', 'opt_section_' + key)} section", 720, 720,
-             settings(30, 30, view=640, scroll=max(0, top - 4)), scene="neutral", seed=43 + i,
-             caption_extra="The panel scrolled to this section, inside the client's options window.")
+        top = components.SECTION_TOP[key]
+        html_, h = settings(20, 20, view=600, scroll=max(0, top - 4))
+        page(f"x-settings-{key}", f"Settings - {ui('en', 'opt_section_' + key)} section", 900, h + 40, html_,
+             scene="neutral", seed=43 + i, scale=1.25,
+             caption_extra="The page scrolled to this section, inside the client's Settings window (a plain stand-in).")
+    html_, h = settings(20, 20, theme="aurora")
+    page("x-settings-aurora", "Settings - the seven sections in the light theme Aurora (unrolled)", 900, h + 40, html_,
+         scene="neutral", seed=50, scale=1, theme="aurora")
 
 
 def chat_page(name, title, command, lines, caption_extra="", seed=113):
@@ -185,11 +197,14 @@ ASSETS_LIST = [
     # settings
     ("settings-panel", "settings-top", "Settings", "The settings panel as it opens in the client's options window."),
     ("settings-section-general", "x-settings-general", "Settings", "The General section: language, intensity, depth, literary forms, pause between lines, window scale."),
+    ("settings-section-appearance", "x-settings-look", "Settings", "The Appearance section: the theme (Nebula or Aurora), neon effects, animations, the fonts, the window positions."),
     ("settings-section-chat", "x-settings-chat", "Settings", "The Chat section: what may reach chat, the default channel, how long a proposal waits, the speak button."),
     ("settings-section-narrator", "x-settings-narrator", "Settings", "The Narrator section: duration, reading speed, opacity, text size, motion, combat, the dialogue window."),
     ("settings-section-modules", "x-settings-modules", "Settings", "The Modules section: each part of the addon on or off."),
     ("settings-section-privacy", "x-settings-privacy", "Settings", "The Privacy section: automatic sending and the Total RP 3 consents."),
+    ("settings-section-info", "x-settings-info", "Settings", "The Info section: who made the addon, the NEBULA community and its logo, the licence and the links to copy."),
     ("settings-panel-unrolled", "settings", "Settings", "The whole panel at once, unrolled."),
+    ("settings-panel-aurora", "x-settings-aurora", "Settings", "The whole panel in the light theme Aurora; the NEBULA logo in its light art."),
     ("settings-language-reload", "settings-reload", "Settings", "After a change of language, the panel asks for a reload."),
     ("language-reload-dialog", "consent-reload", "Settings", "The reload dialog after a change of language."),
     ("settings-total-rp-3-consent", "consent-trp3-others", "Settings", "Reading other players' Total RP 3 profiles asks for consent."),
@@ -482,7 +497,7 @@ def shot(html, out, exe):
 
 
 def main(names):
-    shutil.copy(os.path.join(KIT, "..", "mockups.css"), os.path.join(BUILD, "mockups.css"))
+    mockkit.write_css(BUILD)
     for build in (bm.build_narrator, bm.build_proposal, bm.build_speak_button, bm.build_wizard, bm.build_settings,
                   bm.build_journal, bm.build_relations, bm.build_consent, bm.build_profile, bm.build_dialogue,
                   bm.build_chat, build_depths, build_italian, build_settings_sections, build_chat_more,
