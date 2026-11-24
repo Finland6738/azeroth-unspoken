@@ -4,9 +4,24 @@ All notable changes to this project are recorded here.
 
 The format follows [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/) and the project intends to follow [semantic versioning](https://semver.org/) from version 1.0 onwards. Until then, 0.x versions may change in ways that are not backward compatible. The v2 data schema of the phrase packs (step S3) is now stable and described in [PACK_FORMAT.md](AzerothUnspoken/PACK_FORMAT.md), but it may still change before 1.0: any changes will be announced here.
 
-Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspoken/releases). Each one has a zip with only the addon folders, built by `tools/package_release.py`. The first is `0.1.0` and the latest is `0.2.1`, all development previews.
+Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspoken/releases). Each one has a zip with only the addon folders, built by `tools/package_release.py`. The first is `0.1.0` and the latest is `0.3.0`, all development previews.
 
 ## [Unreleased]
+
+## [0.3.0] - 2026-11-24
+
+The third development preview, and the first in the new look. The UI-ECO migration (UI-0 to UI-8, issue #284, ADR 0058) moves every window to the look of the NEBULA ecosystem shared with Finland Dragon Credit Points: two themes (Nebula, dark, the default, and Aurora, light), new textures, icons and fonts (Outfit, JetBrains Mono, Orbitron, under the OFL), a new window shell with the addon's own logo, gentle motion, and an Info section in the Settings with the credits (Finland, made for the NEBULA community, with its logo). Every mockup is redrawn from the code. Two layout bugs the new mockups showed are fixed. The lines are the same as in 0.2.1. Nothing of the new look has been tried in the game client yet.
+
+### Two layout fixes found by the new mockups (issues #296, #297)
+
+- **Fixed:** the date column of the Journal was 104 units wide, narrower than its 16-character stamp in JetBrains Mono,
+  so the time was cut in every row (#296). It is now 132 units wide (`WHEN_W` in `UI/JournalFrame.lua`).
+- **Fixed:** in a person's detail in the Relationships window, the title over the traits wrapped to two lines and its
+  second line lay under the first trait button (#297). The title is now short ("How you see them" / "Come lo vedi"),
+  and its explanation (the traits shape the lines; "unknown" leaves it to the addon) moved into the tooltip of the trait
+  buttons, in both languages.
+- The journal and relationships mockups (`docs/design/mockups/`) and their images in `assets/` are redrawn.
+- **Not verified in the client:** the real width of the fonts in the game may differ slightly from the mockups.
 
 ### UI-ECO step UI-8: mockups, assets and the final status of the style (issue #284)
 
@@ -3361,7 +3376,8 @@ Tools for the owner to run in the real client, so that the decisions D3 (memory 
 - A pack that registers a key that already exists (script, NPC, place, arc) replaces the base one without a warning ([#69](https://github.com/Finland6738/azeroth-unspoken/issues/69)).
 - License to be defined ([issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2)).
 
-[Unreleased]: https://github.com/Finland6738/azeroth-unspoken/compare/v0.2.1...main
+[Unreleased]: https://github.com/Finland6738/azeroth-unspoken/compare/v0.3.0...main
+[0.3.0]: https://github.com/Finland6738/azeroth-unspoken/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/Finland6738/azeroth-unspoken/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/Finland6738/azeroth-unspoken/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/Finland6738/azeroth-unspoken/releases/tag/v0.1.0
