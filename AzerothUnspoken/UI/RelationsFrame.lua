@@ -1,62 +1,48 @@
--- Azeroth Unspoken: la finestra "Relazioni" (S6b, GDD §7.4, §12.2).
--- Quattro viste: l'elenco (tabella ordinabile e filtrabile per NPC/giocatori, etichetta e nome), le persone incontrate
--- (candidati proposti dal sistema: entrano in lista solo con un clic dell'utente), le opzioni (NPC automatici,
--- attrazione, registra automaticamente, proposte, riconoscimento, lista condivisa) e il dettaglio di una relazione, con
--- cursori per gli assi, etichetta, nota, tag e i selettori di tratti e ruolo dell'interlocutore (#37). In basso
--- l'esportazione testuale. Si apre con /au relationships o dal diario.
--- Nessun contenuto di chat o di whisper è mostrato o salvato: solo nomi, assi, note e tag scelti dall'utente.
--- Il dettaglio di un giocatore ha due sezioni (#107): "Cosa hai scelto tu" (assi, etichetta, sentimenti, nota, tag,
--- tratti: li cambia solo l'utente) e "Cosa ha osservato l'addon" (incontri per tipo, ultimi fatti, senza testi), con
--- due azioni distinte: "Dimentica le osservazioni" e "Rimuovi la persona".
--- Layout (U1, #171, #172, #179, #180): one fixed height of 660 units for every view (the screen is 768 at UI scale 1),
--- the detail in two columns, blocks laid out top-down, the list rows plain buttons that own their cells, and buttons
--- sized from their text. The label, note and tags boxes save when they lose focus, to the person they were opened for
--- (#184).
--- The shell is W.Window (#187): edge, title band, close box, Esc, scale. Flat buttons and sliders drawn with textures
--- (UI/Widgets.lua), like the rest of the interface. The three confirmations (Forget observations, Remove person, Forget
--- everything) are W.Confirm: each with its own token, all disarmed when the window closes (#190).
+-- Azeroth Unspoken: the "Relationships" window (S6b, GDD §7.4, §12.2).
+-- Three tabs and a detail: the list (a sortable table, filtered by NPCs / players, by label and by name), the people met
+-- (suggestions of the system: they join the list only with a click of the user), the options (automatic NPCs,
+-- attraction, register by itself, suggestions, recognition, shared list) and the detail of one relationship, with
+-- sliders for the axes, label, note, tags and the pickers of the traits and role of the other person (#37). At the
+-- bottom, the text export. It opens with /au relationships or from the journal.
+-- No chat or whisper content is shown or saved: only names, axes, notes and tags chosen by the user.
+-- The detail of a player has two sections (#107): "What you chose" (axes, label, feelings, note, tags, traits: only the
+-- user changes them) and "What the addon observed" (encounters by kind, last facts, no texts), with two distinct
+-- actions: "Forget observations" and "Remove person".
+-- Layout (U1, #171, #172, #179, #180): one fixed height for every view (the screen is 768 at UI scale 1), the detail in
+-- two columns, blocks laid out top-down, and buttons sized from their text. The label, note and tags boxes save when
+-- they lose focus, to the person they were opened for (#184).
+-- UI-5 (UI-ECO): the shell is W.Window; the three views are W.Tabs (a 2-unit bar that slides under the chosen one), the
+-- kind filter is a W.Segmented, the list and the people met are sortable W.DataTables (numbers in the mono font, in
+-- accent-text), the three actions that cannot be undone (Forget observations, Remove person, Forget everything) ask
+-- through W.Dialog and their result is said by a W.Toast, every text is a Theme font: the window needs no W.Adopt, and
+-- the coloured words inside a line (W.Hex) are redrawn on a theme change by the window's `refresh`.
 local ADDON, NS = ...
 local W = NS.Widgets
 local R = NS.Relationships
+local Theme = NS.Theme
 
 ---@class AURelationsFrame
 local RelationsFrame = NS:RegisterModule("relationsframe")
 NS.RelationsFrame = RelationsFrame
 
-local WIDTH, HEIGHT = 720, 660   -- every view: at most 680 units, so it fits a 768-unit screen (#172)
+local WIDTH, HEIGHT = 720, 680   -- every view: at most 680 units, so it fits a 768-unit screen (#172)
 local INNER = WIDTH - 32         -- usable width between the 16-unit margins
-local PAGE = 12            -- righe per pagina
-local ROW_H = 26
-local TOP = -168           -- ordinate della prima riga dell'elenco
-local TOP_PEOPLE = -178    -- the people view has a two-line note above its rows
-local PAGER_Y = -500
-local DELETE_ARM_SECONDS = 6
-local BUTTON_PAD = 24      -- room around the label of a UIPanelButtonTemplate
--- tratti e ruolo dell'interlocutore nel dettaglio (fonte 1 del profilo, Systems/Interlocutor.lua), in una colonna
+local ROW_H = 32                 -- rows of the tables: 24-unit buttons with room around them
+local TABLE_BOTTOM = 104         -- the tables end this high above the bottom: the summary and the toast live under them
+-- the person's traits and role in the detail (source 1 of the profile, Systems/Interlocutor.lua), in one column
 local TRAITS = { "role", "temperament", "morality", "goals", "speech" }
-local COLS = {             -- colonne dell'elenco: id, ascissa, larghezza
-	{ "name", 16, 150 }, { "kind", 170, 76 }, { "label", 250, 124 }, { "disposition", 378, 128 }, { "last", 510, 92 },
-	{ "count", 606, 98 },
-}
 -- the detail: two columns, then the observed block across the whole width
 local LEFT_X, RIGHT_X, RIGHT_W = 16, 372, 332
 local CTRL_X, CTRL_W = 112, 244   -- the controls of the left column, after a 92-unit caption
-local DETAIL_TOP = -162
+local VIEW_TOP = -136             -- where every view starts: under the tabs of an intro of two lines
+local DETAIL_TOP = -184
 local AXIS_STEP = 26
-local SEEN_Y = -490
+local SEEN_Y = -512
 
 local frame
-local rows, headers, axisRows, candRows = {}, {}, {}, {}
-local view = { name = "list", page = 1, subject = nil }
-local filter = { sort = "last", text = "" }
--- the two-click confirmations (#190): Forget observations, Remove person, Forget everything; each disarms by its own
--- token (an old timer never ends a newer arming) and all of them when the window closes
-local function Redraw() RelationsFrame:Refresh() end
-local arm = { forget = W.Confirm(DELETE_ARM_SECONDS, Redraw), delete = W.Confirm(DELETE_ARM_SECONDS, Redraw),
-	reset = W.Confirm(DELETE_ARM_SECONDS, Redraw) }
-local function DisarmAll()
-	for _, c in pairs(arm) do c:Disarm() end
-end
+local axisRows = {}
+local view = { name = "list", subject = nil }
+local filter = { text = "" }     -- kind, label, text: what the list shows (the table keeps the order)
 
 -- UI-3: a token of the current theme (W.Hex); a theme change redraws the window
 local function Muted(text) return W.Hex("text-3") .. text .. "|r" end
@@ -66,24 +52,27 @@ local function Stamp(t)
 	return "-"
 end
 
-local KIND_FILTERS = { false, "npc", "player" }
-local function KindFilterText()
-	if filter.kind == "npc" then return NS:L("rel_filter_npcs") end
-	if filter.kind == "player" then return NS:L("rel_filter_players") end
-	return NS:L("rel_filter_all")
-end
+local KIND_IDS = { "all", "npc", "player" }   -- the Segmented's ids; the filter holds "npc", "player" or nil
 
 ---------------------------------------------------------------------------
--- Costruzione
+-- Building
 ---------------------------------------------------------------------------
 -- #182: the views lie under the tabs, and the tabs under the intro, whose height is measured with GetStringHeight(). Every
 -- widget placed from the top goes through Place with its offset for the usual two-line intro; when the intro takes more
--- lines the tabs and everything under them move down by `shift`, and the window grows by as much.
+-- lines the tabs and everything under them move down by `shift`, and the window grows by as much. A table has a second
+-- anchor, at the bottom: `Anchor` puts it back after a move.
 local TABS_Y = 84          -- the tabs under an intro of two lines (W.TOP + 28 + 10)
-local shift, placed = 0, {}
+local shift, placed, anchored = 0, {}, {}
 local function Place(w, point, x, y)
 	placed[#placed + 1] = { w, point, x, y }
 	w:SetPoint(point, x, y - shift)
+end
+
+---A table: its top left corner is placed like the other widgets, its bottom right corner is the window's.
+local function PlaceTable(t, x, y)
+	anchored[#anchored + 1] = t
+	Place(t, "TOPLEFT", x, y)
+	t:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", -16, TABLE_BOTTOM)
 end
 
 local function Reflow(newShift)
@@ -93,10 +82,21 @@ local function Reflow(newShift)
 		p[1]:ClearAllPoints()
 		p[1]:SetPoint(p[2], p[3], p[4] - shift)
 	end
+	for _, t in ipairs(anchored) do t:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", -16, TABLE_BOTTOM) end
 end
 
-local function Text(parent, template, x, y, width, justify)
-	local fs = parent:CreateFontString(nil, "ARTWORK", template or "GameFontHighlight")
+-- the styles of the window's texts: a theme font and a token (no game font object, no W.Adopt)
+local STYLE = {
+	caption = { "BodyMedium", "accent-text" },   -- the caption of a field, a section title
+	body = { "Body", "text-1" },
+	small = { "Small", "text-2" },               -- notes, the privacy text, the observed facts (12 units, #182)
+	title = { "H1", "text-1" },                  -- the name of the person in the detail
+	number = { "Mono", "accent-text" },          -- a value of a slider
+}
+
+local function Text(parent, style, x, y, width, justify)
+	local st = STYLE[style or "body"]
+	local fs = Theme.NewText(parent, st[1], st[2])
 	Place(fs, "TOPLEFT", x, y)
 	if width then fs:SetWidth(width) end
 	fs:SetJustifyH(justify or "LEFT")
@@ -108,15 +108,15 @@ local function Line(fs)
 	return fs
 end
 
--- #180: a button as wide as its label (measured in the font of UIPanelButtonTemplate), between min and max units
+-- #180: a button as wide as its label (measured in the button's own font), between min and max units
 local function Fit(b, text, min, max)
 	b:SetText(text)
-	frame.measure:SetText(text)
-	local w = frame.measure:GetStringWidth()
-	frame.measure:SetText("")
-	if type(w) ~= "number" then w = 0 end
-	b:SetWidth(math.max(min, math.min(max, math.ceil(w) + BUTTON_PAD)))
-	return b:GetWidth()
+	return W.FitButton(b, min, max)
+end
+
+-- a short result in a Toast (the window's, or nothing if the window is not built)
+local function Say(key, tone, ...)
+	if frame and frame.toast then frame.toast:Say(NS:L(key, ...), tone or "ok") end
 end
 
 -- #184: the label, note and tags boxes. Each one remembers the person it was focused for and saves to that person when
@@ -190,15 +190,37 @@ local function RowTip(item)
 	return table.concat(lines, "\n")
 end
 
+-- the table of the list: name, type, label, disposition, last seen, number of encounters. The order of a column is
+-- the one of its value (a name without case, the disposition's number, the date, the count); the sorted column is
+-- in accent-text with an arrow.
+local function ListColumns()
+	return {
+		{ id = "name", title = "", flex = 1, text = function(d) return d.name end, value = function(d) return NS.Lower(d.name) end },
+		{ id = "kind", title = "", width = 76, text = function(d) return NS:L("rel_kind_" .. d.kind) end,
+			value = function(d) return d.kind end },
+		{ id = "label", title = "", width = 124, text = function(d) return d.info.text end,
+			value = function(d) return NS.Lower(d.info.text) end },
+		{ id = "disposition", title = "", width = 128,
+			text = function(d) return ("%s (%d)"):format(d.info.dispositionText, math.floor(d.info.dispositionValue + 0.5)) end,
+			value = function(d) return d.info.dispositionValue end },
+		{ id = "last", title = "", width = 92, mono = true, text = function(d) return Stamp(R.SeenOf(d.rec).last) end,
+			value = function(d) return R.SeenOf(d.rec).last or 0 end },
+		{ id = "count", title = "", width = 76, mono = true, align = "RIGHT", text = function(d) return tostring(R.SeenOf(d.rec).count or 0) end,
+			value = function(d) return R.SeenOf(d.rec).count or 0 end },
+	}
+end
+
 local function BuildList()
-	frame.kindBtn = W.FlatButton(frame, "", 130, 24, function()
-		local idx = 1
-		for i, k in ipairs(KIND_FILTERS) do if (k or nil) == filter.kind then idx = i end end
-		filter.kind = KIND_FILTERS[idx % #KIND_FILTERS + 1] or nil
-		view.page = 1
+	-- the filter by kind: a Segmented (the chosen segment is raised, not only coloured)
+	frame.kindSeg = W.Segmented(frame, {
+		{ id = "all", text = NS:L("rel_filter_all") }, { id = "npc", text = NS:L("rel_filter_npcs") },
+		{ id = "player", text = NS:L("rel_filter_players") },
+	}, function(id)
+		if frame.syncing then return end
+		filter.kind = id ~= "all" and id or nil
 		RelationsFrame:Refresh()
 	end)
-	Place(frame.kindBtn, "TOPLEFT", 16, -116)
+	Place(frame.kindSeg, "TOPLEFT", 16, VIEW_TOP)
 	frame.labelBtn = W.FlatButton(frame, "", 190, 24, function()
 		local ids = R:LabelIds()
 		local nextId
@@ -206,73 +228,40 @@ local function BuildList()
 			for i, id in ipairs(ids) do if id == filter.label then nextId = ids[i + 1] end end
 		end
 		filter.label = nextId
-		view.page = 1
 		RelationsFrame:Refresh()
 	end)
-	Place(frame.labelBtn, "TOPLEFT", 152, -116)
-	frame.searchLabel = Text(frame, "GameFontNormal", 436, -120, 60, "RIGHT")
-	frame.search = W.EditBox(frame, 200, 24)
-	Place(frame.search, "TOPLEFT", 504, -116)
+	Place(frame.labelBtn, "TOPLEFT", 252, VIEW_TOP - 4)
+	frame.searchLabel = Text(frame, "caption", 436, VIEW_TOP - 8, 60, "RIGHT")
+	frame.search = W.EditBox(frame, 180, 24)
+	Place(frame.search, "TOPLEFT", 504, VIEW_TOP - 4)
 	frame.search:SetMaxLetters(32)
 	frame.search:SetScript("OnTextChanged", function(self, byUser)
 		if byUser == false then return end
 		filter.text = self:GetText() or ""
-		view.page = 1
 		RelationsFrame:Refresh()
 	end)
 	frame.search:SetScript("OnEnterPressed", function(self) self:ClearFocus() end)
 	frame.search:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)
-	for _, col in ipairs(COLS) do
-		local id = col[1]
-		-- #183: the column titles are 24-unit targets too
-		local b = W.FlatButton(frame, "", col[3] - 2, 24, function()
-			if filter.sort == id then
-				-- stesso titolo: inverte la direzione (predefinita: i testi dalla A alla Z, i numeri dal più alto)
-				local textual = id == "name" or id == "kind" or id == "label"
-				local ascending = textual
-				if filter.desc ~= nil then ascending = not filter.desc end
-				filter.desc = ascending
-			else
-				filter.sort, filter.desc = id, nil
-			end
-			view.page = 1
-			RelationsFrame:Refresh()
-		end)
-		Place(b, "TOPLEFT", col[2], -142)
-		headers[id] = b
-	end
-	-- #171: plain row buttons (no panel art) that own their cells, so the button never covers the text
-	for i = 1, PAGE do
-		local row = {}
-		row.btn = CreateFrame("Button", nil, frame)
-		row.btn:SetSize(INNER, ROW_H - 2)
-		Place(row.btn, "TOPLEFT", 16, TOP - (i - 1) * ROW_H)
-		row.btn:RegisterForClicks("LeftButtonUp")
-		row.btn:SetScript("OnClick", function()
-			if row.row then RelationsFrame:SelectSubject(row.row.kind, row.row.key) end
-		end)
-		if i % 2 == 0 then
-			local stripe = row.btn:CreateTexture(nil, "BACKGROUND")
-			stripe:SetAllPoints()
-			NS.Theme.Fill(stripe, "surface-2")
-		end
-		local hl = row.btn:CreateTexture(nil, "HIGHLIGHT")
-		hl:SetAllPoints()
-		NS.Theme.Fill(hl, "accent", 0.18)
-		-- the cells are cut with "..."; the tooltip has the whole row (#180)
-		W.Tooltip(row.btn, function() return row.row and RowTip(row.row) or "" end)
-		row.cells = {}
-		for _, col in ipairs(COLS) do
-			row.cells[col[1]] = Line(Text(row.btn, "GameFontHighlight", col[2] - 16 + 4, -6, col[3] - 8))
-		end
-		rows[i] = row
-	end
+	-- a click on a row opens the person; the cells are cut with "..." and the tooltip has the whole row (#180)
+	frame.listTable = W.DataTable(frame, ListColumns(), { rowHeight = ROW_H, pool = 16,
+		onRowClick = function(d) RelationsFrame:SelectSubject(d.kind, d.key) end,
+		rowSetup = function(r) W.Tooltip(r, function() return r.data and RowTip(r.data) or "" end) end })
+	PlaceTable(frame.listTable, 16, VIEW_TOP - 40)
+end
+
+-- the people met: a person to add by name, then the table of the suggestions (and the questions about a changed identity)
+local function PeopleColumns()
+	return {
+		{ id = "name", title = "", flex = 1, text = function(d) return d.text end, value = function(d) return NS.Lower(d.text) end },
+		{ id = "source", title = "", width = 200, text = function(d) return d.source end, value = function(d) return NS.Lower(d.source) end },
+		{ id = "acts", title = "", width = 76, sortable = false, text = function() return "" end },
+	}
 end
 
 local function BuildPeople()
-	frame.addLabel = Text(frame, "GameFontNormal", 16, -120, 120)
-	frame.addBox = W.EditBox(frame, 250, 22)
-	Place(frame.addBox, "TOPLEFT", 140, -116)
+	frame.addLabel = Text(frame, "caption", 16, VIEW_TOP - 8, 120)
+	frame.addBox = W.EditBox(frame, 250, 24)
+	Place(frame.addBox, "TOPLEFT", 140, VIEW_TOP - 4)
 	frame.addBox:SetMaxLetters(48)
 	local function AddTyped()
 		local name = frame.addBox:GetText()
@@ -281,50 +270,54 @@ local function BuildPeople()
 	frame.addBox:SetScript("OnEnterPressed", function(self) AddTyped(); self:ClearFocus() end)
 	frame.addBox:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)
 	frame.addBtn = W.FlatButton(frame, "", 130, 24, AddTyped)
-	Place(frame.addBtn, "TOPLEFT", 398, -116)
-	frame.peopleNote = Text(frame, "GameFontHighlightSmall", 16, -146, INNER)
-	for i = 1, PAGE do
-		local y = TOP_PEOPLE - (i - 1) * ROW_H
-		local row = {}
-		row.text = Line(Text(frame, "GameFontHighlight", 20, y - 6, 600))
-		-- a row is a suggested person, or (#112) a question about a listed person's identity: + says yes, x says no
-		row.add = W.FlatButton(frame, "+", 28, 24, function()
-			if not row.cand then return end
-			if row.cand.kind then RelationsFrame:AnswerIdentity(row.cand.key, true) else RelationsFrame:AddPlayer(row.cand.key) end
-		end)
-		Place(row.add, "TOPLEFT", 644, y)
-		W.Tooltip(row.add, function()
-			return NS:L(row.cand and row.cand.kind and ("rel_id_accept_" .. row.cand.kind .. "_tip") or "rel_cand_add_tip")
-		end)
-		row.dismiss = W.FlatButton(frame, "x", 28, 24, function()
-			if row.cand and row.cand.kind then R:KeepIdentity(row.cand.key) elseif row.cand then R:Dismiss(row.cand.key) end
-			RelationsFrame:Refresh()
-		end)
-		Place(row.dismiss, "TOPLEFT", 676, y)
-		W.Tooltip(row.dismiss, function() return NS:L(row.cand and row.cand.kind and "rel_id_keep_tip" or "rel_cand_dismiss_tip") end)
-		candRows[i] = row
-	end
+	Place(frame.addBtn, "TOPLEFT", 398, VIEW_TOP - 4)
+	frame.peopleNote = Text(frame, "small", 16, VIEW_TOP - 38, INNER)
+	-- a row is a suggested person, or (#112) a question about a listed person's identity: + says yes, x says no
+	frame.peopleTable = W.DataTable(frame, PeopleColumns(), { rowHeight = ROW_H, pool = 14,
+		rowSetup = function(r)
+			r.add = W.FlatButton(r, "+", 28, 24, function()
+				local c = r.data and r.data.cand
+				if not c then return end
+				if c.kind then RelationsFrame:AnswerIdentity(c.key, true) else RelationsFrame:AddPlayer(c.key) end
+			end)
+			r.add:SetPoint("RIGHT", r, "RIGHT", -40, 0)
+			W.Tooltip(r.add, function()
+				local c = r.data and r.data.cand
+				return NS:L(c and c.kind and ("rel_id_accept_" .. c.kind .. "_tip") or "rel_cand_add_tip")
+			end)
+			r.dismiss = W.FlatButton(r, "x", 28, 24, function()
+				local c = r.data and r.data.cand
+				if c and c.kind then R:KeepIdentity(c.key) elseif c then R:Dismiss(c.key) end
+				RelationsFrame:Refresh()
+			end)
+			r.dismiss:SetPoint("RIGHT", r, "RIGHT", -8, 0)
+			W.Tooltip(r.dismiss, function()
+				local c = r.data and r.data.cand
+				return NS:L(c and c.kind and "rel_id_keep_tip" or "rel_cand_dismiss_tip")
+			end)
+		end })
+	PlaceTable(frame.peopleTable, 16, VIEW_TOP - 80)
 end
 
 local function BuildDetail()
-	frame.dTitle = Line(Text(frame, "GameFontNormalLarge", 16, -114, 400))
-	frame.dSummary = Line(Text(frame, "GameFontHighlight", 16, -138, INNER))
+	frame.dTitle = Line(Text(frame, "title", 16, VIEW_TOP, 400))
+	frame.dSummary = Line(Text(frame, "body", 16, VIEW_TOP - 26, INNER))
 	-- #114: with the shared list on, whose choices count for this person (one list for the account, or this character's own)
 	frame.dScope = W.FlatButton(frame, "", 220, 24, function()
 		local s = view.subject
 		if not s or s.kind ~= "player" then return end
 		R:SetScope(s.key, R:ScopeOf(s.key) == "shared" and "character" or "shared")
 	end)
-	Place(frame.dScope, "TOPRIGHT", -16, -110)
+	Place(frame.dScope, "TOPRIGHT", -16, VIEW_TOP + 2)
 	W.Tooltip(frame.dScope, function() return NS:L("rel_scope_tip") end)
 
 	-- left column: the axes, the label and the feelings
-	frame.dUserTitle = Text(frame, "GameFontNormal", LEFT_X, DETAIL_TOP, 340)
+	frame.dUserTitle = Text(frame, "caption", LEFT_X, DETAIL_TOP, 340)
 	for i = 1, #R.axes do
 		local axis = R.axes[i]
 		local y = DETAIL_TOP - 20 - (i - 1) * AXIS_STEP
 		local row = { axis = axis.id }
-		row.label = Line(Text(frame, "GameFontNormal", LEFT_X, y - 5, 92))
+		row.label = Line(Text(frame, "caption", LEFT_X, y - 5, 92))
 		row.slider = W.Slider(frame, 150, axis.min, axis.max, function(v, final)
 			if row.value then row.value:SetText(tostring(v)) end
 			if final and view.subject then
@@ -332,7 +325,7 @@ local function BuildDetail()
 			end
 		end, { step = R.SLIDER_STEP })   -- #183: the mouse wheel moves it like "-" and "+"
 		Place(row.slider, "TOPLEFT", CTRL_X, y - 4)
-		row.value = Text(frame, "GameFontHighlight", 266, y - 5, 34, "RIGHT")
+		row.value = Text(frame, "number", 266, y - 5, 34, "RIGHT")
 		row.minus = W.FlatButton(frame, "-", 24, 24, function()
 			if view.subject then R:AdjustAxis(view.subject.kind, view.subject.key, axis.id, -R.SLIDER_STEP) end
 		end)
@@ -345,7 +338,7 @@ local function BuildDetail()
 		axisRows[i] = row
 	end
 	local y = DETAIL_TOP - 20 - #R.axes * AXIS_STEP - 4
-	frame.dLabelTitle = Line(Text(frame, "GameFontNormal", LEFT_X, y - 5, 92))
+	frame.dLabelTitle = Line(Text(frame, "caption", LEFT_X, y - 5, 92))
 	frame.dLabelBtn = W.FlatButton(frame, "", CTRL_W, 24, function()
 		if view.subject then R:CycleLabel(view.subject.kind, view.subject.key) end
 	end)
@@ -358,7 +351,7 @@ local function BuildDetail()
 	W.Tooltip(frame.dCustom, function() return NS:L("rel_custom_tip") end)
 	y = y - 30
 	-- feelings in words (#109): two slots and the typical-axes preset, all chosen by the user
-	frame.dFeelingTitle = Line(Text(frame, "GameFontNormal", LEFT_X, y - 5, 92))
+	frame.dFeelingTitle = Line(Text(frame, "caption", LEFT_X, y - 5, 92))
 	frame.dFeeling1 = W.FlatButton(frame, "", CTRL_W, 24, function()
 		if view.subject then R:CycleFeeling(view.subject.kind, view.subject.key, 1) end
 	end)
@@ -377,7 +370,7 @@ local function BuildDetail()
 	W.Tooltip(frame.dPreset, function() return NS:L("rel_feeling_preset_tip") end)
 
 	-- right column: how the user sees them (traits and role), then the note and the tags
-	frame.dTraitsTitle = Text(frame, "GameFontNormal", RIGHT_X, DETAIL_TOP, RIGHT_W)
+	frame.dTraitsTitle = Text(frame, "caption", RIGHT_X, DETAIL_TOP, RIGHT_W)
 	frame.dTraitBtns = {}
 	y = DETAIL_TOP - 34
 	for _, trait in ipairs(TRAITS) do
@@ -391,12 +384,12 @@ local function BuildDetail()
 		y = y - 28
 	end
 	y = y - 6
-	frame.dNoteTitle = Text(frame, "GameFontNormal", RIGHT_X, y, RIGHT_W)
+	frame.dNoteTitle = Text(frame, "caption", RIGHT_X, y, RIGHT_W)
 	frame.dNote = W.EditBox(frame, RIGHT_W, 22)
 	Place(frame.dNote, "TOPLEFT", RIGHT_X, y - 18)
 	frame.dNote:SetMaxLetters(R.NOTE_LEN)
 	y = y - 48
-	frame.dTagsTitle = Text(frame, "GameFontNormal", RIGHT_X, y, RIGHT_W)
+	frame.dTagsTitle = Text(frame, "caption", RIGHT_X, y, RIGHT_W)
 	frame.dTags = W.EditBox(frame, RIGHT_W, 22)
 	Place(frame.dTags, "TOPLEFT", RIGHT_X, y - 18)
 	frame.dTags:SetMaxLetters(160)
@@ -406,9 +399,9 @@ local function BuildDetail()
 
 	-- what the addon observed (players) or knows (NPCs: level, temperament, first meeting): a block of its own across
 	-- the window, never editable
-	frame.dSeenTitle = Text(frame, "GameFontNormal", LEFT_X, SEEN_Y, INNER)
-	frame.dSeenLine = Text(frame, "GameFontHighlightSmall", LEFT_X, SEEN_Y - 20, 340)
-	frame.dSeenFacts = Text(frame, "GameFontHighlightSmall", RIGHT_X, SEEN_Y - 20, RIGHT_W)
+	frame.dSeenTitle = Text(frame, "caption", LEFT_X, SEEN_Y, INNER)
+	frame.dSeenLine = Text(frame, "small", LEFT_X, SEEN_Y - 20, 340)
+	frame.dSeenFacts = Text(frame, "small", RIGHT_X, SEEN_Y - 20, RIGHT_W)
 
 	-- the actions on the person, in the footer (the window's own Export and Forget everything are for the list)
 	frame.dBack = W.FlatButton(frame, "", 150, 24, function() RelationsFrame:ShowView("list") end)
@@ -416,25 +409,25 @@ local function BuildDetail()
 	frame.dForget = W.FlatButton(frame, "", 200, 24, function()
 		local s = view.subject
 		if not s or s.kind ~= "player" then return end
-		if arm.forget:Is() then
-			arm.forget:Disarm()
-			R:ForgetObservations(s.key)
-		else
-			arm.forget:Arm()
-		end
-		RelationsFrame:Refresh()
+		local key = s.key
+		frame.dialog:Ask({ title = NS:L("rel_forget_dlg"), text = NS:L("rel_forget_tip"), confirm = NS:L("rel_forget"),
+			cancel = NS:L("dlg_cancel"), danger = true, onConfirm = function()
+				R:ForgetObservations(key)
+				Say("rel_toast_forgot")
+				RelationsFrame:Refresh()
+			end })
 	end, "danger")
 	frame.dForget:SetPoint("BOTTOMLEFT", 176, 16)
 	W.Tooltip(frame.dForget, function() return NS:L("rel_forget_tip") end)
 	frame.dDelete = W.FlatButton(frame, "", 200, 24, function()
-		if not view.subject then return end
-		if arm.delete:Is() then
-			arm.delete:Disarm()
-			RelationsFrame:RemoveSubject()
-		else
-			arm.delete:Arm()
-			RelationsFrame:Refresh()
-		end
+		local s = view.subject
+		if not s then return end
+		local shared = R:Sharing() and s.kind == "player"
+		frame.dialog:Ask({ title = NS:L("rel_delete_dlg"), text = NS:L(shared and "rel_delete_shared_tip" or "rel_delete_dlg_text"),
+			confirm = NS:L("rel_delete"), cancel = NS:L("dlg_cancel"), danger = true, onConfirm = function()
+				RelationsFrame:RemoveSubject()
+				Say("rel_toast_removed")
+			end })
 	end, "danger")
 	frame.dDelete:SetPoint("BOTTOMLEFT", 386, 16)
 	W.Tooltip(frame.dDelete, function()
@@ -468,98 +461,96 @@ local function BuildOptions()
 			end
 			RelationsFrame:Refresh()
 		end)
-		Place(b, "TOPLEFT", 16 + ((i - 1) % 2) * (colW + 16), -116 - math.floor((i - 1) / 2) * 30)
+		Place(b, "TOPLEFT", 16 + ((i - 1) % 2) * (colW + 16), VIEW_TOP - math.floor((i - 1) / 2) * 30)
 		W.Tooltip(b, function() return NS:L(opt[2] .. "_tip") end)
 		frame.options[i] = { button = b, key = opt[1], text = opt[2] }
 	end
 	-- the consents and the privacy note in the 12-unit font (#182), each under the one above
-	frame.optionsHint = Text(frame, W.TEXT_FONT, 16, -116 - math.ceil(#OPTIONS / 2) * 30 - 8, INNER)
-	frame.privacy = frame:CreateFontString(nil, "ARTWORK", W.TEXT_FONT)
+	frame.optionsHint = Text(frame, "small", 16, VIEW_TOP - math.ceil(#OPTIONS / 2) * 30 - 8, INNER)
+	frame.privacy = Theme.NewText(frame, "Small", "text-2")
 	frame.privacy:SetPoint("TOPLEFT", frame.optionsHint, "BOTTOMLEFT", 0, -10)
 	frame.privacy:SetWidth(INNER)
 	frame.privacy:SetJustifyH("LEFT")
-	frame.warning = frame:CreateFontString(nil, "ARTWORK", W.TEXT_FONT)
+	frame.warning = Theme.NewText(frame, "Small", "text-1")
 	frame.warning:SetPoint("TOPLEFT", frame.privacy, "BOTTOMLEFT", 0, -12)
 	frame.warning:SetWidth(INNER)
 	frame.warning:SetJustifyH("LEFT")
 end
 
 local function Build()
-	-- the shell (#187): hidden at once (#192), title band, close box, Esc (#174), scale (#182)
+	-- the shell (#187): hidden at once (#192), title bar, close box, Esc (#174), scale (#182)
 	frame = W.Window(UIParent, WIDTH, HEIGHT, "rel_title", { name = "AzerothUnspokenRelations", point = { "CENTER", 0, 10 },
 		refresh = function() RelationsFrame:Refresh() end })
-	-- closing the window (button, Esc, command, journal) keeps what was typed (#184) and disarms every confirmation (#190)
+	-- closing the window (button, Esc, command, journal) keeps what was typed (#184); a question that was open is
+	-- cancelled (#190) and the toast goes
 	frame:SetScript("OnHide", function()
 		CommitEdits()
-		DisarmAll()
+		if frame.dialog:IsShown() then frame.dialog:Hide() end
+		frame.toast:Dismiss()
 	end)
-	frame.measure = frame:CreateFontString(nil, "ARTWORK", "GameFontNormal")
-	frame.measure:Hide()
 
 	-- what the window keeps and what it never does: a privacy note, 12 units (#182)
-	frame.intro = frame:CreateFontString(nil, "ARTWORK", W.TEXT_FONT)
+	frame.intro = Theme.NewText(frame, "Small", "text-2")
 	frame.intro:SetPoint("TOPLEFT", 16, -W.TOP)
 	frame.intro:SetWidth(INNER)
 	frame.intro:SetJustifyH("LEFT")
-	frame.tabList = W.FlatButton(frame, "", 150, 24, function() RelationsFrame:ShowView("list") end)
-	frame.tabPeople = W.FlatButton(frame, "", 190, 24, function() RelationsFrame:ShowView("people") end)
-	frame.tabOptions = W.FlatButton(frame, "", 120, 24, function() RelationsFrame:ShowView("options") end)
+	-- the three views: tabs with a 2-unit bar that slides under the chosen one; the detail of a person belongs to the list
+	frame.tabBar = W.Tabs(frame, {
+		{ id = "list", text = "" }, { id = "people", text = "" }, { id = "options", text = "" },
+	}, function(id)
+		if frame.syncing then return end
+		RelationsFrame:ShowView(id)
+	end)
+	frame.tabBar:SetWidth(INNER)
+	Place(frame.tabBar, "TOPLEFT", 16, -TABS_Y)
 
 	BuildList()
 	BuildPeople()
 	BuildDetail()
 	BuildOptions()
 
-	frame.prev = W.FlatButton(frame, "<", 28, 24, function() view.page = view.page - 1; RelationsFrame:Refresh() end)
-	Place(frame.prev, "TOPLEFT", 16, PAGER_Y)
-	frame.pageText = Text(frame, "GameFontNormal", 52, PAGER_Y - 4, 140)
-	frame.next = W.FlatButton(frame, ">", 28, 24, function() view.page = view.page + 1; RelationsFrame:Refresh() end)
-	Place(frame.next, "TOPLEFT", 196, PAGER_Y)
-	frame.stats = Text(frame, "GameFontHighlightSmall", 240, PAGER_Y - 4, 464, "RIGHT")
+	frame.stats = Theme.NewText(frame, "Small", "text-2")
+	frame.stats:SetPoint("BOTTOMLEFT", 16, 56)
+	frame.stats:SetWidth(330)
+	frame.stats:SetJustifyH("LEFT")
+	if frame.stats.SetWordWrap then frame.stats:SetWordWrap(false) end
 
 	frame.export = W.FlatButton(frame, "", 110, 24, function() RelationsFrame:ShowExport() end)
 	frame.export:SetPoint("BOTTOMLEFT", 16, 16)
+	-- Forget everything asks through the Dialog; a destructive action, so the danger style
 	frame.reset = W.FlatButton(frame, "", 190, 24, function()
-		if arm.reset:Is() then
-			arm.reset:Disarm()
-			R:Reset("all")
-		else
-			arm.reset:Arm()
-		end
-		RelationsFrame:Refresh()
+		frame.dialog:Ask({ title = NS:L("rel_reset_dlg"), text = NS:L("rel_reset_dlg_text"), confirm = NS:L("rel_reset"),
+			cancel = NS:L("dlg_cancel"), danger = true, onConfirm = function()
+				R:Reset("all")
+				Say("rel_toast_reset")
+				RelationsFrame:Refresh()
+			end })
 	end, "danger")
 	frame.close = W.FlatButton(frame, "", 110, 24, function() RelationsFrame:Close() end)
 	frame.close:SetPoint("BOTTOMRIGHT", -16, 16)
+
+	frame.dialog = W.Dialog(frame, "AzerothUnspokenRelationsDialog", { width = 460 })
+	frame.toast = W.Toast(frame)
+	frame.toast:ClearAllPoints()
+	frame.toast:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", -16, 48)
 	NS.Windows:Register(frame)   -- #181
 	-- a question that opens (after the pause for reading) or expires changes the buttons without a click (#178)
 	NS.Consent:OnChange(function() RelationsFrame:Refresh() end)
 end
 
 ---------------------------------------------------------------------------
--- Disegno
+-- Drawing
 ---------------------------------------------------------------------------
 local function SetShown(widgets, on)
 	for _, w in ipairs(widgets) do w:SetShown(on) end
 end
 
 local function ListWidgets()
-	local out = { frame.kindBtn, frame.labelBtn, frame.searchLabel, frame.search }
-	for _, h in pairs(headers) do table.insert(out, h) end
-	for _, row in ipairs(rows) do
-		table.insert(out, row.btn)
-		for _, c in pairs(row.cells) do table.insert(out, c) end
-	end
-	return out
+	return { frame.kindSeg, frame.labelBtn, frame.searchLabel, frame.search, frame.listTable }
 end
 
 local function PeopleWidgets()
-	local out = { frame.addLabel, frame.addBox, frame.addBtn, frame.peopleNote }
-	for _, row in ipairs(candRows) do
-		table.insert(out, row.text)
-		table.insert(out, row.add)
-		table.insert(out, row.dismiss)
-	end
-	return out
+	return { frame.addLabel, frame.addBox, frame.addBtn, frame.peopleNote, frame.peopleTable }
 end
 
 local function DetailWidgets()
@@ -581,49 +572,26 @@ local function OptionWidgets()
 end
 
 local function RefreshList()
-	Fit(frame.kindBtn, KindFilterText(), 100, 130)
-	Fit(frame.labelBtn, filter.label and (NS:L("rel_filter_label", R:LabelName(filter.label))) or NS:L("rel_filter_label_any"), 150, 280)
+	frame.labelBtn:SetText(filter.label and (NS:L("rel_filter_label", R:LabelName(filter.label))) or NS:L("rel_filter_label_any"))
+	W.FitButton(frame.labelBtn, 150, 180)
 	frame.searchLabel:SetText(NS:L("rel_search"))
-	for _, col in ipairs(COLS) do
-		local id = col[1]
-		local mark = ""
-		if filter.sort == id then
-			local textual = id == "name" or id == "kind" or id == "label"
-			local ascending = textual
-			if filter.desc ~= nil then ascending = not filter.desc end
-			mark = ascending and " ^" or " v"
-		end
-		headers[id]:SetText(NS:L("rel_col_" .. id) .. mark)
-	end
-	local list = R:Rows({ kind = filter.kind, label = filter.label, text = filter.text, sort = filter.sort, desc = filter.desc })
-	local pages = math.max(1, math.ceil(#list / PAGE))
-	view.page = math.max(1, math.min(pages, view.page))
-	for i = 1, PAGE do
-		local item = list[(view.page - 1) * PAGE + i]
-		local row = rows[i]
-		row.row = item
-		row.btn:SetShown(item ~= nil)
-		row.btn:EnableMouse(item ~= nil)   -- the empty state's row is a message, not a link
-		for id, cell in pairs(row.cells) do cell:SetShown(item ~= nil) end
-		if item then
-			row.cells.name:SetText(item.name)
-			row.cells.kind:SetText(NS:L("rel_kind_" .. item.kind))
-			row.cells.label:SetText(item.info.text)
-			row.cells.disposition:SetText(("%s (%d)"):format(item.info.dispositionText, math.floor(item.info.dispositionValue + 0.5)))
-			row.cells.last:SetText(Stamp(R.SeenOf(item.rec).last))
-			row.cells.count:SetText(tostring(R.SeenOf(item.rec).count or 0))
-		end
-	end
-	frame.pageText:SetText(NS:L("rel_page", view.page, pages))
-	frame.prev:SetEnabled(view.page > 1)
-	frame.next:SetEnabled(view.page < pages)
-	if #list == 0 then
-		-- the empty state: the first row shows the message, and is not a link
-		rows[1].btn:Show(); rows[1].cells.name:Show()
-		rows[1].cells.name:SetWidth(INNER - 8)
-		rows[1].cells.name:SetText(Muted(NS:L("rel_empty")))
-	else
-		rows[1].cells.name:SetWidth(COLS[1][3] - 8)
+	-- the labels follow the language
+	frame.kindSeg.buttons.all.label:SetText(NS:L("rel_filter_all"))
+	frame.kindSeg.buttons.npc.label:SetText(NS:L("rel_filter_npcs"))
+	frame.kindSeg.buttons.player.label:SetText(NS:L("rel_filter_players"))
+	frame.syncing = true
+	frame.kindSeg:Select(filter.kind or "all")
+	frame.syncing = false
+	local t = frame.listTable
+	local titles = {}
+	for _, col in ipairs(t.columns) do titles[col.id] = NS:L("rel_col_" .. col.id) end
+	t:SetTitles(titles)
+	t:SetEmptyText(NS:L("rel_empty"))
+	t:SetData(R:Rows({ kind = filter.kind, label = filter.label, text = filter.text }))
+	-- the first time: the newest first, as the list has always been; after that the player's own order stays
+	if not t:GetSort() and not frame.sortSet then
+		frame.sortSet = true
+		t:SortBy("last", true)
 	end
 end
 
@@ -632,28 +600,18 @@ local function RefreshPeople()
 	Fit(frame.addBtn, NS:L("rel_add_btn"), 130, 220)
 	frame.peopleNote:SetText(NS:L("rel_people_note"))
 	-- the questions about identity (#112) come first: the user is asked, and nothing changes until they answer
-	local list = R:IdentityList()
-	for _, c in ipairs(R:Candidates()) do table.insert(list, c) end
-	local pages = math.max(1, math.ceil(#list / PAGE))
-	view.page = math.max(1, math.min(pages, view.page))
-	for i = 1, PAGE do
-		local item = list[(view.page - 1) * PAGE + i]
-		local row = candRows[i]
-		row.cand = item
-		row.text:SetShown(item ~= nil or (i == 1 and #list == 0))
-		row.add:SetShown(item ~= nil)
-		row.dismiss:SetShown(item ~= nil)
-		if item and item.kind then
-			row.text:SetText(item.kind == "renamed" and NS:L("rel_id_renamed", item.key, item.newKey) or NS:L("rel_id_guid", item.key))
-		elseif item then
-			row.text:SetText(("%s  %s"):format(item.key, Muted(NS:L("rel_src_" .. item.source))))
-		elseif i == 1 then
-			row.text:SetText(Muted(NS:L("rel_no_candidates")))
-		end
+	local data = {}
+	for _, c in ipairs(R:IdentityList()) do
+		data[#data + 1] = { cand = c, source = "",
+			text = c.kind == "renamed" and NS:L("rel_id_renamed", c.key, c.newKey) or NS:L("rel_id_guid", c.key) }
 	end
-	frame.pageText:SetText(NS:L("rel_page", view.page, pages))
-	frame.prev:SetEnabled(view.page > 1)
-	frame.next:SetEnabled(view.page < pages)
+	for _, c in ipairs(R:Candidates()) do
+		data[#data + 1] = { cand = c, text = c.key, source = NS:L("rel_src_" .. c.source) }
+	end
+	local t = frame.peopleTable
+	t:SetTitles({ name = NS:L("rel_col_name"), source = NS:L("rel_col_source") })
+	t:SetEmptyText(NS:L("rel_no_candidates"))
+	t:SetData(data)
 end
 
 -- the consents of this window and the question each one keeps open (#178)
@@ -765,8 +723,7 @@ local function RefreshDetail()
 			frame.dSeenLine:SetText(NS:L("rel_seen_line", Stamp(seen.first), Stamp(seen.last), R:EncountersText(rec)))
 			frame.dSeenFacts:SetText(#facts > 0 and (NS:L("rel_seen_facts") .. "\n" .. table.concat(facts, "\n")) or "")
 		end
-		frame.dForget:SetText(NS:L(arm.forget:Is() and "rel_forget_confirm" or "rel_forget"))
-		frame.dForget:SetArmed(arm.forget:Is())
+		frame.dForget:SetText(NS:L("rel_forget"))
 	end
 	-- the footer: Back, then (players) Forget observations, then Remove person
 	local x = 16 + Fit(frame.dBack, NS:L("rel_back"), 120, 180) + 8
@@ -775,30 +732,25 @@ local function RefreshDetail()
 		x = x + Fit(frame.dForget, frame.dForget:GetText(), 150, 210) + 8
 	end
 	frame.dDelete:ClearAllPoints(); frame.dDelete:SetPoint("BOTTOMLEFT", x, 16)
-	Fit(frame.dDelete, NS:L(arm.delete:Is() and "rel_delete_confirm" or "rel_delete"), 150, 210)
-	frame.dDelete:SetArmed(arm.delete:Is())
+	Fit(frame.dDelete, NS:L("rel_delete"), 150, 210)
 	frame.dScope:SetShown(isPlayer and R:Sharing())
 	Fit(frame.dScope, NS:L(R:ScopeOf(s.key) == "shared" and "rel_scope_btn_shared" or "rel_scope_btn_character"), 140, 280)
 end
 
--- the tabs, each as wide as its label, one after the other; the chosen one has a full edge and a bar under its label
--- (#187), not a colour only
+-- the tabs: the chosen one has a 2-unit bar under it, which slides from the old one (#187: not a colour only); the
+-- detail of a person belongs to the list tab. The people tab says how many suggestions wait.
 local function RefreshTabs()
-	local onList, onPeople, onOptions = view.name == "list" or view.name == "detail", view.name == "people", view.name == "options"
-	local x = 16
-	for _, t in ipairs({
-		{ frame.tabList, NS:L("rel_tab"), onList },
-		{ frame.tabPeople, NS:L("rel_tab_people") .. " (" .. (R:Stats().candidates + R:Stats().identity) .. ")", onPeople },
-		{ frame.tabOptions, NS:L("rel_tab_options"), onOptions },
-	}) do
-		local w = Fit(t[1], t[2], 110, 240)
-		t[1]:SetSelected(t[3])
-		t[1]:ClearAllPoints(); t[1]:SetPoint("TOPLEFT", x, -(TABS_Y + shift))
-		x = x + w + 4
-	end
+	local bar = frame.tabBar
+	local st = R:Stats()
+	bar:SetTabText("list", NS:L("rel_tab"))
+	bar:SetTabText("people", NS:L("rel_tab_people") .. " (" .. (st.candidates + st.identity) .. ")")
+	bar:SetTabText("options", NS:L("rel_tab_options"))
+	frame.syncing = true
+	bar:Select(view.name == "detail" and "list" or view.name)
+	frame.syncing = false
 end
 
----Ridisegna la finestra (se è aperta).
+---Redraws the window (if it is open).
 function RelationsFrame:Refresh()
 	if not frame or not frame:IsShown() then return end
 	frame.title:SetText(NS:L("rel_title"))
@@ -807,12 +759,12 @@ function RelationsFrame:Refresh()
 	Reflow(math.max(0, W.TOP + math.ceil(frame.intro:GetStringHeight() or 28) + 10 - TABS_Y))
 	frame:SetHeight(HEIGHT + shift)
 	RefreshTabs()
-	local detail, paged = view.name == "detail", view.name == "list" or view.name == "people"
+	local detail, listed = view.name == "detail", view.name == "list" or view.name == "people"
 	SetShown(ListWidgets(), view.name == "list")
 	SetShown(PeopleWidgets(), view.name == "people")
 	SetShown(OptionWidgets(), view.name == "options")
 	SetShown(DetailWidgets(), detail)
-	SetShown({ frame.prev, frame.next, frame.pageText, frame.stats }, paged)
+	frame.stats:SetShown(listed)
 	SetShown({ frame.export, frame.reset }, not detail)
 	if view.name == "list" then RefreshList()
 	elseif view.name == "people" then RefreshPeople()
@@ -822,20 +774,18 @@ function RelationsFrame:Refresh()
 	frame.stats:SetText(NS:L("rel_summary", st.npcs, st.players, st.candidates))
 	local w = Fit(frame.export, NS:L("rel_export"), 100, 160)
 	frame.reset:ClearAllPoints(); frame.reset:SetPoint("BOTTOMLEFT", 16 + w + 8, 16)
-	Fit(frame.reset, NS:L(arm.reset:Is() and "rel_reset_confirm_btn" or "rel_reset"), 150, 220)
-	frame.reset:SetArmed(arm.reset:Is())
+	Fit(frame.reset, NS:L("rel_reset"), 150, 220)
 	Fit(frame.close, NS:L("rel_close"), 100, 160)
-	W.Adopt(frame)   -- UI-3: rows made by this redraw take the theme's text colours
 end
 
 ---------------------------------------------------------------------------
--- Azioni (le stesse dei pulsanti: i test e i comandi le chiamano direttamente)
+-- Actions (the same as the buttons: the tests and the commands call them directly)
 ---------------------------------------------------------------------------
 ---@param name "list"|"people"|"options"|"detail"
 function RelationsFrame:ShowView(name)
 	CommitEdits()
-	view.name, view.page = name, 1
-	arm.forget:Disarm(); arm.delete:Disarm()
+	view.name = name
+	if frame and frame.dialog:IsShown() then frame.dialog:Hide() end
 	if name ~= "detail" then view.subject = nil end
 	self:Refresh()
 end
@@ -849,7 +799,7 @@ function RelationsFrame:SelectSubject(kind, key)
 	CommitEdits()
 	view.subject = { kind = kind, key = key }
 	view.name = "detail"
-	arm.forget:Disarm(); arm.delete:Disarm()
+	if frame and frame.dialog:IsShown() then frame.dialog:Hide() end
 	self:Refresh()
 	return true
 end
@@ -861,6 +811,7 @@ function RelationsFrame:AddPlayer(name)
 	local rec, why = R:AddPlayer(name, "user")
 	if rec and why ~= "exists" then
 		NS:Print(NS:L("rel_added", R.PlayerKey(name) or name))
+		Say("rel_toast_added", "ok", R.PlayerKey(name) or name)
 		if frame and frame.addBox then frame.addBox:SetText("") end
 		self:Refresh()
 		return true
@@ -909,7 +860,7 @@ function RelationsFrame:Open(where)
 			return false
 		end
 	end
-	DisarmAll()
+	if frame.dialog:IsShown() then frame.dialog:Hide() end   -- a question left over from before is cancelled (#190)
 	frame:Show()
 	if type(where) == "table" then
 		if not self:SelectSubject(where.kind, where.key) then self:ShowView("list") end
@@ -925,7 +876,7 @@ function RelationsFrame:Close()
 	if frame then frame:Hide() end
 end
 
----Apre o chiude la finestra. false se non si può costruire (i comandi ripiegano sul testo).
+---Opens or closes the window. false if it cannot be built (the commands fall back to text).
 ---@return boolean handled
 function RelationsFrame:Toggle()
 	if self:IsOpen() then
@@ -935,7 +886,7 @@ function RelationsFrame:Toggle()
 	return self:Open()
 end
 
----Il testo da copiare (nella finestra di esportazione del diario).
+---The text to copy (in the journal's export window).
 ---@return boolean opened
 function RelationsFrame:ShowExport()
 	if not NS.JournalFrame then return false end
@@ -943,7 +894,7 @@ function RelationsFrame:ShowExport()
 end
 
 ---------------------------------------------------------------------------
--- Il diario ospita due schede: le relazioni e le persone incontrate
+-- The journal hosts two tabs: the relationships and the people met
 ---------------------------------------------------------------------------
 if NS.JournalFrame then
 	NS.JournalFrame:RegisterTab("relations", { label = "rel_tab", note = "rel_journal_note", rows = function()

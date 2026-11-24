@@ -417,6 +417,9 @@ function Widget:GetPoint()
 	if type(p[2]) == "table" then return p[1], p[2], p[3] or p[1], p[4] or 0, p[5] or 0 end
 	return p[1], self.parent or UIParent, p[1], p[2] or 0, p[3] or 0
 end
+-- UI-5: a frame that takes the keyboard and lets a key go on or not (a Dialog's Esc): the tests read _s.propagate
+function Widget:EnableKeyboard(v) self._s.keyboard = v end
+function Widget:SetPropagateKeyboardInput(v) self._s.propagate = v end
 function Widget:SetScript(k, fn) self.scripts[k] = fn end
 function Widget:GetScript(k) return self.scripts[k] end
 function Widget:HookScript(k, fn) local old = self.scripts[k]; self.scripts[k] = function(...) if old then old(...) end fn(...) end end
@@ -632,6 +635,36 @@ function FindWidgets(pred)
 	end
 	for _, f in ipairs(frames) do if pred(f) then table.insert(out, f) end walk(f) end
 	return out
+end
+-- UI-5: what a player sees under a window. The mock's IsShown is the frame's own flag, so a hidden row, dialog or toast still
+-- has "shown" texts inside it: these walk only the frames that are shown, from the root down.
+--   VISIBLE(root, pred) -> the visible descendants (a Texture, a FontString, a Button...) for which pred(widget) is true
+--   VISIBLE_TEXTS(root) -> every non-empty text of a visible FontString, in creation order
+--   VISIBLE_BUTTONS(root, label) -> the visible Buttons whose text is `label` (all of them without a label)
+function VISIBLE(root, pred)
+	local out = {}
+	local function walk(w)
+		for _, c in ipairs(w.children or {}) do
+			if c:IsShown() then
+				if pred(c) then table.insert(out, c) end
+				walk(c)
+			end
+		end
+	end
+	if type(root) == "string" then root = _G[root] end
+	if root then walk(root) end
+	return out
+end
+function VISIBLE_TEXTS(root)
+	local out = {}
+	for _, w in ipairs(VISIBLE(root, function(x) return x.kind == "FontString" end)) do
+		local t = w:GetText()
+		if type(t) == "string" and t ~= "" then table.insert(out, t) end
+	end
+	return out
+end
+function VISIBLE_BUTTONS(root, label)
+	return VISIBLE(root, function(x) return x.kind == "Button" and (label == nil or x:GetText() == label) end)
 end
 -- avanza gli OnUpdate dei widget visibili di dt secondi
 function UPDATE(dt)

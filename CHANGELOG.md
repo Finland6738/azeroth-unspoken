@@ -8,6 +8,31 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### UI-ECO step UI-5: the Journal and the Relationships window (issue #284)
+
+The contents of the two windows take the NEBULA look (step UI-5 of [ADR 0058](docs/adr/0058-nebula-ecosystem-look-and-credits.md)): the first real use of
+the Tabs, Segmented, DataTable, Dialog and Toast widgets of UI-3. Spec: [docs/specs/ui-style.md](docs/specs/ui-style.md).
+
+- **Changed**: the **journal** has one row of tabs with a 2-unit bar that slides under the chosen one (at once with Animations off), and its rows are a
+  **sortable table** (the text, the date in the monospaced font, the row's buttons) that scrolls: **no more pages**. Each tab keeps the order you chose
+  while the window is open; the stories and an open song are read in their own order. The window is 760 by 540 units.
+- **Changed**: the **Relationships window** has the same tabs (the People tab carries the number of suggestions), a three-part selector for All, NPCs and
+  Players, and sortable tables for the list (dates and counts in mono, newest first at the start) and for the people met, with no pages. It is 680 units
+  tall in every view (it was 660), because the tabs are taller.
+- **Changed**: what cannot be undone (deleting a memory, forgetting a place or a song, clearing a flag, Forget everything, Forget observations, Remove
+  person) **asks in a dialog** over the window instead of turning the button into OK: the question, "This cannot be undone.", the action's own word as the red
+  button and Cancel. Esc, Cancel or closing the window cancels it and changes nothing; Esc closes only the dialog. A **toast** says the result (memory deleted,
+  place forgotten, person removed, observations forgotten, relationships forgotten, the person added, the export ready to copy).
+- **Changed**: every text of the two windows is a theme font with a colour token (no game font objects), so `W.Adopt` finds nothing in them; the words
+  coloured inside a line are drawn again when the theme changes. The export window's copy box sits on a raised field.
+- **Added**: `W.Tabs` slides its bar and takes a tab added later (`:AddTab`); `W.DataTable` can clear its sort, stop sorting and hide its header
+  (`:ClearSort`, `:SetSortable`, `:SetHeaderShown`); the `W.Dialog` takes the keyboard while it is up so that Esc cancels the question only.
+- **Removed**: the locale keys of the two-click confirmations and of the pages (`mem_page`, `mem_prev`, `mem_next`, `mem_confirm_btn`, `mem_confirm_tip`,
+  `mem_reset_confirm_btn`, `rel_page`, `rel_forget_confirm`, `rel_delete_confirm`, `rel_reset_confirm_btn`).
+- **Not tried in the game client**: the look, the fonts, the ScrollBox and the FauxScrollFrame, the slide of the bar, the dialog and its Esc, the toast,
+  sorting. Tests: `Tests/TestWidgets.lua`, `TestMemory.lua`, `TestRelations.lua`, `TestWindows.lua`, `TestKeyboard.lua`, `TestLayout.lua` (the contrast of the
+  new pairs in both themes).
+
 ### UI-ECO step UI-4: the narrator, the speak button, the Chat Gateway proposal and the NPC dialogue (issue #284)
 
 The last frames that were not on the NEBULA look take it (step UI-4 of [ADR 0058](docs/adr/0058-nebula-ecosystem-look-and-credits.md)). Spec:

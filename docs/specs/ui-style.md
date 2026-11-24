@@ -52,9 +52,9 @@ Components are those of FDCP §3 (the Button kinds *primary*, *secondary*, *ghos
 | Speak button (`AzerothUnspokenButton`) | own frame | a disc and a ring (`circle`), the sheet's quill icon, Badge, own Tooltip, paused state also in words | UI-4 |
 | Chat Gateway proposal and editor | inside the narrator box | Chip, FlatButtons, EditBox with a byte counter | UI-4 |
 | NPC dialogue (`AzerothUnspokenDialogue`) | own frame, **does not close with Esc** (ADR 0020) | Panel, a Badge "addon ambient dialogue" that is always there, the NPC's title in the voice token, FlatButtons for the answers (a ChoiceList is a radio list: an answer acts at once, so it does not fit) | UI-4 |
-| Journal (`AzerothUnspokenJournal`) | shell | Tabs (seven, with the sliding indicator), DataTable of memories and places, Segmented sub-tabs, Button, Dialog for irreversible actions, Toast for results | UI-5 |
-| Journal export (`AzerothUnspokenJournalExport`) | shell | read-only EditBox with Ctrl+C, Button | UI-5 |
-| Relationships (`AzerothUnspokenRelations`) | shell | Tabs (list, people, options), sortable DataTable, Segmented, EditBox, ChoiceList, Chip, Dialog, Toast, the player's detail in two columns | UI-5 |
+| Journal (`AzerothUnspokenJournal`) | shell | Tabs (one for every registered section: eight today, with the sliding indicator), a sortable DataTable of the section's rows, Button, Dialog for irreversible actions, Toast for results; no Segmented here (no section has a filter of its own) | UI-5 |
+| Journal export (`AzerothUnspokenJournalExport`) | shell | read-only EditBox with Ctrl+C on a `surface-2` field, Button, Toast | UI-5 |
+| Relationships (`AzerothUnspokenRelations`) | shell | Tabs (list, people, options), sortable DataTable, Segmented (kind filter), EditBox, Dialog, Toast, the player's detail in two columns | UI-5 |
 | Character soul (`AzerothUnspokenProfile`) | shell | Cards, ThinBar for the trait levels, ChoiceList, Chip, Button | UI-6 |
 | First-run wizard (`AzerothUnspokenWizard`) | shell | Segmented (language and steps), ChoiceList cards for the consents, Button primary, Dialog | UI-6 |
 | Settings (the client's Settings canvas) | **no shell**: the client draws the frame | Cards for the groups, Switch, Slider, Segmented, Button, EditBox; the content is rebuilt on the theme (§2.5) | UI-6 |
@@ -124,9 +124,9 @@ Slider, ThinBar and the addon's own Tooltip (inverted: a `text-1` surface, `bg` 
 bronze palette (`W.PALETTE`, `W.BRAND`) is gone; the narrator box and the NPC dialogue were rebuilt in UI-4 and `W.LegacyFlatButton`, `W.Button`, `W.Background`, `W.SetBackgroundAlpha` and
 `W.SetFontSize` are gone. The 36-unit
 band became the 52-unit title bar, which rises 16 units above a window's frame (`W.BAR_ABOVE`), so the contents of every window keep their place
-(`W.TOP`, 46 units from the frame's top) until UI-5 and UI-6 rebuild them; `Windows.lua` counts the bar when the narrator steps aside. The
+(`W.TOP`, 46 units from the frame's top) until UI-6 rebuilds the last ones; `Windows.lua` counts the bar when the narrator steps aside. The
 window's name is written in capitals in Orbitron; the mono subtitle is the addon's name and version; `:SetStatus(text, tone)` shows a status
-chip. Until UI-5 and UI-6, the texts of a window that still use the game's font objects take the theme's colours by their font (`W.Adopt`: the
+chip. Until UI-6, the texts of a window that still use the game's font objects (the soul window, the wizard and the settings page; the journal and the relationships window have none since UI-5) take the theme's colours by their font (`W.Adopt`: the
 game's gold becomes `accent-text`, its white `text-1`, its small white `text-2`), and a coloured word inside a line uses `W.Hex(token)`; the
 Settings page has a `bg` surface of its own inside the client's frame, so its texts keep their contrast in Aurora. The narrator's sample in the
 wizard is the narrator's own look since UI-4 (a Panel, the accent bar, the text in `voice-narrator`). The DataTable takes the first backend the client has: the ScrollBox with a
@@ -156,6 +156,26 @@ the addon's own **tooltip** (`W.Tooltip`, the lines one under the other) and a B
 (`UI/DialogueFrame.lua`) is a Panel with the NPC's accent bar, the Badge *addon ambient dialogue* in its header (always visible), the title in
 `voice-npc`, the answers as *secondary* FlatButtons ("1. ..." and the key as before), *Listen* as the *primary* one, and a fade-in from `NS.Motion`;
 it is still not in `UISpecialFrames`: **no Esc** (ADR 0020). Its opacity setting (0.3-1, times 0.85) is raised to the narrator's floor.
+
+**Journal and Relationships (UI-5).** The contents of the two windows are rebuilt on the widgets of UI-3 and need no `W.Adopt` any more (every text is a
+`Theme.NewText`: `Tests/TestWindows.lua` checks that `W.Adopt` finds nothing in any view). *Journal* (`UI/JournalFrame.lua`, 760 by 540 units): the
+introduction, `W.Tabs` (one tab for every registered section, the 2-unit bar sliding under the chosen one in 200 ms by `Motion.Slide`, at once with
+Animations off; `bar:AddTab` adds a section another module registers later), the section's note, and one **sortable DataTable**: a text column
+(flexible), a date column (`mono`, in `accent-text`, 104 units) and a column of at most two row buttons (196 units); a section with no dates or no actions gives
+that room to the text. There are no pages: the table scrolls (ScrollBox, FauxScrollFrame or the pool with the wheel). A section keeps the order the player
+chose while the window is open (`sorts[id]`); the stories and an open song are `plain` (read in their own order): no header, no sort
+(`DataTable:SetHeaderShown`, `:SetSortable`, `:ClearSort`). A row of a tab is `{ text, t?, actions? }`: `t` is the date of the entry. An action that cannot be
+undone (`confirm = <question key>`, `done = <toast key>`) asks through the window's **W.Dialog** (title: the question; text: "This cannot be undone."; the red
+confirm button carries the action's own word; **Esc** cancels the question and nothing else: the Dialog takes the keyboard while it is up and does not let Esc
+go on to the client, which would close the window under it) and then says the result in a **W.Toast** (bottom right, over the footer). Closing the
+window cancels a question that is open. *Export* has the read-only copy box on a `surface-2` field and a toast at the left of its footer saying the text
+is selected. *Relationships* (`UI/RelationsFrame.lua`, 720 by 680 units, the height grows with a longer introduction): `W.Tabs` for list, people
+and options (the people tab carries the count of suggestions waiting; the detail of a person belongs to the list tab); in the list a **`W.Segmented`**
+(All, NPCs, Players), the label filter, the search box and a sortable DataTable (name, type, label, disposition, last seen and encounters, the dates and counts in mono /
+`accent-text`; a first sort by the last meeting, newest first, and the player's own order after it); in the people tab the name box and a sortable DataTable (name,
+where the addon saw them, the **+** and **x** buttons); the detail and the options keep their layout with themed texts. Forget observations, Remove person and Forget
+everything ask through the Dialog, and say the result in a Toast. The inline coloured words use `W.Hex(token)` and are drawn again by `Refresh`, which the window runs on a theme change.
+`W.Confirm` stays for the soul window (UI-6).
 
 **Migration (UI-2).** A player who had turned the narrator's fades off (`ui.narrator.reduceMotion`, [#177](https://github.com/Finland6738/azeroth-unspoken/issues/177)) starts with
 `ui.animations = false`: `Config:Load` sets it once, only when `ui.animations` is not in the file yet. The narrator setting still stops the
@@ -199,7 +219,7 @@ shapes, the glows and the animations are predictions until then.
 | UI-2 | `UI/Theme.lua`, `UI/Motion.lua`, config keys, theme tests, the check of text written in code | [#290](https://github.com/Finland6738/azeroth-unspoken/pull/290) | done: tokens equal FDCP's, switch without reload, contrast of both themes, `Tests/TestTheme.lua` and `Tests/check_locale.py`; **not tried in the client** (`SetFont` with the bundled fonts, 9-slice, ADD glows, gradients, animations) |
 | UI-3 | widgets, the 52-point title bar, `W.Window`, Appearance settings | [#291](https://github.com/Finland6738/azeroth-unspoken/pull/291) | done: every widget of FDCP §3 on the theme, the windows on the new shell, positions per character, Settings > Appearance live, Reduce motion folded into Animations, contrast of every widget in both themes (`Tests/TestLayout.lua`), `Tests/TestWidgets.lua`; **not tried in the client** (the look, the fonts, the 9-slice shapes, the glows, the animations, the ScrollBox and the FauxScrollFrame, the position saving) |
 | UI-4 | narrator box, speak button, Chat Gateway proposal and editor, dialogue frame, the four voice tokens | [#292](https://github.com/Finland6738/azeroth-unspoken/pull/292) | done: the narrator, the speak button, the proposal bar and editor (with a byte counter) and the NPC dialogue on the theme, `voice-*` tokens in both themes, the floor of the box worked out from the tokens, Reduce motion no longer written or read, `W.LegacyFlatButton`, `W.Button`, `W.Background`, `W.SetBackgroundAlpha` and `W.SetFontSize` removed, contrast of every voice in both themes (`Tests/TestLayout.lua`), `Tests/TestNarrator.lua`; **not tried in the client** (the look, the fonts, the fades, the voice colours on real scenes, the translucency, the editor and its counter, the speak button's tooltip) |
-| UI-5 | Journal and Relationships | | to do |
+| UI-5 | Journal and Relationships | [#293](https://github.com/Finland6738/azeroth-unspoken/pull/293) | done: tabs with the sliding bar, sortable DataTables with mono numbers (no pages), Segmented kind filter, Dialog and Toast for what cannot be undone and for results, every text a Theme font (no `W.Adopt` in these two windows), `Tests/TestWidgets.lua`, `Tests/TestMemory.lua`, `Tests/TestRelations.lua`, `Tests/TestLayout.lua`; **not tried in the client** (the look, the fonts, the ScrollBox and the FauxScrollFrame, the tab slide, the dialog and its Esc, the toast, sorting) |
 | UI-6 | Wizard, Character soul, the Settings canvas | | to do |
 | UI-7 | credits: the Info page with the NEBULA community logo (dark and light), the `about` command, README, wiki About page, CurseForge text | | to do |
 | UI-8 | mockups and assets regenerated, README GIF, wiki Interface Tour, final status of this spec | | to do |

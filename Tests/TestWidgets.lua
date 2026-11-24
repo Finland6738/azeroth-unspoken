@@ -328,6 +328,111 @@ T.run("UI-3: the Dialog asks, Esc cancels; the Toast fades after its time", func
 	T.ok(not toast:IsShown(), "dismissed at once")
 end)
 
+-- UI-ECO UI-5: the tabs' bar slides, a tab can be added later, the DataTable can sort in one column or in none, hide its
+-- header and clear its sort, and the Dialog's Esc cancels without closing the window under it.
+T.run("UI-5: the tab bar slides from the old tab to the new one, and rests under it", function()
+	Reset()
+	local host = CreateFrame("Frame", nil, UIParent)
+	local picked = {}
+	local tabs = W.Tabs(host, { { id = "a", text = "Alpha" }, { id = "b", text = "Beta" } }, function(id) table.insert(picked, id) end)
+	T.ok(tabs:Select("a"), "the first tab")
+	T.eq(tabs.indicator._s.points[1][2], tabs.buttons.a, "the bar rests under it")
+	T.eq(tabs.buttons.b.auX, tabs.buttons.a:GetWidth() + 4, "the tabs follow each other, 4 units apart")
+	tabs:Select("b")
+	-- the animation: the bar starts where it was (under a, as wide as b's bar) and moves by the distance between the tabs
+	T.eq(tabs.indicator._s.points[1][2], tabs, "while it slides it is anchored to the bar, at the old tab's place")
+	T.eq(tabs.indicator._s.points[1][4], 8, "starting at the left of the old tab, with its 8-unit inset")
+	T.ok(PLAYING_GROUPS ~= nil and next(PLAYING_GROUPS) ~= nil, "a Translation is playing")
+	FINISH_ANIMATIONS()
+	T.eq(tabs.indicator._s.points[#tabs.indicator._s.points][2], tabs.buttons.b, "at the end it rests under b")
+	T.eq(tabs:Width(), tabs.buttons.a:GetWidth() + tabs.buttons.b:GetWidth() + 4, "the width the tabs take")
+	-- animations off: at once, with no group
+	Config:Set("ui.animations", false)
+	tabs:Select("a")
+	T.eq(tabs.indicator._s.points[#tabs.indicator._s.points][2], tabs.buttons.a, "animations off: under a at once")
+	Config:Set("ui.animations", true)
+	-- too many tabs for the room: the room around each text goes from 32 to 16 units, no further, and back when they fit
+	tabs:SetTabText("a", "A rather long name")
+	tabs:SetTabText("b", "Another long name")
+	local roomy = tabs:Width()
+	tabs:Fit(roomy - 20)
+	T.ok(tabs.pad < 32 and tabs.pad >= 16 and tabs:Width() <= roomy - 20, "Fit squeezes the tabs to the room: " .. tabs:Width() .. " <= " .. (roomy - 20))
+	tabs:Fit(10)
+	T.eq(tabs.pad, 16, "but no further than 16 units around a text")
+	tabs:Fit(2000)
+	T.eq(tabs.pad, 32, "and the roomy look when there is room")
+	-- a tab added later (a window whose tabs other modules register), no duplicate
+	T.ok(tabs:AddTab("c", "Gamma") and not tabs:AddTab("c", "Gamma"), "a new tab, once")
+	tabs:SetTabText("c", "Gamma")
+	T.ok(tabs.buttons.c:IsShown() and tabs.buttons.c.auX > tabs.buttons.b.auX, "after the others")
+	tabs:Select("c")
+	FINISH_ANIMATIONS()
+	T.eq(picked[#picked], "c", "and it can be chosen")
+end)
+
+T.run("UI-5: the DataTable: no sort, one column that does not sort, a header that hides", function()
+	Reset()
+	local columns = {
+		{ id = "name", title = "Name", flex = 1, text = function(d) return d.name end },
+		{ id = "n", title = "Count", width = 80, mono = true, align = "RIGHT", text = function(d) return d.n end },
+		{ id = "acts", title = "", width = 40, sortable = false, text = function() return "" end },
+	}
+	local t = W.DataTable(UIParent, columns, { pool = 6 })
+	local data = { { name = "b", n = 2 }, { name = "a", n = 3 }, { name = "c", n = 1 } }
+	t:SetData(data)
+	T.eq(t:GetSort(), nil, "no sort at first: the order of the data")
+	T.eq(t:VisibleRows()[1].data.name, "b", "as given")
+	t.heads[2]:Click()
+	T.eq(t:GetSort(), "n", "sorted by a column")
+	t:ClearSort()
+	T.eq(t:GetSort(), nil, "ClearSort: no column is the sorted one")
+	T.ok(not t.heads[2].arrow:IsShown() and Is(t.heads[2].label._s.textColor, "text-3"), "no arrow, the header quiet again")
+	T.eq(t:VisibleRows()[1].data.name, "b", "and the rows are in the order of the data")
+	-- the column that does not sort has no click
+	t.heads[3]:Click()
+	T.eq(t:GetSort(), nil, "a column with sortable = false does nothing")
+	-- a view read in order: nothing sorts
+	t:SetSortable(false)
+	t.heads[1]:Click()
+	T.eq(t:GetSort(), nil, "SetSortable(false): the headers do not sort")
+	t:SetSortable(true)
+	t.heads[1]:Click()
+	T.eq(t:GetSort(), "name", "and sort again when it is true")
+	-- a hidden header: the list rises to the top
+	t:SetHeaderShown(false)
+	T.ok(not t.head:IsShown(), "the header is hidden")
+	local p = t.list._s.points[1]
+	T.ok(p[2] == t and p[3] == "TOPLEFT", "the list starts at the top of the table")
+	t:SetHeaderShown(true)
+	T.ok(t.head:IsShown() and t.list._s.points[1][2] == t.head, "and goes back under the header")
+	-- the sorted data keeps its order across SetData; the empty text shows when there is nothing
+	t:SetEmptyText("Nothing")
+	t:SetData({})
+	T.ok(t.empty:IsShown() and t.empty:GetText() == "Nothing", "the empty text")
+end)
+
+T.run("UI-5: the Dialog's Esc cancels the question and the key goes no further", function()
+	Reset()
+	local host = CreateFrame("Frame", nil, UIParent)
+	local d = W.Dialog(host, "AzerothUnspokenTestDialog2")
+	local said = {}
+	d:Ask({ title = "Forget?", text = "Gone.", confirm = "Forget", cancel = "Keep", danger = true,
+		onConfirm = function() table.insert(said, "yes") end, onCancel = function() table.insert(said, "no") end })
+	T.ok(d._s.keyboard == true, "the dialog takes the keyboard while it is up")
+	d.scripts.OnKeyDown(d, "A")
+	T.ok(d:IsShown() and d._s.propagate == true, "another key goes on to the game")
+	d.scripts.OnKeyDown(d, "ESCAPE")
+	T.ok(not d:IsShown() and d._s.propagate == false, "Esc closes the dialog and stays with it")
+	T.eq(table.concat(said, ","), "no", "as a cancel, once")
+	-- a window under it stays open: the dialog hides itself, not the window
+	local win = CreateFrame("Frame", nil, UIParent)
+	win:Show()
+	local d2 = W.Dialog(win, nil)
+	d2:Ask({ title = "x", text = "y", confirm = "Yes", cancel = "No" })
+	d2.scripts.OnKeyDown(d2, "ESCAPE")
+	T.ok(win:IsShown() and not d2:IsShown(), "the window under the dialog stays")
+end)
+
 T.run("UI-3: Animations off makes every widget immediate", function()
 	Reset()
 	Config:Set("ui.animations", false)

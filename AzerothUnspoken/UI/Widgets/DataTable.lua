@@ -15,7 +15,7 @@
 -- opts: { rowHeight (32, at least 24), headerHeight (28), pool (rows made for "faux" and "pool", 40), backend? (force one),
 --   onRowClick(data, row), rowSetup(row) (a row frame is made), rowUpdate(row, data) (a row is filled) }
 -- Methods: :SetData(list), :SortBy(id, descending), :Refresh(), :SetOffset(n), :VisibleRows(), :GetData(), :GetSort(),
---   :SetEmptyText(text), :Backend().
+--   :SetEmptyText(text), :Backend(), :ClearSort(), :SetSortable(bool), :SetHeaderShown(bool).
 local ADDON, NS = ...
 local W, Theme, Compat = NS.Widgets, NS.Theme, NS.Compat
 
@@ -97,7 +97,7 @@ function W.DataTable(parent, columns, opts)
 		b.arrow = W.Icon(b, "chevron", 12, "accent-text", "ARTWORK")
 		b.arrow:Hide()
 		b.col = c
-		if c.sortable ~= false then b:SetScript("OnClick", function() t:SortBy(c.id) end) end
+		if c.sortable ~= false then b:SetScript("OnClick", function() if t.sortable ~= false then t:SortBy(c.id) end end) end
 		t.heads[i] = b
 	end
 	local function titles()
@@ -263,6 +263,31 @@ function W.DataTable(parent, columns, opts)
 	end
 
 	function t:GetSort() return self.sortId, self.sortDesc end
+
+	---Back to the order of the data: no column is the sorted one (a view that lists in a meaningful order of its own).
+	function t:ClearSort()
+		self.sortId, self.sortDesc = nil, false
+		for _, b in ipairs(self.heads) do
+			Theme.Text(b.label, "text-3")
+			b.arrow:Hide()
+		end
+		self:SetData(self.data)
+	end
+
+	---false: a click on a header does nothing (the rows are a text to read in order, not a table to sort).
+	function t:SetSortable(on) self.sortable = on ~= false end
+
+	---Shows or hides the header; the list rises to the top when it is hidden.
+	function t:SetHeaderShown(shown)
+		self.head:SetShown(shown ~= false)
+		self.list:ClearAllPoints()
+		if shown == false then
+			self.list:SetPoint("TOPLEFT", self, "TOPLEFT", 0, 0)
+		else
+			self.list:SetPoint("TOPLEFT", self.head, "BOTTOMLEFT", 0, -2)
+		end
+		self.list:SetPoint("BOTTOMRIGHT", self, "BOTTOMRIGHT", 0, 0)
+	end
 	function t:GetData() return self.sorted end
 
 	function t:SetData(list)

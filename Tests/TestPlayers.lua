@@ -134,7 +134,7 @@ local function Under(pred)
 	local function Walk(w)
 		for _, c in ipairs(w.children or {}) do
 			if pred(c) then table.insert(out, c) end
-			Walk(c)
+			if c:IsShown() then Walk(c) end   -- UI-5: a hidden row, dialog or toast hides what is inside it
 		end
 	end
 	if _G[ROOT] then Walk(_G[ROOT]) end
@@ -300,20 +300,22 @@ T.run("the window: two sections, and 'Forget observations' is not 'Remove person
 	T.ok(text:find("Cosa ha osservato l'addon", 1, true), "section: what the addon observed")
 	T.ok(text:find("Incontri: 2", 1, true), "the observed block shows the encounters: " .. text)
 	T.ok(ButtonWithText("Dimentica le osservazioni") ~= nil and ButtonWithText("Rimuovi la persona") ~= nil, "two distinct actions")
-	-- forget: asks twice, clears only the observations
+	-- forget: asks through the Dialog, clears only the observations
 	ButtonWithText("Dimentica le osservazioni"):Click()
-	T.eq(Rec(key).seen.count, 2, "the first click only arms")
-	ButtonWithText("Conferma: dimentica"):Click()
-	T.eq(Rec(key).seen.count, 0, "the second forgets the observations")
+	T.eq(Rec(key).seen.count, 2, "the click only asks")
+	T.ok(_G[ROOT].dialog:IsShown() and _G[ROOT].dialog.title:GetText() == "Dimenticare le osservazioni?", "the question")
+	_G[ROOT].dialog.confirm:Click()
+	T.eq(Rec(key).seen.count, 0, "Confirm forgets the observations")
+	T.eq(_G[ROOT].toast:Message(), "Osservazioni dimenticate.", "and a Toast says so")
 	T.ok(Count(Rec(key).seen.kinds) == 0 and #Rec(key).seen.facts == 0, "kinds and facts too")
 	T.ok(Rec(key).user.note == "My note" and Rec(key).user.axes.trust == 55 and Rec(key).user.feeling[1] == "liking", "everything the user chose is still there")
 	T.ok(Texts():find("Ancora nulla di osservato", 1, true), "the window says nothing was observed yet")
 	T.eq(RelationsFrame:CurrentView(), "detail", "and stays on the person")
 	-- remove: the person goes away
 	ButtonWithText("Rimuovi la persona"):Click()
-	T.ok(Rec(key) ~= nil, "the first click only arms")
-	ButtonWithText("Conferma: rimuovi"):Click()
-	T.eq(Rec(key), nil, "the second removes the person")
+	T.ok(Rec(key) ~= nil, "the click only asks")
+	_G[ROOT].dialog.confirm:Click()
+	T.eq(Rec(key), nil, "Confirm removes the person")
 	-- an NPC has no observed block
 	NS.db.relations.npcAuto = true
 	P.npc = { name = "Pip", guid = "Creature-0-3134-0-6-1234-0000A2E9A1" }
@@ -432,7 +434,7 @@ T.run("the list shows an Encounters column and the export has the counts", funct
 	local key = Person("Aldric-Stormrage", { trust = 50 })
 	R:Observe(key, "group"); R:Observe(key, "trade"); R:Observe(key, "duel")
 	RelationsFrame:Open("list")
-	T.ok(ButtonWithText("Incontri") ~= nil, "the column header: Incontri")
+	T.eq(_G[ROOT].listTable.heads[6].label:GetText(), "INCONTRI", "the column header: Incontri")
 	local found = false
 	for _, w in ipairs(Under(function(x) return x.kind == "FontString" and x:IsShown() end)) do
 		if w:GetText() == "3" then found = true end
