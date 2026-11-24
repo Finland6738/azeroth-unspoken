@@ -184,7 +184,7 @@ See [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3]].
 
 ## Info
 
-The last section of the panel is about the addon, not a setting. It says who made it (Finland), thanks the NEBULA community and shows its logo (the dark art with the Nebula theme, the light art with Aurora), states the licence and that the addon is fan-made and not affiliated with or endorsed by Blizzard Entertainment, and has four boxes with links: the GitHub repository, its issues page, the NEBULA site and Ko-fi. The game cannot open a web page, so click a box (its text is selected) and press **Ctrl+C**; a box cannot be edited. `/au about` opens the panel on this section and `/au about chat` prints the same in the chat. See [[About and Credits|About]].
+The last section of the panel is about the addon, not a setting. It says who made it (Finland), thanks the NEBULA community and shows its logo (the dark art with the Nebula theme, the light art with Aurora), states the licence and that the addon is fan-made and not affiliated with or endorsed by Blizzard Entertainment, and has one box with the only link the addon carries, Ko-fi. The game cannot open a web page, so click the box (its text is selected) and press **Ctrl+C**; the box cannot be edited. `/au about` opens the panel on this section and `/au about chat` prints the same in the chat. See [[About and Credits|About]].
 
 ## Personality (per character)
 

@@ -8,6 +8,14 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### Ko-fi is the only link in the addon
+
+- **Changed**: by the owner's rule of 2026-11-24, the addon carries one link only, **Ko-fi**. Settings > Info and
+  `/au about chat` no longer show the GitHub repository, its issues page or the NEBULA community's site; the NEBULA
+  thanks and logo stay. The NEBULA site link is also gone from the READMEs, the wiki's About page and the CurseForge
+  credits. The GitHub links stay in the documentation. Mockups of the Info section redrawn. Not verified in the game
+  client: the Info section with one box.
+
 ### Content wave W21: the capital Orgrimmar, its flights, its NPCs, its districts, its rest, its weather, its commands and its dialogues (issue #138)
 
 The twenty-first content wave of [docs/content/WAVES.md](docs/content/WAVES.md), random need only. Its pools were the

@@ -203,7 +203,7 @@ ASSETS_LIST = [
     ("settings-section-narrator", "x-settings-narrator", "Settings", "The Narrator section: duration, reading speed, opacity, text size, motion, combat, the dialogue window."),
     ("settings-section-modules", "x-settings-modules", "Settings", "The Modules section: each part of the addon on or off."),
     ("settings-section-privacy", "x-settings-privacy", "Settings", "The Privacy section: automatic sending and the Total RP 3 consents."),
-    ("settings-section-info", "x-settings-info", "Settings", "The Info section: who made the addon, the NEBULA community and its logo, the licence and the links to copy."),
+    ("settings-section-info", "x-settings-info", "Settings", "The Info section: who made the addon, the NEBULA community and its logo, the licence and the Ko-fi link to copy."),
     ("settings-panel-unrolled", "settings", "Settings", "The whole panel at once, unrolled."),
     ("settings-panel-aurora", "x-settings-aurora", "Settings", "The whole panel in the light theme Aurora; the NEBULA logo in its light art."),
     ("settings-language-reload", "settings-reload", "Settings", "After a change of language, the panel asks for a reload."),
@@ -394,18 +394,19 @@ def build_gallery():
         _page("g-" + name, title, w, h, body, out_dir=BUILD, **kw)
 
 
-# UI-ECO UI-7: the credits for the project description on CurseForge (the logo is the NEBULA community's, used with its
+# UI-ECO UI-7: the credits for the project description on CurseForge; owner rule 2026-11-24: Ko-fi is the only link
+# (no NEBULA site, no GitHub pages). (The logo is the NEBULA community's, used with its
 # owner's permission: docs/third-party.md). Paste the text of each fence; upload the two logos from assets/nebula/.
-CREDITS_EN = ("Made by Finland, with thanks to the NEBULA community, whose look and logo the addon shares "
-              "(https://nebula-community.github.io/giochi/wow-forever/). The logo is used with its owner's permission and is not "
+CREDITS_EN = ("Made by Finland, with thanks to the NEBULA community, whose look and logo the addon shares. "
+              "The logo is used with its owner's permission and is not "
               "covered by the code licence. Licence: code GPL-3.0-or-later; phrases and narrative data all rights reserved; "
               "example pack MIT; documentation CC BY 4.0. Fan-made: not affiliated with or endorsed by Blizzard Entertainment. "
-              "Source and issues: https://github.com/Finland6738/azeroth-unspoken . Optional support: https://ko-fi.com/finland6738")
-CREDITS_IT = ("Di Finland, con un ringraziamento alla community NEBULA, di cui l'addon condivide lo stile e il logo "
-              "(https://nebula-community.github.io/giochi/wow-forever/). Il logo è usato con il permesso del suo proprietario e non è "
+              "Optional support: https://ko-fi.com/finland6738")
+CREDITS_IT = ("Di Finland, con un ringraziamento alla community NEBULA, di cui l'addon condivide lo stile e il logo. "
+              "Il logo è usato con il permesso del suo proprietario e non è "
               "coperto dalla licenza del codice. Licenza: codice GPL-3.0 o successiva; frasi e dati narrativi tutti i diritti "
               "riservati; pacchetto di esempio MIT; documentazione CC BY 4.0. Opera di fan: non affiliata a Blizzard "
-              "Entertainment né da essa approvata. Sorgente e issue: https://github.com/Finland6738/azeroth-unspoken . "
+              "Entertainment né da essa approvata. "
               "Sostegno facoltativo: https://ko-fi.com/finland6738")
 CREDITS_SECTION = [
     "## Credits\n",

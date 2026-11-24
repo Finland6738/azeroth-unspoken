@@ -419,11 +419,11 @@ The credits for the project description, with the NEBULA community logo (the dar
 **Credits**
 
 ```text
-Made by Finland, with thanks to the NEBULA community, whose look and logo the addon shares (https://nebula-community.github.io/giochi/wow-forever/). The logo is used with its owner's permission and is not covered by the code licence. Licence: code GPL-3.0-or-later; phrases and narrative data all rights reserved; example pack MIT; documentation CC BY 4.0. Fan-made: not affiliated with or endorsed by Blizzard Entertainment. Source and issues: https://github.com/Finland6738/azeroth-unspoken . Optional support: https://ko-fi.com/finland6738
+Made by Finland, with thanks to the NEBULA community, whose look and logo the addon shares. The logo is used with its owner's permission and is not covered by the code licence. Licence: code GPL-3.0-or-later; phrases and narrative data all rights reserved; example pack MIT; documentation CC BY 4.0. Fan-made: not affiliated with or endorsed by Blizzard Entertainment. Optional support: https://ko-fi.com/finland6738
 ```
 
 **Crediti**
 
 ```text
-Di Finland, con un ringraziamento alla community NEBULA, di cui l'addon condivide lo stile e il logo (https://nebula-community.github.io/giochi/wow-forever/). Il logo è usato con il permesso del suo proprietario e non è coperto dalla licenza del codice. Licenza: codice GPL-3.0 o successiva; frasi e dati narrativi tutti i diritti riservati; pacchetto di esempio MIT; documentazione CC BY 4.0. Opera di fan: non affiliata a Blizzard Entertainment né da essa approvata. Sorgente e issue: https://github.com/Finland6738/azeroth-unspoken . Sostegno facoltativo: https://ko-fi.com/finland6738
+Di Finland, con un ringraziamento alla community NEBULA, di cui l'addon condivide lo stile e il logo. Il logo è usato con il permesso del suo proprietario e non è coperto dalla licenza del codice. Licenza: codice GPL-3.0 o successiva; frasi e dati narrativi tutti i diritti riservati; pacchetto di esempio MIT; documentazione CC BY 4.0. Opera di fan: non affiliata a Blizzard Entertainment né da essa approvata. Sostegno facoltativo: https://ko-fi.com/finland6738
 ```

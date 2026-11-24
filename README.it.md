@@ -143,7 +143,7 @@ L'addon risponde a `/au` e a `/unspoken`. Ogni comando ha un solo nome, inglese;
 | `/au wizard` | riapre la procedura guidata |
 | `/au wheel [set <fetta> <emote>\|reset\|bind\|unbind]` | la ruota delle emote: senza argomento dice il suo tasto e le sue fette; `set` mette un'emote in una fetta (`/au wheel set 3 dance`), `reset` quelle predefinite, `bind` le dà il tasto centrale del mouse (in due passi nelle impostazioni; mai in combattimento), `unbind` lo toglie; `presets`, `save <nome>`, `use <nome>`, `next` e `delete <nome>` gestiscono i preset |
 | `/au emotes` | tutte le emote del gioco, con il loro comando |
-| `/au about [chat]` | apre le impostazioni sulla sezione **Informazioni** (crediti, licenza, avviso di opera di fan e quattro link da copiare); `chat` stampa in chat gli stessi crediti e link |
+| `/au about [chat]` | apre le impostazioni sulla sezione **Informazioni** (crediti, licenza, avviso di opera di fan e il link di Ko-fi da copiare); `chat` stampa in chat gli stessi crediti e il link |
 | `/au debug [full\|trace]` | diagnostica: capacità del client, ultimi eventi, errori intercettati; `trace` stampa ogni evento riconosciuto, per la sessione |
 | `/au prof [reset\|copy]` | profilo della sessione: tempi della scelta delle frasi, memoria, quante volte il narratore ha parlato o taciuto e perché; `copy` apre una finestra per copiarlo |
 | `/au probe [reset\|stop\|copy]` | prova le API del client che servono alle prossime funzioni e stampa AVAILABLE / MISSING / RESTRICTED con un esempio; conta i loro eventi per la sessione |
@@ -161,7 +161,7 @@ Il pannello si apre con `/au options` (è registrato anche tra le opzioni degli 
 - **Riquadro del narratore**: durata del testo, opacità, dimensione, posizione bloccata, cronologia, prova.
 - **Moduli**: Personale, Mondo, Dialoghi NPC, Memoria, Emozioni, Relazioni, Storie, Social, Proposte in chat, Audio (quelli non ancora attivi, *Social* e *Audio*, sono segnati con `*`), più i preset *Completo*, *RPG personale*, *Mondo narrativo* e *Social RP*.
 - **Ruota delle emote**: il tasto (il tasto centrale del mouse dopo un secondo clic), il numero di fette (4-12), i nomi delle emote, la zona per annullare, l'attesa prima di aprire, i suoni, i preset (mostrato, nuovo, eliminato) e l'emote di ogni fetta, scelta scorrendo l'elenco del gioco o scritta.
-- **Informazioni**: chi ha fatto l'addon, la community NEBULA con il suo logo, la licenza, l'avviso di opera di fan e quattro caselle di sola lettura con i link (il repository GitHub, le sue issue, il sito NEBULA e Ko-fi): clicca una casella e premi Ctrl+C. Anche `/au about`.
+- **Informazioni**: chi ha fatto l'addon, la community NEBULA con il suo logo, la licenza, l'avviso di opera di fan e una casella di sola lettura con l'unico link che l'addon contiene, Ko-fi: cliccala e premi Ctrl+C. Anche `/au about`.
 - Il pulsante "pronuncia", il nome da Total RP 3, come si chiama il personaggio (*Nome del personaggio*: solo il nome, solo il cognome o entrambi) e, con un consenso a parte, la lettura dei profili pubblici degli altri (*Leggi il Total RP 3 degli altri*), il carattere del personaggio (`/au soul`), la pausa immediata, la procedura guidata.
 - Alcune scelte si fanno **solo da comando**: gli assi e le persone delle relazioni (`/au relationships`), l'attrazione e la registrazione automatica dei giocatori (`/au relationships attraction|auto`), l'offerta automatica del dialogo NPC (`/au talk offer`) e il numero massimo di storie attive (`/au stories max`).
 
@@ -295,7 +295,7 @@ Azeroth Unspoken è gratuito e il suo codice è aperto. Le sue frasi sono protet
 </picture>
 
 - Ideazione e sviluppo: Finland.
-- Un ringraziamento alla community **NEBULA**, di cui l'addon condivide lo stile e il logo ([il sito di NEBULA](https://nebula-community.github.io/giochi/wow-forever/)). Il logo qui sopra è usato con il permesso del suo proprietario e non è coperto dalla licenza del codice ([docs/third-party.md](docs/third-party.md), in inglese). Gli stessi crediti sono nel gioco: **Impostazioni → Informazioni**, oppure `/au about`.
+- Un ringraziamento alla community **NEBULA**, di cui l'addon condivide lo stile e il logo. Il logo qui sopra è usato con il permesso del suo proprietario e non è coperto dalla licenza del codice ([docs/third-party.md](docs/third-party.md), in inglese). Gli stessi crediti sono nel gioco: **Impostazioni → Informazioni**, oppure `/au about`.
 - Licenza: il codice è GPL-3.0 o successiva, le frasi e i dati narrativi sono tutti i diritti riservati, il pacchetto di esempio è MIT e la documentazione è CC BY 4.0 (vedi [Licenza](#licenza)).
 - Riferimenti tecnici consultati (non copiati): [Atraeau/WoW-Addons](https://github.com/Atraeau/WoW-Addons) per il dump delle API di Forever; [Warcraft Wiki](https://warcraft.wiki.gg/wiki/World_of_Warcraft_API) per la documentazione generale delle API. Elenco completo in [docs/REFERENCES.md](docs/REFERENCES.md).
 - [Total RP 3](https://totalrp3.info/) è un addon dei suoi autori; Azeroth Unspoken lo usa solo come integrazione facoltativa.
