@@ -697,9 +697,7 @@ SETTINGS_SECTIONS = ("general", "look", "wheel", "chat", "narrator", "modules", 
 S_MODULES = ["personal", "world", "npc", "memory", "emotion", "relations", "storyArcs", "social", "publicChat", "audio"]
 S_MODULES_ON = {"personal", "world", "npc", "memory", "emotion", "relations", "storyArcs", "social"}
 S_LIVE = {"personal", "world", "npc", "memory", "storyArcs", "relations", "emotion", "publicChat"}
-LINKS = [("repo", "https://github.com/Finland6738/azeroth-unspoken"),
-         ("issues", "https://github.com/Finland6738/azeroth-unspoken/issues"),
-         ("site", "https://nebula-community.github.io/giochi/wow-forever/"), ("kofi", "https://ko-fi.com/finland6738")]
+LINKS = [("kofi", "https://ko-fi.com/finland6738")]   # owner rule 2026-11-24: Ko-fi only
 
 
 def _lines(s, width, size=13):

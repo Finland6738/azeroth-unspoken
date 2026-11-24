@@ -10,7 +10,7 @@
 -- The sections scroll inside the client's settings canvas (its scroll bar is the client's own). Every change sends the one
 -- "settings changed" notice (Config:Changed, #192), which the panel, the open windows, the narrator and the NPC dialogue
 -- window follow. UI-7 (UI-ECO): the Info section after Privacy: the credits (Finland, the NEBULA community with its logo),
--- the mixed licence, the fan-made notice and four read-only copy boxes (the game cannot open a web page: click, Ctrl+C).
+-- the mixed licence, the fan-made notice and a read-only copy box for Ko-fi, the only link (the game cannot open a web page: click, Ctrl+C).
 -- Its texts are laid out in Refresh because their height depends on the language; `/au about` scrolls to it.
 local ADDON, NS = ...
 local W = NS.Widgets
@@ -20,11 +20,9 @@ NS.SettingsFrame = SettingsFrame
 local Assets = NS.Assets
 
 -- The links of the Info section, in order; the label of each is the locale key opt_link_<id>. They are data, not text.
--- Ko-fi is only here and in the docs: the addon never asks for it anywhere else.
+-- Owner rule (2026-11-24): the addon carries one link only, Ko-fi; no link to the NEBULA community's site or to the
+-- GitHub pages (they stay in the docs). Ko-fi is only here and in the docs: the addon never asks for it anywhere else.
 SettingsFrame.LINKS = {
-	{ id = "repo", url = "https://github.com/Finland6738/azeroth-unspoken" },
-	{ id = "issues", url = "https://github.com/Finland6738/azeroth-unspoken/issues" },
-	{ id = "site", url = "https://nebula-community.github.io/giochi/wow-forever/" },
 	{ id = "kofi", url = "https://ko-fi.com/finland6738" },
 }
 SettingsFrame.COMMUNITY = "NEBULA"   -- the name that stands in for the logo when the client cannot load it
@@ -641,7 +639,7 @@ local function CreatePanel()
 	helpTop = cy + 2
 
 	-- The Info section, laid out from its texts: the credits beside the logo, the licence, the notice and the hint under it,
-	-- then the four copy boxes. Fits the section and moves the help text under it. Called by Refresh (the language changes
+	-- then the copy box (Ko-fi). Fits the section and moves the help text under it. Called by Refresh (the language changes
 	-- the height of a text).
 	local function Height(fs, width)
 		fs:SetWidth(width)

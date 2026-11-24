@@ -8868,4 +8868,5458 @@ AU:RegisterRegionalTexts("durotar", "enUS", "kalimdor_orgrimmar", [==[
 		"The torches along the canyon are lit and the city is still working, carts and hammers and voices in the dark. I've just added my small part to the night shift.",
 		"Lamps in every doorway, and Orgrimmar not sleeping. Somewhere in all that glow is the little I just finished.",
 	},
+	["org.dawn.w21.daybreak.001"] = {
+		"watches the carrion birds on the canyon rim open their wings to the dawn, as if hanging them out to dry.",
+		"sees a row of vultures along the rim spread their wings at dawn and hold them there, patient as washing on a line.",
+		"notices the big birds on the high ledges unfold their wings toward the first light and simply wait, like old soldiers warming up.",
+	},
+	["org.dawn.w21.daybreak.002"] = {
+		"For a few minutes at dawn the red stone goes almost pink. Nobody in Orgrimmar will ever admit to having noticed.",
+		"Dawn turns the whole canyon the color of a rose petal. I wouldn't say so to a grunt.",
+		"The walls are pink at dawn. Pink. I'll keep that to myself; this city has a reputation to protect.",
+	},
+	["org.dawn.w21.daybreak.003"] = {
+		"steps around a peon raking out the last watch's braziers at dawn, cold ash going into a bucket with a dry hiss.",
+		"watches peons go from brazier to brazier in the gray of dawn, scooping out spent coals and laying fresh wood for later.",
+		"passes a peon on a ladder at dawn, knocking the soot out of a wall lamp with the flat of a hand and sneezing at the result.",
+	},
+	["org.dawn.w21.daybreak.004"] = {
+		"Dawn already? The peons have done half a day's work and I haven't found my boots.",
+		"Up with the dawn, in Orgrimmar. Which means up after the peons, the smiths and the wolves.",
+		"Dawn. Somebody in this city is already busier than me, and I'd like them to stop.",
+	},
+	["org.dawn.w21.daybreak.005"] = {
+		"At dawn the city's sounds come back in order: water barrels rolled over stone, a cough, a door, and then the first argument.",
+		"You can hear dawn arrive in Orgrimmar before you see it: a barrel trundled across stone, a shutter knocked open, a voice already complaining.",
+		"Before any light gets down here, dawn is a noise: buckets, hinges, a cart axle begging for grease, somebody's first loud opinion.",
+	},
+	["org.dawn.w21.daybreak.006"] = {
+		"The lookouts on the highest ledges get the dawn before anyone else in the city. From the way they stand up there, they know it.",
+		"Dawn touches the high posts first. The grunts up there are lit like statues while the streets are still gray, and they hold very still, as if not to waste it.",
+		"Up on the walls the sentries are already gold with dawn. Down below it's still gray, and colder, and nobody's in a hurry to join them.",
+	},
+	["org.dawn.w21.daybreak.007"] = {
+		"pauses where the dawn comes slanting down a street, every mote of dust in it turned to a spark.",
+		"watches the first slant of dawn fill a street with drifting motes, the grit of yesterday's traffic still hanging in the air.",
+		"lets {g:his|her} eyes follow a shaft of dawn down an alley, where the fine dust of the city hangs lit and turning.",
+	},
+	["org.dawn.w21.daybreak.008"] = {
+		"Dawn. The city doesn't wake so much as change shifts: the late crews dragging off, the early ones stamping in, nobody stopping in between.",
+		"In Orgrimmar dawn is a handover, not an awakening. The tired go one way, the fresh go the other, and the work never sets down.",
+	},
+	["org.dawn.w21.daybreak.009"] = {
+		"hears, from somewhere toward the Valley of Spirits, a low voice greeting the dawn in a rhythm older than the walls around it.",
+		"catches a slow chant drifting from the direction of the Valley of Spirits as the dawn comes up, rising and falling like someone rocking.",
+		"stops to listen as a single voice somewhere in the troll quarter meets the dawn with a song that has no hurry in it.",
+	},
+	["org.dawn.w21.daybreak.010"] = {
+		"Look at that light on the walls. Even the grunts look friendly at this hour.",
+		"First light on the canyon. Best the city looks all day, and the shortest-lived.",
+		"Dawn on the walls. Enjoy it; in an hour it'll just be hot.",
+	},
+	["org.dawn.w21.daybreak.011"] = {
+		"The smell of the city turns over at dawn: cold ash going out, the first fat hitting the griddles, someone scorching porridge.",
+		"Dawn has a smell here: damp stone where the water carriers sloshed their buckets, and the first meat of the day already sizzling.",
+	},
+	["org.dusk.w21.dimming.001"] = {
+		"watches the sky over the rim go the color of iron cooling on an anvil: orange, then dull red, then a gray that looks warm to the touch.",
+		"sees the dusk sky above the canyon fade the way worked iron fades, from bright orange to a sullen red to something darker.",
+		"looks up as the dusk goes through a smith's colors overhead, one after another, each duller than the last.",
+	},
+	["org.dusk.w21.dimming.002"] = {
+		"At dusk even a goblin throws a shadow worth respecting. They know it, too; look at them strut.",
+		"Long shadows at dusk flatter everyone. A goblin's reaches halfway across the street, and its owner walks as if well aware of it.",
+		"Dusk is when the small folk of the city get their own back: every shadow stretched to the size of an ogre.",
+	},
+	["org.dusk.w21.dimming.003"] = {
+		"notices the first moths of dusk finding the lamps, circling with the persistence of late customers at a closing stall.",
+		"brushes away a moth drawn to the dusk lamps, and then another, and gives up on the third.",
+		"sees moths gather around a lamp as the dusk settles, as if every insect in the city had agreed on a meeting place.",
+	},
+	["org.dusk.w21.dimming.004"] = {
+		"At dusk the city changes its smell: less hot iron, more frying fat; less work, more supper.",
+		"Dusk, and the air turns from forge to kitchen. Somewhere a hundred pots go on at once, and all of them want garlic.",
+		"You can smell the dusk coming in Orgrimmar. The metal fades out of the air and the stewpots take over.",
+	},
+	["org.dusk.w21.dimming.005"] = {
+		"watches a late caravan hurry in out of the dusk, the drivers shouting the kodos along as if the dark were snapping at their heels.",
+		"steps aside for a string of kodos lumbering in at dusk, their drivers in a hurry to be inside the walls before the light is gone.",
+		"sees the last traders of the day come in with the dusk at their backs, dusty to the eyebrows and arguing about who made them late.",
+	},
+	["org.dusk.w21.dimming.006"] = {
+		"Dusk is the Cleft of Shadow's revenge. All day the rest of the city is brighter; for an hour, everything sinks to the Cleft's level.",
+		"As the dusk comes down, the whole city starts to look a little like the Cleft of Shadow. I suspect the Cleft is pleased.",
+		"At dusk the Cleft of Shadow stops being the dark corner of Orgrimmar. Every corner is dark now.",
+	},
+	["org.dusk.w21.dimming.007"] = {
+		"hears buckles and straps being pulled tight in the guardhouses as dusk comes on: the night watch dressing, unhappily.",
+		"passes a guard post at dusk just as the night shift is shrugging into its gear, one grunt still chewing supper with a helmet half on.",
+		"catches the clink of mail from a guardhouse door as the dusk comes down, and someone inside complaining that it has shrunk.",
+	},
+	["org.dusk.w21.dimming.008"] = {
+		"Light's going. Whatever I meant to buy, I'll buy it from a cheaper liar tomorrow.",
+		"Dusk. The merchants are packing up and I've finally decided what I want. Typical.",
+		"Dusk falls, and suddenly every grunt looks twice as tall. I'm going to stand near one.",
+	},
+	["org.dusk.w21.dimming.009"] = {
+		"The dusk leaves the flight tower last. For a while it stands lit above a city already in shadow, like a finger raised to ask one more question.",
+		"Everything below has gone dim, but the top of the flight tower still holds a little dusk light, as though it had been told to keep it.",
+		"The tower in the Valley of Strength keeps the light longest. When even its top goes gray, the dusk is done and the night has the city.",
+	},
+	["org.dusk.w21.dimming.010"] = {
+		"makes way for a line of peons filing off the job at dusk, tools on their shoulders, too tired even to grumble.",
+		"watches peons trudge away from the work in the dusk, each one carrying a pick or a sack and the same faraway look.",
+		"steps aside as the peons come off shift in the dusk, one of them so tired that two others are steering by the elbows.",
+	},
+	["org.farewell.w21.parting.001"] = {
+		"I'm off. If the bank line's any shorter, take it as a sign.",
+		"Time I went. The auctioneers can't cheat me without me there.",
+		"Off I go. Somewhere in the Drag there's a price with my name on it.",
+	},
+	["org.farewell.w21.parting.002"] = {
+		"Go in strength, and come back the same way.",
+		"Farewell. May the city remember your name for the right reasons.",
+		"When you leave the canyon, walk tall; and walk tall when you come back to it.",
+	},
+	["org.farewell.w21.parting.003"] = {
+		"Farewell. You didn't see me by the auction house, and I didn't see you buying that hat.",
+		"Goodbye. Don't tell the goblin by the bank which way I went.",
+	},
+	["org.farewell.w21.parting.004"] = {
+		"Take care of yourself. A city this big forgets people; I'll try not to.",
+		"Go well. In all this crowd, I'll keep an eye out for your face.",
+		"Until we meet. There are a thousand faces in Orgrimmar and I'll be looking for one.",
+	},
+	["org.farewell.w21.parting.005"] = {
+		"That's me gone. Mind the stairs by the inn.",
+		"Off you go. And don't trip over a peon on the way.",
+		"See you around the Valley of Strength. Everyone ends up there eventually.",
+	},
+	["org.farewell.w21.parting.006"] = {
+		"Strength and honor. The Horde will keep the walls until you're back.",
+		"Lok'tar ogar. Come home to these walls.",
+		"Go with the Horde at your back, and Orgrimmar ahead of you when you turn for home.",
+	},
+	["org.farewell.w21.parting.007"] = {
+		"Farewell. I'm off to find a corner of this city where nobody's selling anything. Wish me luck.",
+		"Goodbye. I'm going to sit somewhere quiet, if Orgrimmar has such a place.",
+		"I'm away. If I find silence anywhere in these valleys, I'll keep it to myself.",
+	},
+	["org.farewell.w21.parting.008"] = {
+		"May the canyon walls stand between you and every harm.",
+		"Farewell. May the stone of this city remember your step kindly.",
+	},
+	["org.farewell.w21.parting.009"] = {
+		"Before you head out, fill your waterskin; Durotar won't do it for you.",
+		"Safe roads. If you're bound for the zeppelins, don't sit near the goblin with the cough.",
+		"Taking the road to Razor Hill? Mind the scorpids along the verge. Farewell.",
+	},
+	["org.farewell.w21.parting.010"] = {
+		"Farewell. Too many who left through Orgrimmar's gate never came back to it. Be one who does.",
+		"Go carefully. This city has said goodbye to too many people to waste one on you.",
+	},
+	["org.farewell.w21.parting.011"] = {
+		"Off with you, before someone tries to sell us both a wolf saddle.",
+		"Go on, then. I'll be here, haggling over a strap I don't need.",
+	},
+	["org.farewell.w21.parting.012"] = {
+		"Farewell. The Darkspear say a goodbye is only the long way round to the next fire.",
+		"Be well. A troll by the pool in the Valley of Spirits once told me partings are only loops. I hope she's right.",
+	},
+	["org.farewell.w21.parting.013"] = {
+		"Go, and let the world see what Orgrimmar sends out.",
+		"Farewell. Wherever you're bound, carry yourself like someone who has stood in this city.",
+		"Off you go. Give them something to talk about out there.",
+	},
+	["org.farewell.w21.parting.014"] = {
+		"Goodbye. I'll find my own way out; quietly, and before the grunts change their minds.",
+		"Farewell. If you see me running, I'm just in a hurry. Honestly.",
+	},
+	["org.farewell.w21.parting.015"] = {
+		"Until later. And if you get back before I do, keep my place in the bank line.",
+		"Farewell. Whoever reaches the inn first buys the first round. That's the rule now.",
+	},
+	["org.farewell.w21.parting.016"] = {
+		"Leave with your purse full and your boots sound.",
+		"May your pack be lighter on the way back, and your purse heavier.",
+		"Travel well, with full skins and a light pack.",
+	},
+	["org.farewell.w21.parting.017"] = {
+		"Farewell. What was said between us stays inside these walls.",
+		"Go. What we spoke of stays in Orgrimmar, with the rest of its secrets.",
+	},
+	["org.farewell.w21.parting.018"] = {
+		"Goodbye. I'd walk you out, but I'd only get lost in the Drag on the way back.",
+		"Farewell. I'd come along, but the bank and I have unfinished business.",
+	},
+	["org.farewell.w21.sendoff.001"] = {
+		"Be off, then. The crowd's one elbow short without you.",
+		"Away with you. The city has errands for everyone, and yours are waiting.",
+	},
+	["org.farewell.w21.sendoff.002"] = {
+		"Farewell, and may every grunt you pass salute you instead of searching you.",
+		"Go with my good word. In Orgrimmar it's worth something, if not much.",
+	},
+	["org.farewell.w21.sendoff.003"] = {
+		"Look after yourself. Eat something hot, sleep somewhere with a door.",
+		"Take care. Find an inn, take your boots off, and let the city get on without you.",
+		"Go and rest. Whatever you're chasing will still be in Orgrimmar when you wake.",
+	},
+	["org.farewell.w21.sendoff.004"] = {
+		"Farewell. Try not to buy anything on your way; you'll regret all of it.",
+		"Goodbye, and walk fast past the Drag. It can smell weakness and a full purse.",
+	},
+	["org.farewell.w21.sendoff.005"] = {
+		"May the city's smoke be the last thing you lose sight of, and the first you see on your return.",
+		"Farewell. When you look back from the road, find the smoke over the canyon; it'll be waiting.",
+		"May you see the smoke above these walls before long.",
+	},
+	["org.farewell.w21.sendoff.006"] = {
+		"Go carefully. And check your pack before you go; the city has quick fingers.",
+		"Farewell. Count your coins once you're clear of the crowd. Then count them twice.",
+	},
+	["org.farewell.w21.sendoff.007"] = {
+		"Go well. I mean it, which in this city is rare enough.",
+		"Farewell. Come back with nothing missing.",
+		"Until next time. Don't let the world grind you down to the size of a coin.",
+	},
+	["org.farewell.w21.sendoff.008"] = {
+		"Goodbye. If a goblin calls you 'friend', walk faster.",
+		"Farewell. Nod at the grunts, ignore the hawkers, and you'll be fine.",
+	},
+	["org.farewell.w21.sendoff.009"] = {
+		"The shamans in the Valley of Wisdom say the ancestors walk every road out of this city. Go with them.",
+		"Go in peace. Orc elders say the spirits keep count of those who leave; may they count you twice.",
+	},
+	["org.farewell.w21.sendoff.010"] = {
+		"Safe travels. If you're taking to the air, don't look down until the city's gone.",
+		"Farewell. If you're flying, hold on tight past the tower; the beasts like to show off.",
+	},
+	["org.farewell.w21.sendoff.011"] = {
+		"Farewell. I'm never good at this part, so I'll say it once and go.",
+		"Goodbye. Partings in a crowd are easier; nobody sees you stand there afterward.",
+	},
+	["org.farewell.w21.sendoff.012"] = {
+		"Goodbye. If you're bound for Ragefire Chasm, bring a friend and leave the good boots behind.",
+		"So long. If your errand takes you down under the Cleft of Shadow, come back up smelling better than they do down there.",
+	},
+	["org.farewell.w21.sendoff.013"] = {
+		"Good luck out there. The road south is long and the inns are few.",
+		"Fair roads. The Crossroads is farther than anyone tells you.",
+		"Safe roads, wherever you're going. Write if you find anything worth buying.",
+	},
+	["org.farewell.w21.sendoff.014"] = {
+		"Farewell. May your errands be few and your returns many.",
+		"May you leave Orgrimmar owing nothing, and come back owed.",
+	},
+	["org.farewell.w21.sendoff.015"] = {
+		"Go on ahead. I'll stand here a moment and watch the crowd fill the space you left.",
+		"Off you go, then. The city closes over a gap so quickly; I'll remember where you stood.",
+	},
+	["org.farewell.w21.sendoff.016"] = {
+		"Go and do something worth hearing about in the Hall of Legends.",
+		"Farewell. Bring back a story fit for the Valley of Honor.",
+		"Come back with tales the grunts will steal and tell as their own.",
+	},
+	["org.farewell.w21.sendoff.017"] = {
+		"Mind how you go, and mind the peons more.",
+		"Watch your step. Half of Orgrimmar is stairs and the other half is somebody's wolf.",
+	},
+	["org.farewell.w21.sendoff.018"] = {
+		"Farewell. Say hello to the zeppelin goblins for me; they'll charge you for it.",
+		"Go well. If you pass the kennels, tell the wolves I said nothing rude about them.",
+	},
+	["org.greet.w21.hail.001"] = {
+		"Hello. If you're in line for the bank, I was here first. If not, hello anyway.",
+		"Hail. Don't tell me you're queuing for the bank too.",
+		"Greetings. Bank, auction house or inn? Everyone in Orgrimmar is heading for one of the three.",
+	},
+	["org.greet.w21.hail.002"] = {
+		"Peace to you while you're within the walls. Outside them, we'll see.",
+		"Hail. Within these walls a greeting is a promise, and I make it.",
+		"May your business in Orgrimmar go straight, even if its streets don't.",
+	},
+	["org.greet.w21.hail.003"] = {
+		"Hello! Mind the peon behind you; he's carrying more lumber than sense.",
+		"Greetings. Step left, there's a peon with a plank coming through and he won't stop for anyone.",
+	},
+	["org.greet.w21.hail.004"] = {
+		"Hail! Lost in the Drag yet? It gets everyone at least once a week.",
+		"Hello there. If you're after the right way through the Drag, nobody has ever found the same one twice.",
+		"Ask me for directions and I'll point at the Drag and wish you luck. Hello, by the way.",
+	},
+	["org.greet.w21.hail.005"] = {
+		"Hello. Of all the faces in this crowd, yours stopped. That's worth a greeting.",
+		"Someone standing still, in a city that never does. I'll greet that.",
+	},
+	["org.greet.w21.hail.006"] = {
+		"Hail. Whatever they're roasting near the inn, I've been following it for a while. Join me?",
+		"Have you eaten? Somebody close by is grilling something that smells like a good decision.",
+		"Hello! Don't mind me, I'm tracking a smell of roast meat across half the city.",
+	},
+	["org.greet.w21.hail.007"] = {
+		"Throm-ka. May the walls keep you and the road bring you back to them.",
+		"Lok'tar. Your hand, if you'd give it, among the Horde's own.",
+		"Hail, under the Warchief's banners. May they fly over you a long while.",
+	},
+	["org.greet.w21.hail.008"] = {
+		"Hello. Smile; the grunt on watch has been looking at both of us for a while.",
+		"Greetings. Keep your voice friendly, the grunts on duty hear everything.",
+		"Hail. Keep your hands where the guards like them and we'll get along fine.",
+	},
+	["org.greet.w21.hail.009"] = {
+		"Well met. These walls were raised by people who once had nothing to greet each other with but chains.",
+		"Every greeting in Orgrimmar remembers the camps a little. Mine too.",
+	},
+	["org.greet.w21.hail.010"] = {
+		"Hail! Forgive me if I don't shake hands; this one's full of auction receipts and the other's full of regret.",
+		"Hello. I'd wave, but I'm carrying three days of shopping from the Drag.",
+		"Grab the top parcel, would you? There. Now I can greet you properly.",
+	},
+	["org.greet.w21.hail.011"] = {
+		"Hail! Back straight; this city respects a spine.",
+		"Orgrimmar measures everyone by how they stand. You stand well. Greetings.",
+		"Shoulders back. Nobody in this canyon greets a stoop.",
+	},
+	["org.greet.w21.hail.012"] = {
+		"Hello. If a goblin offers you a bargain, ask him what happened to mine.",
+		"Seen a goblin with a crate of 'genuine' wolf charms? I'd like a word with him. Greetings, meanwhile.",
+	},
+	["org.greet.w21.hail.013"] = {
+		"Hello, or whichever word you prefer. I hear six kinds of greeting a day in this city, and I've learned them all badly.",
+		"Pick a language. Orgrimmar speaks most of them, loudly and all at once. Greetings in any of them.",
+		"Here a greeting comes in Orcish, Taurahe, troll talk and goblin haggling. This one is just mine.",
+	},
+	["org.greet.w21.hail.014"] = {
+		"Hail. Busy? Everyone here is, so you're in good company.",
+		"Hello. You look like someone with somewhere to be. Same as the rest of the city.",
+		"Walk with me a bit; standing still in Orgrimmar gets you trampled. Greetings.",
+	},
+	["org.greet.w21.hail.015"] = {
+		"Hello. Don't ask me how the auctions went. Ask me something cheerful.",
+		"Greetings. If you're bound for the auctioneers, bid on anything but the hide I just lost.",
+	},
+	["org.greet.w21.hail.016"] = {
+		"Peace to you. Under all this stone, the Earth Mother is still listening.",
+		"Walk gently. Even Orgrimmar stands on the Earth Mother's back.",
+		"Greetings. My hooves miss the grass, but the stone in this city is honest.",
+	},
+	["org.greet.w21.hail.017"] = {
+		"Hello. The grunts at the bank still take a step back when I smile. Progress, of a sort.",
+		"Greetings. Orgrimmar has stopped staring at me. I almost miss it.",
+		"Hail. No need to worry; the tanners down the Drag smell worse than I do.",
+	},
+	["org.greet.w21.hail.018"] = {
+		"Hello. Going to the inn? Tell the innkeeper the stool by the wall is taken; it's mine.",
+		"Greetings. If you're headed for the inn, save me a corner near the fire.",
+	},
+	["org.greet.w21.hail.019"] = {
+		"Hello. Sometimes a city this full is the loneliest place there is. Thanks for stopping.",
+		"Hundreds of people around, and you're the first to really look at me. Greetings.",
+		"In a crowd like this, a single face that answers back is worth a great deal. Hail.",
+	},
+	["org.greet.w21.hail.020"] = {
+		"Should anyone ask, we met in the Valley of Spirits, not anywhere near the Cleft of Shadow. It sounds nicer.",
+		"Hail. Let's say we met somewhere respectable. Not by the Cleft of Shadow, anyway.",
+	},
+	["org.greet.w21.welcome.001"] = {
+		"Come in close, out of the traffic. There, now we can talk.",
+		"Step aside with me before a wolf rider decides you're part of the road. Hello.",
+		"Over here, out of the way of the carts. Greetings.",
+	},
+	["org.greet.w21.welcome.002"] = {
+		"Be welcome, whoever you are, and whatever brings you through Orgrimmar.",
+		"Welcome, in the Warchief's city, whether you're passing through or here to stay.",
+	},
+	["org.greet.w21.welcome.003"] = {
+		"Hello. Sit a moment, if you can find a bit of wall nobody's leaning on.",
+		"Lean on this post with me. It's been holding me up for a while.",
+		"There's room on this crate if you want to rest your feet. Hello.",
+	},
+	["org.greet.w21.welcome.004"] = {
+		"Welcome to Orgrimmar, where everyone has an opinion and an axe to back it.",
+		"Hello! Mind the stairs, the wolves and the advice; there's plenty of all three.",
+	},
+	["org.greet.w21.welcome.005"] = {
+		"Hello. Thirsty? There's water in the skin, and it's only a little warm.",
+		"I've a spare cactus apple, if you're hungry. Don't ask where I got it. Greetings.",
+		"Hail. Share my jerky? It's tough enough to resole a boot, but it's honest.",
+	},
+	["org.greet.w21.welcome.006"] = {
+		"Welcome among the Horde's own. Your back is guarded here, as ours is.",
+		"Hail, and set your guard down a little. Within Orgrimmar the Horde looks after its own.",
+	},
+	["org.greet.w21.welcome.007"] = {
+		"Hello! If you're after a quiet word, the Valley of Spirits is your best chance. Walk with me?",
+		"Let's find somewhere quieter. The Valley of Wisdom, maybe; the tauren keep their voices down.",
+		"There's a calmer corner up toward the Valley of Wisdom, if you'd rather talk than shout. Greetings.",
+	},
+	["org.greet.w21.welcome.008"] = {
+		"Hail! Good to cross paths with someone who looks ready for anything.",
+		"Greetings. You carry yourself like someone this city could use on its walls.",
+		"Well met. There's iron in the way you stand; Orgrimmar notices that.",
+	},
+	["org.greet.w21.welcome.009"] = {
+		"Hello. Waiting on the post too? Letters in this city travel faster than the people.",
+		"Greetings. If you're off to the mailbox, it's the one with the queue of sighing faces.",
+	},
+	["org.greet.w21.welcome.010"] = {
+		"Hello. Whatever you've been carrying, set it down for the length of a greeting.",
+		"Put the city down a moment. It'll still be there for you to pick back up.",
+		"Hail. Rest your shoulders. Orgrimmar won't run off while you do.",
+	},
+	["org.greet.w21.welcome.011"] = {
+		"Hail. I'd salute you like a grunt, but I'd have to scowl, and I've just eaten.",
+		"Greetings, in the local style: a nod, a grunt, and a hand nowhere near a weapon.",
+	},
+	["org.greet.w21.welcome.012"] = {
+		"Greetings. This city carries Doomhammer's name; the least we can do is greet each other properly.",
+		"In a city named for Orgrim, a bow of the head costs nothing. There.",
+		"Well met, under Doomhammer's name.",
+	},
+	["org.greet.w21.welcome.013"] = {
+		"Hello. Quietly, please; not everyone here is pleased to see my colors.",
+		"Let's keep this short and friendly. The grunts are counting my steps.",
+	},
+	["org.greet.w21.welcome.014"] = {
+		"Greetings. Heading somewhere, or just letting the city carry you along? Either will do.",
+		"Hello. Going anywhere in particular? In Orgrimmar it helps to pretend you are.",
+		"Out on business, or just watching the crowd go by? I won't tell either way. Hail.",
+	},
+	["org.greet.w21.welcome.015"] = {
+		"Zug zug. That's peon for hello, and some days it's all I've got.",
+		"Hail. I've got the tusks for a smile, so take this as one.",
+	},
+	["org.greet.w21.welcome.016"] = {
+		"Hello. Any news from outside the walls? In here it's all prices and rumors.",
+		"Greetings. Tell me something I haven't heard at the bank, and I'll owe you one.",
+		"What's the talk where you've been? Here it's still who outbid whom. Hail.",
+	},
+	["org.greet.w21.welcome.017"] = {
+		"Hello. It's good to say a word to someone, in a place that doesn't wait for anyone.",
+		"A city like this runs right over you if you let it. A hello slows it down a little.",
+	},
+	["org.greet.w21.welcome.018"] = {
+		"If you hear shouting about a missing crate, I know nothing and neither do you. Greetings.",
+		"Hello! Act natural. There's a merchant behind me who thinks I promised to buy something.",
+	},
+	["org.greet.w21.welcome.019"] = {
+		"Hail. If you're bound for Grommash Hold, mind your manners; the Kor'kron don't laugh at jokes.",
+		"Going up to Grommash Hold? Bow when you're told, and not a moment before. Greetings.",
+	},
+	["org.greet.w21.welcome.020"] = {
+		"A nod, and peace to you.",
+		"Hail. That's all; the city's busy and so am I, but you deserved that much.",
+		"Greetings, and a fair trade to you in the Drag.",
+	},
+	["org.greet.w21.welcome.021"] = {
+		"Hello. You haven't been sparring in the Valley of Honor, have you? Good, then you can still shake hands.",
+		"Greetings. Shake my hand gently; I lost an argument with a training dummy in the Valley of Honor.",
+	},
+	["org.greet.w21.welcome.022"] = {
+		"Greetings. Every time I pass Grommash Hold I think of what Hellscream paid. A hello feels lighter after.",
+		"Hail. In a city built on Grom's sacrifice, a plain hello is no small thing.",
+	},
+	["org.jest.w21.jest.001"] = {
+		"The queue at the bank moves so slowly I've started charging the people behind me rent.",
+		"I've stood in the bank line so long, the fellow behind me asked if I came with the building.",
+		"Long line at the bank. If I'm not out before my boots wear through, tell the innkeeper to let my room.",
+	},
+	["org.jest.w21.jest.002"] = {
+		"Whoever laid out the Drag drew it with a wolf's tail. While it was wagging.",
+		"The Drag doesn't go anywhere. It just goes. Lovely street, no ambition.",
+		"I walked the whole Drag looking for the end of it, and came out where I started, a few coins lighter.",
+	},
+	["org.jest.w21.jest.003"] = {
+		"The auction house: I sell low, buy high, and call the difference my education.",
+		"My plan for the auction house is simple. Sell cheap, buy dear, complain at the inn.",
+		"Every auctioneer in Orgrimmar knows my face. Not my name, just the face of a customer they can count on.",
+	},
+	["org.jest.w21.jest.004"] = {
+		"The goblins swear their zeppelins are perfectly safe. They swear it standing very firmly on the ground.",
+		"I asked a goblin how often the zeppelin falls. Only once per zeppelin, he said.",
+		"A zeppelin ticket includes the trip, the view and a goblin's personal guarantee. I'd keep the receipt.",
+	},
+	["org.jest.w21.jest.005"] = {
+		"Every door in this city was built to orc size. Ask any tauren's forehead.",
+		"You can tell how long a tauren has lived in Orgrimmar by the dents in the horns. Doorframes are merciless.",
+		"The doorframes here have met more tauren heads than any grunt has.",
+	},
+	["org.jest.w21.jest.006"] = {
+		"I waved at a grunt once. He looked at my hand until I put it away.",
+		"Tried a joke on the Kor'kron. One of them wrote something down.",
+	},
+	["org.jest.w21.jest.007"] = {
+		"I saw a peon working hard. Then he saw me seeing him, and that was the end of that.",
+		"There's a peon near the bank who has carried the same log for as long as I can remember. Very carefully. Nowhere.",
+		"A peon's secret is to look busy the moment anyone looks. I've learned more from them than from any trainer.",
+	},
+	["org.jest.w21.jest.008"] = {
+		"Ask three people in Orgrimmar the way and you'll get three valleys and a shrug.",
+		"Directions in Orgrimmar: up, past the thing with spikes, left at the other thing with spikes.",
+		"I asked a grunt for the way to the inn. He pointed. At the whole city.",
+	},
+	["org.jest.w21.jest.009"] = {
+		"I've paid the smiths of this city so much in repairs, they ought to name an anvil after me.",
+		"The smiths here don't mend armor, they renegotiate it. Every visit, a little more coin and a little less dent.",
+		"The armorer saw me coming and smiled. In Orgrimmar that's the most frightening thing a smith can do.",
+	},
+	["org.jest.w21.jest.010"] = {
+		"I went down to the Cleft of Shadow to look mysterious. Everybody there was already better at it.",
+		"Brooding in the Cleft of Shadow is harder than it looks. The competition is fierce, and nobody admits to trying.",
+	},
+	["org.jest.w21.jest.011"] = {
+		"I asked the banker to keep an eye on my savings. He said he'd need a smaller eye.",
+		"The banker counted my savings twice, then asked if I'd brought the rest. I had not.",
+		"My bank box holds more cobwebs than coin, and the banker still treats it like a rich one's.",
+	},
+	["org.journey.w21.approach.001"] = {
+		"picks out Orgrimmar long before its walls: a smudge of smoke resting in a fold of the ridges, as if the land had a small fire going under its coat.",
+		"sees the city first as a haze, a brown smear of smoke on the ridges ahead, and only afterward the notch in the rock that holds it.",
+	},
+	["org.journey.w21.approach.002"] = {
+		"From up here you can see the paths people really take across the Valley of Strength: pale tracks cutting every corner the builders laid out.",
+		"The valley floor is scored with shortcuts, worn pale by boots that never cared where the proper way went. Only a flier gets to see them all at once.",
+		"Nobody plans the paths of a city. Coming down, I can read them anyway, rubbed into the ground by everyone who was ever in a hurry.",
+	},
+	["org.journey.w21.approach.003"] = {
+		"looks down at the walls as the beast crosses them and finds them oddly thin from above, a line of red chalk meant to stop armies.",
+		"passes over the city's ramparts at the height of a tall roof, and from there they look no thicker than the fence around a goat pen.",
+	},
+	["org.journey.w21.approach.004"] = {
+		"The beast knows we're nearly there before I do. Its wingbeats go lazy, its ears tip forward, and somewhere below a pen full of meat is waiting.",
+		"I can always tell when the city is close: not from anything I see, but from the flier suddenly beating along like it smells supper.",
+		"The flier starts down before the city is even in view. It has its priorities, and the first of them is a bucket.",
+	},
+	["org.journey.w21.approach.005"] = {
+		"follows the road below as it gathers carts, riders and walkers from every side and bends them all toward the same notch in the rock.",
+		"watches the traffic on the road thicken underneath, every cart and wolf and plodding kodo drawn toward the city like grit toward a drain.",
+	},
+	["org.journey.w21.approach.006"] = {
+		"There it is. Loud enough to hear from up here, and it hasn't even noticed I'm coming.",
+		"Smoke on the ridges. That'll be the city, then.",
+		"Ah, there. Nobody's moved it while I was away.",
+	},
+	["org.journey.w21.approach.007"] = {
+		"Orgrimmar doesn't look built from up here so much as dug: the valleys are wounds in the rock, and the city has simply moved into them.",
+		"Coming in, the city looks less raised than carved out, as if someone had pressed a thumb into the red hills and people had filled the dent.",
+	},
+	["org.journey.w21.approach.008"] = {
+		"is tracked across the sky by a lookout on the wall, who turns slowly to follow the beast in and then, satisfied, faces the open country once more.",
+		"draws the eye of a sentry on the ramparts, who watches the flier all the way over before going back to staring at empty land.",
+	},
+	["org.journey.w21.approach.009"] = {
+		"The closer the ground, the more of my errands climb up to meet me. By the perch I'll be carrying all of them.",
+		"Up high I had no list. Every turn down hands me back a piece of it: the bank, the inn, the boots that need mending.",
+		"Funny how the chores come back at about the same speed as the ground.",
+	},
+	["org.journey.w21.approach.010"] = {
+		"marks the land darkening beneath the wings where the city begins: wild red ground giving way to earth trodden hard and brown by countless feet.",
+		"notices the moment the ground changes under the beast, the loose red of open country turning into the packed, stained floor of a place where people live.",
+	},
+	["org.journey.w21.approach.011"] = {
+		"Walk into Orgrimmar and a grunt at the gate looks you over. Fly in and you simply drop over everyone's heads. I try not to find that funny while I'm still up here.",
+		"On foot, this city makes you queue and be inspected. From the air you come down on it like a pebble into a well, and nobody so much as looks up.",
+	},
+	["org.journey.w21.approach.012"] = {
+		"sends a flock of small dusty birds bursting off a ledge of the canyon wall as the beast sweeps past, and they scold it all the way down.",
+		"passes close to the canyon wall, and a row of little brown birds lifts off a crack in the stone in a single startled shrug.",
+	},
+	["org.journey.w21.approach.013"] = {
+		"From this height every quarrel in the city is invisible. It looks finished, settled, even calm. Half a turn lower, that will stop being true.",
+		"Up here the city is quiet as a model on a table. I like it this way for exactly as long as it lasts.",
+	},
+	["org.journey.w21.approach.014"] = {
+		"comes in on the tail of another flier, near enough to see its passenger glance back once, nod, and look away like a stranger in a queue.",
+		"trails a second beast toward the tower, whose rider turns in the saddle, sizes up the company behind, and faces forward again without a word.",
+	},
+	["org.journey.w21.approach.015"] = {
+		"I can count the beasts on the perch from here. Seven. That means a crowd at the bank, a crowd at the inn, and a long wait for anything worth having.",
+		"The perch is packed. You can read the whole city's temper off that tower: full perch, full streets, short tempers.",
+	},
+	["org.journey.w21.approach.016"] = {
+		"Not the inn roof, beast. The tower. The tall one with your friends on it.",
+		"That's a roof, not a perch. Keep going.",
+	},
+	["org.journey.w21.approach.017"] = {
+		"watches the canyon open as the beast comes on, a dark seam in the land that widens and widens until there is a whole city lying in it.",
+		"follows the cleft in the hills as it grows from a crack to a gash to a crowded bowl of valleys, each stroke of the wings adding another street to it.",
+	},
+	["org.journey.w21.approach.018"] = {
+		"The wind rider tips its head toward the tower and I let it. It knows this city from above better than I know it from the street.",
+		"This wind rider has flown into the canyon more times than I've walked the Drag. I'll leave the approach to the one with the experience.",
+	},
+	["org.journey.w21.approach.019"] = {
+		"Smell that? Somebody down there is frying onions. Take us in, beast.",
+		"Cook smoke, all the way up here. Down, beast, and quickly.",
+	},
+	["org.journey.w21.below.001"] = {
+		"follows the Drag by its awnings alone, a crooked ribbon of patched hide and faded cloth that hides the street completely and shows its every bend.",
+		"can't see the Drag itself from up here, only the roofs and awnings over it, a long crooked seam of stitched hides winding through the stone like a scar sewn up in a hurry.",
+	},
+	["org.journey.w21.below.002"] = {
+		"From above you can see where the city really walks: pale tracks worn across the dirt of every valley, cutting the corners the builders laid out with such care.",
+		"The Valley of Strength has roads, and then it has the paths everybody actually uses, worn pale and straight across the ground between the bank and the inn. From up here the second set wins easily.",
+	},
+	["org.journey.w21.below.003"] = {
+		"looks down on the tents in the Valley of Wisdom, and sees for once the whole of the patterns painted on their hides, circles and hoofprints the ground only ever shows one side of.",
+		"passes over the painted tents of the Valley of Wisdom: from above, the designs on their roofs close into rings and spirals that no one standing beside them could see whole.",
+	},
+	["org.journey.w21.below.004"] = {
+		"The training dummies in the Valley of Honor stand in rows from up here, like a crop somebody planted and then beats half to death every day.",
+		"Rows of straw dummies across the Valley of Honor, each with its own lean. From the air it looks like a field after a very bad harvest.",
+	},
+	["org.journey.w21.below.005"] = {
+		"sees the huts of the Valley of Spirits crowd together below, thatched and round, like a basket of bowls turned upside down.",
+		"picks out the Valley of Spirits by its roofs alone, steep thatch the color of dry grass among all that timber and hide.",
+	},
+	["org.journey.w21.below.006"] = {
+		"Around the mouth of the Cleft of Shadow there's a ring of bare ground nobody seems to cross without reason. From up here it looks as if the whole city took one step back and stayed there.",
+		"Everywhere else the crowd fills every gap. Near the Cleft of Shadow it thins, then stops, a clean little margin of empty stone. Cities know things about themselves.",
+	},
+	["org.journey.w21.below.007"] = {
+		"watches a caravan unloading below, bundles coming off the kodos and growing into two piles, one square and tidy, the other already sliding apart.",
+		"has a fine view of a kodo being unloaded by four peons at once, each pulling a different strap, while the kodo stands there chewing as if none of it concerned it.",
+	},
+	["org.journey.w21.below.008"] = {
+		"Someone at the back of the inn tips out a bucket, and three separate wolves reach the spot before the slops have finished landing. From up here it's like watching a very small war.",
+		"A bucket emptied behind the inn, and from three directions at once, three wolves converge. The fastest thing in Orgrimmar is a wolf who heard a bucket.",
+	},
+	["org.journey.w21.below.009"] = {
+		"makes out the shape of the whole city at last as the beast climbs: valleys running off from the center like the marks of a great claw dragged through the rock.",
+		"takes in Orgrimmar spread out entire, its valleys reaching from one another through the stone like the fingers of a half-open hand.",
+	},
+	["org.journey.w21.below.010"] = {
+		"The Drag from above has two currents, one going in and one going out, and right in the middle a goblin with a cart, stopped dead, splitting both like a rock in a stream.",
+		"In the Drag the crowd flows two ways at once, and from up here you can see exactly where it jams: one handcart, one argument, a whole street waiting on it.",
+	},
+	["org.journey.w21.below.011"] = {
+		"makes out the smithies of the Valley of Honor only as dark open roofs, each with a red eye at the center that brightens and dims with the bellows.",
+		"peers into the open-roofed smithies of the Valley of Honor, where each forge is a small red eye that opens and narrows with every pull of the bellows.",
+	},
+	["org.journey.w21.below.012"] = {
+		"From above, the gate is the narrow neck of the whole city: everything Orgrimmar eats, sells and argues about squeezes through that one gap, single file, like grain through a funnel.",
+		"Everything in the canyon came in through that gate, every stone, every plank, every kodo. From up here it looks far too small for the job.",
+	},
+	["org.journey.w21.below.013"] = {
+		"flies over a line of washing strung between two roof spikes, tunics and leggings flapping, as if the city's fiercest decoration had finally found a use.",
+		"notices somebody's laundry pegged out between the iron points of a rooftop, a row of shirts snapping where an enemy was meant to be impressed.",
+	},
+	["org.journey.w21.below.014"] = {
+		"Someone's waving at us from a roof. Or shaking a fist. Can't tell from up here.",
+		"Is that a wave down there or a rude gesture? I'll take it as a wave.",
+	},
+	["org.journey.w21.below.015"] = {
+		"Look, the whole Drag at once. I've got lost in every one of those bends.",
+		"Seen from the sky, the Drag almost makes sense. Almost.",
+		"There's the Drag, all of it. Funny, it felt longer with a pack on.",
+	},
+	["org.journey.w21.below.016"] = {
+		"spies the Drag in the rain from above, its awnings sagging into fat bellies of water, and a merchant below jabbing one with a pole to send it all over the next stall.",
+		"catches the rain pooling in the awnings along the Drag as the beast climbs, and somewhere under them a howl of outrage as one gives way.",
+	},
+	["org.journey.w21.below.017"] = {
+		"The heat coming off the roofs makes the whole city waver below me, as if seen through water. Orgrimmar, gently simmering.",
+		"From up here the day's heat is visible: the air over the valleys wobbles, and the walls ripple like a reflection in a trough.",
+	},
+	["org.journey.w21.below.018"] = {
+		"Half the roofs in the city have rocks sitting on them, holding the hides down. From up here it looks as if Orgrimmar had been pelted with stones and decided to keep them.",
+		"Stones on every hide roof, set out in neat rows to pin the covering down. The city built for gusts long before it built for looks.",
+	},
+	["org.journey.w21.circle.001"] = {
+		"circles wide above the tower while another beast drops off the perch and climbs past, the two fliers trading a hiss wing to wing.",
+		"is held in a slow turn over the valley until a departing beast clears the perch, passing so close that its rider's cloak flicks across the gap.",
+	},
+	["org.journey.w21.circle.002"] = {
+		"One turn. Two. The beast likes to circle as if the city might have moved since it last looked.",
+		"Every flier insists on going round the tower at least once. Checking for changes, I suppose. There are never any.",
+		"Round we go, once, twice, the whole valley wheeling under my boots like a plate on a stick.",
+	},
+	["org.journey.w21.circle.003"] = {
+		"leans into the bank as the beast turns, and the whole city tips up on its edge, roofs and lanes sliding toward one wing.",
+		"grips the saddle as the flier banks hard over the valley, and Orgrimmar stands up sideways for a moment like a picture held up for inspection.",
+	},
+	["org.journey.w21.circle.004"] = {
+		"Each pass around the tower shows me another face of the valley: the bank's doors, the inn, the mouth of the Drag, the wall, and the bank's doors once more.",
+		"The circle is a tour nobody asked for. Inn, wall, the opening of the Drag, the bank. Then the beast decides I've seen enough.",
+	},
+	["org.journey.w21.circle.005"] = {
+		"sends a ripple through a line of tethered wolves as the beast banks: every head comes up at once, and one of them lunges at the empty air where the wings went by.",
+		"turns low enough over the valley that the wolves tied below all lift their noses together and follow the beast round, like needles on a compass.",
+	},
+	["org.journey.w21.circle.006"] = {
+		"Yes, it's still there. You can stop admiring it and land.",
+		"Once round is plenty, beast. I've seen it.",
+	},
+	["org.journey.w21.circle.007"] = {
+		"The handlers say a flier always circles to look over the perch for rivals, the way a wolf turns three times before it lies down. Watching this one, I believe them.",
+		"Ask a handler and you'll hear it: the beasts never land without going round first. They want to see who's already on the perch, and who will have to move.",
+	},
+	["org.journey.w21.circle.008"] = {
+		"sinks in a slow corkscrew, and the walls of the canyon rise around the beast like the sides of a well, with the city at the bottom of it.",
+		"turns and turns on the way down, each loop tighter than the last, until the rock on every side seems to be climbing while the beast hangs still.",
+	},
+	["org.journey.w21.circle.009"] = {
+		"Third turn and I've lost track of which valley is which. The tower stays in the middle, though. I'll keep my eyes on that and let the rest spin.",
+		"After enough circles every valley looks like the one before. Only the tower holds still, so I stare at it the way a drunk stares at a door.",
+	},
+	["org.journey.w21.circle.010"] = {
+		"watches the beast's shadow wheel across the canyon wall below, larger at every turn of the spiral, until it slides off the stone and onto the tower itself.",
+		"keeps an eye on the flier's shadow going round and round the sunlit valley floor, closing in on the tower like a noose drawn tight.",
+	},
+	["org.journey.w21.circle.011"] = {
+		"One more circle and the noise will reach me. I'd ask the beast for another, if I thought it would listen.",
+		"The last turn above the city is the quietest place in Orgrimmar. I try to make it last, and the beast, as usual, does not.",
+	},
+	["org.journey.w21.circle.012"] = {
+		"Go on, wind rider, show off. One more turn, then down.",
+		"Circle all you like, wind rider. They've all seen you before.",
+	},
+	["org.journey.w21.circle.013"] = {
+		"If that's the crowd at the inn, I'm turning round. I'm not, but I'd like to.",
+		"Look at that queue. Fly slower, beast; let them thin out.",
+	},
+	["org.journey.w21.climb.001"] = {
+		"feels the tower's boards give one last creak under the beast's weight, and then there is nothing under either of them but the Valley of Strength.",
+		"leaves the platform on the third wingbeat, and the boards below spring back up with a hollow knock, already empty.",
+	},
+	["org.journey.w21.climb.002"] = {
+		"Something small and round just left my pocket. Somewhere along the Drag a stranger is about to look down and grin.",
+		"A coin slips loose on the climb and drops toward the roofs. I'll call it a toll and pretend I meant it.",
+		"There goes a copper, spinning down into the city. Let it land in some peon's bowl; best use that coin was ever put to.",
+	},
+	["org.journey.w21.climb.003"] = {
+		"looks back down at the tower as it drops away: the handler is already bent over the next saddle, the top of a head and two busy hands, and never once looks up.",
+		"sees the handler shrink to the size of a thumbnail on the platform below, still coiling a rope, still not looking up.",
+	},
+	["org.journey.w21.climb.004"] = {
+		"From one wingbeat above, the perch looks like a row of folded tents, every beast tucked into itself. Only one lifts its head to watch us go.",
+		"The beasts left on the perch are nothing but folded wings from up here, a row of dark bundles. One of them opens an eye, decides we're not food, and shuts it.",
+	},
+	["org.journey.w21.climb.005"] = {
+		"jolts in the saddle as the beast crosses the hot air pouring up from the forges, and for three wingbeats they rise without effort, as if the city itself were pushing.",
+		"is carried up all at once over the smithies, the heat of the forges shoving under the wings like a hand under a load.",
+	},
+	["org.journey.w21.climb.006"] = {
+		"Odd, what carries. The crowd went mute a dozen wingbeats ago, but one wolf yelping in a pen somewhere follows me almost to the rim.",
+		"The valley's racket is gone already, and yet I can still hear a single pot lid clattering in some kitchen below. Sound climbs by its own rules.",
+	},
+	["org.journey.w21.climb.007"] = {
+		"passes low over a roof where strips of meat lie drying in neat rows, guarded by a wolf that is pretending very hard to be asleep.",
+		"skims a flat roof covered in drying meat, laid out in rows like the lines of a ledger, and the wolf stretched beside it opens one eye as the beast goes over.",
+	},
+	["org.journey.w21.climb.008"] = {
+		"Somewhere over the bank my ears go tight, then give with a little click, and the city below gets louder for a moment, as if it had noticed.",
+		"My ears pop halfway up the climb. For one instant the whole valley rushes in, loud and close, and then it's gone once more.",
+	},
+	["org.journey.w21.climb.009"] = {
+		"chases a loose strap end that keeps slapping in the rush of the climb, and finally tucks it under a knee where it can do no more harm.",
+		"spends the first part of the climb fighting a strap that flaps and cracks against the saddle, until it is caught and wound tight round one wrist.",
+	},
+	["org.journey.w21.climb.010"] = {
+		"For a few wingbeats the top of the tower is below me: lashed poles, a tangle of old straps, a waterskin someone left up there long ago. Only the beasts ever see it.",
+		"The roof of the flight tower, seen from over it: knotted poles, frayed leather, a forgotten waterskin. A whole small world that only fliers visit.",
+	},
+	["org.journey.w21.climb.011"] = {
+		"circles the tower twice on the way up, and the Valley of Strength turns slowly underneath like a potter's wheel, the bank, the inn and the gate going round and round.",
+		"rises in a tight spiral above the tower, the valley floor wheeling beneath: gate, bank, inn, gate once more, a little smaller every turn.",
+	},
+	["org.journey.w21.climb.012"] = {
+		"Lift, beast. Past the inn, quickly. Somebody in there thinks I owe a round.",
+		"Up and over the inn, fast. I may have promised someone a drink in there.",
+	},
+	["org.journey.w21.climb.013"] = {
+		"I've stood under the bank's roof more times than I can count, and never knew it had a patch in it shaped like a boot print.",
+		"So the roof over the bank is mended, in one corner, with a hide that doesn't match. All those visits, and I never knew. The sky tells on everybody.",
+	},
+	["org.journey.w21.climb.014"] = {
+		"Clear the tower first, beast. Admire the view after.",
+		"Up past the perch. No, don't greet the others. Up.",
+		"Rail, roof, sky. In that order, please.",
+	},
+	["org.journey.w21.climb.015"] = {
+		"Bank left a little, beast. I want a look at the Valley of Honor before we go.",
+		"One look at the Valley of Spirits, beast, then wherever you like.",
+		"Lean over the Hold, beast. Just once. I want to say I've seen its roof.",
+	},
+	["org.journey.w21.climb.016"] = {
+		"Under the saddle the wind rider's shoulders bunch and release with every stroke, hard work, honest work. The climb out of Orgrimmar is the beast's labor; all I do is hold on and look.",
+		"I can feel the wind rider earning every span of height, muscle over muscle under my knees. The city drops away on the strength of that back.",
+	},
+	["org.journey.w21.climb.017"] = {
+		"I always count the first wingbeats. One, a lurch. Two, a lift. By ten the tower is a toy and I've lost the number.",
+		"Count the strokes, I tell myself, every time. I never get past a dozen before the city steals my eyes and the counting goes with it.",
+	},
+	["org.journey.w21.depart.001"] = {
+		"hears the handler shout something about the left stirrup just as the tower drops away, and spends the next few wingbeats inspecting the left stirrup.",
+		"is already over the edge when a warning about the left stirrup comes up from the tower, too late and too faint to help, so the stirrup gets a long, suspicious look instead.",
+	},
+	["org.journey.w21.depart.002"] = {
+		"The handler's last words to me were \"Don't feed it.\" Not a safe flight, not good luck. I've been wondering what it eats ever since.",
+		"\"Don't feed it,\" the handler said, pulling the strap tight. No other advice. I'm keeping both hands well away from the beast's mouth.",
+		"Of all the things a handler could say at the edge of a tower, mine chose \"Don't feed it.\" I have questions, and the beast has teeth.",
+	},
+	["org.journey.w21.depart.003"] = {
+		"Whatever that was, handler, I'll take it as luck!",
+		"Louder! Or don't. Too late now.",
+		"Was that advice or a curse? Thanks either way!",
+	},
+	["org.journey.w21.depart.004"] = {
+		"follows the canyon out to its mouth, where the red walls stop all at once and the land beyond lies open, like a doorway with the door lifted off its hinges.",
+		"clears the mouth of the canyon at the height of its walls, and the shelter of the city ends in a single stroke: rock on both sides, then nothing on either.",
+	},
+	["org.journey.w21.depart.005"] = {
+		"The last of Orgrimmar to pass under me is a lookout on the wall above the gate, facing out over Durotar. For a moment the two of us are looking the same way.",
+		"A sentry on the outer wall slides by below, staring out at the land ahead. That one has been watching where I'm going the whole time.",
+	},
+	["org.journey.w21.depart.006"] = {
+		"pats the pack straps one by one as the canyon's mouth slides past below, the way people pat a pocket after the door has already shut.",
+		"runs a hand over every buckle of the pack while the walls fall behind, checking for something that, if it were missing, would now be a very long way down.",
+		"counts the buckles on the pack by touch once the walls are gone, then counts them again, since there is nothing whatever to be done about a wrong answer.",
+	},
+	["org.journey.w21.depart.007"] = {
+		"Walking in, the mouth of the canyon takes an age to cross. The beast clears it in three strokes, and the walls I used to crane my neck at slip by under my boots.",
+		"On foot those walls loom over you for a long stretch of road. Flying out, I pass the last of them level with its top, near enough to count the loose stones up there.",
+	},
+	["org.journey.w21.depart.008"] = {
+		"Last wall, beast. After this it's all open ground.",
+		"There goes the wall. From here on it's your country.",
+	},
+	["org.journey.w21.depart.009"] = {
+		"notices a wisp of straw from the perch still caught in the harness, and watches it pull free past the canyon's mouth and spin down toward the road.",
+		"sees a stray bit of straw from the tower work loose from a buckle and go tumbling down over the open land, the last thing carried out of the city only to be dropped.",
+	},
+	["org.journey.w21.depart.010"] = {
+		"The handler called the beast by name as we dropped, a short rough name I couldn't catch. The beast knew it. I'm being carried off by someone I can't even address.",
+		"At the edge a name was spoken, and the beast's ears turned to it. Its name, not mine. I'm riding a stranger who has a friend on that tower.",
+	},
+	["org.journey.w21.depart.011"] = {
+		"Keep my bench at the inn for me. Or sell it. You'll sell it.",
+		"If anyone asks, I left by the top door.",
+		"Out the high way. No line, no questions.",
+	},
+	["org.journey.w21.depart.012"] = {
+		"raises a hand to the grunts on the wall above the gate as the wind rider sweeps out over them, and one, small and far below, lifts a fist in return.",
+		"salutes the sentries over the gate in passing, and the wind rider, as if it understood, dips one wing toward them before turning out over Durotar.",
+	},
+	["org.journey.w21.depart.013"] = {
+		"Out past the walls, wind rider. The city can spare us both.",
+		"Clear of the canyon. Good work, wind rider. Open sky from here.",
+	},
+	["org.journey.w21.descent.001"] = {
+		"feels the wingbeats stop and the beast settle into a long glide, the only sound now the hiss of air across stretched wing leather.",
+		"notices the moment the flier quits beating its wings: everything goes smooth and quiet, and the city starts to come up slowly from below.",
+	},
+	["org.journey.w21.descent.002"] = {
+		"jolts upward as the beast crosses the hot air rising off the forges of the Valley of Honor, and drops back with a lurch once they are past it.",
+		"gets bounced in the saddle over the Valley of Honor, where the heat climbing off the smithies kicks the flier up like a leaf over a bonfire.",
+	},
+	["org.journey.w21.descent.003"] = {
+		"Straight through a column of smoke on the way down. For three wingbeats there's nothing but gray and the taste of charcoal, then the city is back, closer.",
+		"The beast doesn't bother going around the smoke. We drop into it blind, come out the other side with stinging eyes, and the tower is twice the size.",
+	},
+	["org.journey.w21.descent.004"] = {
+		"stuffs loose ends away as the beast tips its nose down: a strap tucked in, a hood pulled tight, a pouch shoved deeper into the pack.",
+		"makes the small preparations of the drop without thinking, cinching the hood and pressing a hand flat over the purse as the flier noses over.",
+	},
+	["org.journey.w21.descent.005"] = {
+		"Every flier comes down as if it had suddenly forgotten it has wings, and remembers again a hand's breadth from the tower.",
+		"Half a wing folded, the beast simply falls, trusting the other half to sort it out. It always does. My stomach is less sure.",
+	},
+	["org.journey.w21.descent.006"] = {
+		"drops past the level of the wall walk, a few paces from the rungs of a ladder lashed inside the rampart and a waterskin hung on a peg.",
+		"sinks below the top of the wall, and for a moment the small life of the ramparts goes by at eye level: a ladder, a bucket on a rope, a grunt eating with his helmet off.",
+	},
+	["org.journey.w21.descent.007"] = {
+		"On the way down my ears close up, then open with a pop, and the city's noise arrives all at once, as if someone had pulled a blanket off my head.",
+		"Halfway down, my ears ring and then clear, and suddenly there's sound once more: the city, which apparently never stopped.",
+	},
+	["org.journey.w21.descent.008"] = {
+		"clamps both knees to the saddle as the beast's head goes down and the valley fills the view ahead, and leans back until the straps creak.",
+		"braces against the stirrups as the flier pitches forward into the drop, the front of the saddle pressing hard into the belly.",
+	},
+	["org.journey.w21.descent.009"] = {
+		"Below the rim the far country disappears piece by piece, the last ridge first, then the road, until the whole world has been folded away and there's only the city.",
+		"As we drop, the walls take the horizon from me a slice at a time. By the last turn there's no country left, only Orgrimmar.",
+	},
+	["org.journey.w21.descent.010"] = {
+		"Slower. Slower! I'd like to arrive, not be delivered.",
+		"Easy! I want to land, beast, not be posted.",
+	},
+	["org.journey.w21.descent.011"] = {
+		"drops below the rim of the canyon into air that is suddenly still and heavy, and the beast has to work its wings once more to hold itself up.",
+		"sinks out of the open sky into the canyon, where the air lies thick and close and the wings must beat hard against nothing.",
+	},
+	["org.journey.w21.descent.012"] = {
+		"The valley floor comes up the way a creditor does: slowly at first, and then all at once.",
+		"For a long while the ground takes no interest in me. Then, in the last few turns, it can't wait to meet me.",
+	},
+	["org.journey.w21.descent.013"] = {
+		"can make out single people at last as the flier drops: a peon bent under a load of hides, a tauren ducking under an awning, a troll and a goblin arguing over a crate.",
+		"comes low enough to tell one figure from another: someone hauling water, someone asleep against a post, someone running and shouting a name.",
+	},
+	["org.journey.w21.descent.014"] = {
+		"The ones who raised these walls never saw them like this, all of a piece, from above. Only fliers and buzzards ever get to see the whole of that work at once.",
+		"Whoever laid out these valleys worked with their feet in the dust. I get to see the whole of it in one look; they never did.",
+	},
+	["org.journey.w21.descent.015"] = {
+		"loses the city entirely in the blowing sand on the way down, then finds it again in pieces: a wall, a plume of smoke, the dark post of the tower.",
+		"comes down into the sandstorm with a scarf over the face, the grains ticking against the beast's wing leather like hail on a tent.",
+	},
+	["org.journey.w21.descent.016"] = {
+		"Rain on the way down. The beast's wings get heavier with every turn, and it shakes them mid-air, which I'll be discussing with it later.",
+		"Coming down through rain, the beast flies like it's carrying wet laundry. Every few strokes it shudders, and a sheet of water hits me in the face.",
+	},
+	["org.journey.w21.descent.017"] = {
+		"rides the last long stoop into the canyon, wings half folded, the walls of Orgrimmar rushing up on both sides like the jaws of something old and patient.",
+		"goes down into the city in one steep, roaring dive, and the red walls close in on either hand until there is nothing to see but the tower ahead.",
+	},
+	["org.journey.w21.descent.018"] = {
+		"Down we go. Hold together, saddle.",
+		"Steady. Steady. Nobody needs to hear me scream.",
+	},
+	["org.journey.w21.descent.019"] = {
+		"My hands have been locked on the reins for so long they don't want to open. I work the fingers loose one by one in the glide, before I need them.",
+		"The last glide is for my fingers: I pry them off the strap one at a time and shake some feeling back into them.",
+	},
+	["org.journey.w21.descent.020"] = {
+		"Ears popped. City's loud. Yes, nearly down.",
+		"There go my ears. Hello, noise.",
+	},
+	["org.journey.w21.fade.001"] = {
+		"The last sound Orgrimmar sends after me is a laugh, one big rolling laugh from somewhere near the gate. I'll never know the joke. It seems a fair parting gift.",
+		"Of all the city's racket, what follows me farthest is somebody laughing. Not the hammers, not the shouting. One laugh, and then only the wings.",
+		"Somebody down by the gate is laughing fit to burst, and the sound climbs after the beast longer than any other. It's the last of the city I get to keep.",
+	},
+	["org.journey.w21.fade.002"] = {
+		"notices {g:his|her} ears still full of the city long after the canyon has dropped behind, a hum with nothing left to make it.",
+		"rubs one ear as the open land unrolls below; the clamor of the streets is gone, but it has left a faint ring behind, like a struck pot.",
+	},
+	["org.journey.w21.fade.003"] = {
+		"I muttered something to the beast just now and it came out like a bellow. After the city, where everything is shouted, my voice hasn't come down to size.",
+		"Out here a word said at an ordinary pitch sounds like a shout. The city tuned me to its own volume, and I haven't been turned down yet.",
+	},
+	["org.journey.w21.fade.004"] = {
+		"looks back for the tower and can find it only by the beasts on its perch, a row of hunched dark flecks that slips behind the rim and is gone.",
+		"turns in the saddle for a last look at the tower; the perch is a short dark line against the sky, and then the canyon's lip folds over it.",
+	},
+	["org.journey.w21.fade.005"] = {
+		"The city is still in my clothes: smoke, wolf, somebody's fried onions. Every stretch of air takes a little of it. By the time we come down I'll smell of nothing but flier.",
+		"Orgrimmar rides along in the folds of my cloak for a while, a smell of smoke and grease. The high air is picking it out thread by thread.",
+		"Sniff a sleeve and there it is, the whole city in one small pinch: cook smoke, hot iron, a wolf that brushed past at the tower. It won't last the flight.",
+	},
+	["org.journey.w21.fade.006"] = {
+		"lets {g:his|her} shoulders come down a finger's width as the canyon falls behind, a small loosening the crowded streets never quite allowed.",
+		"sits a little looser in the saddle once the walls are gone, the elbows coming in, the jaw letting go of a clench nobody had noticed.",
+	},
+	["org.journey.w21.fade.007"] = {
+		"Back there a merchant on the Drag still expects me to come back and haggle over that price. Let the expectation keep him company.",
+		"I left a haggle half finished at a stall along the Drag. The merchant thinks I'm thinking it over. I am, from a very great height.",
+	},
+	["org.journey.w21.fade.008"] = {
+		"A short way past the mouth I look back, and the city has already sunk out of sight behind its own rim. Just a long red ridge, with a smudge over it where the cook fires are.",
+		"Look back from out here and there is no city, only a fold of red hills. Orgrimmar has tucked itself away, the way it was built to.",
+	},
+	["org.journey.w21.fade.009"] = {
+		"Listen. Nobody selling anything.",
+		"Hear that? No one shouting at anyone.",
+		"Quiet at last. I'd almost forgotten what it sounds like.",
+	},
+	["org.journey.w21.fade.010"] = {
+		"begins to hear the flight's own small sounds once the city has fallen away: a buckle ticking against the harness, the saddle's creak, a low rumble somewhere inside the beast.",
+		"finds, with the city gone, that the flight has its own little noises: leather creaking, a strap tapping, and from deep in the beast's chest a grumble like a distant cart.",
+	},
+	["org.journey.w21.fade.011"] = {
+		"Behind me the line at the bank shuffled forward by one when I stepped out of it. That's the whole dent I made in Orgrimmar this time, and it's already filled.",
+		"Somebody already has my seat at the inn, I'd wager, and my place in the line, and my corner of the shade. Orgrimmar fills its holes fast.",
+	},
+	["org.journey.w21.fade.012"] = {
+		"counts the torches of the city behind as they drop out of sight one by one in the night, until a single bright point over the walls is all that holds on, and then that goes too.",
+		"watches the fires of Orgrimmar sink behind the rim in the night, the lowest first, until the dark has taken all but a faint glow on the underside of the smoke.",
+	},
+	["org.journey.w21.fade.013"] = {
+		"Behind me the Warchief keeps the city, and out ahead the Horde needs hands. That's the bargain, and the beast is carrying me to my end of it.",
+		"Thrall stays, the walls stay, the grunts at the gate stay. Somebody has to go out and do the rest, and this time it's me.",
+	},
+	["org.journey.w21.fade.014"] = {
+		"loses Orgrimmar in a few wingbeats as the blowing sand closes over the canyon behind, a red curtain drawn without a sound.",
+		"looks back into the swirling sand and finds no city at all, only a dull red murk where the walls stood a moment ago.",
+	},
+	["org.journey.w21.fade.015"] = {
+		"Not even a goodbye, Orgrimmar? Sulking, then.",
+		"Gone quiet already? You'll miss me, city. You'll pretend not to.",
+	},
+	["org.journey.w21.first.001"] = {
+		"half turns at a name shouted from the crowd below, sharp and impatient; it belongs to somebody else.",
+		"catches a name yelled over and over across the valley by someone who has plainly lost a friend in the crowd, and a temper with it.",
+	},
+	["org.journey.w21.first.002"] = {
+		"Halfway down the ramp the pepper hits me: somebody's brazier, somebody's skewers, far more pepper than anyone needs. My eyes sting before my stomach has even woken up.",
+		"The first smell on the way down is pepper, a whole cloud of it, rising off a skewer stand somewhere below. I'm squinting before I'm hungry.",
+	},
+	["org.journey.w21.first.003"] = {
+		"looks down from the ramp on the crowd's crowns before its faces: tauren horns, troll topknots, the scarred scalps of old orcs, a goblin's hat bobbing along at belt height.",
+		"takes in the valley first as a moving field of heads from halfway down the ramp: horns, crests of hair, hoods, and here and there a shaved scalp shining.",
+	},
+	["org.journey.w21.first.004"] = {
+		"What I hear clearly first is a peon under the tower humming four notes over and over while he stacks crates. The rest of the city is only the setting for it.",
+		"Under everything else, from somewhere below the tower, a peon is humming the same four notes as he stacks crates. That's the sound I'll keep from this landing.",
+	},
+	["org.journey.w21.first.005"] = {
+		"meets the sharp smell of lamp oil at the bottom of the ramp, where someone is refilling the tower's lanterns from a dented can.",
+		"steps around a peon refilling the ramp's lanterns from a dented can, and the reek of lamp oil follows for a dozen paces.",
+	},
+	["org.journey.w21.first.006"] = {
+		"Ah. There's that smell. Never thought I'd miss it.",
+		"Smells like Orgrimmar. Somebody's burning something, and somebody else is complaining.",
+	},
+	["org.journey.w21.first.007"] = {
+		"At the foot of the tower a small orc runs in circles with arms spread wide, playing at being a flier. The landing is louder than mine, and better.",
+		"A child is flying round the bottom of the ramp, arms out, making wing noises. Lands on one foot, bows to nobody. Better form than mine.",
+	},
+	["org.journey.w21.first.008"] = {
+		"hears, before anything else, a saw going through timber somewhere below the tower, back and forth, steady as someone rowing.",
+		"picks out one sound from under the platform as the ears clear: a saw biting through a beam, slow strokes, with a pause each time to blow off the sawdust.",
+	},
+	["org.journey.w21.first.009"] = {
+		"Up there everything was red ground and empty air. The first true color down here is an awning, a faded blue among all the rust, and I stare at it like a flower.",
+		"From the air the city was all one red. Close up the colors come back one by one: an ochre awning, a green-dyed hide, a blue sash on a passing troll.",
+	},
+	["org.journey.w21.first.010"] = {
+		"catches the first words of the city at the bottom of the ramp: two traders haggling over a sack in two languages and a great deal of pointing.",
+		"arrives at the foot of the tower in the middle of somebody's haggle, a price going up and down between two traders who share no tongue but the numbers.",
+	},
+	["org.journey.w21.first.011"] = {
+		"The first voice I can make out is somebody swearing in Orcish at a stuck cart wheel. Of all the welcomes the Horde could give me, it's the one I'd have picked.",
+		"Orcish curses, troll laughter, a tauren asking politely to get by. The Horde's voices, all at once. I'm down.",
+	},
+	["org.journey.w21.first.012"] = {
+		"comes down the ramp into the smell of rain on hot stone, a sharp, mineral smell the city knows only rarely, and the valley has gone quiet under it.",
+		"reaches the bottom of the tower as the rain patters on stretched awnings, and the crowd of the valley has thinned to a few hurrying hoods.",
+	},
+	["org.journey.w21.first.013"] = {
+		"For the first few steps my clothes smell of nothing at all, scrubbed clean by the sky. Ten paces into the valley and the city has corrected that.",
+		"I came down smelling of clean air. That lasted until the first cook fire, and frankly I don't miss it.",
+	},
+	["org.journey.w21.first.014"] = {
+		"Smell that? Forge smoke and cook fires. The Horde's at work.",
+		"Ah, the Horde at full voice. Good to be down in it.",
+	},
+	["org.journey.w21.first.015"] = {
+		"The rope of the rail is coarse and hairy under my palm. After the smooth leather of the reins, it feels like holding on to the city itself.",
+		"First thing I touch in Orgrimmar is the rail's rope, rough as a wolf's back. My palm, used to smooth reins, flinches and then holds on.",
+	},
+	["org.journey.w21.first.016"] = {
+		"The first person to speak to me at the foot of the tower asks me the way to the Valley of Honor. I came out of the sky a moment ago, but fine, I'll point.",
+		"Ten steps from the beast and a tauren asks me for directions. Apparently coming down from the sky makes you look like you know things.",
+	},
+	["org.journey.w21.foot.001"] = {
+		"Stomach says the inn. Purse says the bank, before the Drag can get at it. The feet, who do the actual work, head for the bank.",
+		"Bank first, says the sensible part of me. Inn first, says every other part. We compromise: I walk slowly toward the bank.",
+	},
+	["org.journey.w21.foot.002"] = {
+		"lets the current of the crowd carry {g:him|her} the first stretch from the tower, then steps out of it, as one steps out of a stream, toward the inn.",
+		"goes with the press of bodies for a dozen paces past the tower's foot, then peels off sideways toward the inn without breaking stride.",
+	},
+	["org.journey.w21.foot.003"] = {
+		"Everyone on this ramp is one of two kinds: coming down stiff, or going up nervous. We pass each other with the same small nod.",
+		"Going down, I meet the ones going up: tight-lipped, gripping their packs, eyes on the perch. I must have looked like that. They'll look like me soon.",
+	},
+	["org.journey.w21.foot.004"] = {
+		"Somebody in the Drag is about to sell me a new strap. They don't know it yet.",
+		"First stop, the Drag. This boot strap won't survive another flight.",
+	},
+	["org.journey.w21.foot.005"] = {
+		"detours past the mailbox on the way down into the valley and checks it out of habit, the lid squeaking open on nothing much.",
+		"stops at the mailbox, lifts the lid, peers in, and lets it drop with the face of someone who expected exactly that.",
+	},
+	["org.journey.w21.foot.006"] = {
+		"I meant to walk straight to the inn. The auction house is in the way, and it's very good at being in the way.",
+		"Between the foot of the tower and a bed stands the auction house, and I have never once got past it without going in.",
+	},
+	["org.journey.w21.foot.007"] = {
+		"is overtaken halfway down the ramp by a peon carrying a saddle on his head at a trot, who calls a polite warning and is gone round the bend.",
+		"flattens against the rail to let a peon past, a saddle balanced on his head like a roof, taking the ramp at twice anyone else's pace.",
+	},
+	["org.journey.w21.foot.008"] = {
+		"From the bottom of the ramp I can see nothing over the heads but the roof of the inn. I steer by it, like a boat by a lantern on the shore.",
+		"Too many shoulders to see past. I pick out the inn's roof above the crowd and keep it ahead of me, like a far ridge on a march.",
+	},
+	["org.journey.w21.foot.009"] = {
+		"hears the Drag before seeing it from the tower's foot, a lower, thicker sound than the valley's, like bees inside a wall.",
+		"picks out the sound of the Drag beneath the valley's din: a thicker hum, a hive in a wall, every trade in it working at once.",
+	},
+	["org.journey.w21.foot.010"] = {
+		"Inn. Then bank. Then I'll consider being useful.",
+		"Out of my way, all of you. There's a stool at the inn with my shape on it.",
+	},
+	["org.journey.w21.foot.011"] = {
+		"hurries down the ramp under the storm, thunder bouncing between the canyon walls, and makes straight for the nearest roof.",
+		"takes the way down two steps at a stride while the storm cracks over the canyon, and the valley below empties as if someone had pulled a plug.",
+	},
+	["org.journey.w21.foot.012"] = {
+		"buys a cup of something hot from a stall at the foot of the ramp and drinks it standing, before bank, before inn, before anything.",
+		"stops at the first stall past the tower for a strip of roast off the coals, and eats it leaning on a post, in no hurry to be anywhere.",
+	},
+	["org.journey.w21.foot.013"] = {
+		"Down among the Horde, and the city hands me errands before I've reached the valley floor: a letter, a strap to mend, a trainer to see.",
+		"The Horde's city doesn't let anyone stand idle for long. By the foot of the tower I already have a list: mail, mending, a word with a trainer.",
+	},
+	["org.journey.w21.foot.014"] = {
+		"comes down the ramp in the night by feel more than by sight, one hand on the rail, the lamps of the valley swimming up below.",
+		"takes the way down slowly through the night, counting the lamps along the ramp, each one a small island of orange in the dark.",
+	},
+	["org.journey.w21.foot.015"] = {
+		"vacates the bottom step of the ramp, and a peon who has plainly been eyeing it sits down there at once with a groan of thanks.",
+		"steps off the foot of the ramp, and a waiting peon drops onto the bottom step behind {g:him|her} at once, as if the place had been booked.",
+	},
+	["org.journey.w21.foot.016"] = {
+		"Whoever built this ramp never came down it on wobbly legs.",
+		"Could this ramp be any longer? Don't answer that.",
+	},
+	["org.journey.w21.foot.017"] = {
+		"Which way's the bank? I always come off facing the wrong wall.",
+		"Bank's that way, isn't it? Up there everything looked closer.",
+	},
+	["org.journey.w21.foot.018"] = {
+		"Let me through, friends. Stiff legs coming down.",
+		"Mind your toes. These knees don't steer well yet.",
+	},
+	["org.journey.w21.ground.001"] = {
+		"stands at the top of the way down and works {g:his|her} jaw from side to side until the dull pressure in both ears gives with a small pop.",
+		"presses a palm flat over one ear, then the other, until the muffled ringing of the flight gives way to the city.",
+	},
+	["org.journey.w21.ground.002"] = {
+		"Something in my hip clicks on every other step down. It did not do that before I sat on a flying animal.",
+		"My left hip has taken up clicking. One step, click. One step, quiet. It's keeping time for the whole walk down.",
+	},
+	["org.journey.w21.ground.003"] = {
+		"My eyes are still set for distance. Everything down here is too near and too big: a wall, a shoulder, a wolf's flank at arm's length.",
+		"Up there the nearest thing was miles off. Now a stranger's elbow fills half my sight, and my eyes take a moment to agree to it.",
+	},
+	["org.journey.w21.ground.004"] = {
+		"stamps each boot twice on the boards, hard, as if knocking mud off them, and feeling comes back into the soles in a slow prickle.",
+		"kicks one heel against the rail, then the other, until the numbness the saddle left in both feet breaks up into pins and needles.",
+	},
+	["org.journey.w21.ground.005"] = {
+		"On the beast my pack rode along like a second passenger. Now it's mine again, every strap of it, and it seems to have eaten something in the air.",
+		"Funny how the pack weighed nothing in the saddle. On my own shoulders, at the top of the ramp, it has remembered every single thing inside it.",
+	},
+	["org.journey.w21.ground.006"] = {
+		"reaches the bottom of the tower and feels the difference at once: the boards above gave a little under each step, and the rock of the valley gives nothing at all.",
+		"steps from the last plank onto bare rock, and the ground's flat refusal to sway or give comes up through both heels like an answer.",
+	},
+	["org.journey.w21.ground.007"] = {
+		"Give me a moment. My knees are still flying.",
+		"Nobody rush me. The legs are still on their way down.",
+	},
+	["org.journey.w21.ground.008"] = {
+		"My fingers keep closing on reins that aren't there. Halfway down the ramp I catch them at it and make them open.",
+		"The hands haven't heard the news. They're still curled for a grip, and I have to straighten them one finger after another.",
+	},
+	["org.journey.w21.ground.009"] = {
+		"rubs the backs of both thighs with the heels of {g:his|her} hands and walks on stiff legs, like someone who sat too long on a cold wall.",
+		"kneads the stiffness out of one thigh, then the other, and takes the first few steps with the careful gait of someone carrying a full bowl.",
+	},
+	["org.journey.w21.ground.010"] = {
+		"Every step down feels like the one in the dark where the stair isn't there. My body expects a lurch. The ground just sits.",
+		"My legs keep bracing for a lift that doesn't come. The ground is so still it feels like a trick.",
+	},
+	["org.journey.w21.ground.011"] = {
+		"At the foot of the tower the rock is scored with two dark ruts where carts bring up the beasts' meat. I follow them, because they know the way out.",
+		"Two cart ruts run from the tower's foot into the valley, worn dark by the meat wagons. My feet fall into them without being asked.",
+	},
+	["org.journey.w21.ground.012"] = {
+		"Ground. Good. Stay exactly like that.",
+		"Stone. The kind that stays where you left it.",
+	},
+	["org.journey.w21.ground.013"] = {
+		"Down out of the cool of the heights, into heat that sits on the shoulders like a sack of grain. The valley floor shimmers all the way to the bank's doors.",
+		"The heat of the valley climbs the ramp to meet me halfway. By the bottom, the cool of the air up there is only a rumor.",
+	},
+	["org.journey.w21.ground.014"] = {
+		"turns {g:his|her} face from the blowing sand at the top of the ramp and goes down half blind, one sleeve held across the mouth.",
+		"pulls a fold of cloth over nose and mouth before starting down, the blowing sand hissing against the rail all the way to the bottom.",
+	},
+	["org.journey.w21.ground.015"] = {
+		"Ears still ringing. If you said something, say it louder.",
+		"Sorry, what? There's still sky in my ears.",
+	},
+	["org.journey.w21.ground.016"] = {
+		"That's the last time I sit on anything for a while.",
+		"I'll be standing for the next meal, thank you.",
+	},
+	["org.journey.w21.ground.017"] = {
+		"No two planks on this ramp sit at the same height. Laid by many hands, an old peon swears, and none of them speaking to each other. My knees can confirm it.",
+		"Every plank of the way down sits a little proud or a little low, as if each was nailed by a different peon with a different idea of flat. Stiff knees notice all of them.",
+	},
+	["org.journey.w21.handler.001"] = {
+		"notices the handler's forearms, wrapped to the elbow in strips of old leather chewed ragged at the edges. Nobody asks.",
+		"glances at the leather bands bound round the handler's forearms, gnawed thin along one side, and the question stays unspoken.",
+	},
+	["org.journey.w21.handler.002"] = {
+		"The handler talks to the beast in a long, low, affectionate grumble. To me: one word, and the word was 'off'.",
+		"The beast gets a whole speech, murmured into its ear. I get a jerk of the chin toward the way down.",
+		"A pet name for the beast, a grunt for me. That's the handler's whole ledger, and I'm not offended. The beast earned it.",
+	},
+	["org.journey.w21.handler.003"] = {
+		"steps clear as the handler starts rubbing the beast down with twists of straw, working the stiffness out of the wing joints with long, firm strokes.",
+		"gives the handler room to work; a fistful of straw goes over the beast's shoulders and along each folded wing in slow, practiced passes.",
+	},
+	["org.journey.w21.handler.004"] = {
+		"Your beast knew the way better than I did. Thank it for me.",
+		"My thanks, handler. The beast did the work; I did the holding on.",
+	},
+	["org.journey.w21.handler.005"] = {
+		"The handler asks whether the air was rough, and has already walked off with the beast by the time I've settled on an answer.",
+		"One question from the handler, how was the air, and no patience at all for the answer. Fair. The beast had already told them.",
+	},
+	["org.journey.w21.handler.006"] = {
+		"watches the handler comb out two knots in the beast's mane with stern fingers, exactly where a nervous rider's fists would have been.",
+		"sees the handler find two tangled clumps in the mane, right where a passenger would hold on, and tease them out with a long-suffering look.",
+	},
+	["org.journey.w21.handler.007"] = {
+		"To the handler I'm one more landing in a day full of them. There's a comfort in being that ordinary to somebody.",
+		"My face won't stay with the handler past the next landing. To a tower, arrivals are like the dust: they come in, and they're swept off.",
+	},
+	["org.journey.w21.handler.008"] = {
+		"sees the handler slip the beast something dark from a belt pouch, palm flat, and the great head bow to take it as gently as a cat.",
+		"looks on as the handler pays the beast its due, a strip of dried meat from a pouch, offered on a flat palm and taken with surprising care.",
+	},
+	["org.journey.w21.handler.009"] = {
+		"Yes, I know. Lean into the turns. I'll remember next time.",
+		"Sit straighter, lean into the turns. Yes, I heard you the first time.",
+	},
+	["org.journey.w21.handler.010"] = {
+		"An older handler is showing a young one how to meet a landing, and I'm the example. 'See how they come off stiff? Give them the rail.' I take the rail.",
+		"Apparently I'm the lesson: a young handler watches the old one take my reins, and copies every move, down to the scowl.",
+	},
+	["org.journey.w21.handler.011"] = {
+		"hears the handler give a single word in Orcish, and the wind rider folds both wings at once, like a tent struck in a hurry.",
+		"watches the wind rider fold its wings at one low Orcish word from the handler, as neat as a grunt coming to attention.",
+	},
+	["org.journey.w21.handler.012"] = {
+		"Nobody at the tower asks me for coin on the way out. The flight was settled before it began. In this city, that alone feels like a gift.",
+		"The one place in Orgrimmar where nobody holds out a hand for coin is this platform. Everything here was paid before I left the ground.",
+	},
+	["org.journey.w21.handler.013"] = {
+		"stands aside while the handler heaves the saddle onto a peg beside a dozen others, each one worn into a slightly different shape by a different back.",
+		"follows the saddle with a glance as it is hauled off and hung on its peg with the rest, a row of them along the rail, every one shaped by the beast it belongs to.",
+	},
+	["org.journey.w21.handler.014"] = {
+		"Same beast next time, if it'll have me.",
+		"Remember that one for me. I'd fly it any day.",
+	},
+	["org.journey.w21.handler.015"] = {
+		"Does it bite? No, don't tell me. I'm leaving anyway.",
+		"It's looking at me. Is it supposed to look at me like that?",
+	},
+	["org.journey.w21.handler.016"] = {
+		"The handlers say a beast that lands with its wings half open is still thinking about the sky. Mine snapped them shut the moment it touched down. I'm trying not to take it personally.",
+		"A beast that keeps its wings loose after landing wants to go back up, the handlers say. Mine folded them tight before I'd found a stirrup. Make of that what you will.",
+	},
+	["org.journey.w21.horizon.001"] = {
+		"watches the road south shrink to a pale thread laid over the red land, pulled straight in one place and kinked in another, as if someone had dropped it from a height and left it where it fell.",
+		"follows the road south with {g:his|her} eyes until it thins to a single light stitch through the red country, then loses it among the hills.",
+		"sees the road south go from a road to a ribbon to a scratch, the travelers on it vanishing first, then the ruts, then the road itself.",
+	},
+	["org.journey.w21.horizon.002"] = {
+		"looks down on a zeppelin moored at its tower off to one side, and sees what nobody on the ground does: the top of the great bag is a quilt of patches, no two the same color.",
+		"passes high enough above the zeppelin towers to see the airship from above, its swollen hide stitched with mismatched patches, like a goblin's coat after a good year.",
+	},
+	["org.journey.w21.horizon.003"] = {
+		"Down at the zeppelin tower someone is leaning over the airship's rail, and not to admire the view. Whatever they ate at the inn, Durotar is getting it back.",
+		"A passenger on the moored zeppelin hangs over the side, very still, in the particular stillness of someone about to be ill. The beast and I pass over without comment. Some courtesies hold even up here.",
+	},
+	["org.journey.w21.horizon.004"] = {
+		"sees a crate swinging up the side of a zeppelin tower on a rope, a goblin riding on top of it and shouting directions at the haulers below.",
+		"picks out, beside the zeppelin towers, a goblin perched on a rising crate, waving both arms at the haulers on the rope as if conducting a choir that hates him.",
+	},
+	["org.journey.w21.horizon.005"] = {
+		"Past the walls the land changes color with distance: rust right below, then brick, then a brown that goes almost purple where the hills run out. Nobody in the city ever sees it all at once.",
+		"From up here Durotar has more reds than I knew: rust under the wings, brick farther on, and at the very edge a dark plum color the hills fade into.",
+	},
+	["org.journey.w21.horizon.006"] = {
+		"passes over a lone stack of red rock standing in the open like a post nobody remembers setting, its top flat and bare and spotted white by birds.",
+		"flies by the tops of the rock stacks that stand alone on the plain outside the city, each capped with a flat crown of bare stone that only fliers ever see.",
+	},
+	["org.journey.w21.horizon.007"] = {
+		"On the road below I can tell the travelers apart by speed alone: kodos crawl, wolves run in spurts, and the peons on foot keep the same patient pace whatever passes them.",
+		"From this height everything on the road is a dot, but the dots have manners. The kodo ones barely move, the wolf ones dart and stop, and the walking ones never change.",
+		"Even as specks the road's traffic gives itself away. The slow smear is a caravan, the quick flicker a wolf, and the steady bead that never hurries is someone walking.",
+	},
+	["org.journey.w21.horizon.008"] = {
+		"Off to one side, the pale knob of Skull Rock. The grunts say the Burning Blade still crawl in the caves under it, near enough to see the city's smoke. From up here it looks like nothing at all.",
+		"There's Skull Rock, gray and lumpy in all that red. Cultists of the Burning Blade hide beneath it, if the guards are right, a short walk from the city's walls. Strange, to fly over it so easily.",
+	},
+	["org.journey.w21.horizon.009"] = {
+		"sees two mottled boars rooting at the edge of the road, and watches them bolt in opposite directions as the beast passes, then stop, each one plainly sure the other was the coward.",
+		"startles a pair of boars out of the scrub beside the road; they scatter, pull up short a stone's throw apart and stare about as if the sky had shouted at them.",
+	},
+	["org.journey.w21.horizon.010"] = {
+		"All that open ground, and not one wall across it. Lovely.",
+		"Look at that. Red to the edge of the world, and no roof on any of it.",
+		"Miles of nothing, and every one of them mine to cross.",
+	},
+	["org.journey.w21.horizon.011"] = {
+		"Ahead the ridges lie one behind another, each a little paler than the last, like a herd of kodos asleep in a line and fading toward the back.",
+		"Ridge after ridge out ahead, each one dimmer than the one before it. The farthest are hardly more than a guess.",
+	},
+	["org.journey.w21.horizon.012"] = {
+		"passes over a caravan plodding out along the road, kodos roped nose to tail, the driver on the last one slumped asleep with the reins wound round one wrist.",
+		"overflies a slow string of kodos heading out on the road, nose to tail, and on the hindmost a driver dozing in the saddle, trusting the animal in front to know the way.",
+	},
+	["org.journey.w21.horizon.013"] = {
+		"There's a signpost down where the road splits. From this height it's a splinter, and whatever it says, it says to people on foot. The beast doesn't read.",
+		"A fork below, with its post and its arms pointing every which way. Up here nobody consults it. The beast keeps its own counsel about direction.",
+		"The road divides below, and some patient soul has nailed up a post to say which way is which. Good advice, wasted on anything with wings.",
+	},
+	["org.journey.w21.horizon.014"] = {
+		"squints at the bare ground ahead wavering in the heat of the day, so that the road seems to lift and float a hand's width above the red earth.",
+		"looks out over a plain trembling under the day's heat, where the far rocks swim and the road ahead runs like spilled water.",
+	},
+	["org.journey.w21.horizon.015"] = {
+		"Zeppelin down there. Don't even think about it, beast.",
+		"That's the airship. Leave it alone, beast. It's full of goblins.",
+		"Wave at the zeppelin! No. Not with the wing. Never mind.",
+	},
+	["org.journey.w21.horizon.016"] = {
+		"makes out, in air this clear, a faint smudge of cook smoke far down the road where Razor Hill must be, small as a thumbprint on the red.",
+		"can follow the road in the clear air almost all the way to Razor Hill, a dim brown knot at the very end of the thread.",
+	},
+	["org.journey.w21.horizon.017"] = {
+		"Durotar from the air looks just like Durotar from the road. There's simply more of it, and none of it any softer.",
+		"Height doesn't flatter this country. It only shows you how much of it there is, every rock the same hard red, all the way out.",
+	},
+	["org.journey.w21.landing.001"] = {
+		"hangs for a moment in the air above the perch as the beast throws its wings forward and stalls, and the whole tower seems to wait.",
+		"is held up one last time, the flier's wings cupped wide and beating backward, before it lets itself down onto the boards.",
+	},
+	["org.journey.w21.landing.002"] = {
+		"The landing doesn't come down to me so much as the saddle comes up, hard, and introduces itself to every bone I own.",
+		"Touchdown arrives from below, through the saddle, like a kick from a mule that has waited all its life for the chance.",
+	},
+	["org.journey.w21.landing.003"] = {
+		"lands with a long scrape of claws across the boards, the beast skidding a pace before it digs in and stops.",
+		"comes down with the rasp of four clawed feet on old planks, a sound like a cart dragged over gravel, and then sudden stillness.",
+	},
+	["org.journey.w21.landing.004"] = {
+		"The moment the beast stops, the rush of air that has filled my ears the whole way simply ends, and the silence it leaves is full of the city.",
+		"What I notice first isn't the bump, it's the air: it stops pushing at my face, and the closeness of the canyon settles on my shoulders like a pack I'd forgotten I owned.",
+	},
+	["org.journey.w21.landing.005"] = {
+		"lands with the hood blown forward over {g:his|her} face, and spends the first moment on the perch fighting it off like a cat in a sack.",
+		"touches down in a snap of cloak that wraps once around {g:his|her} head, so that the first taste of the perch is a mouthful of cloth.",
+	},
+	["org.journey.w21.landing.006"] = {
+		"And that's how you land. More or less.",
+		"Down. Nobody clap; you'll startle the beast.",
+	},
+	["org.journey.w21.landing.007"] = {
+		"sits still while the beast folds its wings in two neat, creaking movements, like someone closing a pair of heavy shutters.",
+		"waits for the flier to fold up after the landing, wing leather creasing and settling against its flanks with a sound like an old saddlebag shutting.",
+	},
+	["org.journey.w21.landing.008"] = {
+		"The perch is the one patch of Orgrimmar that still belongs to the sky. I sit on it a moment longer, before the streets get their claim in.",
+		"Half the city's height, half the sky's: the perch is neither one thing nor the other. I stay in the saddle a moment and let it be both.",
+	},
+	["org.journey.w21.landing.009"] = {
+		"lands, and a hand shoots out from the tower to catch the reins before the beast has finished stopping, its owner still talking to someone else.",
+		"comes to rest with the reins already in the handler's fist; the handler never so much as glanced up from a cup of something hot.",
+	},
+	["org.journey.w21.landing.010"] = {
+		"Down, and the beast looks back over its shoulder at me and snorts. A review, I think. Not a good one.",
+		"Once we're down, the flier turns its head and gives me a long look, the kind innkeepers save for guests who sang.",
+	},
+	["org.journey.w21.landing.011"] = {
+		"comes down on the tower with the wind rider's wings still spread, and raises a fist to the handler, who answers with the same gesture before taking the reins.",
+		"sets the wind rider square on the perch and gives the handler the short nod of one Horde traveler to another, returned in kind.",
+	},
+	["org.journey.w21.landing.012"] = {
+		"There. Hold still, beast. Both of us, a moment.",
+		"Easy, easy. Nobody move for a moment.",
+	},
+	["org.journey.w21.landing.013"] = {
+		"Up there I weighed nothing. The instant the feet catch, all of me comes back at once, and it's heavier than I left it.",
+		"Landing gives you your weight back in one lump, and never quite the same amount you had before you flew.",
+	},
+	["org.journey.w21.landing.014"] = {
+		"Sky behind, stone below. Done, and well done.",
+		"Out of the air and onto the boards. That's a flight finished.",
+	},
+	["org.journey.w21.outward.001"] = {
+		"I've gone over the list three times since the tower: purse, pack, the thing I bought on the Drag. It's all here. The list goes round a fourth time anyway.",
+		"Was there something I meant to do before leaving? There always is. Whatever it was, it will keep, and the city will remind me of it the moment I'm back.",
+		"Purse. Pack. Both boots. The little bundle from the Drag. My mind keeps patting the same pockets as the land rolls out ahead.",
+	},
+	["org.journey.w21.outward.002"] = {
+		"turns from the canyon to face the open land, and keeps facing it, chin a little lifted, like someone riding at the head of a column.",
+		"faces forward once the walls are gone, settling the pack with a shrug, eyes on the red country and nothing at {g:his|her} back worth a glance.",
+	},
+	["org.journey.w21.outward.003"] = {
+		"Open ground ahead. Let's see what it's got.",
+		"Out past the walls. Now the real work starts.",
+	},
+	["org.journey.w21.outward.004"] = {
+		"My pack is heavier than when I walked into Orgrimmar, and my purse lighter. The city does that: it moves the weight from one to the other and calls it supplies.",
+		"Going out with a full pack and a thin purse. Coming in it was the other way round. Orgrimmar balances its books on my back.",
+	},
+	["org.journey.w21.outward.005"] = {
+		"fishes a strip of dried meat from a pocket once the flight has steadied, and at the first chew the beast's head swings round with keen and terrible interest.",
+		"unwraps a heel of bread bought at the inn for the road and eats it hunched over, because the flier keeps glancing back at the smell.",
+	},
+	["org.journey.w21.outward.006"] = {
+		"Setting out always feels lighter than it should, given what usually waits at the far end. Maybe that's the trick of it: at the start you only carry the leaving.",
+		"There's a lightness in the first stretch out of any city that the rest of the way never matches. I'll take it while it lasts.",
+	},
+	["org.journey.w21.outward.007"] = {
+		"touches two fingers to the pommel as the last wall slips under, a small, private gesture of leaving, made for no one.",
+		"taps the pommel twice when the canyon is behind, quietly, the way some travelers knock on the door frame on their way out.",
+	},
+	["org.journey.w21.outward.008"] = {
+		"Keep the walls, Orgrimmar. I'll see to the rest.",
+		"Hold the city, grunts. The far end is mine.",
+	},
+	["org.journey.w21.outward.009"] = {
+		"I've forgotten something in Orgrimmar. I always do. I'll find out what at the worst possible moment, far from any merchant.",
+		"There's always one thing left behind. A spare buckle, a needle, a twist of salt. Whatever it is this time, it's in the city and I'm not.",
+	},
+	["org.journey.w21.outward.010"] = {
+		"catches {g:himself|herself} grinning at nothing as the land opens out ahead, and makes no effort to stop.",
+		"wears, for the first stretch over the open country, the small private smile of someone who has slipped out of a crowded room unseen.",
+	},
+	["org.journey.w21.outward.011"] = {
+		"Leaving at dawn, with the whole of Durotar ahead still half gray, as if the land hasn't decided yet what color to be. By the time it does, I'll be well out over it.",
+		"A dawn departure. The red country is still blue with shade, and the first light is only now finding the tops of the hills ahead.",
+	},
+	["org.journey.w21.outward.012"] = {
+		"sets out into the dusk with the low light raking across Durotar, every rock and thornbush ahead trailing a long shadow over the red ground.",
+		"flies out into the dusk as the first campfires prick out along the road below, small and orange and very far apart.",
+	},
+	["org.journey.w21.outward.013"] = {
+		"Just you and me now, beast. Try to be good company.",
+		"No city, no crowd. You'll have to do the talking, beast.",
+	},
+	["org.journey.w21.outward.014"] = {
+		"Setting out in rain, of all things. Below, the red land darkens in spreading blotches, and every dry wash that has waited a whole season is suddenly running.",
+		"Rain on Durotar. The beast hates it and says so with every stroke, and the hard ground below can't drink it fast enough; the water simply slides off in sheets.",
+	},
+	["org.journey.w21.outward.015"] = {
+		"tries to unfold a map once the flight has steadied, loses the argument with the rushing air at the second fold, and stuffs it back inside {g:his|her} coat.",
+		"pulls out a map, thinks better of it as the first corner snaps and flutters, and puts it away; the beast, after all, needs no directions.",
+	},
+	["org.journey.w21.outward.016"] = {
+		"Orgrimmar sends us all out the same way, grunts and caravans and the likes of me: fed, rested, and expected back with something to show for it.",
+		"Out I go, like every grunt and every caravan before me. The Horde lends you its city to rest in, and then it points you at the road.",
+	},
+	["org.journey.w21.perch.001"] = {
+		"sees the beasts already on the perch shuffle sideways as the flier comes in, one of them lifting a wing like an arm thrown across a bench to save a seat.",
+		"watches a perched beast refuse to budge as the flier comes in, holding one wing out stiffly over the free spot until a handler cuffs it aside.",
+	},
+	["org.journey.w21.perch.002"] = {
+		"From above, the perch looks like a butcher's block: scored all over, dark where the meat is served. Lovely place to set down a passenger.",
+		"The landing boards come up scarred with a thousand grooves, every one a beast that came in too fast. I'll count myself lucky to add a shallow one.",
+	},
+	["org.journey.w21.perch.003"] = {
+		"sees a handler step to the edge of the perch and raise both arms, crossing them once overhead; the beast adjusts its line as if the gesture were a word.",
+		"watches a figure on the tower wave the flier in with a long pole held crosswise, and the beast slides over to the spot it points at.",
+	},
+	["org.journey.w21.perch.004"] = {
+		"The tower comes up from a peg in the valley floor to a mast to a whole crooked building, hung with ropes, buckets and a side of meat on a hook.",
+		"Closer, and the tower stops being a landmark and starts being a place: coils of rope, a stool, a half-eaten haunch, a handler scratching his neck.",
+	},
+	["org.journey.w21.perch.005"] = {
+		"catches the beast's legs coming down from under its belly well before the perch, toes spread wide and reaching, like a hand feeling for a step in the dark.",
+		"feels the flier's hind legs swing down beneath the saddle as the tower comes up, the whole beast changing shape from thrown stone to grasping hand.",
+	},
+	["org.journey.w21.perch.006"] = {
+		"Make room up there! Shift your tails!",
+		"Shove over, you lot. One more coming in.",
+	},
+	["org.journey.w21.perch.007"] = {
+		"From above, the perch looks about big enough for a cat. The beast seems confident. I am choosing to share its confidence.",
+		"The landing spot is a square of boards no bigger than a kitchen table, seen from here. Either the beast knows something or we're about to learn it together.",
+	},
+	["org.journey.w21.perch.008"] = {
+		"hears the wind rider let out a long rattling cry as the tower comes up, and every beast on the perch answers it, until the whole platform is shrieking.",
+		"comes in on a scream: the wind rider calls to the perch, the perched beasts throw back their heads and call back, and the din makes the whole valley look up.",
+	},
+	["org.journey.w21.perch.009"] = {
+		"The beast ignores the free space the handler is pointing at and makes for the corner of the perch where the meat buckets stand. We land where the food is. Naturally.",
+		"There are two free spots on the tower, and the flier chooses the one beside the bucket of scraps without any discussion. I'd have done the same.",
+	},
+	["org.journey.w21.perch.010"] = {
+		"notes the travelers waiting on the tower take a quick step back as the flier comes in, all of them grabbing at their hoods with the same hand.",
+		"startles the little crowd on the platform back against the rail as the beast drops toward them, one goblin hugging his pack to his chest.",
+	},
+	["org.journey.w21.perch.011"] = {
+		"The nearer the perch, the more patches I see: new planks beside old ones, a beam lashed where it once cracked. Somebody keeps it mended. I hope they're thorough.",
+		"Coming in, I notice a few boards on the perch are a fresher red than the rest. Replacements. I decide not to wonder what happened to the old ones.",
+	},
+	["org.journey.w21.perch.012"] = {
+		"Coming in! Somebody grab the reins!",
+		"Catch us, handler, we're a bit quick!",
+	},
+	["org.journey.w21.perch.013"] = {
+		"comes in under an empty, clear sky, and from a long way out can count the buckets on the perch and the coils of rope at the handler's feet.",
+		"can see the tower sharp and near in the clear air long before the beast reaches it, every plank of the perch as plain as print.",
+	},
+	["org.journey.w21.perch.014"] = {
+		"The wind riders on the perch lift their heads as we come in, and I find I know a few of them by their scars. Strange company to be glad of, but I am.",
+		"A torn ear, a notched wing: I recognize some of the wind riders on the tower as we drop toward them. They don't recognize me, and that seems fair.",
+	},
+	["org.journey.w21.perch.015"] = {
+		"heads in through the night toward a single lantern swung in slow arcs on the perch, and the beast follows the swinging light down as if on a string.",
+		"descends through the night behind a handler's lantern waving side to side on the tower, the only thing in all that dark the flier seems to care about.",
+	},
+	["org.journey.w21.perch.016"] = {
+		"Mind the new planks, beast. Somebody went to a lot of trouble.",
+		"Not on the bucket. Anywhere but the bucket.",
+	},
+	["org.journey.w21.rim.001"] = {
+		"rises past the face of the canyon close enough to count its bands of stone, rust over red over a pale streak like old bone, laid down long before anyone had a name for them.",
+		"climbs along the canyon wall and sees it laid out in stripes: brick red, dull orange, a seam of yellow, each band a little older than the one above.",
+	},
+	["org.journey.w21.rim.002"] = {
+		"Halfway up the wall there are little holes in the rock, and in every hole a small bird shrieking at us. The beast doesn't even turn its head. I'd be offended too.",
+		"The canyon face is pocked with nests, and every one of their owners leans out to tell the beast exactly what it thinks of it.",
+	},
+	["org.journey.w21.rim.003"] = {
+		"passes an old rope hanging down the canyon wall from a ledge nobody seems to use, its end frayed and swinging, tied up there for some reason the city has long forgotten.",
+		"notices a rope dangling from a high ledge in the canyon face, bleached pale, knotted at intervals, leading up to nothing anyone could see from the street.",
+	},
+	["org.journey.w21.rim.004"] = {
+		"A thornbush grows sideways out of a crack halfway up the wall, a long way from any soil. It has the best view in Orgrimmar and nobody to tell about it.",
+		"Out of a seam in the canyon face, one stubborn bush, leaning over the drop. Nobody planted it and nobody waters it. I like it at once.",
+	},
+	["org.journey.w21.rim.005"] = {
+		"draws level with the canyon's lip, and for a single wingbeat the edge of the rock cuts the view in half: the city on one side, bare red country on the other.",
+		"rises until the rim slides past beneath the beast like the edge of a table, and the city, which a moment ago was all around, is suddenly all below.",
+	},
+	["org.journey.w21.rim.006"] = {
+		"From above, the top of the wall is a road of its own, running round the city: the one street in Orgrimmar where nobody is selling anything.",
+		"The wall walk looks like a quiet path from up here, curving away along the rim with a sentry every so often, like beads on a cord. No stalls, no shouting. I'd pay to walk it.",
+	},
+	["org.journey.w21.rim.007"] = {
+		"watches a crate being hauled up the canyon wall on a squealing pulley, a goblin at the top shouting numbers down at someone who is clearly not listening.",
+		"passes a rope-and-pulley lift on the cliff face, where a load of timber sways halfway up and two voices, one far above and one far below, argue about whose fault that is.",
+	},
+	["org.journey.w21.rim.008"] = {
+		"From the rim, the walls of the canyon look a hundred times older than the city inside them. Whatever Orgrimmar becomes, this rock has already seen longer.",
+		"The city is young and loud; the canyon around it is neither. Up here, level with the top of the stone, you can feel which of the two will outlast the other.",
+	},
+	["org.journey.w21.rim.009"] = {
+		"takes a hard jolt as the beast crosses the rim, where the still air of the canyon meets the moving air above it, and the saddle drops away for half a moment.",
+		"feels the beast stumble on nothing at the canyon's edge, as the warm air rising from the city gives way to the open sky, and then catch itself with one heavy stroke.",
+	},
+	["org.journey.w21.rim.010"] = {
+		"We're level with the walls. Nod to the sentries, beast; they've earned it.",
+		"Eye to eye with the sentries. Don't stop to chat, beast.",
+	},
+	["org.journey.w21.rim.011"] = {
+		"Someone has scratched a face into the rock up near the rim, tusks and scowl and all. A bored sentry, I'd guess, with a knife and a very long watch.",
+		"Up by the canyon's lip, a crude face cut into the stone, glaring at the sky. Not a mason's work. The work of someone on a dull watch, with a knife and plenty of patience.",
+	},
+	["org.journey.w21.rim.012"] = {
+		"follows the seam where the city's timber walls meet the natural rock, every post sunk in a socket chiseled into the stone and lashed fast with rope gone dark with age.",
+		"passes over the join between wall and cliff, where the builders gave up on timber and let the canyon itself be the rampart.",
+	},
+	["org.journey.w21.rim.013"] = {
+		"On foot, those walls are the end of the world. From up here they're a step a kodo could almost manage. It's rude, how much height changes.",
+		"Down there the canyon walls seem to lean over you. From above, they're only the sides of a dish, and not even a deep one.",
+	},
+	["org.journey.w21.rim.014"] = {
+		"That's the rim. Everything past it is sky, beast. Your part.",
+		"Top of the canyon. From here on I just sit and hold.",
+		"That's the canyon's edge. You're in charge now, beast.",
+	},
+	["org.journey.w21.rim.015"] = {
+		"passes a lizard flattened on a ledge of the canyon wall, which turns one eye to follow the beast and otherwise does not move a scale.",
+		"is watched from the cliff face by a lizard pressed to the warm rock, its throat bobbing, entirely unimpressed by anything with wings.",
+	},
+	["org.journey.w21.rim.016"] = {
+		"Something carved this canyon once, water most likely, a long patient river. From up here you can still see the way it bent. The city has simply moved into its old bed.",
+		"From this height the canyon has the shape of a river that isn't there anymore, every valley a bend it once took. Orgrimmar lives in a dry riverbed and calls it streets.",
+	},
+	["org.journey.w21.specks.001"] = {
+		"watches the crowd lose its details as the beast climbs: first faces go, then tusks and horns, then even the difference between a tauren and a goblin, until there is only big dot and small dot.",
+		"sees the people below lose themselves one feature at a time, colors first, then shapes, until the tallest tauren in the valley is a speck like any other.",
+	},
+	["org.journey.w21.specks.002"] = {
+		"Somebody down there shouts a name, faint and thin. At this height every name sounds a little like mine, and none of them is.",
+		"A name floats up from the valley, called twice, then given up. Not mine. I listen anyway, until the next wingbeat covers it.",
+	},
+	["org.journey.w21.specks.003"] = {
+		"finds one face turned up in the whole crowd below, a troll with a basket on one hip, who follows the beast all the way to the rim without once looking away.",
+		"notices a single figure in the Valley of Strength standing still and staring up while the crowd parts around it, and is watched by it until the walls get in the way.",
+	},
+	["org.journey.w21.specks.004"] = {
+		"A string of peons crosses the valley with logs on their shoulders, and from here they look like a line of beetles carrying twigs.",
+		"Peons hauling timber across the valley, one behind another, each log no bigger than a splinter from up here. Somebody down there is about to have a new roof.",
+	},
+	["org.journey.w21.specks.005"] = {
+		"climbs into the night above the canyon, and the city below draws itself in lamps: a ring along the walls, a crooked dotted line for the Drag, a dark gap where the Cleft of Shadow swallows them all.",
+		"rises through the dark with every valley marked out below by its own scatter of lit doorways, so that the night has the city's shape drawn on it point by point.",
+	},
+	["org.journey.w21.specks.006"] = {
+		"Look at them down there. From this high, you can't tell a champion from a porter.",
+		"Every one of them a hero, I'm sure. From here, they're all the size of a seed.",
+	},
+	["org.journey.w21.specks.007"] = {
+		"Somewhere in that crowd is the merchant who haggled with me, the grunt who gave me directions, the stranger who stepped on my foot. From up here I can't tell them apart, and I find I'd like to.",
+		"Every person I spoke to down there is a speck now, and I couldn't point to a single one. The city keeps them, and lets me go.",
+	},
+	["org.journey.w21.specks.008"] = {
+		"can still make out, as the valley shrinks, two tiny figures at a stall waving their arms at each other, the argument visible long after its words are lost.",
+		"picks out an argument far below by its gestures alone, two specks with arms flying, and keeps watching it long after any sound has stopped reaching the saddle.",
+	},
+	["org.journey.w21.specks.009"] = {
+		"From up here the crowd stops being people and becomes one slow animal, shuffling between the bank and the gate on thousands of legs. A little while ago I was one of the legs.",
+		"The whole Valley of Strength moves like a single beast from this height, nosing back and forth between doorways. I was part of its hide a moment ago; it hasn't noticed the hole.",
+	},
+	["org.journey.w21.specks.010"] = {
+		"sees a sack split open somewhere along the Drag, a little spill of something pale on the ground, and a dozen specks converge on it from every direction at once.",
+		"watches a barrow tip over far below and its load scatter, and the crowd around it bend down in a sudden ring, like grass flattened by a gust.",
+	},
+	["org.journey.w21.specks.011"] = {
+		"Seen from above, the crowd is mostly the color of the ground, leather and rust and dust. Every so often a goblin in something bright goes by, like a bead dropped on a carpet.",
+		"Brown, brown, red, brown, and then a speck of loud green darting between the stalls. You can always find the goblins from the air.",
+	},
+	["org.journey.w21.specks.012"] = {
+		"Fare you well, specks. Try not to trample each other while I'm gone.",
+		"Look at you all, no bigger than crumbs. Mind the bank queue without me.",
+	},
+	["org.journey.w21.specks.013"] = {
+		"Hello down there! No, up here! Never mind.",
+		"Oi! Up here! ...Nobody. Typical Orgrimmar.",
+		"Look up, someone! Anyone? Fine.",
+	},
+	["org.journey.w21.specks.014"] = {
+		"The whole city fits between my boots now. Doesn't feel right.",
+		"I could hide the bank behind my thumb. Shame I can't do the same with my debts.",
+	},
+	["org.journey.w21.specks.015"] = {
+		"climbs into the blowing sand and watches the city go under it district by district, the Valley of Honor first, then the Hold, until only the nearest roofs still show.",
+		"rises through a red haze that thickens with every wingbeat, the valleys below fading out one after another like lamps being snuffed.",
+	},
+	["org.journey.w21.specks.016"] = {
+		"rises over the city at dawn as it wakes in pieces below: a shutter here, a door there, the first figures crossing the empty valley floor with buckets.",
+		"lifts into the early light and watches Orgrimmar start its day from above: one cook fire, one open door, one yawning sentry, and then a dozen more.",
+	},
+	["org.journey.w21.specks.017"] = {
+		"follows a knot of figures gathering around the mailbox outside the bank, then coming apart one by one, every speck walking away more slowly than it came, head bent over a letter.",
+		"sees, from high over the Valley of Strength, people leaving the mailbox with their heads down and their pace gone slack, the way anyone walks while reading.",
+	},
+	["org.journey.w21.spire.001"] = {
+		"passes over the open ground before Grommash Hold, the one stretch of the city where nobody loiters, swept bare as if the dust itself knew better than to settle.",
+		"looks down on the yard in front of the Hold as the climb goes on: wide, bare, crossed quickly by everyone who has to cross it, and stopped in by no one.",
+	},
+	["org.journey.w21.spire.002"] = {
+		"Higher than the Hold's roof now. Nothing in Orgrimmar stands over me except the beast, and I have the sense not to say that aloud anywhere near the Kor'kron.",
+		"For a few wingbeats I'm the highest thing in the Warchief's city. I'll keep that to myself. The Kor'kron have no sense of humor about heights.",
+	},
+	["org.journey.w21.spire.003"] = {
+		"flies straight through a column of forge smoke on the way up and comes out the other side blinking, the taste of hot iron and charcoal on the tongue for a dozen wingbeats.",
+		"passes through the smoke of some smithy as the beast climbs, a gray, bitter moment with no city and no sky, and then the air is clean once more.",
+	},
+	["org.journey.w21.spire.004"] = {
+		"You can read the city by its smoke from up here: black and greasy over the smithies, thin and white where someone's burning damp wood, a strange blue curl from the Valley of Spirits that I'm not going to ask about.",
+		"Every column of smoke under me is a different trade. Black for iron, brown for a tannery fire, pale for bread, and one bluish thread out of the Valley of Spirits I couldn't put a name to if I tried.",
+	},
+	["org.journey.w21.spire.005"] = {
+		"looks down into the top of a watchtower as the beast goes over: a sentry's stool, a cookpot balanced on the rail, and a sentry who hurriedly moves away from it.",
+		"passes above a watch platform on the walls and sees what the sentries keep up there: a bench, a water jar, a pile of pebbles for throwing at nothing, and a very bored grunt.",
+	},
+	["org.journey.w21.spire.006"] = {
+		"Mind the city, Warchief. I'll bring back something worth telling.",
+		"The Hold, from above. Keep it standing, Warchief; I'll do my part out there.",
+	},
+	["org.journey.w21.spire.007"] = {
+		"The smoke columns stand up out of the valleys like the poles of some enormous tent, and the sky seems to rest on top of them.",
+		"Twenty chimneys smoking at once, and from up here every column stands like a tent pole. Orgrimmar holds up its own sky, apparently, and does it the way it does everything: with smoke and stubbornness.",
+	},
+	["org.journey.w21.spire.008"] = {
+		"sends a gust down from the beast's wings onto a rooftop, and a neat stack of baskets goes rolling, chased by a small furious figure shaking both fists at the sky.",
+		"leaves a downdraft behind that flattens an awning and lifts a hat clean off someone's head; the hat goes on climbing for a while after its owner has given up.",
+	},
+	["org.journey.w21.spire.009"] = {
+		"Seen from this high, the Warchief's hall and the beasts' tower are just two roofs, one large and one small. The sky doesn't rank them. I find that oddly comforting.",
+		"Up here the Hold is a roof like any other, a little bigger, a little darker. The sky has never once bowed to it, and the Hold doesn't seem to mind.",
+	},
+	["org.journey.w21.spire.010"] = {
+		"reaches the top of the climb, where the beast hangs for a moment with its wings spread wide and still, and the whole of Orgrimmar lies under them like a map someone forgot to fold.",
+		"feels the beast stop climbing all at once, poised at the height of its rise, and takes in every valley of the city together, which no one on foot can ever do.",
+	},
+	["org.journey.w21.spire.011"] = {
+		"Ugh, smithy smoke. Fly round it next time, beast.",
+		"Whose chimney was that? I'll be tasting it the whole way.",
+		"Straight through the smoke. Thank you, beast. Very thorough.",
+	},
+	["org.journey.w21.spire.012"] = {
+		"Show them your wings, wind rider. Let the whole city see who's leaving.",
+		"Climb, wind rider. Over the Hold and away.",
+		"High and proud, wind rider. Orgrimmar's watching.",
+	},
+	["org.journey.w21.spire.013"] = {
+		"From up here Orgrimmar looks finished, every roof in place. From the street you'd never believe it: there's always a scaffold somewhere, a cart of timber, someone shouting about a beam.",
+		"Above, the city looks done and still, like a carving. Only from inside do you see it's being rebuilt all the time, beam by beam and quarrel by quarrel.",
+	},
+	["org.journey.w21.stride.001"] = {
+		"feels the beast's wingbeats stop fighting the air and fall into a long, even swing, three strokes and a glide, three strokes and a glide, steady as a rower.",
+		"settles as the labor of the climb gives way to an easy cadence: a few deep strokes, then a long coast with the wings held still.",
+		"rides the change from climb to cruise, the frantic pumping of the takeoff smoothing out into strokes so regular they could keep time for a march.",
+	},
+	["org.journey.w21.stride.002"] = {
+		"Out over the open land the beast lowers its head and its ears go slack. The climb was work. This part, it seems, it enjoys.",
+		"I can feel the moment the flier stops working: the neck stretches out long, the ears ease back, and the whole animal starts to coast.",
+	},
+	["org.journey.w21.stride.003"] = {
+		"lurches in the saddle as the beast snaps sideways at a passing insect without breaking its stroke, the jaws closing on nothing with a sound like a door.",
+		"is jolted as the flier lunges at a fly, misses, and goes back to its steady beat as though the lunge had been somebody else's idea.",
+	},
+	["org.journey.w21.stride.004"] = {
+		"For the first stretch I rode against the beast, bracing at every stroke. Past the canyon my back gave up and started riding with it. Much better.",
+		"My knees spent the climb gripping as if the saddle meant to escape. Out here they've loosened, and the beast and I have stopped arguing.",
+	},
+	["org.journey.w21.stride.005"] = {
+		"rides level as the beast finds its height and holds it, the red land sliding beneath at one unchanging distance, like a floor drawn slowly out from under a table.",
+		"notices the flier stop climbing and simply keep its height, the ground below moving past at a steady, unhurried crawl.",
+	},
+	["org.journey.w21.stride.006"] = {
+		"There. That's your pace. Keep it.",
+		"Good. Just like that, all the way.",
+		"Slow is fine. Nobody's chasing us.",
+	},
+	["org.journey.w21.stride.007"] = {
+		"rides the slow roll of the great shoulders under the saddle blanket, a swell and a dip with every stroke, steady enough to doze to, for anyone braver.",
+		"feels the muscles of the flier's back bunch and spread beneath the saddle in a rhythm so regular that the body starts to sway with it unasked.",
+	},
+	["org.journey.w21.stride.008"] = {
+		"I started counting wingbeats past the canyon. Somewhere near a hundred I lost the number, and found I didn't miss it.",
+		"Counting the strokes, for something to do: forty, fifty, sixty-odd... and then the land below is more interesting than the sum.",
+		"One, two, three, glide. I could count this all the way, but the beast seems to manage without my help.",
+	},
+	["org.journey.w21.stride.009"] = {
+		"is treated to the beast yawning hugely in the middle of a glide, a long pink cavern of teeth, before the jaws close with a satisfied click and the strokes resume.",
+		"sees the flier, well into its stride, open its mouth in an enormous yawn that shows every tooth it owns, then shut it and carry on as if bored by the whole country.",
+	},
+	["org.journey.w21.stride.010"] = {
+		"Once the beast finds its pace, my thoughts find it too. They come one to a wingbeat, slow and unhurried, and none of them is about the city.",
+		"The steady strokes set a tempo, and my mind falls into step with it. Slow thoughts, evenly spaced, like a march nobody has to keep.",
+	},
+	["org.journey.w21.stride.011"] = {
+		"takes in the wind rider's mane rippling flat along its neck as it settles into a long glide, the great head held level and steady as a spearpoint.",
+		"rides along as the wind rider locks its wings and leans into the long glide it was born for, mane streaming back, eyes half closed, as if this were the restful part of its work.",
+	},
+	["org.journey.w21.stride.012"] = {
+		"You can stop showing off. I'm impressed already.",
+		"Nice and level. Why didn't we start like this?",
+		"Smooth. Was all that flapping at the start really needed?",
+	},
+	["org.journey.w21.stride.013"] = {
+		"Somewhere over the open ground my fingers unhook from the saddle horn. They've been clamped there since the tower, and they ache to prove it.",
+		"I find I can hold on with one hand now. The other has been white-knuckled since the edge of the tower, and it has opinions about that.",
+	},
+	["org.journey.w21.stride.014"] = {
+		"hunches low as the beast shortens its strokes and keeps under the storm, ears pinned flat, the thunder rolling over the ridges behind like barrels down a ramp.",
+		"rides out the first stretch of the storm as the flier settles into a hard, short-stroked beat beneath the clouds, flinching once at a flash over the hills.",
+	},
+	["org.journey.w21.stride.015"] = {
+		"The beast's head tilts as we glide; something small is moving down on the plain, and it watches without breaking stride. Noting it for another time, I suspect.",
+		"Every so often the flier's eye drops to the ground below and fixes on some small running thing. It never dives. It only remembers, the way a merchant remembers a price.",
+	},
+	["org.journey.w21.unsaddle.001"] = {
+		"slides down off the saddle and finds the pattern of its stitching pressed into both palms, a neat row of little dents that takes a while to fade.",
+		"lets go of the saddle at last; the grip has left the leather's seams printed across each palm like the notches of a tally.",
+	},
+	["org.journey.w21.unsaddle.002"] = {
+		"waits while the beast lowers one shoulder like a kodo settling into the dust, which turns out to be the whole of its courtesy.",
+		"gets off the easy way for once: the beast drops a shoulder and leans, and the boards of the platform come up to meet one boot.",
+	},
+	["org.journey.w21.unsaddle.003"] = {
+		"Getting off is a three-part move: leg over, slide, land. I managed two of the three, and the handler saw which one I missed.",
+		"There's a right way to climb off a flier. I know it, I've watched it done a hundred times. My body had other ideas.",
+		"Dismounting: the one part of the flight I get to do myself, and the one part I'd gladly hand over to anyone.",
+	},
+	["org.journey.w21.unsaddle.004"] = {
+		"unties the pack lashed behind the saddle while the beast twists its long neck round to watch every knot come loose.",
+		"reaches back for the bundle strapped behind the saddle, under the steady, unblinking supervision of the beast's head, turned all the way round.",
+	},
+	["org.journey.w21.unsaddle.005"] = {
+		"The saddle is warm where I sat and nowhere else. A small, private patch of warmth, and the handler is already lifting it off.",
+		"Odd thing, a saddle: warm in one spot, cool everywhere else, like a bench somebody just got up from. That somebody was me.",
+	},
+	["org.journey.w21.unsaddle.006"] = {
+		"gets a firm shove between the shoulders from the beast's muzzle, the kind of push that is not a request, and leaves the saddle rather faster than planned.",
+		"is nudged off the last of the way by the beast's head, which has plainly decided that the passenger part is over.",
+	},
+	["org.journey.w21.unsaddle.007"] = {
+		"Hold still a moment. My leg's still on your side of the saddle.",
+		"Don't move. Half of me hasn't got off yet.",
+		"Wait, wait. One more leg to go.",
+	},
+	["org.journey.w21.unsaddle.008"] = {
+		"Somewhere up there the hem of my cloak got trapped under a strap. Freeing it takes three tugs and one look from the beast I don't care for.",
+		"Half my cloak is buckled under the saddle. I work it loose in little tugs while the beast waits with very visible restraint.",
+	},
+	["org.journey.w21.unsaddle.009"] = {
+		"drops the last short way from the stirrup and lands heavier than meant, the boards answering with a hollow knock.",
+		"misjudges the distance from stirrup to boards by a hand's width, and the jolt runs up from both heels.",
+	},
+	["org.journey.w21.unsaddle.010"] = {
+		"Under my hand the beast's flank is still twitching with the work of the wings. Whatever I felt up there, it felt more.",
+		"I leave a palm on its side a moment. The great muscles are still jumping under it, the flight not quite out of them.",
+	},
+	["org.journey.w21.unsaddle.011"] = {
+		"There. You can have your back to yourself.",
+		"All yours again, beast. Your back, I mean.",
+	},
+	["org.journey.w21.unsaddle.012"] = {
+		"rests a palm on the wind rider's neck before stepping away and feels a low rumble there, what the handlers call the sound of a finished job.",
+		"lingers by the wind rider long enough to feel it rumble deep in its chest, a noise the handlers say means food soon, and nothing else.",
+	},
+	["org.journey.w21.unsaddle.013"] = {
+		"Every saddle at this tower has a buckle somewhere it shouldn't be, and my shin finds it on every flight. It is finding it now, from memory.",
+		"There was a buckle against my shin the whole way. I'll be feeling its exact shape as far as the bank.",
+	},
+	["org.journey.w21.unsaddle.014"] = {
+		"steps down onto the upturned crate the handlers keep for riders, its lid split and mended so many times it is mostly patches.",
+		"finds the mounting crate with one boot, a battered box the handlers set beside every beast, its top more nails than wood.",
+	},
+	["org.journey.w21.unsaddle.015"] = {
+		"Easy. Let me get my foot out of this strap before you go anywhere.",
+		"Don't wander off yet. My boot's still caught in the loop.",
+	},
+	["org.journey.w21.unsaddle.016"] = {
+		"One foot in the stirrup, one on the boards, and for that instant I belong to neither the sky nor the city. Then the weight shifts, and Orgrimmar has me.",
+		"Halfway off the saddle there's a moment that belongs to nobody, neither up there nor down here. It lasts one shift of weight. I like it more than I should.",
+	},
+	["org.memory_return.w21.back.001"] = {
+		"I know which ramp is the quick one now, and which one only looks quick.",
+		"This time my feet pick the shorter ramp on their own. Last time they took the long way round and blamed me for it.",
+	},
+	["org.memory_return.w21.back.002"] = {
+		"turns toward the bank without hunting for it, and only notices afterward that {g:he|she} didn't have to.",
+		"finds the way to the bank on the first try, and looks faintly pleased about it.",
+		"heads off through the crowd with the air of someone who no longer needs to ask a grunt for directions.",
+	},
+	["org.memory_return.w21.back.003"] = {
+		"The smell gets to me first: hot iron, onions on a griddle, kodo hide drying somewhere. Yes. This is the place.",
+		"My nose recognizes Orgrimmar before my eyes do. Scorched metal, frying onions, hides on the racks. The eyes only confirm it.",
+		"Before I've looked at anything, I know where I am. Orgrimmar smells of scorched iron and onions, and of hides that will be boots by the end of the week.",
+	},
+	["org.memory_return.w21.back.004"] = {
+		"Back in Orgrimmar. No parade. Then again, nobody's thrown anything either.",
+		"Nobody cheered when I turned up. Nobody threw anything. In Orgrimmar that counts as a warm welcome.",
+		"Orgrimmar! Try to contain your joy, all of you.",
+	},
+	["org.memory_return.w21.back.005"] = {
+		"A few faces on the Drag are familiar now. One or two of them pretend otherwise, which is its own kind of greeting.",
+		"I recognize a merchant or two along the Drag. One of them recognizes me back and is suddenly very busy with a crate.",
+		"Familiar faces are starting to turn up in the crowd. Not friends, exactly. People I'd know again, and who'd know me.",
+	},
+	["org.memory_return.w21.back.006"] = {
+		"Orgrimmar takes me back the way it takes everyone: without looking up from its work.",
+		"The city doesn't look up when I return. It's busy. I find that more restful than any welcome.",
+		"No one marks my coming back. The city has work to do, and it lets me fall in beside it without asking where I've been.",
+	},
+	["org.memory_return.w21.back.007"] = {
+		"slows at a corner as if something about it were familiar, then walks on without deciding what.",
+		"hesitates at a turning, half remembering, and lets the memory go before it can finish.",
+	},
+	["org.memory_return.w21.back.008"] = {
+		"Funny what stays with you. I remembered the ramps and the smoke. I had forgotten how many corners there are.",
+		"Memory keeps strange things. The color of the stone, yes. All these corners, somehow, no.",
+	},
+	["org.memory_return.w21.back.009"] = {
+		"Still loud. Good. If Orgrimmar ever goes quiet, I'm leaving.",
+		"Listen to that racket. If it ever stopped, I'd start worrying.",
+		"Hear that? Same din as ever. I'd be disappointed with anything less.",
+	},
+	["org.memory_return.w21.back.010"] = {
+		"Every return makes a place a little more mine. Only a little, with this one. Orgrimmar doesn't give itself away cheaply.",
+		"Each time I come back, the city lets me have a bit more of it. A street. A corner. It hands them over the way a goblin hands over change: slowly, and counting.",
+	},
+	["org.memory_return.w21.back.011"] = {
+		"I've stopped getting lost in the Drag. These days, when I get lost, I mean to.",
+		"Five visits and more, and the Drag can't lose me any longer. I lose myself in it now, on purpose, when there's coin to spare.",
+		"These days I can find the best skewers on the Drag by smell alone. The cheapest still take a proper hunt.",
+	},
+	["org.memory_return.w21.back.012"] = {
+		"goes about the city with the unhurried step of someone who has stopped counting the visits.",
+		"moves through the crowd at the easy pace of a regular, stepping around a peon's load without looking.",
+	},
+	["org.memory_return.w21.back.013"] = {
+		"By now I have opinions about this city: which cook to trust, which ramp to avoid, which grunt never to ask for directions.",
+		"Ten visits buys you opinions. I know the cook worth the wait, the ramp that clogs with peons, and the grunt whose directions lead nowhere useful.",
+		"I know Orgrimmar well enough to hold grudges in it. A cook, a ramp, a grunt with a long memory. That's familiarity for you.",
+	},
+	["org.memory_return.w21.back.014"] = {
+		"Me again. Somebody tell whoever's keeping count.",
+		"Yes, me. Mark it down; I lost track myself a while back.",
+	},
+	["org.memory_return.w21.back.015"] = {
+		"So many returns that coming into Orgrimmar has stopped being an arrival. It's more like walking through a door I've opened a hundred times.",
+		"Twenty times and more. The city has worn a groove in me, the way feet wear down the stone of a stair.",
+	},
+	["org.memory_return.w21.back.016"] = {
+		"If I come through here much more, they'll start charging me rent.",
+		"At this rate the goblins will want rent from me. Or worse, a membership fee.",
+		"Orgrimmar, my old acquaintance. Don't get up.",
+	},
+	["org.memory_return.w21.back.017"] = {
+		"A week or more away. The goblin by the auction house has painted a new sign. The prices on it are the old ones.",
+		"More than a week gone, and someone's put up a fresh sign by the auction house. Fresh paint, same prices.",
+		"A week and change since my last visit, and the Drag has rearranged its prices without consulting me. Upward, naturally.",
+	},
+	["org.memory_return.w21.back.018"] = {
+		"looks the city over like a room after a week away, checking that the furniture is where it was left.",
+		"takes stock of the streets with the quick glance of someone back from a week on the road, counting what has moved.",
+	},
+	["org.memory_return.w21.back.019"] = {
+		"Weeks away, and I'd forgotten the sheer volume of the place. My ears remember first. The rest of me catches up slowly.",
+		"Two weeks and more of quieter places, and Orgrimmar hits my ears like a slammed door. Give me a moment. Give me a few.",
+		"After weeks somewhere calmer, the first shout from the Drag makes me flinch. The second makes me smile.",
+	},
+	["org.memory_return.w21.back.020"] = {
+		"More than a month. I head straight for a stall that isn't there anymore, and find its owner two doors down, louder than before.",
+		"A month gone and the Drag has shuffled itself. The stall I used to buy from has moved; its owner hasn't changed a bit, only the address.",
+	},
+	["org.memory_return.w21.back.021"] = {
+		"A month away is long enough for the city to look new for a dozen steps. Then a peon walks into me, apologizes to nobody, and it's Orgrimmar once more.",
+		"After a month the place seems strange for about a dozen paces. A peon bumps me, mutters, moves on, and the strangeness goes with him.",
+	},
+	["org.memory_return.w21.back.022"] = {
+		"The last time I left this city, it wasn't the way I'd have chosen. I come back through the ordinary noise and let it do its work on me.",
+		"I know how the last visit ended. This one I'll begin plainly: a street, a crowd, a merchant shouting. Ordinary things mend more than they get credit for.",
+		"It went badly last time. I don't need the city to make amends; I only need it to be ordinary for a while.",
+	},
+	["org.memory_return.w21.back.023"] = {
+		"pauses a moment longer than the crowd allows, as if settling an old account with the city, then moves on.",
+		"stops just long enough to be jostled, eyes on nothing in particular, and then walks on with a set jaw.",
+	},
+	["org.memory_return.w21.back.024"] = {
+		"Bad memories of this place, with better ones under them. I'll let the next few hours decide which pile grows.",
+		"Orgrimmar owes me a better visit than the last one. I've come to collect.",
+		"I carry the last visit in with me like a pebble in a boot. A few streets on, I decide to stop and shake it out.",
+	},
+	["org.memory_return.w21.back.025"] = {
+		"The last time I was here, I left as a ghost. The city never noticed. Strangely, that helps.",
+		"I died the last time I came to Orgrimmar. The merchants went on shouting and the smoke went on rising. There's comfort in being that small.",
+	},
+	["org.memory_return.w21.back.026"] = {
+		"looks around as if for the spot where it ended last time, and seems to decide, deliberately, not to find it.",
+		"walks in a little more carefully than the crowd does, like someone who remembers exactly how the last visit ended.",
+	},
+	["org.memory_return.w21.back.027"] = {
+		"Last time I left here at a run. This time I walk in slowly, just to remind my legs who's in charge.",
+		"My last exit from this city was a hasty one. I make my return slow and unremarkable, which is its own small victory.",
+	},
+	["org.memory_return.w21.back.028"] = {
+		"Back inside the Horde's walls. I keep my hands where the grunts can see them and my eyes on nobody in particular. It worked last time.",
+		"The Horde's capital, once more. I know the drill by now: easy pace, empty hands, no sudden interest in anything.",
+	},
+	["org.memory_return.w21.back.029"] = {
+		"A grunt just shifted a spear an inch to let me by. From a grunt, that's practically a speech.",
+		"Did you see that? The spear moved aside before I asked. That's as close to a hug as the grunts get.",
+		"Back in the Warchief's city. Nobody salutes, nobody blocks the way. That'll do nicely.",
+	},
+	["org.memory_return.w21.back.030"] = {
+		"The orcs still step a little wider around me than around the others. Fine. Space is a kind of welcome too.",
+		"A troll makes room for me in the crowd, the same careful room as last time. I'll take it. In a crowd this thick, room is a gift.",
+	},
+	["org.memory_return.w21.back.031"] = {
+		"These ramps were cut for orc legs. My hooves remember every awkward step of them, and complain in advance.",
+		"Orc-sized doorways, orc-sized stairs. I duck in the right places now without thinking; the lintels have taught me.",
+	},
+	["org.npc_meet.w21.cup.001"] = {
+		"The cups behind the counter are all different: clay, horn, carved wood, one dented tin. The innkeeper picks one for each guest and never says how.",
+		"No two mugs alike on that shelf. The innkeeper's hand hovers, chooses one, and sets it before me as if it had been waiting.",
+		"A horn cup for me, not one of the clay ones. There's a system behind that counter. I'd love to know what it is.",
+	},
+	["org.npc_meet.w21.cup.002"] = {
+		"is pointed toward the beds by a ladle still dripping, with directions that amount to the single word 'there'.",
+		"asks about a bed and gets a dripping ladle aimed across the room and one word, 'there', which proves to be all the explanation on offer.",
+		"is shown a bed with the same economy the innkeeper uses for everything: chin, ladle, and a grunt that means 'that one'.",
+	},
+	["org.npc_meet.w21.cup.003"] = {
+		"The innkeeper watches where I sit and gives a small nod. Back to the wall, eye on the door. Apparently everyone in Orgrimmar sits like that.",
+		"I take the bench against the wall, facing the door, and the innkeeper seems to approve. In this city it's the only seat anyone wants.",
+	},
+	["org.npc_meet.w21.cup.004"] = {
+		"The innkeeper asks nothing of a fellow of the Horde. A bowl, a bench, and the plain assumption that I've earned both.",
+		"For one of the Horde the innkeeper skips the long look and goes straight to the ladle. I'll take the trust and try to deserve it.",
+	},
+	["org.npc_meet.w21.cup.005"] = {
+		"Whatever the grunts eat when they come off watch. They look like they know.",
+		"I'll have what the off-duty grunts are having. They seem to have done their research.",
+		"Give me whatever that table of grunts ordered. Nobody that large eats badly by choice.",
+	},
+	["org.npc_meet.w21.cup.006"] = {
+		"watches the innkeeper settle someone's bill by counting on thick fingers, frowning, losing the thread, and rounding down with a shrug.",
+		"follows the innkeeper's tally of a guest's bill on the fingers of one hand, until the fingers run out and the matter is settled generously.",
+	},
+	["org.npc_meet.w21.cup.007"] = {
+		"Two pots on the fire: one red with peppers, one mild. The innkeeper glances at me and reaches for the mild one. I'm almost offended.",
+		"Guests are sorted at this counter into those who get the fiery pot and those who don't. I've been judged a mild-pot guest, apparently.",
+		"A look at me, and the ladle goes into the gentle pot instead of the one on the hotter fire. Somebody's decided I can't take the peppers.",
+	},
+	["org.npc_meet.w21.cup.008"] = {
+		"A corner away from the forge noise, if such a thing exists in this city.",
+		"Anywhere the hammering's quieter. I'll take a broom cupboard.",
+	},
+	["org.npc_meet.w21.cup.009"] = {
+		"Not once has the innkeeper smiled, and yet I've been given the bench nearest the hearth without asking. Kindness here comes without the face that goes with it.",
+		"Not a smile, not a word, and yet the bench by the hearth is suddenly mine. The innkeeper's kindness keeps a straight face.",
+		"A scowl, the bowl slid over, and a second piece of bread added without comment. Gruff is only the crust of the loaf.",
+	},
+	["org.npc_meet.w21.cup.010"] = {
+		"hears the innkeeper call an order back to the kitchen in a voice that cuts through the din without seeming to be raised at all.",
+		"gives an order and hears it repeated toward the kitchen, short and pitched just right to slip through the clamor of the room.",
+	},
+	["org.npc_meet.w21.cup.011"] = {
+		"I'm served like anyone else: bowl down, coin up, eyes elsewhere. It's the grunts by the door who keep looking.",
+		"No sneer from behind the counter, which surprises me. The innkeeper's trade has no sides. The room's does.",
+	},
+	["org.npc_meet.w21.cup.012"] = {
+		"{other} pours like someone who has never spilled a drop and would like to see anyone try to prove otherwise.",
+		"{other} sets the cup down with a small knock, exactly in front of me. Not a hair to the left. A point of pride, clearly.",
+	},
+	["org.npc_meet.w21.grunt.001"] = {
+		"notices the leather wrap on a grunt's axe haft, worn pale in one spot where a thumb has rested through a great many watches.",
+		"glances at the grunt's grip: the thumb lies in a smooth, faded patch of the leather, the one place it ever seems to rest.",
+		"spots one shiny, faded patch on the grunt's axe handle, exactly the size of a thumb with nowhere else to go on a long watch.",
+	},
+	["org.npc_meet.w21.grunt.002"] = {
+		"There's a tune coming from that grunt. Low, under all the city's din, going nowhere in particular. I don't think I was meant to hear.",
+		"Beneath the clamor, that grunt hums something with no ending, for nobody. I keep walking as if I'd heard nothing.",
+		"A grunt humming at a post, so low it's felt more than heard. I'll keep that one to myself.",
+	},
+	["org.npc_meet.w21.grunt.003"] = {
+		"slows while a grunt sweeps the crowd; the gaze slides past, then comes back once, briefly, like a hand checking a pocket.",
+		"steps into a grunt's line of sight and out again, and the eyes return for one short second, as if to make sure.",
+		"slips out of a grunt's slow look and falls back into it a moment later, the way someone pats a purse to be certain it's still there.",
+	},
+	["org.npc_meet.w21.grunt.004"] = {
+		"A scar splits that grunt's eyebrow in two, so the face looks permanently surprised. Nothing else about the grunt agrees.",
+		"One eyebrow cut clean in half by an old scar. The grunt looks startled forever, and is the least startled thing in Orgrimmar.",
+		"That scar through the brow gives the grunt an air of mild astonishment. The axe says otherwise.",
+	},
+	["org.npc_meet.w21.grunt.005"] = {
+		"Don't mind me. I'm only trying to work out whether you ever blink.",
+		"Hold still. I've almost caught you blinking.",
+		"I've been counting. Not one blink since I came round the corner. Impressive.",
+	},
+	["org.npc_meet.w21.grunt.006"] = {
+		"The grunt's eyes go to my hands, then my belt, then my feet. My face comes last. Somebody taught that order, and taught it well.",
+		"Hands, belt, feet, and only then the face: the grunt reads a stranger from the dangerous end first.",
+		"Last thing the grunt looks at is my face. Hands and belt come first; faces, I suppose, rarely draw steel.",
+	},
+	["org.npc_meet.w21.grunt.007"] = {
+		"A strip of faded cloth is knotted round the grunt's axe haft, in a color no muster ever handed out. Someone's token. I won't ask whose.",
+		"Tied below the axe head: a scrap of cloth, threadbare, not regulation. Every grunt is allowed one small secret, apparently.",
+		"There's a rag knotted at the grip of that axe, too faded to name its color. Not part of any armor I know. A keepsake, then.",
+	},
+	["org.npc_meet.w21.grunt.008"] = {
+		"passes close enough to a grunt to see the nostrils flare: strangers here are checked by smell as much as by sight.",
+		"brushes by a grunt and notices the small lift of the head, the widening nose, a stranger taken in the way a wolf would do it.",
+		"earns a long sniff from the grunt at the post, plain and unembarrassed, before the eyes bother to look.",
+	},
+	["org.npc_meet.w21.grunt.009"] = {
+		"Weight on the back foot, the axe head grounded. Ready to be lifted, not yet lifted. From a grunt, that's practically a bow.",
+		"Leaning on the axe, not gripping it. A small thing. It means I'm not considered a problem. For the moment.",
+		"Axe grounded, shoulders loose: the grunt has made up a mind about me already, and decided to stay comfortable.",
+	},
+	["org.npc_meet.w21.grunt.010"] = {
+		"gets a nod from a grunt that starts somewhere in the shoulders and never quite reaches the head.",
+		"receives what might be a greeting: the grunt's shoulders shift a fraction, and the head stays exactly where it was.",
+		"is acknowledged by a grunt with a movement too small to name, somewhere between a shrug and a nod.",
+	},
+	["org.npc_meet.w21.grunt.011"] = {
+		"The grunt watches the edges of the crowd, never its middle. Trouble, apparently, starts at the fringes and works inward.",
+		"Not the crowd, but where the crowd thins: that's where the grunt keeps looking. Long practice, I suppose.",
+		"Eyes on the gaps between people, not the people. A grunt learns where a knife would come from.",
+	},
+	["org.npc_meet.w21.grunt.012"] = {
+		"I'll keep to the far side. That axe looks like it's been hoping for an excuse all watch.",
+		"Lovely axe. I'll admire it from a respectful distance.",
+		"I'll walk wide of you. Not for your sake; for the axe's. It seems bored.",
+	},
+	["org.npc_meet.w21.grunt.013"] = {
+		"The shoulder plate is polished till it gleams; below the knee the grunt is the color of the road. Somebody inspects the top half only.",
+		"Bright iron at the shoulders, road-colored from the knees down. This grunt polishes exactly as far as an officer's eye reaches.",
+		"Shoulders shining, boots filthy. A grunt who knows precisely where inspections stop.",
+	},
+	["org.npc_meet.w21.grunt.014"] = {
+		"The grunt doesn't reach for the axe. That's what worries me. Someone that calm has already worked out how quickly it could be done.",
+		"Not a hand moves toward a weapon. The grunt has simply measured the distance and the time it would take. I walk on, as dull as I can manage.",
+		"No threat, no word. The grunt turns the head and keeps it turned until I'm past. An Alliance face doesn't get the courtesy of being ignored.",
+	},
+	["org.npc_meet.w21.grunt.015"] = {
+		"A small lift of the chin from the grunt, the one the Horde keeps for its own in this city. No more than that. It's enough.",
+		"A chin raised half an inch: the grunt has placed me with the Horde and lets me through without a second look.",
+		"That short upward jerk of the chin. Among the Horde it means you belong; it costs the grunt nothing and straightens my back for free.",
+	},
+	["org.npc_meet.w21.grunt.016"] = {
+		"Old burn scars across the grunt's knuckles. Forge work, maybe, before the armor. More than one grunt must have started at the bellows.",
+		"Those knuckles are spotted with small pale burns, the kind sparks leave. This grunt has stood at an anvil as well as at a post.",
+	},
+	["org.npc_meet.w21.grunt.017"] = {
+		"Anything worth knowing out there, or is the scowl the whole report?",
+		"Is that frown for me in particular, or for everyone? I'd like to know where I stand.",
+		"Tell me if I'm wandering somewhere I shouldn't. I'd rather hear it from you than from the axe.",
+	},
+	["org.npc_meet.w21.grunt.018"] = {
+		"offers a grunt a polite greeting and receives a long, level look, as if the question of whether greetings are allowed on duty were being weighed.",
+		"tries a friendly word on a grunt and sees it land somewhere on the breastplate and slide off without leaving a mark.",
+		"says a cheerful word to a grunt, who turns it over like a coin of doubtful origin and hands it back unspent, with a grunt.",
+	},
+	["org.npc_meet.w21.grunt.019"] = {
+		"You look like someone who's heard every joke about grunts. I'll spare you mine.",
+		"I had a joke ready about guards. Looking at you, I've decided to keep it.",
+		"Lovely to see you too. No, don't smile, you'll strain something.",
+	},
+	["org.npc_meet.w21.grunt.020"] = {
+		"Easy. I'm only passing through, and in no hurry about it.",
+		"I'm the dull kind of visitor. Truly, ask anyone.",
+	},
+	["org.npc_meet.w21.host.001"] = {
+		"A cloth hangs over the innkeeper's shoulder and never wipes the counter. It's for the hands, the brow, and pointing at people.",
+		"That rag on the innkeeper's shoulder never touches a table. It mops a brow, flicks at a fly, and singles out whoever is next.",
+		"The cloth over the innkeeper's shoulder has three uses I can see, and cleaning isn't one of them.",
+	},
+	["org.npc_meet.w21.host.002"] = {
+		"waits while the innkeeper finishes a sum chalked on the wall behind the counter, lips moving, before turning with a look that asks for one word only.",
+		"stands at the counter until a column of chalk marks on the wall has been added up and underlined, and only then is granted the innkeeper's eyes.",
+		"is kept waiting until a tally on the wall comes out right; when it does, the innkeeper turns, satisfied, and nods for the order.",
+	},
+	["org.npc_meet.w21.host.003"] = {
+		"Past the inn door the grunts keep order. Inside it, the innkeeper does, and nobody has ever confused the two.",
+		"Two laws in this city: the grunts' out in the street, the innkeeper's from the threshold in. The second is enforced with a ladle.",
+		"The innkeeper's word runs exactly as far as the door. Beyond that it's the grunts' business, and both sides seem content with the border.",
+	},
+	["org.npc_meet.w21.host.004"] = {
+		"This is the one who can make the inn the place my hearthstone remembers. A strange power to belong to someone holding a ladle.",
+		"A word with the innkeeper and the stone in my pack will know its way back to this roof. Odd, that such a thing passes over a counter.",
+		"Of everyone in Orgrimmar, it's the innkeeper who can tie my hearthstone to this place. I'd expected a shaman, at the very least.",
+	},
+	["org.npc_meet.w21.host.005"] = {
+		"Whatever's been simmering longest, please. Those pots never lie.",
+		"A bowl from the oldest pot on the fire. The long-cooked ones are the honest ones.",
+		"I'll have whatever the cook would eat. Not the one meant for guests.",
+	},
+	["org.npc_meet.w21.host.006"] = {
+		"Everyone who comes in gets sized up by what they carry, not by who they are. I've been filed under heavy pack, light purse.",
+		"A glance at my bag, a glance at my belt, and the innkeeper has my measure: plenty of luggage, not much coin.",
+	},
+	["org.npc_meet.w21.host.007"] = {
+		"pushes past a row of drying sausages to reach the counter, where the innkeeper is waving the kitchen smoke aside with a ladle.",
+		"reaches the counter through a haze from the kitchen; the innkeeper fans it away with a ladle and peers through the gap.",
+		"finds the innkeeper on the far side of a cloud of cooking smoke, ladle raised to part it like a curtain.",
+	},
+	["org.npc_meet.w21.host.008"] = {
+		"The innkeeper's head tilts a fraction whenever a voice in the room goes up, and straightens once it comes down. Listening to everything, answering nothing.",
+		"Every raised voice in the room earns a small turn of the innkeeper's head; every lowered one, a small turn back. Like a dog that hears the door before anyone knocks.",
+		"I watch the innkeeper's ears more than the face. They follow the room, voice by voice, and settle only when it does.",
+	},
+	["org.npc_meet.w21.host.009"] = {
+		"sets coins on the counter and sees the innkeeper sweep them off with the side of a hand, uncounted, then count them anyway in one sideways glance.",
+		"lays down payment; the innkeeper rakes it in without looking, and somehow knows the sum by the sound.",
+		"drops a few coins on the wood and sees the innkeeper's hand cover them before the last has stopped spinning.",
+	},
+	["org.npc_meet.w21.host.010"] = {
+		"What's the house dish? And what's in it? No, wait. Just the first answer.",
+		"I'll have the house dish. Please don't tell me what goes into it.",
+		"What do the regulars order? I'll have that, and I won't ask.",
+	},
+	["org.npc_meet.w21.host.011"] = {
+		"is looked over by the innkeeper with the quick, practical attention of someone working out which bed will creak least under that weight.",
+		"gets measured from head to boots by the innkeeper, not for trouble but for a bed: length, width, and how much noise it will make.",
+	},
+	["org.npc_meet.w21.host.012"] = {
+		"An inn is the one place in Orgrimmar where nobody is training for anything. The innkeeper seems to guard that, quietly and hard.",
+		"Out there the whole city drills, hammers, marches. In here the innkeeper keeps a small corner of the canyon where nobody has to be ready.",
+		"Something rarer than beds is kept here: a room in Orgrimmar where being ready can wait. The innkeeper sees to it.",
+	},
+	["org.npc_meet.w21.host.013"] = {
+		"The innkeeper's sleeves are rolled to the elbow and scorched along one hem. Too near the fire, too often, too busy to mind.",
+		"One sleeve singed brown at the edge, the other merely stained. The innkeeper leans over the hearth fire more than is wise.",
+	},
+	["org.npc_meet.w21.host.014"] = {
+		"A seat where nobody will tell me a war story. I'll pay extra for that.",
+		"Somewhere to sit that isn't next to a veteran with a tale. Is that a thing you sell?",
+		"Put me at the table furthest from anyone who starts with 'back when I was at the front'.",
+	},
+	["org.npc_meet.w21.host.015"] = {
+		"sees the innkeeper taste the pot, frown, add a pinch of something red, taste again and add a second pinch, like someone losing an argument.",
+		"notices the innkeeper sniff at a stew, throw in a pinch of red powder, sniff again and throw in another, plainly in a quarrel with the pot.",
+		"has to wait while the innkeeper argues with a simmering pot by means of spices, and the pot appears to be winning.",
+	},
+	["org.npc_meet.w21.host.016"] = {
+		"My name isn't asked. The bench gets a number, the bowl gets a price, and guests come and go like smoke.",
+		"No name asked, none given. In an inn this busy I'm a bench and a bowl, and it's restful to be no more than that.",
+		"Here I'm whoever sits at the third bench. The innkeeper prefers it that way, and so, for once, do I.",
+	},
+	["org.npc_meet.w21.host.017"] = {
+		"leans on the counter and is told, with one flick of a rag, to lean somewhere else: it was just wiped.",
+		"props both elbows on the freshly wiped counter and has them removed, without a word, by a rag and a look.",
+		"rests a hand on the wood, gets a glare from the innkeeper, looks down, and finds the gleam of a counter wiped a moment ago.",
+	},
+	["org.npc_meet.w21.host.018"] = {
+		"I'll eat first and talk later, if you don't mind. Possibly not talk at all.",
+		"Food first. Words afterwards, if I've any left.",
+		"Whatever's hot. I'll say something friendly once it's inside me.",
+	},
+	["org.npc_meet.w21.ledger.001"] = {
+		"sets a bundle on the counter; the banker weighs it in one palm before writing anything, as if the weight told the whole story.",
+		"hands over a parcel and watches the banker heft it, once, judging, the way a cook judges a melon.",
+		"puts {g:his|her} things down and sees the banker lift the bundle an inch off the counter and set it back, the sum already guessed.",
+	},
+	["org.npc_meet.w21.ledger.002"] = {
+		"The banker never asks what's in the bundle. In a city of blunt questions, that might be the only one left politely unasked.",
+		"Nothing is asked about what I'm leaving. Orgrimmar will ask anyone anything, but not across this counter.",
+	},
+	["org.npc_meet.w21.ledger.003"] = {
+		"Put it at the back, behind the good stuff. It gets shy.",
+		"That one goes at the bottom. It's been through enough.",
+		"Somewhere dark and dull, please. It's had an exciting life.",
+	},
+	["org.npc_meet.w21.ledger.004"] = {
+		"The keys hang on a cord at the banker's neck, and the right one is found by touch, eyes never leaving my face.",
+		"A ring of keys, dozens of them, and the one for my box is picked out without a downward glance, the way a musician's hand finds a note.",
+		"Heavy bunch of keys, and not one jingle as they're sorted through. I don't know how that's done, and I doubt I'm meant to.",
+	},
+	["org.npc_meet.w21.ledger.005"] = {
+		"notices the banker's inky thumb, which leaves a faint print on the corner of every page it turns.",
+		"follows the banker's thumb down the page, black with ink to the second knuckle and leaving a small smudge wherever it stops.",
+	},
+	["org.npc_meet.w21.ledger.006"] = {
+		"I'm greeted by the number of my box. I suppose that's a kind of friendship.",
+		"To the banker I'm a box with legs. A well-kept box, at least.",
+	},
+	["org.npc_meet.w21.ledger.007"] = {
+		"Just looking in on it. No, nothing out. I only like to know it's still there.",
+		"Don't fetch anything. Just tell me it's all there, and I'll go.",
+	},
+	["org.npc_meet.w21.ledger.008"] = {
+		"is asked by the banker, after a long suspicious sniff at the parcel, whether anything in it was recently alive.",
+		"has the bundle lifted to the banker's nose, sniffed twice, and is asked in a flat voice whether it contains meat.",
+		"is asked, quite seriously, whether the parcel will start to smell, and is told what became of the last one that did.",
+	},
+	["org.npc_meet.w21.ledger.009"] = {
+		"What I leave here is the part of me that doesn't fit in a pack: things kept for reasons nobody else would understand.",
+		"A bank box holds what's too heavy to carry and too dear to sell. Mine is mostly the second kind.",
+		"Everything in that box is a reason I couldn't explain to the banker. Luckily, reasons are the one thing the banker never asks for.",
+	},
+	["org.npc_meet.w21.ledger.010"] = {
+		"hears the banker hum the same three notes while sorting, over and over, and finds them stuck in {g:his|her} head long after.",
+		"listens to the banker hum three low notes to the rhythm of the sorting, a tune that seems to have no fourth note and no end.",
+	},
+	["org.npc_meet.w21.ledger.011"] = {
+		"A goblin's coins, a tauren's charm, an orc's old buckle: the whole Horde crosses this counter one parcel at a time, and each gets its own line in the book.",
+		"Troll beads, Forsaken trinkets, orcish iron, all filed side by side in the same strongroom. The Horde mixes its valuables more readily than its cooking.",
+	},
+	["org.npc_meet.w21.ledger.012"] = {
+		"Mind the corner on that one. It's sharper than it looks, and it's the only thing I own worth stealing.",
+		"Careful, that one's precious. To me. To anyone else, it's a bent nail.",
+	},
+	["org.npc_meet.w21.ledger.013"] = {
+		"watches the banker set coins on a small brass scale one by one, until the needle settles and the banker's eyebrows settle with it.",
+		"sees {g:his|her} coins go onto the banker's scale in a short stack, and waits for the arm to stop trembling before anyone speaks.",
+		"notes how the banker taps the scale's pan with a fingernail to settle it, then reads the weight twice, once with each eye.",
+	},
+	["org.npc_meet.w21.ledger.014"] = {
+		"A coin drops somewhere behind me, and the banker's eyes are on it before it stops rolling. Nothing falls near this counter unnoticed.",
+		"Someone fumbles a copper a few paces off. The banker doesn't turn, only says where it landed.",
+	},
+	["org.npc_meet.w21.ledger.015"] = {
+		"looks on as the banker drips wax across the knot of {g:his|her} bundle and press a thumb into it, a seal nobody in the city would care to break.",
+		"has {g:his|her} parcel tied off by the banker and sealed with a blob of dark wax, pressed flat by a thumb that has done it thousands of times.",
+	},
+	["org.npc_meet.w21.ledger.016"] = {
+		"In, locked, and not a word to anyone. That's all.",
+		"Lock it away and forget my face. I'll remind you.",
+	},
+	["org.npc_meet.w21.ledger.017"] = {
+		"Of every counter in Orgrimmar, this is the only one where nobody tries to sell me anything.",
+		"The one counter in the city where I'm not being sold something. I could stand here a while for the peace of it.",
+		"Nobody shouts a price at me here. I'd forgotten what that sounds like in Orgrimmar.",
+	},
+	["org.npc_meet.w21.ledger.018"] = {
+		"Everything I ever meant to sell sits in that box, waiting for a better price. The banker has the patience to watch it wait.",
+		"My box is a shelf of good intentions: things to sell, things to mend, things to give away. The banker keeps them all with a straight face.",
+	},
+	["org.npc_meet.w21.ledger.019"] = {
+		"waits while the banker finishes a column of figures with one hand and waves {g:him|her} closer with the other, neither hand slowing.",
+		"is beckoned forward by the banker's free hand while the other keeps writing, the pen never lifting from the page.",
+	},
+	["org.npc_meet.w21.ledger.020"] = {
+		"Iron-bound chests stacked to the beams, each lid scratched with a mark I can't read. One of those marks means me.",
+		"Somewhere in that wall of chests, under a scratched mark I couldn't pick out, is everything I didn't want to carry.",
+	},
+	["org.npc_meet.w21.mentor.001"] = {
+		"The trainer lets me wait. Not from rudeness: how a pupil waits is the first thing worth knowing about one.",
+		"I'm kept standing a little longer than needed, and I understand that the standing is being watched.",
+		"First comes the waiting, and I'd bet my boots the waiting is graded.",
+	},
+	["org.npc_meet.w21.mentor.002"] = {
+		"answers the trainer's first question at length, and is asked the same question again, more slowly.",
+		"gives the trainer a long, careful answer and gets back a flat look and the very same question.",
+		"starts explaining, is stopped by a raised finger, and hears the question repeated word for word.",
+	},
+	["org.npc_meet.w21.mentor.003"] = {
+		"Go on, find the flaw. I'd rather hear it from you than from the first thing that bites me.",
+		"Don't be gentle on my account. I'm stubborn; gentle just bounces off.",
+		"Say it plainly. The whole city shouts at me already, one more voice won't hurt.",
+	},
+	["org.npc_meet.w21.mentor.004"] = {
+		"Everything the trainer wears has been mended at least once, and every mend is neater than what it fixed. That tells me how the lessons go.",
+		"Patched straps, darned cuffs, a buckle swapped for a better one. Whoever teaches here fixes things properly, and I suspect pupils get the same treatment.",
+		"Old gear, well kept, every repair stitched tighter than the original. Teaching, I imagine, works the same way.",
+	},
+	["org.npc_meet.w21.mentor.005"] = {
+		"sits on the bench where pupils wait for the trainer; the wood has been worn into two smooth hollows by everyone who sat there before.",
+		"takes the waiting bench by the trainer, its plank rubbed smooth and dipped in the middle by a great many nervous pupils.",
+	},
+	["org.npc_meet.w21.mentor.006"] = {
+		"My name is asked for and then never used. Until I've earned better, it seems, I'm 'you'.",
+		"My name goes in one ear and stays there, unused. A pupil is called 'you' until proven otherwise.",
+		"'You. Closer.' That's what I'm called, for now. I think names are handed out later, like everything else worth having.",
+	},
+	["org.npc_meet.w21.mentor.007"] = {
+		"I'm here. Tell me where to stand and for how long.",
+		"Put me where you want me. I'll stay put till you say otherwise.",
+		"Where do you want me? Say it once; I'm listening.",
+	},
+	["org.npc_meet.w21.mentor.008"] = {
+		"Not a word of welcome. Just 'Again,' before I've done a thing.",
+		"The first thing I'm told is 'again'. I haven't started. I'm choosing to take it as a compliment to my reputation.",
+	},
+	["org.npc_meet.w21.mentor.009"] = {
+		"is kept waiting while the trainer stops mid-word, deals with a shout from across the way, and turns back to finish the very same word where it was left.",
+		"is left hanging in the middle of a sentence while the trainer answers someone else, then picked up again at the exact syllable.",
+	},
+	["org.npc_meet.w21.mentor.010"] = {
+		"A trainer of the Horde will teach anyone who stands still for it: orc, troll, tauren, Forsaken. The lesson doesn't ask whose hands it lands in.",
+		"In Orgrimmar the same teacher faces a troll, then a tauren, then one of the Forsaken, and changes nothing but the height of the gaze. That's the Horde, in small.",
+	},
+	["org.npc_meet.w21.mentor.011"] = {
+		"is asked something offhand by the trainer, who doesn't even look up, and realizes only afterward that the answer mattered.",
+		"answers a question the trainer tosses over a shoulder as if it were nothing, and sees from the short nod that it wasn't.",
+		"fields a careless-sounding question from the trainer and notices, too late, how closely the reply is listened to.",
+	},
+	["org.npc_meet.w21.mentor.012"] = {
+		"Behind those eyes is a count of pupils who never came back. The trainer doesn't speak of it. The patience does.",
+		"Teach long enough in a city at war and you outlive pupils. It's in the way those eyes rest on me: carefully, as if memorizing.",
+	},
+	["org.npc_meet.w21.mentor.013"] = {
+		"Same as always? You talk, I nod, and later I find out which nods were lies.",
+		"I'll nod a lot. Some of the nods will even be honest.",
+	},
+	["org.npc_meet.w21.mentor.014"] = {
+		"This trainer never raises a voice. In a city that shouts its greetings, a teacher who murmurs is impossible to ignore.",
+		"So quiet, this one. Everyone else in Orgrimmar bellows; the trainer speaks low, and I find myself leaning in like a conspirator.",
+		"Every other voice in the street is a shout. The trainer's is barely above a whisper, and it carries further than all of them.",
+	},
+	["org.npc_meet.w21.mentor.015"] = {
+		"gets two taps of the trainer's knuckle on the collarbone: here, now, listen.",
+		"is brought to attention by the trainer's knuckle, two dry taps below the throat, and no further word needed.",
+	},
+	["org.npc_meet.w21.mentor.016"] = {
+		"The pupil before me leaves muttering. The trainer watches the muttering go with something close to fondness.",
+		"Whoever was here before me stalks off grumbling, and is followed by a look that is almost tender. I take note: grumbling is a good sign.",
+		"The last pupil goes off rubbing a shoulder and swearing softly. The trainer nods after them, satisfied, like a cook at a stew that has finally come to the boil.",
+	},
+	["org.npc_meet.w21.mentor.017"] = {
+		"A trainer who counts the fee before the lesson and the mistakes after. Both totals come out higher than I'd like.",
+		"Coin first, then the lesson, then the tally of everything I got wrong. I'm poorer in two ways by the end, and somehow ahead.",
+	},
+	["org.npc_meet.w21.mentor.018"] = {
+		"waits while the trainer finishes a strip of dried meat, unhurried, chewing every bit of it before a single word.",
+		"stands by as the trainer eats the last of some dried meat with great deliberation, as though nothing could start on an empty stomach.",
+	},
+	["org.npc_meet.w21.mentor.019"] = {
+		"I start an excuse. I'm allowed to finish it, every word, and then nothing at all is said. Nobody has ever been so cruel to an excuse of mine.",
+		"Halfway into explaining myself I hear how it sounds. The trainer just waits for me to hear it too.",
+		"The silence after my excuse lasts exactly long enough for me to take it back.",
+	},
+	["org.npc_meet.w21.mentor.020"] = {
+		"Talk slow. Somebody just dropped a crate behind me and I'd hate to learn the wrong half.",
+		"Say that last bit twice? A wolf went by.",
+	},
+	["org.npc_meet.w21.mentor.021"] = {
+		"Praise from this trainer comes with a pause in front of it, long enough to sound like a rebuke on its way.",
+		"There's a gap before every kind word, and I spend it bracing for the opposite.",
+		"When the kind word comes it's late, and small, and I'd carry it across Durotar.",
+	},
+	["org.npc_meet.w21.mentor.022"] = {
+		"is told to come closer, then farther back, then exactly where {g:he|she} first stood, and is never told why.",
+		"shuffles forward at the trainer's word, back at the next, and ends where {g:he|she} began, under a look of quiet satisfaction.",
+	},
+	["org.npc_meet.w21.mentor.023"] = {
+		"Around me the city clangs and haggles. In front of me there's only the trainer, and the plain shape of what I don't know yet.",
+		"For the length of a lesson Orgrimmar goes distant, a noise behind a door. There's the trainer, and my mistakes, and nothing else.",
+	},
+	["org.npc_meet.w21.mentor.024"] = {
+		"watches the trainer roll a small worn stone across the knuckles while thinking, and stop it dead when the thinking is done.",
+		"notices a smooth pebble walking over the backs of the trainer's fingers, back and forth, until a decision closes the hand around it.",
+		"follows a little stone along the knuckles of {other}, over and under, until it vanishes into a fist and the lesson begins.",
+	},
+	["org.npc_meet.w21.mentor.025"] = {
+		"Teach me well. Whatever you put in my hands, the Horde will get back with interest.",
+		"Make it count. I mean to carry it a long way from this city, under the Horde's banner.",
+	},
+	["org.npc_meet.w21.mentor.026"] = {
+		"A single laugh at something I do. Not at me, I think. At something only an old teacher would find funny.",
+		"A short laugh from the trainer, quickly swallowed. I'll spend the rest of the lesson wondering what I did.",
+		"Something I do makes a corner of the trainer's mouth twitch. Whether it's promise or a hopeless case, I'm not told.",
+	},
+	["org.npc_meet.w21.mentor.027"] = {
+		"offers the trainer a hand in greeting and has it turned palm up, inspected, and handed back without comment.",
+		"holds out a hand to the trainer, who takes it, looks it over front and back like a merchant with a doubtful coin, and lets it go.",
+		"has {g:his|her} offered hand studied by the trainer, knuckles, palm and nails, before it is shaken at all.",
+	},
+	["org.npc_meet.w21.mentor.028"] = {
+		"First I'm asked what I want to learn, then what I want it for. The second answer is the one that earns a nod.",
+		"'Why?' is the first word put to me. Not what, not how. Why. I give an honest answer and get a long look for it.",
+	},
+	["org.npc_meet.w21.post.001"] = {
+		"Where the grunt stands, the ground is trodden into two shallow hollows, boot-shaped. Grunts have stood on exactly that spot for years.",
+		"Two dips in the packed earth of the post, one for each boot. This grunt fills them; others filled them before.",
+		"The post has worn its own footprints into the earth. The grunt on watch steps into them like into a pair of old shoes.",
+	},
+	["org.npc_meet.w21.post.002"] = {
+		"catches a grunt mid-yawn and sees the jaw snap shut and the eyes harden in one motion, as if the yawn had never happened.",
+		"glimpses the tail end of a grunt's yawn, swallowed whole the moment someone looks, the face back to stone before the jaw has closed.",
+	},
+	["org.npc_meet.w21.post.003"] = {
+		"Some of the older grunts must remember the camps, and the guards who watched them through the fence. Now they do the watching, and they do it without cruelty.",
+		"A few grunts at the posts are old enough to have stood on the other side of a fence once. It shows in how little they enjoy the staring.",
+		"A grunt that age was likely penned in a camp as a youngster, watched by strangers. Now the grunt watches, and never seems to relish it.",
+	},
+	["org.npc_meet.w21.post.004"] = {
+		"May your relief come early and your boots stay dry.",
+		"Here's to a short watch and a punctual relief.",
+		"Hope whoever takes your post next knows how to be on time.",
+	},
+	["org.npc_meet.w21.post.005"] = {
+		"sees a grunt square up as an officer goes by, every strap suddenly straight, and settle again the instant the officer has turned the corner.",
+		"observes a grunt stiffen for a passing officer and then sag back by one careful inch once the officer is out of sight.",
+		"catches the very moment a grunt's officer leaves: not a slouch, exactly, but the armor seems to sit a little lower.",
+	},
+	["org.npc_meet.w21.post.006"] = {
+		"keeps to the middle of the road as a grunt turns to follow, the whole body pivoting with the axe, slow as a door on its hinge.",
+		"walks on under a grunt's gaze that turns with every step, body and axe together, like a door that follows whoever goes by.",
+	},
+	["org.npc_meet.w21.post.007"] = {
+		"hears the grunt at the post counting quietly under the din: the passers-by, perhaps, or what's left of the watch.",
+		"picks up a murmur of numbers from a grunt on duty, steady and low, though nobody nearby seems to be counting anything.",
+		"stands near enough to a grunt to hear a slow count, twelve, thirteen, and wonders what exactly is being numbered.",
+	},
+	["org.npc_meet.w21.post.008"] = {
+		"The grunt's eyes move the whole time; nothing else does. Hours of that. I'd rather fight three battles than stand one watch.",
+		"All of the grunt is still except the eyes. Doing that for a whole watch must be its own kind of exhaustion.",
+		"Standing is the hard part. Anyone can fight; it takes a grunt to stay put that long without going mad.",
+	},
+	["org.npc_meet.w21.roost.001"] = {
+		"follows the master's flat hand along a beast's folded wing, joint by joint, slow as a healer feeling for a break.",
+		"stays out of the way as the master checks each beast's wing in turn, pressing along the bones with a thumb and listening to the beast grumble.",
+		"stands back as {other} feels down a wing for soreness, the beast holding its complaint to a low rumble.",
+	},
+	["org.npc_meet.w21.roost.002"] = {
+		"At the top of the tower it smells of hide, old meat and the oil the master works into every strap. Nobody else in the city would put up with it.",
+		"Hide, raw meat, leather oil, and under it all the musk of the beasts. The master stopped noticing long ago, by the look of it.",
+		"The tower top has a smell all its own, beast and oiled leather and something left too long in a pail. The master wears it like a coat.",
+	},
+	["org.npc_meet.w21.roost.003"] = {
+		"Which one's flying well? I'll take whichever you'd trust yourself.",
+		"Give me the steadiest of them. I've no wish to argue with a wind rider halfway up.",
+	},
+	["org.npc_meet.w21.roost.004"] = {
+		"The master talks to me with one eye and keeps the other on the rim of the canyon, where the fliers come in.",
+		"Half the master's attention is on me. The other half is out past the canyon's edge, counting wings.",
+		"Every answer I get comes with the master's eyes on the canyon's lip, as if a beast might come over it any moment and need a word first.",
+	},
+	["org.npc_meet.w21.roost.005"] = {
+		"ducks as a beast stretches a wing across the platform; the master steps under it without looking, the way one steps round a door that is always open.",
+		"flinches as a leathery wing unfolds a hand's width from {g:his|her} face, while the master walks beneath it without breaking stride.",
+	},
+	["org.npc_meet.w21.roost.006"] = {
+		"The beasts' tails curl and uncurl behind them, barbed like a scorpid's. The master walks between them as if they were coils of rope.",
+		"Every one of those tails ends in a barb, and the master steps over them like a cook stepping over the cat.",
+	},
+	["org.npc_meet.w21.roost.007"] = {
+		"Easy, easy. I'm only here to talk to your keeper.",
+		"Yes, hello. No, I'm not food. Ask your master.",
+		"Hello to you too. Those are very impressive teeth. Please keep them.",
+	},
+	["org.npc_meet.w21.roost.008"] = {
+		"watches the master toss chunks of meat from a pail, one to each beast in turn, and not one of them snaps out of order.",
+		"stands aside at feeding: the master throws, a beast catches, the next waits its turn with jaws shut and eyes wide.",
+		"sees each beast on the tower take its share of meat from the master's toss without so much as a glance at its neighbor's.",
+	},
+	["org.npc_meet.w21.roost.009"] = {
+		"Every beast on the tower knows the master's step. Their heads come up before I've heard the boots.",
+		"The beasts know their keeper by sound alone. A scuff on the stair below, and every head on the perches turns.",
+	},
+	["org.npc_meet.w21.roost.010"] = {
+		"One old saddle hangs on a peg apart from the rest, cracked and still oiled. It's tended with the others, and nothing is said about whose it was.",
+		"Apart from the working tack hangs a saddle nobody uses, kept supple all the same. I don't ask. The master doesn't look like someone who'd answer.",
+	},
+	["org.npc_meet.w21.roost.011"] = {
+		"hears the master call something down the tower to someone below, and the answer climbs back up as a single grunt.",
+		"waits as {other} leans over the rail and bellows down the tower; whatever was asked, the reply from below is one word.",
+	},
+	["org.npc_meet.w21.roost.012"] = {
+		"Does this one bite, or does it just look at me like it's thinking about it?",
+		"It's staring. Is that hunger, or opinion?",
+		"Saddle's yours, beast's yours, the bruises will be mine. Fair?",
+	},
+	["org.npc_meet.w21.roost.013"] = {
+		"The master's hands never rest: a buckle here, a strap there, a scratch under a jaw. Talking is something done on the side.",
+		"I get the master's words. The beasts get the hands, which are busy the whole time, tugging, smoothing, checking.",
+		"Even mid-sentence the master keeps a hand on a beast's neck, smoothing the hair the wrong way and back.",
+	},
+	["org.npc_meet.w21.roost.014"] = {
+		"brushes a tuft of shed mane from {g:his|her} sleeve; the platform is drifted with it in every corner.",
+		"picks coarse shed hair off {g:his|her} clothes, gathered from a floor that is carpeted with it after only a few moments of standing still.",
+	},
+	["org.npc_meet.w21.roost.015"] = {
+		"A tower full of Horde beasts and their keeper, and no good reason for me to be up here. Every eye on the perches agrees.",
+		"The master's look says what the beasts' looks say: wrong colors, wrong tower. I keep my hands where they can be seen.",
+	},
+	["org.npc_meet.w21.roost.016"] = {
+		"catches the master testing a buckle's leather with the teeth, a long practiced bite, and nodding at the taste.",
+		"sees {other} bite down on a strap to check it, chew thoughtfully, and pass it as sound.",
+	},
+	["org.npc_meet.w21.roost.017"] = {
+		"From the top of the tower the master could watch the whole Valley of Strength, and pays it no attention at all. Everything that matters up here has wings.",
+		"All Orgrimmar spread below, and the master never once looks down at it. The city is just what the beasts leave and come back to.",
+		"The roofs and smoke of the city lie under the master's feet like a rug nobody bothers to look at.",
+	},
+	["org.npc_meet.w21.roost.018"] = {
+		"witnesses a beast yawn enormously at the master, all teeth, and the master yawn straight back without a flicker of fear.",
+		"sees a beast open its jaws wide at the master, who yawns back just as wide, and the beast, outdone, looks away.",
+	},
+	["org.npc_meet.w21.roost.019"] = {
+		"Whichever one's rested. I'm in no hurry, and the beast shouldn't be either.",
+		"Pick for me. You know them; I only know where I'm going.",
+	},
+	["org.npc_meet.w21.roost.020"] = {
+		"The master ends a squabble on the perches with one short whistle, two notes, down then up. The beasts settle like scolded children.",
+		"Two notes whistled, low then high, and the quarreling beasts pull apart and fold their wings. I'd pay to learn that whistle.",
+	},
+	["org.npc_meet.w21.roost.021"] = {
+		"steps aside as a beast comes in to land, all claws and dust, and the master is under its chin before it has finished folding.",
+		"watches a returning beast drop onto its perch with a thump that shivers the planks, the master already reaching for the girth.",
+	},
+	["org.npc_meet.w21.stall.001"] = {
+		"The goods are laid out by price, cheapest at the front where hands reach first. The good things sit at the back, where you have to ask.",
+		"Cheap stock in front, within easy reach of a hand. The fine pieces at the back, behind the merchant's elbow. You pay first in questions.",
+	},
+	["org.npc_meet.w21.stall.002"] = {
+		"notices that the merchant keeps one hand flat on the coin box the whole time, even while the other waves about in grand gestures.",
+		"sees one of the merchant's hands perform the whole sales pitch while the other never leaves the lid of the coin box.",
+		"can't help noticing which of the merchant's hands is doing the talking and which is guarding the coin.",
+	},
+	["org.npc_meet.w21.stall.003"] = {
+		"This merchant greets an orc, a troll and a tauren in three slightly different voices, one after another. I wait to hear which voice I'll get.",
+		"A different tone for every customer: clipped for the orc, singsong for the troll, unhurried for the tauren. My voice is coming. I'm curious which.",
+	},
+	["org.npc_meet.w21.stall.004"] = {
+		"I'm only looking. I say that every time, and I've never once left with empty hands.",
+		"Just browsing. Famous last words, I know.",
+		"Only looking, I promise. My purse has heard that promise before and doesn't believe a word of it.",
+	},
+	["org.npc_meet.w21.stall.005"] = {
+		"Everything gets wrapped, even a single nail, in a twist of rough cloth. A habit, or a way of making a small sale feel like a gift.",
+		"One copper's worth of thread, and still it leaves the stall wrapped in cloth and tied with a twist of string. I feel oddly honored.",
+	},
+	["org.npc_meet.w21.stall.006"] = {
+		"is shown a pair of gloves held out on two flat palms, presented the way one might present something alive.",
+		"has a belt laid across the merchant's open hands and offered with a slight bow, as if it might startle.",
+		"is handed a buckle with both hands, slowly, the way one passes over a sleeping animal.",
+	},
+	["org.npc_meet.w21.stall.007"] = {
+		"The merchant counts my coin twice: once for the value, and once, I suspect, for the stamp on it.",
+		"My coins get turned over and studied on both faces. Gold is gold, the merchant decides, whoever minted it.",
+		"A long look at each coin I hand over, then a shrug, and into the box they go. The merchant's loyalty is to the weight of the metal.",
+	},
+	["org.npc_meet.w21.stall.008"] = {
+		"The merchant's own boots are worn through at the toe. Whatever's sold here, the best of it never stays with the one who sells it.",
+		"Fine leather on the table, cracked old leather on the merchant's feet. The seller rarely keeps the stock.",
+	},
+	["org.npc_meet.w21.stall.009"] = {
+		"sees the merchant scratch a figure into the dust of the counter with a fingernail, rub it out, and scratch a smaller one, all without being asked.",
+		"is shown a price drawn with one finger in the dust on the counter, wiped away with a sigh, and drawn again a little lower before a word has been said.",
+	},
+	["org.npc_meet.w21.stall.010"] = {
+		"Wrap it well. It's going further than you'd believe.",
+		"Pack it tight, please. It has a long way to go, and so do I.",
+	},
+	["org.npc_meet.w21.stall.011"] = {
+		"The merchant talks while counting and counts while talking, and gets both right. I can manage one of those, badly.",
+		"{other} keeps up a stream of chatter and an exact tally at once. I lose count if anyone so much as sneezes.",
+		"Patter and arithmetic at the same time, without a stumble. That's a trade skill nobody teaches.",
+	},
+	["org.npc_meet.w21.stall.012"] = {
+		"The awning over the stall is patched with the hides of four different beasts. Nothing in this city gets thrown away, not even a torn roof.",
+		"Four kinds of hide stitched into one awning, every patch a different color. The merchant wastes nothing, roof included.",
+		"That stall's awning is a quilt of leathers, scraps of this beast and that. Mended, mended once more, and still doing its job.",
+	},
+	["org.npc_meet.w21.stall.013"] = {
+		"is made to wait while the merchant serves a peon with a single copper to spend, with exactly the same care and the same small bow.",
+		"stands aside as a peon spends one copper at the stall, and the merchant takes as long over that coin as over any silver.",
+		"lets a peon go first, and sees the merchant weigh out a copper's worth of salt as if for a chieftain.",
+	},
+	["org.npc_meet.w21.stall.014"] = {
+		"I'll pay what you ask, if you'll tell me afterward what you'd have taken.",
+		"Fine, your price. But I want to hear the real one once the coin's changed hands.",
+	},
+	["org.npc_meet.w21.stall.015"] = {
+		"steps up to a stall in the middle of the merchant's meal and gets a full-mouthed greeting and a greasy finger aimed at the goods.",
+		"catches the merchant with a bone in one hand; it is used, without a pause, to point out the best of the stock.",
+		"arrives mid-mouthful; the merchant swallows, wipes both hands on an apron, and is all business at once.",
+	},
+	["org.npc_meet.w21.task.001"] = {
+		"is greeted with a grip on the forearm, held a beat too long, the way one tests a rope before trusting any weight to it.",
+		"clasps forearms with the one who called {g:him|her} over, and feels the grip take a measure before it lets go.",
+		"takes the forearm offered by the asker; the hold tightens once, testing, and only then do the words begin.",
+	},
+	["org.npc_meet.w21.task.002"] = {
+		"The asking starts with a compliment I haven't earned. In this city that means the request is bigger than the compliment.",
+		"First a word of praise, laid on thick. Orgrimmar isn't a place that flatters for nothing; I start bracing.",
+		"Praise, then more praise, then a pause. In Orgrimmar the pause is where the hook is.",
+	},
+	["org.npc_meet.w21.task.003"] = {
+		"You've been watching the crowd for someone. Was it me, or will anyone do?",
+		"I saw you looking. Am I the one you wanted, or just the first to stand still?",
+		"Out of this whole crowd you pointed at me. Honor or trouble?",
+	},
+	["org.npc_meet.w21.task.004"] = {
+		"Someone in Orgrimmar has a trouble and has decided I look like its answer. I won't correct them too quickly.",
+		"Apparently I have the face of a solution. I'll try to keep it on until I know what the problem is.",
+	},
+	["org.npc_meet.w21.task.005"] = {
+		"is made to wait while the asker finishes an argument with somebody else entirely, then is turned to with a smile that comes on like a lamp.",
+		"stands by while the one with the request wins a quarrel with a passing porter, then gets the full, sudden warmth of a smile.",
+	},
+	["org.npc_meet.w21.task.006"] = {
+		"The words come out in order, polished against a wall many times. Something in the eyes hasn't been rehearsed at all.",
+		"It's a practiced speech, every word in place. The eyes never got the practice.",
+		"Every word sits where it was put the last ten times it was said. Only the voice wobbles.",
+	},
+	["org.npc_meet.w21.task.007"] = {
+		"Say it again, closer. Every word just went under a passing cart.",
+		"Come again? The racket swallowed the important part.",
+	},
+	["org.npc_meet.w21.task.008"] = {
+		"When the Horde asks, it doesn't beg. It names the need and waits to see whether you're the kind who answers.",
+		"No pleading, no bowing. Whoever asks in the Horde says what's wanted and looks me in the eye. I'd think less of anything softer.",
+	},
+	["org.npc_meet.w21.task.009"] = {
+		"The asker glances over my shoulder before settling on me, checking for someone better. Fair. I'd have checked too.",
+		"First a look past me, in case somebody more suitable is coming. Nobody is. I'm what's on offer.",
+		"My shoulder gets checked first, for anyone better behind it. Nobody. Lucky me, or unlucky them.",
+	},
+	["org.npc_meet.w21.task.010"] = {
+		"I've got two ears and nowhere urgent to be. Go on.",
+		"You have my attention. It's not much, but it's all yours.",
+		"Out with it. Whatever it is, it sounds better said than chewed on.",
+	},
+	["org.npc_meet.w21.task.011"] = {
+		"is pulled out of the crowd's way by the sleeve, so the asking can be done without anyone getting trampled.",
+		"is steered by the elbow into a quieter corner, away from the press of the street, before a word is said.",
+	},
+	["org.npc_meet.w21.task.012"] = {
+		"{other} says my name as though we'd already agreed on something. That's how they get you.",
+		"My name, said warmly, by someone I've never met. In this city that's a hook with bait on it.",
+		"Being greeted by name before I've given it is flattering for about as long as it takes to wonder who told them.",
+	},
+	["org.npc_meet.w21.task.013"] = {
+		"There's a pause before the request, the kind a grunt leaves before a charge. I brace accordingly.",
+		"A long silence, a squaring of shoulders: whatever's coming is coming at a run.",
+		"The asker squares up to me as if the asking were a fight to be got through. Maybe it is.",
+	},
+	["org.npc_meet.w21.task.014"] = {
+		"Skip the flattery. I'll hear the rest.",
+		"Leave out the part where I'm wonderful. Start with the part you need.",
+	},
+	["org.npc_meet.w21.task.015"] = {
+		"sees the asker straighten up, clear the throat and start over from the beginning, though nothing at all has been said yet.",
+		"hears the asker begin, stop, begin again in a better voice, and stop once more to choose a better first word.",
+	},
+	["org.npc_meet.w21.task.016"] = {
+		"Orgrimmar asks for help the way it does everything: straight, loud, and a little too close to the face.",
+		"No hints, no hovering. Someone plants themselves in front of me and asks, near enough that I could count the teeth.",
+		"Nobody hovers at the edge of a request in this city. It arrives head-on, like everything else.",
+	},
+	["org.npc_meet.w21.task.017"] = {
+		"Dark rings under the eyes and dust on the boots that's days old. Whatever is wrong hasn't let this one rest.",
+		"The asker's boots are caked with old dust, the eyes heavy. Something has been gnawing for longer than anyone would like to say.",
+	},
+	["org.npc_meet.w21.task.018"] = {
+		"is offered a seat on an upturned crate, which wobbles, and the asker apologizes for the crate before anything else.",
+		"is waved onto an overturned crate that rocks on one bad corner; the first matter discussed is the crate.",
+	},
+	["org.npc_meet.w21.task.019"] = {
+		"That's the face of someone about to ask a favor. I know it well; I've worn it myself.",
+		"Ah. You've got the favor face. Go on, I won't make you hold it.",
+		"I know that look. I've used it on innkeepers.",
+	},
+	["org.npc_meet.w21.task.020"] = {
+		"lets the asker press a coin on a passing runner and send the runner off at a sprint, and only then becomes the center of the asker's attention.",
+		"stands aside as the one with the request dispatches a messenger with a coin and three quick words, then looks round, ready.",
+	},
+	["org.npc_meet.w21.task.021"] = {
+		"Two kinds of people ask strangers for help in Orgrimmar: the ones too proud to ask friends, and the ones whose friends already said no. I try to guess which before the first word.",
+		"Is this someone too proud to ask a friend, or someone whose friends have run out? I'll know by the second sentence.",
+	},
+	["org.npc_meet.w21.task.022"] = {
+		"Is this the sort of thing I'll want a drink after? Just so I know where to head next.",
+		"Tell me now: will this end at the inn celebrating, or at the inn forgetting?",
+	},
+	["org.npc_meet.w21.task.023"] = {
+		"No preamble at all: a hand on my shoulder and 'Good. You.' It's oddly flattering, being chosen that fast.",
+		"A clap on the shoulder, a nod, 'You'll do.' No speech. I've had warmer welcomes and none quicker.",
+		"'You. Yes, you.' And that's the whole of the introduction. I find I don't mind.",
+	},
+	["org.npc_meet.w21.task.024"] = {
+		"catches the asker's lips moving silently a moment before speaking, the opening line run through one last time.",
+		"sees the asker mouth the first words silently, like someone counting stairs in the dark, before saying them aloud.",
+	},
+	["org.npc_meet.w21.task.025"] = {
+		"The asker sizes up my gear piece by piece, like a peddler pricing a used cart. I seem to pass, which is its own kind of worry.",
+		"Boots, belt, pack, hands: I'm inventoried before I'm greeted. The asking goes ahead, so I suppose I'm the right size.",
+		"I'm looked over the way a quartermaster looks over a mule: legs, load, temper.",
+	},
+	["org.npc_meet.w21.task.026"] = {
+		"notices the asker nodding all through the asking, steadily, as if a nod might be catching.",
+		"finds {g:himself|herself} nodding along before hearing anything at all, because the asker has been nodding since the first word.",
+	},
+	["org.npc_meet.w21.task.027"] = {
+		"Asking a stranger costs something, even in a city this proud. Especially in a city this proud. I can see it being paid.",
+		"Pride has to be set down before a stranger can be asked. I watch it being set down, slowly, like a heavy pack.",
+		"It costs something to ask, here. The asker pays it in a lowered voice and a gaze that keeps sliding to the side.",
+	},
+	["org.npc_meet.w21.task.028"] = {
+		"is greeted by the asker with a fist struck once to the chest, the salute of the Horde, and returns it before anything is asked.",
+		"answers the asker's fist-to-chest with {g:his|her} own, and only then, the courtesy done, does the request begin.",
+		"receives a short Horde salute from the one with the request, knuckles to the heart, and gives it back in kind.",
+	},
+	["org.npc_meet.w21.ware.001"] = {
+		"watches the merchant blow the dust off each piece before setting it down, a small ritual repeated item by item, even on things with no dust at all.",
+		"sees every item lifted, blown on once, and laid down again, by a merchant who clearly does it for the goods' sake rather than the dust's.",
+		"notices the merchant puff softly over each thing before showing it, clean or not, like a greeting between seller and stock.",
+	},
+	["org.npc_meet.w21.ware.002"] = {
+		"One pan of the merchant's scale is dented. I'd very much like to know which way that leans.",
+		"A dent in the left pan of the scale, old and polished. Whoever it favors, it isn't the customer.",
+		"That scale has a dented pan. I'll weigh my own coin twice, thank you.",
+	},
+	["org.npc_meet.w21.ware.003"] = {
+		"Don't tell me the price yet. Let me grow fond of it first.",
+		"Hold the price a moment. I want to enjoy this before it hurts.",
+		"No numbers yet, please. I'm still admiring it.",
+	},
+	["org.npc_meet.w21.ware.004"] = {
+		"Before I've said a word the merchant has read my pack, my boots and the wear on my gloves, and settled on what I can afford. It's always a little more than I can.",
+		"A quick look over me, gloves to buckles, and the merchant knows my budget. Then adds a bit to it, out of optimism.",
+	},
+	["org.npc_meet.w21.ware.005"] = {
+		"is offered a sip from a clay water jug before any talk of business, the merchant waiting politely until it has been taken.",
+		"has a cup of water pushed across the stall before a word of trade, and the merchant won't begin until it has been accepted.",
+		"accepts a ladle of water from the merchant's own jar, the courtesy that comes before any haggling at this stall.",
+	},
+	["org.npc_meet.w21.ware.006"] = {
+		"Every coin I hand over gets bitten, copper or silver. Either the merchant trusts nobody, or likes the taste.",
+		"Bitten, every one: my coin, then the next, then the next. I'm not sure whether I'm paying or feeding someone.",
+		"Each coin goes between the merchant's teeth before it goes in the box. Thorough, if a little unsettling to watch.",
+	},
+	["org.npc_meet.w21.ware.007"] = {
+		"waits while the merchant finishes a quarrel with the neighboring stall, which ends in shared laughter and a promise of revenge.",
+		"arrives in the middle of a shouting match between two neighboring stalls and stays to see it end in a grin and a rude gesture.",
+	},
+	["org.npc_meet.w21.ware.008"] = {
+		"What have you got that no one else on this street has? Besides that grin.",
+		"Show me the thing you'd keep if nobody bought it.",
+		"What's here that I won't find three stalls down?",
+	},
+	["org.npc_meet.w21.ware.009"] = {
+		"This merchant will ask what I need, then sell me what I didn't know I needed. I can see it in the smile.",
+		"I came for one thing. I can already tell I'll leave with three.",
+	},
+	["org.npc_meet.w21.ware.010"] = {
+		"When I put something down to think, the merchant turns it a quarter turn toward me, so the good side shows. A small, patient trick.",
+		"Every time I set an item down, the merchant nudges it round to show its best face. I notice. I'll probably buy it anyway.",
+	},
+	["org.npc_meet.w21.ware.011"] = {
+		"glances at the merchant cutting a notch in a tally stick for the last sale, then running a thumb down all the other notches to count them.",
+		"sees the merchant mark a sale with a knife-nick in a stick already rough with notches, and nod at the total.",
+	},
+	["org.npc_meet.w21.ware.012"] = {
+		"A word in Orcish and the merchant's price seems to soften by a copper or two. I may be imagining it. I'll keep talking Orcish anyway.",
+		"Among the Horde the haggling starts friendlier. The merchant's first number already has a little give in it, a coin or so.",
+	},
+	["org.npc_meet.w21.ware.013"] = {
+		"There's a stool behind the stall that {other} never sits on. It's kept, I gather, for customers who look worn enough to need it.",
+		"An empty stool at the merchant's elbow, offered to me with a jerk of the chin. I must look more tired than I thought.",
+		"On their feet all the long trading hours, and a stool kept for the customers. A strange courtesy, and a good one.",
+	},
+	["org.npc_meet.w21.ware.014"] = {
+		"ducks beneath the goods hung from every pole of the stall, pelts, pots and belts, and finds the merchant somewhere inside them.",
+		"parts a curtain of hanging wares to reach the merchant, who seems to live in the middle of the stock like a spider in its web.",
+	},
+	["org.npc_meet.w21.ware.015"] = {
+		"No patter, no flattery. The merchant lifts each thing, names it, names a price, and waits. Restful, in a city this loud.",
+		"{other} sells in four words or fewer. Item, price, nod, done. I could get used to that.",
+	},
+	["org.npc_meet.w21.ware.016"] = {
+		"Good trade to you. Go easy on me; I've just counted my purse and I'm still upset.",
+		"Hello. Before you start: my purse is small and my tastes are not. Be gentle.",
+	},
+	["org.npcd_flightmaster_open.w21.fopen.001"] = {
+		"Don't reach for that one's head. She bites the hand that feeds her, and I'm the hand.",
+		"Keep clear of the big one at the end. He likes nobody until he's eaten.",
+		"Hands down, voice low. The beasts read a stranger faster than I do.",
+	},
+	["org.npcd_flightmaster_open.w21.fopen.002"] = {
+		"You climbed all those stairs. The beast will gladly spare you the rest of the way.",
+		"All those steps, and nothing worse than sore knees? Good. The hard part's done; the beast does the rest.",
+		"Every step of this tower is a reason to fly instead. You've earned the top.",
+	},
+	["org.npcd_flightmaster_open.w21.fopen.003"] = {
+		"Look at them. Every one knows the routes better than any map you could buy.",
+		"I've fed and mended every beast on this tower. They know the way better than I ever will.",
+		"These animals have carried more folk than any road in Durotar. Treat them kindly.",
+	},
+	["org.npcd_flightmaster_open.w21.fopen.004"] = {
+		"Buckle the strap, then check it twice. The beast won't stop for loose leather.",
+		"Sit where the saddle's worn smooth, and keep your knees in. That's all the advice there is.",
+		"Grip with the knees, not the hands. Hands tire; knees remember.",
+	},
+	["org.npcd_flightmaster_open.w21.fopen.005"] = {
+		"Mind your step on the platform. The beasts are well fed, and it shows.",
+		"Watch your boots up here. Everything a well-fed beast does, it does on this platform.",
+		"Careful underfoot. Nobody's swept since the last landing, and there's been a lot of landing.",
+	},
+	["org.npcd_flightmaster_open.w21.fopen.006"] = {
+		"From up here you can count the smoke columns of the city. Most who come up to look end up flying.",
+		"Fine view, isn't it? Half the city from one platform. Shame I never get time to look.",
+		"Folk climb up for the view and leave on a beast's back. Which kind are you?",
+	},
+	["org.npcd_flightmaster_open.w21.fopen.007"] = {
+		"Every wind rider on this tower flies for the Horde, and so do you. Choose your perch.",
+		"Horde colors. Good; the wind riders won't argue. Up you come.",
+		"The beasts carry the Horde's own without fuss. Pick one and settle in.",
+	},
+	["org.npcd_guard_bye.w21.gbye.001"] = {
+		"On you go. Mind the carts.",
+		"Off with you, then. Watch for carts at the corners.",
+	},
+	["org.npcd_guard_bye.w21.gbye.002"] = {
+		"Go on. Let's keep it so I never have to remember your face.",
+		"Farewell. The folk I remember are the ones who caused trouble; stay forgettable.",
+		"Off you go. Highest praise a grunt gives: I don't recall you at all.",
+	},
+	["org.npcd_guard_bye.w21.gbye.003"] = {
+		"Go with honor, and keep the Warchief's peace wherever the city takes you.",
+		"Walk in honor. The peace of these streets goes with you as far as the gate.",
+		"Honor to you. Leave the peace as you found it.",
+	},
+	["org.npcd_guard_bye.w21.gbye.004"] = {
+		"Done? Move on.",
+		"Good. Step aside for the next one.",
+		"That's it. Off you go.",
+	},
+	["org.npcd_guard_bye.w21.gbye.005"] = {
+		"Go well. And eat something hot before you leave the city; the road out there feeds nobody.",
+		"Take care. Find a hot meal before the gate; you won't find one past it.",
+	},
+	["org.npcd_guard_bye.w21.gbye.006"] = {
+		"Back to standing still, then. Someone has to.",
+		"And now back to staring at the crowd. Someone must.",
+	},
+	["org.npcd_guard_bye.w21.gbye.007"] = {
+		"If you see trouble on your way, shout. There's always a grunt in earshot.",
+		"Anything wrong out there, raise your voice. One of us will come running.",
+		"See something wrong, call out. In this city the grunts hear everything, sooner or later.",
+	},
+	["org.npcd_guard_bye.w21.gbye.008"] = {
+		"Farewell. Keep your purse close near the auction house; quick fingers love a crowd.",
+		"Safe walking. Hold your coin tight around the auction house; that crowd is all elbows and fingers.",
+	},
+	["org.npcd_guard_bye.w21.gbye.009"] = {
+		"Go on, then. Not long now till my relief comes. Not that I'm counting.",
+		"Off you go. My relief's due soon; I've been counting carts to pass the time.",
+	},
+	["org.npcd_guard_bye.w21.gbye.010"] = {
+		"Strength and honor, friend of the Horde. Come back through that gate on your own feet.",
+		"Go, and carry the Horde's name well out there.",
+	},
+	["org.npcd_guard_bye.w21.gbye.011"] = {
+		"Mind the peons as you go; with a load on their backs, they have right of way.",
+		"Give the peons room on your way. Anything carrying timber goes first in this city.",
+	},
+	["org.npcd_guard_directions.w21.gdir.001"] = {
+		"The way down to Ragefire Chasm is in the Cleft of Shadow. Cultists and troggs below, and nobody selling anything.",
+		"Ragefire Chasm? Through the Cleft of Shadow and down. Take friends; the cultists below don't care for visitors.",
+		"There's a mouth in the rock at the bottom of the Cleft of Shadow. It leads to Ragefire Chasm. If you're going, don't go alone.",
+	},
+	["org.npcd_guard_directions.w21.gdir.002"] = {
+		"The Darkspear keep their huts in the Valley of Spirits, round the pool. Follow the drums.",
+		"Want the Valley of Spirits? Look for the water with the Darkspear lodges around it.",
+		"The Valley of Spirits holds the pool and the Darkspear. The quietest corner of the city, by our standards.",
+	},
+	["org.npcd_guard_directions.w21.gdir.003"] = {
+		"Smiths and miners? Valley of Honor. Follow the anvils.",
+		"The Hall of Legends is in the Valley of Honor. Go in quietly; the ones honored there earned it the hard way.",
+		"For ore and anvils, or the training grounds, it's the Valley of Honor. Mind the sparring.",
+	},
+	["org.npcd_guard_directions.w21.gdir.004"] = {
+		"You can reach the Cleft of Shadow from the Valley of Strength or from the Drag. It runs low, between the two.",
+		"Looking for the Cleft? Go down, not up. It's the lowest street in the city, and the dimmest.",
+		"Cleft of Shadow: down off the Drag, under the cliffs. Keep a hand on your purse in there.",
+	},
+	["org.npcd_guard_directions.w21.gdir.005"] = {
+		"Grommash Hold is the great hall in the Valley of Wisdom. Follow the Drag all the way through and you'll find it facing you.",
+		"The Kor'kron keep the Hold's doors. Walk in like you mean no harm, and they'll let you mean none.",
+		"Take the Drag to the Valley of Wisdom; Grommash Hold is the biggest thing there. Don't try chatting with the Kor'kron.",
+	},
+	["org.npcd_guard_directions.w21.gdir.006"] = {
+		"The main gate opens off the Valley of Strength. Once outside, the road south runs to Razor Hill.",
+		"Razor Hill? Out the main gate and follow the road south. It's the one with all the traffic.",
+		"Leaving the city? Valley of Strength, then the gate. Durotar starts right outside.",
+	},
+	["org.npcd_guard_directions.w21.gdir.007"] = {
+		"The airships don't come inside the walls. Out the gate into Durotar, and look up for the towers.",
+		"The zeppelin towers stand outside, in Durotar. One ship goes to Tirisfal Glades, the other to Grom'gol.",
+		"For Undercity or Stranglethorn Vale you want the zeppelins, not the flight tower. Out the gate; you'll see them.",
+	},
+	["org.npcd_guard_directions.w21.gdir.008"] = {
+		"Stitchers, tanners, potion-brewers: they keep shop along the Drag. Start at one end and keep walking.",
+		"The Drag curls through the middle of the city. Whatever is made with needle, hide or kettle, you'll find it there.",
+		"Cloth, leather, bottles: the Drag. You'll smell the tannery before you see it.",
+	},
+	["org.npcd_guard_open.w21.gopen.001"] = {
+		"Speak. I can listen and watch the street at the same time; it's most of the job.",
+		"Ask what you need. My eyes stay on the crowd, not on you; don't take it badly.",
+		"Go ahead. I'll be looking past your shoulder the whole time. Nothing personal.",
+	},
+	["org.npcd_guard_open.w21.gopen.002"] = {
+		"If it's the bank, it's in the Valley of Strength. It's always the bank.",
+		"Let me guess: the inn. Nine in ten who stop at my post want the inn, and the tenth wants the bank.",
+		"Don't be shy about it. Half the folk who stop me can't find the bank either.",
+	},
+	["org.npcd_guard_open.w21.gopen.003"] = {
+		"Within these walls the Warchief's word is law, and I'm the nearest piece of it. What do you need?",
+		"I stand here for the Warchief. While I stand, the street stays orderly. State your business.",
+		"This post answers to Grommash Hold. Whatever you ask, ask it plainly.",
+	},
+	["org.npcd_guard_open.w21.gopen.004"] = {
+		"Hm. You stopped. Why?",
+		"Out with it.",
+		"Talk. Short.",
+	},
+	["org.npcd_guard_open.w21.gopen.005"] = {
+		"Careful where you stand. Kodo carts take that corner as if they own it, and the drivers swear they do.",
+		"Mind the carts while we talk. Drivers in this city slow down for nobody, me included.",
+		"Step to the side when you talk to me, or the next peon with a load of timber walks right through you.",
+	},
+	["org.npcd_guard_open.w21.gopen.006"] = {
+		"Good. Someone who stops to ask instead of shoving past. What can I do for you?",
+		"First one this watch to stop without a complaint. Go on.",
+		"A question, and nobody shouting it. You've improved my watch already.",
+	},
+	["org.npcd_guard_open.w21.gopen.007"] = {
+		"I've looked you over and you've looked me over. Now we can talk.",
+		"You've had your look at my armor, and I've had mine at your boots. Speak.",
+		"We've both weighed each other up. Good. Now, what is it?",
+	},
+	["org.npcd_guard_open.w21.gopen.008"] = {
+		"Speak up. This helmet was made for a bigger head, and it rings like a pot.",
+		"Louder, if you would. The helmet eats half of what anyone says to me.",
+		"Say it again, slower. The helmet is thick, and so, some say, is the head under it.",
+	},
+	["org.npcd_guard_open.w21.gopen.009"] = {
+		"Walk our streets with care. Every stone in them was set by hands that had worn chains not long before.",
+		"These streets were cut out of a bare canyon by folk just out of the camps. Mind that, and ask your question.",
+		"The ones who built Orgrimmar had nothing but their hands. Remember it while you're inside. Now, what do you need?",
+	},
+	["org.npcd_guard_open.w21.gopen.010"] = {
+		"One rule at this post: no running. Folk who run in a crowd like this get stopped, and not gently. Now, what is it?",
+		"Walk, don't run, and keep your hands where the crowd can see them. Then ask me anything.",
+		"Running makes grunts nervous. Walk, and we'll all get on. What's your question?",
+	},
+	["org.npcd_guard_open.w21.gopen.011"] = {
+		"Give me a moment; I was halfway through this bread. There. Ask.",
+		"Mm. Sorry, a bite of bread between rounds. What did you want to know?",
+		"You caught me chewing. Grunts eat standing up in this city. Go on.",
+	},
+	["org.npcd_guard_open.w21.gopen.012"] = {
+		"Every grunt on these walls has your back while you're inside them, whether you know it or not. What brings you over?",
+		"There's a grunt on every corner of this city and another behind each one. You're safer here than anywhere in Durotar. Ask.",
+		"While you're within the walls, the Warchief's grunts watch over you. Speak.",
+	},
+	["org.npcd_guard_open.w21.gopen.013"] = {
+		"If you've come to complain about the din, join the queue. It runs to the Valley of Honor and back.",
+		"Smoke, stink, racket: I've heard every complaint, and I can't fix one of them. Something else?",
+		"Complaints about the forge smoke go to the smiths, not to me. Anything else?",
+	},
+	["org.npcd_guard_open.w21.gopen.014"] = {
+		"Lok'tar. Horde colors: this street is as much yours as mine. Ask away.",
+		"The Horde's own, in the Horde's capital. Speak, friend.",
+		"Anyone in Horde colors gets a straight answer at my post. Ask.",
+	},
+	["org.npcd_innkeeper_bye.w21.ibye.001"] = {
+		"Suit yourself. Your bed gets aired and made either way.",
+		"Off you go. If the road sends you back, the door's open.",
+		"Mind how you go. The bed will keep.",
+	},
+	["org.npcd_innkeeper_bye.w21.ibye.002"] = {
+		"Leaving? Then leave. A doorway's for coming or going, not for standing.",
+		"Out you get. Somebody's waiting for that stool.",
+		"Shut the door behind you, would you? The street keeps trying to get in.",
+	},
+	["org.npcd_innkeeper_bye.w21.ibye.003"] = {
+		"Take this heel of bread for the road. No, don't argue; it's yesterday's, and it would only go to the crows.",
+		"Here, a hunk of bread for the way. It's stale, which means it'll last.",
+		"Wrap this in something. Hard bread travels better than soft promises.",
+	},
+	["org.npcd_innkeeper_bye.w21.ibye.004"] = {
+		"Farewell! Tell everyone out there the beds in Orgrimmar are soft. They aren't, but it brings them in.",
+		"Safe roads! And if anyone asks, the stew was magnificent. I'll swear to it.",
+		"Off with you, and spread the word: best bowl in Durotar. Second best, if the cook's listening.",
+	},
+	["org.npcd_innkeeper_bye.w21.ibye.005"] = {
+		"Mm. Go careful.",
+		"Door's that way.",
+		"Go. Eat something out there, now and then.",
+	},
+	["org.npcd_innkeeper_bye.w21.ibye.006"] = {
+		"Whatever's waiting for you, face it fed and rested. That's all I can give, and I've given it.",
+		"You carry less out than you carried in. That's my whole trade, and I'm not ashamed of it.",
+		"Go on. The city will keep its noise for you, and I'll keep a bench.",
+	},
+	["org.npcd_innkeeper_bye.w21.ibye.007"] = {
+		"Strength and honor go with you. And a full belly; that part I can vouch for.",
+		"The Horde's roads are long. When one of them bends back this way, this house stands on it.",
+	},
+	["org.npcd_innkeeper_bye.w21.ibye.008"] = {
+		"Settled up and still smiling? That's a rare guest. Go before it wears off.",
+		"Walking out on your own feet, purse still on your belt. In this city, that's a good stay.",
+		"Not a single broken chair. You can come back whenever you like.",
+	},
+	["org.npcd_innkeeper_bye.w21.ibye.009"] = {
+		"Fill your waterskin at the trough before you go. Past the walls, water turns scarce and dear.",
+		"If you're heading out, top up your waterskin first. Durotar is stingy with it.",
+		"Whichever way you're bound, drink your fill at the barrel by the door. The land around this city shares nothing.",
+	},
+	["org.npcd_innkeeper_news.w21.inews.001"] = {
+		"The peons hauling stone along the Drag have a new work song. Same as the old one, only ruder.",
+		"A peon dozed off in a wheelbarrow and got pushed halfway to the Valley of Honor before anybody looked inside. He's been boasting about it since.",
+		"Somebody taught the peons a chant with forty verses. They're stuck on the ninth, and so is everyone within earshot.",
+	},
+	["org.npcd_innkeeper_news.w21.inews.002"] = {
+		"The cooks heard chanting drifting up out of the Cleft of Shadow. Warlocks at practice, most likely. Most likely.",
+		"The Kor'kron outside Grommash Hold changed the way they stand their watch. Every gossip in the city has a reason, and no two agree.",
+		"Somebody keeps leaving little bundles of feathers on the steps by the bank. Nobody owns up to it, and nobody throws them away either.",
+	},
+	["org.npcd_innkeeper_news.w21.inews.003"] = {
+		"Two traders nearly came to blows outside the auction house over a crate neither of them had opened.",
+		"A goblin by the gate was selling lucky pebbles. Sold every last one. Pebbles. In a canyon.",
+		"The line at the bank ran out the door twice this week. Seems everybody found something worth locking up.",
+	},
+	["org.npcd_innkeeper_news.w21.inews.004"] = {
+		"A tauren ducked under my doorframe so carefully that the whole room went quiet to watch. Made it, too. We all cheered.",
+		"A Forsaken traveler bought every jar of pickled onions on the Drag. Didn't say why. Nobody asked twice.",
+		"A pair of Darkspear drummers ate here and tried to pay in rhythm on the tabletop. The cook made them pay in coin as well.",
+	},
+	["org.npcd_innkeeper_news.w21.inews.005"] = {
+		"Somebody dropped a boot into the pool in the Valley of Spirits. The trolls won't fish it out; they say the water wants an apology first.",
+		"There's a boot at the bottom of the pool in the Valley of Spirits, and the trolls say it stays there until its owner says sorry to the water.",
+	},
+	["org.npcd_innkeeper_news.w21.inews.006"] = {
+		"My cook swears somebody's stealing onions from the back. He's set a trap. I've stopped going into the kitchen.",
+		"The onion thief struck once more, says the cook. He sleeps by the sacks now, with a ladle in his fist.",
+		"Cook's convinced the onions are being stolen. I've counted them. They're all there. Don't tell him.",
+	},
+	["org.npcd_innkeeper_news.w21.inews.007"] = {
+		"A bout in the Valley of Honor ran so long the crowd went off to eat and came back. The two fighters never noticed.",
+		"There was a sparring match by the training grounds that lasted until the onlookers got bored. The fighters didn't.",
+		"The Valley of Honor had a bout that dragged on so long somebody started selling skewers to the watchers.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.001"] = {
+		"Bed, bowl or bench. Pick one and I'll stop asking.",
+		"Talk quick. There's a line behind you, and it's hungry.",
+		"Order or sit, but don't linger in the doorway. It lets the street in.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.002"] = {
+		"Ah, a face that wants a mattress! Mine are lumpy, but every lump is honest.",
+		"Make yourself comfortable. The beds are hard and the blankets scratch, and somehow everyone sleeps like a log.",
+		"The straw in my mattresses comes from the Barrens: tough as the folk who cut it, and it never complains.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.003"] = {
+		"Set your things down, there by the post. Nobody touches a guest's pack under my roof.",
+		"Put the load down first. Talking can wait until your shoulders come back to you.",
+		"Leave the road at the door. In here it's hot bowls and low voices.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.004"] = {
+		"Want to tie your hearthstone to this inn? Say so, and wherever the road drops you, the stone will find its way back to this door.",
+		"Plenty of folk bind their stone to this house. One word, if you'd like to be among them.",
+		"I can set your hearthstone to this room, if you like. Most who do are glad of it later, somewhere far off.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.005"] = {
+		"Pay no mind to the shouting from the kitchen. That's the cook and the stewpot, and the stewpot usually wins.",
+		"If you hear crashing in the back, it's the cook arguing with the pans. Sit down; it means food is close.",
+		"The racket in the kitchen is nothing. The cook and the big pot have been at war for years, and the stew is the truce.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.006"] = {
+		"Two rules in this house. Boots off the table, and fights go outside.",
+		"Sleep where I point, eat what I bring, and we'll get on fine.",
+		"No brawling, no singing after the third mug, no scraps for the stray cats. Otherwise, sit wherever you please.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.007"] = {
+		"Sit with anyone you like. Half my tables are strangers who turned into drinking partners by the second round.",
+		"Grab a stool. Under this roof, the one beside you stays a stranger for exactly one mug.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.008"] = {
+		"There's a pot on the hearth that's been going longer than I can remember, and something new goes into it every day.",
+		"The stew's thick enough to stand a spoon in. Sit, and I'll bring you the proof.",
+		"Smell that? Boar, onion, and whatever the hunters dragged in. Pull up a seat.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.009"] = {
+		"The room's clean, the blanket's wolf hide, and the door bars from the inside. That's all an inn owes anyone.",
+		"A cot, a blanket and a bar across the door. Nothing fancy, but you'll wake up where you lay down.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.010"] = {
+		"You've road on your boots and a question on your face. The boots can wait; I'll hear the question once you've eaten.",
+		"Dust to the knees, eh? Shake it off outside, then come and tell me what you need.",
+		"Whatever's on your mind, it'll still be there after a bowl. Smaller, like most things after a bowl.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.011"] = {
+		"Step in, step in! Out of one din and into another, with better smells.",
+		"Behold the softest spot in a city made of hard edges. Not very soft, mind you, but softer.",
+		"In you come! This whole city is built to stop a charge. My chairs only stop tired feet.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.012"] = {
+		"A fellow of the Horde is never short a bench in this house. Sit, and let the city mind its own walls for a while.",
+		"The Warchief keeps the city; I keep the beds. Between the two of us, you'll sleep sound.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.013"] = {
+		"There's water in the jug by the door, cool from the cistern. Help yourself before you ask me for anything.",
+		"Jug first, then talk. That's how this house greets everyone who comes through the door.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.014"] = {
+		"Mm. Sit. I'll be over once the pot lets go of me.",
+		"Can't stop to chat, the place is packed to the rafters. Bench by the post is yours if you're quick.",
+		"Busy, busy. Point at what you want and I'll nod.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.015"] = {
+		"Every guest is a story walking in. Sit, let me guess yours, then tell me how wrong I was.",
+		"Ah, a purse on legs! Forgive me, it's an innkeeper's joke. What can I get you?",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.016"] = {
+		"There's a corner at the back where the noise thins out. Nobody will bother you there; I see to it.",
+		"If you want quiet, take the far bench. The loud ones sit by the entrance, so they can leave loudly.",
+		"Quiet table at the back, rowdy one up front. Choose by mood; the bowl comes either way.",
+	},
+	["org.npcd_merchant_bye.w21.mbye.001"] = {
+		"Come again once your purse has had a rest.",
+		"Pleasure talking business. Tell your friends; tell your enemies too, their coin spends the same.",
+		"Off you go, and may your bags fill up with things I'll want to buy.",
+	},
+	["org.npcd_merchant_bye.w21.mbye.002"] = {
+		"Done? Good. Next!",
+		"That's it, then. Move along.",
+		"On your way. Others are waiting.",
+	},
+	["org.npcd_merchant_bye.w21.mbye.003"] = {
+		"Remember this counter when your gear starts to fray. It always starts to fray.",
+		"Everything wears out sooner or later. When yours does, you know the stall.",
+		"Straps snap, bags split, buckles bend. When it happens, think of me.",
+	},
+	["org.npcd_merchant_bye.w21.mbye.004"] = {
+		"Go well. I'll have the shelves rearranged by your next visit. Nothing new, just moved about, so it feels new.",
+		"Until next time. Mind you, by then half of this will sit somewhere else. A merchant has to keep the eyes busy.",
+		"Off you go. Before you're back I'll have shuffled the whole stall, and you'll swear it's fresh stock.",
+	},
+	["org.npcd_merchant_bye.w21.mbye.005"] = {
+		"Keep your pouch inside your coat in the crowd. Not everyone in the Valley of Strength is there to shop.",
+		"Watch your purse on the way off. The busier the street, the quicker the fingers.",
+		"A word of advice: crowds are where purses go missing. Keep yours close.",
+	},
+	["org.npcd_merchant_bye.w21.mbye.006"] = {
+		"Go with strength. The Horde needs its people well equipped, and I do my part.",
+		"Lok'tar. When you need something, spend your coin among your own.",
+	},
+	["org.npcd_merchant_bye.w21.mbye.007"] = {
+		"Come back soon, and bring news. I trade in that too.",
+		"Next time, bring a story from the road. I pay for those in good humor.",
+		"Bring me a good rumor on your next visit, and I'll swap you one of mine.",
+	},
+	["org.npcd_merchant_bye.w21.mbye.008"] = {
+		"Off with you. And don't let me hear you bought anything from the stall across the way.",
+		"Go on. If I see you wearing that stuff from the other stall, I'll pretend we've never met.",
+		"Leave, then. But if you buy elsewhere, at least have the decency to hide it from me.",
+	},
+	["org.npcd_merchant_bye.w21.mbye.009"] = {
+		"Safe going. I'm here from the first customer to the last, most days.",
+		"Fare well. The counter opens early and shuts late; you'll find me.",
+		"Go on, then. You know where the counter stands; it hasn't moved in years.",
+	},
+	["org.npcd_merchant_news.w21.mnews.001"] = {
+		"Salt is short this week. The coast caravan is stuck somewhere with a broken axle.",
+		"Thread's gone scarce. Every tailor on the Drag bought up what came in, and now they all pretend they didn't.",
+		"The smiths bought every scrap of coal that came through the gate. Something big is being made, or somebody's hoarding.",
+	},
+	["org.npcd_merchant_news.w21.mnews.002"] = {
+		"The goblins at the zeppelin towers raised their freight fees once more. They call it the wind tax. The wind never sees a copper of it.",
+		"A goblin is offering to insure stalls against bad luck. Nobody signed. Two stalls have had bad luck since. Funny, that.",
+		"Somebody at the auction house bought a whole crate of boots, every one a left foot. Now they're hunting for a buyer with two left feet.",
+	},
+	["org.npcd_merchant_news.w21.mnews.003"] = {
+		"Somebody's been buying up every candle on the Drag. Folk say it's for the Cleft. Folk say a lot.",
+		"A buyer came round asking for black dye, all of it, and paid without haggling. Nobody liked that.",
+	},
+	["org.npcd_merchant_news.w21.mnews.004"] = {
+		"The tanners and the cooks are feuding over who gets first pick of the boar. I'm selling twine to both sides.",
+		"Two hawkers on the Drag have been shouting each other down for a week. Business has never been better: folk stop to watch, then they buy.",
+	},
+	["org.npcd_merchant_open.w21.mopen.001"] = {
+		"Have a good look. Every piece on this counter has a story, and I'll tell you all of them unless you buy something quickly.",
+		"Go ahead and look. I talk while people look; it's an affliction. Buying cures it.",
+		"Look your fill. Every purchase comes with a piece of advice, and the advice is mostly good.",
+	},
+	["org.npcd_merchant_open.w21.mopen.002"] = {
+		"Buying or selling? Either way, don't block the stall.",
+		"Want something, point. Got something to sell, put it on the counter.",
+		"Make it quick. The crowd behind you didn't come to admire your back.",
+	},
+	["org.npcd_merchant_open.w21.mopen.003"] = {
+		"Got anything rattling in your pack you don't need? I'll take the odd bits off your hands.",
+		"Before you buy, empty your bags. Half of what folk lug around is worth more to me than to them.",
+		"Bring out the bits and scraps. Teeth, hides, bent buckles: I've a buyer for nearly all of it.",
+	},
+	["org.npcd_merchant_open.w21.mopen.004"] = {
+		"Haggle if you like. I enjoy it, and I always win, but I do enjoy it.",
+		"Fair warning: I bargain the way the grunts spar. Hard, and with a grin.",
+		"Bargaining's a sport to me. I'm telling you up front, so you can't complain later.",
+	},
+	["org.npcd_merchant_open.w21.mopen.005"] = {
+		"Take your time. Good gear is chosen slowly and kept for years.",
+		"No hurry. I'd rather you leave with the right thing than with the first thing.",
+		"Browse slowly. What you need is rarely what catches the eye first.",
+	},
+	["org.npcd_merchant_open.w21.mopen.006"] = {
+		"Everything on this counter came a long way to meet you: by zeppelin, by caravan, and one piece by sheer stubbornness.",
+		"Some of these goods rode a goblin airship to get here. They've earned a good owner.",
+		"Look at this stock! Half came in by airship, half on a kodo's back, and not a piece went missing. A small wonder.",
+	},
+	["org.npcd_merchant_open.w21.mopen.007"] = {
+		"Counter's open. Speak.",
+		"Yes? Buying?",
+		"Name it.",
+	},
+	["org.npcd_merchant_open.w21.mopen.008"] = {
+		"Whatever the stall next door told you, it's a lie. Mostly. Let me show you the truth.",
+		"Don't listen to the one across the way. The goods are fine; it's that smile I don't trust.",
+		"You've done the rounds of the other stalls first, I can tell. Good. Now you know what you're comparing.",
+	},
+	["org.npcd_merchant_open.w21.mopen.009"] = {
+		"Made on the Drag or carried in from outside the walls, it's all sound. I don't sell what I wouldn't carry.",
+		"Everything I sell, I'd carry myself. That's the only test I know.",
+	},
+	["org.npcd_merchant_open.w21.mopen.010"] = {
+		"For a fellow of the Horde, the good stock comes out from under the counter.",
+		"Ah, Horde through and through. I keep the better pieces back for hands like yours; let's see what suits.",
+	},
+	["org.npcd_merchant_open.w21.mopen.011"] = {
+		"Lean in and talk loud. This street eats quiet voices.",
+		"Come closer, I can't hear a thing over the hawkers. Now, what are you after?",
+		"Speak up! Between the hammering and the hawkers, I can barely hear my own coins.",
+	},
+	["org.npcd_merchant_open.w21.mopen.012"] = {
+		"Now that's a purse ready to be lighter. Let's not keep it waiting.",
+		"I can hear your coins from here, and they sound bored. Let's give them something to do.",
+		"That purse looks heavy. Let me help you carry it, in the friendliest way.",
+	},
+	["org.npcd_merchant_open.w21.mopen.013"] = {
+		"Those straps have seen some miles. Whatever you need for the next ones, ask.",
+		"That pack looks worn out. Not your fault; packs are like that. See what I have.",
+	},
+	["org.npcd_merchant_open.w21.mopen.014"] = {
+		"Hold on, let me finish this tally. Seven, eight... there. Now, what can I do for you?",
+		"One moment, I'm counting stock. Don't talk, I'll lose my place. Done. Yes?",
+		"Wait, wait, the sum nearly works. ...No. Never mind that. What do you need?",
+	},
+	["org.npcd_merchant_open.w21.mopen.015"] = {
+		"Business is steady. A city this busy always needs something. What is it you need?",
+		"Walk the whole Drag if you like; you'll end up back at this counter. Most do.",
+	},
+	["org.npcd_merchant_open.w21.mopen.016"] = {
+		"Hands where I can see them, coin where I can count it. Now we'll get along.",
+		"Nothing personal, but in this crowd I watch everybody's hands. Now: buying?",
+	},
+	["org.npcd_trainer_open.w21.topen.001"] = {
+		"Show me your hands. How someone holds them tells me more than anything they'll say.",
+		"Hands first. Let me see what they do when you're not thinking about them.",
+		"Before anything else: open your hands. Half of what I teach starts there.",
+	},
+	["org.npcd_trainer_open.w21.topen.002"] = {
+		"Every teacher in Orgrimmar will tell you they're the best. I'll only tell you I'm the most patient. Barely.",
+		"Others in this city teach louder. I teach slower, and it sticks.",
+		"Loud teachers are easy to find in this city. I'm the quiet one, and my lessons last longer.",
+	},
+	["org.npcd_trainer_open.w21.topen.003"] = {
+		"Even the Warchief once stood in front of a teacher and listened. You can manage the same.",
+		"Nobody in Orgrimmar is too proud to learn. The Warchief had his teachers too.",
+		"Thrall himself was a student once. Stand where he would have stood, and listen.",
+	},
+	["org.npcd_trainer_open.w21.topen.004"] = {
+		"Stand there. No, there. Good. Now we start.",
+		"Wipe your boots first. Then show me what you've brought.",
+		"Quiet, then. I talk, you watch. Questions after.",
+	},
+	["org.npcd_trainer_open.w21.topen.005"] = {
+		"Make your mistakes in front of me. Here they cost a scolding; out there they cost more.",
+		"I'd rather watch you fail here than hear later how you failed beyond the gate.",
+		"Get it wrong in front of me, as often as you like. That's what this place is for.",
+	},
+	["org.npcd_trainer_open.w21.topen.006"] = {
+		"Ignore the hammering from the street. I've taught through worse, and so have those I taught.",
+		"Shut out the street. Whoever can learn with Orgrimmar shouting all around can learn anywhere.",
+		"Can you hear me over the city? Then you can hear me anywhere. We begin.",
+	},
+	["org.npcd_trainer_open.w21.topen.007"] = {
+		"Every lesson I give makes the Horde a little harder to break. Let's give one.",
+		"The Horde needs what you'll learn here more than it needs another banner. Begin.",
+		"Teaching the Horde's own is the best work in this city. Come, show me where you stand.",
+	},
+	["org.pray.w21.pray.001"] = {
+		"Spirits in the worn stone of these streets, you have felt every foot that passed. Remember mine kindly.",
+		"Whatever dwells in the steps of this city, hollowed by so many boots: let my steps sit light on you.",
+		"Stone that wears away so others may walk: I see you. Bear with me one more crossing.",
+	},
+	["org.pray.w21.pray.002"] = {
+		"If anything listens through all this clamor: make me a little gentler than this city asks.",
+		"Whoever hears a quiet voice in a loud place, keep one soft corner in me, somewhere the iron can't reach.",
+		"Spirits, let the city harden my hands, if it must. Leave the rest of me alone.",
+	},
+	["org.pray.w21.pray.003"] = {
+		"For the names nobody calls in these streets anymore: let someone, somewhere, keep calling them.",
+		"Spirits, some who built this city never saw it finished. Let them see it now, from wherever they are.",
+		"For whoever carried stone up this canyon and did not live to rest in its shade: rest now.",
+	},
+	["org.pray.w21.pray.004"] = {
+		"Old rock, older than the walls cut into you: you have outlasted every master. Teach me a little of how.",
+		"Canyon that was here before any name was given you, before any wall: you have seen all things end. Keep me a while.",
+		"Stone that stood before the first wall and will stand after the last: I am brief. Be patient with me.",
+	},
+	["org.pray.w21.pray.005"] = {
+		"Ancestors, the camps are behind us and the city stands. Let me be worth the walls you never got to see.",
+		"Ancestors, you knew chains and you knew the demon's thirst. I walk unchained in a city of our own. Watch me use it well.",
+	},
+	["org.pray.w21.pray.006"] = {
+		"Loa who crossed the water with the Darkspear, stay close in this city of stone. The islands are far off.",
+		"Spirits of the islands, you followed us all the way into this red rock. Don't lose your way in the crowd.",
+	},
+	["org.pray.w21.pray.007"] = {
+		"Earth Mother, even under the streets of this orc city, you are there. Let me feel you through the stone.",
+		"Earth Mother, this canyon is your palm cupped around a city of strangers. Be gentle with them.",
+		"Earth Mother, your children are guests in this place. Teach us to be good ones, and teach the doorways patience.",
+	},
+	["org.pray.w21.pray.008"] = {
+		"Whatever listens to the healers in the Valley of Spirits: listen to them a little longer, and a little harder.",
+		"Spirits, the healers of this city are tired. Lend their hands a little of your steadiness.",
+	},
+	["org.pray.w21.pray.009"] = {
+		"Spirits who keep watch, keep it beside the grunts on the walls. Long posts go easier in company.",
+		"Whatever watches over watchers: stand a while with the grunts on the walls, and keep them awake and whole.",
+		"You who never sleep, sit with the grunts at their posts. They won't say they're glad of it. They are.",
+	},
+	["org.pray.w21.pray.010"] = {
+		"For those who set out from this city and came back only as a name: may the road have been short, and the end quick.",
+		"Spirits, this city counts the ones who return. Count the others, the ones who stayed out there, so none is forgotten.",
+		"For every cup left full on a table because nobody came to drink it: you who listen, carry it to them.",
+	},
+	["org.pray.w21.pray.011"] = {
+		"I'm poor at this. Whoever is listening: thanks for the walls, and for one quiet corner inside them.",
+		"No fine words, sorry. Just this: whatever listens, look after the people in these streets, even the rude ones.",
+	},
+	["org.pray.w21.pray.012"] = {
+		"Earth under the walls, fire in the forges, water in the troll pool, air above the canyon: hear one small voice among so many.",
+		"By stone and flame, by the pool and the open air: whatever is old in this place, know that I passed through with respect.",
+	},
+	["org.reputation_change.w21.name.001"] = {
+		"My name has picked up a little weight somewhere. The crowd around me neither knows nor cares, which keeps it from going to my head.",
+		"A rise in someone's regard, and not one face in this crowd turns. Good. Pride grows badly in a crowd.",
+		"Better thought of than I was. I'll carry it through these streets like a coin in an inside pocket: felt, not shown.",
+	},
+	["org.reputation_change.w21.name.002"] = {
+		"They like me a bit more now. Quick, somebody sell me something before it wears off.",
+		"My standing's up. Don't tell the merchants; they'll raise their prices to match.",
+		"Better regarded, am I? Then I'll expect the goblins to round down. They won't.",
+	},
+	["org.reputation_change.w21.name.003"] = {
+		"Held in high honor now, by some. In a city built on deeds, I know better than to think that is the end of anything. It is a debt, and it runs both ways.",
+		"Esteem this high is heavy. Walking among people who earned their places with scars, I'll try to deserve it.",
+		"That kind of standing used to belong to other people. Now it's mine, and it looks smaller from inside than it did from the street.",
+	},
+	["org.reputation_change.w21.name.004"] = {
+		"walks on a little taller through the crowd, though nobody in it could say why.",
+		"straightens without meaning to, and a peon hauling a sack gives {g:him|her} a puzzled glance for no reason either of them knows.",
+		"rolls {g:his|her} shoulders back as if a strap had been loosened somewhere, and goes on through the bustle.",
+	},
+	["org.reputation_change.w21.name.005"] = {
+		"A name slipped a notch somewhere. The Drag goes on haggling as if nothing happened, and for the Drag nothing has.",
+		"Thought of a little worse, now. In a city this busy, a falling name makes no sound at all.",
+		"Some regard lost. I'll feel it later. For now, Orgrimmar is too loud to sulk in properly.",
+	},
+	["org.reputation_change.w21.name.006"] = {
+		"Fewer friends than I had. In a crowd like this one, I'll hardly notice the difference.",
+		"Down in someone's books. Fine. I wasn't using that goodwill for anything.",
+		"So I'm less welcome somewhere. Grunts glare at everyone; I'll fit right in.",
+	},
+	["org.reputation_change.w21.name.007"] = {
+		"Fallen far in someone's eyes. Strange to feel it here, among strangers who neither know nor care, but maybe this is the best place for it.",
+		"Disliked, and more so by the hour, somewhere. I'll keep my head down in these streets and do the arithmetic later.",
+		"Doors closing somewhere. The ones around me stay open, for now, and I'm grateful to whoever keeps them so.",
+	},
+	["org.rest_enter.w21.ease.001"] = {
+		"unclenches a jaw that has been set since somewhere far down the road, and works it side to side as if testing a hinge.",
+		"notices {g:his|her} own teeth are clamped together, and lets them part.",
+		"rubs the hinge of the jaw with two knuckles until the set of it finally gives.",
+	},
+	["org.rest_enter.w21.ease.002"] = {
+		"My shoulders have been up around my ears for so long I'd forgotten they went any lower. Apparently they do.",
+		"Somewhere between one step and the next my shoulders came down from where they'd been hiding. I didn't even tell them to.",
+	},
+	["org.rest_enter.w21.ease.003"] = {
+		"flexes stiff fingers slowly, as though counting them home from the road.",
+		"opens and closes both hands slowly, until the grip of the last hours finally lets go of them.",
+		"rubs the cramp out of a palm where a strap has pressed its pattern.",
+	},
+	["org.rest_enter.w21.ease.004"] = {
+		"I've set the pack down, but my back hasn't heard. It keeps leaning forward against a weight that isn't there.",
+		"The pack's at my feet. My shoulders are still carrying its ghost, and they'll go on carrying it until they're sure.",
+	},
+	["org.rest_enter.w21.ease.005"] = {
+		"sits very still while the ringing of the road fades out of {g:his|her} ears and the city's own noise takes its place.",
+		"shakes out one hand, then the other, as the last tremor of the road leaves them.",
+		"holds both hands out flat and watches them until they stop shaking, then puts them away as if nothing had happened.",
+	},
+	["org.rest_enter.w21.ease.006"] = {
+		"There's a knot under my left shoulder blade that has outlasted two pairs of boots. In here, it might finally loosen.",
+		"The knot in my back has been along for the whole trip. It hasn't paid for a single meal. Time it moved out.",
+	},
+	["org.rest_enter.w21.ease.007"] = {
+		"Everything hurts, and none of it is urgent. That's what a city is for.",
+		"My back just made a noise I didn't know it could make. Don't mind it.",
+		"I'll stand up again eventually. Probably.",
+	},
+	["org.rest_enter.w21.ease.008"] = {
+		"lets {g:his|her} gaze stop roving over rooftops and corners, and rest on the nearest thing that isn't moving.",
+		"stops searching the edges of things and looks, for once, at the middle of them.",
+		"goes soft and unfocused about the eyes, the way eyes do when they have finally been relieved of duty.",
+	},
+	["org.rest_enter.w21.ease.009"] = {
+		"Somebody drops a pot and my whole body jumps for it. It'll take a while for the rest of me to believe what my head already knows.",
+		"A crate lands hard somewhere close and I'm halfway to my feet before I know it. Easy. It's only somebody's crate.",
+	},
+	["org.rest_enter.w21.ease.010"] = {
+		"stretches both arms overhead, slowly, until the shoulders remember they were built to move in more than one direction.",
+		"rolls both ankles in slow circles, one after the other, like a smith testing a fresh joint.",
+	},
+	["org.rest_enter.w21.ease.011"] = {
+		"My mouth has tasted of road dust for hours. The first bite of anything in this city is going to taste like a feast.",
+		"Grit in the teeth, grit in the collar. Whatever I eat first, I'll be eating some of the road with it.",
+	},
+	["org.rest_enter.w21.ease.012"] = {
+		"sits down in stages, the way a heavy load is lowered, until nothing is left holding {g:him|her} up but the seat.",
+		"drops {g:his|her} whole weight into the seat at once, as if the legs had handed in their notice.",
+		"folds down onto the nearest seat like a tent with the poles pulled out.",
+	},
+	["org.rest_enter.w21.ease.013"] = {
+		"Funny how the aches wait until I've stopped. All the way here they kept quiet, and now they've all arrived at once, like guests.",
+		"The body is polite on the road. It saves every complaint for the first quiet seat, and then reads them all out.",
+		"Every bruise I collected out there has waited its turn, and now that the walls are around me, they're all speaking up.",
+	},
+	["org.rest_enter.w21.ease.014"] = {
+		"I promised my feet this seat three hills ago. A promise is a promise.",
+		"Feet, you were right. We should have stopped sooner.",
+		"There. Sitting. The wisest thing I've done all week.",
+	},
+	["org.rest_enter.w21.ease.015"] = {
+		"Orgrimmar's doorways were measured for orcs. Sitting down is the first moment in a long while my horns have been out of danger.",
+		"A tauren in this city spends half the time ducking. Sitting, at last, the lintels can't touch me.",
+		"Every beam in this city is hung at exactly the height of my horns. Down here on a seat, I finally outrank them.",
+	},
+	["org.rest_enter.w21.ease.016"] = {
+		"kneads the back of {g:his|her} neck with one hand, slowly, chasing a stiffness that has ridden along all the way.",
+		"presses both thumbs into the small of the back and leans into them, eyes half closed.",
+		"works a thumb along a sore forearm from wrist to elbow, as if smoothing out a creased map.",
+	},
+	["org.rest_enter.w21.ease.017"] = {
+		"peels off one glove finger by finger, then the other, and lays them side by side like a pair of tired animals.",
+		"tugs both gloves off and flexes bare hands in the air, as though airing them out.",
+		"drops a pair of gloves on the seat alongside, where they keep the shape of the hands that just left them.",
+	},
+	["org.rest_enter.w21.ease.018"] = {
+		"unslings the pack, which slumps over on its side like a second traveler every bit as tired as the first.",
+		"lets the pack slide off {g:his|her} back and land with a thump that sounds very much like relief.",
+		"drops the pack and gives it a look, as if it had been the one doing all the walking.",
+	},
+	["org.rest_enter.w21.lull.001"] = {
+		"Out there every snap meant something. In here I can let a thousand sounds go by and answer none of them.",
+		"The trick of a city is learning what not to hear. Hammer, haggling, a wolf's whine: none of it is for me.",
+		"My ears are still sorting the city's noise into dangers and not. So far everything has landed in the second pile.",
+	},
+	["org.rest_enter.w21.lull.002"] = {
+		"finds a corner where the noise of the city thins to a single hammer far off, and lets that one sound keep time.",
+		"picks out one voice from the crowd, an old one humming tunelessly somewhere close, and listens to nothing else.",
+		"settles where the din wears thin, and follows a single distant voice calling out wares until it fades.",
+	},
+	["org.rest_enter.w21.lull.003"] = {
+		"There's a kind of quiet that only lives inside noise. I've found it, somewhere between the haggling and the wolves, and I'm not moving.",
+		"Too much noise to think, which is perfect. I've done enough thinking out there.",
+	},
+	["org.rest_enter.w21.lull.004"] = {
+		"realizes {g:he|she} has been keeping {g:his|her} voice low out of road habit, and lets it come back up to its ordinary size.",
+		"says a word aloud to nobody, just to hear it come out at a normal volume.",
+		"clears {g:his|her} throat and speaks a few words to the air, testing a voice that has spent too long whispering.",
+	},
+	["org.rest_enter.w21.lull.005"] = {
+		"Three or four tongues at once around me, and not one word of any of them is a question for me.",
+		"I can follow maybe half the talk around me. The other half sounds like gravel and laughter, which is restful in its own way.",
+	},
+	["org.rest_enter.w21.lull.006"] = {
+		"Keep it down, Orgrimmar. No, don't. I'd miss it.",
+		"Somebody's always shouting in this city. Lovely. Means it's not me.",
+	},
+	["org.rest_enter.w21.lull.007"] = {
+		"closes {g:his|her} eyes and listens to the city as one might listen to a river, without trying to follow any single part of it.",
+		"lets {g:his|her} eyes fall shut and the noise of the streets run on, unattended.",
+		"shuts {g:his|her} eyes, and the city goes on without supervision, as cities do.",
+	},
+	["org.rest_enter.w21.lull.008"] = {
+		"Late, and the city is down to its small sounds: a door, a cough, a wolf turning over. I can hear myself think, and I'd rather not.",
+		"At this hour the noise drains out of the streets like water from a trough, and what's left is almost gentle.",
+		"A door shuts somewhere, a cup is set down, a grunt on the wall shifts his weight. The city is talking in its sleep.",
+	},
+	["org.rest_enter.w21.lull.009"] = {
+		"My thoughts are still moving at road speed. Give them a moment; they're like kodos, they need room to stop.",
+		"The mind keeps walking after the feet have stopped. I let it go around the block once or twice.",
+		"My feet stopped at the walls. My head is still somewhere out on the road, trudging, and it'll be along presently.",
+	},
+	["org.rest_enter.w21.lull.010"] = {
+		"The canyon throws every sound back twice, softer. After a while the echo stops sounding like a warning and starts sounding like company.",
+		"Sounds come back off the stone a moment late, worn soft. Even a shout comes back with its edges rubbed off.",
+	},
+	["org.rest_enter.w21.lull.011"] = {
+		"half listens to two strangers arguing about the price of rope nearby, and feels no need to know who wins.",
+		"lets the talk at the next bench drift past, catching a word here and there like a fish in a slow current.",
+		"follows somebody else's long complaint about a lame kodo with mild, sleepy interest, and nods at the right places without being asked.",
+	},
+	["org.rest_enter.w21.lull.012"] = {
+		"Talk all you like. I'm listening with about half an ear.",
+		"Tell me later. Much later. I'll pretend to be surprised.",
+		"Is it urgent? Is anything on fire? Then it keeps.",
+	},
+	["org.rest_enter.w21.lull.013"] = {
+		"Let the dust howl along the canyon. I've found a corner it can't reach, and I'm staying in it.",
+		"Sand hissing against every wall in the city, and me on the right side of the nearest one.",
+		"Outside the sand is scouring the streets clean of everyone with any sense. I'm one of the ones with sense, for once.",
+	},
+	["org.rest_enter.w21.lull.014"] = {
+		"Rain in Orgrimmar, of all things. I'll listen to it from under a roof, the way you listen to a rare song.",
+		"Water drumming on the awnings and nobody hurrying. Even the grunts are standing under something.",
+	},
+	["org.rest_enter.w21.lull.015"] = {
+		"Let it crash and flash over the canyon. Under a roof with something hot, a storm is just a show I didn't pay for.",
+		"Every crack of thunder rolls around the canyon twice. I count the second one, pull my collar up, and that's all the storm gets from me.",
+	},
+	["org.rest_enter.w21.respite.001"] = {
+		"Nobody in this crowd knows what I did out there, or needs to. For a while I can be just another back on a bench.",
+		"In a crowd this size I'm nobody in particular. It's a better cloak than any I own.",
+		"Nobody here wants my story. I could kiss every indifferent face in the street.",
+	},
+	["org.rest_enter.w21.respite.002"] = {
+		"sits with {g:his|her} back to the stone and chin tucked low, resting the way a hare rests: completely still and not at all.",
+		"lowers {g:himself|herself} onto a seat in the enemy's capital and keeps one eye on every grunt, which is a strange way to rest.",
+	},
+	["org.rest_enter.w21.respite.003"] = {
+		"The inn, a bench by the bank, a quiet step behind some tanner's yard: in this city I get to choose where to drop. Out there the ground chose for me.",
+		"So many places to sit down that I stand here deciding. It's the best problem I've had in a while.",
+		"Inn or bench or doorstep? I'll take the first one that doesn't argue.",
+	},
+	["org.rest_enter.w21.respite.004"] = {
+		"considers the inn's crowded doorway, considers a quiet stretch of wall nearby, and chooses the wall.",
+		"weighs the noise of the inn against a quiet step outside it, and sits down on the step without further debate.",
+		"looks at the inn door, at the press of bodies going in and out, and finds a patch of stone a little way off instead.",
+	},
+	["org.rest_enter.w21.respite.005"] = {
+		"Food I didn't have to hunt, skin, or keep away from something bigger. I'll eat it slowly, out of respect.",
+		"Somebody else lit the fire, somebody else turned the spit. All I have to do is chew. Civilization.",
+		"Meat off a stall, still hot, wrapped in a leaf. On the road I'd have spent an hour earning this.",
+	},
+	["org.rest_enter.w21.respite.006"] = {
+		"Something hot, something cooked, something I don't have to kill first. Point me.",
+		"I'd trade my boots for a hot meal. Then I'd buy them back.",
+		"Food first. Then I'll be civil.",
+	},
+	["org.rest_enter.w21.respite.007"] = {
+		"Clean water from a clay jar, cool from the shade it was kept in. After the waterskin, it tastes of nothing at all, which is exactly right.",
+		"The waterskin has made everything taste of old leather. This cup tastes of nothing but water, and I want nothing more.",
+		"A full cup of water, and nobody to share it with or ration it for. I drink it in one go, like a rich fool.",
+	},
+	["org.rest_enter.w21.respite.008"] = {
+		"eats with both hands and both eyes on the food, a luxury the road never allowed.",
+		"tears into a heel of flatbread without once looking up, which out on the road would have been foolish.",
+		"eats with {g:his|her} back to the busy street and an untroubled face, letting the city guard the meal.",
+	},
+	["org.rest_enter.w21.respite.009"] = {
+		"Orcs once slept behind human walls, in the camps. These walls are orcish, and the gate opens from the inside. That's the whole difference, and it's everything.",
+		"The old ones remember sleeping under guard. Here the guards are our own, and they face outward.",
+	},
+	["org.rest_enter.w21.respite.010"] = {
+		"takes a seat at the end of a long table in the inn, where the cups are passed down and nobody expects conversation.",
+		"picks a stool near the inn's door, half in the crowd and half out of it, the most noncommittal seat in the house.",
+		"wedges in at the corner of a crowded table at the inn, accepts a passing mug with a nod, and says nothing whatsoever.",
+	},
+	["org.rest_enter.w21.respite.011"] = {
+		"On the road sleep comes in pieces, a little here, a little there, always with one eye open. In here I'd like it all in one piece.",
+		"Road sleep comes in scraps. City sleep comes whole, if I'm lucky, and if the snorer in the next corner is not.",
+	},
+	["org.rest_enter.w21.respite.012"] = {
+		"unrolls a bedroll in a sheltered corner, smooths it twice with the flat of a hand, and regards it with deep affection.",
+		"shakes the road out of a blanket with two hard snaps and spreads it with great care, as though for a guest.",
+	},
+	["org.rest_enter.w21.respite.013"] = {
+		"There's a peon asleep against a crate with a hauling strap still over one shoulder. Nobody has ever understood me better.",
+		"A peon is dozing on a sack of grain, mouth open, one boot twitching. If anyone wakes him, I'm on his side.",
+		"I've just watched a peon fall asleep standing up, leaning on a broom. I salute the craft.",
+	},
+	["org.rest_enter.w21.respite.014"] = {
+		"finds a wedge of shade against a wall and folds into it, out of the heat, like a lizard minding its own business.",
+		"edges along the wall after the shrinking shade, a little at each turn of the light, and refuses to be driven out of it.",
+		"presses {g:his|her} back to a stretch of stone the sun hasn't reached yet, and borrows its cool for as long as it lasts.",
+	},
+	["org.rest_enter.w21.respite.015"] = {
+		"Beyond these walls I carry the Horde's name into every meeting. Inside them the Horde carries itself, and I can set my share down for an hour.",
+		"Every grunt on these walls is watching for me as much as for anyone. That's what a Horde is, I suppose: a lot of people holding the door for each other.",
+	},
+	["org.rest_enter.w21.respite.016"] = {
+		"Somebody else has the watch. I asked. Twice.",
+		"I'm not on duty. I'm not on anything. I'm on this bench.",
+		"Off duty. Off my feet. Off the road. Leave me off.",
+	},
+	["org.rest_enter.w21.respite.017"] = {
+		"splashes cold water from a bucket over face and neck, and comes up looking a year younger and considerably wetter.",
+		"rinses the road out of both hands in a basin, and watches the water take on the color of the miles behind {g:him|her}.",
+		"sinks both forearms in a basin of water up to the elbows and stays like that, unhurried, as if the basin were the whole reason the city exists.",
+	},
+	["org.rest_enter.w21.rest.001"] = {
+		"Somebody on the walls is counting every shape on the road. It doesn't have to be me.",
+		"The grunts up on the walls are looking out so that I can look at nothing. I intend to do it thoroughly.",
+		"Nobody shared the watch with me on the road. In here a whole city keeps it, and doesn't even ask my name.",
+	},
+	["org.rest_enter.w21.rest.002"] = {
+		"glances back over one shoulder out of habit, finds only the ordinary traffic of the city, and lets the habit go for a while.",
+		"starts to check behind {g:him|her}, catches the movement halfway, and turns it into a stretch instead.",
+		"turns {g:his|her} back to the busiest stretch in sight on purpose, the way one tests an old plank with a foot, and nothing happens.",
+	},
+	["org.rest_enter.w21.rest.003"] = {
+		"If anything gets past those grunts, by all means wake me. Gently.",
+		"Walls, grunts, a gate. I've done my share of watching. Your turn, city.",
+		"Somebody else's watch. Best three words I know.",
+	},
+	["org.rest_enter.w21.rest.004"] = {
+		"I count the ways out of wherever I sit. Here the count stopped at three, because nobody coming through any of them was looking my way.",
+		"Old habit: find the doors first. In this city I find them, then I find a cup, and the cup wins.",
+		"My eyes still go to the doorways before they go to the faces. Give them time. They'll learn the city's manners.",
+	},
+	["org.rest_enter.w21.rest.005"] = {
+		"hears a pair of grunts tramp past on their rounds and, for the first time in a long while, does not look up.",
+		"lets the heavy, unhurried footsteps of a patrol go by unremarked, a sound that here means only that somebody else is working.",
+		"notes the clank of a passing patrol, measures it, finds it ordinary, and stops listening.",
+	},
+	["org.rest_enter.w21.rest.006"] = {
+		"Half the walls of this city were put there by the canyon long before anyone thought of a gate. Stone makes a patient sentry.",
+		"The cliffs keep one side, the grunts the other. Between them there's room for one tired traveler to stop being careful.",
+	},
+	["org.rest_enter.w21.rest.007"] = {
+		"This body doesn't tire the way it used to. Something still does, though, and inside these walls it finally sits down.",
+		"The flesh has no use for a bed. The mind behind it does, and it has been standing guard far too long.",
+		"Nobody here flinches when I pass. That alone is worth more than sleep.",
+	},
+	["org.rest_enter.w21.rest.008"] = {
+		"works open a buckle that has been biting into one shoulder for hours, and lets the strap hang loose.",
+		"loosens the belt by one notch, then by another, with the gravity of someone signing a treaty.",
+		"slips a thumb under a strap and lifts it clear of a sore shoulder, then simply lets the whole load go.",
+	},
+	["org.rest_enter.w21.rest.009"] = {
+		"I'm closed for business. Come back when I've eaten something.",
+		"Whatever it is, it can wait until I've sat down. Then it can wait some more.",
+		"Ask me again after I've had something hot.",
+	},
+	["org.rest_enter.w21.rest.010"] = {
+		"With nothing to watch for, my hands don't know what to do with themselves. I give them a cup to hold, and they settle.",
+		"Odd how idle hands fidget once the danger's gone. These found a loose thread on my sleeve and won't leave it alone.",
+	},
+	["org.rest_enter.w21.rest.011"] = {
+		"Our walls. I don't say it aloud, but I think it every time I'm inside them, and every time it does me good.",
+		"These walls were raised by people who knew what it was to have none. I sleep well inside them.",
+		"The Warchief's walls, the Warchief's grunts. Our city. Whatever I carried out there, I can set it down in here.",
+	},
+	["org.rest_enter.w21.rest.012"] = {
+		"I slept with my boots on and one ear open all the way here. These walls let me take the boots off. The ear will take longer.",
+		"Boots off. That's the true sign I trust a place. The ear that listens for trouble stays on duty a while yet, out of stubbornness.",
+	},
+	["org.rest_enter.w21.rest.013"] = {
+		"Is this spot taken? Good. It is now.",
+		"Make room. These legs have walked enough for two.",
+		"I'll just sit here and be furniture for a while.",
+	},
+	["org.rest_enter.w21.rest.014"] = {
+		"Somewhere along the walls the torches are lit, a ring of light at every post. The dark between them belongs to the grunts, not to me.",
+		"Every torch on the walls has a grunt beneath it. I don't need to see them to know it, which is the whole point.",
+		"The torches on the walls burn all through the dark hours, and someone feeds them. I am not that someone. Not this time.",
+	},
+	["org.rest_enter.w21.settle.001"] = {
+		"The inn smells of tallow, spilled grog and too many travelers. Not a good smell. A safe one.",
+		"Somebody has spilled something on this table that will outlive us both. I like it here already.",
+		"The floor of the inn is sticky, the bench wobbles, and the mug has a chip. Perfect. Nobody fights over a place like this.",
+	},
+	["org.rest_enter.w21.settle.002"] = {
+		"hangs a dusty cloak on a peg by the inn's door, beside a dozen others just as dusty, and leaves it there with evident relief.",
+		"finds a free hook for {g:his|her} cloak among the inn's crowded pegs and pats it once, like someone stabling a tired animal.",
+	},
+	["org.rest_enter.w21.settle.003"] = {
+		"Ditches, cart beds, the lee of a rock: I've slept in all of them. Any corner of this city is a palace by comparison.",
+		"After the hard ground of the road, even a bench feels like a bed somebody made up specially.",
+	},
+	["org.rest_enter.w21.settle.004"] = {
+		"A bed, a bowl and a door that shuts. I'm a simple creature.",
+		"Two bowls of whatever that pot is hiding. I'm past being proud.",
+		"Let me sit before I fall in the general direction of a chair.",
+	},
+	["org.rest_enter.w21.settle.005"] = {
+		"A bowl of mashed roots and salt, nothing more. After trail rations it tastes like a feast someone threw in my honor.",
+		"Hot root mash, too much salt, a spoon bent from use. I've had finer meals and enjoyed none of them more.",
+		"Plain food, hot, and enough of it. Halfway through the bowl I stop thinking about anything else.",
+	},
+	["org.rest_enter.w21.settle.006"] = {
+		"cups a bowl of something hot in both hands and simply holds it for a while before eating, as if the warmth were the main course.",
+		"eats slowly, the way people eat when nobody is about to take the bowl away.",
+		"scrapes the last of a bowl clean with a crust, then sits looking at the empty bowl with great contentment.",
+	},
+	["org.rest_enter.w21.settle.007"] = {
+		"The grunts off duty all have their own ledges and doorways, out of the traffic, claimed by long habit. I'll have to find one nobody's using.",
+		"Every regular in Orgrimmar has a favorite place to doze: a step, a coil of rope, a corner of some smith's yard. I'm still auditioning mine.",
+		"There's an art to choosing a place to nap in a city this busy. Out of the way, out of the noise, and not in front of anyone's shop.",
+	},
+	["org.rest_enter.w21.settle.008"] = {
+		"arranges the pack into something like a pillow, punches it into shape, and lies back against it with the look of a satisfied architect.",
+		"tests three different ways of leaning against the pack before settling on the fourth.",
+	},
+	["org.rest_enter.w21.settle.009"] = {
+		"Everybody heads for the inn first. I head for the quietest wall I can find, and then for the inn, once I'm fit for company.",
+		"The inn will still be loud in an hour. I'll get there when I'm loud enough to match it.",
+		"It'll keep, the inn. First I want a few quiet moments where no one hands me a mug or a story.",
+	},
+	["org.rest_enter.w21.settle.010"] = {
+		"nods off sitting up, jerks awake, and looks around as if daring anyone to have noticed.",
+		"nods slowly toward {g:his|her} chest, catches the chin, and nods once more, losing the argument by degrees.",
+		"dozes for the length of a passing conversation and wakes with a start in the middle of someone else's sentence.",
+	},
+	["org.rest_enter.w21.settle.011"] = {
+		"Sleep, or the nearest thing I can manage, is going to come easy behind these walls.",
+		"Eyes closed, mind idling, nothing to listen for. Call it sleep or don't; it's the best rest I've had in a long while.",
+		"Whatever my kind of sleep is, it's waiting for me in here, patient as a dog by a door.",
+	},
+	["org.rest_enter.w21.settle.012"] = {
+		"toes off both boots under a table at the inn and pushes them into the dark beneath, where they can think about what they've done.",
+		"sets both elbows on the inn's scarred table and lowers {g:his|her} chin onto stacked fists, the very picture of someone going nowhere.",
+	},
+	["org.rest_enter.w21.settle.013"] = {
+		"The city's waking up all around me, stalls clattering open, and I am absolutely not joining it.",
+		"Early carts rattling past, the first hawkers clearing their throats. I turn over and give the whole city my back.",
+	},
+	["org.rest_enter.w21.settle.014"] = {
+		"It takes a little while to fit back into a city, like a coat that's been hanging on a peg. Then it fits.",
+		"For a while, inside the walls, half of me is still on the road. Then something small, a smell or a shout, and I've arrived all the way.",
+		"A city has to be put on slowly, one sleeve and then the other. I'm about halfway in.",
+	},
+	["org.rest_enter.w21.settle.015"] = {
+		"accepts a bowl from a stall without asking what's in it, which in Orgrimmar counts as trust.",
+		"pays for a bowl of something brown and steaming, sniffs it once, and wisely asks nothing.",
+	},
+	["org.rest_enter.w21.settle.016"] = {
+		"glances up at the roof overhead, and up at it once more a moment later, as if it might wander off.",
+		"looks up at the rafters with open fondness, something solid at last between {g:him|her} and everything above.",
+	},
+	["org.rest_enter.w21.settle.017"] = {
+		"Horde walls, Horde food, Horde snoring. I've missed all three.",
+		"Any grunt need a hand? No? Then I'm off duty, same as every other tired back in the Horde.",
+	},
+	["org.rest_enter.w21.settle.018"] = {
+		"stretches out full length on a bench too short for the purpose, boots hanging off the end, and makes no complaint.",
+		"lies back on a bench with one arm over the eyes, a posture understood in every city there is.",
+		"tries a bench lengthwise, finds it a hand too short, and accepts the terms.",
+	},
+	["org.rest_enter.w21.settle.019"] = {
+		"Plenty of room here. Sit if you like; talk only if you must.",
+		"Pull up a seat. I won't ask where you've come from if you don't ask me.",
+		"Room for one more, as long as they're quiet.",
+	},
+	["org.rest_enter.w21.settle.020"] = {
+		"If anyone needs me, I'm not here. If anyone needs me badly, I'm still not here.",
+		"Nobody hand me anything. Not a map, not a task, not a cup... well. Maybe a cup.",
+		"I've stopped walking. Officially. Spread the word.",
+	},
+	["org.rest_enter.w21.settle.021"] = {
+		"The grunts look like they've never sat down in their lives. Somebody in this city has to balance them out. I volunteer.",
+		"Every grunt in sight is standing at attention. Someone has to do the sitting, for the sake of balance.",
+		"Watching the guards stand so straight makes my own back ache in sympathy. I'll sit for all of us.",
+	},
+	["org.rest_enter.w21.settle.022"] = {
+		"In a city someone else can mend the boots, stitch the strap, sharpen what's blunt. Out there it all fell to me. In here it can wait for the right pair of hands.",
+		"A torn strap, a split seam, a boot sole flapping. On the road, my problems. In this city, somebody's trade.",
+	},
+	["org.rest_enter.w21.settle.023"] = {
+		"Whoever built this place had been on the move for a long time before. You can tell: every wall is twice as thick as it needs to be.",
+		"The orcs came here off ships and out of camps, and the first thing they made, the elders say, was walls. I understand them better every time I sit down inside them.",
+	},
+	["org.rest_enter.w21.settle.024"] = {
+		"Quiet enough to sleep at last. Don't anyone ruin it.",
+		"Late. Late enough for me, anyway. Somebody show me a bed.",
+	},
+	["org.rest_enter.w21.settle.025"] = {
+		"Enough trolls about that nobody needs my jokes explained, and I don't need theirs. That's half of rest, right there.",
+		"Off in the Valley of Spirits my own people are laughing at something. I can't hear what, and I don't need to.",
+	},
+	["org.rest_enter.w21.unwind.001"] = {
+		"My head insists on replaying the one moment out there I got wrong. I let it play once more, then tell it the story's over.",
+		"Every misstep of the road surfaces now that there's time for it. I nod at each one and send it on its way.",
+		"One bad choice out there keeps tapping me on the shoulder. I turn and look at it properly, for once, and it shrinks.",
+	},
+	["org.rest_enter.w21.unwind.002"] = {
+		"tips out the contents of a bag and sorts them slowly into heaps, as though sorting out the hours that filled it.",
+		"turns over a handful of oddments from the road one by one, a pebble, a strap end, a bent copper, and keeps only the copper.",
+	},
+	["org.rest_enter.w21.unwind.003"] = {
+		"A face from the road keeps floating up: a stranger I passed without a word. I hope they found walls of their own somewhere.",
+		"Odd what the mind keeps. Not the danger, not the miles: a stranger's wave from the far side of a ford.",
+		"Of everything out there, what stays with me is a stranger sharing the shade of a rock without a word. I never learned the name.",
+	},
+	["org.rest_enter.w21.unwind.004"] = {
+		"Don't ask me how it went. Ask me after a meal, and I'll lie beautifully.",
+		"It was long, it was dusty, and I'm not telling the rest until somebody feeds me.",
+		"Yes, I have stories. No, not yet. Feed me first.",
+	},
+	["org.rest_enter.w21.unwind.005"] = {
+		"I make myself list what went right out there. It's a short list, but it's mine, and it's longer than I'd have guessed.",
+		"Counting the good parts first. A clear road, a fair trade, a strap that held. Enough to sit down on.",
+	},
+	["org.rest_enter.w21.unwind.006"] = {
+		"stares at nothing in particular for a long moment, lips moving slightly, as though settling an account with someone who isn't there.",
+		"sits with a frown that slowly unknots itself, the way a hard thought loosens once there's room for it.",
+	},
+	["org.rest_enter.w21.unwind.007"] = {
+		"I've just thought of the perfect reply to something somebody said three hills back. Too late, and very satisfying.",
+		"Now that the walls are up around me, I win every argument I lost on the road. My best work is always done afterwards.",
+		"The clever answer always arrives once I've stopped walking. It must travel slower than I do.",
+	},
+	["org.rest_enter.w21.unwind.008"] = {
+		"Out there there was no time to ask whether it was right. In here there's all the time in the world, and I'm not sure I want it.",
+		"Safe walls give the questions room to come in. That's the price of rest, and I'll pay it.",
+	},
+	["org.rest_enter.w21.unwind.009"] = {
+		"counts out a small heap of coins on one knee, loses count halfway, and does not start over.",
+		"weighs a coin purse in one palm, listening to it the way a farmer listens to a well.",
+		"lines up a few coins along the edge of the seat by size, then by shine, then sweeps them all back into the purse together.",
+	},
+	["org.rest_enter.w21.unwind.010"] = {
+		"The hours behind me are still rattling around like stones in a boot. I shake them out one by one, and look at each before throwing it away.",
+		"Whatever happened out there is starting to feel like something I heard about rather than lived. That's how I know the walls are working.",
+		"The road is turning into a story already, all its sharp parts worn down by the telling. And I haven't even told it to anyone.",
+	},
+	["org.rest_enter.w21.unwind.011"] = {
+		"watches a lantern catch across the way, then another, and leaves the city the job of keeping things visible.",
+		"follows braziers and lanterns coming alight here and there as the light goes, without feeling the least need to help.",
+	},
+	["org.rest_enter.w21.unwind.012"] = {
+		"Tomorrow's road is already sitting in the corner of my mind like a dog waiting for a walk. Lie down, road. Later.",
+		"The next errand is already pacing in my head. I've told it to sit. It's sitting, sulkily.",
+		"The plans for later keep knocking. I've told them the door's shut until I've eaten.",
+	},
+	["org.rest_enter.w21.unwind.013"] = {
+		"I've some thinking to do. Mostly the sitting part.",
+		"Leave me be a while. I'm busy doing absolutely nothing.",
+	},
+	["org.rest_enter.w21.unwind.014"] = {
+		"Everyone on these streets carried something in with them from out there. You can see it in how they sit. I'm in good company.",
+		"Look at any face in this crowd long enough and you can see the road on it. Mine's no different, and nobody stares.",
+		"A city full of people setting things down: packs, grudges, the weight of the miles. Mine goes on the pile with the rest.",
+	},
+	["org.rest_enter.w21.unwind.015"] = {
+		"picks at a knot in a bootlace for far longer than the knot deserves, with the look of someone thinking of something else entirely.",
+		"traces a crack in the stone with one finger, slowly, from end to end, eyes somewhere far away.",
+		"turns a pebble over and over in one hand, as if it had a question written on it somewhere.",
+	},
+	["org.rest_enter.w21.unwind.016"] = {
+		"Nobody's counting my hours here. I could sit until this cup goes cold and not owe anyone an explanation.",
+		"There's no hurry anywhere in me. I keep checking for it, the way you pat a pocket for a lost coin, and it's gone.",
+		"Time behaves differently behind walls. Out there it chased me. In here it sits down beside me and waits.",
+	},
+	["org.rest_enter.w21.unwind.017"] = {
+		"The questions on the road were big: which way, how far, who's following. Between walls they shrink to which bowl, which bench.",
+		"My biggest decision for the next hour is which end of the bench to sit on. I'm taking my time over it.",
+		"On the road every choice could cost something. In here the worst I can do is pick the wrong pie.",
+	},
+	["org.rest_enter.w21.unwind.018"] = {
+		"Resting is a skill like any other, and I'm out of practice. First attempt: sit. So far, so good.",
+		"I've forgotten how to do nothing. It'll come to me; I used to be very good at it.",
+		"Doing nothing turns out to need practice. My hands keep looking for work. My feet keep looking for road.",
+	},
+	["org.subzone_enter.w21.cleft.001"] = {
+		"enters the Cleft of Shadow past ledges crusted with old candle wax, layer on layer and every color, the drippings of more vigils than anyone has counted.",
+		"picks a way past niches in the rock where candles have burned down onto the stubs of older candles, the wax built up in lumpy towers nobody ever scrapes away.",
+		"brushes a sleeve against a ledge thick with candle drippings, black and red and bone-white, hardened over one another for years.",
+	},
+	["org.subzone_enter.w21.cleft.002"] = {
+		"From one of the doorways comes a patient little clicking: someone working a lock with picks, over and over, on a box that has surely been opened a thousand times before.",
+		"Tick, scrape, click. In some corner of the Cleft a lock is being picked for practice. I hope for practice.",
+		"There's a battered strongbox in a doorway down here that has been picked so often its lock just sighs and gives up the moment anyone touches it.",
+	},
+	["org.subzone_enter.w21.cleft.003"] = {
+		"walks under a ledge where two imps are bickering in their crackling tongue, each flicking sparks at the other's toes, while their masters pretend not to know them.",
+		"slips beneath a pair of quarrelling imps perched on the rock, who break off just long enough to stare, snicker, and take up the argument where they left it.",
+		"ducks under a ledge as one of the imps squatting there flicks a spark in {g:his|her} direction, purely, it seems, for the pleasure of the hiss.",
+	},
+	["org.subzone_enter.w21.cleft.004"] = {
+		"One stall in the Cleft sells nothing but blank books bound in dark hide. The seller never asks what they're for, and every buyer, I notice, pays without haggling.",
+		"Blank books bound in black hide, stacked on a ledge with no price marked. Anywhere else in the city that would be stationery. Down here it looks like a confession waiting to be written.",
+	},
+	["org.subzone_enter.w21.cleft.005"] = {
+		"Lovely. Even the walls in here look like they're keeping a list.",
+		"Everyone down here is very polite. That's what worries me.",
+		"Just passing through, for the record. Whoever's keeping the record.",
+	},
+	["org.subzone_enter.w21.cleft.006"] = {
+		"stops, unsure why, and realizes a figure has just crossed the Cleft a few paces ahead without making a single sound on the gravel.",
+		"notices, too late to hear it, that someone has walked past close enough to touch; the gravel underfoot never said a word.",
+		"feels rather than hears someone go by in the Cleft: a shiver in the torchlight, a draft, and then nobody there.",
+	},
+	["org.subzone_enter.w21.cleft.007"] = {
+		"A green light leaks from one doorway in the Cleft, the color of a bad bruise healing. I hold a hand toward it out of habit. It gives no warmth whatsoever.",
+		"Most light down here is torchlight, yellow and tired. One doorway glows a thin, sour green instead, and the grunts on patrol walk a little wider of it.",
+		"Somebody's doorway down here burns green. I don't look in. Looking in is how stories start.",
+	},
+	["org.subzone_enter.w21.cleft.008"] = {
+		"squeezes past a young warlock reading by a single candle, lips moving over the page, while an imp perched on one shoulder reads along and mouths the words a moment ahead.",
+		"edges by a student hunched over a book in a niche, an imp on her shoulder impatiently turning the page before she has finished it.",
+	},
+	["org.subzone_enter.w21.cleft.009"] = {
+		"Up in the valleys the crowd hides me. Down in the Cleft there is no crowd, only a few still figures in doorways, and every one of them has already counted me.",
+		"The Cleft has fewer eyes than the valleys, and each of them is better. I keep my hood up and my pace even, and feel them count me one by one.",
+	},
+	["org.subzone_enter.w21.cleft.010"] = {
+		"sidles past a goblin sitting in a doorway with a lantern and a ledger, adding up figures in a mutter that stops dead whenever anyone comes within earshot.",
+		"walks by a goblin bent over an account book by lantern light, who covers the page with a flat green hand until the footsteps are well past.",
+	},
+	["org.subzone_enter.w21.cleft.011"] = {
+		"Under the overhang the rock carries the city down to me in small sounds: a cart wheel, a dropped bucket, a laugh, all arriving through the stone like news from upstairs.",
+		"The Cleft has the city for a ceiling. Every so often a thump comes down through the rock, and everyone here glances up together, then pretends they didn't.",
+		"In here the city is something heard through a ceiling: footsteps, wheels, a far-off hammer, all a floor away and none of it my business.",
+	},
+	["org.subzone_enter.w21.cleft.012"] = {
+		"hears the gritty turn of a pestle from a niche, where someone in thick gloves grinds a pale powder very slowly and does not look up.",
+		"glances into a niche where a figure in heavy gloves grinds something in a stone mortar, the pestle going round and round, a damp cloth tied over nose and mouth.",
+	},
+	["org.subzone_enter.w21.cleft.013"] = {
+		"The grunt posted near the way down to Ragefire Chasm cuts a notch in a stick for every band that goes down, and crosses it out when they come back up. Most notches are crossed. Not all.",
+		"By the descent to Ragefire Chasm a grunt keeps a tally stick: a notch for every party going down, a slash through it for every party coming up. I don't count the ones without a slash.",
+	},
+	["org.subzone_enter.w21.cleft.014"] = {
+		"Excuse me. Excuse me. Is anyone going to move this voidwalker, or do I go round?",
+		"Pardon. Sorry. Coming through. Not you, the large cold one.",
+	},
+	["org.subzone_enter.w21.cleft.015"] = {
+		"runs a glance over the small marks scratched into the rock at shoulder height, a hook, a ring, a crossed line, which mean nothing at all to {g:him|her} and clearly something to somebody.",
+		"notices tiny signs cut into the walls of the Cleft beside certain doorways, a notch, a circle, a tick, a private alphabet meant for someone else's eyes.",
+	},
+	["org.subzone_enter.w21.cleft.016"] = {
+		"For all its name, the Cleft runs on small errands too: a hooded figure haggling over boot laces, a warlock asking who mends cracked bowls, an imp sent off for a loaf.",
+		"I expected conspiracies in the Cleft. What I find is a rogue arguing about the price of thread and a warlock who wants her cloak hemmed.",
+	},
+	["org.subzone_enter.w21.cleft.017"] = {
+		"leaves the glare of the day behind a few steps into the Cleft of Shadow, where it might as well be any hour at all.",
+		"blinks as hard daylight gives way to the torches of the Cleft, the heat sliding off the shoulders like a pack set down.",
+	},
+	["org.subzone_enter.w21.cleft.018"] = {
+		"There's a cobbler down here who makes nothing but soft-soled boots. He tests each pair by walking across a tray of dry leaves, and sells only the ones he can't hear.",
+		"A bootmaker in the Cleft scatters dry leaves on the floor of his niche and walks every new pair across them. If they crackle, back they go to the bench.",
+	},
+	["org.subzone_enter.w21.cleft.019"] = {
+		"makes room for a tauren picking a careful way through the Cleft, stooped under the overhang, horns tilted to clear the rock and murmuring apologies to it.",
+		"steps aside as a tauren comes through the Cleft bent nearly double, one hand on the rock overhead, wearing the patient look of someone who has bumped that horn here before.",
+	},
+	["org.subzone_enter.w21.cleft.020"] = {
+		"The Cleft has its manners. Where the way narrows, two people passing both turn sideways, chest to chest, and neither offers the other a back.",
+		"In the tight spots of the Cleft folk pass each other face to face, edging sideways like dancers. Turning your back on a stranger down here would be worse than rude.",
+	},
+	["org.subzone_enter.w21.cleft.021"] = {
+		"notices the grit underfoot changing color in the Cleft, the red dust of the city going dark with soot and ash that nobody bothers to sweep.",
+		"scuffs at the ground and sees that the dust of the Cleft is nearly black, the city's red ground down under years of soot.",
+		"leaves faint dark prints behind on the stone, the sooty dust of the Cleft clinging to {g:his|her} boots in place of the usual red.",
+	},
+	["org.subzone_enter.w21.cleft.022"] = {
+		"A figure stands very still in a doorway as I pass. Only once I'm by do I catch a trainer nodding at it from across the way. I think I was the lesson.",
+		"Someone in a doorway has been perfectly still since I set foot in the Cleft. Then a voice from the dark says 'better', and the stillness walks off. I was the exercise, apparently.",
+	},
+	["org.subzone_enter.w21.cleft.023"] = {
+		"Mind the step. And the next one. And whoever's sitting on the one after.",
+		"Watch your feet down here. Half the shadows have legs.",
+	},
+	["org.subzone_enter.w21.cleft.024"] = {
+		"comes upon a seller burning sweet resin in a clay bowl at the mouth of a niche; the smoke is meant to hide the sulfur of the Cleft and only manages to keep it company.",
+		"walks through a drift of incense from someone's doorway, sweet and heavy, with the sulfur of the Cleft underneath it like a second voice.",
+		"catches the scent of burning resin from a doorway, honey-sweet over the reek of brimstone, as if somebody were trying to make the Cleft presentable.",
+	},
+	["org.subzone_enter.w21.cleft.025"] = {
+		"Up in the valleys children are underfoot everywhere. Not one plays in the Cleft. Nobody had to forbid it, I think; they simply know.",
+		"There are no children in the Cleft. The little ones who run the rest of Orgrimmar ragged stop at its edge like dogs at a cold river.",
+		"Every corner of the city has its children except this one. They come as far as the edge of the Cleft, look in, and go back to their games.",
+	},
+	["org.subzone_enter.w21.drag.001"] = {
+		"rounds a bend of the Drag as a barrel gets loose somewhere up the slope and comes bounding down it, a red-faced cooper three strides behind and losing ground.",
+		"flattens against a doorway while a runaway cask rumbles down the curve of the street, followed by its maker, who is shouting at it by name.",
+		"dodges an empty barrel rolling downhill on its own errand, while somewhere above a cooper curses the slope of the Drag in detail.",
+	},
+	["org.subzone_enter.w21.drag.002"] = {
+		"A young apprentice is going door to door down the Drag asking for a bucket of steam. Every smith sends him to the next one, straight-faced. The whole street is in on it.",
+		"Somebody's sent an apprentice down the Drag for a left-handed hammer. Each shop he tries swears the last one has it. The grown-ups are enjoying this far too much.",
+		"A wide-eyed apprentice has asked half the Drag for a jar of striped paint. The other half is waiting its turn, very solemn.",
+	},
+	["org.subzone_enter.w21.drag.003"] = {
+		"draws the squint of a tailor in a doorway who sizes up every passerby and calls the measure out to an apprentice, who chalks it on a board: shoulders, waist, a rude word for the tauren.",
+		"is measured by a tailor's eye in passing, without being asked; a number is muttered, an apprentice scratches it down, and that seems to settle something.",
+	},
+	["org.subzone_enter.w21.drag.004"] = {
+		"Over one door in the Drag someone carved a clan mark, a wolf's head; over the next, a different clan. A third doorframe has its mark scraped off so hard the wood is still pale.",
+		"Old clan signs cut into the lintels along the Drag, one per door, like names on a roll. Here and there one has been gouged away, and nobody on the street will say whose it was.",
+		"The doorframes of this street remember the clans: a mark burnt in here, carved there. One has been chiseled clean off, recently, by someone in a hurry.",
+	},
+	["org.subzone_enter.w21.drag.005"] = {
+		"follows the smell to a cook slapping rounds of flatbread onto a hot stone and flipping them with bare fingers, faster than any eye can quite follow.",
+		"lingers by a cook who peels flatbread off a heated slab with fingertips that seem to have given up feeling anything long ago.",
+	},
+	["org.subzone_enter.w21.drag.006"] = {
+		"I came into the Drag for one needle. I'm leaving with a needle, a thimble and a lecture.",
+		"One needle. That's all I'm here for. Don't show me the thimbles.",
+	},
+	["org.subzone_enter.w21.drag.007"] = {
+		"Under the awnings of the Drag the light comes through stretched hide, the same tired orange at any hour. You could lose a whole day in here and only notice by your purse.",
+		"This street lives under its awnings, hide and canvas lapped edge to edge, so the Drag is always the color of a lamp turned low.",
+	},
+	["org.subzone_enter.w21.drag.008"] = {
+		"reaches the tightest bend of the Drag as a wolf rider and a porter with a cart meet nose to nose; neither will back up, and the queue behind them starts taking sides.",
+		"is caught behind a standoff at a bend in the street: one wolf, one handcart, two stubborn owners, and a growing crowd placing small bets.",
+	},
+	["org.subzone_enter.w21.drag.009"] = {
+		"The bag maker of the Drag fills every pack with gravel and swings it against the wall before she'll sell it. The crowd steps back by habit. So far, the wall has lost.",
+		"There's a bag seller down here who tests each seam by loading the bag with rocks and hurling it at a post. Buyers watch with real interest. Nobody wants to be the one asking for a refund.",
+		"Before any pack leaves her stall, the bag maker stuffs it with rocks and slams it on the ground twice. Buyers flinch. Packs don't.",
+	},
+	["org.subzone_enter.w21.drag.010"] = {
+		"comes alongside a cobbler on a low stool with a row of nails held in his lips, tapping hobnails into a sole and somehow still managing to argue with the customer.",
+		"slows beside a cobbler who talks around a mouthful of nails, every word a little hiss, without dropping one or missing a single tap of the hammer.",
+	},
+	["org.subzone_enter.w21.drag.011"] = {
+		"Someone's nailed a single glove to the post here, waiting for its owner. It's been waiting a while. It's started to look smug.",
+		"A lone glove nailed up by the door. Not mine. I checked both hands, though.",
+		"There's a glove nailed to that post. Somebody lost a hand's worth of warmth and the Drag is keeping it for them.",
+	},
+	["org.subzone_enter.w21.drag.012"] = {
+		"ducks into the Drag as the rain finds the awnings and pours off their edges in a hundred thin ropes, each shopkeeper hurrying to drag the stock under cover.",
+		"slips through a curtain of rain running off a sagging awning, into a street where every merchant is suddenly busy pushing tables back from the wet.",
+	},
+	["org.subzone_enter.w21.drag.013"] = {
+		"A chandler in the Drag dips wicks in a pot of tallow, over and over, and hangs them in pairs to set. Slow work for a city that hurries; she doesn't look as if she's noticed.",
+		"Rows of half-made candles hang in pairs over a tallow pot, each a little fatter than the last. The chandler dips them as patiently as if the street were empty.",
+	},
+	["org.subzone_enter.w21.drag.014"] = {
+		"notices a fine glittering dust trodden into the step of one shop along the Drag, and the faint prickle in the fingertips of anyone who lingers by its door.",
+		"crosses a threshold dusted with something that sparkles faintly underfoot, outside a shop whose owner sells powders nobody else on the street will touch.",
+	},
+	["org.subzone_enter.w21.drag.015"] = {
+		"Everything bought in the Drag comes with free advice. How to oil it, how to wear it, what I was doing wrong with the last one. The advice is worth about what it costs.",
+		"On this street the goods have a price and the opinions are free. No stall lets me go without telling me how I've been doing it wrong.",
+		"Buy a strap in the Drag and you get the strap, plus the seller's whole view of the world, at no extra charge.",
+	},
+	["org.subzone_enter.w21.drag.016"] = {
+		"watches a troll haggle without a word, simply holding the merchant's eye and the coin until the merchant, unnerved, knocks off a piece of silver.",
+		"halts by a stall where a Darkspear customer says nothing at all, only taps the coins on the counter one by one, and the price comes down to meet them.",
+	},
+	["org.subzone_enter.w21.drag.017"] = {
+		"Half the boots on the Horde's front lines were stitched on this street. You can hear it: they all squeak the same.",
+		"Every grunt on every wall I've passed walks in Drag leather. Same stitch, same squeak.",
+	},
+	["org.subzone_enter.w21.drag.018"] = {
+		"The Drag slopes, everyone agrees. Nobody agrees which way. I've walked it in both directions and been uphill the whole time.",
+		"There's a law of the Drag the peons swear by: whichever way you're carrying something heavy, it's uphill.",
+	},
+	["org.subzone_enter.w21.drag.019"] = {
+		"catches a grunt on patrol stopping at a sweets stall, buying a twist of honeyed nuts, and pocketing it with a glare that dares anyone to have seen.",
+		"spots a hulking grunt break off his round of the Drag for a paper cone of sugared nuts, eat one, and walk on looking twice as fierce to make up for it.",
+		"notices a grunt pause at a sweet-seller's tray, glance both ways along the street, and buy two honey cakes that vanish into his gauntlet.",
+	},
+	["org.subzone_enter.w21.drag.020"] = {
+		"One doorway along the Drag is scorched black to the lintel, and a brand-new door hangs inside the old burnt frame. The alchemist within has clearly decided this is normal.",
+		"An alchemist's shop with a charred doorframe and a fresh door fitted inside it, the third, a neighbor tells me. The neighbor has moved his stall two doors down.",
+		"The alchemist's door is new; the frame around it is charcoal. Every neighbor on the street keeps a full bucket handy.",
+	},
+	["org.subzone_enter.w21.drag.021"] = {
+		"hears the Drag wake around {g:him|her}: shutters dropping one by one with a clatter, each shopkeeper sweeping yesterday's dust over the next one's doorstep.",
+		"walks a Drag just opening its eyes: shutters banging back, a first fire coaxed alight under a griddle, and two neighbors already arguing over whose dust is whose.",
+	},
+	["org.subzone_enter.w21.drag.022"] = {
+		"A leatherworker down here sews with one hand and a hook, and the hook does the finer work. He lost the hand at some wall or other and says the hook has better manners.",
+		"The best stitcher on this street works with a hook strapped where a hand used to be. He threads the needle with his teeth, and nobody has ever dared to offer help.",
+	},
+	["org.subzone_enter.w21.drag.023"] = {
+		"walks under bolts of cloth hung across the Drag from roof to roof, so that the street passes beneath a slow tide of brown, ochre and a hard red.",
+		"ducks, needlessly, beneath lengths of cloth strung from one side of the street to the other, airing out just above the tallest heads; a tauren ahead ducks too, and needs to.",
+	},
+	["org.subzone_enter.w21.drag.024"] = {
+		"Lye, tallow and onions. Somebody in the Drag is making soap and somebody else is making lunch. I hope.",
+		"That smell is soap being boiled. Or a stew. On this street I wouldn't bet on which.",
+	},
+	["org.subzone_enter.w21.hold.001"] = {
+		"comes into Grommash Hold behind a peon carrying an armful of wood to the braziers, who sets it down log by log as quietly as if each one might wake somebody.",
+		"follows a peon into the hall, an armload of firewood against the chest, and watches the logs go onto a brazier one at a time without a single knock.",
+		"steps in behind a peon with a basket of kindling, who feeds the nearest brazier stick by stick, careful as a healer.",
+	},
+	["org.subzone_enter.w21.hold.002"] = {
+		"Whether the seat at the far end is filled or empty, the hall faces it the same way. The Kor'kron stand as they would stand anyway, and voices stay low either way.",
+		"Some days the Warchief sits there, some days he's away from the city. You can't tell from the Kor'kron. They guard an empty chair as hard as a full one.",
+		"The hall doesn't change its manners for an empty throne. Whoever is or isn't sitting there, everyone speaks as if he might be listening.",
+	},
+	["org.subzone_enter.w21.hold.003"] = {
+		"pauses just inside Grommash Hold to let the eyes catch up, as the braziers pick out the hall a piece at a time: a beam, a hide, a helmet, a face.",
+		"stops a pace past the threshold while the dimness of the hall sorts itself out, guards first, then the long floor, then the far end where the seat stands.",
+		"waits on the threshold a moment for the hall to come out of the dimness, its far end last of all.",
+	},
+	["org.subzone_enter.w21.hold.004"] = {
+		"The city carries Orgrim Doomhammer's name and the hall carries Grom Hellscream's. Two dead chieftains holding the place up between them, and the living Warchief walking under both.",
+		"Orgrimmar for Doomhammer, the hall for Hellscream. Here the great places are named for the dead and filled with the living, which seems the right way round.",
+		"A city for one fallen chieftain, a hall for another. Thrall built them both and put his own name on neither.",
+	},
+	["org.subzone_enter.w21.hold.005"] = {
+		"waits by the door beside a runner with a sealed message and dust to the knees, who shifts from foot to foot until a Kor'kron tips a head and lets the runner through.",
+		"makes way for a messenger hurrying in with a satchel clutched to the chest, who slows to a walk the moment the threshold is crossed, as everyone seems to here.",
+		"steps aside for a dusty courier leaving the hall at a dead run, after a very proper walk all the way to the door.",
+	},
+	["org.subzone_enter.w21.hold.006"] = {
+		"Quiet in here. I'll keep my opinions in my pockets.",
+		"Boots wiped, voice down, nothing clever. Here goes.",
+		"Best behavior. Whatever that looks like on me.",
+	},
+	["org.subzone_enter.w21.hold.007"] = {
+		"I've nothing to ask of anyone in here. I come in now and then only to stand a while where the Horde is held together, and I leave a little straighter.",
+		"No petition, no errand. Some days I step into Grommash Hold just to remember what all the marching is for.",
+	},
+	["org.subzone_enter.w21.hold.008"] = {
+		"follows, without meaning to, the faint worn track in the floor of the hall that runs from the door toward the far seat, rubbed smooth by every petitioner who has walked it.",
+		"notices a pale path worn into the floor of Grommash Hold, door to throne, the boots of a whole people polishing the same line.",
+		"walks in along a line worn pale in the floor, door to far seat, the busiest road in the hall and its shortest.",
+	},
+	["org.subzone_enter.w21.hold.009"] = {
+		"The one who sits at the end of this hall carries the Doomhammer, the grunts say, the same hammer Orgrim swung. A weapon that heavy is mostly a promise.",
+		"Orgrim's hammer passed to Thrall, and every clan with it. Standing in his hall, I think the hammer was the lighter of the two.",
+		"Thrall took up the Doomhammer from a dying Orgrim, as the elders tell it. A whole people came with the hammer, and this hall came with the people.",
+	},
+	["org.subzone_enter.w21.hold.010"] = {
+		"feels a draft follow {g:him|her} into the hall and sees every brazier flame lean the same way, toward the far end, before standing straight.",
+		"watches the brazier flames bow toward the throne as the air of the valley pushes in at the door, then right themselves.",
+	},
+	["org.subzone_enter.w21.hold.011"] = {
+		"Strength to this hall, and to whoever keeps it.",
+		"Peace in this hall. Out there, we'll see.",
+		"A good roof. May it keep every quarrel it hears from turning into a war.",
+	},
+	["org.subzone_enter.w21.hold.012"] = {
+		"I am standing in the Warchief's own hall and no one has drawn a weapon. Either the Horde keeps its peace better than my side says, or they are waiting to see what I do.",
+		"Nobody stops me at the door. That frightens me more than if they had.",
+	},
+	["org.subzone_enter.w21.hold.013"] = {
+		"spots a tauren elder sitting cross-legged on the floor of the hall, the only seated figure in it, waiting with the look of someone who has waited for rivers to change course.",
+		"steps around an old tauren settled on the floor near the wall, eyes half shut, plainly prepared to wait as long as it takes and a little longer.",
+	},
+	["org.subzone_enter.w21.hold.014"] = {
+		"Grommash Hold smells of old smoke worked deep into hide and timber, of iron oil, of a great many people waiting. It isn't unpleasant. It smells like a place that gets used.",
+		"Smoke soaked into the beams, oil on armor, dust off a hundred travelers' cloaks: the hall has the smell of a room that has never once been empty.",
+	},
+	["org.subzone_enter.w21.hold.015"] = {
+		"slips by a petitioner near the door who is rehearsing a speech without a sound, lips moving, one finger ticking off points, starting over each time a Kor'kron glances that way.",
+		"catches sight of a young orc mouthing the same few sentences over and over against the wall, readying them for the long walk to the far end.",
+	},
+	["org.subzone_enter.w21.hold.016"] = {
+		"Wars get started in halls like this one. I'd wager more get stopped in this one, quietly, in a sentence nobody outside ever hears.",
+		"Nobody sings about the battles that never happened. I suspect a good many of them were called off right here, in a low voice, over a cup.",
+		"Every quarrel that reaches this hall comes in loud and goes out quiet. That's most of what a Warchief is for, I think.",
+	},
+	["org.subzone_enter.w21.hold.017"] = {
+		"Don't point. Nobody points in here. Use your chin, like everyone else.",
+		"Stop staring at the throne. It's a chair. A very important chair.",
+		"If you need to scratch, scratch slowly. Sudden moves make the guards thoughtful.",
+	},
+	["org.subzone_enter.w21.hold.018"] = {
+		"starts at a loud crack from a brazier as a knot in the wood bursts, and sees that not one Kor'kron in the hall has so much as blinked.",
+		"flinches as a log splits in a brazier with a report like a snapped bow, and is, it seems, the only one in the whole hall who did.",
+	},
+	["org.subzone_enter.w21.hold.019"] = {
+		"The Warchief's hall is built like the great tent of a war camp that decided, one day, to stay: timber for poles, hides for canvas, and room for the whole war band to sit.",
+		"Look past the size and this hall is a chieftain's tent, the kind the clans pitched on the march, only grown roots. The orcs built their greatest hall in the shape of moving on.",
+	},
+	["org.subzone_enter.w21.hold.020"] = {
+		"hears the small click of beads as a Darkspear envoy shifts by the wall, a sound that would vanish anywhere else in Orgrimmar and here seems to fill the hall.",
+		"marks how far small sounds carry in Grommash Hold: a troll's bone beads tapping, a goblin's buckle, a cough at the back, each one distinct in the hush.",
+		"picks out the faint rattle of a troll's beads, a creak of leather, a shuffled foot, sounds the rest of the city drowns and this hall keeps, one by one.",
+	},
+	["org.subzone_enter.w21.hold.021"] = {
+		"A peon sweeps the Warchief's floor and grumbles about his wages to the Kor'kron, who ignore him. There's a whole free people in that grumble.",
+		"Even this hall has its sweeper, and the sweeper has views about his pay. In the camps, I'm told, nobody's views were asked. Here they're simply ignored, which is progress.",
+		"The peon sweeping Grommash Hold mutters about his wages the whole time, and nobody stops him. I can't think of a better sign of the times.",
+	},
+	["org.subzone_enter.w21.honor.001"] = {
+		"comes into the Valley of Honor as a peon drags a wide rake across the yard, smoothing away the scuffs of the last bout before the next pair steps in.",
+		"finds a peon raking the training ground level, patient stroke after stroke, erasing every footprint the last sparring match left behind.",
+		"walks past a peon who rakes the yard flat between bouts, and who stops, rake raised, only long enough for the next pair to take their places.",
+	},
+	["org.subzone_enter.w21.honor.002"] = {
+		"slows beside a troll stuffing fresh straw into a practice dummy that has lost most of its stuffing, and its head, and one arm.",
+		"watches a stitcher sew up a split training dummy with thick twine, while a line of grunts, knuckles wrapped, waits for it to be whole enough to hit.",
+		"notices a heap of burst dummies at the edge of the yard, waiting their turn for new straw like patients at a healer's door.",
+	},
+	["org.subzone_enter.w21.honor.003"] = {
+		"The practice racks in this valley hold every shape of weapon anyone in Orgrimmar has ever swung, and every haft is worn dark in the same two places, where the hands go.",
+		"Staves, maces, axes, long hafted things with hooks on the end: all wood, all chipped, all polished black at the grip by a thousand palms before mine.",
+		"Each practice haft on these racks has two dark patches where the hands settle. Whoever carved them never needed a second try.",
+	},
+	["org.subzone_enter.w21.honor.004"] = {
+		"winces at the shriek of a grindstone somewhere in the Valley of Honor, where a peon turns the crank and a smith holds an edge to the wheel in a spray of orange sparks.",
+		"walks into the valley under the long squeal of a grinding wheel, its crank turned by a peon who looks as though he has been turning it since the walls went up.",
+		"hears the grindstone before seeing it: a thin, rising whine, a fan of sparks, and a smith's grunt of approval.",
+	},
+	["org.subzone_enter.w21.honor.005"] = {
+		"A fletcher sits on an upturned crate near the hunters, trimming feathers with a thumbnail and never once looking down. The hands know the work; the eyes are busy with the gossip.",
+		"The fletchers of this valley work cross-legged in the dust, a bundle of bare shafts on one side and a pile of finished ones on the other, and talk the whole time.",
+	},
+	["org.subzone_enter.w21.honor.006"] = {
+		"Smells like black powder and singed eyebrows. Somebody's trying out a new rifle.",
+		"That bang? Somebody proving a rifle works. Mostly to the rifle.",
+		"Powder smoke, scorched leather, and a hunter swearing it was meant to do that. Valley of Honor, all right.",
+	},
+	["org.subzone_enter.w21.honor.007"] = {
+		"steps around the water barrel at the edge of the yard, where sparring partners who were trying to break each other's ribs a moment ago now pass the ladle back and forth.",
+		"pauses by a barrel and a single dented ladle, the one spot in the valley where nobody trains, and where everybody turns up sooner or later.",
+		"notices that the busiest place in the Valley of Honor is a water barrel; the ladle goes from fist to fist without a word, and the fighting resumes after.",
+	},
+	["org.subzone_enter.w21.honor.008"] = {
+		"Before a bout in this yard the two knock forearms once, hard. It isn't a rule anyone wrote down. Skip it, a trainer told me, and you'll be sparring with the whole valley.",
+		"Every pair in the yard begins the same way: forearm to forearm, one knock, no words. The grunts say a fight without it doesn't count, and a win without it counts against you.",
+	},
+	["org.subzone_enter.w21.honor.009"] = {
+		"passes a miner rinsing at a trough near the smithies, the water turning rust-red around wrists that will never quite come clean.",
+		"skirts a trough where a miner dunks head and arms, comes up streaming red, and shakes like a wolf out of a river.",
+	},
+	["org.subzone_enter.w21.honor.010"] = {
+		"Honor, the valley's name says. What I see is repetition: the same cut, the same step, the same fall, a hundred times before supper. Maybe that is what the word meant all along.",
+		"They called this place Honor and then filled it with drills. Nobody here is handed honor; they get the same lesson until it stops hurting.",
+		"Honor sounds like banners and songs. In this valley it sounds like one grunt turning on the same foot, over and over, until the foot stops arguing.",
+	},
+	["org.subzone_enter.w21.honor.011"] = {
+		"Everyone in this valley walks like they're about to be tested. Now I'm walking like that too. Marvelous.",
+		"Ten paces into the Valley of Honor and my shoulders have squared themselves. Nobody asked them to.",
+	},
+	["org.subzone_enter.w21.honor.012"] = {
+		"finds the Valley of Honor nearly empty after dark: one grunt alone under a torch, working the same drill as if the whole valley were still watching.",
+		"enters the darkened valley as the torches gutter around the empty yard, where a single trainee keeps at it, the thud of each blow carrying all the way to the walls.",
+	},
+	["org.subzone_enter.w21.honor.013"] = {
+		"Near the stables a cleaver keeps a steady beat on a block. Feeding the hunters' beasts must be the busiest butcher's trade in the city, and nobody ever thanks the butcher.",
+		"The stable hands chop meat all day for the animals in the pens. One of them told me a bear eats like three grunts and complains like four.",
+	},
+	["org.subzone_enter.w21.honor.014"] = {
+		"stops behind a small knot of pupils as a trainer scratches a pair of footprints into the dust with the butt of a spear and makes each of them stand in it, one by one.",
+		"peers over shoulders at a trainer drawing feet in the dust with a stick, a lesson in where to stand that the pupils follow as if their lives hung on it, which they may.",
+	},
+	["org.subzone_enter.w21.honor.015"] = {
+		"Stand still in the Valley of Honor and the noise comes apart into its trades: strings thrumming at the butts, iron on iron by the smithies, a cat yowling in the pens, and over it all somebody's trainer.",
+		"With my eyes shut I could map this valley by ear: thrumming strings to one side, an anvil to the other, a snarl from the pens, and a trainer's bark that seems to come from everywhere.",
+	},
+	["org.subzone_enter.w21.honor.016"] = {
+		"Duck if you hear a shout. In this valley a shout usually comes with something attached.",
+		"Walk wide of the yard. The trainees are aiming at each other, and missing a lot.",
+		"Keep to the edges here. Half of what gets swung in that yard ends up where it wasn't meant to.",
+	},
+	["org.subzone_enter.w21.honor.017"] = {
+		"spots a row of children perched along a rail at the edge of the yard, copying every move of the sparring pairs with sticks, always half a beat late.",
+		"sees small orcs and trolls lined up on a fence by the training ground, sticks in hand, flinching together each time a real blow lands.",
+	},
+	["org.subzone_enter.w21.honor.018"] = {
+		"Some of the faces in this yard will stand beside me one day, somewhere far from here. I look at each of them a little longer than manners allow, so I'll know them.",
+		"The Horde I'll lean on later is being made right here, bruise by bruise. I nod at the trainees as I pass. A few of them, surprised, nod back.",
+	},
+	["org.subzone_enter.w21.honor.019"] = {
+		"edges past an armorer's bench where an apprentice works with a mouthful of rivets, spitting them into a palm one at a time and hammering each home without looking.",
+		"lingers by a bench of mended armor where an apprentice, lips clamped on a row of rivets, sets them one after another with a small hammer and a smaller patience.",
+	},
+	["org.subzone_enter.w21.honor.020"] = {
+		"Broken practice hafts pile up behind the racks in a heap taller than a tauren. They end up in the smithies' fires, I'm told, so every lesson that snapped still does a day's work.",
+		"Nothing broken in this valley goes to waste: a snapped haft becomes kindling, a split dummy gets new straw, and a grunt who fell over gets up and tries the same move.",
+	},
+	["org.subzone_enter.w21.honor.021"] = {
+		"Listen to them. 'Lower. Faster. From the top.' I'm not even training and my knees ache.",
+		"Every trainer in here has the same three words and a different way of shouting them.",
+		"A dozen paces into this valley and I already want to apologize to my knees.",
+	},
+	["org.subzone_enter.w21.honor.022"] = {
+		"The straw targets at the hunters' end bristle like angry porcupines. The painted rings faded long ago; nobody needs them, they say, since the middle is wherever the holes are thickest.",
+		"Someone paints fresh rings on the hunters' targets now and then. By the next time I pass, the rings are gone under a thicket of feathered shafts, and straw is leaking from the middle.",
+	},
+	["org.subzone_enter.w21.honor.023"] = {
+		"arrives in the Valley of Honor in the rain to find the yard turned to red mud and the trainers delighted: footing, they shout, is a lesson too.",
+		"walks into the rain-soaked valley, where sparring pairs slither about in red mud while a trainer, dry under an awning, calls out every fall by name.",
+	},
+	["org.subzone_enter.w21.honor.024"] = {
+		"By the smithies the ore lies in heaps sorted by color: green-streaked copper in the big pile, dull tin in a small one, and now and then a single lump of silver set apart on a cloth like an honored guest.",
+		"Someone by the smithies keeps a lump of silver ore on a folded cloth, well apart from the common copper, and every miner who walks past glances at it the way grunts glance at a banner.",
+	},
+	["org.subzone_enter.w21.honor.025"] = {
+		"hears a hunter's two-note whistle cross the valley, and watches half a dozen beasts in the pens lift their heads at once before deciding it was not meant for them.",
+		"turns at a sharp whistle from the hunters' end; every animal in the pens pricks its ears, and only one, a lean cat, gets up and goes.",
+		"catches a hunter's whistle carrying over the yard, and the brief, collective disappointment of every beast in the stables that was not called.",
+	},
+	["org.subzone_enter.w21.legends.001"] = {
+		"Most halls honor the dead, who can't lose what they earned. This one honors the living, and a rank held here slips away the moment its owner stops fighting for it.",
+		"Nothing in the Hall of Legends is kept for good. Stop taking the field, the officers grumble, and the standing drains out of you like water from a cracked jar.",
+		"Other peoples carve their heroes in stone and leave them be. Here the heroes have to show up and earn it every week, or watch their names slide down the list.",
+	},
+	["org.subzone_enter.w21.legends.002"] = {
+		"overhears two officers in the Hall of Legends greet each other with the same short question, up or down, and answer it with a grunt apiece.",
+		"hears an officer ask another, by way of hello, whether the week went up or down; the answer is a shrug that says down, and a clap on the shoulder that says next time.",
+		"hears 'up or down?' asked twice in the first few paces inside the hall, and both times answered with a grunt that settles nothing.",
+	},
+	["org.subzone_enter.w21.legends.003"] = {
+		"Stone Guard, Blood Guard, Legionnaire, Centurion. The ranks of this hall sound carved out of old rock. The people holding them look like anyone with a sore shoulder.",
+		"Every rank in the Hall of Legends has a name like a wall: Champion, General, Warlord. Then a Warlord walks past scratching an elbow, and the wall turns out to be a person.",
+		"High Warlord. Said aloud in this hall it sounds like a mountain. Then you see one eat, and it's just someone hungry.",
+	},
+	["org.subzone_enter.w21.legends.004"] = {
+		"finds an officer of the Hall of Legends sitting on a bench with needle and thread, mending a torn tabard in small, neat stitches with a frown of total concentration.",
+		"comes across a decorated warrior bent over a tabard, stitching up a long rent, needle flashing, tongue caught between the tusks.",
+		"notices that the most fearsome-looking officer in the hall is darning a sock.",
+	},
+	["org.subzone_enter.w21.legends.005"] = {
+		"Half the talk in the Hall of Legends is of Alterac Valley: the Frostwolves, the snow, which bridge held and which didn't. Every officer here seems to have left a little of themselves in that cold.",
+		"Listen long enough in here and you could draw a map of Alterac Valley from the arguments alone: who held the bridge, who lost the tower, who's still owed a drink.",
+		"Officers in this hall argue about Warsong Gulch the way herders argue about grass: endlessly, from experience, and with no hope of changing anyone's mind.",
+	},
+	["org.subzone_enter.w21.legends.006"] = {
+		"Legends. They look tired. Must be long hours, being a legend.",
+		"So this is where legends go between battles. To sit down, mostly.",
+		"Quiet in here. I thought legends would be louder.",
+	},
+	["org.subzone_enter.w21.legends.007"] = {
+		"spots an officer asleep on his feet against a pillar of the Hall of Legends, arms folded, chin on chest, armor still buckled, as though the next call to arms might come any moment.",
+		"goes by a warrior dozing upright against the wall, still in full armor, who wakes at a footstep, weighs it, and goes back to sleep in the same instant.",
+		"sees an officer drop onto a bench in full armor and fall asleep before the clatter has finished echoing.",
+	},
+	["org.subzone_enter.w21.legends.008"] = {
+		"The officers in here wear their rank small: an insignia at the belt, a token on a cord. Out in the yard the boasting is loud. In the hall a little piece of metal says it all.",
+		"Nobody in the Hall of Legends carries a rank on a banner. It hangs at the hip, an insignia no bigger than a coin, and somehow it's the first thing my eye finds.",
+		"Rank in here hangs at the belt, small and plain. The bigger the officer, it seems, the smaller the badge.",
+	},
+	["org.subzone_enter.w21.legends.009"] = {
+		"The best fighters of the Horde gather under this roof. Standing among them, I find I care less about their ranks than about the Horde they fought for, and whether I'm doing my part of it.",
+		"Every officer in this hall has taken the field for the same Horde I belong to. Their ranks are theirs. The Horde is ours, and that's enough to stand up straight in here.",
+	},
+	["org.subzone_enter.w21.legends.010"] = {
+		"skirts a pair of officers crouched over a game of knucklebones on an upturned crate, betting with such ferocity that nobody else in the Hall of Legends dares look.",
+		"steps around two decorated warriors throwing bones on the floor of the hall, swearing at every roll with the full vocabulary of a long campaign.",
+		"pauses beside a ring of officers betting on a game of bones, the stakes higher, by the sound of it, than anything at the auction house.",
+	},
+	["org.subzone_enter.w21.legends.011"] = {
+		"Legends, the hall calls them. The ones I see are alive, short-tempered and asking where the food is. I like them better for it.",
+		"I expected statues. The Hall of Legends is full of very living people with stiff knees and opinions about the ale.",
+		"Legend sounds like something sung about the dead. These ones are alive, and one of them is complaining about his boots.",
+	},
+	["org.subzone_enter.w21.legends.012"] = {
+		"comes upon a knot of officers in the hall congratulating one of their own in the local manner: a clasp of forearms, a cuff to the back of the head, and a loud remark about luck.",
+		"sees an officer of the Hall of Legends take the news of a new rank with a curt nod, then stand very still for a moment after the others have turned away.",
+		"watches a newly raised officer try to look as though it means nothing, and fail, at the corners of the mouth.",
+	},
+	["org.subzone_enter.w21.legends.013"] = {
+		"Keep your voice down. Everyone in here has fought someone louder than you.",
+		"Don't stare at the officers. They've been stared at by worse.",
+		"Feet off the benches. Better than us have sat on them.",
+	},
+	["org.subzone_enter.w21.legends.014"] = {
+		"Every rank in this hall was won against someone, not something. People with names, and friends waiting for them. The officers don't talk about that part, and I understand why.",
+		"Beasts and bandits don't count toward the honors of this hall. Only other soldiers do. It makes the quiet in here sound different.",
+	},
+	["org.subzone_enter.w21.legends.015"] = {
+		"goes past a Forsaken officer and an orc officer sharing a bench in the Hall of Legends in comfortable silence, the kind that only comes after holding the same line under the same fire.",
+		"notices a tauren and a Forsaken, both heavy with honors, sitting side by side and saying nothing, as easy with each other as old tent-mates.",
+	},
+	["org.subzone_enter.w21.legends.016"] = {
+		"Nobody in the Hall of Legends seems to unpack. Packs stay by the wall, boots stay laced; everyone here is only halfway between one battle and the next.",
+		"The hall feels less like a home than a waiting room. Officers sit with their gear at their feet, ready to stand the moment a horn calls them somewhere far off.",
+		"Every officer in here sits like someone about to be called away: half on the bench, half already gone.",
+	},
+	["org.subzone_enter.w21.legends.017"] = {
+		"Smells of polish and old campaigns in here. I'll touch nothing.",
+		"Look at all this. I'm keeping my hands behind my back.",
+		"Mind the officers' gear. Every strap in here has a story, and they will tell it.",
+	},
+	["org.subzone_enter.w21.spirits.001"] = {
+		"steps into the Valley of Spirits past two trolls on a low wall, one braiding beads into the other's tall crest of hair and telling a joke so long the braid is finished first.",
+		"edges by a troll threading beads into a friend's upswept hair, talking the whole time; the friend laughs at the end of every bead, never in between.",
+		"finds two Darkspear sitting knee to knee by a hut, one weaving beads into the other's hair with quick fingers and slow gossip.",
+	},
+	["org.subzone_enter.w21.spirits.002"] = {
+		"Trolls sit on their heels here, knees up by their ears, for longer than my legs would ever forgive me. They look ready to spring from it in an instant, and never do.",
+		"The Darkspear rest crouched, heels flat, elbows on knees, as if a chair were a rumor from another land. I tried it once. My knees are still filing a complaint.",
+		"A troll on her heels by the path, perfectly balanced, eats a whole meal that way and stands up as if she'd been lounging on cushions.",
+	},
+	["org.subzone_enter.w21.spirits.003"] = {
+		"passes a fishing net stretched between two hut posts, a troll working its knots with a bone needle, though the nearest sea is a long walk east of the walls.",
+		"pauses beside a troll mending a net strung from post to post, fingers moving by habit, as if the coast of the islands were just behind the next hut.",
+	},
+	["org.subzone_enter.w21.spirits.004"] = {
+		"A young mage in the Valley of Spirits is making a clay cup float in front of her nose. It drops. She picks it up, glares at it, and up it goes. There's a pile of shards by her feet.",
+		"Near the mages' lodge a student keeps lifting a cup into the air and losing it. By the shards around the step, the cups are losing.",
+	},
+	["org.subzone_enter.w21.spirits.005"] = {
+		"edges past a raptor tethered by a hut, chewing its rope with the calm of a creature that has all the time in the world and very good teeth.",
+		"gives a wide berth to a tethered raptor stretched out by a doorway; it opens one yellow eye, considers {g:him|her} as a possible meal, and shuts it, unconvinced.",
+		"steps carefully around a raptor dozing in the dust at the end of its tether, its tail twitching as if it were chasing something in a dream.",
+	},
+	["org.subzone_enter.w21.spirits.006"] = {
+		"Mention the Echo Isles in this valley and the talk goes on; mention Zalazane and it stops. The Darkspear have a way of letting a name sink without a ripple.",
+		"The trolls here speak of the Echo Isles freely enough. It's the witch doctor who holds them now, Zalazane, whose name can silence a whole hut.",
+	},
+	["org.subzone_enter.w21.spirits.007"] = {
+		"Lot of eyes on me from those huts. Friendly eyes. Probably.",
+		"I nod to every troll I pass. Most nod back. One grinned with every tusk he had. I'm choosing to take that well.",
+	},
+	["org.subzone_enter.w21.spirits.008"] = {
+		"notices that the stone grows green in the Valley of Spirits, a thin coat of moss along the shaded side of every rock near the water, the only green the canyon allows.",
+		"finds the air of the valley a shade damper, and the rocks by the water wearing a soft skin of moss that no other corner of the city has managed to grow.",
+	},
+	["org.subzone_enter.w21.spirits.009"] = {
+		"Troll laughter starts high and ends somewhere in the belly, and in this valley it goes off without warning, from a hut, from a roof, from right behind me. I've stopped jumping. Mostly.",
+		"The Darkspear laugh like a flock taking off, sudden and all at once. Nobody else in Orgrimmar laughs like that, or nearly as often.",
+		"Behind the huts a troll laughs, a great whooping peal, and two more pick it up before they can possibly know the joke.",
+	},
+	["org.subzone_enter.w21.spirits.010"] = {
+		"comes upon a priest on a bench showing a pupil how to fold a dressing, corner over corner, as carefully as if the folding itself did half the healing.",
+		"slows by a bench where a priest folds clean linen into squares for a pupil, over and over, and won't let the pupil near a wound until the folds are perfect.",
+	},
+	["org.subzone_enter.w21.spirits.011"] = {
+		"Vol'jin keeps his place in Grommash Hold, at the Warchief's side, and this valley runs itself in his name. The trolls seem to like it that way: their leader near the top, and their own door left open below.",
+		"The leader of our trolls stands in the Warchief's hall, not here. Ask a Darkspear about it and you get a shrug: Vol'jin is where he's needed, and the valley knows its own business.",
+	},
+	["org.subzone_enter.w21.spirits.012"] = {
+		"stands in the Valley of Spirits as thunder rolls over the canyon, and finds an old troll out in it with arms spread wide, answering each crack with a howl of his own.",
+		"looks up into a storm-dark sky over the huts, where an elder Darkspear has climbed onto a roof to shout back at the thunder, and the young ones cheer him from the doorways.",
+	},
+	["org.subzone_enter.w21.spirits.013"] = {
+		"A crate of jungle fruit has come up from Grom'gol on the airship, and half the valley is crowded round it, sniffing, squeezing, arguing over which is ripe. For a moment the air smells of somewhere green and loud.",
+		"Someone has hauled a crate of fruit from Stranglethorn Vale off the zeppelin and cracked it open by the huts. The trolls handle each piece like a letter from an old friend.",
+		"There's jungle fruit by the huts, come all the way from Grom'gol. The trolls are eating it slowly, which is how I know it matters.",
+	},
+	["org.subzone_enter.w21.spirits.014"] = {
+		"Quieter here. I'll match it. No sudden moves near the huts.",
+		"Soft steps, small voice. This valley has its own manners, and I mean to learn them.",
+	},
+	["org.subzone_enter.w21.spirits.015"] = {
+		"glimpses a witch doctor sitting cross-legged over a shallow bowl, sorting small bones by shape with one long finger, muttering approval or disgust at each.",
+		"catches sight of a witch doctor shaking a handful of knucklebones, throwing them onto a hide, and frowning at them as if they had answered rudely.",
+	},
+	["org.subzone_enter.w21.spirits.016"] = {
+		"Every hut in this valley has a spear by the door, and none of them is for show. One props a shutter, one holds up a fishing line, one keeps a pot off the coals. A Darkspear's spear does a bit of everything.",
+		"Spears lean beside every doorway here. The Darkspear use them as pegs, poles, walking sticks and shutter props, and I'd bet every one of them is sharp under its rag.",
+		"Count the spears by the hut doors and you've counted the Darkspear. They keep them close the way other folk keep a coat by the door.",
+	},
+	["org.subzone_enter.w21.spirits.017"] = {
+		"pauses as a troll tilts a polished bronze plate to catch the light and repaints the stripes on her cheeks with a fingertip, unhurried, while the valley goes about its business.",
+		"watches a Darkspear redo his face paint by the reflection in a beaten copper dish, stripe after careful stripe.",
+	},
+	["org.subzone_enter.w21.spirits.018"] = {
+		"The hut roofs are thatched with Durotar's thin yellow grass and patched with goblin sacking, the trade marks still printed on. Island houses, built from what this land had to spare.",
+		"Thatch from the scrubland, poles from who knows where, and sacks with a goblin company's stamp sewn in wherever the grass ran short. The Darkspear built island huts out of a desert's leftovers.",
+	},
+	["org.subzone_enter.w21.spirits.019"] = {
+		"The quietest valley in Orgrimmar, which makes it the worst kind for me. In a crowd I'm nobody; here every one of my footsteps sounds like a confession.",
+		"Too quiet. No crowd to hide in, only huts and slow eyes and my own boots announcing me. I keep walking as if I belong.",
+	},
+	["org.subzone_enter.w21.spirits.020"] = {
+		"comes past a rack of split fish drying by a hut, salted and gray-skinned, and a troll fanning flies off them with a palm frond that must have come a very long way.",
+		"steps around a frame of fish laid out to dry, brought up from the coast at some cost and guarded by an old troll with a switch and nothing else to do.",
+		"catches the smell of a rack of salted fish by the huts; the troll guarding it grins at the face that follows, as if he has seen it a thousand times.",
+	},
+	["org.subzone_enter.w21.spirits.021"] = {
+		"Nobody knocks in the Valley of Spirits. A dried gourd full of seeds hangs at each doorway, and a visitor gives it a shake and waits. I've seen grunts do it, very gently, as if the gourd might bite.",
+		"Each hut here has a seed rattle by the door instead of a knocker. Shake, wait, be answered. Even the grunts on their rounds have learned the manners.",
+		"Shake the gourd, wait to be asked in: that's how the Darkspear knock. I like a door that has to be invited open.",
+	},
+	["org.subzone_enter.w21.spirits.022"] = {
+		"Herbs, smoke and singed eyebrows. The mages must be in.",
+		"Something here smells of scorched hair. Ah. The mages' lodge. Of course.",
+	},
+	["org.subzone_enter.w21.spirits.023"] = {
+		"eyes a stump by the huts so chewed by thrown axes that it's more gap than wood, and a young troll pacing back from it for one more throw.",
+		"notes a post at the edge of the huts hacked thin by years of thrown axes, a fresh one still quivering in it and nobody in sight to claim it.",
+	},
+	["org.subzone_enter.w21.spirits.024"] = {
+		"A Darkspear told me the orcs named this valley and the spirits who live in it were never consulted. They stayed anyway, she said. Good neighbors are hard to find.",
+		"The trolls joke that the orcs gave this valley its name and the spirits came to see what the fuss was about. They liked the water and stayed, apparently.",
+	},
+	["org.subzone_enter.w21.strength.001"] = {
+		"steps into the Valley of Strength as a peon tips a basket of dried dung into the nearest iron brazier, and the flames sit up and take notice.",
+		"skirts a brazier on its tall iron legs just as a peon feeds it a basket of dung cakes; the smoke turns brown, then thick, then everybody's problem.",
+		"falls in behind a peon making the round of the braziers with a basket on his hip, feeding each one in turn like a sulky animal.",
+	},
+	["org.subzone_enter.w21.strength.002"] = {
+		"Some folk in this valley stand so still, for so long, that the peons sweep around their boots. I've never once seen one of them blink.",
+		"There's always someone by the bank standing perfectly motionless, gear gleaming, eyes on nothing. A statue would be cheaper to keep.",
+	},
+	["org.subzone_enter.w21.strength.003"] = {
+		"arrives in time to see a grunt hold up a dropped purse and bark a single word, 'Whose?', while a dozen hands shoot up across the valley at once.",
+		"sees a grunt lift a lost coin purse high over the crowd; within a moment it has eleven owners, each of them certain.",
+	},
+	["org.subzone_enter.w21.strength.004"] = {
+		"They named it the Valley of Strength. The peons carrying everything in it seem to agree.",
+		"Strength, they say. See that peon with four crates on his back? He's the only one living up to the name.",
+	},
+	["org.subzone_enter.w21.strength.005"] = {
+		"At the long stone trough against the wall the riding wolves drink side by side without a single snarl. Their riders, waiting behind them, manage far less peace.",
+		"The wolves at the trough share the water shoulder to shoulder. Two paces back, their owners are arguing over whose turn it is.",
+		"Riding wolves lap at the trough in a row, tails low and content. The folk who own them stand behind, all elbows.",
+	},
+	["org.subzone_enter.w21.strength.006"] = {
+		"pauses as two orc children fight a war with sticks between the legs of the crowd; the one made to play the human dies at great length, twice.",
+		"steps around a pair of small orcs dueling with sticks, where the loser, by some rule of their own, has to play the human and fall down with a groan.",
+	},
+	["org.subzone_enter.w21.strength.007"] = {
+		"The ground of this valley is a ledger of feet: paw over boot over hoof, and a cart rut through the lot. A peon rakes it smooth now and then, and it's full before he turns round.",
+		"Wolf, kodo, boot, wheel: the dust of the Valley of Strength takes every print, and a peon with a rake wipes the page, uselessly, from one wall to the other.",
+		"A peon rakes the valley floor flat; ten paces behind him the paws and boots have written all over it.",
+	},
+	["org.subzone_enter.w21.strength.008"] = {
+		"walks under the flight tower just as something half-eaten drops from the platform above; the people below sidestep it without even looking up.",
+		"notices how the crowd beneath the flight tower leaves a clear ring of ground, and a moment later sees why, as a gnawed bone tumbles down from the platform.",
+	},
+	["org.subzone_enter.w21.strength.009"] = {
+		"Fried scorpid on a stick. I'm told you eat the tail last. I'm told a lot of things.",
+		"Scorpid skewers, two coppers. Crunchy, says the cook. That's one word for it.",
+	},
+	["org.subzone_enter.w21.strength.010"] = {
+		"This valley works like a sieve. Everyone gets poured in together, and within twenty paces they've sorted themselves: coin one way, sleep another, trouble down the Drag.",
+		"Stand still here and watch the crowd sort itself without a word: full packs toward the bank, tired feet toward the inn, the restless ones off down the Drag.",
+	},
+	["org.subzone_enter.w21.strength.011"] = {
+		"comes upon a goblin money-changer at a folding table, weighing silver on a tiny brass scale and biting any coin that looks at him wrongly.",
+		"slows by a goblin who has set up a little scale on a crate and changes coin for a fee, testing each piece between his teeth with a face of deep suspicion.",
+		"stops to watch a goblin weigh a stranger's silver on his little brass scale, sigh as if wounded, and hand back slightly less.",
+	},
+	["org.subzone_enter.w21.strength.012"] = {
+		"Walls at my back, grunts at their posts, a din I know for my own. My shoulders come down half an inch without asking me first.",
+		"In this valley the hand stops straying toward the belt. Our grunts on the walls, our banners overhead: somebody else is keeping watch for a while.",
+	},
+	["org.subzone_enter.w21.strength.013"] = {
+		"The busiest valley in the Horde's capital, and nobody has looked at me twice yet. I'd like to keep it that way, so I walk like someone with dull errands to run.",
+		"Crowds are a kind of cover. In this crush I'm one more stranger with a pack. The trick is not to be the stranger who stops.",
+	},
+	["org.subzone_enter.w21.strength.014"] = {
+		"glances up at the long banners hung over the valley, their red faded to the color of old meat at the top and still fresh where the folds keep it hidden.",
+		"looks over the war banners strung above the valley: bleached pale where they hang open, deep red still in every fold.",
+	},
+	["org.subzone_enter.w21.strength.015"] = {
+		"Pardon. Excuse me. Mind the wolf. Pardon. Excuse me.",
+		"Coming through. Sorry. Not your wolf? Sorry anyway.",
+	},
+	["org.subzone_enter.w21.strength.016"] = {
+		"finds the Valley of Strength by torchlight, the crowd thinned to a few late hagglers and a grunt yawning so wide his tusks click.",
+		"stands in a valley gone quiet under its torches, the bank steps empty for once, only the inn's door still spilling light and voices onto the dust.",
+	},
+	["org.subzone_enter.w21.strength.017"] = {
+		"Sand pouring in over the walls, and the whole valley turns its back to it at once, like a herd. Suddenly the bank door is the most popular spot in Orgrimmar.",
+		"The sand finds the Valley of Strength first. Everyone in it squints at the same angle and makes for the nearest roof.",
+	},
+	["org.subzone_enter.w21.strength.018"] = {
+		"edges past a peon asleep on his feet against the bank wall, a crate still on his shoulder; a grunt glances at him, decides it isn't worth it, and walks on.",
+		"finds a peon dozing upright in the lee of a wall, load and all, snoring softly while the crowd flows round him as round a post.",
+		"steps carefully around a peon sound asleep against a pile of crates, mouth open, one hand still closed on the strap of his load.",
+	},
+	["org.subzone_enter.w21.strength.019"] = {
+		"A trader by the wall sells used armor cheap. Every piece has a mark scratched off the inside, where a name used to be. Nobody asks, and he doesn't say.",
+		"Secondhand gear on a blanket by the wall: good leather, sound rings, and on each piece a little scar where somebody's mark has been filed away.",
+	},
+	["org.subzone_enter.w21.strength.020"] = {
+		"follows a troll as he asks three grunts in a row for the way to the Drag and receives three confident arms, pointing three different ways.",
+		"hears a lost tauren ask directions of a grunt, a goblin and a peon; the answers come back as one nod, one price and one shrug.",
+	},
+	["org.subzone_enter.w21.strength.021"] = {
+		"Wet wolf, lamp oil, fried something, coin warmed in too many hands. The Valley of Strength smells like business that never quite closes.",
+		"Lamp oil and wolf, onions on a griddle, the sour copper smell of a lot of money in a small space. This valley has a nose all its own.",
+	},
+	["org.subzone_enter.w21.strength.022"] = {
+		"Look at that one, turning slowly by the bank to show off the new armor. Shiny. Still has the price on it, probably.",
+		"New armor, fresh from the auction house, paraded round the valley in a slow circle. We've all seen it. Lovely. Move along.",
+	},
+	["org.subzone_enter.w21.strength.023"] = {
+		"makes way for a water-seller walking a yoke of dripping skins through the valley, calling the price in a voice worn down to gravel.",
+		"gives room to a water-carrier bent under a yoke of skins, who sells by the cupful and somehow never spills a drop of profit.",
+		"hears the water-seller before seeing her: the slap of full skins against her hips and a hoarse call that carries over every other voice in the valley.",
+	},
+	["org.subzone_enter.w21.strength.024"] = {
+		"People step out of the inn here carrying other places on them: pine needles in a collar, swamp mud to the knee, salt on a cloak. Wherever they were a moment ago hasn't let go of them yet.",
+		"Watch the inn door long enough and the whole world walks out of it in pieces: a boot caked in jungle mud, a cloak that smells of the sea, a beard full of somebody else's dust.",
+	},
+	["org.subzone_enter.w21.strength.025"] = {
+		"is offered a hand-drawn map of Orgrimmar by a goblin who swears it is accurate, and who, on a closer look, has drawn the Drag perfectly straight.",
+		"waves off a goblin selling maps of the city, but not before noticing that the map circles his own stall in bright red and leaves the bank off entirely.",
+	},
+	["org.subzone_enter.w21.wisdom.001"] = {
+		"walks into the Valley of Wisdom past a doorway whose lintel is chipped and scored at exactly tauren height, the stone polished pale where a thousand horns have misjudged it.",
+		"notices that every orc-built doorway in the valley has a fresh nick at the top: the mark of tauren horns, and of orc builders who never quite believed how tall their guests would be.",
+		"ducks a little, from sympathy, under a lintel gouged by tauren horns, where someone has finally nailed up a pad of folded hide.",
+	},
+	["org.subzone_enter.w21.wisdom.002"] = {
+		"A shaman in this valley teaches by pouring water on bare stone and asking the pupil where it will run before it does. The pupil is wrong. The water, she says, is never wrong; only impatient.",
+		"I watched a shaman tip a cup of water onto the rock and wait in silence while her student guessed its path. Three guesses, three misses. She didn't say a word. The water had said it.",
+		"Pour water on the rock and guess where it goes: here that's a whole lesson. The shaman says the stone already knows. The pupils are the ones learning.",
+	},
+	["org.subzone_enter.w21.wisdom.003"] = {
+		"passes a line of petitioners waiting their turn for Grommash Hold, each one mouthing a speech to nobody, lips moving, hands rehearsing the gestures.",
+		"picks out, here and there along the path, folk plainly rehearsing what they will say up at the Warchief's hall: frowning, starting over, counting points on their fingers.",
+	},
+	["org.subzone_enter.w21.wisdom.004"] = {
+		"Valley of Wisdom. I'll stand in it a minute and see if any rubs off.",
+		"Nobody shouting, nobody selling. This must be the wise part.",
+	},
+	["org.subzone_enter.w21.wisdom.005"] = {
+		"steps around two tauren bent over lines scratched in the dust, moving pebbles from row to row in a game so slow that the onlookers have brought food.",
+		"stops beside a pebble game played on a grid drawn in the dirt, an orc and a tauren facing each other across it, neither having moved in a good while.",
+		"watches a tauren elder take an orc's last pebble off a board scratched in the dust, and the orc demand a rematch before it has even landed.",
+	},
+	["org.subzone_enter.w21.wisdom.006"] = {
+		"The Valley of Wisdom sounds different underfoot. Fewer boots, more hooves: a slow, heavy clop that the stone seems to answer more politely.",
+		"Tauren hooves on the paving here sound like a mallet on a hollow log, slow and even. Beside them every orc boot in the valley sounds as if it's late.",
+	},
+	["org.subzone_enter.w21.wisdom.007"] = {
+		"makes way for a tauren runner, dust to the knees, who hands a knotted cord to a shaman by the path and only then lets herself sit.",
+		"sees a tauren courier give an elder a cord tied with knots, which the elder reads with her fingers, nodding slowly, before offering the runner water.",
+	},
+	["org.subzone_enter.w21.wisdom.008"] = {
+		"The city carries Doomhammer's name; the hall carries Grom's. This valley carries neither, only the patience it took to make something of them. I think the Warchief meant it that way.",
+		"Two dead heroes named the city and the hall. The living put this quiet valley between them, where the shamans teach. Good placing.",
+	},
+	["org.subzone_enter.w21.wisdom.009"] = {
+		"comes upon a tauren weaving a mat from bundles of pale plains grass, her fingers going over and under so steadily that the mat seems to grow out of her lap on its own.",
+		"slows near a tauren plaiting dry grass into a mat across her knees, the bundles at her side smelling faintly of somewhere much greener than Durotar.",
+		"observes a tauren's thick fingers working grass into a tight mat, row on row, never once looking down, eyes on the passing crowd instead.",
+	},
+	["org.subzone_enter.w21.wisdom.010"] = {
+		"A tauren and an orc are trading a sack of grain for a pouch of nails, and both insist on counting. The orc counts fast and twice; the tauren counts once, slowly, and nobody argues with his total.",
+		"Grain for iron nails, by the path: the orc counts quickly, loses his place, starts over. The tauren counts once, at her own pace, and the deal is done when she says so.",
+	},
+	["org.subzone_enter.w21.wisdom.011"] = {
+		"enters the Valley of Wisdom under a sky scrubbed clean, where two shamans have stopped mid-lesson to look up at it, as though the clearing were part of the teaching.",
+		"turns {g:his|her} face up as the sky clears over the canyon rim; nearby a shaman lifts a palm to it, unhurried, the way one greets a guest who has arrived on time.",
+	},
+	["org.subzone_enter.w21.wisdom.012"] = {
+		"Mind the horns on that lintel. Not you. Him. Actually, both of you.",
+		"Low door, tall horns. Duck.",
+	},
+	["org.subzone_enter.w21.wisdom.013"] = {
+		"An orc and a tauren are arm-wrestling on an upturned barrel by the path. The orc is red in the face. The tauren is chatting to a friend over his shoulder. The orc has not yet understood what this means.",
+		"A barrel-top contest by the path, orc arm against tauren arm. The orc strains, veins standing out. The tauren yawns, then, very kindly, lets him last a little longer.",
+		"Orc against tauren, elbows on a barrel. The orc is giving it everything. The tauren is giving it some thought.",
+	},
+	["org.subzone_enter.w21.wisdom.014"] = {
+		"finds an apprentice shaman lying flat with one ear pressed to the stone, listening hard, while an elder stands over him waiting to be told what the earth has said.",
+		"steps over the legs of a young shaman stretched face down on the path, ear to the ground, who waves {g:him|her} past without lifting his head.",
+	},
+	["org.subzone_enter.w21.wisdom.015"] = {
+		"The Valley of Wisdom sits deep in the city, well back from the bustle. Few people wander in by accident, and it shows in how they stand once they're here.",
+		"Hardly anyone crosses the Valley of Wisdom on the way to somewhere else. People come to it on purpose, with something to ask or something to learn.",
+	},
+	["org.subzone_enter.w21.wisdom.016"] = {
+		"finds an old tauren lying flat on his back in the middle of the valley, hooves crossed, naming the stars over the canyon to a grunt who pretends not to be listening.",
+		"steps carefully around a tauren stretched out on a hide beneath the night sky, tracing the stars between the canyon walls with a slow finger.",
+	},
+	["org.subzone_enter.w21.wisdom.017"] = {
+		"Stop for a moment near a tauren's tent here and a bowl of water appears in front of you, offered without a word. Refusing seems a bigger matter than drinking.",
+		"The tauren of this valley offer water to anyone who pauses at their tents. I paused. I drank. Something passed between us that I suspect I'll be expected to repay.",
+		"Just for pausing by her tent, a tauren handed me a bowl of water. Nobody in the rest of the city has ever handed me anything without a price.",
+	},
+	["org.subzone_enter.w21.wisdom.018"] = {
+		"comes alongside a shaman who coaxes a stubborn cookfire alight with a murmur and a flick of the fingers, while the grunt who has been fighting it with a flint pretends not to mind.",
+		"comes across a grunt hammering at a flint over a cold fire pit until a passing shaman bends, says something low to the kindling, and walks on as it catches.",
+		"notices that the cookfires of the Valley of Wisdom never need a flint for long; sooner or later a shaman wanders by and has a quiet word with them.",
+	},
+	["org.subzone_enter.w21.wisdom.019"] = {
+		"Some of the tauren in this valley carry old scars in neat parallel rows, the kind centaur lances leave. Ask about the Barrens and they'll talk about grass and water and nothing else.",
+		"A tauren by the path has a scar across his flank like a plowed furrow. Centaur, a grunt tells me quietly. The tauren himself talks only of the herds.",
+	},
+	["org.subzone_enter.w21.wisdom.020"] = {
+		"The Warchief's own valley. Straighten up, everyone. Me first.",
+		"Shoulders back. We're in the Warchief's valley now.",
+	},
+	["org.subzone_enter.w21.wisdom.021"] = {
+		"lingers near a tauren walking a slow circle round a freshly stretched hide, trailing the smoke of a smoldering braid of sweetgrass over every inch of it.",
+		"catches the sweet, hay-like smoke of a grass braid being waved over a new hide by a tauren who doesn't hurry and doesn't explain.",
+	},
+	["org.subzone_enter.w21.wisdom.022"] = {
+		"The tauren of this valley speak Orcish carefully, picking each word like a stone for a wall and setting it down where it will hold. The orcs, who throw their words, listen longer than they'd admit.",
+		"When a tauren speaks Orcish it sounds like someone building with it, word by careful word. When an orc speaks it, it sounds like someone throwing it. In this valley you hear both, and the builders get the last word.",
+	},
+	["org.subzone_enter.w21.wisdom.023"] = {
+		"makes way for an off-duty grunt carrying a tauren elder's stool and blanket three paces behind her, with the grave face of a soldier escorting a general.",
+		"notices a grunt trailing an old tauren with her folding stool under his arm, opening it wherever she pauses before she has to ask.",
+	},
+	["org.subzone_enter.w21.wisdom.024"] = {
+		"Strength, Honor, Spirits, Wisdom: the orcs named their valleys like a list of things to become. It says something that they put Wisdom where the Warchief sits.",
+		"Whoever named the valleys of this city was writing down hopes. Wisdom got the Warchief's hall. I'd like to think that was on purpose.",
+	},
+	["org.thanks.w21.thank.001"] = {
+		"Thanks. Find me at the inn sometime, and the first cup is mine to pay.",
+		"Much obliged. I'll stand you a drink for it, as soon as I find a free table in this crowd.",
+		"Truly, thanks. The next round has your name on it.",
+	},
+	["org.thanks.w21.thank.002"] = {
+		"Thanks. I tried to find a way to haggle that down, and there wasn't one.",
+		"Thank you. In this city I keep waiting for the bill. None coming? Strange place, all of a sudden.",
+		"Thanks. Somewhere in the Drag a goblin just felt a chill and doesn't know why.",
+	},
+	["org.thanks.w21.thank.003"] = {
+		"You have my gratitude, said plainly. This city carves its promises in stone, not in long speeches.",
+		"My thanks, given once and meant for good. The walls here would frown at anything fancier.",
+	},
+	["org.thanks.w21.thank.004"] = {
+		"Hm. Thanks. Don't make a habit of it, people will talk.",
+		"Thanks. Now let's both pretend that never happened, before a grunt sees us.",
+		"Fine. Thanks. There, I said it, and nobody fell off the walls.",
+	},
+	["org.thanks.w21.thank.005"] = {
+		"A hard city teaches you to notice the soft things. Thank you; I noticed.",
+		"Thanks. I'll keep this somewhere safe, away from all the elbows in this city.",
+	},
+	["org.thanks.w21.thank.006"] = {
+		"Thanks! I'll pass it along to the next stranger I find going in circles on these ramps.",
+		"Next time somebody looks lost outside the bank, they'll get the same from me. Thanks.",
+		"Consider it handed on: the next bewildered face in the crowd gets it from me. And thanks.",
+	},
+	["org.thanks.w21.thank.007"] = {
+		"Thanks. Even that grunt nearly smiled, and I think he was quarried from the same rock as the walls.",
+		"My thanks. Look, the grunt at his post just blinked. That's applause, in Orgrimmar.",
+	},
+	["org.thanks.w21.thank.008"] = {
+		"Thanks. The Horde holds together on small things like this, more than on any speech in Grommash Hold.",
+		"You have my thanks. Walls keep the Horde safe; it's this sort of thing that keeps it whole.",
+	},
+	["org.thanks.w21.thank.009"] = {
+		"Thanks. Short, I know. In this city that counts as a speech.",
+		"Thank you, and that's the whole speech; the noise here eats the rest.",
+		"Thanks! Hope that carried over the clatter.",
+	},
+	["org.thanks.w21.thank.010"] = {
+		"Nobody else saw it, so I'll remember it for both of us. Thanks.",
+		"Thanks, quietly: between the two of us and no one else in this crowd.",
+	},
+	["org.thanks.w21.thank.011"] = {
+		"Wait, did that cost you something? It did. Then thanks twice, and I'm counting.",
+		"Thanks. And if that cost you anything, thanks once more, with interest. The goblins taught me that word.",
+	},
+	["org.thanks.w21.thank.012"] = {
+		"Let the city know it: you were good to me, and I said so aloud. Thank you.",
+		"Be it heard in the street, then: I owe you my thanks, and I pay them gladly.",
+	},
+	["org.thanks.w21.thank.013"] = {
+		"Thanks. Here, your hand: that's how such things get settled in Orgrimmar.",
+		"A clasp, not a bow: I've learned that much in this city. Thanks.",
+	},
+	["org.thanks.w21.thank.014"] = {
+		"It's easy to feel small in a city built for giants. That helped. Thanks.",
+		"Among all these walls and hard faces, that was a door left open. My thanks.",
+	},
+	["org.thanks.w21.thank.015"] = {
+		"Thanks. I'd deposit it at the bank, but they only take coin, and this was worth more.",
+		"If gratitude went in a bank box, I'd need a bigger box. Thanks.",
+		"Thanks. The bankers will never see this one; some debts stay off the ledger.",
+	},
+	["org.thanks.w21.thank.016"] = {
+		"Thanks. If anyone gives you trouble in these streets, send them to me.",
+		"Anyone shortchanges you in the Drag, come find me. Loud voice, plenty of time. And thanks.",
+	},
+	["org.thanks.w21.thank.017"] = {
+		"Grateful. In Orgrimmar a stranger who stops is worth more than a bow anywhere else.",
+		"Good to know someone in this crowd still stops. Thanks.",
+		"Most of this city walks straight past. You didn't. Thanks.",
+	},
+	["org.thanks.w21.thank.018"] = {
+		"Thanks! Even the peons would stop working to watch that. Well. They'd stop anyway.",
+		"Rare as a peon in a hurry, that was. Many thanks.",
+	},
+	["org.thanks.w21.thank.019"] = {
+		"Thanks. That one I hold on to.",
+		"I'm grateful. I don't say it often, so mark it.",
+		"Thanks. That goes out the gate with me.",
+	},
+	["org.thanks.w21.thank.020"] = {
+		"In a city of hard edges, you just made one corner softer. Thanks.",
+		"That was kind, and kindness gets noticed here, even when nobody says so. Thank you.",
+	},
+	["org.thanks.w21.thank.021"] = {
+		"Thanks. Best write that down where no goblin can find it, so it stays free.",
+		"A favor in this city, and no paperwork? Nobody will believe me. Thanks.",
+	},
+	["org.thanks.w21.thank.022"] = {
+		"My thanks before witnesses: half of Orgrimmar is standing right here.",
+		"Thanks, and let every passerby be my witness. There are plenty.",
+	},
+	["org.thanks.w21.thank.023"] = {
+		"Thanks. I'd bow, but in this crowd I'd come up holding somebody else's boots.",
+		"I'd make a bigger fuss, but somebody would charge me for the space. Thanks.",
+		"A proper bow would take up more room than this street has. So: thanks!",
+	},
+	["org.thanks.w21.thank.024"] = {
+		"Easy to forget, among all the iron, that people live here. You reminded me. Thanks.",
+		"Iron and stone everywhere, and then something like that. It evens things out. Thanks, truly.",
+		"All this iron, and still somebody bothers to be decent. Good. Thanks.",
+	},
+	["org.thanks.w21.thank.025"] = {
+		"A trade with no haggling: the rarest deal in the whole city. Thanks.",
+		"No counteroffer? Then it's a deal, and a good one. Thanks.",
+		"In the Drag that would've taken an hour of shouting. You managed it with none. Thanks.",
+	},
+	["org.thanks.w21.thank.026"] = {
+		"Thanks. I don't forget faces, and I won't forget yours.",
+		"I'll remember who you are. Thanks, and I mean it.",
+		"Your face goes on the short list now. The good one. Thanks.",
+	},
+	["org.toast.w21.toast.001"] = {
+		"Cups up! To the peons, who build all of it and get thanked for none of it!",
+		"To every peon in Orgrimmar: may your loads be light and your foremen far away!",
+		"Raise them for the peons! Without them this city would be a very loud pile of logs.",
+	},
+	["org.toast.w21.toast.002"] = {
+		"To the cooks of this city, who feed a crowd of warriors every day and haven't lost a fight yet!",
+		"Here's to whoever stirs the big pots! The bravest folk in Orgrimmar, and the best paid in compliments.",
+		"A cup for the cooks: they face a hungry crowd every day, and without armor.",
+	},
+	["org.toast.w21.toast.003"] = {
+		"To the couriers, who cross the whole city before the rest of us find our boots!",
+		"Drink to the runners! May your satchels be light and the ramps kind to your knees.",
+		"Here's a cup the couriers will never have time to drink. Somebody drink it for them!",
+	},
+	["org.toast.w21.toast.004"] = {
+		"Here's to the goblins, who sold me the cup, the drink and, I suspect, the headache!",
+		"Goblin traders, everyone! Neutral in every war, and on the winning side of every bargain.",
+		"Toast the goblins, friends: one of them is surely charging us for it already.",
+	},
+	["org.toast.w21.toast.005"] = {
+		"To strangers at a crowded table, who'll be something more by the bottom of the cup.",
+		"To whoever I've just been squeezed in beside! Elbows down, cups up.",
+		"One for sharing a bench, in a city that has far too few of them.",
+	},
+	["org.toast.w21.toast.006"] = {
+		"Healers of the Valley of Spirits, this one's yours: you mend whatever the Valley of Honor breaks!",
+		"A drink for the menders! The training yards keep them busy, and they never once send a bill.",
+		"To bandages and patient hands, the busiest things in the city after the anvils!",
+	},
+	["org.toast.w21.toast.007"] = {
+		"To orc, troll, tauren and Forsaken: four ways to say it, one cup to say it with!",
+		"Cups high for the Horde, all of it, from the tallest horns to the boniest elbows!",
+		"To every people that walks these streets under one banner. Drink, all of you!",
+	},
+	["org.toast.w21.toast.008"] = {
+		"To the bankers, who've never lost a copper of mine, and never let one go without a frown!",
+		"A toast to the ledger-keepers: may their sums come right and their faces, someday, less serious.",
+		"A round for the bankers! I'd buy it myself, but my coin is in their vault.",
+	},
+	["org.toast.w21.toast.009"] = {
+		"To a quiet corner in a loud city, and the luck to find it twice.",
+		"Raise it low and soft: to the one spot in Orgrimmar where nobody's shouting.",
+		"To quiet, wherever this city keeps it hidden.",
+	},
+	["org.toast.w21.toast.010"] = {
+		"Raise one for the apprentices at the anvils: may your burns be small and your masters' tempers smaller!",
+		"One for the smiths' apprentices, sweeping up sparks and taking the blame for every one!",
+		"Drink to the lads and lasses at the bellows: they work the hardest and get the smallest cup.",
+	},
+	["org.travel.w21.stone.001"] = {
+		"stands still in the middle of the street with the hearthstone in hand while the crowd parts around {g:him|her}, then closes over the empty space.",
+		"goes motionless amid the traffic, hearthstone cupped in one palm, and a stream of peons flows around {g:him|her} like water around a rock until there is nothing left to flow around.",
+		"holds the hearthstone and lets the crowd go on shoving past, until one shoulder meets only air.",
+	},
+	["org.travel.w21.stone.002"] = {
+		"Ten seconds is a long time in Orgrimmar: long enough for three offers, one insult and a grunt's suspicious look.",
+		"The stone takes its time, and the city fills it: two hawkers, a haggling match and a grunt wondering what I'm up to.",
+		"Stand still in Orgrimmar and company arrives. Before the stone is done I've been offered a rug, a rumor and directions I never asked for.",
+	},
+	["org.travel.w21.stone.003"] = {
+		"Hold that thought. I'm leaving.",
+		"Keep talking, I'll catch the end some other time.",
+		"Don't save my place.",
+	},
+	["org.travel.w21.stone.004"] = {
+		"The noise doesn't fade. It's cut, clean, like a rope, and the silence on the other side rings.",
+		"There's no fading out of Orgrimmar. One instant the whole din of it, the next nothing, as if someone shut a lid.",
+		"The city doesn't thin out around the stone. It stops between one hammer blow and the next, and the quiet that follows is almost rude.",
+	},
+	["org.travel.w21.stone.005"] = {
+		"leaves a goblin mid-pitch, talking to the empty air, and the goblin finishes the pitch anyway, just in case.",
+		"vanishes halfway through a goblin's sales talk. The goblin pauses, shrugs, and delivers the rest to the next passerby.",
+	},
+	["org.travel.w21.stone.006"] = {
+		"The city never says goodbye. It doesn't need to. It'll be here, as loud as ever, whenever I am.",
+		"No farewell from Orgrimmar; it has never given one to anyone. It simply stays, and lets you go.",
+		"I don't look back. Orgrimmar wouldn't look back at me either, and it would be right.",
+	},
+	["org.travel.w21.stone.007"] = {
+		"At least I take the smell with me: hot iron and cookfire grease, worked into every seam. It'll last longer than the trip.",
+		"Whatever else stays behind, the city's smell comes along, caught in my sleeves: forge, cookfire, the tannery's sour edge.",
+		"I'll be finding Orgrimmar in my clothes for a while yet: soot in a fold, the sour tang of the tanneries in a cuff.",
+	},
+	["org.travel.w21.stone.008"] = {
+		"If anyone asks, I was never here. Well. Briefly.",
+		"You didn't see me. Nobody saw me. I'm practically gone already.",
+	},
+	["org.travel.w21.stone.009"] = {
+		"turns the hearthstone over once, the way a gambler turns a coin, and the city lets go of {g:him|her}.",
+		"rolls the hearthstone across {g:his|her} knuckles once, idly, and then there is only the street where {g:he|she} stood.",
+	},
+	["org.travel.w21.stone.010"] = {
+		"No last look. A last listen: a hammer, a haggle, a wolf complaining. In Orgrimmar your ears tell you more than your eyes.",
+		"I close my eyes for the last of it. Orgrimmar is easier to remember by sound: clatter, argument, the creak of a cart.",
+		"My final scrap of Orgrimmar is a sound: someone laughing hard at a joke whose ending I'll never know.",
+	},
+	["org.travel.w21.stone.011"] = {
+		"Halfway through the count I remember the thing I came to buy. Too late. The stone doesn't take requests.",
+		"Just as the pull starts, I remember what I meant to pick up on the Drag. The stone, as ever, is unmoved by my errands.",
+		"Of course. The moment the stone begins, I remember the one thing I came here for.",
+	},
+	["org.travel.w21.stone.012"] = {
+		"goes still with the hearthstone warming in {g:his|her} palm, and a passing grunt looks twice, then decides it is somebody else's problem.",
+		"draws a long look from a grunt as the hearthstone wakes in {g:his|her} hand; the grunt weighs the matter and lets it go.",
+	},
+	["org.travel.w21.stone.013"] = {
+		"This city was built by people who crossed a sea to reach it. I leave it in the time it takes to count to ten. It feels faintly rude.",
+		"The orcs who raised Orgrimmar came a long way on foot and by ship to do it. I'm out in ten seconds with a stone. Somebody ought to apologize, and it's probably me.",
+	},
+	["org.travel.w21.stone.014"] = {
+		"The red walls go last, and they go without much interest, as if they'd seen a thousand travelers flicker out.",
+		"Last to dissolve is the stone of the canyon, slow and indifferent, as if it has watched this trick too often to be impressed.",
+		"The canyon walls are the last to go: a red blur that lingers, as if reluctant.",
+	},
+	["org.travel.w21.stone.015"] = {
+		"Orgrimmar, keep the noise up. I'll want to hear it when I come back.",
+		"I'm off. Somebody keep the city loud while I'm gone.",
+	},
+	["org.travel.w21.stone.016"] = {
+		"shakes a little of the city's dust off {g:his|her} boots out of habit, and is gone before it settles.",
+		"brushes the canyon's grit from one sleeve, a small tidy gesture, and the stone takes {g:him|her} mid-brush.",
+	},
+	["org.travel.w21.stone.017"] = {
+		"Leaving Orgrimmar the lazy way. Somewhere on the Drag a goblin who sells boots just felt a pang of loss.",
+		"No walk to the gate, no ride, no farewell. The boot-sellers of the Drag will never forgive the hearthstone.",
+	},
+	["org.weather_change.w21.clearsky.001"] = {
+		"watches a tanner haul a fresh hide out of a doorway and peg it flat on the stones, now that the air is clean enough to let it dry without grit.",
+		"steps around a tanner on his knees in the street, pegging out a hide now that there is nothing left in the air to spoil it.",
+		"sees the tanners of the city come out all at once with their hides, as if the clear air were a bell only they could hear.",
+	},
+	["org.weather_change.w21.clearsky.002"] = {
+		"The air has cleared, and the far wall of the canyon steps closer: I can count the timbers of the walkways on it, and a grunt up there scratching his ear.",
+		"Clean air. The other side of the canyon is suddenly near enough to read: every ladder, every lashed beam, every coil of rope.",
+	},
+	["org.weather_change.w21.clearsky.003"] = {
+		"Air's clean. Somebody tell the cooks they can take the lids off.",
+		"It's cleared. The stewpots can come out from under their covers now, and so can I.",
+		"Weather's turned fair. Uncover the pots, I'm starving.",
+	},
+	["org.weather_change.w21.clearsky.004"] = {
+		"Clear overhead, and nobody in the street quite trusts it. Half the stalls keep one cover tied down, just in case.",
+		"Fair skies. The traders roll back their covers slowly, the way you'd lower a guard against someone who smiled first.",
+	},
+	["org.weather_change.w21.clearsky.005"] = {
+		"looks up as the haze thins, and the smoke of a hundred cookfires and chimneys stands up from the valleys in straight, unbothered columns.",
+		"notices the smoke rising plumb from every chimney in the city now that the air has gone still and clean: a forest of gray trunks with nothing to bend them.",
+		"follows one thread of chimney smoke up and up through the cleared air, and it never wavers once until it is too thin to see.",
+	},
+	["org.weather_change.w21.clearsky.006"] = {
+		"With the air this clear, a shout from the far end of the city arrives whole. Someone in another valley has just lost a bet.",
+		"Sound carries in air this clean. I can follow a quarrel across half the city, word for word, and it's about a debt.",
+		"Now the haze is gone, the city's noise comes apart into single voices. Somewhere far off, someone is losing an argument about a broken pot.",
+	},
+	["org.weather_change.w21.clearsky.007"] = {
+		"ducks as someone on a walkway above beats a blanket over the rail, shaking down the last of the grit now the air is clean enough to bother.",
+		"gets a sprinkle of old grit on the head from above, where a troll, trusting the clear air at last, is beating a rug over a rail like someone settling a score.",
+	},
+	["org.weather_change.w21.clearsky.008"] = {
+		"The air clears and the city looks newly cut, every edge of it sharp. It will not last. Nothing in Durotar stays clean for long, and Orgrimmar least of all.",
+		"Clear air, and every corner of the city stands out as if freshly carved. Give it a day of traffic and it will be soft and red once more.",
+	},
+	["org.weather_change.w21.clearsky.009"] = {
+		"notices the beasts on the flight tower lifting and resettling their wings, shaking off the dust now that the air is calm enough to fly in.",
+		"glances up to where the handlers on the flight tower are loosening the tethers, and the great beasts stretch and fidget, sensing the clean sky.",
+	},
+	["org.weather_change.w21.clearsky.010"] = {
+		"The sky's cleared. Watch the goblins put their prices back up.",
+		"Clear skies. Give it a moment: every price on the Drag climbs back where it was.",
+	},
+	["org.weather_change.w21.clearsky.011"] = {
+		"The sky has cleared. Orgrimmar marks the occasion by doing exactly what it was doing before, only louder.",
+		"Clear air at last, and the city celebrates the only way it knows: by going straight back to work.",
+		"Fine weather, and not one person in the street stops to enjoy it. They just shout faster.",
+	},
+	["org.weather_change.w21.clearsky.012"] = {
+		"turns slowly in the cleared air and follows the rim of the canyon all the way round, as if checking that every wall was still in its place.",
+		"lets {g:his|her} gaze travel the whole length of the canyon rim, sharp and unbroken now against the open sky.",
+		"traces the jagged edge where stone meets sky, clean from end to end, and finds no gap in it anywhere.",
+	},
+	["org.weather_change.w21.clearsky.013"] = {
+		"Up on a walkway a grunt pulls the rag off his face, spits, and looks at the clear sky as though it owed him an apology.",
+		"The guards pull down the cloths from their faces one by one, and the fair sky gets the long, flat look a grunt keeps for a late relief.",
+	},
+	["org.weather_change.w21.clearsky.014"] = {
+		"Clear as a washed bowl up there. Doesn't happen often; I'm going to stand here and look.",
+		"Look at that, the whole rim in one clean piece. Give me a moment, I want to look at it.",
+		"Not a speck between us and the sky. Let me enjoy this.",
+	},
+	["org.weather_change.w21.clearsky.015"] = {
+		"catches the smells of the city one by one now the air has cleared: pitch, boiled grain, singed hair from a smithy, a wolf pen somewhere upwind.",
+		"picks out how the cleared air sorts the city's smells into a neat row: hot tar, porridge, scorched hair, and somewhere a pen of wolves.",
+	},
+	["org.weather_change.w21.clearsky.016"] = {
+		"The sky clears, and the sun comes down into the canyon all at once, hard as a hammer on the red stone. Every shadow in the city goes ink-black.",
+		"Sunlight back in the canyon. The stone starts warming under my boots almost before I notice the sky has opened.",
+		"Out comes the sun, and the whole canyon flares red from rim to floor, as if somebody had blown on a coal.",
+	},
+	["org.weather_change.w21.clearsky.017"] = {
+		"moves into the narrow shade of a wall as the clear sky lets the sun in, and finds three peons already crowded there, pretending to work.",
+		"goes looking for shade as the sky clears and the sun lands on the street; a pair of peons have beaten {g:him|her} to it and look terribly busy.",
+	},
+	["org.weather_change.w21.clearsky.018"] = {
+		"The sky has cleared, and the moon sits on the rim of the canyon like a coin someone left on a wall.",
+		"Clear night over the canyon. The moon finds the iron fittings on every door and makes each one a small cold lamp.",
+	},
+	["org.weather_change.w21.clearsky.019"] = {
+		"pulls a cloak closer as the sky clears and the night cold comes down into the canyon, settling in the stone like water in a bowl.",
+		"feels the cold drop into the canyon the moment the sky opens, and sees the night watch stamp their feet at their posts.",
+		"shivers once as the clouds go and the cold of a clear night pours over the rim, quick and thorough.",
+	},
+	["org.weather_change.w21.clearsky.020"] = {
+		"Clear air. Every hunter's beast in the city can smell the cookpots now. Hold on to your supper.",
+		"Air's gone clean. Every pet in Orgrimmar just caught the scent of somebody's sausage.",
+	},
+	["org.weather_change.w21.clearsky.021"] = {
+		"notices, now that the air is clean, the old tracks pressed into the red ground: boots, paws, cart wheels, all baked hard and overlapping like writing.",
+		"looks down in the clearing air and sees the street for once: the ruts of carts and the prints of boots and paws, layered over each other like an old ledger.",
+		"kneels to look at the cleared street, where a thousand comings and goings lie pressed into the earth one on top of the other.",
+	},
+	["org.weather_change.w21.clearsky.022"] = {
+		"Clear sky over a city of soot. I keep looking up, like someone who has found a window in a room they thought had none.",
+		"Open sky above all the smoke and iron, and I catch myself glancing at it the way you check a door you've just found unlocked.",
+	},
+	["org.weather_change.w21.clearsky.023"] = {
+		"spots a goblin trader climbing onto a crate to hang his wares back up hook by hook, muttering a price to each as the sky clears.",
+		"pauses to watch a goblin rehang a whole stall of pots and lanterns as the weather turns fair, naming a price to every hook as if introducing it.",
+		"smiles at a goblin who is putting his stall back together in the clearing air, greeting each pot and lantern by its price.",
+	},
+	["org.weather_change.w21.clearsky.024"] = {
+		"Fair weather, and the peons have strung a line between two poles and hung the grunts' padded shirts on it to air. The smell is a war of its own.",
+		"Now it's clear, every padded jerkin in the barracks seems to be hung out to air at once. The whole city smells like a troop on the march.",
+	},
+	["org.weather_change.w21.clearsky.025"] = {
+		"Clear sky. Good. Now nobody gets to blame the weather for anything.",
+		"Weather's cleared. Whatever goes wrong from here, the sky had nothing to do with it.",
+		"Clean air and no excuses left. Get to work.",
+	},
+	["org.weather_change.w21.clearsky.026"] = {
+		"hears the anvils of the city ring cleaner in the cleared air, each blow arriving sharp, with nothing in the way to blunt it.",
+		"stops to listen: with the air gone clean, the hammering from the smithies comes through bright and separate, blow by blow.",
+		"tilts {g:his|her} head at the hammering of the smiths, every stroke now so crisp in the clear air that it could be counted from anywhere.",
+	},
+	["org.weather_change.w21.clearsky.027"] = {
+		"watches an old orc roll up the hide that hangs over a doorway and tie it high, letting the clean air into the room behind as if it were a guest.",
+		"sees door flaps lifted and tied back all along the street as the weather clears, and the dim rooms behind them look out at the street like sleepy faces.",
+	},
+	["org.weather_change.w21.dust.001"] = {
+		"observes a merchant blowing the grit off the pans of a scale before weighing anything, then doing it a second time, and a third, as the sand keeps coming.",
+		"chuckles at a trader who gives up on the scales entirely as the sand blows in, since every pan comes up a few grains heavier than it should.",
+	},
+	["org.weather_change.w21.dust.002"] = {
+		"Close your mouth and your purse. The sand wants into both.",
+		"Mouth shut, purse shut. This wind gets into anything left open.",
+		"Purse closed, lips closed. Sand finds every opening.",
+	},
+	["org.weather_change.w21.dust.003"] = {
+		"The sand comes and the city answers with one long clatter: every shutter in the street slamming in turn, like a drill all of Orgrimmar has practiced.",
+		"All down the street, shutters bang closed one after the other as the sand rolls in, so evenly it sounds rehearsed.",
+		"Sand on the wind, and Orgrimmar shuts like a fist: shutter, shutter, shutter, all down the line.",
+	},
+	["org.weather_change.w21.dust.004"] = {
+		"envies a goblin who pulls a pair of brass goggles down over his eyes as the sand begins to fly, and strolls on looking enormously pleased with himself.",
+		"eyes a goblin who snaps on goggles at the first gust of sand and keeps strolling, the only person in the street who can see where he's going.",
+		"squints enviously at a goblin in brass goggles, ambling through the blowing sand as if it were a fine day for a walk.",
+	},
+	["org.weather_change.w21.dust.005"] = {
+		"The cook swears there's always a little sand in the stew. With this wind lifting it off Durotar, you can hear it crunch.",
+		"Every bowl in the city has a pinch of Durotar in it when the sand blows. The cooks have stopped apologizing and started calling it seasoning.",
+		"A bowl of stew in this wind comes with a free spoonful of Durotar. Nobody sends it back.",
+	},
+	["org.weather_change.w21.dust.006"] = {
+		"steps over a rolled blanket laid along a doorway to keep the sand out, and finds that every door down the street has one, like dogs asleep across the thresholds.",
+		"notices that the sand has every threshold in the street stuffed with rolled hides and old sacks, and still finds its way in at the corners.",
+	},
+	["org.weather_change.w21.dust.007"] = {
+		"Give the sand an hour and it builds small dunes in every corner the walls make, neat as if someone had raked them.",
+		"The sand drifts into the angles of the walls and lies there in little ridges, shaped by the wind into something almost deliberate.",
+		"Wherever two walls meet, the blowing sand lays down a little ridge, combed smooth, like a patient craftsman leaving his mark.",
+	},
+	["org.weather_change.w21.dust.008"] = {
+		"flinches as a gust of sand reaches a smithy's open fire and throws up a spray of sparks, and the smith curses and drags a hide across the opening.",
+		"hears the sand-laden wind reach the forges, every gust lifting a crackle of sparks from the coals as if the fire were spitting the grit back out.",
+	},
+	["org.weather_change.w21.dust.009"] = {
+		"Keep to the walls. You can't see three paces in this sand.",
+		"Stay close to the wall. In this sand you'll lose the street if you let go of it.",
+		"One hand on the wall and follow it. This sand will turn you round otherwise.",
+	},
+	["org.weather_change.w21.dust.010"] = {
+		"The sand takes the far end of the street first, then the middle, and now the city is just the ten paces around me and a lot of shouting.",
+		"Orgrimmar shrinks in the sand to a small room with red curtains for walls. Voices come through them from nowhere.",
+		"Ten paces of street, a wall of red air, and voices with no faces. That's the whole of Orgrimmar now.",
+	},
+	["org.weather_change.w21.dust.011"] = {
+		"notices a hunter's great cat squeezing its eyes shut against the sand and pressing its whole face into the hunter's knee.",
+		"waits while a hunter crouches to tie a cloth around the muzzle of a big striped cat, which bears it like an insult while the sand hisses past.",
+		"makes room for a hunter shepherding a sand-blind cat along by the scruff, both of them walking with their heads down.",
+	},
+	["org.weather_change.w21.dust.012"] = {
+		"Sand on the wind, and suddenly everyone in the street is wearing a face cloth. The city looks like a market of bandits, all very politely buying bread.",
+		"With their faces wrapped against the sand, every shopper looks like a robber. They still queue, and haggle all the same.",
+	},
+	["org.weather_change.w21.dust.013"] = {
+		"watches a grunt fight a banner down off its pole before the sand can shred it, and roll it under one arm like a sleeping child.",
+		"sees two peons wrestle a great war banner down from its staff as the sand thickens, folding it with more care than they give to anything else.",
+	},
+	["org.weather_change.w21.dust.014"] = {
+		"Sand against the hide walls makes a sound like a crowd whispering just outside. In a city this loud, it's the whisper that gets under the skin.",
+		"Listen to it: sand hissing on every stretched hide in Orgrimmar, a thousand people saying hush at once.",
+		"Every hide in the city hisses as the sand runs over it, soft and constant, like a secret being passed along.",
+	},
+	["org.weather_change.w21.dust.015"] = {
+		"Durotar's dropping by. It never wipes its feet.",
+		"The desert's come calling, and it's brought the whole yard with it.",
+		"Here comes Durotar through the walls, with no manners at all.",
+	},
+	["org.weather_change.w21.dust.016"] = {
+		"sees lanterns lit along the street though it is broad day, small orange smudges in the blowing sand.",
+		"watches the sun shrink to a pale coin behind the sand, and people light lamps in their doorways at the height of the day.",
+	},
+	["org.weather_change.w21.dust.017"] = {
+		"The sun is a dull red disk through the sand, so faint I can look straight at it. Durotar has put a lid on the sky.",
+		"Sand across the sky, and the sun behind it like a coal seen through a hide. I can stare at it without blinking.",
+		"Through the blowing sand the sun has lost all its teeth. It hangs there red and harmless, and I look it right in the face.",
+	},
+	["org.weather_change.w21.dust.018"] = {
+		"watches the torches along the wall go dim and orange as the sand thickens in the dark, each flame wearing a halo of grit.",
+		"sees the night watch's torches blur into fuzzy red smears as the sand comes over the walls, and hears the grunts call out to find each other.",
+		"loses sight of the torches one by one as the sand rolls through the night, until only the grunts' voices mark where the wall is.",
+	},
+	["org.weather_change.w21.dust.019"] = {
+		"I'll be finding this sand for days: in seams, in pockets, in the creases of letters I haven't opened.",
+		"This sand will travel with me for days. In my seams, my pockets, my bedroll, the fold of every map.",
+		"Days from now I'll still be shaking this sand out of things I thought were closed.",
+	},
+	["org.weather_change.w21.dust.020"] = {
+		"catches a troll wrapping a cloth over her own face against the sand, and then, with the same care, over the carved mask that hangs beside her door.",
+		"sees a Darkspear woman shield the painted mask on her doorpost from the sand with a corner of her shawl before she thinks to cover her own eyes.",
+	},
+	["org.weather_change.w21.dust.021"] = {
+		"So this is what Durotar does when it stops being polite: the whole land picks itself up and walks in over the walls.",
+		"Durotar has stood up and come to town. I'd thought the walls were for armies; they're for this.",
+	},
+	["org.weather_change.w21.dust.022"] = {
+		"Wrap up and keep walking. Standing still just gives it something to bury.",
+		"Don't stop out here. Sand piles up on anything that waits.",
+		"Keep moving. Whatever stands still in this gets buried.",
+	},
+	["org.weather_change.w21.dust.023"] = {
+		"steps aside for a peon hurrying by with a water jar, its mouth tied over with hide against the sand while his own face goes bare.",
+		"makes way for a peon shielding a water jar from the sand with his whole body, his own face left to take the grit.",
+	},
+	["org.weather_change.w21.dust.024"] = {
+		"Sand hides the rim first, then the walls, then the sky. For an hour Durotar takes the canyon back, and Orgrimmar lets it.",
+		"In the sand the city loses its walls one by one, as if the land were trying to remember what this canyon was before anyone built in it.",
+		"First the rim goes, then the walls, then the far side of the street. The canyon is turning back into a canyon, and the city waits it out.",
+	},
+	["org.weather_change.w21.dust.025"] = {
+		"frowns at the film of red grit settling on a water trough as the sand blows, and at the thirsty wolf pushing at it with its nose, offended.",
+		"laughs quietly as a wolf noses at the grit floating on a trough, sneezes, and gives the sky a long reproachful look.",
+	},
+	["org.weather_change.w21.dust.026"] = {
+		"Lovely. Give it a minute and we'll all be the same color as the walls.",
+		"Wonderful. Ten more minutes of this and nobody will tell us from the stonework.",
+	},
+	["org.weather_change.w21.rainfall.001"] = {
+		"watches doors open all along the street and every kind of vessel come out into the rain: barrels, cookpots, an upturned helmet, a goblin's tin hat.",
+		"sees the whole street set out whatever will hold water as the rain falls: tubs, kettles, a cracked helmet, even a boot.",
+		"steps around a row of pots and buckets put out to catch the rain, each one ringing under the drops with a note of its own.",
+	},
+	["org.weather_change.w21.rainfall.002"] = {
+		"Get the barrels out! Who knows when the sky will remember us next.",
+		"Bring a bucket, anything. Rain like this doesn't come twice in a season.",
+		"Out with the jars! This water's free, and it won't stay long.",
+	},
+	["org.weather_change.w21.rainfall.003"] = {
+		"The rain wakes a smell out of the stone I'd never have guessed it kept: clean and sharp, like iron fresh from the quench.",
+		"Wet rock. Under all the smoke the city has a scent of its own, and it takes rain to find it.",
+		"So the canyon has a smell of its own when the rain reaches it. Cold, mineral, older than anything built here.",
+	},
+	["org.weather_change.w21.rainfall.004"] = {
+		"winces as a peon pokes a sagging awning with a broom handle to empty it, and a whole bellyful of rain lands on the grunt standing underneath.",
+		"flinches as someone pushes up a bulging hide roof from below, and the rain it was holding comes down in one slap on a passing tauren, who only blinks.",
+	},
+	["org.weather_change.w21.rainfall.005"] = {
+		"Ten steps in the rain and my boots are red to the ankle and twice as heavy. The street comes along with me, a handful per step.",
+		"Rain turns the street into a red paste that grips every boot. I'm walking taller by a finger and heavier by a pound.",
+	},
+	["org.weather_change.w21.rainfall.006"] = {
+		"sees two orc youngsters stamp through a red puddle until a grunt bellows at them, and then, when they've gone, give it one stamp himself.",
+		"spots a pair of young trolls leaping from puddle to puddle in the rain, shrieking, while an older one tries very hard not to want to join them.",
+	},
+	["org.weather_change.w21.rainfall.007"] = {
+		"Rain over Orgrimmar feels like a guest who arrived at the wrong house. Everyone is polite to it, and nobody knows where to put it.",
+		"The rain has come to a city with no gutters worth the name, and it wanders the streets looking for somewhere to go.",
+		"This canyon was never built for rain. The water goes from door to door like a stranger asking directions.",
+	},
+	["org.weather_change.w21.rainfall.008"] = {
+		"follows a thread of rainwater as it finds its way down the ramps and steps of the city, gathering others, until a small red stream runs along the wall.",
+		"keeps an eye on the rain running off the walkways and down the ramps in rusty threads, braiding together at the foot of the wall into one hurrying stream.",
+	},
+	["org.weather_change.w21.rainfall.009"] = {
+		"It's raining in Orgrimmar. Somebody write down the date.",
+		"Rain! Mark the day; the elders will be arguing about it for years.",
+		"Rain, in Orgrimmar. Nobody will believe this tomorrow.",
+	},
+	["org.weather_change.w21.rainfall.010"] = {
+		"A tauren stands in the open with the rain running off both horns, eyes closed, as still as a post. I think it's the happiest thing I've seen in this city.",
+		"There's a tauren in the middle of the street letting the rain soak right through the fur, not moving a hair. Whatever that is, I envy it.",
+		"One tauren, out in the rain on purpose, face turned up and perfectly content. Everyone else is running; only the tauren arrived.",
+	},
+	["org.weather_change.w21.rainfall.011"] = {
+		"jumps at the clang of a cook slamming an iron lid over a brazier as the rain comes on, the coals underneath grumbling and spitting like an animal shut in a box.",
+		"hears every open fire along the street hiss at the rain, and the cooks scramble to throw hides over the coals.",
+	},
+	["org.weather_change.w21.rainfall.012"] = {
+		"Rain on the ramps, and suddenly the toughest grunts in the city walk like calves on a wet plank.",
+		"Wet stone is the one enemy the grunts never trained for. I've just watched two of them go down a ramp on their backsides, with great dignity.",
+		"Every warrior in Orgrimmar can hold a line against a charge. Not one of them can hold a wet ramp.",
+	},
+	["org.weather_change.w21.rainfall.013"] = {
+		"listens to the rain on the hide roofs of the city, a soft, close sound, like fingers tapping on a table in another room.",
+		"pauses beneath an overhang to hear the rain on the stretched hides above, a dull patter that makes the whole city oddly quiet.",
+	},
+	["org.weather_change.w21.rainfall.014"] = {
+		"An old peon under the awning beside me swears this is the third rain he's seen in Orgrimmar, and that the first two were better. Nobody argues.",
+		"The peon sheltering next to me insists he remembers every rain since the city was built, and ranks this one somewhere in the middle.",
+	},
+	["org.weather_change.w21.rainfall.015"] = {
+		"jumps back as a wolf trots in out of the rain and shakes itself from nose to tail, spraying everyone within reach with red water.",
+		"gets a faceful of muddy water from a soaked wolf shaking itself dry close by, and an apologetic shrug from its rider.",
+		"ends up speckled red from head to foot when a rain-soaked wolf decides, right there, that it has been wet long enough.",
+	},
+	["org.weather_change.w21.rainfall.016"] = {
+		"Mind the steps, they're slick as soap.",
+		"Watch your feet. Rain on this stone is worse than an ambush.",
+		"Careful on the ramps. This rock turns treacherous the moment it's wet.",
+	},
+	["org.weather_change.w21.rainfall.017"] = {
+		"The rain darkens the canyon walls from the top down, slow as a dye working into a hide.",
+		"The walls drink the rain and go darker from the rim downward, like cloth dipped in a vat.",
+	},
+	["org.weather_change.w21.rainfall.018"] = {
+		"sees a troll unknot her hair and let the rain run through it, combing it out with her fingers and humming.",
+		"glimpses a troll woman tipping her head back to comb the rain through her long hair with her fingers, beads clicking, utterly unhurried.",
+	},
+	["org.weather_change.w21.rainfall.019"] = {
+		"An old orc under the eaves watches the rain with no pleasure at all. The camps were in a wet country, the grunts say; some have not forgiven the weather.",
+		"Not everyone is glad of the rain. The older orcs watch it like an old creditor; the camps, the grunts say, were a wet and gray place.",
+	},
+	["org.weather_change.w21.rainfall.020"] = {
+		"catches sight of a goblin throwing himself bodily over a crate marked with a skull as the rain begins, shouting for somebody, anybody, to bring a tarp.",
+		"laughs at a goblin racing the rain to a stack of little kegs, arms spread over as many as he can cover, yelling about blasting powder to nobody in particular.",
+		"grins as a goblin sprawls across his crates of powder in the rain, using his whole body for a lid and his whole voice for complaints.",
+	},
+	["org.weather_change.w21.rainfall.021"] = {
+		"Rain does what no grunt can: it makes Orgrimmar lower its voice. For a while the loudest thing in the city is the water.",
+		"The whole city talks more quietly in the rain, as if it had been told off. I didn't know it could.",
+		"Under the rain, Orgrimmar speaks in a mutter. It suits the place better than I'd have guessed.",
+	},
+	["org.weather_change.w21.rainfall.022"] = {
+		"squints up into the rain and sees the sun still shining at one end of the canyon, the drops coming down lit like sparks.",
+		"stands still as the rain falls through a band of sunlight over the walls, every drop a bright spark for an instant before it hits the red stone.",
+		"turns toward the light: sun and rain together over the canyon, and the falling water glints like thrown sparks.",
+	},
+	["org.weather_change.w21.rainfall.023"] = {
+		"Rain in the night over Orgrimmar. The torches hiss and lean, and the streets shine red and black like a wet forge.",
+		"Night rain. Every torch along the wall wears a little crown of steam.",
+	},
+	["org.weather_change.w21.rainfall.024"] = {
+		"Someone go and tell the shamans. They'll want the credit for this rain.",
+		"Rain! Ten silver says a shaman somewhere is already taking credit.",
+	},
+	["org.weather_change.w21.rainfall.025"] = {
+		"notices that the grunts at their posts stay exactly where they are in the rain, water running off their shoulder plates in two neat streams.",
+		"takes in the city's sentries holding their places in the rain as though it were falling on someone else.",
+	},
+	["org.weather_change.w21.rainfall.026"] = {
+		"Every door in the city swells in the rain. All down the street I can hear people shouldering them open and swearing at the wood.",
+		"Rain gets into the timbers, and suddenly no door in Orgrimmar wants to shut. The sound of the city becomes kicking.",
+	},
+	["org.weather_change.w21.rainfall.027"] = {
+		"Put your hand out. Go on. When did you last feel rain in this canyon?",
+		"Stand out in it a moment. You won't get many chances here.",
+		"Hold a hand out. Rain, here. You'll want to remember that.",
+	},
+	["org.weather_change.w21.thunder.001"] = {
+		"sees lightning flicker over the rim and counts slowly until the thunder answers, the way children everywhere learn to.",
+		"counts between the flash over the canyon and the crack that follows, and gets to four before the stone shakes.",
+		"mouths the numbers silently after each flash of the storm, and the thunder cuts in a little sooner every time.",
+	},
+	["org.weather_change.w21.thunder.002"] = {
+		"Thunder, and somewhere in the city every wolf answers it at once. The storm doesn't seem impressed; I am.",
+		"The wolves of Orgrimmar howl back at the thunder as if it were a rival pack on the ridge. I almost hope it answers.",
+		"Every wolf in Orgrimmar has an opinion about the thunder, and they're all giving it at once.",
+	},
+	["org.weather_change.w21.thunder.003"] = {
+		"notices a shaman step out into the open as the storm breaks, face lifted, listening hard, as if the thunder were a voice with something to say.",
+		"sees an old shaman come out of a doorway toward the storm rather than away from it, standing still with eyes closed while everyone else runs.",
+	},
+	["org.weather_change.w21.thunder.004"] = {
+		"Nobody on the walkways. The sky's throwing things.",
+		"Off the high ground, all of you. The sky's picking targets.",
+		"Get down from up there! This storm is looking for something tall.",
+	},
+	["org.weather_change.w21.thunder.005"] = {
+		"Each crack of thunder shakes a little dust out of the beams and sets the cups on the shelves chattering, as if the whole city had a fever.",
+		"The thunder gets into the stone itself. Cups rattle on their hooks, a loose shutter trembles, and grit sifts down from the rafters.",
+		"When the thunder lands, everything in the city that can rattle does: cups, shutters, chains, the pegs in the walls.",
+	},
+	["org.weather_change.w21.thunder.006"] = {
+		"catches a line of peons hauling timber as they stop dead at the first thunderclap, look at their foreman, and get a roar louder than the sky for their trouble.",
+		"sees a work gang flinch together at a crack of thunder and then hurry on twice as fast, their overseer bellowing louder than the storm.",
+	},
+	["org.weather_change.w21.thunder.007"] = {
+		"In each flash the whole city appears at once, every person in it caught mid-step, and then the gloom folds it away before I've finished looking.",
+		"Lightning, and for an instant Orgrimmar is a painting: a grunt with his mouth open, a peon with a sack half-lifted, a troll frozen on a ramp.",
+		"The storm shows me the city in pieces, one white flash per piece, and never long enough to see any of them twice.",
+	},
+	["org.weather_change.w21.thunder.008"] = {
+		"looks up at the flight tower, where the handlers are hauling hard on the tethers while the beasts shriek and beat their wings at each roll of thunder.",
+		"winces as the beasts on the flight tower rear and screech at the thunder, their handlers hanging off the tethers with all their weight.",
+	},
+	["org.weather_change.w21.thunder.009"] = {
+		"The goblins have covered every machine in the street and are standing well back from all of them. That tells me more about this storm than the thunder does.",
+		"Every goblin in sight has thrown a hide over his gadgets and stepped away. When goblins get careful in a storm, I get careful too.",
+		"If the goblins are hiding from their own machines in this storm, I'm keeping well away from them as well.",
+	},
+	["org.weather_change.w21.thunder.010"] = {
+		"jumps back as a gust of the storm catches a brazier and sends a fan of embers skittering across the street, where three people stamp on them at once.",
+		"treads on a stray ember the storm has torn loose from a brazier, and sees others rolling down the street like lit beads, chased by stamping boots.",
+		"skips aside from a scatter of coals the storm wind has flung out of a brazier, while half the street dances on them to put them out.",
+	},
+	["org.weather_change.w21.thunder.011"] = {
+		"That one was close. I felt it in my teeth.",
+		"Close one. My teeth are still humming.",
+		"Thunder that near, you feel it in your jaw.",
+	},
+	["org.weather_change.w21.thunder.012"] = {
+		"The trolls in the street don't hurry. One tells me the loa are only arguing, and that it's rude to run from other people's arguments.",
+		"A Darkspear woman under the eaves laughs at the thunder. The loa are quarreling, she says, and it's bad manners to leave in the middle.",
+		"No troll in sight is running from the storm. The loa are only shouting at each other, one says, shrugging.",
+	},
+	["org.weather_change.w21.thunder.013"] = {
+		"hears a hide door flap and crack in the storm until someone inside gives up and simply sits against it, a broad back pressing it shut.",
+		"keeps an eye on a doorway's hide curtain bellying and slapping in the storm, until an arm reaches out, grabs the edge, and holds it down by force.",
+	},
+	["org.weather_change.w21.thunder.014"] = {
+		"The air before each strike smells sharp and wrong, like iron fresh off the grindstone. Then the thunder, and the smell is gone.",
+		"There's a smell in this storm I can't place: hot metal, or a struck flint, hanging in the air between the flashes.",
+		"Between flashes the storm leaves a tang in the air, like a hot anvil doused, and I can't stop noticing it.",
+	},
+	["org.weather_change.w21.thunder.015"] = {
+		"stands in the open a moment as the storm rolls over the canyon, and feels each thunderclap come up through the soles of {g:his|her} boots from the rock below.",
+		"feels the thunder arrive twice: once in the ears, and a moment later through the stone underfoot, as if the canyon were repeating it.",
+		"lingers out in the storm long enough to feel the canyon floor shiver under each crack, the rock taking the blow and passing it on.",
+	},
+	["org.weather_change.w21.thunder.016"] = {
+		"Thunder like that, and somewhere on the Drag somebody's still haggling. I love this city.",
+		"Listen: the sky splitting overhead, and a merchant somewhere who hasn't stopped bargaining.",
+	},
+	["org.weather_change.w21.thunder.017"] = {
+		"looks up as lightning splits the night over the rim, and for one white instant every torch in the city looks like nothing at all.",
+		"glimpses the night above the canyon torn open by lightning, and the torches on the walls going faint and yellow in the glare.",
+		"blinks as the storm throws a bolt across the night sky, and the dark city springs out of nowhere and is gone again before it can be seen properly.",
+	},
+	["org.weather_change.w21.thunder.018"] = {
+		"The storm turns the day as dark as a cellar, and the city lights its lamps at an hour when no one should need them.",
+		"Thunderheads over the canyon, and the daylight goes the color of a bruise. Lamps flicker on in doorways all down the street.",
+	},
+	["org.weather_change.w21.thunder.019"] = {
+		"makes way for a rider dragging a balking wolf by the scruff toward cover, the beast's ears flat and its tail clamped, every bit of its courage left behind at the first crack.",
+		"pities a wolf that refuses to go one step further into the storm, all four legs braced, while its rider pleads with it in a voice not meant for other ears.",
+	},
+	["org.weather_change.w21.thunder.020"] = {
+		"A bolt lands somewhere up on the rim and a few stones come rattling down the canyon wall. Everyone below takes one step back from it, then carries on.",
+		"Lightning on the rim, close. A trickle of loose stones skitters down the cliff, and the whole street takes a single step away from the wall.",
+	},
+	["org.weather_change.w21.thunder.021"] = {
+		"notes a grunt on watch planting his feet and leaning into the storm wind at his post, his cloak streaming straight out behind him.",
+		"spots a grunt at his post wedge the butt of his spear between two stones and hold on to it through the gusts, his face as calm as if nothing were blowing.",
+		"admires a sentry braced against the storm like a post driven into the ground, cloak snapping, eyes never leaving the street.",
+	},
+	["org.weather_change.w21.thunder.022"] = {
+		"An old grunt beside me mutters that thunder sounds like the catapults of the war. Then he says nothing else at all.",
+		"The older orcs in the street go still when the thunder comes. One mutters a word I don't catch; it sounds like the name of a battle.",
+	},
+	["org.weather_change.w21.thunder.023"] = {
+		"Find a roof. This storm isn't bluffing.",
+		"Get under something solid. That sky means every word.",
+		"Inside, quick. The storm's done with warnings.",
+	},
+	["org.weather_change.w21.thunder.024"] = {
+		"hears a tauren somewhere close humming low along with the thunder, the two sounds so alike it is hard to tell where one ends.",
+		"picks out, under the storm, a deep tauren voice humming in time with the thunder, as if keeping it company.",
+	},
+	["org.weather_change.w21.thunder.025"] = {
+		"For once, Orgrimmar isn't the loudest thing in the canyon. It seems to know it, too; the whole city has gone a little sulky.",
+		"The storm outshouts the city. I didn't think anything could, and Orgrimmar looks as surprised as I am.",
+		"Thunder has the last word over Orgrimmar, and the city plainly hates it.",
+	},
+	["org.weather_change.w21.thunder.026"] = {
+		"watches a stallholder give up on his awning and cut the cords, and the storm carries the hide off down the street like a great flapping bird while everyone ducks.",
+		"ducks as a loose awning tears free in the storm and goes tumbling down the street, its owner chasing after it with both arms out.",
+	},
 ]==])

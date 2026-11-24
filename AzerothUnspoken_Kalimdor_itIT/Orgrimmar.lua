@@ -8868,4 +8868,5458 @@ AU:RegisterRegionalTexts("durotar", "itIT", "kalimdor_orgrimmar", [==[
 		"Le torce lungo il canyon sono accese e la città lavora ancora, carri e martelli e voci nel buio. Ho appena aggiunto la mia piccola parte al turno di notte.",
 		"Lanterne su ogni soglia, e Orgrimmar che non dorme. Da qualche parte in tutto quel chiarore c'è quel poco che ho appena finito.",
 	},
+	["org.dawn.w21.daybreak.001"] = {
+		"guarda gli uccelli spazzini sul bordo del canyon aprire le ali all'alba, come per stenderle ad asciugare.",
+		"vede una fila di avvoltoi lungo il bordo allargare le ali all'alba e tenerle così, pazienti come panni stesi.",
+		"nota i grossi uccelli sulle sporgenze alte spiegare le ali verso la prima luce e restare lì ad aspettare, come vecchi soldati che si scaldano.",
+	},
+	["org.dawn.w21.daybreak.002"] = {
+		"Per qualche minuto, all'alba, la pietra rossa diventa quasi rosa. Nessuno a Orgrimmar ammetterà mai di averlo notato.",
+		"L'alba tinge tutto il canyon del colore di un petalo di rosa. Non lo direi a un grunt.",
+		"All'alba le mura sono rosa. Rosa. Me lo tengo per me: questa città ha una reputazione da difendere.",
+	},
+	["org.dawn.w21.daybreak.003"] = {
+		"scansa un peone che all'alba svuota i bracieri dell'ultimo turno di guardia, la cenere fredda che scivola nel secchio con un fruscio secco.",
+		"osserva i peoni passare da un braciere all'altro nel grigio dell'alba, togliendo le braci spente e preparando legna nuova per dopo.",
+		"passa accanto a un peone su una scala che all'alba batte via la fuliggine da una lanterna a muro col palmo della mano, e starnutisce.",
+	},
+	["org.dawn.w21.daybreak.004"] = {
+		"Già l'alba? I peoni hanno fatto mezza giornata di lavoro e io non ho ancora trovato gli stivali.",
+		"In piedi all'alba, a Orgrimmar. Che vuol dire in piedi dopo i peoni, i fabbri e i lupi.",
+		"Alba. In questa città c'è già qualcuno più indaffarato di me, e vorrei che la smettesse.",
+	},
+	["org.dawn.w21.daybreak.005"] = {
+		"All'alba i suoni della città tornano in ordine: barili d'acqua fatti rotolare sulla pietra, un colpo di tosse, una porta, e poi la prima lite.",
+		"A Orgrimmar l'alba si sente prima di vederla: un barile spinto sulla pietra, un'imposta spalancata, una voce che già si lamenta.",
+		"Prima che la luce arrivi quaggiù, l'alba è un rumore: secchi, cardini, l'asse di un carro che implora grasso, la prima opinione ad alta voce di qualcuno.",
+	},
+	["org.dawn.w21.daybreak.006"] = {
+		"Le vedette sulle sporgenze più alte hanno l'alba prima di chiunque altro in città. Da come stanno lassù, lo sanno.",
+		"L'alba tocca per prime le postazioni alte. I grunt lassù sono illuminati come statue mentre le strade sono ancora grigie, e restano immobili, come per non sprecarla.",
+		"In cima alle mura le sentinelle sono già dorate d'alba. Quaggiù è ancora grigio, e più freddo, e nessuno ha fretta di raggiungerle.",
+	},
+	["org.dawn.w21.daybreak.007"] = {
+		"si ferma dove l'alba scende di sbieco lungo una strada, e ogni granello di polvere diventa una scintilla.",
+		"guarda il primo raggio dell'alba riempire una strada di pulviscolo, i residui del via vai di ieri ancora sospesi nell'aria.",
+		"segue con lo sguardo un fascio d'alba giù per un vicolo, dove la polvere fine della città resta sospesa, accesa, a girare.",
+	},
+	["org.dawn.w21.daybreak.008"] = {
+		"Alba. La città non si sveglia, più che altro cambia turno: le squadre tardive se ne vanno trascinando i piedi, quelle fresche arrivano pestandoli, e nessuno si ferma in mezzo.",
+		"A Orgrimmar l'alba è un passaggio di consegne, non un risveglio. Gli stanchi vanno da una parte, i freschi dall'altra, e il lavoro non si posa mai.",
+	},
+	["org.dawn.w21.daybreak.009"] = {
+		"sente, da qualche parte verso la Valley of Spirits, una voce bassa che saluta l'alba con un ritmo più antico delle mura che la circondano.",
+		"coglie un canto lento che arriva dalla direzione della Valley of Spirits mentre sorge l'alba, e sale e scende come chi si culla.",
+		"resta ad ascoltare una voce sola, da qualche parte nel quartiere dei troll, che accoglie l'alba con un canto senza fretta.",
+	},
+	["org.dawn.w21.daybreak.010"] = {
+		"Guarda che luce sulle mura. A quest'ora perfino i grunt sembrano cordiali.",
+		"Prima luce sul canyon. È il momento in cui la città è più bella, e quello che dura meno.",
+		"L'alba sulle mura. Godetevela: fra un'ora farà solo caldo.",
+	},
+	["org.dawn.w21.daybreak.011"] = {
+		"All'alba l'odore della città si rigira: esce la cenere fredda, entra il primo grasso sulle piastre, e c'è chi brucia la pappa d'avena.",
+		"Qui l'alba ha un odore: pietra bagnata dove i portatori d'acqua hanno fatto traboccare i secchi, e la prima carne del giorno che già sfrigola.",
+	},
+	["org.dusk.w21.dimming.001"] = {
+		"guarda il cielo sopra il bordo del canyon prendere il colore del ferro che si raffredda sull'incudine: arancio, poi rosso cupo, poi un grigio che sembra ancora caldo al tatto.",
+		"vede il cielo del tramonto sopra il canyon spegnersi come si spegne il ferro lavorato, dall'arancio acceso a un rosso imbronciato, poi a qualcosa di più scuro.",
+		"alza gli occhi mentre il crepuscolo passa in rassegna i colori di un fabbro, uno dopo l'altro, ognuno più spento del precedente.",
+	},
+	["org.dusk.w21.dimming.002"] = {
+		"Al tramonto perfino un goblin proietta un'ombra degna di rispetto. E lo sanno: guardali come si pavoneggiano.",
+		"Le ombre lunghe del tramonto lusingano tutti. Quella di un goblin arriva a metà strada, e il padrone cammina come se se ne fosse accorto.",
+		"Col crepuscolo i piccoli della città si prendono la loro vendetta: ogni ombra allungata fino alla taglia di un ogre.",
+	},
+	["org.dusk.w21.dimming.003"] = {
+		"nota le prime falene del crepuscolo trovare le lanterne e girarci intorno con l'ostinazione dei clienti in ritardo a una bancarella che chiude.",
+		"scaccia una falena attirata dalle lanterne del tramonto, poi un'altra, e alla terza si arrende.",
+		"vede le falene radunarsi attorno a una lanterna mentre il crepuscolo si posa, come se tutti gli insetti della città si fossero dati appuntamento.",
+	},
+	["org.dusk.w21.dimming.004"] = {
+		"Al tramonto la città cambia odore: meno ferro rovente, più frittura; meno lavoro, più cena.",
+		"Crepuscolo, e l'aria passa dalla forgia alla cucina. Da qualche parte cento pentole vanno sul fuoco tutte insieme, e tutte vogliono aglio.",
+		"Il tramonto, qui, si annusa prima di vederlo. Il metallo sparisce dall'aria e le pentole di stufato prendono il sopravvento.",
+	},
+	["org.dusk.w21.dimming.005"] = {
+		"guarda una carovana in ritardo entrare di fretta nel crepuscolo, i conducenti che incitano i kodo come se il buio li mordesse ai talloni.",
+		"si fa da parte per una fila di kodo che arranca dentro al tramonto, i conducenti in ansia di trovarsi entro le mura prima che la luce se ne vada.",
+		"vede gli ultimi mercanti della giornata arrivare col crepuscolo alle spalle, impolverati fino alle sopracciglia e a litigare su chi li abbia fatti tardare.",
+	},
+	["org.dusk.w21.dimming.006"] = {
+		"Il crepuscolo è la rivincita del Cleft of Shadow. Per tutto il giorno il resto della città è più luminoso; per un'ora, scende tutto al livello del Cleft.",
+		"Mentre cala il tramonto, tutta la città comincia a somigliare un po' al Cleft of Shadow. Sospetto che al Cleft faccia piacere.",
+		"Al crepuscolo il Cleft of Shadow smette di essere l'angolo buio di Orgrimmar. Adesso l'angolo buio è dappertutto.",
+	},
+	["org.dusk.w21.dimming.007"] = {
+		"sente fibbie e cinghie tirate strette nei corpi di guardia mentre arriva il tramonto: la ronda notturna che si veste, malvolentieri.",
+		"passa accanto a un posto di guardia al tramonto proprio mentre il turno di notte si infila l'equipaggiamento, un grunt che mastica ancora la cena con l'elmo messo a metà.",
+		"coglie il tintinnio di una cotta di maglia dalla porta di un corpo di guardia mentre scende il crepuscolo, e qualcuno dentro che si lamenta perché si è ristretta.",
+	},
+	["org.dusk.w21.dimming.008"] = {
+		"La luce se ne va. Qualunque cosa volessi comprare, la comprerò domani da un bugiardo più economico.",
+		"Tramonto. I mercanti stanno chiudendo e io ho finalmente deciso cosa voglio. Tipico.",
+		"Scende il crepuscolo, e d'un tratto ogni grunt sembra alto il doppio. Vado a mettermi vicino a uno.",
+	},
+	["org.dusk.w21.dimming.009"] = {
+		"Il tramonto lascia per ultima la torre di volo. Per un po' resta illuminata sopra una città già in ombra, come un dito alzato per fare un'ultima domanda.",
+		"Tutto quaggiù si è oscurato, ma la cima della torre di volo trattiene ancora un po' di luce del tramonto, come se le avessero ordinato di custodirla.",
+		"La torre nella Valley of Strength tiene la luce più a lungo. Quando anche la cima diventa grigia, il crepuscolo è finito e la notte si prende la città.",
+	},
+	["org.dusk.w21.dimming.010"] = {
+		"fa strada a una fila di peoni che staccano dal lavoro al tramonto, gli attrezzi in spalla, troppo stanchi perfino per brontolare.",
+		"guarda i peoni allontanarsi dal lavoro nel crepuscolo, ognuno con un piccone o un sacco e lo stesso sguardo perso.",
+		"si scansa mentre i peoni smontano dal turno nel crepuscolo, uno così stanco che due compagni lo guidano per i gomiti.",
+	},
+	["org.farewell.w21.parting.001"] = {
+		"Io vado. Se la fila della banca si è accorciata, prendilo come un segno.",
+		"È ora che vada. I banditori non possono imbrogliarmi se non ci sono.",
+		"Me ne vado. Da qualche parte nel Drag c'è un prezzo che porta il mio nome.",
+	},
+	["org.farewell.w21.parting.002"] = {
+		"Va' con forza, e torna allo stesso modo.",
+		"Addio. Che la città ricordi il tuo nome per le ragioni giuste.",
+		"Quando lasci il canyon, cammina a testa alta; e così quando ci ritorni.",
+	},
+	["org.farewell.w21.parting.003"] = {
+		"Addio. Tu non mi hai {g:visto|vista} alla casa d'aste, e io non ti ho visto comprare quel cappello.",
+		"Ciao. Non dire al goblin della banca da che parte vado.",
+	},
+	["org.farewell.w21.parting.004"] = {
+		"Abbi cura di te. Una città così grande dimentica la gente: io cercherò di non farlo.",
+		"Buon cammino. In tutta questa folla, terrò d'occhio la tua faccia.",
+		"Alla prossima. A Orgrimmar ci sono mille facce, e io ne cercherò una.",
+	},
+	["org.farewell.w21.parting.005"] = {
+		"Io sparisco. Occhio ai gradini della locanda.",
+		"Vai pure. E non inciampare in un peon per strada.",
+		"Ci si vede dalle parti della Valley of Strength. Prima o poi ci passano tutti.",
+	},
+	["org.farewell.w21.parting.006"] = {
+		"Forza e onore. L'Orda bada alle mura finché non torni.",
+		"Lok'tar ogar. Torna a casa, fra queste mura.",
+		"Va' con l'Orda alle spalle, e con Orgrimmar davanti quando prendi la via di casa.",
+	},
+	["org.farewell.w21.parting.007"] = {
+		"Addio. Vado a cercare un angolo di questa città dove nessuno vende niente. Augurami buona fortuna.",
+		"Arrivederci. Vado a sedermi in un posto tranquillo, se a Orgrimmar ne esiste uno.",
+		"Me la svigno. Se trovo silenzio da qualche parte in queste valli, me lo tengo stretto.",
+	},
+	["org.farewell.w21.parting.008"] = {
+		"Che le pareti del canyon stiano fra te e ogni male.",
+		"Addio. Che la pietra di questa città ricordi con benevolenza il tuo passo.",
+	},
+	["org.farewell.w21.parting.009"] = {
+		"Prima di uscire, riempi l'otre: Durotar non lo farà per te.",
+		"Buona strada. Se vai agli zeppelin, non sederti vicino al goblin con la tosse.",
+		"Prendi la strada per Razor Hill? Occhio agli scorpioni sul ciglio. Addio.",
+	},
+	["org.farewell.w21.parting.010"] = {
+		"Addio. Troppi sono usciti dalla porta di Orgrimmar senza più tornarci. Tu sii fra quelli che tornano.",
+		"Sii prudente. Questa città ha già detto addio a troppa gente per sprecarne uno con te.",
+	},
+	["org.farewell.w21.parting.011"] = {
+		"Sparisci, prima che qualcuno provi a venderci una sella da lupo a tutti e due.",
+		"Su, vai. Io resto qui, a mercanteggiare per una cinghia che non mi serve.",
+	},
+	["org.farewell.w21.parting.012"] = {
+		"Addio. I Darkspear dicono che un congedo è solo la strada lunga verso il prossimo fuoco.",
+		"Stammi bene. Una troll vicino alla pozza nella Valley of Spirits mi ha detto che gli addii sono solo giri larghi. Spero abbia ragione.",
+	},
+	["org.farewell.w21.parting.013"] = {
+		"Va', e che il mondo veda cosa esce da Orgrimmar.",
+		"Addio. Ovunque tu vada, portati come chi ha messo piede in questa città.",
+		"Fila. Dagli qualcosa di cui parlare, là fuori.",
+	},
+	["org.farewell.w21.parting.014"] = {
+		"Arrivederci. La strada per uscire la trovo da me: in silenzio, e prima che i grunt cambino idea.",
+		"Addio. Se mi vedi correre, ho solo fretta. Davvero.",
+	},
+	["org.farewell.w21.parting.015"] = {
+		"A più tardi. E se torni prima di me, tienimi il posto nella fila della banca.",
+		"Addio. Chi arriva prima alla locanda paga il primo giro. Da adesso la regola è questa.",
+	},
+	["org.farewell.w21.parting.016"] = {
+		"Parti con la borsa piena e gli stivali sani.",
+		"Che lo zaino sia più leggero al ritorno, e la borsa più pesante.",
+		"Fa' buon viaggio, con gli otri pieni e lo zaino leggero.",
+	},
+	["org.farewell.w21.parting.017"] = {
+		"Addio. Quello che ci siamo detti resta dentro queste mura.",
+		"Va'. Le nostre parole restano a Orgrimmar, insieme al resto dei suoi segreti.",
+	},
+	["org.farewell.w21.parting.018"] = {
+		"Ciao. Ti accompagnerei fuori, ma al ritorno mi perderei nel Drag.",
+		"Addio. Verrei con te, ma io e la banca abbiamo un conto in sospeso.",
+	},
+	["org.farewell.w21.sendoff.001"] = {
+		"Vai, vai. Alla folla manca un gomito, senza di te.",
+		"Muoviti, che la città ha commissioni per tutti e le tue ti aspettano.",
+	},
+	["org.farewell.w21.sendoff.002"] = {
+		"Addio, e che ogni grunt che incontri ti saluti invece di perquisirti.",
+		"Va' con la mia buona parola. A Orgrimmar vale qualcosa, anche se poco.",
+	},
+	["org.farewell.w21.sendoff.003"] = {
+		"Abbi cura di te. Mangia qualcosa di caldo, dormi in un posto con una porta.",
+		"Stammi bene. Trova una locanda, togliti gli stivali e lascia che la città vada avanti senza di te.",
+		"Va' a riposare. Qualunque cosa tu stia inseguendo, sarà ancora a Orgrimmar al tuo risveglio.",
+	},
+	["org.farewell.w21.sendoff.004"] = {
+		"Addio. Cerca di non comprare niente strada facendo: te ne pentiresti di tutto.",
+		"Ciao, e passa in fretta dal Drag. Fiuta la debolezza e le borse piene.",
+	},
+	["org.farewell.w21.sendoff.005"] = {
+		"Che il fumo della città sia l'ultima cosa che perdi di vista e la prima che rivedi tornando.",
+		"Addio. Quando ti volti dalla strada, cerca il fumo sopra il canyon: sarà lì ad aspettarti.",
+		"Che tu possa rivedere presto il fumo sopra queste mura.",
+	},
+	["org.farewell.w21.sendoff.006"] = {
+		"Prudenza. E controlla lo zaino prima di partire: la città ha le dita svelte.",
+		"Addio. Conta le monete quando sei fuori dalla calca. E poi contale due volte.",
+	},
+	["org.farewell.w21.sendoff.007"] = {
+		"Buon cammino. E lo dico sul serio, cosa rara in questa città.",
+		"Addio. Torna senza pezzi mancanti.",
+		"Alla prossima. Non lasciare che il mondo ti consumi fino alla misura di una moneta.",
+	},
+	["org.farewell.w21.sendoff.008"] = {
+		"Ciao. Se un goblin ti chiama «amico», allunga il passo.",
+		"Addio. Un cenno ai grunt, nessuno ai venditori, e andrà tutto bene.",
+	},
+	["org.farewell.w21.sendoff.009"] = {
+		"Gli sciamani della Valley of Wisdom dicono che gli antenati percorrono ogni strada che esce da questa città. Va' con loro.",
+		"Va' in pace. Gli anziani degli orchi dicono che gli spiriti tengono il conto di chi parte: che ti contino due volte.",
+	},
+	["org.farewell.w21.sendoff.010"] = {
+		"Buon viaggio. Se prendi il volo, non guardare giù finché la città non è sparita.",
+		"Addio. In volo, tieniti forte dopo la torre: alle bestie piace fare scena.",
+	},
+	["org.farewell.w21.sendoff.011"] = {
+		"Addio. Questa parte non mi riesce mai bene, quindi lo dico una volta e me ne vado.",
+		"Arrivederci. Gli addii in mezzo alla folla sono più facili: nessuno nota chi resta lì fermo a guardare.",
+	},
+	["org.farewell.w21.sendoff.012"] = {
+		"Addio. Se vai giù a Ragefire Chasm, porta un amico e lascia a casa gli stivali buoni.",
+		"Arrivederci. Se le tue faccende ti portano sotto il Cleft of Shadow, torna su con un odore migliore di quello che c'è laggiù.",
+	},
+	["org.farewell.w21.sendoff.013"] = {
+		"Buona fortuna là fuori. La strada verso sud è lunga e le locande sono poche.",
+		"Strade buone. Crossroads è più lontano di quanto ti dicano tutti.",
+		"Buona strada, ovunque tu vada. Scrivimi se trovi qualcosa che valga la pena comprare.",
+	},
+	["org.farewell.w21.sendoff.014"] = {
+		"Addio. Che le tue commissioni siano poche e i tuoi ritorni molti.",
+		"Che tu lasci Orgrimmar senza debiti, e ci torni con dei crediti.",
+	},
+	["org.farewell.w21.sendoff.015"] = {
+		"Vai avanti. Io resto un momento a guardare la folla che riempie il posto che hai lasciato.",
+		"Allora vai. La città richiude i vuoti così in fretta: io mi ricorderò dove stavi.",
+	},
+	["org.farewell.w21.sendoff.016"] = {
+		"Va' e fai qualcosa che valga la pena raccontare nella Hall of Legends.",
+		"Addio. Riporta una storia degna della Valley of Honor.",
+		"Torna con racconti che i grunt ruberanno per spacciarli come propri.",
+	},
+	["org.farewell.w21.sendoff.017"] = {
+		"Va' piano, e ancora più piano vicino ai peon.",
+		"Occhio a dove metti i piedi. Mezza Orgrimmar è gradini, e l'altra metà è il lupo di qualcuno.",
+	},
+	["org.farewell.w21.sendoff.018"] = {
+		"Addio. Saluta da parte mia i goblin degli zeppelin: ti faranno pagare anche quello.",
+		"Buon cammino. Se passi dai canili, di' ai lupi che non ho detto niente di male su di loro.",
+	},
+	["org.greet.w21.hail.001"] = {
+		"Salve. Se sei in fila per la banca, c'ero prima io. Se no, salve lo stesso.",
+		"Ehi. Non dirmi che anche tu fai la fila per la banca.",
+		"Ciao. Banca, casa d'aste o locanda? A Orgrimmar tutti stanno andando verso una delle tre.",
+	},
+	["org.greet.w21.hail.002"] = {
+		"Pace a te, finché sei dentro le mura. Fuori, si vedrà.",
+		"Ti saluto. Dentro queste mura un saluto è una promessa, e io la faccio.",
+		"Che i tuoi affari a Orgrimmar vadano dritti, anche se le sue strade non lo fanno.",
+	},
+	["org.greet.w21.hail.003"] = {
+		"Salve! Occhio al peon alle tue spalle: porta più legname che giudizio.",
+		"Fatti a sinistra, che sta passando un peon con una trave e non si ferma per nessuno. Salute.",
+	},
+	["org.greet.w21.hail.004"] = {
+		"Salute! Già girato a vuoto nel Drag? Prima o poi tocca a tutti, almeno una volta a settimana.",
+		"Se cerchi la strada giusta per attraversare il Drag, nessuno l'ha mai trovata due volte uguale. Ciao, comunque.",
+		"Chiedimi indicazioni e io ti indico il Drag e ti auguro buona fortuna. Salve, intanto.",
+	},
+	["org.greet.w21.hail.005"] = {
+		"Salve. Fra tutte le facce di questa folla, la tua si è fermata. Merita un saluto.",
+		"Qualcuno che sta fermo, in una città che non si ferma mai. Questo lo saluto volentieri.",
+	},
+	["org.greet.w21.hail.006"] = {
+		"Salute. Qualunque cosa stiano arrostendo vicino alla locanda, la sto seguendo da un pezzo. Vieni?",
+		"Hai mangiato? Qui vicino qualcuno griglia una cosa che profuma di buona idea.",
+		"Ciao! Non badare a me: sto inseguendo un odore di arrosto per mezza città.",
+	},
+	["org.greet.w21.hail.007"] = {
+		"Throm-ka. Che le mura ti custodiscano e la strada ti riporti fra loro.",
+		"Lok'tar. Dammi la mano, se vuoi, qui fra la gente dell'Orda.",
+		"Ti saluto sotto gli stendardi del Capoguerra. Che sventolino a lungo sopra di te.",
+	},
+	["org.greet.w21.hail.008"] = {
+		"Salve. Sorridi: il grunt di guardia ci tiene d'occhio tutti e due da un po'.",
+		"Tieni la voce cordiale: i grunt di servizio sentono tutto. Salute.",
+		"Ehilà. Tieni le mani dove piacciono alle guardie e andremo d'accordo.",
+	},
+	["org.greet.w21.hail.009"] = {
+		"Salute. Queste mura le ha alzate gente che un tempo, per salutarsi, aveva solo catene.",
+		"A Orgrimmar ogni saluto si ricorda un poco dei campi di prigionia. Anche il mio.",
+	},
+	["org.greet.w21.hail.010"] = {
+		"Salute! Scusa se non ti stringo la mano: in questa ho le ricevute dell'asta, nell'altra i rimpianti.",
+		"Ti farei un cenno, ma porto in braccio tre giorni di spese fatte nel Drag. Salve.",
+		"Prendi il pacco in cima, per favore? Ecco. Adesso posso salutarti come si deve.",
+	},
+	["org.greet.w21.hail.011"] = {
+		"Salute! Schiena dritta: questa città rispetta chi ha spina dorsale.",
+		"Orgrimmar misura tutti da come stanno in piedi. Tu ci stai bene. Salve.",
+		"Spalle indietro: in questo canyon nessuno saluta chi si curva.",
+	},
+	["org.greet.w21.hail.012"] = {
+		"Salve. Se un goblin ti offre un affare, chiedigli che fine ha fatto il mio.",
+		"Hai visto un goblin con una cassa di amuleti di lupo «autentici»? Vorrei scambiarci due parole. Salute, intanto.",
+	},
+	["org.greet.w21.hail.013"] = {
+		"Salve, o la parola che preferisci. In questa città sento sei tipi di saluto al giorno, e li ho imparati tutti male.",
+		"Scegli una lingua. Orgrimmar le parla quasi tutte, forte e tutte insieme. Salute, in ciascuna.",
+		"Qui un saluto arriva in orchesco, in taurahe, in parlata troll e in trattativa goblin. Questo, invece, è soltanto mio.",
+	},
+	["org.greet.w21.hail.014"] = {
+		"Salute. Hai da fare? Qui tutti hanno da fare, quindi sei in buona compagnia.",
+		"Hai l'aria di chi deve essere da qualche parte. Come il resto della città. Salve.",
+		"Fai due passi con me: a Orgrimmar chi sta fermo viene travolto. Ciao.",
+	},
+	["org.greet.w21.hail.015"] = {
+		"Non chiedermi com'è andata all'asta. Chiedimi qualcosa di allegro. Ciao.",
+		"Salute. Se vai dai banditori, fai offerte su tutto tranne la pelle che ho appena perso.",
+	},
+	["org.greet.w21.hail.016"] = {
+		"Pace a te. Sotto tutta questa pietra, la Madre Terra ascolta ancora.",
+		"Cammina piano. Anche Orgrimmar poggia sulla schiena della Madre Terra.",
+		"Salute. Ai miei zoccoli manca l'erba, ma la pietra di questa città è onesta.",
+	},
+	["org.greet.w21.hail.017"] = {
+		"Salve. I grunt della banca fanno ancora un passo indietro quando sorrido. Un progresso, in un certo senso.",
+		"Orgrimmar ha smesso di fissarmi. Quasi mi manca. Salute.",
+		"Niente paura: i conciatori giù nel Drag puzzano più di me. Ti saluto.",
+	},
+	["org.greet.w21.hail.018"] = {
+		"Salve. Vai alla locanda? Di' al locandiere che lo sgabello contro il muro è occupato: è il mio.",
+		"Se passi dalla locanda, tienimi un angolo vicino al fuoco. Salute a te.",
+	},
+	["org.greet.w21.hail.019"] = {
+		"Salve. A volte una città così piena è il posto più solitario che ci sia. Grazie per la sosta.",
+		"Centinaia di persone intorno, e sei la prima persona che mi guarda davvero. Salute.",
+		"In una folla come questa, una sola faccia che risponde vale parecchio. Ti saluto.",
+	},
+	["org.greet.w21.hail.020"] = {
+		"Se qualcuno chiede, diciamo che l'incontro è stato nella Valley of Spirits, non dalle parti del Cleft of Shadow. Suona meglio.",
+		"Salve. A chi chiede racconterò di un posto rispettabile. Non certo il Cleft of Shadow.",
+	},
+	["org.greet.w21.welcome.001"] = {
+		"Vieni più vicino, fuori dal via vai. Ecco, adesso possiamo parlare.",
+		"Spostati con me prima che un cavaliere su un lupo ti scambi per un pezzo di strada. Salve.",
+		"Da questa parte, lontano dai carri. Salute.",
+	},
+	["org.greet.w21.welcome.002"] = {
+		"Ti do il benvenuto, chiunque tu sia e qualunque cosa ti porti a Orgrimmar.",
+		"Il benvenuto a te, nella città del Capoguerra, che tu sia di passaggio o di casa.",
+	},
+	["org.greet.w21.welcome.003"] = {
+		"Salve. Siediti un momento, se trovi un pezzo di muro a cui non si appoggia nessuno.",
+		"Appoggiati a questo palo con me. È un pezzo che regge me.",
+		"Su questa cassa c'è posto, se vuoi riposare i piedi. Ciao.",
+	},
+	["org.greet.w21.welcome.004"] = {
+		"Ecco Orgrimmar: qui tutti hanno un'opinione e un'ascia per sostenerla. Salve!",
+		"Salute! Occhio ai gradini, ai lupi e ai consigli: qui abbondano tutti e tre.",
+	},
+	["org.greet.w21.welcome.005"] = {
+		"Salve. Hai sete? Nell'otre c'è acqua, ed è solo un po' tiepida.",
+		"Ho un frutto di cactus in più, se hai fame. Non chiedermi dove l'ho preso. Salute.",
+		"Un po' di carne secca? È dura abbastanza da risuolarci uno stivale, ma è onesta. Ciao.",
+	},
+	["org.greet.w21.welcome.006"] = {
+		"Il benvenuto fra la gente dell'Orda. Qui le tue spalle sono guardate, come le nostre.",
+		"Salute, e abbassa un poco la guardia. Dentro Orgrimmar l'Orda bada ai suoi.",
+	},
+	["org.greet.w21.welcome.007"] = {
+		"Salve! Se cerchi due parole in pace, la Valley of Spirits è la tua occasione migliore. Mi accompagni?",
+		"Troviamo un posto più tranquillo. La Valley of Wisdom, forse: i tauren abbassano la voce.",
+		"Verso la Valley of Wisdom c'è un angolo più quieto, se preferisci parlare invece di gridare. Salute.",
+	},
+	["org.greet.w21.welcome.008"] = {
+		"Salute! Fa piacere incrociare qualcuno con l'aria di chi non si tira indietro.",
+		"Hai il portamento di chi servirebbe a questa città, sulle mura. Salve.",
+		"C'è del ferro nel modo in cui stai in piedi, e Orgrimmar lo nota. Salve.",
+	},
+	["org.greet.w21.welcome.009"] = {
+		"Salve. Aspetti la posta anche tu? In questa città le lettere viaggiano più in fretta della gente.",
+		"Se vai alla cassetta delle lettere, è quella con la fila di facce che sospirano. Ciao.",
+	},
+	["org.greet.w21.welcome.010"] = {
+		"Salve. Qualunque cosa ti porti addosso, posala per il tempo di un saluto.",
+		"Posa la città per un momento. Sarà ancora lì quando vorrai riprenderla.",
+		"Riposa le spalle. Orgrimmar non scappa mentre lo fai. Salute.",
+	},
+	["org.greet.w21.welcome.011"] = {
+		"Salute. Ti saluterei come un grunt, ma dovrei fare il muso, e ho appena mangiato.",
+		"All'usanza del posto: un cenno, un grugnito e una mano lontana dalle armi. Ecco fatto.",
+	},
+	["org.greet.w21.welcome.012"] = {
+		"Salute. Questa città porta il nome di Doomhammer: il minimo è salutarsi come si deve.",
+		"In una città che porta il nome di Orgrim, un cenno del capo non costa niente. Ecco.",
+		"Ti saluto, sotto il nome di Doomhammer.",
+	},
+	["org.greet.w21.welcome.013"] = {
+		"Salve. Piano, per favore: non a tutti qui fa piacere vedere i miei colori.",
+		"Facciamola breve e cordiale. I grunt mi contano i passi.",
+	},
+	["org.greet.w21.welcome.014"] = {
+		"Salute. Vai da qualche parte o ti lasci portare dalla città? Vanno bene tutte e due.",
+		"Hai una meta? A Orgrimmar conviene fingere di averne una. Salve.",
+		"In giro per affari, o solo a guardare la folla che passa? Non lo dirò a nessuno. Ciao.",
+	},
+	["org.greet.w21.welcome.015"] = {
+		"Zug zug. È il saluto dei peon, e certe volte è tutto quello che riesco a dire.",
+		"Salute. Ho le zanne giuste per sorridere: prendi questo come un sorriso.",
+	},
+	["org.greet.w21.welcome.016"] = {
+		"Salve. Novità da fuori le mura? Qui dentro si parla solo di prezzi e di voci.",
+		"Dimmi qualcosa che non ho già sentito in banca, e ti dovrò un favore. Salute.",
+		"Di cosa si parla là da dove vieni? Qui ancora di chi ha rilanciato su chi. Ciao.",
+	},
+	["org.greet.w21.welcome.017"] = {
+		"Salve. Fa bene dire una parola a qualcuno, in un posto che non aspetta nessuno.",
+		"Una città così ti passa sopra, se la lasci fare. Un saluto la rallenta un poco.",
+	},
+	["org.greet.w21.welcome.018"] = {
+		"Se senti gridare per una cassa sparita, io non so niente e nemmeno tu. Salute.",
+		"Salve! Fai finta di niente. Dietro di me c'è un mercante convinto che gli abbia promesso di comprare qualcosa.",
+	},
+	["org.greet.w21.welcome.019"] = {
+		"Se vai a Grommash Hold, bada alle buone maniere: i Kor'kron non ridono alle battute. Salute.",
+		"Sali a Grommash Hold? Inchinati quando te lo dicono, e non un attimo prima. Salve.",
+	},
+	["org.greet.w21.welcome.020"] = {
+		"Un cenno, e pace a te.",
+		"Salute. Tutto qui: la città ha fretta e io pure, ma questo te lo meritavi.",
+		"Salve, e che il Drag ti faccia buoni prezzi.",
+	},
+	["org.greet.w21.welcome.021"] = {
+		"Non vieni dagli allenamenti nella Valley of Honor, vero? Bene, allora puoi ancora stringere una mano. Salve.",
+		"Stringimi la mano piano: ho perso una discussione con un manichino nella Valley of Honor. Salute.",
+	},
+	["org.greet.w21.welcome.022"] = {
+		"Salute. Ogni volta che passo davanti a Grommash Hold penso a quanto ha pagato Hellscream. Dopo, un saluto pesa meno.",
+		"In una città costruita sul sacrificio di Grom, un semplice saluto non è poco. Ti saluto.",
+	},
+	["org.jest.w21.jest.001"] = {
+		"La fila alla banca è così lenta che ho cominciato a far pagare l'affitto a chi sta dietro di me.",
+		"Sono in fila alla banca da così tanto che quello dietro mi ha chiesto se sono {g:compreso|compresa} nell'edificio.",
+		"Fila lunga alla banca. Se non esco prima che mi si consumino gli stivali, dite all'oste di affittare la mia stanza.",
+	},
+	["org.jest.w21.jest.002"] = {
+		"Chi ha tracciato il Drag l'ha disegnato con la coda di un lupo. Mentre scodinzolava.",
+		"Il Drag non porta da nessuna parte. Semplicemente va. Bella strada, zero ambizioni.",
+		"Ho percorso tutto il Drag per trovarne la fine, e sono {g:sbucato|sbucata} al punto di partenza, con qualche moneta in meno.",
+	},
+	["org.jest.w21.jest.003"] = {
+		"La casa d'aste: vendo basso, compro alto, e la differenza la chiamo istruzione.",
+		"Il mio piano per la casa d'aste è semplice. Vendere a poco, comprare a caro prezzo, lamentarmi alla locanda.",
+		"Ogni banditore di Orgrimmar conosce la mia faccia. Non il nome: la faccia di un cliente su cui si può sempre contare.",
+	},
+	["org.jest.w21.jest.004"] = {
+		"I goblin giurano che i loro zeppelin sono sicurissimi. Lo giurano con i piedi ben piantati per terra.",
+		"Ho chiesto a un goblin quante volte cade lo zeppelin. Una sola volta per zeppelin, mi ha risposto.",
+		"Il biglietto dello zeppelin comprende il viaggio, il panorama e la garanzia personale di un goblin. Io terrei la ricevuta.",
+	},
+	["org.jest.w21.jest.005"] = {
+		"Ogni porta di questa città è fatta su misura d'orco. Chiedete alla fronte di qualunque tauren.",
+		"Da quanto tempo un tauren vive a Orgrimmar lo capisci contando le ammaccature sulle corna. Gli stipiti non perdonano.",
+		"Gli stipiti di qui hanno incontrato più teste di tauren di qualunque grunt.",
+	},
+	["org.jest.w21.jest.006"] = {
+		"Una volta ho salutato un grunt con la mano. L'ha fissata finché non l'ho rimessa via.",
+		"Ho provato a fare una battuta ai Kor'kron. Uno di loro si è segnato qualcosa.",
+	},
+	["org.jest.w21.jest.007"] = {
+		"Ho visto un peon lavorare sodo. Poi lui ha visto che lo guardavo, e lì è finita.",
+		"Vicino alla banca c'è un peon che porta lo stesso tronco da che ho memoria. Con grande cura. Da nessuna parte.",
+		"Il segreto di un peon è sembrare indaffarato appena qualcuno guarda. Da loro ho imparato più che da qualunque maestro.",
+	},
+	["org.jest.w21.jest.008"] = {
+		"Chiedi la strada a tre persone di Orgrimmar e avrai tre valli e un'alzata di spalle.",
+		"Indicazioni a Orgrimmar: su, oltre la cosa con le punte, poi a sinistra alla cosa con le altre punte.",
+		"Ho chiesto a un grunt dov'era la locanda. Ha indicato. Tutta la città.",
+	},
+	["org.jest.w21.jest.009"] = {
+		"Ho pagato ai fabbri di questa città così tanto in riparazioni che dovrebbero intitolarmi un'incudine.",
+		"I fabbri di qui non riparano le armature: le rinegoziano. A ogni visita, qualche moneta in più e qualche ammaccatura in meno.",
+		"L'armaiolo mi ha visto arrivare e ha sorriso. A Orgrimmar è la cosa più spaventosa che un fabbro possa fare.",
+	},
+	["org.jest.w21.jest.010"] = {
+		"Sono {g:sceso|scesa} nel Cleft of Shadow per darmi un'aria misteriosa. Lì erano tutti più bravi di me.",
+		"Tenere il broncio nel Cleft of Shadow è più difficile di quanto sembri: la concorrenza è spietata, e nessuno ammette di provarci.",
+	},
+	["org.jest.w21.jest.011"] = {
+		"Ho chiesto al banchiere di tenere d'occhio i miei risparmi. Ha detto che gli servirebbe un occhio più piccolo.",
+		"Il banchiere ha contato i miei risparmi due volte, poi mi ha chiesto se avevo portato il resto. Non l'avevo portato.",
+		"Nella mia cassetta in banca ci sono più ragnatele che monete, e il banchiere la tratta comunque come quella di un ricco.",
+	},
+	["org.journey.w21.approach.001"] = {
+		"riconosce Orgrimmar molto prima delle mura: una macchia di fumo posata in una piega delle creste, come se la terra tenesse un piccolo fuoco sotto il mantello.",
+		"vede la città prima come una foschia, una sbavatura bruna di fumo sulle creste davanti, e solo dopo la fenditura nella roccia che la contiene.",
+	},
+	["org.journey.w21.approach.002"] = {
+		"Da quassù si vedono i sentieri che la gente prende davvero nella Valley of Strength: tracce chiare che tagliano ogni angolo voluto dai costruttori.",
+		"Il fondo della valle è segnato di scorciatoie, consumate da stivali che non si sono mai curati della strada giusta. Solo chi vola le vede tutte insieme.",
+		"Nessuno disegna i sentieri di una città. Scendendo li leggo lo stesso, strofinati nel terreno da chiunque abbia mai avuto fretta.",
+	},
+	["org.journey.w21.approach.003"] = {
+		"guarda le mura mentre la bestia le scavalca e le trova stranamente sottili, viste dall'alto: una riga di gesso rosso pensata per fermare eserciti.",
+		"passa sopra i bastioni della città all'altezza di un tetto alto, e da lassù non sembrano più spessi del recinto di un ovile.",
+	},
+	["org.journey.w21.approach.004"] = {
+		"La bestia sa che siamo quasi arrivati prima di me. I colpi d'ala si fanno pigri, le orecchie si tendono in avanti, e laggiù da qualche parte l'aspetta un recinto pieno di carne.",
+		"Capisco sempre quando la città è vicina: non da qualcosa che vedo, ma da come la bestia di colpo accelera, quasi fiutasse la cena.",
+		"Comincia a scendere prima ancora che la città si veda: la bestia ha le sue priorità, e la prima è un secchio.",
+	},
+	["org.journey.w21.approach.005"] = {
+		"segue la strada laggiù mentre raccoglie carri, cavalieri e viandanti da ogni lato e li piega tutti verso la stessa fenditura nella roccia.",
+		"osserva il traffico sulla strada infittirsi là sotto, ogni carro, lupo e kodo lento tirato verso la città come ghiaia verso uno scolo.",
+	},
+	["org.journey.w21.approach.006"] = {
+		"Eccola. Si sente fin quassù, e non si è nemmeno accorta che arrivo.",
+		"Fumo sulle creste. Dev'essere la città.",
+		"Ah, la vedo. Nessuno l'ha spostata, in mia assenza.",
+	},
+	["org.journey.w21.approach.007"] = {
+		"Dall'alto Orgrimmar non sembra costruita, ma scavata: le valli sono ferite nella roccia, e la città ci si è semplicemente sistemata dentro.",
+		"In avvicinamento la città pare più incavata che innalzata, come se qualcuno avesse premuto un pollice nelle colline rosse e la gente avesse riempito l'impronta.",
+	},
+	["org.journey.w21.approach.008"] = {
+		"ha addosso lo sguardo di una vedetta sulle mura, che ruota piano per seguire la bestia in arrivo e poi, soddisfatta, torna a guardare la campagna.",
+		"attira l'occhio di una sentinella sui bastioni, che osserva la bestia per tutto il passaggio prima di tornare a fissare la terra vuota.",
+	},
+	["org.journey.w21.approach.009"] = {
+		"Più il suolo si avvicina, più commissioni mi salgono incontro. Quando toccherò il trespolo le avrò tutte addosso.",
+		"Lassù non avevo nessuna lista. Ogni giro in discesa me ne restituisce un pezzo: la banca, la locanda, gli stivali da risuolare.",
+		"Strano come le faccende tornino più o meno alla stessa velocità del terreno.",
+	},
+	["org.journey.w21.approach.010"] = {
+		"osserva la terra scurirsi sotto le ali dove comincia la città: il rosso selvatico che cede a un suolo battuto e bruno, consumato da piedi senza numero.",
+		"nota l'istante in cui il terreno cambia sotto la bestia: il rosso sciolto dell'aperta campagna diventa il fondo pressato e macchiato di un posto dove vive gente.",
+	},
+	["org.journey.w21.approach.011"] = {
+		"Entri a Orgrimmar a piedi e un grunt al portone ti squadra. Entri in volo e piombi sopra la testa di tutti. Cerco di non trovarlo buffo finché sono quassù.",
+		"A piedi, questa città ti mette in fila e ti esamina. Dall'alto ci cadi dentro come un sassolino in un pozzo, e nessuno alza nemmeno gli occhi.",
+	},
+	["org.journey.w21.approach.012"] = {
+		"fa schizzare da una cengia della parete del canyon un nugolo di uccelletti impolverati al passaggio della bestia, che la rimproverano fino in fondo.",
+		"passa rasente alla parete del canyon, e una fila di uccellini bruni si stacca da una crepa nella roccia con un'unica alzata di spalle spaventata.",
+	},
+	["org.journey.w21.approach.013"] = {
+		"Da quest'altezza ogni lite della città è invisibile. Sembra finita, sistemata, perfino calma. Mezzo giro più in basso smetterà di esserlo.",
+		"Quassù la città è silenziosa come un modellino su un tavolo. Mi piace così, esattamente per quanto dura.",
+	},
+	["org.journey.w21.approach.014"] = {
+		"arriva in scia a un'altra bestia, a pochi colpi d'ala: il suo passeggero si volta una volta, fa un cenno e distoglie lo sguardo, come un estraneo in fila.",
+		"segue una seconda bestia verso la torre; chi la cavalca si gira in sella, squadra chi viene dietro e torna a guardare avanti senza una parola.",
+	},
+	["org.journey.w21.approach.015"] = {
+		"Da qui riesco a contare le bestie sul trespolo. Sette. Vuol dire folla in banca, folla alla locanda e una lunga attesa per qualunque cosa valga la pena.",
+		"Il trespolo è pieno. Da quella torre si legge l'umore della città intera: trespolo pieno, strade piene, nervi corti.",
+	},
+	["org.journey.w21.approach.016"] = {
+		"Non il tetto della locanda, bestia. La torre. Quella alta, con i tuoi amici sopra.",
+		"Quello è un tetto, non un trespolo. Tira dritto.",
+	},
+	["org.journey.w21.approach.017"] = {
+		"guarda il canyon aprirsi mentre la bestia avanza, una cucitura scura nella terra che si allarga e si allarga finché dentro non ci sta una città intera.",
+		"segue la spaccatura tra le colline che passa da crepa a squarcio a conca affollata di valli, e ogni colpo d'ala ci aggiunge una strada.",
+	},
+	["org.journey.w21.approach.018"] = {
+		"La viverna inclina la testa verso la torre e io la lascio fare. Conosce questa città dall'alto meglio di quanto io la conosca dalla strada.",
+		"Questa viverna è entrata in volo nel canyon più volte di quante io abbia percorso il Drag. Lascio l'avvicinamento a chi ha esperienza.",
+	},
+	["org.journey.w21.approach.019"] = {
+		"Senti? Laggiù qualcuno sta friggendo cipolle. Portaci giù, bestia.",
+		"Fumo di cucina fin quassù. Giù, bestia, e in fretta.",
+	},
+	["org.journey.w21.below.001"] = {
+		"segue il Drag soltanto dalle sue tende, un nastro storto di pelli rattoppate e stoffe sbiadite che nasconde del tutto la strada e ne mostra ogni curva.",
+		"il Drag vero e proprio da quassù non lo vede, solo i tetti e le tende che lo coprono: una lunga cucitura storta di pelli che serpeggia nella pietra come una cicatrice ricucita in fretta.",
+	},
+	["org.journey.w21.below.002"] = {
+		"Da sopra si vede dove cammina davvero la città: tracce chiare consumate nella terra di ogni valle, che tagliano gli angoli disegnati con tanta cura dai costruttori.",
+		"La Valley of Strength ha le sue strade, e poi ci sono i sentieri che usano tutti, chiari e dritti nel terreno tra la banca e la locanda. Da quassù vincono i secondi, e di parecchio.",
+	},
+	["org.journey.w21.below.003"] = {
+		"guarda giù sulle tende della Valley of Wisdom e, per una volta, vede per intero i disegni dipinti sulle pelli, cerchi e impronte di zoccolo di cui da terra si scorge sempre un lato solo.",
+		"scivola sopra le tende dipinte della Valley of Wisdom: dall'alto i disegni sui teli si chiudono in anelli e spirali che nessuno, standoci accanto, potrebbe vedere interi.",
+	},
+	["org.journey.w21.below.004"] = {
+		"I fantocci da addestramento della Valley of Honor, visti dall'alto, stanno in file, come un raccolto che qualcuno ha seminato e poi riempie di botte ogni giorno.",
+		"File di fantocci di paglia in tutta la Valley of Honor, ognuno storto a modo suo. Dall'alto sembra un campo dopo un pessimo raccolto.",
+	},
+	["org.journey.w21.below.005"] = {
+		"vede le capanne della Valley of Spirits ammucchiate di sotto, tonde e col tetto di paglia, come una cesta di ciotole capovolte.",
+		"riconosce la Valley of Spirits dai soli tetti, paglia ripida color erba secca in mezzo a tutto quel legno e quelle pelli.",
+	},
+	["org.journey.w21.below.006"] = {
+		"Intorno all'imbocco del Cleft of Shadow c'è un anello di terra nuda che nessuno sembra attraversare senza motivo. Da quassù pare che l'intera città abbia fatto un passo indietro e sia rimasta lì.",
+		"Ovunque altrove la folla riempie ogni buco. Vicino al Cleft of Shadow si dirada, poi si ferma: un piccolo margine pulito di pietra vuota. Le città sanno certe cose di sé.",
+	},
+	["org.journey.w21.below.007"] = {
+		"guarda una carovana che scarica di sotto: i fagotti scendono dai kodo e crescono in due mucchi, uno squadrato e ordinato, l'altro che già frana.",
+		"si gode dall'alto un kodo scaricato da quattro peoni insieme, ognuno che tira una cinghia diversa, mentre il kodo sta lì a ruminare come se la faccenda non lo riguardasse.",
+	},
+	["org.journey.w21.below.008"] = {
+		"Qualcuno sul retro della locanda rovescia un secchio, e tre lupi diversi arrivano sul posto prima che gli avanzi abbiano finito di cadere. Da quassù sembra una guerra in miniatura.",
+		"Un secchio vuotato dietro la locanda, e da tre parti insieme convergono tre lupi. La cosa più veloce di Orgrimmar è un lupo che ha sentito un secchio.",
+	},
+	["org.journey.w21.below.009"] = {
+		"vede finalmente la forma di tutta la città mentre la bestia sale: valli che partono dal centro come i segni di un artiglio enorme trascinato nella roccia.",
+		"abbraccia Orgrimmar stesa per intero sotto di sé, con le valli che si allungano l'una dall'altra nella pietra come le dita di una mano socchiusa.",
+	},
+	["org.journey.w21.below.010"] = {
+		"Visto dall'alto il Drag ha due correnti, una che entra e una che esce, e proprio in mezzo un goblin col carretto, piantato lì, che le spacca tutte e due come uno scoglio in un torrente.",
+		"Nel Drag la folla scorre in due sensi insieme, e da quassù si vede esattamente dove s'ingorga: un carretto, una lite, e un'intera strada che aspetta.",
+	},
+	["org.journey.w21.below.011"] = {
+		"distingue le fucine della Valley of Honor solo come tetti scuri e aperti, ciascuno con un occhio rosso nel mezzo che si accende e si smorza al ritmo del mantice.",
+		"scruta dentro le fucine scoperte della Valley of Honor, dove ogni forgia è un piccolo occhio rosso che si apre e si socchiude a ogni colpo di mantice.",
+	},
+	["org.journey.w21.below.012"] = {
+		"Da sopra, la porta è il collo stretto di tutta la città: tutto quello che Orgrimmar mangia, vende e discute passa da quell'unico varco, in fila indiana, come grano in un imbuto.",
+		"Tutto quello che c'è nel canyon è entrato da quella porta, ogni pietra, ogni asse, ogni kodo. Da quassù sembra troppo piccola per un lavoro del genere.",
+	},
+	["org.journey.w21.below.013"] = {
+		"sorvola una corda da bucato tesa tra due punte di ferro di un tetto, tuniche e calzoni che sbattono, come se l'ornamento più feroce della città avesse finalmente trovato un'utilità.",
+		"nota il bucato di qualcuno appeso tra le punte di ferro di un tetto, una fila di camicie che schioccano là dove un nemico avrebbe dovuto restare impressionato.",
+	},
+	["org.journey.w21.below.014"] = {
+		"Qualcuno ci saluta da un tetto. O ci mostra il pugno. Da quassù non si capisce.",
+		"Quello laggiù è un saluto o un gestaccio? Facciamo che è un saluto.",
+	},
+	["org.journey.w21.below.015"] = {
+		"Guarda, il Drag tutto in una volta. Mi sono {g:perso|persa} in ognuna di quelle curve.",
+		"Visto dal cielo, il Drag ha quasi senso. Quasi.",
+		"Ecco il Drag, tutto intero. Strano, con lo zaino in spalla sembrava più lungo.",
+	},
+	["org.journey.w21.below.016"] = {
+		"scorge dall'alto il Drag sotto la pioggia, con le tende che si gonfiano in grosse pance d'acqua e un mercante che ne pungola una con un'asta per rovesciarla sulla bancarella accanto.",
+		"vede la pioggia raccogliersi nelle tende lungo il Drag mentre la bestia sale, e là sotto un urlo indignato quando una cede.",
+	},
+	["org.journey.w21.below.017"] = {
+		"Il caldo che sale dai tetti fa tremolare tutta la città là sotto, come vista attraverso l'acqua. Orgrimmar, che bolle a fuoco lento.",
+		"Da quassù il caldo del giorno si vede: l'aria sopra le valli ondeggia, e le mura tremano come un riflesso in un abbeveratoio.",
+	},
+	["org.journey.w21.below.018"] = {
+		"Metà dei tetti della città ha dei sassi sopra, a tenere giù le pelli. Da quassù sembra che Orgrimmar sia stata presa a sassate e abbia deciso di tenerseli.",
+		"Pietre su ogni tetto di pelle, messe in file ordinate a fermare la copertura. La città ha pensato alle raffiche molto prima che all'aspetto.",
+	},
+	["org.journey.w21.circle.001"] = {
+		"gira largo sopra la torre mentre un'altra bestia si lascia cadere dal trespolo e sale, e le due si scambiano un sibilo ala contro ala.",
+		"resta in un lento giro sopra la valle finché una bestia in partenza non libera il trespolo, passando così rasente che il mantello del suo cavaliere schiocca nel varco.",
+	},
+	["org.journey.w21.circle.002"] = {
+		"Un giro. Due. Alla bestia piace girare in tondo, come se la città potesse essersi spostata dall'ultima volta.",
+		"Ogni bestia vuole fare almeno un giro attorno alla torre. Per controllare se è cambiato qualcosa, immagino. Non cambia mai niente.",
+		"E giù in tondo, una volta, due, con tutta la valle che mi ruota sotto gli stivali come un piatto in cima a un bastone.",
+	},
+	["org.journey.w21.circle.003"] = {
+		"si piega nella virata mentre la bestia gira, e l'intera città si inclina sul bordo, tetti e vicoli che scivolano verso un'ala.",
+		"stringe la sella mentre la bestia vira stretta sopra la valle, e per un attimo Orgrimmar si raddrizza di lato come un quadro sollevato perché lo si veda.",
+	},
+	["org.journey.w21.circle.004"] = {
+		"Ogni passaggio intorno alla torre mi mostra un'altra faccia della valle: le porte della banca, la locanda, l'imbocco del Drag, le mura, e poi daccapo la banca.",
+		"Il giro è una visita guidata che nessuno ha chiesto. Locanda, mura, l'imbocco del Drag, la banca. Poi la bestia decide che ho visto abbastanza.",
+	},
+	["org.journey.w21.circle.005"] = {
+		"scuote una fila di lupi legati laggiù mentre la bestia vira: tutte le teste si alzano insieme, e uno si avventa sull'aria vuota dove le ali sono appena passate.",
+		"gira così basso sopra la valle che i lupi legati là sotto alzano tutti il muso insieme e seguono la bestia nel giro, come aghi di bussola.",
+	},
+	["org.journey.w21.circle.006"] = {
+		"Sì, è ancora lì. Puoi smettere di ammirarla e atterrare.",
+		"Un giro basta e avanza, bestia. L'ho vista.",
+	},
+	["org.journey.w21.circle.007"] = {
+		"Gli addestratori dicono che una bestia gira sempre in tondo per controllare se sul trespolo c'è un rivale, come un lupo che si gira tre volte prima di sdraiarsi. Guardando questa, ci credo.",
+		"Chiedi a un addestratore e te lo dirà: le bestie non atterrano mai senza fare prima un giro. Vogliono vedere chi c'è già sul trespolo, e chi dovrà spostarsi.",
+	},
+	["org.journey.w21.circle.008"] = {
+		"scende in un lento cavatappi, e le pareti del canyon salgono attorno alla bestia come le sponde di un pozzo, con la città sul fondo.",
+		"gira e rigira nella discesa, ogni anello più stretto del precedente, finché la roccia tutt'intorno sembra salire mentre la bestia resta sospesa.",
+	},
+	["org.journey.w21.circle.009"] = {
+		"Al terzo giro non so più quale valle sia quale. La torre però resta nel mezzo. Tengo gli occhi lì e lascio girare il resto.",
+		"Dopo abbastanza giri ogni valle somiglia alla precedente. Solo la torre sta ferma, e la fisso come un ubriaco fissa una porta.",
+	},
+	["org.journey.w21.circle.010"] = {
+		"guarda l'ombra della bestia ruotare sulla parete del canyon, più grande a ogni giro della spirale, finché scivola giù dalla roccia e finisce sulla torre stessa.",
+		"tiene d'occhio l'ombra della bestia che gira e rigira sul fondo della valle assolata, stringendosi attorno alla torre come un cappio che si chiude.",
+	},
+	["org.journey.w21.circle.011"] = {
+		"Ancora un giro e il rumore mi raggiungerà. Ne chiederei un altro alla bestia, se pensassi che mi ascolta.",
+		"L'ultimo giro sopra la città è il posto più silenzioso di Orgrimmar. Provo a farlo durare, e la bestia, come al solito, no.",
+	},
+	["org.journey.w21.circle.012"] = {
+		"Dai, viverna, fatti ammirare. Un altro giro, poi giù.",
+		"Gira quanto vuoi, viverna. Ti hanno già vista tutti.",
+	},
+	["org.journey.w21.circle.013"] = {
+		"Se quella è la folla alla locanda, faccio dietrofront. Non lo farò, ma mi piacerebbe.",
+		"Guarda che coda. Vola più piano, bestia: lasciali sfoltire.",
+	},
+	["org.journey.w21.climb.001"] = {
+		"sente le assi della torre scricchiolare un'ultima volta sotto il peso della bestia, poi sotto tutti e due non resta che la Valley of Strength.",
+		"si stacca dalla piattaforma al terzo colpo d'ala, e le assi lì sotto si raddrizzano con un tonfo sordo, già vuote.",
+	},
+	["org.journey.w21.climb.002"] = {
+		"Qualcosa di piccolo e tondo mi è appena scivolato di tasca. Lungo il Drag, uno sconosciuto sta per abbassare gli occhi e sorridere.",
+		"Una moneta si sfila durante la salita e scende verso i tetti. La chiamerò pedaggio, e farò finta di averlo deciso io.",
+		"Ecco un rame che vola giù in mulinello verso la città. Che finisca nella ciotola di qualche peone: è il miglior uso che quella moneta abbia mai avuto.",
+	},
+	["org.journey.w21.climb.003"] = {
+		"guarda giù verso la torre che si allontana: l'addetto è già chino sulla sella successiva, una nuca e due mani indaffarate, e non alza gli occhi neanche una volta.",
+		"vede l'addetto della torre ridursi alla grandezza di un'unghia sulla piattaforma, sempre lì ad arrotolare una fune, sempre senza alzare lo sguardo.",
+	},
+	["org.journey.w21.climb.004"] = {
+		"A un colpo d'ala di altezza, il posatoio sembra una fila di tende chiuse, ogni bestia raccolta su sé stessa. Solo una alza la testa per guardarci andare.",
+		"Viste dall'alto, le bestie rimaste sul posatoio sono solo ali ripiegate, una fila di fagotti scuri. Una apre un occhio, stabilisce che non siamo cibo, e lo richiude.",
+	},
+	["org.journey.w21.climb.005"] = {
+		"sobbalza in sella quando la bestia attraversa l'aria calda che sale dalle forge, e per tre colpi d'ala salgono senza fatica, come se a spingere fosse la città stessa.",
+		"sale di colpo sopra le fucine, col calore delle forge che spinge sotto le ali come una mano sotto un carico.",
+	},
+	["org.journey.w21.climb.006"] = {
+		"Strano, cosa arriva fin quassù. La folla è ammutolita una dozzina di colpi d'ala fa, eppure un lupo che guaisce in qualche recinto mi segue quasi fino al bordo.",
+		"Il chiasso della valle è già sparito, ma sento ancora un coperchio che sbatte in qualche cucina là sotto. Il suono sale per conto suo, con regole sue.",
+	},
+	["org.journey.w21.climb.007"] = {
+		"passa basso su un tetto dove strisce di carne seccano in file ordinate, sorvegliate da un lupo che si sforza parecchio di sembrare addormentato.",
+		"sfiora un tetto piatto coperto di carne messa a seccare, allineata come le righe di un registro, e il lupo disteso lì accanto apre un occhio al passaggio della bestia.",
+	},
+	["org.journey.w21.climb.008"] = {
+		"Più o meno sopra la banca mi si tappano le orecchie, poi cedono con un piccolo scatto, e per un attimo la città là sotto si fa più forte, come se se ne fosse accorta.",
+		"A metà salita mi si stappano le orecchie. Per un istante tutta la valle mi piomba addosso, forte e vicina, e poi sparisce un'altra volta.",
+	},
+	["org.journey.w21.climb.009"] = {
+		"dà la caccia a un capo di cinghia che continua a schioccare nella corrente della salita, e alla fine lo infila sotto un ginocchio, dove non può più far danni.",
+		"passa il primo tratto della salita a lottare con una cinghia che sbatte e schiocca contro la sella, finché non l'afferra e se la avvolge stretta al polso.",
+	},
+	["org.journey.w21.climb.010"] = {
+		"Per qualche colpo d'ala la cima della torre mi resta sotto: pali legati, un groviglio di vecchie cinghie, un otre dimenticato lassù chissà quando. Lo vedono solo le bestie.",
+		"Il tetto della torre visto da sopra: pali annodati, cuoio sfilacciato, un otre lasciato lì a nessuno. Un piccolo mondo intero che conosce solo chi vola.",
+	},
+	["org.journey.w21.climb.011"] = {
+		"fa due giri intorno alla torre salendo, e sotto la Valley of Strength gira piano come un tornio da vasaio, con la banca, la locanda e la porta che vanno in tondo.",
+		"sale in una spirale stretta sopra la torre, mentre il fondo della valle ruota là sotto: la porta, la banca, la locanda, poi ancora la porta, a ogni giro un po' più piccole.",
+	},
+	["org.journey.w21.climb.012"] = {
+		"Su, bestia. Oltre la locanda, svelta. Là dentro qualcuno crede che io debba offrire un giro.",
+		"Su e via sopra la locanda, in fretta. Forse ho promesso da bere a qualcuno, là dentro.",
+	},
+	["org.journey.w21.climb.013"] = {
+		"Ho fatto la fila sotto il tetto della banca più volte di quante ne possa contare, e non sapevo che avesse una toppa a forma di impronta di stivale.",
+		"Dunque il tetto sopra la banca è rattoppato, in un angolo, con una pelle di un altro colore. Tutte quelle visite, e non l'avevo mai notato. Il cielo fa la spia su tutti.",
+	},
+	["org.journey.w21.climb.014"] = {
+		"Prima supera la torre, bestia. Il panorama dopo.",
+		"Su, oltre il posatoio. No, non salutare gli altri. Su.",
+		"Parapetto, tetto, cielo. In quest'ordine, per favore.",
+	},
+	["org.journey.w21.climb.015"] = {
+		"Piega un po' a sinistra, bestia. Voglio dare un'occhiata alla Valley of Honor prima di andare.",
+		"Un'occhiata alla Valley of Spirits, bestia, e poi dove vuoi tu.",
+		"Passa sopra Grommash Hold, bestia. Una volta sola. Voglio poter dire di averne visto il tetto.",
+	},
+	["org.journey.w21.climb.016"] = {
+		"Sotto la sella le spalle della viverna si contraggono e si allentano a ogni colpo d'ala, lavoro duro, lavoro onesto. La salita fuori da Orgrimmar è fatica sua; io mi limito a reggermi e guardare.",
+		"Sento la viverna guadagnarsi ogni palmo di quota, muscolo su muscolo sotto le ginocchia. La città scende via sulla forza di quella schiena.",
+	},
+	["org.journey.w21.climb.017"] = {
+		"Conto sempre i primi colpi d'ala. Uno, uno strattone. Due, una spinta. Al dieci la torre è un giocattolo e ho perso il conto.",
+		"Conta i colpi, mi dico, ogni volta. Non arrivo mai oltre la dozzina prima che la città mi rubi gli occhi, e i numeri con loro.",
+	},
+	["org.journey.w21.depart.001"] = {
+		"sente l'addestratore gridare qualcosa sulla staffa sinistra proprio mentre la torre sprofonda, e passa i colpi d'ala seguenti a ispezionare la staffa sinistra.",
+		"è già oltre il bordo quando dalla torre sale un avvertimento sulla staffa sinistra, troppo tardi e troppo fioco per servire, così la staffa si guadagna una lunga occhiata sospettosa.",
+	},
+	["org.journey.w21.depart.002"] = {
+		"Le ultime parole dell'addestratore sono state: «Non darle da mangiare». Niente buon volo, niente buona fortuna. Da allora mi chiedo cosa mangi.",
+		"«Non darle da mangiare», ha detto l'addestratore stringendo la cinghia. Nessun altro consiglio. Tengo le mani ben lontane dalla bocca della bestia.",
+		"Fra tutte le cose che si possono dire sul bordo di una torre, il mio addestratore ha scelto «Non darle da mangiare». Io ho delle domande, e la bestia ha i denti.",
+	},
+	["org.journey.w21.depart.003"] = {
+		"Qualunque cosa fosse, addestratore, la prendo come un augurio!",
+		"Più forte! Anzi no, lascia stare. Ormai è tardi.",
+		"Era un consiglio o una maledizione? Grazie comunque!",
+	},
+	["org.journey.w21.depart.004"] = {
+		"segue il canyon fino alla sua bocca, dove le pareti rosse finiscono di colpo e la terra oltre si apre, come un vano a cui abbiano tolto la porta dai cardini.",
+		"supera la bocca del canyon all'altezza delle pareti, e il riparo della città finisce in un solo colpo d'ala: roccia da una parte e dall'altra, poi più niente.",
+	},
+	["org.journey.w21.depart.005"] = {
+		"L'ultimo pezzo di Orgrimmar a scorrermi sotto è una vedetta sulle mura sopra il cancello, rivolta verso Durotar. Per un attimo guardiamo tutti e due dalla stessa parte.",
+		"Una sentinella sulle mura esterne mi scivola sotto, gli occhi fissi sulla terra là davanti. Quella guardava da sempre dove sto andando io.",
+	},
+	["org.journey.w21.depart.006"] = {
+		"tasta le cinghie dello zaino una per una mentre la bocca del canyon scorre di sotto, come si tasta una tasca quando la porta si è già chiusa.",
+		"passa una mano su ogni fibbia dello zaino mentre le pareti restano indietro, in cerca di qualcosa che, se mancasse, sarebbe ormai molto, molto in basso.",
+		"conta al tatto le fibbie dello zaino una volta sparite le mura, poi le riconta, visto che a un conto sbagliato non c'è proprio rimedio.",
+	},
+	["org.journey.w21.depart.007"] = {
+		"A piedi, la bocca del canyon non finisce mai. La bestia la supera in tre colpi d'ala, e le pareti che guardavo col naso all'insù mi scorrono sotto gli stivali.",
+		"A piedi quelle pareti ti incombono addosso per un bel tratto di strada. In volo passo l'ultima all'altezza della cima, così vicino da contare i sassi smossi lassù.",
+	},
+	["org.journey.w21.depart.008"] = {
+		"Ultimo muro, bestia. Da qui in poi è tutta terra aperta.",
+		"Ecco che il muro se ne va. Da qui in avanti è roba tua.",
+	},
+	["org.journey.w21.depart.009"] = {
+		"nota un filo di paglia del trespolo ancora impigliato nella bardatura, e lo guarda staccarsi oltre la bocca del canyon e scendere a spirale verso la strada.",
+		"vede un ciuffo di paglia della torre liberarsi da una fibbia e precipitare sulla terra aperta, l'ultima cosa portata fuori dalla città solo per essere lasciata cadere.",
+	},
+	["org.journey.w21.depart.010"] = {
+		"Mentre cadevamo l'addestratore ha chiamato la bestia per nome, un nome breve e ruvido che non ho afferrato. Lei sì. Mi porta via qualcuno a cui non so nemmeno come rivolgermi.",
+		"Sul bordo qualcuno ha detto un nome, e le orecchie della bestia si sono voltate da quella parte. Il suo nome, non il mio. Cavalco un'estranea che ha un amico su quella torre.",
+	},
+	["org.journey.w21.depart.011"] = {
+		"Tenetemi la panca alla locanda. O vendetela. La venderete.",
+		"Se qualcuno chiede, sono {g:uscito|uscita} dalla porta di sopra.",
+		"Fuori dall'uscita alta. Niente fila, niente domande.",
+	},
+	["org.journey.w21.depart.012"] = {
+		"alza una mano verso i grunt sulle mura sopra il cancello mentre la viverna li sorvola, e uno di loro, piccolo e lontano, risponde col pugno levato.",
+		"saluta le sentinelle sopra il cancello passando, e la viverna, come se avesse capito, inclina un'ala verso di loro prima di virare su Durotar.",
+	},
+	["org.journey.w21.depart.013"] = {
+		"Fuori dalle mura, viverna. La città può fare a meno di tutti e due.",
+		"Fuori dal canyon. Bel lavoro, viverna. Da qui è tutto cielo aperto.",
+	},
+	["org.journey.w21.descent.001"] = {
+		"sente i colpi d'ala fermarsi e la bestia adagiarsi in una lunga planata; ora l'unico suono è il sibilo dell'aria sul cuoio teso delle ali.",
+		"nota l'istante in cui la bestia smette di battere le ali: tutto si fa liscio e quieto, e la città comincia a salire piano dal basso.",
+	},
+	["org.journey.w21.descent.002"] = {
+		"sobbalza in sella quando la bestia attraversa l'aria calda che sale dalle forge della Valley of Honor, e ricade con uno scossone appena l'hanno superata.",
+		"salta sulla sella sopra la Valley of Honor, dove il calore che sale dalle fucine spinge in su la bestia come una foglia sopra un falò.",
+	},
+	["org.journey.w21.descent.003"] = {
+		"Dritti dentro una colonna di fumo, in discesa. Per tre colpi d'ala non c'è altro che grigio e sapore di carbone, poi la città ricompare, più vicina.",
+		"La bestia non si prende il disturbo di aggirare il fumo. Ci caschiamo dentro alla cieca, ne usciamo dall'altra parte con gli occhi che bruciano, e la torre è grande il doppio.",
+	},
+	["org.journey.w21.descent.004"] = {
+		"sistema le ultime cose mentre la bestia punta il muso in basso: una cinghia infilata, il cappuccio stretto, un sacchetto spinto più a fondo nello zaino.",
+		"fa senza pensarci i piccoli preparativi della discesa, stringe il cappuccio e preme una mano sulla borsa mentre la bestia si inclina in avanti.",
+	},
+	["org.journey.w21.descent.005"] = {
+		"Ogni bestia scende come se di colpo avesse dimenticato di avere le ali, e se ne ricordasse a un palmo dalla torre.",
+		"Chiusa mezz'ala, la bestia si lascia cadere, contando sull'altra metà per sistemare le cose. Ci riesce sempre. Il mio stomaco è meno convinto.",
+	},
+	["org.journey.w21.descent.006"] = {
+		"scende oltre il cammino di ronda, a pochi passi dai pioli di una scala legata all'interno del bastione e da un otre appeso a un chiodo.",
+		"cala sotto la cima delle mura, e per un attimo la piccola vita dei bastioni scorre all'altezza degli occhi: una scala, un secchio appeso a una corda, un grunt che mangia con l'elmo tolto.",
+	},
+	["org.journey.w21.descent.007"] = {
+		"Durante la discesa le orecchie mi si tappano, poi si stappano con uno schiocco, e il rumore della città arriva tutto insieme, come se qualcuno mi avesse tolto una coperta dalla testa.",
+		"A metà discesa le orecchie mi fischiano e poi si liberano, e di colpo torna il suono: la città, che a quanto pare non aveva mai smesso.",
+	},
+	["org.journey.w21.descent.008"] = {
+		"serra le ginocchia sulla sella mentre la testa della bestia si abbassa e la valle riempie tutta la vista, e si piega all'indietro finché le cinghie scricchiolano.",
+		"punta i piedi nelle staffe mentre la bestia si butta in avanti nella picchiata, con il bordo della sella che preme forte sullo stomaco.",
+	},
+	["org.journey.w21.descent.009"] = {
+		"Sotto l'orlo del canyon la campagna lontana sparisce a pezzi, prima l'ultima cresta, poi la strada, finché il mondo intero è stato ripiegato e resta solo la città.",
+		"Mentre scendiamo, le mura mi tolgono l'orizzonte una fetta per volta. All'ultimo giro non resta più campagna, solo Orgrimmar.",
+	},
+	["org.journey.w21.descent.010"] = {
+		"Più piano. Più piano! Vorrei arrivare, non essere {g:consegnato|consegnata}.",
+		"Calma! Voglio atterrare, bestia, non essere {g:spedito|spedita}.",
+	},
+	["org.journey.w21.descent.011"] = {
+		"scende sotto l'orlo del canyon in un'aria d'improvviso ferma e pesante, e la bestia deve rimettersi a battere le ali per reggersi.",
+		"affonda dal cielo aperto dentro il canyon, dove l'aria ristagna densa e chiusa e le ali devono battere forte contro il niente.",
+	},
+	["org.journey.w21.descent.012"] = {
+		"Il fondo della valle sale come un creditore: piano all'inizio, poi tutto in una volta.",
+		"Per un bel pezzo il terreno non si interessa a me. Poi, negli ultimi giri, non vede l'ora di incontrarmi.",
+	},
+	["org.journey.w21.descent.013"] = {
+		"riesce finalmente a distinguere le singole persone mentre la bestia scende: un peone piegato sotto un carico di pelli, un tauren che si china sotto una tenda, un troll e un goblin che litigano per una cassa.",
+		"arriva tanto in basso da distinguere una figura dall'altra: qualcuno che porta acqua, qualcuno che dorme contro un palo, qualcuno che corre gridando un nome.",
+	},
+	["org.journey.w21.descent.014"] = {
+		"Chi ha alzato queste mura non le ha mai viste così, tutte intere, dall'alto. L'opera completa la vedono solo le bestie in volo e gli avvoltoi.",
+		"Chi ha tracciato queste valli lavorava con i piedi nella polvere. Io vedo tutta l'opera con un'occhiata sola; chi l'ha fatta, mai.",
+	},
+	["org.journey.w21.descent.015"] = {
+		"perde del tutto la città nella sabbia che soffia, in discesa, poi la ritrova a pezzi: un muro, un pennacchio di fumo, il palo scuro della torre.",
+		"scende nella sabbia che turbina con una sciarpa sul viso, i granelli che ticchettano sul cuoio delle ali come grandine su una tenda.",
+	},
+	["org.journey.w21.descent.016"] = {
+		"Pioggia in discesa. Le ali della bestia si fanno più pesanti a ogni giro, e lei le scuote in pieno volo: ne discuteremo dopo.",
+		"Scendendo sotto la pioggia, la bestia vola come se portasse del bucato bagnato. Ogni pochi colpi d'ala rabbrividisce, e una secchiata d'acqua mi arriva in faccia.",
+	},
+	["org.journey.w21.descent.017"] = {
+		"cavalca l'ultima lunga picchiata nel canyon, ali mezze chiuse, con le mura di Orgrimmar che salgono di corsa ai due lati come le fauci di qualcosa di vecchio e paziente.",
+		"si getta nella città con un'unica picchiata ripida e rombante, e le mura rosse si stringono da una parte e dall'altra finché non resta da vedere che la torre davanti.",
+	},
+	["org.journey.w21.descent.018"] = {
+		"Si scende. Tieni duro, sella.",
+		"Piano. Piano. Nessuno deve sentirmi urlare.",
+	},
+	["org.journey.w21.descent.019"] = {
+		"Ho le mani chiuse sulle redini da così tanto che non vogliono aprirsi. Nella planata sciolgo le dita una per una, prima che mi servano.",
+		"L'ultima planata è per le dita: le stacco dalla cinghia una alla volta e le scuoto finché non torna un po' di sensibilità.",
+	},
+	["org.journey.w21.descent.020"] = {
+		"Orecchie stappate. Città rumorosa. Sì, siamo quasi giù.",
+		"Ecco che le orecchie si stappano. Ciao, baccano.",
+	},
+	["org.journey.w21.fade.001"] = {
+		"L'ultimo suono che Orgrimmar mi manda dietro è una risata, una grossa risata che rotola da qualche parte vicino al cancello. Non saprò mai la battuta. Mi sembra un giusto regalo d'addio.",
+		"Di tutto il chiasso della città, quello che mi segue più lontano è qualcuno che ride. Non i martelli, non le urla. Una risata, e poi soltanto le ali.",
+		"Qualcuno giù al cancello ride a crepapelle, e quel suono insegue la bestia più a lungo di ogni altro. È l'ultimo pezzo di città che mi tengo.",
+	},
+	["org.journey.w21.fade.002"] = {
+		"si accorge di avere ancora le orecchie piene della città molto dopo che il canyon è rimasto indietro, un ronzio che non ha più niente a produrlo.",
+		"si strofina un orecchio mentre la terra aperta si srotola di sotto; il frastuono delle strade è sparito, ma ha lasciato un leggero tintinnio, come una pentola percossa.",
+	},
+	["org.journey.w21.fade.003"] = {
+		"Ho borbottato qualcosa alla bestia e mi è uscito come un muggito. Dopo la città, dove tutto si urla, la mia voce non è ancora tornata della sua misura.",
+		"Qui fuori una parola detta a voce normale suona come un grido. La città mi ha {g:accordato|accordata} sul suo volume, e il volume non è ancora sceso.",
+	},
+	["org.journey.w21.fade.004"] = {
+		"si volta a cercare la torre e la trova solo grazie alle bestie sul trespolo, una fila di macchioline scure e ingobbite che scivola dietro l'orlo e sparisce.",
+		"si gira in sella per un'ultima occhiata alla torre; il trespolo è una breve linea scura contro il cielo, poi il ciglio del canyon lo ricopre.",
+	},
+	["org.journey.w21.fade.005"] = {
+		"La città è ancora nei miei vestiti: fumo, lupo, cipolle fritte di qualcuno. Ogni tratto d'aria se ne porta via un po'. Quando scenderemo saprò solo di bestia volante.",
+		"Orgrimmar mi viene dietro per un po' nelle pieghe del mantello, un odore di fumo e di unto. L'aria d'alta quota lo sfila via filo per filo.",
+		"Basta annusare una manica ed eccola, tutta la città in un pizzico: fumo di cucina, ferro caldo, un lupo che mi ha sfiorato alla torre. Non durerà fino alla fine del volo.",
+	},
+	["org.journey.w21.fade.006"] = {
+		"lascia scendere le spalle di un dito mentre il canyon resta indietro, un piccolo allentarsi che le strade affollate non concedevano mai del tutto.",
+		"si siede in sella un po' più {g:sciolto|sciolta} una volta sparite le mura, i gomiti che rientrano, la mascella che molla una stretta di cui nessuno si era accorto.",
+	},
+	["org.journey.w21.fade.007"] = {
+		"Laggiù, nel Drag, un mercante si aspetta ancora che torni a contrattare su quel prezzo. Che l'attesa gli tenga compagnia.",
+		"Ho lasciato una trattativa a metà a una bancarella del Drag. Il mercante crede che ci stia pensando su. Ci penso, sì: da molto, molto in alto.",
+	},
+	["org.journey.w21.fade.008"] = {
+		"Poco oltre la bocca del canyon mi volto, e la città è già sprofondata dietro il proprio orlo. Solo una lunga cresta rossa, con una macchia sopra dove sono i fuochi delle cucine.",
+		"A guardare indietro da qui non c'è nessuna città, solo una piega di colline rosse. Orgrimmar si è nascosta tutta, come era stata costruita per fare.",
+	},
+	["org.journey.w21.fade.009"] = {
+		"Senti? Nessuno che vende niente.",
+		"Lo senti? Nessuno che urla contro qualcuno.",
+		"Finalmente silenzio. Ne avevo quasi scordato il suono.",
+	},
+	["org.journey.w21.fade.010"] = {
+		"comincia a sentire i piccoli suoni del volo appena la città si è allontanata: una fibbia che ticchetta sulla bardatura, lo scricchiolio della sella, un brontolio sordo da qualche parte dentro la bestia.",
+		"scopre, sparita la città, che il volo ha i suoi rumori minuti: il cuoio che cigola, una cinghia che batte, e dal fondo del petto della bestia un brontolio come quello di un carro lontano.",
+	},
+	["org.journey.w21.fade.011"] = {
+		"Alle mie spalle la fila alla banca è avanzata di uno quando ne sono {g:uscito|uscita}. È tutto il segno che ho lasciato su Orgrimmar stavolta, ed è già colmato.",
+		"Scommetto che qualcuno ha già il mio posto alla locanda, e il mio posto in fila, e il mio angolo d'ombra. Orgrimmar riempie in fretta i suoi vuoti.",
+	},
+	["org.journey.w21.fade.012"] = {
+		"conta le torce della città alle spalle mentre spariscono una dopo l'altra nella notte, finché resta solo un punto luminoso sopra le mura, e poi se ne va anche quello.",
+		"guarda i fuochi di Orgrimmar affondare dietro l'orlo nella notte, prima i più bassi, finché il buio si è preso tutto tranne un riflesso fioco sotto il fumo.",
+	},
+	["org.journey.w21.fade.013"] = {
+		"Alle mie spalle il Capoguerra custodisce la città, e là fuori l'Orda ha bisogno di braccia. È questo il patto, e la bestia mi porta verso la mia parte.",
+		"Thrall resta, le mura restano, le guardie al cancello restano. Qualcuno deve uscire a fare il resto, e stavolta tocca a me.",
+	},
+	["org.journey.w21.fade.014"] = {
+		"perde Orgrimmar in pochi colpi d'ala: la sabbia che soffia si richiude sul canyon alle spalle, una tenda rossa tirata senza un rumore.",
+		"si volta verso la sabbia che turbina e non trova più nessuna città, solo un torbido rosso cupo dove un attimo fa c'erano le mura.",
+	},
+	["org.journey.w21.fade.015"] = {
+		"Neanche un saluto, Orgrimmar? Tieni il broncio, allora.",
+		"Già zitta? Ti mancherò, città. Farai finta di no.",
+	},
+	["org.journey.w21.first.001"] = {
+		"si volta a metà verso un nome gridato dalla folla di sotto, secco e impaziente: è di qualcun altro.",
+		"sente un nome urlato più e più volte attraverso la valle da qualcuno che ha chiaramente perso un amico tra la folla, e anche la pazienza.",
+	},
+	["org.journey.w21.first.002"] = {
+		"A metà rampa mi arriva il pepe: il braciere di qualcuno, gli spiedini di qualcuno, molto più pepe del necessario. Mi pizzicano gli occhi prima ancora che lo stomaco si svegli.",
+		"Il primo odore in discesa è il pepe, una nuvola intera, che sale da un banco di spiedini da qualche parte di sotto. Strizzo gli occhi prima ancora di avere fame.",
+	},
+	["org.journey.w21.first.003"] = {
+		"dalla rampa vede le teste della folla prima delle facce: corna di tauren, ciuffi di troll, le teste sfregiate dei vecchi orchi, e il cappello di un goblin che ondeggia all'altezza delle cinture.",
+		"dall'alto della rampa vede la valle come un campo di teste in movimento: corna, creste di capelli, cappucci, e qua e là un cranio rasato e lucido.",
+	},
+	["org.journey.w21.first.004"] = {
+		"La prima cosa che sento davvero è un peone sotto la torre che canticchia quattro note, sempre le stesse, impilando casse. Il resto della città gli fa solo da cornice.",
+		"Sotto tutto il resto, da qualche parte ai piedi della torre, un peone canticchia le stesse quattro note mentre impila casse. È questo il suono che mi porterò via da questo atterraggio.",
+	},
+	["org.journey.w21.first.005"] = {
+		"in fondo alla rampa incontra l'odore pungente dell'olio da lampada: qualcuno sta riempiendo le lanterne della torre da una latta ammaccata.",
+		"gira intorno a un peone che riempie le lanterne della rampa da una latta ammaccata, e il puzzo dell'olio accompagna i passi per un bel tratto.",
+	},
+	["org.journey.w21.first.006"] = {
+		"Ah. Eccolo, quell'odore. Non avrei mai detto che mi sarebbe mancato.",
+		"Odore di Orgrimmar. Qualcuno brucia qualcosa, e qualcun altro protesta.",
+	},
+	["org.journey.w21.first.007"] = {
+		"Ai piedi della torre un piccolo orco corre in tondo a braccia spalancate, giocando a fare la bestia volante. Atterra con più rumore di me, e meglio.",
+		"Un bambino vola intorno al fondo della rampa, braccia aperte, facendo il verso delle ali. Atterra su un piede solo e si inchina a nessuno. Più stile del mio.",
+	},
+	["org.journey.w21.first.008"] = {
+		"sente, prima di ogni altra cosa, una sega che morde il legno da qualche parte sotto la torre, avanti e indietro, regolare come chi rema.",
+		"distingue un suono sotto la piattaforma mentre le orecchie si liberano: una sega che passa una trave, colpi lenti, con una pausa ogni volta per soffiare via la segatura.",
+	},
+	["org.journey.w21.first.009"] = {
+		"Lassù era tutto terra rossa e aria vuota. Il primo colore vero quaggiù è una tenda, un azzurro sbiadito in mezzo a tutta la ruggine, e lo guardo come fosse un fiore.",
+		"Dall'alto la città era tutta di un rosso solo. Da vicino i colori tornano uno per uno: una tenda ocra, una pelle tinta di verde, una fascia blu su un troll che passa.",
+	},
+	["org.journey.w21.first.010"] = {
+		"coglie le prime parole della città in fondo alla rampa: due mercanti che trattano su un sacco in due lingue e con un gran puntare di dita.",
+		"arriva ai piedi della torre nel bel mezzo di una trattativa, un prezzo che sale e scende tra due mercanti che non hanno in comune nessuna lingua tranne i numeri.",
+	},
+	["org.journey.w21.first.011"] = {
+		"La prima voce che riesco a distinguere è qualcuno che impreca in orchesco contro la ruota di un carro incastrata. Di tutti i benvenuti che l'Orda poteva darmi, è quello che avrei scelto.",
+		"Imprecazioni in orchesco, risate di troll, un tauren che chiede con garbo di passare. Tutte le voci dell'Orda insieme. Sono a terra.",
+	},
+	["org.journey.w21.first.012"] = {
+		"scende la rampa nell'odore della pioggia sulla pietra calda, un odore aspro, minerale, che la città conosce di rado, e la valle sotto si è fatta silenziosa.",
+		"arriva ai piedi della torre mentre la pioggia picchietta sulle tende tese, e la folla della valle si è ridotta a pochi cappucci di corsa.",
+	},
+	["org.journey.w21.first.013"] = {
+		"Per un tratto i vestiti non sanno di niente, strigliati dal cielo. Dieci passi nella valle e la città ha già rimediato.",
+		"Sono {g:sceso|scesa} che odoravo di aria pulita. È durato fino al primo fuoco di cucina, e a dirla tutta non mi manca.",
+	},
+	["org.journey.w21.first.014"] = {
+		"Lo senti? Fumo di forgia e fuochi di cucina. L'Orda è al lavoro.",
+		"Ah, l'Orda a piena voce. È bello scenderci dentro.",
+	},
+	["org.journey.w21.first.015"] = {
+		"La corda del parapetto è ruvida e pelosa sotto il palmo. Dopo il cuoio liscio delle redini, è come aggrapparsi alla città stessa.",
+		"Per prima cosa, a Orgrimmar, tocco la corda del parapetto, ruvida come il dorso di un lupo. Il palmo, abituato alle redini lisce, si ritrae e poi si aggrappa.",
+	},
+	["org.journey.w21.first.016"] = {
+		"La prima persona che mi rivolge la parola ai piedi della torre mi chiede la strada per la Valley of Honor. Sono {g:uscito|uscita} dal cielo un attimo fa, ma va bene, indico.",
+		"Dieci passi dalla bestia e un tauren mi chiede indicazioni. A quanto pare chi scende dal cielo ha l'aria di sapere le cose.",
+	},
+	["org.journey.w21.foot.001"] = {
+		"Lo stomaco dice locanda. La borsa dice banca, prima che il Drag ci metta le mani sopra. I piedi, che il lavoro lo fanno davvero, puntano sulla banca.",
+		"Prima la banca, dice la parte giudiziosa di me. Prima la locanda, dicono tutte le altre. Facciamo un compromesso: cammino piano verso la banca.",
+	},
+	["org.journey.w21.foot.002"] = {
+		"si lascia portare dalla corrente della folla per il primo tratto dalla torre, poi ne esce come si esce da un torrente, verso la locanda.",
+		"segue la calca per una dozzina di passi oltre i piedi della torre, poi si stacca di lato verso la locanda senza rallentare.",
+	},
+	["org.journey.w21.foot.003"] = {
+		"Su questa rampa ci sono solo due tipi di persone: chi scende rigido e chi sale nervoso. Ci incrociamo con lo stesso piccolo cenno.",
+		"Scendendo incrocio quelli che salgono: labbra strette, mani sugli zaini, occhi al trespolo. Dovevo avere quella faccia anch'io. Tra poco avranno la mia.",
+	},
+	["org.journey.w21.foot.004"] = {
+		"Qualcuno nel Drag sta per vendermi una cinghia nuova. Ancora non lo sa.",
+		"Prima tappa, il Drag. Questa cinghia dello stivale un altro volo non lo regge.",
+	},
+	["org.journey.w21.foot.005"] = {
+		"fa una deviazione verso la cassetta della posta scendendo nella valle e ci guarda dentro per abitudine; il coperchio si apre cigolando su poco o niente.",
+		"si ferma alla cassetta della posta, alza il coperchio, sbircia dentro e lo lascia ricadere con la faccia di chi si aspettava proprio quello.",
+	},
+	["org.journey.w21.foot.006"] = {
+		"Avevo intenzione di andare dritto alla locanda. In mezzo c'è la casa d'aste, e ha un vero talento per stare in mezzo.",
+		"Tra i piedi della torre e un letto c'è la casa d'aste, e non mi è mai riuscito di passarle davanti senza entrare.",
+	},
+	["org.journey.w21.foot.007"] = {
+		"a metà rampa viene {g:superato|superata} da un peone che porta una sella in testa, al trotto: lancia un avviso educato e sparisce dietro la curva.",
+		"si schiaccia contro il parapetto per lasciar passare un peone con una sella in equilibrio sulla testa come un tetto, che fa la rampa al doppio del passo di chiunque.",
+	},
+	["org.journey.w21.foot.008"] = {
+		"Dal fondo della rampa, sopra le teste, vedo solo il tetto della locanda. Mi oriento su quello, come una barca su un faro.",
+		"Troppe spalle per vedere oltre. Individuo il tetto della locanda sopra la folla e lo tengo davanti a me come una cresta lontana durante una marcia.",
+	},
+	["org.journey.w21.foot.009"] = {
+		"sente il Drag prima di vederlo, dai piedi della torre: un suono più basso e più denso di quello della valle, come api dentro un muro.",
+		"distingue il suono del Drag sotto il chiasso della valle: un ronzio più fitto, un alveare in un muro, con tutti i mestieri al lavoro insieme.",
+	},
+	["org.journey.w21.foot.010"] = {
+		"Locanda. Poi banca. Poi valuterò se rendermi utile.",
+		"Fate largo, tutti. Alla locanda c'è uno sgabello con la mia forma.",
+	},
+	["org.journey.w21.foot.011"] = {
+		"scende la rampa di corsa sotto la tempesta, col tuono che rimbalza tra le pareti del canyon, e punta dritto al tetto più vicino.",
+		"fa la discesa a grandi falcate mentre la tempesta schiocca sopra il canyon, e la valle di sotto si svuota come se qualcuno avesse tolto il tappo.",
+	},
+	["org.journey.w21.foot.012"] = {
+		"compra una tazza di qualcosa di caldo a un banco ai piedi della rampa e la beve in piedi, prima della banca, prima della locanda, prima di tutto.",
+		"si ferma al primo banco dopo la torre per una striscia d'arrosto presa dalla brace, e la mangia appoggiandosi a un palo, senza nessuna fretta di andare altrove.",
+	},
+	["org.journey.w21.foot.013"] = {
+		"Giù tra la gente dell'Orda, e la città mi consegna commissioni prima ancora che arrivi in fondo alla valle: una lettera, una cinghia da aggiustare, un maestro da andare a trovare.",
+		"La città dell'Orda non lascia nessuno con le mani in mano a lungo. Ai piedi della torre ho già una lista: posta, rammendi, due parole con un maestro.",
+	},
+	["org.journey.w21.foot.014"] = {
+		"scende la rampa nella notte più a tentoni che a vista, una mano sul parapetto, mentre le lanterne della valle salgono a galla di sotto.",
+		"fa la discesa piano, nella notte, contando le lanterne lungo la rampa, ognuna un'isoletta arancione nel buio.",
+	},
+	["org.journey.w21.foot.015"] = {
+		"libera l'ultimo gradino della rampa, e un peone che chiaramente lo puntava da un pezzo ci si siede sopra con un gemito di gratitudine.",
+		"lascia il fondo della rampa e un peone in attesa si lascia subito cadere sull'ultimo gradino, come se il posto fosse prenotato.",
+	},
+	["org.journey.w21.foot.016"] = {
+		"Chi ha costruito questa rampa non l'ha mai scesa con le gambe molli.",
+		"Potevano farla più lunga, questa rampa? Non rispondete.",
+	},
+	["org.journey.w21.foot.017"] = {
+		"Da che parte è la banca? Scendo sempre con la faccia verso il muro sbagliato.",
+		"La banca è di là, vero? Da lassù sembrava tutto più vicino.",
+	},
+	["org.journey.w21.foot.018"] = {
+		"Fatemi passare, amici. Gambe rigide in discesa.",
+		"Occhio ai piedi. Queste ginocchia non sterzano ancora bene.",
+	},
+	["org.journey.w21.ground.001"] = {
+		"si ferma in cima alla discesa e muove la mascella da una parte all'altra finché la pressione sorda nelle orecchie non cede con un piccolo schiocco.",
+		"si preme un palmo su un orecchio, poi sull'altro, finché il ronzio ovattato del volo non lascia il posto alla città.",
+	},
+	["org.journey.w21.ground.002"] = {
+		"Qualcosa nell'anca mi scrocchia un passo sì e uno no. Prima di sedermi su un animale volante non lo faceva.",
+		"L'anca sinistra ha preso a scrocchiare. Un passo, crac. Un passo, niente. Mi tiene il tempo per tutta la discesa.",
+	},
+	["org.journey.w21.ground.003"] = {
+		"Gli occhi sono ancora regolati sulla distanza. Quaggiù tutto è troppo vicino e troppo grande: un muro, una spalla, il fianco di un lupo a un braccio da me.",
+		"Lassù la cosa più vicina stava a miglia di distanza. Adesso il gomito di uno sconosciuto mi riempie mezza vista, e gli occhi ci mettono un attimo ad accettarlo.",
+	},
+	["org.journey.w21.ground.004"] = {
+		"batte due volte ogni stivale sulle assi, forte, come per staccarci il fango, e la sensibilità torna nelle piante dei piedi con un formicolio lento.",
+		"dà un colpo di tallone contro il parapetto, poi con l'altro, finché l'intorpidimento che la sella ha lasciato nei piedi non si scioglie in mille spilli.",
+	},
+	["org.journey.w21.ground.005"] = {
+		"Sulla bestia lo zaino viaggiava come un secondo passeggero. Adesso è di nuovo mio, cinghia per cinghia, e lassù sembra aver mangiato qualcosa.",
+		"Buffo: in sella lo zaino non pesava niente. Sulle mie spalle, in cima alla rampa, si è ricordato di ogni singola cosa che contiene.",
+	},
+	["org.journey.w21.ground.006"] = {
+		"arriva ai piedi della torre e sente subito la differenza: lassù le assi cedevano un poco a ogni passo, la roccia della valle non cede per niente.",
+		"passa dall'ultima asse alla roccia nuda, e il netto rifiuto del suolo di oscillare o di cedere sale da entrambi i talloni come una risposta.",
+	},
+	["org.journey.w21.ground.007"] = {
+		"Datemi un momento. Le ginocchia stanno ancora volando.",
+		"Nessuno mi metta fretta. Le gambe stanno ancora scendendo.",
+	},
+	["org.journey.w21.ground.008"] = {
+		"Le dita continuano a chiudersi su redini che non ci sono. A metà rampa le colgo sul fatto e le costringo ad aprirsi.",
+		"Le mani non hanno ancora saputo la notizia. Sono piegate per la presa, e devo raddrizzarle un dito dopo l'altro.",
+	},
+	["org.journey.w21.ground.009"] = {
+		"si massaggia il dietro delle cosce con la base dei palmi e cammina a gambe rigide, come chi è rimasto troppo a lungo seduto su un muretto freddo.",
+		"scioglie la rigidità prima da una coscia e poi dall'altra, e muove qualche passo con l'andatura attenta di chi porta una scodella piena.",
+	},
+	["org.journey.w21.ground.010"] = {
+		"Ogni passo in discesa è come quel gradino al buio che non c'è. Il corpo si aspetta uno scossone. Il terreno resta lì e basta.",
+		"Le gambe continuano a prepararsi a una spinta che non arriva. Il suolo è così fermo da sembrare un trucco.",
+	},
+	["org.journey.w21.ground.011"] = {
+		"Ai piedi della torre la roccia è segnata da due solchi scuri, dove arrivano i carri con la carne per le bestie. Li seguo, perché sanno da che parte si esce.",
+		"Due solchi di carro partono dai piedi della torre e scendono nella valle, anneriti dai carri della carne. I miei piedi ci finiscono dentro senza che glielo chieda.",
+	},
+	["org.journey.w21.ground.012"] = {
+		"Terra. Bene. Resta esattamente così.",
+		"Pietra. Di quella che resta dove l'hai lasciata.",
+	},
+	["org.journey.w21.ground.013"] = {
+		"Giù dal fresco dell'alto, dentro un caldo che si posa sulle spalle come un sacco di grano. Il fondo della valle tremola tra me e la banca.",
+		"Il caldo della valle sale la rampa e mi viene incontro a metà strada. In fondo, il fresco di lassù è già una diceria.",
+	},
+	["org.journey.w21.ground.014"] = {
+		"volta la faccia alla sabbia che soffia in cima alla rampa e scende quasi senza vedere, con una manica premuta sulla bocca.",
+		"si tira un lembo di stoffa su naso e bocca prima di scendere, mentre la sabbia sferza il parapetto fino in fondo.",
+	},
+	["org.journey.w21.ground.015"] = {
+		"Mi fischiano ancora le orecchie. Se hai detto qualcosa, ripetilo più forte.",
+		"Scusa, come? Ho ancora il cielo nelle orecchie.",
+	},
+	["org.journey.w21.ground.016"] = {
+		"Per un bel po' non mi siedo più su niente.",
+		"Il prossimo pasto lo consumo in piedi, grazie.",
+	},
+	["org.journey.w21.ground.017"] = {
+		"Su questa rampa non ci sono due assi alla stessa altezza. Messe da tante mani, giura un vecchio peone, e nessuna parlava con l'altra. Le mie ginocchia confermano.",
+		"Ogni asse della discesa sporge un po' o affonda un po', come se le avessero inchiodate peoni diversi, ognuno con la sua idea di piano. Le ginocchia rigide se ne accorgono tutte.",
+	},
+	["org.journey.w21.handler.001"] = {
+		"nota gli avambracci dell'addestratore, fasciati fino al gomito con strisce di cuoio vecchio, masticate e sfilacciate sui bordi. Nessuno fa domande.",
+		"lancia un'occhiata alle fasce di cuoio legate sugli avambracci dell'addestratore, rosicchiate fino a farsi sottili da un lato, e la domanda resta lì, non detta.",
+	},
+	["org.journey.w21.handler.002"] = {
+		"L'addestratore parla alla bestia con un brontolio lungo, basso, affettuoso. A me ha rivolto una parola sola, ed era «giù».",
+		"Alla bestia tocca un discorso intero, sussurrato all'orecchio. A me un cenno del mento verso la discesa.",
+		"L'addestratore ha un nomignolo per la bestia e un grugnito per me. Non mi offendo: la bestia se l'è guadagnato.",
+	},
+	["org.journey.w21.handler.003"] = {
+		"si fa da parte quando l'addestratore comincia a strigliare la bestia con mazzetti di paglia, sciogliendo con passate lunghe e decise le giunture delle ali.",
+		"lascia spazio all'addestratore: un pugno di paglia passa sulle spalle della bestia e lungo ogni ala ripiegata, in passate lente e pratiche.",
+	},
+	["org.journey.w21.handler.004"] = {
+		"La tua bestia conosceva la strada meglio di me. Ringraziala da parte mia.",
+		"Grazie. Il lavoro l'ha fatto la bestia: io ho solo tenuto duro.",
+	},
+	["org.journey.w21.handler.005"] = {
+		"L'addestratore mi chiede com'era l'aria lassù, e quando trovo la risposta la bestia è già all'altro capo della piattaforma, e la domanda con lei.",
+		"Una sola domanda dall'addestratore, com'era l'aria, e nessuna pazienza per la risposta. Giusto: gliel'aveva già detto la bestia.",
+	},
+	["org.journey.w21.handler.006"] = {
+		"guarda l'addestratore sciogliere con dita severe due nodi nella criniera della bestia, proprio dove si sarebbero aggrappati i pugni di un passeggero nervoso.",
+		"vede l'addestratore trovare due ciuffi arruffati nella criniera, giusto dove si tiene chi monta, e districarli con l'aria di chi ne ha viste troppe.",
+	},
+	["org.journey.w21.handler.007"] = {
+		"Per l'addestratore sono un atterraggio come tanti, in una giornata piena di atterraggi. C'è una certa pace nel contare così poco per qualcuno.",
+		"L'addestratore non si ricorda la mia faccia e non se la ricorderà mai. Per una torre chi arriva è come la polvere: entra, e lo si spazza via.",
+	},
+	["org.journey.w21.handler.008"] = {
+		"vede l'addestratore passare alla bestia qualcosa di scuro preso da una borsa alla cintura, col palmo aperto, e il testone chinarsi a prenderlo con la delicatezza di un gatto.",
+		"guarda l'addestratore pagare alla bestia il suo compenso, una striscia di carne secca tirata fuori dalla borsa, offerta sul palmo aperto e accettata con una cura sorprendente.",
+	},
+	["org.journey.w21.handler.009"] = {
+		"Sì, lo so. Assecondare le virate. La prossima volta me lo ricordo.",
+		"Schiena dritta, assecondare le virate. Sì, l'avevo capito al primo colpo.",
+	},
+	["org.journey.w21.handler.010"] = {
+		"Un addestratore anziano mostra a uno giovane come si accoglie un atterraggio, e l'esempio sono io. «Vedi come scendono rigidi? Dagli il parapetto.» Prendo il parapetto.",
+		"A quanto pare la lezione sono io: un addestratore giovane guarda il vecchio prendermi le redini e copia ogni gesto, smorfia compresa.",
+	},
+	["org.journey.w21.handler.011"] = {
+		"sente l'addestratore pronunciare una sola parola in orchesco, e la viverna ripiega di colpo tutte e due le ali, come una tenda smontata in fretta.",
+		"guarda la viverna chiudere le ali a una parola bassa in orchesco dell'addestratore, composta come un grunt sull'attenti.",
+	},
+	["org.journey.w21.handler.012"] = {
+		"Alla torre nessuno mi chiede monete mentre me ne vado. Il volo era saldato prima di cominciare. In questa città, già questo sembra un regalo.",
+		"L'unico posto di Orgrimmar dove nessuno tende la mano per una moneta è questa piattaforma. Qui era tutto pagato prima che lasciassi terra.",
+	},
+	["org.journey.w21.handler.013"] = {
+		"guarda l'addestratore issare la sella su un piolo accanto a una dozzina di altre, ognuna consumata in una forma un po' diversa da una schiena diversa.",
+		"vede la sella tolta e appesa al suo piolo con le altre, una fila lungo il parapetto, ognuna modellata sulla bestia a cui appartiene.",
+	},
+	["org.journey.w21.handler.014"] = {
+		"La prossima volta la stessa bestia, se mi vuole ancora.",
+		"Segnati quella bestia. Con lei volerei sempre.",
+	},
+	["org.journey.w21.handler.015"] = {
+		"Morde? No, non dirmelo. Tanto me ne sto andando.",
+		"Mi sta guardando. È normale che mi guardi così?",
+	},
+	["org.journey.w21.handler.016"] = {
+		"Gli addestratori dicono che una bestia che atterra con le ali mezze aperte sta ancora pensando al cielo. La mia le ha chiuse di scatto appena toccato terra. Cerco di non prenderla sul personale.",
+		"Una bestia che dopo l'atterraggio tiene le ali allentate vuole tornare su, dicono gli addestratori. La mia le ha strette prima che trovassi la staffa. Ognuno ne tragga le sue conclusioni.",
+	},
+	["org.journey.w21.horizon.001"] = {
+		"guarda la strada verso sud ridursi a un filo chiaro steso sulla terra rossa, teso dritto in un punto e attorcigliato in un altro, come se qualcuno l'avesse lasciato cadere dall'alto e non l'avesse più raccolto.",
+		"segue con gli occhi la strada verso sud finché si assottiglia in un unico punto di cucitura chiaro nella terra rossa, poi la perde fra le colline.",
+		"vede la strada verso sud diventare un nastro, poi un graffio: spariscono prima i viaggiatori, poi i solchi delle ruote, poi la strada stessa.",
+	},
+	["org.journey.w21.horizon.002"] = {
+		"guarda dall'alto uno zeppelin ormeggiato alla sua torre, poco discosto, e vede ciò che da terra nessuno vede: la sommità del grande pallone è una trapunta di toppe, tutte di colore diverso.",
+		"passa abbastanza in alto sulle torri degli zeppelin da vedere l'aeronave da sopra, la pelle gonfia cucita di toppe spaiate, come la giacca di un goblin dopo un'annata buona.",
+	},
+	["org.journey.w21.horizon.003"] = {
+		"Giù alla torre degli zeppelin qualcuno si sporge dalla murata dell'aeronave, e non per ammirare il panorama. Quel che ha mangiato alla locanda, Durotar se lo sta riprendendo.",
+		"Un passeggero dello zeppelin ormeggiato sta piegato oltre il parapetto, immobile, con quell'immobilità particolare di chi sta per sentirsi male. La bestia e io passiamo sopra senza commenti. Certe cortesie valgono anche quassù.",
+	},
+	["org.journey.w21.horizon.004"] = {
+		"vede una cassa salire lungo una torre degli zeppelin appesa a una fune, con un goblin seduto in cima che urla istruzioni a quelli che tirano di sotto.",
+		"scorge, accanto alle torri degli zeppelin, un goblin appollaiato su una cassa che sale, che agita le braccia verso chi tira la fune come se dirigesse un coro che lo detesta.",
+	},
+	["org.journey.w21.horizon.005"] = {
+		"Oltre le mura la terra cambia colore con la distanza: ruggine proprio sotto, poi mattone, poi un bruno che diventa quasi viola dove finiscono le colline. In città nessuno la vede mai tutta insieme.",
+		"Da quassù Durotar ha più rossi di quanti ne conoscessi: ruggine sotto le ali, mattone più avanti, e sul bordo estremo un color prugna scuro in cui le colline sfumano.",
+	},
+	["org.journey.w21.horizon.006"] = {
+		"sorvola un pinnacolo isolato di roccia rossa piantato in mezzo alla piana come un palo che nessuno ricorda di aver messo, con la cima piatta, nuda e macchiata di bianco dagli uccelli.",
+		"passa sopra le cime dei torrioni di roccia che si alzano solitari sulla piana fuori città, ognuno con una corona piatta di pietra nuda che vede soltanto chi vola.",
+	},
+	["org.journey.w21.horizon.007"] = {
+		"Sulla strada là sotto distinguo i viaggiatori solo dalla velocità: i kodo strisciano, i lupi corrono a scatti, e i peoni a piedi tengono sempre lo stesso passo paziente, qualunque cosa li sorpassi.",
+		"Da quest'altezza sulla strada tutto è un puntino, ma i puntini hanno le loro maniere. Quelli dei kodo quasi non si muovono, quelli dei lupi scattano e si fermano, e quelli a piedi non cambiano mai.",
+		"Anche ridotto a macchioline, il traffico della strada si tradisce. La sbavatura lenta è una carovana, il guizzo veloce un lupo, e la perlina costante che non ha mai fretta è qualcuno che cammina.",
+	},
+	["org.journey.w21.horizon.008"] = {
+		"Da un lato, la gobba pallida di Skull Rock. I grunt dicono che nelle grotte là sotto strisciano ancora quelli della Burning Blade, abbastanza vicini da vedere il fumo della città. Da quassù non sembra niente.",
+		"Ecco Skull Rock, grigia e bitorzoluta in mezzo a tutto quel rosso. Lì sotto si nascondono i cultisti della Burning Blade, se le guardie dicono il vero, a due passi dalle mura della città. Strano sorvolarla con tanta facilità.",
+	},
+	["org.journey.w21.horizon.009"] = {
+		"vede due cinghiali maculati grufolare sul bordo della strada, e li guarda scappare in direzioni opposte al passaggio della bestia, poi fermarsi, ognuno chiaramente convinto che il vigliacco fosse l'altro.",
+		"fa schizzare due cinghiali fuori dagli arbusti accanto alla strada; si sparpagliano, si bloccano a un tiro di sasso l'uno dall'altro e si guardano intorno come se il cielo avesse gridato contro di loro.",
+	},
+	["org.journey.w21.horizon.010"] = {
+		"Tutta quella terra aperta, e nemmeno un muro di traverso. Che meraviglia.",
+		"Guarda lì. Rosso fino all'orlo del mondo, e nemmeno un tetto sopra.",
+		"Miglia e miglia di niente, e tutte da attraversare.",
+	},
+	["org.journey.w21.horizon.011"] = {
+		"Davanti le creste si allineano una dietro l'altra, ognuna un po' più pallida della precedente, come una mandria di kodo addormentati in fila che sbiadisce verso il fondo.",
+		"Cresta dopo cresta, là davanti, ognuna più sbiadita di quella prima. Le più lontane sono poco più di un'ipotesi.",
+	},
+	["org.journey.w21.horizon.012"] = {
+		"sorvola una carovana che arranca lungo la strada, kodo legati muso a coda, con il conducente dell'ultimo accasciato nel sonno e le redini avvolte intorno a un polso.",
+		"passa sopra una lenta fila di kodo che si allontana per la strada, muso a coda, e sull'ultimo un conducente che sonnecchia in sella, fidandosi dell'animale davanti.",
+	},
+	["org.journey.w21.horizon.013"] = {
+		"C'è un cartello giù dove la strada si divide. Da quest'altezza è una scheggia, e qualunque cosa dica, la dice a chi va a piedi. La bestia non sa leggere.",
+		"Un bivio là sotto, con il suo palo e le braccia puntate in ogni direzione. Quassù nessuno lo consulta. Sulla direzione, la bestia tiene i suoi pensieri per sé.",
+		"La strada si divide, di sotto, e qualche anima paziente ci ha piantato un palo per dire cosa porta dove. Buoni consigli, sprecati per chiunque abbia le ali.",
+	},
+	["org.journey.w21.horizon.014"] = {
+		"guarda il terreno nudo davanti tremolare nel caldo del giorno, tanto che la strada sembra sollevarsi e galleggiare un palmo sopra la terra rossa.",
+		"contempla una piana che vibra sotto il calore del giorno, dove le rocce lontane ondeggiano e la strada davanti scorre come acqua versata.",
+	},
+	["org.journey.w21.horizon.015"] = {
+		"Lo zeppelin, là sotto. Non ci pensare nemmeno, bestia.",
+		"Quella è l'aeronave. Lasciala stare. È piena di goblin.",
+		"Saluta lo zeppelin! No. Non con l'ala. Lascia perdere.",
+	},
+	["org.journey.w21.horizon.016"] = {
+		"distingue, in un'aria così limpida, una tenue macchia di fumo di cucina in fondo alla strada, dove dev'essere Razor Hill, piccola come un'impronta di pollice sul rosso.",
+		"nell'aria limpida riesce a seguire la strada quasi fino a Razor Hill, un nodo bruno e fioco proprio in fondo al filo.",
+	},
+	["org.journey.w21.horizon.017"] = {
+		"Durotar vista dall'alto è identica a Durotar vista dalla strada. Ce n'è solo di più, e nemmeno un pezzo è più morbido.",
+		"L'altezza non abbellisce questo paese. Ti mostra solo quanto ce n'è, ogni sasso dello stesso rosso duro, fino in fondo.",
+	},
+	["org.journey.w21.landing.001"] = {
+		"per un attimo pende nell'aria sopra il trespolo, mentre la bestia getta le ali in avanti e si ferma, e la torre intera sembra aspettare.",
+		"sente la bestia reggersi in aria un'ultima volta, ali a coppa e battute all'indietro, prima di lasciarsi andare sulle assi.",
+	},
+	["org.journey.w21.landing.002"] = {
+		"L'atterraggio non arriva dall'alto: è la sella che sale, di colpo, e si presenta a ogni osso che possiedo.",
+		"L'atterraggio arriva da sotto, attraverso la sella, come il calcio di un mulo che ha aspettato tutta la vita l'occasione.",
+	},
+	["org.journey.w21.landing.003"] = {
+		"atterra con un lungo stridio di unghie sulle assi, la bestia che slitta di un passo prima di piantarsi e fermarsi.",
+		"tocca giù con il raspare di quattro zampe unghiute su vecchie tavole, come un carro trascinato sulla ghiaia, e poi un'immobilità improvvisa.",
+	},
+	["org.journey.w21.landing.004"] = {
+		"Nell'istante in cui la bestia si ferma, il fruscio d'aria che mi ha riempito le orecchie per tutto il volo finisce di colpo, e il silenzio che lascia è pieno di città.",
+		"La prima cosa che noto non è il colpo, è l'aria: smette di spingermi sul viso, e l'aria chiusa del canyon mi si posa sulle spalle come uno zaino che avevo scordato di avere.",
+	},
+	["org.journey.w21.landing.005"] = {
+		"atterra con il cappuccio rovesciato sulla faccia, e passa il primo momento sul trespolo a lottarci come con un gatto in un sacco.",
+		"tocca le assi con uno schiocco di mantello che si avvolge una volta attorno alla testa: il primo assaggio del trespolo è una bocca piena di stoffa.",
+	},
+	["org.journey.w21.landing.006"] = {
+		"Ed ecco come si atterra. Grosso modo.",
+		"Giù. Niente applausi, che spaventate la bestia.",
+	},
+	["org.journey.w21.landing.007"] = {
+		"resta immobile mentre la bestia chiude le ali in due mosse pulite e scricchiolanti, come chi accosta un paio di imposte pesanti.",
+		"aspetta che la bestia si ripieghi dopo l'atterraggio, il cuoio delle ali che si piega e si adagia sui fianchi con il suono di una vecchia bisaccia che si chiude.",
+	},
+	["org.journey.w21.landing.008"] = {
+		"Il trespolo è l'unico pezzo di Orgrimmar che appartiene ancora al cielo. Ci resto sopra un momento in più, prima che le strade facciano valere i loro diritti.",
+		"Né quassù né laggiù: il trespolo non è ancora l'una cosa né l'altra. Resto in sella un momento e lascio che sia tutte e due.",
+	},
+	["org.journey.w21.landing.009"] = {
+		"atterra, e dalla torre scatta una mano ad afferrare le redini prima che la bestia abbia finito di fermarsi, mentre chi la tende sta ancora parlando con qualcun altro.",
+		"si ferma con le redini già nel pugno dell'addestratore, che non ha nemmeno alzato gli occhi da una tazza di qualcosa di bollente.",
+	},
+	["org.journey.w21.landing.010"] = {
+		"Atterrata, la bestia si gira a guardarmi da sopra la spalla e sbuffa. Una recensione, credo. Non buona.",
+		"Appena giù, la bestia volta la testa e mi lancia un'occhiata lunga, quella che gli osti riservano agli ospiti che hanno cantato.",
+	},
+	["org.journey.w21.landing.011"] = {
+		"scende sulla torre con le ali della viverna ancora aperte e alza il pugno verso l'addestratore, che risponde con lo stesso gesto prima di prendere le redini.",
+		"posa la viverna dritta sul trespolo e rivolge all'addestratore il breve cenno che si scambiano i viaggiatori dell'Orda, ricambiato allo stesso modo.",
+	},
+	["org.journey.w21.landing.012"] = {
+		"Ecco. Ferma, bestia. Tutti e due, un momento.",
+		"Piano, piano. Nessuno si muova per un attimo.",
+	},
+	["org.journey.w21.landing.013"] = {
+		"Lassù non pesavo niente. Appena le zampe fanno presa, il mio peso torna tutto in una volta, ed è più di quanto ricordassi.",
+		"L'atterraggio ti restituisce il peso in un blocco solo, e mai proprio quello che avevi prima di volare.",
+	},
+	["org.journey.w21.landing.014"] = {
+		"Cielo alle spalle, pietra sotto. Fatto, e fatto bene.",
+		"Fuori dall'aria e sopra le assi. E anche questo volo è finito.",
+	},
+	["org.journey.w21.outward.001"] = {
+		"Ho ripassato la lista tre volte dalla torre: borsa, zaino, quella cosa comprata nel Drag. C'è tutto. La lista fa comunque un quarto giro.",
+		"C'era qualcosa che volevo fare prima di partire? C'è sempre. Qualunque cosa fosse, può aspettare, e la città me la ricorderà appena sarò di ritorno.",
+		"Borsa. Zaino. Tutti e due gli stivali. Il fagottino del Drag. La mente continua a tastare le stesse tasche mentre la terra si srotola davanti.",
+	},
+	["org.journey.w21.outward.002"] = {
+		"si volta dal canyon verso la terra aperta, e resta così, il mento un po' sollevato, come chi cavalca in testa a una colonna.",
+		"guarda avanti una volta sparite le mura, sistemando lo zaino con un'alzata di spalle, gli occhi sulla terra rossa e dietro niente che meriti un'occhiata.",
+	},
+	["org.journey.w21.outward.003"] = {
+		"Terra aperta davanti. Vediamo cos'ha da offrire.",
+		"Fuori dalle mura. Adesso comincia il lavoro vero.",
+	},
+	["org.journey.w21.outward.004"] = {
+		"Lo zaino pesa più di quando sono {g:entrato|entrata} a Orgrimmar, e la borsa meno. La città fa così: sposta il peso dall'una all'altro e lo chiama provviste.",
+		"Esco con lo zaino pieno e la borsa magra. All'arrivo era il contrario. Orgrimmar fa quadrare i suoi conti sulla mia schiena.",
+	},
+	["org.journey.w21.outward.005"] = {
+		"pesca una striscia di carne secca da una tasca quando il volo si è stabilizzato, e al primo morso la testa della bestia si gira di scatto con un interesse vivo e terribile.",
+		"scarta un tozzo di pane comprato alla locanda per il viaggio e lo mangia {g:curvo|curva}, perché la bestia continua a voltarsi verso l'odore.",
+	},
+	["org.journey.w21.outward.006"] = {
+		"Partire sembra sempre più leggero di quanto dovrebbe, visto quello che di solito aspetta in fondo. Forse è questo il trucco: all'inizio si porta solo la partenza.",
+		"Nel primo tratto fuori da una città c'è una leggerezza che il resto del cammino non eguaglia mai. Me la prendo finché dura.",
+	},
+	["org.journey.w21.outward.007"] = {
+		"sfiora il pomo della sella con due dita mentre l'ultima parete scivola sotto, un piccolo gesto di congedo, privato, fatto per nessuno.",
+		"batte due volte sul pomo quando il canyon è alle spalle, piano, come certi viaggiatori bussano allo stipite uscendo di casa.",
+	},
+	["org.journey.w21.outward.008"] = {
+		"Tieni le mura, Orgrimmar. Del resto mi occupo io.",
+		"Tenete la città, grunt. Alla parte lontana ci penso io.",
+	},
+	["org.journey.w21.outward.009"] = {
+		"Ho dimenticato qualcosa a Orgrimmar. Succede sempre. Scoprirò cosa nel momento peggiore, lontano da qualunque mercante.",
+		"C'è sempre una cosa che resta indietro. Una fibbia di ricambio, un ago, un pizzico di sale. Qualunque cosa sia stavolta, è in città e io no.",
+	},
+	["org.journey.w21.outward.010"] = {
+		"si sorprende a sorridere al nulla mentre la terra si apre davanti, e non fa nulla per smettere.",
+		"porta, per il primo tratto sopra la campagna aperta, il piccolo sorriso privato di chi è {g:sgattaiolato|sgattaiolata} fuori da una stanza affollata senza farsi vedere.",
+	},
+	["org.journey.w21.outward.011"] = {
+		"Partire all'alba, con tutta Durotar davanti ancora mezza grigia, come se la terra non avesse deciso di che colore essere. Quando si deciderà, sarò già ben {g:lontano|lontana}.",
+		"Una partenza all'alba. La terra rossa è ancora azzurra d'ombra, e la prima luce sta appena trovando le cime delle colline davanti.",
+	},
+	["org.journey.w21.outward.012"] = {
+		"parte nel crepuscolo con la luce bassa che rade Durotar, ogni roccia e ogni cespuglio spinoso davanti che trascina un'ombra lunga sulla terra rossa.",
+		"vola via nel crepuscolo mentre i primi fuochi di bivacco si accendono lungo la strada di sotto, piccoli, arancioni e molto distanti tra loro.",
+	},
+	["org.journey.w21.outward.013"] = {
+		"Adesso ci siamo solo tu e io, bestia. Cerca di essere di buona compagnia.",
+		"Niente città, niente folla. Dovrai farmi conversazione tu, bestia.",
+	},
+	["org.journey.w21.outward.014"] = {
+		"Partire sotto la pioggia, figuriamoci. Di sotto la terra rossa si scurisce a chiazze che si allargano, e ogni letto secco che aspettava da una stagione intera all'improvviso scorre.",
+		"Pioggia su Durotar. La bestia la detesta e lo dice a ogni colpo d'ala, e il terreno duro di sotto non fa in tempo a berla: l'acqua ci scivola sopra a lenzuola.",
+	},
+	["org.journey.w21.outward.015"] = {
+		"prova a spiegare una mappa quando il volo si è stabilizzato, perde la discussione con l'aria che corre alla seconda piega, e la ricaccia dentro la giubba.",
+		"tira fuori una mappa, ci ripensa appena il primo angolo schiocca e sbatte, e la rimette via; la bestia, del resto, non ha bisogno di indicazioni.",
+	},
+	["org.journey.w21.outward.016"] = {
+		"Orgrimmar ci manda fuori tutti allo stesso modo, grunt, carovane e gente come me: con la pancia piena, il sonno fatto, e l'attesa che si torni con qualcosa da mostrare.",
+		"Fuori, come ogni grunt e ogni carovana prima di me. L'Orda ti presta la sua città per riposare, e poi ti punta verso la strada.",
+	},
+	["org.journey.w21.perch.001"] = {
+		"vede le bestie già sul trespolo spostarsi di lato mentre la bestia arriva, e una di loro alza un'ala come un braccio buttato su una panca per tenere il posto.",
+		"guarda una bestia appollaiata rifiutarsi di cedere: tiene un'ala tesa e rigida sopra il posto libero finché un addestratore non la scaccia con uno scappellotto.",
+	},
+	["org.journey.w21.perch.002"] = {
+		"Dall'alto il trespolo sembra un ceppo da macellaio: tutto segnato di graffi, scuro dove si serve la carne. Posto delizioso per posarci un passeggero.",
+		"Le assi d'atterraggio salgono incontro piene di solchi, ognuno una bestia arrivata troppo veloce. Mi riterrò {g:fortunato|fortunata} se ne aggiungo uno poco profondo.",
+	},
+	["org.journey.w21.perch.003"] = {
+		"vede un addestratore farsi sul bordo del trespolo e alzare le braccia, incrociandole una volta sopra la testa; la bestia corregge la rotta come se il gesto fosse una parola.",
+		"osserva una figura sulla torre richiamare la bestia con un'asta tenuta di traverso, e la bestia scivola verso il punto che indica.",
+	},
+	["org.journey.w21.perch.004"] = {
+		"La torre sale dal fondo della valle: prima un picchetto, poi un albero maestro, poi un intero edificio storto, carico di corde, secchi e un quarto di carne appeso a un gancio.",
+		"Più vicina, la torre smette di essere un punto di riferimento e diventa un posto: rotoli di corda, uno sgabello, un cosciotto mezzo mangiato, un addestratore che si gratta il collo.",
+	},
+	["org.journey.w21.perch.005"] = {
+		"coglie le zampe della bestia che scendono da sotto il ventre ben prima del trespolo, dita larghe e protese, come una mano che cerca un gradino al buio.",
+		"sente le zampe posteriori della bestia calare sotto la sella mentre la torre si avvicina, e tutto l'animale cambia forma, da sasso lanciato a mano che afferra.",
+	},
+	["org.journey.w21.perch.006"] = {
+		"Fate posto lassù! Spostate quelle code!",
+		"Fatevi in là, voialtri. Ne arriva un'altra.",
+	},
+	["org.journey.w21.perch.007"] = {
+		"Dall'alto il trespolo sembra grande giusto per un gatto. La bestia pare sicura. Ho deciso di fidarmi della sua sicurezza.",
+		"Da quassù il posto d'atterraggio è un quadrato di assi non più grande di un tavolo da cucina. O la bestia sa qualcosa, o stiamo per impararlo insieme.",
+	},
+	["org.journey.w21.perch.008"] = {
+		"sente la viverna lanciare un lungo grido raschiante mentre la torre si avvicina, e tutte le bestie sul trespolo le rispondono, finché la piattaforma intera strilla.",
+		"entra dentro un urlo: la viverna chiama il trespolo, le bestie appollaiate gettano indietro la testa e rispondono, con un baccano che fa alzare gli occhi a tutta la valle.",
+	},
+	["org.journey.w21.perch.009"] = {
+		"La bestia ignora il posto libero che l'addestratore le indica e punta all'angolo del trespolo dove stanno i secchi della carne. Si atterra dove c'è da mangiare. Ovvio.",
+		"Sulla torre ci sono due posti liberi, e la bestia sceglie senza discutere quello accanto al secchio degli avanzi. Avrei fatto lo stesso.",
+	},
+	["org.journey.w21.perch.010"] = {
+		"nota i viaggiatori in attesa sulla torre fare un rapido passo indietro mentre la bestia arriva, tutti con la stessa mano sul cappuccio.",
+		"fa stringere il gruppetto sulla piattaforma contro il parapetto mentre la bestia scende verso di loro, un goblin che si stringe lo zaino al petto.",
+	},
+	["org.journey.w21.perch.011"] = {
+		"Più il trespolo si avvicina, più toppe vedo: assi nuove accanto alle vecchie, una trave legata dove un tempo si era crepata. Qualcuno lo tiene in ordine. Spero che sia scrupoloso.",
+		"Arrivando noto che alcune assi del trespolo hanno un rosso più fresco delle altre. Rimpiazzi. Decido di non chiedermi che fine abbiano fatto le vecchie.",
+	},
+	["org.journey.w21.perch.012"] = {
+		"In arrivo! Qualcuno prenda le redini!",
+		"Prendici al volo, addestratore, siamo un po' veloci!",
+	},
+	["org.journey.w21.perch.013"] = {
+		"arriva sotto un cielo sgombro e limpido, e da molto lontano riesce a contare i secchi sul trespolo e i rotoli di corda ai piedi dell'addestratore.",
+		"scorge la torre nitida e vicina nell'aria tersa molto prima che la bestia la raggiunga, ogni asse del trespolo chiara come una scritta.",
+	},
+	["org.journey.w21.perch.014"] = {
+		"Le viverne sul trespolo alzano la testa al nostro arrivo, e scopro di riconoscerne qualcuna dalle cicatrici. Strana compagnia di cui essere {g:contento|contenta}, ma lo sono.",
+		"Un orecchio strappato, un'ala intaccata: mentre scendiamo verso la torre riconosco alcune viverne. Loro non riconoscono me, e mi sembra giusto.",
+	},
+	["org.journey.w21.perch.015"] = {
+		"punta nella notte verso un'unica lanterna che oscilla in lenti archi sul trespolo, e la bestia segue la luce che dondola fino in fondo, come tirata da un filo.",
+		"scende nella notte dietro la lanterna di un addestratore che ondeggia da una parte all'altra sulla torre, l'unica cosa di tutto quel buio che alla bestia sembri importare.",
+	},
+	["org.journey.w21.perch.016"] = {
+		"Attenta alle assi nuove, bestia. Qualcuno ci ha faticato parecchio.",
+		"Non sul secchio. Dovunque, ma non sul secchio.",
+	},
+	["org.journey.w21.rim.001"] = {
+		"sale lungo la parete del canyon tanto vicino da contarne le fasce di pietra, ruggine su rosso su una vena chiara come osso vecchio, posate lì molto prima che qualcuno desse loro un nome.",
+		"risale accanto alla parete del canyon e la vede stesa a strisce: rosso mattone, arancio spento, una vena gialla, e ogni fascia un po' più vecchia di quella sopra.",
+	},
+	["org.journey.w21.rim.002"] = {
+		"A metà parete la roccia è piena di buchetti, e da ogni buco un uccellino ci strilla dietro. La bestia non gira nemmeno la testa. Mi offenderei anch'io.",
+		"La parete del canyon è bucherellata di nidi, e ogni padrone di casa si sporge a dire alla bestia, chiaro e tondo, cosa pensa di lei.",
+	},
+	["org.journey.w21.rim.003"] = {
+		"passa accanto a una vecchia fune che pende lungo la parete del canyon da una cengia che nessuno sembra usare, col capo sfilacciato che dondola, legata lassù per un motivo che la città ha scordato da tempo.",
+		"nota una corda che penzola da una cengia alta nella parete, sbiadita, annodata a intervalli, che sale verso qualcosa che dalla strada non si vede.",
+	},
+	["org.journey.w21.rim.004"] = {
+		"Un rovo cresce di traverso da una crepa a metà parete, lontanissimo da qualsiasi terra. Ha la vista migliore di Orgrimmar e nessuno a cui raccontarla.",
+		"Da una fenditura della parete spunta un cespuglio testardo, chino sul vuoto. Nessuno l'ha piantato, nessuno lo annaffia. Mi è subito simpatico.",
+	},
+	["org.journey.w21.rim.005"] = {
+		"arriva all'altezza del bordo del canyon, e per un solo colpo d'ala lo spigolo della roccia taglia la vista in due: la città da una parte, la terra rossa e nuda dall'altra.",
+		"sale finché il ciglio del canyon non scivola sotto la bestia come lo spigolo di un tavolo, e la città, che un attimo prima stava tutt'intorno, ora sta tutta di sotto.",
+	},
+	["org.journey.w21.rim.006"] = {
+		"Da sopra, la cima delle mura è una strada a sé, che gira intorno alla città: l'unica via di Orgrimmar dove nessuno vende niente.",
+		"Il camminamento delle mura da quassù sembra un sentiero tranquillo che corre lungo il bordo, con una sentinella ogni tanto, come perline su un cordino. Niente bancarelle, niente urla. Pagherei per percorrerlo.",
+	},
+	["org.journey.w21.rim.007"] = {
+		"guarda una cassa che sale lungo la parete del canyon su una carrucola che stride, mentre un goblin in cima grida numeri a qualcuno in basso che, chiaramente, non lo ascolta.",
+		"passa accanto a un montacarichi di funi e carrucole sulla parete, dove un carico di legname dondola a metà strada e due voci, una molto in alto e una molto in basso, litigano su di chi sia la colpa.",
+	},
+	["org.journey.w21.rim.008"] = {
+		"Dal bordo, le pareti del canyon sembrano cento volte più vecchie della città che contengono. Qualunque cosa diventi Orgrimmar, questa roccia ha già visto di più.",
+		"La città è giovane e rumorosa; il canyon intorno non è né l'una né l'altra cosa. Quassù, all'altezza della cima della pietra, si sente quale dei due durerà di più.",
+	},
+	["org.journey.w21.rim.009"] = {
+		"riceve uno scossone quando la bestia supera il bordo, dove l'aria ferma del canyon incontra quella che corre di sopra, e la sella sparisce di sotto per mezzo istante.",
+		"sente la bestia inciampare nel nulla sul ciglio del canyon, dove l'aria calda che sale dalla città lascia il posto al cielo aperto, e poi riprendersi con un solo colpo d'ala pesante.",
+	},
+	["org.journey.w21.rim.010"] = {
+		"Siamo all'altezza delle mura. Un cenno alle sentinelle, bestia: se lo sono guadagnato.",
+		"Faccia a faccia con le sentinelle. Non fermarti a chiacchierare, bestia.",
+	},
+	["org.journey.w21.rim.011"] = {
+		"Qualcuno ha inciso una faccia nella roccia vicino al bordo, zanne, cipiglio e tutto. Una sentinella annoiata, direi, con un coltello e un turno di guardia lunghissimo.",
+		"Accanto al ciglio del canyon, una faccia rozza scavata nella pietra, che fissa il cielo torva. Non è opera di uno scalpellino. È opera di qualcuno di guardia, con un coltello e tanta pazienza.",
+	},
+	["org.journey.w21.rim.012"] = {
+		"segue la giuntura dove le mura di legno della città incontrano la roccia viva, ogni palo infilato in un incavo scalpellato nella pietra e legato stretto con funi scurite dagli anni.",
+		"sorvola il punto in cui le mura si saldano alla rupe, dove i costruttori hanno lasciato perdere il legno e hanno fatto del canyon stesso il bastione.",
+	},
+	["org.journey.w21.rim.013"] = {
+		"A piedi, quelle pareti sono la fine del mondo. Da quassù sono un gradino che quasi un kodo riuscirebbe a salire. È sfacciato, quanto cambia tutto con l'altezza.",
+		"Laggiù le pareti del canyon sembrano chinarsi addosso. Da sopra sono solo i bordi di un piatto, e nemmeno tanto fondo.",
+	},
+	["org.journey.w21.rim.014"] = {
+		"Ecco il bordo. Tutto quello che c'è oltre è cielo, bestia. Roba tua.",
+		"In cima al canyon. Da qui in poi non faccio che stare in sella.",
+		"Il ciglio del canyon. Adesso comandi tu, bestia.",
+	},
+	["org.journey.w21.rim.015"] = {
+		"passa accanto a una lucertola schiacciata su una cengia della parete, che gira un occhio per seguire la bestia e per il resto non muove una squama.",
+		"ha addosso lo sguardo di una lucertola appiattita sulla roccia calda della parete, la gola che va su e giù, per nulla colpita da qualunque cosa abbia le ali.",
+	},
+	["org.journey.w21.rim.016"] = {
+		"Qualcosa ha scavato questo canyon, un tempo, l'acqua probabilmente, un fiume lungo e paziente. Da quassù si vede ancora dove piegava. La città si è semplicemente sistemata nel suo vecchio letto.",
+		"Da quest'altezza il canyon ha la forma di un fiume che non c'è più, e ogni valle è un'ansa che faceva un tempo. Orgrimmar vive in un letto di fiume asciutto e lo chiama strade.",
+	},
+	["org.journey.w21.specks.001"] = {
+		"guarda la folla perdere i dettagli mentre la bestia sale: prima spariscono le facce, poi le zanne e le corna, poi perfino la differenza tra un tauren e un goblin, finché restano solo puntini grandi e puntini piccoli.",
+		"vede la gente là sotto perdersi un tratto alla volta, prima i colori, poi le sagome, finché il tauren più alto della valle è un puntino come un altro.",
+	},
+	["org.journey.w21.specks.002"] = {
+		"Qualcuno là sotto grida un nome, debole e sottile. A quest'altezza ogni nome somiglia un po' al mio, e nessuno lo è.",
+		"Un nome sale dalla valle, chiamato due volte e poi lasciato perdere. Non è il mio. Ascolto lo stesso, finché il colpo d'ala successivo non lo copre.",
+	},
+	["org.journey.w21.specks.003"] = {
+		"trova un solo viso rivolto in su in tutta la folla: un troll con una cesta su un fianco, che segue la bestia fino al bordo del canyon senza distogliere lo sguardo una volta.",
+		"nota una figura sola nella Valley of Strength, ferma a fissare in alto mentre la folla le scorre intorno, e se la sente addosso finché le mura non si mettono in mezzo.",
+	},
+	["org.journey.w21.specks.004"] = {
+		"Una fila di peoni attraversa la valle coi tronchi in spalla, e da quassù sembrano scarabei che trasportano rametti.",
+		"Peoni che trasportano legname attraverso la valle, uno dietro l'altro, ogni tronco non più grande di una scheggia, visto da qui. Qualcuno là sotto sta per avere un tetto nuovo.",
+	},
+	["org.journey.w21.specks.005"] = {
+		"sale nella notte sopra il canyon, e la città sotto di sé si disegna a lumi: un anello lungo le mura, una linea storta a puntini per il Drag, un buco scuro dove il Cleft of Shadow li inghiotte tutti.",
+		"sale nel buio, con ogni valle segnata là sotto dalla sua manciata di porte accese, tanto che la notte porta disegnata la forma della città, punto per punto.",
+	},
+	["org.journey.w21.specks.006"] = {
+		"Guardali là sotto. Da quest'altezza non distingui un campione da un facchino.",
+		"Tutti eroi, ci scommetto. Da qui sono grandi come un seme.",
+	},
+	["org.journey.w21.specks.007"] = {
+		"In mezzo a quella folla c'è il mercante con cui ho contrattato, il grunt che mi ha dato indicazioni, lo sconosciuto che mi ha pestato un piede. Da quassù non li distinguo, e scopro che mi piacerebbe.",
+		"Ogni persona con cui ho parlato laggiù adesso è un puntino, e non saprei indicarne nemmeno una. La città se li tiene, e lascia andare me.",
+	},
+	["org.journey.w21.specks.008"] = {
+		"distingue ancora, mentre la valle rimpicciolisce, due figurine a una bancarella che si agitano l'una contro l'altra: la lite si vede molto dopo che se ne sono perse le parole.",
+		"riconosce una lite laggiù dai soli gesti, due puntini con le braccia che volano, e continua a guardarla molto dopo che dalla sella non arriva più alcun suono.",
+	},
+	["org.journey.w21.specks.009"] = {
+		"Da quassù la folla smette di essere gente e diventa un unico animale lento, che si trascina tra la banca e la porta su migliaia di zampe. Poco fa io ero una di quelle zampe.",
+		"Da quest'altezza tutta la Valley of Strength si muove come una sola bestia, che fruga avanti e indietro tra le porte. Un momento fa facevo parte della sua pelle; non si è accorta del buco.",
+	},
+	["org.journey.w21.specks.010"] = {
+		"vede un sacco che si apre da qualche parte lungo il Drag, una piccola macchia chiara sparsa per terra, e una dozzina di puntini che vi accorrono da ogni direzione nello stesso istante.",
+		"guarda una carriola che si rovescia laggiù e il carico che si sparpaglia, e la folla intorno che si china tutta insieme in un cerchio improvviso, come l'erba piegata da una folata.",
+	},
+	["org.journey.w21.specks.011"] = {
+		"Vista dall'alto, la folla ha quasi tutta il colore del suolo, cuoio, ruggine e polvere. Ogni tanto passa un goblin vestito di qualcosa di sgargiante, come una perlina caduta su un tappeto.",
+		"Marrone, marrone, rosso, marrone, e poi un puntino di verde chiassoso che sfreccia tra le bancarelle. I goblin, dall'alto, li trovi sempre.",
+	},
+	["org.journey.w21.specks.012"] = {
+		"State bene, puntini. Cercate di non calpestarvi a vicenda mentre non ci sono.",
+		"Guardatevi, grandi come briciole. Tenete a bada la fila della banca senza di me.",
+	},
+	["org.journey.w21.specks.013"] = {
+		"Ehi, voi là sotto! No, quassù! Lasciate perdere.",
+		"Ohi! Quassù! ...Niente. Tipico di Orgrimmar.",
+		"Guardate in su, qualcuno! Nessuno? Va bene.",
+	},
+	["org.journey.w21.specks.014"] = {
+		"Adesso la città intera mi sta tra gli stivali. Non mi sembra giusto.",
+		"Potrei nascondere la banca dietro il pollice. Peccato non poterlo fare coi debiti.",
+	},
+	["org.journey.w21.specks.015"] = {
+		"sale dentro la sabbia che soffia e guarda la città sparirci sotto quartiere dopo quartiere, prima la Valley of Honor, poi Grommash Hold, finché restano visibili solo i tetti più vicini.",
+		"sale in una foschia rossa che si fa più fitta a ogni colpo d'ala, mentre le valli di sotto svaniscono una dopo l'altra come lumi spenti.",
+	},
+	["org.journey.w21.specks.016"] = {
+		"si alza sulla città all'alba mentre si sveglia a pezzi là sotto: un'imposta qui, una porta là, le prime figure che attraversano coi secchi il fondo vuoto della valle.",
+		"sale nella prima luce e guarda dall'alto Orgrimmar cominciare la giornata: un fuoco di cucina, una porta aperta, una sentinella che sbadiglia, e poi una dozzina d'altri.",
+	},
+	["org.journey.w21.specks.017"] = {
+		"segue un gruppetto di figure che si raduna intorno alla cassetta della posta davanti alla banca e poi si disfa una per una, ogni puntino che se ne va più piano di com'è arrivato, a capo chino su una lettera.",
+		"vede, da molto sopra la Valley of Strength, gente che si allontana dalla cassetta della posta a testa bassa e col passo rallentato, come cammina chiunque stia leggendo.",
+	},
+	["org.journey.w21.spire.001"] = {
+		"passa sopra lo spiazzo davanti a Grommash Hold, l'unico tratto di città dove nessuno si ferma a perdere tempo, spazzato come se la polvere stessa sapesse che lì non è aria di posarsi.",
+		"guarda giù sullo spiazzo davanti a Grommash Hold mentre la salita continua: largo, spoglio, attraversato in fretta da chi deve attraversarlo, e dove non si ferma nessuno.",
+	},
+	["org.journey.w21.spire.002"] = {
+		"Ormai sono più in alto del tetto di Grommash Hold. Niente, a Orgrimmar, mi sta sopra la testa tranne la bestia, e ho il buon senso di non dirlo ad alta voce vicino ai Kor'kron.",
+		"Per qualche colpo d'ala sono la cosa più alta nella città del Capoguerra. Me lo tengo per me. I Kor'kron non hanno senso dell'umorismo, in fatto di altezze.",
+	},
+	["org.journey.w21.spire.003"] = {
+		"attraversa in pieno una colonna di fumo di forgia durante la salita e ne esce dall'altra parte strizzando gli occhi, col sapore di ferro caldo e carbone in bocca per una dozzina di colpi d'ala.",
+		"passa dentro il fumo di qualche fucina mentre la bestia sale: un istante grigio e amaro senza città e senza cielo, poi l'aria si rifà pulita.",
+	},
+	["org.journey.w21.spire.004"] = {
+		"La città, vista dall'alto, si legge dal fumo: nero e unto sopra le fucine, sottile e bianco dove qualcuno brucia legna umida, e un ricciolo azzurro dalla Valley of Spirits su cui non farò domande.",
+		"Ogni colonna di fumo là sotto è un mestiere diverso. Nero per il ferro, bruno per il fuoco di una conceria, chiaro per il pane, e un filo azzurrino dalla Valley of Spirits a cui non saprei dare un nome nemmeno volendo.",
+	},
+	["org.journey.w21.spire.005"] = {
+		"guarda dentro la cima di una torre di guardia mentre la bestia ci passa sopra: lo sgabello di una sentinella, una pentola in bilico sul parapetto, e una sentinella che se ne allontana in fretta.",
+		"supera in volo una piattaforma di guardia sulle mura e scopre cosa ci tengono le sentinelle: una panca, una giara d'acqua, un mucchietto di sassi da tirare contro il niente, e un grunt annoiatissimo.",
+	},
+	["org.journey.w21.spire.006"] = {
+		"Bada alla città, Capoguerra. Riporterò qualcosa che valga la pena raccontare.",
+		"Grommash Hold vista dall'alto. Tienila in piedi, Capoguerra: io farò la mia parte là fuori.",
+	},
+	["org.journey.w21.spire.007"] = {
+		"Le colonne di fumo si alzano dalle valli come i pali di una tenda enorme, e il cielo sembra appoggiarcisi sopra.",
+		"Venti camini che fumano insieme, e da quassù ogni colonna sta dritta come un palo da tenda. A quanto pare Orgrimmar si regge il cielo da sola, e lo fa come fa tutto: con fumo e testardaggine.",
+	},
+	["org.journey.w21.spire.008"] = {
+		"manda giù una folata dalle ali della bestia su un tetto, e una pila ordinata di ceste rotola via, inseguita da una figurina furiosa che agita tutti e due i pugni contro il cielo.",
+		"si lascia dietro un risucchio d'aria che appiattisce una tenda e strappa il cappello dalla testa di qualcuno; il cappello continua a salire per un po', anche dopo che il padrone ci ha rinunciato.",
+	},
+	["org.journey.w21.spire.009"] = {
+		"Da quest'altezza la sala del Capoguerra e la torre delle bestie sono solo due tetti, uno grande e uno piccolo. Il cielo non fa classifiche. Lo trovo stranamente consolante.",
+		"Quassù Grommash Hold è un tetto come gli altri, un po' più grande, un po' più scuro. Il cielo non le si è mai inchinato, e lei non sembra farci caso.",
+	},
+	["org.journey.w21.spire.010"] = {
+		"arriva in cima alla salita, dove la bestia resta sospesa un istante con le ali aperte e immobili, e Orgrimmar intera si stende di sotto come una mappa che qualcuno ha dimenticato di ripiegare.",
+		"sente la bestia smettere di salire di colpo, ferma al culmine dello slancio, e abbraccia con lo sguardo tutte le valli della città insieme, cosa che a piedi non riesce a nessuno.",
+	},
+	["org.journey.w21.spire.011"] = {
+		"Puah, fumo di fucina. La prossima volta giraci intorno, bestia.",
+		"Di chi era quel camino? Me lo sentirò in bocca per tutto il viaggio.",
+		"Dritti in mezzo al fumo. Grazie, bestia. Davvero scrupolosa.",
+	},
+	["org.journey.w21.spire.012"] = {
+		"Mostra loro le ali, viverna. Che tutta la città veda chi parte.",
+		"Sali, viverna. Sopra Grommash Hold e via.",
+		"Alta e fiera, viverna. Orgrimmar ti guarda.",
+	},
+	["org.journey.w21.spire.013"] = {
+		"Da quassù Orgrimmar sembra finita, ogni tetto al suo posto. Dalla strada non ci crederesti mai: c'è sempre un'impalcatura da qualche parte, un carro di legname, qualcuno che urla per una trave.",
+		"Dall'alto la città sembra compiuta e immobile, come un intaglio. Solo stando dentro ti accorgi che la rifanno di continuo, trave dopo trave e lite dopo lite.",
+	},
+	["org.journey.w21.stride.001"] = {
+		"sente i colpi d'ala della bestia smettere di lottare con l'aria e cadere in un'oscillazione lunga e regolare, tre colpi e una planata, tre colpi e una planata, costante come un rematore.",
+		"si assesta mentre la fatica della salita lascia il posto a una cadenza facile: qualche colpo profondo, poi una lunga planata con le ali immobili.",
+		"accompagna il passaggio dalla salita all'andatura, il battere affannoso del decollo che si distende in colpi così regolari da poter scandire una marcia.",
+	},
+	["org.journey.w21.stride.002"] = {
+		"Sopra la terra aperta la bestia abbassa la testa e le orecchie si allentano. La salita era fatica. Questa parte, pare, le piace.",
+		"Sento il momento in cui la bestia smette di faticare: il collo si allunga, le orecchie si rilassano all'indietro, e l'animale intero comincia a lasciarsi portare.",
+	},
+	["org.journey.w21.stride.003"] = {
+		"barcolla in sella quando la bestia scatta di lato contro un insetto di passaggio senza interrompere il ritmo, e le mascelle si chiudono sul vuoto con il rumore di una porta.",
+		"sobbalza quando la bestia si avventa su una mosca, la manca, e torna al suo ritmo regolare come se lo scatto fosse stato un'idea di qualcun altro.",
+	},
+	["org.journey.w21.stride.004"] = {
+		"Il primo tratto l'ho fatto contro la bestia, irrigidendomi a ogni colpo. Oltre il canyon la schiena si è arresa e ha cominciato ad andarle dietro. Molto meglio.",
+		"Per tutta la salita le ginocchia hanno stretto come se la sella volesse scappare. Qui fuori si sono allentate, e la bestia e io abbiamo smesso di litigare.",
+	},
+	["org.journey.w21.stride.005"] = {
+		"vola in piano mentre la bestia trova la sua quota e la mantiene, la terra rossa che scorre sotto sempre alla stessa distanza, come un pavimento sfilato adagio da sotto un tavolo.",
+		"nota che la bestia ha smesso di salire e tiene semplicemente l'altezza, con il terreno che scorre di sotto a un passo regolare e senza fretta.",
+	},
+	["org.journey.w21.stride.006"] = {
+		"Ecco. Questo è il tuo passo. Tienilo.",
+		"Bene. Proprio così, fino in fondo.",
+		"Va bene anche piano. Non ci insegue nessuno.",
+	},
+	["org.journey.w21.stride.007"] = {
+		"si lascia portare dal lento rollio delle grandi spalle sotto la coperta della sella, un'onda e un avvallamento a ogni colpo, così regolare da poterci sonnecchiare, per chi ha più coraggio.",
+		"sente i muscoli della schiena della bestia raccogliersi e distendersi sotto la sella con un ritmo così regolare che il corpo comincia a dondolare insieme a loro senza che nessuno glielo chieda.",
+	},
+	["org.journey.w21.stride.008"] = {
+		"Oltre il canyon ho cominciato a contare i colpi d'ala. Verso il centinaio ho perso il conto, e ho scoperto che non mi mancava.",
+		"Conto i colpi, tanto per fare qualcosa: quaranta, cinquanta, sessanta e rotti... e poi la terra di sotto è più interessante della somma.",
+		"Uno, due, tre, planata. Potrei contare fino all'arrivo, ma la bestia pare cavarsela anche senza il mio aiuto.",
+	},
+	["org.journey.w21.stride.009"] = {
+		"assiste allo sbadiglio smisurato della bestia nel mezzo di una planata, una lunga caverna rosa piena di denti, prima che le mascelle si chiudano con uno scatto soddisfatto e i colpi riprendano.",
+		"vede la bestia, ormai lanciata, spalancare la bocca in uno sbadiglio enorme che mostra ogni dente che possiede, poi richiuderla e proseguire come annoiata dall'intero paese.",
+	},
+	["org.journey.w21.stride.010"] = {
+		"Quando la bestia trova il suo passo, lo trovano anche i miei pensieri. Arrivano uno per colpo d'ala, lenti e senza fretta, e nessuno riguarda la città.",
+		"I colpi regolari danno un tempo, e la mente ci si mette al passo. Pensieri lenti, ben distanziati, come una marcia che nessuno è obbligato a tenere.",
+	},
+	["org.journey.w21.stride.011"] = {
+		"osserva la criniera della viverna appiattirsi increspata lungo il collo mentre si distende in una lunga planata, la grande testa tenuta ferma e diritta come una punta di lancia.",
+		"si lascia portare mentre la viverna blocca le ali e si abbandona alla lunga planata per cui è nata, la criniera che fila all'indietro, gli occhi socchiusi, come se questa fosse la parte riposante del suo lavoro.",
+	},
+	["org.journey.w21.stride.012"] = {
+		"Puoi smettere di darti delle arie. Sono già {g:colpito|colpita}.",
+		"Bello in piano. Perché non abbiamo cominciato così?",
+		"Liscio. Tutto quello sbattere d'ali all'inizio serviva davvero?",
+	},
+	["org.journey.w21.stride.013"] = {
+		"Sopra la terra aperta le dita si staccano finalmente dal pomo della sella. Ci stavano aggrappate dalla torre, e lo dimostrano dolendo.",
+		"Mi accorgo che adesso riesco a reggermi con una mano sola. L'altra stringe a nocche bianche dal bordo della torre, e avrebbe qualcosa da dire in proposito.",
+	},
+	["org.journey.w21.stride.014"] = {
+		"si rannicchia mentre la bestia accorcia i colpi e si tiene bassa sotto la tempesta, le orecchie appiattite, mentre il tuono rotola sulle creste alle spalle come botti giù per una rampa.",
+		"affronta il primo tratto del temporale mentre la bestia si assesta su un ritmo duro e corto sotto le nuvole, sussultando una volta a un lampo sopra le colline.",
+	},
+	["org.journey.w21.stride.015"] = {
+		"La testa della bestia si inclina mentre planiamo; qualcosa di piccolo si muove giù nella piana, e lei lo guarda senza rompere il passo. Se lo segna per un'altra volta, sospetto.",
+		"Ogni tanto l'occhio della bestia scende sul terreno e si fissa su qualche piccola cosa che corre. Non si tuffa mai. Se la ricorda, come un mercante ricorda un prezzo.",
+	},
+	["org.journey.w21.unsaddle.001"] = {
+		"scivola giù dalla sella e si ritrova le cuciture impresse in tutti e due i palmi, una fila ordinata di piccoli solchi che ci mette un po' a sparire.",
+		"molla finalmente la presa sulla sella: le cuciture del cuoio sono rimaste stampate su ogni palmo come le tacche di un conto.",
+	},
+	["org.journey.w21.unsaddle.002"] = {
+		"aspetta che la bestia abbassi una spalla, come un kodo che si accuccia nella polvere: tutta la sua cortesia sta lì.",
+		"per una volta scende nel modo facile: la bestia abbassa una spalla e si inclina, e le assi della piattaforma salgono incontro a uno stivale.",
+	},
+	["org.journey.w21.unsaddle.003"] = {
+		"Scendere è una mossa in tre tempi: gamba oltre la sella, scivolata, appoggio. Me ne sono riusciti due su tre, e l'addestratore ha visto quale no.",
+		"C'è un modo giusto per smontare da una bestia volante. Lo conosco, l'ho visto fare cento volte. Il mio corpo aveva altri piani.",
+		"Smontare: l'unica parte del volo che faccio da me, e l'unica che cederei volentieri a chiunque.",
+	},
+	["org.journey.w21.unsaddle.004"] = {
+		"slega lo zaino fissato dietro la sella, mentre la bestia torce il lungo collo all'indietro per controllare ogni nodo che si scioglie.",
+		"allunga la mano verso il fagotto assicurato dietro la sella, sotto la sorveglianza fissa della bestia, che ha girato la testa fino in fondo.",
+	},
+	["org.journey.w21.unsaddle.005"] = {
+		"La sella è tiepida solo dove sedevo, e da nessun'altra parte. Una piccola macchia di calore tutta mia, e l'addestratore la sta già togliendo.",
+		"Strana cosa, una sella: calda in un punto e fresca dappertutto, come una panca da cui qualcuno si è appena alzato. Quel qualcuno ero io.",
+	},
+	["org.journey.w21.unsaddle.006"] = {
+		"riceve una spinta decisa tra le scapole dal muso della bestia, di quelle che non sono una richiesta, e lascia la sella più in fretta del previsto.",
+		"viene {g:accompagnato|accompagnata} giù per l'ultimo tratto da una testata della bestia, che ha evidentemente deciso che il turno del passeggero è finito.",
+	},
+	["org.journey.w21.unsaddle.007"] = {
+		"Non muoverti un attimo. La mia gamba è ancora dalla tua parte della sella.",
+		"Non ti muovere. Metà di me deve ancora scendere.",
+		"Aspetta, aspetta. Manca una gamba.",
+	},
+	["org.journey.w21.unsaddle.008"] = {
+		"Lassù, chissà dove, l'orlo del mantello è rimasto preso sotto una cinghia. Per liberarlo servono tre strattoni e un'occhiata della bestia che non mi piace per niente.",
+		"Mezzo mantello è rimasto agganciato sotto la sella. Lo libero a piccoli strattoni, mentre la bestia aspetta con una pazienza che si vede tutta.",
+	},
+	["org.journey.w21.unsaddle.009"] = {
+		"si lascia cadere dalla staffa per l'ultimo breve tratto e tocca le assi più pesante del previsto; il legno risponde con un colpo sordo.",
+		"sbaglia di un palmo la distanza tra la staffa e le assi, e il contraccolpo sale da tutti e due i talloni.",
+	},
+	["org.journey.w21.unsaddle.010"] = {
+		"Sotto la mia mano il fianco della bestia trema ancora per il lavoro delle ali. Qualunque cosa abbia sentito io lassù, lei l'ha sentita di più.",
+		"Le lascio un palmo sul fianco per un momento. I grandi muscoli guizzano lì sotto, con il volo che non ne è uscito del tutto.",
+	},
+	["org.journey.w21.unsaddle.011"] = {
+		"Ecco fatto. La schiena è di nuovo tutta tua.",
+		"Te la restituisco, bestia. La schiena, dico.",
+	},
+	["org.journey.w21.unsaddle.012"] = {
+		"posa un palmo sul collo della viverna prima di allontanarsi e ci sente dentro un brontolio basso, quello che gli addestratori chiamano il rumore del lavoro finito.",
+		"si attarda accanto alla viverna quanto basta per sentirla brontolare in fondo al petto: secondo gli addestratori vuol dire che presto si mangia, e nient'altro.",
+	},
+	["org.journey.w21.unsaddle.013"] = {
+		"Ogni sella di questa torre ha una fibbia dove non dovrebbe, e il mio stinco la trova a ogni volo. La sta trovando anche adesso, a memoria.",
+		"Per tutto il viaggio ho avuto una fibbia contro lo stinco. Ne sentirò la forma precisa fino alla banca.",
+	},
+	["org.journey.w21.unsaddle.014"] = {
+		"scende sulla cassa capovolta che gli addestratori tengono per chi smonta, col coperchio spaccato e rattoppato così tante volte che ormai è quasi tutto toppe.",
+		"trova con uno stivale la cassa per smontare, una scatola malconcia che gli addestratori mettono accanto a ogni bestia, il piano più chiodi che legno.",
+	},
+	["org.journey.w21.unsaddle.015"] = {
+		"Piano. Fammi togliere il piede da questa cinghia prima di andartene.",
+		"Non andare via adesso. Lo stivale è rimasto nell'anello.",
+	},
+	["org.journey.w21.unsaddle.016"] = {
+		"Un piede nella staffa, uno sulle assi, e per un istante non appartengo né al cielo né alla città. Poi il peso si sposta, e Orgrimmar mi ha {g:preso|presa}.",
+		"A metà della discesa dalla sella c'è un momento che non è di nessuno, né lassù né quaggiù. Dura quanto uno spostamento di peso. Mi piace più di quanto dovrebbe.",
+	},
+	["org.memory_return.w21.back.001"] = {
+		"Adesso so qual è la rampa veloce, e quale lo sembra soltanto.",
+		"Stavolta i piedi scelgono da soli la rampa più corta. L'altra volta avevano preso il giro lungo e poi avevano dato la colpa a me.",
+	},
+	["org.memory_return.w21.back.002"] = {
+		"si dirige verso la banca senza doverla cercare, e solo dopo si accorge di non averne avuto bisogno.",
+		"trova la strada per la banca al primo colpo, e ne sembra vagamente {g:soddisfatto|soddisfatta}.",
+		"si avvia tra la folla con l'aria di chi non ha più bisogno di chiedere la strada a un grunt.",
+	},
+	["org.memory_return.w21.back.003"] = {
+		"L'odore arriva per primo: ferro rovente, cipolle sulla piastra, pelli di kodo a seccare da qualche parte. Sì. È questo il posto.",
+		"Il naso riconosce Orgrimmar prima degli occhi. Metallo bruciato, cipolle fritte, pelli sulle rastrelliere. Gli occhi si limitano a confermare.",
+		"Prima ancora di guardarmi intorno, so dove sono. Orgrimmar sa di ferro bruciato e di cipolle, e di pelli che entro fine settimana saranno stivali.",
+	},
+	["org.memory_return.w21.back.004"] = {
+		"Di ritorno a Orgrimmar. Niente parata. In compenso, nessuno mi ha tirato niente.",
+		"Nessuno ha esultato al mio arrivo. Nessuno mi ha lanciato contro qualcosa. A Orgrimmar è un'accoglienza calorosa.",
+		"Orgrimmar! Cercate di contenere la gioia, tutti quanti.",
+	},
+	["org.memory_return.w21.back.005"] = {
+		"Qualche faccia nel Drag ormai mi è familiare. Un paio fingono il contrario, che è un modo come un altro di salutare.",
+		"Riconosco un mercante o due lungo il Drag. Uno ricambia lo sguardo e all'improvviso ha molto da fare con una cassa.",
+		"Tra la folla cominciano a spuntare facce note. Non amici, proprio. Gente che riconoscerei, e che riconoscerebbe me.",
+	},
+	["org.memory_return.w21.back.006"] = {
+		"Orgrimmar mi riprende come riprende chiunque: senza alzare gli occhi dal lavoro.",
+		"La città non alza lo sguardo quando torno. Ha da fare. Lo trovo più riposante di qualsiasi benvenuto.",
+		"Nessuno fa caso al mio ritorno. La città ha il suo da fare, e mi lascia unirmi senza chiedere dove sono {g:stato|stata}.",
+	},
+	["org.memory_return.w21.back.007"] = {
+		"rallenta a un angolo, come davanti a qualcosa di già visto, poi riprende il cammino senza capire cosa.",
+		"esita a una svolta, il ricordo a metà, e lo lascia andare prima che finisca.",
+	},
+	["org.memory_return.w21.back.008"] = {
+		"Buffo cosa resta in mente. Ricordavo le rampe e il fumo. Avevo scordato quanti angoli ci fossero.",
+		"La memoria tiene cose strane. Il colore della pietra, sì. Tutti questi angoli, chissà perché, no.",
+	},
+	["org.memory_return.w21.back.009"] = {
+		"Sempre rumorosa. Bene. Il giorno che Orgrimmar tace, me ne vado.",
+		"Senti che baccano. Se mai smettesse, comincerei a preoccuparmi.",
+		"Senti? Il solito fracasso. Con qualcosa di meno ci resterei male.",
+	},
+	["org.memory_return.w21.back.010"] = {
+		"Ogni ritorno rende un posto un po' più mio. Solo un po', con questo. Orgrimmar non si regala a buon mercato.",
+		"Ogni volta che torno, la città mi concede un pezzetto in più: una strada, un angolo. Me li consegna come un goblin dà il resto: piano, e contando.",
+	},
+	["org.memory_return.w21.back.011"] = {
+		"Non mi perdo più nel Drag. Adesso, quando mi perdo, lo faccio apposta.",
+		"Più di cinque visite, e il Drag non riesce più a farmi perdere. Ora mi ci perdo io, di proposito, quando ho monete da spendere.",
+		"Ormai trovo gli spiedini migliori del Drag col solo naso. Per i più economici ci vuole ancora una caccia vera.",
+	},
+	["org.memory_return.w21.back.012"] = {
+		"si muove per la città col passo tranquillo di chi ha smesso di contare le visite.",
+		"attraversa la folla con l'andatura comoda di un cliente abituale, schivando senza guardare il carico di un peone.",
+	},
+	["org.memory_return.w21.back.013"] = {
+		"Ormai su questa città ho le mie opinioni: di quale cuoco fidarmi, quale rampa evitare, a quale grunt non chiedere mai la strada.",
+		"Dieci visite ti comprano delle opinioni. So quale cuoco merita l'attesa, quale rampa si intasa di peoni e quale grunt dà indicazioni che non portano da nessuna parte.",
+		"Conosco questa città abbastanza da averci dei rancori. Un cuoco, una rampa, un grunt con la memoria lunga. Questa è confidenza.",
+	},
+	["org.memory_return.w21.back.014"] = {
+		"Sempre io. Qualcuno avvisi chi tiene il conto.",
+		"Sì, sono io. Segnatelo pure; io il conto l'ho perso da un pezzo.",
+	},
+	["org.memory_return.w21.back.015"] = {
+		"Così tanti ritorni che entrare a Orgrimmar non è più un arrivo. È come passare da una porta che ho aperto cento volte.",
+		"Venti volte e più. La città mi ha scavato un solco, come i piedi consumano la pietra di un gradino.",
+	},
+	["org.memory_return.w21.back.016"] = {
+		"Se passo di qui ancora un po' più spesso, cominceranno a farmi pagare l'affitto.",
+		"Di questo passo i goblin mi chiederanno l'affitto. O peggio, una quota d'iscrizione.",
+		"Orgrimmar, vecchia conoscenza. Non alzarti.",
+	},
+	["org.memory_return.w21.back.017"] = {
+		"Una settimana e passa fuori città. Il goblin vicino alla casa d'aste ha ridipinto l'insegna; i prezzi sono rimasti quelli vecchi.",
+		"Più di una settimana via, e qualcuno ha appeso un cartello nuovo vicino alla casa d'aste. Vernice fresca, prezzi di sempre.",
+		"Una settimana abbondante dall'ultima visita, e il Drag ha rivisto i prezzi senza consultarmi. Al rialzo, naturalmente.",
+	},
+	["org.memory_return.w21.back.018"] = {
+		"squadra la città come una stanza dopo una settimana fuori, controllando che i mobili siano dove li aveva lasciati.",
+		"passa in rassegna le strade con l'occhiata svelta di chi rientra da una settimana di viaggio, contando cosa si è spostato.",
+	},
+	["org.memory_return.w21.back.019"] = {
+		"Settimane via, e avevo scordato quanto fa rumore questo posto. Le orecchie se ne ricordano per prime; il resto di me arriva piano.",
+		"Due settimane e più in posti tranquilli, e Orgrimmar mi arriva alle orecchie come una porta sbattuta. Datemi un momento. Anzi, qualcuno.",
+		"Dopo settimane in posti più quieti, il primo grido dal Drag mi fa sobbalzare. Il secondo mi fa sorridere.",
+	},
+	["org.memory_return.w21.back.020"] = {
+		"Più di un mese. Punto deciso verso una bancarella che non c'è più, e ritrovo il padrone due porte più in là, più chiassoso di prima.",
+		"Un mese via, e il Drag si è rimescolato. La bancarella dove compravo ha cambiato posto; il padrone no, è cambiato solo l'indirizzo.",
+	},
+	["org.memory_return.w21.back.021"] = {
+		"Un mese di assenza basta perché la città sembri nuova per una decina di passi. Poi un peone mi viene addosso, chiede scusa a nessuno, ed è di nuovo Orgrimmar.",
+		"Dopo un mese il posto sembra strano per una dozzina di passi. Un peone mi urta, borbotta, tira dritto, e la stranezza se ne va con lui.",
+	},
+	["org.memory_return.w21.back.022"] = {
+		"L'ultima volta che ho lasciato questa città non è stato come avrei voluto. Torno in mezzo al solito chiasso e lascio che faccia il suo lavoro su di me.",
+		"Com'è finita l'ultima visita, lo so bene. Questa la comincio semplice: una strada, la folla, un mercante che urla. Le cose ordinarie aggiustano più di quanto si creda.",
+		"L'altra volta è andata storta. Non chiedo alla città di farsi perdonare: mi basta che per un po' sia normale.",
+	},
+	["org.memory_return.w21.back.023"] = {
+		"si ferma un istante più di quanto la folla conceda, come per saldare un vecchio conto con la città, poi prosegue.",
+		"resta {g:fermo|ferma} quel tanto che basta a farsi urtare, lo sguardo perso, poi riprende a camminare a mascella serrata.",
+	},
+	["org.memory_return.w21.back.024"] = {
+		"Brutti ricordi di questo posto, e sotto ce ne sono di migliori. Lascerò alle prossime ore decidere quale mucchio cresce.",
+		"Orgrimmar mi deve una visita migliore dell'ultima. Sono {g:venuto|venuta} a riscuotere.",
+		"Mi porto dentro l'ultima visita come un sassolino nello stivale. Dopo qualche strada decido di fermarmi e scuoterlo fuori.",
+	},
+	["org.memory_return.w21.back.025"] = {
+		"L'ultima volta che sono {g:stato|stata} qui, me ne sono {g:andato|andata} da spettro. La città non se n'è accorta. Strano a dirsi, aiuta.",
+		"Alla mia ultima visita a Orgrimmar sono {g:morto|morta}. I mercanti hanno continuato a urlare e il fumo a salire. Essere così piccoli consola.",
+	},
+	["org.memory_return.w21.back.026"] = {
+		"si guarda intorno come in cerca del punto dove tutto è finito l'ultima volta, e sembra decidere, con fermezza, di non trovarlo.",
+		"avanza con un po' più di cautela della folla, come chi ricorda bene com'è finita la visita precedente.",
+	},
+	["org.memory_return.w21.back.027"] = {
+		"Me ne sono {g:andato|andata} di corsa, l'altra volta. Stavolta entro piano, giusto per ricordare alle gambe chi comanda.",
+		"La mia ultima uscita da questa città è stata frettolosa. Il ritorno lo faccio lento e senza clamore, che è già una piccola vittoria.",
+	},
+	["org.memory_return.w21.back.028"] = {
+		"Rieccomi dentro le mura dell'Orda. Tengo le mani in vista dei grunt e lo sguardo su nessuno in particolare. L'altra volta ha funzionato.",
+		"La capitale dell'Orda, un'altra volta. Ormai conosco la regola: passo tranquillo, mani vuote, nessun interesse improvviso per niente.",
+	},
+	["org.memory_return.w21.back.029"] = {
+		"Un grunt ha appena spostato la lancia di un dito per farmi passare. Per un grunt è quasi un discorso.",
+		"Hai visto? La lancia si è scostata prima che chiedessi. Per i grunt è il massimo dell'abbraccio.",
+		"Di ritorno nella città del Capoguerra. Nessuno saluta, nessuno sbarra la strada. Mi va benissimo.",
+	},
+	["org.memory_return.w21.back.030"] = {
+		"Gli orchi mi girano ancora un po' più alla larga che agli altri. Va bene. Anche lo spazio è un modo di accogliere.",
+		"Un troll mi fa posto tra la folla, con la stessa cautela dell'altra volta. Lo accetto. In una calca così, lo spazio è un regalo.",
+	},
+	["org.memory_return.w21.back.031"] = {
+		"Queste rampe sono state tagliate per gambe d'orco. I miei zoccoli ricordano ogni gradino scomodo, e protestano in anticipo.",
+		"Porte a misura d'orco, scale a misura d'orco. Ormai mi abbasso nei punti giusti senza pensarci: me l'hanno insegnato gli architravi.",
+	},
+	["org.npc_meet.w21.cup.001"] = {
+		"Le tazze dietro il banco sono tutte diverse: terracotta, corno, legno intagliato, una di latta ammaccata. L'oste ne sceglie una per ogni ospite, e non dice mai come.",
+		"Su quella mensola non ci sono due boccali uguali. La mano dell'oste esita, ne sceglie uno e me lo mette davanti come se mi stesse aspettando.",
+		"Per me una tazza di corno, non una di terracotta. Dietro quel banco c'è un criterio. Mi piacerebbe sapere quale.",
+	},
+	["org.npc_meet.w21.cup.002"] = {
+		"si vede indicare i letti con un mestolo ancora gocciolante, e istruzioni che si riducono alla parola 'là'.",
+		"chiede di un letto e riceve un mestolo che sgocciola puntato dall'altra parte della sala e una parola sola, 'là', che si rivela tutta la spiegazione disponibile.",
+		"ottiene un letto con la stessa economia che l'oste usa per tutto: il mento, il mestolo, e un grugnito che vuol dire 'quello'.",
+	},
+	["org.npc_meet.w21.cup.003"] = {
+		"L'oste guarda dove mi siedo e fa un piccolo cenno. Schiena al muro, occhio alla porta. A quanto pare a Orgrimmar si siedono tutti così.",
+		"Prendo la panca contro il muro, di fronte alla porta, e l'oste sembra approvare. In questa città è l'unico posto che vogliono tutti.",
+	},
+	["org.npc_meet.w21.cup.004"] = {
+		"L'oste non chiede niente a chi è dell'Orda. Una scodella, una panca, e la semplice convinzione che me le sia guadagnate entrambe.",
+		"Con chi è dell'Orda l'oste salta la lunga occhiata e passa dritto al mestolo. Prendo la fiducia e cerco di meritarla.",
+	},
+	["org.npc_meet.w21.cup.005"] = {
+		"Quello che mangiano i grunt quando smontano dal turno. Hanno l'aria di saperla lunga.",
+		"Per me lo stesso dei grunt fuori servizio. Sembrano essersi documentati bene.",
+		"Dammi quello che ha ordinato quel tavolo di grunt. Nessuno così grosso mangia male per scelta.",
+	},
+	["org.npc_meet.w21.cup.006"] = {
+		"guarda l'oste fare il conto di qualcuno sulle dita, aggrottare la fronte, perdere il filo e arrotondare per difetto con un'alzata di spalle.",
+		"segue il conto che l'oste fa a un cliente sulle dita di una mano, finché le dita finiscono e la faccenda si chiude con generosità.",
+	},
+	["org.npc_meet.w21.cup.007"] = {
+		"Due pentole sul fuoco: una rossa di peperoncino, una delicata. L'oste mi guarda e allunga la mano verso quella delicata. Quasi mi offendo.",
+		"L'oste divide gli ospiti tra chi merita la pentola piccante e chi no. Io, a quanto pare, sono da pentola delicata.",
+		"Uno sguardo a me, e il mestolo finisce nella pentola tranquilla invece che in quella sul fuoco più vivo. Qualcuno ha deciso che il peperoncino non lo reggo.",
+	},
+	["org.npc_meet.w21.cup.008"] = {
+		"Un angolo lontano dal rumore delle forge, se in questa città esiste una cosa del genere.",
+		"Dovunque si sentano meno martellate. Mi va bene anche uno sgabuzzino.",
+	},
+	["org.npc_meet.w21.cup.009"] = {
+		"L'oste non ha sorriso una volta, eppure senza chiedere mi è toccata la panca più vicina al focolare. Qui la gentilezza arriva senza la faccia che la accompagna.",
+		"Né un sorriso né una parola, eppure la panca accanto al focolare adesso è mia. La gentilezza dell'oste tiene la faccia seria.",
+		"L'oste fa una smorfia, spinge la scodella verso di me e ci aggiunge un secondo pezzo di pane senza commenti. La crosta è dura, la mollica no.",
+	},
+	["org.npc_meet.w21.cup.010"] = {
+		"sente l'oste passare un'ordinazione in cucina con una voce che taglia il baccano senza che sembri alzata.",
+		"fa la sua ordinazione e la sente ripetere verso la cucina, breve e intonata quel tanto che basta a infilarsi nel frastuono della sala.",
+	},
+	["org.npc_meet.w21.cup.011"] = {
+		"L'oste mi serve come chiunque altro: scodella giù, moneta su, occhi altrove. Sono i grunt vicino alla porta che continuano a guardare.",
+		"Nessuna smorfia da dietro il banco, e la cosa mi sorprende. Il mestiere dell'oste non ha schieramenti. La sala sì.",
+	},
+	["org.npc_meet.w21.cup.012"] = {
+		"{other} versa come chi non ha mai fatto cadere una goccia e sfida chiunque a dimostrare il contrario.",
+		"{other} posa la tazza con un piccolo colpo, esattamente davanti a me. Neanche un capello più a sinistra. Una questione d'orgoglio, chiaramente.",
+	},
+	["org.npc_meet.w21.grunt.001"] = {
+		"nota il cuoio avvolto sul manico dell'ascia del grunt, sbiadito in un solo punto, dove un pollice si è posato per moltissimi turni.",
+		"lancia un'occhiata alla presa del grunt: il pollice sta su una chiazza di cuoio liscia e chiara, l'unico posto dove pare riposare.",
+		"scorge sul manico dell'ascia del grunt un punto consumato e lucido, grande quanto un pollice che nei turni lunghi non sa dove altro stare.",
+	},
+	["org.npc_meet.w21.grunt.002"] = {
+		"Quel grunt canticchia. Piano, sotto tutto il chiasso della città, un motivo che non va da nessuna parte. Non credo dovessi sentirlo.",
+		"Sotto il frastuono, quel grunt mormora una melodia senza fine, per nessuno. Tiro dritto come se non avessi sentito niente.",
+		"Un grunt che canticchia di guardia, così piano che lo si avverte più che sentirlo. Questa me la tengo per me.",
+	},
+	["org.npc_meet.w21.grunt.003"] = {
+		"rallenta mentre un grunt passa in rassegna la folla; lo sguardo scivola oltre, poi torna una volta, di sfuggita, come una mano che controlla una tasca.",
+		"entra nella visuale di un grunt e ne esce, e gli occhi tornano per un istante solo, come a sincerarsi.",
+		"sfugge allo sguardo lento di un grunt e ci ricade poco dopo, come chi tasta la borsa per accertarsi che ci sia ancora.",
+	},
+	["org.npc_meet.w21.grunt.004"] = {
+		"Una cicatrice taglia in due il sopracciglio di quel grunt, e la faccia sembra sempre sorpresa. Il resto del grunt non è d'accordo.",
+		"Un sopracciglio diviso netto da una vecchia cicatrice. Il grunt ha l'aria eternamente stupita, ed è la cosa meno stupita di Orgrimmar.",
+		"Quella cicatrice sul sopracciglio gli dà un'aria di lieve meraviglia. L'ascia dice tutt'altro.",
+	},
+	["org.npc_meet.w21.grunt.005"] = {
+		"Non badare a me. Sto solo cercando di capire se sbatti mai le palpebre.",
+		"Resta così. Ancora un attimo e ti vedo chiudere gli occhi.",
+		"Sto contando. Non hai chiuso gli occhi una volta da quando ho girato l'angolo. Notevole.",
+	},
+	["org.npc_meet.w21.grunt.006"] = {
+		"Gli occhi del grunt vanno alle mie mani, poi alla cintura, poi ai piedi. La faccia viene per ultima. Qualcuno ha insegnato quell'ordine, e bene.",
+		"Mani, cintura, piedi, e solo dopo la faccia: il grunt legge chi passa partendo dalla parte pericolosa.",
+		"L'ultima cosa che il grunt guarda è la mia faccia. Prima vengono mani e cintura; le facce, immagino, di rado sfoderano l'acciaio.",
+	},
+	["org.npc_meet.w21.grunt.007"] = {
+		"Una striscia di stoffa sbiadita è annodata al manico dell'ascia del grunt, di un colore che nessuna adunata ha mai distribuito. Un pegno di qualcuno. Non chiederò di chi.",
+		"Legato sotto la testa dell'ascia: un brandello di stoffa, consunto, fuori ordinanza. A ogni grunt, pare, spetta un piccolo segreto.",
+		"All'impugnatura di quell'ascia c'è uno straccio annodato, troppo sbiadito per dirne il colore. Non fa parte di nessuna armatura che conosca. Un ricordo, allora.",
+	},
+	["org.npc_meet.w21.grunt.008"] = {
+		"passa abbastanza vicino a un grunt da vedergli dilatare le narici: qui gli estranei si controllano a fiuto quanto a vista.",
+		"sfiora un grunt e nota il capo che si alza appena, il naso che si allarga, un estraneo preso in esame come farebbe un lupo.",
+		"si guadagna una lunga annusata dal grunt di guardia, aperta e senza imbarazzo, prima che gli occhi si prendano il disturbo di guardare.",
+	},
+	["org.npc_meet.w21.grunt.009"] = {
+		"Il peso sul piede dietro, la testa dell'ascia a terra. Pronta per essere sollevata, non ancora sollevata. Da un grunt, è quasi un inchino.",
+		"La mano posata sull'ascia, non stretta. Poca cosa. Vuol dire che non mi considera un problema. Per il momento.",
+		"Ascia a terra, spalle sciolte: il grunt ha già deciso sul mio conto, e ha deciso di restare comodo.",
+	},
+	["org.npc_meet.w21.grunt.010"] = {
+		"riceve da un grunt un cenno che parte da qualche parte nelle spalle e non arriva mai del tutto alla testa.",
+		"ottiene quello che forse è un saluto: le spalle del grunt si spostano di un niente, e la testa resta dov'era.",
+		"incassa da un grunt un movimento troppo piccolo per avere un nome, a metà tra un'alzata di spalle e un cenno.",
+	},
+	["org.npc_meet.w21.grunt.011"] = {
+		"Il grunt guarda i margini della folla, mai il centro. I guai, a quanto pare, cominciano ai bordi e si fanno strada verso l'interno.",
+		"Non la folla, ma il punto dove la folla si dirada: è lì che il grunt continua a guardare. Lunga pratica, suppongo.",
+		"Occhi sugli spazi tra la gente, non sulla gente. Un grunt impara da dove arriverebbe un coltello.",
+	},
+	["org.npc_meet.w21.grunt.012"] = {
+		"Passo dall'altra parte. Quell'ascia sembra aspettare una scusa da tutto il turno.",
+		"Bella ascia. La ammiro da una distanza rispettosa.",
+		"Ti giro alla larga. Non per te, per l'ascia. Mi sembra annoiata.",
+	},
+	["org.npc_meet.w21.grunt.013"] = {
+		"Lo spallaccio è lucidato a specchio; dal ginocchio in giù il grunt ha il colore della strada. Qualcuno ispeziona solo la metà di sopra.",
+		"Ferro lucente sulle spalle, color strada dalle ginocchia in giù. Questo grunt lucida esattamente fin dove arriva l'occhio di un ufficiale.",
+		"Spalle scintillanti, stivali lerci. Un grunt che sa con precisione dove finiscono le ispezioni.",
+	},
+	["org.npc_meet.w21.grunt.014"] = {
+		"Il grunt non allunga la mano verso l'ascia. È questo che mi preoccupa. Chi è così calmo ha già calcolato quanto ci metterebbe.",
+		"Nessuna mano si muove verso un'arma. Il grunt ha semplicemente preso le misure: la distanza, il tempo che servirebbe. Proseguo, con l'aria più insignificante che ho.",
+		"Nessuna minaccia, nessuna parola. Il grunt gira la testa e la tiene girata finché non lo supero. Una faccia dell'Alleanza non ha il privilegio di essere ignorata.",
+	},
+	["org.npc_meet.w21.grunt.015"] = {
+		"Dal grunt, il piccolo scatto del mento che a Orgrimmar l'Orda riserva ai suoi. Niente di più. Basta così.",
+		"Un mento alzato di un soffio: il grunt mi ha messo con l'Orda e mi lascia passare senza una seconda occhiata.",
+		"Quel breve scatto del mento in su. Nell'Orda vuol dire che sei dei nostri; al grunt non costa nulla, e a me raddrizza la schiena gratis.",
+	},
+	["org.npc_meet.w21.grunt.016"] = {
+		"Vecchie cicatrici di bruciature sulle nocche del grunt. Lavoro di forgia, forse, prima dell'armatura. Più d'un grunt avrà cominciato al mantice.",
+		"Quelle nocche sono punteggiate di piccole bruciature chiare, quelle che lasciano le scintille. Questo grunt è stato davanti a un'incudine oltre che a un posto di guardia.",
+	},
+	["org.npc_meet.w21.grunt.017"] = {
+		"C'è qualcosa che vale la pena sapere, o il cipiglio è tutto il rapporto?",
+		"Quella smorfia è per me in particolare o per tutti? Vorrei capire a che punto sono.",
+		"Dimmi se sto andando dove non dovrei. Preferisco sentirlo da te che dall'ascia.",
+	},
+	["org.npc_meet.w21.grunt.018"] = {
+		"rivolge a un grunt un saluto cortese e riceve un'occhiata lunga e piatta, come se si stesse valutando se in servizio i saluti siano ammessi.",
+		"prova una parola gentile con un grunt e la vede atterrare da qualche parte sul pettorale e scivolare via senza lasciare segno.",
+		"dice una parola allegra a un grunt, che la rigira come una moneta di dubbia provenienza e la restituisce senza averla spesa, con un grugnito.",
+	},
+	["org.npc_meet.w21.grunt.019"] = {
+		"Hai l'aria di chi ha sentito tutte le battute sui grunt. Ti risparmio la mia.",
+		"Avevo pronta una battuta sulle guardie. Guardandoti, ho deciso di tenermela.",
+		"Che piacere vederti. No, non sorridere, rischi di farti male.",
+	},
+	["org.npc_meet.w21.grunt.020"] = {
+		"Niente allarmi. Sono solo di passaggio, e senza fretta.",
+		"Sono la visita più noiosa che vedrai. Davvero, chiedi in giro.",
+	},
+	["org.npc_meet.w21.host.001"] = {
+		"L'oste tiene uno strofinaccio su una spalla e non ci pulisce mai il banco. Serve per le mani, per la fronte e per indicare la gente.",
+		"Quello straccio sulla spalla dell'oste non tocca mai un tavolo. Asciuga una fronte, scaccia una mosca, e sceglie chi è il prossimo.",
+		"Lo strofinaccio sulla spalla dell'oste ha tre usi, a quanto vedo, e pulire non è uno di questi.",
+	},
+	["org.npc_meet.w21.host.002"] = {
+		"aspetta che l'oste finisca una somma scritta col gesso sul muro dietro il banco, muovendo le labbra, prima di voltarsi con un'occhiata che chiede una parola sola.",
+		"resta al banco finché una colonna di segni di gesso sul muro non è stata sommata e sottolineata, e solo allora riceve gli occhi dell'oste.",
+		"deve attendere che un conto sul muro torni giusto; quando torna, l'oste si gira con aria soddisfatta e con un cenno chiede l'ordinazione.",
+	},
+	["org.npc_meet.w21.host.003"] = {
+		"Oltre la porta della locanda l'ordine lo tengono i grunt. Dentro, lo tiene l'oste, e nessuno ha mai confuso le due cose.",
+		"Due leggi in questa città: quella dei grunt per strada, e quella dell'oste dalla soglia in dentro. La seconda si fa rispettare col mestolo.",
+		"La parola dell'oste arriva esattamente fino alla porta. Al di là è faccenda dei grunt, e a entrambi il confine sta bene.",
+	},
+	["org.npc_meet.w21.host.004"] = {
+		"È questa la persona che può fare della locanda il posto che la mia pietra del ritorno ricorda. Uno strano potere, per chi regge un mestolo.",
+		"Una parola con l'oste e la pietra nello zaino saprà la strada per tornare sotto questo tetto. Strano, che una cosa così passi sopra un bancone.",
+		"Fra tutti a Orgrimmar, è l'oste che può legare la mia pietra del ritorno a questo posto. Mi aspettavo come minimo uno sciamano.",
+	},
+	["org.npc_meet.w21.host.005"] = {
+		"Quello che sobbolle da più tempo, per favore. Quelle pentole non mentono mai.",
+		"Una scodella dalla pentola più vecchia sul fuoco. Le cose cotte a lungo sono le più oneste.",
+		"Vorrei quello che mangerebbe il cuoco. Non quello per gli ospiti.",
+	},
+	["org.npc_meet.w21.host.006"] = {
+		"L'oste valuta gli ospiti da quello che portano, non da chi sono. Per me la voce è: zaino pesante, borsa leggera.",
+		"Un'occhiata allo zaino, una alla cintura, e l'oste ha già preso le mie misure: molti bagagli, poche monete.",
+	},
+	["org.npc_meet.w21.host.007"] = {
+		"si fa largo tra una fila di salsicce messe a seccare per arrivare al banco, dove l'oste scaccia il fumo della cucina con un mestolo.",
+		"raggiunge il banco attraverso il fumo della cucina; l'oste lo allontana col mestolo e sbircia dal varco.",
+		"trova l'oste dall'altra parte di una nuvola di fumo di cucina, mestolo alzato per aprirla come una tenda.",
+	},
+	["org.npc_meet.w21.host.008"] = {
+		"La testa dell'oste si inclina di un niente ogni volta che una voce nella sala si alza, e si raddrizza quando torna giù. Ascolta tutto, non risponde a niente.",
+		"Ogni voce alzata nella sala riceve un piccolo giro di testa dell'oste; ogni voce abbassata, un piccolo giro indietro. Come un cane che sente la porta prima che bussino.",
+		"Guardo le orecchie dell'oste più della faccia. Seguono la sala, voce per voce, e si posano solo quando si posa la sala.",
+	},
+	["org.npc_meet.w21.host.009"] = {
+		"posa le monete sul banco e vede l'oste spazzarle via col taglio della mano, senza contarle, per poi contarle comunque con un'occhiata di traverso.",
+		"mette sul banco il dovuto; l'oste lo raccoglie senza guardare, e chissà come conosce la somma dal suono.",
+		"lascia cadere qualche moneta sul legno e vede la mano dell'oste coprirle prima che l'ultima abbia smesso di girare.",
+	},
+	["org.npc_meet.w21.host.010"] = {
+		"Qual è il piatto della casa? E cosa c'è dentro? No, aspetta. Solo la prima risposta.",
+		"Prendo il piatto della casa. Per favore, non dirmi cosa ci finisce dentro.",
+		"Cosa ordinano i clienti fissi? Lo stesso per me, e non faccio domande.",
+	},
+	["org.npc_meet.w21.host.011"] = {
+		"si fa squadrare dall'oste con l'attenzione rapida e pratica di chi calcola quale letto cigolerà meno sotto quel peso.",
+		"si lascia misurare dall'oste dalla testa agli stivali, non per capire se porta guai ma per scegliere un letto: lunghezza, larghezza, e quanto rumore farà.",
+	},
+	["org.npc_meet.w21.host.012"] = {
+		"La locanda è l'unico posto di Orgrimmar dove nessuno si sta addestrando per qualcosa. L'oste sembra difenderlo, in silenzio e con ostinazione.",
+		"Là fuori l'intera città si esercita, martella, marcia. Qui dentro l'oste custodisce un angolo di canyon dove nessuno è tenuto a stare all'erta.",
+		"L'oste custodisce qualcosa di più raro dei letti: una stanza di Orgrimmar dove l'essere pronti può aspettare.",
+	},
+	["org.npc_meet.w21.host.013"] = {
+		"L'oste ha le maniche arrotolate fino al gomito e bruciacchiate lungo un orlo. Troppe volte accanto al fuoco, e troppo da fare per farci caso.",
+		"Una manica strinata ai bordi, l'altra solo macchiata. L'oste si sporge sul fuoco del focolare più di quanto sia saggio.",
+	},
+	["org.npc_meet.w21.host.014"] = {
+		"Un posto dove nessuno mi racconti una storia di guerra. Per quello pago in più.",
+		"Un posto a sedere che non sia accanto a un veterano con un racconto. Lo vendete?",
+		"Mettimi al tavolo più lontano da chiunque cominci con 'quando ero al fronte'.",
+	},
+	["org.npc_meet.w21.host.015"] = {
+		"vede l'oste assaggiare la pentola, aggrottare la fronte, aggiungere un pizzico di qualcosa di rosso, riassaggiare e aggiungerne un secondo, come chi perde una discussione.",
+		"nota l'oste annusare uno stufato, buttarci un pizzico di polvere rossa, annusare ancora e buttarne un altro, in evidente lite con la pentola.",
+		"deve aspettare mentre l'oste litiga a colpi di spezie con una pentola che sobbolle, e la pentola sembra in vantaggio.",
+	},
+	["org.npc_meet.w21.host.016"] = {
+		"Il nome non me lo chiede nessuno. La panca ha un numero, la scodella un prezzo, e gli ospiti vanno e vengono come il fumo.",
+		"Nessun nome chiesto, nessuno dato. In una locanda così piena sono una panca e una scodella, ed è riposante non essere altro.",
+		"Qui sono chi siede alla terza panca. L'oste preferisce così, e per una volta anche io.",
+	},
+	["org.npc_meet.w21.host.017"] = {
+		"si appoggia al banco e, con un colpo di strofinaccio, si sente dire di appoggiarsi altrove: era appena stato pulito.",
+		"pianta i gomiti sul banco appena pulito e se li vede togliere, senza una parola, da uno straccio e da un'occhiata.",
+		"posa una mano sul legno, riceve un'occhiataccia dall'oste, abbassa lo sguardo e scopre il luccichio di un banco pulito un attimo prima.",
+	},
+	["org.npc_meet.w21.host.018"] = {
+		"Prima mangio e poi parlo, se non ti dispiace. Magari non parlo affatto.",
+		"Il cibo per primo. Le parole dopo, se me ne restano.",
+		"Qualunque cosa sia calda. Dirò qualcosa di gentile quando l'avrò mandata giù.",
+	},
+	["org.npc_meet.w21.ledger.001"] = {
+		"posa un fagotto sul banco; il banchiere lo soppesa su un palmo prima di scrivere qualcosa, come se il peso raccontasse tutta la storia.",
+		"consegna un pacco e osserva il banchiere sollevarlo una volta, a giudicare, come un cuoco giudica un melone.",
+		"posa le sue cose e vede il banchiere sollevare il fagotto di un dito sopra il banco e rimetterlo giù, la somma già indovinata.",
+	},
+	["org.npc_meet.w21.ledger.002"] = {
+		"Il banchiere non chiede mai cosa ci sia nel fagotto. In una città di domande brusche, forse è l'unica che resta educatamente taciuta.",
+		"Su quello che lascio non mi viene chiesto niente. Orgrimmar chiede di tutto a chiunque, ma non al di là di questo banco.",
+	},
+	["org.npc_meet.w21.ledger.003"] = {
+		"Mettilo in fondo, dietro la roba buona. È timido.",
+		"Quello va sotto a tutto. Ne ha passate abbastanza.",
+		"In un posto buio e noioso, grazie. Ha avuto una vita movimentata.",
+	},
+	["org.npc_meet.w21.ledger.004"] = {
+		"Le chiavi pendono a un cordino al collo del banchiere, e quella giusta viene trovata al tatto, senza che gli occhi si stacchino mai dalla mia faccia.",
+		"Un anello di chiavi, decine, e quella della mia cassetta viene scelta senza abbassare lo sguardo, come la mano di un musicista trova una nota.",
+		"Un mazzo di chiavi pesante, e nemmeno un tintinnio mentre vengono passate in rassegna. Non so come ci si riesca, e dubito di doverlo sapere.",
+	},
+	["org.npc_meet.w21.ledger.005"] = {
+		"nota il pollice del banchiere sporco d'inchiostro, che lascia un'impronta leggera sull'angolo di ogni pagina che gira.",
+		"segue il pollice del banchiere giù per la pagina, nero d'inchiostro fino alla seconda falange, che lascia una piccola macchia dovunque si fermi.",
+	},
+	["org.npc_meet.w21.ledger.006"] = {
+		"Vengo {g:salutato|salutata} col numero della mia cassetta. Immagino sia una forma d'amicizia.",
+		"Per il banchiere sono una cassetta con le gambe. Una cassetta ben tenuta, almeno.",
+	},
+	["org.npc_meet.w21.ledger.007"] = {
+		"Passo solo a dare un'occhiata. No, non tiro fuori niente. Mi basta sapere che è tutto al suo posto.",
+		"Non prendere niente. Dimmi solo che c'è tutto, e me ne vado.",
+	},
+	["org.npc_meet.w21.ledger.008"] = {
+		"si sente chiedere dal banchiere, dopo una lunga annusata sospettosa al pacco, se lì dentro ci sia qualcosa che fino a poco fa era vivo.",
+		"vede il banchiere portarsi il fagotto al naso, annusarlo due volte e chiedere con voce piatta se contenga carne.",
+		"deve rispondere, molto seriamente, alla domanda se il pacco comincerà a puzzare, e si sente raccontare che fine ha fatto l'ultimo che l'ha fatto.",
+	},
+	["org.npc_meet.w21.ledger.009"] = {
+		"Quello che lascio qui è la parte di me che non entra in uno zaino: cose tenute per ragioni che nessun altro capirebbe.",
+		"Una cassetta in banca tiene ciò che è troppo pesante da portare e troppo caro da vendere. La mia è quasi tutta del secondo tipo.",
+		"Ogni cosa in quella cassetta è una ragione che non saprei spiegare al banchiere. Per fortuna, le ragioni sono l'unica cosa che il banchiere non chiede mai.",
+	},
+	["org.npc_meet.w21.ledger.010"] = {
+		"sente il banchiere canticchiare le stesse tre note mentre smista, una volta dopo l'altra, e se le ritrova in testa per un bel pezzo.",
+		"ascolta il banchiere mormorare tre note basse al ritmo dello smistamento, un motivetto che sembra non avere una quarta nota né una fine.",
+	},
+	["org.npc_meet.w21.ledger.011"] = {
+		"Le monete di un goblin, l'amuleto di un tauren, la vecchia fibbia di un orco: tutta l'Orda passa per questo banco un pacco alla volta, e ognuno ha la sua riga nel registro.",
+		"Perline troll, ninnoli dei Reietti, ferro orchesco, tutto archiviato fianco a fianco nello stesso caveau. L'Orda mescola i suoi tesori più volentieri della sua cucina.",
+	},
+	["org.npc_meet.w21.ledger.012"] = {
+		"Occhio all'angolo di quello. È più affilato di quanto sembri, ed è l'unica cosa mia che valga la pena rubare.",
+		"Piano, quello è prezioso. Per me. Per chiunque altro è un chiodo storto.",
+	},
+	["org.npc_meet.w21.ledger.013"] = {
+		"osserva il banchiere posare le monete una a una su una piccola bilancia d'ottone, finché l'ago si ferma e con lui si fermano le sopracciglia del banchiere.",
+		"vede le sue monete finire sulla bilancia del banchiere in una pila bassa, e aspetta che il braccio smetta di tremare prima che qualcuno parli.",
+		"nota come il banchiere dia un colpetto d'unghia al piatto della bilancia per assestarlo, poi legga il peso due volte, una per occhio.",
+	},
+	["org.npc_meet.w21.ledger.014"] = {
+		"Una moneta cade alle mie spalle, e gli occhi del banchiere sono già lì prima che smetta di rotolare. Vicino a questo banco niente cade inosservato.",
+		"Qualcuno si lascia sfuggire un rame a qualche passo di distanza. Il banchiere non si volta, dice solo dove è finito.",
+	},
+	["org.npc_meet.w21.ledger.015"] = {
+		"guarda il banchiere far gocciolare cera sul nodo del suo fagotto e premerci dentro un pollice, un sigillo che nessuno in città avrebbe voglia di rompere.",
+		"si vede legare il pacco dal banchiere e sigillare con una goccia di cera scura, schiacciata da un pollice che l'ha fatto migliaia di volte.",
+	},
+	["org.npc_meet.w21.ledger.016"] = {
+		"Dentro, sotto chiave, e non una parola con nessuno. Tutto qui.",
+		"Chiudi tutto sotto chiave e scordati la mia faccia. Te la ricorderò io.",
+	},
+	["org.npc_meet.w21.ledger.017"] = {
+		"Di tutti i banchi di Orgrimmar, questo è l'unico dove nessuno cerca di vendermi qualcosa.",
+		"L'unico banco in città dove nessuno mi vende niente. Potrei restare qui un po', solo per la pace.",
+		"Qui nessuno mi urla un prezzo addosso. Avevo dimenticato che suono avesse, a Orgrimmar.",
+	},
+	["org.npc_meet.w21.ledger.018"] = {
+		"Tutto quello che prima o poi intendevo vendere sta in quella cassetta, in attesa di un prezzo migliore. Il banchiere ha la pazienza di guardarlo aspettare.",
+		"La mia cassetta è uno scaffale di buone intenzioni: cose da vendere, da riparare, da regalare. Il banchiere le custodisce tutte senza battere ciglio.",
+	},
+	["org.npc_meet.w21.ledger.019"] = {
+		"aspetta mentre il banchiere finisce una colonna di cifre con una mano e con l'altra fa cenno di avvicinarsi, senza che nessuna delle due rallenti.",
+		"viene {g:chiamato|chiamata} avanti dalla mano libera del banchiere mentre l'altra continua a scrivere, la penna che non si stacca mai dalla pagina.",
+	},
+	["org.npc_meet.w21.ledger.020"] = {
+		"Casse cerchiate di ferro impilate fino alle travi, ogni coperchio inciso con un segno che non so leggere. Uno di quei segni vuol dire me.",
+		"In quel muro di casse, sotto un segno inciso che non saprei riconoscere, c'è tutto quello che non avevo voglia di portarmi dietro.",
+	},
+	["org.npc_meet.w21.mentor.001"] = {
+		"L'istruttore mi lascia aspettare. Non per scortesia: il modo in cui si aspetta dice già molto di un allievo.",
+		"Resto in piedi un po' più del necessario, e capisco che anche questo viene osservato.",
+		"Prima viene l'attesa, e scommetterei gli stivali che anche l'attesa prende un voto.",
+	},
+	["org.npc_meet.w21.mentor.002"] = {
+		"risponde a lungo alla prima domanda dell'istruttore, e si sente rifare la stessa domanda, più lentamente.",
+		"dà all'istruttore una risposta lunga e accurata, e riceve in cambio uno sguardo piatto e la stessa identica domanda.",
+		"comincia a spiegare, viene {g:fermato|fermata} da un dito alzato e si sente ripetere la domanda parola per parola.",
+	},
+	["org.npc_meet.w21.mentor.003"] = {
+		"Su, trova il difetto. Preferisco saperlo da te che dalla prima cosa che mi morde.",
+		"Non trattarmi con i guanti. Ho la testa dura: la gentilezza mi rimbalza addosso.",
+		"Dimmelo chiaro. Tutta la città mi urla già dietro, una voce in più non mi farà male.",
+	},
+	["org.npc_meet.w21.mentor.004"] = {
+		"Tutto ciò che l'istruttore indossa è stato rammendato almeno una volta, e ogni rammendo è più accurato della cosa che ripara. Mi dice già come vanno le lezioni.",
+		"Cinghie rattoppate, polsini ricuciti, una fibbia sostituita con una migliore. Chi insegna qui ripara le cose per bene, e sospetto che con gli allievi faccia lo stesso.",
+		"Equipaggiamento vecchio ma curato, ogni riparazione cucita più stretta dell'originale. Immagino che l'insegnamento funzioni allo stesso modo.",
+	},
+	["org.npc_meet.w21.mentor.005"] = {
+		"siede sulla panca dove gli allievi aspettano l'istruttore; il legno è consumato in due conche lisce da tutti quelli che ci si sono seduti prima.",
+		"prende posto sulla panca d'attesa accanto all'istruttore, un'asse levigata e incavata al centro da un gran numero di allievi in ansia.",
+	},
+	["org.npc_meet.w21.mentor.006"] = {
+		"Mi viene chiesto il nome e poi non viene mai usato. Finché non mi sarò {g:guadagnato|guadagnata} di meglio, a quanto pare, sono «tu».",
+		"Il mio nome entra da un orecchio e lì resta, inutilizzato. Un allievo si chiama «tu» finché non dimostra il contrario.",
+		"«Tu. Più vicino.» Per ora mi chiamo così. Credo che i nomi si distribuiscano più avanti, come tutto ciò che vale la pena avere.",
+	},
+	["org.npc_meet.w21.mentor.007"] = {
+		"Eccomi. Dimmi dove mettermi e per quanto.",
+		"Mettimi dove vuoi. Non mi muovo finché non dici il contrario.",
+		"Dove mi vuoi? Dillo una volta sola: ti ascolto.",
+	},
+	["org.npc_meet.w21.mentor.008"] = {
+		"Nemmeno una parola di benvenuto. Solo «rifallo», prima ancora che io abbia mosso un dito.",
+		"La prima cosa che mi sento dire è «da capo». Non ho neanche cominciato. Scelgo di prenderlo come un omaggio alla mia fama.",
+	},
+	["org.npc_meet.w21.mentor.009"] = {
+		"osserva l'istruttore fermarsi a metà parola, sbrigare un grido arrivato dall'altra parte e tornare a finire proprio quella parola, dove l'aveva lasciata.",
+		"resta {g:sospeso|sospesa} a metà frase mentre l'istruttore risponde a qualcun altro, poi viene {g:ripreso|ripresa} esattamente alla stessa sillaba.",
+	},
+	["org.npc_meet.w21.mentor.010"] = {
+		"Un maestro dell'Orda insegna a chiunque abbia la pazienza di ascoltare: orco, troll, tauren, Reietto. La lezione non chiede in che mani finisce.",
+		"A Orgrimmar lo stesso maestro si trova davanti un troll, poi un tauren, poi un Reietto, e cambia soltanto l'altezza dello sguardo. Ecco l'Orda, in piccolo.",
+	},
+	["org.npc_meet.w21.mentor.011"] = {
+		"si sente fare una domanda di passaggio dall'istruttore, che non alza nemmeno gli occhi, e capisce solo dopo che la risposta contava.",
+		"risponde a una domanda che l'istruttore butta lì da sopra la spalla come se niente fosse, e dal cenno secco capisce che non lo era.",
+		"raccoglie una domanda buttata lì con aria distratta e si accorge, troppo tardi, di quanto attentamente venga ascoltata la risposta.",
+	},
+	["org.npc_meet.w21.mentor.012"] = {
+		"Dietro quegli occhi c'è il conto degli allievi che non sono più tornati. L'istruttore non ne parla. Ne parla la pazienza.",
+		"Chi insegna abbastanza a lungo in una città in guerra sopravvive ai propri allievi. Si vede da come quegli occhi si posano su di me: con cura, come per imparare a memoria.",
+	},
+	["org.npc_meet.w21.mentor.013"] = {
+		"Solito accordo? Tu parli, io annuisco, e più tardi scopro quali cenni erano bugie.",
+		"Annuirò parecchio. Qualche cenno sarà perfino sincero.",
+	},
+	["org.npc_meet.w21.mentor.014"] = {
+		"Questo istruttore non alza mai la voce. In una città che i saluti li urla, chi insegna sottovoce è impossibile da ignorare.",
+		"Che voce bassa. Tutta Orgrimmar sbraita; chi insegna parla piano, e mi ritrovo a sporgermi in avanti come un complice.",
+		"Ogni altra voce per strada è un grido. Quella dell'istruttore è poco più di un sussurro, e arriva più lontano di tutte.",
+	},
+	["org.npc_meet.w21.mentor.015"] = {
+		"riceve due colpetti delle nocche dell'istruttore sulla clavicola: qui, adesso, ascolta.",
+		"viene {g:richiamato|richiamata} all'attenzione dalle nocche dell'istruttore, due colpetti secchi sotto la gola, senza bisogno d'altro.",
+	},
+	["org.npc_meet.w21.mentor.016"] = {
+		"L'allievo prima di me se ne va borbottando. L'istruttore guarda il borbottio allontanarsi con qualcosa di molto simile all'affetto.",
+		"Chi c'era prima di me si allontana brontolando, seguito da uno sguardo quasi tenero. Me lo segno: brontolare è buon segno.",
+		"L'ultimo allievo se ne va massaggiandosi una spalla e imprecando a mezza voce. L'istruttore annuisce soddisfatto, come un cuoco davanti a uno stufato che finalmente bolle.",
+	},
+	["org.npc_meet.w21.mentor.017"] = {
+		"Un istruttore che conta la tariffa prima della lezione e gli errori dopo. Tutti e due i totali vengono più alti di quanto vorrei.",
+		"Prima le monete, poi la lezione, poi il conto di tutto quello che ho sbagliato. Alla fine sono più {g:povero|povera} in due modi, e chissà come ci ho guadagnato.",
+	},
+	["org.npc_meet.w21.mentor.018"] = {
+		"aspetta che l'istruttore finisca una striscia di carne secca, senza fretta, masticandola tutta prima di dire una sola parola.",
+		"resta lì mentre l'istruttore mangia con grande calma l'ultimo pezzo di carne secca, come se niente potesse cominciare a stomaco vuoto.",
+	},
+	["org.npc_meet.w21.mentor.019"] = {
+		"Comincio una scusa. Me la lasciano finire, parola per parola, e poi non viene detto niente. Nessuno è mai stato così crudele con una mia scusa.",
+		"A metà della mia giustificazione sento come suona. L'istruttore aspetta soltanto che la senta anch'io.",
+		"Il silenzio che segue la mia scusa dura esattamente quanto serve perché io me la rimangi.",
+	},
+	["org.npc_meet.w21.mentor.020"] = {
+		"Parla adagio. Qualcuno ha appena fatto cadere una cassa qui dietro, e non vorrei imparare la metà sbagliata.",
+		"Puoi ripetere l'ultima parte? È passato un lupo.",
+	},
+	["org.npc_meet.w21.mentor.021"] = {
+		"Le lodi di questo istruttore arrivano precedute da una pausa, lunga abbastanza da sembrare un rimprovero in arrivo.",
+		"Prima di ogni parola gentile c'è un vuoto, e lo passo a prepararmi al contrario.",
+		"Quando arriva, la parola gentile è tardiva e piccola, e me la porterei dietro per tutto Durotar.",
+	},
+	["org.npc_meet.w21.mentor.022"] = {
+		"si sente dire di avvicinarsi, poi di arretrare, poi di rimettersi esattamente nel punto di partenza, senza che nessuno spieghi perché.",
+		"avanza di un passo a una parola dell'istruttore, arretra alla successiva e finisce dove aveva cominciato, sotto uno sguardo di quieta soddisfazione.",
+	},
+	["org.npc_meet.w21.mentor.023"] = {
+		"Intorno la città sbatte e contratta. Davanti a me c'è solo l'istruttore, e la forma netta di quello che ancora non so.",
+		"Per la durata di una lezione Orgrimmar si allontana, un rumore dietro una porta. Ci sono l'istruttore, i miei errori, e nient'altro.",
+	},
+	["org.npc_meet.w21.mentor.024"] = {
+		"osserva l'istruttore far rotolare un sassolino consumato sulle nocche mentre pensa, e bloccarlo di colpo quando ha finito di pensare.",
+		"nota un ciottolo liscio che cammina sul dorso delle dita dell'istruttore, avanti e indietro, finché una decisione non chiude la mano.",
+		"segue un sassolino lungo le nocche di {other}, sopra e sotto, finché sparisce in un pugno e la lezione comincia.",
+	},
+	["org.npc_meet.w21.mentor.025"] = {
+		"Insegnami bene. Qualunque cosa mi metti in mano, l'Orda se la ritroverà con gli interessi.",
+		"Fa' che valga. Intendo portarla lontano da questa città, sotto le insegne dell'Orda.",
+	},
+	["org.npc_meet.w21.mentor.026"] = {
+		"Una sola risata per qualcosa che faccio. Non di me, credo. Di qualcosa che solo un vecchio maestro troverebbe buffo.",
+		"Una risata breve dell'istruttore, subito ingoiata. Passerò il resto della lezione a chiedermi cosa ho combinato.",
+		"Qualcosa che faccio fa tremare un angolo della bocca dell'istruttore. Se sia buon segno o un caso disperato, non mi viene detto.",
+	},
+	["org.npc_meet.w21.mentor.027"] = {
+		"tende la mano all'istruttore e se la vede girare col palmo in su, esaminare e restituire senza commenti.",
+		"porge la mano all'istruttore, che la prende, la guarda sopra e sotto come un mercante con una moneta sospetta, e la lascia andare.",
+		"si vede studiare la mano tesa dall'istruttore, nocche, palmo e unghie, prima che venga stretta.",
+	},
+	["org.npc_meet.w21.mentor.028"] = {
+		"Prima mi viene chiesto che cosa voglio imparare, poi a che cosa mi serve. È la seconda risposta a guadagnarsi un cenno.",
+		"«Perché?» è la prima parola che mi viene rivolta. Non cosa, non come. Perché. Rispondo con sincerità e ricevo in cambio una lunga occhiata.",
+	},
+	["org.npc_meet.w21.post.001"] = {
+		"Dove sta il grunt, il terreno è pestato in due conche poco profonde, a forma di stivale. Da anni i grunt stanno proprio lì.",
+		"Due avvallamenti nella terra battuta del posto di guardia, uno per stivale. Questo grunt li riempie; altri li hanno riempiti prima.",
+		"Il posto di guardia si è scavato le proprie impronte nella terra. Il grunt di turno ci entra come in un paio di scarpe vecchie.",
+	},
+	["org.npc_meet.w21.post.002"] = {
+		"sorprende un grunt a metà sbadiglio e vede la mascella chiudersi di scatto e gli occhi indurirsi in un solo movimento, come se lo sbadiglio non ci fosse mai stato.",
+		"coglie la coda dello sbadiglio di un grunt, inghiottito appena qualcuno guarda, la faccia già di pietra prima ancora che la mascella si chiuda.",
+	},
+	["org.npc_meet.w21.post.003"] = {
+		"Alcuni dei grunt più vecchi devono ricordare i campi, e le guardie che li sorvegliavano oltre il recinto. Ora sono loro a sorvegliare, e lo fanno senza crudeltà.",
+		"Certi grunt ai posti di guardia hanno l'età per essere stati, una volta, dall'altra parte di un recinto. Si vede da quanto poco godono a fissare la gente.",
+		"Un grunt di quell'età è stato con ogni probabilità rinchiuso in un campo da giovane, sorvegliato da estranei. Adesso sorveglia, e non sembra mai provarci gusto.",
+	},
+	["org.npc_meet.w21.post.004"] = {
+		"Che il cambio arrivi presto e gli stivali restino asciutti.",
+		"A un turno breve e a un cambio puntuale.",
+		"Spero che chi prende il tuo posto dopo sia uno che arriva in orario.",
+	},
+	["org.npc_meet.w21.post.005"] = {
+		"vede un grunt mettersi dritto al passaggio di un ufficiale, ogni cinghia di colpo in ordine, e rilassarsi appena l'ufficiale ha girato l'angolo.",
+		"osserva un grunt irrigidirsi per un ufficiale di passaggio e poi cedere di un dito, con prudenza, appena quello sparisce alla vista.",
+		"coglie l'istante in cui l'ufficiale del grunt se ne va: non proprio un abbandono, ma l'armatura sembra posarsi un po' più in basso.",
+	},
+	["org.npc_meet.w21.post.006"] = {
+		"si tiene al centro della strada mentre un grunt si gira per {g:seguirlo|seguirla}, tutto il corpo che ruota insieme all'ascia, lento come una porta sui cardini.",
+		"prosegue sotto lo sguardo di un grunt che ruota a ogni passo, corpo e ascia insieme, come una porta che segue chi passa.",
+	},
+	["org.npc_meet.w21.post.007"] = {
+		"sente il grunt di guardia contare sottovoce sotto il frastuono: i passanti, forse, o quanto manca alla fine del turno.",
+		"coglie un mormorio di numeri da un grunt in servizio, regolare e basso, anche se intorno nessuno sembra contare niente.",
+		"si ferma abbastanza vicino a un grunt da sentire una conta lenta, dodici, tredici, e si chiede che cosa venga contato.",
+	},
+	["org.npc_meet.w21.post.008"] = {
+		"Gli occhi del grunt si muovono di continuo; nient'altro si muove. Ore così. Preferirei tre battaglie a un solo turno di guardia.",
+		"Del grunt è immobile tutto tranne gli occhi. Farlo per un intero turno dev'essere una fatica a sé.",
+		"La parte difficile è restare in piedi. Combattere lo sa fare chiunque; per restare lì così a lungo senza impazzire ci vuole un grunt.",
+	},
+	["org.npc_meet.w21.roost.001"] = {
+		"segue la mano aperta del mastro di volo lungo l'ala ripiegata di una bestia, giuntura per giuntura, lento come un guaritore che cerca una frattura.",
+		"aspetta mentre il mastro controlla l'ala di ogni bestia a turno, premendo lungo le ossa col pollice e ascoltandone il brontolio.",
+		"si tiene in disparte mentre {other} tasta un'ala in cerca di dolori, e la bestia riduce la sua protesta a un basso rombo.",
+	},
+	["org.npc_meet.w21.roost.002"] = {
+		"In cima alla torre c'è odore di pelle, di carne vecchia e dell'olio che il mastro passa su ogni cinghia. Nessun altro in città lo sopporterebbe.",
+		"Pelle, carne cruda, olio per cuoio, e sotto tutto il muschio delle bestie. Il mastro ha smesso di farci caso da un pezzo, a quanto pare.",
+		"La cima della torre ha un odore tutto suo, bestia e cuoio unto e qualcosa dimenticato troppo a lungo in un mastello. Il mastro lo porta addosso come un mantello.",
+	},
+	["org.npc_meet.w21.roost.003"] = {
+		"Quale vola meglio? Prendo quella di cui ti fideresti tu.",
+		"Dammi la più tranquilla. Non ho voglia di litigare con una viverna a metà strada.",
+	},
+	["org.npc_meet.w21.roost.004"] = {
+		"Il mastro mi parla con un occhio e tiene l'altro sul bordo del canyon, da dove arrivano gli animali in volo.",
+		"Metà dell'attenzione del mastro è per me. L'altra metà è oltre il ciglio del canyon, a contare ali.",
+		"Ogni risposta che ricevo arriva con gli occhi del mastro sul filo del canyon, come se da un momento all'altro potesse spuntarne una bestia bisognosa di una parola prima di me.",
+	},
+	["org.npc_meet.w21.roost.005"] = {
+		"si abbassa mentre una bestia distende un'ala attraverso la piattaforma; il mastro ci passa sotto senza guardare, come si gira intorno a una porta sempre aperta.",
+		"sussulta quando un'ala coriacea si apre a un palmo dal viso, mentre il mastro ci cammina sotto senza rallentare.",
+	},
+	["org.npc_meet.w21.roost.006"] = {
+		"Dietro le bestie le code si arricciano e si srotolano, con la punta uncinata come quella di uno scorpione. Il mastro ci cammina in mezzo come fossero rotoli di corda.",
+		"Ognuna di quelle code finisce con un pungiglione, e il mastro le scavalca come un cuoco scavalca il gatto.",
+	},
+	["org.npc_meet.w21.roost.007"] = {
+		"Buona, buona. Sono qui solo per parlare con chi ti accudisce.",
+		"Sì, ciao. No, non sono cibo. Chiedi al tuo padrone.",
+		"Ciao anche a te. Hai dei denti davvero notevoli. Tienili per te, per favore.",
+	},
+	["org.npc_meet.w21.roost.008"] = {
+		"osserva il mastro lanciare pezzi di carne da un mastello, uno per bestia a turno, e nessuna che azzanni fuori dal suo turno.",
+		"si fa da parte durante il pasto: il mastro lancia, una bestia afferra, la successiva aspetta il suo turno a fauci chiuse e occhi sgranati.",
+		"vede ogni bestia sulla torre prendere al volo la sua parte di carne senza degnare di uno sguardo quella della vicina.",
+	},
+	["org.npc_meet.w21.roost.009"] = {
+		"Ogni bestia sulla torre conosce il passo del mastro. Le teste si alzano prima che io senta gli stivali.",
+		"Le bestie riconoscono chi le accudisce dal solo rumore. Uno strascichio sulla scala, e ogni testa sui trespoli si volta.",
+	},
+	["org.npc_meet.w21.roost.010"] = {
+		"Una vecchia sella pende da un piolo, separata dalle altre, screpolata e ancora unta. La si cura insieme alle altre, e nessuno dice di chi fosse.",
+		"Lontano dai finimenti in uso c'è una sella che nessuno adopera, tenuta morbida lo stesso. Non chiedo. Il mastro non ha l'aria di chi risponderebbe.",
+	},
+	["org.npc_meet.w21.roost.011"] = {
+		"sente il mastro gridare qualcosa giù dalla torre a qualcuno di sotto, e la risposta risale sotto forma di un solo grugnito.",
+		"resta in attesa mentre {other} si sporge dalla balaustra e urla giù dalla torre; qualunque fosse la domanda, la risposta da sotto è una parola sola.",
+	},
+	["org.npc_meet.w21.roost.012"] = {
+		"Questa morde, o mi guarda soltanto come se ci stesse pensando?",
+		"Mi fissa. È fame, o un'opinione?",
+		"La sella è tua, la bestia è tua, i lividi saranno miei. Giusto?",
+	},
+	["org.npc_meet.w21.roost.013"] = {
+		"Le mani del mastro non riposano mai: una fibbia qui, una cinghia là, una grattata sotto una mascella. Parlare è una cosa che fa a margine.",
+		"A me toccano le parole del mastro. Alle bestie le mani, occupate tutto il tempo a tirare, lisciare, controllare.",
+		"Anche a metà frase il mastro tiene una mano sul collo di una bestia, lisciandone il pelo contropelo e poi per il verso giusto.",
+	},
+	["org.npc_meet.w21.roost.014"] = {
+		"si toglie dalla manica un ciuffo di criniera perduta; la piattaforma ne è piena in ogni angolo.",
+		"si stacca dai vestiti peli ruvidi di bestia, raccolti in pochi istanti di immobilità da un pavimento che ne è coperto.",
+	},
+	["org.npc_meet.w21.roost.015"] = {
+		"Una torre piena di bestie dell'Orda con il loro mastro, e nessun buon motivo per cui io sia quassù. Ogni occhio sui trespoli è d'accordo.",
+		"Lo sguardo del mastro dice quello che dicono gli sguardi delle bestie: colori sbagliati, torre sbagliata. Tengo le mani bene in vista.",
+	},
+	["org.npc_meet.w21.roost.016"] = {
+		"coglie il mastro a saggiare il cuoio di una fibbia coi denti, un morso lungo e collaudato, e ad annuire al sapore.",
+		"vede {other} mordere una cinghia per controllarla, masticare con aria pensosa e dichiararla buona.",
+	},
+	["org.npc_meet.w21.roost.017"] = {
+		"Dalla cima della torre il mastro potrebbe guardare tutta la Valley of Strength, e non le presta la minima attenzione. Quassù conta solo ciò che ha le ali.",
+		"Tutta Orgrimmar distesa sotto, e il mastro non abbassa lo sguardo nemmeno una volta. La città è solo ciò che le bestie lasciano e ritrovano.",
+		"I tetti e il fumo della città stanno sotto i piedi del mastro come un tappeto che nessuno si prende la briga di guardare.",
+	},
+	["org.npc_meet.w21.roost.018"] = {
+		"assiste allo sbadiglio enorme di una bestia in faccia al mastro, tutto denti, e al mastro che sbadiglia di rimando senza un filo di paura.",
+		"vede una bestia spalancare le fauci verso il mastro, che sbadiglia altrettanto largo, e la bestia, battuta, distoglie lo sguardo.",
+	},
+	["org.npc_meet.w21.roost.019"] = {
+		"Quella che si è riposata. Io non ho fretta, e la bestia non dovrebbe averne.",
+		"Scegli tu. Tu le conosci; io so solo dove vado.",
+	},
+	["org.npc_meet.w21.roost.020"] = {
+		"Il mastro chiude una zuffa sui trespoli con un solo fischio breve, due note, giù e poi su. Le bestie si calmano come bambini sgridati.",
+		"Due note fischiate, bassa e alta, e le bestie che si azzuffavano si separano e ripiegano le ali. Pagherei per imparare quel fischio.",
+	},
+	["org.npc_meet.w21.roost.021"] = {
+		"si scansa mentre una bestia atterra, tutta artigli e polvere, e il mastro le è già sotto il mento prima che abbia finito di ripiegarsi.",
+		"osserva una bestia di ritorno piombare sul trespolo con un tonfo che fa tremare le assi, e il mastro che già allunga la mano verso il sottopancia.",
+	},
+	["org.npc_meet.w21.stall.001"] = {
+		"La merce è disposta per prezzo, la più economica davanti, dove le mani arrivano prima. Le cose buone stanno in fondo, dove bisogna chiedere.",
+		"Roba a buon mercato davanti, a portata di mano. I pezzi pregiati dietro, oltre il gomito del mercante. Prima si paga in domande.",
+	},
+	["org.npc_meet.w21.stall.002"] = {
+		"nota che il mercante tiene sempre una mano piatta sulla cassetta delle monete, anche mentre l'altra si agita in gesti grandiosi.",
+		"vede una mano del mercante recitare tutta la proposta di vendita mentre l'altra non si stacca mai dal coperchio della cassetta delle monete.",
+		"non può fare a meno di notare quale mano del mercante parla e quale fa la guardia alle monete.",
+	},
+	["org.npc_meet.w21.stall.003"] = {
+		"Questo mercante saluta un orco, un troll e un tauren con tre voci leggermente diverse, uno dopo l'altro. Aspetto di sentire quale voce toccherà a me.",
+		"Un tono diverso per ogni cliente: secco con l'orco, cantilenante col troll, senza fretta col tauren. Adesso tocca alla mia voce. Ho una certa curiosità.",
+	},
+	["org.npc_meet.w21.stall.004"] = {
+		"Sto solo guardando. Lo dico ogni volta, e non me ne sono mai {g:andato|andata} a mani vuote.",
+		"Do solo un'occhiata. Famose ultime parole, lo so.",
+		"Guardo e basta, lo giuro. La mia borsa ha già sentito questa promessa, e non ci crede.",
+	},
+	["org.npc_meet.w21.stall.005"] = {
+		"Qui si incarta tutto, perfino un chiodo solo, in un ritaglio di tela grezza. Un'abitudine, o un modo per far sembrare un regalo una piccola vendita.",
+		"Un rame di filo, eppure lascia il banco avvolto nella tela e legato con uno spago. Mi sento stranamente {g:onorato|onorata}.",
+	},
+	["org.npc_meet.w21.stall.006"] = {
+		"ha davanti un paio di guanti posati su due palmi aperti, presentati come si presenterebbe qualcosa di vivo.",
+		"riceve una cintura distesa sulle mani aperte del mercante, offerta con un leggero inchino, come se potesse spaventarsi.",
+		"prende una fibbia consegnata dal mercante a due mani e piano, come si passa di mano un animale addormentato.",
+	},
+	["org.npc_meet.w21.stall.007"] = {
+		"Il mercante conta le mie monete due volte: una per il valore, e una, sospetto, per il conio.",
+		"Le mie monete vengono girate e studiate su entrambe le facce. L'oro è oro, decide il mercante, chiunque l'abbia coniato.",
+		"Una lunga occhiata a ogni moneta che consegno, poi un'alzata di spalle, e dentro la cassetta. La fedeltà del mercante va al peso del metallo.",
+	},
+	["org.npc_meet.w21.stall.008"] = {
+		"Gli stivali del mercante sono consumati in punta. Qualunque cosa si venda qui, il meglio non resta mai a chi lo vende.",
+		"Cuoio fine sul banco, cuoio vecchio e screpolato ai piedi del mercante. Chi vende di rado si tiene la merce.",
+	},
+	["org.npc_meet.w21.stall.009"] = {
+		"vede il mercante tracciare una cifra nella polvere del banco con un'unghia, cancellarla, e tracciarne una più piccola, senza che nessuno gliel'abbia chiesto.",
+		"si vede mostrare un prezzo disegnato col dito nella polvere del banco, cancellato con un sospiro e ridisegnato un po' più in basso, prima ancora che si sia detta una parola.",
+	},
+	["org.npc_meet.w21.stall.010"] = {
+		"Incartalo bene. Farà più strada di quanto crederesti.",
+		"Imballalo stretto, per favore. Ha tanta strada davanti, e io pure.",
+	},
+	["org.npc_meet.w21.stall.011"] = {
+		"Il mercante parla mentre conta e conta mentre parla, e fa giuste entrambe le cose. Io ne so fare una, e male.",
+		"{other} tiene insieme un fiume di chiacchiere e un conto esatto. Io perdo il conto se qualcuno starnutisce.",
+		"Parlantina e aritmetica nello stesso momento, senza un inciampo. Un'arte del mestiere che nessuno insegna.",
+	},
+	["org.npc_meet.w21.stall.012"] = {
+		"La tettoia della bancarella è rattoppata con le pelli di quattro bestie diverse. In questa città non si butta via niente, nemmeno un tetto strappato.",
+		"Quattro tipi di pelle cuciti in un'unica tettoia, ogni toppa di un colore. Il mercante non spreca nulla, tetto compreso.",
+		"La tettoia di quella bancarella è una trapunta di cuoi, ritagli di questa bestia e di quella. Rammendata, rammendata ancora, e fa sempre il suo lavoro.",
+	},
+	["org.npc_meet.w21.stall.013"] = {
+		"deve aspettare che il mercante serva un peone con un solo rame da spendere, con la stessa identica cura e lo stesso piccolo inchino.",
+		"si fa da parte mentre un peone spende un rame alla bancarella, e il mercante ci mette per quella moneta lo stesso tempo che per un argento.",
+		"lascia passare avanti un peone, e vede il mercante pesare un rame di sale come se fosse per un capotribù.",
+	},
+	["org.npc_meet.w21.stall.014"] = {
+		"Pago quello che chiedi, se dopo mi dici quanto avresti accettato.",
+		"D'accordo, il tuo prezzo. Ma quando le monete saranno passate di mano voglio sentire quello vero.",
+	},
+	["org.npc_meet.w21.stall.015"] = {
+		"si avvicina a una bancarella nel bel mezzo del pasto del mercante e riceve un saluto a bocca piena e un dito unto puntato verso la merce.",
+		"sorprende il mercante con un osso in mano; l'osso viene usato, senza una pausa, per indicare il meglio della merce.",
+		"arriva a metà di un boccone; il mercante inghiotte, si pulisce le mani sul grembiule ed è subito tutto affari.",
+	},
+	["org.npc_meet.w21.task.001"] = {
+		"riceve una stretta all'avambraccio, tenuta un istante di troppo, come si saggia una corda prima di affidarle un peso.",
+		"stringe l'avambraccio di chi l'ha {g:chiamato|chiamata} in disparte, e sente la presa prendere le misure prima di lasciare.",
+		"accetta l'avambraccio teso da chi chiede; la stretta si serra una volta, per saggiare, e solo allora cominciano le parole.",
+	},
+	["org.npc_meet.w21.task.002"] = {
+		"La richiesta comincia con un complimento che non mi sono {g:guadagnato|guadagnata}. In questa città vuol dire che la richiesta è più grossa del complimento.",
+		"Prima una lode, spalmata bella spessa. Orgrimmar non è un posto che adula per niente: comincio a prepararmi.",
+		"Lodi, poi altre lodi, poi una pausa. Qui l'amo sta nella pausa.",
+	},
+	["org.npc_meet.w21.task.003"] = {
+		"Stavi cercando qualcuno tra la folla. Ero io, o va bene chiunque?",
+		"Ti ho visto guardare. Sono la persona che cercavi, o solo la prima che si è fermata?",
+		"Fra tutta questa folla hai indicato me. È un onore o un guaio?",
+	},
+	["org.npc_meet.w21.task.004"] = {
+		"Qualcuno a Orgrimmar ha un guaio e ha deciso che ho la faccia della soluzione. Non mi affretterò a smentire.",
+		"A quanto pare ho la faccia di una soluzione. Cercherò di tenerla addosso finché non saprò qual è il problema.",
+	},
+	["org.npc_meet.w21.task.005"] = {
+		"deve aspettare che chi chiede finisca una discussione con tutt'altra persona, poi riceve un sorriso che si accende come una lanterna.",
+		"aspetta mentre chi ha la richiesta vince un battibecco con un facchino di passaggio, poi si prende tutto il calore improvviso di un sorriso.",
+	},
+	["org.npc_meet.w21.task.006"] = {
+		"Le parole escono in ordine, lucidate contro un muro chissà quante volte. Qualcosa negli occhi, invece, non è stato provato affatto.",
+		"È un discorso preparato, ogni parola al suo posto. Gli occhi non hanno fatto le prove.",
+		"Ogni parola sta dove è stata messa le ultime dieci volte che è stata detta. Solo la voce trema.",
+	},
+	["org.npc_meet.w21.task.007"] = {
+		"Ripeti, più vicino. Ogni parola è appena finita sotto un carro di passaggio.",
+		"Come hai detto? Il chiasso si è portato via la parte importante.",
+	},
+	["org.npc_meet.w21.task.008"] = {
+		"Quando l'Orda chiede, non supplica. Dice di cosa c'è bisogno e aspetta di vedere se sei del tipo che risponde.",
+		"Niente suppliche, niente inchini. Chi chiede, nell'Orda, dice cosa serve e mi guarda negli occhi. Qualcosa di più morbido mi deluderebbe.",
+	},
+	["org.npc_meet.w21.task.009"] = {
+		"Chi chiede lancia un'occhiata oltre la mia spalla prima di fermarsi su di me, per vedere se arriva qualcuno di meglio. Giusto. L'avrei fatto anch'io.",
+		"Prima uno sguardo oltre me, caso mai arrivasse qualcuno più adatto. Non arriva nessuno. Passa il convento: io.",
+		"Prima viene controllata la mia spalla, nel caso dietro ci fosse qualcuno di meglio. Nessuno. Fortuna mia, o sfortuna loro.",
+	},
+	["org.npc_meet.w21.task.010"] = {
+		"Ho due orecchie e nessun posto dove correre. Dimmi.",
+		"Hai la mia attenzione. Non è granché, ma è tutta tua.",
+		"Sputa il rospo. Qualunque cosa sia, detta suona meglio che rimuginata.",
+	},
+	["org.npc_meet.w21.task.011"] = {
+		"viene {g:tirato|tirata} per la manica fuori dal passaggio della folla, così da poter chiedere senza che nessuno finisca calpestato.",
+		"si lascia guidare per il gomito in un angolo più tranquillo, lontano dalla calca della strada, prima che si dica una parola.",
+	},
+	["org.npc_meet.w21.task.012"] = {
+		"{other} pronuncia il mio nome come se un accordo ci fosse già. È così che ti fregano.",
+		"Il mio nome, detto con calore, da qualcuno che non ho mai visto. In questa città è un amo con l'esca.",
+		"Sentirmi chiamare per nome prima di averlo detto lusinga per il tempo che ci vuole a chiedersi chi l'abbia fatto girare.",
+	},
+	["org.npc_meet.w21.task.013"] = {
+		"Prima della richiesta c'è una pausa, quella che un grunt lascia prima di una carica. Mi preparo di conseguenza.",
+		"Un lungo silenzio, le spalle che si raddrizzano: qualunque cosa stia arrivando, arriva di corsa.",
+		"Chi chiede mi si para davanti come se chiedere fosse uno scontro da superare. Forse lo è.",
+	},
+	["org.npc_meet.w21.task.014"] = {
+		"Salta le lusinghe. Il resto lo ascolto.",
+		"Tralascia la parte in cui ho tante qualità. Comincia da quella che ti serve.",
+	},
+	["org.npc_meet.w21.task.015"] = {
+		"osserva chi chiede raddrizzarsi, schiarirsi la gola e ricominciare da capo, anche se non è stato ancora detto niente.",
+		"sente chi chiede cominciare, fermarsi, ricominciare con una voce migliore e fermarsi un'altra volta per scegliere una prima parola migliore.",
+	},
+	["org.npc_meet.w21.task.016"] = {
+		"Orgrimmar chiede aiuto come fa tutto il resto: dritta, a voce alta, e un po' troppo vicino alla faccia.",
+		"Niente allusioni, niente giri. Qualcuno mi si pianta davanti e chiede, così vicino che potrei contargli i denti.",
+		"In questa città nessuno gira intorno a una richiesta. Arriva di petto, come tutto il resto.",
+	},
+	["org.npc_meet.w21.task.017"] = {
+		"Occhiaie scure, e sugli stivali una polvere vecchia di giorni. Qualunque cosa non vada, a chi chiede non ha dato tregua.",
+		"Gli stivali di chi chiede sono incrostati di polvere vecchia, gli occhi pesanti. Qualcosa rode da più tempo di quanto si voglia ammettere.",
+	},
+	["org.npc_meet.w21.task.018"] = {
+		"si vede offrire come sedile una cassa capovolta, che traballa, e chi chiede si scusa per la cassa prima di ogni altra cosa.",
+		"si accomoda, su invito, sopra una cassa rovesciata che dondola su un angolo storto; il primo argomento della conversazione è la cassa.",
+	},
+	["org.npc_meet.w21.task.019"] = {
+		"Quella è la faccia di chi sta per chiedere un favore. La conosco bene: l'ho messa anch'io.",
+		"Ah. Hai la faccia da favore. Su, non te la faccio tenere a lungo.",
+		"Conosco quello sguardo. L'ho usato anch'io con i locandieri.",
+	},
+	["org.npc_meet.w21.task.020"] = {
+		"resta ad aspettare che chi chiede metta una moneta in mano a un fattorino di passaggio e lo spedisca via di corsa; poi l'attenzione è tutta per {g:lui|lei}.",
+		"si fa da parte mentre chi ha la richiesta spedisce un messaggero con una moneta e tre parole svelte, poi si gira: ora si può cominciare.",
+	},
+	["org.npc_meet.w21.task.021"] = {
+		"Due tipi di persone, a Orgrimmar, chiedono aiuto agli estranei: quelle troppo orgogliose per chiederlo agli amici, e quelle i cui amici hanno già detto di no. Provo a indovinare quale prima della prima parola.",
+		"È qualcuno troppo orgoglioso per chiedere a un amico, o qualcuno che gli amici li ha finiti? Lo saprò alla seconda frase.",
+	},
+	["org.npc_meet.w21.task.022"] = {
+		"È il genere di cosa dopo cui vorrò bere qualcosa? Giusto per sapere dove andare poi.",
+		"Dimmelo subito: finirà alla locanda a festeggiare, o alla locanda per dimenticare?",
+	},
+	["org.npc_meet.w21.task.023"] = {
+		"Nessun preambolo: una mano sulla spalla e «Bene. Tu.» È stranamente lusinghiero, essere {g:scelto|scelta} così in fretta.",
+		"Una pacca sulla spalla, un cenno, «Andrai bene.» Nessun discorso. Ho avuto benvenuti più calorosi, mai più rapidi.",
+		"«Tu. Sì, proprio tu.» E la presentazione finisce lì. Scopro che non mi dispiace.",
+	},
+	["org.npc_meet.w21.task.024"] = {
+		"coglie le labbra di chi chiede muoversi in silenzio un attimo prima di parlare, l'attacco ripassato un'ultima volta.",
+		"vede chi chiede mimare in silenzio le prime parole, come chi conta i gradini al buio, prima di dirle ad alta voce.",
+	},
+	["org.npc_meet.w21.task.025"] = {
+		"Chi chiede valuta il mio equipaggiamento pezzo per pezzo, come un ambulante che stima un carro usato. A quanto pare passo l'esame, il che è già una preoccupazione.",
+		"Stivali, cintura, zaino, mani: vengo {g:inventariato|inventariata} prima di essere {g:salutato|salutata}. La richiesta va avanti, quindi immagino di essere della misura giusta.",
+		"Vengo {g:squadrato|squadrata} come un furiere squadra un mulo: zampe, carico, carattere.",
+	},
+	["org.npc_meet.w21.task.026"] = {
+		"nota che chi chiede annuisce per tutto il tempo, con regolarità, come se un cenno del capo fosse contagioso.",
+		"si ritrova ad annuire prima di aver sentito qualcosa, perché chi chiede annuisce fin dalla prima parola.",
+	},
+	["org.npc_meet.w21.task.027"] = {
+		"Chiedere a un estraneo costa qualcosa, anche in una città così orgogliosa. Soprattutto in una città così orgogliosa. Vedo il prezzo venire pagato.",
+		"Prima di chiedere a un estraneo bisogna posare l'orgoglio. Lo guardo venire posato, piano, come uno zaino pesante.",
+		"Chiedere costa, qui. Chi chiede lo paga con la voce abbassata e uno sguardo che continua a scivolare di lato.",
+	},
+	["org.npc_meet.w21.task.028"] = {
+		"incontra un pugno battuto una volta sul petto, il saluto dell'Orda, e lo ricambia prima che chi chiede abbia detto qualcosa.",
+		"risponde al pugno sul petto di chi chiede con il proprio, e solo allora, sbrigata la cortesia, comincia la richiesta.",
+		"riceve da chi ha la richiesta un breve saluto dell'Orda, nocche sul cuore, e lo restituisce allo stesso modo.",
+	},
+	["org.npc_meet.w21.ware.001"] = {
+		"guarda il mercante soffiare via la polvere da ogni pezzo prima di posarlo, un piccolo rito ripetuto oggetto per oggetto, anche su ciò che di polvere non ne ha.",
+		"vede ogni oggetto sollevato, ripulito con un soffio e rimesso giù, da un mercante che lo fa chiaramente per la merce e non per la polvere.",
+		"nota che il mercante soffia piano su ogni cosa prima di mostrarla, pulita o no, come un saluto tra chi vende e ciò che vende.",
+	},
+	["org.npc_meet.w21.ware.002"] = {
+		"Uno dei piatti della bilancia del mercante è ammaccato. Mi piacerebbe proprio sapere da che parte pende.",
+		"Un'ammaccatura nel piatto sinistro della bilancia, vecchia e lucida. Chiunque favorisca, non è il cliente.",
+		"Quella bilancia ha un piatto ammaccato. Le mie monete me le peso due volte, grazie.",
+	},
+	["org.npc_meet.w21.ware.003"] = {
+		"Non dirmi ancora il prezzo. Lasciami prima affezionare.",
+		"Aspetta un attimo col prezzo. Voglio godermela prima che faccia male.",
+		"Niente cifre per ora, per favore. Sto ancora ammirando.",
+	},
+	["org.npc_meet.w21.ware.004"] = {
+		"Prima che io dica una parola il mercante ha letto il mio zaino, i miei stivali e l'usura dei guanti, e ha deciso quanto posso spendere. È sempre un po' più di quanto posso.",
+		"Una rapida occhiata, dai guanti alle fibbie, e il mercante conosce il mio bilancio. Poi ci aggiunge qualcosa, per ottimismo.",
+	},
+	["org.npc_meet.w21.ware.005"] = {
+		"si vede offrire un sorso da una brocca d'acqua di terracotta prima di qualsiasi discorso d'affari, e il mercante aspetta educatamente che venga bevuto.",
+		"si trova davanti una tazza d'acqua spinta sul banco prima di una sola parola di commercio, e il mercante non comincia finché non è stata accettata.",
+		"accetta un mestolo d'acqua dalla giara del mercante, la cortesia che a questa bancarella viene prima di ogni trattativa.",
+	},
+	["org.npc_meet.w21.ware.006"] = {
+		"Ogni moneta che consegno viene morsa, rame o argento. O il mercante non si fida di nessuno, o ne apprezza il sapore.",
+		"Morse, una per una: la mia moneta, poi la seguente, poi quella dopo. Non so se sto pagando o dando da mangiare a qualcuno.",
+		"Ogni moneta passa tra i denti del mercante prima di finire nella cassetta. Uno scrupolo che fa un po' impressione, a guardarlo.",
+	},
+	["org.npc_meet.w21.ware.007"] = {
+		"aspetta che il mercante finisca di litigare con la bancarella accanto, una lite che si chiude con una risata comune e una promessa di vendetta.",
+		"arriva nel pieno di una sfuriata tra due bancarelle vicine e resta a vederla finire con un ghigno e un gesto volgare.",
+	},
+	["org.npc_meet.w21.ware.008"] = {
+		"Cosa hai che nessun altro in questa strada ha? A parte quel ghigno.",
+		"Fammi vedere la cosa che terresti se nessuno la comprasse.",
+		"Cosa c'è qui che tre bancarelle più in là non trovo?",
+	},
+	["org.npc_meet.w21.ware.009"] = {
+		"Questo mercante mi chiederà di cosa ho bisogno, poi mi venderà quello di cui non sapevo di aver bisogno. Lo leggo nel sorriso.",
+		"Sono qui per una cosa sola. Lo vedo già: me ne andrò con tre.",
+	},
+	["org.npc_meet.w21.ware.010"] = {
+		"Quando poso qualcosa per pensarci, il mercante la gira di un quarto verso di me, così che si veda il lato buono. Un trucco piccolo e paziente.",
+		"Ogni volta che poso un oggetto, il mercante lo ruota per mostrarne il lato migliore. Me ne accorgo. Probabilmente lo compro lo stesso.",
+	},
+	["org.npc_meet.w21.ware.011"] = {
+		"osserva il mercante incidere una tacca su un bastoncino per l'ultima vendita, poi passare il pollice su tutte le altre per contarle.",
+		"vede il mercante segnare una vendita con un taglio di coltello su un bastone già ruvido di tacche, e annuire al totale.",
+	},
+	["org.npc_meet.w21.ware.012"] = {
+		"Una parola in orchesco e il prezzo del mercante sembra ammorbidirsi di un rame o due. Forse me lo immagino. Continuerò a parlare orchesco comunque.",
+		"Tra gente dell'Orda la trattativa comincia più cordiale. La prima cifra del mercante ha già un po' di gioco, una moneta o giù di lì.",
+	},
+	["org.npc_meet.w21.ware.013"] = {
+		"Dietro la bancarella c'è uno sgabello su cui {other} non si siede mai. È tenuto, mi pare, per i clienti che sembrano abbastanza sfiniti da averne bisogno.",
+		"Uno sgabello vuoto accanto al gomito del mercante, offerto con uno scatto del mento. Devo sembrare più {g:stanco|stanca} di quanto pensassi.",
+		"In piedi per tutte le lunghe ore di commercio, e uno sgabello tenuto per i clienti. Una cortesia strana, e buona.",
+	},
+	["org.npc_meet.w21.ware.014"] = {
+		"si china sotto la merce appesa a ogni palo della bancarella, pelli, pentole e cinture, e trova il mercante da qualche parte là in mezzo.",
+		"scosta una tenda di merci appese per raggiungere il mercante, che sembra abitare in mezzo alla roba come un ragno al centro della tela.",
+	},
+	["org.npc_meet.w21.ware.015"] = {
+		"Niente parlantina, niente lusinghe. Il mercante solleva ogni cosa, la nomina, dice un prezzo e aspetta. Riposante, in una città così rumorosa.",
+		"{other} vende in quattro parole al massimo. Oggetto, prezzo, cenno, fatto. Potrei abituarmici.",
+	},
+	["org.npc_meet.w21.ware.016"] = {
+		"Buoni affari. Vacci piano con me: ho appena contato la borsa e non mi sono ancora {g:ripreso|ripresa}.",
+		"Salve. Prima che cominci: la borsa è piccola, i gusti no. Sii clemente.",
+	},
+	["org.npcd_flightmaster_open.w21.fopen.001"] = {
+		"Non allungare la mano verso la testa di quella. Morde chi le dà da mangiare, e chi le dà da mangiare sono io.",
+		"Stai alla larga da quello grosso in fondo. Finché non ha mangiato, non sopporta nessuno.",
+		"Mani giù, voce bassa. Le bestie capiscono un estraneo prima di me.",
+	},
+	["org.npcd_flightmaster_open.w21.fopen.002"] = {
+		"Tutte quelle scale, e ce l'hai fatta. Il resto della strada te lo risparmia la bestia.",
+		"Tutti quei gradini e solo un po' di male alle ginocchia? Bene. Il difficile è fatto, al resto pensa la bestia.",
+		"Ogni gradino di questa torre è un buon motivo per volare. La cima te la sei guadagnata.",
+	},
+	["org.npcd_flightmaster_open.w21.fopen.003"] = {
+		"Guardale. Ognuna conosce le rotte meglio di qualunque mappa.",
+		"Ho nutrito e curato ogni bestia di questa torre. La strada la conoscono meglio di quanto la conoscerò mai io.",
+		"Questi animali hanno portato più gente di qualunque strada del Durotar. Trattali con garbo.",
+	},
+	["org.npcd_flightmaster_open.w21.fopen.004"] = {
+		"Allaccia la cinghia, poi controllala due volte. La bestia non si ferma per una fibbia allentata.",
+		"Siediti dove la sella è più consumata e stringi le ginocchia. Non c'è altro consiglio da dare.",
+		"Tieniti con le ginocchia, non con le mani. Le mani si stancano, le ginocchia ricordano.",
+	},
+	["org.npcd_flightmaster_open.w21.fopen.005"] = {
+		"Guarda dove metti i piedi sulla piattaforma. Le bestie mangiano bene, e si vede.",
+		"Occhio agli stivali, quassù. Tutto quello che fa una bestia ben pasciuta, lo fa su questa piattaforma.",
+		"Attenzione a dove pesti. Nessuno ha spazzato dall'ultimo atterraggio, e di atterraggi ce ne sono stati parecchi.",
+	},
+	["org.npcd_flightmaster_open.w21.fopen.006"] = {
+		"Da quassù puoi contare le colonne di fumo della città. Quasi tutti quelli che salgono a guardare finiscono per volare.",
+		"Bella vista, eh? Mezza città da un'unica piattaforma. Peccato che io non abbia mai il tempo di guardarla.",
+		"La gente sale per la vista e se ne va in groppa a una bestia. Tu di che tipo sei?",
+	},
+	["org.npcd_flightmaster_open.w21.fopen.007"] = {
+		"Ogni viverna di questa torre vola per l'Orda, e lo stesso vale per te. Scegli il tuo posatoio.",
+		"Colori dell'Orda. Bene: le viverne non faranno storie. Sali.",
+		"Le bestie portano la gente dell'Orda senza fare capricci. Scegline una e sistemati.",
+	},
+	["org.npcd_guard_bye.w21.gbye.001"] = {
+		"Vai pure. Occhio ai carri.",
+		"E adesso via. Attenzione ai carri agli angoli.",
+	},
+	["org.npcd_guard_bye.w21.gbye.002"] = {
+		"Vai. E facciamo in modo che io non debba mai ricordarmi la tua faccia.",
+		"Addio. Io ricordo solo chi ha dato fastidio: cerca di restare dimenticabile.",
+		"Puoi andare. Il complimento più grande di un grunt: non mi ricordo affatto di te.",
+	},
+	["org.npcd_guard_bye.w21.gbye.003"] = {
+		"Va' con onore, e porta la pace del Capoguerra ovunque la città ti conduca.",
+		"Cammina nell'onore. La pace di queste strade ti accompagna fino al portone.",
+		"Onore a te. Lascia la pace come l'hai trovata.",
+	},
+	["org.npcd_guard_bye.w21.gbye.004"] = {
+		"Finito? Circolare.",
+		"Bene. Fai posto al prossimo.",
+		"Tutto qui. Vai.",
+	},
+	["org.npcd_guard_bye.w21.gbye.005"] = {
+		"Va' in pace. E mangia qualcosa di caldo prima di lasciare la città: la strada là fuori non sfama nessuno.",
+		"Abbi cura di te. Trova un pasto caldo prima del portone: dopo, non ne troverai.",
+	},
+	["org.npcd_guard_bye.w21.gbye.006"] = {
+		"E io torno a fare la statua. Qualcuno deve pur farla.",
+		"E adesso di nuovo a fissare la folla. Tocca pure a qualcuno.",
+	},
+	["org.npcd_guard_bye.w21.gbye.007"] = {
+		"Se vedi guai per strada, grida. C'è sempre un grunt a portata d'orecchio.",
+		"Qualcosa non va? Alza la voce, e uno di noi arriva di corsa.",
+		"Se noti qualcosa di storto, chiama. In questa città i grunt sentono tutto, prima o poi.",
+	},
+	["org.npcd_guard_bye.w21.gbye.008"] = {
+		"Addio. Tieni stretta la borsa vicino alla casa d'aste: le dita svelte adorano la folla.",
+		"Buon cammino. Stringi bene le monete dalle parti della casa d'aste: quella folla è tutta gomiti e dita.",
+	},
+	["org.npcd_guard_bye.w21.gbye.009"] = {
+		"Vai, vai. Manca poco al cambio. Non che li stia contando, i minuti.",
+		"Su, vai. Il mio cambio arriva presto: per passare il tempo conto i carri.",
+	},
+	["org.npcd_guard_bye.w21.gbye.010"] = {
+		"Forza e onore a chi serve l'Orda. Torna da quel portone sulle tue gambe.",
+		"Va', e porta bene il nome dell'Orda là fuori.",
+	},
+	["org.npcd_guard_bye.w21.gbye.011"] = {
+		"Fai strada ai peoni, andando: con un carico in spalla hanno la precedenza.",
+		"Lascia spazio ai peoni. In questa città chi porta legname passa per primo.",
+	},
+	["org.npcd_guard_directions.w21.gdir.001"] = {
+		"La via per Ragefire Chasm scende dalla Cleft of Shadow. Laggiù ci sono cultisti e trogg, e nessuno che venda qualcosa.",
+		"Ragefire Chasm? Attraversa la Cleft of Shadow e scendi. Porta compagnia: i cultisti laggiù non amano le visite.",
+		"In fondo alla Cleft of Shadow c'è una bocca nella roccia che porta a Ragefire Chasm. Se ci vai, non scendere senza qualcuno al fianco.",
+	},
+	["org.npcd_guard_directions.w21.gdir.002"] = {
+		"I Darkspear hanno le loro capanne nella Valley of Spirits, attorno alla pozza. Segui i tamburi.",
+		"Cerchi la Valley of Spirits? Guarda dove c'è l'acqua, con le capanne dei Darkspear tutt'intorno.",
+		"Nella Valley of Spirits ci sono la pozza e i Darkspear. L'angolo più quieto della città, per come la intendiamo noi.",
+	},
+	["org.npcd_guard_directions.w21.gdir.003"] = {
+		"Fabbri e minatori? Valley of Honor. Segui le incudini.",
+		"La Hall of Legends sta nella Valley of Honor. Entra in silenzio: chi è onorato là dentro se l'è guadagnato a fatica.",
+		"Minerale, incudini, campi d'addestramento: tutto nella Valley of Honor. Attenzione a chi si allena.",
+	},
+	["org.npcd_guard_directions.w21.gdir.004"] = {
+		"Alla Cleft of Shadow si arriva dalla Valley of Strength o dal Drag. Corre in basso, tra le due.",
+		"Cerchi la Cleft? Scendi, non salire. È la strada più bassa della città, e la più buia.",
+		"La Cleft of Shadow? Giù dal Drag, sotto le pareti di roccia. Lì dentro, una mano sul borsello.",
+	},
+	["org.npcd_guard_directions.w21.gdir.005"] = {
+		"Grommash Hold è la grande sala della Valley of Wisdom. Percorri il Drag fino in fondo e te la trovi davanti.",
+		"Alle porte di Grommash Hold stanno i Kor'kron. Entra come chi non cerca guai, e ti lasceranno non cercarne.",
+		"Segui il Drag fino alla Valley of Wisdom: Grommash Hold è l'edificio più grande. Coi Kor'kron, niente chiacchiere.",
+	},
+	["org.npcd_guard_directions.w21.gdir.006"] = {
+		"Il portone principale dà sulla Valley of Strength. Una volta fuori, la strada verso sud porta a Razor Hill.",
+		"Razor Hill? Esci dal portone principale e prendi la strada a sud. È quella con tutto il traffico.",
+		"Vuoi uscire dalla città? Valley of Strength, poi il portone. Fuori comincia subito il Durotar.",
+	},
+	["org.npcd_guard_directions.w21.gdir.007"] = {
+		"Le aeronavi dentro le mura non entrano. Esci dal portone, nel Durotar, e alza gli occhi: vedrai le torri.",
+		"Le torri degli zeppelin sono fuori, nel Durotar. Un dirigibile va a Tirisfal Glades, l'altro a Grom'gol.",
+		"Per Undercity o Stranglethorn Vale servono gli zeppelin, non la torre dei voli. Fuori dal portone: li vedrai.",
+	},
+	["org.npcd_guard_directions.w21.gdir.008"] = {
+		"Sarti, conciatori, chi distilla pozioni: tengono bottega lungo il Drag. Parti da un capo e cammina.",
+		"Il Drag si attorciglia in mezzo alla città. Tutto ciò che nasce da ago, pelle o pentolone, lo trovi lì.",
+		"Stoffa, cuoio, boccette: il Drag. La conceria la senti col naso prima di vederla.",
+	},
+	["org.npcd_guard_open.w21.gopen.001"] = {
+		"Parla pure. Riesco ad ascoltare e a tenere d'occhio la strada insieme: è quasi tutto il mestiere.",
+		"Chiedi quello che ti occorre. Gli occhi li tengo sulla folla, non su di te: non offenderti.",
+		"Dimmi. Guarderò oltre la tua spalla per tutto il tempo, ma non è niente di personale.",
+	},
+	["org.npcd_guard_open.w21.gopen.002"] = {
+		"Se cerchi la banca, è nella Valley of Strength. Cercano sempre la banca.",
+		"Fammi indovinare: la locanda. Nove su dieci di quelli che si fermano da me cercano la locanda, e il decimo la banca.",
+		"Niente vergogna. Metà di quelli che mi fermano non trovano nemmeno la banca.",
+	},
+	["org.npcd_guard_open.w21.gopen.003"] = {
+		"Dentro queste mura la parola del Capoguerra è legge, e io ne sono il pezzo più vicino. Cosa ti serve?",
+		"Sto qui per conto del Capoguerra, e finché ci sto la strada resta in ordine. Di' cosa ti porta.",
+		"Questo posto di guardia risponde a Grommash Hold. Qualunque cosa tu chieda, chiedila chiaramente.",
+	},
+	["org.npcd_guard_open.w21.gopen.004"] = {
+		"Mh. Hai rallentato. Perché?",
+		"Sputa il rospo.",
+		"Parla. In breve.",
+	},
+	["org.npcd_guard_open.w21.gopen.005"] = {
+		"Occhio a dove ti metti. I carri dei kodo prendono quella curva come se fosse loro, e i conducenti giurano che lo è.",
+		"Bada ai carri mentre parliamo. Qui i carrettieri non rallentano per nessuno, nemmeno per me.",
+		"Spostati di lato quando mi parli, o il prossimo peone con un carico di legname ti passa attraverso.",
+	},
+	["org.npcd_guard_open.w21.gopen.006"] = {
+		"Bene. Qualcuno che si ferma a chiedere invece di passare a spintoni. Che posso fare per te?",
+		"Da che ho preso il turno, nessun altro si è fermato senza una lamentela. Dimmi.",
+		"Una domanda, e nessuno che la urla. Mi hai già migliorato il turno.",
+	},
+	["org.npcd_guard_open.w21.gopen.007"] = {
+		"Tu hai dato un'occhiata a me, io a te. Adesso possiamo parlare.",
+		"Hai studiato la mia armatura; io ho studiato i tuoi stivali. Avanti, parla.",
+		"Ognuno ha preso le misure all'altro. Bene. Allora, che c'è?",
+	},
+	["org.npcd_guard_open.w21.gopen.008"] = {
+		"Alza la voce. Questo elmo era fatto per una testa più grossa e rimbomba come una pentola.",
+		"Più forte, per favore. L'elmo si mangia metà di quello che mi dicono.",
+		"Ripeti, e piano. L'elmo è spesso, e qualcuno dice che anche la testa sotto non scherza.",
+	},
+	["org.npcd_guard_open.w21.gopen.009"] = {
+		"Cammina con rispetto per le nostre strade. Ogni pietra l'hanno posata mani che poco prima portavano catene.",
+		"Queste strade le ha scavate in un canyon spoglio gente appena uscita dai campi. Tienilo a mente, e poi chiedi.",
+		"Chi ha costruito Orgrimmar aveva soltanto le proprie mani. Ricordalo, finché sei qui dentro. Adesso chiedi pure.",
+	},
+	["org.npcd_guard_open.w21.gopen.010"] = {
+		"A questo posto vale una regola: niente corse. Chi corre in mezzo a una folla così viene fermato, e non con le buone. Ora dimmi.",
+		"Cammina, non correre, e tieni le mani in vista. Poi chiedimi quello che vuoi.",
+		"Chi corre innervosisce i grunt. Cammina, e andremo tutti d'accordo. Qual è la domanda?",
+	},
+	["org.npcd_guard_open.w21.gopen.011"] = {
+		"Un attimo, ero a metà di questo pane. Ecco. Chiedi.",
+		"Mm. Scusa, un pezzo di pane tra un giro e l'altro. Cosa volevi sapere?",
+		"Mi hai beccato a masticare. In questa città i grunt mangiano in piedi. Dimmi pure.",
+	},
+	["org.npcd_guard_open.w21.gopen.012"] = {
+		"Finché sei dentro queste mura, ogni grunt sui bastioni ti copre le spalle, che tu lo sappia o no. Cosa ti porta da me?",
+		"C'è un grunt a ogni angolo di questa città, e un altro dietro. Qui sei più al sicuro che in qualunque punto del Durotar. Chiedi.",
+		"Dentro le mura ci pensano i grunt del Capoguerra a vegliare su di te. Parla.",
+	},
+	["org.npcd_guard_open.w21.gopen.013"] = {
+		"Se è per il baccano, mettiti in fila. Arriva fino alla Valley of Honor e torna indietro.",
+		"Fumo, puzza, chiasso: ho sentito ogni lamentela e non posso rimediare a nessuna. Altro?",
+		"Le lamentele sul fumo delle forge si portano ai fabbri, non a me. Serve altro?",
+	},
+	["org.npcd_guard_open.w21.gopen.014"] = {
+		"Lok'tar. Porti i colori dell'Orda, quindi questa strada è tua quanto mia. Chiedi pure.",
+		"Dell'Orda, nella capitale dell'Orda: sei tra i tuoi. Parla.",
+		"Chi porta i colori dell'Orda, al mio posto riceve risposte dritte. Chiedi.",
+	},
+	["org.npcd_innkeeper_bye.w21.ibye.001"] = {
+		"Va' pure. Il tuo letto viene arieggiato e rifatto in ogni caso.",
+		"Vai, allora. Se la strada ti riporta qui, la porta è aperta.",
+		"Guarda dove cammini, là fuori. Il letto non scappa.",
+	},
+	["org.npcd_innkeeper_bye.w21.ibye.002"] = {
+		"Te ne vai? Allora vai. La soglia serve per entrare o uscire, non per starci in mezzo.",
+		"Fuori, su. C'è qualcuno che aspetta quello sgabello.",
+		"Vai pure. E chiudi la porta: la strada continua a cercare di entrare.",
+	},
+	["org.npcd_innkeeper_bye.w21.ibye.003"] = {
+		"Prendi questo tozzo di pane per la strada. No, non discutere: è di ieri, e altrimenti finisce ai corvi.",
+		"Tieni, un pezzo di pane per il cammino. È raffermo, quindi dura.",
+		"Avvolgilo in qualcosa. Il pane duro viaggia meglio delle promesse morbide.",
+	},
+	["org.npcd_innkeeper_bye.w21.ibye.004"] = {
+		"Buona strada! E di' a tutti là fuori che i letti di Orgrimmar sono morbidi. Non è vero, ma porta clienti.",
+		"Strade sicure! E se qualcuno chiede, lo stufato era magnifico. Lo giuro io.",
+		"Vai, e spargi la voce: la scodella migliore di Durotar. La seconda, se il cuoco ascolta.",
+	},
+	["org.npcd_innkeeper_bye.w21.ibye.005"] = {
+		"Mm. Va' con prudenza.",
+		"Per uscire, di là.",
+		"Vai. E là fuori mangia qualcosa, ogni tanto.",
+	},
+	["org.npcd_innkeeper_bye.w21.ibye.006"] = {
+		"Qualunque cosa ti aspetti, affrontala con la pancia piena e le ossa riposate. È tutto quello che posso darti, e te l'ho dato.",
+		"Esci con meno peso addosso di quello che avevi sulla soglia. Il mio mestiere è tutto qui, e non me ne vergogno.",
+		"Vai. La città ti terrà da parte il suo chiasso, e io una panca.",
+	},
+	["org.npcd_innkeeper_bye.w21.ibye.007"] = {
+		"Forza e onore ti accompagnino. E una pancia piena: per quella garantisco io.",
+		"Le strade dell'Orda sono lunghe. Quando una torna a piegare da questa parte, questa casa è lì ad aspettarla.",
+	},
+	["org.npcd_innkeeper_bye.w21.ibye.008"] = {
+		"Conti saldati e ancora il sorriso? Ospiti così sono rari. Vai prima che ti passi.",
+		"Esci sulle tue gambe e con la borsa ancora alla cintura. In questa città, è un buon soggiorno.",
+		"Nemmeno una sedia rotta. Torna quando vuoi.",
+	},
+	["org.npcd_innkeeper_bye.w21.ibye.009"] = {
+		"Prima di andare, riempi l'otre all'abbeveratoio. Fuori dalle mura l'acqua diventa rara e cara.",
+		"Se esci, rabbocca prima l'otre. Durotar è tirchia d'acqua.",
+		"Da qualunque parte tu vada, prima bevi a sazietà dal barile vicino alla porta. La terra intorno a questa città non regala niente.",
+	},
+	["org.npcd_innkeeper_news.w21.inews.001"] = {
+		"I peon che trascinano pietre lungo il Drag hanno una nuova canzone da lavoro. Uguale alla vecchia, solo più sguaiata.",
+		"Un peon si è appisolato in una carriola e l'hanno spinto mezzo fino alla Valley of Honor prima che qualcuno guardasse dentro. Da allora non fa che vantarsene.",
+		"Qualcuno ha insegnato ai peon una cantilena di quaranta strofe. Sono fermi alla nona, e con loro chiunque abbia orecchie.",
+	},
+	["org.npcd_innkeeper_news.w21.inews.002"] = {
+		"I cuochi hanno sentito una cantilena salire dal Cleft of Shadow. Stregoni che si esercitano, con ogni probabilità. Con ogni probabilità.",
+		"I Kor'kron davanti a Grommash Hold hanno cambiato il modo di montare la guardia. Ogni pettegolo della città ha una spiegazione, e non ce ne sono due uguali.",
+		"Qualcuno continua a lasciare mazzetti di piume sui gradini vicino alla banca. Nessuno lo ammette, e nessuno li butta via.",
+	},
+	["org.npcd_innkeeper_news.w21.inews.003"] = {
+		"Due mercanti sono quasi venuti alle mani davanti alla casa d'aste per una cassa che nessuno dei due aveva aperto.",
+		"Un goblin vicino alla porta della città vendeva sassolini portafortuna. Venduti tutti. Sassolini. In un canyon.",
+		"Questa settimana la fila alla banca è uscita dalla porta due volte. Pare che tutti abbiano trovato qualcosa da mettere sotto chiave.",
+	},
+	["org.npcd_innkeeper_news.w21.inews.004"] = {
+		"Un tauren si è chinato sotto la mia porta con tanta attenzione che tutta la sala si è zittita a guardarlo. Ce l'ha fatta, pure. Abbiamo applaudito tutti.",
+		"Un viaggiatore dei Reietti ha comprato tutti i vasetti di cipolle sottaceto del Drag. Non ha detto perché. Nessuno gliel'ha chiesto due volte.",
+		"Due suonatori di tamburo Darkspear hanno mangiato qui e volevano pagare battendo il tempo sul tavolo. Il cuoco ha voluto anche le monete.",
+	},
+	["org.npcd_innkeeper_news.w21.inews.005"] = {
+		"Qualcuno ha fatto cadere uno stivale nella pozza della Valley of Spirits. I troll non lo ripescano: dicono che prima l'acqua vuole delle scuse.",
+		"C'è uno stivale sul fondo della pozza nella Valley of Spirits, e i troll dicono che resta lì finché il padrone non chiede scusa all'acqua.",
+	},
+	["org.npcd_innkeeper_news.w21.inews.006"] = {
+		"Il mio cuoco giura che qualcuno gli ruba le cipolle dal retro. Ha piazzato una trappola. Io in cucina non ci metto più piede.",
+		"Il ladro di cipolle ha colpito un'altra volta, dice il cuoco. Adesso dorme accanto ai sacchi, con un mestolo in pugno.",
+		"Il cuoco è convinto che gli rubino le cipolle. Le ho contate. Ci sono tutte. Non diteglielo.",
+	},
+	["org.npcd_innkeeper_news.w21.inews.007"] = {
+		"Un incontro nella Valley of Honor è durato così tanto che il pubblico è andato a mangiare ed è tornato. I due combattenti non se ne sono accorti.",
+		"C'è stato uno scontro d'allenamento vicino ai campi di addestramento che è andato avanti finché gli spettatori si sono annoiati. I due no.",
+		"Nella Valley of Honor un incontro è durato talmente tanto che qualcuno si è messo a vendere spiedini a chi guardava.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.001"] = {
+		"Letto, scodella o panca. Scegline una e smetto di chiedere.",
+		"Parla svelto. Dietro di te c'è una fila, ed è affamata.",
+		"Ordina o siediti, ma non piantarti sulla soglia: fai entrare la strada.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.002"] = {
+		"Ah, una faccia che cerca un materasso! I miei sono pieni di bitorzoli, ma ogni bitorzolo è onesto.",
+		"Accomodati. I letti sono duri e le coperte pungono, eppure qui dentro tutti dormono come sassi.",
+		"La paglia dei miei materassi viene dai Barrens: dura come chi la taglia, e non si lamenta mai.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.003"] = {
+		"Posa la tua roba lì, vicino al palo. Sotto il mio tetto nessuno tocca lo zaino di un ospite.",
+		"Prima metti giù il carico. Le parole possono aspettare che le spalle tornino al loro posto.",
+		"La strada lasciala sulla porta. Qui dentro ci sono scodelle bollenti e voci basse.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.004"] = {
+		"Vuoi legare la tua pietra del ritorno a questa locanda? Dillo, e ovunque ti lasci la strada, la pietra ritroverà questa porta.",
+		"Molti legano la pietra a questa casa. Basta una parola, se vuoi essere tra loro.",
+		"Posso legare la tua pietra del ritorno a questa stanza, se vuoi. Chi lo fa di solito ne è contento, più tardi e lontano da qui.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.005"] = {
+		"Non badare alle urla dalla cucina: sono il cuoco e la pentola grande, e di solito vince la pentola.",
+		"Se senti fracasso sul retro, è il cuoco che litiga con i tegami. Siediti: vuol dire che si mangia presto.",
+		"Il baccano in cucina non è niente. Il cuoco e il pentolone sono in guerra da anni; lo stufato è la tregua.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.006"] = {
+		"In questa casa ci sono due regole: niente stivali sul tavolo, e le risse si fanno fuori.",
+		"Dormi dove indico, mangi quello che porto, e andremo d'accordo.",
+		"Niente zuffe, niente canti dopo il terzo boccale, niente avanzi ai gatti randagi. Per il resto, siediti dove ti pare.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.007"] = {
+		"Siediti con chi vuoi. Metà dei miei tavoli sono sconosciuti diventati compagni di bevute al secondo giro.",
+		"Prendi uno sgabello. Sotto questo tetto, chi ti siede accanto resta un estraneo per un boccale esatto.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.008"] = {
+		"Sul focolare c'è una pentola che bolle da quando ho memoria, e ogni giorno ci finisce dentro qualcosa di nuovo.",
+		"Lo stufato è così denso che il cucchiaio ci sta in piedi. Siediti, ti porto la prova.",
+		"Senti che profumo? Cinghiale, cipolla e quello che hanno trascinato dentro i cacciatori. Trovati un posto.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.009"] = {
+		"La stanza è pulita, la coperta è di pelle di lupo e la porta si sbarra dall'interno. Una locanda non deve altro a nessuno.",
+		"Una branda, una coperta e una sbarra alla porta. Niente di speciale, ma ti sveglierai nel letto in cui hai chiuso gli occhi.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.010"] = {
+		"Hai la strada sugli stivali e una domanda in faccia. Gli stivali possono aspettare; la domanda la sento dopo che hai mangiato.",
+		"Polvere fino alle ginocchia, eh? Scuotila fuori, poi vieni a dirmi cosa ti serve.",
+		"Qualunque cosa ti giri in testa, dopo una scodella sarà ancora lì. Solo più piccola, come quasi tutto.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.011"] = {
+		"Entra, entra! Fuori da un baccano e dentro un altro, che però profuma meglio.",
+		"Ecco il posto più morbido di una città fatta di spigoli. Non molto morbido, intendiamoci, ma di più.",
+		"Dentro, dentro! In questa città tutto è costruito per fermare una carica. Le mie sedie fermano soltanto i piedi stanchi.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.012"] = {
+		"A chi è dell'Orda, in questa casa, una panca non manca mai. Siediti, e per un po' lascia che alle mura ci pensi la città.",
+		"Il Capoguerra custodisce la città; io custodisco i letti. Fra tutti e due, il tuo sonno è in buone mani.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.013"] = {
+		"Nella brocca accanto alla porta c'è acqua fresca di cisterna. Serviti prima di chiedermi qualunque cosa.",
+		"Prima la brocca, poi le chiacchiere. In questa casa si accoglie così chiunque varchi la porta.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.014"] = {
+		"Mm. Siediti. Arrivo appena la pentola mi lascia andare.",
+		"Non posso fermarmi a chiacchierare, il locale è pieno fino alle travi. La panca vicino al palo è tua, se fai in fretta.",
+		"Da fare, da fare. Indica quello che vuoi e io faccio sì con la testa.",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.015"] = {
+		"Ogni ospite che entra è una storia con le gambe. Siediti, lasciami indovinare la tua, poi dimmi quanto ho sbagliato.",
+		"Ah, una borsa con le gambe! Perdona, è una battuta da locandiere. Cosa ti porto?",
+	},
+	["org.npcd_innkeeper_open.w21.iopen.016"] = {
+		"In fondo c'è un angolo dove il rumore si dirada. Lì non ti disturba nessuno: ci penso io.",
+		"Se cerchi pace, prendi la panca più lontana. I chiassosi stanno vicino all'ingresso, così possono uscire facendo chiasso.",
+		"Tavolo tranquillo in fondo, tavolo rumoroso davanti. Scegli secondo l'umore; la scodella arriva comunque.",
+	},
+	["org.npcd_merchant_bye.w21.mbye.001"] = {
+		"Torna quando la tua borsa si sarà ripresa.",
+		"Un piacere parlare d'affari. Dillo agli amici; dillo anche ai nemici, le loro monete valgono uguale.",
+		"Va', e che le tue borse si riempiano di cose che vorrò comprarti.",
+	},
+	["org.npcd_merchant_bye.w21.mbye.002"] = {
+		"Finito? Bene. Il prossimo!",
+		"Allora è tutto. Circolare.",
+		"Su, c'è chi aspetta.",
+	},
+	["org.npcd_merchant_bye.w21.mbye.003"] = {
+		"Ricordati di questo banco quando la tua roba comincia a sfilacciarsi. Comincia sempre.",
+		"Prima o poi tutto si consuma. Quando tocca alla tua roba, sai dov'è il banco.",
+		"Le cinghie si spezzano, le borse si sfondano, le fibbie si piegano. Quando succede, pensa a me.",
+	},
+	["org.npcd_merchant_bye.w21.mbye.004"] = {
+		"Buona strada. Alla tua prossima visita avrò risistemato gli scaffali. Niente di nuovo, solo spostato, così sembra nuovo.",
+		"Alla prossima. Bada, per allora metà di questa roba starà altrove: un mercante deve tenere occupati gli occhi.",
+		"Ci vediamo. Prima che tu torni avrò rimescolato tutto il banco, e giurerai che è merce fresca.",
+	},
+	["org.npcd_merchant_bye.w21.mbye.005"] = {
+		"Tieni la borsa dentro la giubba quando sei in mezzo alla folla. Non tutti nella Valley of Strength sono lì per comprare.",
+		"Occhio alla borsa, andando via. Più la strada è piena, più le dita sono svelte.",
+		"Un consiglio: è nella calca che spariscono le borse. Tienila stretta.",
+	},
+	["org.npcd_merchant_bye.w21.mbye.006"] = {
+		"Va' con forza. All'Orda serve gente ben equipaggiata, e io faccio la mia parte.",
+		"Lok'tar. Quando ti serve qualcosa, spendi le monete fra la tua gente.",
+	},
+	["org.npcd_merchant_bye.w21.mbye.007"] = {
+		"Torna presto, e porta notizie. Commercio anche in quelle.",
+		"La prossima volta portami una storia dalla strada. Quelle le pago in buonumore.",
+		"Alla tua prossima visita portami una bella diceria, e te ne scambio una delle mie.",
+	},
+	["org.npcd_merchant_bye.w21.mbye.008"] = {
+		"Via, su. E che non senta dire che hai comprato qualcosa al banco di fronte.",
+		"Vai. Se ti vedo addosso la roba dell'altro banco, faccio finta di non conoscerti.",
+		"Allora vattene. Ma se compri altrove, abbi almeno la decenza di nascondermelo.",
+	},
+	["org.npcd_merchant_bye.w21.mbye.009"] = {
+		"Buon cammino. Sono qui dal primo cliente all'ultimo, quasi sempre.",
+		"Stammi bene. Il banco apre presto e chiude tardi: mi trovi.",
+		"Vai, dunque. Sai dove sta il banco; non si sposta da anni.",
+	},
+	["org.npcd_merchant_news.w21.mnews.001"] = {
+		"Il sale scarseggia, questa settimana. La carovana della costa è ferma da qualche parte con un asse rotto.",
+		"Il filo è diventato raro. Tutti i sarti del Drag hanno comprato quello che è arrivato, e adesso fanno finta di niente.",
+		"I fabbri hanno comprato ogni briciola di carbone entrata in città. O stanno forgiando qualcosa di grosso, o qualcuno fa scorta.",
+	},
+	["org.npcd_merchant_news.w21.mnews.002"] = {
+		"I goblin delle torri degli zeppelin hanno alzato un'altra volta i noli. La chiamano la tassa del vento. Il vento non ne vede un rame.",
+		"Un goblin offre di assicurare i banchi contro la sfortuna. Nessuno ha firmato. Da allora, due banchi hanno avuto sfortuna. Curioso.",
+		"Alla casa d'aste qualcuno ha comprato una cassa intera di stivali, tutti sinistri. Adesso cerca un compratore con due piedi sinistri.",
+	},
+	["org.npcd_merchant_news.w21.mnews.003"] = {
+		"Qualcuno sta comprando tutte le candele del Drag. La gente dice che servono giù nel Cleft. La gente dice tante cose.",
+		"È passato un compratore a chiedere tinta nera, tutta quella che c'era, e ha pagato senza contrattare. Non è piaciuto a nessuno.",
+	},
+	["org.npcd_merchant_news.w21.mnews.004"] = {
+		"Conciatori e cuochi si contendono chi deve scegliere per primo il cinghiale. Io vendo spago a tutte e due le parti.",
+		"Due strilloni del Drag si urlano addosso da una settimana. Gli affari non sono mai andati meglio: la gente si ferma a guardare, e poi compra.",
+	},
+	["org.npcd_merchant_open.w21.mopen.001"] = {
+		"Guarda pure, con calma. Ogni pezzo su questo banco ha una storia, e te le racconto tutte, a meno che tu non compri in fretta.",
+		"Dai un'occhiata. Mentre la gente guarda io parlo: è una malattia. Comprare la cura.",
+		"Guarda quanto vuoi. Con ogni acquisto ti regalo un consiglio, e di solito è buono.",
+	},
+	["org.npcd_merchant_open.w21.mopen.002"] = {
+		"Compri o vendi? In tutti e due i casi, non bloccare il banco.",
+		"Vuoi qualcosa? Indica. Hai qualcosa da vendere? Mettilo sul banco.",
+		"Sbrigati. La folla alle tue spalle non è venuta ad ammirarti la schiena.",
+	},
+	["org.npcd_merchant_open.w21.mopen.003"] = {
+		"Hai qualcosa che ti sbatacchia nello zaino e non ti serve? Le cianfrusaglie le prendo io.",
+		"Prima di comprare, svuota le borse. Metà di quello che la gente si porta dietro vale più per me che per loro.",
+		"Tira fuori avanzi e scarti. Denti, pelli, fibbie storte: per quasi tutto ho un compratore.",
+	},
+	["org.npcd_merchant_open.w21.mopen.004"] = {
+		"Contratta pure, se ti va. A me piace, e vinco sempre, ma mi piace davvero.",
+		"Ti avverto: io tratto come i grunt si allenano. Duro, e col sorriso.",
+		"Per me contrattare è uno sport. Lo dico prima, così poi non ti lamenti.",
+	},
+	["org.npcd_merchant_open.w21.mopen.005"] = {
+		"Prenditi il tuo tempo. La buona roba si sceglie piano e si tiene per anni.",
+		"Nessuna fretta. Preferisco che tu te ne vada con la cosa giusta piuttosto che con la prima capitata.",
+		"Guarda con calma. Quello che ti serve raramente è la prima cosa che salta all'occhio.",
+	},
+	["org.npcd_merchant_open.w21.mopen.006"] = {
+		"Tutto ciò che vedi su questo banco ha fatto molta strada per incontrarti: in zeppelin, in carovana, e un pezzo per pura testardaggine.",
+		"Parte di questa merce è arrivata fin qui su un'aeronave goblin. Si merita un buon padrone.",
+		"Guarda che roba! Metà è arrivata in aeronave, metà a dorso di kodo, e non se n'è perso un pezzo. Un piccolo prodigio.",
+	},
+	["org.npcd_merchant_open.w21.mopen.007"] = {
+		"Il banco è aperto. Parla.",
+		"Sì? Compri?",
+		"Dimmi.",
+	},
+	["org.npcd_merchant_open.w21.mopen.008"] = {
+		"Qualunque cosa ti abbia detto il banco qui accanto, è una bugia. Quasi sempre. Lascia che ti mostri la verità.",
+		"Non dare retta a quello di fronte. La merce va bene; è di quel sorriso che non mi fido.",
+		"Hai già fatto il giro degli altri banchi, si vede. Bene: adesso sai cosa stai confrontando.",
+	},
+	["org.npcd_merchant_open.w21.mopen.009"] = {
+		"Che sia fatta nel Drag o portata da fuori le mura, è tutta roba solida. Non vendo niente che non porterei io.",
+		"Tutto quello che vendo lo porterei addosso anch'io. È l'unica prova che conosco.",
+	},
+	["org.npcd_merchant_open.w21.mopen.010"] = {
+		"Per chi è dell'Orda, la roba buona esce da sotto il banco.",
+		"Ah, gente dell'Orda. Tengo da parte i pezzi migliori per mani come le tue; vediamo cosa ti va.",
+	},
+	["org.npcd_merchant_open.w21.mopen.011"] = {
+		"Avvicinati e parla forte. Questa strada si mangia le voci basse.",
+		"Vieni più vicino, con tutti questi strilloni non sento niente. Allora, cosa cerchi?",
+		"Alza la voce! Tra martelli e strilloni non sento nemmeno le mie monete.",
+	},
+	["org.npcd_merchant_open.w21.mopen.012"] = {
+		"Ecco una borsa che non vede l'ora di alleggerirsi. Non facciamola aspettare.",
+		"Sento le tue monete da qui, e sembrano annoiate. Diamogli qualcosa da fare.",
+		"Hai una borsa che pesa. Lascia che ti aiuti a portarla, nel modo più amichevole.",
+	},
+	["org.npcd_merchant_open.w21.mopen.013"] = {
+		"Quelle cinghie ne hanno fatta di strada. Per quella che resta, chiedi pure.",
+		"Quello zaino è sfinito. Non è colpa tua, gli zaini sono fatti così. Guarda cosa ho.",
+	},
+	["org.npcd_merchant_open.w21.mopen.014"] = {
+		"Un attimo, finisco questo conto. Sette, otto... ecco. Allora, cosa posso fare per te?",
+		"Un momento, sto contando la merce. Non parlare o perdo il segno. Fatto. Sì?",
+		"Aspetta, aspetta, la somma mi torna quasi. ...No. Lasciamo stare. Cosa ti serve?",
+	},
+	["org.npcd_merchant_open.w21.mopen.015"] = {
+		"Gli affari vanno. A una città così piena serve sempre qualcosa. A te cosa serve?",
+		"Fatti tutto il Drag, se vuoi: finirai a questo banco. Succede quasi a tutti.",
+	},
+	["org.npcd_merchant_open.w21.mopen.016"] = {
+		"Le mani dove le vedo, le monete dove posso contarle. Ecco, così andiamo d'accordo.",
+		"Niente di personale, ma in questa calca guardo le mani di tutti. Allora: compri?",
+	},
+	["org.npcd_trainer_open.w21.topen.001"] = {
+		"Fammi vedere le mani. Come le tieni mi dice più di qualunque parola.",
+		"Prima le mani. Voglio vedere cosa fanno quando non ci pensi.",
+		"Prima di tutto, apri le mani. Metà di quello che insegno comincia da lì.",
+	},
+	["org.npcd_trainer_open.w21.topen.002"] = {
+		"Ogni maestro di Orgrimmar ti dirà di essere il migliore. Io ti dico solo che ho più pazienza di loro. Più o meno.",
+		"Altri, in questa città, insegnano a voce più alta. Io insegno più piano, e resta.",
+		"In questa città i maestri che urlano si trovano facilmente. Io parlo piano, e le mie lezioni durano di più.",
+	},
+	["org.npcd_trainer_open.w21.topen.003"] = {
+		"Anche il Capoguerra, un tempo, è stato davanti a un maestro ad ascoltare. Puoi farlo anche tu.",
+		"A Orgrimmar nessuno è troppo orgoglioso per imparare. Anche il Capoguerra ha avuto i suoi maestri.",
+		"Anche Thrall è stato allievo, un tempo. Mettiti dove si sarebbe messo lui, e ascolta.",
+	},
+	["org.npcd_trainer_open.w21.topen.004"] = {
+		"Mettiti lì. No, lì. Bene. Adesso cominciamo.",
+		"Prima pulisci gli stivali. Poi fammi vedere cosa porti.",
+		"Silenzio, allora. Io parlo, tu guardi. Le domande dopo.",
+	},
+	["org.npcd_trainer_open.w21.topen.005"] = {
+		"Sbaglia davanti a me. Qui costa una sgridata; là fuori costa di più.",
+		"Preferisco vederti fallire qui che sentir dire poi come hai fallito oltre il portone.",
+		"Sbaglia qui, davanti a me, tutte le volte che vuoi. Questo posto serve a quello.",
+	},
+	["org.npcd_trainer_open.w21.topen.006"] = {
+		"Lascia perdere i martelli della strada. Ho insegnato in mezzo a peggio, e così i miei allievi.",
+		"Chiudi fuori la strada. Chi impara con Orgrimmar che urla tutt'intorno, impara dappertutto.",
+		"Mi senti, sopra la città? Allora mi sentirai ovunque. Cominciamo.",
+	},
+	["org.npcd_trainer_open.w21.topen.007"] = {
+		"Ogni lezione che do rende l'Orda un po' più difficile da spezzare. Diamone una.",
+		"All'Orda serve quello che imparerai qui più di un'altra bandiera. Comincia.",
+		"Insegnare alla gente dell'Orda è il lavoro migliore di questa città. Vieni, fammi vedere a che punto sei.",
+	},
+	["org.pray.w21.pray.001"] = {
+		"Spiriti della pietra consumata di queste strade, avete sentito ogni passo. Ricordate il mio con benevolenza.",
+		"Qualunque cosa abiti i gradini di questa città, scavati da tanti stivali: che i miei passi ti pesino poco.",
+		"Alla pietra che si consuma perché altri possano camminare: ti vedo. Sopportami per un altro tratto.",
+	},
+	["org.pray.w21.pray.002"] = {
+		"Se qualcosa ascolta, in mezzo a tutto questo clamore: rendimi un po' più mite di quanto questa città pretenda.",
+		"Chiunque senta una voce sommessa in un posto chiassoso, conserva in me un angolo morbido, dove il ferro non arriva.",
+		"Spiriti, lasciate pure che la città mi indurisca le mani, se deve. Il resto di me lasciatelo stare.",
+	},
+	["org.pray.w21.pray.003"] = {
+		"Per i nomi che nessuno chiama più per queste strade: che qualcuno, da qualche parte, continui a chiamarli.",
+		"Spiriti, alcuni di quelli che hanno costruito questa città non l'hanno mai vista finita. Che la vedano adesso, ovunque siano.",
+		"Per chi ha portato pietre su per questo canyon e non è vissuto abbastanza da riposare alla sua ombra: riposa, ora.",
+	},
+	["org.pray.w21.pray.004"] = {
+		"Roccia più vecchia delle mura scavate in te: sei sopravvissuta a ogni padrone. Insegnami un poco come si fa.",
+		"Canyon che c'eri prima di avere un nome, prima di ogni muro: hai visto finire ogni cosa. Tienimi con te ancora un po'.",
+		"Pietra che c'eri prima del primo muro e ci sarai dopo l'ultimo: io sono di passaggio. Abbi pazienza con me.",
+	},
+	["org.pray.w21.pray.005"] = {
+		"Antenati, i campi sono alle spalle e la città è in piedi. Fate che io valga le mura che non avete potuto vedere.",
+		"Antenati, avete conosciuto catene e sete di demone. Io cammino senza catene, in una città nostra: guardate come la userò.",
+	},
+	["org.pray.w21.pray.006"] = {
+		"Loa che avete attraversato l'acqua con i Darkspear, restate vicini in questa città di pietra. Le isole sono lontane.",
+		"Spiriti delle isole, ci avete seguiti fin dentro questa roccia rossa. Non perdetevi tra la folla.",
+	},
+	["org.pray.w21.pray.007"] = {
+		"Madre Terra, anche sotto le strade di questa città d'orchi tu ci sei. Fa' che ti senta attraverso la pietra.",
+		"Madre Terra, questo canyon è il tuo palmo chiuso a coppa intorno a una città di stranieri. Sii gentile con loro.",
+		"Madre Terra, i tuoi figli qui sono ospiti. Insegnaci a esserlo come si deve, e insegna pazienza alle porte.",
+	},
+	["org.pray.w21.pray.008"] = {
+		"Qualunque cosa ascolti i guaritori della Valley of Spirits: ascoltali un po' più a lungo, e con più attenzione.",
+		"Spiriti, i guaritori di questa città sono stanchi. Prestate alle loro mani un po' della vostra fermezza.",
+	},
+	["org.pray.w21.pray.009"] = {
+		"Spiriti che vegliate, vegliate accanto ai grunt sulle mura. I turni lunghi pesano meno in compagnia.",
+		"Chiunque vegli su chi veglia: resta un po' con i grunt sulle mura, e tienili svegli e interi.",
+		"Voi che non dormite mai, sedete con i grunt ai loro posti. Non diranno di esserne contenti. Lo sono.",
+	},
+	["org.pray.w21.pray.010"] = {
+		"Per chi è partito da questa città ed è tornato solo come un nome: che la strada sia stata breve, e la fine rapida.",
+		"Spiriti, questa città conta quelli che tornano. Contate voi gli altri, quelli rimasti là fuori, perché nessuno vada dimenticato.",
+		"Per ogni boccale rimasto pieno su un tavolo perché nessuno è venuto a berlo: voi che ascoltate, portatelo a loro.",
+	},
+	["org.pray.w21.pray.011"] = {
+		"Non sono {g:bravo|brava} in queste cose. Chiunque ascolti: grazie per le mura, e per un angolo tranquillo là dentro.",
+		"Niente belle parole, scusate. Solo questo: chiunque ascolti, abbi cura della gente di queste strade, anche dei maleducati.",
+	},
+	["org.pray.w21.pray.012"] = {
+		"Terra sotto le mura, fuoco nelle forge, acqua nella pozza dei troll, aria sopra il canyon: ascoltate una piccola voce tra tante.",
+		"Per la pietra e la fiamma, per la pozza e l'aria aperta: ciò che è antico in questo luogo sappia che sono {g:passato|passata} con rispetto.",
+	},
+	["org.reputation_change.w21.name.001"] = {
+		"Il mio nome ha preso un po' di peso, chissà dove. La folla attorno a me non lo sa e non le importa, e così non mi monta la testa.",
+		"La stima di qualcuno è salita, e in questa calca non si gira una sola faccia. Meglio. L'orgoglio cresce male, in mezzo alla gente.",
+		"Godo di più considerazione di prima. Me la porterò per queste strade come una moneta in una tasca interna: si sente, non si mostra.",
+	},
+	["org.reputation_change.w21.name.002"] = {
+		"Adesso mi stimano un po' di più. Presto, qualcuno mi venda qualcosa prima che passi.",
+		"La mia reputazione è salita. Non ditelo ai mercanti: alzerebbero i prezzi di conseguenza.",
+		"Sono più {g:stimato|stimata}, eh? Allora mi aspetto che i goblin arrotondino per difetto. Non lo faranno.",
+	},
+	["org.reputation_change.w21.name.003"] = {
+		"Ora qualcuno mi tiene in grande onore. In una città costruita sulle imprese, so bene che non è la fine di niente. È un debito, e corre in tutte e due le direzioni.",
+		"Una stima così alta pesa. Tra gente che si è guadagnata il posto a colpi di cicatrici, cercherò di meritarla.",
+		"Un rispetto così era roba di altri. Adesso è mio, e visto da dentro sembra più piccolo che dalla strada.",
+	},
+	["org.reputation_change.w21.name.004"] = {
+		"prosegue tra la folla un po' più {g:dritto|dritta}, anche se nessuno lì in mezzo saprebbe dire perché.",
+		"si raddrizza senza volerlo, e un peone che trascina un sacco {g:gli|le} lancia un'occhiata perplessa, senza che nessuno dei due sappia il motivo.",
+		"tira indietro le spalle come se da qualche parte si fosse allentata una cinghia, e continua nel trambusto.",
+	},
+	["org.reputation_change.w21.name.005"] = {
+		"Un nome è sceso di un gradino, chissà dove. Il Drag continua a contrattare come se niente fosse, e per il Drag niente è stato.",
+		"Ora pensano un po' peggio di me. In una città così affaccendata, un nome che cade non fa nessun rumore.",
+		"Un po' di stima persa. Ci penserò dopo. Per adesso Orgrimmar è troppo rumorosa per mettermi a tenere il broncio come si deve.",
+	},
+	["org.reputation_change.w21.name.006"] = {
+		"Ho meno amici di prima. In una calca come questa, la differenza quasi non si nota.",
+		"Sono {g:sceso|scesa} nei conti di qualcuno. Pazienza. Quella benevolenza non la stavo usando.",
+		"Quindi sono meno {g:gradito|gradita} da qualche parte. I grunt guardano storto tutti: mi confonderò bene.",
+	},
+	["org.reputation_change.w21.name.007"] = {
+		"Sono {g:caduto|caduta} in basso agli occhi di qualcuno. Strano sentirlo qui, tra estranei che non sanno e non si curano, ma forse è il posto migliore.",
+		"Mal {g:visto|vista}, e sempre di più, chissà dove. Per queste strade terrò la testa bassa, e i conti li farò dopo.",
+		"Si chiudono porte, da qualche parte. Quelle attorno a me restano aperte, per ora, e ringrazio chi le tiene così.",
+	},
+	["org.rest_enter.w21.ease.001"] = {
+		"allenta una mascella serrata da chissà quante leghe di strada, e la muove da un lato all'altro come chi prova un cardine.",
+		"si accorge di avere i denti stretti, e li lascia andare.",
+		"si massaggia l'attaccatura della mascella con due nocche, finché la morsa non cede.",
+	},
+	["org.rest_enter.w21.ease.002"] = {
+		"Ho tenuto le spalle all'altezza delle orecchie così a lungo da dimenticare che potessero scendere. A quanto pare scendono.",
+		"Tra un passo e l'altro le spalle sono scese dal loro nascondiglio. Non gliel'ho nemmeno chiesto.",
+	},
+	["org.rest_enter.w21.ease.003"] = {
+		"piega piano le dita intorpidite, come per contarle e riportarle tutte dentro, dopo la strada.",
+		"apre e chiude piano le mani, finché la stretta delle ultime ore non le lascia andare.",
+		"si massaggia il palmo, dove una cinghia ha stampato il suo disegno.",
+	},
+	["org.rest_enter.w21.ease.004"] = {
+		"Ho posato lo zaino, ma la schiena non se n'è accorta: continua a piegarsi in avanti contro un peso che non c'è.",
+		"Lo zaino è ai miei piedi. Le spalle ne portano ancora il fantasma, e lo porteranno finché non ne saranno sicure.",
+	},
+	["org.rest_enter.w21.ease.005"] = {
+		"resta immobile mentre il ronzio della strada svanisce dalle orecchie e al suo posto entra il rumore della città.",
+		"scuote una mano, poi l'altra, finché l'ultimo tremito della strada non se ne va.",
+		"tende le mani aperte e le osserva finché non smettono di tremare, poi le mette via come se niente fosse.",
+	},
+	["org.rest_enter.w21.ease.006"] = {
+		"Ho un nodo sotto la scapola sinistra che è durato più di due paia di stivali. Qui dentro, forse, finalmente si scioglie.",
+		"Il nodo nella schiena mi ha seguito per tutto il viaggio, e non ha pagato un solo pasto. È ora che trovi un altro alloggio.",
+	},
+	["org.rest_enter.w21.ease.007"] = {
+		"Mi fa male tutto, e niente è urgente. Le città servono a questo.",
+		"La schiena ha appena fatto un rumore che non sapevo potesse fare. Non badateci.",
+		"Prima o poi mi rialzo. Probabilmente.",
+	},
+	["org.rest_enter.w21.ease.008"] = {
+		"smette di far correre lo sguardo su tetti e angoli, e lo lascia posare sulla prima cosa che sta ferma.",
+		"smette di frugare i margini delle cose e guarda, per una volta, il loro centro.",
+		"lascia che lo sguardo si faccia morbido e sfocato, come fanno gli occhi quando finalmente vengono sollevati dal servizio.",
+	},
+	["org.rest_enter.w21.ease.009"] = {
+		"Qualcuno lascia cadere una pentola e tutto il corpo scatta. Ci vorrà un po' perché il resto di me creda a quello che la testa sa già.",
+		"Una cassa sbatte a terra lì vicino e prima di accorgermene sto già per alzarmi. Calma: è solo la cassa di qualcuno.",
+	},
+	["org.rest_enter.w21.ease.010"] = {
+		"stira le braccia sopra la testa, piano, finché le spalle non ricordano di essere fatte per muoversi in più di una direzione.",
+		"fa ruotare piano le caviglie, prima una e poi l'altra, come un fabbro che prova un giunto appena fatto.",
+	},
+	["org.rest_enter.w21.ease.011"] = {
+		"La bocca sa di polvere di strada da ore. Il primo boccone di qualsiasi cosa, in questa città, avrà il sapore di un banchetto.",
+		"Sabbia tra i denti, sabbia nel colletto. Qualsiasi cosa mangerò per prima, mi toccherà mandarne giù anche un po' di strada.",
+	},
+	["org.rest_enter.w21.ease.012"] = {
+		"si siede a tappe, come si cala un carico pesante, finché a reggere tutto non resta che il sedile.",
+		"lascia cadere tutto il peso sul sedile in un colpo solo, come se le gambe avessero dato le dimissioni.",
+		"si affloscia sul primo sedile a portata come una tenda a cui hanno tolto i pali.",
+	},
+	["org.rest_enter.w21.ease.013"] = {
+		"Buffo come i dolori aspettino che mi fermi. Per tutta la strada zitti, e adesso arrivano tutti insieme, come ospiti.",
+		"Il corpo, in viaggio, è educato: tiene da parte ogni lamentela per il primo posto tranquillo, e poi le legge tutte.",
+		"Ogni livido raccolto là fuori ha aspettato il suo turno, e adesso che ho le mura intorno prendono la parola tutti quanti.",
+	},
+	["org.rest_enter.w21.ease.014"] = {
+		"Ai miei piedi avevo promesso questo posto tre colline fa. Una promessa è una promessa.",
+		"Piedi, avevate ragione voi. Dovevamo fermarci prima.",
+		"Ecco fatto: a sedere. La cosa più saggia di tutta la settimana.",
+	},
+	["org.rest_enter.w21.ease.015"] = {
+		"Le porte di Orgrimmar sono state misurate sugli orchi. Stare {g:seduto|seduta} è il primo momento da un pezzo in cui le mie corna sono al sicuro.",
+		"Un tauren, in questa città, passa metà del tempo a chinare la testa. Da {g:seduto|seduta}, almeno, gli architravi non mi raggiungono.",
+		"Ogni trave di questa città è appesa esattamente all'altezza delle mie corna. Quaggiù, su un sedile, finalmente sono io ad averla vinta.",
+	},
+	["org.rest_enter.w21.ease.016"] = {
+		"si massaggia la nuca con una mano, piano, dando la caccia a una rigidità che ha fatto tutto il viaggio insieme.",
+		"preme i pollici sul fondo della schiena e ci si appoggia contro, gli occhi socchiusi.",
+		"fa scorrere un pollice lungo un avambraccio dolente, dal polso al gomito, come chi stira una mappa sgualcita.",
+	},
+	["org.rest_enter.w21.ease.017"] = {
+		"si sfila un guanto dito per dito, poi l'altro, e li posa uno accanto all'altro come due bestiole stanche.",
+		"si toglie i guanti e muove le mani nude nell'aria, come per arieggiarle.",
+		"lascia cadere i guanti sul sedile accanto, dove conservano la forma delle mani che li hanno appena lasciati.",
+	},
+	["org.rest_enter.w21.ease.018"] = {
+		"si sfila lo zaino, che si accascia su un fianco come un secondo viandante stanco quanto il primo.",
+		"lascia scivolare lo zaino giù dalla schiena e cadere con un tonfo che somiglia molto al sollievo.",
+		"molla lo zaino e gli lancia un'occhiata, come se fosse stato lui a fare tutta la strada.",
+	},
+	["org.rest_enter.w21.lull.001"] = {
+		"Là fuori ogni schiocco voleva dire qualcosa. Qui dentro posso lasciar passare mille rumori senza rispondere a nessuno.",
+		"Il segreto di una città è imparare cosa non sentire. Martelli, contrattazioni, il guaito di un lupo: niente di questo è per me.",
+		"Le orecchie stanno ancora smistando il rumore della città in pericoli e no. Finora è finito tutto nel secondo mucchio.",
+	},
+	["org.rest_enter.w21.lull.002"] = {
+		"trova un angolo dove il rumore della città si assottiglia fino a un solo martello lontano, e lascia che sia quel suono a tenere il tempo.",
+		"isola una voce nella folla, una voce vecchia che canticchia stonata lì vicino, e non ascolta nient'altro.",
+		"si sistema dove il frastuono si fa sottile, e segue una sola voce lontana che decanta la sua merce finché non si spegne.",
+	},
+	["org.rest_enter.w21.lull.003"] = {
+		"C'è un tipo di quiete che vive solo dentro il rumore. L'ho trovata, chissà dove fra le contrattazioni e i lupi, e non mi muovo.",
+		"Troppo rumore per pensare, ed è perfetto. Di pensieri, là fuori, ne ho fatti abbastanza.",
+	},
+	["org.rest_enter.w21.lull.004"] = {
+		"si accorge di aver tenuto la voce bassa per abitudine di strada, e la lascia risalire alla sua misura normale.",
+		"dice una parola ad alta voce a nessuno, solo per sentirla uscire a volume normale.",
+		"si schiarisce la gola e rivolge due parole all'aria, per provare una voce che ha passato troppo tempo a sussurrare.",
+	},
+	["org.rest_enter.w21.lull.005"] = {
+		"Tre o quattro lingue intorno a me, tutte insieme, e nemmeno una parola è una domanda per me.",
+		"Delle chiacchiere intorno ne capisco forse metà. L'altra metà suona come ghiaia e risate, che a modo suo riposa.",
+	},
+	["org.rest_enter.w21.lull.006"] = {
+		"Abbassa la voce, Orgrimmar. Anzi no. Mi mancheresti.",
+		"In questa città c'è sempre qualcuno che urla. Che bello: vuol dire che non tocca a me.",
+	},
+	["org.rest_enter.w21.lull.007"] = {
+		"chiude gli occhi e ascolta la città come si ascolterebbe un fiume, senza cercare di seguirne nessun pezzo in particolare.",
+		"lascia che gli occhi si chiudano e che il rumore delle strade continui per conto suo, senza sorveglianza.",
+		"chiude gli occhi, e la città va avanti senza nessuno che la controlli, come fanno le città.",
+	},
+	["org.rest_enter.w21.lull.008"] = {
+		"È tardi, e la città si è ridotta ai suoi rumori piccoli: una porta, un colpo di tosse, un lupo che si gira nel sonno. Riesco a sentirmi pensare, e preferirei di no.",
+		"A quest'ora il rumore scola via dalle strade come l'acqua da un abbeveratoio, e quello che resta è quasi gentile.",
+		"Una porta che si chiude, una tazza posata, un grunt sulle mura che sposta il peso: la città parla nel sonno.",
+	},
+	["org.rest_enter.w21.lull.009"] = {
+		"I pensieri vanno ancora a passo di strada. Diamogli un momento: sono come i kodo, per fermarsi hanno bisogno di spazio.",
+		"La mente continua a camminare quando i piedi si sono fermati. Le lascio fare il giro dell'isolato un paio di volte.",
+		"I piedi si sono fermati alle mura. La testa è ancora là fuori sulla strada, che arranca, e arriverà fra poco.",
+	},
+	["org.rest_enter.w21.lull.010"] = {
+		"Il canyon rimanda ogni suono due volte, più piano. Dopo un po' l'eco smette di sembrare un avvertimento e comincia a sembrare compagnia.",
+		"I suoni rimbalzano dalla roccia un attimo in ritardo, consumati. Perfino un grido rientra con gli spigoli smussati.",
+	},
+	["org.rest_enter.w21.lull.011"] = {
+		"ascolta a metà due sconosciuti che lì vicino litigano sul prezzo della corda, senza alcun bisogno di sapere chi vince.",
+		"lascia scorrere le chiacchiere della panca accanto, afferrandone una parola qua e là come un pesce in una corrente lenta.",
+		"segue con un interesse vago e assonnato la lunga lagna di qualcuno su un kodo azzoppato, e annuisce al momento giusto senza che nessuno glielo chieda.",
+	},
+	["org.rest_enter.w21.lull.012"] = {
+		"Parlate pure quanto volete. Vi ascolto con mezzo orecchio, sì e no.",
+		"Raccontatemelo dopo. Molto dopo. Farò finta di stupirmi.",
+		"È urgente? Va a fuoco qualcosa? Allora può aspettare.",
+	},
+	["org.rest_enter.w21.lull.013"] = {
+		"Che la polvere ululi pure lungo il canyon. Ho trovato un angolo dove non arriva, e ci resto.",
+		"La sabbia sfrigola contro tutte le mura della città, e io sto dalla parte giusta di una di esse.",
+		"Fuori la sabbia spazza dalle strade chiunque abbia un po' di giudizio. Per una volta io sono tra quelli col giudizio.",
+	},
+	["org.rest_enter.w21.lull.014"] = {
+		"Pioggia a Orgrimmar, figurarsi. La ascolto da sotto un tetto, come si ascolta una canzone rara.",
+		"L'acqua tamburella sulle tende e nessuno ha fretta. Perfino i grunt stanno sotto qualcosa.",
+	},
+	["org.rest_enter.w21.lull.015"] = {
+		"Che tuoni e lampeggi pure sopra il canyon. Sotto un tetto, con qualcosa di caldo, un temporale è solo uno spettacolo gratis.",
+		"Ogni tuono rotola per il canyon due volte. Conto il secondo, tiro su il bavero, ed è tutto quello che il temporale ottiene da me.",
+	},
+	["org.rest_enter.w21.respite.001"] = {
+		"In questa folla nessuno sa cosa ho fatto là fuori, né gli interessa. Per un po' posso essere solo un'altra schiena su una panca.",
+		"In una folla così grande non sono nessuno in particolare. È un mantello migliore di tutti quelli che possiedo.",
+		"Qui nessuno vuole la mia storia. Bacerei una per una tutte le facce indifferenti della strada.",
+	},
+	["org.rest_enter.w21.respite.002"] = {
+		"siede con la schiena contro la pietra e il mento basso, riposando come riposa una lepre: immobile del tutto, e per niente tranquilla.",
+		"si cala su un sedile nella capitale del nemico e tiene un occhio su ogni grunt, che è uno strano modo di riposare.",
+	},
+	["org.rest_enter.w21.respite.003"] = {
+		"La locanda, una panca vicino alla banca, un gradino tranquillo dietro il cortile di un conciatore: in questa città posso scegliere dove crollare. Là fuori sceglieva il terreno.",
+		"Tanti posti dove sedersi che resto qui in piedi a decidere. È il problema più bello che abbia avuto da un pezzo.",
+		"Locanda, panca o gradino? Prendo il primo che non fa storie.",
+	},
+	["org.rest_enter.w21.respite.004"] = {
+		"considera la porta affollata della locanda, considera un tratto di muro tranquillo lì accanto, e sceglie il muro.",
+		"soppesa il chiasso della locanda contro un gradino tranquillo lì fuori, e si siede sul gradino senza ulteriori discussioni.",
+		"guarda la porta della locanda, la calca che entra ed esce, e trova invece un angolo di pietra un po' più in là.",
+	},
+	["org.rest_enter.w21.respite.005"] = {
+		"Cibo che non ho dovuto cacciare, scuoiare o difendere da qualcosa di più grosso. Lo mangio piano, per rispetto.",
+		"Il fuoco l'ha acceso qualcun altro, lo spiedo l'ha girato qualcun altro. A me tocca solo masticare. Civiltà.",
+		"Carne da una bancarella, ancora calda, avvolta in una foglia. In viaggio mi ci sarebbe voluta un'ora per guadagnarmela.",
+	},
+	["org.rest_enter.w21.respite.006"] = {
+		"Qualcosa di caldo, di cotto, qualcosa che non devo ammazzare prima. Indicatemi dove.",
+		"Darei gli stivali per un pasto caldo. Poi me li ricomprerei.",
+		"Prima mangio. Poi divento gentile.",
+	},
+	["org.rest_enter.w21.respite.007"] = {
+		"Acqua pulita da una brocca di terracotta, fresca dell'ombra in cui l'hanno tenuta. Dopo l'otre non sa di niente, ed è proprio così che dev'essere.",
+		"L'otre ha dato a tutto un sapore di cuoio vecchio. Questa tazza sa solo d'acqua, e non mi serve altro.",
+		"Una tazza d'acqua piena, e nessuno con cui dividerla o per cui razionarla. La bevo tutta d'un sorso, come un ricco sciocco.",
+	},
+	["org.rest_enter.w21.respite.008"] = {
+		"mangia con tutte e due le mani e tutti e due gli occhi sul cibo, un lusso che la strada non concedeva mai.",
+		"addenta un pezzo di focaccia senza alzare lo sguardo nemmeno una volta, cosa che sulla strada sarebbe stata una sciocchezza.",
+		"mangia dando le spalle alla strada affollata, con la faccia tranquilla, e lascia alla città la guardia del pasto.",
+	},
+	["org.rest_enter.w21.respite.009"] = {
+		"Un tempo gli orchi dormivano dietro mura umane, nei campi d'internamento. Queste mura sono orchesche, e il cancello si apre da dentro. Tutta qui la differenza, ed è tutto.",
+		"I vecchi ricordano di aver dormito sotto sorveglianza. Qui le guardie sono nostre, e guardano verso fuori.",
+	},
+	["org.rest_enter.w21.respite.010"] = {
+		"prende posto in fondo a un lungo tavolo della locanda, dove le tazze passano di mano in mano e nessuno pretende di fare conversazione.",
+		"sceglie uno sgabello vicino alla porta della locanda, mezzo dentro la folla e mezzo fuori, il posto più evasivo della casa.",
+		"s'infila all'angolo di un tavolo affollato della locanda, accetta con un cenno un boccale di passaggio, e non dice una parola.",
+	},
+	["org.rest_enter.w21.respite.011"] = {
+		"Sulla strada il sonno arriva a pezzi, un po' qui e un po' là, sempre con un occhio aperto. Qui dentro lo vorrei tutto intero.",
+		"Il sonno di strada arriva a brandelli. Quello di città arriva intero, se ho fortuna, e se il russatore nell'angolo accanto non ne ha.",
+	},
+	["org.rest_enter.w21.respite.012"] = {
+		"srotola un giaciglio in un angolo riparato, lo liscia due volte col palmo e lo contempla con profondo affetto.",
+		"scuote via la strada da una coperta con due colpi secchi e la stende con gran cura, come per un ospite.",
+	},
+	["org.rest_enter.w21.respite.013"] = {
+		"C'è un peon addormentato contro una cassa, con la cinghia da trasporto ancora su una spalla. Nessuno mi ha mai capito meglio.",
+		"Un peon sonnecchia su un sacco di grano, a bocca aperta, uno stivale che ogni tanto scatta. Se qualcuno lo sveglia, io sto dalla sua parte.",
+		"Ho appena visto un peon addormentarsi in piedi, appoggiato a una scopa. Mi inchino all'arte.",
+	},
+	["org.rest_enter.w21.respite.014"] = {
+		"trova uno spicchio d'ombra contro un muro e ci si rannicchia, al riparo dal caldo, come una lucertola che bada agli affari suoi.",
+		"insegue l'ombra che si restringe lungo il muro, spostandosi un poco a ogni giro di luce, e si rifiuta di farsene scacciare.",
+		"appoggia la schiena a un tratto di pietra che il sole non ha ancora raggiunto, e se ne prende il fresco finché dura.",
+	},
+	["org.rest_enter.w21.respite.015"] = {
+		"Fuori da queste mura porto il nome dell'Orda in ogni incontro. Dentro, l'Orda si regge da sola, e la mia parte posso posarla per un'ora.",
+		"Ogni grunt su queste mura fa la guardia anche per me, come per chiunque altro. È questo un'Orda, credo: un sacco di gente che si tiene la porta a vicenda.",
+	},
+	["org.rest_enter.w21.respite.016"] = {
+		"La guardia ce l'ha qualcun altro. Ho chiesto. Due volte.",
+		"Non sono di turno. Non sono di niente. Sono su questa panca.",
+		"Fuori servizio, giù dai piedi, giù dalla strada. Lasciatemi giù.",
+	},
+	["org.rest_enter.w21.respite.017"] = {
+		"si rovescia su viso e collo l'acqua fredda di un secchio, e riemerge con l'aria di un anno più giovane e decisamente più bagnata.",
+		"si sciacqua via la strada dalle mani in un catino, e guarda l'acqua prendere il colore delle leghe che si è lasciato alle spalle.",
+		"immerge gli avambracci in un catino d'acqua fino ai gomiti e resta così, senza fretta, come se il catino fosse lo scopo stesso della città.",
+	},
+	["org.rest_enter.w21.rest.001"] = {
+		"Qualcuno sulle mura sta contando ogni sagoma sulla strada. Non devo farlo io.",
+		"I grunt lassù sulle mura guardano lontano perché io possa guardare il nulla. Ho intenzione di farlo con impegno.",
+		"In viaggio nessuno divideva con me la guardia. Qui dentro la monta un'intera città, senza nemmeno chiedermi il nome.",
+	},
+	["org.rest_enter.w21.rest.002"] = {
+		"si guarda alle spalle per abitudine, trova solo il solito via vai della città e per un po' lascia perdere l'abitudine.",
+		"fa per controllarsi alle spalle, si blocca a metà del gesto e lo trasforma in una stiracchiata.",
+		"volge di proposito la schiena al tratto più affollato che vede, come si saggia col piede un'asse vecchia, e non succede niente.",
+	},
+	["org.rest_enter.w21.rest.003"] = {
+		"Se qualcosa supera quei grunt, svegliatemi pure. Con garbo.",
+		"Mura, grunt, un cancello. La mia parte di guardia l'ho fatta. Tocca a te, città.",
+		"La guardia è di qualcun altro. Non conosco parole più belle.",
+	},
+	["org.rest_enter.w21.rest.004"] = {
+		"Conto le vie d'uscita ovunque mi sieda. Qui il conto si è fermato a tre, perché da nessuna di quelle porte entrava qualcuno che cercasse me.",
+		"Vecchia abitudine: prima le porte. In questa città le trovo, poi trovo una tazza, e la tazza vince.",
+		"Gli occhi corrono ancora alle porte prima che alle facce. Diamogli tempo: impareranno le maniere della città.",
+	},
+	["org.rest_enter.w21.rest.005"] = {
+		"sente passare una coppia di grunt nel loro giro e stavolta, dopo tanto tempo, non alza lo sguardo.",
+		"lascia sfilare senza badarci i passi pesanti e senza fretta di una ronda, un suono che qui significa soltanto che qualcun altro sta lavorando.",
+		"registra lo sferragliare di una ronda che passa, lo pesa, lo trova normale, e smette di ascoltare.",
+	},
+	["org.rest_enter.w21.rest.006"] = {
+		"Metà delle mura di questa città le ha messe il canyon, molto prima che qualcuno pensasse a un cancello. La pietra è una sentinella paziente.",
+		"Le pareti di roccia tengono un lato, i grunt l'altro. In mezzo c'è posto per un viandante stanco che smette di stare in guardia.",
+	},
+	["org.rest_enter.w21.rest.007"] = {
+		"Questo corpo non si stanca più come una volta. Qualcosa però sì, e dentro queste mura finalmente si mette a sedere.",
+		"La carne non sa che farsene di un letto. La mente che la abita sì, ed è di guardia da troppo tempo.",
+		"Qui nessuno trasale quando passo. Già questo vale più del sonno.",
+	},
+	["org.rest_enter.w21.rest.008"] = {
+		"apre a fatica una fibbia che da ore morde una spalla e lascia penzolare la cinghia.",
+		"allenta la cintura di un buco, poi di un altro, con la serietà di chi firma un trattato.",
+		"infila un pollice sotto una cinghia, la solleva dalla spalla indolenzita, e alla fine molla tutto il carico.",
+	},
+	["org.rest_enter.w21.rest.009"] = {
+		"Chiuso per riposo. Ripassate quando avrò mangiato qualcosa.",
+		"Qualunque cosa sia, può aspettare che mi sieda. E poi aspettare ancora un pochino.",
+		"Chiedetemelo dopo che avrò buttato giù qualcosa di caldo.",
+	},
+	["org.rest_enter.w21.rest.010"] = {
+		"Senza niente da sorvegliare, le mani non sanno che fare. Do loro una tazza da tenere, e si calmano.",
+		"Strano come le mani si agitino, quando il pericolo se ne va. Queste hanno trovato un filo scucito sulla manica e non lo mollano più.",
+	},
+	["org.rest_enter.w21.rest.011"] = {
+		"Le nostre mura. Non lo dico ad alta voce, ma lo penso ogni volta che ci sto dentro, e ogni volta mi fa bene.",
+		"Queste mura le ha alzate gente che sapeva cosa vuol dire non averne. Ci dormo bene, qui dentro.",
+		"Le mura del Capoguerra, i grunt del Capoguerra. La nostra città. Qualunque peso portassi là fuori, qui lo posso posare.",
+	},
+	["org.rest_enter.w21.rest.012"] = {
+		"Per tutta la strada ho dormito con gli stivali ai piedi e un orecchio aperto. Queste mura mi lasciano togliere gli stivali. Per l'orecchio ci vorrà di più.",
+		"Via gli stivali: ecco il vero segno che mi fido di un posto. L'orecchio che ascolta i guai resta in servizio ancora un po', per testardaggine.",
+	},
+	["org.rest_enter.w21.rest.013"] = {
+		"È occupato questo posto? Bene. Adesso sì.",
+		"Fate spazio. Queste gambe hanno camminato per due.",
+		"Mi siedo qui a fare da soprammobile, se nessuno ha niente in contrario.",
+	},
+	["org.rest_enter.w21.rest.014"] = {
+		"Lungo le mura, chissà dove, le torce sono accese, un cerchio di luce a ogni posto di guardia. Il buio che sta in mezzo è affare dei grunt, non mio.",
+		"Sotto ogni torcia delle mura c'è un grunt. Non ho bisogno di vederli per saperlo, ed è proprio questo il punto.",
+		"Le torce sulle mura bruciano per tutte le ore buie, e qualcuno le alimenta. Quel qualcuno non sono io. Non stavolta.",
+	},
+	["org.rest_enter.w21.settle.001"] = {
+		"La locanda sa di sego, di grog versato e di troppi viandanti. Non è un buon odore. È un odore sicuro.",
+		"Su questo tavolo qualcuno ha versato qualcosa che ci sopravviverà a entrambi. Mi piace già, qui.",
+		"Il pavimento della locanda appiccica, la panca balla e il boccale è sbeccato. Perfetto. Per un posto così nessuno fa a botte.",
+	},
+	["org.rest_enter.w21.settle.002"] = {
+		"appende un mantello impolverato a un piolo vicino alla porta della locanda, accanto a una dozzina d'altri altrettanto impolverati, e ce lo lascia con evidente sollievo.",
+		"trova un gancio libero per il mantello fra i pioli affollati della locanda e gli dà un colpetto, come a una bestia stanca messa nella stalla.",
+	},
+	["org.rest_enter.w21.settle.003"] = {
+		"Fossi, pianali di carro, il riparo di una roccia: ho dormito in tutti. Qualsiasi angolo di questa città, al confronto, è una reggia.",
+		"Dopo la terra dura della strada, perfino una panca sembra un letto rifatto apposta per me.",
+	},
+	["org.rest_enter.w21.settle.004"] = {
+		"Un letto, una scodella e una porta che si chiude. Sono una creatura semplice.",
+		"Due scodelle di qualunque cosa nasconda quella pentola. L'orgoglio l'ho lasciato per strada.",
+		"Fatemi sedere prima che cada in direzione generica di una sedia.",
+	},
+	["org.rest_enter.w21.settle.005"] = {
+		"Una scodella di radici schiacciate e sale, niente di più. Dopo le razioni da viaggio sa di banchetto offerto in mio onore.",
+		"Purè di radici caldo, troppo sale, un cucchiaio piegato dall'uso. Ho fatto pasti più raffinati, ma nessuno mi è piaciuto di più.",
+		"Cibo semplice, caldo, e in quantità. A metà scodella smetto di pensare a qualsiasi altra cosa.",
+	},
+	["org.rest_enter.w21.settle.006"] = {
+		"stringe tra le mani una scodella di qualcosa di caldo e la tiene così per un po' prima di mangiare, come se il calore fosse la portata principale.",
+		"mangia piano, come mangia chi sa che nessuno sta per portargli via la scodella.",
+		"ripulisce il fondo della scodella con una crosta di pane, poi resta a guardare la scodella vuota con grande soddisfazione.",
+	},
+	["org.rest_enter.w21.settle.007"] = {
+		"I grunt fuori servizio hanno tutti la loro sporgenza o il loro uscio, lontano dal via vai, conquistati per lunga abitudine. Me ne toccherà trovare uno che non usa nessuno.",
+		"Ogni frequentatore di Orgrimmar ha il suo posto preferito per sonnecchiare: un gradino, un rotolo di corda, l'angolo del cortile di un fabbro. Io sto ancora facendo i provini.",
+		"Scegliere dove schiacciare un pisolino, in una città così indaffarata, è un'arte. Fuori dai piedi, fuori dal chiasso, e non davanti alla bottega di qualcuno.",
+	},
+	["org.rest_enter.w21.settle.008"] = {
+		"sistema lo zaino a mo' di cuscino, lo prende a pugni finché non ha la forma giusta, e ci si appoggia con l'aria di un architetto soddisfatto.",
+		"prova tre modi diversi di appoggiarsi allo zaino prima di trovare pace col quarto.",
+	},
+	["org.rest_enter.w21.settle.009"] = {
+		"Tutti puntano prima alla locanda. Io punto al muro più tranquillo che trovo, e poi alla locanda, quando sarò in grado di stare in compagnia.",
+		"Fra un'ora la locanda sarà ancora chiassosa. Ci andrò quando avrò abbastanza voce da tenerle testa.",
+		"La locanda è lì, e non scappa. Prima voglio qualche momento di quiete, senza che nessuno mi metta in mano un boccale o una storia.",
+	},
+	["org.rest_enter.w21.settle.010"] = {
+		"si appisola da {g:seduto|seduta}, si risveglia di soprassalto e si guarda intorno come a sfidare chiunque ad averlo notato.",
+		"lascia scendere piano il mento verso il petto, lo riprende, lo lascia scendere un'altra volta, e la discussione la perde a poco a poco.",
+		"sonnecchia per tutta la durata di una conversazione che passa e si sveglia di colpo a metà della frase di qualcun altro.",
+	},
+	["org.rest_enter.w21.settle.011"] = {
+		"Il sonno, o la cosa più vicina che mi riesce, arriverà facile dietro queste mura.",
+		"Occhi chiusi, mente al minimo, niente da ascoltare. Chiamatelo sonno oppure no: è il riposo migliore che abbia avuto da un bel pezzo.",
+		"Qualunque sia il mio modo di dormire, mi aspetta qui dentro, paziente come un cane davanti a una porta.",
+	},
+	["org.rest_enter.w21.settle.012"] = {
+		"si sfila gli stivali sotto un tavolo della locanda e li spinge nel buio là sotto, a riflettere su quello che hanno fatto.",
+		"pianta i gomiti sul tavolo segnato della locanda e posa il mento sui pugni, il ritratto di chi non va da nessuna parte.",
+	},
+	["org.rest_enter.w21.settle.013"] = {
+		"La città si sveglia tutto intorno a me, le bancarelle che si aprono sbatacchiando, e io non ho la minima intenzione di unirmi.",
+		"I primi carri passano sferragliando, i primi venditori si schiariscono la gola. Mi giro dall'altra parte e do le spalle all'intera città.",
+	},
+	["org.rest_enter.w21.settle.014"] = {
+		"Ci vuole un po' per rientrare in una città, come in un cappotto rimasto appeso a un chiodo. Poi calza.",
+		"Per un po', dentro le mura, una metà di me è ancora per strada. Poi basta una cosa piccola, un odore o un grido, e arrivo del tutto.",
+		"Una città va indossata piano, prima una manica e poi l'altra. Sono più o meno a metà.",
+	},
+	["org.rest_enter.w21.settle.015"] = {
+		"accetta una scodella da una bancarella senza chiedere cosa contenga, il che a Orgrimmar vale come un atto di fiducia.",
+		"paga una scodella di qualcosa di marrone e fumante, la annusa una volta, e saggiamente non chiede niente.",
+	},
+	["org.rest_enter.w21.settle.016"] = {
+		"alza gli occhi al tetto, e un momento dopo li rialza, come se il tetto potesse andarsene a spasso.",
+		"guarda le travi del soffitto con aperto affetto: finalmente qualcosa di solido fra sé e tutto quello che c'è di sopra.",
+	},
+	["org.rest_enter.w21.settle.017"] = {
+		"Mura dell'Orda, cibo dell'Orda, russare dell'Orda. Mi mancavano tutti e tre.",
+		"A qualche grunt serve una mano? No? Allora sono fuori servizio, come ogni altra schiena stanca dell'Orda.",
+	},
+	["org.rest_enter.w21.settle.018"] = {
+		"si stende per tutta la lunghezza su una panca troppo corta per lo scopo, con gli stivali che penzolano dal fondo, e non si lamenta affatto.",
+		"si sdraia su una panca con un braccio sugli occhi, una posa che si capisce in ogni città che esista.",
+		"prova una panca per il lungo, la trova corta di una spanna, e ne accetta le condizioni.",
+	},
+	["org.rest_enter.w21.settle.019"] = {
+		"C'è posto in abbondanza. Sedetevi pure; parlate solo se dovete.",
+		"Prendete posto. Non vi chiedo da dove venite se voi non lo chiedete a me.",
+		"C'è posto ancora per qualcuno, purché faccia silenzio.",
+	},
+	["org.rest_enter.w21.settle.020"] = {
+		"Se qualcuno mi cerca, non ci sono. Se qualcuno mi cerca con urgenza, non ci sono lo stesso.",
+		"Nessuno mi dia niente. Né una mappa, né un incarico, né una tazza... be'. Una tazza magari sì.",
+		"Ho smesso di camminare. Ufficialmente. Spargete la voce.",
+	},
+	["org.rest_enter.w21.settle.021"] = {
+		"I grunt sembrano non essersi mai seduti in vita loro. Qualcuno in questa città deve pur bilanciarli. Mi offro io.",
+		"Ogni grunt in vista sta sull'attenti. Qualcuno dovrà pure stare seduto, per amor d'equilibrio.",
+		"A guardare le guardie così dritte mi viene mal di schiena per solidarietà. Mi siedo io per tutti quanti.",
+	},
+	["org.rest_enter.w21.settle.022"] = {
+		"In città gli stivali li ripara qualcun altro, la cinghia la cuce qualcun altro, quello che è smussato lo affila qualcun altro. Là fuori toccava tutto a me. Qui può aspettare le mani giuste.",
+		"Una cinghia strappata, una cucitura aperta, una suola che sbatte. Sulla strada, problemi miei. In questa città, il mestiere di qualcuno.",
+	},
+	["org.rest_enter.w21.settle.023"] = {
+		"Chi ha costruito questo posto era in cammino da molto tempo. Si capisce: ogni muro è spesso il doppio del necessario.",
+		"Gli orchi arrivarono qui dalle navi e dai campi, e la prima cosa che fecero, dicono gli anziani, furono le mura. Li capisco meglio ogni volta che mi ci siedo dentro.",
+	},
+	["org.rest_enter.w21.settle.024"] = {
+		"Finalmente abbastanza silenzio per dormire. Che nessuno lo rovini.",
+		"È tardi. Abbastanza tardi per me, almeno. Qualcuno mi indichi un letto.",
+	},
+	["org.rest_enter.w21.settle.025"] = {
+		"Abbastanza troll in giro che nessuno ha bisogno di spiegazioni per le mie battute, né io per le loro. Metà del riposo è già qui.",
+		"Laggiù nella Valley of Spirits la mia gente ride di qualcosa. Non sento di cosa, e non ho bisogno di saperlo.",
+	},
+	["org.rest_enter.w21.unwind.001"] = {
+		"La testa insiste a riproporre l'unico momento in cui là fuori ho sbagliato. Lo lascio andare in scena un'ultima volta, poi le dico che la storia è finita.",
+		"Ogni passo falso della strada viene a galla, ora che c'è tempo. Saluto ognuno con un cenno e lo rimando per la sua strada.",
+		"Una scelta sbagliata di là fuori continua a picchiettarmi sulla spalla. Mi volto e la guardo bene, per una volta, e si rimpicciolisce.",
+	},
+	["org.rest_enter.w21.unwind.002"] = {
+		"rovescia il contenuto di una sacca e lo divide piano in mucchietti, come se mettesse in ordine anche le ore che l'hanno riempita.",
+		"rigira tra le dita una manciata di cianfrusaglie della strada, un sassolino, un capo di cinghia, un rame piegato, e tiene solo il rame.",
+	},
+	["org.rest_enter.w21.unwind.003"] = {
+		"Un volto della strada continua a riaffiorare: uno sconosciuto incrociato senza una parola. Spero abbia trovato mura sue, chissà dove.",
+		"Strano cosa trattiene la mente. Non il pericolo, non le leghe: il saluto di uno sconosciuto dall'altra riva di un guado.",
+		"Di tutto quello che c'era là fuori, mi resta uno sconosciuto che divideva l'ombra di una roccia senza dire niente. Il nome non l'ho mai saputo.",
+	},
+	["org.rest_enter.w21.unwind.004"] = {
+		"Non chiedetemi com'è andata. Chiedetemelo dopo mangiato, e vi racconterò splendide bugie.",
+		"È stata lunga, è stata polverosa, e il resto non lo racconto finché qualcuno non mi dà da mangiare.",
+		"Sì, di storie ne ho. No, adesso no. Prima datemi da mangiare.",
+	},
+	["org.rest_enter.w21.unwind.005"] = {
+		"Mi impongo di elencare quello che è andato bene là fuori. È una lista corta, ma è mia, ed è più lunga di quanto pensassi.",
+		"Prima conto le cose buone. Una strada sgombra, uno scambio onesto, una cinghia che ha tenuto. Basta per sedercisi sopra.",
+	},
+	["org.rest_enter.w21.unwind.006"] = {
+		"fissa il vuoto per un lungo momento, le labbra che si muovono appena, come chi chiude un conto con qualcuno che non c'è.",
+		"siede con una ruga in fronte che pian piano si scioglie, come fa un pensiero duro quando trova spazio.",
+	},
+	["org.rest_enter.w21.unwind.007"] = {
+		"Mi è appena venuta la risposta perfetta a una cosa che qualcuno ha detto tre colline fa. Troppo tardi, e che soddisfazione.",
+		"A mente fredda vinco ogni discussione persa per strada. Il mio lavoro migliore lo faccio sempre dopo.",
+		"La risposta brillante arriva sempre quando ho smesso di camminare. Dev'essere più lenta di me.",
+	},
+	["org.rest_enter.w21.unwind.008"] = {
+		"Là fuori non c'era tempo per chiedersi se fosse giusto. Qui dentro c'è tutto il tempo del mondo, e non so se lo voglio.",
+		"Le mura sicure lasciano entrare le domande. È il prezzo del riposo, e lo pago.",
+	},
+	["org.rest_enter.w21.unwind.009"] = {
+		"conta un mucchietto di monete sul ginocchio, perde il conto a metà, e non ricomincia.",
+		"soppesa la borsa delle monete sul palmo, ascoltandola come un contadino ascolta un pozzo.",
+		"allinea qualche moneta lungo il bordo del sedile per grandezza, poi per lucentezza, poi le spazza tutte insieme dentro la borsa.",
+	},
+	["org.rest_enter.w21.unwind.010"] = {
+		"Le ore che ho alle spalle sbatacchiano ancora come sassi in uno stivale. Le scuoto fuori a una a una, e le guardo prima di buttarle.",
+		"Quello che è successo là fuori comincia a sembrare una cosa sentita raccontare più che vissuta. Così capisco che le mura funzionano.",
+		"La strada sta già diventando un racconto, con tutte le parti affilate consumate a forza di raccontarle. E ancora non l'ho raccontata a nessuno.",
+	},
+	["org.rest_enter.w21.unwind.011"] = {
+		"guarda una lanterna accendersi dall'altra parte della strada, poi un'altra, e lascia alla città il compito di tenere le cose in vista.",
+		"osserva bracieri e lanterne prendere vita qua e là mentre la luce cala, senza il minimo bisogno di dare una mano.",
+	},
+	["org.rest_enter.w21.unwind.012"] = {
+		"La strada di domani è già lì in un angolo della testa, come un cane che aspetta la passeggiata. A cuccia, strada. Più tardi.",
+		"La prossima commissione sta già passeggiando avanti e indietro nella mia testa. Le ho detto di sedersi. Si è seduta, imbronciata.",
+		"I progetti per dopo continuano a bussare. Ho detto loro che la porta resta chiusa finché non avrò mangiato.",
+	},
+	["org.rest_enter.w21.unwind.013"] = {
+		"Ho un po' da pensare. Soprattutto la parte in cui si sta seduti.",
+		"Lasciatemi in pace per un po'. Sono {g:occupato|occupata} a non fare assolutamente niente.",
+	},
+	["org.rest_enter.w21.unwind.014"] = {
+		"Tutti in queste strade si sono portati dentro qualcosa da là fuori. Si vede da come siedono. Sono in buona compagnia.",
+		"Guarda a lungo una faccia qualsiasi di questa folla e ci vedi sopra la strada. La mia non fa eccezione, e nessuno la fissa.",
+		"Una città piena di gente che posa qualcosa: zaini, rancori, il peso delle leghe. Il mio va sul mucchio con gli altri.",
+	},
+	["org.rest_enter.w21.unwind.015"] = {
+		"armeggia con un nodo del laccio dello stivale molto più a lungo di quanto il nodo meriti, con l'aria di pensare a tutt'altro.",
+		"segue con un dito una crepa nella pietra, piano, da un capo all'altro, lo sguardo altrove.",
+		"rigira un sassolino nel palmo, come se da qualche parte ci fosse scritta sopra una domanda.",
+	},
+	["org.rest_enter.w21.unwind.016"] = {
+		"Qui nessuno conta le mie ore. Potrei restare finché questa tazza si fredda senza dover spiegazioni a nessuno.",
+		"Non c'è fretta da nessuna parte dentro di me. Continuo a cercarla, come si tasta una tasca per una moneta persa, e non c'è più.",
+		"Il tempo, dietro le mura, si comporta in un altro modo. Là fuori mi inseguiva. Qui mi si siede accanto e aspetta.",
+	},
+	["org.rest_enter.w21.unwind.017"] = {
+		"Le domande, sulla strada, erano grosse: da che parte, quanto lontano, chi mi segue. Tra le mura si rimpiccioliscono: quale scodella, quale panca.",
+		"La decisione più grande della prossima ora è a quale capo della panca sedermi. Me la prendo con calma.",
+		"Sulla strada ogni scelta poteva costare cara. Qui il peggio che posso fare è scegliere il pasticcio sbagliato.",
+	},
+	["org.rest_enter.w21.unwind.018"] = {
+		"Riposare è un'arte come un'altra, e sono fuori allenamento. Primo tentativo: sedersi. Finora tutto bene.",
+		"Ho dimenticato come si fa a non fare niente. Mi verrà in mente; un tempo mi riusciva benissimo.",
+		"A quanto pare, non fare niente richiede pratica. Le mani cercano lavoro. I piedi cercano strada.",
+	},
+	["org.subzone_enter.w21.cleft.001"] = {
+		"entra nella Cleft of Shadow passando accanto a sporgenze incrostate di vecchia cera, strato su strato e di ogni colore, le colature di più veglie di quante qualcuno ne abbia mai contate.",
+		"si fa strada davanti a nicchie nella roccia dove le candele si sono consumate sopra i mozziconi di candele più vecchie, e la cera è cresciuta in torri bitorzolute che nessuno raschia mai via.",
+		"sfiora con la manica una sporgenza spessa di sgocciolature, nere, rosse e bianco osso, indurite l'una sull'altra negli anni.",
+	},
+	["org.subzone_enter.w21.cleft.002"] = {
+		"Da una delle porte arriva un ticchettio paziente: qualcuno che lavora una serratura con i grimaldelli, ancora e ancora, su una cassetta che sarà stata aperta mille volte.",
+		"Tic, raschio, clic. In un angolo della Cleft c'è chi scassina una serratura per esercizio. Spero per esercizio.",
+		"Su una soglia, quaggiù, c'è uno scrigno malconcio forzato così tante volte che la serratura sospira e si arrende appena qualcuno la tocca.",
+	},
+	["org.subzone_enter.w21.cleft.003"] = {
+		"passa sotto una sporgenza dove due imp litigano nella loro lingua crepitante, lanciandosi scintille sulle dita dei piedi, mentre i padroni fingono di non conoscerli.",
+		"scivola sotto una coppia di imp appollaiati sulla roccia, che smettono di bisticciare giusto il tempo di fissare, sghignazzare e riprendere la lite da dove l'avevano lasciata.",
+		"si china sotto una sporgenza mentre uno degli imp accovacciati lassù lancia una scintilla nella sua direzione, a quanto pare per il solo gusto di sentirla sfrigolare.",
+	},
+	["org.subzone_enter.w21.cleft.004"] = {
+		"Una bancarella della Cleft vende soltanto libri bianchi rilegati in pelle scura. Il venditore non chiede mai a cosa servano, e ogni compratore, noto, paga senza contrattare.",
+		"Libri bianchi rilegati in pelle nera, impilati su una sporgenza senza prezzo. In qualunque altra parte della città sarebbe cancelleria. Quaggiù sembra una confessione in attesa di essere scritta.",
+	},
+	["org.subzone_enter.w21.cleft.005"] = {
+		"Splendido. Perfino i muri, qui dentro, hanno l'aria di tenere un elenco.",
+		"Quaggiù sono tutti molto educati. È questo che mi preoccupa.",
+		"Sono solo di passaggio, sia messo agli atti. Da chiunque tenga gli atti.",
+	},
+	["org.subzone_enter.w21.cleft.006"] = {
+		"si ferma senza sapere perché, e capisce che una figura ha appena attraversato la Cleft a pochi passi senza far scricchiolare la ghiaia nemmeno una volta.",
+		"si accorge, troppo tardi per sentirlo, che qualcuno è passato abbastanza vicino da poterlo toccare; la ghiaia sotto i piedi non ha detto una parola.",
+		"più che sentire, avverte qualcuno che passa nella Cleft: un tremito nella luce delle torce, uno spiffero, e poi nessuno.",
+	},
+	["org.subzone_enter.w21.cleft.007"] = {
+		"Da una porta della Cleft trapela una luce verde, il colore di un brutto livido che guarisce. Allungo una mano per abitudine. Non scalda per niente.",
+		"Quasi tutta la luce quaggiù è di torcia, gialla e stanca. Una porta invece manda un bagliore verde, sottile e acido, e i grunt di pattuglia le girano un po' più al largo.",
+		"Una porta, quaggiù, arde di verde. Non guardo dentro. È guardando dentro che cominciano le storie.",
+	},
+	["org.subzone_enter.w21.cleft.008"] = {
+		"passa stretto accanto a un giovane stregone che legge alla luce di una sola candela, muovendo le labbra sulla pagina, mentre un imp appollaiato su una spalla legge con lui e mormora le parole un attimo prima.",
+		"scivola accanto a un'allieva china su un libro in una nicchia, con un imp sulla spalla che gira la pagina spazientito prima che lei abbia finito.",
+	},
+	["org.subzone_enter.w21.cleft.009"] = {
+		"Su nelle valli la folla mi nasconde. Giù nella Cleft la folla non c'è, solo poche figure immobili sulle soglie, e ognuna mi ha già contato.",
+		"La Cleft ha meno occhi delle valli, e ognuno vale di più. Tengo il cappuccio alzato e il passo regolare, e li sento contarmi uno per uno.",
+	},
+	["org.subzone_enter.w21.cleft.010"] = {
+		"sfila davanti a un goblin seduto su una soglia con una lanterna e un registro, che somma cifre borbottando e si zittisce di colpo appena qualcuno si avvicina abbastanza da sentire.",
+		"cammina accanto a un goblin chino su un libro dei conti alla luce di una lanterna, che copre la pagina con una mano verde e piatta finché i passi non si sono allontanati.",
+	},
+	["org.subzone_enter.w21.cleft.011"] = {
+		"Sotto la volta di roccia la città mi arriva a piccoli suoni: una ruota di carro, un secchio che cade, una risata, tutti filtrati dalla pietra come notizie dal piano di sopra.",
+		"La Cleft ha la città per soffitto. Ogni tanto un tonfo scende attraverso la roccia, e tutti quaggiù alzano gli occhi insieme, poi fanno finta di niente.",
+		"Qui la città è qualcosa che si sente attraverso un soffitto: passi, ruote, un martello lontano, tutto un piano più su e niente che mi riguardi.",
+	},
+	["org.subzone_enter.w21.cleft.012"] = {
+		"sente il giro granuloso di un pestello in una nicchia, dove qualcuno con guanti spessi macina molto lentamente una polvere chiara senza alzare la testa.",
+		"getta un'occhiata in una nicchia dove una figura con pesanti guanti pesta qualcosa in un mortaio di pietra, il pestello che gira e rigira, un panno umido legato su naso e bocca.",
+	},
+	["org.subzone_enter.w21.cleft.013"] = {
+		"Il grunt di guardia vicino alla discesa per Ragefire Chasm incide una tacca su un bastone per ogni gruppo che scende, e la sbarra quando risale. Quasi tutte le tacche sono sbarrate. Non tutte.",
+		"Accanto alla via che scende a Ragefire Chasm un grunt tiene un bastone delle tacche: una per ogni gruppo che va giù, un taglio sopra per ogni gruppo che torna su. Quelle senza taglio non le conto.",
+	},
+	["org.subzone_enter.w21.cleft.014"] = {
+		"Permesso. Permesso. Qualcuno sposta questo voidwalker, o devo girarci attorno?",
+		"Scusate. Pardon. Passo io. Non tu, quello grosso e freddo.",
+	},
+	["org.subzone_enter.w21.cleft.015"] = {
+		"fa scorrere lo sguardo sui piccoli segni graffiati nella roccia all'altezza della spalla, un uncino, un anello, una linea sbarrata, che a {g:lui|lei} non dicono nulla e a qualcun altro, chiaramente, parecchio.",
+		"nota minuscoli segni incisi nelle pareti della Cleft accanto a certe porte, una tacca, un cerchio, un trattino, un alfabeto privato per gli occhi di qualcun altro.",
+	},
+	["org.subzone_enter.w21.cleft.016"] = {
+		"Con tutta la sua fama, anche la Cleft vive di piccole commissioni: una figura incappucciata che mercanteggia sui lacci degli stivali, uno stregone che chiede chi ripari le ciotole crepate, un imp mandato a prendere il pane.",
+		"Nella Cleft mi aspettavo congiure. Trovo un ladro che discute sul prezzo del filo e una strega che vuole farsi rifare l'orlo del mantello.",
+	},
+	["org.subzone_enter.w21.cleft.017"] = {
+		"si lascia alle spalle il riverbero del giorno dopo pochi passi nella Cleft of Shadow, dove potrebbe essere un'ora qualsiasi.",
+		"sbatte le palpebre mentre la luce dura del giorno cede alle torce della Cleft, e il caldo scivola via dalle spalle come uno zaino posato a terra.",
+	},
+	["org.subzone_enter.w21.cleft.018"] = {
+		"Quaggiù c'è un calzolaio che fa soltanto stivali dalla suola morbida. Prova ogni paio camminando su un vassoio di foglie secche, e vende solo quelli che non riesce a sentire.",
+		"Un calzolaio della Cleft sparge foglie secche sul pavimento della sua nicchia e ci fa camminare sopra ogni paio nuovo. Se scricchiolano, tornano al banco.",
+	},
+	["org.subzone_enter.w21.cleft.019"] = {
+		"fa spazio a un tauren che si apre la strada con cura nella Cleft, curvo sotto la volta, le corna inclinate per non urtare la roccia, mormorandole scuse.",
+		"si scosta mentre un tauren attraversa la Cleft piegato quasi in due, una mano sulla roccia sopra la testa, con l'aria paziente di chi quel corno, qui, l'ha già sbattuto.",
+	},
+	["org.subzone_enter.w21.cleft.020"] = {
+		"La Cleft ha le sue buone maniere. Dove il passaggio si stringe, due che si incrociano si girano entrambi di fianco, petto contro petto, e nessuno offre all'altro la schiena.",
+		"Nei punti stretti della Cleft la gente si incrocia faccia a faccia, scivolando di lato come in una danza. Voltare la schiena a uno sconosciuto, quaggiù, sarebbe peggio che scortese.",
+	},
+	["org.subzone_enter.w21.cleft.021"] = {
+		"si accorge che la polvere sotto i piedi cambia colore nella Cleft: il rosso della città si scurisce di fuliggine e cenere che nessuno si prende la briga di spazzare.",
+		"sfrega il suolo con la punta del piede e vede che la polvere della Cleft è quasi nera, il rosso della città macinato sotto anni di fuliggine.",
+		"lascia deboli impronte scure sulla pietra, con la polvere fuligginosa della Cleft attaccata agli stivali al posto del solito rosso.",
+	},
+	["org.subzone_enter.w21.cleft.022"] = {
+		"Una figura sta immobile su una soglia mentre passo. Solo dopo vedo un addestratore farle un cenno dall'altra parte. Credo che la lezione fossi io.",
+		"Qualcuno, su una soglia, non si è mosso di un pelo da quando ho messo piede nella Cleft. Poi una voce dal buio dice «meglio», e l'immobilità se ne va. L'esercizio, a quanto pare, ero io.",
+	},
+	["org.subzone_enter.w21.cleft.023"] = {
+		"Occhio al gradino. E a quello dopo. E a chi è seduto su quello dopo ancora.",
+		"Guarda dove metti i piedi, quaggiù. Metà delle ombre ha le gambe.",
+	},
+	["org.subzone_enter.w21.cleft.024"] = {
+		"si imbatte in un venditore che brucia resina dolce in una ciotola d'argilla all'imbocco di una nicchia; il fumo dovrebbe coprire lo zolfo della Cleft e riesce solo a fargli compagnia.",
+		"attraversa una scia d'incenso uscita da una soglia, dolce e pesante, con lo zolfo della Cleft sotto come una seconda voce.",
+		"coglie l'odore di resina bruciata da una porta, dolce come miele sopra il puzzo di zolfo, come se qualcuno cercasse di rendere la Cleft presentabile.",
+	},
+	["org.subzone_enter.w21.cleft.025"] = {
+		"Nelle valli i bambini sono dappertutto, tra i piedi. Nella Cleft non ne gioca nemmeno uno. Non c'è stato bisogno di proibirlo, credo: lo sanno e basta.",
+		"Nella Cleft non ci sono bambini. I piccoli che sfiancano il resto di Orgrimmar si fermano al suo margine come cani davanti a un fiume freddo.",
+		"Ogni angolo della città ha i suoi bambini, tranne questo. Arrivano fino al bordo della Cleft, guardano dentro e tornano ai loro giochi.",
+	},
+	["org.subzone_enter.w21.drag.001"] = {
+		"imbocca una curva del Drag mentre un barile si libera da qualche parte in salita e scende rimbalzando, con un bottaio paonazzo tre passi dietro che perde terreno.",
+		"si appiattisce contro una soglia mentre una botte fuggita rotola giù per la curva della via, inseguita dal suo artefice che la chiama per nome.",
+		"schiva un barile vuoto che scende da solo per faccende sue, mentre più su un bottaio maledice la pendenza del Drag con dovizia di particolari.",
+	},
+	["org.subzone_enter.w21.drag.002"] = {
+		"Un giovane apprendista va di porta in porta lungo il Drag a chiedere un secchio di vapore. Ogni fabbro lo manda dal successivo, serissimo. È d'accordo tutta la via.",
+		"Qualcuno ha mandato un apprendista giù per il Drag a cercare un martello per mancini. Ogni bottega giura che ce l'ha quella prima. I grandi si stanno divertendo fin troppo.",
+		"Un apprendista con gli occhi sgranati ha chiesto a mezzo Drag un barattolo di vernice a righe. L'altra metà aspetta il suo turno, solennissima.",
+	},
+	["org.subzone_enter.w21.drag.003"] = {
+		"attira lo sguardo socchiuso di un sarto sulla soglia, che squadra ogni passante e detta le misure a un apprendista, il quale le segna col gesso su una tavola: spalle, vita, una parolaccia per il tauren.",
+		"viene {g:misurato|misurata} dall'occhio di un sarto passando, senza averlo chiesto; un numero borbottato, un apprendista che lo scarabocchia, e la cosa sembra chiusa lì.",
+	},
+	["org.subzone_enter.w21.drag.004"] = {
+		"Sopra una porta del Drag qualcuno ha inciso il segno di un clan, una testa di lupo; sopra la successiva, un clan diverso. Il terzo stipite ha il suo segno raschiato via con tanta forza che il legno è ancora chiaro.",
+		"Vecchi segni di clan intagliati negli architravi lungo il Drag, uno per porta, come nomi in un appello. Qua e là uno è stato scalpellato via, e nessuno nella via dice di chi fosse.",
+		"Gli stipiti di questa via si ricordano dei clan: un segno bruciato qui, uno inciso là. Uno è stato tolto di netto a colpi di scalpello, e di recente, da qualcuno che aveva fretta.",
+	},
+	["org.subzone_enter.w21.drag.005"] = {
+		"segue l'odore fino a un cuoco che sbatte tondi di pane piatto su una pietra rovente e li gira a dita nude, più svelto di quanto l'occhio riesca a seguire.",
+		"indugia accanto a un cuoco che stacca le focacce da una lastra rovente con polpastrelli che sembrano aver smesso da tempo di sentire qualsiasi cosa.",
+	},
+	["org.subzone_enter.w21.drag.006"] = {
+		"Sono {g:entrato|entrata} nel Drag per un ago. Esco con un ago, un ditale e una predica.",
+		"Un ago. Mi serve solo quello. Non mostratemi i ditali.",
+	},
+	["org.subzone_enter.w21.drag.007"] = {
+		"Sotto le tende del Drag la luce passa attraverso pelli tese, lo stesso arancione stanco a ogni ora. Qui si potrebbe perdere un giorno intero e accorgersene solo dalla borsa.",
+		"Questa via vive sotto le sue tettoie, pelle e tela sovrapposte orlo a orlo, così il Drag ha sempre il colore di una lampada abbassata.",
+	},
+	["org.subzone_enter.w21.drag.008"] = {
+		"raggiunge la curva più stretta del Drag mentre un cavaliere su lupo e un facchino col carretto si trovano muso a muso; nessuno dei due arretra, e la coda dietro comincia a parteggiare.",
+		"resta {g:bloccato|bloccata} dietro uno stallo a una curva della via: un lupo, un carretto, due padroni testardi e una folla crescente che piazza piccole scommesse.",
+	},
+	["org.subzone_enter.w21.drag.009"] = {
+		"La borsaia del Drag riempie ogni zaino di ghiaia e lo sbatte contro il muro prima di venderlo. La folla fa un passo indietro per abitudine. Finora ha perso il muro.",
+		"C'è una venditrice di borse, quaggiù, che prova ogni cucitura caricando la sacca di sassi e scagliandola contro un palo. I compratori guardano con vero interesse. Nessuno vuole essere quello che chiede un rimborso.",
+		"Prima che uno zaino lasci il suo banco, la borsaia lo riempie di sassi e lo sbatte per terra due volte. I clienti sobbalzano. Gli zaini no.",
+	},
+	["org.subzone_enter.w21.drag.010"] = {
+		"si affianca a un ciabattino su uno sgabello basso, con una fila di chiodi stretta fra le labbra, che pianta bullette in una suola e riesce comunque a litigare col cliente.",
+		"rallenta vicino a un calzolaio che parla con la bocca piena di chiodi, ogni parola un piccolo sibilo, senza farne cadere uno né sbagliare un colpo di martello.",
+	},
+	["org.subzone_enter.w21.drag.011"] = {
+		"Qualcuno ha inchiodato un guanto spaiato a questo palo, in attesa del padrone. Aspetta da un pezzo. Comincia ad avere l'aria compiaciuta.",
+		"Un guanto solo inchiodato accanto alla porta. Non è mio. Però ho controllato tutte e due le mani.",
+		"C'è un guanto inchiodato a quel palo. Qualcuno ha perso il calore di una mano e il Drag glielo tiene da parte.",
+	},
+	["org.subzone_enter.w21.drag.012"] = {
+		"s'infila nel Drag mentre la pioggia trova le tettoie e scivola giù dai bordi in cento corde sottili, e ogni bottegaio si affretta a tirare la merce al coperto.",
+		"passa attraverso una cortina di pioggia che cola da una tenda sfondata, in una via dove tutti i mercanti hanno all'improvviso da fare a spingere indietro i banchi.",
+	},
+	["org.subzone_enter.w21.drag.013"] = {
+		"Una candelaia del Drag immerge gli stoppini in una pentola di sego, un'immersione dopo l'altra, e li appende a coppie a rapprendersi. Lavoro lento per una città che corre; lei non sembra essersene accorta.",
+		"File di candele a metà pendono a coppie sopra una pentola di sego, ognuna un poco più grossa della precedente. La candelaia le immerge con la pazienza di chi ha la via tutta per sé.",
+	},
+	["org.subzone_enter.w21.drag.014"] = {
+		"nota una polvere fine e scintillante calpestata sul gradino di una bottega del Drag, e il lieve formicolio alle dita di chiunque indugi davanti alla sua porta.",
+		"scavalca una soglia cosparsa di qualcosa che brilla appena sotto i piedi, davanti a una bottega che vende polveri che nessun altro nella via vuole toccare.",
+	},
+	["org.subzone_enter.w21.drag.015"] = {
+		"Tutto quello che si compra nel Drag arriva con un consiglio in omaggio. Come ungerlo, come portarlo, cosa sbagliavo con quello di prima. Il consiglio vale più o meno quanto costa.",
+		"In questa via la merce ha un prezzo e le opinioni sono gratis. Nessun banco mi lascia andare senza spiegarmi dove sbaglio.",
+		"Compri una cinghia nel Drag e ti danno la cinghia, più tutta la visione del mondo del venditore, senza sovrapprezzo.",
+	},
+	["org.subzone_enter.w21.drag.016"] = {
+		"guarda un troll contrattare senza dire una parola, reggendo soltanto lo sguardo del mercante e la moneta, finché il mercante, a disagio, toglie un pezzo d'argento.",
+		"sosta presso un banco dove un cliente Darkspear non dice niente, batte solo le monete sul bancone una per una, e il prezzo scende fino a incontrarle.",
+	},
+	["org.subzone_enter.w21.drag.017"] = {
+		"Metà degli stivali sulle prime linee dell'Orda è stata cucita in questa via. Si sente: scricchiolano tutti uguale.",
+		"Ogni grunt su ogni muro che ho superato cammina nel cuoio del Drag. Stesso punto, stesso scricchiolio.",
+	},
+	["org.subzone_enter.w21.drag.018"] = {
+		"Il Drag è in pendenza, su questo sono tutti d'accordo. Su quale verso, no. L'ho percorso in entrambe le direzioni ed è stato in salita tutto il tempo.",
+		"C'è una legge del Drag su cui i peon giurano: da qualunque parte porti qualcosa di pesante, è in salita.",
+	},
+	["org.subzone_enter.w21.drag.019"] = {
+		"sorprende un grunt di ronda che si ferma a un banco di dolci, compra un cartoccio di noci al miele e se lo intasca con un'occhiataccia che sfida chiunque ad averlo visto.",
+		"scorge un grunt enorme che interrompe il giro del Drag per un cono di noci zuccherate, ne mangia una e riparte con l'aria doppiamente feroce, per compensare.",
+		"nota un grunt fermarsi davanti al vassoio di un dolciaio, guardare da entrambe le parti della via e comprare due focaccine al miele che spariscono nel guanto d'arme.",
+	},
+	["org.subzone_enter.w21.drag.020"] = {
+		"Una porta lungo il Drag è annerita fino all'architrave, e dentro il vecchio telaio bruciato ne è appesa una nuova di zecca. L'alchimista che sta lì ha evidentemente deciso che è normale.",
+		"Una bottega d'alchimista con lo stipite carbonizzato e una porta nuova montata dentro, la terza, mi dice un vicino. Il vicino ha spostato il suo banco due porte più in là.",
+		"La porta dell'alchimista è nuova; il telaio intorno è carbone. Ogni vicino della via tiene un secchio pieno a portata di mano.",
+	},
+	["org.subzone_enter.w21.drag.021"] = {
+		"sente il Drag svegliarsi intorno a sé: imposte che si abbassano una a una con fracasso, e ogni bottegaio che spazza la polvere di ieri sulla soglia del vicino.",
+		"percorre un Drag che apre appena gli occhi: imposte che sbattono, un primo fuoco convinto a prendere sotto una piastra, e due vicini che già litigano su di chi sia la polvere.",
+	},
+	["org.subzone_enter.w21.drag.022"] = {
+		"Un conciatore quaggiù cuce con una mano e un uncino, e l'uncino fa il lavoro più fine. La mano l'ha persa sotto un muro o l'altro e dice che l'uncino ha maniere migliori.",
+		"Il miglior cucitore di questa via lavora con un uncino legato dove prima c'era una mano. Infila l'ago coi denti, e nessuno ha mai osato offrirgli aiuto.",
+	},
+	["org.subzone_enter.w21.drag.023"] = {
+		"cammina sotto pezze di stoffa tese attraverso il Drag da un tetto all'altro, così che la via scorre sotto una marea lenta di bruno, ocra e un rosso duro.",
+		"si abbassa, senza bisogno, sotto teli tesi da un lato all'altro della via, messi a prendere aria appena sopra le teste più alte; un tauren più avanti si abbassa anche lui, e a ragione.",
+	},
+	["org.subzone_enter.w21.drag.024"] = {
+		"Lisciva, sego e cipolle. Qualcuno nel Drag fa il sapone e qualcun altro il pranzo. Spero.",
+		"Quell'odore è sapone in cottura. O uno stufato. In questa via non ci scommetterei.",
+	},
+	["org.subzone_enter.w21.hold.001"] = {
+		"entra in Grommash Hold dietro a un peone con una bracciata di legna per i bracieri, che posa i ciocchi uno alla volta, piano, come se ognuno potesse svegliare qualcuno.",
+		"segue un peone dentro la sala, una bracciata di legna contro il petto, e guarda i ciocchi finire su un braciere uno per uno, senza un colpo.",
+		"varca la soglia dietro a un peone con un cesto di legnetti, che alimenta il braciere più vicino rametto dopo rametto, con la cura di un guaritore.",
+	},
+	["org.subzone_enter.w21.hold.002"] = {
+		"Che il seggio in fondo sia occupato o vuoto, la sala gli sta di fronte allo stesso modo. I Kor'kron restano come resterebbero comunque, e le voci restano basse.",
+		"Certi giorni il Capoguerra siede lì, altri è lontano dalla città. Dai Kor'kron non lo capisci. Sorvegliano una sedia vuota con lo stesso rigore di una piena.",
+		"La sala non cambia maniere per un trono vuoto. Che ci sia seduto qualcuno o no, tutti parlano come se potesse ascoltare.",
+	},
+	["org.subzone_enter.w21.hold.003"] = {
+		"indugia appena dentro Grommash Hold per lasciare che gli occhi si abituino, mentre i bracieri tirano fuori la sala un pezzo dopo l'altro: una trave, una pelle, un elmo, un volto.",
+		"resta un passo oltre la soglia mentre la penombra della sala si mette in ordine: prima le guardie, poi il lungo pavimento, poi il fondo, dove sta il seggio.",
+		"attende un momento sulla soglia che la sala emerga dalla penombra, il fondo per ultimo.",
+	},
+	["org.subzone_enter.w21.hold.004"] = {
+		"La città porta il nome di Orgrim Doomhammer e la sala quello di Grom Hellscream. Due capi morti che reggono il posto fra tutti e due, e il Capoguerra vivo che cammina sotto entrambi.",
+		"Orgrimmar per Doomhammer, la sala per Hellscream. Qui i luoghi più grandi portano il nome dei morti e si riempiono di vivi, e mi pare l'ordine giusto.",
+		"Una città per un capo caduto, una sala per un altro. Thrall le ha costruite entrambe e non ha messo il suo nome su nessuna.",
+	},
+	["org.subzone_enter.w21.hold.005"] = {
+		"aspetta alla porta accanto a un messaggero con un messaggio sigillato e la polvere fino alle ginocchia, che sposta il peso da un piede all'altro finché un Kor'kron non piega la testa e lo lascia passare.",
+		"fa strada a un messaggero che entra di fretta con una bisaccia stretta al petto, e che rallenta al passo appena varcata la soglia, come pare facciano tutti qui.",
+		"si scansa per un corriere impolverato che esce dalla sala a rotta di collo, dopo aver camminato con gran compostezza fino all'ultimo passo prima della porta.",
+	},
+	["org.subzone_enter.w21.hold.006"] = {
+		"C'è silenzio, qui dentro. Le opinioni me le tengo in tasca.",
+		"Stivali puliti, voce bassa, niente battute. Coraggio.",
+		"Comportarsi bene. Qualunque cosa voglia dire, per me.",
+	},
+	["org.subzone_enter.w21.hold.007"] = {
+		"Non ho niente da chiedere a nessuno qui dentro. Ogni tanto entro solo per stare un po' dove l'Orda viene tenuta insieme, ed esco con la schiena un po' più dritta.",
+		"Nessuna supplica, nessuna commissione. Certi giorni entro in Grommash Hold solo per ricordarmi a cosa servono tutte quelle marce.",
+	},
+	["org.subzone_enter.w21.hold.008"] = {
+		"segue, senza volerlo, la traccia consumata nel pavimento della sala che va dalla porta verso il seggio in fondo, levigata da ogni postulante che l'ha percorsa.",
+		"nota un sentiero più chiaro consumato nel pavimento di Grommash Hold, dalla porta al trono: gli stivali di un intero popolo che lucidano la stessa linea.",
+		"avanza lungo una linea sbiadita dal passaggio nel pavimento, dalla porta al seggio in fondo: la strada più battuta della sala, e la più breve.",
+	},
+	["org.subzone_enter.w21.hold.009"] = {
+		"Chi siede in fondo a questa sala porta il Doomhammer, dicono i grunt, lo stesso martello che impugnava Orgrim. Un'arma così pesante è soprattutto una promessa.",
+		"Il martello di Orgrim è passato a Thrall, e tutti i clan con lui. In piedi nella sua sala, penso che il martello fosse il più leggero dei due.",
+		"Thrall raccolse il Doomhammer da un Orgrim morente, così raccontano gli anziani. Con il martello venne un popolo intero, e con il popolo questa sala.",
+	},
+	["org.subzone_enter.w21.hold.010"] = {
+		"sente uno spiffero entrare con {g:lui|lei} nella sala e vede ogni fiamma dei bracieri piegarsi dalla stessa parte, verso il fondo, prima di raddrizzarsi.",
+		"guarda le fiamme dei bracieri inchinarsi verso il trono mentre l'aria della valle spinge dalla porta, e poi tornare dritte.",
+	},
+	["org.subzone_enter.w21.hold.011"] = {
+		"Forza a questa sala, e a chi la custodisce.",
+		"Pace in questa sala. Là fuori, si vedrà.",
+		"Un buon tetto. Che impedisca a ogni lite che ascolta di diventare una guerra.",
+	},
+	["org.subzone_enter.w21.hold.012"] = {
+		"Sono nella sala del Capoguerra in persona e nessuno ha sguainato un'arma. O l'Orda mantiene la pace meglio di quanto dicano dalle mie parti, o aspettano di vedere che cosa faccio.",
+		"Alla porta nessuno mi ferma. Mi spaventa più che se l'avessero fatto.",
+	},
+	["org.subzone_enter.w21.hold.013"] = {
+		"scorge un anziano tauren seduto a gambe incrociate sul pavimento della sala, l'unica figura seduta là dentro, che aspetta con l'aria di chi ha aspettato che i fiumi cambiassero corso.",
+		"aggira un vecchio tauren sistemato a terra vicino alla parete, gli occhi socchiusi, chiaramente pronto ad aspettare tutto il necessario e un po' di più.",
+	},
+	["org.subzone_enter.w21.hold.014"] = {
+		"Grommash Hold sa di fumo vecchio penetrato a fondo nelle pelli e nel legno, d'olio da ferro, di tanta gente che aspetta. Non è sgradevole. È l'odore di un posto che viene usato.",
+		"Fumo impregnato nelle travi, olio sulle armature, polvere dei mantelli di cento viandanti: la sala ha l'odore di una stanza dove non passa un momento senza qualcuno.",
+	},
+	["org.subzone_enter.w21.hold.015"] = {
+		"sguscia accanto a un postulante vicino alla porta che prova un discorso senza emettere un suono, le labbra che si muovono, un dito che spunta i punti, e ricomincia da capo ogni volta che un Kor'kron guarda da quella parte.",
+		"intravede un giovane orco che ripete in silenzio le stesse poche frasi, appoggiato alla parete, per prepararle alla lunga camminata fino in fondo.",
+	},
+	["org.subzone_enter.w21.hold.016"] = {
+		"Le guerre cominciano in sale come questa. Scommetterei che in questa ne vengono fermate di più, in silenzio, con una frase che fuori nessuno sente mai.",
+		"Nessuno canta le battaglie che non ci sono state. Ho il sospetto che molte siano state annullate proprio qui, a voce bassa, davanti a una tazza.",
+		"Ogni lite che arriva in questa sala entra rumorosa ed esce in silenzio. Credo che un Capoguerra serva soprattutto a questo.",
+	},
+	["org.subzone_enter.w21.hold.017"] = {
+		"Non indicare. Qui dentro nessuno indica. Usa il mento, come tutti gli altri.",
+		"Smetti di fissare il trono. È una sedia. Una sedia molto importante.",
+		"Se devi grattarti, grattati piano. I movimenti bruschi rendono pensierose le guardie.",
+	},
+	["org.subzone_enter.w21.hold.018"] = {
+		"sobbalza a uno schiocco secco da un braciere, un nodo del legno che scoppia, e vede che nessun Kor'kron nella sala ha nemmeno battuto ciglio.",
+		"trasale quando un ciocco si spacca nel braciere con un colpo secco come un arco spezzato, e a quanto pare è {g:l'unico|l'unica} in tutta la sala.",
+	},
+	["org.subzone_enter.w21.hold.019"] = {
+		"La sala del Capoguerra è fatta come la grande tenda di un accampamento di guerra che un giorno ha deciso di restare: legno per i pali, pelli per il telo, e posto per far sedere tutta la banda.",
+		"Al di là delle dimensioni, questa sala è la tenda di un capo, di quelle che i clan piantavano in marcia, solo che ha messo radici. Gli orchi hanno costruito la loro sala più grande a forma di partenza.",
+	},
+	["org.subzone_enter.w21.hold.020"] = {
+		"sente il piccolo schiocco delle perline di un emissario Darkspear che si sposta lungo la parete, un suono che altrove a Orgrimmar sparirebbe e qui sembra riempire la sala.",
+		"nota quanto lontano arrivino i piccoli suoni in Grommash Hold: le perline d'osso di un troll che battono, la fibbia di un goblin, un colpo di tosse in fondo, ciascuno distinto nel silenzio.",
+		"coglie il lieve tintinnio delle perline di un troll, uno scricchiolio di cuoio, un piede strascicato, suoni che il resto della città copre e che questa sala conserva uno per uno.",
+	},
+	["org.subzone_enter.w21.hold.021"] = {
+		"Un peone spazza il pavimento del Capoguerra e si lamenta della paga con i Kor'kron, che lo ignorano. In quel brontolio c'è tutto un popolo libero.",
+		"Anche questa sala ha il suo spazzino, e lo spazzino ha idee precise sulla sua paga. Nei campi, mi dicono, le idee non le chiedeva nessuno. Qui le si ignora e basta, ed è un progresso.",
+		"Il peone che spazza Grommash Hold borbotta sulla paga per tutto il tempo, e nessuno lo ferma. Non saprei immaginare un segno dei tempi migliore.",
+	},
+	["org.subzone_enter.w21.honor.001"] = {
+		"entra nella Valley of Honor mentre un peone trascina un largo rastrello sul cortile, cancellando i segni dell'ultimo incontro prima che arrivi la coppia successiva.",
+		"trova un peone che rastrella il campo d'addestramento, passata dopo passata, finché dell'ultimo scontro non resta più un'impronta.",
+		"costeggia un peone che spiana il cortile tra un incontro e l'altro, e che si ferma col rastrello alzato solo il tempo che i due nuovi prendano posto.",
+	},
+	["org.subzone_enter.w21.honor.002"] = {
+		"rallenta accanto a un troll che infila paglia fresca in un fantoccio d'addestramento che ha perso quasi tutta l'imbottitura, e la testa, e un braccio.",
+		"guarda qualcuno ricucire con lo spago grosso un fantoccio sventrato, mentre una fila di grunt con le nocche fasciate aspetta che torni abbastanza intero da prenderlo a pugni.",
+		"nota un mucchio di fantocci sfondati ai margini del cortile, in attesa di paglia nuova come malati alla porta di un guaritore.",
+	},
+	["org.subzone_enter.w21.honor.003"] = {
+		"Le rastrelliere di questa valle tengono ogni forma d'arma che qualcuno a Orgrimmar abbia mai impugnato, e ogni manico è consumato e scuro negli stessi due punti, dove vanno le mani.",
+		"Bastoni, mazze, asce, lunghe aste con un uncino in cima: tutto legno, tutto scheggiato, tutto lucidato di nero sull'impugnatura da mille palmi prima del mio.",
+		"Ogni manico d'allenamento su queste rastrelliere ha due chiazze scure dove si posano le mani. Chi li ha intagliati ci aveva visto giusto al primo colpo.",
+	},
+	["org.subzone_enter.w21.honor.004"] = {
+		"fa una smorfia allo stridio di una mola, da qualche parte nella Valley of Honor, dove un peone gira la manovella e un fabbro accosta un filo alla ruota in uno sprazzo di scintille arancioni.",
+		"si inoltra nella valle sotto il lungo lamento di una mola, la cui manovella è affidata a un peone che pare girarla da quando hanno alzato le mura.",
+		"sente la mola prima di vederla: un sibilo sottile che sale, un ventaglio di scintille, e il grugnito soddisfatto di un fabbro.",
+	},
+	["org.subzone_enter.w21.honor.005"] = {
+		"Un'artigiana seduta su una cassa rovesciata, vicino ai cacciatori, rifila penne con l'unghia del pollice senza mai abbassare lo sguardo. Le mani sanno il lavoro; gli occhi sono tutti per i pettegolezzi.",
+		"In questa valle c'è chi impenna aste a gambe incrociate nella polvere, un fascio di legni nudi da una parte e un mucchio di lavoro finito dall'altra, chiacchierando senza sosta.",
+	},
+	["org.subzone_enter.w21.honor.006"] = {
+		"Odore di polvere nera e sopracciglia bruciacchiate. Qualcuno sta provando un fucile nuovo.",
+		"Quel botto? Qualcuno che dimostra che il fucile funziona. Al fucile, soprattutto.",
+		"Fumo di polvere, cuoio strinato e un cacciatore che giura che doveva andare così. Eccola, la Valley of Honor.",
+	},
+	["org.subzone_enter.w21.honor.007"] = {
+		"gira attorno al barile dell'acqua ai margini del cortile, dove due compagni d'allenamento che fino a un attimo fa cercavano di rompersi le costole adesso si passano il mestolo.",
+		"sosta accanto a un barile e a un unico mestolo ammaccato, l'unico punto della valle dove nessuno si allena, e dove prima o poi passano tutti.",
+		"si accorge che il posto più affollato della Valley of Honor è un barile d'acqua: il mestolo passa di pugno in pugno senza una parola, e dopo si riprende a combattere.",
+	},
+	["org.subzone_enter.w21.honor.008"] = {
+		"Prima di un incontro, in questo cortile, i due si battono gli avambracci una volta, forte. Non è una regola scritta da nessuna parte. Saltala, mi ha detto un addestratore, e ti ritrovi contro tutta la valle.",
+		"Ogni coppia del cortile comincia allo stesso modo: avambraccio contro avambraccio, un colpo, nessuna parola. Per i grunt uno scontro senza quel gesto non vale, e una vittoria senza vale contro di te.",
+	},
+	["org.subzone_enter.w21.honor.009"] = {
+		"passa accanto a un minatore che si sciacqua a un abbeveratoio vicino alle fucine, l'acqua che si tinge color ruggine attorno a polsi che non torneranno mai del tutto puliti.",
+		"aggira un abbeveratoio dove un minatore immerge testa e braccia, riemerge grondando rosso e si scrolla come un lupo uscito da un fiume.",
+	},
+	["org.subzone_enter.w21.honor.010"] = {
+		"Onore, dice il nome della valle. Quello che vedo è ripetizione: lo stesso taglio, lo stesso passo, la stessa caduta, cento volte prima di cena. Forse la parola voleva dire proprio questo.",
+		"Questo posto l'hanno chiamato Onore, e poi l'hanno riempito di esercizi. Qui l'onore non lo regala nessuno: ti danno la stessa lezione finché smette di far male.",
+		"Onore fa pensare a stendardi e canzoni. In questa valle ha il suono di un grunt che gira sullo stesso piede, una volta e un'altra, finché il piede smette di protestare.",
+	},
+	["org.subzone_enter.w21.honor.011"] = {
+		"In questa valle tutti camminano come se stessero per essere messi alla prova. Adesso cammino così anch'io. Meraviglioso.",
+		"Dieci passi nella Valley of Honor e le spalle mi si sono raddrizzate da sole. Nessuno gliel'aveva chiesto.",
+	},
+	["org.subzone_enter.w21.honor.012"] = {
+		"trova la Valley of Honor quasi deserta col buio: un grunt da solo sotto una torcia, che ripete lo stesso esercizio come se tutta la valle lo stesse ancora guardando.",
+		"entra nella valle immersa nel buio mentre le torce crepitano attorno al cortile vuoto, dove un unico allievo insiste, e il tonfo di ogni colpo arriva fino alle mura.",
+	},
+	["org.subzone_enter.w21.honor.013"] = {
+		"Vicino alle stalle una mannaia batte un tempo regolare su un ceppo. Sfamare le bestie dei cacciatori dev'essere il mestiere da macellaio più indaffarato della città, e nessuno ringrazia mai il macellaio.",
+		"I garzoni delle stalle tagliano carne tutto il giorno per gli animali nei recinti. Uno di loro mi ha detto che un orso mangia come tre grunt e si lamenta come quattro.",
+	},
+	["org.subzone_enter.w21.honor.014"] = {
+		"si ferma dietro un gruppetto di allievi mentre un addestratore incide due impronte nella polvere col calcio di una lancia e ci fa mettere i piedi a ciascuno, uno dopo l'altro.",
+		"sbircia oltre le spalle altrui un addestratore che disegna piedi nella polvere con un bastone, una lezione su dove stare che gli allievi seguono come se ne andasse della vita, e forse è così.",
+	},
+	["org.subzone_enter.w21.honor.015"] = {
+		"Se ci si ferma nella Valley of Honor, il rumore si scompone nei suoi mestieri: corde che vibrano ai bersagli, ferro sul ferro alle fucine, un felino che soffia nei recinti, e sopra tutto qualche addestratore.",
+		"A occhi chiusi potrei disegnare questa valle a orecchio: corde che ronzano da una parte, un'incudine dall'altra, un ringhio dai recinti, e il latrato di un addestratore che sembra arrivare da ogni dove.",
+	},
+	["org.subzone_enter.w21.honor.016"] = {
+		"Se senti un urlo, abbassati. In questa valle un urlo di solito arriva con qualcosa attaccato.",
+		"Tieniti alla larga dal cortile. Gli allievi mirano l'uno all'altro, e sbagliano spesso.",
+		"Qui meglio stare ai bordi. Metà di quello che si mena in quel cortile finisce dove non doveva.",
+	},
+	["org.subzone_enter.w21.honor.017"] = {
+		"scorge una fila di ragazzini appollaiati su una staccionata ai margini del cortile, che copiano con dei bastoni ogni mossa delle coppie in allenamento, sempre con mezzo tempo di ritardo.",
+		"vede piccoli orchi e piccoli troll in fila su uno steccato accanto al campo d'addestramento, bastone in mano, che sussultano tutti insieme ogni volta che un colpo vero va a segno.",
+	},
+	["org.subzone_enter.w21.honor.018"] = {
+		"Alcune delle facce di questo cortile un giorno staranno accanto a me, da qualche parte lontano da qui. Le guardo un po' più a lungo di quanto la creanza permetta, per riconoscerle.",
+		"L'Orda su cui un giorno mi appoggerò si sta facendo proprio qui, un livido dopo l'altro. Passando faccio un cenno agli allievi. Qualcuno, sorpreso, lo ricambia.",
+	},
+	["org.subzone_enter.w21.honor.019"] = {
+		"scivola accanto al banco di un armaiolo dove un apprendista lavora con la bocca piena di rivetti, li sputa nel palmo uno per volta e li ribatte senza nemmeno guardare.",
+		"indugia vicino a un banco di armature rattoppate dove un apprendista, le labbra strette su una fila di rivetti, li fissa uno dopo l'altro con un martelletto e una pazienza ancora più piccola.",
+	},
+	["org.subzone_enter.w21.honor.020"] = {
+		"I manici d'allenamento spezzati si ammucchiano dietro le rastrelliere in una catasta più alta di un tauren. Finiscono nei fuochi delle fucine, mi dicono, così ogni lezione andata in pezzi fa ancora una giornata di lavoro.",
+		"In questa valle niente di rotto va sprecato: un manico spezzato diventa legna, un fantoccio squarciato riceve paglia nuova, e un grunt finito a terra si rialza e riprova la stessa mossa.",
+	},
+	["org.subzone_enter.w21.honor.021"] = {
+		"Sentili. «Più basso. Più svelto. Da capo.» Non mi sto nemmeno allenando e mi fanno già male le ginocchia.",
+		"Gli addestratori qui hanno tutti le stesse tre parole e un modo diverso di urlarle.",
+		"Una dozzina di passi in questa valle e ho già voglia di chiedere scusa alle ginocchia.",
+	},
+	["org.subzone_enter.w21.honor.022"] = {
+		"I bersagli di paglia dalla parte dei cacciatori sono irti come istrici arrabbiati. Gli anelli dipinti sono sbiaditi da tempo; non servono più, dicono, perché il centro è dove i buchi sono più fitti.",
+		"Ogni tanto qualcuno ridipinge gli anelli sui bersagli dei cacciatori. La volta dopo che passo sono già spariti sotto un boschetto di aste impennate, e dal centro esce la paglia.",
+	},
+	["org.subzone_enter.w21.honor.023"] = {
+		"arriva nella Valley of Honor sotto la pioggia e trova il cortile ridotto a fango rosso e gli addestratori contentissimi: anche tenersi in piedi, gridano, è una lezione.",
+		"si addentra nella valle fradicia di pioggia, dove le coppie scivolano nel fango rosso mentre un addestratore, all'asciutto sotto una tettoia, chiama ogni caduta per nome.",
+	},
+	["org.subzone_enter.w21.honor.024"] = {
+		"Vicino alle fucine il minerale è ammucchiato per colore: il rame venato di verde nel mucchio grande, lo stagno opaco in uno piccolo, e ogni tanto un unico pezzo d'argento messo da parte su un panno, come un ospite di riguardo.",
+		"Qualcuno, vicino alle fucine, tiene un pezzo di minerale d'argento su un panno piegato, ben lontano dal rame comune, e ogni minatore che passa gli lancia un'occhiata come i grunt la lanciano a uno stendardo.",
+	},
+	["org.subzone_enter.w21.honor.025"] = {
+		"sente il fischio a due note di un cacciatore attraversare la valle, e vede una mezza dozzina di bestie nei recinti alzare la testa insieme prima di decidere che non era per loro.",
+		"si volta a un fischio secco dalla parte dei cacciatori; ogni animale nei recinti drizza le orecchie, e solo uno, un felino magro, si alza e va.",
+		"coglie il fischio di un cacciatore che arriva sopra il cortile, e la breve delusione collettiva di tutte le bestie nelle stalle che non sono state chiamate.",
+	},
+	["org.subzone_enter.w21.legends.001"] = {
+		"Quasi tutte le sale onorano i morti, che non possono perdere quello che hanno guadagnato. Questa onora i vivi, e un grado tenuto qui scivola via appena chi lo porta smette di combattere.",
+		"Nella Hall of Legends non si tiene niente per sempre. Smetti di scendere in campo, brontolano gli ufficiali, e il grado ti cola via come acqua da una brocca incrinata.",
+		"Altri popoli scolpiscono i loro eroi nella pietra e li lasciano stare. Qui gli eroi devono presentarsi e guadagnarselo ogni settimana, o guardare il proprio nome scendere nella lista.",
+	},
+	["org.subzone_enter.w21.legends.002"] = {
+		"sente due ufficiali della Hall of Legends salutarsi con la stessa breve domanda, su o giù, e rispondere con un grugnito a testa.",
+		"ascolta un ufficiale chiedere a un altro, al posto del saluto, se la settimana è andata su o giù; la risposta è un'alzata di spalle che vuol dire giù, e una pacca sulla spalla che vuol dire alla prossima.",
+		"sente chiedere «su o giù?» due volte dopo pochi passi dentro la sala, ed entrambe le volte la risposta è un grugnito che non chiarisce niente.",
+	},
+	["org.subzone_enter.w21.legends.003"] = {
+		"Stone Guard, Blood Guard, Legionnaire, Centurion. I gradi di questa sala sembrano scolpiti nella roccia antica. Chi li porta ha l'aria di chiunque altro con una spalla dolorante.",
+		"Ogni grado della Hall of Legends ha un nome che sembra un muro: Champion, General, Warlord. Poi un Warlord passa grattandosi un gomito, e il muro si rivela una persona.",
+		"High Warlord. Detto ad alta voce in questa sala sembra una montagna. Poi ne vedi uno mangiare, ed è soltanto qualcuno che ha fame.",
+	},
+	["org.subzone_enter.w21.legends.004"] = {
+		"trova un ufficiale della Hall of Legends seduto su una panca con ago e filo, intento a rammendare un tabarro strappato a punti piccoli e precisi, con un'espressione di concentrazione assoluta.",
+		"incrocia un guerriero pluridecorato chino su un tabarro, che ricuce un lungo strappo con l'ago che lampeggia e la lingua stretta fra le zanne.",
+		"nota che l'ufficiale dall'aria più temibile di tutta la sala sta rammendando un calzino.",
+	},
+	["org.subzone_enter.w21.legends.005"] = {
+		"Metà dei discorsi nella Hall of Legends riguarda Alterac Valley: i Frostwolf, la neve, quale ponte ha tenuto e quale no. Ogni ufficiale qui sembra aver lasciato un pezzo di sé in quel gelo.",
+		"A furia di ascoltare, qui dentro, si potrebbe disegnare la mappa di Alterac Valley con le sole discussioni: chi ha tenuto il ponte, chi ha perso la torre, a chi si deve ancora da bere.",
+		"Gli ufficiali di questa sala discutono di Warsong Gulch come i mandriani discutono dei pascoli: all'infinito, per esperienza, e senza alcuna speranza di far cambiare idea a nessuno.",
+	},
+	["org.subzone_enter.w21.legends.006"] = {
+		"Leggende. Hanno l'aria stanca. Dev'essere un lavoro con orari lunghi, fare la leggenda.",
+		"Ecco dove vanno le leggende fra una battaglia e l'altra. A sedersi, soprattutto.",
+		"Che silenzio. Pensavo che le leggende facessero più rumore.",
+	},
+	["org.subzone_enter.w21.legends.007"] = {
+		"scorge un ufficiale addormentato in piedi contro un pilastro della Hall of Legends, braccia conserte, mento sul petto, armatura ancora allacciata, come se la prossima chiamata alle armi potesse arrivare da un momento all'altro.",
+		"costeggia un guerriero che sonnecchia dritto contro la parete, ancora in armatura completa, che si sveglia a un passo, lo soppesa e torna a dormire nello stesso istante.",
+		"vede un ufficiale lasciarsi cadere su una panca in armatura completa e addormentarsi prima che il fragore abbia smesso di rimbombare.",
+	},
+	["org.subzone_enter.w21.legends.008"] = {
+		"Gli ufficiali qui dentro portano il grado in piccolo: un'insegna alla cintura, un pegno appeso a un laccio. Fuori, nel cortile, ci si vanta a gran voce. Nella sala basta un pezzetto di metallo.",
+		"Alla Hall of Legends nessuno porta il grado su uno stendardo. Pende al fianco, un'insegna grande come una moneta, e chissà come è la prima cosa che il mio occhio trova.",
+		"Il grado, in questa sala, pende dalla cintura, piccolo e semplice. Più grosso è l'ufficiale, a quanto pare, più piccola è l'insegna.",
+	},
+	["org.subzone_enter.w21.legends.009"] = {
+		"I migliori combattenti dell'Orda si radunano sotto questo tetto. In mezzo a loro mi accorgo che mi importano meno i loro gradi che l'Orda per cui hanno combattuto, e se sto facendo la mia parte.",
+		"Ogni ufficiale in questa sala è sceso in campo per la stessa Orda a cui appartengo. I gradi sono loro. L'Orda è di tutti noi, e basta per stare a testa alta là in mezzo.",
+	},
+	["org.subzone_enter.w21.legends.010"] = {
+		"gira al largo da due ufficiali accovacciati su una partita agli aliossi sopra una cassa rovesciata, che scommettono con tale ferocia che nessun altro nella Hall of Legends osa guardare.",
+		"aggira due guerrieri pluridecorati che tirano gli ossi sul pavimento della sala, imprecando a ogni lancio con tutto il vocabolario di una lunga campagna.",
+		"si attarda accanto a un cerchio di ufficiali che scommettono su una partita agli ossi, con poste più alte, a giudicare dalle voci, di qualunque cosa messa all'asta.",
+	},
+	["org.subzone_enter.w21.legends.011"] = {
+		"Leggende, le chiama la sala. Quelle che vedo sono vive, irascibili e chiedono dove sia il cibo. Mi piacciono di più così.",
+		"Mi aspettavo statue. La Hall of Legends è piena di gente vivissima, con le ginocchia rigide e opinioni sulla birra.",
+		"Leggenda fa pensare a qualcosa che si canta dei morti. Queste sono vive, e una si lamenta degli stivali.",
+	},
+	["org.subzone_enter.w21.legends.012"] = {
+		"si imbatte in un gruppetto di ufficiali che, nella sala, si congratulano con uno dei loro all'usanza del posto: una stretta d'avambracci, uno scappellotto sulla nuca e un commento ad alta voce sulla fortuna.",
+		"vede un ufficiale della Hall of Legends accogliere la notizia di un nuovo grado con un breve cenno del capo, e poi restare immobile per un momento, quando gli altri si sono già voltati.",
+		"guarda un ufficiale appena promosso cercare di far finta che non significhi niente, e non riuscirci, agli angoli della bocca.",
+	},
+	["org.subzone_enter.w21.legends.013"] = {
+		"Abbassa la voce. Qui dentro hanno tutti combattuto contro qualcuno più rumoroso di te.",
+		"Non fissare gli ufficiali. Li hanno fissati tipi ben peggiori.",
+		"Giù i piedi dalle panche. Ci si sono seduti tipi migliori di noi.",
+	},
+	["org.subzone_enter.w21.legends.014"] = {
+		"Ogni grado di questa sala è stato vinto contro qualcuno, non contro qualcosa. Gente con un nome, e amici ad aspettarla. Gli ufficiali di questa parte non parlano, e capisco perché.",
+		"Bestie e briganti non contano per gli onori di questa sala. Contano solo altri soldati. Il silenzio, qui dentro, ha un suono diverso.",
+	},
+	["org.subzone_enter.w21.legends.015"] = {
+		"passa accanto a un ufficiale dei Reietti e a un ufficiale orco che dividono una panca della Hall of Legends in un silenzio tranquillo, quello che viene solo dopo aver tenuto la stessa linea sotto lo stesso fuoco.",
+		"nota un tauren e un Reietto, entrambi carichi di onori, seduti fianco a fianco senza dire niente, a loro agio come vecchi compagni di tenda.",
+	},
+	["org.subzone_enter.w21.legends.016"] = {
+		"Alla Hall of Legends nessuno sembra disfare i bagagli. Gli zaini restano contro il muro, gli stivali allacciati; qui tutti sono soltanto a metà strada tra una battaglia e l'altra.",
+		"La sala sembra meno una casa che una sala d'attesa. Gli ufficiali siedono con l'equipaggiamento ai piedi, pronti ad alzarsi appena un corno li chiami da qualche parte lontano.",
+		"Ogni ufficiale qui dentro siede come chi sta per essere chiamato altrove: mezzo sulla panca, mezzo già partito.",
+	},
+	["org.subzone_enter.w21.legends.017"] = {
+		"C'è odore di lucido e di vecchie campagne, in questa sala. Non tocco niente.",
+		"Guarda qui. Tengo le mani dietro la schiena.",
+		"Occhio all'equipaggiamento degli ufficiali. Ogni cinghia qui dentro ha una storia, e te la racconteranno.",
+	},
+	["org.subzone_enter.w21.spirits.001"] = {
+		"mette piede nella Valley of Spirits passando accanto a due troll su un muretto, uno che intreccia perline nella cresta di capelli dell'altro raccontando una barzelletta così lunga che la treccia finisce prima.",
+		"sfila accanto a un troll che infila perline nei capelli rialzati di un amico, parlando tutto il tempo; l'amico ride alla fine di ogni perlina, mai in mezzo.",
+		"trova due Darkspear seduti ginocchio contro ginocchio vicino a una capanna, uno che intreccia perline nei capelli dell'altro con dita svelte e pettegolezzi lenti.",
+	},
+	["org.subzone_enter.w21.spirits.002"] = {
+		"Qui i troll stanno accovacciati sui talloni, ginocchia all'altezza delle orecchie, più a lungo di quanto le mie gambe mi perdonerebbero mai. Sembrano pronti a scattare in un istante, e non lo fanno mai.",
+		"I Darkspear riposano accovacciati, talloni a terra e gomiti sulle ginocchia, come se la sedia fosse una diceria di un'altra terra. Ci ho provato una volta. Le ginocchia stanno ancora presentando reclamo.",
+		"Una troll accovacciata sui talloni lungo il sentiero, in equilibrio perfetto, consuma un pasto intero così e si alza come se fosse stata sdraiata sui cuscini.",
+	},
+	["org.subzone_enter.w21.spirits.003"] = {
+		"passa davanti a una rete da pesca tesa fra due pali di capanna, con un troll che ne lavora i nodi con un ago d'osso, anche se il mare più vicino è a un bel tratto di cammino a est delle mura.",
+		"rallenta accanto a un troll che rammenda una rete tesa da palo a palo, le dita che vanno da sole, come se la costa delle isole fosse appena dietro la capanna dopo.",
+	},
+	["org.subzone_enter.w21.spirits.004"] = {
+		"Una giovane maga nella Valley of Spirits fa fluttuare una tazza di terracotta davanti al naso. Cade. La raccoglie, la fulmina con lo sguardo, e la tazza riprende a galleggiare. Ai suoi piedi c'è un mucchio di cocci.",
+		"Vicino alla loggia dei maghi uno studente continua a sollevare in aria una tazza e a perderla. A giudicare dai cocci intorno al gradino, a perdere sono le tazze.",
+	},
+	["org.subzone_enter.w21.spirits.005"] = {
+		"sgattaiola oltre un raptor legato vicino a una capanna, che mastica la corda con la calma di una creatura che ha tutto il tempo del mondo e ottimi denti.",
+		"gira alla larga da un raptor legato e disteso davanti a una soglia; l'animale apre un occhio giallo, {g:lo|la} valuta come possibile pasto e lo richiude, poco convinto.",
+		"aggira con prudenza un raptor che sonnecchia nella polvere in fondo alla sua corda, la coda che guizza come se in sogno stesse inseguendo qualcosa.",
+	},
+	["org.subzone_enter.w21.spirits.006"] = {
+		"Nomina le Echo Isles in questa valle e la conversazione continua; nomina Zalazane e si ferma. I Darkspear sanno lasciar affondare un nome senza un'increspatura.",
+		"I troll di qui parlano delle Echo Isles abbastanza volentieri. È lo stregone che ora le tiene, Zalazane, il cui nome può zittire un'intera capanna.",
+	},
+	["org.subzone_enter.w21.spirits.007"] = {
+		"Un sacco di occhi su di me da quelle capanne. Occhi amichevoli. Credo.",
+		"Faccio un cenno a ogni troll che incrocio. Quasi tutti rispondono. Uno mi ha sorriso con tutte le zanne che aveva. Scelgo di prenderla bene.",
+	},
+	["org.subzone_enter.w21.spirits.008"] = {
+		"si accorge che nella Valley of Spirits la pietra diventa verde: un velo sottile di muschio sul lato in ombra di ogni roccia vicino all'acqua, l'unico verde che il canyon conceda.",
+		"trova l'aria della valle appena più umida, e le rocce vicino all'acqua vestite di una morbida pelle di muschio che nessun altro angolo della città è riuscito a far crescere.",
+	},
+	["org.subzone_enter.w21.spirits.009"] = {
+		"La risata dei troll comincia acuta e finisce da qualche parte nella pancia, e in questa valle scoppia senza preavviso, da una capanna, da un tetto, proprio alle mie spalle. Ho smesso di sobbalzare. Quasi.",
+		"I Darkspear ridono come uccelli che si levano in volo, di colpo e tutti insieme. Nessun altro a Orgrimmar ride così, né così spesso.",
+		"Dietro le capanne un troll ride, uno scroscio enorme e sguaiato, e altri due lo raccolgono prima di poter conoscere la battuta.",
+	},
+	["org.subzone_enter.w21.spirits.010"] = {
+		"s'imbatte in un sacerdote seduto su una panca che mostra a un allievo come piegare una medicazione, angolo su angolo, con la cura di chi pensa che la piega da sola faccia metà della guarigione.",
+		"rallenta presso una panca dove una sacerdotessa piega lino pulito in quadrati per un allievo, una piega dopo l'altra, e non lo lascia avvicinare a una ferita finché le pieghe non sono perfette.",
+	},
+	["org.subzone_enter.w21.spirits.011"] = {
+		"Vol'jin tiene il suo posto a Grommash Hold, accanto al Capoguerra, e questa valle si governa da sé in suo nome. Ai troll pare che vada bene così: il loro capo vicino alla cima, e la loro porta lasciata aperta qui sotto.",
+		"Il capo dei nostri troll sta nella sala del Capoguerra, non qui. Chiedi a un Darkspear e ricevi un'alzata di spalle: Vol'jin è dove serve, e la valle sa sbrigare le proprie faccende.",
+	},
+	["org.subzone_enter.w21.spirits.012"] = {
+		"si trova nella Valley of Spirits mentre il tuono rotola sopra il canyon, e vede un vecchio troll all'aperto a braccia spalancate, che risponde a ogni schianto con un ululato tutto suo.",
+		"alza gli occhi a un cielo nero di tempesta sopra le capanne, dove un anziano Darkspear è salito su un tetto a urlare in faccia al tuono, e i giovani lo acclamano dalle soglie.",
+	},
+	["org.subzone_enter.w21.spirits.013"] = {
+		"Una cassa di frutta della giungla è arrivata da Grom'gol con la nave volante, e mezza valle le si stringe intorno ad annusare, tastare, discutere su quale sia matura. Per un attimo l'aria sa di un posto verde e chiassoso.",
+		"Qualcuno ha scaricato dallo zeppelin una cassa di frutta di Stranglethorn Vale e l'ha aperta vicino alle capanne. I troll maneggiano ogni frutto come la lettera di un vecchio amico.",
+		"Vicino alle capanne c'è frutta della giungla, arrivata fin da Grom'gol. I troll la mangiano piano, ed è così che capisco che conta.",
+	},
+	["org.subzone_enter.w21.spirits.014"] = {
+		"Qui è più quieto. Mi adeguo. Niente gesti bruschi vicino alle capanne.",
+		"Passi leggeri, voce piccola. Questa valle ha le sue buone maniere, e intendo impararle.",
+	},
+	["org.subzone_enter.w21.spirits.015"] = {
+		"intravede uno stregone seduto a gambe incrociate davanti a una ciotola bassa, che divide ossicini per forma con un lungo dito, borbottando approvazione o disgusto per ciascuno.",
+		"scorge uno stregone che scuote una manciata di aliossi, li getta su una pelle e li guarda accigliato, come se avessero risposto con maleducazione.",
+	},
+	["org.subzone_enter.w21.spirits.016"] = {
+		"Ogni capanna di questa valle ha una lancia accanto alla porta, e nessuna è lì per bellezza. Una regge un'imposta, una tiene su una lenza, una tiene una pentola sollevata dalle braci. La lancia di un Darkspear fa un po' di tutto.",
+		"Le lance stanno appoggiate a ogni soglia. I Darkspear le usano come pioli, pertiche, bastoni da passeggio e puntelli per le imposte, e scommetto che ognuna, sotto lo straccio, è affilata.",
+		"Conta le lance accanto agli usci delle capanne e avrai contato i Darkspear. Le tengono a portata come altri tengono il mantello vicino alla porta.",
+	},
+	["org.subzone_enter.w21.spirits.017"] = {
+		"si ferma mentre una troll inclina un piatto di bronzo lucidato per prendere la luce e si ridipinge le strisce sulle guance con la punta di un dito, senza fretta, mentre la valle bada ai fatti suoi.",
+		"osserva un Darkspear rifarsi la pittura del viso specchiandosi in un piatto di rame battuto, striscia dopo striscia, con cura.",
+	},
+	["org.subzone_enter.w21.spirits.018"] = {
+		"I tetti delle capanne sono di paglia sottile e gialla di Durotar, rattoppata con sacchi goblin col marchio ancora stampato. Case delle isole, costruite con quel che questa terra poteva avanzare.",
+		"Paglia della boscaglia, pali chissà da dove, e sacchi col timbro di una compagnia goblin cuciti dove l'erba non bastava. I Darkspear hanno costruito capanne d'isola con gli avanzi di un deserto.",
+	},
+	["org.subzone_enter.w21.spirits.019"] = {
+		"La valle più silenziosa di Orgrimmar, cioè la peggiore per me. In mezzo alla folla non sono nessuno; qui ogni mio passo suona come una confessione.",
+		"Troppo silenzio. Nessuna folla in cui sparire, solo capanne, occhi lenti e i miei stivali che mi annunciano. Continuo a camminare come se fossi di casa.",
+	},
+	["org.subzone_enter.w21.spirits.020"] = {
+		"costeggia una rastrelliera di pesci aperti a seccare vicino a una capanna, salati e grigi di pelle, e un troll che scaccia le mosche con una fronda di palma venuta da molto lontano.",
+		"aggira un telaio di pesci stesi a seccare, portati su dalla costa a caro prezzo e sorvegliati da un vecchio troll armato di una frusta e di nient'altro da fare.",
+		"sente l'odore di una rastrelliera di pesce salato vicino alle capanne; il troll di guardia sogghigna alla smorfia che segue, come chi l'ha vista mille volte.",
+	},
+	["org.subzone_enter.w21.spirits.021"] = {
+		"Nella Valley of Spirits nessuno bussa. A ogni soglia pende una zucca secca piena di semi, e chi arriva la scuote e aspetta. Ho visto dei grunt farlo, con grande delicatezza, come se la zucca potesse mordere.",
+		"Ogni capanna qui ha un sonaglio di semi accanto all'uscio, invece del batacchio. Scuoti, aspetti, ti rispondono. Perfino i grunt di ronda hanno imparato le buone maniere.",
+		"Scuoti la zucca, aspetta che ti invitino a entrare: così bussano i Darkspear. Mi piace una porta che si apre solo su invito.",
+	},
+	["org.subzone_enter.w21.spirits.022"] = {
+		"Erbe, fumo e sopracciglia bruciacchiate. I maghi devono essere in casa.",
+		"Qualcosa qui sa di capelli strinati. Ah. La loggia dei maghi. Ovvio.",
+	},
+	["org.subzone_enter.w21.spirits.023"] = {
+		"osserva un ceppo vicino alle capanne così rosicchiato dalle asce lanciate che è più vuoto che legno, e un giovane troll che arretra a passi contati per un altro tiro.",
+		"nota un palo ai margini delle capanne ridotto sottile da anni di asce lanciate, con una ancora vibrante piantata dentro e nessuno in vista a reclamarla.",
+	},
+	["org.subzone_enter.w21.spirits.024"] = {
+		"Una Darkspear mi ha detto che il nome a questa valle l'hanno dato gli orchi, e che gli spiriti che ci vivono non sono mai stati consultati. Sono rimasti lo stesso, ha detto. I buoni vicini sono rari.",
+		"I troll scherzano che gli orchi hanno battezzato questa valle e che gli spiriti sono venuti a vedere cos'era tutto quel chiasso. Gli è piaciuta l'acqua e sono rimasti, a quanto pare.",
+	},
+	["org.subzone_enter.w21.strength.001"] = {
+		"mette piede nella Valley of Strength mentre un peon rovescia una cesta di sterco secco nel braciere più vicino, e le fiamme si drizzano come chiamate per nome.",
+		"gira attorno a un braciere sulle sue alte gambe di ferro proprio quando un peon gli dà in pasto focacce di sterco; il fumo si fa bruno, poi denso, poi un problema di tutti.",
+		"si ritrova dietro a un peon che fa il giro dei bracieri con la cesta sul fianco, nutrendoli uno dopo l'altro come bestie di cattivo umore.",
+	},
+	["org.subzone_enter.w21.strength.002"] = {
+		"Certa gente in questa valle sta così ferma, e così a lungo, che i peon spazzano intorno ai suoi stivali. Non ne ho mai visto uno sbattere le palpebre.",
+		"Accanto alla banca c'è sempre qualcuno immobile come un palo, l'equipaggiamento lucido e lo sguardo nel vuoto. Una statua costerebbe meno da mantenere.",
+	},
+	["org.subzone_enter.w21.strength.003"] = {
+		"arriva in tempo per vedere un grunt sollevare una borsa caduta e abbaiare una sola parola, «Di chi?», mentre una dozzina di mani si alza in tutta la valle.",
+		"vede un grunt alzare sopra la folla un borsellino smarrito; nel giro di un momento ha undici proprietari, ognuno sicurissimo.",
+	},
+	["org.subzone_enter.w21.strength.004"] = {
+		"L'hanno chiamata Valley of Strength. I peon che ci trasportano tutto sembrano d'accordo.",
+		"Forza, dicono. Vedete quel peon con quattro casse sulla schiena? È l'unico che fa onore al nome.",
+	},
+	["org.subzone_enter.w21.strength.005"] = {
+		"Al lungo abbeveratoio di pietra contro il muro i lupi da sella bevono fianco a fianco senza un ringhio. I loro cavalieri, in attesa dietro, ci riescono molto meno.",
+		"I lupi all'abbeveratoio si dividono l'acqua spalla a spalla. Due passi più indietro, i padroni litigano su a chi tocchi.",
+		"I lupi da sella lappano all'abbeveratoio in fila, code basse e soddisfatte. Chi li possiede sta dietro, tutto gomiti.",
+	},
+	["org.subzone_enter.w21.strength.006"] = {
+		"si ferma mentre due piccoli orchi combattono una guerra coi bastoni fra le gambe della folla; quello costretto a fare l'umano muore a lungo, e due volte.",
+		"aggira una coppia di orchetti che duellano con dei bastoni: chi perde, per una regola tutta loro, deve fare l'umano e crollare con un lamento.",
+	},
+	["org.subzone_enter.w21.strength.007"] = {
+		"Il suolo di questa valle è un registro di piedi: zampa su stivale su zoccolo, e il solco di un carro sopra tutto. Ogni tanto un peon lo rastrella, e prima che si volti è già pieno.",
+		"Lupo, kodo, stivale, ruota: la polvere della Valley of Strength prende ogni impronta, e un peon col rastrello cancella la pagina, inutilmente, da una parete all'altra.",
+		"Un peon spiana col rastrello il fondo della valle; dieci passi dietro di lui zampe e stivali ci hanno già scritto sopra di tutto.",
+	},
+	["org.subzone_enter.w21.strength.008"] = {
+		"cammina sotto la torre di volo proprio mentre qualcosa di mezzo mangiato cade dalla piattaforma; chi sta sotto lo scansa senza nemmeno alzare gli occhi.",
+		"nota che la folla sotto la torre di volo lascia libero un cerchio di terra, e un attimo dopo capisce perché, quando un osso rosicchiato rotola giù dalla piattaforma.",
+	},
+	["org.subzone_enter.w21.strength.009"] = {
+		"Scorpide fritto sullo spiedo. Mi dicono che la coda si mangia per ultima. Mi dicono tante cose.",
+		"Spiedini di scorpide, due rame. Croccanti, dice il cuoco. È un modo di dirlo.",
+	},
+	["org.subzone_enter.w21.strength.010"] = {
+		"Questa valle funziona come un setaccio. Tutti ci vengono versati insieme, e dopo venti passi si sono già divisi da soli: le monete da una parte, il sonno dall'altra, i guai giù per il Drag.",
+		"Basta stare fermi qui e guardare la folla smistarsi senza una parola: gli zaini pieni verso la banca, i piedi stanchi verso la locanda, gli irrequieti giù per il Drag.",
+	},
+	["org.subzone_enter.w21.strength.011"] = {
+		"s'imbatte in un cambiavalute goblin seduto a un tavolino pieghevole, che pesa l'argento su una minuscola bilancia d'ottone e morde ogni moneta che lo guardi storto.",
+		"rallenta accanto a un goblin che ha piazzato una bilancina su una cassa e cambia monete dietro compenso, saggiandole una per una fra i denti con aria di profondo sospetto.",
+		"resta a guardare un goblin che pesa l'argento di un forestiero sulla sua bilancina d'ottone, sospira come se l'avessero ferito e ne restituisce un po' meno.",
+	},
+	["org.subzone_enter.w21.strength.012"] = {
+		"Mura alle spalle, grunt ai loro posti, un frastuono che riconosco come mio. Le spalle mi scendono di un dito senza chiedermi il permesso.",
+		"In questa valle la mano smette di cercare la cintura. I nostri grunt sulle mura, i nostri stendardi in alto: per un po' a fare la guardia è qualcun altro.",
+	},
+	["org.subzone_enter.w21.strength.013"] = {
+		"La valle più affollata della capitale dell'Orda, e ancora nessuno mi ha {g:guardato|guardata} due volte. Vorrei che restasse così, perciò cammino come chi ha commissioni noiose da sbrigare.",
+		"La folla è un nascondiglio. In questa calca sono solo un altro forestiero con lo zaino. Il segreto è non essere il forestiero che si ferma.",
+	},
+	["org.subzone_enter.w21.strength.014"] = {
+		"alza lo sguardo ai lunghi stendardi appesi sopra la valle, il cui rosso in cima è sbiadito al colore della carne vecchia e conserva la sua forza solo dove le pieghe lo nascondono.",
+		"osserva gli stendardi di guerra tesi sopra la valle: smorti dove pendono aperti, ancora rosso cupo in ogni piega.",
+	},
+	["org.subzone_enter.w21.strength.015"] = {
+		"Permesso. Scusate. Attenti al lupo. Permesso. Scusate.",
+		"Passo io. Pardon. Non è vostro, il lupo? Scusate lo stesso.",
+	},
+	["org.subzone_enter.w21.strength.016"] = {
+		"trova la Valley of Strength alla luce delle torce, la folla ridotta a pochi contrattatori ritardatari e a un grunt che sbadiglia così forte da far schioccare le zanne.",
+		"sosta in una valle ammutolita sotto le torce, i gradini della banca vuoti per una volta, e solo la porta della locanda che rovescia ancora luce e voci sulla polvere.",
+	},
+	["org.subzone_enter.w21.strength.017"] = {
+		"La sabbia scavalca le mura e tutta la valle le volta le spalle nello stesso istante, come una mandria. All'improvviso la porta della banca è il posto più ambito di Orgrimmar.",
+		"La sabbia trova per prima la Valley of Strength. Tutti strizzano gli occhi con la stessa angolatura e corrono sotto il tetto più vicino.",
+	},
+	["org.subzone_enter.w21.strength.018"] = {
+		"sfila accanto a un peon che dorme in piedi contro il muro della banca, una cassa ancora in spalla; un grunt lo guarda, decide che non ne vale la pena e tira dritto.",
+		"trova un peon che sonnecchia ritto al riparo di un muro, carico compreso, russando piano mentre la folla gli scorre intorno come a un palo.",
+		"scavalca con cautela le gambe di un peon profondamente addormentato contro una pila di casse, a bocca aperta, una mano ancora stretta sulla cinghia del carico.",
+	},
+	["org.subzone_enter.w21.strength.019"] = {
+		"Un mercante contro il muro vende armature usate a poco. Ogni pezzo ha un segno raschiato all'interno, dove prima c'era un nome. Nessuno chiede, e lui non dice.",
+		"Roba di seconda mano su una coperta accanto al muro: cuoio buono, anelli sani, e su ciascun pezzo una piccola cicatrice dove qualcuno ha limato via il proprio marchio.",
+	},
+	["org.subzone_enter.w21.strength.020"] = {
+		"guarda un troll chiedere a tre grunt di fila la strada per il Drag e ricevere tre braccia sicurissime, puntate in tre direzioni diverse.",
+		"sente un tauren smarrito chiedere indicazioni a un grunt, a un goblin e a un peon; le risposte sono un cenno, un prezzo e un'alzata di spalle.",
+	},
+	["org.subzone_enter.w21.strength.021"] = {
+		"Lupo bagnato, olio da lampada, qualcosa di fritto, monete scaldate in troppe mani. La Valley of Strength odora di affari che non chiudono mai del tutto.",
+		"Olio da lampada e lupo, cipolle sulla piastra, l'odore acido di rame di troppi soldi in poco spazio. Questa valle ha un naso tutto suo.",
+	},
+	["org.subzone_enter.w21.strength.022"] = {
+		"Guardate quello, che gira piano davanti alla banca per sfoggiare l'armatura nuova. Lucida. Avrà ancora il prezzo attaccato.",
+		"Armatura nuova, fresca d'asta, portata a spasso in tondo per la valle. L'abbiamo vista tutti. Bellissima. Circolare.",
+	},
+	["org.subzone_enter.w21.strength.023"] = {
+		"si fa da parte per un acquaiolo che attraversa la valle con un giogo di otri gocciolanti, gridando il prezzo con una voce consumata fino alla ghiaia.",
+		"lascia spazio a un portatore d'acqua curvo sotto un giogo di otri, che vende a tazze e in qualche modo non spreca una goccia di guadagno.",
+		"sente l'acquaiola prima di vederla: lo schiocco degli otri pieni contro i fianchi e un richiamo roco che sovrasta ogni altra voce della valle.",
+	},
+	["org.subzone_enter.w21.strength.024"] = {
+		"Dalla locanda qui esce gente che si porta addosso altri luoghi: aghi di pino nel colletto, fango di palude fino al ginocchio, sale su un mantello. Dovunque fossero un attimo fa, non li ha ancora lasciati andare.",
+		"Guarda abbastanza a lungo la porta della locanda e il mondo intero ne esce a pezzi: uno stivale incrostato di fango di giungla, un mantello che sa di mare, una barba piena della polvere di qualcun altro.",
+	},
+	["org.subzone_enter.w21.strength.025"] = {
+		"si vede offrire da un goblin una mappa di Orgrimmar disegnata a mano, garantita esatta; a guardarla meglio, il Drag è tracciato perfettamente dritto.",
+		"congeda un goblin che vende mappe della città, non prima di notare che la mappa cerchia di rosso acceso il suo banco e lascia fuori la banca del tutto.",
+	},
+	["org.subzone_enter.w21.wisdom.001"] = {
+		"attraversa la Valley of Wisdom passando sotto una soglia il cui architrave è scheggiato e rigato esattamente all'altezza di un tauren, la pietra lucidata chiara da mille corna che hanno sbagliato misura.",
+		"nota che ogni porta costruita dagli orchi nella valle ha una tacca fresca in cima: il segno delle corna tauren, e di costruttori orchi che non hanno mai creduto davvero a quanto sarebbero stati alti i loro ospiti.",
+		"si abbassa un poco, per solidarietà, sotto un architrave scavato dalle corna dei tauren, dove qualcuno ha finalmente inchiodato un cuscinetto di pelle ripiegata.",
+	},
+	["org.subzone_enter.w21.wisdom.002"] = {
+		"Una sciamana di questa valle insegna versando acqua sulla pietra nuda e chiedendo all'allievo dove scorrerà prima che lo faccia. L'allievo sbaglia. L'acqua, dice lei, non sbaglia mai: è solo impaziente.",
+		"Ho visto una sciamana rovesciare una tazza d'acqua sulla roccia e aspettare in silenzio che l'allievo indovinasse il percorso. Tre tentativi, tre errori. Lei non ha detto una parola. L'aveva detta l'acqua.",
+		"Versa l'acqua sulla roccia e indovina dove andrà: qui è una lezione intera. La sciamana dice che la pietra lo sa già. Quelli che imparano sono gli allievi.",
+	},
+	["org.subzone_enter.w21.wisdom.003"] = {
+		"passa lungo una fila di postulanti in attesa del loro turno per Grommash Hold, ognuno che mima un discorso a nessuno, labbra che si muovono, mani che provano i gesti.",
+		"distingue qua e là lungo il sentiero gente che chiaramente ripete ciò che dirà su alla sala del Capoguerra: aggrotta la fronte, ricomincia, conta i punti sulle dita.",
+	},
+	["org.subzone_enter.w21.wisdom.004"] = {
+		"Valley of Wisdom. Ci sto un minuto e vediamo se se ne attacca un po'.",
+		"Nessuno che urla, nessuno che vende. Dev'essere questa la parte saggia.",
+	},
+	["org.subzone_enter.w21.wisdom.005"] = {
+		"aggira due tauren chini su linee tracciate nella polvere, che spostano sassolini di fila in fila in un gioco così lento che chi guarda si è portato da mangiare.",
+		"fa sosta accanto a un gioco di sassolini su una griglia disegnata in terra, un orco e un tauren uno di fronte all'altro, nessuno dei due che muova da un bel pezzo.",
+		"assiste mentre un anziano tauren toglie a un orco l'ultimo sassolino da una scacchiera graffiata nella polvere, e l'orco pretende la rivincita prima ancora che il sasso tocchi terra.",
+	},
+	["org.subzone_enter.w21.wisdom.006"] = {
+		"La Valley of Wisdom suona diversa sotto i piedi. Meno stivali, più zoccoli: un passo lento e pesante a cui la pietra sembra rispondere con più garbo.",
+		"Gli zoccoli dei tauren sul selciato qui fanno il suono di un mazzuolo su un tronco cavo, lento e regolare. Accanto, ogni stivale orchesco della valle sembra in ritardo.",
+	},
+	["org.subzone_enter.w21.wisdom.007"] = {
+		"lascia passare una corriera tauren impolverata fino alle ginocchia, che consegna una cordicella annodata a uno sciamano lungo il sentiero e solo allora si concede di sedersi.",
+		"vede un messaggero tauren porgere a un'anziana una cordicella annodata, che lei legge con le dita annuendo piano, prima di offrire da bere al corridore.",
+	},
+	["org.subzone_enter.w21.wisdom.008"] = {
+		"La città porta il nome di Doomhammer, la sala quello di Grom. Questa valle non porta nessuno dei due, solo la pazienza che c'è voluta per farne qualcosa. Credo che il Capoguerra l'abbia voluto così.",
+		"Due eroi morti hanno dato il nome alla città e alla sala. I vivi hanno messo fra loro questa valle quieta, dove insegnano gli sciamani. Ben piazzata.",
+	},
+	["org.subzone_enter.w21.wisdom.009"] = {
+		"s'imbatte in una tauren che intreccia una stuoia con fasci d'erba chiara delle pianure, le dita che vanno sopra e sotto con tanta regolarità che la stuoia sembra crescerle in grembo da sola.",
+		"rallenta accanto a una tauren che intreccia erba secca in una stuoia sulle ginocchia; i fasci accanto a lei sanno appena di un posto molto più verde di Durotar.",
+		"segue con lo sguardo le dita grosse di un tauren che lavorano l'erba in una stuoia fitta, fila su fila, senza mai abbassare gli occhi, fissi invece sulla gente che passa.",
+	},
+	["org.subzone_enter.w21.wisdom.010"] = {
+		"Un tauren e un orco si scambiano un sacco di grano con un sacchetto di chiodi, e tutti e due vogliono contare. L'orco conta in fretta e due volte; il tauren conta una volta sola, piano, e sul suo totale nessuno discute.",
+		"Grano contro chiodi di ferro, lungo il sentiero: l'orco conta svelto, perde il segno, ricomincia. La tauren conta una volta, coi suoi tempi, e l'affare è fatto quando lo dice lei.",
+	},
+	["org.subzone_enter.w21.wisdom.011"] = {
+		"arriva nella Valley of Wisdom sotto un cielo ripulito, dove due sciamani si sono fermati a metà lezione per guardarlo, come se il rasserenarsi facesse parte dell'insegnamento.",
+		"alza il viso mentre il cielo si schiarisce sopra il bordo del canyon; poco lontano uno sciamano gli tende il palmo, senza fretta, come si saluta un ospite arrivato puntuale.",
+	},
+	["org.subzone_enter.w21.wisdom.012"] = {
+		"Occhio alle corna con quell'architrave. Non a te. A lui. Anzi, a tutti e due.",
+		"Porta bassa, corna alte. Giù la testa.",
+	},
+	["org.subzone_enter.w21.wisdom.013"] = {
+		"Un orco e un tauren fanno braccio di ferro su un barile rovesciato lungo il sentiero. L'orco è paonazzo. Il tauren chiacchiera con un amico voltato a metà. L'orco non ha ancora capito cosa significa.",
+		"Gara sul coperchio di un barile, accanto al sentiero: braccio d'orco contro braccio di tauren. L'orco si sforza con le vene in rilievo. Il tauren sbadiglia, poi, con grande gentilezza, lo lascia resistere ancora un po'.",
+		"Orco contro tauren, gomiti su un barile. L'orco ci mette tutto. Il tauren ci mette un pensiero.",
+	},
+	["org.subzone_enter.w21.wisdom.014"] = {
+		"trova un apprendista sciamano disteso a terra con un orecchio premuto sulla pietra, in ascolto intenso, mentre un anziano lo sovrasta aspettando che gli riferisca cosa ha detto la terra.",
+		"scavalca le gambe di un giovane sciamano steso a faccia in giù sul sentiero, l'orecchio a terra, che {g:lo|la} fa passare con un cenno senza alzare la testa.",
+	},
+	["org.subzone_enter.w21.wisdom.015"] = {
+		"La Valley of Wisdom sta in fondo alla città, ben lontana dal trambusto. Poca gente ci capita per caso, e si vede da come sta in piedi chi c'è.",
+		"Quasi nessuno attraversa la Valley of Wisdom per andare altrove. Ci si viene apposta, con qualcosa da chiedere o qualcosa da imparare.",
+	},
+	["org.subzone_enter.w21.wisdom.016"] = {
+		"trova un vecchio tauren sdraiato sulla schiena in mezzo alla valle, zoccoli incrociati, che dà nome alle stelle sopra il canyon per un grunt che finge di non ascoltare.",
+		"gira con attenzione intorno a un tauren disteso su una pelle sotto il cielo notturno, che segue le stelle fra le pareti del canyon con un dito lento.",
+	},
+	["org.subzone_enter.w21.wisdom.017"] = {
+		"Basta fermarsi un momento vicino a una tenda tauren, qui, e ti compare davanti una ciotola d'acqua, offerta senza una parola. Rifiutare sembra una faccenda più seria che bere.",
+		"I tauren di questa valle offrono acqua a chiunque si fermi davanti alle tende. Mi sono {g:fermato|fermata}. Ho bevuto. È passato fra noi qualcosa che, sospetto, mi toccherà ricambiare.",
+		"Una tauren mi ha porto una ciotola d'acqua solo perché sostavo davanti alla sua tenda. Nel resto della città nessuno mi ha mai dato niente senza un prezzo.",
+	},
+	["org.subzone_enter.w21.wisdom.018"] = {
+		"si affianca a una sciamana che convince un fuoco testardo ad accendersi con un mormorio e uno schiocco di dita, mentre il grunt che ci si accaniva con la pietra focaia finge di non farci caso.",
+		"s'accorge di un grunt che batte su una pietra focaia sopra un focolare spento finché uno sciamano di passaggio si china, dice qualcosa a bassa voce alla legna e prosegue mentre prende fuoco.",
+		"osserva come i fuochi da campo della Valley of Wisdom non abbiano mai bisogno a lungo della pietra focaia; prima o poi passa uno sciamano e scambia con loro due parole sottovoce.",
+	},
+	["org.subzone_enter.w21.wisdom.019"] = {
+		"Alcuni tauren di questa valle portano vecchie cicatrici in file parallele e ordinate, del tipo che lasciano le lance dei centauri. Chiedi delle Barrens e parleranno d'erba e d'acqua, e di nient'altro.",
+		"Un tauren lungo il sentiero ha sul fianco una cicatrice come un solco d'aratro. Centauri, mi dice piano un grunt. Lui, il tauren, parla soltanto delle mandrie.",
+	},
+	["org.subzone_enter.w21.wisdom.020"] = {
+		"La valle del Capoguerra in persona. Tutti dritti. Io per {g:primo|prima}.",
+		"Spalle indietro. Siamo nella valle del Capoguerra.",
+	},
+	["org.subzone_enter.w21.wisdom.021"] = {
+		"indugia vicino a un tauren che compie un lento giro intorno a una pelle appena tesa, facendo scorrere su ogni palmo il fumo di una treccia d'erba dolce che arde piano.",
+		"coglie il fumo dolce, che sa di fieno, di una treccia d'erba agitata sopra una pelle nuova da una tauren che non ha fretta e non dà spiegazioni.",
+	},
+	["org.subzone_enter.w21.wisdom.022"] = {
+		"I tauren di questa valle parlano l'orchesco con cura, scegliendo ogni parola come una pietra per un muro e posandola dove reggerà. Gli orchi, che le parole le lanciano, ascoltano più a lungo di quanto ammetterebbero.",
+		"Un tauren che parla orchesco sembra qualcuno che ci costruisce, parola dopo parola. Un orco che lo parla sembra qualcuno che lo scaglia. In questa valle si sentono entrambi, e l'ultima parola è dei costruttori.",
+	},
+	["org.subzone_enter.w21.wisdom.023"] = {
+		"lascia passare un grunt fuori servizio che porta lo sgabello e la coperta di un'anziana tauren tre passi dietro di lei, con la faccia grave di un soldato che scorta un generale.",
+		"nota un grunt che segue una vecchia tauren con il suo sgabello pieghevole sotto il braccio, aprendolo ovunque lei si fermi, prima che debba chiederlo.",
+	},
+	["org.subzone_enter.w21.wisdom.024"] = {
+		"Strength, Honor, Spirits, Wisdom: gli orchi hanno battezzato le loro valli come un elenco di cose da diventare. Dice qualcosa che abbiano messo Wisdom dove siede il Capoguerra.",
+		"Chi ha dato i nomi alle valli di questa città stava scrivendo speranze. A Wisdom è toccata la sala del Capoguerra. Mi piace pensare che non sia un caso.",
+	},
+	["org.thanks.w21.thank.001"] = {
+		"Grazie. Passa dalla locanda, prima o poi: il primo boccale lo pago io.",
+		"Ti sono {g:obbligato|obbligata}. Ti offro da bere, appena trovo un tavolo libero in mezzo a questa calca.",
+		"Grazie davvero. Sul prossimo giro c'è scritto il tuo nome.",
+	},
+	["org.thanks.w21.thank.002"] = {
+		"Grazie. Ho cercato un modo per tirare sul prezzo, e non c'era.",
+		"Ti ringrazio. In questa città aspetto sempre il conto. Non arriva? Posto strano, tutto d'un tratto.",
+		"Grazie. Da qualche parte nel Drag un goblin ha appena sentito un brivido, e non sa spiegarsi perché.",
+	},
+	["org.thanks.w21.thank.003"] = {
+		"Hai la mia gratitudine, detta senza giri di parole. Questa città incide le promesse nella pietra, non nei discorsi.",
+		"Grazie, una volta sola e per sempre. Queste mura storcerebbero il naso davanti a qualcosa di più elaborato.",
+	},
+	["org.thanks.w21.thank.004"] = {
+		"Mh. Grazie. Non farci l'abitudine, che la gente chiacchiera.",
+		"Grazie. Adesso facciamo finta che non sia successo niente, prima che ci veda un grunt.",
+		"E va bene: grazie. Ecco, l'ho detto, e nessuno è cascato giù dalle mura.",
+	},
+	["org.thanks.w21.thank.005"] = {
+		"Una città dura ti insegna ad accorgerti delle cose gentili. Grazie: me ne sono {g:accorto|accorta}.",
+		"Grazie. Lo terrò in un posto sicuro, lontano da tutti i gomiti di questa città.",
+	},
+	["org.thanks.w21.thank.006"] = {
+		"Grazie! Lo passerò al prossimo sconosciuto che vedo girare a vuoto su queste rampe.",
+		"La prossima volta che qualcuno si guarda intorno spaesato davanti alla banca, avrà lo stesso da me. Grazie.",
+		"Lo considero un prestito da girare: la prima faccia smarrita in mezzo alla folla l'avrà da me. E grazie.",
+	},
+	["org.thanks.w21.thank.007"] = {
+		"Grazie. Perfino quel grunt ha quasi sorriso, e secondo me l'hanno cavato dalla stessa roccia delle mura.",
+		"Ti ringrazio. Guarda, il grunt di guardia ha appena sbattuto le palpebre. A Orgrimmar vale come un applauso.",
+	},
+	["org.thanks.w21.thank.008"] = {
+		"Grazie. L'Orda si regge su piccole cose come questa, più che su qualunque discorso a Grommash Hold.",
+		"Hai la mia gratitudine. Le mura tengono l'Orda al sicuro; sono gesti come questo a tenerla intera.",
+	},
+	["org.thanks.w21.thank.009"] = {
+		"Grazie. Breve, lo so. In questa città vale come un discorso.",
+		"Grazie, e basta così: il resto se lo mangia il chiasso.",
+		"Grazie! Spero che si sia sentito, con tutto questo baccano.",
+	},
+	["org.thanks.w21.thank.010"] = {
+		"Nessun altro l'ha visto, quindi me lo ricorderò per tutti e due. Grazie.",
+		"Grazie, sottovoce: tra noi due e nessun altro in tutta questa folla.",
+	},
+	["org.thanks.w21.thank.011"] = {
+		"Aspetta, ti è costato qualcosa? Sì, eh. Allora grazie due volte, e le conto.",
+		"Grazie. E se ti è costato qualcosa, grazie un'altra volta, con gli interessi. Parola che mi hanno insegnato i goblin.",
+	},
+	["org.thanks.w21.thank.012"] = {
+		"Lo sappia la città: mi hai fatto del bene, e l'ho detto ad alta voce. Grazie.",
+		"Che lo senta tutta la strada, allora: ti devo un grazie, e lo pago volentieri.",
+	},
+	["org.thanks.w21.thank.013"] = {
+		"Grazie. Qua la mano: a Orgrimmar certe cose si chiudono così.",
+		"Una stretta, non un inchino: in città almeno questo l'ho imparato. Grazie.",
+	},
+	["org.thanks.w21.thank.014"] = {
+		"È facile sentirsi piccoli in una città costruita per i giganti. Mi ha fatto bene. Grazie.",
+		"Fra tante mura e tante facce dure, è stata una porta lasciata aperta. Ti ringrazio.",
+	},
+	["org.thanks.w21.thank.015"] = {
+		"Grazie. In banca lo depositerei, ma prendono solo monete, e questo valeva di più.",
+		"Se la gratitudine si potesse mettere in una cassetta della banca, me ne servirebbe una più grande. Grazie.",
+		"Grazie. I banchieri questo non lo vedranno mai: certi debiti restano fuori dal registro.",
+	},
+	["org.thanks.w21.thank.016"] = {
+		"Grazie. Se qualcuno ti dà fastidio per queste strade, mandalo da me.",
+		"Se qualcuno nel Drag ti frega sul resto, vieni a cercarmi. Ho una voce forte e tempo da vendere. E grazie.",
+	},
+	["org.thanks.w21.thank.017"] = {
+		"Ti sono {g:grato|grata}. A Orgrimmar uno sconosciuto che si ferma vale più di un inchino altrove.",
+		"Fa piacere sapere che in mezzo a questa folla c'è ancora qualcuno che si ferma. Grazie.",
+		"Quasi tutta la città tira dritto. Tu no. Grazie.",
+	},
+	["org.thanks.w21.thank.018"] = {
+		"Grazie! Perfino i peon smetterebbero di lavorare per vedere una cosa così. Be', smetterebbero comunque.",
+		"Raro come un peon che ha fretta, davvero. Grazie mille.",
+	},
+	["org.thanks.w21.thank.019"] = {
+		"Grazie. Questo me lo tengo stretto.",
+		"Ti sono riconoscente. Non lo dico spesso, quindi segnatelo.",
+		"Grazie. Me lo porterò dietro, oltre il portone.",
+	},
+	["org.thanks.w21.thank.020"] = {
+		"In una città tutta spigoli, hai appena smussato un angolo. Grazie.",
+		"È stato un gesto gentile, e qui la gentilezza si nota, anche quando nessuno lo dice. Ti ringrazio.",
+	},
+	["org.thanks.w21.thank.021"] = {
+		"Grazie. Meglio annotarlo dove nessun goblin possa trovarlo, così resta gratis.",
+		"Un favore, in questa città, e senza scartoffie? Non mi crederà nessuno. Grazie.",
+	},
+	["org.thanks.w21.thank.022"] = {
+		"Grazie davanti a testimoni: mezza Orgrimmar è proprio qui intorno.",
+		"Grazie, e ogni passante mi faccia da testimone. Non ne mancano.",
+	},
+	["org.thanks.w21.thank.023"] = {
+		"Grazie. Farei un inchino, ma con questa calca mi rialzerei con gli stivali di qualcun altro.",
+		"Farei più cerimonie, ma qualcuno mi farebbe pagare lo spazio. Grazie.",
+		"Un inchino come si deve occuperebbe più posto di quanto ne abbia questa strada. Quindi: grazie!",
+	},
+	["org.thanks.w21.thank.024"] = {
+		"In mezzo a tutto questo ferro è facile dimenticare che qui ci vive gente. Me l'hai ricordato. Grazie.",
+		"Ferro e pietra dappertutto, e poi un gesto così. Rimette le cose in pari. Grazie a te.",
+		"Tutto questo ferro, e c'è ancora chi si prende la briga di essere decente. Bene. Grazie.",
+	},
+	["org.thanks.w21.thank.025"] = {
+		"Un affare senza trattativa: il più raro di tutta la città. Grazie.",
+		"Nessuna controfferta? Allora affare fatto, e pure buono. Grazie.",
+		"Nel Drag ci sarebbe voluta un'ora di urla. Tu ce l'hai fatta senza alzare la voce. Grazie.",
+	},
+	["org.thanks.w21.thank.026"] = {
+		"Grazie. Le facce non le dimentico, e la tua meno che mai.",
+		"Mi ricorderò di te. Grazie davvero.",
+		"La tua faccia finisce sulla lista corta. Quella buona. Grazie.",
+	},
+	["org.toast.w21.toast.001"] = {
+		"In alto i boccali! Ai peon, che costruiscono tutto e non si sentono mai dire grazie!",
+		"A tutti i peon di Orgrimmar: che i carichi vi siano leggeri e i capisquadra lontani!",
+		"Alzateli per i peon! Senza di loro questa città sarebbe un mucchio di tronchi molto rumoroso.",
+	},
+	["org.toast.w21.toast.002"] = {
+		"Ai cuochi di questa città, che sfamano una folla di guerrieri ogni giorno e non hanno ancora perso una battaglia!",
+		"Alla salute di chi mescola i pentoloni! La gente più coraggiosa di Orgrimmar, e la più pagata in complimenti.",
+		"Un boccale per i cuochi: affrontano una folla affamata ogni giorno, e senza armatura.",
+	},
+	["org.toast.w21.toast.003"] = {
+		"Ai corrieri, che attraversano tutta la città prima che noialtri troviamo gli stivali!",
+		"Beviamo ai messaggeri! Che le bisacce vi siano leggere e le rampe buone con le ginocchia.",
+		"Ecco un boccale che i corrieri non avranno mai il tempo di bere. Qualcuno lo beva al posto loro!",
+	},
+	["org.toast.w21.toast.004"] = {
+		"Alla salute dei goblin, che mi hanno venduto il boccale, la bevanda e, temo, anche il mal di testa!",
+		"Ai mercanti goblin! Neutrali in ogni guerra, e dalla parte giusta di ogni affare.",
+		"Un brindisi ai goblin, amici: qualcuno di loro ce lo starà già facendo pagare.",
+	},
+	["org.toast.w21.toast.005"] = {
+		"Agli sconosciuti di una tavolata affollata, che in fondo al boccale saranno qualcosa di più.",
+		"A chi mi siede schiacciato accanto! Gomiti giù, boccali su.",
+		"Alla panca da dividere, in una città che ne ha troppo poche.",
+	},
+	["org.toast.w21.toast.006"] = {
+		"Ai guaritori della Valley of Spirits, che rimettono in sesto tutto quello che la Valley of Honor rompe!",
+		"Un sorso per chi ricuce! I campi d'addestramento li tengono occupati, e non mandano mai il conto.",
+		"Alle bende e alle mani pazienti, le cose più indaffarate della città dopo le incudini!",
+	},
+	["org.toast.w21.toast.007"] = {
+		"Agli orchi, ai troll, ai tauren e ai Reietti: quattro modi di dirlo, un solo boccale per farlo!",
+		"Boccali in alto per l'Orda, tutta quanta, dalle corna più alte ai gomiti più ossuti!",
+		"A ogni popolo che cammina per queste strade sotto un solo stendardo. Bevete, tutti quanti!",
+	},
+	["org.toast.w21.toast.008"] = {
+		"Ai banchieri, che non hanno mai perso un mio rame, né l'hanno mai lasciato andare senza aggrottare la fronte!",
+		"Un brindisi a chi tiene i registri: che i conti tornino sempre, e che un giorno le facce siano meno serie.",
+		"Un giro per i banchieri! Lo offrirei io, ma le mie monete stanno nel loro forziere.",
+	},
+	["org.toast.w21.toast.009"] = {
+		"A un angolo tranquillo in una città rumorosa, e alla fortuna di trovarlo due volte.",
+		"Alzatelo piano, senza far chiasso: all'unico posto di Orgrimmar dove nessuno urla.",
+		"Alla quiete, ovunque questa città la tenga nascosta.",
+	},
+	["org.toast.w21.toast.010"] = {
+		"Agli apprendisti delle incudini: che le bruciature siano piccole, e i malumori dei maestri ancora più piccoli!",
+		"Uno per gli apprendisti dei fabbri, che spazzano le scintille e si prendono la colpa di ognuna!",
+		"Beviamo ai ragazzi e alle ragazze dei mantici: lavorano più di tutti e hanno il boccale più piccolo.",
+	},
+	["org.travel.w21.stone.001"] = {
+		"resta immobile in mezzo alla strada con la pietra del ritorno in mano, mentre la folla si apre attorno a {g:lui|lei} e poi si richiude sul vuoto.",
+		"si blocca in mezzo al via vai, la pietra del ritorno nel palmo, e un fiume di peoni scorre attorno a {g:lui|lei} come acqua attorno a un sasso, finché non resta niente da aggirare.",
+		"stringe la pietra del ritorno e lascia che la folla continui a spingere, finché una spalla non incontra soltanto aria.",
+	},
+	["org.travel.w21.stone.002"] = {
+		"Dieci secondi sono tanti, a Orgrimmar: abbastanza per tre offerte, un insulto e l'occhiata sospettosa di un grunt.",
+		"La pietra se la prende comoda, e la città riempie l'attesa: due imbonitori, una contrattazione e un grunt che si chiede cosa stia combinando.",
+		"A Orgrimmar chi sta fermo attira compagnia. Prima che la pietra abbia finito mi hanno offerto un tappeto, una diceria e indicazioni che non avevo chiesto.",
+	},
+	["org.travel.w21.stone.003"] = {
+		"Tieni il filo del discorso. Io sparisco.",
+		"Continua pure, la fine me la racconti un'altra volta.",
+		"Non tenermi il posto.",
+	},
+	["org.travel.w21.stone.004"] = {
+		"Il rumore non svanisce. Si taglia, netto, come una corda, e il silenzio dall'altra parte fischia nelle orecchie.",
+		"Da Orgrimmar non si sfuma. Un istante tutto il suo frastuono, quello dopo niente, come se qualcuno avesse chiuso un coperchio.",
+		"La città non si dirada attorno alla pietra. Si ferma tra un colpo di martello e l'altro, e il silenzio che segue è quasi maleducato.",
+	},
+	["org.travel.w21.stone.005"] = {
+		"lascia un goblin a metà della sua tiritera, a parlare all'aria vuota, e il goblin la finisce lo stesso, non si sa mai.",
+		"sparisce a metà dell'imbonimento di un goblin. Il goblin si interrompe, alza le spalle e rifila il resto al primo che passa.",
+	},
+	["org.travel.w21.stone.006"] = {
+		"La città non saluta mai. Non ne ha bisogno. Sarà qui, rumorosa come sempre, quando ci sarò anch'io.",
+		"Nessun addio da Orgrimmar: non l'ha mai dato a nessuno. Resta e basta, e ti lascia andare.",
+		"Non mi volto. Orgrimmar non si volterebbe a guardarmi, e avrebbe ragione.",
+	},
+	["org.travel.w21.stone.007"] = {
+		"Almeno l'odore viene via con me: ferro caldo e grasso di cucina, entrati in ogni cucitura. Durerà più del viaggio.",
+		"Qualunque cosa resti indietro, l'odore della città viene con me, impigliato nelle maniche: forgia, fuochi di cucina, l'aspro delle concerie.",
+		"Per un po' continuerò a trovare Orgrimmar nei vestiti: fuliggine in una piega, l'acre delle concerie in un polsino.",
+	},
+	["org.travel.w21.stone.008"] = {
+		"Se qualcuno chiede, non sono mai {g:stato|stata} qui. Be', di sfuggita.",
+		"Non mi hai {g:visto|vista}. Nessuno mi ha {g:visto|vista}. Sono già praticamente {g:sparito|sparita}.",
+	},
+	["org.travel.w21.stone.009"] = {
+		"rigira una volta la pietra del ritorno, come un giocatore rigira una moneta, e la città {g:lo|la} lascia andare.",
+		"fa scorrere la pietra del ritorno sulle nocche, distrattamente, e poi resta soltanto la strada dove si trovava.",
+	},
+	["org.travel.w21.stone.010"] = {
+		"Niente ultimo sguardo. Un ultimo ascolto: un martello, una trattativa, un lupo che si lamenta. A Orgrimmar le orecchie dicono più degli occhi.",
+		"Chiudo gli occhi per l'ultimo tratto. Orgrimmar si ricorda meglio a orecchio: sferragliare, liti, il cigolio di un carro.",
+		"L'ultima cosa che mi resta di Orgrimmar è un suono: qualcuno che ride forte a una battuta di cui non saprò mai il finale.",
+	},
+	["org.travel.w21.stone.011"] = {
+		"A metà del conto mi ricordo cosa ero {g:venuto|venuta} a comprare. Troppo tardi. La pietra non accetta richieste.",
+		"Proprio mentre comincia il richiamo, mi viene in mente cosa dovevo prendere nel Drag. La pietra, come sempre, se ne infischia delle mie commissioni.",
+		"Ovvio. Appena la pietra si mette in moto, mi ricordo l'unica cosa per cui ero {g:venuto|venuta} qui.",
+	},
+	["org.travel.w21.stone.012"] = {
+		"resta immobile, la pietra del ritorno che si scalda nel palmo, e un grunt di passaggio guarda due volte, poi decide che è un problema di qualcun altro.",
+		"si attira una lunga occhiata da un grunt mentre la pietra del ritorno si risveglia nella sua mano; il grunt ci pensa su e lascia perdere.",
+	},
+	["org.travel.w21.stone.013"] = {
+		"Questa città l'ha costruita gente che aveva attraversato un mare per arrivarci. Io la lascio nel tempo di contare fino a dieci. Sembra quasi scortese.",
+		"Gli orchi che hanno tirato su Orgrimmar hanno fatto tanta strada, a piedi e per mare, per arrivarci. Io me ne vado in dieci secondi con una pietra. Qualcuno dovrebbe scusarsi, e probabilmente tocca a me.",
+	},
+	["org.travel.w21.stone.014"] = {
+		"Le mura rosse se ne vanno per ultime, e senza molto interesse, come se avessero visto sparire mille viandanti.",
+		"L'ultima cosa a sciogliersi è la pietra del canyon, lenta e indifferente, come chi ha visto questo trucco troppe volte per farsi impressionare.",
+		"Le pareti del canyon sono le ultime ad andarsene: una macchia rossa che indugia, quasi a malincuore.",
+	},
+	["org.travel.w21.stone.015"] = {
+		"Orgrimmar, tieni alto il frastuono. Lo voglio sentire quando torno.",
+		"Io vado. Qualcuno tenga la città rumorosa finché non ci sono.",
+	},
+	["org.travel.w21.stone.016"] = {
+		"si scuote un po' di polvere della città dagli stivali, per abitudine, e sparisce prima che si posi.",
+		"si spazzola via dalla manica i granelli rossi del canyon, un gesto piccolo e ordinato, e la pietra {g:lo|la} porta via a metà.",
+	},
+	["org.travel.w21.stone.017"] = {
+		"Lascio Orgrimmar nel modo più pigro. Da qualche parte nel Drag un goblin che vende stivali ha appena sentito una fitta.",
+		"Niente strada fino al portale, niente cavalcatura, niente addio. I venditori di stivali del Drag non perdoneranno mai la pietra del ritorno.",
+	},
+	["org.weather_change.w21.clearsky.001"] = {
+		"osserva un conciatore trascinare fuori da una porta una pelle fresca e fissarla coi picchetti sulle pietre, ora che l'aria è abbastanza pulita da lasciarla asciugare senza polvere.",
+		"scavalca un conciatore in ginocchio in mezzo alla via, intento a tendere una pelle ora che nell'aria non è rimasto niente che possa rovinarla.",
+		"vede i conciatori della città uscire tutti insieme con le loro pelli, come se l'aria limpida fosse una campana che sentono solo loro.",
+	},
+	["org.weather_change.w21.clearsky.002"] = {
+		"L'aria si è fatta limpida, e la parete opposta del canyon si avvicina di un passo: posso contare le travi delle passerelle, e un grunt lassù che si gratta un orecchio.",
+		"Aria tersa. L'altro lato del canyon è d'un tratto abbastanza vicino da poterlo leggere: ogni scala, ogni trave legata, ogni rotolo di corda.",
+	},
+	["org.weather_change.w21.clearsky.003"] = {
+		"L'aria è pulita. Qualcuno dica ai cuochi che possono togliere i coperchi.",
+		"Si è rimesso al bello. Le pentole possono uscire da sotto i teli, e io con loro.",
+		"Il tempo si è aggiustato. Scoperchiate le pentole, che ho una fame da lupi.",
+	},
+	["org.weather_change.w21.clearsky.004"] = {
+		"Sereno lassù, e in strada nessuno se ne fida del tutto. Metà delle bancarelle tiene un telo ancora legato, non si sa mai.",
+		"Cielo sgombro. I mercanti arrotolano i teli adagio, come si abbassa la guardia davanti a chi ha sorriso per primo.",
+	},
+	["org.weather_change.w21.clearsky.005"] = {
+		"alza lo sguardo mentre la foschia si dirada, e il fumo di cento focolari e camini sale dalle valli in colonne dritte e tranquille.",
+		"si accorge che il fumo sale a piombo da ogni camino della città, ora che l'aria si è fatta ferma e pulita: un bosco di tronchi grigi che niente piega.",
+		"segue un filo di fumo di camino su e su nell'aria tersa, e quello non vacilla una sola volta finché non diventa troppo sottile per vederlo.",
+	},
+	["org.weather_change.w21.clearsky.006"] = {
+		"Con l'aria così limpida, un grido dall'altro capo della città arriva intero. In un'altra valle qualcuno ha appena perso una scommessa.",
+		"Nell'aria pulita i suoni viaggiano. Seguo parola per parola una lite a mezza città di distanza, e riguarda un debito.",
+		"Ora che la foschia è sparita, il chiasso della città si scompone in voci singole. Laggiù, lontano, qualcuno sta perdendo una discussione su una pentola rotta.",
+	},
+	["org.weather_change.w21.clearsky.007"] = {
+		"si abbassa mentre qualcuno su una passerella sbatte una coperta oltre il parapetto, scrollando giù l'ultima polvere ora che l'aria è abbastanza pulita da valerne la pena.",
+		"si prende in testa una spolverata di terra vecchia: lassù un troll, fidandosi finalmente dell'aria limpida, batte un tappeto contro il parapetto come chi regola un conto.",
+	},
+	["org.weather_change.w21.clearsky.008"] = {
+		"L'aria si schiarisce e la città sembra appena tagliata, ogni spigolo netto. Non durerà: in Durotar niente resta pulito a lungo, e Orgrimmar meno di tutto.",
+		"Aria limpida, e ogni angolo della città risalta come scolpito di fresco. Basta un giorno di via vai e tornerà morbida e rossa.",
+	},
+	["org.weather_change.w21.clearsky.009"] = {
+		"nota le bestie sulla torre di volo sollevare e riassestare le ali, scrollandosi la polvere di dosso ora che l'aria è abbastanza calma per volare.",
+		"alza un'occhiata verso i custodi della torre di volo che allentano le corde, e le grandi bestie si stirano e scalpitano: hanno fiutato il cielo pulito.",
+	},
+	["org.weather_change.w21.clearsky.010"] = {
+		"Il cielo si è schiarito. Adesso guardate i goblin rialzare i prezzi.",
+		"Cielo sereno. Concedigli un momento, e ogni prezzo del Drag torna a salire dov'era.",
+	},
+	["org.weather_change.w21.clearsky.011"] = {
+		"Si è rasserenato. Orgrimmar festeggia facendo esattamente quello che faceva prima, solo a voce più alta.",
+		"Finalmente aria limpida, e la città festeggia nell'unico modo che conosce: tornando dritta al lavoro.",
+		"Bel tempo, e in strada nessuno si ferma a goderselo. Si limitano a urlare più in fretta.",
+	},
+	["org.weather_change.w21.clearsky.012"] = {
+		"si volta adagio nell'aria limpida e segue l'orlo del canyon per tutto il giro, come per controllare che ogni parete sia ancora al suo posto.",
+		"lascia correre lo sguardo lungo tutto l'orlo del canyon, netto e intero adesso contro il cielo aperto.",
+		"ripercorre il profilo frastagliato dove la pietra incontra il cielo, pulito da un capo all'altro, e non vi trova una sola breccia.",
+	},
+	["org.weather_change.w21.clearsky.013"] = {
+		"Lassù su una passerella un grunt si toglie lo straccio dalla faccia, sputa, e guarda il cielo sgombro come se gli dovesse delle scuse.",
+		"Le guardie si abbassano i panni dal viso una dopo l'altra, e il cielo sereno si prende l'occhiata lunga e piatta che un grunt riserva al cambio in ritardo.",
+	},
+	["org.weather_change.w21.clearsky.014"] = {
+		"Lassù è limpido come una ciotola lavata. Capita di rado: me ne sto qui a guardare.",
+		"Guarda, tutto l'orlo in un solo pezzo pulito. Dammi un momento, voglio guardarlo.",
+		"Neanche un granello fra noi e il cielo. Lasciatemelo godere.",
+	},
+	["org.weather_change.w21.clearsky.015"] = {
+		"coglie gli odori della città uno per uno, ora che l'aria si è schiarita: pece, cereali bolliti, peli strinati da una fucina, un recinto di lupi da qualche parte sopravvento.",
+		"nota come l'aria ripulita metta in fila gli odori della città: catrame caldo, pappa d'orzo, peli bruciati, e chissà dove un recinto di lupi.",
+	},
+	["org.weather_change.w21.clearsky.016"] = {
+		"Il cielo si schiarisce, e il sole scende nel canyon tutto in una volta, duro come un martello sulla pietra rossa. Ogni ombra della città diventa nera come inchiostro.",
+		"Il sole torna nel canyon. La pietra comincia a scaldarsi sotto gli stivali quasi prima che io mi accorga che il cielo si è aperto.",
+		"Ecco il sole, e il canyon intero s'infiamma di rosso dall'orlo al fondo, come una brace ravvivata da un soffio.",
+	},
+	["org.weather_change.w21.clearsky.017"] = {
+		"si sposta nella striscia d'ombra di un muro mentre il cielo sgombro lascia entrare il sole, e ci trova già tre peoni ammassati che fingono di lavorare.",
+		"va in cerca d'ombra mentre il cielo si apre e il sole cade sulla via; due peoni ci sono arrivati prima e hanno l'aria indaffaratissima.",
+	},
+	["org.weather_change.w21.clearsky.018"] = {
+		"Il cielo si è sgombrato, e la luna si posa sull'orlo del canyon come una moneta dimenticata su un muretto.",
+		"Notte serena sul canyon. La luna trova le borchie di ferro di ogni porta e ne fa tante piccole lampade fredde.",
+	},
+	["org.weather_change.w21.clearsky.019"] = {
+		"si stringe nel mantello mentre il cielo si sgombra e il freddo della notte scende nel canyon, posandosi nella pietra come acqua in una ciotola.",
+		"sente il freddo calare nel canyon appena il cielo si apre, e vede la guardia di notte battere i piedi ai posti.",
+		"rabbrividisce una volta mentre le nuvole se ne vanno e il gelo di una notte serena si rovescia dall'orlo, rapido e senza riguardi.",
+	},
+	["org.weather_change.w21.clearsky.020"] = {
+		"Aria pulita. Adesso ogni bestia di cacciatore in città sente l'odore delle pentole. Tieni stretta la cena.",
+		"L'aria si è fatta tersa. Ogni bestiola di Orgrimmar ha appena fiutato la salsiccia di qualcuno.",
+	},
+	["org.weather_change.w21.clearsky.021"] = {
+		"nota, ora che l'aria è pulita, le vecchie impronte pressate nella terra rossa: stivali, zampe, ruote di carro, tutte indurite e sovrapposte come una scrittura.",
+		"abbassa lo sguardo nell'aria che si schiarisce e per una volta vede la strada: solchi di carri, orme di stivali e di zampe, una sopra l'altra come in un vecchio registro.",
+		"s'inginocchia a guardare la via ripulita, dove mille andirivieni restano impressi nella terra uno sopra l'altro.",
+	},
+	["org.weather_change.w21.clearsky.022"] = {
+		"Cielo sgombro sopra una città di fuliggine. Continuo ad alzare gli occhi, come chi ha trovato una finestra in una stanza che credeva senza.",
+		"Sopra tutto quel fumo e quel ferro si è aperto il cielo, e mi sorprendo a guardarlo come si controlla una porta appena trovata aperta.",
+	},
+	["org.weather_change.w21.clearsky.023"] = {
+		"scorge un mercante goblin salire su una cassa per riappendere la merce gancio per gancio, borbottando un prezzo a ciascun pezzo mentre il cielo si schiarisce.",
+		"si ferma a guardare un goblin che riappende un'intera bancarella di pentole e lanterne mentre il tempo si rimette al bello, dicendo un prezzo a ogni gancio come se li presentasse.",
+		"sorride a un goblin che rimonta la bancarella nell'aria tersa, salutando ogni pentola e ogni lanterna col suo prezzo.",
+	},
+	["org.weather_change.w21.clearsky.024"] = {
+		"Col tempo sereno i peoni hanno teso una corda fra due pali e ci hanno appeso a prendere aria le casacche imbottite dei grunt. L'odore è una guerra a sé.",
+		"Ora che è sereno, tutte le giubbe imbottite delle caserme sembrano appese all'aria nello stesso momento. La città intera sa di truppa in marcia.",
+	},
+	["org.weather_change.w21.clearsky.025"] = {
+		"Cielo sgombro. Bene: adesso nessuno può più dare la colpa al tempo.",
+		"Il tempo si è rimesso. Qualunque cosa vada storta d'ora in poi, il cielo non c'entra.",
+		"Aria pulita e niente più scuse. Al lavoro.",
+	},
+	["org.weather_change.w21.clearsky.026"] = {
+		"sente le incudini della città suonare più nette nell'aria schiarita, ogni colpo che arriva tagliente, senza niente in mezzo a smussarlo.",
+		"si ferma ad ascoltare: con l'aria ripulita, i colpi delle fucine arrivano chiari e distinti, uno per uno.",
+		"inclina la testa verso il martellare dei fabbri, ogni battuta così nitida nell'aria tersa che la si potrebbe contare da qualunque punto.",
+	},
+	["org.weather_change.w21.clearsky.027"] = {
+		"guarda un vecchio orco arrotolare la pelle appesa davanti a una porta e legarla in alto, lasciando entrare nella stanza l'aria pulita come un ospite.",
+		"vede sollevare e legare indietro le tende delle porte lungo tutta la via mentre il tempo si rimette, e le stanze buie là dietro affacciarsi sulla via come facce assonnate.",
+	},
+	["org.weather_change.w21.dust.001"] = {
+		"osserva un mercante soffiare via la sabbia dai piatti della bilancia prima di pesare qualunque cosa, poi rifarlo una seconda volta, e una terza, mentre la sabbia continua ad arrivare.",
+		"ridacchia davanti a un commerciante che rinuncia del tutto alla bilancia mentre la sabbia entra col vento: ogni piatto risulta più pesante di qualche granello.",
+	},
+	["org.weather_change.w21.dust.002"] = {
+		"Chiudi la bocca e la borsa. La sabbia vuole entrare in tutte e due.",
+		"Bocca chiusa, borsa chiusa. Questo vento s'infila in qualunque cosa resti aperta.",
+		"Borsa chiusa, labbra serrate. La sabbia trova ogni fessura.",
+	},
+	["org.weather_change.w21.dust.003"] = {
+		"Arriva la sabbia e la città risponde con un unico lungo fragore: tutte le imposte della via che sbattono a turno, come un'esercitazione che Orgrimmar intera ha provato.",
+		"Lungo tutta la via le imposte si chiudono di colpo una dopo l'altra mentre la sabbia avanza, con una regolarità che sa di prova generale.",
+		"Sabbia nel vento, e Orgrimmar si chiude come un pugno: imposta, imposta, imposta, per tutta la fila.",
+	},
+	["org.weather_change.w21.dust.004"] = {
+		"invidia un goblin che si cala sugli occhi un paio di occhialoni d'ottone mentre la sabbia comincia a volare, e prosegue la passeggiata con l'aria soddisfattissima.",
+		"adocchia un goblin che s'infila gli occhialoni alla prima folata di sabbia e continua a passeggiare, l'unico della via che vede dove mette i piedi.",
+		"strizza gli occhi con invidia verso un goblin con gli occhialoni d'ottone, che se ne va a zonzo nella sabbia come se fosse la giornata ideale per una passeggiata.",
+	},
+	["org.weather_change.w21.dust.005"] = {
+		"Il cuoco giura che nello stufato c'è sempre un po' di sabbia. Con questo vento che la solleva da Durotar, la si sente scricchiolare.",
+		"Quando soffia la sabbia, ogni ciotola della città ha dentro un pizzico di Durotar. I cuochi hanno smesso di scusarsi e lo chiamano condimento.",
+		"Con questo vento ogni ciotola di stufato arriva con un cucchiaio di Durotar in omaggio. Nessuno la rimanda indietro.",
+	},
+	["org.weather_change.w21.dust.006"] = {
+		"scavalca una coperta arrotolata stesa davanti a una porta per tenere fuori la sabbia, e scopre che ogni porta della via ne ha una, come cani addormentati sulla soglia.",
+		"nota che per la sabbia ogni soglia della via è stata imbottita di pelli arrotolate e sacchi vecchi, e lei trova lo stesso la strada dagli angoli.",
+	},
+	["org.weather_change.w21.dust.007"] = {
+		"Concedi un'ora alla sabbia e costruisce piccole dune in ogni angolo dei muri, ordinate come se qualcuno le avesse rastrellate.",
+		"La sabbia si accumula negli angoli dei muri e ci resta in piccole creste, modellate dal vento in qualcosa di quasi voluto.",
+		"Dovunque due muri s'incontrano, la sabbia in volo stende una piccola cresta pettinata, come un artigiano paziente che lascia il suo segno.",
+	},
+	["org.weather_change.w21.dust.008"] = {
+		"trasale quando una folata di sabbia raggiunge il fuoco aperto di una fucina e solleva uno spruzzo di scintille, e il fabbro impreca e tira una pelle davanti all'apertura.",
+		"vede il vento carico di sabbia trovare le forge, ogni raffica che solleva dalle braci un crepitio di scintille, come se il fuoco risputasse fuori la polvere.",
+	},
+	["org.weather_change.w21.dust.009"] = {
+		"Resta vicino ai muri. Con questa sabbia non si vede a tre passi.",
+		"Tieniti al muro. In questa sabbia, se lo molli perdi la strada.",
+		"Una mano sul muro, e seguilo. Altrimenti questa sabbia ti fa girare in tondo.",
+	},
+	["org.weather_change.w21.dust.010"] = {
+		"La sabbia si prende prima il fondo della via, poi il mezzo, e adesso la città sono i dieci passi intorno a me e un sacco di urla.",
+		"Nella sabbia Orgrimmar si rimpicciolisce fino a una stanzetta con tende rosse per pareti. Le voci ci passano attraverso venendo dal nulla.",
+		"Dieci passi di strada, un muro d'aria rossa, e voci senza faccia. Adesso Orgrimmar è tutta qui.",
+	},
+	["org.weather_change.w21.dust.011"] = {
+		"vede il grosso felino di un cacciatore serrare gli occhi contro la sabbia e premere tutto il muso contro il ginocchio di chi lo accompagna.",
+		"aspetta mentre un cacciatore si accuccia per legare un panno sul muso di un grosso felino striato, che lo sopporta come un'offesa mentre la sabbia sibila intorno.",
+		"fa spazio a un cacciatore che guida per la collottola un felino accecato dalla sabbia, tutti e due a testa bassa.",
+	},
+	["org.weather_change.w21.dust.012"] = {
+		"Sabbia nel vento, e d'un tratto tutti in strada portano un panno sulla faccia. La città sembra un mercato di briganti che comprano il pane con grande educazione.",
+		"Con le facce avvolte contro la sabbia, ogni compratore sembra un rapinatore. Però fanno la fila, e contrattano lo stesso.",
+	},
+	["org.weather_change.w21.dust.013"] = {
+		"guarda un grunt lottare con uno stendardo per tirarlo giù dall'asta prima che la sabbia lo strappi, e arrotolarselo sotto un braccio come un bambino addormentato.",
+		"vede due peoni tirare giù dall'asta un grande stendardo di guerra mentre la sabbia s'infittisce, e piegarlo con più cura di quanta ne mettano in qualunque altra cosa.",
+	},
+	["org.weather_change.w21.dust.014"] = {
+		"La sabbia sulle pareti di pelle fa il rumore di una folla che bisbiglia proprio lì fuori. In una città così chiassosa, è il bisbiglio che ti entra sotto la pelle.",
+		"Ascolta: sabbia che sibila su ogni pelle tesa di Orgrimmar, mille persone che fanno silenzio tutte insieme.",
+		"Ogni pelle della città sibila al passaggio della sabbia, piano e senza sosta, come un segreto che passa di bocca in bocca.",
+	},
+	["org.weather_change.w21.dust.015"] = {
+		"Durotar passa a fare visita. Non si pulisce mai i piedi.",
+		"Il deserto è venuto in visita, e si è portato dietro tutto il cortile.",
+		"Ecco Durotar che entra dalle mura, senza alcuna creanza.",
+	},
+	["org.weather_change.w21.dust.016"] = {
+		"vede accendersi le lanterne lungo la via anche se è pieno giorno, piccole macchie arancioni nella sabbia che soffia.",
+		"guarda il sole ridursi a una moneta pallida dietro la sabbia, e la gente accendere lumi sulle soglie nel cuore della giornata.",
+	},
+	["org.weather_change.w21.dust.017"] = {
+		"Il sole è un disco rosso spento dietro la sabbia, così fioco che posso guardarlo dritto. Durotar ha messo un coperchio al cielo.",
+		"Sabbia di traverso nel cielo, e dietro il sole come una brace vista attraverso una pelle. Posso fissarlo senza battere ciglio.",
+		"Attraverso la sabbia in volo il sole ha perso tutti i denti. Se ne sta lì, rosso e innocuo, e io lo guardo dritto in faccia.",
+	},
+	["org.weather_change.w21.dust.018"] = {
+		"guarda le torce lungo il muro farsi fioche e arancioni mentre la sabbia s'infittisce nel buio, ogni fiamma con un alone di polvere.",
+		"vede le torce della guardia notturna sfocarsi in macchie rosse mentre la sabbia scavalca le mura, e sente i grunt chiamarsi per ritrovarsi.",
+		"perde di vista le torce una per una mentre la sabbia attraversa la notte, finché solo le voci dei grunt dicono dov'è il muro.",
+	},
+	["org.weather_change.w21.dust.019"] = {
+		"Questa sabbia la ritroverò per giorni: nelle cuciture, nelle tasche, nelle pieghe di lettere che non ho ancora aperto.",
+		"Mi porterò dietro questa sabbia per giorni. Nelle cuciture, nelle tasche, nel giaciglio, nella piega di ogni mappa.",
+		"Fra giorni starò ancora scuotendo questa sabbia da cose che credevo chiuse.",
+	},
+	["org.weather_change.w21.dust.020"] = {
+		"sorprende una troll che si avvolge il viso in un panno contro la sabbia, e poi, con la stessa cura, copre la maschera intagliata appesa accanto alla porta.",
+		"vede una donna Darkspear riparare dalla sabbia la maschera dipinta sullo stipite con un lembo dello scialle, prima di pensare a coprirsi gli occhi.",
+	},
+	["org.weather_change.w21.dust.021"] = {
+		"Ecco cosa fa Durotar quando smette di fare complimenti: la terra intera si alza e entra in città scavalcando le mura.",
+		"Durotar si alza e viene in città. Credevo che le mura servissero contro gli eserciti; servono contro questo.",
+	},
+	["org.weather_change.w21.dust.022"] = {
+		"Copriti e continua a camminare. A star fermi le si dà solo qualcosa da seppellire.",
+		"Non fermarti qua fuori. La sabbia si ammucchia su tutto ciò che aspetta.",
+		"Muoviti. In mezzo a questa, quel che sta fermo finisce sepolto.",
+	},
+	["org.weather_change.w21.dust.023"] = {
+		"vede passare di fretta un peone con una giara d'acqua, la bocca chiusa da una pelle legata contro la sabbia mentre la sua faccia resta scoperta.",
+		"fa largo a un peone che ripara dalla sabbia una giara d'acqua con tutto il corpo, lasciando la propria faccia a prendersi la polvere.",
+	},
+	["org.weather_change.w21.dust.024"] = {
+		"Sabbia sull'orlo, poi sulle mura, poi sul cielo: per un'ora Durotar si riprende il canyon, e Orgrimmar glielo lascia fare.",
+		"Nella sabbia la città perde i suoi muri uno dopo l'altro, come se la terra cercasse di ricordare com'era questo canyon prima che qualcuno ci costruisse.",
+		"Prima sparisce l'orlo, poi le mura, poi l'altro lato della via. Il canyon torna a essere soltanto un canyon, e la città aspetta che passi.",
+	},
+	["org.weather_change.w21.dust.025"] = {
+		"aggrotta la fronte davanti al velo di polvere rossa che si posa su un abbeveratoio mentre soffia la sabbia, e al lupo assetato che lo spinge col naso, offeso.",
+		"ride sottovoce di un lupo che fruga col muso la polvere che galleggia sull'abbeveratoio, starnutisce, e rivolge al cielo un lungo sguardo di rimprovero.",
+	},
+	["org.weather_change.w21.dust.026"] = {
+		"Splendido. Ancora un momento e ognuno avrà il colore delle mura.",
+		"Meraviglioso. Altri dieci minuti così e nessuno ci distinguerà più dai muri.",
+	},
+	["org.weather_change.w21.rainfall.001"] = {
+		"guarda aprirsi le porte lungo tutta la via e uscire sotto la pioggia ogni genere di recipiente: barili, pentoloni, un elmo capovolto, il cappello di latta di un goblin.",
+		"vede l'intera via mettere fuori tutto ciò che può tenere acqua mentre piove: tinozze, bollitori, un elmo incrinato, perfino uno stivale.",
+		"aggira una fila di pentole e secchi messi a raccogliere la pioggia, ognuno che risuona sotto le gocce con una nota tutta sua.",
+	},
+	["org.weather_change.w21.rainfall.002"] = {
+		"Fuori i barili! Chissà quando il cielo si ricorderà di nuovo di questo posto.",
+		"Portate un secchio, qualunque cosa. Una pioggia così non viene due volte in una stagione.",
+		"Fuori le giare! Quest'acqua è gratis, e non si tratterrà molto.",
+	},
+	["org.weather_change.w21.rainfall.003"] = {
+		"La pioggia sveglia dalla pietra un odore che non avrei mai detto custodisse: pulito e aspro, come ferro appena temprato.",
+		"Roccia bagnata. Sotto tutto il fumo la città ha un odore suo, e ci vuole la pioggia per trovarlo.",
+		"Dunque il canyon ha un odore suo, quando lo raggiunge la pioggia. Freddo, minerale, più vecchio di tutto quello che ci hanno costruito.",
+	},
+	["org.weather_change.w21.rainfall.004"] = {
+		"fa una smorfia quando un peone pungola col manico della scopa un tendone imbarcato, e un'intera pancia di pioggia si rovescia sul grunt che stava sotto.",
+		"sussulta quando qualcuno spinge da sotto un tetto di pelle gonfio, e la pioggia che tratteneva cade tutta d'un colpo su un tauren di passaggio, che si limita a sbattere le palpebre.",
+	},
+	["org.weather_change.w21.rainfall.005"] = {
+		"Dieci passi sotto la pioggia e ho gli stivali rossi fino alla caviglia, e pesanti il doppio. La strada viene con me, una manciata per passo.",
+		"Con la pioggia la via diventa una pasta rossa che si aggrappa a ogni stivale. Cammino più alto di un dito e più pesante di una libbra.",
+	},
+	["org.weather_change.w21.rainfall.006"] = {
+		"vede due giovani orchi pestare i piedi in una pozzanghera rossa finché un grunt non li sgrida a gran voce; e quando se ne sono andati, ci dà un colpo di stivale anche lui.",
+		"scorge un paio di giovani troll saltare da una pozzanghera all'altra sotto la pioggia, strillando, mentre uno più vecchio si sforza parecchio di non averne voglia.",
+	},
+	["org.weather_change.w21.rainfall.007"] = {
+		"La pioggia su Orgrimmar sembra un ospite capitato alla casa sbagliata. Tutti sono gentili con lei, e nessuno sa dove metterla.",
+		"È arrivata la pioggia in una città senza grondaie degne di questo nome, e vaga per le strade cercando un posto dove andare.",
+		"Questo canyon non è mai stato costruito per la pioggia. L'acqua va di porta in porta come un forestiero che chiede la strada.",
+	},
+	["org.weather_change.w21.rainfall.008"] = {
+		"segue un filo d'acqua piovana che trova la sua strada giù per le rampe e i gradini della città, raccogliendone altri, finché lungo il muro scorre un piccolo rivolo rosso.",
+		"tiene d'occhio la pioggia che scola dalle passerelle e giù per le rampe in fili color ruggine, e che ai piedi del muro s'intreccia in un unico rivolo frettoloso.",
+	},
+	["org.weather_change.w21.rainfall.009"] = {
+		"Piove su Orgrimmar. Qualcuno si segni la data.",
+		"Pioggia! Segnatevi il giorno: i vecchi ne discuteranno per anni.",
+		"Pioggia, a Orgrimmar. Domani non ci crederà nessuno.",
+	},
+	["org.weather_change.w21.rainfall.010"] = {
+		"Un tauren se ne sta allo scoperto con la pioggia che gli cola dalle corna, occhi chiusi, fermo come un palo. Credo sia la cosa più felice che ho visto in questa città.",
+		"C'è un tauren in mezzo alla via che si lascia inzuppare la pelliccia dalla pioggia senza muovere un pelo. Qualunque cosa sia, la invidio.",
+		"Un tauren, sotto la pioggia di proposito, il muso rivolto in su e perfettamente in pace. Tutti gli altri corrono; solo il tauren è arrivato.",
+	},
+	["org.weather_change.w21.rainfall.011"] = {
+		"sobbalza al clangore di un cuoco che cala di colpo un coperchio di ferro su un braciere mentre arriva la pioggia, e le braci là sotto brontolano e sputano come una bestia chiusa in una cassa.",
+		"sente ogni fuoco aperto lungo la via sibilare alla pioggia, mentre i cuochi si affannano a buttare pelli sui carboni.",
+	},
+	["org.weather_change.w21.rainfall.012"] = {
+		"Pioggia sulle rampe, e d'un tratto i grunt più duri della città camminano come vitelli su un'asse bagnata.",
+		"La pietra bagnata è l'unico nemico per cui i grunt non si sono mai allenati. Ne ho appena visti due scendere una rampa sul sedere, con grande dignità.",
+		"Ogni guerriero di Orgrimmar sa reggere una carica. Neanche uno sa reggersi su una rampa bagnata.",
+	},
+	["org.weather_change.w21.rainfall.013"] = {
+		"ascolta la pioggia sui tetti di pelle della città, un suono morbido e vicino, come dita che tamburellano su un tavolo in un'altra stanza.",
+		"sosta sotto una sporgenza a sentire la pioggia sulle pelli tese di sopra, un picchiettio sordo che rende la città stranamente quieta.",
+	},
+	["org.weather_change.w21.rainfall.014"] = {
+		"Un vecchio peone sotto la tenda accanto a me giura che è la terza pioggia che vede a Orgrimmar, e che le prime due erano migliori. Nessuno ribatte.",
+		"Il peone riparato accanto a me sostiene di ricordare ogni pioggia da quando la città è stata costruita, e piazza questa più o meno a metà classifica.",
+	},
+	["org.weather_change.w21.rainfall.015"] = {
+		"fa un salto indietro quando un lupo rientra trotterellando dalla pioggia e si scrolla dal muso alla coda, schizzando acqua rossa su chiunque sia a tiro.",
+		"si becca in faccia uno spruzzo d'acqua fangosa da un lupo fradicio che si scrolla lì accanto, e dal suo cavaliere un'alzata di spalle per scusarsi.",
+		"si prende schizzi rossi da capo a piedi quando un lupo inzuppato di pioggia decide, proprio lì, che di acqua addosso ne ha avuta abbastanza.",
+	},
+	["org.weather_change.w21.rainfall.016"] = {
+		"Attenzione ai gradini, sono viscidi come sapone.",
+		"Occhio ai piedi. La pioggia su questa pietra è peggio di un'imboscata.",
+		"Attenzione alle rampe. Questa roccia diventa traditrice appena si bagna.",
+	},
+	["org.weather_change.w21.rainfall.017"] = {
+		"Dall'orlo in giù la pioggia scurisce le pareti del canyon, lenta come una tinta che penetra in una pelle.",
+		"Le pareti bevono la pioggia e si fanno più scure a partire dall'orlo, come stoffa immersa in un tino.",
+	},
+	["org.weather_change.w21.rainfall.018"] = {
+		"vede una troll sciogliersi i capelli e lasciarci scorrere dentro la pioggia, pettinandoli con le dita e canticchiando.",
+		"intravede una troll che piega indietro la testa e si passa la pioggia fra i lunghi capelli con le dita, le perline che ticchettano, senza alcuna fretta.",
+	},
+	["org.weather_change.w21.rainfall.019"] = {
+		"Un vecchio orco sotto la gronda guarda la pioggia senza alcun piacere. I campi erano in una terra umida, dicono i grunt: qualcuno non ha ancora perdonato il tempo.",
+		"Non tutti sono contenti della pioggia. Gli orchi più anziani la guardano come un vecchio creditore; i campi, dicono i grunt, erano un posto umido e grigio.",
+	},
+	["org.weather_change.w21.rainfall.020"] = {
+		"nota un goblin che si getta di peso su una cassa segnata con un teschio mentre comincia la pioggia, urlando che qualcuno, chiunque, porti un telo.",
+		"ride di un goblin che fa a gara con la pioggia verso una pila di barilotti, le braccia allargate su quanti più ne riesce a coprire, strillando di polvere da sparo a nessuno in particolare.",
+		"sogghigna davanti a un goblin spaparanzato sulle sue casse di polvere sotto la pioggia, che usa tutto il corpo come coperchio e tutta la voce per lamentarsi.",
+	},
+	["org.weather_change.w21.rainfall.021"] = {
+		"La pioggia fa quello che nessun grunt sa fare: costringe Orgrimmar ad abbassare la voce. Per un po' la cosa più rumorosa della città è l'acqua.",
+		"Sotto la pioggia l'intera città parla più piano, come se l'avessero sgridata. Non sapevo che ne fosse capace.",
+		"Con la pioggia, Orgrimmar parla sottovoce. Le sta meglio di quanto avrei creduto.",
+	},
+	["org.weather_change.w21.rainfall.022"] = {
+		"socchiude gli occhi verso la pioggia e vede il sole che brilla ancora a un capo del canyon, le gocce che cadono accese come scintille.",
+		"resta immobile mentre la pioggia cade attraverso una lama di sole sopra le mura, ogni goccia una scintilla per un istante prima di toccare la pietra rossa.",
+		"si volta verso la luce: sole e pioggia insieme sopra il canyon, e l'acqua che cade luccica come scintille lanciate.",
+	},
+	["org.weather_change.w21.rainfall.023"] = {
+		"Pioggia nella notte su Orgrimmar. Le torce sfrigolano e si piegano, e le strade luccicano rosse e nere come una forgia bagnata.",
+		"Pioggia notturna. Ogni torcia lungo il muro porta una piccola corona di vapore.",
+	},
+	["org.weather_change.w21.rainfall.024"] = {
+		"Qualcuno vada ad avvisare gli sciamani. Vorranno prendersi il merito di questa pioggia.",
+		"Piove! Dieci d'argento che da qualche parte uno sciamano se ne sta già prendendo il merito.",
+	},
+	["org.weather_change.w21.rainfall.025"] = {
+		"nota che i grunt ai loro posti restano esattamente dove sono sotto la pioggia, l'acqua che scorre dagli spallacci in due rigagnoli ordinati.",
+		"vede le sentinelle della città mantenere la posizione sotto la pioggia come se cadesse su qualcun altro.",
+	},
+	["org.weather_change.w21.rainfall.026"] = {
+		"Con la pioggia ogni porta della città si gonfia. Per tutta la via sento gente che le apre a spallate imprecando contro il legno.",
+		"Il legno beve la pioggia, e d'un tratto nessuna porta di Orgrimmar vuole più chiudersi. Il suono della città diventa una serie di calci.",
+	},
+	["org.weather_change.w21.rainfall.027"] = {
+		"Tendi la mano. Avanti. Quand'è l'ultima volta che hai sentito la pioggia in questo canyon?",
+		"Restaci sotto un momento. Qui non ti capiterà spesso.",
+		"Allunga una mano. Pioggia, qui. Vorrai ricordartelo.",
+	},
+	["org.weather_change.w21.thunder.001"] = {
+		"vede il lampo guizzare sopra l'orlo e conta adagio finché il tuono risponde, come imparano a fare i bambini di ogni dove.",
+		"conta fra il bagliore sopra il canyon e lo schianto che lo segue, e arriva a quattro prima che la pietra tremi.",
+		"muove le labbra sui numeri in silenzio dopo ogni lampo della tempesta, e il tuono interrompe il conto ogni volta un po' prima.",
+	},
+	["org.weather_change.w21.thunder.002"] = {
+		"Un tuono, e da qualche parte in città tutti i lupi gli rispondono insieme. La tempesta non sembra impressionata; io sì.",
+		"I lupi di Orgrimmar ululano al tuono come a un branco rivale sulla cresta. Quasi spero che risponda.",
+		"Ogni lupo di Orgrimmar ha un'opinione sul tuono, e la stanno dando tutti insieme.",
+	},
+	["org.weather_change.w21.thunder.003"] = {
+		"nota uno sciamano uscire allo scoperto mentre scoppia la tempesta, il viso alzato, in ascolto attento, come se il tuono fosse una voce con qualcosa da dire.",
+		"vede un vecchio sciamano uscire da una porta incontro alla tempesta invece di scappare, immobile a occhi chiusi mentre tutti gli altri corrono.",
+	},
+	["org.weather_change.w21.thunder.004"] = {
+		"Nessuno sulle passerelle. Il cielo sta tirando roba.",
+		"Giù dai punti alti, chiunque ci sia. Il cielo sta scegliendo i bersagli.",
+		"Scendi da lassù! Questa tempesta cerca qualcosa di alto.",
+	},
+	["org.weather_change.w21.thunder.005"] = {
+		"Ogni schianto di tuono scuote un po' di polvere dalle travi e fa battere i denti alle tazze sugli scaffali, come se la città intera avesse la febbre.",
+		"Il tuono entra nella pietra stessa. Le tazze tintinnano sui ganci, un'imposta allentata trema, e la polvere cola giù dalle travi.",
+		"Quando arriva il tuono, in città tutto ciò che può tremare trema: tazze, imposte, catene, i pioli nei muri.",
+	},
+	["org.weather_change.w21.thunder.006"] = {
+		"guarda una fila di peoni che trasportano legname fermarsi di colpo al primo tuono, guardare il caposquadra, e ricevere per tutta risposta un ruggito più forte del cielo.",
+		"vede una squadra di lavoro sobbalzare tutta insieme a uno schianto di tuono e poi riprendere a passo doppio, col sorvegliante che sbraita più forte della tempesta.",
+	},
+	["org.weather_change.w21.thunder.007"] = {
+		"A ogni lampo la città intera compare tutta insieme, ogni persona colta a metà di un passo, e poi la penombra la ripiega via prima che io abbia finito di guardare.",
+		"Un lampo, e per un istante Orgrimmar è un dipinto: un grunt a bocca aperta, un peone con un sacco a mezz'aria, un troll immobile su una rampa.",
+		"La tempesta mi mostra la città a pezzi, un lampo bianco per pezzo, e mai abbastanza a lungo per vederne uno due volte.",
+	},
+	["org.weather_change.w21.thunder.008"] = {
+		"alza lo sguardo verso la torre di volo, dove i custodi tirano con forza le corde mentre le bestie strillano e sbattono le ali a ogni rombo di tuono.",
+		"fa una smorfia mentre le bestie sulla torre di volo s'impennano e stridono al tuono, e i loro custodi restano appesi alle corde con tutto il peso.",
+	},
+	["org.weather_change.w21.thunder.009"] = {
+		"I goblin hanno coperto ogni macchina della via e se ne stanno ben lontani da tutte. Questo mi dice sulla tempesta più di quanto dica il tuono.",
+		"Ogni goblin in vista ha buttato una pelle sui suoi aggeggi e si è fatto da parte. Quando i goblin diventano prudenti con la tempesta, divento prudente anch'io.",
+		"Se in questa tempesta i goblin si nascondono dalle loro stesse macchine, io ne sto alla larga.",
+	},
+	["org.weather_change.w21.thunder.010"] = {
+		"fa un salto indietro quando una raffica della tempesta investe un braciere e lancia un ventaglio di braci attraverso la via, dove tre persone le pestano insieme.",
+		"calpesta una brace che la tempesta ha strappato a un braciere, e ne vede altre rotolare giù per la via come perline accese, inseguite da stivali che pestano.",
+		"scarta di lato davanti a una manciata di carboni che il vento della tempesta ha scagliato fuori da un braciere, mentre mezza via ci balla sopra per spegnerli.",
+	},
+	["org.weather_change.w21.thunder.011"] = {
+		"Quello era vicino. L'ho sentito nei denti.",
+		"Vicino, quello. Mi ronzano i denti.",
+		"Un tuono così vicino lo senti nella mascella.",
+	},
+	["org.weather_change.w21.thunder.012"] = {
+		"I troll in strada non hanno fretta. Uno mi dice che i loa stanno solo litigando, e che è maleducato scappare dalle liti degli altri.",
+		"Una donna Darkspear sotto la gronda ride del tuono. Sono i loa che litigano, dice, ed è da maleducati andarsene a metà.",
+		"Nessun troll in vista scappa dalla tempesta. I loa si stanno solo urlando addosso, dice uno, con un'alzata di spalle.",
+	},
+	["org.weather_change.w21.thunder.013"] = {
+		"sente una porta di pelle sbattere e schioccare nella tempesta finché qualcuno dentro si arrende e ci si siede contro, una schiena larga a tenerla chiusa.",
+		"vede la tenda di pelle di un ingresso gonfiarsi e schiaffeggiare nella tempesta, finché un braccio sporge, ne afferra il bordo e la tiene giù a forza.",
+	},
+	["org.weather_change.w21.thunder.014"] = {
+		"L'aria prima di ogni fulmine ha un odore aspro e strano, come ferro appena uscito dalla mola. Poi il tuono, e l'odore sparisce.",
+		"In questa tempesta c'è un odore che non riesco a collocare: metallo caldo, o una pietra focaia battuta, sospeso nell'aria fra un lampo e l'altro.",
+		"Fra un lampo e l'altro la tempesta lascia nell'aria un sapore metallico, come un'incudine rovente spenta nell'acqua, e non riesco a non accorgermene.",
+	},
+	["org.weather_change.w21.thunder.015"] = {
+		"resta un momento allo scoperto mentre la tempesta passa sul canyon, e sente ogni tuono salire dalla roccia attraverso le suole degli stivali.",
+		"sente il tuono arrivare due volte: prima nelle orecchie, e un attimo dopo dalla pietra sotto i piedi, come se il canyon lo ripetesse.",
+		"s'attarda fuori nella tempesta quanto basta a sentire il fondo del canyon fremere a ogni schianto, la roccia che incassa il colpo e lo passa oltre.",
+	},
+	["org.weather_change.w21.thunder.016"] = {
+		"Tuoni così, e da qualche parte nel Drag c'è ancora qualcuno che contratta. Adoro questa città.",
+		"Senti: il cielo che si spacca sopra la testa, e da qualche parte un mercante che non ha smesso di tirare sul prezzo.",
+	},
+	["org.weather_change.w21.thunder.017"] = {
+		"alza gli occhi mentre un fulmine squarcia la notte sopra l'orlo, e per un istante bianco ogni torcia della città sembra non esistere.",
+		"intravede la notte sopra il canyon strappata da un lampo, e le torce sulle mura farsi deboli e gialle nel bagliore.",
+		"sbatte le palpebre quando la tempesta scaglia un fulmine attraverso il cielo notturno, e la città buia salta fuori dal nulla per sparire prima che la si possa vedere bene.",
+	},
+	["org.weather_change.w21.thunder.018"] = {
+		"La tempesta fa un buio da cantina in pieno giorno, e la città accende i lumi a un'ora in cui nessuno dovrebbe averne bisogno.",
+		"Nuvoloni di tempesta sul canyon, e la luce del giorno prende il colore di un livido. Sulle soglie lungo la via si accendono le lampade.",
+	},
+	["org.weather_change.w21.thunder.019"] = {
+		"fa largo a un cavaliere che trascina per la collottola un lupo riluttante verso il riparo, orecchie appiattite e coda stretta, tutto il suo coraggio lasciato indietro al primo schianto.",
+		"compatisce un lupo che si rifiuta di fare un solo passo in più nella tempesta, le quattro zampe puntate, mentre il cavaliere lo supplica con una voce che non è fatta per altre orecchie.",
+	},
+	["org.weather_change.w21.thunder.020"] = {
+		"Un fulmine cade da qualche parte sull'orlo e qualche sasso rotola giù per la parete del canyon. Tutti quelli di sotto fanno un passo indietro, poi riprendono.",
+		"Un fulmine sull'orlo, vicino. Un rigagnolo di sassi scivola giù per la parete, e l'intera via fa un solo passo indietro dal muro.",
+	},
+	["org.weather_change.w21.thunder.021"] = {
+		"nota un grunt di guardia che punta i piedi e si piega nel vento della tempesta, il mantello che gli sventola dritto alle spalle.",
+		"scorge un grunt al suo posto incastrare il calcio della lancia fra due pietre e reggersi a quella nelle raffiche, la faccia calma come se non soffiasse nulla.",
+		"ammira una sentinella piantata contro la tempesta come un palo nel terreno, il mantello che schiocca, gli occhi che non lasciano mai la via.",
+	},
+	["org.weather_change.w21.thunder.022"] = {
+		"Un vecchio grunt accanto a me borbotta che il tuono ha il suono delle catapulte della guerra. Poi non dice più niente.",
+		"Gli orchi più anziani in strada s'immobilizzano quando arriva il tuono. Uno borbotta una parola che non afferro; sembra il nome di una battaglia.",
+	},
+	["org.weather_change.w21.thunder.023"] = {
+		"Trovati un tetto. Questa tempesta non sta bluffando.",
+		"Mettiti sotto qualcosa di solido. Quel cielo fa sul serio.",
+		"Dentro, presto. La tempesta ha finito con gli avvertimenti.",
+	},
+	["org.weather_change.w21.thunder.024"] = {
+		"sente un tauren lì vicino canticchiare a bassa voce insieme al tuono, i due suoni così simili che è difficile dire dove finisce l'uno.",
+		"distingue, sotto la tempesta, una profonda voce di tauren che canticchia a tempo col tuono, come per fargli compagnia.",
+	},
+	["org.weather_change.w21.thunder.025"] = {
+		"Per una volta Orgrimmar non è la cosa più rumorosa del canyon. E sembra saperlo: la città intera ha messo un po' il broncio.",
+		"La tempesta urla più forte della città. Non credevo che nulla ci riuscisse, e Orgrimmar sembra sorpresa quanto me.",
+		"Sopra Orgrimmar l'ultima parola ce l'ha il tuono, e alla città la cosa non va proprio giù.",
+	},
+	["org.weather_change.w21.thunder.026"] = {
+		"guarda un bottegaio arrendersi col suo tendone e tagliare le corde, e la tempesta porta via la pelle lungo la via come un grande uccello che sbatte le ali, mentre tutti si abbassano.",
+		"si abbassa quando un tendone si strappa nella tempesta e rotola giù per la via, col padrone che lo insegue a braccia tese.",
+	},
 ]==])

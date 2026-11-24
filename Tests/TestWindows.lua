@@ -429,12 +429,9 @@ T.run("UI-7: the Info section: credits, licence, notice, copy boxes and the NEBU
 	local S, panel = NS.SettingsFrame, NS.SettingsFrame.panel
 	local info = panel.info
 	local urls = {
-		repo = "https://github.com/Finland6738/azeroth-unspoken",
-		issues = "https://github.com/Finland6738/azeroth-unspoken/issues",
-		site = "https://nebula-community.github.io/giochi/wow-forever/",
 		kofi = "https://ko-fi.com/finland6738",
 	}
-	T.eq(#S.LINKS, 4, "four links")
+	T.eq(#S.LINKS, 1, "one link only: Ko-fi (owner rule 2026-11-24)")
 	for _, link in ipairs(S.LINKS) do T.eq(link.url, urls[link.id], link.id .. ": the address") end
 	for _, lang in ipairs({ "en", "it" }) do
 		NS.db.locale = lang

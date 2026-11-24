@@ -66,7 +66,7 @@ Every command of Azeroth Unspoken. Type them in the chat box, like any other sla
 | `/au language [code]` (short form `/au lang`) | Sets the language of lines and interface: `en` (English, the default) or `it` (Italian). With no code, lists the available languages. See [[Languages]]. |
 | `/au options` | Opens the [[settings panel|Settings]]. |
 | `/au wizard` | Reopens the [[setup wizard|First-Run-Wizard]]. |
-| `/au about` | Opens the [[settings panel|Settings]] on its **Info** section: the credits, the licence, the fan-made notice and four read-only boxes with the links. See [[About and Credits|About]]. |
+| `/au about` | Opens the [[settings panel|Settings]] on its **Info** section: the credits, the licence, the fan-made notice and a read-only box with the Ko-fi link, the only link the addon carries. See [[About and Credits|About]]. |
 | `/au about chat` | Prints the same credits and the links in the chat, where you can select and copy them. |
 
 ## Narrator style and rhythm
