@@ -35,4 +35,7 @@
 	<Binding name="AZEROTHUNSPOKEN_ANSWER3" category="ADDONS">
 		AzerothUnspoken_NPCAnswer(3)
 	</Binding>
+	<Binding name="AZEROTHUNSPOKEN_WHEEL" runOnUp="true" category="ADDONS">
+		AzerothUnspoken_EmoteWheel(keystate)
+	</Binding>
 </Bindings>

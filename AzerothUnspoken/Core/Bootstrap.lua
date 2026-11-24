@@ -38,6 +38,8 @@ if GetLocale and select(2, pcall(GetLocale)) == "itIT" then
 	BINDING_NAME_AZEROTHUNSPOKEN_ANSWER1 = "Dialogo con l'NPC: risposta 1"
 	BINDING_NAME_AZEROTHUNSPOKEN_ANSWER2 = "Dialogo con l'NPC: risposta 2"
 	BINDING_NAME_AZEROTHUNSPOKEN_ANSWER3 = "Dialogo con l'NPC: risposta 3"
+	-- ADR 0059: held, it opens the emote wheel; released, it plays the emote under the cursor (the key ships unbound)
+	BINDING_NAME_AZEROTHUNSPOKEN_WHEEL = "Ruota delle emote (tieni premuto, rilascia per scegliere)"
 else
 	BINDING_NAME_AZEROTHUNSPOKEN_SPEAK = "Confirm and speak the proposed line (or improvise)"
 	BINDING_NAME_AZEROTHUNSPOKEN_PAUSE = "Pause the narrator immediately (toggle)"
@@ -51,6 +53,7 @@ else
 	BINDING_NAME_AZEROTHUNSPOKEN_ANSWER1 = "NPC dialogue: answer 1"
 	BINDING_NAME_AZEROTHUNSPOKEN_ANSWER2 = "NPC dialogue: answer 2"
 	BINDING_NAME_AZEROTHUNSPOKEN_ANSWER3 = "NPC dialogue: answer 3"
+	BINDING_NAME_AZEROTHUNSPOKEN_WHEEL = "Emote wheel (hold, release to choose)"
 end
 
 ---------------------------------------------------------------------------

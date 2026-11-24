@@ -24,6 +24,9 @@ Assets.textures = {
 	pill       = { path = MEDIA .. "pill.tga",       w = 64,  h = 32,  slice = 16 },
 	circle     = { path = MEDIA .. "circle.tga",     w = 64,  h = 64 },
 	blob_radial = { path = MEDIA .. "blob_radial.tga", w = 128, h = 128 },
+	-- the emote wheel (ADR 0059): a large disc and its 2 px ring, so the edge stays sharp at the wheel's size
+	disc_256   = { path = MEDIA .. "disc_256.tga",   w = 256, h = 256 },
+	ring_256   = { path = MEDIA .. "ring_256.tga",   w = 256, h = 256 },
 	icons      = { path = MEDIA .. "icons.tga",      w = 256, h = 256, cell = 16 },
 	-- the addon's own logo (assets/logo-source.webp), cut round, full colour
 	logo_256   = { path = MEDIA .. "logo_256.tga",   w = 256, h = 256 },
@@ -35,13 +38,14 @@ Assets.textures = {
 }
 
 -- Cells of the icon sheet, in the order of tools/make_media.py (16 per row).
--- 44 icons, drawn for this addon (docs/third-party.md): FDCP's 40, then heart, quill, chat, scroll.
+-- 48 icons, drawn for this addon (docs/third-party.md): FDCP's 40, then heart, quill, chat, scroll (UI-1), then hand, note,
+-- smile, train (the emote wheel, ADR 0059).
 Assets.icons = { "chevron", "check", "cross", "dashed", "skull", "shield", "heal", "sword", "star", "gear", "arrow_up",
 	"arrow_down", "lock", "eye", "dot", "plus",
 	"info", "warn", "search", "filter", "copy", "trash", "edit", "calendar", "clock", "user", "users", "crown",
 	"coin", "refresh", "download", "upload",
 	"bell", "flag", "minus", "gem", "bag", "book", "link", "arrow_left",
-	"heart", "quill", "chat", "scroll" }
+	"heart", "quill", "chat", "scroll", "hand", "note", "smile", "train" }
 
 -- Fonts. Orbitron ships whole (it declares a Reserved Font Name): it is used for the title only, in capitals, and has
 -- no middle dot or arrow. `fallback` is the game font used when SetFont fails or the user chose the game fonts.

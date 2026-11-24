@@ -24,6 +24,7 @@ Core\Probe.lua
 Core\ProbeCombat.lua
 Core\SourceCodec.lua
 Core\Packs.lua
+Core\Emotes.lua
 
 # --- motore narrativo (non contiene testi) ---
 Engine\PhraseRegistry.lua
@@ -73,6 +74,7 @@ UI\ProfileFrame.lua
 UI\JournalFrame.lua
 UI\RelationsFrame.lua
 UI\DialogueFrame.lua
+UI\EmoteWheel.lua
 UI\SettingsFrame.lua
 UI\Commands.lua
 

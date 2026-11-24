@@ -132,6 +132,11 @@ for name_, call_ in (("DISCARD", "AzerothUnspoken_Discard()"), ("EDIT", "Azeroth
                      ("JOURNAL", "AzerothUnspoken_Journal()"), ("ANSWER1", "AzerothUnspoken_NPCAnswer(1)"),
                      ("ANSWER2", "AzerothUnspoken_NPCAnswer(2)"), ("ANSWER3", "AzerothUnspoken_NPCAnswer(3)")):
     check(f'name="AZEROTHUNSPOKEN_{name_}"' in bindings and call_ in bindings, f"key {name_} in Bindings.xml")
+# ADR 0059: the emote wheel's key runs on press and on release and passes the key state; it ships unbound
+wheel_ = re.search(r'<Binding name="AZEROTHUNSPOKEN_WHEEL"([^>]*)>\s*([^<]+?)\s*</Binding>', bindings)
+check(wheel_ is not None and 'runOnUp="true"' in wheel_.group(1), "the emote wheel's key in Bindings.xml runs on release too")
+check(wheel_ is not None and wheel_.group(2) == "AzerothUnspoken_EmoteWheel(keystate)", "and passes the key state to its handler")
+check(wheel_ is not None and "default" not in wheel_.group(1).lower(), "and has no default key (the player binds it)")
 boot_ = open(os.path.join(ADDON, "Core", "Bootstrap.lua"), encoding="utf-8").read()
 for m_ in re.finditer(r'<Binding name="(\w+)"[^>]*>\s*(\w+)\(', bindings):
     check(G[m_.group(2)] is not None, f"{m_.group(1)}: {m_.group(2)} exists after the load")
@@ -493,7 +498,7 @@ for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContex
              "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestEmotion", "TestMemory", "TestRelations", "TestPlayers", "TestNPCLevels", "TestNPCRomance", "TestPromises", "TestFavours", "TestLocalReputation", "TestHostility", "TestProximityShared",
              "TestOtherPlace", "TestNPCAlive", "TestArcs", "TestCommands", "TestProfile", "TestProbeCombat", "TestContent", "TestScale",
              "TestSelection", "TestWorld", "TestDynamism", "TestKeyClaims", "TestPacks", "TestKeyboard", "TestLiterary",
-             "TestLiteraryMeta", "TestSongbook", "TestNemesis", "TestCompanion", "TestIdentity", "TestLayout", "TestAssets", "TestTheme", "TestWidgets"):
+             "TestLiteraryMeta", "TestSongbook", "TestNemesis", "TestCompanion", "TestIdentity", "TestLayout", "TestAssets", "TestTheme", "TestWidgets", "TestEmoteWheel"):
     # TestPacks: the folders of the download are loaded by Core/Packs.lua like in the client (#85, #101)
     lt, nst = load_addon(packs="lazy" if name == "TestPacks" else "all")
     # un'installazione nuova parte in inglese (#132); i test dei testi sono scritti in italiano, quindi la lingua si

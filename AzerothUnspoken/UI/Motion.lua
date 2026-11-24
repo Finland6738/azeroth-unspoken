@@ -126,6 +126,49 @@ function Motion.Rise(frame, rise, duration)
 	return true
 end
 
+-- A popup appears where it is: it grows from `fromScale` (0.85 by default) to its size while it fades in, in `duration`
+-- seconds (the emote wheel: 0.15 s, ADR 0059). Shows the frame; with animations off it is simply shown at full alpha.
+-- Returns true when it animates.
+function Motion.PopIn(frame, duration, fromScale)
+	duration = duration or Motion.FAST
+	fromScale = fromScale or 0.85
+	local s = of(frame)
+	if s.fade then s.fade.group:Stop() end
+	if s.pop then s.pop.group:Stop() end
+	frame:Show()
+	if not animates(frame) or duration <= 0 then frame:SetAlpha(1); return false end
+	if not s.pop then
+		local group = frame:CreateAnimationGroup()
+		local grow = group:CreateAnimation("Scale")
+		grow:SetSmoothing(Motion.SMOOTHING)
+		grow:SetOrigin("CENTER", 0, 0)
+		grow:SetScaleTo(1, 1)
+		local fade = group:CreateAnimation("Alpha")
+		fade:SetSmoothing(Motion.SMOOTHING)
+		fade:SetFromAlpha(0); fade:SetToAlpha(1)
+		s.pop = { group = group, grow = grow, fade = fade }
+		group:SetScript("OnFinished", function() frame:SetAlpha(1) end)
+	end
+	s.pop.grow:SetScaleFrom(fromScale, fromScale)
+	s.pop.grow:SetDuration(duration); s.pop.fade:SetDuration(duration)
+	frame:SetAlpha(1)   -- the Alpha animation starts from 0 itself; the end state is the frame's own alpha
+	s.pop.group:Play()
+	return true
+end
+
+-- Stops every animation of a region where it is, with none of their end callbacks (a popup closed in the middle of its
+-- entrance, the wheel opened again during its fade-out).
+function Motion.Stop(region)
+	local s = state[region]
+	if not s then return end
+	for _, key in ipairs({ "fade", "pop", "rise", "slide", "rotate" }) do
+		if s[key] and s[key].group then
+			if key == "fade" then s.fade.done = nil end
+			s[key].group:Stop()
+		end
+	end
+end
+
 -- Turns a texture to `radians` in `duration` seconds (the accordion arrow, 320 ms); the end angle is set when it ends.
 function Motion.Rotate(texture, radians, duration)
 	duration = duration or Motion.SLOW

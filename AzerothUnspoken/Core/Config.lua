@@ -269,6 +269,16 @@ Config.defaults = {
 		neon = true,
 		animations = true,
 		fontSource = "addon",
+		-- ADR 0059: the emote wheel, held on the key AZEROTHUNSPOKEN_WHEEL (unbound until the player binds it). `emotes` holds
+		-- one token per slice, clockwise from the top; the first `slices` are shown. `holdDelay` in seconds: 0 opens on press
+		wheel = {
+			slices = 8,
+			labels = true,
+			deadZone = 30,
+			holdDelay = 0,
+			sounds = true,
+			emotes = { "WAVE", "DANCE", "BOW", "CHEER", "LAUGH", "TRAIN", "MOO", "SALUTE", "THANK", "KISS", "POINT", "ROAR" },
+		},
 	},
 }
 
@@ -320,6 +330,9 @@ Config.rules = {
 	["ui.windowScale"] = { min = 0.8, max = 1.5 },
 	["ui.theme"] = { enum = Config.THEMES },
 	["ui.fontSource"] = { enum = Config.FONT_SOURCES },
+	["ui.wheel.slices"] = { min = 4, max = 12, integer = true },
+	["ui.wheel.deadZone"] = { min = 16, max = 80, integer = true },
+	["ui.wheel.holdDelay"] = { min = 0, max = 0.5 },
 	["pacing.globalCooldownSeconds"] = { min = 0, max = 3600 },
 	["pacing.recentPhraseWindow"] = { min = 1, max = 200, integer = true },
 	["pacing.inCombat"] = { enum = Config.COMBAT_SETTINGS },
@@ -340,6 +353,8 @@ Config.maps = {
 	chance = function(v) return type(v) == "number" and v >= 0 and v <= 100 end,
 	ignored = function(v) return v == true end,
 	disabledPacks = function(v) return v == true end,
+	-- ADR 0059: one emote token per slice of the wheel ("DANCE"); a malformed one is dropped and the slice shows its default
+	["ui.wheel.emotes"] = function(v) return type(v) == "string" and v:match("^[A-Z][A-Z0-9_]*$") ~= nil and #v <= 40 end,
 }
 
 -- Moduli che hanno già un effetto: l'impostazione e la guida iniziale mostrano un asterisco accanto agli altri (#77).
