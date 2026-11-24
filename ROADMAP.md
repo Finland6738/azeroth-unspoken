@@ -199,6 +199,23 @@ Asked by the owner on 2026-11-24, after UI-ECO and release 0.3.0 (the content wa
 |---|---|---|
 | EW | The wheel held on an unbound key (`AZEROTHUNSPOKEN_WHEEL`, `runOnUp`), the client's emote list, the geometry in pure Lua, the NEBULA look in both themes, the watchdog and the closings, Settings > Emote wheel with presets (named wheels, a next-preset key), `/au wheel` and `/au emotes`, four icons and two textures, tests, docs and mockups | built in one pull request; **untested in the client** (G1 section EW: the key state, the emotes, the sounds, the cursor scale, the look, the timings) |
 
+### Active romance
+
+Asked by the owner on 2026-11-24: a romance the player does with NPCs, on top of the passive romance of ADR 0037. Flirt
+answers in the ambient dialogue, an affinity table that decides welcome, cold or refusal, stages up to the vow, one beloved,
+jealousy and a break-up, a romance popup for the big moments, and three tone tiers (Courteous, Intimate with a fade to
+black, and Explicit only behind an 18+ consent and in a separate pack that never reaches CurseForge). Decision:
+[ADR 0060](docs/adr/0060-active-romance-flirt-answers-an-affinity-table-one-beloved-and-three-tone-tiers.md); spec:
+[docs/specs/romance.md](docs/specs/romance.md). One pull request per step, merged by the parent session.
+
+| Step | What | State |
+|---|---|---|
+| R0 | ADR 0060, the spec in English and Italian, seven proposed mockups (`docs/design/mockups/romance-*`). Docs only | in review |
+| R1 | Engine: `Systems/Romance.lua`, `Data/Romance.lua`, the gates, the affinity score, stages and moments, one beloved, jealousy, break-up, tone selection, the 18+ consent, the flirt exception in the validator, `relationships.version` 10 and its migration, tests | to do |
+| R2 | Interface: flirt answers in the dialogue window, the romance popup (`voice-romance`), Settings > Romance, the Relationships detail, the journal kinds, `au romance`, mockups and assets | to do |
+| R3 | Content of tiers 1-2 in Italian and English (Opus writers): flirt answers, NPC replies, popup scenes, inner voice, journal lines; `romance.exclude` | to do |
+| R4 | The tier-3 pack `AzerothUnspoken_Romance18` (LoadOnDemand, silent without the gate), its own zip outside the CurseForge one, a few non-graphic samples, how to write for it | to do |
+
 ### GitHub issues
 
 - Labels: `bug`, `enhancement`, `docs`, `in-game` (to be verified in the client), `content` (lines), `good first issue`, `priority:high|medium|low`.

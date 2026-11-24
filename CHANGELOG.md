@@ -8,6 +8,19 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### Active romance, step R0: the design (ADR 0060)
+
+- **Added (docs only)**: [ADR 0060](docs/adr/0060-active-romance-flirt-answers-an-affinity-table-one-beloved-and-three-tone-tiers.md)
+  and the spec [docs/specs/romance.md](docs/specs/romance.md) (Italian: `romance.it.md`) for a romance the player does
+  with NPCs, extending the passive romance of ADR 0037: flirt answers in the ambient dialogue (the one validated
+  exception to neutral answers), an affinity table in data (race, class, soul, temperament, relationship, situation)
+  that makes the NPC welcome, stay cold or refuse without harm, stages up to the existing vow, one beloved, jealousy
+  after the vow and a break-up the player chooses, a romance popup for the declaration, the dates and the vow, and three
+  tone tiers: Courteous (default), Intimate with a fade to black, and Explicit only behind a two-step 18+ consent, off by
+  default, in a separate pack that never ships in the CurseForge zip. Seven proposed mockups in
+  `docs/design/mockups/romance-*` (marked PROPOSED) and an "Active romance" section in the ROADMAP. Nothing changes in
+  the addon yet; the engine, interface, content and pack come in steps R1-R4.
+
 ### Ko-fi is the only link in the addon
 
 - **Changed**: by the owner's rule of 2026-11-24, the addon carries one link only, **Ko-fi**. Settings > Info and

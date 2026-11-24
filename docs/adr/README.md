@@ -67,6 +67,7 @@ They exist to remember *why* the project is built a certain way, not only *how*.
 | [0057](0057-a-pick-that-does-not-grow-with-its-pools.md) | A pick that does not grow with its pools: weights read where the pick needs them, and the tiers of a large group kept as it loads | accepted (offline; untested in game) |
 | [0058](0058-nebula-ecosystem-look-and-credits.md) | The interface adopts the look and credits of the NEBULA ecosystem (FDCP), and replaces the flat bronze look | accepted (a plan, UI-ECO #284; supersedes the flat bronze look of #187; nothing built or seen in game yet) |
 | [0059](0059-a-radial-emote-wheel-held-on-a-key.md) | A radial emote wheel, held on a key the player binds | accepted (offline; untested in game: key state, emotes, sounds, cursor scale, look, timings) |
+| [0060](0060-active-romance-flirt-answers-an-affinity-table-one-beloved-and-three-tone-tiers.md) | Active romance: flirt answers, an affinity table, one beloved and three tone tiers | accepted (design, step R0; built in R1-R4) |
 
 ## Pending decisions
 

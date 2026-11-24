@@ -121,9 +121,10 @@ def scene_svg(kind, w, h, seed=7, trees=True):
 # ---------------------------------------------------------------------------------------------------------------
 def page(name, title, w, h, body, scene="neutral", seed=7, scale=1.5, kind="current", caption_extra="",
          alt=None, out_dir=None, css_href="mockups.css", theme="nebula"):
-    """Writes <name>.html. kind: current | none. theme: nebula | aurora (the addon's two themes). The size and scale
+    """Writes <name>.html. kind: current | proposed (a design not built yet, such as ADR 0060's romance) | none. theme: nebula | aurora (the addon's two themes). The size and scale
     are read by render.py."""
     badge = {"current": f'<div class="badge-current">CURRENT (from the code) - {M.THEME_NAMES[theme].upper()}</div>',
+             "proposed": f'<div class="badge-proposed">PROPOSED (a design, not built yet) - {M.THEME_NAMES[theme].upper()}</div>',
              "none": ""}[kind]
     cap = f'<div class="caption"><b>{esc(title)}</b> - {esc(CAPTION)}{(" " + esc(caption_extra)) if caption_extra else ""}</div>'
     alt = alt or f"{title}. {CAPTION}"
