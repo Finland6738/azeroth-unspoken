@@ -422,3 +422,121 @@ T.run("UI-6: the guide, the soul window and the settings page need no W.Adopt, a
 	T.eq(panel.rows.opt_theme.seg:Active(), "nebula", "the theme row shows the theme")
 	Reset()
 end)
+
+-- UI-ECO UI-7: Settings > Info: the credits, the licence, the fan-made notice, four read-only copy boxes and the NEBULA logo of
+-- the active theme, swapped at once by the theme registry. Only the mock client: the look, the Ctrl+C and the TGA are not tried.
+T.run("UI-7: the Info section: credits, licence, notice, copy boxes and the NEBULA logo of the theme", function()
+	local S, panel = NS.SettingsFrame, NS.SettingsFrame.panel
+	local info = panel.info
+	local urls = {
+		repo = "https://github.com/Finland6738/azeroth-unspoken",
+		issues = "https://github.com/Finland6738/azeroth-unspoken/issues",
+		site = "https://nebula-community.github.io/giochi/wow-forever/",
+		kofi = "https://ko-fi.com/finland6738",
+	}
+	T.eq(#S.LINKS, 4, "four links")
+	for _, link in ipairs(S.LINKS) do T.eq(link.url, urls[link.id], link.id .. ": the address") end
+	for _, lang in ipairs({ "en", "it" }) do
+		NS.db.locale = lang
+		panel:Refresh()
+		local last = panel.headers[#panel.headers]
+		T.eq(last.key, "opt_section_info", lang .. ": Info is the last section")
+		T.eq(last.fs:GetText(), NS:L("opt_section_info"), lang .. ": its title")
+		T.ok(last.section == panel.sections[#panel.sections], lang .. ": the last of the sections")
+		-- the texts, in the language, one under the other
+		local y = 0
+		for _, id in ipairs({ "info_made_by", "info_nebula", "info_licence", "info_fanmade", "info_copy_hint" }) do
+			local fs = info.texts[id]
+			T.eq(fs:GetText(), NS:L(id), lang .. ": " .. id)
+			local py = -select(5, fs:GetPoint())
+			T.ok(py > y, lang .. ": " .. id .. " is under the one before it")
+			y = py
+		end
+		T.ok(NS:L("info_made_by"):find("Finland", 1, true), lang .. ": credits to Finland")
+		T.ok(NS:L("info_nebula"):find("NEBULA", 1, true), lang .. ": and to the NEBULA community")
+		T.ok(NS:L("info_licence"):find("GPL-3.0-or-later", 1, true) and NS:L("info_licence"):find("CC BY 4.0", 1, true),
+			lang .. ": the mixed licence")
+		T.ok(NS:L("info_fanmade"):find("Blizzard Entertainment", 1, true), lang .. ": the fan-made notice")
+		-- the copy boxes
+		for _, link in ipairs(S.LINKS) do
+			local row = panel.rows["opt_link_" .. link.id]
+			T.ok(row ~= nil and row.box ~= nil, lang .. ": a copy box for " .. link.id)
+			T.eq(row.label:GetText(), NS:L("opt_link_" .. link.id), lang .. ": its label")
+			T.eq(row.box:GetText(), link.url, lang .. ": it holds the address")
+			T.ok(-row.box._s.points[1][3] > y, lang .. ": " .. link.id .. " is under the texts")
+			T.ok(-row.box._s.points[1][3] + 24 <= last.section:GetHeight(), lang .. ": " .. link.id .. " is inside the section")
+			-- read-only: a typed change is put back, a click selects it all
+			row.box:SetText(link.url .. "x")
+			row.box.scripts.OnTextChanged(row.box, true)
+			T.eq(row.box:GetText(), link.url, lang .. ": " .. link.id .. ": a change is put back at once")
+			local selected = 0
+			row.box.HighlightText = function() selected = selected + 1 end
+			row.box.scripts.OnEditFocusGained(row.box)
+			T.eq(selected, 1, lang .. ": " .. link.id .. ": the text is selected when the box takes the keyboard")
+			row.box.HighlightText = nil
+		end
+		-- the help text is under the Info section
+		T.ok(select(5, panel.help:GetPoint()) <= select(5, last.section:GetPoint()) - last.section:GetHeight(),
+			lang .. ": the help is under the Info section")
+		T.eq(W.Adopt(panel), 0, lang .. ": the page, Info included, needs no W.Adopt")
+	end
+	-- Ko-fi is only a link here: no other text of the interface says it
+	for _, lang in ipairs({ "en", "it" }) do
+		for key, v in pairs(NS.languages[lang].ui) do
+			if type(v) == "string" and v:find("Ko-fi", 1, true) then T.eq(key, "opt_link_kofi", lang .. ": Ko-fi only in its link") end
+		end
+	end
+	-- the logo follows the theme, without /reload
+	local logo = info.logo
+	local A = NS.Assets.textures
+	Config:Set("ui.theme", "nebula")
+	T.eq(logo._s.texture, A.nebula_dark_256.path, "Nebula: the dark-theme art")
+	Config:Set("ui.theme", "aurora")
+	T.eq(logo._s.texture, A.nebula_light_256.path, "Aurora: the light-theme art")
+	T.eq(S.LogoKey("nebula"), "nebula_dark_256", "the key for Nebula")
+	T.eq(S.LogoKey("aurora"), "nebula_light_256", "and for Aurora")
+	Config:Set("ui.theme", "nebula")
+	T.eq(logo._s.texture, A.nebula_dark_256.path, "and back")
+	T.ok(logo:IsShown() and not logo.fallback:IsShown(), "the logo shows, not its fallback")
+	-- a client that cannot load the file: the word NEBULA stands in
+	local setTexture = logo.SetTexture
+	logo.SetTexture = function() return false end
+	S.ApplyLogo(logo)
+	T.ok(not logo:IsShown() and logo.fallback:IsShown(), "no file: the logo hides and the word takes its place")
+	T.eq(logo.fallback:GetText(), S.COMMUNITY, "the word is the community's name")
+	logo.SetTexture = setTexture
+	S.ApplyLogo(logo)
+	T.ok(logo:IsShown(), "and back")
+	NS.db.locale = "it"
+	Reset()
+end)
+
+T.run("UI-7: /au about opens the settings on the Info section, /au about chat prints the credits", function()
+	local calls, scrolled = 0, nil
+	local savedSettings, savedOpen = Settings, InterfaceOptionsFrame_OpenToCategory
+	Settings = nil
+	InterfaceOptionsFrame_OpenToCategory = function() calls = calls + 1 end
+	local scroll = _G.AzerothUnspokenSettingsScroll
+	T.ok(scroll ~= nil, "the settings scroll exists")
+	local savedScroll = scroll.SetVerticalScroll
+	scroll.SetVerticalScroll = function(_, y) scrolled = y end
+	local panel = NS.SettingsFrame.panel
+	T.ok(panel.infoTop and panel.infoTop > 0, "the Info section has a place in the content")
+	SlashCmdList.AZEROTHUNSPOKEN("about")
+	T.eq(calls, 2, "/au about opens the settings (two calls, as /au options)")
+	T.ok(scrolled ~= nil and scrolled > 0 and scrolled <= panel.infoTop, "and scrolls down to the Info section")
+	scroll.SetVerticalScroll = savedScroll
+	Settings, InterfaceOptionsFrame_OpenToCategory = savedSettings, savedOpen
+	for _, lang in ipairs({ "en", "it" }) do
+		NS.db.locale = lang
+		SENT = {}
+		SlashCmdList.AZEROTHUNSPOKEN("about chat")
+		local out = table.concat(SENT, "\n")
+		T.ok(out:find(NS:L("info_chat_title"), 1, true), lang .. ": /au about chat: the title")
+		T.ok(out:find(NS:L("info_made_by"), 1, true) and out:find(NS:L("info_fanmade"), 1, true), lang .. ": the credits and the notice")
+		for _, link in ipairs(NS.SettingsFrame.LINKS) do
+			T.ok(out:find(NS:L("opt_link_" .. link.id) .. ": " .. link.url, 1, true), lang .. ": the link " .. link.id)
+		end
+	end
+	Reset()
+end)

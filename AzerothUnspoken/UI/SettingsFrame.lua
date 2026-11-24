@@ -9,12 +9,46 @@
 -- No UIDropDownMenu (it taints): a list that opens would be clipped by the scrolling canvas, so none is used here.
 -- The sections scroll inside the client's settings canvas (its scroll bar is the client's own). Every change sends the one
 -- "settings changed" notice (Config:Changed, #192), which the panel, the open windows, the narrator and the NPC dialogue
--- window follow. UI-7 adds the Info section (credits) after Privacy with the same Header(...) rows.
+-- window follow. UI-7 (UI-ECO): the Info section after Privacy: the credits (Finland, the NEBULA community with its logo),
+-- the mixed licence, the fan-made notice and four read-only copy boxes (the game cannot open a web page: click, Ctrl+C).
+-- Its texts are laid out in Refresh because their height depends on the language; `/au about` scrolls to it.
 local ADDON, NS = ...
 local W = NS.Widgets
 local Theme = NS.Theme
 local SettingsFrame = NS:RegisterModule("settings")
 NS.SettingsFrame = SettingsFrame
+local Assets = NS.Assets
+
+-- The links of the Info section, in order; the label of each is the locale key opt_link_<id>. They are data, not text.
+-- Ko-fi is only here and in the docs: the addon never asks for it anywhere else.
+SettingsFrame.LINKS = {
+	{ id = "repo", url = "https://github.com/Finland6738/azeroth-unspoken" },
+	{ id = "issues", url = "https://github.com/Finland6738/azeroth-unspoken/issues" },
+	{ id = "site", url = "https://nebula-community.github.io/giochi/wow-forever/" },
+	{ id = "kofi", url = "https://ko-fi.com/finland6738" },
+}
+SettingsFrame.COMMUNITY = "NEBULA"   -- the name that stands in for the logo when the client cannot load it
+
+---The NEBULA community logo of a theme: the dark-theme art (own colours, white word) on Nebula, the light-theme art (black
+---word) on Aurora. Returns the key of Assets.textures. The logo belongs to the community (docs/third-party.md).
+---@param themeId? string
+---@return string key
+function SettingsFrame.LogoKey(themeId)
+	local theme = Theme.themes[themeId or Theme.Current()]
+	if theme and theme.dark == false then return "nebula_light_256" end
+	return "nebula_dark_256"
+end
+
+---Puts the logo of a theme on `tex` (a theme entry: it runs now and at every theme change). A client that cannot load the file
+---hides the texture and shows `tex.fallback`, the word NEBULA.
+---@param tex table
+---@param themeId? string
+function SettingsFrame.ApplyLogo(tex, themeId)
+	local ok, loaded = pcall(tex.SetTexture, tex, Assets.textures[SettingsFrame.LogoKey(themeId)].path)
+	local shown = ok and loaded ~= false and not (tex.GetTexture and tex:GetTexture() == nil)
+	tex:SetShown(shown)
+	if tex.fallback then tex.fallback:SetShown(not shown) end
+end
 
 local panel
 local MODULE_ORDER = { "personal", "world", "npc", "memory", "emotion", "relations", "storyArcs", "social", "publicChat", "audio" }
@@ -101,6 +135,7 @@ local function CreatePanel()
 		scroll = CreateFrame("ScrollFrame", "AzerothUnspokenSettingsScroll", panel, "UIPanelScrollFrameTemplate")
 	end)
 	local content = panel
+	panel.scroll = scroll   -- nil without the scroll template
 	if scroll then
 		scroll:SetPoint("TOPLEFT", 0, -44)
 		scroll:SetPoint("BOTTOMRIGHT", -30, 8)
@@ -115,6 +150,7 @@ local function CreatePanel()
 	local headers, rows, sections = {}, {}, {}
 	local modules = {}
 	local refreshing = false        -- the panel is setting its controls from the settings: they must not answer
+	local infoSec, infoTop, helpTop -- the Info section, its top in the content, and where the help text starts
 	panel.rows = rows           -- [key] = { label, button | switch | seg | slider + minus + plus + text } (the tests use them)
 	panel.headers = headers     -- { fs = the section's title, key, section }
 	panel.sections = sections   -- the W.Sections, top to bottom
@@ -420,6 +456,57 @@ local function CreatePanel()
 	Toggle("opt_namestyle", function() return NS:L("namestyle_" .. NS.db.names.player) end,
 		function() NS.Config:Set("names.player", Cycle(NAME_STYLES, NS.db.names.player)) end, "opt_namestyle_tip")
 	Next()
+
+	-- Info (UI-7): credits, licence, fan-made notice, the NEBULA logo and the links as copy boxes. Everything inside is
+	-- placed by LayoutInfo (called by Refresh), because the height of a text depends on the language.
+	Header("opt_section_info")
+	infoSec, infoTop = sec, cy
+	panel.infoTop = cy   -- where the section starts in the scrolling content (`/au about` scrolls there)
+	local info = { texts = {}, links = {} }
+	panel.info = info
+	local LOGO = 96
+	local function InfoText(id, font, token)
+		local fs = Theme.NewText(sec, font, token)
+		fs:SetJustifyH("LEFT")
+		fs:SetJustifyV("TOP")
+		if fs.SetWordWrap then fs:SetWordWrap(true) end
+		info.texts[id] = fs
+		return fs
+	end
+	InfoText("info_made_by", "BodyMedium", "text-1")
+	InfoText("info_nebula", "Body", "text-2")
+	InfoText("info_licence", "Small", "text-3")
+	InfoText("info_fanmade", "Small", "text-3")
+	InfoText("info_copy_hint", "Small", "text-3")
+	-- the NEBULA logo: the art of the active theme, swapped by the theme registry (full colour, never tinted)
+	info.logo = sec:CreateTexture(nil, "ARTWORK")
+	info.logo:SetSize(LOGO, LOGO)
+	info.logo:SetPoint("TOPRIGHT", sec, "TOPRIGHT", -LABEL_X, -(W.SECTION_TOP + 2))
+	info.logo.fallback = Theme.NewText(sec, "H2", "text-2")
+	info.logo.fallback:SetPoint("CENTER", info.logo, "CENTER", 0, 0)
+	info.logo.fallback:SetText(SettingsFrame.COMMUNITY)
+	Theme.Call(info.logo, function(tex, themeId) SettingsFrame.ApplyLogo(tex, themeId) end)
+	-- the copy boxes: read-only (a change is put back at once), the text selected when the box takes the keyboard
+	for _, link in ipairs(SettingsFrame.LINKS) do
+		local key = "opt_link_" .. link.id
+		local row = { key = key, url = link.url }
+		row.label = Label(key)
+		row.box = W.EditBox(sec, SECTION_W - CONTROL_X - LABEL_X, 24)
+		row.box:SetPoint("TOPLEFT", CONTROL_X, -sy)
+		row.box:SetText(link.url)
+		row.box:SetCursorPosition(0)
+		row.box:HookScript("OnEditFocusGained", function(self) self:HighlightText() end)
+		row.box:HookScript("OnTextChanged", function(self, user)
+			if user and self:GetText() ~= row.url then
+				self:SetText(row.url)
+				self:HighlightText()
+			end
+		end)
+		rows[key] = row
+		info.links[#info.links + 1] = row
+		Next()
+	end
+	sy = sy + 240   -- a first guess; LayoutInfo measures the texts
 	EndSection()
 
 	-- what each choice means, the consents that wait for something, the content: the text of a consent, 12 units (#182),
@@ -430,7 +517,46 @@ local function CreatePanel()
 	help:SetJustifyH("LEFT")
 	help:SetJustifyV("TOP")
 	panel.help = help
-	local helpTop = cy + 2
+	helpTop = cy + 2
+
+	-- The Info section, laid out from its texts: the credits beside the logo, the licence, the notice and the hint under it,
+	-- then the four copy boxes. Fits the section and moves the help text under it. Called by Refresh (the language changes
+	-- the height of a text).
+	local function Height(fs, width)
+		fs:SetWidth(width)
+		local h = fs:GetStringHeight()
+		if type(h) ~= "number" or h <= 0 then h = 16 * math.ceil(#(fs:GetText() or "") * 7 / width) end   -- a client that does not measure
+		return math.ceil(h)
+	end
+	local function LayoutInfo()
+		local inner, narrow = SECTION_W - 2 * LABEL_X, SECTION_W - 2 * LABEL_X - LOGO - 16
+		local y = W.SECTION_TOP
+		local function Place(id, width)
+			local fs = info.texts[id]
+			fs:SetText(NS:L(id))
+			fs:ClearAllPoints()
+			fs:SetPoint("TOPLEFT", infoSec, "TOPLEFT", LABEL_X, -y)
+			y = y + Height(fs, width) + 6
+		end
+		Place("info_made_by", narrow)
+		Place("info_nebula", narrow)
+		y = math.max(y, W.SECTION_TOP + 2 + LOGO + 8)   -- under the logo
+		Place("info_licence", inner)
+		Place("info_fanmade", inner)
+		Place("info_copy_hint", inner)
+		y = y + 4
+		for _, row in ipairs(info.links) do
+			row.label:ClearAllPoints()
+			row.label:SetPoint("TOPLEFT", LABEL_X, -(y + 5))
+			row.box:ClearAllPoints()
+			row.box:SetPoint("TOPLEFT", CONTROL_X, -y)
+			y = y + ROW
+		end
+		infoSec:Fit(y)
+		helpTop = infoTop + infoSec:GetHeight() + GAP + 2
+		help:ClearAllPoints()
+		help:SetPoint("TOPLEFT", content, "TOPLEFT", LABEL_X, -helpTop)
+	end
 
 	-- the controls, labels and texts again, from the settings
 	function panel:Refresh()
@@ -438,7 +564,10 @@ local function CreatePanel()
 		for _, h in ipairs(headers) do h.section:SetTitle(NS:L(h.key)) end
 		for key, r in pairs(rows) do
 			if r.label then r.label:SetText(NS:L(key)) end
-			if r.action then
+			if r.box then
+				r.box:SetText(r.url)   -- a copy box: always its link
+				r.box:SetCursorPosition(0)
+			elseif r.action then
 				r.button:SetText(r.value and r.value() or NS:L(key))
 			elseif r.switch then
 				local on = r.get() and true or false
@@ -457,6 +586,7 @@ local function CreatePanel()
 			end
 		end
 		refreshing = false
+		LayoutInfo()
 		for _, r in ipairs(modules) do
 			if not MODULE_LIVE[r.module] then r.label:SetText(NS:L("module_" .. r.module) .. " *") end
 		end
@@ -505,6 +635,30 @@ local function OpenPanel()
 	end
 end
 NS.OpenSettings = OpenPanel
+
+---`/au about`: opens the settings on the Info section (credits, licence, links). The canvas scrolls to it; the range of the
+---scroll is known only once the panel is laid out, so the move is tried now and again a moment later.
+function SettingsFrame:OpenInfo()
+	OpenPanel()
+	if not panel then return end
+	if panel:IsShown() then panel:Refresh() end   -- the panel was open already: its OnShow does not run again
+	local function ScrollToInfo()
+		local scroll = panel.scroll
+		if not scroll or not panel.info or not panel.infoTop then return end
+		-- how far the content can scroll: its height less the room of the scroll frame (never past the end)
+		local range = math.max(0, (tonumber(panel.content:GetHeight()) or 0) - (tonumber(scroll:GetHeight()) or 0))
+		scroll:SetVerticalScroll(math.min(panel.infoTop - 4, range))
+	end
+	ScrollToInfo()
+	if C_Timer and C_Timer.After then C_Timer.After(0.1, ScrollToInfo) end
+end
+
+---`/au about chat`: the credits and the links in the chat, where they can be selected and copied.
+function SettingsFrame:PrintCredits()
+	NS:Print(NS:L("info_chat_title"))
+	for _, id in ipairs({ "info_made_by", "info_nebula", "info_licence", "info_fanmade" }) do NS:Print(NS:L(id)) end
+	for _, link in ipairs(SettingsFrame.LINKS) do NS:Print(NS:L("opt_link_" .. link.id) .. ": " .. link.url) end
+end
 
 -- The one "settings changed" notice (#192): the panel redraws, the narrator applies its look and, when the addon or
 -- the narrator box is turned off, the line on screen goes away; the dialogue window follows in UI/DialogueFrame.lua

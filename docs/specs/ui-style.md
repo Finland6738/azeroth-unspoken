@@ -189,13 +189,12 @@ and the consents are single-choice `W.Card`s (marker, ring and raised fill; they
 a row for each trait with a `W.Slider` and its "-" and "+", the value in the mono font in `accent-text` and a `W.Badge` that says in words where it
 comes from, then the inner voice and the culture of origin) and *Topics to avoid*; the **neutral profile** asks through a `W.Dialog` (Esc cancels it
 and only it) and says the result in a `W.Toast` at the top of the window. *The Settings page* (`UI/SettingsFrame.lua`, 640 wide content): one
-`W.Section` for each of General, Appearance, Chat, Narrator, Modules and Privacy; an on/off setting is a `W.Switch` with *on* or *off* written next
+`W.Section` for each of General, Appearance, Chat, Narrator, Modules, Privacy and Info; an on/off setting is a `W.Switch` with *on* or *off* written next
 to it, a choice of two to four short words (theme, fonts, style depth, literary forms, how long a proposal waits) a `W.Segmented`, a number a
 `W.Slider` with "-" and "+" (whole percent for a fraction; the wheel scrolls the page and never moves these sliders), and a button that shows the value and
 goes to the next for the choices too many or too long for a segment (language, chat mode, channel, pause, reading speed, combat, the character's name)
 and for the two consents, which are asked in two steps and say their state in words. There is no `UIDropDownMenu`, and no `W.Select` here: its list
-would be clipped by the scrolling canvas. `SettingsFrame.panel.sections` lists the sections; UI-7 adds its Info section after Privacy with the same
-`Header(...)` rows.
+would be clipped by the scrolling canvas. `SettingsFrame.panel.sections` lists the sections; the Info section (UI-7, §2.6) is the last, after Privacy.
 
 **Migration (UI-2).** A player who had turned the narrator's fades off (`ui.narrator.reduceMotion`, [#177](https://github.com/Finland6738/azeroth-unspoken/issues/177)) starts with
 `ui.animations = false`: `Config:Load` sets it once, only when `ui.animations` is not in the file yet. The narrator setting still stops the
@@ -212,13 +211,13 @@ diagnostic) says so with `-- nolocale: the reason`; without a reason it fails. T
 ### 2.6 The Info page and the credits
 
 FDCP shows its credits on an About tab of its main window. AU has no such tab: the **Info page lives in the client's Settings canvas** (a
-page of the addon's category, built from `UI/Windows/About.lua`). A command named `about` (planned for UI-7, so not quoted as a command yet) opens Settings on it, and its `chat` form prints the same
-credits to the chat. The page shows the name, the version, the licence (code GPL-3.0-or-later, phrases and narrative data all rights reserved, example
-pack MIT, documents CC BY 4.0), the NEBULA site, the GitHub repository and issues, and Ko-fi, each as a read-only box to copy with Ctrl+C. The fan-made
-notice (not affiliated with or endorsed by Blizzard Entertainment) is on it. **Ko-fi appears only there and in the documents, never as a prompt.** The
+last section of `UI/SettingsFrame.lua`, `SettingsFrame.LINKS`, `LogoKey` and `ApplyLogo`; AU has no `UI/Windows/About.lua`). `/au about` opens Settings and scrolls to it, and `/au about chat` prints the same
+credits and the links to the chat. The page shows the credit to Finland and to the NEBULA community, the licence (code GPL-3.0-or-later, phrases and narrative data all rights reserved, example
+pack MIT, documents CC BY 4.0), the fan-made notice (not affiliated with or endorsed by Blizzard Entertainment) and four links, the GitHub repository and its issues, the NEBULA site and Ko-fi, each as a read-only box (`W.EditBox`:
+the text is selected when the box takes the keyboard, and a change is put back at once) to copy with Ctrl+C. The texts are laid out in `Refresh`, because their height depends on the language. **Ko-fi appears only there and in the documents, never as a prompt.** The
 Info page also shows the **NEBULA community logo**, a picture of its own (not the addon's own round logo of the title bar): full-colour and never tinted, in a dark variant
 for Nebula and a light variant for Aurora, swapped with the theme without `/reload` ([ADR 0058](../adr/0058-nebula-ecosystem-look-and-credits.md), decision 7). The community logo is used with its owner's permission
-and is not covered by the code licence; `docs/third-party.md` says so. The image files arrive in step UI-7.
+and is not covered by the code licence; `docs/third-party.md` says so. The sources are `assets/nebula/nebula-logo-dark.png` and `-light.png` (cropped to their content); `tools/make_media.py` makes `Media/nebula_dark_256.tga` and `nebula_light_256.tga` (the art centred on a transparent square, 256 by 256), listed in `UI/Assets.lua`. `Theme.Call` swaps the file with the theme; a client that cannot load it shows the word NEBULA instead.
 
 ### 2.7 Accessibility invariants
 
@@ -241,5 +240,5 @@ shapes, the glows and the animations are predictions until then.
 | UI-4 | narrator box, speak button, Chat Gateway proposal and editor, dialogue frame, the four voice tokens | [#292](https://github.com/Finland6738/azeroth-unspoken/pull/292) | done: the narrator, the speak button, the proposal bar and editor (with a byte counter) and the NPC dialogue on the theme, `voice-*` tokens in both themes, the floor of the box worked out from the tokens, Reduce motion no longer written or read, `W.LegacyFlatButton`, `W.Button`, `W.Background`, `W.SetBackgroundAlpha` and `W.SetFontSize` removed, contrast of every voice in both themes (`Tests/TestLayout.lua`), `Tests/TestNarrator.lua`; **not tried in the client** (the look, the fonts, the fades, the voice colours on real scenes, the translucency, the editor and its counter, the speak button's tooltip) |
 | UI-5 | Journal and Relationships | [#293](https://github.com/Finland6738/azeroth-unspoken/pull/293) | done: tabs with the sliding bar, sortable DataTables with mono numbers (no pages), Segmented kind filter, Dialog and Toast for what cannot be undone and for results, every text a Theme font (no `W.Adopt` in these two windows), `Tests/TestWidgets.lua`, `Tests/TestMemory.lua`, `Tests/TestRelations.lua`, `Tests/TestLayout.lua`; **not tried in the client** (the look, the fonts, the ScrollBox and the FauxScrollFrame, the tab slide, the dialog and its Esc, the toast, sorting) |
 | UI-6 | Wizard, Character soul, the Settings canvas | [#294](https://github.com/Finland6738/azeroth-unspoken/pull/294) | done: the guide on a numbered step indicator and a language list, the soul window on two Sections with sliders, badges and a thin bar, the Settings page on Sections with switches, segments and sliders, a Dialog and a Toast for the neutral profile, `W.Confirm` removed, every text a Theme font (no `W.Adopt` left to do in any window), `Tests/TestWindows.lua`, `Tests/TestLayout.lua`, `Tests/TestWidgets.lua`, `Tests/TestWizardConsent.lua`, `Tests/TestSoul.lua`, `Tests/TestNarrator.lua`; **not tried in the client** (the look, the fonts, the numbered indicator and the language list, the sliders and switches in the client's canvas and its scroll bar, the dialog and its Esc, the toast) |
-| UI-7 | credits: the Info page with the NEBULA community logo (dark and light), the `about` command, README, wiki About page, CurseForge text | | to do |
+| UI-7 | credits: the Info page with the NEBULA community logo (dark and light), the `about` command, README, wiki About page, CurseForge text | [#295](https://github.com/Finland6738/azeroth-unspoken/pull/295) | done: the Info section (credits, licence, fan-made notice, four copy boxes, the logo of the theme), `/au about` and `/au about chat`, `make_media.py` makes the two full-colour logos, README and wiki credits with `prefers-color-scheme`, `docs/third-party.md`, `Tests/TestWindows.lua`, `TestLayout.lua`, `TestNarrator.lua`; **not tried in the client** (the logo and its TGA loading, the copy boxes and Ctrl+C, the scroll to Info, the swap with the theme) |
 | UI-8 | mockups and assets regenerated, README GIF, wiki Interface Tour, final status of this spec | | to do |

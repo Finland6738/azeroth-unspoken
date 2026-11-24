@@ -460,7 +460,7 @@ T.run("UI-6: the settings page's controls fit their sections, in English and Ita
 		NS.db.locale = lang
 		panel:Refresh()
 		for key, row in pairs(panel.rows) do
-			local control = row.seg or row.slider
+			local control = row.seg or row.slider or row.box   -- UI-7: a copy box ends inside its section too
 			if control then
 				local x = control._s.points[1][2]
 				local section = control.parent
@@ -470,6 +470,21 @@ T.run("UI-6: the settings page's controls fit their sections, in English and Ita
 				local x = row.switch._s.points[1][2]
 				T.ok(x + 52 + Units(row.text:GetText()) <= row.switch.parent:GetWidth() - 8, ("%s %s: the state in words fits"):format(lang, key))
 			end
+		end
+		-- UI-7: the Info section's texts are one under the other, never over each other, and the section holds the boxes
+		local info, order, prevBottom = panel.info, { "info_made_by", "info_nebula", "info_licence", "info_fanmade", "info_copy_hint" }, 0
+		local logoBottom = -select(5, info.logo:GetPoint()) + info.logo:GetHeight()
+		for _, id in ipairs(order) do
+			local fs = info.texts[id]
+			local top = -select(5, fs:GetPoint())
+			T.ok(top >= prevBottom, ("%s %s: starts under the text before it (%d >= %d)"):format(lang, id, top, prevBottom))
+			if id == "info_licence" then T.ok(top >= logoBottom, lang .. ": the wide texts start under the logo") end
+			prevBottom = top + fs:GetStringHeight()
+		end
+		local section = info.links[1].box.parent
+		for _, row in ipairs(info.links) do
+			T.ok(-row.box._s.points[1][3] >= prevBottom, lang .. ": " .. row.key .. " is under the texts")
+			T.ok(-row.box._s.points[1][3] + 24 <= section:GetHeight(), lang .. ": " .. row.key .. " is inside the section")
 		end
 	end
 	NS.db.locale = "en"

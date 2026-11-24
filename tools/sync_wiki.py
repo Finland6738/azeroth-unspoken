@@ -3,8 +3,9 @@
 docs/wiki/*.md is the only source of the wiki (ADR 0013). This script:
   1. clones the wiki repository into a temporary folder (or uses --wiki-dir, an existing clone);
   2. copies every docs/wiki/*.md page, with a "generated, do not edit here" note at the top;
-  3. copies every image a page shows (a relative link such as ../design/mockups/png/<name>.png, which also displays in
-     the repository) into the wiki's images/ folder, and points the link of the published page there;
+  3. copies every image a page shows (a relative link such as ../design/mockups/png/<name>.png, or the src or srcset of an
+     <img> or <picture> tag, which also display in the repository) into the wiki's images/ folder, and points the link of the
+     published page there;
   4. removes the wiki pages, and the images, that are no longer used;
   5. commits with the noreply identity configured in this repository and pushes.
 
@@ -41,8 +42,10 @@ NOTE = ("<!-- Generated from docs/wiki in the azeroth-unspoken repository by too
         "Do not edit this page here: changes are overwritten. Edit docs/wiki and open a pull request. -->\n\n")
 # estensioni che GitHub mostra come pagine del wiki: quelle che non sono più in docs/wiki si tolgono
 PAGE_EXTENSIONS = (".md", ".markdown", ".mediawiki", ".textile", ".rdoc", ".org", ".creole", ".asciidoc", ".rst", ".pod")
-# the images of the pages: a relative Markdown image link, published in the wiki's images/ folder
+# the images of the pages: a relative Markdown image link, or the src/srcset of an <img> or <picture> tag (a logo with a dark
+# and a light variant, UI-ECO UI-7), published in the wiki's images/ folder
 IMAGE_LINK = re.compile(r"(!\[[^\]]*\]\()([^)\s]+\.(?:png|gif|jpe?g|svg|webp))(\))", re.IGNORECASE)
+HTML_IMAGE = re.compile(r'(\b(?:src|srcset)=")([^"\s]+\.(?:png|gif|jpe?g|svg|webp))(")', re.IGNORECASE)
 IMAGE_DIR = "images"
 
 
@@ -119,7 +122,7 @@ def source_pages():
             images[name] = src
             return m.group(1) + image_url(name) + m.group(3)
 
-        pages[os.path.basename(path)] = NOTE + IMAGE_LINK.sub(publish, text)
+        pages[os.path.basename(path)] = NOTE + HTML_IMAGE.sub(publish, IMAGE_LINK.sub(publish, text))
     if "Home.md" not in pages:
         raise SystemExit("docs/wiki/Home.md is missing: nothing to publish.")
     return pages, images

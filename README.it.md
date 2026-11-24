@@ -140,6 +140,7 @@ L'addon risponde a `/au` e a `/unspoken`. Ogni comando ha un solo nome, inglese;
 | `/au memory` | azzera la memoria delle **frasi usate** (quelle già dette, per non ripeterle; senza conferma). Non tocca i ricordi del diario: per quelli c'è `/au journal reset` |
 | `/au options` | apre il pannello delle impostazioni |
 | `/au wizard` | riapre la procedura guidata |
+| `/au about [chat]` | apre le impostazioni sulla sezione **Informazioni** (crediti, licenza, avviso di opera di fan e quattro link da copiare); `chat` stampa in chat gli stessi crediti e link |
 | `/au debug [full\|trace]` | diagnostica: capacità del client, ultimi eventi, errori intercettati; `trace` stampa ogni evento riconosciuto, per la sessione |
 | `/au prof [reset\|copy]` | profilo della sessione: tempi della scelta delle frasi, memoria, quante volte il narratore ha parlato o taciuto e perché; `copy` apre una finestra per copiarlo |
 | `/au probe [reset\|stop\|copy]` | prova le API del client che servono alle prossime funzioni e stampa AVAILABLE / MISSING / RESTRICTED con un esempio; conta i loro eventi per la sessione |
@@ -156,6 +157,7 @@ Il pannello si apre con `/au options` (è registrato anche tra le opzioni degli 
 - **Chat**: la modalità e il canale predefinito.
 - **Riquadro del narratore**: durata del testo, opacità, dimensione, posizione bloccata, cronologia, prova.
 - **Moduli**: Personale, Mondo, Dialoghi NPC, Memoria, Emozioni, Relazioni, Storie, Social, Proposte in chat, Audio (quelli non ancora attivi, *Social* e *Audio*, sono segnati con `*`), più i preset *Completo*, *RPG personale*, *Mondo narrativo* e *Social RP*.
+- **Informazioni**: chi ha fatto l'addon, la community NEBULA con il suo logo, la licenza, l'avviso di opera di fan e quattro caselle di sola lettura con i link (il repository GitHub, le sue issue, il sito NEBULA e Ko-fi): clicca una casella e premi Ctrl+C. Anche `/au about`.
 - Il pulsante "pronuncia", il nome da Total RP 3, come si chiama il personaggio (*Nome del personaggio*: solo il nome, solo il cognome o entrambi) e, con un consenso a parte, la lettura dei profili pubblici degli altri (*Leggi il Total RP 3 degli altri*), il carattere del personaggio (`/au soul`), la pausa immediata, la procedura guidata.
 - Alcune scelte si fanno **solo da comando**: gli assi e le persone delle relazioni (`/au relationships`), l'attrazione e la registrazione automatica dei giocatori (`/au relationships attraction|auto`), l'offerta automatica del dialogo NPC (`/au talk offer`) e il numero massimo di storie attive (`/au stories max`).
 
@@ -267,7 +269,7 @@ L'indice completo è in [docs/README.md](docs/README.md). La documentazione è i
 
 ## Sostieni il progetto
 
-Azeroth Unspoken è gratuito e resterà gratuito: ogni funzione è disponibile per tutti. Se ti piace e vuoi sostenerne lo sviluppo, puoi offrire un caffè all'autore su [Ko-fi](https://ko-fi.com/finland6738). Le donazioni sono del tutto facoltative, non sbloccano nulla e l'addon non le chiede mai dentro il gioco.
+Azeroth Unspoken è gratuito e resterà gratuito: ogni funzione è disponibile per tutti. Se ti piace e vuoi sostenerne lo sviluppo, puoi offrire un caffè all'autore su [Ko-fi](https://ko-fi.com/finland6738). Le donazioni sono del tutto facoltative e non sbloccano nulla. L'addon non le chiede mai: l'unico punto del gioco in cui compare il link a Ko-fi è la pagina **Informazioni** delle impostazioni (`/au about`), fra i crediti, come casella da copiare.
 
 ## Licenza
 
@@ -277,13 +279,22 @@ Azeroth Unspoken è gratuito e il suo codice è aperto. Le sue frasi sono protet
 - **Frasi e dati narrativi:** [tutti i diritti riservati](LICENSE-CONTENT.md). Puoi giocarci, citarne brevi estratti, mostrarle in screenshot, video e dirette, e proporre correzioni e traduzioni. Copiarle in altre opere, ripubblicarle o usarle per addestrare sistemi di IA richiede un permesso scritto.
 - **Pacchetto di esempio e guida ai pacchetti:** [MIT](AzerothUnspoken_Example/LICENSE), liberi da copiare per il tuo pacchetto.
 - **Font, icone e logo** inclusi nella cartella dell'addon (`AzerothUnspoken/Media/`): i font sono sotto la SIL Open Font License, le icone e le forme sono disegnate dallo strumento del progetto e non si usa nessuna grafica di Blizzard. L'origine di ognuno è in [docs/third-party.md](docs/third-party.md) (in inglese).
+- **Il logo della community NEBULA** (`assets/nebula/`, `Media/nebula_*_256.tga`) è usato con il permesso del suo proprietario e **non** è coperto dalla licenza del codice: non fa parte di ciò che concede la GPL-3.0 o successiva. Vedi [docs/third-party.md](docs/third-party.md) (in inglese).
 - **Il nome "Azeroth Unspoken"** non è concesso in licenza: una versione modificata condivisa con altri deve avere un altro nome.
 
 ## Crediti
 
-- Ideazione e sviluppo: Finland6738.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/nebula/nebula-logo-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="assets/nebula/nebula-logo-light.png">
+  <img src="assets/nebula/nebula-logo-light.png" alt="Logo della community NEBULA" width="160">
+</picture>
+
+- Ideazione e sviluppo: Finland.
+- Un ringraziamento alla community **NEBULA**, di cui l'addon condivide lo stile e il logo ([il sito di NEBULA](https://nebula-community.github.io/giochi/wow-forever/)). Il logo qui sopra è usato con il permesso del suo proprietario e non è coperto dalla licenza del codice ([docs/third-party.md](docs/third-party.md), in inglese). Gli stessi crediti sono nel gioco: **Impostazioni → Informazioni**, oppure `/au about`.
+- Licenza: il codice è GPL-3.0 o successiva, le frasi e i dati narrativi sono tutti i diritti riservati, il pacchetto di esempio è MIT e la documentazione è CC BY 4.0 (vedi [Licenza](#licenza)).
 - Riferimenti tecnici consultati (non copiati): [Atraeau/WoW-Addons](https://github.com/Atraeau/WoW-Addons) per il dump delle API di Forever; [Warcraft Wiki](https://warcraft.wiki.gg/wiki/World_of_Warcraft_API) per la documentazione generale delle API. Elenco completo in [docs/REFERENCES.md](docs/REFERENCES.md).
 - [Total RP 3](https://totalrp3.info/) è un addon dei suoi autori; Azeroth Unspoken lo usa solo come integrazione facoltativa.
 - Se in futuro si useranno dati di [ForeverDB.net](https://foreverdb.net/) per preparare i registri locali, verrà citato qui con un link visibile.
 
-*World of Warcraft® è un marchio di Blizzard Entertainment, Inc. Azeroth Unspoken è un progetto di fan, indipendente e non affiliato né approvato da Blizzard. Le frasi sono originali e non riproducono testi del gioco.*
+*World of Warcraft® è un marchio di Blizzard Entertainment, Inc. Azeroth Unspoken è un addon fatto dai fan: un progetto indipendente, non affiliato a Blizzard Entertainment né da essa approvato. Le frasi sono originali e non riproducono testi del gioco.*

@@ -43,10 +43,20 @@ Made by `tools/make_media.py` from `assets/logo-source.webp`, the addon's own lo
 from it), supplied by the repository owner, cut to a circle with an anti-aliased edge. It is a picture of the project and
 not part of the code: the GPL-3.0 of the code does not by itself grant a right to use the logo to present another project.
 
-## Not here yet
+## The NEBULA community logo (`Media/nebula_dark_256.tga`, `Media/nebula_light_256.tga`)
 
-The NEBULA community logo that the Info page will show (two variants, one for each theme) is added in step UI-7, with the
-permission of its owner, and will be listed here then. It is not covered by the code licence.
+The logo of the NEBULA community, in two variants supplied by the repository owner: the dark-theme art (an orange, pink and
+purple swirl with white stars and the word NEBULA in white, shown with the Nebula theme) and the light-theme art (a blue and
+green swirl with black stars and word, shown with the Aurora theme). The sources are `assets/nebula/nebula-logo-dark.png` and
+`assets/nebula/nebula-logo-light.png` (the owner's 1024 by 1024 files, cropped to their content, 512 by 492); `tools/make_media.py`
+centres each on a transparent square and scales it to 256 by 256. They are full colour and are never tinted. The Settings > Info
+page shows the one of the active theme (`UI/SettingsFrame.lua`); the README, the wiki About page and the CurseForge text show both
+with `prefers-color-scheme`.
+
+**Licence.** The logo is used with its owner's permission. It is a picture of the NEBULA community, **not** part of the code:
+the GPL-3.0-or-later of the code does not grant a right to use it, and it is covered by no licence of this repository. A
+copy of the repository that is shared again must remove it or ask its owner. Everything else in this page is original or
+under a licence that allows bundling.
 
 ## Game art
 

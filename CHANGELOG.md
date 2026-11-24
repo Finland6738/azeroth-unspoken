@@ -8,6 +8,29 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### UI-ECO step UI-7: credits and the NEBULA logo (issue #284)
+
+- **Added**: the **Info** section, last on the Settings page: who made the addon (Finland), thanks to the NEBULA community, the mixed licence (code
+  GPL-3.0-or-later, phrases and narrative data all rights reserved, example pack MIT, documentation CC BY 4.0), the fan-made notice (not affiliated with or
+  endorsed by Blizzard Entertainment) and four read-only boxes with the links: the GitHub repository, its issues, the NEBULA site and Ko-fi (click, then Ctrl+C;
+  the game cannot open a web page). Ko-fi is only there and in the documents, never a prompt.
+- **Added**: the **NEBULA community logo** on that page, a dark variant for Nebula and a light one for Aurora, full colour and never tinted, swapped with the theme
+  without `/reload`; the word NEBULA stands in if the client cannot load the file. Sources `assets/nebula/nebula-logo-dark.png` and `-light.png`;
+  `tools/make_media.py` makes `Media/nebula_dark_256.tga` and `Media/nebula_light_256.tga`, listed in `UI/Assets.lua`. The logo is used with its owner's
+  permission and is not covered by the code licence (`docs/third-party.md`).
+- **Added**: `/au about` opens the settings and scrolls to Info; `/au about chat` prints the credits and the links to the chat. Both are in `/au help` (group `start`)
+  and in the commands of the README and the wiki. `SettingsFrame.LINKS`, `LogoKey`, `ApplyLogo`, `OpenInfo` and `PrintCredits` are the API.
+- **Added** (texts): `opt_section_info`, `info_made_by`, `info_nebula`, `info_licence`, `info_fanmade`, `info_copy_hint`, `info_chat_title`, `opt_link_repo`,
+  `opt_link_issues`, `opt_link_site`, `opt_link_kofi`, `help_about` (English and Italian).
+- **Docs**: Credits sections in `README.md`, `README.it.md` and the CurseForge text with the logo as `<picture>` (dark art for a dark page, light art for a light one);
+  wiki pages `About` and `About-it` (the wiki's sync script now also publishes the images of `<img>` and `<picture>` tags); `docs/third-party.md`; the README's
+  sentence about Ko-fi says where it appears; the public name in the credits is Finland (the toc `Author` line stays as it was); ROADMAP rows UI-1 to UI-5 link their pull requests.
+- **Tests**: `Tests/TestWindows.lua` (the Info section in both languages: the texts, the four boxes read-only and selected on focus, the logo of each theme and the
+  fallback word, `W.Adopt` finds nothing, Ko-fi only in its link, `/au about` and `/au about chat`), `Tests/TestLayout.lua` (the texts of Info one under the other, the boxes
+  inside the section) and `Tests/TestNarrator.lua` (seven sections).
+- **Not tried in the game client**: the logo and the loading of its TGA, the copy boxes and Ctrl+C, the scroll to Info, the swap of the logo with the theme, the
+  height of the Info texts with the real fonts.
+
 ### UI-ECO step UI-6: the first-run guide, the character soul window and the Settings page (issue #284)
 
 - **Changed**: the **first-run guide** shows its step as a row of numbered segments under the title bar (the chosen step is the raised, bright one, the chip in the
@@ -201,7 +224,7 @@ in the steps UI-1 to UI-8, one pull request each.
 - **Decision 2 revised later the same day**: the title bar shows the addon's own logo (`assets/logo-source.webp`, #286), not
   FDCP's guild logo (ADR 0058, the spec, ROADMAP UI-1).
 - **Decision 7 added later the same day**: the Settings > Info page will show the NEBULA community logo, a dark variant for
-  Nebula and a light one for Aurora (ADR 0058, the spec, ROADMAP UI-7). The image files arrive in UI-7.
+  Nebula and a light one for Aurora (ADR 0058, the spec, ROADMAP UI-7). The image files arrived in UI-7.
 
 ## [0.2.1] - 2026-11-18
 

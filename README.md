@@ -142,6 +142,7 @@ The addon answers to `/au` and `/unspoken`. Each command has one English name; t
 | `/au memory` | resets the memory of **used lines** (the ones already said, to avoid repeating them; no confirmation). It does not touch the journal's memories: for those use `/au journal reset` |
 | `/au options` | opens the settings panel |
 | `/au wizard` | reopens the wizard |
+| `/au about [chat]` | opens the settings on the **Info** section (credits, licence, fan-made notice and four links to copy); `chat` prints the same credits and links in the chat instead |
 | `/au debug [full\|trace]` | diagnostics: client capabilities, latest events, trapped errors; `trace` prints every recognised event, for the session |
 | `/au prof [reset\|copy]` | profiling of the session: timings of the line picker, memory, how often the narrator spoke or stayed silent and why; `copy` opens a box to copy it |
 | `/au probe [reset\|stop\|copy]` | tries the client APIs the next features need and prints AVAILABLE / MISSING / RESTRICTED with a sample; counts their events for the session |
@@ -158,6 +159,7 @@ The panel opens with `/au options` (it is also registered among the game's addon
 - **Chat**: the mode and the default channel.
 - **Narrator box**: text duration, opacity, size, locked position, history, test.
 - **Modules**: Personal, World, NPC dialogues, Memory, Emotions, Relationships, Stories, Social, Chat proposals, Audio (those not yet active, *Social* and *Audio*, are marked `*`), plus the presets *Complete*, *Personal RPG*, *Narrative world* and *Social RP*.
+- **Info**: who made the addon, the NEBULA community with its logo, the licence, the fan-made notice and four read-only boxes with the links (the GitHub repository, its issues, the NEBULA site and Ko-fi): click a box and press Ctrl+C. Also `/au about`.
 - The "speak" button, the name from Total RP 3, how the character is named (*Character's name*: first name, last name or both) and, with a separate consent, reading other players' public profiles (*Read others' Total RP 3*), the character's personality (`/au soul`), the immediate pause, the wizard.
 - Some choices are made **by command only**: the relationship axes and people (`/au relationships`), attraction and automatic registration of players (`/au relationships attraction|auto`), the automatic NPC dialogue offer (`/au talk offer`) and the maximum number of active stories (`/au stories max`).
 
@@ -269,7 +271,7 @@ The full index is [docs/README.md](docs/README.md). Starting points:
 
 ## Support the project
 
-Azeroth Unspoken is free and will stay free: every feature is available to everyone. If you enjoy it and want to support its development, you can buy the author a coffee on [Ko-fi](https://ko-fi.com/finland6738). Donations are entirely optional, they unlock nothing, and the addon never asks for them in the game.
+Azeroth Unspoken is free and will stay free: every feature is available to everyone. If you enjoy it and want to support its development, you can buy the author a coffee on [Ko-fi](https://ko-fi.com/finland6738). Donations are entirely optional and they unlock nothing. The addon never asks for them: the only place in the game where the Ko-fi link appears is the **Info** page of the settings (`/au about`), among the credits, as a box to copy.
 
 ## License
 
@@ -280,13 +282,22 @@ Azeroth Unspoken is free, and its code is open. Its phrases are protected. The f
 - **Example pack and pack guide:** [MIT](AzerothUnspoken_Example/LICENSE), free to copy for your own pack.
 - **Documentation:** CC BY 4.0.
 - **Fonts, icons and the logo** that ship in the addon folder (`AzerothUnspoken/Media/`): the fonts are under the SIL Open Font License, the icons and shapes are drawn by the project's own tool, and no Blizzard art is used. Where each comes from is in [docs/third-party.md](docs/third-party.md).
+- **The NEBULA community logo** (`assets/nebula/`, `Media/nebula_*_256.tga`) is used with its owner's permission and is **not** covered by the code licence: it is not part of what GPL-3.0-or-later grants. See [docs/third-party.md](docs/third-party.md).
 - **The name "Azeroth Unspoken"** is not licensed: a modified version shared with others needs another name.
 
 ## Credits
 
-- Concept and development: Finland6738.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/nebula/nebula-logo-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="assets/nebula/nebula-logo-light.png">
+  <img src="assets/nebula/nebula-logo-light.png" alt="NEBULA community logo" width="160">
+</picture>
+
+- Concept and development: Finland.
+- With thanks to the **NEBULA** community, whose look and logo the addon shares ([the NEBULA site](https://nebula-community.github.io/giochi/wow-forever/)). The logo above is used with its owner's permission and is not covered by the code licence ([docs/third-party.md](docs/third-party.md)). The same credits are in the game: **Settings → Info**, or `/au about`.
+- Licence: the code is GPL-3.0-or-later, the phrases and narrative data are all rights reserved, the example pack is MIT and the documentation is CC BY 4.0 (see [Licence](#license)).
 - Technical references consulted (not copied): [Atraeau/WoW-Addons](https://github.com/Atraeau/WoW-Addons) for the Forever API dump; the [Warcraft Wiki](https://warcraft.wiki.gg/wiki/World_of_Warcraft_API) for general API documentation. Full list in [docs/REFERENCES.md](docs/REFERENCES.md).
 - [Total RP 3](https://totalrp3.info/) belongs to its authors; Azeroth Unspoken only uses it as an optional integration.
 - If [ForeverDB.net](https://foreverdb.net/) data is ever used to prepare local registries, it will be credited here with a visible link.
 
-*World of Warcraft® is a trademark of Blizzard Entertainment, Inc. Azeroth Unspoken is an independent fan project, not affiliated with or endorsed by Blizzard. The lines are original and do not reproduce in-game text.*
+*World of Warcraft® is a trademark of Blizzard Entertainment, Inc. Azeroth Unspoken is a fan-made addon: an independent project, not affiliated with or endorsed by Blizzard Entertainment. The lines are original and do not reproduce in-game text.*

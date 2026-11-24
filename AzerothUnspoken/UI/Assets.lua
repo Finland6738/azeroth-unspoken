@@ -28,6 +28,10 @@ Assets.textures = {
 	-- the addon's own logo (assets/logo-source.webp), cut round, full colour
 	logo_256   = { path = MEDIA .. "logo_256.tga",   w = 256, h = 256 },
 	logo_64    = { path = MEDIA .. "logo_64.tga",    w = 64,  h = 64 },
+	-- the NEBULA community logo (assets/nebula/): the dark-theme art for Nebula, the light-theme art for Aurora; full colour,
+	-- never tinted, used with its owner's permission (docs/third-party.md); shown on Settings > Info
+	nebula_dark_256  = { path = MEDIA .. "nebula_dark_256.tga",  w = 256, h = 256 },
+	nebula_light_256 = { path = MEDIA .. "nebula_light_256.tga", w = 256, h = 256 },
 }
 
 -- Cells of the icon sheet, in the order of tools/make_media.py (16 per row).

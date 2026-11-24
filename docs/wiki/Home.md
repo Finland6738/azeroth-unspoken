@@ -67,11 +67,12 @@ Azeroth Unspoken is a quiet narrator that walks beside your character. It notice
 | read quick answers | [[FAQ]] |
 | look up a word | [[Glossary]] |
 | report a bug or share an idea | [[Reporting Bugs and Feedback|Reporting-Bugs-and-Feedback]] |
+| see the credits, the licence and the links | [[About and Credits|About]] |
 
 ## About
 
-Azeroth Unspoken is a free fan project by Finland6738. It is not affiliated with or endorsed by Blizzard Entertainment. World of Warcraft® is a trademark of Blizzard Entertainment, Inc. All lines are original and do not reproduce in-game text.
+Azeroth Unspoken is a free fan project by Finland. It is not affiliated with or endorsed by Blizzard Entertainment. World of Warcraft® is a trademark of Blizzard Entertainment, Inc. All lines are original and do not reproduce in-game text.
 
 The source code and the documentation for pack authors and developers live in the [GitHub repository](https://github.com/Finland6738/azeroth-unspoken).
 
-Azeroth Unspoken is free, and every feature is available to everyone. If you want to support its development, you can buy the author a coffee on [Ko-fi](https://ko-fi.com/finland6738). Donations are optional, unlock nothing, and the addon never asks for them in the game.
+Azeroth Unspoken is free, and every feature is available to everyone. If you want to support its development, you can buy the author a coffee on [Ko-fi](https://ko-fi.com/finland6738). Donations are optional and unlock nothing; the addon never asks for them (the link is only on its Info page). More in [[About and Credits|About]].
