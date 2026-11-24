@@ -315,7 +315,8 @@ end
 -- --- Segmented (pill selector) -----------------------------------------------------------------------------------------
 
 ---items: { { id, text } }. A surface-2 pill with the selected segment raised (a shape of its own, not a colour only).
----:Select(id), :Active(), :Clear(), :SetEnabled(bool). onSelect(id) after a change.
+---:Select(id), :Active(), :Clear(), :SetEnabled(bool), :SetItemText(id, text), :SetItemShown(id, bool), :Layout().
+---onSelect(id) after a change.
 function W.Segmented(parent, items, onSelect)
 	local seg = CreateFrame("Frame", nil, parent)
 	seg:SetHeight(32)
@@ -357,20 +358,49 @@ function W.Segmented(parent, items, onSelect)
 		for _, ob in pairs(self.buttons) do ob:SetEnabled(self.enabled) end
 	end
 
-	local x = 4
+	seg.hidden = {}
+	-- the segments are laid out from the left, each as wide as its text; a hidden one takes no room
+	function seg:Layout()
+		local x = 4
+		for _, id in ipairs(self.order) do
+			local b = self.buttons[id]
+			if self.hidden[id] then
+				b:Hide()
+			else
+				b:Show()
+				b:SetWidth(math.max(48, math.ceil(b.label:GetStringWidth() or 0) + 24))
+				b:ClearAllPoints()
+				b:SetPoint("LEFT", self, "LEFT", x, 0)
+				x = x + b:GetWidth() + 2
+			end
+		end
+		self:SetWidth(x + 2)
+	end
+	---Changes the text of one segment (a language change) and lays the control out again.
+	function seg:SetItemText(id, text)
+		local b = self.buttons[id]
+		if not b then return end
+		b.label:SetText(text or "")
+		self:Layout()
+	end
+	---Shows or hides a segment (a step the guide skips); the chosen one is never hidden.
+	function seg:SetItemShown(id, shown)
+		if not self.buttons[id] then return end
+		self.hidden[id] = (not shown and self.active ~= id) or nil
+		self:Layout()
+	end
+
 	for _, item in ipairs(items) do
 		local b = CreateFrame("Button", nil, seg)
 		b.label = Theme.NewText(b, "BodyMedium", "text-3")
 		b.label:SetPoint("CENTER", b, "CENTER", 0, 0)
 		b.label:SetText(item.text or "")
-		b:SetSize(math.max(48, math.ceil(b.label:GetStringWidth() or 0) + 24), 24)
-		b:SetPoint("LEFT", seg, "LEFT", x, 0)
-		x = x + b:GetWidth() + 2
+		b:SetSize(48, 24)
 		b:SetScript("OnClick", function() seg:Select(item.id) end)
 		seg.buttons[item.id] = b
 		seg.order[#seg.order + 1] = item.id
 	end
-	seg:SetWidth(x + 2)
+	seg:Layout()
 	return seg
 end
 
@@ -570,6 +600,7 @@ function W.ChoiceList(parent, opts)
 		b.label:SetPoint("LEFT", b, "LEFT", 24, 0)
 		b.label:SetPoint("RIGHT", b, "RIGHT", -6, 0)
 		b.label:SetJustifyH("LEFT")
+		function b:GetText() return self.label:GetText() end   -- a row says its words (the tests and a screen reader read them)
 		b:SetScript("OnClick", function(self) if self.choice then f:Select(self.choice.id) end end)
 		b:Hide()
 		f.rows[i] = b

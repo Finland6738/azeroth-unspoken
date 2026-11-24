@@ -397,6 +397,10 @@ T.run("wizard: le scelte arrivano alle impostazioni", function()
 		for _, p in ipairs(w.content.children) do
 			for _, x in ipairs(p.children) do
 				if x.kind == "Button" and x:GetText():find(text, 1, true) then return x end
+				-- UI-6: the language is a ChoiceList: its rows are one level down
+				for _, row in ipairs(x.rows or {}) do
+					if row:IsShown() and row:GetText():find(text, 1, true) then return row end
+				end
 			end
 		end
 	end
@@ -686,10 +690,8 @@ T.run("#11: il testo d'aiuto del wizard segue la lingua scelta", function()
 	end
 	T.ok(NS:L("wiz_language_help"):find("Indipendente", 1, true), "testo italiano")
 	T.eq(HelpText(), NS:L("wiz_language_help"), "la pagina mostra l'aiuto in italiano")
-	for _, p in ipairs(w.content.children) do
-		for _, x in ipairs(p.children) do
-			if x.kind == "Button" and (x:GetText() or ""):find("English", 1, true) then x:Click() end
-		end
+	for _, row in ipairs(w.content.children[1].languages.rows) do
+		if row:IsShown() and (row:GetText() or ""):find("English", 1, true) then row:Click() end
 	end
 	T.eq(NS.db.locale, "en", "lingua cambiata")
 	T.eq(HelpText(), NS:L("wiz_language_help"), "l'aiuto è nella lingua nuova")
@@ -879,16 +881,19 @@ T.run("#177, #179, #187: the settings rows, their sections and the help under th
 	-- #187: a plain label next to its control; the control shows the value only
 	local waits = Row("opt_waits")
 	T.ok(waits ~= nil and waits.label:GetText() == "Proposal waits", "riga 'Proposal waits', with its label as text")
-	T.eq(waits.button:GetText(), "25 s", "the button shows the value")
+	-- UI-6: a choice of four short words is a Segmented control, the chosen one raised and bright
+	T.eq(waits.seg:Active(), 25, "the control shows the value")
+	T.eq(waits.seg.buttons[25].label:GetText(), "25 s", "in words")
 	local seen = {}
-	for _ = 1, 4 do
-		waits.button:Click()
+	for _, v in ipairs({ 60, 120, 0, 25 }) do
+		waits.seg.buttons[v]:Click()
 		table.insert(seen, NS.db.chat.pendingSeconds)
 	end
 	T.eq(table.concat(seen, ","), "60,120,0,25", "25, 60, 120 s, fino alla chiusura")
-	NS.db.chat.pendingSeconds = 120
-	waits.button:Click()
-	T.eq(waits.button:GetText(), "until dismissed", "l'etichetta lo dice")
+	waits.seg.buttons[0]:Click()
+	T.eq(waits.seg.buttons[0].label:GetText(), "until dismissed", "l'etichetta lo dice")
+	T.eq(waits.seg:Active(), 0, "and it is the chosen one")
+	NS.db.chat.pendingSeconds = 25
 	local reading = Row("opt_reading")
 	T.ok(reading ~= nil and reading.button:GetText() == "14 characters/s", "riga della velocità di lettura")
 	reading.button:Click()
@@ -896,12 +901,15 @@ T.run("#177, #179, #187: the settings rows, their sections and the help under th
 	-- UI-3: "Reduce motion" is folded into Appearance > Animations, which writes both settings
 	local motion = Row("opt_motion")
 	T.ok(motion ~= nil and motion.label:GetText() == "Animations", "riga 'Animations'")
-	T.eq(motion.button:GetText(), "on", "on by default")
-	motion.button:Click()
+	-- UI-6: an on/off setting is a Switch (its position is the state) with the state in words next to it
+	T.eq(motion.text:GetText(), "on", "on by default")
+	T.ok(motion.switch:IsOn(), "the switch is on")
+	motion.switch:Click()
 	T.ok(NS.db.ui.animations == false and not NS.Motion.On(), "spente: anche il narratore senza dissolvenza")
 	T.eq(NS.db.ui.narrator.reduceMotion, false, "il vecchio 'riduci il movimento' non viene più scritto (UI-4)")
-	T.eq(motion.button:GetText(), "off", "the button says it")
-	motion.button:Click()
+	T.eq(motion.text:GetText(), "off", "the words say it")
+	T.ok(not motion.switch:IsOn(), "and the switch is off")
+	motion.switch:Click()
 	T.ok(NS.db.ui.animations == true and NS.Motion.On(), "accese")
 	T.eq(NS.db.ui.narrator.reduceMotion, false, "e nemmeno ora")
 	T.eq(Row("opt_alpha").label:GetText(), "Background opacity", "l'opacità dice che è dello sfondo")
@@ -921,7 +929,7 @@ T.run("#177, #179, #187: the settings rows, their sections and the help under th
 	local heads = {}
 	for _, h in ipairs(panel.headers) do
 		T.eq(h.fs:GetText(), NS:L(h.key), h.key .. ": the header says its name")
-		table.insert(heads, { key = h.key, y = h.fs._s.points[1][3] })
+		table.insert(heads, { key = h.key, y = select(5, h.section:GetPoint()) })   -- UI-6: the section carries the place
 	end
 	table.sort(heads, function(a, b) return a.y > b.y end)
 	local order = {}
@@ -931,10 +939,10 @@ T.run("#177, #179, #187: the settings rows, their sections and the help under th
 	-- no two controls on the same spot, every label left of its control
 	local spots, clash = {}, {}
 	for key, r in pairs(panel.rows) do
-		for _, c in ipairs({ r.button or false, r.minus or false }) do
+		for _, c in ipairs({ r.button or r.switch or r.seg or r.slider or false }) do
 			if c then
 				local p = c._s.points[1]
-				local spot = p[2] .. "," .. p[3]
+				local spot = tostring(c.parent) .. "," .. p[2] .. "," .. p[3]
 				if spots[spot] then table.insert(clash, key .. "/" .. spots[spot]) end
 				spots[spot] = key
 				if r.label then T.ok(r.label._s.points[1][2] < p[2], key .. ": the label is left of its control") end
@@ -944,12 +952,18 @@ T.run("#177, #179, #187: the settings rows, their sections and the help under th
 	T.eq(table.concat(clash, ";"), "", "no two controls on the same spot")
 
 	-- #179: the help text is under the last row, whatever the number of rows
+	-- UI-6: the rows are inside their sections, so the help is under the last section, and every row is inside its section
 	local lowest = 0
-	for _, r in pairs(panel.rows) do
-		local c = r.button or r.minus
-		if c ~= panel.reload then lowest = math.min(lowest, c._s.points[1][3] - 24) end
+	for _, s in ipairs(panel.sections) do
+		lowest = math.min(lowest, select(5, s:GetPoint()) - s:GetHeight())
+		for _, r in pairs(panel.rows) do
+			local c = r.button or r.switch or r.seg or r.slider
+			if c.parent == s and c ~= panel.reload then
+				T.ok(-c._s.points[1][3] + 24 <= s:GetHeight(), r.key .. ": the row is inside its section")
+			end
+		end
 	end
-	T.ok(panel.help._s.points[1][3] < lowest, "the help is under the last row")
+	T.ok(select(5, panel.help:GetPoint()) <= lowest, "the help is under the last section")
 	T.ok(panel.help:GetText():find(NS:L("chatmode_" .. NS.db.chat.mode .. "_help"), 1, true) ~= nil, "and explains the chat mode")
 	-- #182: the window scale is a setting, and the open windows follow it at once
 	NS.JournalFrame:Open()
@@ -966,9 +980,9 @@ T.run("#177, #179, #187: the settings rows, their sections and the help under th
 	-- #192: turning the narrator box off takes the line on screen away
 	Gateway:Propose(Rec("say", "inner", "Una frase breve."), CTX, {})
 	T.ok(frame:IsShown(), "a line on screen")
-	Row("opt_narrator").button:Click()
+	Row("opt_narrator").switch:Click()
 	T.ok(not frame:IsShown(), "the narrator box off: the line goes away at once")
-	Row("opt_narrator").button:Click()
+	Row("opt_narrator").switch:Click()
 	T.ok(NS.db.output.privateNarrator, "on again")
 	NS.db.locale = "it"
 	NS.db.chat.pendingSeconds = 25

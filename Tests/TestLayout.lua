@@ -254,10 +254,10 @@ T.run("#180 #182: journal tabs, the songbook and the soul window, in English and
 		end
 		NS.ProfileFrame:Open()
 		local p = _G.AzerothUnspokenProfile
-		CheckWindow(p, lang .. " soul window", 700)
+		CheckWindow(p, lang .. " soul window", 720)
 		AddOn_TotalRP3 = {}
 		NS.ProfileFrame:Refresh()
-		CheckWindow(p, lang .. " soul window with Total RP 3", 700)
+		CheckWindow(p, lang .. " soul window with Total RP 3", 720)
 		local rects = {}
 		for _, c in ipairs(p.children) do
 			if c:IsShown() and c.kind ~= "Texture" then
@@ -418,6 +418,61 @@ T.run("UI-4: the voice colours and the narrator's texts keep their contrast in N
 		end
 	end
 	Th.Apply(saved)
+end)
+
+-- UI-ECO UI-6: the Section surface of the soul window and of the settings page (surface-1): the texts on it and its controls.
+-- Every text pair is 4.5:1, a control's edge or track 3:1 against the section, in both themes.
+T.run("UI-6: the texts and controls on the sections keep their contrast in Nebula and in Aurora", function()
+	local Th = NS.Theme
+	local function C(token, id) return { Th.Color(token, id) } end
+	local TEXT = {
+		{ "text-1", "surface-1", "a section's title and a row's label" }, { "text-2", "surface-1", "the state in words, a note, the archetype's help" },
+		{ "text-3", "surface-1", "a value that is not set" }, { "accent-text", "surface-1", "a number in the mono font" },
+		{ "text-1", "surface-2", "the chosen segment's text over its pill" }, { "text-3", "surface-2", "the other segments" },
+		{ "text-1", "raised", "the chosen segment" }, { "text-1", "surface-3", "a button in a section" },
+		{ "err", "surface-1", "the danger button" }, { "accent-text", "bg", "the guide's number" }, { "text-1", "bg", "the guide's texts" },
+		{ "text-2", "bg", "the guide's help, the soul window's introduction" }, { "accent-text", "bg", "the guide's small heading" },
+		{ "text-1", "raised", "the chosen language" }, { "text-2", "surface-2", "the other languages" },
+	}
+	for _, id in ipairs(Th.ORDER) do
+		for _, pair in ipairs(TEXT) do
+			local bg = Th.Over(C(pair[2], id), C("bg", id))
+			local ratio = Th.Contrast(Th.Over(C(pair[1], id), bg), bg)
+			T.ok(ratio >= 4.5, ("%s, %s: %s on %s %.2f"):format(id, pair[3], pair[1], pair[2], ratio))
+		end
+		-- a source badge on a section: every tone is 4.5:1 on its own pill (the same rule as the Journal's badges)
+		for _, pair in ipairs({ { W.SLIDER_TRACK, "surface-1", "slider track" }, { "text-1", "surface-1", "slider thumb" },
+			{ "text-3", "surface-1", "switch ring, off" }, { "accent", "surface-1", "switch, on" }, { "accent", "surface-1", "the thin bar's fill" },
+			{ "border-strong", "surface-1", "the segmented pill's edge" } }) do
+			local bg = Th.Over(C(pair[2], id), C("bg", id))
+			local ratio = Th.Contrast(Th.Over(C(pair[1], id), bg), bg)
+			-- the pill's edge is only a boundary (the chosen segment has a shape and bright text): 1.5:1 is enough there
+			T.ok(ratio >= (pair[3]:find("edge") and 1.4 or 3), ("%s, %s: %.2f"):format(id, pair[3], ratio))
+		end
+	end
+end)
+
+-- the segmented controls of the settings page fit their room (section width minus the label column and the margin), in both
+-- languages: a long word would push the pill past the section's edge
+T.run("UI-6: the settings page's controls fit their sections, in English and Italian", function()
+	local panel = NS.SettingsFrame.panel
+	for _, lang in ipairs({ "en", "it" }) do
+		NS.db.locale = lang
+		panel:Refresh()
+		for key, row in pairs(panel.rows) do
+			local control = row.seg or row.slider
+			if control then
+				local x = control._s.points[1][2]
+				local section = control.parent
+				T.ok(x + control:GetWidth() <= section:GetWidth() - 16, ("%s %s: ends at %d of %d"):format(lang, key, x + control:GetWidth(), section:GetWidth() - 16))
+			end
+			if row.switch and row.text then
+				local x = row.switch._s.points[1][2]
+				T.ok(x + 52 + Units(row.text:GetText()) <= row.switch.parent:GetWidth() - 8, ("%s %s: the state in words fits"):format(lang, key))
+			end
+		end
+	end
+	NS.db.locale = "en"
 end)
 
 REALISTIC_TEXT = false

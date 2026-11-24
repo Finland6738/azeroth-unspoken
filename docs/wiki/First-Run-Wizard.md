@@ -6,7 +6,7 @@ The first time you enter the world with Azeroth Unspoken installed, a short guid
 
 - **Next** goes to the next step, **Back** to the previous one, and **Finish** (on the last step) closes the guide. **Enter** is Next.
 - **Every step can be skipped.** **Skip - keep the defaults** (and the **X** at the top right of the title band, and **Esc**) closes the guide at once and keeps what you have chosen so far; everything else stays at its default. The defaults are the safe ones: the narrator stays private and nothing goes to chat.
-- The dots under the title show where you are. You can drag the window to move it. It has the same frame as every other window of the addon, and its size follows the **Window scale** setting.
+- A row of numbered segments under the title shows where you are: the step you are on is the raised, bright one, and the chip in the title bar says it in words too (*step 3 of 7*). A click on a number jumps to that step; the answers are independent, so you can go in any order. You can drag the window to move it. It has the same frame as every other window of the addon, and its size follows the **Window scale** setting.
 - The texts you read before giving a consent (what may reach chat, reading others' Total RP 3, the social note) are in the normal text size, not the small one.
 - It never covers the narrator box: when the narrator needs room (for the test line, for a proposal) the box steps aside for as long as the guide is open.
 - Reopen it at any time with `/au wizard`, or with the **Reopen the setup guide** button in the [[settings panel|Settings]].
@@ -15,13 +15,13 @@ The guide opens only once per account. After you finish or skip it, it does not 
 
 ## The steps
 
-The guide has **7 steps**, or **8 if Total RP 3 is installed**. Every step lays its blocks out from the top, each under the one above, and the window grows by itself when a step needs more room (a long text in your language, for example); its buttons are as wide as their labels. A chosen card has a gold border and a filled square; the card of the default choice says "default".
+The guide has **7 steps**, or **8 if Total RP 3 is installed**. Every step lays its blocks out from the top, each under the one above, and the window grows by itself when a step needs more room (a long text in your language, for example); its buttons are as wide as their labels. A chosen card has an accent border, a lighter background and a filled circle (never colour alone); the card of the default choice says "default". The texts follow the look you chose in [[Settings]] (Nebula, dark, or Aurora, light) without a reload.
 
 ### 1. Welcome and language
 
 A promise in one sentence: *a private narrator for your character; lines appear only on your screen and nothing reaches chat unless you choose it.* Under it, a **live sample of the narrator**, so you see the box before you change any setting.
 
-Then choose the language of the narrator's lines and of the addon's interface: **English** or **Italiano**. This does not depend on the language of your game client.
+Then choose the language of the narrator's lines and of the addon's interface from the short list: **English** or **Italiano**. The chosen row has a dot and a lighter background. This does not depend on the language of your game client.
 
 > **Note.** The addon starts in **English**. If you prefer Italian for the interface and the lines, choose **Italiano** on this first page. If you skipped the guide, type `/au language it`. Command names stay English in both languages. See [[Languages]].
 

@@ -8,6 +8,30 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### UI-ECO step UI-6: the first-run guide, the character soul window and the Settings page (issue #284)
+
+- **Changed**: the **first-run guide** shows its step as a row of numbered segments under the title bar (the chosen step is the raised, bright one, the chip in the
+  title bar says "step n of N" in words, a click on a number goes to that page; the page the guide skips has no segment); the language is a list with a dot on the
+  chosen row; the other answers and the consents stay single-choice cards. The guide is 20 units taller (520 by 500). Every word and every consent dialog is as before.
+- **Changed**: the **character soul window** is two cards, *Archetype and traits* and *Topics to avoid*. A trait is a slider with its - and + and its value in the
+  mono font in the accent colour; a small badge says in words where a value comes from (chosen, Total RP 3, game, neutral); a thin bar counts how many traits you
+  chose. **Neutral profile** no longer turns into "Click again": it asks in a dialog (the red button carries the action's name, Cancel, **Esc** cancels the
+  question and leaves the window open) and a short message at the top of the window says it is done.
+- **Changed**: the **Settings page** is a card for each of General, Appearance, Chat, Narrator, Modules and Privacy. An on/off setting is a **switch** with *on* or *off*
+  written next to it; a choice among a few short words (theme, fonts, style depth, literary forms, how long a proposal waits) is a row of **segments**; a number is a
+  **slider** with - and + and its value in the mono font (the mouse wheel scrolls the page, it does not move these sliders); the choices that are too many or too
+  long for a segment (language, chat mode, channel, pause, reading speed, combat, the character's name) and the two consents keep their button with the value in words.
+  The width of the content is 640 units (it was 600). Every setting, command and validation is as before.
+- **Added**: `W.Section` (a quiet card with a title and a rule), `W.Segmented:SetItemText`, `:SetItemShown` and `:Layout`, and a text on every `W.ChoiceList` row.
+- **Removed**: `W.Confirm` (no window asks with a second click any more), `W.TEXT_FONT`, `W.TITLE_FONT`, and the locale keys `soul_reset_confirm`,
+  `soul_reset_confirm_tip` and `wiz_language_card`. `W.Adopt` stays in the window shell as a safety net: after this step it finds nothing in any window or in the Settings page.
+- **Added** (texts): `soul_reset_dlg`, `soul_reset_dlg_text`, `soul_toast_reset`, `soul_section_traits`, `soul_progress` (English and Italian).
+- **Tests**: `Tests/TestWindows.lua` proves `W.Adopt` finds nothing in the guide (every page, both languages, with and without Total RP 3), in the soul window (with its
+  question open) and in the Settings page; `Tests/TestLayout.lua` has the contrast pairs of the cards and controls in both themes and the fit of the Settings controls in
+  English and Italian; `Tests/TestWidgets.lua`, `TestWizardConsent.lua`, `TestSoul.lua`, `TestNarrator.lua` and `TestLiterary.lua` follow the new controls.
+- **Not tried in the game client**: the look, the fonts, the numbered step indicator and the language list, the sliders and switches inside the client's Settings canvas
+  and its own scroll bar, the soul window's height on a small screen, the dialog and its Esc, the toast.
+
 ### UI-ECO step UI-5: the Journal and the Relationships window (issue #284)
 
 The contents of the two windows take the NEBULA look (step UI-5 of [ADR 0058](docs/adr/0058-nebula-ecosystem-look-and-credits.md)): the first real use of

@@ -230,11 +230,13 @@ T.run("#188: the guide explains the language, the private narrator, the keys, th
 	local text = PageTexts(w)
 	T.ok(text:find("private narrator", 1, true) and text:find("nothing reaches chat unless you choose it", 1, true), "welcome: a private narrator")
 	T.ok(text:find(NS:L("voice_narrator"), 1, true) and text:find("light drains", 1, true), "welcome: a live sample of the narrator")
-	local cards = {}
-	for _, x in ipairs(w.content.children[1].children) do
-		if x.kind == "Button" then table.insert(cards, x:GetText()) end
-	end
-	T.eq(#cards, #NS.languageOrder, "one card per language")
+	-- UI-6: the language is a ChoiceList (a row for each language, the chosen one with a dot), not a card each
+	local list = w.content.children[1].languages
+	T.eq(list:Count(), #NS.languageOrder, "one row per language")
+	T.eq(list:Selected(), NS.db.locale, "the chosen language is marked")
+	local rowsShown = 0
+	for _, r in ipairs(list.rows) do if r:IsShown() then rowsShown = rowsShown + 1 end end
+	T.eq(rowsShown, #NS.languageOrder, "and each row is shown")
 	-- the last page
 	local last = Wizard:NumberOfPages()
 	for _ = 1, last - 1 do w.next:Click() end
@@ -539,4 +541,38 @@ T.run("#181: the ambient dialogue window does not cover the narrator either", fu
 	T.ok(before >= 1, "the narrator box counts among the rectangles the dialogue avoids")
 	Narrator:Clear()
 	T.eq(#F:BlizzardRects(), before - 1, "and only while it is shown")
+end)
+
+---------------------------------------------------------------------------
+-- UI-6: the step indicator
+---------------------------------------------------------------------------
+T.run("UI-6: the step indicator is a numbered Segmented: the chosen step is raised, a click goes there, a skipped page has none", function()
+	Reset()
+	AddOn_TotalRP3 = nil
+	local w = Open()
+	local steps = w.steps
+	T.ok(steps ~= nil and steps.buttons[1] ~= nil, "the indicator is in the window")
+	T.eq(steps:Active(), 1, "the first step is the chosen one")
+	local shown = 0
+	for i = 1, 8 do if steps.buttons[i]:IsShown() then shown = shown + 1 end end
+	T.eq(shown, Wizard:NumberOfPages(), "one segment for each page the guide shows (Total RP 3 is absent)")
+	T.ok(not steps.buttons[6]:IsShown(), "the page that is skipped has no segment")
+	T.eq(steps.buttons[7].label:GetText(), "6", "and the numbers go on without a gap")
+	T.ok(w.count:GetText():find("1", 1, true), "the chip says the step in words too: " .. tostring(w.count:GetText()))
+	-- a click goes to that page
+	steps.buttons[3]:Click()
+	T.eq(Wizard:Step(), 3, "a click on a segment goes to the page")
+	T.eq(steps:Active(), 3, "and it is the chosen one")
+	w.next:Click()
+	T.eq(steps:Active(), 4, "Next moves the indicator")
+	T.ok(not Wizard:GoTo(6), "a skipped page is no destination")
+	T.ok(not Wizard:GoTo(4), "the same page is no move")
+	T.ok(Wizard:GoTo(1) and steps:Active() == 1, "back to the first")
+	-- with Total RP 3 the page is there, and has its segment
+	w.skip:Click()
+	AddOn_TotalRP3 = {}
+	w = Open()
+	T.ok(w.steps.buttons[6]:IsShown(), "with Total RP 3 the sixth page has its segment")
+	w.skip:Click()
+	AddOn_TotalRP3 = nil
 end)
