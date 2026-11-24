@@ -25,9 +25,15 @@ end
 local function rgba(r, g, b, a) return { r / 255, g / 255, b / 255, a } end
 
 -- Token names, in the order of the spec's table. Every theme defines every one of them (the tests check the parity).
+-- The first 27 are the sister addon's, identical on purpose. The last four are this addon's only addition (UI-4, spec
+-- section 2.3): one colour per voice of the narrator (narrator, inner voice, character, NPC), chosen to differ in lightness as
+-- well as in hue and to keep 4.5:1 on the narrator's surface (Tests/TestLayout.lua). UI-8 compares the mockup tokens with
+-- these, so a change here is a deliberate one.
 Theme.TOKENS = { "bg", "surface-1", "surface-2", "surface-3", "raised", "border-subtle", "border", "border-strong",
 	"text-1", "text-2", "text-3", "on-accent", "accent", "accent-hover", "accent-text", "accent-2", "neon", "neon-core",
-	"ok", "warn", "err", "highlight", "scrim", "grad-1", "grad-2", "grad-3", "grad-4" }
+	"ok", "warn", "err", "highlight", "scrim", "grad-1", "grad-2", "grad-3", "grad-4",
+	"voice-narrator", "voice-inner", "voice-character", "voice-npc" }
+Theme.VOICE_TOKENS = { narrator = "voice-narrator", inner = "voice-inner", character = "voice-character", npc = "voice-npc" }
 
 Theme.themes = {
 	nebula = {
@@ -41,6 +47,8 @@ Theme.themes = {
 		ok = hex("#46C28F"), warn = hex("#F2B33D"), err = hex("#FF6369"),
 		highlight = rgba(255, 255, 255, .06), scrim = rgba(5, 2, 10, .72),
 		["grad-1"] = hex("#FC8C46"), ["grad-2"] = hex("#EE4662"), ["grad-3"] = hex("#9A2A9A"), ["grad-4"] = hex("#702AA8"),
+			-- the voices (light on the dark surface; Character and NPC differ in lightness 1.9:1, for a protanope)
+			["voice-narrator"] = hex("#C4B0FF"), ["voice-inner"] = hex("#7FD4FF"), ["voice-character"] = hex("#FFE08A"), ["voice-npc"] = hex("#5BBF66"),
 	},
 	aurora = {
 		name = "Aurora", dark = false,
@@ -53,6 +61,8 @@ Theme.themes = {
 		ok = hex("#1B7A50"), warn = hex("#8F5B00"), err = hex("#C0262D"),
 		highlight = rgba(255, 255, 255, .6), scrim = rgba(11, 27, 43, .45),
 		["grad-1"] = hex("#0054B6"), ["grad-2"] = hex("#007EA8"), ["grad-3"] = hex("#00A89A"), ["grad-4"] = hex("#70C446"),
+			-- the voices (dark on the light surface; Character and NPC differ in lightness 1.9:1, for a protanope)
+			["voice-narrator"] = hex("#4B2BB3"), ["voice-inner"] = hex("#005F8F"), ["voice-character"] = hex("#935E00"), ["voice-npc"] = hex("#0E5A28"),
 	},
 }
 
@@ -210,9 +220,11 @@ end
 
 -- "Neon effects" (glows and shadows), on by default; a client without a database yet answers the default.
 function Theme.NeonOn() return setting("ui.neon", true) ~= false end
--- "Animations", on by default. A player who turned the narrator's fades off (ui.narrator.reduceMotion, #177) has no animation either.
+-- "Animations", on by default: the one switch of every motion of the addon, the narrator's included. A player who had turned
+-- the narrator's fades off (ui.narrator.reduceMotion, #177) was moved to ui.animations = false once, by Config:Load; the old
+-- key is no longer read.
 function Theme.AnimationsOn()
-	return setting("ui.animations", true) ~= false and setting("ui.narrator.reduceMotion", false) ~= true
+	return setting("ui.animations", true) ~= false
 end
 function Theme.FontSource()
 	local v = setting("ui.fontSource", "addon")

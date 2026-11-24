@@ -328,4 +328,65 @@ T.run("UI-3: the widgets keep their contrast in Nebula and in Aurora", function(
 	end
 end)
 
+-- UI-ECO UI-4: the voices of the narrator keep their contrast (spec section 2.3). A voice colour is a token (voice-*); the box
+-- is the `bg` surface, opaque or translucent over the world. Body text and the label are 4.5:1 on the opaque surface in
+-- both themes; over a translucent box the contrast is worked out over a white world (the rule of docs/design/UI_REVIEW.md)
+-- and over a black one (the worst for the light theme); where a voice colour would not reach 4.5:1 the narrator writes the
+-- text in text-1, which the floor of the box keeps at 4.5:1 (Narrator:Floor).
+T.run("UI-4: the voice colours and the narrator's texts keep their contrast in Nebula and in Aurora", function()
+	local Th, Narrator = NS.Theme, NS.Narrator
+	local voices = { "narrator", "inner", "character", "npc" }
+	local function C(token, id) return { Th.Color(token, id) } end
+	local function Surface(id, alpha, scene)
+		local r, g, b = Th.Color("bg", id)
+		return Th.Over({ r, g, b, alpha }, scene)
+	end
+	local WHITE, BLACK = { 1, 1, 1, 1 }, { 0, 0, 0, 1 }
+	local saved = NS.db.ui.theme
+	for _, id in ipairs(Th.ORDER) do
+		Th.Apply(id)
+		local bg = C("bg", id)
+		for _, speaker in ipairs(voices) do
+			local token = "voice-" .. speaker
+			-- the opaque surface (a world as opaque as the box)
+			T.ok(Th.Contrast(C(token, id), bg) >= 4.5, ("%s, %s on the opaque surface: %.2f"):format(id, token, Th.Contrast(C(token, id), bg)))
+			-- the accent bar and the time line are a graphic of the voice: 3:1 on the opaque surface
+			T.ok(Th.Contrast(C(token, id), bg) >= 3, id .. ", " .. token .. " as a bar")
+			-- over a white world at the default opacity (0.8): a voice that does not reach 4.5:1 there is not used for text
+			local over = Th.Contrast(C(token, id), Surface(id, 0.8, WHITE))
+			local _, ink = Narrator:VoiceColors(speaker, 0.8)
+			T.ok(ink == token and Narrator.WorstContrast(token, 0.8) >= 4.5 or ink == "text-1",
+				("%s, %s at 0.8: the text is the voice's or text-1 (%.2f over white)"):format(id, speaker, over))
+			T.ok(Narrator.WorstContrast(ink, 0.8) >= 4.5, ("%s, %s at 0.8: the text %s keeps 4.5:1 over any world (%.2f)"):format(id, speaker, ink, Narrator.WorstContrast(ink, 0.8)))
+			-- at the floor: always readable
+			local _, atFloor = Narrator:VoiceColors(speaker, Narrator:Floor())
+			T.ok(Narrator.WorstContrast(atFloor, Narrator:Floor()) >= 4.5, ("%s, %s at the floor %.2f: the text %s"):format(id, speaker, Narrator:Floor(), atFloor))
+		end
+		-- Nebula's voices all read over a white world at the default opacity (the tokens were chosen for it)
+		if id == "nebula" then
+			for _, speaker in ipairs(voices) do
+				T.ok(Th.Contrast(C("voice-" .. speaker, id), Surface(id, 0.8, WHITE)) >= 4.5, "nebula: " .. speaker .. " at 0.8 over a white world")
+			end
+		end
+		-- text-1, text-2 and the label over the box at the floor and at the default opacity, over both worlds
+		for _, alpha in ipairs({ Narrator:Floor(), 0.8, 1 }) do
+			T.ok(Narrator.WorstContrast("text-1", alpha) >= 4.5, ("%s: text-1 at %.2f over any world"):format(id, alpha))
+			local ink = Narrator:Ink("text-2", alpha)
+			T.ok(Narrator.WorstContrast(ink, alpha) >= 4.5, ("%s: the muted words (%s) at %.2f"):format(id, ink, alpha))
+		end
+		-- the pieces of the box: the byte counter (on the editor's surface-2), the Paused badge, the speak button's icon
+		for _, pair in ipairs({ { "text-3", "surface-2", "byte counter" }, { "err", "surface-2", "byte counter, over the limit" },
+			{ "text-2", "surface-2", "channel chip" } }) do
+			local ratio = Th.Contrast(C(pair[1], id), Th.Over(C(pair[2], id), C("bg", id)))
+			T.ok(ratio >= 4.5, ("%s, %s: %s on %s %.2f"):format(id, pair[3], pair[1], pair[2], ratio))
+		end
+		for _, pair in ipairs({ { "text-3", "surface-1", "the speak button's quiet icon" }, { "accent-text", "surface-1", "its lit icon" } }) do
+			local surf = Th.Over(C(pair[2], id), C("bg", id))
+			local ratio = Th.Contrast(Th.Over(C(pair[1], id), surf), surf)
+			T.ok(ratio >= 3, ("%s, %s: %.2f"):format(id, pair[3], ratio))
+		end
+	end
+	Th.Apply(saved)
+end)
+
 REALISTIC_TEXT = false

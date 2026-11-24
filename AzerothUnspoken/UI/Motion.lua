@@ -2,7 +2,7 @@
 -- 320 ms for panels and the accordion, always the game's OUT curve (no spring: the engine has none). UI-ECO step UI-2. Lua 5.1.
 -- * Everything is an AnimationGroup of the game (Alpha, Scale, Translation, Rotation); the groups are made once per region and
 --   reused, so a window that is drawn again creates none (the spec's pool rule). No OnUpdate.
--- * "Animations: off" (ui.animations, and the older narrator setting reduceMotion) makes every call finish at once: the end
+-- * "Animations: off" (ui.animations, which also took over the narrator's older reduceMotion) makes every call finish at once: the end
 --   state is set directly and no group is played. A client without AnimationGroups behaves the same way.
 -- Not tried in the game client: the groups, the curves and the timings are predictions.
 local ADDON_NAME, NS = ...

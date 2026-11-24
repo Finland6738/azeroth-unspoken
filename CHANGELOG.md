@@ -8,6 +8,31 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### UI-ECO step UI-4: the narrator, the speak button, the Chat Gateway proposal and the NPC dialogue (issue #284)
+
+The last frames that were not on the NEBULA look take it (step UI-4 of [ADR 0058](docs/adr/0058-nebula-ecosystem-look-and-credits.md)). Spec:
+[docs/specs/ui-style.md](docs/specs/ui-style.md) (section 2.3 has the voice colours).
+
+- **Added**: four colour tokens, one per voice, in both themes (`voice-narrator`, `voice-inner`, `voice-character`, `voice-npc`; `Theme.VOICE_TOKENS`):
+  the addon's only addition to the sister addon's 27 tokens. They differ in lightness as well as in hue (Character and NPC at least 1.8:1, for
+  a protanope) and keep 4.5:1 on the narrator's surface in Nebula and in Aurora (`Tests/TestLayout.lua`).
+- **Changed**: the **narrator box** is a rounded Panel in the `bg` token (the opacity setting is the fill's alpha; the ring, the shadow and the text keep
+  theirs), with the accent bar, the label and the text in the voice's token, ghost icon buttons, a Chip for the channel, FlatButtons in the
+  proposal bar, a ThinBar for the time and a short entrance fade from `NS.Motion`. It follows a change of theme at once, label and history included.
+  The least background opacity is now worked out from the tokens (`Narrator:Floor()`): 0.55, or what the theme's text needs to keep 4.5:1 over the
+  brightest and the darkest world (**0.6 in Nebula**). Over a translucent box a voice colour is used for the text only where it keeps 4.5:1, and the
+  text is `text-1` where not.
+- **Added**: the proposal **editor** is a themed EditBox with a **byte counter** (the bytes the line will take in chat over the channel's limit;
+  in `err` and with "(cut)" over it). Enter, Esc and the Gateway are unchanged.
+- **Changed**: **Animations** is now the one switch of the narrator too: `ui.narrator.reduceMotion` is neither written nor read any more (the migration
+  of `Config:Load` that turned it into `ui.animations = false` stays). The narrator had no fade of its own since #186; the box now fades in over
+  120 ms and, with Animations off, appears at once with no time line and with the verses all at once.
+- **Changed**: the **speak button** is a disc in a ring with the icon sheet's quill (not the game's book icon), an accent ring, lit icon and glow
+  while a proposal waits, the addon's own tooltip instead of `GameTooltip`, and a "Paused" Badge. The **NPC dialogue** is a Panel with the NPC's
+  accent bar, the "addon ambient dialogue" Badge always in its header, the title in `voice-npc` and FlatButtons for the answers; it still
+  has no Esc (ADR 0020). The first page of the first-run guide shows the narrator's real look.
+- **Removed**: `W.LegacyFlatButton`, `W.Button` (the game's button template), `W.Background`, `W.SetBackgroundAlpha` and `W.SetFontSize`.
+
 ### UI-ECO step UI-3: the widgets, the new window shell and the Appearance settings (issue #284)
 
 The windows take the NEBULA look for the first time (step UI-3 of [ADR 0058](docs/adr/0058-nebula-ecosystem-look-and-credits.md)): every

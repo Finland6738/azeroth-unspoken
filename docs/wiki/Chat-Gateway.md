@@ -49,13 +49,13 @@ World of Warcraft only lets an addon post to `/say` and `/yell` in the open worl
 
 When a proposal is waiting:
 
-- the narrator box shows the line, the label says *proposal* and counts down, and a bar of buttons appears under it: the channel on a chip at the left, then a quiet **Discard**, **Another**, **Edit**, **To chat** and **Send**, the one gold button;
-- the speak button glows, and its tooltip shows the text and the channel.
+- the narrator box shows the line, the label says *proposal* and counts down, and a bar of buttons appears under it: the channel on a chip at the left, then a quiet **Discard**, **Another**, **Edit**, **To chat** and **Send**, the one coloured button (the theme's accent);
+- the speak button lights up (an accent ring and a soft glow), and its tooltip shows the text and the channel.
 
 | Action | Button on the box | Key or command |
 |---|---|---|
 | Send it | **Send** | speak key, speak button, `/au speak` |
-| Edit it | **Edit** (opens the editor; Enter sends, Esc closes) | in preview mode, the speak key opens the editor |
+| Edit it | **Edit** (opens the editor, with a **byte counter** on its right: the bytes the line will take in chat over the channel's limit, 255; over it the counter turns red and says *(cut)*, and the end is cut when sent; Enter sends, Esc closes) | in preview mode, the speak key opens the editor |
 | Get a different line | **Another** | `/au another` or its key |
 | Copy into the chat box | **To chat** | `/au copy` (`/au copy`) |
 | Change the channel | the channel chip | `/au channel <channel>` sets the default |
@@ -65,9 +65,9 @@ When a proposal is waiting:
 
 ### The speak button
 
-The speak button is a small book icon. It starts **beside the narrator box**, to its right. Drag it with the right mouse button to move it; `/au button reset` puts it back. `/au button` shows or hides it.
+The speak button is a small round button with a quill icon, in the colours of the current theme. It starts **beside the narrator box**, to its right. While a proposal waits it lights up; while the narrator is paused it is dimmed and **Paused** is written under it. Drag it with the right mouse button to move it; `/au button reset` puts it back. `/au button` shows or hides it.
 
-Its tooltip says what a left click will do now:
+Its tooltip (the addon's own, dark on the light theme and light on the dark one) says what a left click will do now:
 
 | Situation | The tooltip says |
 |---|---|
@@ -173,7 +173,7 @@ If you try to send too fast, you see *"too fast: wait a few seconds before sendi
 ## What you will see
 
 - In private mode: nothing changes, lines stay in the box.
-- In preview and confirm modes: proposals in the box with **Send**, **Edit**, **Another**, **Discard**, **To chat** and the channel; the speak button glows.
+- In preview and confirm modes: proposals in the box with **Send**, **Edit**, **Another**, **Discard**, **To chat** and the channel; the speak button lights up.
 - After a send: the line in the box is marked *"sent to /say"* (or the channel), and your character's message appears in chat like any other.
 - In automatic mode: the occasional emote sent by itself, also marked *"sent to"* in the box.
 

@@ -1,7 +1,11 @@
 -- Azeroth Unspoken: pulsante "pronuncia", la conferma del Chat Gateway
+-- UI-ECO UI-4: the NEBULA look: a round button (a disc in `surface-1` inside a ring, the addon's own quill icon from the
+-- icon sheet, never the game's art), an accent ring and glow while a proposal waits, the addon's own tooltip
+-- (W.Tooltip) and a Badge that says "Paused" in words. 36 units: a target well over the 24 minimum. Not tried in the client.
 local ADDON, NS = ...
 local SpeakButton = NS:RegisterModule("speakButton")
 NS.SpeakButton = SpeakButton
+local W, Theme, Motion, Assets = NS.Widgets, NS.Theme, NS.Motion, NS.Assets
 
 ---------------------------------------------------------------------------
 -- Pulsante "pronuncia": il clic è un'azione del giocatore. Conferma (o apre l'editor di) la proposta
@@ -14,21 +18,25 @@ local button
 -- personaggio (UI-19, #189): chi ha già spostato il pulsante tiene la sua posizione
 SpeakButton.DEFAULT_POS = { "BOTTOMLEFT", "BOTTOM", 236, 240 }
 
+-- the ring, the icon and the glow follow the state: a proposal waits (accent ring, lit icon, glow) or not (quiet), and the
+-- hover; the state is also in words in the tooltip, and "Paused" is a word under the button
+local function Paint()
+	local waiting = button.waiting == true
+	local lit = waiting or button.hover == true
+	Theme.Tint(button.ring, lit and "accent" or "border-strong")
+	Theme.Tint(button.icon, waiting and "accent-text" or (button.hover and "text-1" or "text-3"))
+	Theme.GlowShow(button.glow, waiting)
+end
+
 local function UpdateButton()
 	if not button then return end
 	if not NS.db.ui.showButton then button:Hide() return end
 	button:Show()
-	if NS.Gateway:GetPending() then
-		button.glow:Show()
-		button.icon:SetDesaturated(false)
-	else
-		button.glow:Hide()
-		button.icon:SetDesaturated(true)
-	end
+	button.waiting = NS.Gateway:GetPending() ~= nil
+	Paint()
 	-- in pausa il pulsante resta, ma più spento, e lo dice in parole (#183): the badge is not dimmed with it
 	button:SetAlpha(NS.paused and 0.5 or 1)
-	button.badgeText:SetText(NS:L("paused_badge"))
-	button.badge:SetWidth(math.ceil(button.badgeText:GetStringWidth() or 40) + 10)
+	button.badge:SetBadge(NS:L("paused_badge"), "warn")
 	button.badge:SetShown(NS.paused == true)
 end
 
@@ -58,14 +66,14 @@ end
 
 ---Le righe del suggerimento, fedeli a ciò che farà il clic nella modalità attuale (UI-19, #189): in modalità
 ---privata non si invia mai nulla, e il suggerimento non deve dire "pronuncia".
----@return { [1]: string, [2]?: number, [3]?: number, [4]?: number }[] lines testo e colore (nessun colore: il titolo)
+---@return { [1]: string }[] lines the title, then what the click does (the addon's tooltip shows them one under the other)
 function SpeakButton:TooltipLines()
 	local lines = { { NS.name } }
 	local p = NS.Gateway:GetPending()
 	local hint
 	if p then
-		table.insert(lines, { p.edited or p.text, 1, 1, 1 })
-		table.insert(lines, { NS:L("button_channel", NS:L("channel_" .. p.channel)), 0.7, 0.9, 0.7 })
+		table.insert(lines, { p.edited or p.text })
+		table.insert(lines, { NS:L("button_channel", NS:L("channel_" .. p.channel)) })
 		if NS.db.ui.buttonOpensEditor then
 			hint = "button_hint_editor"
 		elseif NS.Gateway:EffectiveMode() == "PREVIEW" and not p.reviewed then
@@ -74,14 +82,22 @@ function SpeakButton:TooltipLines()
 			hint = "button_hint_send"
 		end
 	elseif NS.Gateway:EffectiveMode() == "PRIVATE" then
-		table.insert(lines, { NS:L("button_idle_private"), 0.8, 0.8, 0.8 })
+		table.insert(lines, { NS:L("button_idle_private") })
 		hint = "button_hint_private"
 	else
-		table.insert(lines, { NS:L("button_idle"), 0.8, 0.8, 0.8 })
+		table.insert(lines, { NS:L("button_idle") })
 		hint = "button_hint_new"
 	end
-	table.insert(lines, { NS:L(hint), 0.5, 0.5, 0.5 })
+	table.insert(lines, { NS:L(hint) })
 	return lines
+end
+
+---The tooltip's text: the lines one under the other.
+---@return string
+function SpeakButton:TooltipText()
+	local out = {}
+	for _, line in ipairs(self:TooltipLines()) do table.insert(out, line[1]) end
+	return table.concat(out, "\n")
 end
 
 local function CreateButton()
@@ -93,26 +109,28 @@ local function CreateButton()
 	button:RegisterForClicks("LeftButtonUp")
 	button:RegisterForDrag("RightButton")
 
-	button.icon = button:CreateTexture(nil, "ARTWORK")
-	button.icon:SetAllPoints()
-	button.icon:SetTexture("Interface\\Icons\\INV_Misc_Book_09")
-
-	button.glow = button:CreateTexture(nil, "OVERLAY")
-	button.glow:SetTexture("Interface\\Buttons\\UI-ActionButton-Border")
-	button.glow:SetBlendMode("ADD")
-	button.glow:SetPoint("CENTER")
-	button.glow:SetSize(66, 66)
+	-- a ring and a disc (the sheet's `circle`, white, tinted by Paint), the quill of the icon sheet, a glow
+	button.ring = button:CreateTexture(nil, "BACKGROUND")
+	button.ring:SetTexture(Assets.textures.circle.path)
+	button.ring:SetAllPoints(button)
+	button.disc = button:CreateTexture(nil, "BORDER")
+	button.disc:SetTexture(Assets.textures.circle.path)
+	button.disc:SetPoint("TOPLEFT", button, "TOPLEFT", 2, -2)
+	button.disc:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", -2, 2)
+	Theme.Tint(button.disc, "surface-1")
+	button.icon = W.Icon(button, "quill", 20, "text-3", "ARTWORK")
+	button.icon:SetPoint("CENTER", 0, 0)
+	button.glow = Theme.Glow(button, "glow_s", "accent", { layer = "BACKGROUND", alpha = 0.5 })
+	button.glow:SetPoint("TOPLEFT", button, "TOPLEFT", -14, 14)
+	button.glow:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", 14, -14)
+	Theme.GlowShow(button.glow, false)
 
 	-- #183: "Paused" in words under the button, at full opacity
-	local badge = CreateFrame("Frame", nil, button)
-	badge:SetHeight(16)
-	badge:SetPoint("TOP", button, "BOTTOM", 0, -2)
+	local badge = W.Badge(button, NS:L("paused_badge"), "warn")
+	badge:SetPoint("TOP", button, "BOTTOM", 0, -4)
 	if badge.SetIgnoreParentAlpha then badge:SetIgnoreParentAlpha(true) end
-	NS.Widgets.Background(badge, 0, 0, 0, 0.85)
-	badge.text = badge:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-	badge.text:SetPoint("CENTER", 0, 0)
 	badge:Hide()
-	button.badge, button.badgeText = badge, badge.text
+	button.badge, button.badgeText = badge, badge.label
 
 	Place()
 
@@ -123,14 +141,11 @@ local function CreateButton()
 		local p, _, rp, x, y = self:GetPoint()
 		NS.db.ui.buttonPos = { p, rp, x, y }
 	end)
-	button:SetScript("OnEnter", function(self)
-		GameTooltip:SetOwner(self, "ANCHOR_TOP")
-		for i, line in ipairs(SpeakButton:TooltipLines()) do
-			GameTooltip:AddLine(line[1], line[2], line[3], line[4], i > 1)
-		end
-		GameTooltip:Show()
-	end)
-	button:SetScript("OnLeave", function() GameTooltip:Hide() end)
+	-- the addon's own tooltip (W.Tooltip): what the click will do in the mode the player is in
+	W.Tooltip(button, function() return SpeakButton:TooltipText() end)
+	button:HookScript("OnEnter", function(self) self.hover = true; Paint() end)
+	button:HookScript("OnLeave", function(self) self.hover = false; Paint() end)
+	Motion.Press(button)
 
 	-- la proposta in attesa scade: aggiorna l'aspetto ogni tanto
 	NS.Compat.Ticker(2, function()

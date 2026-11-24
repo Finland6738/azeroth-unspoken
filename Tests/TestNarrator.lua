@@ -17,7 +17,10 @@ local function Reset()
 	Narrator:Clear()
 	Narrator:ClearHistory()
 	NS.db.ui.narrator.historySize = 30
-	NS.db.ui.narrator.duration, NS.db.ui.narrator.readingSpeed, NS.db.ui.narrator.reduceMotion = 8, 14, false
+	NS.db.ui.narrator.duration, NS.db.ui.narrator.readingSpeed = 8, 14
+	NS.db.ui.animations = true   -- UI-4: the one switch (the narrator's older reduceMotion is no longer read)
+	NS.Theme.Apply("nebula")
+	FINISH_ANIMATIONS()
 	NS.db.chat.pendingSeconds = 25
 	frame._s.mouseOver = false
 	ADVANCE(100)
@@ -65,14 +68,15 @@ T.run("durata e linea del tempo", function()
 	T.ok(math.abs(Narrator.remaining - (8 + 16 / 14)) < 1e-9, "durata: base più tempo di lettura")
 	UPDATE(5)
 	T.ok(frame:IsShown(), "ancora visibile dopo 5 s")
+	FINISH_ANIMATIONS()   -- the short fade-in of the entrance (UI-4)
 	T.eq(frame:GetAlpha(), 1, "il riquadro è pieno (#173)")
 	-- #186: a thin time line instead of a fade; it shrinks as the time runs out, the frame alpha stays 1
 	T.ok(frame.timeline:IsShown(), "linea del tempo visibile")
-	local w5 = frame.timeline:GetWidth()
-	T.ok(w5 > 0 and w5 < 437, "più corta dopo 5 s: " .. w5)
+	local w5 = frame.timeline:GetFraction()
+	T.ok(w5 > 0 and w5 < 1, "più corta dopo 5 s: " .. w5)
 	UPDATE(Narrator.remaining - 5 - 0.5)
 	T.ok(frame:IsShown() and frame:GetAlpha() == 1, "verso la fine: nessuna dissolvenza")
-	T.ok(frame.timeline:GetWidth() < w5, "la linea si accorcia")
+	T.ok(frame.timeline:GetFraction() < w5, "la linea si accorcia")
 	UPDATE(5)
 	T.ok(not frame:IsShown(), "sparisce da solo")
 	-- la durata è regolabile
@@ -87,21 +91,30 @@ end)
 
 T.run("opacità e dimensione del testo", function()
 	Reset()
-	-- #173: the setting is the background's opacity, once; the text keeps full opacity
-	local bgAlpha
-	frame.bg.SetColorTexture = function(_, _, _, _, a) bgAlpha = a end
+	-- #173: the setting is the background's opacity, once; the text keeps full opacity. The surface is the Panel's fill in the
+	-- `bg` token (UI-4): its opacity is the alpha of its vertex colour
+	local function BgAlpha() return select(4, frame.bg:GetVertexColor()) end
 	NS.db.ui.narrator.alpha, NS.db.ui.narrator.fontSize = 0.9, 20
 	Narrator:ApplySettings()
 	local _, size = frame.text:GetFont()
 	T.eq(size, 20, "dimensione del testo applicata")
-	T.eq(bgAlpha, 0.9, "opacità applicata allo sfondo, una volta sola")
+	T.eq(BgAlpha(), 0.9, "opacità applicata allo sfondo, una volta sola")
 	Gateway:Propose(Rec("say", "inner"), CTX, {})
 	UPDATE(0.1)
+	FINISH_ANIMATIONS()
 	T.eq(frame:GetAlpha(), 1, "il testo non sbiadisce con l'opacità")
-	-- a value under 0.55 (saved before #173) never makes the background thinner than 0.55
+	-- a value under the floor (saved before #173) never makes the background thinner than the floor: 0.55, or what the
+	-- theme's text needs to keep 4.5:1 over a bright world (Nebula's light text: 0.6)
 	NS.db.ui.narrator.alpha = 0.2
 	Narrator:ApplySettings()
-	T.eq(bgAlpha, 0.55, "sfondo almeno 0.55")
+	T.eq(BgAlpha(), Narrator:Floor(), "sfondo almeno il minimo")
+	T.ok(Narrator:Floor() >= 0.55 and Narrator:Floor() <= 0.7, "il minimo: " .. Narrator:Floor())
+	for _, id in ipairs(NS.Theme.ORDER) do
+		NS.Theme.Apply(id)
+		T.ok(Narrator.WorstContrast("text-1", Narrator:Floor()) >= 4.5, id .. ": al minimo il testo resta leggibile su ogni scena")
+		T.ok(Narrator.WorstContrast("text-1", Narrator:Floor() - 0.02) < 4.5 or Narrator:Floor() == 0.55, id .. ": e il minimo è il più basso che serve")
+	end
+	NS.Theme.Apply("nebula")
 	-- the voice label is 12 px or more
 	for _, fontSize in ipairs({ 10, 14, 20 }) do
 		NS.db.ui.narrator.fontSize = fontSize
@@ -109,7 +122,6 @@ T.run("opacità e dimensione del testo", function()
 		local _, labelSize = frame.label:GetFont()
 		T.ok(labelSize >= 12, "etichetta della voce di almeno 12 px (testo " .. fontSize .. "): " .. labelSize)
 	end
-	frame.bg.SetColorTexture = nil
 	NS.db.ui.narrator.alpha, NS.db.ui.narrator.fontSize = 0.8, 14
 	Narrator:ApplySettings()
 end)
@@ -547,10 +559,11 @@ T.run("#17: il mouse sopra il riquadro lo tiene visibile", function()
 	Tick(remaining + 10)
 	T.ok(frame:IsShown(), "con il mouse sopra resta visibile oltre la durata")
 	T.ok(Narrator.elapsed <= remaining, "il tempo resta fermo")
+	FINISH_ANIMATIONS()
 	T.eq(frame:GetAlpha(), 1, "e non sbiadisce")
-	local stopped = frame.timeline:GetWidth()
+	local stopped = frame.timeline:GetFraction()
 	Tick(2)
-	T.eq(frame.timeline:GetWidth(), stopped, "la linea del tempo resta ferma (#186)")
+	T.eq(frame.timeline:GetFraction(), stopped, "la linea del tempo resta ferma (#186)")
 	-- #21: tolto il mouse, il riquadro resta ancora un poco (non sparisce sotto la mano)
 	frame._s.mouseOver = false
 	Tick(0.5)
@@ -841,14 +854,17 @@ T.run("#177: tempo di lettura per carattere UTF-8, velocità e 'riduci il movime
 	NS.db.ui.narrator.readingSpeed = 8
 	T.eq(Narrator:ReadingTime(long), 8 + 140 / 8, "più lenta, più tempo")
 	NS.db.ui.narrator.readingSpeed = 14
-	-- reduce motion: full opacity to the end, then gone
-	NS.db.ui.narrator.reduceMotion = true
+	-- "Animations: off" (UI-4: the one switch): full opacity from the start to the end, no time line, then gone
+	NS.db.ui.animations = false
 	Gateway:Propose(Rec("say", "inner", "Una frase breve."), CTX, {})
+	T.eq(frame:GetAlpha(), 1, "senza animazioni il riquadro compare subito pieno")
+	T.eq(FINISH_ANIMATIONS(), 0, "e nessun gruppo di animazione parte")
 	Tick(Narrator.remaining - 0.5)
 	T.ok(frame:IsShown() and frame:GetAlpha() == 1, "nessuna dissolvenza")
+	T.ok(not frame.timeline:IsShown(), "e nessuna linea del tempo che si accorcia")
 	Tick(1)
 	T.ok(not frame:IsShown(), "poi sparisce")
-	NS.db.ui.narrator.reduceMotion = false
+	NS.db.ui.animations = true
 end)
 
 T.run("#177, #179, #187: the settings rows, their sections and the help under the last row", function()
@@ -882,10 +898,12 @@ T.run("#177, #179, #187: the settings rows, their sections and the help under th
 	T.ok(motion ~= nil and motion.label:GetText() == "Animations", "riga 'Animations'")
 	T.eq(motion.button:GetText(), "on", "on by default")
 	motion.button:Click()
-	T.ok(NS.db.ui.narrator.reduceMotion == true and NS.db.ui.animations == false, "spente: anche il narratore senza dissolvenza")
+	T.ok(NS.db.ui.animations == false and not NS.Motion.On(), "spente: anche il narratore senza dissolvenza")
+	T.eq(NS.db.ui.narrator.reduceMotion, false, "il vecchio 'riduci il movimento' non viene più scritto (UI-4)")
 	T.eq(motion.button:GetText(), "off", "the button says it")
 	motion.button:Click()
-	T.ok(NS.db.ui.narrator.reduceMotion == false and NS.db.ui.animations == true, "accese")
+	T.ok(NS.db.ui.animations == true and NS.Motion.On(), "accese")
+	T.eq(NS.db.ui.narrator.reduceMotion, false, "e nemmeno ora")
 	T.eq(Row("opt_alpha").label:GetText(), "Background opacity", "l'opacità dice che è dello sfondo")
 	-- #187: a stepper's value is text, never a button that does nothing
 	for _, key in ipairs({ "opt_intensity", "opt_duration", "opt_alpha", "opt_fontsize", "opt_scale", "opt_dialogue_size", "opt_dialogue_alpha" }) do
@@ -957,41 +975,51 @@ T.run("#177, #179, #187: the settings rows, their sections and the help under th
 	NS.db.ui.narrator.readingSpeed = 14
 end)
 
-T.run("#186: le voci si distinguono per barra, colore del testo, carattere e luminosità", function()
+T.run("#186, UI-4: le voci si distinguono per barra, colore del testo, carattere e luminosità (token delle voci)", function()
 	Reset()
+	local Th = NS.Theme
 	NS.db.ui.narrator.alpha, NS.db.ui.narrator.fontSize = 0.8, 14
-	-- relative luminance of a hex colour (WCAG)
-	local function Lum(hex)
-		local function L(c) c = c / 255; return c <= 0.04045 and c / 12.92 or ((c + 0.055) / 1.055) ^ 2.4 end
-		return 0.2126 * L(tonumber(hex:sub(1, 2), 16)) + 0.7152 * L(tonumber(hex:sub(3, 4), 16))
-			+ 0.0722 * L(tonumber(hex:sub(5, 6), 16))
+	local function Is(c, token, id)
+		local r, g, b = Th.Color(token, id)
+		return c ~= nil and math.abs(c[1] - r) < 1e-6 and math.abs(c[2] - g) < 1e-6 and math.abs(c[3] - b) < 1e-6
 	end
-	local accents, tints = {}, {}
-	for _, speaker in ipairs({ "narrator", "inner", "character", "npc" }) do
-		accents[speaker], tints[speaker] = Narrator:VoiceColors(speaker)
-		T.ok(tints[speaker] ~= "ffffff", speaker .. ": testo tinto")
+	local speakers = { "narrator", "inner", "character", "npc" }
+	for _, id in ipairs(Th.ORDER) do
+		Th.Apply(id)
+		-- every voice has a token of its own in the theme, and the narrator asks for it by name
+		local accents = {}
+		for _, speaker in ipairs(speakers) do
+			local accent, ink = Narrator:VoiceColors(speaker)
+			T.eq(accent, "voice-" .. speaker, id .. ": il token della voce " .. speaker)
+			T.ok(Th.themes[id][accent] ~= nil, id .. ": definito dal tema")
+			T.ok(ink == accent or ink == "text-1", id .. ": il testo è nel colore della voce o in text-1")
+			accents[speaker] = { Th.Color(accent) }
+		end
+		-- the default opacity (0.8): every voice reads in its own colour in Nebula (the worst world is a white one)
+		if id == "nebula" then
+			for _, speaker in ipairs(speakers) do
+				local accent, ink = Narrator:VoiceColors(speaker)
+				T.eq(ink, accent, id .. ": a 0.8 il testo di " .. speaker .. " ha il colore della voce")
+			end
+		end
+		-- Character and NPC collapse for protanopes (yellow and green): they differ in lightness too
+		local function Lum(c) return Th.Luminance(c) end
+		local hi, lo = math.max(Lum(accents.character), Lum(accents.npc)), math.min(Lum(accents.character), Lum(accents.npc))
+		T.ok(hi / lo >= 1.8, id .. ": Personaggio e NPC differiscono in luminosità " .. hi / lo)
+		-- under the floor of the theme the text is text-1, which keeps 4.5:1 (a voice colour would not)
+		NS.db.ui.narrator.alpha = 0.55
+		local ink = select(2, Narrator:VoiceColors("character"))
+		T.ok(ink == "text-1" or Narrator.WorstContrast(ink, Narrator:BackgroundAlpha()) >= 4.5, id .. ": al minimo il testo resta leggibile")
+		T.ok(Narrator.WorstContrast("text-1", Narrator:BackgroundAlpha()) >= 4.5, id .. ": e text-1 lo è sempre")
+		NS.db.ui.narrator.alpha = 0.8
 	end
-	-- Character and NPC collapsed for protanopes: now they differ in lightness too
-	T.ok(Lum(accents.character) / Lum(accents.npc) >= 1.8, "Personaggio e NPC differiscono in luminosità")
-	T.ok(math.abs(Lum(accents.narrator) - Lum(accents.npc)) > 0.05, "Narratore e NPC pure")
-	-- each text tint keeps 4.5:1 over a white scene seen through the background at 0.6 (grey 102)
-	local grey = Lum("666666")
-	for speaker, tint in pairs(tints) do
-		T.ok((Lum(tint) + 0.05) / (grey + 0.05) >= 4.5, speaker .. ": testo leggibile anche su una scena bianca")
-	end
-	-- under 0.6 the text is white (a tint would drop under 4.5:1)
-	NS.db.ui.narrator.alpha = 0.55
-	local _, low = Narrator:VoiceColors("character")
-	T.eq(low, "ffffff", "sotto 0.6 il testo è bianco")
-	NS.db.ui.narrator.alpha = 0.8
+	Th.Apply("nebula")
 
-	-- on screen: the accent bar in the voice colour, the tinted text, the inner voice in another typeface
-	local accentColor, textColor
-	frame.accent.SetColorTexture = function(_, r, g, b) accentColor = { r, g, b } end
-	frame.text.SetTextColor = function(_, r, g, b) textColor = { r, g, b } end
+	-- on screen: the accent bar and the time line in the voice token, the text in its ink, the inner voice in another typeface
 	Gateway:Propose(Rec("say", "inner", "Un pensiero."), CTX, {})
-	T.ok(accentColor and math.abs(accentColor[1] - 0x7f / 255) < 1e-6, "barra nel colore della voce interiore")
-	T.ok(textColor and math.abs(textColor[1] - 0xdd / 255) < 1e-6, "testo tinto della voce interiore")
+	T.ok(Is(frame.accent._s.colorTex, "voice-inner"), "barra nel colore della voce interiore")
+	T.ok(Is(frame.timeline.fill._s.colorTex, "voice-inner"), "linea del tempo nello stesso colore")
+	T.ok(Is(frame.text._s.textColor, "voice-inner"), "testo nel colore della voce interiore")
 	local innerPath, innerSize = frame.text:GetFont()
 	T.ok(tostring(innerPath):find("ARIALN", 1, true) ~= nil, "voce interiore in un altro carattere: " .. tostring(innerPath))
 	T.eq(innerSize, 15, "un punto più grande (lettere più strette)")
@@ -999,8 +1027,69 @@ T.run("#186: le voci si distinguono per barra, colore del testo, carattere e lum
 	local path, size = frame.text:GetFont()
 	T.eq(path, frame.bodyFont, "il narratore nel carattere normale")
 	T.eq(size, 14, "alla dimensione scelta")
-	T.ok(math.abs(accentColor[1] - 0xb9 / 255) < 1e-6, "e la barra cambia colore")
-	frame.accent.SetColorTexture, frame.text.SetTextColor = nil, nil
+	T.ok(Is(frame.accent._s.colorTex, "voice-narrator"), "e la barra cambia colore")
+	T.ok(frame.label:GetText():find(NS.Widgets.Hex("voice-narrator"), 1, true) ~= nil, "l'etichetta è nel colore della voce")
+	-- the label names the voice in words as well (colour is never the only cue)
+	NS.db.locale = "en"
+	Narrator:Refresh()
+	T.ok(frame.label:GetText():find("Narrator", 1, true) ~= nil, "e dice il nome della voce")
+	NS.db.locale = "it"
+end)
+
+T.run("UI-4: il cambio di tema ricolora il riquadro, l'etichetta e la cronologia senza /reload", function()
+	Reset()
+	local Th = NS.Theme
+	NS.db.ui.narrator.alpha = 0.8
+	local function Is(c, token, id)
+		local r, g, b = Th.Color(token, id)
+		return c ~= nil and math.abs(c[1] - r) < 1e-6 and math.abs(c[2] - g) < 1e-6 and math.abs(c[3] - b) < 1e-6
+	end
+	Gateway:Propose(Rec("say", "npc", "Benvenuto, viandante."), CTX, {})
+	FINISH_ANIMATIONS()
+	T.ok(Is(frame.bg._s.vertex, "bg", "nebula"), "Nebula: la superficie è bg")
+	T.eq(select(4, frame.bg:GetVertexColor()), 0.8, "con l'opacità scelta")
+	T.ok(Is(frame.parts.ring._s.vertex, "border", "nebula"), "l'anello è il bordo del tema")
+	local labelBefore = frame.label:GetText()
+	Narrator:ToggleHistory()
+	local h = Narrator.historyFrame
+	T.ok(Is(h.parts.fill._s.vertex, "bg", "nebula"), "la cronologia ha la stessa superficie")
+	Th.Set("aurora")
+	T.ok(Is(frame.bg._s.vertex, "bg", "aurora"), "Aurora: la superficie segue")
+	T.ok(Is(frame.accent._s.colorTex, "voice-npc", "aurora"), "la barra ha il colore della voce di Aurora")
+	T.ok(Is(frame.text._s.textColor, "voice-npc", "aurora") or Is(frame.text._s.textColor, "text-1", "aurora"),
+		"il testo: il colore della voce o text-1")
+	T.ok(frame.label:GetText() ~= labelBefore, "l'etichetta (colore nel testo) è riscritta: " .. frame.label:GetText())
+	T.ok(frame.label:GetText():find(NS.Widgets.Hex(select(2, Narrator:VoiceColors("npc"))), 1, true) ~= nil, "con il colore di Aurora")
+	T.eq(select(4, frame.bg:GetVertexColor()), math.max(Narrator:Floor(), 0.8), "l'opacità non cambia con il tema (salvo il minimo)")
+	T.ok(Is(h.parts.fill._s.vertex, "bg", "aurora"), "anche la cronologia")
+	T.ok(Is(frame.timeline.fill._s.colorTex, "voice-npc", "aurora"), "la linea del tempo")
+	Narrator:ToggleHistory()
+	Th.Set("nebula")
+	T.ok(Is(frame.bg._s.vertex, "bg", "nebula"), "e di nuovo Nebula")
+end)
+
+T.run("UI-4: il riquadro entra con una breve dissolvenza di Motion e senza animazioni compare subito", function()
+	Reset()
+	NS.db.ui.animations = true
+	Gateway:Propose(Rec("say", "inner", "Un pensiero."), CTX, {})
+	T.eq(frame:GetAlpha(), 0, "con le animazioni: parte da 0")
+	T.ok(FINISH_ANIMATIONS() >= 1, "e un gruppo di animazione gira")
+	T.eq(frame:GetAlpha(), 1, "arriva a 1")
+	T.ok(frame.timeline:IsShown() and Narrator.verses == nil, "linea del tempo visibile")
+	-- a line that replaces the one on screen does not fade again
+	Gateway:Propose(Rec("say", "inner", "Un altro pensiero."), CTX, {})
+	T.eq(frame:GetAlpha(), 1, "il riquadro già in vista non sbiadisce di nuovo")
+	-- hidden by "x" in the middle of the entrance: it is not left half-faded
+	frame:Hide()
+	Gateway:Propose(Rec("say", "inner", "Ancora un pensiero."), CTX, {})
+	frame:Hide()
+	T.eq(frame:GetAlpha(), 1, "nascosto: alpha di nuovo 1")
+	FINISH_ANIMATIONS()
+	NS.db.ui.animations = false
+	Gateway:Propose(Rec("say", "inner", "Senza animazioni."), CTX, {})
+	T.eq(frame:GetAlpha(), 1, "senza animazioni: subito pieno")
+	T.eq(FINISH_ANIMATIONS(), 0, "nessun gruppo")
+	NS.db.ui.animations = true
 end)
 
 T.run("#186, #183: pulsanti a icona 24x24 a 6 di distanza; l'intestazione cresce con l'etichetta (#182)", function()
@@ -1123,4 +1212,150 @@ T.run("#174, #182: la cronologia: chiusura, Esc, maniglia, posto proprio, caratt
 	Narrator:ApplySettings()
 	T.ok(h:GetHeight() < tall, "più bassa con un testo più piccolo")
 	T.eq(#NS.Config:Validate(NS.db), 0, "impostazioni valide")
+end)
+
+---------------------------------------------------------------------------
+-- UI-ECO UI-4: the proposal editor's byte counter, the speak button, the wizard's sample and the NPC dialogue on the theme
+---------------------------------------------------------------------------
+T.run("UI-4: the editor's byte counter counts what chat will receive, over the channel's limit, and says it in words", function()
+	Reset()
+	NS.db.locale = "en"
+	Gateway:SetMode("PREVIEW")
+	Gateway:Propose(Rec("say", "character", "Andiamo."), CTX, {})
+	T.ok(Narrator:OpenEditor(), "the editor opens")
+	local p = Gateway:GetPending()
+	T.ok(frame.editor:IsShown() and frame.counter:IsShown(), "with its counter")
+	T.eq(frame.counter:GetText(), "8/255 bytes", "the proposal's own text: " .. tostring(frame.counter:GetText()))
+	T.ok(frame.counter._s.textColor ~= nil, "the counter has a colour")
+	-- two bytes for a letter with an accent: bytes, not letters
+	frame.editor:SetText("è")
+	frame.editor.scripts.OnTextChanged(frame.editor)
+	T.eq(frame.counter:GetText(), "2/255 bytes", "bytes: " .. tostring(frame.counter:GetText()))
+	-- over the limit: a different text and the err colour; the editor's own limit is in letters (240)
+	frame.editor:SetText(string.rep("è", 130))
+	frame.editor.scripts.OnTextChanged(frame.editor)
+	T.eq(frame.counter:GetText(), "260/255 bytes (cut)", "over the limit it says so in words: " .. tostring(frame.counter:GetText()))
+	local r, g, b = NS.Theme.Color("err")
+	local c = frame.counter._s.textColor
+	T.ok(c and math.abs(c[1] - r) < 1e-6 and math.abs(c[2] - g) < 1e-6, "and in the err colour")
+	-- an emote takes the name or asterisks as well: the counter counts the line as the Gateway makes it
+	Narrator:CloseEditor()
+	Gateway:Discard()
+	Gateway:Propose(Rec("emote", "narrator", "guarda lontano"), CTX, {})
+	Narrator:OpenEditor()
+	local used = Gateway:TextFor(Gateway:GetPending().form, Gateway:GetPending().edited or Gateway:GetPending().text, Gateway:GetPending().channel, Gateway:GetPending().player)
+	T.eq(frame.counter:GetText(), ("%d/255 bytes"):format(#used), "an emote: the name counts too: " .. tostring(frame.counter:GetText()))
+	-- Esc still closes it, and Esc is unchanged
+	frame.editor.scripts.OnEscapePressed(frame.editor)
+	T.ok(not frame.editor:IsShown(), "Esc closes the editor")
+	-- the editor is a themed EditBox of the shared widget, with its ring and fill
+	T.ok(frame.editor.fill ~= nil and frame.editor.ring ~= nil, "the editor is the theme's EditBox")
+	T.ok(frame.editor:GetHeight() >= 24, "24 units high")
+	NS.db.locale = "it"
+end)
+
+T.run("UI-4: the narrator's buttons are the theme's: ghost icons, a Chip for the channel, a primary Send, 24 units", function()
+	Reset()
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	Gateway:Propose(Rec("say", "character", "Andiamo."), CTX, {})
+	T.eq(frame.sendBtn.style, "primary", "Send is the primary button")
+	T.eq(frame.copyBtn.style, "ghost", "To chat is a ghost button")
+	T.eq(frame.editBtn.style, "ghost", "Edit")
+	T.eq(frame.anotherBtn.style, "ghost", "Another")
+	T.eq(frame.discardBtn.style, "text", "Discard is quiet: a text button")
+	for _, b in ipairs({ frame.sendBtn, frame.copyBtn, frame.editBtn, frame.anotherBtn, frame.discardBtn, frame.channelBtn }) do
+		T.ok(b:GetHeight() >= 24 and b:GetWidth() >= 24, "a target of 24 units or more")
+	end
+	T.ok(frame.channelBtn.arrow ~= nil and frame.channelBtn.label:GetText() == "/s", "the chip: the channel and an arrow")
+	for _, b in ipairs({ frame.pauseBtn, frame.historyBtn, frame.closeBtn }) do T.eq(b.style, "ghost", "the icon buttons are ghost buttons") end
+	T.ok(frame.closeBtn.cross:IsShown() and not frame.pauseBtn.cross:IsShown(), "the x is the sheet's cross, the others are drawn")
+	-- they follow the theme
+	NS.Theme.Set("aurora")
+	local r, g, b = NS.Theme.Color("text-2", "aurora")
+	local c = frame.pauseBtn.parts[1]._s.colorTex
+	T.ok(c and math.abs(c[1] - r) < 1e-6 and math.abs(c[3] - b) < 1e-6, "the drawn icons take the theme's text-2")
+	NS.Theme.Set("nebula")
+	-- every text the narrator box draws has a theme token: nothing keeps a colour of its own
+	for _, fs in ipairs({ frame.label, frame.text, frame.counter }) do T.ok(fs.auThemed == true, "a text with a token") end
+	Gateway:Discard()
+end)
+
+T.run("UI-4: the speak button is the theme's: its own tooltip, a lit ring while a proposal waits, 24 units or more, Paused in words", function()
+	Reset()
+	NS.db.locale = "en"
+	local button = _G.AzerothUnspokenButton
+	T.ok(button:GetWidth() >= 24 and button:GetHeight() >= 24, "a target of 24 units or more")
+	T.ok(button.ring ~= nil and button.disc ~= nil and button.icon ~= nil, "a ring, a disc and the sheet's icon")
+	T.ok(button.scripts.OnEnter ~= nil, "mouse hooks")
+	-- the addon's own tooltip, not GameTooltip
+	local used = false
+	local game = _G.GameTooltip
+	_G.GameTooltip = setmetatable({}, { __index = function() return function() used = true end end })
+	NS.UpdateButton()
+	button.scripts.OnEnter(button)
+	T.ok(not used, "GameTooltip is not used")
+	T.ok(NS.Widgets.TipText():find(NS.name, 1, true) ~= nil, "the addon's tooltip names the addon: " .. NS.Widgets.TipText())
+	T.ok(NS.Widgets.TipText():find(NS:L("button_idle_private"), 1, true) ~= nil, "and says what a click does (private mode: only to you)")
+	button.scripts.OnLeave(button)
+	T.eq(NS.Widgets.TipText(), "", "it hides on leave")
+	_G.GameTooltip = game
+	-- no proposal: quiet; a proposal waits: the ring, the icon and the glow say so
+	local function Is(c, token)
+		local r, g, b = NS.Theme.Color(token)
+		return c ~= nil and math.abs(c[1] - r) < 1e-6 and math.abs(c[2] - g) < 1e-6 and math.abs(c[3] - b) < 1e-6
+	end
+	T.ok(Is(button.icon._s.vertex, "text-3") and not button.glow:IsShown(), "quiet: a quiet icon, no glow")
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	Gateway:Propose(Rec("say", "character", "Andiamo."), CTX, {})
+	NS.UpdateButton()
+	T.ok(Is(button.ring._s.vertex, "accent") and Is(button.icon._s.vertex, "accent-text") and button.glow:IsShown(), "a proposal waits: accent ring, lit icon, glow")
+	-- the tooltip shows the waiting proposal and its channel
+	button.scripts.OnEnter(button)
+	T.ok(NS.Widgets.TipText():find("Andiamo.", 1, true) ~= nil, "the line: " .. NS.Widgets.TipText())
+	button.scripts.OnLeave(button)
+	-- the theme changes it without /reload
+	NS.Theme.Set("aurora")
+	T.ok(Is(button.icon._s.vertex, "accent-text"), "Aurora: the icon follows")
+	NS.Theme.Set("nebula")
+	Gateway:Discard()
+	NS.UpdateButton()
+	-- paused: in words, under the button, whatever its dimming
+	Director:SetPaused(true)
+	T.ok(button.badge:IsShown() and button.badgeText:GetText() == "Paused", "Paused in words")
+	Director:SetPaused(false)
+	NS.db.locale = "it"
+end)
+
+T.run("UI-4: the wizard's narrator sample is the narrator's own look, in the voice token, and follows the theme", function()
+	Reset()
+	NS.db.locale = "en"
+	NS.Wizard:Open()
+	local w = _G.AzerothUnspokenWizard
+	local function Find(pred)
+		local out = {}
+		local function walk(f)
+			for _, c in ipairs(f.children or {}) do
+				if pred(c) then table.insert(out, c) end
+				walk(c)
+			end
+		end
+		walk(w)
+		return out
+	end
+	local boxes = Find(function(f) return f.parts ~= nil and f.parts.fill ~= nil and f.parts.ring ~= nil and f.parts.shadow == nil end)
+	local box
+	for _, f in ipairs(boxes) do if f:GetHeight() >= 52 and f:GetWidth() > 300 then box = f end end
+	T.ok(box ~= nil, "the sample is a Panel")
+	T.ok(not box.auKeepColours, "and does not keep colours of its own any more")
+	local n = 0
+	for _, r in ipairs(box.children or {}) do
+		if r.kind == "FontString" then
+			n = n + 1
+			T.ok(r.auThemed == true, "a text of the sample has a token")
+			T.ok(r:GetText() == nil or not tostring(r:GetText()):find("|cff", 1, true), "and no colour written in its text")
+		end
+	end
+	T.ok(n >= 2, "the voice and the line: " .. n)
+	w:Hide()
+	NS.db.locale = "it"
 end)

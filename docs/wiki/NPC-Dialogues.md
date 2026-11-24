@@ -28,8 +28,9 @@ Click it to open the dialogue. If you ignore it, it goes away by itself after ab
 
 ### In the dialogue window
 
+- The header always says **addon ambient dialogue** (a label that cannot be hidden): the conversation is made up by the addon, it is not the real NPC. The NPC's role and name are in the NPC voice's colour, with a bar of the same colour along the left edge.
 - Read the NPC's line.
-- Click one of the answers to reply.
+- Click one of the answers to reply (or press its number, 1 to 3: the keys are in the Keybindings).
 - Click **Close**, use the key again, or type `/au talk close` to end it.
 - Drag the window to move it. It tries not to cover the game's own windows.
 - **Esc** does not close it, on purpose: Esc also closes the game's own NPC windows (gossip, vendor, quests), and the dialogue must never take part in that. Use **Close**, the **x** in its header, the key or `/au talk close`.

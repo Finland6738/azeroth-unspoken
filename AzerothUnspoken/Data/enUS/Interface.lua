@@ -110,6 +110,7 @@ NS:RegisterLanguage("en", {
 		gw_blocked = "the client blocked the send (%s): nothing went out. The proposal stays here, press the button or the speak key to try again.",
 		gw_review = "proposal preview: %s\nPress again to send it, or /au cancel.",
 		gw_expired = "the proposal is gone (expired, discarded or replaced): nothing was sent. Your text: %s",
+		gw_bytes = "%d/%d bytes", gw_bytes_over = "%d/%d bytes (cut)",
 		gw_text_kept = "the proposal vanished while you were editing it: nothing was sent. Your text: %s",
 		emote_says = "says, \"%s\"",
 		invalid_value = "invalid value: '%s'. Allowed values: %s.",

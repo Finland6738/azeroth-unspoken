@@ -115,6 +115,7 @@ NS:RegisterLanguage("it", {
 		gw_blocked = "il client ha bloccato l'invio (%s): nulla è partito. La proposta resta qui, premi il pulsante o il tasto 'pronuncia' per riprovare.",
 		gw_review = "anteprima della proposta: %s\nPremi di nuovo per inviarla, oppure /au cancel.",
 		gw_expired = "la proposta non c'è più (scaduta, scartata o sostituita): nulla è stato inviato. Il tuo testo: %s",
+		gw_bytes = "%d/%d byte", gw_bytes_over = "%d/%d byte (tagliato)",
 		gw_text_kept = "la proposta è sparita mentre la modificavi: nulla è stato inviato. Il tuo testo: %s",
 		emote_says = "dice: «%s»",
 		invalid_value = "valore non valido: '%s'. Valori ammessi: %s.",

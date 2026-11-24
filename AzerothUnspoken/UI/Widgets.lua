@@ -16,47 +16,8 @@ NS.Widgets = W
 local Theme, Motion, Assets = NS.Theme, NS.Motion, NS.Assets
 
 ---------------------------------------------------------------------------
--- Helpers kept for the frames that are rebuilt in a later step (narrator, dialogue, speak button: UI-4)
+-- Helpers
 ---------------------------------------------------------------------------
-
--- a solid colour behind a frame (the narrator box and the NPC dialogue keep their own colours until UI-4)
----@param frame table
----@param r number
----@param g number
----@param b number
----@param a number
----@return table texture
-function W.Background(frame, r, g, b, a)
-	local bg = frame:CreateTexture(nil, "BACKGROUND")
-	bg:SetAllPoints()
-	if bg.SetColorTexture then bg:SetColorTexture(r, g, b, a) else bg:SetTexture(r, g, b, a) end
-	return bg
-end
-
-function W.SetBackgroundAlpha(bg, r, g, b, a)
-	if bg.SetColorTexture then bg:SetColorTexture(r, g, b, a) else bg:SetTexture(r, g, b, a) end
-end
-
--- cambia la dimensione del carattere mantenendo tipo e contorno
-function W.SetFontSize(fs, size, flags)
-	local path, _, f = fs:GetFont()
-	fs:SetFont(path or STANDARD_TEXT_FONT, size, flags or f or "")
-end
-
--- the client's own button, for the NPC dialogue window until UI-4 rebuilds it
----@param parent table
----@param text? string
----@param width number
----@param height? number
----@param onClick? fun(self: table, button: string)
----@return table button
-function W.Button(parent, text, width, height, onClick)
-	local b = CreateFrame("Button", nil, parent, "UIPanelButtonTemplate")
-	b:SetSize(width, height or 22)
-	b:SetText(text or "")
-	if onClick then b:SetScript("OnClick", onClick) end
-	return b
-end
 
 ---Contrast ratio of two opaque colours (WCAG relative luminance): the formula of UI/Theme.lua.
 ---@param a number[] { r, g, b } 0-1
@@ -103,79 +64,6 @@ function W.RestorePosition(frame, pos, default)
 	else
 		frame:SetPoint(default[1], UIParent, default[2], default[3], default[4])
 	end
-end
-
--- The narrator's flat button, as it was before UI-3 (#187): only coloured textures, its own warm colours. The narrator
--- box is not a window and keeps its look until UI-4 rebuilds it on the theme; nothing else uses this.
-local LEGACY = {
-	gold = { 1, 0.82, 0 }, goldDim = { 0.79, 0.64, 0.15 }, cardOn = { 0.17, 0.14, 0.04 },
-	danger = { 0.8, 0.3, 0.24 }, dangerOn = { 0.45, 0.1, 0.07 },
-}
-
--- four 1-unit edges around a frame, each anchored on two corners so that it follows a later change of size
-local function Edges(frame)
-	local edges = {}
-	for _, e in ipairs({ { "TOPLEFT", "TOPRIGHT", true }, { "BOTTOMLEFT", "BOTTOMRIGHT", true },
-		{ "TOPLEFT", "BOTTOMLEFT", false }, { "TOPRIGHT", "BOTTOMRIGHT", false } }) do
-		local t = frame:CreateTexture(nil, "BORDER")
-		t:SetPoint(e[1])
-		t:SetPoint(e[2])
-		if e[3] then t:SetHeight(1) else t:SetWidth(1) end
-		table.insert(edges, t)
-	end
-	return edges
-end
-
-local function Tint(texture, c, a)
-	if texture.SetColorTexture then texture:SetColorTexture(c[1], c[2], c[3], a or 1) end
-end
-
----The narrator's button until UI-4 (see LEGACY). kind: "primary", "ghost" (default), "danger", "text".
----@return table button with .edges, .label, :SetText, :GetText, :SetEnabled, :Paint
-function W.LegacyFlatButton(parent, text, width, height, onClick, kind)
-	local P = LEGACY
-	kind = kind or "ghost"
-	local b = CreateFrame("Button", nil, parent)
-	b:SetSize(width, height or 24)
-	b.style = kind
-	b.bg = W.Background(b, 0, 0, 0, 0)
-	b.edges = kind == "text" and {} or Edges(b)
-	b.label = b:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-	if kind == "text" then b.label:SetPoint("LEFT", 2, 0) else b.label:SetPoint("CENTER", 0, 0) end
-	function b:Paint()
-		local off = self.disabled == true
-		local hover = self.hover and not off
-		local dim = off and 0.45 or 1
-		if self.style == "primary" then
-			Tint(self.bg, hover and { 0.58, 0.44, 0.08 } or { 0.45, 0.34, 0.06 }, off and 0.5 or 1)
-			for _, t in ipairs(self.edges) do Tint(t, P.goldDim, dim) end
-			self.label:SetTextColor(1, 0.95, 0.77, dim)
-		elseif self.style == "danger" then
-			Tint(self.bg, { 0.3, 0.08, 0.05 }, hover and 0.8 or 0)
-			for _, t in ipairs(self.edges) do Tint(t, P.danger, off and 0.4 or 0.8) end
-			self.label:SetTextColor(1, 0.62, 0.55, dim)
-		elseif self.style == "ghost" then
-			Tint(self.bg, hover and { 0.2, 0.16, 0.06 } or { 0, 0, 0 }, hover and 1 or 0)
-			for _, t in ipairs(self.edges) do Tint(t, hover and P.gold or P.goldDim, off and 0.3 or (hover and 1 or 0.55)) end
-			self.label:SetTextColor(0.9, 0.85, 0.72, dim)
-		else
-			self.label:SetTextColor(hover and 1 or 0.72, hover and 0.82 or 0.66, hover and 0 or 0.6, dim)
-		end
-	end
-	function b:SetText(t) self.label:SetText(t or "") end
-	function b:GetText() return self.label:GetText() end
-	local enable = b.SetEnabled
-	function b:SetEnabled(on)
-		if enable then enable(self, on) end
-		self.disabled = not on
-		self:Paint()
-	end
-	b:SetText(text)
-	if onClick then b:SetScript("OnClick", onClick) end
-	b:HookScript("OnEnter", function(self) self.hover = true; self:Paint() end)
-	b:HookScript("OnLeave", function(self) self.hover = false; self:Paint() end)
-	b:Paint()
-	return b
 end
 
 ---------------------------------------------------------------------------
@@ -483,8 +371,8 @@ end
 -- The contents of the journal, relationships, character soul, wizard and settings still use the game's font objects
 -- (gold headings, white text). On the light theme they would be white on white, so every text of a window that the theme
 -- does not colour yet takes the token of its font object: the game's gold becomes accent-text, the game's white text-1,
--- the small white text-2. A frame marked `auKeepColours` (the narrator's sample in the wizard, which
--- has the narrator's own dark surface) is left as it is.
+-- the small white text-2. A frame marked `auKeepColours` (a surface of its own that colours its texts itself) is left as
+-- it is; the narrator's sample in the wizard no longer needs it since UI-4: its texts have tokens.
 -- (the font objects the windows use today; any other one, GameFontHighlight included, becomes text-1)
 W.ADOPT = {
 	GameFontNormal = "accent-text", GameFontNormalSmall = "accent-text", GameFontNormalLarge = "accent-text",
