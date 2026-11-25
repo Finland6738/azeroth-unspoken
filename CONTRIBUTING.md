@@ -352,10 +352,10 @@ The full flow is in [ADR 0009](docs/adr/0009-git-flow-branch-pr-squash.md). In s
    **Every step or fix PR updates, in the same PR: `CHANGELOG.md`, the affected docs and the affected wiki pages in `docs/wiki/`** ([section 5, point 9](#5-changing-the-code)). The PR template has the checklist.
 4. **Pull request to `main`**, with a title and description (in English) that summarize the change and **what has not been verified** (in particular everything that needs the real client).
 5. If it resolves an issue, write `Closes #N` in the description.
-6. **CI must be green before merging**, then **squash merge**, with deletion of the branch (`gh pr merge --squash --delete-branch`). The checks are:
+6. **`Docs rule` must be green before merging** (and, from release 1.0, `Tests` too), then **squash merge**, with deletion of the branch (`gh pr merge --squash --delete-branch`). The checks are:
    - **`Tests`** (workflow `CI`): the whole offline suite, including `check_api.py` and the docs, wiki and privacy checks;
    - **`Docs rule`**: a PR that changes `AzerothUnspoken/` or any other `AzerothUnspoken_*` folder (example, verses, language and regional packs) must also change `CHANGELOG.md` **and** at least one of `docs/` (wiki included), `README.md`, `README.it.md`, `AzerothUnspoken/PACK_FORMAT.md`. For a pure refactor or tests only, the owner or the session adds the label **`no-docs-needed`** and the check runs again.
-   `main` is protected: both checks are required (administrators included), no reviews are required, no force push, no deletion. Never merge red and never disable a check ([ADR 0022](docs/adr/0022-automatic-rules-ci-docs-check-and-wiki-sync.md)).
+   `main` is protected: `Docs rule` is required (administrators included), no reviews are required, no force push, no deletion. **Until release 1.0, `Tests` is not required** (owner, 2026-11-25): the full suite runs locally before the PR, so the merge does not wait for the same suite on CI (about 30 minutes). CI still runs it on every PR and on `main`; before the next merge, check the last run on `main`, and if it is red, fix it first. Never merge with a check that has already failed, and never disable a check ([ADR 0022](docs/adr/0022-automatic-rules-ci-docs-check-and-wiki-sync.md)).
 7. **Never** `--force` on `main`, never rewrite published history, never skip hooks.
 8. If `main` changes while you work: update your branch, resolve the conflicts, repeat the tests.
 

@@ -58,7 +58,7 @@ Where the GDD and this file disagree, this file prevails.
 3. At the end, with the tests passing:
    - `git push -u origin <branch>`;
    - `gh pr create --base main`, with a title and description that summarize the step and what was not verified (the PR template has the checklist);
-   - wait for CI to be green (`gh pr checks <number> --watch`);
+   - wait for the required check `Docs rule` (until release 1.0, `Tests` is not waited for: check that the last CI run on `main` is green, and fix it first if it is not);
    - `gh pr merge --squash --delete-branch`, without asking for confirmation.
 4. After the merge, update the installation in `AddOns` with the files from `main`.
 5. Never `--force` on `main`, never rewrite already published history, never skip the hooks.

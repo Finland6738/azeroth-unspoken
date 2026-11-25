@@ -1,7 +1,8 @@
 name: CI
 
 # Offline tests (Lua 5.1 through lupa) on every pull request and on every push to main.
-# The job name "Tests" is the status check required by the branch protection of main.
+# Until release 1.0 the job "Tests" is not a required status check: merges do not wait for it (owner, 2026-11-25;
+# ADR 0022, amendment). It still runs on every PR and on main, and a red run on main is fixed before the next merge.
 on:
   pull_request:
   push:

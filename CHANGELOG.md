@@ -8,6 +8,10 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### Project rules: merges no longer wait for CI `Tests` until 1.0
+
+- **Changed**: the CI job `Tests` is no longer a required check on `main` until release 1.0 (owner's decision; ADR 0022, amendment). The full suite still runs locally before every PR and on CI for every PR and push to `main`; a red run on `main` is fixed before the next merge, and `Tests` becomes required again before 1.0. `Docs rule` stays required. This saves about 30 minutes per content wave. CONTRIBUTING, ROADMAP, the PR template and the CI workflow comment say so.
+
 ## [0.3.4] - 2026-11-25
 
 A small development preview on top of 0.3.3 that completes active romance (ADR 0061) with its last step: the optional **18+ pack** `AzerothUnspoken_Romance18`, a few mature, never graphic samples of the tone *Explicit* in Italian and English. It is a second download, `AzerothUnspoken_Romance18-0.3.4.zip`, on the GitHub release only, never on CurseForge, and it loads only with the two-step 18+ consent on and the tone *Explicit*. Settings > Romance gains a short note on where the pack comes from, with no link. Nothing of the pack has been tried in the game client yet.
