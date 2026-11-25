@@ -2,7 +2,7 @@
 ## Title: Azeroth Unspoken - Verses
 ## Notes: Prototype pack of literary forms: inscriptions, remembered verses, inn rhymes, road songs, a walking song of stanzas, a hymn and a lament. Private narrator only.
 ## Author: Finland6738
-## Version: 0.3.3
+## Version: 0.3.4
 ## Dependencies: AzerothUnspoken
 ## X-Category: Roleplay
 ## X-License: All rights reserved (phrases and narrative data). See LICENSING.md

@@ -18,7 +18,7 @@
 ---@field Wizard table
 local ADDON, NS = ...
 NS.name = "Azeroth Unspoken"
-NS.version = "0.3.3"
+NS.version = "0.3.4"
 AzerothUnspoken = NS     -- API pubblica per i pacchetti di frasi, le macro e il debug
 
 BINDING_HEADER_AZEROTHUNSPOKEN = "Azeroth Unspoken"
