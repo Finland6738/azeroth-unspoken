@@ -6,7 +6,9 @@
 > which extends [ADR 0037](../adr/0037-romance-with-npcs-opposite-sex-and-the-vow.md). Steps: [ROADMAP.md](../../ROADMAP.md),
 > section "Active romance".
 >
-> **Status: design.** Nothing here is built yet. The mockups are in [`docs/design/mockups/`](../design/mockups/README.md)
+> **Status: R1 built (the engine, `Systems/Romance.lua`, `Data/Romance.lua`).** No flirt answer and no moment is offered
+> until the interface of R2 says it can draw them; the vow of ADR 0037 keeps happening by itself until then. The
+> differences R1 settled are listed in point 21. The mockups are in [`docs/design/mockups/`](../design/mockups/README.md)
 > (`romance-*.html`, PNGs in `png/`); they are proposals drawn on the addon's real widgets and tokens, marked *PROPOSED*.
 
 ## 1. What this adds, in one paragraph
@@ -27,7 +29,7 @@ Active romance appears only when **every** condition holds, checked at each use 
 |---|---|
 | Relationships module on | `NS.db.modules.relations` |
 | Attraction axis on | `relations.attraction` (off by default) |
-| Active romance on | `relations.romance.active` (new, **on** by default) |
+| Active romance on | `relations.romanceActive` (new, **on** by default) |
 | The soul does not avoid *romance* | `Personality` trait `avoid`, value `romance` |
 | The NPC is eligible | `R:RomanceEligible(npcID)`: opposite sex, humanoid (ADR 0037) |
 | The NPC is not excluded | `romance.exclude` (npcIDs) in `Data/Romance.lua`; `romance = false` in `Data/NPCs.lua` |
@@ -74,14 +76,14 @@ romance = {
 		},
 		stage = { ahead = -15, tierOut = -20 },
 		situation = { inn_night = 6, festival = 6, city = 0, wild = -3 },
-		mood = { joy = 3, calm = 1, anger = -5, fear = -4, grief = -10 },
+		mood = { happy = 3, serene = 1, admiring = 2, curious = 1, worried = -4, tense = -3, furious = -5, melancholic = -10 },
 		momentum = { step = 2, max = 6 },
 	},
 	refuse = { hours = 20, streak = 3, restDays = 5 },
 	moment = { coldDays = 3, refuseDays = 7, dateHours = 20 },
 	jealousy = { from = "vowed", farChance = 0.35, days = 7 },
 	breakup = { attraction = 15, affection = 5, restDays = 30, confirmSeconds = 30 },
-	tone = { default = 1, mix = { [1] = 0.6, [2] = 0.4 }, night = { from = 21, to = 5 } },
+	tone = { default = 1, mix = { [1] = 0.6, [2] = 0.4, [3] = 0.4 }, night = { from = 21, to = 5 } },
 	pack18 = { addon = "AzerothUnspoken_Romance18", toc = "X-AzerothUnspoken-Romance" },
 }
 ```
@@ -235,15 +237,15 @@ dates = {
 
 ### 9.1 The allowed tier
 
-`relations.romance.tone`: 1 (Courteous, default), 2 (Intimate), 3 (Explicit, only with the gate on **and** the pack
+`relations.romanceTone`: 1 (Courteous, default), 2 (Intimate), 3 (Explicit, only with the gate on **and** the pack
 installed; otherwise the setting reads as 2). `au romance tone` and the Settings segment change it.
 
 ### 9.2 The situation's tier
 
-`Romance:SituationTier()` is 2 when: the NPC's stage is `declared` or `vowed`; and it is night (`tone.night`, the
+`Romance:SituationTier()` is intimate (any tier the player allows, so 2 or 3) when: the NPC's stage is `declared` or `vowed`; and it is night (`tone.night`, the
 world's hour) at an inn or rested, **or** a festival is known (a `festival` world variable that R1 adds only if the 1.60.1
 API dump has a calendar; without one, never); and the character's mood is not grief. Otherwise 1. A flirt or date of tier `t` is offered when
-`t <= min(allowed, situation)`. When both tiers fit, their lines mix by `tone.mix`; the player chooses between date
+`t <= min(allowed, situation)`. The grief is the dominant emotion *melancholic* of `Systems/Emotion.lua`. When both tiers fit, their lines mix by `tone.mix`; the player chooses between date
 options of different tiers by their chips.
 
 ### 9.3 Fade to black
@@ -265,7 +267,7 @@ a candidate.
 - Warning (English, final wording in R2): *Explicit romance texts (18+). Turn this on only if you are 18 or older and want
   them. They come only from a separate optional pack, AzerothUnspoken_Romance18, which is not on CurseForge; without it,
   nothing changes. Romance stays private: nothing is ever sent to chat. You can turn it off at any time.*
-- Kept in the account: `relations.romance.adult = true`.
+- Kept in the account: `relations.romanceAdult = true`.
 
 ## 11. The interface
 
@@ -396,13 +398,14 @@ npcs[npcID].romance = {
 	mo = { declaration = 1764259200 },   -- next allowed time of a moment
 	endT = nil,           -- the break-up
 	mm = 2,               -- momentum
+	jp = true,            -- the beloved's jealousy waits for the next meeting
 }
 relationships.beloved = 12345   -- an npcID, or nil
 ```
 
 `CleanRecord` keeps `romance` through `R.CleanRomance` (known stages only, times in the past or `cd`/`mo` in the near
 future, small counters), and `beloved` only if that NPC exists with stage `declared` or `vowed`. Migration 9 → 10 as in
-the ADR (point 10). Account settings: `relations.romance = { active = true, tone = 1, adult = false }`.
+the ADR (point 10). Account settings: `relations.romanceActive = true`, `relations.romanceTone = 1`, `relations.romanceAdult = false`.
 
 ## 14. New engine pieces
 
@@ -478,3 +481,30 @@ name; nothing is sent, nothing changes in the game.
 Everything; in particular: `UnitSex` and `UnitCreatureType` for the dialogue's `target`; the dialogue window with five
 answers; the popup's strata over the narrator and the dialogue; Esc on the popup; the fade to black's timing;
 `C_AddOns.LoadAddOn` or `LoadAddOn` for a LoadOnDemand folder in 1.60.1; whether a festival can be known at all.
+
+## 21. What step R1 settled
+
+The engine (`Systems/Romance.lua`, `NS.Romance`) follows this spec, with these details fixed while building it:
+
+- **Settings** are flat keys of the account's `relations`: `romanceActive` (on), `romanceTone` (1-3, checked by
+  `Config.rules`), `romanceAdult` (off).
+- **The interface decides when anything shows.** Flirt answers are offered only when the dialogue frame says it can draw
+  them (`NS.DialogueFrame.ROMANCE = true`, set by R2), moment answers only when the popup exists (`NS.RomanceFrame.Open`).
+  Until then the vow of ADR 0037 happens by itself, as before; with Active romance on, the NPC of that vow becomes the
+  beloved (stage `vowed`) when the slot is free. With the popup, the vow waits for its moment (`R:RomanceHoldsVow`).
+- **A flirt one stage ahead** of the NPC may be offered (never past courtship), and costs `affinity.stage.ahead`.
+- **An intimate situation** allows every tier the player allows (2, or 3 with the consent and the pack); otherwise 1.
+  The grief that keeps the tone courteous is the dominant emotion *melancholic*; `affinity.mood` is keyed by the emotions
+  of `Systems/Emotion.lua`. `tone.mix` has a weight for tier 3 too.
+- **Jealousy in the same town** needs both towns known (`rec.town`); an unknown town counts as far. The waiting jealousy
+  is `jp`; it is told at the next meeting (`R:RomanceMet`). A stage `none` is never saved; `ended` goes back to `none` at
+  the first meeting after `breakup.restDays`.
+- **The temperament** scales the romance rows like every other row: a refusal costs 1 point of attraction times the NPC's
+  temperament.
+- **The popup's scenes** are prose: their rules have the speaker `narrator` and `form = "say"`.
+- **The validator**: a flirt's problems are `badDialogue` errors on the key `flirt:<pack>:<id>`; a romance rule without
+  `romanceTier` is `romanceTier`, one in the character's voice `romanceVoice`.
+- **For R2**: `Romance:Flirts`, `Romance:Answer`, `Romance:Reply`, `Romance:DueMoment`, `Romance:DateOptions`,
+  `Romance:Decide`, `Romance:Scene`, `Romance:BreakUp`, `Romance:SetTone`, `Romance:SetAdult`, `Romance:PackState`,
+  `Romance:Status` and the last score in `Romance.session.last` (for `au romance why`). The 18+ pack is loaded through
+  `NS.Packs:Load`.

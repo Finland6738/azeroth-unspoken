@@ -683,6 +683,24 @@ an issue with `/au debug` and a screenshot.
 - **BD.6 · The settings.** *Settings > General*: **Bard** off, **Share button** off, **Share on**; `/au bard`.
     - **Expect:** Bard off: songs in the inner voice; Share off: no bar under the piece and no row in the songbook.
 
+## RA: active romance, step R1, the engine (ADR 0061)
+
+Built and tested outside the game only. This step adds the engine of active romance; its buttons and its popup come with
+step R2, so for now almost nothing changes on screen. If something goes wrong, open an issue with `/au debug`.
+
+- **RA.1 · Saved data, version 10.** Log in with a character that already made the private vow to an NPC (attraction axis
+  on), then `/reload`.
+    - **Expect:** no red error, nothing missing in the Relationships window; the vow is still in the journal; `/au debug`
+      shows no line about the relationships' data.
+    - **Report:** a red error, an NPC or a journal line that disappeared.
+- **RA.2 · Nothing new yet.** With the attraction axis on, talk with NPCs of the opposite sex for a while (`/au talk`, also
+  with the NPC only targeted, without opening their window).
+    - **Expect:** the dialogue window looks as before: three answers at most, no heart, no new button; the vow, when it
+      comes, comes by itself as before.
+    - **Report:** a fourth answer, a heart, or an error.
+- **RA.3 · An older addon.** Optional: copy the saved variables, install the previous release, log in.
+    - **Expect:** the relationships are read but not changed (a newer version), as for every other data block.
+
 ## Summary form (copy and fill in)
 
 ```

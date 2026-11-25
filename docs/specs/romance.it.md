@@ -6,7 +6,9 @@
 > che estende l'[ADR 0037](../adr/0037-romance-with-npcs-opposite-sex-and-the-vow.md). Step: [ROADMAP.md](../../ROADMAP.md),
 > sezione "Active romance".
 >
-> **Stato: progetto.** Qui non è ancora costruito nulla. I mockup sono in [`docs/design/mockups/`](../design/mockups/README.md)
+> **Stato: R1 costruito (il motore, `Systems/Romance.lua`, `Data/Romance.lua`).** Nessuna risposta romantica e nessun
+> momento si offre finché l'interfaccia di R2 non dice di poterli disegnare; fino ad allora il voto dell'ADR 0037
+> continua ad arrivare da solo. Le differenze decise in R1 sono nel punto 21. I mockup sono in [`docs/design/mockups/`](../design/mockups/README.md)
 > (`romance-*.html`, i PNG in `png/`): sono proposte disegnate sui widget e sui token veri dell'addon, segnate *PROPOSED*.
 
 ## 1. Che cosa aggiunge, in un paragrafo
@@ -29,7 +31,7 @@ Il romanticismo attivo compare solo quando valgono **tutte** queste condizioni, 
 |---|---|
 | Modulo Relazioni acceso | `NS.db.modules.relations` |
 | Asse dell'attrazione acceso | `relations.attraction` (spento di base) |
-| Romanticismo attivo acceso | `relations.romance.active` (nuovo, **acceso** di base) |
+| Romanticismo attivo acceso | `relations.romanceActive` (nuovo, **acceso** di base) |
 | L'anima non evita l'argomento *romance* | tratto `avoid` di `Personality`, valore `romance` |
 | L'NPC è idoneo | `R:RomanceEligible(npcID)`: sesso opposto, umanoide (ADR 0037) |
 | L'NPC non è escluso | `romance.exclude` (npcID) in `Data/Romance.lua`; `romance = false` in `Data/NPCs.lua` |
@@ -77,14 +79,14 @@ romance = {
 		},
 		stage = { ahead = -15, tierOut = -20 },
 		situation = { inn_night = 6, festival = 6, city = 0, wild = -3 },
-		mood = { joy = 3, calm = 1, anger = -5, fear = -4, grief = -10 },
+		mood = { happy = 3, serene = 1, admiring = 2, curious = 1, worried = -4, tense = -3, furious = -5, melancholic = -10 },
 		momentum = { step = 2, max = 6 },
 	},
 	refuse = { hours = 20, streak = 3, restDays = 5 },
 	moment = { coldDays = 3, refuseDays = 7, dateHours = 20 },
 	jealousy = { from = "vowed", farChance = 0.35, days = 7 },
 	breakup = { attraction = 15, affection = 5, restDays = 30, confirmSeconds = 30 },
-	tone = { default = 1, mix = { [1] = 0.6, [2] = 0.4 }, night = { from = 21, to = 5 } },
+	tone = { default = 1, mix = { [1] = 0.6, [2] = 0.4, [3] = 0.4 }, night = { from = 21, to = 5 } },
 	pack18 = { addon = "AzerothUnspoken_Romance18", toc = "X-AzerothUnspoken-Romance" },
 }
 ```
@@ -244,16 +246,17 @@ dates = {
 
 ### 9.1 Il livello permesso
 
-`relations.romance.tone`: 1 (Cortese, predefinito), 2 (Intimo), 3 (Esplicito, solo con il blocco acceso **e** il
+`relations.romanceTone`: 1 (Cortese, predefinito), 2 (Intimo), 3 (Esplicito, solo con il blocco acceso **e** il
 pacchetto installato; altrimenti l'impostazione vale come 2). `au romance tone` e il selettore delle Impostazioni lo
 cambiano.
 
 ### 9.2 Il livello della situazione
 
-`Romance:SituationTier()` vale 2 quando: la fase dell'NPC è `declared` o `vowed`; ed è notte (`tone.night`, l'ora del
+`Romance:SituationTier()` è intimo (ogni livello che il giocatore permette, quindi 2 o 3) quando: la fase dell'NPC è `declared` o `vowed`; ed è notte (`tone.night`, l'ora del
 mondo) in una locanda o a riposo, **oppure** è nota una festa (una variabile del mondo `festival` che R1 aggiunge solo se
 il dump delle API di 1.60.1 ha un calendario; senza, mai); e l'umore del personaggio non è il lutto. Altrimenti 1. Una
-risposta o un appuntamento di livello `t` si offre quando `t <= min(permesso, situazione)`. Quando valgono entrambi i
+risposta o un appuntamento di livello `t` si offre quando `t <= min(permesso, situazione)`. Il lutto è l'emozione
+dominante *melancholic* di `Systems/Emotion.lua`. Quando valgono entrambi i
 livelli, le loro battute si mescolano secondo `tone.mix`; fra proposte di appuntamento di livelli diversi il giocatore
 sceglie guardando le loro etichette.
 
@@ -276,7 +279,7 @@ livello non è mai candidata.
 - Avviso (in inglese, testo definitivo in R2): *Explicit romance texts (18+). Turn this on only if you are 18 or older and
   want them. They come only from a separate optional pack, AzerothUnspoken_Romance18, which is not on CurseForge; without
   it, nothing changes. Romance stays private: nothing is ever sent to chat. You can turn it off at any time.*
-- Si conserva nell'account: `relations.romance.adult = true`.
+- Si conserva nell'account: `relations.romanceAdult = true`.
 
 ## 11. L'interfaccia
 
@@ -415,13 +418,14 @@ npcs[npcID].romance = {
 	mo = { declaration = 1764259200 },   -- prossimo momento permesso di ogni momento
 	endT = nil,           -- la rottura
 	mm = 2,               -- slancio
+	jp = true,            -- la gelosia dell'amato aspetta il prossimo incontro
 }
 relationships.beloved = 12345   -- un npcID, o nil
 ```
 
 `CleanRecord` conserva `romance` tramite `R.CleanRomance` (solo fasi note, tempi nel passato o `cd`/`mo` nel futuro
 vicino, contatori piccoli), e `beloved` solo se quell'NPC esiste in fase `declared` o `vowed`. Migrazione 9 → 10 come
-nell'ADR (punto 10). Impostazioni dell'account: `relations.romance = { active = true, tone = 1, adult = false }`.
+nell'ADR (punto 10). Impostazioni dell'account: `relations.romanceActive = true`, `relations.romanceTone = 1`, `relations.romanceAdult = false`.
 
 ## 14. Nuovi pezzi del motore
 
@@ -499,3 +503,33 @@ diario contengono identificatori, mai un nome; non si invia nulla, nel gioco non
 Tutto; in particolare: `UnitSex` e `UnitCreatureType` per il `target` del dialogo; la finestra del dialogo con cinque
 risposte; lo strato del popup sopra il narratore e il dialogo; Esc sul popup; i tempi della dissolvenza al nero;
 `C_AddOns.LoadAddOn` o `LoadAddOn` per una cartella LoadOnDemand in 1.60.1; se una festa possa essere nota del tutto.
+
+## 21. Che cosa ha fissato lo step R1
+
+Il motore (`Systems/Romance.lua`, `NS.Romance`) segue questa specifica, con questi dettagli fissati mentre lo si
+costruiva:
+
+- **Le impostazioni** sono chiavi semplici di `relations` dell'account: `romanceActive` (acceso), `romanceTone` (1-3,
+  controllato da `Config.rules`), `romanceAdult` (spento).
+- **È l'interfaccia a decidere quando si vede qualcosa.** Le risposte romantiche si offrono solo quando la finestra del
+  dialogo dice di poterle disegnare (`NS.DialogueFrame.ROMANCE = true`, impostato da R2), le risposte dei momenti solo
+  quando il popup esiste (`NS.RomanceFrame.Open`). Fino ad allora il voto dell'ADR 0037 arriva da solo, come prima; con il
+  romanticismo attivo acceso, l'NPC di quel voto diventa l'amato (fase `vowed`) se il posto è libero. Con il popup, il voto
+  aspetta il suo momento (`R:RomanceHoldsVow`).
+- **Una risposta di una fase più avanti** di quella dell'NPC può comparire (mai oltre il corteggiamento) e costa
+  `affinity.stage.ahead`.
+- **Una situazione intima** permette ogni livello che il giocatore permette (2, o 3 con il consenso e il pacchetto);
+  altrimenti 1. Il lutto che tiene il tono cortese è l'emozione dominante *melancholic*; `affinity.mood` usa le emozioni
+  di `Systems/Emotion.lua`. `tone.mix` ha un peso anche per il livello 3.
+- **La gelosia nella stessa città** vuole entrambe le città note (`rec.town`); una città ignota vale come lontana. La
+  gelosia in attesa è `jp`; si racconta al prossimo incontro (`R:RomanceMet`). Una fase `none` non si salva mai; `ended`
+  torna a `none` al primo incontro dopo `breakup.restDays`.
+- **Il temperamento** scala le righe del romanticismo come ogni altra riga: un rifiuto costa 1 punto di attrazione per il
+  temperamento dell'NPC.
+- **Le scene del popup** sono prosa: le loro regole hanno la voce `narrator` e `form = "say"`.
+- **Il validatore**: i problemi di una risposta romantica sono errori `badDialogue` sulla chiave `flirt:<pacchetto>:<id>`;
+  una regola romantica senza `romanceTier` è `romanceTier`, una nella voce del personaggio `romanceVoice`.
+- **Per R2**: `Romance:Flirts`, `Romance:Answer`, `Romance:Reply`, `Romance:DueMoment`, `Romance:DateOptions`,
+  `Romance:Decide`, `Romance:Scene`, `Romance:BreakUp`, `Romance:SetTone`, `Romance:SetAdult`, `Romance:PackState`,
+  `Romance:Status` e l'ultimo punteggio in `Romance.session.last` (per `au romance why`). Il pacchetto 18+ si carica con
+  `NS.Packs:Load`.

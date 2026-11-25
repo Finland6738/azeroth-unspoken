@@ -1562,6 +1562,25 @@ apri una issue con `/au debug` e una schermata.
     - **Atteso:** Bardo spento: le canzoni nella voce interiore; Condividi spento: nessuna barra sotto il brano e nessuna
       riga nel canzoniere.
 
+## RA: romanticismo attivo, step R1, il motore (ADR 0061)
+
+Costruito e provato solo fuori dal gioco. Questo step aggiunge il motore del romanticismo attivo; i pulsanti e il popup
+arrivano con lo step R2, quindi per ora sullo schermo non cambia quasi nulla. Se qualcosa non va, apri una issue con
+`/au debug`.
+
+- **RA.1 · Dati salvati, versione 10.** Entra con un personaggio che ha già fatto il voto privato a un NPC (asse
+  dell'attrazione acceso), poi `/reload`.
+    - **Atteso:** nessun errore rosso, nulla di mancante nella finestra delle Relazioni; il voto è ancora nel diario;
+      `/au debug` non mostra righe sui dati delle relazioni.
+    - **Segnala:** un errore rosso, un NPC o una riga del diario spariti.
+- **RA.2 · Ancora niente di nuovo.** Con l'asse dell'attrazione acceso, parla per un po' con NPC del sesso opposto
+  (`/au talk`, anche con l'NPC solo come bersaglio, senza aprire la sua finestra).
+    - **Atteso:** la finestra del dialogo è come prima: al massimo tre risposte, nessun cuore, nessun pulsante nuovo; il
+      voto, quando arriva, arriva da solo come prima.
+    - **Segnala:** una quarta risposta, un cuore, o un errore.
+- **RA.3 · Un addon più vecchio.** Facoltativo: copia le variabili salvate, installa la versione precedente, entra.
+    - **Atteso:** le relazioni si leggono ma non si cambiano (una versione più nuova), come per ogni altro blocco di dati.
+
 ## Modulo riassuntivo (copia e compila)
 
 ```

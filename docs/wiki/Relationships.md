@@ -95,6 +95,12 @@ Only if you turn on the **Attraction axis** (off by default). Romance is possibl
 
 Nothing changes in the game: the NPC does not behave differently. Moving the attraction slider yourself does not make the vow by itself: only something you do with the NPC can.
 
+#### Active romance (in progress)
+
+A romance **you** lead is being built: a romantic answer now and then in the [[NPC dialogues|NPC-Dialogues]], marked by a heart; the NPC may welcome it, stay cold or gently refuse (a refusal never ruins the friendship); a declaration, dates and the vow in a small window of their own; one beloved at a time, some jealousy after the vow, and a break-up only if you choose it. It stays private and needs the **Attraction axis**, like everything here.
+
+The engine is in the addon already, but **nothing of it shows yet**: the answers and the window come in the next update. Until then the vow happens by itself, as described above, and the NPC of the vow becomes your beloved. The saved relationships are now version 10: an older version of the addon reads them but does not change them.
+
 ### Your word: promises and oaths
 
 Taking a quest from an NPC is **a promise to them**. The addon remembers which quest you promised to whom, and when: nothing else (never the quest's title or text).
@@ -404,7 +410,7 @@ Names can be `Name` or `Name-Realm`. NPCs are written `npc:` plus their number, 
 - What the addon observed is kept apart from what you chose, and never changes it.
 - Your notes, tags and own labels are **private**: they are never used in a line that could go to chat.
 - The first meeting with an NPC keeps only the time of day, the weather, the zone and your level: no text.
-- Romance reads the NPC's sex and creature type when you talk to them and keeps them only until you log out. The vow is a mark on the NPC's record and a journal line with no name.
+- Romance reads the NPC's sex and creature type when you talk to them (or when you open a dialogue with them as your target) and keeps them only until you log out. The vow is a mark on the NPC's record and a journal line with no name. Active romance keeps, per NPC, only a stage and a few times and counters, and which NPC is your beloved: never a text.
 - A promise keeps only the quest's number, the NPC's number and the times; an oath also keeps the number of the map where you swore it. Never a quest title or text.
 - A favor keeps which favor it is, when it was asked and until when, and the zone or map it is about; a nickname keeps only its number in the list. The NPC also counts the quests you handed to them and the favors you did for them.
 - Everything stays on your computer, per character, unless you turn on **Share with the account**: then your choices (not the observations) are kept in the account's file. Erase it with **Forget everything**, `/au relationships reset` or `/au relationships reset shared`.

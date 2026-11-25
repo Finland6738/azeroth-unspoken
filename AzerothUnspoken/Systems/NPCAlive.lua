@@ -139,8 +139,11 @@ local function Frame() return NS.DialogueFrame end
 ---Registra i copioni dei dialoghi. `{ scripts = { [chiave] = AUDialogueScript } }`: la chiave è l'archetipo
 ---("innkeeper") o "npc:<npcID>" per un NPC specifico (che di solito riprende l'archetipo con `extends`).
 ---`pack` (the id of the pack the scripts belong to) is the owner of the keys (#69) and how the authoring archive files them (#143). Una chiave già registrata da un altro pacchetto si rifiuta, a meno di `override = true` (sul copione o su `def`).
----@param def { pack?: string, override?: boolean, scripts: table<string, AUDialogueScript> }
+---Active romance (ADR 0061): `flirts` is the list of flirt answers of the pack (Systems/Romance.lua), the one exception to
+---neutral answers; `romance18 = true` marks the 18+ pack's.
+---@param def { pack?: string, override?: boolean, scripts?: table<string, AUDialogueScript>, flirts?: table[], romance18?: boolean }
 function NS:RegisterDialogues(def)
+	if type(def) == "table" and type(def.flirts) == "table" and NS.Romance then NS.Romance:RegisterFlirts(def) end
 	local keys = {}
 	for key in pairs(type(def) == "table" and def.scripts or EMPTY) do
 		if type(key) == "string" then table.insert(keys, key) end
@@ -304,7 +307,15 @@ function N:Check()
 			if c.when then
 				for _, msg in ipairs(Engine.CheckConditions(c.when)) do Add("error", key, ("risposta '%s': %s"):format(cid, msg)) end
 			end
+			-- ADR 0061: the exception for romance is the flirts' only; a script's answer can never claim it
+			if c.romance ~= nil then
+				Add("error", key, ("risposta '%s': `romance` non vale nei copioni (le risposte romantiche sono i `flirts`, ADR 0061)"):format(cid))
+			end
 		end
+	end
+	-- ADR 0061: the flirt answers (the neutrality test does not run on them; every other check does)
+	if NS.Romance then
+		for _, p in ipairs(NS.Romance:Check(languages, self.LABEL_BYTES)) do Add(p.level, p.key, p.msg) end
 	end
 	return out
 end
@@ -350,9 +361,14 @@ function N:View()
 	local choices, lang = {}, NS:Lang()
 	for i, c in ipairs(s.choices) do
 		-- il testo si sceglie qui, nella lingua di adesso: un cambio di lingua a metà dialogo vale subito
-		local def = s.script.choices[c.id]
-		local label = def and (def.label[lang] or def.label.en or def.label.it)
-		choices[i] = { id = c.id, text = label or c.text }
+		if c.romance then
+			-- ADR 0061: a flirt answer (the frame draws it with the heart, R2); a moment answer opens the popup
+			choices[i] = { id = c.id, text = NS.Romance:FlirtLabel(c.flirt, lang) or c.text, romance = true, moment = c.moment }
+		else
+			local def = s.script.choices[c.id]
+			local label = def and (def.label[lang] or def.label.en or def.label.it)
+			choices[i] = { id = c.id, text = label or c.text }
+		end
 	end
 	return { state = self.state, name = who.name, role = who.role, test = who.kind == "test",
 		roleLabel = NS:L("role_" .. who.role), line = s.line and s.line.text, choices = choices,
@@ -360,7 +376,7 @@ function N:View()
 end
 
 ---Il dialogo è finito (o l'offerta è sparita): effetti di chiusura e finestra nascosta.
----@param reason string closed | finished | offer_expired | idle | combat | death | zone | npc_changed | identity | disabled | no_line
+---@param reason string closed | finished | offer_expired | idle | combat | death | zone | npc_changed | identity | disabled | no_line | romance (a moment answer: the popup opens)
 ---@return boolean
 function N:End(reason)
 	if self.state == "idle" or self.state == "ended" then return false end
@@ -448,6 +464,13 @@ function N:Identify(hint)
 	if not o.npcID then return nil, "uncertain", ctx end
 	local unit = subject and "npc" or "target"
 	if Compat.SafeCall("UnitIsDead", unit) == true then return nil, "dead", ctx end
+	-- ADR 0061: a dialogue opened from the target reads the NPC's sex and creature type there (only from the target
+	-- itself: `o` came from it); a reading of the interaction (R:NoteKin at NPC_INTERACT) is never replaced by nothing
+	if unit == "target" and NS.Relationships then
+		local R = NS.Relationships
+		local sex, humanoid = R.Kin("target")
+		if sex ~= nil or humanoid ~= nil then R:NoteKin(o.npcID, sex, humanoid) end
+	end
 	local role, how = ReliableRole(o, interaction)
 	if not role then return nil, "uncertain", ctx end
 	local script, key = self:FindScript(o.npcID, role)
@@ -573,6 +596,8 @@ local function PickLine(self, s, node)
 end
 
 -- le risposte disponibili adesso nel nodo (al massimo MAX_CHOICES, solo quelle le cui condizioni valgono)
+-- ADR 0061: then the flirt answers (Systems/Romance.lua: at most romance.flirt.max, after the neutral ones, only when
+-- every gate holds and the frame can draw them); a node with no neutral answer gets none (a flirt never ends a talk)
 local function ComputeChoices(self, s, node, ctx)
 	local out, lang = {}, NS:Lang()
 	for _, cid in ipairs(node.choices or EMPTY) do
@@ -585,6 +610,14 @@ local function ComputeChoices(self, s, node, ctx)
 			end
 		end
 	end
+	if #out > 0 and NS.Romance then
+		for _, f in ipairs(NS.Romance:Flirts(s.who, ctx, s)) do
+			local label = NS.Romance:FlirtLabel(f.key, lang)
+			if label then
+				table.insert(out, { id = "flirt:" .. f.key, text = label, romance = true, flirt = f.key, moment = f.moment })
+			end
+		end
+	end
 	return out
 end
 
@@ -593,6 +626,10 @@ local function ShowNode(self, s, nodeId)
 	local node = s.script.nodes[nodeId]
 	if not node then return false end
 	local line, ctx = PickLine(self, s, node)
+	-- ADR 0061: the beloved, still jealous, opens the talk with a jealous line
+	if line and s.turns == 0 and nodeId == s.script.start and NS.Romance then
+		line = NS.Romance:JealousOpen(s.who, ctx) or line
+	end
 	if not line then return false end
 	s.node, s.line, s.turns = nodeId, line, s.turns + 1
 	s.choices = ComputeChoices(self, s, node, ctx)
@@ -659,6 +696,7 @@ function N:Choose(index)
 	if self.state ~= "choice" or not s then return false, "not_choosing" end
 	local picked = s.choices[index]
 	if not picked then return false, "no_choice" end
+	if picked.romance then return self:ChooseFlirt(s, picked) end
 	local choice = s.script.choices[picked.id]
 	if not choice then return false, "no_choice" end
 	self:SetState("response", picked.id)
@@ -681,6 +719,41 @@ function N:Choose(index)
 		self:End(s.turns >= self.MAX_TURNS and "finished" or "no_line")
 		return true
 	end
+	if #s.choices > 0 then self:SetState("choice") end
+	Refresh(self)
+	return true
+end
+
+---ADR 0061: the player chose a flirt answer. A moment answer closes the dialogue and opens the romance popup (R2);
+---any other gets the NPC's answer (welcome, cold or refuse) as the node's line, and the flirts leave the dialogue
+---while its neutral answers stay.
+---@param s AUDialogueSession
+---@param picked table
+---@return boolean ok
+function N:ChooseFlirt(s, picked)
+	local Ro = NS.Romance
+	local flirt = Ro and Ro.flirtByKey[picked.flirt]
+	if not flirt then return false, "no_choice" end
+	self:SetState("response", picked.id)
+	s.chosen = s.chosen + 1
+	s.flirts = (s.flirts or 0) + 1
+	Arm(self, s, self.IDLE_SECONDS)
+	local keep = {}
+	for _, c in ipairs(s.choices) do if not c.romance then table.insert(keep, c) end end
+	s.choices = keep
+	if picked.moment then
+		local npcID = s.who.npcID
+		self:End("romance")
+		if Ro:PopupReady() then NS.RomanceFrame:Open(npcID, picked.moment) end
+		return true
+	end
+	local ctx = self:ContextFor(s)
+	local outcome = Ro:Answer(s.who, flirt, ctx)
+	local line = outcome and Ro:Reply(s.who, flirt, outcome, ctx)
+	if line then
+		s.line, s.turns = line, s.turns + 1
+	end
+	if outcome then Ro:Inner(s.who.npcID, outcome, flirt.kind) end
 	if #s.choices > 0 then self:SetState("choice") end
 	Refresh(self)
 	return true

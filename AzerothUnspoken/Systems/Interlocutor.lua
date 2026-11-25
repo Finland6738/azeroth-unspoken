@@ -136,6 +136,8 @@ function NS:RegisterNPCs(map)
 			-- N2 (#214): the curated temperament of the relationship (multipliers, read by Systems/Relationships.lua)
 			if IsNumber(e.warmth) and e.warmth > 0 then clean.warmth = e.warmth end
 			if IsNumber(e.forget) and e.forget > 0 then clean.forget = e.forget end
+			-- ADR 0061: a curated NPC the content must never court (Systems/Romance.lua)
+			if e.romance == false then clean.romance = false end
 			I.npcs[math.floor(id)] = clean
 		end
 	end

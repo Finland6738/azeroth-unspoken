@@ -210,8 +210,8 @@ black, and Explicit only behind an 18+ consent and in a separate pack that never
 
 | Step | What | State |
 |---|---|---|
-| R0 | ADR 0061, the spec in English and Italian, seven proposed mockups (`docs/design/mockups/romance-*`). Docs only | in review |
-| R1 | Engine: `Systems/Romance.lua`, `Data/Romance.lua`, the gates, the affinity score, stages and moments, one beloved, jealousy, break-up, tone selection, the 18+ consent, the flirt exception in the validator, `relationships.version` 10 and its migration, tests | to do |
+| R0 | ADR 0061, the spec in English and Italian, seven proposed mockups (`docs/design/mockups/romance-*`). Docs only | done (PR #308) |
+| R1 | Engine: `Systems/Romance.lua`, `Data/Romance.lua`, the gates, the affinity score, stages and moments, one beloved, jealousy, break-up, tone selection, the 18+ consent, the flirt exception in the validator, `relationships.version` 10 and its migration, tests | in review: nothing shows in game until R2 (the frame and the popup turn it on) |
 | R2 | Interface: flirt answers in the dialogue window, the romance popup (`voice-romance`), Settings > Romance, the Relationships detail, the journal kinds, `au romance`, mockups and assets | to do |
 | R3 | Content of tiers 1-2 in Italian and English (Opus writers): flirt answers, NPC replies, popup scenes, inner voice, journal lines; `romance.exclude` | to do |
 | R4 | The tier-3 pack `AzerothUnspoken_Romance18` (LoadOnDemand, silent without the gate), its own zip outside the CurseForge one, a few non-graphic samples, how to write for it | to do |
