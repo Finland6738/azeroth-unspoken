@@ -17,7 +17,7 @@ Every step or fix PR updates the CHANGELOG, the affected docs and the affected w
 ([CONTRIBUTING.md](../CONTRIBUTING.md), section 8). The wiki is never edited on GitHub: it is published from `docs/wiki/`.
 
 - [ ] **I have read and agree to the [Licensing of contributions](../CONTRIBUTING.md#licensing-of-contributions) in CONTRIBUTING.md** (required), and external contributors have signed off their commits (`git commit -s`, Developer Certificate of Origin).
-- [ ] The tests pass: `python -I -X utf8 Tests/run_tests.py AzerothUnspoken` (CI must also be green before merging).
+- [ ] The tests pass: `python -I -X utf8 Tests/run_tests.py AzerothUnspoken` (until release 1.0 the merge does not wait for CI `Tests`; a red run on `main` is fixed before the next merge).
 - [ ] `CHANGELOG.md` is updated, in the "Unreleased" section, in the group of this step or fix.
 - [ ] The docs are updated: `docs/ARCHITECTURE.md`, an ADR in `docs/adr/` if a decision changed (and the ADR index), `AzerothUnspoken/PACK_FORMAT.md` if the pack API changed, `README.md` **and** `README.it.md` for commands, numbers, privacy and status.
 - [ ] **The wiki pages in `docs/wiki/` are updated for any user-visible change** (commands, settings, defaults, behavior, privacy, troubleshooting).

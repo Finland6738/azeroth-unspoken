@@ -21,6 +21,8 @@ Three GitHub Actions workflows, a PR template, and a protection of `main`.
 5. **Branch protection on `main`**: the checks `Tests` and `Docs rule` must pass before a merge; **no required reviews** (one maintainer plus automated sessions); the rule applies to administrators too, because the sessions work with the owner's token and would otherwise bypass it; no force pushes; no deletion. Branches do not have to be up to date with `main` (so a green PR is not made stale by another merge), and the squash merge keeps the history linear.
 6. **Actions are pinned to a commit** (with the version in a comment), the workflows declare the least permissions they need, and no workflow runs code from a pull request with write access or secrets (`pull_request`, read-only token).
 
+**Amendment (owner, 2026-11-25): until release 1.0, `Tests` is not a required check.** The full suite took about 30 minutes on CI after W22, and every PR had already run it locally (about 26 minutes), so each content wave waited twice for the same tests. Now only `Docs rule` is required. `Tests` still runs on every PR and on every push to `main`. Before each merge, the last run on `main` must be green; a red run is fixed by the next PR before anything else. Before release 1.0, `Tests` becomes required again, and the release needs it green. What CI adds over the local run (a Linux random stream, `check_api.py` with the API dump) is therefore found at most one merge later, not before.
+
 ## Alternatives considered
 
 - **Reviews required before merge.** There is nobody to review: the project is maintained by one person and automated sessions. Rejected; CI is the gate.
