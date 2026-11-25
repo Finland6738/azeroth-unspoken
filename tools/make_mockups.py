@@ -69,7 +69,7 @@ def design_system(lang, theme):
     body = f"""
 <div class="abs" style="left:24px;top:62px;right:24px;display:flex;flex-direction:column;gap:14px">
 <div style="display:flex;align-items:flex-end;gap:16px"><div><div class="f-Eyebrow" style="color:var(--accent-text)">DESIGN SYSTEM</div>
-<div class="f-H1" style="font-size:22px;margin-top:4px">{M.esc(T(lang, "theme_" + theme))} · 31 tokens</div></div><span style="flex:1"></span>
+<div class="f-H1" style="font-size:22px;margin-top:4px">{M.esc(T(lang, "theme_" + theme))} · {len(M.TOKENS)} tokens</div></div><span style="flex:1"></span>
 <div class="f-Display" style="color:var(--accent-text);text-transform:uppercase">Azeroth Unspoken</div></div>
 <div style="display:grid;grid-template-columns:repeat(8,1fr);gap:7px">{sw}</div>
 <div class="thin" style="position:relative;width:100%;height:6px"><i style="width:100%"></i></div>

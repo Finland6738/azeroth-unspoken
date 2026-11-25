@@ -32,6 +32,9 @@ local function Fresh()
 	-- N5 (#217): favours and nicknames have their own tests (TestFavours.lua); here they would add notices
 	NS.db.relations.favours, NS.db.relations.nicknames = false, false
 	NS.db.relations.attraction = true
+	-- ADR 0061: these are the tests of the passive romance of ADR 0037, which stays as it was with Active romance off
+	-- (with it on and the romance popup at hand, the vow becomes a moment of the popup: Tests/TestRomance.lua)
+	NS.db.relations.romanceActive = false
 	for k in pairs(NS.db.modules) do NS.db.modules[k] = (k ~= "audio") end
 	P.target, P.npc, P.party, P.group, P.raid = nil, nil, nil, false, false
 	P.zone, P.combat, P.dead, P.hp, P.hpMax, P.mapID = "Durotar", false, false, 100, 100, nil

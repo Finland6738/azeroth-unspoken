@@ -19,7 +19,7 @@ from mockup_lib import (L, badge, button, card, chip, choicelist, dialog, editbo
 
 CHANNEL = {"SAY": "/s", "EMOTE": "/e", "YELL": "/y", "PARTY": "/p", "RAID": "/raid", "GUILD": "/g", "INSTANCE_CHAT": "/i"}
 VOICE_KEY = {"narrator": "voice_narrator", "inner": "voice_inner", "character": "voice_character", "npc": "voice_npc",
-             "bard": "voice_bard"}   # the Bard: ADR 0060
+             "bard": "voice_bard", "romance": "rom_label"}   # the Bard: ADR 0060; romance: ADR 0061
 
 
 # ---------------------------------------------------------------------------------------------------------------
