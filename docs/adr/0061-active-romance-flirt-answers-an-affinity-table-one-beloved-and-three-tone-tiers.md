@@ -54,7 +54,7 @@ decisions.
 Active romance shows only when **all** of these hold, checked each time:
 
 - the Relationships module is on, the **attraction axis** is on (`relations.attraction`, off by default) and the new
-  setting **Active romance** (`relations.romance.active`, on by default: turning the axis on is the opt-in) is on;
+  setting **Active romance** (`relations.romanceActive`, on by default: turning the axis on is the opt-in) is on;
 - the character's soul does not avoid the topic **romance** (`avoid` already lists it; a soul that avoids it hears none
   of this, as it already hears no romantic line);
 - the NPC passes `R:RomanceEligible` (ADR 0037: sex and creature type read this session, opposite sex, humanoid);
@@ -161,7 +161,7 @@ flirt.
 
 ### 6. Tone tiers
 
-- **The allowed tier** is a setting, `relations.romance.tone`: 1 Courteous (default), 2 Intimate, 3 Explicit. 3 can be
+- **The allowed tier** is a setting, `relations.romanceTone`: 1 Courteous (default), 2 Intimate, 3 Explicit. 3 can be
   chosen only with the 18+ gate on (point 7).
 - **The situation's tier** is 2 when the stage and the moment allow intimacy (declared or vowed, at an inn or rested, at
   night, or at a festival when the world knows one) and the character's mood is not grief; otherwise 1.
@@ -179,7 +179,7 @@ flirt.
   after `Consent.MIN_DELAY` and within `Consent.WINDOW`, and a double-click never confirms. Turning it off is one click.
 - The warning says: turn this on only if you are 18 or older; the explicit texts come only from a separate optional pack
   that is not on CurseForge; without that pack nothing changes.
-- It is kept in the **account** (`relations.romance.adult`), since age belongs to the player, not to a character.
+- It is kept in the **account** (`relations.romanceAdult`), since age belongs to the player, not to a character.
 - Turning it off sets the allowed tier back to 2 at most at once; no `/reload` is needed.
 
 ### 8. Tier 3: a separate pack, `AzerothUnspoken_Romance18`

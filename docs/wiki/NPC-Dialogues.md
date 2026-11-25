@@ -38,6 +38,8 @@ Click it to open the dialogue. If you ignore it, it goes away by itself after ab
 
 The dialogue closes by itself if combat starts, you die, you change zone, you turn to another NPC, or you do not answer for two minutes.
 
+**Coming next: romantic answers.** With the **Attraction axis** on (see [[Relationships|Relationships#romance]]), a future update adds one or two extra answers after the usual ones, marked by a heart and a colour of their own, with an NPC of the opposite sex you know well enough. They are always extra: the usual answers stay, and nobody is ever made to flirt. The engine for them is in the addon already; the buttons are not, so the window still shows at most three answers.
+
 ## When there is no dialogue
 
 The addon tells you why when it cannot open a dialogue. The most common reasons:

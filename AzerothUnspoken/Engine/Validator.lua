@@ -1339,6 +1339,22 @@ function Validator:Run(opts)
 				Add("error", "lightReturnAfterBadVisit", p.pack, id, nil,
 					"cheerful or ironic return line without lastVisitBad = false (or req:irony:high for a line about the bad visit)")
 			end
+			-- active romance (ADR 0061, spec 9.4 and 16): a romance line is written at one tier (romanceTier) and never in
+			-- the character's voice, the one voice the narrator could propose to chat
+			if NS.Romance then
+				for _, ev in ipairs(p.events) do
+					if NS.Romance.EVENTS[ev] then
+						local tier = type(p.when) == "table" and p.when.romanceTier
+						if type(tier) ~= "number" then
+							Add("error", "romanceTier", p.pack, id, nil, ("event '%s': a romance line declares romanceTier (1, 2 or 3)"):format(ev))
+						end
+						if p.speaker == "character" then
+							Add("error", "romanceVoice", p.pack, id, nil, ("event '%s': a romance line never speaks as the character"):format(ev))
+						end
+						break
+					end
+				end
+			end
 			-- eventi che citano una persona (relation_npc): la frase dichiara la condizione che garantisce il rapporto
 			if NS.Relationships then
 				for _, ev in ipairs(p.events) do

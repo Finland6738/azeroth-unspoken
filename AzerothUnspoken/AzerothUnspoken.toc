@@ -58,6 +58,7 @@ Systems\Songbook.lua
 Systems\Nemesis.lua
 Systems\Companion.lua
 Systems\Bard.lua
+Systems\Romance.lua
 
 # --- interfaccia ---
 UI\Assets.lua
@@ -91,6 +92,7 @@ Data\Themes.lua
 Data\Vocabulary.lua
 Data\Frames.lua
 Data\Relationships.lua
+Data\Romance.lua
 Data\Places.lua
 Data\Landmarks.lua
 Data\Emotions.lua

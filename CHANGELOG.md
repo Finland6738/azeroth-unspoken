@@ -8,6 +8,25 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### Active romance, step R1: the engine (ADR 0061)
+
+- **Added**: `Systems/Romance.lua` and `Data/Romance.lua`, the engine of active romance with NPCs. The gates (the
+  attraction axis, the new setting *Active romance*, the soul, the fixed rule of a humanoid of the opposite sex, an
+  exclusion list, Acquaintance or above, no grudge, a calm moment); flirt answers registered as `flirts` with
+  `RegisterDialogues` (the one validated exception to neutral answers); the affinity score (race, class, soul,
+  temperament, relationship, situation, mood, momentum, a random part) and its outcomes: welcome, cold, or a refusal that
+  costs one point of attraction and some quiet, never the relationship; the stages up to the vow, the moments of the
+  coming popup (declaration, dates, vow), one beloved, jealousy after the vow, the player's break-up; the tone tiers and
+  the two-step 18+ consent (`romance_adult`, kept in the account, off). New conditions `romanceStage`, `romanceTier`,
+  `romanceOutcome`, `romanceMoment`, `romancePhase`, `romanceDate`, `romanceKind`, `romanceJealous`, `romanceNight`,
+  `romanceBeloved`, `romanceOther`; the validator asks every romance line for `romanceTier` and never the character's
+  voice. A dialogue opened from the target now reads the NPC's sex and creature type there.
+- **Changed**: the saved relationships are **version 10** (`romance` per NPC, `beloved`): a vow already made becomes the
+  stage *vowed*, the NPC with the highest attraction the beloved. An older addon reads them without changing them.
+- **Nothing shows in game yet**: no flirt and no moment is offered until the interface of step R2 can draw them, and the
+  vow of ADR 0037 keeps happening by itself (its NPC now becomes the beloved). Not verified in the game client: see
+  section RA of the [G1 checklist](docs/G1_checklist.en.md).
+
 ### Active romance, step R0: the design (ADR 0061)
 
 - **Added (docs only)**: [ADR 0061](docs/adr/0061-active-romance-flirt-answers-an-affinity-table-one-beloved-and-three-tone-tiers.md)

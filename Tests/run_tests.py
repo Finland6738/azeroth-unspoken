@@ -495,7 +495,7 @@ for f_ in ("Widgets.lua", "JournalFrame.lua", "RelationsFrame.lua", "ProfileFram
         check("W.Window(" in "\n".join(src_), f"{f_}: the window is made by W.Window (#187)")
 check(win_frames_ == 2, f"the named frames of the windows: W.Window and the dialogue window ({win_frames_})")
 for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContext", "TestNames", "TestChatGateway", "TestNarrator", "TestWizardConsent", "TestWindows",
-             "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestEmotion", "TestMemory", "TestRelations", "TestPlayers", "TestNPCLevels", "TestNPCRomance", "TestPromises", "TestFavours", "TestLocalReputation", "TestHostility", "TestProximityShared",
+             "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestEmotion", "TestMemory", "TestRelations", "TestPlayers", "TestNPCLevels", "TestNPCRomance", "TestRomance", "TestPromises", "TestFavours", "TestLocalReputation", "TestHostility", "TestProximityShared",
              "TestOtherPlace", "TestNPCAlive", "TestArcs", "TestCommands", "TestProfile", "TestProbeCombat", "TestContent", "TestScale",
              "TestSelection", "TestWorld", "TestDynamism", "TestKeyClaims", "TestPacks", "TestKeyboard", "TestLiterary",
              "TestLiteraryMeta", "TestSongbook", "TestNemesis", "TestCompanion", "TestIdentity", "TestLayout", "TestAssets", "TestTheme", "TestWidgets", "TestEmoteWheel", "TestBard"):
@@ -906,7 +906,7 @@ check(rl2.eval("function() return AzerothUnspokenCharacterDB.relationships.npcs[
 check(rl2.eval("function() return AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].user.note end")() == "Mi ha salvato la vita", "relazioni: la nota dopo /reload")
 check(rl2.eval("function() return AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].user.label end")() == "fratello di spada", "relazioni: l'etichetta scelta dopo /reload")
 check(rl2.eval("function() return AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].user.feeling[1] end")() == "gratitude", "relazioni: il sentimento scelto dopo /reload")
-check(rl2.eval("function() return AzerothUnspokenCharacterDB.relationships.version end")() == 9, "relazioni: versione 9 dopo /reload")
+check(rl2.eval("function() return AzerothUnspokenCharacterDB.relationships.version end")() == 10, "relazioni: versione 10 dopo /reload")
 check(rl2.eval("function() local s = AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].seen; return s.count == 1 and s.kinds.group == 1 and s.kinds.group_combat == 1 and #s.facts == 2 and s.last > 0 end")(), "relazioni: le osservazioni (incontri per tipo e fatti) dopo /reload")
 check(rl2.eval("function() return AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].trust end")() is None, "relazioni: nessun campo piatto in un giocatore")
 check(rl2.eval("function() return next(AzerothUnspoken.Relationships.candidates) end")() is None, "relazioni: le proposte non sopravvivono alla sessione")
@@ -935,7 +935,7 @@ v1_char = ("{schemaVersion=7,relationships={version=1,npcs={[1234]={first=1,last
 rl5, rn5 = load_addon(saved_global_r, v1_char, with_example=False, zone="Durotar")
 def rel5(expr):
     return rl5.eval("function() local d = AzerothUnspokenCharacterDB.relationships; return " + expr + " end")()
-check(rel5("d.version") == 9, "relazioni: un file di versione 1 passa alla versione attuale (9)")
+check(rel5("d.version") == 10, "relazioni: un file di versione 1 passa alla versione attuale (10)")
 check(rel5("d.players['Aldric-Stormrage'].user.axes.trust") == 55 and rel5("d.players['Aldric-Stormrage'].user.axes.affection") == 45, "relazioni v1: gli assi sono in user.axes")
 check(rel5("d.players['Aldric-Stormrage'].user.note") == "Mi ha salvato la vita" and rel5("d.players['Aldric-Stormrage'].user.label") == "fratello di spada", "relazioni v1: nota ed etichetta in user")
 check(rel5("d.players['Aldric-Stormrage'].user.tags[1]") == "gilda" and rel5("d.players['Aldric-Stormrage'].user.role") == "innkeeper", "relazioni v1: tag e ruolo in user")
@@ -950,9 +950,9 @@ saved5 = rl5.eval("function() return SERIALIZE(AzerothUnspokenCharacterDB) end")
 rl6, rn6 = load_addon(saved_global_r, saved5, with_example=False, zone="Durotar")
 check(rl6.eval("function() return SERIALIZE(AzerothUnspokenCharacterDB.relationships) end")() == rl5.eval("function() return SERIALIZE(AzerothUnspokenCharacterDB.relationships) end")(), "relazioni v1: salvato e ricaricato, resta uguale")
 # un file di una versione piu nuova resta in sola lettura e intatto
-newer = "{schemaVersion=7,relationships={version=10,npcs={},players={['Eve-Stormrage']={user={future=true},seen={first=1},nickname='x'}}}}"
+newer = "{schemaVersion=7,relationships={version=11,npcs={},players={['Eve-Stormrage']={user={future=true},seen={first=1},nickname='x'}}}}"
 rl7, rn7 = load_addon(saved_global_r, newer, with_example=False)
-check(rl7.eval("function() return AzerothUnspoken.Relationships.readOnly end")() is True and rl7.eval("function() return AzerothUnspokenCharacterDB.relationships.players['Eve-Stormrage'].nickname end")() == "x", "relazioni v10: sola lettura, dati intatti")
+check(rl7.eval("function() return AzerothUnspoken.Relationships.readOnly end")() is True and rl7.eval("function() return AzerothUnspokenCharacterDB.relationships.players['Eve-Stormrage'].nickname end")() == "x", "relazioni v11: sola lettura, dati intatti")
 
 # e) the list shared in the account (R4b2, #114, ADR 0030): in the account file, never in the character's, kept when the
 # option is off, and shared with another character of the same account
@@ -1083,7 +1083,7 @@ for schema in range(0, 7):
           and c1("AzerothUnspokenCharacterDB.personality.traits.avoid.death") is True, f"{label}: personality values are cleaned")
     check(c1("AzerothUnspokenCharacterDB.personality.archetype") == "custom" and c1("AzerothUnspokenCharacterDB.personality.trp3") is False,
           f"{label}: a damaged archetype and consent give a coherent profile")
-    check(c1("AzerothUnspokenCharacterDB.relationships.version") == 9 and c1("AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].user.axes.trust") == 55
+    check(c1("AzerothUnspokenCharacterDB.relationships.version") == 10 and c1("AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].user.axes.trust") == 55
           and c1("AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].user.note") == "kept", f"{label}: the player record is migrated with its choices")
     check(c1("AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].seen.last") <= SAVED_EPOCH
           and c1("AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].seen.first") <= SAVED_EPOCH,

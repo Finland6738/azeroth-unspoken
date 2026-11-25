@@ -484,6 +484,12 @@ Engine.CONDITIONS = {
 	relFoe = "str", townBetrayed = "bool", townFoe = "bool", homeReturn = "bool",
 	-- the companion pet and grief (N8, #220, #125)
 	petMood = "str", petStage = "str", petKind = "str", grief = "str",
+	-- active romance (ADR 0061, Systems/Romance.lua): the stage with the NPC of the line, the tier the line is chosen at,
+	-- the answer to a flirt, the popup's moment, phase and date, the kind of flirt, the beloved's jealousy, the night of
+	-- romance, whether the NPC is the beloved or the character has another one
+	romanceStage = "str", romanceTier = "num", romanceOutcome = "str", romanceMoment = "str", romancePhase = "str",
+	romanceDate = "str", romanceKind = "str", romanceJealous = "bool", romanceNight = "bool", romanceBeloved = "bool",
+	romanceOther = "bool",
 	-- interlocutore e luogo (S6c): sotto-tabelle con i campi di Engine.SUB_FIELDS
 	other = "sub", place = "sub",
 	-- Story Arcs (S9): sotto-tabella `arc` (campi di Engine.SUB_FIELDS.arc); gli archi chiusi si chiedono con arcDone
@@ -533,6 +539,13 @@ Engine.CONDITION_VALUES = {
 	relFoe = { attacked = true, killed = true, host = true },
 	-- the companion pet and grief (N8, #220, #125): the stages and moods are filled from the data (Systems/Companion.lua)
 	petMood = {}, petStage = {}, petKind = { beast = true, demon = true }, grief = { pet = true, npc = true, ally = true },
+	-- active romance (ADR 0061): the date options are filled from the data (Systems/Romance.lua)
+	romanceStage = { none = true, interest = true, courtship = true, declared = true, vowed = true, ended = true, past = true },
+	romanceOutcome = { welcome = true, cold = true, refuse = true },
+	romanceMoment = { declaration = true, date = true, vow = true },
+	romancePhase = { open = true, welcome = true, cold = true, refuse = true },
+	romanceKind = { glance = true, compliment = true, gift = true, walk = true, invite = true, moment = true },
+	romanceDate = {},
 	-- the composite situations (#100): filled by NS:RegisterSituation
 	situation = {},
 }
@@ -604,7 +617,8 @@ Engine.SUB_VALUES = {
 Engine.RELATION_CONDITIONS = { relation = true, disposition = true, relationKind = true, isKnown = true,
 	withRelation = true, feeling = true, relDaysSince = true, relMetHere = true, relShared = true,
 	relMetLevels = true, relMetDays = true, relMetTime = true, relMetWeather = true, relVowed = true,
-	relPromiseDays = true, relOathbroken = true, relFavour = true, relNick = true, relRival = true, relFoe = true }
+	relPromiseDays = true, relOathbroken = true, relFavour = true, relNick = true, relRival = true, relFoe = true,
+	romanceStage = true, romanceJealous = true, romanceBeloved = true, romanceOther = true }
 
 ---Registra le condizioni <asse>Min e <asse>Max di un asse delle relazioni (valgono sugli assi del bersaglio o
 ---dell'NPC dell'interazione: ctx.rel[asse]).

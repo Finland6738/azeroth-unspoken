@@ -465,8 +465,8 @@ end)
 ---------------------------------------------------------------------------
 T.run("identity: saved data, version 9: GUIDs of older files are not trusted, bad and duplicate ones are dropped", function()
 	Fresh()
-	T.eq(R.VERSION, 9, "relationships.version is 9 (#112: seen.guid)")
-	T.eq(Config.characterDefaults.relationships.version, 9, "the defaults follow")
+	T.eq(R.VERSION, 10, "relationships.version is 10 (ADR 0061 made it 10; #112: seen.guid)")
+	T.eq(Config.characterDefaults.relationships.version, 10, "the defaults follow")
 	local function Seen(guid) return { first = 1, last = 2, count = 1, guid = guid } end
 	-- a version 8 file: the addon never wrote a GUID, so one found there is not trusted
 	NS.cdb.relationships = { version = 8, npcs = {}, players = {
@@ -475,7 +475,7 @@ T.run("identity: saved data, version 9: GUIDs of older files are not trusted, ba
 	R.readOnly = false
 	R:Sanitize()
 	local d = NS.cdb.relationships
-	T.eq(d.version, 9, "version 8 moves to 9")
+	T.eq(d.version, R.VERSION, "version 8 moves to the current one")
 	T.eq(d.players["Aldric-Stormrage"].seen.guid, nil, "a GUID in an older file is dropped")
 	-- a version 9 file: valid ones stay, malformed ones go, two people never share one
 	NS.cdb.relationships = { version = 9, npcs = {}, players = {
@@ -496,7 +496,7 @@ T.run("identity: saved data, version 9: GUIDs of older files are not trusted, ba
 	T.eq(d.players["Fay-Stormrage"].seen.guid, B1, "another valid one is kept")
 	T.eq(Count(d.players), 6, "no person was dropped for it")
 	-- a newer file is read only and left intact
-	NS.cdb.relationships = { version = 10, npcs = {}, players = { ["Aldric-Stormrage"] = { user = {}, seen = Seen(A1), future = 1 } } }
+	NS.cdb.relationships = { version = 11, npcs = {}, players = { ["Aldric-Stormrage"] = { user = {}, seen = Seen(A1), future = 1 } } }
 	R.readOnly = false
 	R:Sanitize()
 	T.ok(R.readOnly and NS.cdb.relationships.players["Aldric-Stormrage"].future == 1, "a newer version is read only and intact")

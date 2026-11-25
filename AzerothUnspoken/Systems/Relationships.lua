@@ -135,7 +135,7 @@ local Engine, Traits, Compat = NS.Engine, NS.Traits, NS.Compat
 local R = NS:RegisterModule("relations")
 NS.Relationships = R
 
-R.VERSION = 9                  -- forma dei dati in AzerothUnspokenCharacterDB.relationships (2: user/seen, #107; 3: met, race, #214; 4: promises, marks, oathT, #216; 5: favour, favourT, favourN, quests, nick, #217; 6: towns, town, heard, rival, #218; 7: foe, home, town betray/host/foe, #213; 8: pets, letterT, mourned, letter, #220; 9: seen.guid of players, #112)
+R.VERSION = 10                 -- forma dei dati in AzerothUnspokenCharacterDB.relationships (2: user/seen, #107; 3: met, race, #214; 4: promises, marks, oathT, #216; 5: favour, favourT, favourN, quests, nick, #217; 6: towns, town, heard, rival, #218; 7: foe, home, town betray/host/foe, #213; 8: pets, letterT, mourned, letter, #220; 9: seen.guid of players, #112; 10: romance, beloved, ADR 0061)
 R.MAX_NPCS = 1000
 R.COMPACT_NPCS = 900           -- dopo una compattazione se ne tengono 900
 R.MAX_PLAYERS = 300
@@ -491,6 +491,8 @@ function R:RegisterData(def)
 			if type(v.label) == "string" then cr.vow.label = v.label end
 			if IsNumber(v.variants) and v.variants >= 1 then cr.vow.variants = math.floor(v.variants) end
 		end
+		-- active romance (ADR 0061): the rest of the block belongs to Systems/Romance.lua
+		if NS.Romance then NS.Romance:Merge(rm) end
 	end
 	-- N5 (#217): favours (a template with the id of an existing one replaces it, so a pack can tune or add one)
 	local fv = def.favours
@@ -1246,6 +1248,8 @@ local function CleanRecord(rec, kind)
 		if type(rival) == "table" and IsNumber(rival.npc) and rival.npc > 0 and IsNumber(rival.t) and rival.t > 0 then
 			out.rival = { npc = math.floor(rival.npc), t = Past(rival.t) }
 		end
+		-- active romance (ADR 0061, version 10): the stage with this NPC and its times (Systems/Romance.lua)
+		out.romance = R.CleanRomance and R.CleanRomance(rec.romance) or nil
 		local t = rec.today
 		-- i contatori di un giorno passato non servono più: Increment li sostituisce alla prossima interazione (#52)
 		if type(t) == "table" and IsNumber(t.day) and math.floor(t.day) == Day(Now())
@@ -1391,6 +1395,8 @@ function R:Sanitize()
 		NS.Diagnostics:Error("relations", ("relationships.version %d > %d: sola lettura"):format(v, self.VERSION))
 		return 0
 	end
+	-- version 10 (ADR 0061): `romance` and `beloved` start absent; R.SanitizeRomance (Systems/Romance.lua) turns a vow of
+	-- an older version into the stage `vowed` (one beloved, the others `past`).
 	-- versions 2 to 7 need no migration of NPC records: the fields of later versions (met, race: 3; promises, marks,
 	-- oathT: 4; favour, nick, quests: 5, #217; towns, town, heard, rival: 6, #218; foe, home: 7, #213; pets, letterT,
 	-- mourned, letter: 8, #220) start absent and are cleaned below. Version 9 (#112) adds `seen.guid` to players: it
@@ -1413,6 +1419,8 @@ function R:Sanitize()
 		if clean and key == k then players[key] = clean else dropped = dropped + 1 end
 	end
 	d.npcs, d.players = npcs, players
+	-- active romance (ADR 0061): version 10 turns the vows of ADR 0037 into stages and keeps one beloved
+	if R.SanitizeRomance then dropped = dropped + R.SanitizeRomance(d, npcs, v) else d.beloved = nil end
 	-- #112: two people never share a GUID: in a file that says they do (hand edited, or copied) the first in name order
 	-- keeps it and the others lose it, so a GUID always leads to one person
 	local owners, order = {}, {}
@@ -1661,8 +1669,9 @@ function R:CompactNPCs()
 		-- N5 (#217): nor those with an open favour or who gave a nickname
 		-- N1 (#213): nor those who keep a grudge, nor the host of the hearth
 		local home = d.home and d.home.npc == id
+		-- active romance (ADR 0061): nor those with a romance
 		if not (rec.label or rec.note or rec.tags or rec.feeling or rec.oathT or promised[id] or rec.favour or rec.nick
-			or rec.foe or home) then
+			or rec.foe or home or rec.romance) then
 			table.insert(list, { id = id, f = AxisValue(rec, "familiarity"), t = rec.last or 0 })
 		end
 	end
@@ -1883,6 +1892,8 @@ function R:RecordNPC(npcID, name, source, uncounted)
 	self:CompactNPCs()
 	AfterChange(self, "npc", rec, old)
 	if warmed and d.npcs[npcID] == rec then self:Vow(npcID, rec) end
+	-- active romance (ADR 0061): the stage may move, a waiting jealousy of the beloved is told
+	if self.RomanceMet and d.npcs[npcID] == rec then self:RomanceMet(npcID, rec) end
 	local _, after = self:Disposition(self:Axes(rec))
 	if after ~= before and d.npcs[npcID] == rec then self:LevelChanged(npcID, rec, before, after) end
 	self:Changed()
@@ -2048,13 +2059,17 @@ end
 ---The top of the romance: attraction at `romance.vow.attraction` or more and the derived label `romance.vow.label`. A
 ---private vow, once per NPC (rec.noted.vow): a permanent journal memory with no name, and one line of the private
 ---narrator when the moment allows it (narrator on, not paused, not in combat, no invasive screen). Never chat.
+---Active romance (ADR 0061): with the romance popup at hand the vow is offered as a moment instead (R:RomanceHoldsVow);
+---`popup` is that moment's choice.
 ---@param npcID integer
 ---@param rec AURelationRecord
+---@param popup? boolean the player made the vow in the romance popup
 ---@return boolean made
-function R:Vow(npcID, rec)
+function R:Vow(npcID, rec, popup)
 	local v = self.config.romance.vow
 	if (rec.noted and rec.noted.vow) or AxisValue(rec, "attraction") < v.attraction
 		or DerivedOf(self, rec) ~= v.label then return false end
+	if not popup and self.RomanceHoldsVow and self:RomanceHoldsVow(npcID) then return false end
 	rec.noted = rec.noted or {}
 	rec.noted.vow = true
 	if NS.LivingMemory and NS.LivingMemory.Record then
@@ -2067,6 +2082,7 @@ function R:Vow(npcID, rec)
 		and Compat.SafeCall("UnitAffectingCombat", "player") ~= true then
 		NS.Narrator:Notice(NS:L("rel_vow_" .. ((rec.count or 0) % v.variants + 1), self:DisplayName("npc", npcID)))
 	end
+	if self.RomanceVowed then self:RomanceVowed(npcID, rec) end
 	return true
 end
 
@@ -4184,6 +4200,8 @@ function R:Context(ctx, extra)
 	if self.HostilityContext then self:HostilityContext(ctx) end
 	-- N8 (#220): the pet out now ({pet}, petMood, petStage, petKind; no person needed)
 	if self.CompanionContext then self:CompanionContext(ctx) end
+	-- active romance (ADR 0061): the night of romance (no person needed)
+	if self.RomanceWorldContext then self:RomanceWorldContext(ctx) end
 	local kind, key, rec = self:Subject(ctx, extra)
 	if not rec then
 		ctx.isKnown, ctx.relTraits = false, EMPTY
@@ -4206,6 +4224,8 @@ function R:Context(ctx, extra)
 		self:RivalContext(ctx, key, rec)
 		-- N1 (#213): the grudge of an NPC the character attacked
 		if self.FoeContext then self:FoeContext(ctx, rec) end
+		-- active romance (ADR 0061): the stage, the beloved, the jealousy
+		if self.RomanceContext then self:RomanceContext(ctx, key, rec) end
 	end
 	-- N3 (#215): the character made the private vow to this NPC (the condition relVowed)
 	ctx.relVowed = kind == "npc" and type(rec.noted) == "table" and rec.noted.vow == true or nil

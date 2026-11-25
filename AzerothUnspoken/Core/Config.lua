@@ -123,6 +123,9 @@ Config.CHAT_LIMITS = {
 ---@field hostilityNotices boolean the private narrator tells an attack remembered, a betrayal seen, guest-right broken, the return home (on, #213)
 ---@field companion boolean the companion pet's lines (bond, mood, call, dismissal) and the grief for it (on, #220)
 ---@field letters boolean an NPC you are close to and have not met for weeks writes a letter to the journal (on, #220)
+---@field romanceActive boolean active romance: flirt answers in the ambient dialogue and the romance moments; needs the attraction axis (on, ADR 0061)
+---@field romanceTone integer the allowed tone of romance: 1 Courteous, 2 Intimate, 3 Explicit (only with romanceAdult and the 18+ pack) (1, ADR 0061)
+---@field romanceAdult boolean the 18+ consent of explicit romance texts, in the account; on only in two steps (off, ADR 0061)
 
 ---@class AUSettings
 ---@field locale string codice di due lettere registrato con RegisterLanguage
@@ -220,6 +223,11 @@ Config.defaults = {
 		-- #220: the companion pet (its bond, mood, call, dismissal and death) and the letters of NPCs you are close to
 		companion = true,
 		letters = true,
+		-- ADR 0061: active romance (on: turning the attraction axis on is the opt-in), its tone (Courteous) and the 18+
+		-- consent of explicit texts (off; two steps to turn on; kept in the account, since age belongs to the player)
+		romanceActive = true,
+		romanceTone = 1,
+		romanceAdult = false,
 	},
 	-- Interlocutore (S6c): leggere il profilo pubblico Total RP 3 degli altri giocatori è un consenso a parte
 	interlocutor = {
@@ -311,7 +319,7 @@ Config.characterDefaults = {
 	-- Living Memory (S6): ricordi, luoghi e flag. La forma e le migrazioni interne sono in Systems/LivingMemory.lua
 	memories = { version = 2, nextId = 1, entries = {}, places = {}, flags = {}, stats = {} },
 	-- Relazioni (S6b): NPC per npcID e giocatori scelti dall'utente. Forma e pulizia in Systems/Relationships.lua
-	relationships = { version = 9, npcs = {}, players = {} },
+	relationships = { version = 10, npcs = {}, players = {} },
 	-- Story Arcs (S9): lo stato di ogni arco; forma e migrazioni interne in Systems/StoryArcs.lua
 	arcs = { version = 1, items = {}, stats = {} },
 	-- Songbook (#122, ADR 0044): the literary pieces heard and the user's marks, ids and times only (never a text);
@@ -329,6 +337,7 @@ Config.rules = {
 	intensity = { min = 0, max = 100, integer = true },
 	proseDepth = { enum = { "natural", "literary", "elevated" } },
 	["arcs.maxActive"] = { min = 1, max = 2, integer = true },
+	["relations.romanceTone"] = { min = 1, max = 3, integer = true },
 	["chat.mode"] = { enum = Config.CHAT_MODES },
 	["chat.channel"] = { enum = Config.CHAT_CHANNELS },
 	["chat.pendingSeconds"] = { min = 0, max = 120 },
