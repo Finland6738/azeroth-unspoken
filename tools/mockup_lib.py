@@ -434,14 +434,16 @@ ICONS = {
 }
 
 def _material(name):
-    """A Material Symbols path of tools/make_media.py (MATERIAL), as a filled glyph of the 24-unit icon box."""
-    import importlib.util
-    spec = importlib.util.spec_from_file_location("make_media", os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                                                                             "make_media.py"))
-    mm = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mm)
+    """A Material Symbols path of tools/make_media.py (MATERIAL), as a filled glyph of the 24-unit icon box.
+
+    The literal is read with ast, not by importing make_media: that module needs Pillow, which the CI's test job does
+    not install (only lupa), and the mockup checks must run there."""
+    import ast
+    src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "make_media.py"), encoding="utf-8").read()
+    material = next(ast.literal_eval(node.value) for node in ast.parse(src).body
+                    if isinstance(node, ast.Assign) and any(getattr(t, "id", None) == "MATERIAL" for t in node.targets))
     return (f'<path transform="scale(0.025) translate(0 960)" fill="currentColor" stroke="none" fill-rule="evenodd" '
-            f'd="{mm.MATERIAL[name]}"/>')
+            f'd="{material[name]}"/>')
 
 
 ICONS["share"] = _material("share")
