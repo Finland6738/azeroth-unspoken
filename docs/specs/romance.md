@@ -6,9 +6,8 @@
 > which extends [ADR 0037](../adr/0037-romance-with-npcs-opposite-sex-and-the-vow.md). Steps: [ROADMAP.md](../../ROADMAP.md),
 > section "Active romance".
 >
-> **Status: R1 built (the engine, `Systems/Romance.lua`, `Data/Romance.lua`).** No flirt answer and no moment is offered
-> until the interface of R2 says it can draw them; the vow of ADR 0037 keeps happening by itself until then. The
-> differences R1 settled are listed in point 21. The mockups are in [`docs/design/mockups/`](../design/mockups/README.md)
+> **Status: R1-R3 built (the engine, the interface, the lines of tiers 1-2).** The tier-3 pack is step R4. What each step
+> settled is listed in points 21 (R1), 22 (R2) and 23 (R3). The mockups are in [`docs/design/mockups/`](../design/mockups/README.md)
 > (`romance-*.html`, PNGs in `png/`); they are proposals drawn on the addon's real widgets and tokens, marked *PROPOSED*.
 
 ## 1. What this adds, in one paragraph
@@ -523,3 +522,24 @@ The engine (`Systems/Romance.lua`, `NS.Romance`) follows this spec, with these d
 - **The command** `/au romance` is a line of the group *Character* of `/au help`, not a group of its own.
 - **Settings > Romance** sits right after *Privacy*; with the attraction axis off, *Active romance* is disabled and says
   what it needs; *Explicit* is disabled until the consent is on.
+
+## 23. What step R3 settled
+
+- **The pack** `base_romance`: 133 rules in `Data/RegistryRomance.lua` (70 NPC replies: any NPC at both tiers, the seven
+  temperaments, the five roles, the kind of flirt, the beloved, and an NPC who knows of another beloved; 11 jealous
+  openings; 32 scenes: every moment and phase, the date's four options; 20 thoughts), 387 texts per language in
+  `AzerothUnspoken_enUS|itIT/Romance.lua`, written by five Opus writers on one brief and checked by the addon's
+  validator. Ids `rom.<what>.<tier or phase>.<who>`. `romance_inner` has a chance of 70 and a pause of 300 s.
+- **The flirt answers**: 45 in `Data/RomanceFlirts.lua` (looks, words, small gifts found on the road, walks, invitations,
+  ten by role, five intimate, four moments; the date's evening answer first). A pack turned off offers no flirt either.
+- **The NPC of a line**: `Romance:Person` puts the NPC's name (`{other}`) and sex (`{og:}`) in the context of every
+  romance line; without the client's reading the sex is the other one of the character's (romance is only with the
+  opposite sex).
+- **The popup** colours the NPC's quoted words in the NPC's voice (point 11.2; `RomanceFrame.Voiced`), and draws again
+  on a change of theme.
+- **The validator** measures a scene (`romance_scene`, `Validator.READ_ONLY_EVENTS`) against the READING limit (600
+  bytes), not the narrator's emote: the popup is read, never offered to chat.
+- **The children** left out: the npcIDs of Lil Timmy and of the Children's Week orphans (Classic Era numbers, to verify
+  in game). The curated register has none.
+- **Not written**: the thought at an inn at night about the beloved (no event fires it yet; the thoughts follow a
+  flirt only) and new journal keys (R1's are enough for the five memories).

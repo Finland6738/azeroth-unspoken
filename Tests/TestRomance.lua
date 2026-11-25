@@ -11,6 +11,9 @@ local NS = ...
 local Engine, Config, R, I, N, LM = NS.Engine, NS.Config, NS.Relationships, NS.Interlocutor, NS.NPCAlive, NS.LivingMemory
 local Ro, Validator, Narrator, Director = NS.Romance, NS.Validator, NS.Narrator, NS.Director
 
+-- R3: the addon's own romance content (base_romance) stays out: these tests draw from their own test packs only
+NS.db.disabledPacks.base_romance = true
+
 local MALE, FEMALE = 2, 3
 local DAY = 86400
 local LYRA, MARA, ILSA = 70001, 70002, 70003   -- curated test NPCs (innkeepers; Lyra a cheerful Orc)

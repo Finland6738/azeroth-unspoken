@@ -116,6 +116,8 @@ Data\RegistryDialogues.lua
 Data\Dialogues.lua
 Data\RegistryArcs.lua
 Data\Arcs.lua
+Data\RegistryRomance.lua
+Data\RomanceFlirts.lua
 Data\itIT\RelationsUI.lua
 Data\enUS\RelationsUI.lua
 Data\itIT\ContextUI.lua

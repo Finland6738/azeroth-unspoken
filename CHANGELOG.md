@@ -8,6 +8,18 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### Active romance, step R3: the lines (ADR 0061)
+
+- **Added**: the romance lines of tiers 1 (Courteous) and 2 (Intimate), in Italian and English, pack `base_romance`:
+  **45 flirt answers** (a look, a compliment, a small gift found on the road, a walk, an invitation, some by the NPC's
+  trade, a few intimate ones, the moments); the NPC's **replies** (welcome, cold, a gentle refusal) by temperament and
+  trade; the beloved's **jealous openings**; the **scenes** of the romance window for the declaration, each kind of date
+  and the vow; private **thoughts** after a flirt. 133 lines, 387 texts per language. Children are never part of a
+  romance (`romance.exclude`).
+- **Changed**: the romance window colours the NPC's quoted words in the NPC's voice; the NPC's name and sex reach every
+  romance line (`{other}`, `{og:}`); a pack turned off offers no flirt answers either.
+- **Not verified in the game client**: see section RC of the [G1 checklist](docs/G1_checklist.en.md).
+
 ### Active romance, step R2: the interface (ADR 0061)
 
 - **Added**: flirt answers in the NPC dialogue window, after the usual ones (numbered 4 and 5, with new keys *NPC answer 4*

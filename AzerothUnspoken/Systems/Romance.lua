@@ -695,8 +695,10 @@ function Ro:Flirts(who, ctx, s)
 	local cap = self:TierCap(rec, ctx)
 	ctx.romanceNight = self:Night(ctx)
 	local adult = self:AdultOn()
+	local disabled = NS.db and NS.db.disabledPacks or EMPTY
 	local function Fits(f)
-		if f.romance18 and not adult then return false end
+		-- a pack turned off in Settings > Packs offers no flirt either, like its lines (R3)
+		if disabled[f.pack] or (f.romance18 and not adult) then return false end
 		if not (IsNumber(f.tier) and f.tier <= cap) or not InRange(f, st) then return false end
 		if f.roles and not f.roles[who.role] then return false end
 		return f.when == nil or Engine.SafeMatch(f.when, ctx)
@@ -944,6 +946,31 @@ function Ro:LineContext(ctx, rec, fields)
 	return ctx
 end
 
+---The NPC of a romance line, in its context: the name ({other}) and the sex ({og:m|f}), so the texts can name them and
+---agree with them (R3). Romance is only with the opposite sex (ADR 0037): without the client's reading of the NPC, its
+---sex is the other one of the character's.
+---@param ctx table
+---@param npcID integer
+---@param rec? AURelationRecord
+---@return table ctx
+function Ro:Person(ctx, npcID, rec)
+	if (ctx.otherName == nil or ctx.otherName == "") and rec and type(rec.name) == "string" and rec.name ~= "" then
+		ctx.otherName = rec.name
+	end
+	if ctx.otherSex ~= "male" and ctx.otherSex ~= "female" then
+		local kin = R.session.kin and R.session.kin[npcID]
+		if kin and kin.sex == 2 then
+			ctx.otherSex = "male"
+		elseif kin and kin.sex == 3 then
+			ctx.otherSex = "female"
+		else
+			local mine = ctx.sex or ((SafeCall("UnitSex", "player") == 3) and "female" or "male")
+			ctx.otherSex = mine == "female" and "male" or "female"
+		end
+	end
+	return ctx
+end
+
 ---The NPC's reply to a flirt, a line of `npcd_romance_<outcome>` at one tier (nil when there is none).
 ---@param who AUDialogueWho
 ---@param flirt table
@@ -954,6 +981,7 @@ function Ro:Reply(who, flirt, outcome, ctx)
 	local rec = R:Get("npc", who.npcID)
 	if not rec then return nil end
 	self:LineContext(ctx, rec, { romanceKind = flirt.kind, romanceOutcome = outcome })
+	self:Person(ctx, who.npcID, rec)
 	local tier = ctx.romanceTier
 	for t = tier, 1, -1 do
 		ctx.romanceTier = t
@@ -972,6 +1000,7 @@ function Ro:JealousOpen(who, ctx)
 	local ok, _, rec = self:Gate(who.npcID, { calm = false })
 	if not ok or who.npcID ~= self:Beloved() or not self:IsJealous(rec) then return nil end
 	self:LineContext(ctx, rec, { romanceTier = 1 })
+	self:Person(ctx, who.npcID, rec)
 	local e = Engine:PickEntry(self.JEALOUS_OPEN, ctx, "say")
 	return e and { text = e.text, id = e.id } or nil
 end
@@ -986,6 +1015,7 @@ function Ro:Inner(npcID, outcome, kind)
 	local ctx = { romanceInner = true, relationSubject = { kind = "npc", id = npcID }, romanceOutcome = outcome,
 		romanceKind = kind, romanceStage = self.Stage(rec) }
 	ctx.romanceTier = self:PickTier(math.min(self:AllowedTier(), self:SituationTier(rec, NS:BuildContext())))
+	self:Person(ctx, npcID, rec)
 	NS.Director:Offer(self.INNER, ctx)
 end
 
@@ -1091,6 +1121,7 @@ function Ro:Scene(npcID, moment, phase, ctx, date)
 	local tier = date and date.tier or self:PickTier(self:TierCap(rec, ctx))
 	self:LineContext(ctx, rec, { romanceMoment = moment, romancePhase = phase, romanceDate = date and date.id or nil,
 		romanceTier = tier })
+	self:Person(ctx, npcID, rec)
 	for t = tier, 1, -1 do
 		ctx.romanceTier = t
 		local e = Engine:PickEntry(self.SCENE, ctx, "say")

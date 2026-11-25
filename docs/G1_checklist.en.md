@@ -727,6 +727,26 @@ If something goes wrong, open an issue with `/au debug` and a screenshot.
       ends it; the journal keeps the ending with no name.
 - **RB.6 · The keys.** In the game's Keybindings, *NPC dialogue: answer 4* and *answer 5* exist (unbound).
 
+## RC: active romance, step R3, the lines (ADR 0061)
+
+Built and tested outside the game only. Attraction axis on (`/au relationships attraction on`), *Active romance* on. If a
+line reads wrong (a word in the wrong gender in Italian, a reply that does not fit what you did, anything too much for
+its tone), report its words with a screenshot (`/au narrator history` lists the recent lines).
+
+- **RC.1 · A flirt answer.** Talk to an NPC of the opposite sex you know (Acquaintance or above).
+    - **Expect:** sometimes one flirt answer with the heart after the usual ones (two from courtship on), worded as
+      something you do; after a click, the NPC's reply as the dialogue's line, in their voice and trade, and now and then
+      a private thought in the narrator box. Nothing in chat.
+    - **Report:** a label cut in the button; a reply that does not fit the NPC (a guard who sounds like an innkeeper).
+- **RC.2 · The popup's scenes.** Through RB.3 and RB.4: the declaration, a date (walk, supper, stars, a night), the vow.
+    - **Expect:** a scene of two to five sentences for each step, the NPC's name in it, the NPC's quoted words in the NPC's
+      colour; a night's scene ends on a closing line before the fade.
+    - **Report:** a scene that does not fit the option chosen; Italian agreement wrong for a woman or a man character.
+- **RC.3 · Jealousy.** After the vow, flirt with someone else in the same town, then talk to your beloved.
+    - **Expect:** the beloved opens with a hurt or cool line once (for a few days), never a threat.
+- **RC.4 · Children.** Target Lil Timmy in Stormwind City (or an orphan during Children's Week) and `/au who`.
+    - **Expect:** never a flirt answer. **Report:** the npcID `/au who` shows, if it is not 8666, 14305 or 14444.
+
 ## Summary form (copy and fill in)
 
 ```

@@ -10,6 +10,9 @@ local Engine, Config, R, I, N, LM = NS.Engine, NS.Config, NS.Relationships, NS.I
 local Ro, RF, DF, Theme = NS.Romance, NS.RomanceFrame, NS.DialogueFrame, NS.Theme
 local Narrator, Director = NS.Narrator, NS.Director
 
+-- R3: the addon's own romance content (base_romance) stays out: these tests draw from their own test packs only
+NS.db.disabledPacks.base_romance = true
+
 local MALE, FEMALE = 2, 3
 local DAY = 86400
 local MARA, LYRA = 70002, 70001

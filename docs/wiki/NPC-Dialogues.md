@@ -38,7 +38,7 @@ Click it to open the dialogue. If you ignore it, it goes away by itself after ab
 
 The dialogue closes by itself if combat starts, you die, you change zone, you turn to another NPC, or you do not answer for two minutes.
 
-**Romantic answers.** With the **Attraction axis** on (see [[Relationships|Relationships#romance]]), one or two extra answers may come after the usual ones, numbered 4 and 5, with an NPC of the opposite sex you know well enough: a heart before the words, a coral (Nebula) or brick red (Aurora) border and text, and a tooltip that says the NPC may welcome it, stay cold or refuse. They are always extra: the usual answers stay, and nobody is ever made to flirt. After the NPC's reply they leave the conversation. An answer that starts a moment (*Ask for a word alone*) closes the dialogue and opens the romance window. The romance lines come with the next update: until then no romantic answer appears.
+**Romantic answers.** With the **Attraction axis** on (see [[Relationships|Relationships#romance]]), one or two extra answers may come after the usual ones, numbered 4 and 5, with an NPC of the opposite sex you know well enough: a heart before the words, a coral (Nebula) or brick red (Aurora) border and text, and a tooltip that says the NPC may welcome it, stay cold or refuse. They are always extra: the usual answers stay, and nobody is ever made to flirt. After the NPC's reply they leave the conversation. An answer that starts a moment (*Ask for a word alone*) closes the dialogue and opens the romance window. The NPC's reply fits their temperament (cheerful, gruff, stoic...) or their trade (innkeeper, guard, merchant, trainer, quest giver).
 
 ## When there is no dialogue
 

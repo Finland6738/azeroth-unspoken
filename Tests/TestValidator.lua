@@ -356,11 +356,11 @@ T.run("il database di base non ha né errori né avvisi", function()
 	for _, id in ipairs(Engine.packOrder) do
 		if id:sub(1, 5) == "base_" or Engine.packs[id].region then table.insert(packs, id) end
 	end
-	T.eq(#packs, 68, "diciannove pacchetti di base (quattordici di frasi, cornici, vocabolario, temi e regia #90, il mondo di R3, le emozioni di R4, le situazioni composte #100 e i monologhi #99) e quarantanove regionali (#101; quattro della fetta di prova, #102; otto della W01; tredici della W02; diciassette della W03; cinque della W04)")
+	T.eq(#packs, 69, "venti pacchetti di base (quindici di frasi, con il romanticismo attivo di R3, cornici, vocabolario, temi e regia #90, il mondo di R3, le emozioni di R4, le situazioni composte #100 e i monologhi #99) e quarantanove regionali (#101; quattro della fetta di prova, #102; otto della W01; tredici della W02; diciassette della W03; cinque della W04)")
 	local r = Validator:Run({ packs = packs })
 	Clean(r, "database di base")
 	-- the 8 monologues (#99) have no texts of their own: their 23 parts have two variants each
-	T.eq(r.stats.phrases, 28410, "28410 frasi (+ 11 della nemesi, N7; + 23 del compagno animale e del lutto, N8; + 53 della seconda parte di N9; + 583 della fetta di prova, #102; + 1006 della W01; + 1110 della W02; + 1081 della W03; + 1223 della W04; + 1335 della W05; + 1226 della W06; + 1121 della W07; + 1259 della W08; + 1121 della W09; + 1093 della W10; + 1287 della W11; + 1263 della W12; + 1122 della W13; + 1138 della W14; + 1196 della W15; + 1223 della W16; + 1271 della W17; + 1320 della W18; + 1330 della W19; + 1319 della W20; + 1227 della W21; + 1214 della W22)"); T.ok(r.stats.variants >= 4 * (1266 - 8), "almeno due varianti IT e due EN per frase")
+	T.eq(r.stats.phrases, 28543, "28543 frasi (+ 11 della nemesi, N7; + 23 del compagno animale e del lutto, N8; + 53 della seconda parte di N9; + 583 della fetta di prova, #102; + 1006 della W01; + 1110 della W02; + 1081 della W03; + 1223 della W04; + 1335 della W05; + 1226 della W06; + 1121 della W07; + 1259 della W08; + 1121 della W09; + 1093 della W10; + 1287 della W11; + 1263 della W12; + 1122 della W13; + 1138 della W14; + 1196 della W15; + 1223 della W16; + 1271 della W17; + 1320 della W18; + 1330 della W19; + 1319 della W20; + 1227 della W21; + 1214 della W22; + 133 del romanticismo attivo, R3)"); T.ok(r.stats.variants >= 4 * (1266 - 8), "almeno due varianti IT e due EN per frase")
 end)
 
 T.run("/au validate", function()
