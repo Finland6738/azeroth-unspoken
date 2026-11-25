@@ -8,6 +8,10 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+## [0.3.4] - 2026-11-25
+
+A small development preview on top of 0.3.3 that completes active romance (ADR 0061) with its last step: the optional **18+ pack** `AzerothUnspoken_Romance18`, a few mature, never graphic samples of the tone *Explicit* in Italian and English. It is a second download, `AzerothUnspoken_Romance18-0.3.4.zip`, on the GitHub release only, never on CurseForge, and it loads only with the two-step 18+ consent on and the tone *Explicit*. Settings > Romance gains a short note on where the pack comes from, with no link. Nothing of the pack has been tried in the game client yet.
+
 ### Settings: where the 18+ pack comes from
 
 - **Added**: under the *18+ pack* row of Settings > Romance, a short note in both languages: "An optional 18+ romance pack exists for adults; it is not distributed here. See the project's GitHub page for details." It is plain text with no link; Ko-fi stays the only link in the addon. The same sentence goes in the CurseForge description.
@@ -3627,7 +3631,8 @@ Tools for the owner to run in the real client, so that the decisions D3 (memory 
 - A pack that registers a key that already exists (script, NPC, place, arc) replaces the base one without a warning ([#69](https://github.com/Finland6738/azeroth-unspoken/issues/69)).
 - License to be defined ([issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2)).
 
-[Unreleased]: https://github.com/Finland6738/azeroth-unspoken/compare/v0.3.3...main
+[Unreleased]: https://github.com/Finland6738/azeroth-unspoken/compare/v0.3.4...main
+[0.3.4]: https://github.com/Finland6738/azeroth-unspoken/compare/v0.3.3...v0.3.4
 [0.3.3]: https://github.com/Finland6738/azeroth-unspoken/compare/v0.3.2...v0.3.3
 [0.3.2]: https://github.com/Finland6738/azeroth-unspoken/compare/v0.3.1...v0.3.2
 [0.3.1]: https://github.com/Finland6738/azeroth-unspoken/compare/v0.3.0...v0.3.1
