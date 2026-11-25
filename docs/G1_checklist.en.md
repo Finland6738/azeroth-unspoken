@@ -701,6 +701,32 @@ step R2, so for now almost nothing changes on screen. If something goes wrong, o
 - **RA.3 · An older addon.** Optional: copy the saved variables, install the previous release, log in.
     - **Expect:** the relationships are read but not changed (a newer version), as for every other data block.
 
+## RB: active romance, step R2, the interface (ADR 0061)
+
+Built and tested outside the game only. Turn the attraction axis on first (`/au relationships attraction on`). The romance
+lines come with step R3, so for now no flirt answer appears in the dialogues; the window uses a few plain lines of its own.
+If something goes wrong, open an issue with `/au debug` and a screenshot.
+
+- **RB.1 · Settings > Romance.** Open the settings and scroll past Privacy.
+    - **Expect:** *Active romance* on, *Tone* Courteous, *Explicit texts (18+)* off, *18+ pack* not installed; with the
+      attraction axis off, the switch greyed out and *needs the Attraction axis*.
+    - **Report:** a screenshot per theme; a row cut or overlapping.
+- **RB.2 · The 18+ consent.** Click *Explicit texts (18+)*, read, click again after two seconds; then once more.
+    - **Expect:** the game's confirmation dialog with the warning; a quick double click does nothing; on, then off at once,
+      and the tone back to Intimate at most.
+- **RB.3 · The romance window.** With an NPC of the opposite sex you know well (Friend, attraction 50 or more), target
+  them and type `/au romance`.
+    - **Expect:** the window over the narrator and the dialogue, the heart and *Romance · <name>*, *addon ambient dialogue*,
+      a plain line, *Speak your heart* on the right and *Not yet*. Esc, the x and a fight close it with nothing changed.
+    - **Report:** a screenshot per theme; whether Esc also closes something else; where the window opens.
+- **RB.4 · A date at an inn at night.** After a declaration, at an inn after 21:00, `/au romance` again.
+    - **Expect:** two or three options with their tone chip and *Not tonight*; with Tone Intimate an Intimate option; after
+      it, the scene fades out over a second and a half to *Later.* (at once with Animations off).
+- **RB.5 · The Relationships detail.** Open your beloved's detail.
+    - **Expect:** *Romance: Declared.* (or Vowed) and *Your beloved.*; the red **End the romance** asks first and, confirmed,
+      ends it; the journal keeps the ending with no name.
+- **RB.6 · The keys.** In the game's Keybindings, *NPC dialogue: answer 4* and *answer 5* exist (unbound).
+
 ## Summary form (copy and fill in)
 
 ```

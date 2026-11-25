@@ -38,6 +38,9 @@ if GetLocale and select(2, pcall(GetLocale)) == "itIT" then
 	BINDING_NAME_AZEROTHUNSPOKEN_ANSWER1 = "Dialogo con l'NPC: risposta 1"
 	BINDING_NAME_AZEROTHUNSPOKEN_ANSWER2 = "Dialogo con l'NPC: risposta 2"
 	BINDING_NAME_AZEROTHUNSPOKEN_ANSWER3 = "Dialogo con l'NPC: risposta 3"
+	-- ADR 0061: the flirt answers come after the neutral ones, as 4 and 5
+	BINDING_NAME_AZEROTHUNSPOKEN_ANSWER4 = "Dialogo con l'NPC: risposta 4"
+	BINDING_NAME_AZEROTHUNSPOKEN_ANSWER5 = "Dialogo con l'NPC: risposta 5"
 	-- ADR 0059: held, it opens the emote wheel; released, it plays the emote under the cursor (the key ships unbound)
 	BINDING_NAME_AZEROTHUNSPOKEN_WHEEL = "Ruota delle emote (tieni premuto, rilascia per scegliere)"
 	BINDING_NAME_AZEROTHUNSPOKEN_WHEEL_NEXT = "Ruota delle emote: preset successivo"
@@ -54,6 +57,8 @@ else
 	BINDING_NAME_AZEROTHUNSPOKEN_ANSWER1 = "NPC dialogue: answer 1"
 	BINDING_NAME_AZEROTHUNSPOKEN_ANSWER2 = "NPC dialogue: answer 2"
 	BINDING_NAME_AZEROTHUNSPOKEN_ANSWER3 = "NPC dialogue: answer 3"
+	BINDING_NAME_AZEROTHUNSPOKEN_ANSWER4 = "NPC dialogue: answer 4"
+	BINDING_NAME_AZEROTHUNSPOKEN_ANSWER5 = "NPC dialogue: answer 5"
 	BINDING_NAME_AZEROTHUNSPOKEN_WHEEL = "Emote wheel (hold, release to choose)"
 	BINDING_NAME_AZEROTHUNSPOKEN_WHEEL_NEXT = "Emote wheel: next preset"
 end

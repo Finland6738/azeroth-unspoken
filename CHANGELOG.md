@@ -8,6 +8,22 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### Active romance, step R2: the interface (ADR 0061)
+
+- **Added**: flirt answers in the NPC dialogue window, after the usual ones (numbered 4 and 5, with new keys *NPC answer 4*
+  and *5*): a heart, the new voice colour `voice-romance` (coral in Nebula, brick red in Aurora) on the border and the
+  words, and a tooltip that says the NPC may welcome it, stay cold or refuse. The **romance window**
+  (`AzerothUnspokenRomance`): the declaration, a date (its options with their tone) and the vow, opened only by a moment's
+  answer or `/au romance` with the NPC targeted; Esc, the close box, a fight or a loading screen mean *Not now*, at no
+  cost; an Intimate scene fades to black (at once with Animations off). **Settings > Romance** after Privacy: Active
+  romance, the tone, the two-step 18+ consent and the state of the optional 18+ pack. The Relationships detail shows the
+  stage and, for the beloved, **End the romance** (a Dialog first). **`/au romance`** (in the Character group of
+  `/au help`): the stage with the target and its moment, `on|off`, `tone`, `adult on|off`, `end` (twice), `why`.
+- **Changed**: 33 theme tokens (six voices); the mockups of romance are built pages now, with README assets.
+- **Not verified in the game client**: see section RB of the [G1 checklist](docs/G1_checklist.en.md). The romance lines
+  (flirts, replies, scenes) come with step R3: until then no flirt answer appears and the window uses a few plain lines
+  of its own.
+
 ### Active romance, step R1: the engine (ADR 0061)
 
 - **Added**: `Systems/Romance.lua` and `Data/Romance.lua`, the engine of active romance with NPCs. The gates (the

@@ -419,6 +419,19 @@ local function BuildDetail()
 	end, "danger")
 	frame.dForget:SetPoint("BOTTOMLEFT", 176, 16)
 	W.Tooltip(frame.dForget, function() return NS:L("rel_forget_tip") end)
+	-- ADR 0061: the beloved's detail has End the romance (a danger button and a Dialog that says what happens)
+	frame.dEndRomance = W.FlatButton(frame, "", 200, 24, function()
+		local s = view.subject
+		local Ro = NS.Romance
+		if not (s and s.kind == "npc" and Ro and Ro:Beloved() == s.key) then return end
+		local c = Ro.config.breakup
+		frame.dialog:Ask({ title = NS:L("rel_rom_end_dlg"), text = NS:L("rel_rom_end_text", R:DisplayName("npc", s.key), c.restDays),
+			confirm = NS:L("rel_rom_end"), cancel = NS:L("dlg_cancel"), danger = true, onConfirm = function()
+				if Ro:BreakUp() then Say("rel_toast_romance_ended") end
+				RelationsFrame:Refresh()
+			end })
+	end, "danger")
+	W.Tooltip(frame.dEndRomance, function() return NS:L("rel_rom_end_tip") end)
 	frame.dDelete = W.FlatButton(frame, "", 200, 24, function()
 		local s = view.subject
 		if not s then return end
@@ -557,7 +570,7 @@ local function DetailWidgets()
 	local out = { frame.dTitle, frame.dSummary, frame.dUserTitle, frame.dLabelTitle, frame.dLabelBtn, frame.dCustom,
 		frame.dFeelingTitle, frame.dFeeling1, frame.dFeeling2, frame.dPreset, frame.dNoteTitle, frame.dNote,
 		frame.dTagsTitle, frame.dTags, frame.dTraitsTitle, frame.dSeenTitle, frame.dSeenLine, frame.dSeenFacts,
-		frame.dForget, frame.dDelete, frame.dBack, frame.dScope }
+		frame.dForget, frame.dDelete, frame.dBack, frame.dScope, frame.dEndRomance }
 	for _, b in pairs(frame.dTraitBtns) do table.insert(out, b) end
 	for _, row in ipairs(axisRows) do
 		for _, w in ipairs({ row.label, row.slider, row.value, row.minus, row.plus }) do table.insert(out, w) end
@@ -700,7 +713,10 @@ local function RefreshDetail()
 		local town = R:TownText(s.key, rec)
 		-- N1 (#213): the grudge, the hearth, a betrayal their town remembers
 		local foe = R:FoeText(s.key, rec)
+		-- ADR 0061: the stage of an active romance, and whether they are the beloved
+		local romance = NS.Romance and NS.Romance:Text(s.key, rec) or ""
 		local extra = {}
+		if romance ~= "" then table.insert(extra, romance) end
 		if vow ~= "" then table.insert(extra, vow) end
 		if promises ~= "" then table.insert(extra, promises) end
 		if favours ~= "" then table.insert(extra, favours) end
@@ -730,6 +746,13 @@ local function RefreshDetail()
 	if isPlayer then
 		frame.dForget:ClearAllPoints(); frame.dForget:SetPoint("BOTTOMLEFT", x, 16)
 		x = x + Fit(frame.dForget, frame.dForget:GetText(), 150, 210) + 8
+	end
+	-- ADR 0061: End the romance, only in the beloved's detail
+	local beloved = not isPlayer and NS.Romance and NS.Romance:Beloved() == s.key
+	frame.dEndRomance:SetShown(beloved == true)
+	if beloved then
+		frame.dEndRomance:ClearAllPoints(); frame.dEndRomance:SetPoint("BOTTOMLEFT", x, 16)
+		x = x + Fit(frame.dEndRomance, NS:L("rel_rom_end"), 150, 210) + 8
 	end
 	frame.dDelete:ClearAllPoints(); frame.dDelete:SetPoint("BOTTOMLEFT", x, 16)
 	Fit(frame.dDelete, NS:L("rel_delete"), 150, 210)

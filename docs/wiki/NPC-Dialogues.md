@@ -30,7 +30,7 @@ Click it to open the dialogue. If you ignore it, it goes away by itself after ab
 
 - The header always says **addon ambient dialogue** (a label that cannot be hidden): the conversation is made up by the addon, it is not the real NPC. The NPC's role and name are in the NPC voice's colour, with a bar of the same colour along the left edge.
 - Read the NPC's line.
-- Click one of the answers to reply (or press its number, 1 to 3: the keys are in the Keybindings).
+- Click one of the answers to reply (or press its number, 1 to 5: the keys are in the Keybindings).
 - Click **Close**, use the key again, or type `/au talk close` to end it.
 - Drag the window to move it. It tries not to cover the game's own windows.
 - **Esc** does not close it, on purpose: Esc also closes the game's own NPC windows (gossip, vendor, quests), and the dialogue must never take part in that. Use **Close**, the **x** in its header, the key or `/au talk close`.
@@ -38,7 +38,7 @@ Click it to open the dialogue. If you ignore it, it goes away by itself after ab
 
 The dialogue closes by itself if combat starts, you die, you change zone, you turn to another NPC, or you do not answer for two minutes.
 
-**Coming next: romantic answers.** With the **Attraction axis** on (see [[Relationships|Relationships#romance]]), a future update adds one or two extra answers after the usual ones, marked by a heart and a colour of their own, with an NPC of the opposite sex you know well enough. They are always extra: the usual answers stay, and nobody is ever made to flirt. The engine for them is in the addon already; the buttons are not, so the window still shows at most three answers.
+**Romantic answers.** With the **Attraction axis** on (see [[Relationships|Relationships#romance]]), one or two extra answers may come after the usual ones, numbered 4 and 5, with an NPC of the opposite sex you know well enough: a heart before the words, a coral (Nebula) or brick red (Aurora) border and text, and a tooltip that says the NPC may welcome it, stay cold or refuse. They are always extra: the usual answers stay, and nobody is ever made to flirt. After the NPC's reply they leave the conversation. An answer that starts a moment (*Ask for a word alone*) closes the dialogue and opens the romance window. The romance lines come with the next update: until then no romantic answer appears.
 
 ## When there is no dialogue
 

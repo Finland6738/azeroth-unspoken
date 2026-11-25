@@ -21,9 +21,9 @@ are plain grey stand-ins. The `proposed-*` pages are the UI review's proposals o
 - `png/`: the pages rendered to PNG. The wiki pages show them (see below).
 - [`interface-tour.gif`](interface-tour.gif): every window type, a few seconds each, shown near the top of the README.
 - [`narrator-demo.gif`](narrator-demo.gif): the narrator in action, from a forest at dusk to a line sent on confirmation.
-- `romance-*.html`: the **proposed** pages of active romance ([ADR 0061](../../adr/0061-active-romance-flirt-answers-an-affinity-table-one-beloved-and-three-tone-tiers.md),
-  spec [romance.md](../../specs/romance.md)), drawn by `tools/romance.py` on the same widgets with the proposed token
-  `voice-romance`. They carry a PROPOSED badge: nothing of them is built until steps R1-R2.
+- `romance-*.html`: the pages of active romance ([ADR 0061](../../adr/0061-active-romance-flirt-answers-an-affinity-table-one-beloved-and-three-tone-tiers.md),
+  spec [romance.md](../../specs/romance.md)), drawn by `tools/romance.py` on the same widgets with the token
+  `voice-romance`: proposals in step R0, built in step R2 (the romance lines on them are samples until step R3).
 - `tools/`: the generators. The design system and every window in both themes and both languages are in
   [docs/specs/mockups](../../specs/mockups/README.md), with a side-by-side comparison with the sister addon.
 

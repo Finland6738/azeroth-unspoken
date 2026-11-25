@@ -185,6 +185,17 @@ The panel's **Privacy** section has the three choices about what may leave your 
 
 See [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3]].
 
+## Romance
+
+Right after Privacy. Everything here needs the **Attraction axis** of [Relationships](#relationships): with it off, *Active romance* is greyed out and says so. See [[Relationships|Relationships#romance]].
+
+| Setting | Default | Where | What it does |
+|---|---|---|---|
+| Active romance | on | panel **Active romance**, `/au romance on\|off` | Romantic answers in the NPC dialogues and the romance window, with an NPC of the opposite sex you know well enough. |
+| Tone | Courteous | panel **Tone**, `/au romance tone` | *Courteous*: words and glances. *Intimate*: closer moments that fade to black. *Explicit (18+)*: only with the 18+ consent and the separate 18+ pack; it reads as Intimate without the pack. |
+| Explicit texts (18+) | off | panel **Explicit texts (18+)**, `/au romance adult` | A consent in two steps (the warning, then a second click after a couple of seconds). Kept for the whole account. Off in one click; the tone goes back to Intimate at most. |
+| 18+ pack | — | panel **18+ pack** | Not a setting: says whether the optional pack is *not installed*, *installed* or *loaded*. |
+
 ## Info
 
 The last section of the panel is about the addon, not a setting. It says who made it (Finland), thanks the NEBULA community and shows its logo (the dark art with the Nebula theme, the light art with Aurora), states the licence and that the addon is fan-made and not affiliated with or endorsed by Blizzard Entertainment, and has one box with the only link the addon carries, Ko-fi. The game cannot open a web page, so click the box (its text is selected) and press **Ctrl+C**; the box cannot be edited. `/au about` opens the panel on this section and `/au about chat` prints the same in the chat. See [[About and Credits|About]].

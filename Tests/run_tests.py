@@ -130,7 +130,8 @@ check('name="AZEROTHUNSPOKEN_REROLL"' in bindings and "AzerothUnspoken_Reroll()"
 for name_, call_ in (("DISCARD", "AzerothUnspoken_Discard()"), ("EDIT", "AzerothUnspoken_Edit()"),
                      ("CHANNEL", "AzerothUnspoken_Channel()"), ("HISTORY", "AzerothUnspoken_History()"),
                      ("JOURNAL", "AzerothUnspoken_Journal()"), ("ANSWER1", "AzerothUnspoken_NPCAnswer(1)"),
-                     ("ANSWER2", "AzerothUnspoken_NPCAnswer(2)"), ("ANSWER3", "AzerothUnspoken_NPCAnswer(3)")):
+                     ("ANSWER2", "AzerothUnspoken_NPCAnswer(2)"), ("ANSWER3", "AzerothUnspoken_NPCAnswer(3)"),
+                     ("ANSWER4", "AzerothUnspoken_NPCAnswer(4)"), ("ANSWER5", "AzerothUnspoken_NPCAnswer(5)")):
     check(f'name="AZEROTHUNSPOKEN_{name_}"' in bindings and call_ in bindings, f"key {name_} in Bindings.xml")
 # ADR 0059: the emote wheel's key runs on press and on release and passes the key state; it ships unbound
 wheel_ = re.search(r'<Binding name="AZEROTHUNSPOKEN_WHEEL"([^>]*)>\s*([^<]+?)\s*</Binding>', bindings)
@@ -495,7 +496,7 @@ for f_ in ("Widgets.lua", "JournalFrame.lua", "RelationsFrame.lua", "ProfileFram
         check("W.Window(" in "\n".join(src_), f"{f_}: the window is made by W.Window (#187)")
 check(win_frames_ == 2, f"the named frames of the windows: W.Window and the dialogue window ({win_frames_})")
 for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContext", "TestNames", "TestChatGateway", "TestNarrator", "TestWizardConsent", "TestWindows",
-             "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestEmotion", "TestMemory", "TestRelations", "TestPlayers", "TestNPCLevels", "TestNPCRomance", "TestRomance", "TestPromises", "TestFavours", "TestLocalReputation", "TestHostility", "TestProximityShared",
+             "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestEmotion", "TestMemory", "TestRelations", "TestPlayers", "TestNPCLevels", "TestNPCRomance", "TestRomance", "TestRomanceFrame", "TestPromises", "TestFavours", "TestLocalReputation", "TestHostility", "TestProximityShared",
              "TestOtherPlace", "TestNPCAlive", "TestArcs", "TestCommands", "TestProfile", "TestProbeCombat", "TestContent", "TestScale",
              "TestSelection", "TestWorld", "TestDynamism", "TestKeyClaims", "TestPacks", "TestKeyboard", "TestLiterary",
              "TestLiteraryMeta", "TestSongbook", "TestNemesis", "TestCompanion", "TestIdentity", "TestLayout", "TestAssets", "TestTheme", "TestWidgets", "TestEmoteWheel", "TestBard"):

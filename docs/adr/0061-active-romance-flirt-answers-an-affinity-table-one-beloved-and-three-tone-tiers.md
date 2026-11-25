@@ -86,7 +86,7 @@ flirt answers can appear there too.
   same NPC offers none for `romance.flirt.hours` hours (6).
 - **A moment answer.** When a big moment is due (point 4), one flirt slot holds a moment answer instead (for example
   *Ask for a word alone*). Choosing it closes the dialogue and opens the romance popup. **The popup never opens by
-  itself**: it always follows a click, or `au romance` with the NPC targeted.
+  itself**: it always follows a click, or `/au romance` with the NPC targeted.
 
 ### 3. The NPC's answer: the affinity table
 
@@ -153,7 +153,7 @@ flirt.
   `jealousy.days`, 7), and the journal keeps a line. A welcomed date clears it early. **The NPC never breaks up by
   itself** (a default of this ADR: only the player ends a romance).
 - **Break-up**: only the player, from the beloved's detail in the Relationships window (a danger button and a Dialog
-  that says what happens) or `au romance end` (the same command twice within 30 seconds). The stage becomes *ended*, the
+  that says what happens) or `/au romance end` (the same command twice within 30 seconds). The stage becomes *ended*, the
   slot is free, attraction drops to at most `breakup.attraction` (15) and affection loses `breakup.affection` (5);
   trust, respect and loyalty do not change. A **permanent journal memory** (`relation_breakup`, tokens only, no name, like
   every relationship memory) and one private line of the inner voice. The vow memory, if any, stays: the journal does not
@@ -213,9 +213,9 @@ flirt.
 - **Settings**, a section **Romance**: *Active romance* (switch), *Tone* (Courteous, Intimate, Explicit 18+; Explicit is
   disabled until the gate is on and the pack is installed), *Explicit texts 18+* (the consent button, *Off* by default),
   and a status line for the pack (*not installed*, *installed*, *loaded*).
-- **Commands** (written here without the slash, since they do not exist until R2): `au romance` (the stage with the targeted NPC, the beloved, and the due moment, which it opens),
-  `au romance end`, `au romance tone courteous|intimate|explicit`, `au romance adult on|off` (the consent), and
-  `au romance on|off`. **No key binding**: every moment starts from a dialogue answer or the command.
+- **Commands**: `/au romance` (the stage with the targeted NPC, the beloved, and the due moment, which it opens),
+  `/au romance end`, `/au romance tone courteous|intimate|explicit`, `/au romance adult on|off` (the consent), and
+  `/au romance on|off`. **No key binding**: every moment starts from a dialogue answer or the command.
 
 ### 10. Saved data
 

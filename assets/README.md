@@ -16,6 +16,7 @@ For the CurseForge gallery: [curseforge/](curseforge/README.md) has fourteen of 
 ## Contents
 
 - [Narrator box](#narrator-box) (19)
+- [Active romance](#active-romance) (7)
 - [Chat Gateway](#chat-gateway) (7)
 - [First-run wizard](#first-run-wizard) (9)
 - [Settings](#settings) (14)
@@ -51,6 +52,18 @@ For the CurseForge gallery: [curseforge/](curseforge/README.md) has fourteen of 
 | <a href="narrator-box-bard-sharing.png"><img src="narrator-box-bard-sharing.png" width="320" alt="narrator-box-bard-sharing"></a> | **[narrator-box-bard-sharing.png](narrator-box-bard-sharing.png)**<br>The Bard sharing a song on /say: Next verse and Stop, only on your clicks. |
 | <a href="narrator-box-bard-aurora.png"><img src="narrator-box-bard-aurora.png" width="320" alt="narrator-box-bard-aurora"></a> | **[narrator-box-bard-aurora.png](narrator-box-bard-aurora.png)**<br>The Bard's box in the light theme Aurora, with /emote chosen. |
 | <a href="narrator-box-bard-italian.png"><img src="narrator-box-bard-italian.png" width="320" alt="narrator-box-bard-italian"></a> | **[narrator-box-bard-italian.png](narrator-box-bard-italian.png)**<br>The Bard's box in Italian: Bardo, Condividi. |
+
+## Active romance
+
+| Image | What it shows |
+|---|---|
+| <a href="romance-flirt-answers.png"><img src="romance-flirt-answers.png" width="320" alt="romance-flirt-answers"></a> | **[romance-flirt-answers.png](romance-flirt-answers.png)**<br>Flirt answers after the neutral ones: the heart, the coral border, a tooltip. |
+| <a href="romance-refusal.png"><img src="romance-refusal.png" width="320" alt="romance-refusal"></a> | **[romance-refusal.png](romance-refusal.png)**<br>A gentle refusal: it costs a little attraction, never the friendship. |
+| <a href="romance-popup-declaration.png"><img src="romance-popup-declaration.png" width="320" alt="romance-popup-declaration"></a> | **[romance-popup-declaration.png](romance-popup-declaration.png)**<br>The romance window at a declaration: Speak your heart or Not yet. |
+| <a href="romance-popup-date.png"><img src="romance-popup-date.png" width="320" alt="romance-popup-date"></a> | **[romance-popup-date.png](romance-popup-date.png)**<br>A date at the inn at night: the options carry their tone. |
+| <a href="romance-popup-aurora.png"><img src="romance-popup-aurora.png" width="320" alt="romance-popup-aurora"></a> | **[romance-popup-aurora.png](romance-popup-aurora.png)**<br>An intimate scene fades to black, in the light theme Aurora. |
+| <a href="romance-settings.png"><img src="romance-settings.png" width="320" alt="romance-settings"></a> | **[romance-settings.png](romance-settings.png)**<br>Settings > Romance and the two-step 18+ consent. |
+| <a href="romance-journal.png"><img src="romance-journal.png" width="320" alt="romance-journal"></a> | **[romance-journal.png](romance-journal.png)**<br>The journal keeps a declaration, a jealousy and an ending, with no names. |
 
 ## Chat Gateway
 

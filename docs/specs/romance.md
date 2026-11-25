@@ -151,7 +151,7 @@ Choosing a moment answer closes the dialogue (`End("romance")`) and opens the po
 
 ## 5. The affinity score
 
-`Romance:Score(npcID, flirt)` returns the score and its parts (the parts are shown by `au romance why`, for tuning):
+`Romance:Score(npcID, flirt)` returns the score and its parts (the parts are shown by `/au romance why`, for tuning):
 
 | Part | How |
 |---|---|
@@ -211,7 +211,7 @@ The declaration and the date are scored like a flirt, with the moment's own `sta
   `beloved = nil`; attraction `min(value, breakup.attraction)`; `romance_breakup`; `relation_breakup` (permanent); one
   inner-voice line (`rel_breakup_N`). From the Relationships window: a *danger* button **End the romance** in the beloved's
   detail and a Dialog (*End the romance with %s? The vow, if made, stays in your journal. You can court again after 30
-  days.*). From chat: `au romance end` twice within `breakup.confirmSeconds`. After `restDays`, the stage goes back to
+  days.*). From chat: `/au romance end` twice within `breakup.confirmSeconds`. After `restDays`, the stage goes back to
   `none` at the next meeting.
 
 ## 8. The popup's scenes
@@ -238,7 +238,7 @@ dates = {
 ### 9.1 The allowed tier
 
 `relations.romanceTone`: 1 (Courteous, default), 2 (Intimate), 3 (Explicit, only with the gate on **and** the pack
-installed; otherwise the setting reads as 2). `au romance tone` and the Settings segment change it.
+installed; otherwise the setting reads as 2). `/au romance tone` and the Settings segment change it.
 
 ### 9.2 The situation's tier
 
@@ -263,7 +263,7 @@ a candidate.
 ## 10. The 18+ gate
 
 - `Consent:Register("romance_adult", { text = "consent_romance_adult_text", accept = ... })`; the Settings button and
-  `au romance adult on` call `Consent:Step`; *off* is one step and sets the tone to `min(tone, 2)`.
+  `/au romance adult on` call `Consent:Step`; *off* is one step and sets the tone to `min(tone, 2)`.
 - Warning (English, final wording in R2): *Explicit romance texts (18+). Turn this on only if you are 18 or older and want
   them. They come only from a separate optional pack, AzerothUnspoken_Romance18, which is not on CurseForge; without it,
   nothing changes. Romance stays private: nothing is ever sent to chat. You can turn it off at any time.*
@@ -321,17 +321,17 @@ The confirmation is the client's own dialog (StaticPopup), as for the other cons
 
 ### 11.5 Commands
 
-A new group of `/au help`, **Romance** (at most nine lines). These commands do not exist yet, so this spec writes them
-without the slash (`au romance ...`); R2 builds them with the slash and the docs check then holds them to the code.
+One line of the group **Character** of `/au help` (step R2: a group of one line would not fill a window, and Character
+still fits in one with it).
 
 | Command | What |
 |---|---|
-| `au romance` | the beloved, the stage with the targeted NPC, and the due moment (opens it) |
-| `au romance on\|off` | Active romance |
-| `au romance tone courteous\|intimate\|explicit` | the allowed tier |
-| `au romance adult on\|off` | the 18+ consent (two steps to turn on) |
-| `au romance end` | break up with the beloved (twice within 30 s) |
-| `au romance why` | the parts of the last score (for tuning) |
+| `/au romance` | the beloved, the stage with the targeted NPC, and the due moment (opens it) |
+| `/au romance on\|off` | Active romance |
+| `/au romance tone courteous\|intimate\|explicit` | the allowed tier |
+| `/au romance adult on\|off` | the 18+ consent (two steps to turn on) |
+| `/au romance end` | break up with the beloved (twice within 30 s) |
+| `/au romance why` | the parts of the last score (for tuning) |
 
 No key binding.
 
@@ -506,5 +506,20 @@ The engine (`Systems/Romance.lua`, `NS.Romance`) follows this spec, with these d
   `romanceTier` is `romanceTier`, one in the character's voice `romanceVoice`.
 - **For R2**: `Romance:Flirts`, `Romance:Answer`, `Romance:Reply`, `Romance:DueMoment`, `Romance:DateOptions`,
   `Romance:Decide`, `Romance:Scene`, `Romance:BreakUp`, `Romance:SetTone`, `Romance:SetAdult`, `Romance:PackState`,
-  `Romance:Status` and the last score in `Romance.session.last` (for `au romance why`). The 18+ pack is loaded through
+  `Romance:Status` and the last score in `Romance.session.last` (for `/au romance why`). The 18+ pack is loaded through
   `NS.Packs:Load`.
+
+## 22. What step R2 settled
+
+- **The token** `voice-romance` is in `UI/Theme.lua` (33 tokens: the sister addon's 27 and six voices), in
+  `tools/mockup_lib.py` and in `mockups.css`; the button kind `romance` of `UI/Widgets.lua` uses it on the ring and the
+  label (5.7:1 or more on `surface-3`).
+- **The dialogue window** builds five answer buttons (`DialogueFrame.MAX_BUTTONS`); a flirt answer is `romance` with the
+  heart 6 units before its label, and the keys *NPC answer 4* and *5* exist (unbound, like 1-3). `DialogueFrame.ROMANCE`
+  turns the engine's flirts on.
+- **The popup** (`UI/RomanceFrame.lua`) shows the interface's own plain line for each moment and phase
+  (`rom_scene_<moment>_<phase>`) when no content line fits: R3 brings the real scenes. Its position is kept per character
+  (`windows.AzerothUnspokenRomance`). A date shows at most four options.
+- **The command** `/au romance` is a line of the group *Character* of `/au help`, not a group of its own.
+- **Settings > Romance** sits right after *Privacy*; with the attraction axis off, *Active romance* is disabled and says
+  what it needs; *Explicit* is disabled until the consent is on.

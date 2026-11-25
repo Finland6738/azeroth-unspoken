@@ -44,6 +44,7 @@ Every command of Azeroth Unspoken. Type them in the chat box, like any other sla
 | `/au songbook` | the verses and songs your character heard |
 | `/au bard` | the Bard: its box, the Share button and its channel |
 | `/au relationships` | your relationships |
+| `/au romance` | active romance: the stage with your target, its moment, the tone, the end |
 | `/au stories` | your personal stories |
 | `/au talk` | the ambient dialogue with an NPC |
 | `/au wheel` | the emote wheel: its slices, its presets and its key |
@@ -241,6 +242,19 @@ See [[Memory and Journal|Memory-and-Journal]].
 | `/au relationships auto on\|off` | Registers the players you meet by themselves. Off by default. |
 | `/au relationships attraction on\|off` | Turns the optional attraction axis on or off. Off by default. |
 | `/au relationships reset [all\|npcs\|players\|shared]` | Erases relationships. Asks you to repeat within 15 seconds to confirm. |
+
+## Romance
+
+Active romance needs the attraction axis (`/au relationships attraction on`). See [[Relationships|Relationships#romance]].
+
+| Command | What it does |
+|---|---|
+| `/au romance` | Says who your beloved is and the stage with the NPC you target; if a moment is due with them (a declaration, a date, the vow), it opens the romance window. |
+| `/au romance on\|off` | Active romance (on by default). |
+| `/au romance tone courteous\|intimate\|explicit` | The tone you allow. *Explicit* needs the 18+ consent and the separate 18+ pack. |
+| `/au romance adult on\|off` | The 18+ consent: `on` shows a warning; repeat after a couple of seconds, within 30 s, to confirm. `off` is immediate and brings the tone back to Intimate at most. |
+| `/au romance end` | Ends the romance with your beloved. Type it twice within 30 seconds. |
+| `/au romance why` | The parts of the last answer's score, to see why an NPC welcomed or refused. |
 
 A name can be `Name` or `Name-Realm`. An NPC is written `npc:` followed by its number, as shown by `/au relationships list`. See [[Relationships]].
 

@@ -263,6 +263,20 @@ function Ro:PackState()
 	return loaded or P:Exists(name) == true, loaded
 end
 
+---The tone the player chose (1-3), before the consent and the pack are applied (the Settings segment shows it).
+---@return integer
+function Ro:SettingTone()
+	local t = tonumber(Settings().romanceTone) or self.config.tone.default or 1
+	return Clamp(math.floor(t), 1, self.TIERS)
+end
+
+---The 18+ pack in one word: missing, installed, loaded (Settings, /au romance).
+---@return string
+function Ro:PackWord()
+	local installed, loaded = self:PackState()
+	return loaded and "loaded" or (installed and "installed" or "missing")
+end
+
 ---The tier the player allows: the setting, with Explicit (3) only when the consent is on and the pack is loaded.
 ---@return integer
 function Ro:AllowedTier()
@@ -626,7 +640,7 @@ end
 ---@return boolean
 function Ro:PopupReady()
 	local F = NS.RomanceFrame
-	return F ~= nil and type(F.Open) == "function"
+	return F ~= nil and type(F.Open) == "function" and (F.IsReady == nil or F:IsReady() == true)
 end
 
 local function InRange(f, st)
@@ -1140,6 +1154,109 @@ function Ro:Status()
 	return ("active %s, tone %d (allowed %d), adult %s, beloved %s, flirts %d%s"):format(tostring(self:ActiveOn()),
 		tonumber(Settings().romanceTone) or 1, self:AllowedTier(), tostring(self:AdultOn()), tostring(b), #self.flirts,
 		last and ("; last " .. tostring(last.outcome) .. " " .. ("%.1f"):format(last.score or 0)) or "")
+end
+
+---------------------------------------------------------------------------
+-- The interface's words: the stage in the Relationships window, and /au romance (step R2)
+---------------------------------------------------------------------------
+---The romance of an NPC for the Relationships detail: the stage, and whether they are the beloved ("" without one).
+---@param npcID integer
+---@param rec AURelationRecord
+---@return string
+function Ro:Text(npcID, rec)
+	if not R:AttractionOn() then return "" end
+	local st = self.Stage(rec)
+	if st == "none" then return "" end
+	local line = NS:L("rel_rom_stage", NS:L("rom_stage_" .. st))
+	if npcID == self:Beloved() then line = line .. " " .. NS:L("rel_rom_beloved") end
+	return line
+end
+
+-- the NPC the character targets, with its kin read there (the dialogue's reading, ADR 0061 point 1)
+local function TargetNPC()
+	if Compat:IsUnitIdentitySecret("target") then return nil end
+	local id = R.NpcID(SafeCall("UnitGUID", "target"))
+	if not IsNumber(id) then return nil end
+	local sex, humanoid = R.Kin("target")
+	if sex ~= nil or humanoid ~= nil then R:NoteKin(id, sex, humanoid) end
+	return id
+end
+
+local K = NS.Keywords
+local WORDS = K.Register("romance", { on = "on", off = "off", tone = "tone", adult = "adult", ["end"] = "end", why = "why" })
+local TONES = K.Register("romance_tones", { courteous = 1, intimate = 2, explicit = 3 })
+local function Say(key, ...) NS:Print(NS:L(key, ...)) end
+
+---/au romance [on|off | tone courteous|intimate|explicit | adult on|off | end | why]. Without a word: the beloved, the
+---stage with the targeted NPC and the moment due with them, which it opens (the popup never opens by itself).
+---@param rest? string
+function Ro:Command(rest)
+	local word, arg = (rest or ""):match("^([^ ]*) *(.*)$")
+	local cmd = WORDS[NS.Lower(word or "")]
+	arg = NS.Lower(arg or "")
+	if cmd == "on" or cmd == "off" then
+		NS.db.relations.romanceActive = cmd == "on"
+		Say(cmd == "on" and "rom_on" or "rom_off")
+		if cmd == "on" and not R:AttractionOn() then Say("rom_needs_attraction_cmd") end
+	elseif cmd == "tone" then
+		local tier = TONES[arg]
+		if not tier then
+			if arg ~= "" then Say("invalid_value", arg, NS:L("values_romance_tone")) end
+			Say("rom_tone_now", NS:L("rom_tone_" .. ({ "courteous", "intimate", "explicit" })[self:SettingTone()]))
+			return
+		end
+		local ok, why = self:SetTone(tier)
+		if not ok then Say(why == "adult" and "rom_tone_needs_adult" or "rom_off") return end
+		Say("rom_tone_now", NS:L("rom_tone_" .. ({ "courteous", "intimate", "explicit" })[tier]))
+		if tier == 3 and self:PackWord() ~= "loaded" then Say("rom_pack_" .. self:PackWord()) end
+	elseif cmd == "adult" then
+		local on = K.OnOff(arg)
+		if on == nil then Say("rom_adult_state", NS:L(self:AdultOn() and "on" or "off")) return end
+		local r = self:SetAdult(on)
+		if r == "wait" then Say("consent_wait")
+		elseif r == "on" then Say("rom_adult_on")
+		elseif r == "off" then Say("rom_adult_off") end
+	elseif cmd == "end" then
+		local b = self:Beloved()
+		if not b then Say("rom_end_none") return end
+		local c = self.config.breakup
+		local armed = self.session.breakup
+		if armed and armed.npcID == b and GetTime() - armed.t <= c.confirmSeconds then
+			self.session.breakup = nil
+			local name = R:DisplayName("npc", b)
+			if self:BreakUp() then Say("rom_end_done", name) end
+		else
+			self.session.breakup = { npcID = b, t = GetTime() }
+			Say("rom_end_confirm", R:DisplayName("npc", b), c.confirmSeconds, c.restDays)
+		end
+	elseif cmd == "why" then
+		local last = self.session.last
+		if not last then Say("rom_why_none") return end
+		local parts = {}
+		for _, k in ipairs({ "base", "race", "class", "soul", "relation", "stage", "situation", "mood", "momentum", "random" }) do
+			local v = last.parts and last.parts[k]
+			if IsNumber(v) and v ~= 0 then table.insert(parts, ("%s %+.1f"):format(k, v)) end   -- nolocale: the parts' names are the data's
+		end
+		Say("rom_why", R:DisplayName("npc", last.npcID), ("%.1f"):format(last.score or 0), NS:L("rom_outcome_" .. tostring(last.outcome)),
+			table.concat(parts, ", "))
+	elseif word ~= "" then
+		Say("invalid_value", word, NS:L("values_romance"))
+	else
+		local b = self:Beloved()
+		Say(b and "rom_status_beloved" or "rom_status_none", b and R:DisplayName("npc", b) or nil,
+			b and NS:L("rom_stage_" .. self.Stage(R:Get("npc", b))) or nil)
+		local id = TargetNPC()
+		local rec = id and R:Get("npc", id)
+		if not rec then return end
+		local ok, why = self:Gate(id)
+		Say("rom_status_target", R:DisplayName("npc", id), NS:L("rom_stage_" .. self.Stage(rec)))
+		if not ok then Say("rom_closed_" .. (NS:L("rom_closed_" .. tostring(why)) ~= "rom_closed_" .. tostring(why) and why or "other")) return end
+		local due = self:PopupReady() and self:DueMoment(id, rec)
+		if due then
+			local opened, reason = NS.RomanceFrame:Open(id, due)
+			if not opened then Say("rom_cannot_open_" .. (reason == "combat" and "combat" or "other")) end
+		end
+	end
 end
 
 ---------------------------------------------------------------------------

@@ -71,7 +71,7 @@ I componenti sono quelli di FDCP §3 (i tipi di Button *primary*, *secondary*, *
   una superficie quasi opaca, non gli si adatta. Il narratore tiene le regole della revisione dell'interfaccia: l'impostazione di opacità vale per lo
   sfondo soltanto, il testo resta del tutto opaco, lo sfondo effettivo è almeno 0,55 ([#173](https://github.com/Finland6738/azeroth-unspoken/issues/173)) e il
   contrasto si calcola contro una scena bianca in entrambi i temi, come in `docs/design/UI_REVIEW.md`.
-- **Le quattro voci** (narratore, voce interiore, personaggio, NPC) sono l'unica aggiunta di AU all'elenco dei token di FDCP (UI-4): un token di colore per voce e per tema,
+- **Le voci** (narratore, voce interiore, personaggio, NPC, il Bardo dall'[ADR 0060](../adr/0060-the-bard-voice-and-sharing-a-piece.md) e il romanticismo dall'[ADR 0061](../adr/0061-active-romance-flirt-answers-an-affinity-table-one-beloved-and-three-tone-tiers.md)) sono l'unica aggiunta di AU all'elenco dei token di FDCP (UI-4): un token di colore per voce e per tema,
   scelti in modo che differiscano per luminosità oltre che per tinta, e che superino la prova di contrasto in Nebula e in Aurora. Una voce si riconosce
   anche dall'etichetta scritta, dalla barra d'accento e dal carattere della voce interiore
   ([#186](https://github.com/Finland6738/azeroth-unspoken/issues/186)); un colore non è mai l'unica differenza. I colori di Personaggio e NPC devono
@@ -84,6 +84,7 @@ I componenti sono quelli di FDCP §3 (i tipi di Button *primary*, *secondary*, *
   | `voice-character` | `#FFE08A` | `#935E00` | le parole del personaggio |
   | `voice-npc` | `#5BBF66` | `#0E5A28` | le parole dell'NPC e il titolo NPC del dialogo ambientale |
   | `voice-bard` | `#FF8FB8` | `#9C1F5E` | il riquadro del Bardo (ADR 0060): le canzoni, i versi e i racconti che il personaggio ricorda; anche la sua icona della nota |
+  | `voice-romance` | `#FF7F6E` | `#A3301F` | il romanticismo attivo (ADR 0061): le risposte romantiche del dialogo ambientale, la barra, l'etichetta e il cuore del popup |
 
   I token hanno **4,5:1 o più sulla superficie opaca `bg`** in entrambi i temi (il più basso è il Personaggio di Aurora, 5,1). Su un riquadro
   traslucido il testo è il token della voce **solo dove tiene 4,5:1 sul mondo più chiaro e su quello più scuro a quell'opacità** (`Narrator:Ink`), e

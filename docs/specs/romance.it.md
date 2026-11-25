@@ -157,7 +157,7 @@ Scegliere una risposta di momento chiude il dialogo (`End("romance")`) e apre il
 
 ## 5. Il punteggio di affinità
 
-`Romance:Score(npcID, flirt)` restituisce il punteggio e le sue parti (`au romance why` le mostra, per la taratura):
+`Romance:Score(npcID, flirt)` restituisce il punteggio e le sue parti (`/au romance why` le mostra, per la taratura):
 
 | Parte | Come |
 |---|---|
@@ -219,7 +219,7 @@ non è mai "in anticipo"). *Non ancora* e *Non stasera*, Esc e la casella di chi
   `beloved = nil`; attrazione `min(valore, breakup.attraction)`; `romance_breakup`; `relation_breakup` (permanente); una
   battuta della voce interiore (`rel_breakup_N`). Dalla finestra Relazioni: un pulsante *danger* **Chiudi la storia** nel
   dettaglio dell'amato e un Dialog (*Chiudere la storia con %s? Il voto, se c'è stato, resta nel diario. Potrai
-  corteggiare di nuovo fra 30 giorni.*). Dalla chat: `au romance end` due volte entro `breakup.confirmSeconds`. Passati
+  corteggiare di nuovo fra 30 giorni.*). Dalla chat: `/au romance end` due volte entro `breakup.confirmSeconds`. Passati
   `restDays`, la fase torna a `none` all'incontro successivo.
 
 ## 8. Le scene del popup
@@ -247,7 +247,7 @@ dates = {
 ### 9.1 Il livello permesso
 
 `relations.romanceTone`: 1 (Cortese, predefinito), 2 (Intimo), 3 (Esplicito, solo con il blocco acceso **e** il
-pacchetto installato; altrimenti l'impostazione vale come 2). `au romance tone` e il selettore delle Impostazioni lo
+pacchetto installato; altrimenti l'impostazione vale come 2). `/au romance tone` e il selettore delle Impostazioni lo
 cambiano.
 
 ### 9.2 Il livello della situazione
@@ -275,7 +275,7 @@ livello non è mai candidata.
 ## 10. Il blocco 18+
 
 - `Consent:Register("romance_adult", { text = "consent_romance_adult_text", accept = ... })`; il pulsante delle
-  Impostazioni e `au romance adult on` chiamano `Consent:Step`; spegnerlo è un passo solo e porta il tono a `min(tono, 2)`.
+  Impostazioni e `/au romance adult on` chiamano `Consent:Step`; spegnerlo è un passo solo e porta il tono a `min(tono, 2)`.
 - Avviso (in inglese, testo definitivo in R2): *Explicit romance texts (18+). Turn this on only if you are 18 or older and
   want them. They come only from a separate optional pack, AzerothUnspoken_Romance18, which is not on CurseForge; without
   it, nothing changes. Romance stays private: nothing is ever sent to chat. You can turn it off at any time.*
@@ -337,18 +337,17 @@ La conferma è la finestra di dialogo del client (StaticPopup), come per gli alt
 
 ### 11.5 Comandi
 
-Un nuovo gruppo di `/au help`, **Romance** (al massimo nove righe). Questi comandi non esistono ancora, quindi questa
-specifica li scrive senza la barra (`au romance ...`); R2 li costruisce con la barra e da allora il controllo dei
-documenti li confronta con il codice.
+Una riga del gruppo **Personaggio** di `/au help` (step R2: un gruppo di una sola riga non riempirebbe una finestra, e
+Personaggio ci sta ancora con essa).
 
 | Comando | Che cosa |
 |---|---|
-| `au romance` | l'amato, la fase con l'NPC bersaglio e il momento maturo (lo apre) |
-| `au romance on\|off` | Romanticismo attivo |
-| `au romance tone courteous\|intimate\|explicit` | il livello permesso |
-| `au romance adult on\|off` | il consenso 18+ (due passi per accenderlo) |
-| `au romance end` | lasciare l'amato (due volte entro 30 s) |
-| `au romance why` | le parti dell'ultimo punteggio (per la taratura) |
+| `/au romance` | l'amato, la fase con l'NPC bersaglio e il momento maturo (lo apre) |
+| `/au romance on\|off` | Romanticismo attivo |
+| `/au romance tone courteous\|intimate\|explicit` | il livello permesso |
+| `/au romance adult on\|off` | il consenso 18+ (due passi per accenderlo) |
+| `/au romance end` | lasciare l'amato (due volte entro 30 s) |
+| `/au romance why` | le parti dell'ultimo punteggio (per la taratura) |
 
 Nessun tasto assegnabile.
 
@@ -531,5 +530,20 @@ costruiva:
   una regola romantica senza `romanceTier` è `romanceTier`, una nella voce del personaggio `romanceVoice`.
 - **Per R2**: `Romance:Flirts`, `Romance:Answer`, `Romance:Reply`, `Romance:DueMoment`, `Romance:DateOptions`,
   `Romance:Decide`, `Romance:Scene`, `Romance:BreakUp`, `Romance:SetTone`, `Romance:SetAdult`, `Romance:PackState`,
-  `Romance:Status` e l'ultimo punteggio in `Romance.session.last` (per `au romance why`). Il pacchetto 18+ si carica con
+  `Romance:Status` e l'ultimo punteggio in `Romance.session.last` (per `/au romance why`). Il pacchetto 18+ si carica con
   `NS.Packs:Load`.
+
+## 22. Che cosa ha fissato lo step R2
+
+- **Il token** `voice-romance` è in `UI/Theme.lua` (33 token: i 27 dell'addon gemello e sei voci), in
+  `tools/mockup_lib.py` e in `mockups.css`; il tipo di pulsante `romance` di `UI/Widgets.lua` lo usa sul bordo e
+  sull'etichetta (5,7:1 o più su `surface-3`).
+- **La finestra del dialogo** costruisce cinque pulsanti di risposta (`DialogueFrame.MAX_BUTTONS`); una risposta
+  romantica è `romance` con il cuore 6 unità prima dell'etichetta, ed esistono i tasti *risposta 4* e *5* (non assegnati,
+  come 1-3). `DialogueFrame.ROMANCE` accende le risposte romantiche del motore.
+- **Il popup** (`UI/RomanceFrame.lua`) mostra una riga semplice dell'interfaccia per ogni momento e fase
+  (`rom_scene_<momento>_<fase>`) quando nessuna riga dei contenuti va bene: R3 porta le scene vere. La sua posizione si
+  conserva per personaggio (`windows.AzerothUnspokenRomance`). Un appuntamento mostra al massimo quattro proposte.
+- **Il comando** `/au romance` è una riga del gruppo *Personaggio* di `/au help`, non un gruppo a sé.
+- **Impostazioni > Romanticismo** viene subito dopo *Privacy*; con l'asse dell'attrazione spento, *Romanticismo attivo* è
+  disattivato e dice che cosa gli serve; *Esplicito* è disattivato finché il consenso è spento.
