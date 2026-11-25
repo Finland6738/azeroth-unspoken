@@ -49,7 +49,7 @@ NS:AddTexts("enUS", {
 	},
 	["rom.welcome.t1.melancholic"] = {
 		"Oh. I had forgotten what this feels like, to be glad for no reason at all.",
-		"Strange. The sky looked grey to me this morning, and now I am smiling.",
+		"Strange. The sky looked gray to me this morning, and now I am smiling.",
 		"I don't trust moments like this to last. I think I'll enjoy this one anyway.",
 	},
 	["rom.welcome.t1.merciful"] = {
@@ -213,7 +213,7 @@ NS:AddTexts("enUS", {
 	["rom.cold.t1.melancholic"] = {
 		"That's kind. I'm afraid my heart is too heavy today to answer it properly.",
 		"Some days I can't take a kindness without it hurting a little. This is one of them.",
-		"Ah... perhaps on a brighter day. This one feels grey to me.",
+		"Ah... perhaps on a brighter day. This one feels gray to me.",
 	},
 	["rom.cold.t1.merciful"] = {
 		"That's sweetly meant, and I thank you for it. Still, I'd rather we simply talk for now.",

@@ -112,7 +112,11 @@ T.run("le quattro voci, ciascuna dove ha senso", function()
 			-- battute dei dialoghi ambientali (eventi npcd_*, solo dentro la finestra di NPC Alive)
 			T.ok(HasEvent(p, "npc_meet") or p.events[1]:find("^npcd_") ~= nil, id .. ": la voce NPC parla solo in npc_meet e nei dialoghi")
 			local other = When(p, "other")
-			T.ok(type(other) == "table" and (other.role ~= nil or other.any ~= nil), id .. ": l'NPC ha un ruolo dichiarato")
+			-- ADR 0061 (R3): a romance reply fits any NPC the romance gates let through (Romance:Gate), so it may name
+			-- only a temperament, or nothing but its tier
+			if not p.events[1]:find("^npcd_romance_") then
+				T.ok(type(other) == "table" and (other.role ~= nil or other.any ~= nil), id .. ": l'NPC ha un ruolo dichiarato")
+			end
 		end
 	end
 	T.ok(by.narrator >= 80, "narratore esterno: " .. by.narrator)

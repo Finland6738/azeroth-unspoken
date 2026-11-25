@@ -521,6 +521,9 @@ T.run("voce delle frasi: regola dello schema v2 e ripiego del formato vecchio", 
 		elseif p.speaker == "narrator" and p.chainable then
 			-- #99: the parts of a narrator monologue after the first are whole sentences (say), never said alone in chat
 			T.eq(p.form, "say", p.id .. ": parte di un monologo del narratore")
+		elseif p.speaker == "narrator" and NS.Validator.READ_ONLY_EVENTS[p.events[1]] then
+			-- ADR 0061 (R3): a scene of the romance popup is prose read in its window, never offered to chat
+			T.eq(p.form, "say", p.id .. ": scena del popup del romanticismo")
 		else
 			T.eq(p.speaker, "character", p.id .. ": say = voce del personaggio")
 			counts.say = counts.say + 1
