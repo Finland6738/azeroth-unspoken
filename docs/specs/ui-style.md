@@ -74,7 +74,7 @@ Components are those of FDCP §3 (the Button kinds *primary*, *secondary*, *ghos
   needs** to keep 4.5:1 over the brightest and the darkest world (`Narrator:Floor()`, worked out from the tokens: 0.6 in Nebula, whose light text
   needs a darker surface; 0.55 in Aurora). The contrast is computed over a white scene in both themes, as in `docs/design/UI_REVIEW.md`, and over a
   black one, which is the worst for Aurora (`Narrator.WorstContrast`).
-- **The four voices** (narrator, inner voice, character, NPC) are AU's only addition to FDCP's token list (UI-4): one colour token per voice per theme,
+- **The voices** (narrator, inner voice, character, NPC, and the Bard since [ADR 0060](../adr/0060-the-bard-voice-and-sharing-a-piece.md)) are AU's only addition to FDCP's token list (UI-4): one colour token per voice per theme,
   chosen to differ in lightness as well as in hue, and passing the contrast test in Nebula and in Aurora. A voice is
   also told by its written label, by its accent bar and by the typeface of the inner voice
   ([#186](https://github.com/Finland6738/azeroth-unspoken/issues/186)); a colour is never the only difference. The Character and NPC colours must be
@@ -86,12 +86,13 @@ Components are those of FDCP §3 (the Button kinds *primary*, *secondary*, *ghos
   | `voice-inner` | `#7FD4FF` | `#005F8F` | the inner voice |
   | `voice-character` | `#FFE08A` | `#935E00` | the character's words |
   | `voice-npc` | `#5BBF66` | `#0E5A28` | the NPC's words, and the NPC title of the ambient dialogue |
+  | `voice-bard` | `#FF8FB8` | `#9C1F5E` | the Bard's box (ADR 0060): the songs, verses and tales the character remembers; also its note icon |
 
   The tokens are **4.5:1 or more on the opaque `bg` surface** in both themes (the lowest is Aurora's Character, 5.1). Over a translucent box the
   text is the voice's token **only where it keeps 4.5:1 over the brightest and the darkest world at that opacity** (`Narrator:Ink`), and `text-1`
   otherwise, which the floor above keeps at 4.5:1: Nebula's four voices read in their own colour from 0.8 up, a lower opacity gives `text-1`, and
   Aurora's give `text-1` over a dark world unless the box is opaque. The bar and the time line are always the voice's token (a graphic, 3:1). The
-  muted words (`text-2`) follow the same rule. UI-8 compares the mockup tokens with `Theme.TOKENS`, which now has 31 names: FDCP's 27 and these four.
+  muted words (`text-2`) follow the same rule. UI-8 compares the mockup tokens with `Theme.TOKENS`, which now has 32 names: FDCP's 27 and these five.
 - **Button kinds.** *danger* (an action that loses data: the `err` token for outline and label, never a fill) and *text* (a link-like
   button, for Skip in the wizard). They add no colour token: *danger* uses `err`.
 - **Consents.** The text a player reads to give a consent, and every privacy note, is 12 units or more. A consent that is on shows the

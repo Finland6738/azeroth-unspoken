@@ -8,7 +8,11 @@ By default every line stays in the private [[narrator box|The-Narrator]]. If you
 
 Only two [[voices|The-Narrator]] can ever become chat: the **character** voice (as spoken words) and the **narrator** voice (as an emote). The inner voice and NPC voices never go to chat. Neither do [[NPC ambient dialogues|NPC-Dialogues]] and [[personal stories|Story-Arcs]].
 
-Some lines are private whatever their voice, in every mode (also in automatic mode, and when you press "Another" or "To chat"): the narrator's **monologues**, and **literary forms** (verses, songs, inscriptions, tales: lines tagged `lore` or `genre_*`, or in the literary category). They appear in the narrator box and nowhere else.
+Some lines are private whatever their voice, in every mode (also in automatic mode, and when you press "Another" or "To chat"): the narrator's **monologues**, and **literary forms** (verses, songs, inscriptions, tales: lines tagged `lore` or `genre_*`, or in the literary category). They appear in the narrator box and nowhere else, with one exception you start yourself: the **Share** button of the [[Bard|Literary-Forms#the-bard]], which sings a song, verse or tale in chat line by line when you click it.
+
+### Sharing a Bard piece
+
+A share is not a proposal and never comes by itself, in any mode (also in automatic mode): it starts only from your click on **Share** (or the songbook's Share row, or `/au bard sing`). It works even in the private mode, because you asked for it; it is refused while the module **Public chat** is off, in combat, while Total RP 3 says you are out of character, while a proposal waits, and while another share runs. The first message is an emote on `/emote` (*sings an old song:*), then one verse per message on the channel you chose (`/say` or `/emote`). Every message goes through the gateway's own send: one line, at most 255 bytes, never within the pause between two sends (`floodSeconds`, at least 4 seconds for a share), never past the messages per minute (the share waits), never while the game holds chat. On `/say` in the open world each verse needs a click (**Next verse**); on `/emote`, and on `/say` inside an instance, the share goes on by itself. **Stop** ends it.
 
 A chat message is always **one line**. If a line written with a line break ever becomes a proposal, the break is shown and sent as " / ", and the proposal box shows exactly that.
 

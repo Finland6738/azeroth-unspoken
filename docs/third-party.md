@@ -25,10 +25,20 @@ choose them (step UI-3). Nothing uses the fonts yet: the widgets that do arrive 
 
 ## Icons (`Media/icons.tga`)
 
-The 48 icons of the sheet are **drawn for this addon** by `tools/make_media.py` from simple Pillow shapes (lines, arcs,
-ellipses, polygons): the first 40 are those of FDCP (also drawn by its own tool), the last eight (heart, quill, chat,
-scroll, and hand, note, smile, train for the emote wheel) were drawn for this addon. No third-party artwork is copied or traced; they are covered by the addon's code licence,
-GPL-3.0-or-later. The names and the order of the cells are in `UI/Assets.lua` (`Assets.icons`) and in `ICON_NAMES` of the
+The sheet has 49 icons. 48 are **drawn for this addon** by `tools/make_media.py` from simple Pillow shapes (lines, arcs,
+ellipses, polygons): the first 40 are those of FDCP (also drawn by its own tool), the next eight (heart, quill, chat,
+scroll, and hand, note, smile, train for the emote wheel) were drawn for this addon. No third-party artwork is copied or traced in them; they are covered by the addon's code licence,
+GPL-3.0-or-later.
+
+One icon comes from **Google's Material Symbols** (<https://fonts.google.com/icons>), under the **Apache License 2.0**
+(<https://www.apache.org/licenses/LICENSE-2.0>), with the owner's permission (2026-11-24):
+
+| Cell | Material Symbol | Style | Source | Licence | Used for |
+|---|---|---|---|---|---|
+| `share` | `share` | Outlined, weight 400, 24 px | `fonts.gstatic.com/s/i/short-term/release/materialsymbolsoutlined/share/default/24px.svg` | Apache-2.0 | the Bard's Share button ([ADR 0060](adr/0060-the-bard-voice-and-sharing-a-piece.md)) |
+
+Its published SVG path is kept in `MATERIAL` of `tools/make_media.py`, which fills it (even-odd, at 8x) and reduces it to
+the 16 px cell, like the drawn icons. The mockups draw the same path (`tools/mockup_lib.py`). The names and the order of the cells are in `UI/Assets.lua` (`Assets.icons`) and in `ICON_NAMES` of the
 tool, and a test keeps the two equal.
 
 ## Textures (`Media/*.tga`)

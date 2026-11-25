@@ -71,11 +71,11 @@ def main():
     import mockup_lib as M
     src = open(THEME, encoding="utf-8").read()
     names, themes = lua_tokens(src)
-    check(len(names) == 31, f"Theme.TOKENS has {len(names)} names (31: the 27 of the sister addon and 4 voices)")
+    check(len(names) == 32, f"Theme.TOKENS has {len(names)} names (32: the 27 of the sister addon and 5 voices, ADR 0060)")
     check(sorted(themes) == ["aurora", "nebula"] and all(len(themes[t]) == len(names) for t in themes),
           "Theme.lua defines every token in Nebula and Aurora")
     diff = compare(M.TOKENS, M.THEMES, names, themes)
-    check(not diff, "tools/mockup_lib.py has the same 31 tokens and values as Theme.lua, in both themes"
+    check(not diff, "tools/mockup_lib.py has the same 32 tokens and values as Theme.lua, in both themes"
           + ("" if not diff else ":\n    " + "\n    ".join(diff)))
     # self-test: a changed value, a missing token and a renamed one are caught
     bad = {t: dict(v) for t, v in M.THEMES.items()}

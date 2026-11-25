@@ -176,6 +176,10 @@ ASSETS_LIST = [
     ("narrator-box-long-reading", "narrator-reading", "Narrator box", "A long private reading (a rhyme, a song), revealed line by line."),
     ("narrator-box-long-reading-scroll", "narrator-reading-scroll", "Narrator box", "A reading longer than twelve lines scrolls inside the box."),
     ("narrator-history", "narrator-history", "Narrator box", "The narrator history, opened from the box's header."),
+    ("narrator-box-bard", "narrator-bard", "Narrator box", "The Bard (ADR 0060): a song the character remembers, in its own colour, with the Share bar."),
+    ("narrator-box-bard-sharing", "narrator-bard-sharing", "Narrator box", "The Bard sharing a song on /say: Next verse and Stop, only on your clicks."),
+    ("narrator-box-bard-aurora", "narrator-bard-aurora", "Narrator box", "The Bard's box in the light theme Aurora, with /emote chosen."),
+    ("narrator-box-bard-italian", "narrator-bard-it", "Narrator box", "The Bard's box in Italian: Bardo, Condividi."),
     # Chat Gateway
     ("chat-gateway-proposal", "proposal", "Chat Gateway", "A proposal waiting for your confirmation before it goes to /s."),
     ("chat-gateway-editor", "proposal-editor", "Chat Gateway", "The editor: change the line before you send it."),
@@ -196,7 +200,7 @@ ASSETS_LIST = [
     ("wizard-try-the-narrator", "wizard-test-line", "First-run wizard", "\"Try the narrator\": the box steps aside, below the guide."),
     # settings
     ("settings-panel", "settings-top", "Settings", "The settings panel as it opens in the client's options window."),
-    ("settings-section-general", "x-settings-general", "Settings", "The General section: language, intensity, depth, literary forms, pause between lines, window scale."),
+    ("settings-section-general", "x-settings-general", "Settings", "The General section: language, intensity, depth, literary forms, the Bard and its Share button, pause between lines, window scale."),
     ("settings-section-appearance", "x-settings-look", "Settings", "The Appearance section: the theme (Nebula or Aurora), neon effects, animations, the fonts, the window positions."),
     ("settings-section-emote-wheel", "x-settings-wheel", "Settings", "The Emote wheel section: its key (the middle mouse button after a second click), the slices, the emote names, the cancel zone, the hold delay, the sounds, the presets, and the emote of each slice (stepped or typed)."),
     ("settings-section-chat", "x-settings-chat", "Settings", "The Chat section: what may reach chat, the default channel, how long a proposal waits, the speak button."),

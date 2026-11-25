@@ -746,6 +746,8 @@ end
 ---proposal joins the hold, off the screen, until the fight ends.
 function Gateway:OnCombatStart()
 	if NS.Narrator then NS.Narrator:KeepTyped() end
+	-- ADR 0060: a piece being shared stops at the start of a fight
+	if NS.Bard then NS.Bard:Stop("combat") end
 	local p = self.pending
 	if not p then return end
 	self.combatHeld.public = { proposal = p, at = GetTime() }

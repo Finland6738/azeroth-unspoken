@@ -14,10 +14,11 @@ file belongs to a theme. All files are 32-bit uncompressed TGA with power-of-two
   blob_radial       128x128  radial fall-off for generated covers and soft spots
   disc_256          256x256  filled circle, large: the emote wheel's disc and dead zone keep a sharp edge (ADR 0059)
   ring_256          256x256  2 px ring of the same circle: the edge of the emote wheel and of its dead zone
-  icons             256x256  16 px cells, 48 drawn (ICON_NAMES): chevron, check, cross, skull, shield, sword, info, search, ...
+  icons             256x256  16 px cells, 49 (ICON_NAMES): chevron, check, cross, skull, shield, sword, info, search, ...
                              the first 40 are FDCP's, then heart, quill, chat, scroll (UI-1) and hand, note, smile, train
                              (the emote wheel, ADR 0059) are this addon's;
-                             all drawn with Pillow shapes (no third-party artwork; docs/third-party.md)
+                             all drawn with Pillow shapes, except share (ADR 0060), Google's Material Symbols under
+                             Apache 2.0, filled from its published path (docs/third-party.md)
   logo_256, logo_64          the addon's own logo from assets/logo-source.webp, with a round mask (full colour, never tinted)
   nebula_dark_256, nebula_light_256   the NEBULA community logo with its word, from assets/nebula/nebula-logo-dark.png (Nebula,
                              the dark theme) and assets/nebula/nebula-logo-light.png (Aurora): the credits on Settings > Info.
@@ -92,10 +93,129 @@ ICON_NAMES = ["chevron", "check", "cross", "dashed", "skull", "shield", "heal", 
               # UI-1: four more for this addon (mirrored in UI/Assets.lua)
               "heart", "quill", "chat", "scroll",
               # ADR 0059: four more for the emote wheel (wave, dance, laugh, train)
-              "hand", "note", "smile", "train"]
+              "hand", "note", "smile", "train",
+              # ADR 0060: the Bard's Share button, from Google's Material Symbols (MATERIAL below)
+              "share"]
+
+# Icons taken from Google's Material Symbols (https://fonts.google.com/icons, Apache License 2.0; docs/third-party.md):
+# the path of the Outlined style, weight 400, 24 px, viewBox 0 -960 960 960, as published. Filled even-odd at 8x and
+# reduced to the 16 px cell like the drawn icons.
+MATERIAL = {
+    "share": (
+        "M680-80q-50 0-85-35t-35-85q0-6 3-28L282-392q-16 15-37 23.5t-45 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q24 0 45 "
+        "8.5t37 23.5l281-164q-2-7-2.5-13.5T560-760q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-24 0-45-8.5T598-672"
+        "L317-508q2 7 2.5 13.5t.5 14.5q0 8-.5 14.5T317-452l281 164q16-15 37-23.5t45-8.5q50 0 85 35t35 85q0 50-35 85t-85 "
+        "35Zm0-80q17 0 28.5-11.5T720-200q0-17-11.5-28.5T680-240q-17 0-28.5 11.5T640-200q0 17 11.5 28.5T680-160ZM200-440q17 "
+        "0 28.5-11.5T240-480q0-17-11.5-28.5T200-520q-17 0-28.5 11.5T160-480q0 17 11.5 28.5T200-440Zm508.5-291.5Q720-743 "
+        "720-760t-11.5-28.5Q697-800 680-800t-28.5 11.5Q640-777 640-760t11.5 28.5Q663-720 680-720t28.5-11.5ZM680-200ZM200-"
+        "480Zm480-280Z"),
+}
+
+
+def svg_subpaths(d, steps=12):
+    """The subpaths of an SVG path (M L H V C S Q T Z, absolute and relative), curves flattened: lists of (x, y)."""
+    import re
+    toks = re.findall(r"[MmLlHhVvCcSsQqTtZz]|-?(?:\d+\.?\d*|\.\d+)(?:e-?\d+)?", d)
+    out, cur, i = [], [], 0
+    x = y = sx = sy = 0.0
+    last_c = last_q = None
+    cmd = None
+
+    def num():
+        nonlocal i
+        v = float(toks[i])
+        i += 1
+        return v
+
+    def bez(pts):
+        n = len(pts) - 1
+        res = []
+        for k in range(1, steps + 1):
+            t = k / steps
+            if n == 2:
+                (x0, y0), (x1, y1), (x2, y2) = pts
+                res.append(((1 - t) ** 2 * x0 + 2 * (1 - t) * t * x1 + t * t * x2,
+                            (1 - t) ** 2 * y0 + 2 * (1 - t) * t * y1 + t * t * y2))
+            else:
+                (x0, y0), (x1, y1), (x2, y2), (x3, y3) = pts
+                a, b, c, e = (1 - t) ** 3, 3 * (1 - t) ** 2 * t, 3 * (1 - t) * t * t, t ** 3
+                res.append((a * x0 + b * x1 + c * x2 + e * x3, a * y0 + b * y1 + c * y2 + e * y3))
+        return res
+
+    while i < len(toks):
+        if re.match(r"[A-Za-z]", toks[i]):
+            cmd = toks[i]
+            i += 1
+            if cmd in "Zz":
+                if cur:
+                    out.append(cur)
+                cur, x, y = [], sx, sy
+                last_c = last_q = None
+                continue
+        rel = cmd.islower()
+        c = cmd.upper()
+        ox, oy = (x, y) if rel else (0.0, 0.0)
+        if c == "M":
+            if cur:
+                out.append(cur)
+            x, y = ox + num(), oy + num()
+            sx, sy, cur = x, y, [(x, y)]
+            cmd = "l" if rel else "L"
+            last_c = last_q = None
+        elif c == "L":
+            x, y = ox + num(), oy + num()
+            cur.append((x, y))
+            last_c = last_q = None
+        elif c == "H":
+            x = ox + num()
+            cur.append((x, y))
+            last_c = last_q = None
+        elif c == "V":
+            y = oy + num()
+            cur.append((x, y))
+            last_c = last_q = None
+        elif c in "CS":
+            if c == "C":
+                c1 = (ox + num(), oy + num())
+            else:
+                c1 = (2 * x - last_c[0], 2 * y - last_c[1]) if last_c else (x, y)
+            c2 = (ox + num(), oy + num())
+            end = (ox + num(), oy + num())
+            cur += bez([(x, y), c1, c2, end])
+            last_c, last_q = c2, None
+            x, y = end
+        elif c in "QT":
+            if c == "Q":
+                c1 = (ox + num(), oy + num())
+            else:
+                c1 = (2 * x - last_q[0], 2 * y - last_q[1]) if last_q else (x, y)
+            end = (ox + num(), oy + num())
+            cur += bez([(x, y), c1, end])
+            last_q, last_c = c1, None
+            x, y = end
+        else:
+            raise ValueError("unsupported path command " + cmd)
+    if cur:
+        out.append(cur)
+    return out
+
+
+def draw_material(name):
+    """A Material Symbols icon in the 16 px cell: each subpath filled and combined even-odd (the holes stay open)."""
+    s = CELL * ICON_SS
+    img = Image.new("L", (s, s), 0)
+    for sub in svg_subpaths(MATERIAL[name]):
+        if len(sub) < 3:
+            continue
+        layer = Image.new("L", (s, s), 0)
+        ImageDraw.Draw(layer).polygon([(px * s / 960, (py + 960) * s / 960) for px, py in sub], fill=255)
+        img = ImageChops.logical_xor(img.convert("1"), layer.convert("1")).convert("L")
+    return img.resize((CELL, CELL), Image.LANCZOS)
 
 
 def draw_icon(name):
+    if name in MATERIAL:
+        return draw_material(name)
     s = CELL * ICON_SS
     img = Image.new("L", (s, s), 0)
     d = ImageDraw.Draw(img)

@@ -26,6 +26,8 @@ Every line belongs to one of four voices. The box tells them apart in more than 
 | **Character** | words your character could say out loud | *"Well met, friend. The road was kind today."* | yes, as `/say` or on a channel you choose, if you send it |
 | **NPC** | something said by a person around you | *"Mind the step, traveller."* | **never** |
 
+A fifth look, the **Bard** (rose on Nebula, wine red on Aurora, with a note before its name), shows the songs, verses and tales your character remembers: it is the inner voice's piece in another box, and only its **Share** button can send it to chat, on your click (see [[Literary Forms|Literary-Forms]]).
+
 The inner voice and the NPC voice always stay private, whatever you choose in the [[Chat Gateway]]. You can turn the inner voice down or off in your [[character's personality|Character-Soul-and-Total-RP-3]].
 
 ## How it keeps things varied
@@ -63,7 +65,7 @@ They are rare on purpose, never in combat, and **never go to chat**: only the na
 
 A [[literary form|Literary-Forms]] (a verse, a song, an inscription, a tale) keeps its **line breaks**: one verse per line. The lines appear **one at a time**, each after the time to read the one before at your reading speed, plus a short pause. The box is as tall as the whole piece from the start, so it does not jump as the lines come, up to **twelve lines** of your text size. A longer piece scrolls: move the **mouse wheel** over the text (the box follows the newest line until you scroll it yourself). The text still lets your clicks pass through to the game. With **Animations** off (Settings > Appearance), the whole piece appears at once. The history shows the verses on separate lines, the later ones indented.
 
-These pieces are private: they are never offered for chat.
+These pieces are private: they are never offered for chat. A song, verse or tale your character remembers appears in the **Bard**'s box, whose **Share** button sings it in chat line by line, only when you click it (see [[Literary Forms|Literary-Forms#the-bard]]).
 
 ## How to use it
 
