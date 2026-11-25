@@ -1610,6 +1610,30 @@ usa alcune righe semplici sue. Se qualcosa non va, apri una issue con `/au debug
 - **RB.6 · I tasti.** Nelle Associazioni tasti del gioco esistono *Dialogo con l'NPC: risposta 4* e *risposta 5* (non
   assegnati).
 
+## RC: romanticismo attivo, step R3, le frasi (ADR 0061)
+
+Costruito e provato solo fuori dal gioco. Asse dell'attrazione acceso (`/au relationships attraction on`), *Romanticismo
+attivo* acceso. Se una frase suona male (una parola al genere sbagliato in italiano, una risposta che non c'entra con ciò
+che hai fatto, qualcosa di troppo per il suo tono), segnala le sue parole con uno screenshot (`/au narrator history`
+elenca le frasi recenti).
+
+- **RC.1 · Una risposta di corteggiamento.** Parla con un NPC di sesso opposto che conosci (Conoscente o più).
+    - **Atteso:** a volte una risposta con il cuore dopo le solite (due dal corteggiamento in poi), scritta come qualcosa
+      che fai; dopo il clic, la risposta dell'NPC come battuta del dialogo, nella sua voce e nel suo mestiere, e ogni
+      tanto un pensiero privato nel riquadro del narratore. Niente in chat.
+    - **Segnala:** un'etichetta tagliata nel pulsante; una risposta che non si addice all'NPC (una guardia che parla da oste).
+- **RC.2 · Le scene della finestra.** Con RB.3 e RB.4: la dichiarazione, un appuntamento (passeggiata, cena, stelle, una
+  notte), il voto.
+    - **Atteso:** una scena di due-cinque frasi per ogni passo, con il nome dell'NPC, le sue parole tra virgolette nel
+      colore dell'NPC; la scena di una notte finisce con una riga di chiusura prima della dissolvenza.
+    - **Segnala:** una scena che non corrisponde alla proposta scelta; accordi italiani sbagliati per un personaggio donna
+      o uomo.
+- **RC.3 · La gelosia.** Dopo il voto, corteggia un'altra persona nella stessa città, poi parla con la persona amata.
+    - **Atteso:** la persona amata apre con una battuta ferita o fredda una volta (per qualche giorno), mai una minaccia.
+- **RC.4 · I bambini.** Prendi come bersaglio Lil Timmy a Stormwind City (o un orfano nella Settimana dei bambini) e
+  `/au who`.
+    - **Atteso:** mai una risposta di corteggiamento. **Segnala:** l'npcID che mostra `/au who`, se non è 8666, 14305 o 14444.
+
 ## Modulo riassuntivo (copia e compila)
 
 ```

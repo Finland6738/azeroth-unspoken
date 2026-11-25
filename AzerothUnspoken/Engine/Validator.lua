@@ -24,6 +24,8 @@ NS.Validator = Validator
 -- così il validatore prevede ciò che il Gateway farà davvero.
 ---@type table<string, integer>
 Validator.LIMITS = NS.Config.CHAT_LIMITS
+-- ADR 0061 (R3): events read only inside a window of the addon, never offered to chat: up to READING bytes
+Validator.READ_ONLY_EVENTS = { romance_scene = true }
 
 -- canali in cui può finire il testo di una voce
 local CHANNELS = {
@@ -1531,6 +1533,10 @@ function Validator:Run(opts)
 							-- #126, D20: a literary form in a private voice is read in the narrator: up to READING bytes
 							if p.category == Engine.LITERARY_CATEGORY and not Engine.PUBLIC_SPEAKERS[p.speaker] then
 								limit, limitCh = Validator.LIMITS.READING, "READING"
+							end
+							-- ADR 0061 (R3): a scene of the romance popup is read there and never offered to chat
+							for _, ev in ipairs(p.events or {}) do
+								if Validator.READ_ONLY_EVENTS[ev] then limit, limitCh = Validator.LIMITS.READING, "READING" end
 							end
 							if worst > limit then
 								local private = p.speaker == "inner" or p.speaker == "npc"

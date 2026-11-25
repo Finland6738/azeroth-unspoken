@@ -58,6 +58,23 @@ local function Ink(token)
 	return NS.Narrator and NS.Narrator:Ink(token, Alpha()) or "text-1"
 end
 
+-- the NPC's words inside a scene, in quotes ("..." in English, «...» in Italian), take the NPC's voice (spec 11.2); the
+-- rest stays text-1. The colour is written inline, so a change of theme draws the popup again (OnInit).
+RF.QUOTES = { { '"', '"' }, { "\194\171", "\194\187" }, { "\226\128\156", "\226\128\157" } }
+
+---The text of a scene with the NPC's quoted words coloured in the voice of the NPC (its contrast-safe ink).
+---@param text string
+---@return string
+function RF.Voiced(text)
+	if type(text) ~= "string" or text == "" then return text or "" end
+	local r, g, b = Theme.Color(Ink(Theme.VOICE_TOKENS.npc))
+	local open = ("|cff%02x%02x%02x"):format(math.floor(r * 255 + 0.5), math.floor(g * 255 + 0.5), math.floor(b * 255 + 0.5))
+	for _, q in ipairs(RF.QUOTES) do
+		text = text:gsub(q[1] .. "(.-)" .. q[2], function(words) return open .. q[1] .. words .. q[2] .. "|r" end)
+	end
+	return text
+end
+
 local function Context(npcID)
 	return NS:BuildContext({ relationSubject = { kind = "npc", id = npcID } })
 end
@@ -133,7 +150,7 @@ function RF:Render()
 	frame.badge:SetBadge(NS:L("npc_badge"), "accent")
 	local tier = s.tier or NS.Romance:AllowedTier()
 	frame.chip:SetBadge(NS:L("rom_tone_" .. TONE_WORDS[math.max(1, math.min(3, tier))]), "neutral")
-	frame.text:SetText(s.text or "")
+	frame.text:SetText(RF.Voiced(s.text or ""))
 	frame.text:SetAlpha(1)
 	frame.text:SetShown(not s.faded)
 	frame.later:SetText(NS:L("rom_later"))
@@ -394,4 +411,5 @@ function RF:OnInit()
 	end
 	self.state = nil
 	NS.Config:OnChange(function() if RF.state then RF:Render() end end)
+	Theme.OnChange(function() if RF.state then RF:Render() end end)
 end

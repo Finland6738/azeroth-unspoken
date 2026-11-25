@@ -6,9 +6,8 @@
 > che estende l'[ADR 0037](../adr/0037-romance-with-npcs-opposite-sex-and-the-vow.md). Step: [ROADMAP.md](../../ROADMAP.md),
 > sezione "Active romance".
 >
-> **Stato: R1 costruito (il motore, `Systems/Romance.lua`, `Data/Romance.lua`).** Nessuna risposta romantica e nessun
-> momento si offre finché l'interfaccia di R2 non dice di poterli disegnare; fino ad allora il voto dell'ADR 0037
-> continua ad arrivare da solo. Le differenze decise in R1 sono nel punto 21. I mockup sono in [`docs/design/mockups/`](../design/mockups/README.md)
+> **Stato: R1-R3 costruiti (il motore, l'interfaccia, le frasi dei livelli 1-2).** Il pacchetto del livello 3 è lo step R4.
+> Che cosa ha fissato ogni step è nei punti 21 (R1), 22 (R2) e 23 (R3). I mockup sono in [`docs/design/mockups/`](../design/mockups/README.md)
 > (`romance-*.html`, i PNG in `png/`): sono proposte disegnate sui widget e sui token veri dell'addon, segnate *PROPOSED*.
 
 ## 1. Che cosa aggiunge, in un paragrafo
@@ -547,3 +546,26 @@ costruiva:
 - **Il comando** `/au romance` è una riga del gruppo *Personaggio* di `/au help`, non un gruppo a sé.
 - **Impostazioni > Romanticismo** viene subito dopo *Privacy*; con l'asse dell'attrazione spento, *Romanticismo attivo* è
   disattivato e dice che cosa gli serve; *Esplicito* è disattivato finché il consenso è spento.
+
+## 23. Che cosa ha fissato lo step R3
+
+- **Il pacchetto** `base_romance`: 133 regole in `Data/RegistryRomance.lua` (70 risposte degli NPC: qualunque NPC ai due
+  livelli, i sette temperamenti, i cinque ruoli, il tipo di corteggiamento, la persona amata e un NPC che sa di un'altra
+  persona amata; 11 aperture gelose; 32 scene: ogni momento e fase, le quattro proposte dell'appuntamento; 20 pensieri),
+  387 testi per lingua in `AzerothUnspoken_enUS|itIT/Romance.lua`, scritti da cinque scrittori Opus su un'unica
+  traccia e controllati dal validatore dell'addon. Gli id sono `rom.<cosa>.<livello o fase>.<chi>`. `romance_inner` ha
+  probabilità 70 e una pausa di 300 s.
+- **Le risposte di corteggiamento**: 45 in `Data/RomanceFlirts.lua` (sguardi, parole, piccoli doni trovati per strada,
+  passeggiate, inviti, dieci per mestiere, cinque intime, quattro momenti; prima la risposta serale dell'appuntamento).
+  Un pacchetto spento non offre nemmeno le sue risposte.
+- **L'NPC di una frase**: `Romance:Person` mette nel contesto di ogni frase romantica il nome dell'NPC (`{other}`) e il
+  suo sesso (`{og:}`); senza la lettura del client il sesso è l'opposto di quello del personaggio (il romanticismo è
+  solo con il sesso opposto).
+- **Il popup** colora le parole dell'NPC tra virgolette nella voce dell'NPC (punto 11.2; `RomanceFrame.Voiced`) e si
+  ridisegna al cambio di tema.
+- **Il validatore** misura una scena (`romance_scene`, `Validator.READ_ONLY_EVENTS`) sul limite READING (600 byte), non
+  sull'emote del narratore: il popup si legge, non si propone mai in chat.
+- **I bambini** esclusi: gli npcID di Lil Timmy e degli orfani della Settimana dei bambini (numeri di Classic Era, da
+  verificare in gioco). Il registro curato non ne ha.
+- **Non scritti**: il pensiero alla locanda di notte rivolto alla persona amata (nessun evento lo fa scattare ancora; i
+  pensieri seguono solo un corteggiamento) e nuove chiavi del diario (quelle di R1 bastano per i cinque ricordi).

@@ -23,7 +23,15 @@ local ADDON, NS = ...
 
 NS:RegisterRelationData({
 	romance = {
-		exclude = { npcIDs = {} },   -- R3: the children of the curated register and of the capitals, by npcID
+		-- R3: children are never courted. The curated register (Data/NPCs.lua) has none; these are the children who walk
+		-- the capitals and their roads, by npcID of the Classic Era numbering, NOT yet verified in the Forever client (as
+		-- for the register: `/au who` in game, docs/G1_checklist.md). A wrong number only leaves one NPC out of romance.
+		-- The humanoid and opposite-sex gates (ADR 0037) still apply to everyone else.
+		exclude = { npcIDs = {
+			8666,    -- Lil Timmy, the boy with the kittens (Stormwind City)
+			14305,   -- Human Orphan (Children's Week, Stormwind City)
+			14444,   -- Orcish Orphan (Children's Week, Orgrimmar)
+		} },
 		stages = {
 			{ id = "interest", attraction = 5 },
 			{ id = "courtship", attraction = 25, band = "friend" },

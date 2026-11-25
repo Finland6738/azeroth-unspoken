@@ -106,7 +106,7 @@ With the **Attraction axis** on, you can lead a romance yourself (setting **Acti
 - **Ending it.** Only you can end it: **End the romance** in your beloved's detail (it asks first), or `/au romance end` twice. The vow, if made, stays in your journal; you can court again after 30 days.
 - **The tone.** *Courteous* by default; *Intimate* moments fade to black. *Explicit* exists only behind a two-step 18+ consent, off by default, and only with a separate optional pack that is not on CurseForge.
 
-The journal keeps the declaration, the first date, a jealousy, an ending and a first refusal, with no names. Until the next update brings the romance lines, the window uses a few plain lines of its own and the dialogues show no romantic answers yet. The saved relationships are version 10: an older version of the addon reads them but does not change them.
+The journal keeps the declaration, the first date, a jealousy, an ending and a first refusal, with no names. The romantic answers are about forty-five gestures and words (a look, a compliment, a small gift found on the road, a walk, an invitation, a few of them by the NPC's trade); the NPC answers in the voice of their temperament or trade, the romance window tells each moment in a few sentences (the NPC's quoted words in the NPC's colour), and now and then a private thought follows. Every line exists in Italian and English, Courteous or Intimate; children are never part of a romance. The saved relationships are version 10: an older version of the addon reads them but does not change them.
 
 ### Your word: promises and oaths
 
