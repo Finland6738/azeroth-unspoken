@@ -137,6 +137,7 @@ NS:RegisterLanguage("en", {
 		opt_romance_adult = "Explicit texts (18+)",
 		opt_romance_adult_tip = "A consent in two steps: the warning, then a second click. Kept for the whole account. Off in one click.",
 		opt_romance_pack = "18+ pack",
+		opt_romance_pack_note = "An optional 18+ romance pack exists for adults; it is not distributed here. See the project's GitHub page for details.",
 		help_romance = "active romance: the stage with your target and its moment; on/off, tone, the 18+ consent, end, why",
 		song_share_row = "Share it in chat, line by line:",
 		song_tip_share_say = "Show it in the Bard's box and sing it on /say (in the open world, one click a verse).",

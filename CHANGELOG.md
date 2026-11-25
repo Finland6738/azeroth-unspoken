@@ -8,6 +8,10 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### Settings: where the 18+ pack comes from
+
+- **Added**: under the *18+ pack* row of Settings > Romance, a short note in both languages: "An optional 18+ romance pack exists for adults; it is not distributed here. See the project's GitHub page for details." It is plain text with no link; Ko-fi stays the only link in the addon. The same sentence goes in the CurseForge description.
+
 ### Active romance, step R4: the optional 18+ pack (ADR 0061)
 
 - **Added**: `AzerothUnspoken_Romance18`, the optional pack of the tone *Explicit*: a few samples, mature and never
