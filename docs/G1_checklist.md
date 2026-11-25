@@ -1634,6 +1634,34 @@ elenca le frasi recenti).
   `/au who`.
     - **Atteso:** mai una risposta di corteggiamento. **Segnala:** l'npcID che mostra `/au who`, se non è 8666, 14305 o 14444.
 
+## RD: romanticismo attivo, step R4, il pacchetto 18+ (ADR 0061)
+
+Costruito e provato solo fuori dal gioco. Il pacchetto `AzerothUnspoken_Romance18` non è nello zip principale: prendilo
+dal rilascio su GitHub (`AzerothUnspoken_Romance18-<versione>.zip`) o dal repository e copialo in `AddOns`. Asse
+dell'attrazione e *Romanticismo attivo* accesi, un NPC già dichiarato (RB.3). Gli esempi sono maturi e mai espliciti nei
+dettagli: se uno ti sembra esplicito, o qualcosa di diverso da due adulti consenzienti, segnala subito le sue parole.
+
+- **RD.1 · Muto senza consenso.** Con il pacchetto installato e l'impostazione 18+ spenta, entra in gioco e `/au romance`.
+    - **Atteso:** il pacchetto *installato*, non *caricato*; `/au packs` non lo mostra caricato; mai una risposta o una
+      frase 18+.
+    - **Segnala:** il pacchetto caricato all'accesso (non deve: `C_AddOns.LoadAddOn` si chiama solo con il consenso e il
+      tono *Esplicito*).
+- **RD.2 · Acceso.** Impostazioni > Romance: *Testi espliciti (18+)* due volte (l'avviso, poi la conferma), poi il tono
+  *Esplicito*.
+    - **Atteso:** il pacchetto *caricato* subito (senza `/reload`), fuori dal combattimento; dopo un `/reload` si carica di
+      nuovo da solo quando entri nel mondo (o alla fine del combattimento in cui sei entrato).
+    - **Segnala:** un errore Lua; *mancante* anche se la cartella è in `AddOns`; un caricamento in combattimento.
+- **RD.3 · Le frasi.** In una locanda di notte (o a riposo), con l'NPC dichiarato o promesso: corteggia e apri il voto.
+    - **Atteso:** ogni tanto una delle tre risposte 18+ (sussurrare, restare la notte, uno sguardo); la risposta dell'NPC,
+      tra cui un gentile *non stanotte* o un *no* chiaro; la scena del voto di livello 3 che sfuma nel nero. Niente in
+      chat; l'etichetta *dialogo ambientale dell'addon* resta.
+- **RD.4 · Spento.** *Testi espliciti (18+)* spento.
+    - **Atteso:** il tono torna a *Intimo*; da quel momento nessuna risposta o frase 18+, senza `/reload`. Riacceso (due
+      passi): tornano, sempre senza `/reload`.
+- **RD.5 · Gli zip.** Nella pagina del rilascio su GitHub.
+    - **Atteso:** `AzerothUnspoken-<versione>.zip` senza `AzerothUnspoken_Romance18`; `AzerothUnspoken_Romance18-<versione>.zip`
+      con lei sola. Su CurseForge, solo il primo.
+
 ## Modulo riassuntivo (copia e compila)
 
 ```

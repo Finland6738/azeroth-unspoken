@@ -214,7 +214,7 @@ black, and Explicit only behind an 18+ consent and in a separate pack that never
 | R1 | Engine: `Systems/Romance.lua`, `Data/Romance.lua`, the gates, the affinity score, stages and moments, one beloved, jealousy, break-up, tone selection, the 18+ consent, the flirt exception in the validator, `relationships.version` 10 and its migration, tests | done (PR #309) |
 | R2 | Interface: flirt answers in the dialogue window, the romance popup (`voice-romance`), Settings > Romance, the Relationships detail, the journal kinds, `/au romance`, mockups and assets | done (PR #310) |
 | R3 | Content of tiers 1-2 in Italian and English (Opus writers): flirt answers, NPC replies, popup scenes, inner voice, journal lines; `romance.exclude` | in review: 133 lines (387 texts per language) and 45 flirt answers, pack `base_romance` |
-| R4 | The tier-3 pack `AzerothUnspoken_Romance18` (LoadOnDemand, silent without the gate), its own zip outside the CurseForge one, a few non-graphic samples, how to write for it | to do |
+| R4 | The tier-3 pack `AzerothUnspoken_Romance18` (LoadOnDemand, silent without the gate), its own zip outside the CurseForge one, a few non-graphic samples, how to write for it | in review: 9 lines and 3 flirt answers (samples), `Romance:Register18`, the validator's lock `romance18`, `tools/package_release.py` makes a second zip for the GitHub release only, `AzerothUnspoken_Romance18/README.md` |
 
 ### GitHub issues
 

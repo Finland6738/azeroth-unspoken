@@ -8,6 +8,19 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### Active romance, step R4: the optional 18+ pack (ADR 0061)
+
+- **Added**: `AzerothUnspoken_Romance18`, the optional pack of the tone *Explicit*: a few samples, mature and never
+  graphic (nine lines: the NPC's replies, among them a kind *not tonight* and a clear *no*, the vow's scenes, two
+  thoughts; three flirt answers), in Italian and English. It is **not on CurseForge** and not in the main zip: it is a
+  second zip, `AzerothUnspoken_Romance18-<version>.zip`, on the GitHub release only. It loads only with the two-step 18+
+  consent on and the tone *Explicit*, at once or when you enter the world; turning the consent off removes its lines and
+  answers at once. How to write your own: `AzerothUnspoken_Romance18/README.md`.
+- **Changed**: `tools/package_release.py` leaves every folder whose `.toc` has `X-AzerothUnspoken-Romance` out of the
+  main zip and zips it alone. The validator refuses tier 3 outside an 18+ pack, and anything but tier-3 romance lines
+  inside one (error `romance18`).
+- **Not verified in the game client**: see section RD of the [G1 checklist](docs/G1_checklist.en.md).
+
 ### Active romance, step R3: the lines (ADR 0061)
 
 - **Added**: the romance lines of tiers 1 (Courteous) and 2 (Intimate), in Italian and English, pack `base_romance`:

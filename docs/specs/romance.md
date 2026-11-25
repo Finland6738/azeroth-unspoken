@@ -6,8 +6,8 @@
 > which extends [ADR 0037](../adr/0037-romance-with-npcs-opposite-sex-and-the-vow.md). Steps: [ROADMAP.md](../../ROADMAP.md),
 > section "Active romance".
 >
-> **Status: R1-R3 built (the engine, the interface, the lines of tiers 1-2).** The tier-3 pack is step R4. What each step
-> settled is listed in points 21 (R1), 22 (R2) and 23 (R3). The mockups are in [`docs/design/mockups/`](../design/mockups/README.md)
+> **Status: R1-R4 built (the engine, the interface, the lines of tiers 1-2, the optional 18+ pack).** What each step
+> settled is listed in points 21 (R1), 22 (R2), 23 (R3) and 24 (R4). The mockups are in [`docs/design/mockups/`](../design/mockups/README.md)
 > (`romance-*.html`, PNGs in `png/`); they are proposals drawn on the addon's real widgets and tokens, marked *PROPOSED*.
 
 ## 1. What this adds, in one paragraph
@@ -543,3 +543,36 @@ The engine (`Systems/Romance.lua`, `NS.Romance`) follows this spec, with these d
   in game). The curated register has none.
 - **Not written**: the thought at an inn at night about the beloved (no event fires it yet; the thoughts follow a
   flirt only) and new journal keys (R1's are enough for the five memories).
+
+## 24. What step R4 settled
+
+- **The pack** `AzerothUnspoken_Romance18` (pack id `romance18_base`): the `.toc` of point 12.1 (plus `Author`,
+  `Version`, `X-Category`, `X-License` like the other folders), `Registry.lua`, `Flirts.lua`, `Texts_enUS.lua`,
+  `Texts_itIT.lua`, `README.md` with its Italian twin `README.it.md`, `NOTICE.md`. **Nine sample rules** (two welcomes
+  and one for the beloved, a kind *not tonight*, a clear *no*, the vow's scene `open` and `welcome`, a thought after a
+  welcome and one after a no) and **three flirt answers** (`compliment`, `invite` at night, `glance`; stages `declared`
+  to `vowed`), two or three variants per language, written by an Opus writer and checked by the addon's validator.
+  Mature and never graphic, by the owner's choice; heavier texts are an author's own pack.
+- **The second lock** is `Romance:Register18(pack, fn)`: every file of the pack wraps its registration in it. `fn` runs
+  only while the 18+ consent is on; `Romance:Sync18`, called by the consent (on and off), drops the 18+ packs
+  (`Engine:DropPack`, `Romance:DropFlirts`) when it goes off and runs the parts again when it comes back, without a
+  `/reload` (a loaded addon cannot be unloaded, its data can). A tier-3 line is also never picked below tier 3.
+- **The first lock at login**: `Romance:LoadPack` also runs at `WORLD_ENTER` and `COMBAT_END` (never in combat), so a
+  saved consent with the tone *Explicit* loads the pack after a `/reload`.
+- **The third lock for rules**: the validator's error `romance18` (tier 3 outside an 18+ pack; another tier, or an event
+  that is not a romance event, inside one), next to the flirts' check of R1.
+- **Reachable at tier 3**: the NPC's replies and the thoughts (at night at an inn or rested, with a declared or vowed
+  NPC) and the vow's scenes. A declaration is always courteous (it comes before the stage `declared`) and a date takes
+  the tier of its option (1 or 2): no date option is tier 3, so the pack has no date scene.
+- **An author's pack** lives in the same folder (the addon loads only `romance.pack18.addon` and allows tier 3 only
+  while it is loaded); the format, the rules (adults only, consent always, nothing about a minor) and the offline test
+  are in its `README.md`.
+- **Packaging**: `tools/package_release.py` (`addon_folders`, `build`) puts every folder whose `.toc` has
+  `## X-AzerothUnspoken-Romance:` in a zip of its own, `<folder>-<version>.zip`, for the GitHub release only; there is
+  no release workflow, so the manual step is in `CONTRIBUTING.md` (*Making a release*). `Tests/check_package.py` builds
+  both zips in a throwaway repository and checks the split at `HEAD`.
+- **Tests**: `Tests/TestRomance18.lua` (installed like a player's download: silent and unloaded without the consent,
+  nothing registered even when loaded by hand, registered with the consent, tier 3 only, its validator run clean, its
+  lines picked at tier 3 and never sent, dropped with the consent off and back with it on, the validator's `romance18`).
+  The harnesses that load the download (`run_tests.py`, `check_docs.py`, `check_versi.py`, `bench_scale.py`) leave the
+  18+ folder out, as the main zip does.

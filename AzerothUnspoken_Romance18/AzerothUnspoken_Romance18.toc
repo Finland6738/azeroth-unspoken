@@ -1,0 +1,15 @@
+## Interface: 16001
+## Title: Azeroth Unspoken - Romance 18+
+## Notes: Optional explicit romance texts for Azeroth Unspoken. Silent unless the 18+ setting is on.
+## Dependencies: AzerothUnspoken
+## LoadOnDemand: 1
+## X-AzerothUnspoken-Romance: 18
+## Author: Finland6738
+## Version: 0.3.2
+## X-Category: Roleplay
+## X-License: All rights reserved (phrases and narrative data). See LICENSING.md
+
+Registry.lua
+Flirts.lua
+Texts_enUS.lua
+Texts_itIT.lua

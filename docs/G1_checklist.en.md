@@ -747,6 +747,33 @@ its tone), report its words with a screenshot (`/au narrator history` lists the 
 - **RC.4 · Children.** Target Lil Timmy in Stormwind City (or an orphan during Children's Week) and `/au who`.
     - **Expect:** never a flirt answer. **Report:** the npcID `/au who` shows, if it is not 8666, 14305 or 14444.
 
+## RD: active romance, step R4, the 18+ pack (ADR 0061)
+
+Built and tested outside the game only. The pack `AzerothUnspoken_Romance18` is not in the main zip: take it from the
+GitHub release (`AzerothUnspoken_Romance18-<version>.zip`) or from the repository, and copy it into `AddOns`. Attraction
+axis and *Active romance* on, an NPC already declared (RB.3). The samples are mature and never graphic: if one reads as
+graphic, or as anything but two consenting adults, report its words at once.
+
+- **RD.1 · Silent without the consent.** With the pack installed and the 18+ setting off, log in and `/au romance`.
+    - **Expect:** the pack *installed*, not *loaded*; `/au packs` does not list it as loaded; no 18+ answer or line ever.
+    - **Report:** the pack loaded at login (it must not be: `C_AddOns.LoadAddOn` is called only with the consent and the
+      tone *Explicit*).
+- **RD.2 · On.** Settings > Romance: *Explicit texts (18+)* twice (the warning, then the confirmation), then the tone
+  *Explicit*.
+    - **Expect:** the pack *loaded* at once (no `/reload`), out of combat; after a `/reload` it loads again by itself when
+      you enter the world (or at the end of the fight you logged in during).
+    - **Report:** a Lua error; *missing* although the folder is in `AddOns`; a load in combat.
+- **RD.3 · The lines.** At an inn at night (or rested), with the declared or vowed NPC: flirt, and open the vow.
+    - **Expect:** now and then one of three 18+ answers (whisper, stay the night, a look); the NPC's reply, a kind *not
+      tonight* or a clear *no* among them; the vow's scene at tier 3 fading to black. Nothing in chat; the label *addon
+      ambient dialogue* stays.
+- **RD.4 · Off.** *Explicit texts (18+)* off.
+    - **Expect:** the tone back to *Intimate*; no 18+ answer or line from that moment, without a `/reload`. On again (two
+      steps): they come back, still without a `/reload`.
+- **RD.5 · The zips.** On the GitHub release page.
+    - **Expect:** `AzerothUnspoken-<version>.zip` without `AzerothUnspoken_Romance18`; `AzerothUnspoken_Romance18-<version>.zip`
+      with it alone. On CurseForge, only the first.
+
 ## Summary form (copy and fill in)
 
 ```

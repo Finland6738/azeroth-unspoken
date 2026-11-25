@@ -69,7 +69,9 @@ def new_runtime(zone=None):
     root = os.path.dirname(ADDON)
     packs = [d for d in sorted(os.listdir(root)) if d.startswith("AzerothUnspoken_")
              and os.path.isfile(os.path.join(root, d, d + ".toc"))
-             and "## X-AzerothUnspoken-" in open(os.path.join(root, d, d + ".toc"), encoding="utf-8").read()]
+             and "## X-AzerothUnspoken-" in open(os.path.join(root, d, d + ".toc"), encoding="utf-8").read()
+             # the 18+ pack (X-AzerothUnspoken-Romance, ADR 0061) is not part of the download
+             and "## X-AzerothUnspoken-Romance:" not in open(os.path.join(root, d, d + ".toc"), encoding="utf-8").read()]
     lua.globals().INSTALL_PACKS(root.replace(chr(92), "/"), lua.table_from(packs), True)
     lua.globals().FIRE("ADDON_LOADED", "AzerothUnspoken")
     lua.execute("AzerothUnspoken.Packs:ActivateAll()")
