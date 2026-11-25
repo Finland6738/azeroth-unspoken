@@ -2,7 +2,7 @@
 ## Title: Azeroth Unspoken - Eastern Kingdoms
 ## Notes: Rules of the phrases bound to Eastern Kingdoms. Loaded by Azeroth Unspoken when the character is in Eastern Kingdoms.
 ## Author: Finland6738
-## Version: 0.3.1
+## Version: 0.3.2
 ## Dependencies: AzerothUnspoken
 ## LoadOnDemand: 1
 ## X-AzerothUnspoken-Region: eastern

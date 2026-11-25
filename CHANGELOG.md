@@ -4,7 +4,7 @@ All notable changes to this project are recorded here.
 
 The format follows [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/) and the project intends to follow [semantic versioning](https://semver.org/) from version 1.0 onwards. Until then, 0.x versions may change in ways that are not backward compatible. The v2 data schema of the phrase packs (step S3) is now stable and described in [PACK_FORMAT.md](AzerothUnspoken/PACK_FORMAT.md), but it may still change before 1.0: any changes will be announced here.
 
-Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspoken/releases). Each one has a zip with only the addon folders, built by `tools/package_release.py`. The first is `0.1.0` and the latest is `0.3.1`, all development previews.
+Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspoken/releases). Each one has a zip with only the addon folders, built by `tools/package_release.py`. The first is `0.1.0` and the latest is `0.3.2`, all development previews.
 
 ## [Unreleased]
 
@@ -20,6 +20,11 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
   default, in a separate pack that never ships in the CurseForge zip. Seven proposed mockups in
   `docs/design/mockups/romance-*` (marked PROPOSED) and an "Active romance" section in the ROADMAP. Nothing changes in
   the addon yet; the engine, interface, content and pack come in steps R1-R4.
+
+## [0.3.2] - 2026-11-25
+
+A small development preview on top of 0.3.1: it adds the **Bard** (ADR 0060), the songs, verses and tales the character remembers shown in the narrator box with a colour, label and note icon of their own, and shared in `/say` or `/emote` one verse at a time, only on the player's click; it leaves **Ko-fi** as the only link inside the addon; and it brings two content waves, **W21** (Orgrimmar) and **W22** (Stormwind City), which take the addon from 62,255 to **68,255 texts per language** (28,453 intentions). Nothing of the Bard or of the one-link Info section has been tried in the game client yet.
+
 ### The Bard (ADR 0060)
 
 - **Added**: the **Bard** (*Bardo* in Italian). The songs, rhymes, hymns, laments, verses and tales the character
@@ -3554,7 +3559,8 @@ Tools for the owner to run in the real client, so that the decisions D3 (memory 
 - A pack that registers a key that already exists (script, NPC, place, arc) replaces the base one without a warning ([#69](https://github.com/Finland6738/azeroth-unspoken/issues/69)).
 - License to be defined ([issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2)).
 
-[Unreleased]: https://github.com/Finland6738/azeroth-unspoken/compare/v0.3.1...main
+[Unreleased]: https://github.com/Finland6738/azeroth-unspoken/compare/v0.3.2...main
+[0.3.2]: https://github.com/Finland6738/azeroth-unspoken/compare/v0.3.1...v0.3.2
 [0.3.1]: https://github.com/Finland6738/azeroth-unspoken/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/Finland6738/azeroth-unspoken/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/Finland6738/azeroth-unspoken/compare/v0.2.0...v0.2.1

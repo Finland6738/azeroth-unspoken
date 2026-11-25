@@ -14,7 +14,7 @@ Un compagno narrativo immersivo per World of Warcraft, distintivo e misterioso, 
 
 Azeroth Unspoken è un addon per **World of Warcraft: Forever** (Interface `16001`). Contiene un motore narrativo locale e un database di frasi curate, in italiano e in inglese, che reagiscono ai luoghi, agli eventi e alle azioni del personaggio: una zona nuova, un combattimento, una ferita grave, un livello guadagnato, un saluto.
 
-> **Stato: in sviluppo (versione 0.3.1 nel `.toc`), funzioni delle milestone M0–M3 scritte.** Il codice è stato provato solo fuori dal gioco, con un client simulato. **Nessuna prova nel client vero è ancora stata fatta** (checklist [G1](docs/G1_checklist.md): prove G1, G2 e G3, 108 passi numerati più le sezioni R): aspettati sorprese. Vedi [Stato del progetto](#stato-del-progetto).
+> **Stato: in sviluppo (versione 0.3.2 nel `.toc`), funzioni delle milestone M0–M3 scritte.** Il codice è stato provato solo fuori dal gioco, con un client simulato. **Nessuna prova nel client vero è ancora stata fatta** (checklist [G1](docs/G1_checklist.md): prove G1, G2 e G3, 108 passi numerati più le sezioni R): aspettati sorprese. Vedi [Stato del progetto](#stato-del-progetto).
 
 ## Indice
 
@@ -77,7 +77,7 @@ Altri client (retail, Classic Era, ecc.) non sono supportati né provati. L'addo
 
 ## Installazione
 
-L'ultima release è la **0.3.1**, un'anteprima di sviluppo come le precedenti (0.1.0, 0.2.0, 0.2.1, 0.3.0): aggiunge la ruota radiale delle emote all'aspetto NEBULA della 0.3.0, le funzioni ci sono, le frasi stanno ancora crescendo (circa 62.000 per lingua) e non è ancora stata provata a fondo in gioco.
+L'ultima release è la **0.3.2**, un'anteprima di sviluppo come le precedenti (0.1.0, 0.2.0, 0.2.1, 0.3.0, 0.3.1): aggiunge il **Bardo**, un riquadro del suo colore per canti e versi con la condivisione a un clic, lascia Ko-fi come unico link nell'addon e porta due nuove ondate di contenuti (circa 68.000 frasi per lingua); le funzioni ci sono, le frasi stanno ancora crescendo e non è ancora stata provata a fondo in gioco.
 
 1. Scarica `AzerothUnspoken-<versione>.zip` dalla [pagina Releases](https://github.com/Finland6738/azeroth-unspoken/releases) e decomprimilo: contiene solo le cartelle dell'addon. (Lo stato di sviluppo più recente è il repository stesso: `Code` → `Download ZIP`, oppure `git clone https://github.com/Finland6738/azeroth-unspoken`.)
 2. Copia **tutte le cartelle il cui nome comincia con `AzerothUnspoken`** in `World of Warcraft\_forever_\Interface\AddOns\`: l'addon (`AzerothUnspoken`), le frasi di ogni lingua (`AzerothUnspoken_enUS`, `AzerothUnspoken_itIT`) e di ogni continente (`AzerothUnspoken_Kalimdor`, `AzerothUnspoken_EasternKingdoms` e le loro cartelle `_enUS`/`_itIT`). L'addon carica da solo solo la lingua scelta e solo il continente in cui ti trovi, fuori dal combattimento: non devi mai scegliere una cartella.
