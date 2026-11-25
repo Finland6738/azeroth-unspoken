@@ -7455,4 +7455,5432 @@ AU:RegisterRegionalTexts("elwynnforest", "enUS", "eastern_stormwind", [==[
 		"loosens a buckle that has been biting all along, and seems to grow taller by roughly the width of the strap.",
 		"lets out a belt by one hole, right there in the street, with the dignity of someone who has earned it.",
 	},
+	["sw.greet.w22.howdo.001"] = {
+		"Hello! Lost? Ask a guard. They'll point you to the bank, the inn and three trainers you never asked about.",
+		"Need directions? Every guard in Stormwind knows the way to everything and will tell you all of it.",
+		"Hi. If you're lost, don't be shy. The guards in this city give directions the way priests give sermons.",
+	},
+	["sw.greet.w22.howdo.002"] = {
+		"Hello. A word of advice: keep away from the canal edges. They take somebody's hat every hour, and now and then the somebody.",
+		"Walking the canals? Keep to the middle of the path; the edges are slicker than they look. Hello.",
+		"Hi! The guards say somebody falls into the canals every week. Please don't be this week's.",
+	},
+	["sw.greet.w22.howdo.003"] = {
+		"Hi. Made it through the Trade District crowd with both elbows? I've lost the use of one.",
+		"Hello! You look a little trampled. The Trade District does that to everyone.",
+		"Into the Trade District? Elbows out, coin pouch in. And hello.",
+	},
+	["sw.greet.w22.howdo.004"] = {
+		"Hullo. You smell faintly of the Pig and Whistle. Don't worry, so does half of Old Town.",
+		"Hello. Been to the Pig and Whistle? Thought so. That smell doesn't come out with one wash.",
+	},
+	["sw.greet.w22.howdo.005"] = {
+		"Hello. If your hair is standing on end, you've been in the Mage Quarter. Mine took an hour to lie flat.",
+		"Ho there. If you hear a bang from the Mage Quarter, don't run. Everyone else does, and it only makes it worse.",
+		"Hi! Walked through the Mage Quarter yet? You'll know when your hair starts to crackle.",
+	},
+	["sw.greet.w22.howdo.006"] = {
+		"Hello! Pay no mind to the cat. It's been following me since the last bridge, and I think it wants my lunch.",
+		"Hi there. Do you like cats? Good, because one has adopted me and I need somebody to hand it to.",
+		"A word of warning: if a gray cat starts trailing after you, don't feed it. That's how it got me.",
+	},
+	["sw.greet.w22.howdo.007"] = {
+		"Hello! Fair warning: the children of this city race the length of every street and stop for nobody.",
+		"Greetings. If a child tugs your sleeve and runs off, check your coin. Then laugh; it's usually still there.",
+		"Hi. The children here play guards and Defias in the alleys. Guess which side always wins.",
+	},
+	["sw.greet.w22.howdo.008"] = {
+		"Hello. Have you heard what they whisper about Lady Prestor at court? Nor have I. I'd like to keep it that way.",
+		"Greetings. Don't say Lady Prestor's name too loudly; people near the Keep go quiet when it comes up.",
+		"Hail. A word in your ear: they say the regent listens to Lady Prestor more than he should. Now, hello properly.",
+	},
+	["sw.greet.w22.howdo.009"] = {
+		"Hello. Any word of the king's ship? Sorry. Everybody in this city asks everybody that.",
+		"Greetings. If you ever hear news of King Varian, tell the first guard you see. They all still hope.",
+		"You haven't heard anything of the king, have you? No. Nobody has. Hail, all the same.",
+	},
+	["sw.greet.w22.howdo.010"] = {
+		"Hi. Off to the Deeprun Tram? Hold on to something, and don't stare into the dark too long.",
+		"Hello! If you're taking the tram, sit facing forward. The other way sets the stomach arguing.",
+		"Greetings. Riding the Deeprun Tram? Count the lamps in the tunnel; it passes the time better than thinking about the water.",
+	},
+	["sw.greet.w22.howdo.011"] = {
+		"Hello! Say again? I've been near the forges in the Dwarven District and my ears are still ringing.",
+		"Greetings! Sorry, am I shouting? Too long beside the dwarven anvils; everyone sounds far away.",
+		"Hi! Speak up a bit. The hammers of the Dwarven District have borrowed half my hearing for the next hour.",
+	},
+	["sw.greet.w22.howdo.012"] = {
+		"Hello. If you're tired of stone, the Park is the one place in town where your feet touch grass.",
+		"Greetings. Walk in the Park sometime; the trees there don't care who's regent.",
+		"Hi. When the city gets too loud, I go and stand under the trees in the Park. You might try it.",
+	},
+	["sw.greet.w22.salute.001"] = {
+		"Peace to you, under the blue and gold. The Alliance could pick worse streets to meet in.",
+		"Greetings, in the regent's city. May every friend of the Alliance find it as safe as I do.",
+		"Hail. Ironforge, Darnassus or these streets: wherever we stand, we answer to the same cause.",
+	},
+	["sw.greet.w22.salute.002"] = {
+		"Your servant. That's how the nobles greet each other at court, and they almost never mean it. I do.",
+		"Your humble servant, as they say up at the Keep. Less humble down here, but glad to meet you all the same.",
+		"A courtier's bow for you. I learned it by watching nobles, so it may come out slightly crooked.",
+	},
+	["sw.greet.w22.salute.003"] = {
+		"Greetings, in King Anduin's name. He's young, but the city bows to him all the same, and so do I.",
+		"Well met, under the boy king and his regent. Between the two of them the streets keep their peace.",
+		"Hail. Highlord Bolvar keeps this city in order; the least I can do is keep my manners in order too.",
+	},
+	["sw.greet.w22.salute.004"] = {
+		"The Light keep you. I say it whenever the Cathedral comes into view, and from most corners of the city it does.",
+		"Peace of the Light on you, whoever you pray to, or if you pray to no one.",
+		"May the Light walk a little way with you once you're past the gates. It does with me, I like to think.",
+	},
+	["sw.greet.w22.salute.005"] = {
+		"Hail! Missing a proper forge? The Dwarven District is the nearest thing to Ironforge this side of the tram.",
+		"Ho there. Fine city, Stormwind. Pity they built it on top of the ground instead of inside a mountain.",
+		"The humans build good walls, I'll give them that. Shame about the ceilings; there aren't any. Greetings!",
+	},
+	["sw.greet.w22.salute.006"] = {
+		"Good to meet you. Forgive my accent; I'm working on it.",
+		"Greetings. Yes. Greetings. That is how it's said in this city, I believe.",
+		"Hello, hello. A pleasant city, all this white. Very... pleasant. Shall we keep walking?",
+	},
+	["sw.greet.w22.salute.007"] = {
+		"After the statues in the Valley of Heroes, a plain hello feels a little small. Here's one anyway.",
+		"Greetings. All those stone heroes along the Valley of Heroes, and not one of them ever nods back. You did.",
+		"Hail. I nod to the statues in the Valley of Heroes every time I pass. You're the first who's answered.",
+	},
+	["sw.greet.w22.salute.008"] = {
+		"Peace to you. If your road goes through Westfall, spare the farmers a kind word; they've had few enough.",
+		"Greetings. Half the folk asking for coin in these streets came up from Westfall, they say. Greet them too.",
+		"Hail. With the Defias loose in Westfall, a friendly face in the city is worth stopping for.",
+	},
+	["sw.greet.w22.salute.009"] = {
+		"Hail! That's the guards' salute, fist to chest. I've been practicing on a lamppost.",
+		"A salute for you, the way the city guards do it. Theirs is sharper, but they get paid for it.",
+		"Greetings! I once tried saluting like the guards and nearly knocked a merchant's hat off. Hello, carefully.",
+	},
+	["sw.greet.w22.salute.010"] = {
+		"My respects, to you and to wherever you're bound.",
+		"A bow, and good fortune to you.",
+	},
+	["sw.greet.w22.salute.011"] = {
+		"Hello. Stay out of trouble; I hear the Stockade is full and the cooking hasn't improved.",
+		"Greetings. Mind the guards' tempers; the Stockade takes new lodgers without asking them first.",
+		"Keep your nose clean in this city, friend. The Stockade has no view and worse neighbors.",
+	},
+	["sw.greet.w22.salute.012"] = {
+		"Hail. Bound for the Keep? Straighten your collar; the court notices everything and forgets nothing.",
+		"Off to the throne room? Brush your boots first. Courtiers look down before they look up. Greetings.",
+		"Going up to the Keep? Speak slowly in there. The court likes to make people repeat themselves. Hello, by the way.",
+	},
+	["sw.greet.w22.wellmet.001"] = {
+		"Good to meet you. In Stormwind even a hello comes with a fee, but this one's free.",
+		"Hello! Nice to meet someone who doesn't want paying for the privilege. Most of this city does.",
+		"Greetings, at no charge. Rare enough in this city that I thought I'd mention it.",
+	},
+	["sw.greet.w22.wellmet.002"] = {
+		"Hello. Should I bow? Half this city expects one, and the other half laughs if you try.",
+		"Greetings. I never know here whether to bow, nod or offer a hand, so take your pick.",
+		"A bow? A nod? In Stormwind you can never tell. Have a little of both.",
+	},
+	["sw.greet.w22.wellmet.003"] = {
+		"Hello! I'm sure we've met, or will. Stormwind has too many faces to keep straight.",
+		"Greetings. Forgive me if I've forgotten your name; this city crams a hundred new ones into my head every hour.",
+		"Hail. Your name? No, wait, don't tell me. I'll only drop it somewhere between here and the bank.",
+	},
+	["sw.greet.w22.wellmet.004"] = {
+		"Hello. Speak freely; somebody from SI:7 is probably listening anyway, so you might as well be interesting.",
+		"Greetings. Keep it cheerful. In this city the walls have ears, and SI:7 pays them.",
+		"Hi. Don't look now, but that idler by the wall could be SI:7. Or only an idler. Hello either way.",
+	},
+	["sw.greet.w22.wellmet.005"] = {
+		"Hello. You're not carrying a petition to the Keep, are you? Good. You're the first in an hour.",
+		"Greetings! A pleasure to meet someone who isn't complaining about taxes. You aren't, are you?",
+		"No grievance to air, no petition for the regent? Then you're the restful sort. Hello.",
+	},
+	["sw.greet.w22.wellmet.006"] = {
+		"Greetings. You still look like yourself. Some people this city swallows whole; mind it doesn't happen to you.",
+		"Hello. Stormwind wears people down to their coin and their titles. Good to meet someone who's more than that.",
+		"Hail. Keep that face. The city has a way of polishing people until they all look like merchants.",
+	},
+	["sw.greet.w22.wellmet.007"] = {
+		"Hello. I'd buy you a drink, but every tavern between Old Town and the Mage Quarter knows my tab by heart.",
+		"Greetings! Fancy a pint? You'd be paying, mind; the Slaughtered Lamb stopped giving me credit.",
+		"A drink to mark the meeting? Gladly, if you're buying. My tab at the Gilded Rose has grown a tab of its own.",
+	},
+	["sw.greet.w22.wellmet.008"] = {
+		"Hello! Sorry? Wait for the bells to stop. Half of every conversation in this city is lost to the Cathedral.",
+		"Greetings. Say it again once the bells are done; Cathedral Square could drown out a whole sermon.",
+		"Hi. Talk fast, before the Cathedral bells start up and nobody hears anybody.",
+	},
+	["sw.greet.w22.wellmet.009"] = {
+		"Greetings, stranger, or friend, whichever you turn out to be.",
+		"Hello. I can't tell yet whether you're a stranger or a friend, so you get the greeting meant for both.",
+		"Well met. In a city this size a stranger is only someone nobody has introduced yet. Consider it done.",
+	},
+	["sw.greet.w22.wellmet.010"] = {
+		"Hello. Do I know you? Never mind; in this city it's cheaper to be polite than to guess.",
+		"Greetings, whoever you are. A courtesy costs nothing, and in Stormwind that makes it a bargain.",
+	},
+	["sw.greet.w22.wellmet.011"] = {
+		"Hello. Banker, tailor, priest or pickpocket? In Stormwind I greet them all the same way, to be safe.",
+		"Greetings. In this city the beggar and the noble get the same nod from me, and so do you.",
+		"Hail. Merchant, mage or soldier, everyone here deserves a hello. Even the ones who never give one back.",
+	},
+	["sw.greet.w22.wellmet.012"] = {
+		"Hello. Ever watched somebody fish the canals? I did, for an hour. Neither of us caught a thing.",
+		"Greetings. If you've a rod, the canals are full of fish, or so the people fishing them keep telling me.",
+		"Hi. They say something big lives under one of the canal bridges. The fishers won't say which one.",
+	},
+	["sw.journey.w22.aerial.001"] = {
+		"peers down into the back courtyards that no street ever shows: a well, a woodpile, a bench, a cat asleep on a barrel lid.",
+		"finds a second city behind the house fronts, one only the air can see: inner yards with wells and woodpiles, washing tubs, a goat tied to a post.",
+		"glimpses the little squares of private business hidden behind every block of houses, each yard its own small world with its own well.",
+	},
+	["sw.journey.w22.aerial.002"] = {
+		"The market from above is all awnings: striped, patched, faded to the color of weak tea, stitched into one great tattered quilt.",
+		"Under me the stalls of the Trade District vanish beneath their canvas. Every patch is a different merchant's idea of a bright color.",
+		"Awnings, awnings, awnings. If anybody is selling anything down there, the canvas is keeping it a secret.",
+	},
+	["sw.journey.w22.aerial.003"] = {
+		"sees from above how a city crowd really moves: a cart goes through, people part ahead of it and close behind, like weed around a pushing fish.",
+		"follows a single handcart down a packed street from the air, the crowd opening before it and folding shut behind, the way tall grass parts for a dog and springs back.",
+	},
+	["sw.journey.w22.aerial.004"] = {
+		"Up here every person in Stormwind is the same size. The lord in his velvet and the boy with the barrow: two dots, moving at much the same pace.",
+		"No nobles and no porters at this height, only dots. I doubt the nobles would enjoy the view.",
+		"I can't tell a duke from a dustman at this distance. Same size, same pace, same dark speck on the stone. The city would be mortified.",
+	},
+	["sw.journey.w22.aerial.005"] = {
+		"Slow down a moment, beast. I'm reading the city.",
+		"Easy. Let me get a proper look before it all slides by.",
+		"Hold the turn a little. I want the whole of it in one look.",
+	},
+	["sw.journey.w22.aerial.006"] = {
+		"takes in the city entire for a moment: its back against the mountain, its face to the forest, like a sentry who has found a good wall to lean on.",
+		"sees how Stormwind is set into the land: shoulders to the mountainside, the forest at its feet, and no way to come at it but from the front.",
+	},
+	["sw.journey.w22.aerial.007"] = {
+		"The mending shows from this height. Some roofs are a shade paler, some walls a course newer, and the seams cross the districts like tide marks on a jetty.",
+		"Seen from the air, this is a mended city: paler slates beside darker ones, new courses laid on old, the patches running from one street into the next.",
+	},
+	["sw.journey.w22.aerial.008"] = {
+		"notices, here and there where a roof runs flat, the gardens nobody in the street knows about: herbs in tubs, beans climbing a chimney stack.",
+		"spots the hidden roof gardens of the city: a box of beans, a row of herb pots, one brave little pear tree growing out of a barrel.",
+	},
+	["sw.journey.w22.aerial.009"] = {
+		"All those windows, and behind each a whole life I'll never know a thing about. From up here they're small dark squares set out in rows.",
+		"Thousands of windows in rows. Someone is quarreling behind one, laughing behind the next, and from this height they look exactly alike.",
+	},
+	["sw.journey.w22.aerial.010"] = {
+		"can tell the districts apart by ear for a few wingbeats: hammering toward the forges, the babble of the market straight below, a hush over the Cathedral side.",
+		"hears each quarter on its own at this height, as if the city had been unpicked: anvils in one corner, voices at the market, the quiet of the Park.",
+	},
+	["sw.journey.w22.aerial.011"] = {
+		"Look at it: the whole of Stormwind, every scrap of it minding its own business.",
+		"I'd draw a map of it, if it would only hold still.",
+	},
+	["sw.journey.w22.aerial.012"] = {
+		"I can see into half the yards in the city from up here. Stormwind, hang your washing more modestly.",
+		"This city has no secrets from up here. Well, one or two. Mostly laundry.",
+		"Yes, I can see your yard down there. Nice cabbages.",
+	},
+	["sw.journey.w22.aerial.013"] = {
+		"reads the city by its lamps as the flier climbs: a thick cluster round the market, a sparse scatter over Old Town, a ring of torches about the Keep, the canals black lanes between.",
+		"can tell the districts apart in the dark only by their lights: crowded around the market, thin and crooked over Old Town, set in a careful ring around the Keep.",
+	},
+	["sw.journey.w22.aerial.014"] = {
+		"I can watch the rain cross the city: Old Town's roofs go dark first, then the market's, then the Keep's, like a hand drawing a curtain.",
+		"The shower moves over Stormwind like a slow broom. Roof by roof the slates darken behind it, and from up here I can see exactly which quarter is getting wet.",
+	},
+	["sw.journey.w22.aerial.015"] = {
+		"Not a cloud. I can count every statue in the Valley from up here.",
+		"Clear sky, and the whole city laid out to the last chimney pot. Beast, look at that.",
+	},
+	["sw.journey.w22.aerial.016"] = {
+		"The capital of the kingdom, all at once and no bigger than a hand. Lothar led our people away from its ashes. Seeing it whole like this, I understand why they came back for it.",
+		"Our people once walked away from this city's ashes. From up here, whole and busy again to its last alley, that is almost impossible to believe.",
+	},
+	["sw.journey.w22.alight.001"] = {
+		"sits quiet while the beast draws its wings in by stages, the long feathers sliding over one another with a dry rustle like cards being gathered.",
+		"hears the wings close behind the saddle a little at a time, quill over quill, with the papery hush of a deck of cards drawn together.",
+	},
+	["sw.journey.w22.alight.002"] = {
+		"It has landed on a flat stone floor, and still its talons curl over the edge of a flagstone as if gripping a branch. Some habits are older than any city.",
+		"The beast's front claws close round the lip of the stone the moment it lands, the way a hawk takes a bough. There are no boughs here. The claws haven't heard.",
+	},
+	["sw.journey.w22.alight.003"] = {
+		"rises and settles with the beast as it rouses the way hawks do, every feather on its body lifting at once and then lying flat.",
+		"is lifted an inch as the beast fluffs out every feather it owns, holds them so, then lets them all fall smooth at once.",
+	},
+	["sw.journey.w22.alight.004"] = {
+		"Its talons tick on the stone, tick, tick, like a clerk drumming on a counter. I'm being told the ride is over.",
+		"The beast drums its claws on the flagstones while I find my stirrups. I've seen bank clerks wait exactly like that.",
+	},
+	["sw.journey.w22.alight.005"] = {
+		"Hold. Let it settle first.",
+		"Wait for the wings. Always wait for the wings.",
+		"Easy. Off when it's still, and not before.",
+	},
+	["sw.journey.w22.alight.006"] = {
+		"First thing it does, before I'm even out of the saddle: turns its head right round and straightens one feather on its shoulder. Everyone has priorities.",
+		"Down, and the beast's first act is to nibble a single ruffled feather back into line. The rider can wait. The feather could not.",
+	},
+	["sw.journey.w22.alight.007"] = {
+		"sees the gryphon's crest, raised stiff through the whole descent, smooth itself flat against the skull the moment its feet are on the stone.",
+		"notes how the gryphon's crown feathers, bristling all the way down, lie back one by one now that the roost is under it.",
+	},
+	["sw.journey.w22.alight.008"] = {
+		"It clacks its beak twice once it's down. The handlers swear that's a beast pleased with itself. I think it's a beast that has seen the fish bucket.",
+		"Two sharp clacks of the beak on landing. Contentment, a handler once told me. From where I sit it looks a great deal like appetite.",
+	},
+	["sw.journey.w22.alight.009"] = {
+		"senses the beast knead the stone with its hind paws, like a cat working a cushion, before it lowers its haunches and is still.",
+		"rocks gently in the saddle as the beast treads the flagstones with its back feet, left, right, left, the way a cat makes a bed, and then folds down.",
+	},
+	["sw.journey.w22.alight.010"] = {
+		"The beast stands with its wings half folded, still listening to something up there I can no longer hear. Then it shakes its head, and it's a roost animal again.",
+		"For a moment after landing it keeps looking up, past the roofs, as if it had left something behind. Then the meat bucket rattles and the sky is forgotten.",
+	},
+	["sw.journey.w22.alight.011"] = {
+		"Yes, very elegant. You can stop posing now.",
+		"Wings in, beast. Nobody's painting your portrait.",
+	},
+	["sw.journey.w22.alight.012"] = {
+		"notices the beast's forefoot open and close on the stone a few times after it lands, four hooked toes spreading and curling as if counting something.",
+		"sees one of the beast's taloned feet flex on the flagstone, toes fanning out and gathering in again, like a hand working stiffness out of the knuckles.",
+	},
+	["sw.journey.w22.away.001"] = {
+		"The last of the city to let go of me is its smallest sound: a hammer somewhere, tap, tap, tap, until the wings cover it.",
+		"Of all the noise behind me, a single hammer holds on longest, a little iron tapping that rides along for a while and then simply isn't there.",
+	},
+	["sw.journey.w22.away.002"] = {
+		"In the city everyone talks over everyone. Up here even my own thoughts sound loud. I'd better come up with one worth hearing.",
+		"Down there I could think whatever I liked and nobody would hear it over the din. Up here my thoughts echo. I'm handling them with more care.",
+	},
+	["sw.journey.w22.away.003"] = {
+		"unclenches a fist still clamped around the purse strings, a habit of the city's crowded bridges that outlasts the walls by a few wingbeats.",
+		"finally lets go of the purse {g:he|she} has gripped through every crowded street, there being no cutpurse yet born who works at this height.",
+	},
+	["sw.journey.w22.away.004"] = {
+		"Quiet enough to hear myself think. That's not always good news.",
+		"Peace and quiet. Give it a moment and I'll start talking to the beast.",
+	},
+	["sw.journey.w22.away.005"] = {
+		"Stormwind is loud the way a mill is loud: you stop hearing it after a while, and then you leave, and the quiet feels like someone breaking off in the middle of a sentence.",
+		"You never notice the city's noise until it's gone. Then the silence has an odd shape to it, like an unfinished sentence left hanging.",
+	},
+	["sw.journey.w22.away.006"] = {
+		"hears a dog bark at some farm far below, small and very clear, for a moment the loudest thing in the world now that the streets have gone quiet.",
+		"catches the bark of a farm dog rising out of the forest, thin and distinct, and for a few wingbeats it is the only sound under the sky.",
+	},
+	["sw.journey.w22.away.007"] = {
+		"hums a few bars under the noise of the wings, tunelessly, in the manner of someone sure that nobody can hear.",
+		"starts humming something with no particular tune once the city is behind, safe in the knowledge that the beast cannot repeat it.",
+	},
+	["sw.journey.w22.away.008"] = {
+		"No clerk up here, no queue, no fee for anything. The sky charges nothing, so far. I keep waiting for someone to come round with a ledger.",
+		"It's been a while since I wasn't standing in a line for something. The air is free. It makes me almost suspicious.",
+	},
+	["sw.journey.w22.away.009"] = {
+		"sits a little looser in the saddle once the city noise is gone, as though the din had been a hand on {g:his|her} shoulder all along and has only now let go.",
+		"settles back as the clamor of the streets fades, the set of the jaw easing as when a long quarrel in the next room finally ends.",
+	},
+	["sw.journey.w22.away.010"] = {
+		"Down there I'm one face in thousands. Up here they're the specks, every one of them, and mine is the only face for miles.",
+		"In the streets I'm elbows and apologies. Up here there's room on every side of me, more than I know what to do with.",
+	},
+	["sw.journey.w22.away.011"] = {
+		"No one's asked me for anything in a whole minute. A record.",
+		"Not one errand shouted after me. Suspicious.",
+	},
+	["sw.journey.w22.away.012"] = {
+		"Behind me the city's lamps; ahead, the forest, dark as a well, with a farmhouse window here and there like a coin somebody dropped down it.",
+		"Flying out of Stormwind by night is like stepping off a lit stage. A few cottage windows wink in the trees below, and beyond them nothing at all.",
+	},
+	["sw.journey.w22.away.013"] = {
+		"draws away over a forest drowned in fog, only the tallest treetops poking out of the white like the bristles of a brush, the city's sounds swallowed behind.",
+		"goes out over Elwynn as it lies smothered in fog, the forest gone, the road gone, the noise of the city sinking into the white behind as into wool.",
+	},
+	["sw.journey.w22.away.014"] = {
+		"Quiet, the lot of you. Oh. Nobody's here.",
+		"Shh, the... ah. Habit. There's nobody to hush up here.",
+	},
+	["sw.journey.w22.bells.001"] = {
+		"Bells carry upward better than anything else a city makes. I heard Stormwind over the trees before I could see a single tower of it.",
+		"Sound climbs. Long before the towers, a bell came up to me over Elwynn, thin as a thread, and I knew the city was there.",
+		"The ear finds the city first. A far bell over the forest, faint enough to doubt, and then the towers come along to prove it.",
+	},
+	["sw.journey.w22.bells.002"] = {
+		"hears a single bell come up thin and clear above the forest, and the gryphon cocks its head toward it like a dog hearing its name.",
+		"feels the gryphon turn its head at the first stroke of a bell rising from the city, its ear-tufts lifting as if the sound were meant for it.",
+	},
+	["sw.journey.w22.bells.003"] = {
+		"Heard from high up, a bell sounds smaller, and farther, like it's ringing for some other city entirely.",
+		"Up here the bells lose their weight. They reach me small and far off, as if they belonged to a place I'd only heard about.",
+		"Odd how lonely a bell sounds from the air. Down there it gathers people; up here it only passes by.",
+	},
+	["sw.journey.w22.bells.004"] = {
+		"Hear that? The city's ringing. Not for me, I know. I'll take it anyway.",
+		"Bells! No, don't tell me who they're for. I'm pretending.",
+	},
+	["sw.journey.w22.bells.005"] = {
+		"The bells reach a flier in pieces: one stroke, then a wingbeat swallows the next, then two arrive together as if they'd been waiting for each other.",
+		"Up here a peal comes through torn: a stroke, a gap where the wings beat it away, then a pair of notes tumbling in late.",
+		"Between the wingbeats I catch the bells in scraps, never the whole tune, like hearing a song through a door that keeps swinging shut.",
+	},
+	["sw.journey.w22.bells.006"] = {
+		"feels the deepest of the bells more than hears it, a low hum that comes up through the harness straps and settles in the knees.",
+		"catches the great bell not with the ears but through the straps of the harness, a slow hum the leather seems to carry upward.",
+	},
+	["sw.journey.w22.bells.007"] = {
+		"The Cathedral's bell, rising to meet me over the trees. The Light keeps its hours whether or not I keep mine.",
+		"A bell from the Cathedral, coming up to the wings. The Light doesn't wait until I'm ready; it simply rings, and lets me catch up.",
+	},
+	["sw.journey.w22.bells.008"] = {
+		"Down in the streets nobody hears the bells any more. Up here there's nothing between me and the bronze, and every stroke lands.",
+		"The people below have stopped noticing the bells. Flying in, I get each stroke full in the face, the way the ringers meant it.",
+	},
+	["sw.journey.w22.bells.009"] = {
+		"sees a gray burst of pigeons go up from the roofs around the Cathedral as the bell starts, and the whole flock wheels once before settling back.",
+		"watches the pigeons over Cathedral Square lift all together at the first stroke, circle the belfry, and come down exactly where they were.",
+	},
+	["sw.journey.w22.bells.010"] = {
+		"Odd: from up here the Cathedral bells and the anvils of the Dwarven District sound like one instrument, metal answering metal all across the roofs.",
+		"Bronze from the Cathedral, iron from the forges, and at this height they blend, as if the whole city were being struck in tune.",
+	},
+	["sw.journey.w22.bells.011"] = {
+		"comes in at dusk as the evening bell rises over the walls, the roofs below going dark one district after another while the spire keeps the last of the color.",
+		"hears the bell for the end of the day climb toward the wings as the city sinks into dusk, the Cathedral's tip the last thing still lit.",
+	},
+	["sw.journey.w22.bells.012"] = {
+		"Somebody tell the ringers to stop announcing me. It's embarrassing.",
+		"All those bells, just for me coming in? You shouldn't have. Really.",
+	},
+	["sw.journey.w22.bells.013"] = {
+		"Down below a bell stops and is gone. Up here the last stroke lingers, with no walls to swallow it, until a wingbeat scatters it.",
+		"The final note of a bell lasts longer at this height. Nothing up here to soak it up but sky.",
+	},
+	["sw.journey.w22.chart.001"] = {
+		"I trace the way I walked to the roost and it's half the length my feet swore it was. The streets kink and double back; the beast just goes straight.",
+		"From here I can follow the path I took through the streets, and it's a disgrace: three wrong turns and a loop round the same corner.",
+	},
+	["sw.journey.w22.chart.002"] = {
+		"counts off the districts as they pass beneath, one by one, like a quartermaster making sure nothing has gone missing from the stores.",
+		"ticks off the quarters of the city below with a small nod for each, the way a sergeant counts heads after a river crossing.",
+	},
+	["sw.journey.w22.chart.003"] = {
+		"The maps they sell in the market have the canals wrong. I always suspected it; now I can see exactly where, and I'm not paying for another.",
+		"Whoever draws the maps they sell in the market has never been up here. The canals bend in places the ink never heard of.",
+	},
+	["sw.journey.w22.chart.004"] = {
+		"finds the city strung between two weights from up here: the Keep at one end, the Cathedral toward the middle, and every street seeming to choose which of them to face.",
+		"notes how the streets settle their loyalties when seen from the air: some run toward the Keep, some toward the Cathedral, and Old Town's go wherever they like.",
+	},
+	["sw.journey.w22.chart.005"] = {
+		"On foot I ask the way twice in every district. From up here the city simply shows me, without a word, every turn I ever got wrong.",
+		"Every street that ever sent me round in circles lies open below, its secret given away. It looks so simple from up here that I'm almost offended.",
+	},
+	["sw.journey.w22.chart.006"] = {
+		"So that's where that alley comes out. I'd never have guessed.",
+		"There, see? The canal bends round. That's why I keep ending up at the same bridge.",
+		"Ha! The Mage Quarter isn't crooked at all. It's me who walks crooked in it.",
+	},
+	["sw.journey.w22.chart.007"] = {
+		"The guards always tell me 'past the canal, then left'. From up here I can see about nine canals that would answer to that.",
+		"'Over the bridge and keep the water on your right,' say the guards. From the air I count a dozen bridges, every one with water on its right.",
+	},
+	["sw.journey.w22.chart.008"] = {
+		"spots someone below at a crossing, turning in a slow circle, plainly lost two streets from where they want to be, and can do nothing at all to help.",
+		"watches a small figure at a corner peer up one street, then down another, then back, while the place it seeks sits just behind the next row of roofs.",
+	},
+	["sw.journey.w22.chart.009"] = {
+		"Seen like this, the roofs alone tell you who lives where: neat slate where the money is, patched and sagging where it isn't.",
+		"The roofs give the city away. Tidy where the coin sits, mended and bowed where it doesn't, and a whole street of them waiting on a mason nobody can afford.",
+	},
+	["sw.journey.w22.chart.010"] = {
+		"From the street I'd have called the Keep the heart of the city. From up here the crowd says otherwise: the dots are thickest round the market, and the Keep sits apart.",
+		"Height changes what matters. On foot the Keep is the city's crown. From the air, judging by the crowds, the real crown is the auction house.",
+		"Funny how the crowd draws the true map. The thick dark knot is the market; the Keep, for all its towers, is a quiet edge.",
+	},
+	["sw.journey.w22.chart.011"] = {
+		"I'll say this for human masons: from up here their walls run true. The roofs, mind, I'd have done differently, all but the Dwarven District's, naturally.",
+		"Not bad, for a city with no mountain over its head. Walls straight, canals tidy. A dwarf could live down there at a pinch, given a roof worth the name.",
+	},
+	["sw.journey.w22.cobbles.001"] = {
+		"steps over the long pale scratches on the roost's flagstones, claw marks laid one over another by every landing the city has seen.",
+		"looks down at the landing stones, scored pale where countless talons have skidded and gripped, like a page of hurried handwriting.",
+	},
+	["sw.journey.w22.cobbles.002"] = {
+		"walks off the roost through a scatter of coarse sand, raked over the paving so the claws have something to grip, and it grinds under the boots for a dozen steps.",
+		"crunches across the grit the roost hands throw down on the stones for the talons, and carries a little of it in the boot treads into the street.",
+	},
+	["sw.journey.w22.cobbles.003"] = {
+		"Up there a shout goes out and is simply gone. Down here the walls hand every sound back twice, and my own boots follow me like a second walker.",
+		"In the air nothing echoes. Between these walls even my footsteps answer themselves, and it takes a street or two to stop turning round.",
+	},
+	["sw.journey.w22.cobbles.004"] = {
+		"falls in a few paces behind a patrol of the city watch without meaning to, their boots on the stones the first steady beat since the wings stopped.",
+		"finds {g:his|her} stride matching a passing patrol's for half a street, the guards' heels striking the paving together, before peeling off toward the bank.",
+	},
+	["sw.journey.w22.cobbles.005"] = {
+		"hears the first greeting of the streets: a small dog at the end of the lane barking itself hoarse at the roost, while the beasts ignore it completely.",
+		"passes a terrier planted at the edge of the roost, yapping at the fliers with enormous courage while its owner hauls on the lead.",
+	},
+	["sw.journey.w22.cobbles.006"] = {
+		"The first thing my feet have to think about is the gutter, a stone channel down the middle of the lane with a thin stream in it. I step over. The legs make a meal of it.",
+		"A little runnel of water down the center of the street, and my stiff legs take it for a ditch. Crossing it is the hardest thing I've done since landing.",
+	},
+	["sw.journey.w22.cobbles.007"] = {
+		"A moment ago the sky was everywhere. Now it's a strip between two rows of eaves, and I keep glancing up at it as if checking it hasn't wandered off.",
+		"All that open air, and now the sky is a ribbon over the street with a washing line strung across it.",
+	},
+	["sw.journey.w22.cobbles.008"] = {
+		"is met at the edge of the roost by the grind of iron-rimmed wheels over stone, a dray loaded with barrels lurching on toward the Trade District.",
+		"flinches at the first real noise of the street, a heavy cart rolling past on iron rims and every stone of the paving rattling its load.",
+	},
+	["sw.journey.w22.cobbles.009"] = {
+		"The street smells of wet lime before it smells of anything else. Somewhere close a mason is mixing mortar. In this city, somewhere close, one always is.",
+		"Mortar. That's the first smell, damp and chalky, from a trough beside some scaffold out of sight. They're still patching this place, stone by stone.",
+	},
+	["sw.journey.w22.cobbles.010"] = {
+		"hears four peoples in the first ten paces off the roost: a dwarf's burr, a gnome talking twice as fast as anyone needs, a night elf's low reply, and a human trying to keep up with all three.",
+		"picks out four accents before the end of the first street, each one haggling, greeting or complaining in its own fashion, all of it in Common.",
+	},
+	["sw.journey.w22.cobbles.011"] = {
+		"notices the paving as only stiff legs would: small stones set in overlapping fans, each joint a tiny ridge felt through the sole.",
+		"feels every seam of the paving through {g:his|her} boots for the first street, the small stones laid in fans, as if the feet were reading them.",
+	},
+	["sw.journey.w22.cobbles.012"] = {
+		"Listen to that. Half the city talking and nobody listening.",
+		"Carts, hawkers, hammers. Yes, this is the right place.",
+	},
+	["sw.journey.w22.cobbles.013"] = {
+		"After the pace of the wings, the whole street seems to be wading. The carts, the porters, the guards. Me, worst of all.",
+		"Everyone down here is walking through honey. It takes half a street to understand that the honey is mine.",
+	},
+	["sw.journey.w22.cobbles.014"] = {
+		"The first words I make out on the ground belong to a hawker: 'Hot chestnuts, two a copper!' Nothing I heard in the sky was half as useful.",
+		"A woman with a tray is calling something about hot chestnuts. After all that sky, it's the most sensible sentence in the world.",
+	},
+	["sw.journey.w22.cobbles.015"] = {
+		"Smell that? Hot pitch, onions and somebody's pipe. Civilization.",
+		"Noise, smoke and elbows. Yes, this is a city.",
+	},
+	["sw.journey.w22.cobbles.016"] = {
+		"steps off the roost into the night streets, where every footfall carries the length of the lane and a watchman's lantern turns to see whose it is.",
+		"walks away from the roost through lamplit streets gone quiet with the night, boots loud on the stones, the shutters of every shop closed.",
+	},
+	["sw.journey.w22.cobbles.017"] = {
+		"comes off the roost into the full noise of the day's trading, porters shouting for room and a crier somewhere calling out the lots.",
+		"lands in the busiest part of the day, and has to wait at the edge of the roost for a gap in the stream of carts and baskets.",
+	},
+	["sw.journey.w22.dismount.001"] = {
+		"finds the stirrup leather twisted half a turn by the flight, and has to work the boot out of it like a key from a stiff lock.",
+		"frees one boot from a stirrup that has wound round on itself in the air, turning the foot this way and that until the leather lets go.",
+	},
+	["sw.journey.w22.dismount.002"] = {
+		"leaves the saddle on knees that fold more than planned, and turns the stumble into kneeling to retie a bootlace. Nobody at the roost is fooled.",
+		"comes down onto the paving in a lurch, then stays on one knee fussing with a perfectly good lace until the legs agree to stand.",
+	},
+	["sw.journey.w22.dismount.003"] = {
+		"Off on the wrong side as usual, nose to the beast's flank, with the whole roost between me and the street. The only way out is past the tail. I take it with respect.",
+		"I always climb down on the side away from the street, and then there's nothing for it but to walk round behind the animal. Its tail twitches. I walk faster.",
+	},
+	["sw.journey.w22.dismount.004"] = {
+		"Coming down. Avert your eyes, this part is never graceful.",
+		"Stand back, please. I dismount like a sack of turnips.",
+	},
+	["sw.journey.w22.dismount.005"] = {
+		"peels off both gloves at the foot of the roost; laid on a post, they keep the curl of the grip, two empty fists still holding on.",
+		"pulls the gloves off finger by finger and drops them on the saddle, where they lie curled as if the flight had never ended.",
+	},
+	["sw.journey.w22.dismount.006"] = {
+		"Up there the beast carried most of my weight and never mentioned it. On the paving my legs get the whole account at once, and they read every line.",
+		"For the length of a flight my weight was somebody else's problem. Feet down, and it's handed over again, all of it, without a receipt.",
+	},
+	["sw.journey.w22.dismount.007"] = {
+		"swings a leg forward over the beast's neck instead of back over its rump, and slides down the front of the saddle in a way no handler would ever teach.",
+		"takes the quick way off, leg over the neck and a slide down the shoulder, and earns a long look from the animal and a longer one from the handler.",
+	},
+	["sw.journey.w22.dismount.008"] = {
+		"slides off the gryphon, and the animal stands a full hand taller the instant the weight is gone, like a porter straightening after a crate.",
+		"steps down, and behind {g:him|her} the gryphon unfolds upward, legs straightening, as glad to be rid of a passenger as any porter of a load.",
+	},
+	["sw.journey.w22.dismount.009"] = {
+		"Hold its head a moment, would you? I'd like to keep all ten fingers for the walk into the city.",
+		"Keep that beak pointed elsewhere while I climb down, if you'd be so kind.",
+	},
+	["sw.journey.w22.dismount.010"] = {
+		"Everything in my pack has slid to one corner during the flight. I hoist it and it hangs off my shoulder like a sulking child.",
+		"The pack has rearranged itself in the air: every hard thing at the bottom, every soft thing crushed under it. I'll sort it out at the inn. Or never.",
+	},
+	["sw.journey.w22.dismount.011"] = {
+		"is still half out of the saddle when the handler loosens the girth, and rides the last of it sideways, saddle and all, down the beast's flank.",
+		"feels the saddle slip as the girth is let out a notch too soon, and arrives on the paving with one leg still hooked over the leather.",
+	},
+	["sw.journey.w22.dismount.012"] = {
+		"I always mean to say something to the beast as I climb down. The words never come in time, and it never waits for them.",
+		"At each landing I search for a proper thank-you for the animal. By the time I find one it's being led to its water, and the thank-you goes into the street with me.",
+	},
+	["sw.journey.w22.dismount.013"] = {
+		"Nothing fell off on the way. Including me.",
+		"I kept hold of everything up there. Everything but my good opinion of heights.",
+	},
+	["sw.journey.w22.dismount.014"] = {
+		"has barely cleared the saddle when thunder rolls over the rooftops, and crosses the street at a stiff-legged trot for the shelter of the nearest eaves.",
+		"steps down into a crack of thunder that sets every beast on the roost shifting, and hurries off along the street with shoulders hunched.",
+	},
+	["sw.journey.w22.farewell.001"] = {
+		"I never say goodbye to the city out loud. It wouldn't hear, and it would be silly. I just look back once, quick, the way you check a latch you know is down.",
+		"No farewells for Stormwind; it has too many visitors to answer them all. One glance back, like trying a door already locked, and that's my whole ceremony.",
+	},
+	["sw.journey.w22.farewell.002"] = {
+		"lifts a hand toward the wall in a farewell nobody below could possibly see, then lowers it again, faintly embarrassed.",
+		"raises a hand to the receding city, holds it there a moment for no one at all, and tucks it back under {g:his|her} cloak.",
+	},
+	["sw.journey.w22.farewell.003"] = {
+		"glances back once and finds the city already sinking behind the trees, only its tallest towers still standing up out of the green like pins in a cushion.",
+		"twists round to look behind and sees how quickly the forest has taken the city in: a few spires above the treetops, and the rest folded away under leaves.",
+	},
+	["sw.journey.w22.farewell.004"] = {
+		"Goodbye, walls. Don't let anyone move you while I'm gone.",
+		"Stay where you are, city. I'll know if you've rearranged anything.",
+	},
+	["sw.journey.w22.farewell.005"] = {
+		"Leaving is easier from the air. No last corner to turn, no one at the gate to wave you off. The city simply gets smaller until it belongs to somebody else.",
+		"On foot you leave a city street by street. Up here there are no stages to it: one moment it's under me, the next it's a shape far behind, and then just a story.",
+		"Nobody walks out of a city all at once. Flying, you do: walls, bridge, forest, and the place is behind you before you've thought of a last look.",
+	},
+	["sw.journey.w22.farewell.006"] = {
+		"Every time I leave, I promise the city I'll come back with my debts paid and my boots mended. It has heard that before. So have the boots.",
+		"The usual vow on the way out: next time, a full purse and boots without holes. The city doesn't believe it either.",
+	},
+	["sw.journey.w22.farewell.007"] = {
+		"pulls the cloak tighter as the city falls behind, less against the chill of the height than out of the old habit of shutting up a house before a trip.",
+		"draws the cloak in once the walls are gone, the small tidy gesture of someone locking up before going away.",
+	},
+	["sw.journey.w22.farewell.008"] = {
+		"Keep the bells going, Stormwind. I'll listen for them on the way back.",
+		"Ring for me now and then, city. I'll be back to check.",
+	},
+	["sw.journey.w22.farewell.009"] = {
+		"A few wingbeats out there's always a twinge, a wish to have lingered a little longer. It passes. That's what the first stretch of sky is for.",
+		"The same small regret every time, right about here, over the trees: I could have stayed. Then the beast settles into its pace and the regret gets left behind with everything else.",
+	},
+	["sw.journey.w22.farewell.010"] = {
+		"glances back at the city and meets the beast's own glance back, as if it too were making sure the place stays put.",
+		"looks back over the tail at the shrinking walls and catches the beast doing the same, one eye turned, for all the world like a fellow traveler counting the luggage.",
+	},
+	["sw.journey.w22.farewell.011"] = {
+		"The Alliance sends its people out through that gate all the time. Going over it on a gryphon, I feel like a letter the kingdom has sent, sealed and not to be opened until the far end.",
+		"Every gryphon leaving the city carries somebody the kingdom needs elsewhere. This one, for once, carries me.",
+	},
+	["sw.journey.w22.farewell.012"] = {
+		"Not one person down there will notice I've gone. The bread will still be sold, the bank will still close at the worst possible moment. I find that oddly restful.",
+		"The city won't feel the hole I leave. It never does. There's a kind of freedom in being that easy to replace.",
+		"The city sees a thousand comings and goings. Mine just went past without a ripple, and that suits me.",
+	},
+	["sw.journey.w22.farewell.013"] = {
+		"Bye for now, city. Keep the kettle on.",
+		"That's Stormwind done with. For a while.",
+	},
+	["sw.journey.w22.feathers.001"] = {
+		"For a moment after the landing the air on the roost is full of small down feathers, turning slowly, as if somebody had shaken out a pillow.",
+		"Bits of down hang in the air around the beast once it's settled, so light they seem undecided about ever coming to rest.",
+		"The landing leaves a little flurry of down behind it. It drifts over the roost and finds every crease I own.",
+	},
+	["sw.journey.w22.feathers.002"] = {
+		"catches sight of a handler raising a flat palm and giving two short whistles, at which the beast drops its head and walks the last stride onto the mark.",
+		"watches the beast obey a handler's open hand held out level, and a pair of short whistles, as promptly as a soldier obeys a sergeant.",
+	},
+	["sw.journey.w22.feathers.003"] = {
+		"With a rag, the handler signals: left, left, down. The beast obeys him, not me. I'm luggage with opinions.",
+		"A flick of the handler's wrist and the beast turns. I pulled on the reins at the same time, for my own dignity. Nobody was fooled.",
+	},
+	["sw.journey.w22.feathers.004"] = {
+		"sits in the haze of dust the landing raised, a pale cloud of straw chaff and old grit that hangs at knee height and settles slowly into the creases of {g:his|her} boots.",
+		"waits for the dust of the landing to come back down: chaff, grit and a few small feathers, sifting over the saddle like flour off a baker's sieve.",
+	},
+	["sw.journey.w22.feathers.005"] = {
+		"Thanks for the wave. The beast saw it long before I did.",
+		"Good signals, friend. I'd have landed in the trough without them.",
+	},
+	["sw.journey.w22.feathers.006"] = {
+		"The handler clicks her tongue twice and the beast lowers its head at once. I should learn that click. I'd use it at the bank.",
+		"Two clicks of the handler's tongue and the great head comes down meek as a lamb. If that sound works on clerks, I'll pay to learn it.",
+	},
+	["sw.journey.w22.feathers.007"] = {
+		"has a small feather plucked out of {g:his|her} hair by a passing handler, who drops it on the straw without a word and walks on.",
+		"feels a quick tug at the collar: a handler going by has picked off a stray feather, neatly as a tailor taking off a thread, and moved on without a glance.",
+	},
+	["sw.journey.w22.feathers.008"] = {
+		"lands into the smell of wet feathers, thick and woolly, like a blanket left out on the line, while the rain beads and runs off the beast's oiled back.",
+		"comes down with the rain bouncing on the flagstones, the beast's outer feathers shedding the water in strings while the down beneath stays dry.",
+	},
+	["sw.journey.w22.feathers.009"] = {
+		"Roost dust is a thing of its own: chaff, old down, and the grit of more landings than anyone has counted. It's in my boots already, and it means to stay.",
+		"Whatever the roost floor is made of, it isn't only stone. Chaff, down and fine gray grit, and now a good share of it is riding in my cuffs.",
+	},
+	["sw.journey.w22.feathers.010"] = {
+		"looks over the parapet to see two children in the street below already scrambling for the feathers that drift down off the roost.",
+		"notices a small boy under the roost with a fistful of feathers held up like a bunch of flowers, still scanning the air for more.",
+	},
+	["sw.journey.w22.feathers.011"] = {
+		"A gryphon sheds a feather on every landing, the handlers say, the way a coin drops out of a busy purse. Mine has left a brown one on the stone, barred with cream.",
+		"No gryphon ever lands without leaving a feather behind, the roost hands say. Mine has paid its toll: a long brown quill, lying across the flagstone like a pen set down.",
+	},
+	["sw.journey.w22.feathers.012"] = {
+		"picks a curl of down off {g:his|her} tongue after the landing, with the faintly betrayed look of someone who kept {g:his|her} mouth closed the whole way.",
+		"spends the first moment on the roost brushing down off both sleeves, then gives up as a new tuft lands on the shoulder just cleaned.",
+	},
+	["sw.journey.w22.feathers.013"] = {
+		"I saw your hand. Down she came, just as you said.",
+		"Your signal, your landing. I only held on.",
+		"You called it in, not me. Thank you.",
+	},
+	["sw.journey.w22.feathers.014"] = {
+		"Between two flagstones of the roost there's a seam packed with old down, years of it, pressed gray and hard. Every landing ever made here has left a little in that crack.",
+		"In the cracks of the roost floor the down has packed in so thick it has turned to felt. Every arrival adds a pinch. Mine just did.",
+	},
+	["sw.journey.w22.feathers.015"] = {
+		"sees a handler on the far side of the roost lift one arm high and hold it there, fist closed, and the beast drops its last few feet as if the fist had a string to pull.",
+		"catches the moment a handler's raised fist opens, fingers spread, and the beast answers by folding its legs under it and settling down on the spot.",
+	},
+	["sw.journey.w22.feathers.016"] = {
+		"Somebody hand me a brush. I'm half bird.",
+		"Look at me. More feathers on me than on the beast.",
+	},
+	["sw.journey.w22.firststep.001"] = {
+		"The bank first. My bags are a jumble of things I picked up and forgot, and the vault is the only place in the city that doesn't ask what they're for.",
+		"Bank. Something in my pack has been jabbing me in the back since the saddle, and I'd like to lock it away and forget it exists.",
+	},
+	["sw.journey.w22.firststep.002"] = {
+		"makes for the nearest canal bridge before anything else and leans on its parapet, letting the stone take the weight until the legs feel like legs.",
+		"goes first to the middle of a bridge over the canal, rests both forearms on the cool parapet and watches the water go nowhere in particular for a while.",
+	},
+	["sw.journey.w22.firststep.003"] = {
+		"Straight to the auction house, to find out whether anyone wanted what I left there. Hope is a terrible walking companion. It keeps quickening the pace.",
+		"The auction house is the first errand, and I'm half running. Either something sold, or I get my disappointment early and have done with it.",
+	},
+	["sw.journey.w22.firststep.004"] = {
+		"Bank, bath, bed. If anyone stops me in between, they'd better be selling one of the three.",
+		"Bank. Then food. Then someone to tell me where I left my legs.",
+	},
+	["sw.journey.w22.firststep.005"] = {
+		"turns {g:his|her} steps toward the Gilded Rose, walking with the purpose of someone who thought about one particular chair the whole way down.",
+		"sets off for the Gilded Rose at a stiff, determined pace, wearing the face of someone already sitting.",
+	},
+	["sw.journey.w22.firststep.006"] = {
+		"A buckle gave up somewhere in the air. The Dwarven District, then: I'll follow the hammers until they lead me to a smith with a moment to spare.",
+		"My boot sole has started to flap. The forges in the Dwarven District will mend it, once they've finished laughing at it.",
+	},
+	["sw.journey.w22.firststep.007"] = {
+		"points {g:his|her} feet toward Old Town and the Pig and Whistle, where the ale is cheaper than at the Gilded Rose and nobody minds a walk that still sways.",
+		"takes the turning that leads, eventually, to Old Town and the Pig and Whistle: a long way for stiff legs, but the right sort of crowd at the end of it.",
+	},
+	["sw.journey.w22.firststep.008"] = {
+		"I'll go and sit on the Cathedral steps for a bit. Nobody there asks what you want; they assume you came to think, and leave you to it.",
+		"The wide steps in Cathedral Square make the best bench in the city. I'll sit there until the ground stops feeling borrowed.",
+	},
+	["sw.journey.w22.firststep.009"] = {
+		"pauses where the roost meets the street to settle the pack, choose a direction and settle the pack once more, then sets off toward the bank as if there had never been a question.",
+		"stands a moment where the roost gives way to the street, weighing the bank against the inn, and lets the first gap in the crowd decide.",
+	},
+	["sw.journey.w22.firststep.010"] = {
+		"My feet take the turning for the bank before I've decided anything. I let them. They've done this more often than my judgment has.",
+		"My feet recite the way to the bank like a lesson learned by heart; the rest of me is still somewhere above the rooftops.",
+	},
+	["sw.journey.w22.firststep.011"] = {
+		"Point me at the Gilded Rose. I'll do the rest at a limp.",
+		"Gilded Rose, anyone? First round's mine if someone carries me there.",
+	},
+	["sw.journey.w22.firststep.012"] = {
+		"Before the inn, before the bank: a trainer. I've been putting it off for three landings now, and I'm out of excuses that sound good out loud.",
+		"This time I'll see a trainer before anything else. I said that last time, and the time before. My feet know better, and drift toward the inn.",
+	},
+	["sw.journey.w22.firststep.013"] = {
+		"Anyone heading for the auction house? I'll walk with you. Slowly.",
+		"First errand: find my legs. Second: the auction house.",
+	},
+	["sw.journey.w22.firststep.014"] = {
+		"goes straight to the bank and joins the end of its line, still swaying faintly, like a reed among people who have stood on stone all along.",
+		"is standing in the bank's line within minutes of landing, behind a gnome with a very full sack, legs still humming from the flight.",
+	},
+	["sw.journey.w22.firststep.015"] = {
+		"walks off the roost into fog thick enough to hide the far side of the street, and finds the bank by its noise rather than its shape.",
+		"leaves the beasts behind in the mist and goes on through the muffled street, steering by voices and the creak of a shop sign.",
+	},
+	["sw.journey.w22.firststep.016"] = {
+		"Down at dusk, just as the stalls are packing up. Every shopkeeper in the street is closing a shutter in my face.",
+		"The awnings are coming in all along the street as I land. I've picked the exact hour when nobody wants to sell me anything.",
+	},
+	["sw.journey.w22.footfall.001"] = {
+		"walks bow-legged for the first dozen steps off the roost, as if the beast were still somewhere between {g:his|her} knees.",
+		"goes off along the street with the rolling, wide-kneed gait of a rider, which the paving does nothing to correct.",
+	},
+	["sw.journey.w22.footfall.002"] = {
+		"My lips have cracked in the high air and my cheeks sting as if slapped. The first thing I buy in this city is a pot of salve, before bread.",
+		"The air up there scoured my face raw. I'll pay any herbalist in the Trade District whatever they ask for something greasy to put on it.",
+	},
+	["sw.journey.w22.footfall.003"] = {
+		"stops at the edge of the roost to stretch both arms high overhead, back arching, while a passing guard looks very carefully at something else.",
+		"lifts both arms and leans back as far as the spine allows, a long creaking stretch performed in full view of a street that politely ignores it.",
+	},
+	["sw.journey.w22.footfall.004"] = {
+		"My hands smell of the beast: leather, oil and something musky underneath, like a hayloft with a secret. I'll be sniffing them all the way to the inn.",
+		"The smell of the flier is all over my gloves and sleeves. In a crowd of humans and dwarves, I smell faintly of the sky's livestock.",
+	},
+	["sw.journey.w22.footfall.005"] = {
+		"Nobody ask me to run anywhere. Not for a while.",
+		"These legs belong to a chair now. I'm only borrowing them.",
+	},
+	["sw.journey.w22.footfall.006"] = {
+		"trails one hand along the nearest wall for the first stretch of street, fingertips bumping over the mortar joints, until the legs no longer need the company.",
+		"keeps close to the house fronts at first, a palm brushing the stone now and then, the way one keeps near the rail on a rolling deck.",
+	},
+	["sw.journey.w22.footfall.007"] = {
+		"Every muscle that held on is letting go at its own pace. My calves have already forgiven me. My shoulders are still thinking it over.",
+		"The body unclenches in a queue: hands first, then jaw, then shoulders. The knees are at the back and plainly in no hurry.",
+	},
+	["sw.journey.w22.footfall.008"] = {
+		"catches a guard's eye on that stiff, wide-legged walk, and straightens at once into something more respectable, for exactly as long as the guard keeps looking.",
+		"corrects a lopsided gait into a soldierly stride the moment a guard glances over, and lets it slump the moment the guard looks away.",
+	},
+	["sw.journey.w22.footfall.009"] = {
+		"Hunger was nowhere in the air. It was waiting at the roost, it seems, like a dog that knows when its master lands, and it jumps on me the moment I touch the stones.",
+		"Not a thought of food for the whole flight, and now the street smells of fried onions and I could eat the saddle.",
+	},
+	["sw.journey.w22.footfall.010"] = {
+		"holds one hand out flat at the foot of the roost and watches the last small tremor of the grip go out of it, like ripples settling in a basin.",
+		"spreads {g:his|her} fingers and waits for the shake of the harness to leave them, which it does in its own time, a little less with each step.",
+	},
+	["sw.journey.w22.footfall.011"] = {
+		"Twice in the first street I bump a shoulder. In the air there was nothing to steer around, and it takes my feet a while to remember how crowds are done.",
+		"I keep walking into people. Not hard, not rudely, just as if the street were empty. The sky leaves you with bad manners.",
+	},
+	["sw.journey.w22.footfall.012"] = {
+		"Hold on. My legs and I are negotiating.",
+		"Lend me your arm a moment? Only as far as the corner.",
+	},
+	["sw.journey.w22.footfall.013"] = {
+		"glances up from the street at a gryphon coming in over the rooftops, and winces in sympathy with whoever is clinging on up there.",
+		"pauses below the roost to watch another gryphon drop in, and feels {g:his|her} own knees bracing for a landing that belongs to someone else.",
+	},
+	["sw.journey.w22.footfall.014"] = {
+		"Stiff legs and wet cobbles: the worst pair in the city. I take the first street like a cat crossing a roof ridge, every paw placed with care.",
+		"The rain has made glass of the paving. I land fine, and then nearly fall over in the first ten paces of the street.",
+	},
+	["sw.journey.w22.groom.001"] = {
+		"watches the handler lift each of the beast's feet in turn and pick the grit from between the talons with a bent iron hook, the way a farrier works on a horse.",
+		"lingers while a roost hand cradles one great clawed foot and scrapes it clean with a little hook, then sets it down and reaches for the next.",
+	},
+	["sw.journey.w22.groom.002"] = {
+		"stops to watch the beast drink from the roost's trough: dip the beak, lift the head, let the water run down, dip once more, patient as a sparrow at a puddle.",
+		"sees the flier led to its water, where it drinks the way any small bird does, beak down, head tipped back to swallow, one sip after another.",
+	},
+	["sw.journey.w22.groom.003"] = {
+		"steps back as the unsaddled beast shakes itself from crest to tail, a long ripple running the length of it like a rug shaken out of a window.",
+		"is caught at the edge of it when the flier, saddle off, shakes from head to haunches, and comes away dusted with fine down.",
+	},
+	["sw.journey.w22.groom.004"] = {
+		"steps smartly aside for the roost hand who follows every landing with a shovel and a bucket and has never, by the look of him, had a day off.",
+		"makes way for the youngest hand at the roost, whose whole trade is a shovel, a bucket, and walking two paces behind whatever just landed.",
+	},
+	["sw.journey.w22.groom.005"] = {
+		"The handler gives me the same once-over he gives the animals: eyes, legs, gait. I seem to pass. Nobody offers me a bucket, though.",
+		"I'm inspected on my way off the roost, quickly, the way the handlers look over a flier for a limp. Apparently I'll do.",
+	},
+	["sw.journey.w22.groom.006"] = {
+		"hears the handler work a thumb of tallow into a squeaking buckle of the saddle, and the squeak, which kept time the whole flight, finally stops.",
+		"notices the little pot of grease at the handler's belt, and the thumb dipped in it and pressed into every buckle of the harness as it comes off.",
+	},
+	["sw.journey.w22.groom.007"] = {
+		"leaves the gryphon preening, one wing half spread and its beak working along the long feathers, setting right whatever the flight disturbed.",
+		"glances back to see the gryphon already grooming, beak drawn down a wing feather by feather, too busy with itself to mark the rider's going.",
+	},
+	["sw.journey.w22.groom.008"] = {
+		"There's a name painted over each stall at the roost. I watch my beast go into one and miss which, as usual. It carried me, and we were never introduced.",
+		"Every animal here has its name over its stall. I've ridden a dozen of them and couldn't tell you one. Rude of me. They probably don't know mine either.",
+	},
+	["sw.journey.w22.groom.009"] = {
+		"That one took the last turn gently. I noticed. Tell it I noticed.",
+		"Have a look at the left wing on that one. It flew a little carefully on that side.",
+	},
+	["sw.journey.w22.groom.010"] = {
+		"watches the handler wipe the grit from the corners of the beast's eyes with a wet rag, and the great lids slide shut for it, slow and trusting.",
+		"sees a damp cloth pass gently over each of the animal's eyes, and the flier hold quite still for it, as it held still for nothing else on the roost.",
+	},
+	["sw.journey.w22.groom.011"] = {
+		"'A grip like a burr,' says the handler, and I decide to take it as praise, since nothing better is on offer.",
+		"The handler's whole review of my riding is a grunt and the word 'tick'. I've had worse from trainers.",
+	},
+	["sw.journey.w22.groom.012"] = {
+		"sees the handler lay a flat palm on the beast's chest and hold it there, judging the heat of the flight the way a cook judges an oven.",
+		"watches a broad hand pressed to the flier's chest, held, lifted; whatever the handler felt there, a bucket is sent for at once.",
+	},
+	["sw.journey.w22.groom.013"] = {
+		"No, no, see to the animal. I can unsaddle myself.",
+		"Don't mind me. Groom the one with wings.",
+	},
+	["sw.journey.w22.groom.014"] = {
+		"Don't give me that look. I tipped your handler.",
+		"Yes, yes, I'm going. You can stop staring.",
+	},
+	["sw.journey.w22.groom.015"] = {
+		"I've never met a gryphon that thought much of its passengers. This one hands me over to the city with the air of someone giving back a dull book.",
+		"The gryphon gives me one look as I climb down: tolerable cargo, nothing more. From a gryphon, that's practically affection.",
+	},
+	["sw.journey.w22.groom.016"] = {
+		"Thanks, old bird. Go and find something less chewy than me.",
+		"Off you go, gryphon. Your supper's waiting, and it isn't me.",
+	},
+	["sw.journey.w22.inbound.001"] = {
+		"The first thing I find from up here is always the bank. I'd like to think that says something about the bank.",
+		"Of every landmark in the city, my eye goes to the bank first. That's not a compliment to me.",
+		"Cathedral, Keep, canals, and what do I look for? The bank. A pilgrim would be ashamed of me.",
+	},
+	["sw.journey.w22.inbound.002"] = {
+		"picks out the Dwarven District at once by the darker haze hanging over its forges, a smudge on the slate the rest of the city doesn't share.",
+		"finds the Dwarven District without trying: it's the corner of the city with its own small sky of forge smoke.",
+	},
+	["sw.journey.w22.inbound.003"] = {
+		"spots a scrap of violet among all that slate, the Mage Quarter refusing to match the rest, as it always has.",
+		"picks out the one stubborn patch of violet in a sea of slate, and knows the Mage Quarter by it.",
+	},
+	["sw.journey.w22.inbound.004"] = {
+		"The Park from above looks like a scrap of Elwynn the city kept back for itself when it cleared the rest, and has been watering ever since.",
+		"All that stone, and in one corner a patch of real trees, fenced in and well kept. The city cut the forest back and then couldn't quite do without it.",
+		"Green in the corner of the walls: the Park. Fly over enough stone and that patch looks less like a garden than like an apology to the woods outside.",
+	},
+	["sw.journey.w22.inbound.005"] = {
+		"Trade District, dead ahead. Purse, brace yourself.",
+		"There's the auction house. I can hear my coin trying to hide.",
+	},
+	["sw.journey.w22.inbound.006"] = {
+		"searches the jumbled roofs of Old Town for the Pig and Whistle and settles on a chimney that might be it, or might belong to anyone at all.",
+		"tries to find the Pig and Whistle from the air, fails, and decides the tavern is there in spirit, somewhere under that tangle of Old Town roofs.",
+		"hunts for one particular tavern among the roofs of Old Town and finds, instead, eleven chimneys that all look equally thirsty.",
+	},
+	["sw.journey.w22.inbound.007"] = {
+		"Old Town from up here: the rest of the city was drawn with a rule, and Old Town was argued into place one quarrel per corner.",
+		"You can tell Old Town from the air by its corners. Everywhere else the streets agree with each other. There, every lane looks like the end of a dispute.",
+	},
+	["sw.journey.w22.inbound.008"] = {
+		"looks down into a courtyard of the Keep where a square of tiny soldiers is drilling, turning all together like one creature with a great many boots.",
+		"catches a company at drill in the Keep's yard below, rows of small figures wheeling on a shout too far off to hear.",
+	},
+	["sw.journey.w22.inbound.009"] = {
+		"Cathedral Square opens among the roofs like an upturned palm, the one wide empty space in the city that nobody is allowed to fill.",
+		"Amid all that crowding, the square before the Cathedral is a clean pale gap. Every city keeps one place it refuses to build on.",
+		"From the air the city is packed tight, wall to wall, roof to roof, except for one broad open square. The Cathedral keeps its elbow room.",
+	},
+	["sw.journey.w22.inbound.010"] = {
+		"follows one canal with the eye, bridge after bridge, until it slips beneath a row of houses and does not come out where it should.",
+		"traces a canal from above as it threads the quarters, loses it under a building, then finds it again, further along than seemed possible.",
+		"tries to keep track of a single canal from the air and ends up following three, each of them sure it is the important one.",
+	},
+	["sw.journey.w22.inbound.011"] = {
+		"On foot I know this city by its corners: where I took the wrong turn, where I bought the bad pie. From up here none of my corners show, and the whole thing looks innocent.",
+		"Every mistake I ever made in these streets is hidden from up here. No wrong turns, no dead ends, just roofs pretending it was simple all along.",
+	},
+	["sw.journey.w22.inbound.012"] = {
+		"points out the Trade District to the gryphon, which pays no attention whatever and banks toward it anyway.",
+		"nudges the gryphon toward the roost by the Trade District, and the beast, which was already going there, lets its rider believe it helped.",
+	},
+	["sw.journey.w22.inbound.013"] = {
+		"There's the Cathedral, there's the Keep, there's the bank. Everything where I left it.",
+		"Keep, Cathedral, canals. All accounted for.",
+	},
+	["sw.journey.w22.lift.001"] = {
+		"feels the handler give the girth strap one last tug, hears a grunt of approval, and then the planks of the roost are simply no longer under {g:him|her}.",
+		"watches the handler check the buckles with two quick fingers and step back, and the boards of the roost fall away before the step is finished.",
+		"is still nodding at the handler's last word when the beast crouches, springs, and leaves the nod somewhere on the platform.",
+	},
+	["sw.journey.w22.lift.002"] = {
+		"There's a moment when the beast gathers itself under the saddle, every muscle wound, and nothing has happened yet. I like that moment more than the flying.",
+		"Just before the leap the beast goes tight from neck to tail, a clockspring wound all the way. Then it lets go, and the roost goes with it.",
+		"Crouch, stillness, spring. The stillness is the part nobody talks about, and somehow it is the longest part of any flight.",
+	},
+	["sw.journey.w22.lift.003"] = {
+		"is barely off the platform before the next traveler in line steps up to the handler, purse already open, without a glance upward.",
+		"rises off the roost and sees, below the beast's tail, the next customer already haggling over the fare.",
+	},
+	["sw.journey.w22.lift.004"] = {
+		"Gently off the edge. Gently is a word, beast. Learn it.",
+		"Those planks were fine. I liked those planks.",
+	},
+	["sw.journey.w22.lift.005"] = {
+		"The roost's people go on with their work as I rise: a boy sweeping feathers into a pile, a groom hauling a bucket of meat. Nobody looks up. For them this is just a door banging.",
+		"Under me the roost goes about its business. The sweeper sweeps, the groom carries his bucket, the handler counts coins. One more rider leaving is not news on that platform.",
+		"To me this is a flight. To the boy sweeping feathers off the planks, it's one more gust from one more pair of wings, scattering his pile.",
+	},
+	["sw.journey.w22.lift.006"] = {
+		"lifts off in a whirl of grit and loose down from the planks, and below the handler clamps one hand on his hat and waits it out.",
+		"rises through a swirl of down kicked off the planks by the wings, the handler squinting through it with his hat held flat.",
+	},
+	["sw.journey.w22.lift.007"] = {
+		"The gryphon was off the roost before I had finished settling. They don't wait for permission; they wait for weight.",
+		"A gryphon feels the rider settle and takes that as the whole conversation. I'd meant to say something to the handler. Too late.",
+		"No signal, no word: the gryphon felt me sit and went. I suspect it has done this more often than I have.",
+	},
+	["sw.journey.w22.lift.008"] = {
+		"hears the handler's two-note whistle behind the leap, more for the beast than for the rider, and then nothing but wings.",
+		"is sent off with a short whistle from the roost, low then high, which the beast answers with its first full stroke.",
+	},
+	["sw.journey.w22.lift.009"] = {
+		"They never go straight up. First the beast drops off the edge, just far enough to make my stomach lodge a complaint, and only then does it climb.",
+		"The first thing a flight does is fall. A short fall, a deliberate one, off the lip of the roost. Then the wings take hold, and I start trusting again.",
+		"Off the edge, a sag, a lurch in the gut, and then the long pull upward. I know the dip is coming every time. Knowing has never helped once.",
+	},
+	["sw.journey.w22.lift.010"] = {
+		"Tell the next one the straps hold!",
+		"Thank you! I think! Ask me when we land!",
+	},
+	["sw.journey.w22.lift.011"] = {
+		"watches the roost lose its details one by one on the climb: first the cup on the handler's stool, then the stool, then the handler.",
+		"keeps an eye on the platform as it falls away; the water trough goes to a sliver, the coil of rope to a coin, and the handler last of all.",
+	},
+	["sw.journey.w22.lift.012"] = {
+		"That corner down there is where I took the wrong turning on the way to the roost. From up here it's obvious. From the street it was a wall and two alleys that looked alike.",
+		"The lane I walked to get here is already a pencil line, and the crowd I pushed through is a smudge on it. I could have used this view on the way.",
+		"Every street that confused me on foot is laying itself out flat now, honest and straight, as if it had only been playing tricks while I was down there.",
+	},
+	["sw.journey.w22.lift.013"] = {
+		"watches the nearest canal shrink on the climb from water to a ribbon to a single drawn line, its bridges reduced to little ticks across it.",
+		"sees the canal below the roost go flat and narrow as the beast rises, its bridges turning into the small cross-strokes a clerk makes when he strikes out a word.",
+		"follows the canal beside the Trade District as it narrows to a cord, the stone banks pinching in, the bridges no wider than notches cut in a stick.",
+	},
+	["sw.journey.w22.lift.014"] = {
+		"A few strokes up and the crowd stops being people. It becomes a current, thick by the market, thin in the lanes, with little eddies round anyone who stops to talk.",
+		"At this height the crowd of the Trade District moves like water: it pools at the stalls, races down the wide street, and backs up behind one slow cart.",
+		"I can see the traffic now the way the guards must wish they could: a cart stuck at a corner, the knot it causes, and the knot spreading back three streets.",
+	},
+	["sw.journey.w22.lift.015"] = {
+		"Hold on, I've left my stomach on the roost.",
+		"Go on, then. The ground and I were never that close anyway.",
+	},
+	["sw.journey.w22.lines.001"] = {
+		"sees how the canals cut the city into islands, each district standing in its own ring of dark green water, tied to its neighbors only by bridges.",
+		"can see from the air what the streets hide: Stormwind is an archipelago, every quarter an island in a loop of canal, the bridges its only moorings.",
+	},
+	["sw.journey.w22.lines.002"] = {
+		"From up here the bridges look like stitches, small and tight, holding each quarter to the next. Cut a few and I swear the city would come apart at the seams.",
+		"Every bridge below is a stitch. Count them and you know how hard somebody worked to keep these quarters from drifting apart.",
+	},
+	["sw.journey.w22.lines.003"] = {
+		"finds the canals are not one water but many, seen from above: green under the bridges, brown where a gutter empties, nearly black where they run deep.",
+		"follows the canals with {g:his|her} eyes and finds them every color but blue: moss green, mud brown, the dark of strong tea where they run deepest.",
+	},
+	["sw.journey.w22.lines.004"] = {
+		"Something small is floating along the canal below, a crate or a basket or somebody's hat. I'll never know which, and it'll nag at me for a while.",
+		"There's a speck drifting down the canal. A barrel? A hat? A duck with ambitions? The beast won't go down to settle it.",
+	},
+	["sw.journey.w22.lines.005"] = {
+		"follows the line of the city wall from above, its walkway running pale and narrow along the top, a tiny sentry at each turn like a pin holding it in place.",
+		"traces the wall's long walkway from the air, the sentries along it set at such even distances that someone must have paced them out with a measuring cord.",
+	},
+	["sw.journey.w22.lines.006"] = {
+		"Seen from above, the walls are thicker than they ever look from the street. Two carts could pass each other up there, with room left for a guard to complain.",
+		"The walls are wider on top than half the streets inside them. The city spent more stone keeping the world out than letting its own people move.",
+	},
+	["sw.journey.w22.lines.007"] = {
+		"watches from above how every street drifts toward the Trade District, like threads gathered into one knot by an impatient hand.",
+		"sees every street in the city lean toward the market, as if the whole place had been tilted to roll the coin downhill into one square.",
+	},
+	["sw.journey.w22.lines.008"] = {
+		"notes that the road through the Valley of Heroes is laid as straight as a spear shaft, while the streets inside the walls bend, kink and double back as they please.",
+		"picks out the Valley of Heroes road at once, the one line in the city drawn for show, dead straight, while every other street wanders off on its own errands.",
+	},
+	["sw.journey.w22.lines.009"] = {
+		"Whoever cut the canals worked with a ruler. Their stone banks run as straight as lines in a copybook, while the streets beside them wobble like a child's handwriting.",
+		"The canal banks are ruled lines and the streets are scribble. Somebody cared a great deal more about the water than about the walking.",
+	},
+	["sw.journey.w22.lines.010"] = {
+		"watches two carts meet head-on in the middle of a canal bridge below, and stays long enough to see that neither driver means to back up.",
+		"witnesses a standoff on a narrow bridge over the canal: two carts nose to nose, both drivers standing up on their seats to argue.",
+	},
+	["sw.journey.w22.lines.011"] = {
+		"Look at the canals. It's as if someone traced round every district so as not to lose it.",
+		"The water draws the borders, seen from up here. Stormwind's been outlined, like a child's drawing.",
+	},
+	["sw.journey.w22.lines.012"] = {
+		"The wall is a line drawn between two ideas: inside, every corner squared and every stone counted; outside, trees that never heard of either.",
+		"From this height the wall is the plainest thing in the world: a pale line, stone and order on one side, green and muddle on the other.",
+	},
+	["sw.journey.w22.lines.013"] = {
+		"notices from the air that every roof tilts toward a gutter, every gutter toward a drain, every drain toward the canals, as if Stormwind had been built to pour.",
+		"makes out the city's slope from up here: roofs leaning to gutters, gutters to drains, drains down to the canals, a whole capital shaped like a funnel.",
+	},
+	["sw.journey.w22.lines.014"] = {
+		"Go round by the Cathedral, would you? I like the view from that side.",
+		"Bank left, beast, over the Park. The green is good for the eyes.",
+		"Take me over the canals once. I want to see them all joined up.",
+	},
+	["sw.journey.w22.lines.015"] = {
+		"Those walls look like a garden fence from up here. Don't tell the guards I said so.",
+		"Remember this when someone calls Stormwind a fortress: from here it looks like a very tidy sheepfold.",
+		"All that wall, and from up here a cat could step over it.",
+	},
+	["sw.journey.w22.lines.016"] = {
+		"With the sun high, the canals blaze up between the districts like cuts made with a bright knife, and the city looks sliced into pieces.",
+		"Broad day, and every canal below has caught the sun at once. The quarters sit between them like squares on a game board, divided by blades of light.",
+	},
+	["sw.journey.w22.lines.017"] = {
+		"watches fog that has settled only in the canals, so that the districts rise out of it as separate islands, their bridges drowned in white.",
+		"sees the mist lying in the canals and nowhere else, tracing every waterway in white, as if the city had been outlined in chalk.",
+	},
+	["sw.journey.w22.nearing.001"] = {
+		"From far off it's one block of pale stone. Nearer it splits into roofs, the roofs into chimneys, the chimneys into pigeons. It keeps breaking into smaller pieces until it's full of people.",
+		"The closer it gets, the more it comes apart: one shape, then quarters, then houses, then a woman shaking a rug from an upper floor.",
+		"Distance makes a city simple. Every wingbeat nearer adds detail I didn't ask for: gutters, handcarts, a cat on a ridge, a man arguing with a door.",
+	},
+	["sw.journey.w22.nearing.002"] = {
+		"watches the city stop being a shape on the horizon and start being a size, which is a good deal less comfortable.",
+		"sees Stormwind cross the line, somewhere along the approach, between a pretty view and a very large place to find one's way in.",
+		"finds the view ahead turning steadily from a picture into an errand list with walls around it.",
+	},
+	["sw.journey.w22.nearing.003"] = {
+		"Look at the size of it. Every time, I forget the size of it.",
+		"Every time I swear it's smaller than I remember. Every time I'm wrong.",
+	},
+	["sw.journey.w22.nearing.004"] = {
+		"notices, as the roofs come closer, that the slate is not one color: new courses dark and glossy, old ones faded almost to ash.",
+		"has the roofs sharpen into patchwork under {g:him|her} as they near, fresh slate dark beside old slate bleached nearly white.",
+	},
+	["sw.journey.w22.nearing.005"] = {
+		"hears the sounds come up in order of size: first nothing, then a dog, then a cartwheel on cobbles, then a hammer, then everyone talking at once.",
+		"listens to the silent city below start leaking noise as the beast drops: a dog, a wheel, somebody's hammer, and then all of it in a heap.",
+		"catches the first sound of the city from above, a single barking dog, and then the rest piling in behind it like late guests.",
+	},
+	["sw.journey.w22.nearing.006"] = {
+		"passes close enough above the nearest houses to see the laundry strung between them, a whole street's shirts hung out to be judged by the sky.",
+		"drops low enough to see the washing on the lines between the houses, and a woman pegging up sheets who never once looks up.",
+	},
+	["sw.journey.w22.nearing.007"] = {
+		"From out here I can cover the whole Keep with one thumb. It's the only time the Keep and I will ever be the same size.",
+		"Hold up a thumb and the Keep vanishes behind it. Enjoy that while it lasts; it grows with every wingbeat.",
+	},
+	["sw.journey.w22.nearing.008"] = {
+		"watches the beast's shadow slide over the last of the treetops, ripple across the moat and climb the wall, getting there a moment ahead of its owner.",
+		"sees the shadow of the wings run ahead over the forest, drop into the water and scramble up the stone, first into the city by a length.",
+	},
+	["sw.journey.w22.nearing.009"] = {
+		"takes in a city so pale against the forest that it looks cut out of the map rather than drawn on it, a clean hole in Elwynn with people living in it.",
+		"finds Stormwind, against all that green, looking less built than cut out: a sharp-edged pale gap in the woods.",
+		"is struck, coming nearer, by how little the city blends with anything around it, as if someone had taken a knife to Elwynn and left the hole showing.",
+	},
+	["sw.journey.w22.nearing.010"] = {
+		"Bigger every time. Do they add a street whenever I'm out of sight?",
+		"I'd swear that wasn't there last time. They're building behind my back.",
+	},
+	["sw.journey.w22.nearing.011"] = {
+		"sees the city rise to meet the wings, not growing so much as lifting, as if the whole pale mass were being raised out of the forest on a mason's lever.",
+		"watches Stormwind swell until there is no seeing it whole any more; the eye has to take it in pieces, tower by tower.",
+	},
+	["sw.journey.w22.nearing.012"] = {
+		"From up here you can watch the rain cross the city: the slate goes dark a street ahead of it, district by district.",
+		"Coming in, I saw the rain arrive before I felt it, the roofs turning dark in a line that marched across the city toward me.",
+	},
+	["sw.journey.w22.nearing.013"] = {
+		"One of those roofs has a bed under it with my name on it, if the price is right.",
+		"All those roofs, and only a handful with a bed I can pay for. Let's go and find one.",
+	},
+	["sw.journey.w22.outbound.001"] = {
+		"skims the top of the outer wall close enough to see the walkway worn into a shallow groove by the sentries' boots, a pale trench along the stone.",
+		"passes low over the outer wall and sees what no one in the streets does: the walkway hollowed into a soft dip where the watch has paced it for years.",
+		"clears the outer wall by a few lengths, near enough to make out the groove the patrols have walked into its top, smooth as a riverbed.",
+	},
+	["sw.journey.w22.outbound.002"] = {
+		"On foot, leaving takes the whole length of the bridge, a nod to the watch and a cart to dodge. On wings it takes four strokes. The bridge deserved better.",
+		"Walking out, the bridge is a small journey of its own. Flying out, it's a pale strip that slips under me before I've finished noticing it.",
+		"The bridge takes a long walk and a dozen greetings to cross. From up here it's gone between one wingbeat and the next, and nobody got a hello.",
+	},
+	["sw.journey.w22.outbound.003"] = {
+		"looks down at the gate as the beast crosses above it and sees a short line of carts waiting to be let in, every driver's head bent over the reins.",
+		"passes high over the gate, where a few wagons wait their turn with the watch, and leaves the city without having to answer a single question.",
+		"goes out over the heads of everyone queuing at the gate, the one traveler of the hour the watch will never ask a thing.",
+	},
+	["sw.journey.w22.outbound.004"] = {
+		"Walls are built to be seen from outside, at the height of a face. From above you get their backs instead: stairs, a bucket, a stool someone keeps hauling up for the long watches.",
+		"Nobody builds the inside of a wall to be admired. From up here I can see the lot: steps worn crooked, a coil of rope, a sentry's stool tucked into a corner.",
+	},
+	["sw.journey.w22.outbound.005"] = {
+		"sees a carthorse on the bridge stop dead and lift its head as the wings pass over; its driver, who never looks up, simply goes on shouting at it.",
+		"watches a horse on the bridge plant all four hooves and stare skyward, while the carter behind it, eyes on the cobbles, curses it for stopping.",
+	},
+	["sw.journey.w22.outbound.006"] = {
+		"The moat hides nothing from above. A cartwheel on its side in the weed, a boot, something pale that I decide is a sack and keep deciding it.",
+		"Fly over the moat and you learn what the city throws away: half a cartwheel, a broken crate, one boot without its partner, sunk where the weed grows thickest.",
+		"From this height the moat is clear as a shop window. Old wheel, older boot, and a great deal of weed that has given up pretending to be tidy.",
+	},
+	["sw.journey.w22.outbound.007"] = {
+		"Over the wall, and no ladder. Someone tell the watch it wasn't a breach.",
+		"Leaving without using the gate. The guards hate that.",
+	},
+	["sw.journey.w22.outbound.008"] = {
+		"keeps watching the bridge as it slides behind, a long pale band with the gate fastened to one end and the forest fastened to the other.",
+		"watches the bridge shrink to a clasp that pins the city to the forest, and the city end of it is the one drifting away.",
+	},
+	["sw.journey.w22.outbound.009"] = {
+		"I've gone under that gate more times than I can count, and I still crane up at it every time. For once it's the one looking up.",
+		"Every time I pass through that gate my neck bends back to take it in. Going over the top of it feels like catching a very tall man without his hat.",
+	},
+	["sw.journey.w22.outbound.010"] = {
+		"draws the eye of a guard on the outer wall, who tracks the wings with a slow turn of the helmet, then returns to staring at the empty road as his post requires.",
+		"passes a sentry on the wall nearly at eye level; the man's helmet turns to follow the beast, and turns back the moment it is plainly leaving rather than arriving.",
+	},
+	["sw.journey.w22.outbound.011"] = {
+		"Down at the gate the guards wish you safe roads as you go. Up here nobody says anything, so I say it myself, quietly, to the back of the beast's head.",
+		"Leave on foot and the gate guard says safe roads. Leave by air and you have to manage on your own. Safe roads, then. To me.",
+	},
+	["sw.journey.w22.outbound.012"] = {
+		"crosses the line where the city's stone ends at the water's edge, and in one wingbeat the ground below changes from paving to reeds.",
+		"goes out over the place where the foot of the wall meets the moat, a hard edge against soft green water, and then there is only water, and then only grass.",
+	},
+	["sw.journey.w22.outbound.013"] = {
+		"Easy, gryphon. The wall's behind us. Let's go and earn our keep.",
+		"Clear of the wall, gryphon. Now let's see what the kingdom needs.",
+	},
+	["sw.journey.w22.outbound.014"] = {
+		"Wave to the guards, beast. No? Fair enough.",
+		"The wall stays behind. That's the whole plan.",
+	},
+	["sw.journey.w22.pigeon.001"] = {
+		"notices that the pigeons on the roost's crossbeam don't even shuffle as the beast leaps; they have seen this a thousand times and stopped being impressed.",
+		"leaves the roost under a row of pigeons on the rafters, who watch the takeoff with the bored eyes of regulars at a tavern.",
+	},
+	["sw.journey.w22.pigeon.002"] = {
+		"A pigeon flew alongside us for a few strokes, working twice as hard as the beast, and then peeled off toward a gutter as if it had only been going that way anyway.",
+		"For a moment one pigeon kept level with my knee, wings whirring like a hand-crank. Then it saw how far up we were going and remembered urgent business on a windowsill.",
+		"A single pigeon tried to race us off the roost. It lost with great dignity, swerving onto a chimney and preening as though the race had never happened.",
+	},
+	["sw.journey.w22.pigeon.003"] = {
+		"gazes down at a flock of pigeons wheeling below the beast, and for once sees their backs: gray, barred, the necks going green and violet as they turn.",
+		"rises above the city's pigeons and sees them as they never show themselves to a street: gray backs and white rumps, tilting all at once like a hand of cards turned over.",
+	},
+	["sw.journey.w22.pigeon.004"] = {
+		"The roost looks spotless until you're above it. Then you see the truth: every beam, every rail and the handler's own hat, streaked white by the pigeons who really run the place.",
+		"Over the roost you see who actually owns it. Every ledge is whitewashed by pigeons, and the handlers have simply learned to stand in the clean bits.",
+		"Leaving the platform behind, I finally see why the handlers wear wide hats. The rafters above them are a pigeon tenement, and the planks below keep the record.",
+	},
+	["sw.journey.w22.pigeon.005"] = {
+		"Out of the way, pigeons. Big bird coming through.",
+		"Sorry, pigeons. You're not the tallest thing in the sky anymore.",
+	},
+	["sw.journey.w22.pigeon.006"] = {
+		"glances back to see a pigeon land on the mounting block the moment it is empty, and settle there as if it had booked the next flight.",
+		"peers back from the first strokes and sees a pigeon already strutting over the spot where {g:he|she} stood, pecking at whatever the boots left behind.",
+	},
+	["sw.journey.w22.pigeon.007"] = {
+		"On every ridge below me the pigeons sit in a row, all facing the same way, like stitches along a seam. I'll never know what they're all looking at.",
+		"The pigeons line the roof ridges as neatly as if a clerk had set them out, each the same small distance from the next, every head turned one way.",
+		"Ridge after ridge, a dotted line of pigeons. They space themselves as carefully as the guards on a wall, and keep a much better watch.",
+	},
+	["sw.journey.w22.pigeon.008"] = {
+		"passes over a rooftop dovecote where an old man is letting his birds out, and for a few wingbeats rises through the middle of his flock.",
+		"climbs past a wooden loft on a roof, its little doors open, and a man below it scowling up at the beast that has just scattered all his birds.",
+		"is overtaken by a dozen pigeons let loose from a loft on a roof; they swirl round the beast once, find it dull, and stream away over the canal.",
+	},
+	["sw.journey.w22.pigeon.009"] = {
+		"A pigeon crossed right under the gryphon's beak. The gryphon looked at it the way a lord looks at a beggar's dog, and did not even slow.",
+		"The gryphon snapped once at a pigeon on the way up, more out of habit than hunger, and missed on purpose, I think. A professional courtesy.",
+	},
+	["sw.journey.w22.pigeon.010"] = {
+		"follows a loose feather from the beast's wing as it spins down into the lane, where a passing porter catches it, looks up, and tucks it into his hatband.",
+		"sees a feather shake loose on the climb and seesaw down toward the street, a long brown one, nothing like a pigeon's, and a flower seller reaching up for it.",
+	},
+	["sw.journey.w22.pigeon.011"] = {
+		"Even the pigeons are looking up. That's a first.",
+		"Wave to the pigeons. No? Just me, then.",
+	},
+	["sw.journey.w22.quarters.001"] = {
+		"crosses above Old Town's roofs, a jumble of slopes and patches where every house seems mended by a different hand in a different mood.",
+		"looks down on Old Town, where the roofs pile against one another at odd angles, as if the houses had shuffled closer for warmth and never moved back.",
+	},
+	["sw.journey.w22.quarters.002"] = {
+		"SI:7 is down there in Old Town somewhere. Every roof looks equally innocent from the air, which must be exactly how they like it.",
+		"I'm looking straight down at the spies of Stormwind and couldn't tell you which roof they're under. Well done, SI:7.",
+	},
+	["sw.journey.w22.quarters.003"] = {
+		"crosses the Dwarven District, where the roofs are a shade darker than the rest of the city, every slate dusted with soot from the forges.",
+		"flies through the smoke over the Dwarven District, coal and hot metal, the roofs beneath lying black around their squat chimneys.",
+	},
+	["sw.journey.w22.quarters.004"] = {
+		"Somewhere under the Dwarven District the tram is rattling off into the deep. From up here there's no sign of it; the city keeps its tunnels to itself.",
+		"The way to Ironforge runs under all of this, they tell me, through the deep dark. From the air the city gives no hint that it's hollow.",
+	},
+	["sw.journey.w22.quarters.005"] = {
+		"spots, in a yard of the Mage Quarter, a ring of scorched flagstones that someone has tried and failed to scrub clean.",
+		"notices that one courtyard in the Mage Quarter has a blackened circle burned into its paving, and that nobody below walks across it.",
+	},
+	["sw.journey.w22.quarters.006"] = {
+		"From the air the Slaughtered Lamb is just another roof in the Mage Quarter. Whatever goes on in its cellar, the slates aren't telling.",
+		"Flying over the Slaughtered Lamb, I find it looks like any other tavern roof. Cellars are the one thing a bird's view can't touch.",
+	},
+	["sw.journey.w22.quarters.007"] = {
+		"passes over the Park, the one place in the city where slate gives way to leaves, the treetops packed so close they look like moss on a stone.",
+		"crosses the Park, and the green of the crowns below is so thick it looks as if it could be walked on, a bed of moss set into the slate.",
+	},
+	["sw.journey.w22.quarters.008"] = {
+		"Through a gap in the trees of the Park someone is lying flat on the grass, looking straight up. I wave, just in case it's me they're watching.",
+		"There's a figure stretched out on the Park's lawn, face to the sky. From up here we're looking at each other, and only one of us knows it.",
+	},
+	["sw.journey.w22.quarters.009"] = {
+		"looks down on the statues of the Valley of Heroes and sees what their sculptors never meant anyone to see: the tops of their heads, streaked white, a sparrow on each stone shoulder.",
+		"sees the heroes of the Valley from an angle nobody planned for: bald stone crowns, birds roosting on their helms, moss in the folds of their cloaks.",
+	},
+	["sw.journey.w22.quarters.010"] = {
+		"The statues of the Valley of Heroes, seen from above, are a row of still points along the road, and everything that moves goes round them: carts, travelers, a dog.",
+		"From this height the heroes in the Valley are the only things on the road that do not move. Everything else flows past their feet without looking up.",
+	},
+	["sw.journey.w22.quarters.011"] = {
+		"Pale shapes beside a road: that's all the heroes of the Valley are from up here, the names on their plinths too small to read. That's the way of it, in the end, for everyone.",
+		"The statues shrink faster than I'd like. A few wingbeats and the heroes of the Valley are pale specks, their names unreadable. Fame keeps about that well.",
+		"Heroes in stone, and from this height I couldn't tell one from another. Somebody fought hard for every one of those plinths.",
+	},
+	["sw.journey.w22.quarters.012"] = {
+		"passes over the bank, whose roof is the plainest and heaviest in the Trade District, as if its builders had worried about thieves arriving by air as well.",
+		"notes that the bank wears the stoutest roof in the Trade District, not a window in it, the work of someone who trusted nobody, not even the sky.",
+	},
+	["sw.journey.w22.quarters.013"] = {
+		"That's the Pig and Whistle down there. Lovely place, from this height. Very quiet.",
+		"Look, the Gilded Rose. From up here you can't hear what they charge.",
+	},
+	["sw.journey.w22.quarters.014"] = {
+		"Keep, Cathedral, market, and Old Town looking as if it slept in its clothes. All present.",
+		"Look at Old Town from up here. Like a roof that fell down a staircase and decided to stay.",
+		"Old Town's roofs are a disgrace seen like this. I love them.",
+	},
+	["sw.journey.w22.quarters.015"] = {
+		"My regards to the heroes down there. Somebody ought to tell them about the birds.",
+		"Chin up, heroes. Ah, you can't. Well, there's a sparrow on yours anyway.",
+		"Hail, heroes of the Valley! Mind the pigeons.",
+	},
+	["sw.journey.w22.quarters.016"] = {
+		"leans over the gryphon's neck to look straight down on the Valley of Heroes, and the beast obligingly dips a wing so the statues swing into view.",
+		"feels the gryphon tilt one wing over the city, as if it too liked a good look at the Park's green before going on.",
+	},
+	["sw.journey.w22.rooftop.001"] = {
+		"passes a garret window so close the curtain stirs, and inside a woman at a table looks up from her mending, needle raised, until the wings have gone.",
+		"skims by an attic window at the height of its sill and glimpses a cot, a candle stub and a man asleep with his boots on, who does not wake.",
+		"rises past a dormer where a clerk sits copying by the window; he lifts the pen, watches the beast go by, and dips it in the ink once more.",
+	},
+	["sw.journey.w22.rooftop.002"] = {
+		"Lines of washing run from roof to roof over the narrow lanes, shirts and sheets and one very large pair of drawers. From the street they're bunting. From up here they're laundry.",
+		"Every lane near the roost is stitched across with washing lines. I fly over somebody's shirts, somebody's sheets, a whole household's socks, and feel I know them a little too well.",
+		"Seen from above, the washing strung over the alleys is the city's most honest banner: patched, faded, and flapping with no ceremony at all.",
+	},
+	["sw.journey.w22.rooftop.003"] = {
+		"passes over a gray cat on a ridge, who flattens itself to the slates, ears back, and glares at the beast with the outrage of the rightful owner.",
+		"sends a rooftop cat streaking along a gutter and down a drainpipe, leaving the whole ridge to the wings.",
+	},
+	["sw.journey.w22.rooftop.004"] = {
+		"We go up through the chimney smoke of a whole street: mutton, onions, somebody burning bread. The roofs feed the sky the same smells the lanes feed me.",
+		"Each chimney we pass puffs out somebody's meal: stew, then fish, then something nobody should be cooking. Then we're above all of them.",
+		"The climb smells of the lanes below it, carried up the flues: onions and tallow and hot iron. Only a little higher does the air stop telling me what the neighbors are eating.",
+	},
+	["sw.journey.w22.rooftop.005"] = {
+		"passes close enough to a weathercock that the downdraft spins it round, and for a moment the iron bird points straight at the beast, as if no other direction were left.",
+		"rises past a weathervane on a gable and sets it turning in the wash of the wings; it swings twice, wavers, and settles on the beast's tail.",
+		"sets a tin rooster creaking on its spindle with the first strokes, and leaves it pointing after the flight, as though the beast were the only news worth reporting.",
+	},
+	["sw.journey.w22.rooftop.006"] = {
+		"There's a whole second city up on the roofs that nobody at street level knows about: pots of herbs, a bench, a ladder left against a chimney, someone's hidden bottle.",
+		"Only from the air do you see what people keep on their roofs. Bean pots. A broken chair. A wooden box of something somebody clearly doesn't want found indoors.",
+		"The roofs have secrets the streets don't share: a rope swing between two chimneys, a little forest of herb pots, a pair of boots set out to dry and forgotten.",
+	},
+	["sw.journey.w22.rooftop.007"] = {
+		"flies straight through the plume of a smithy chimney on the climb and comes out the other side smelling of coal, with soot on {g:his|her} sleeves to prove it.",
+		"is carried through a forge's smoke as the beast gains height, a moment of hot, bitter gray, and then clean air and a sneeze from the beast.",
+	},
+	["sw.journey.w22.rooftop.008"] = {
+		"The gutters make sense at last: each roof tips into a pipe, each pipe into a lane, each lane down to a canal. Somebody drew this city for water first and people second.",
+		"The roofs all lean the same way, toward the nearest canal. From the street you'd never notice. From the saddle it's as plain as the furrows in a plowed field.",
+		"Every gutter on these roofs has an opinion about where water should go, and every one of them agrees: the canal. Only from the air do you see the vote.",
+	},
+	["sw.journey.w22.rooftop.009"] = {
+		"Pardon us, rooftops. Just passing over.",
+		"Mind that chimney. Mind that one. That one too!",
+	},
+	["sw.journey.w22.rooftop.010"] = {
+		"feels the gryphon's hind claws knock a loose tile off a ridge on the climb, and hears it clatter down into the lane long after the roof is behind.",
+		"hears a ridge slate go as the gryphon's hind feet clip it in passing, and leaves a small clatter of shards skittering down toward somebody's step.",
+		"is lifted over the last roof by a gryphon that does not quite clear it; one clawed foot drags along the tiles, and something below breaks with a sound like a dropped plate.",
+	},
+	["sw.journey.w22.rooftop.011"] = {
+		"A man is asleep flat on his back on a roof below, arms folded, hat over his face. The wings go right over him. He doesn't stir. I envy him more than I can say.",
+		"On one flat roof a fellow lies stretched out with his hat over his eyes, lost to the world. We pass a few yards above him. He'll never know.",
+		"Somebody has found the one quiet spot in this city: a ledge between two chimneys, a folded coat for a pillow. I hope the noise of the wings didn't wake him.",
+	},
+	["sw.journey.w22.rooftop.012"] = {
+		"looks down on the market stalls as the beast climbs, and sees them turn into a patchwork of awnings, striped and plain, the shoppers showing only as hats between them.",
+		"notices the stalls near the roost fold into squares of colored canvas, a game board laid out on the street, the merchants hidden under their own awnings.",
+		"sees the market beneath the climb become a tray of colored tiles: red awning, green awning, a torn one patched with sacking, and between them nothing but the tops of heads.",
+	},
+	["sw.journey.w22.rooftop.013"] = {
+		"The paving in the square below is laid in fans, curve inside curve, like ripples from a stone dropped in a pond. Nobody walking on it would ever guess.",
+		"Only from the saddle can you see that the cobbles near the roost were set in a pattern, arcs nested in arcs. Some paver's careful work, and the whole city walks on it blind.",
+		"Somebody laid those cobbles in sweeping curves, row after row, and only birds and fliers will ever see it. Masons must have a strange kind of patience.",
+	},
+	["sw.journey.w22.rooftop.014"] = {
+		"I can see right into that attic. Somebody tidy it.",
+		"Look, there's the lane I got lost in. Tiny, isn't it?",
+	},
+	["sw.journey.w22.roostward.001"] = {
+		"watches the roost grow out of the rooftops below: first a pale square, then straw bales, a trough, and finally a broom leaning against a post.",
+		"sees the roost take shape as the beast drops toward it, a flat patch among the slates that turns into hay, troughs and a stool with somebody's lunch on it.",
+		"makes out the roost bit by bit on the way down: a square of stone, a heap of straw, a row of feed tubs, a handler's coat on a nail.",
+	},
+	["sw.journey.w22.roostward.002"] = {
+		"My nose finds the roost first: damp straw, raw meat, the musky smell of many animals kept close. Under me the flier's head comes up at it.",
+		"Before I can pick the roost out among the roofs I can smell it, straw and butcher's scraps. The beast smells it too and puts on speed, the glutton.",
+	},
+	["sw.journey.w22.roostward.003"] = {
+		"There's the roost. Steady now, beast. You and me both.",
+		"Roost ahead. If you've a landing in you, beast, now's the time for it.",
+		"I see it. Hay, buckets, someone waving. That'll be the place.",
+	},
+	["sw.journey.w22.roostward.004"] = {
+		"spots a stable hand dragging a bale of straw clear of the landing stones at a run, glancing up twice to judge how much time is left.",
+		"watches a roost hand below kick a bucket aside and then, thinking better of it, run back to carry it out of the way properly.",
+	},
+	["sw.journey.w22.roostward.005"] = {
+		"There's a water trough on the roost, and for a moment I see the beast and myself in it, a smudge of wings and a small dark rider, swelling until they fill it rim to rim.",
+		"The trough by the perches catches the descent: a blot of wings in the water that grows and grows, until the beast's own shadow wipes it out.",
+	},
+	["sw.journey.w22.roostward.006"] = {
+		"drops close enough to the roost's stonework to see the mortar between the blocks, and a swallow's nest of dried mud tucked high under a ledge.",
+		"slides down past the roost's wall, near enough to pick out moss in the joints of the stone and a nest of swallows clinging under the cornice.",
+	},
+	["sw.journey.w22.roostward.007"] = {
+		"Down below, the handler is eating an apple and doesn't stop for the beast. If the handler isn't worried, I've decided I'm not either.",
+		"Somebody on the roost is finishing an apple as the beast drops toward him, with no hurry at all. I take my courage from that apple.",
+		"The handler doesn't look up from his apple until the beast is a few wingbeats off. Either he trusts the animal entirely, or he has seen worse riders than me.",
+	},
+	["sw.journey.w22.roostward.008"] = {
+		"drops toward the roost with thunder rolling over the roofs, while the handlers below hurry to throw oiled cloths across the empty perches.",
+		"is brought in fast under a rumbling sky, the beast's feathers standing on end and the handlers on the roost already shouting it in.",
+	},
+	["sw.journey.w22.roostward.009"] = {
+		"From up here the flagstones of the roost are worn pale in two places, side by side, like the floor before a busy counter. The beast lines up on the nearer one without being asked.",
+		"The roost's flagstones are rubbed into two light patches where every beast sets down. Mine picks the nearer one from far off, like a regular making for a favorite stool.",
+	},
+	["sw.journey.w22.roostward.010"] = {
+		"Somebody shift that wheelbarrow!",
+		"Whose wheelbarrow is that? Move it, please, before this beast lands in it.",
+	},
+	["sw.journey.w22.roostward.011"] = {
+		"There's a cat on the roost wall, asleep, while an animal that could swallow it whole drops out of the sky beside it. I'd like to learn that kind of calm.",
+		"A fat tabby lives on the roost, curled on the parapet. It opens one eye as the wings come down around it, and shuts it again.",
+	},
+	["sw.journey.w22.roostward.012"] = {
+		"sees a handler at the edge of the roost wave a strip of blue cloth toward one free perch, over and over, until the beast tips its wings that way.",
+		"follows the flutter of a blue rag in a handler's fist, waved toward an empty perch; the beast swings onto the line of it as if pulled by a thread.",
+	},
+	["sw.journey.w22.roostward.013"] = {
+		"Up comes the roost and the sky goes thin, the way a crowd thins round you near a closing gate. I'd like a little more of it. The beast would like its supper.",
+		"With every wingbeat down there's less sky left over my head. Up there I had a whole country of it. Here I'll get a strip between two roofs.",
+	},
+	["sw.journey.w22.roostward.014"] = {
+		"Hold on to your hats down there!",
+		"Heads low below! Wings coming through.",
+	},
+	["sw.journey.w22.roostward.015"] = {
+		"Before the city, the roost speaks up: the clank of a pail handle, a short whistle, someone laughing at the end of a joke I'll never hear the start of.",
+		"Before the street noise reaches me, the roost's small sounds come up through the last of the air: a bucket set down, a broom scraping, a laugh cut short.",
+	},
+	["sw.journey.w22.sighting.001"] = {
+		"notices the trees of Elwynn ending ahead in a line too straight for any forest, and knows the city is behind it before a single tower shows.",
+		"makes out the green below stopping short along a ruled edge, the kind of straight line only builders make, and leans forward to look past it.",
+		"spots, far ahead, the place where the woods give up all at once along a clean edge. Nothing grows that tidily on its own.",
+	},
+	["sw.journey.w22.sighting.002"] = {
+		"Towers first, walls after. The city always peeks before it shows itself.",
+		"Look, the towers are up over the trees already. The walls are still being shy.",
+	},
+	["sw.journey.w22.sighting.003"] = {
+		"There. The pale bit past the trees. No, further. Yes, that enormous pale bit.",
+		"See it? Over the treetops. Hard to miss, once you stop staring at the trees.",
+	},
+	["sw.journey.w22.sighting.004"] = {
+		"Coming in, the roofs below change before the city shows: thatch gives way to shingle, shingle to slate. You can read the money thickening toward the walls.",
+		"Thatch, then shingle, then slate. Long before the walls, the roofs under me say the city is near, and how much richer everyone gets the closer it is.",
+		"The farmhouses under the wings huddle closer and their roofs grow dearer. Stormwind starts well before its stone does.",
+	},
+	["sw.journey.w22.sighting.005"] = {
+		"counts the towers rising out of the green, loses the count each time the beast dips, and starts over with stubborn patience.",
+		"tries to tally the towers as they come up over the trees, and gives it up on the third dip of the wings.",
+		"keeps a running count of towers above the forest line, gets to nine, then eleven, then six, and decides the city is simply large.",
+	},
+	["sw.journey.w22.sighting.006"] = {
+		"From far off the city looks finished. Closer, the scaffolds show, poking up among the roofs like pins left in a hem. Stormwind is still being sewn.",
+		"Every time it comes into view there's scaffolding somewhere. This city has never once considered itself done.",
+	},
+	["sw.journey.w22.sighting.007"] = {
+		"Elwynn runs right up to the moat and stops, like a crowd told to wait outside. In the middle sits the city, very pale and very sure of itself.",
+		"The forest comes to the edge of the water and no further. From up here it looks less like a border than a crowd kept politely back.",
+		"All those trees pressing toward the walls, and the moat holding them off without a word. It must be the most patient guard in the kingdom.",
+	},
+	["sw.journey.w22.sighting.008"] = {
+		"sees the city first as a paleness over the trees at dawn, there before the forest itself has found its colors.",
+		"picks the walls out of the early dimness, pale above a forest still the shade of slate, the first thing in Elwynn to wake.",
+	},
+	["sw.journey.w22.sighting.009"] = {
+		"For a while there's only sky and trees and the beast's shoulders working. Then a tower breaks the line of the forest, and the quiet is over before a single sound arrives.",
+		"The quiet of the air ends with something seen, not heard: one tower above the treetops, and already my head is full of streets.",
+	},
+	["sw.journey.w22.sighting.010"] = {
+		"The Cathedral's spire comes up first, a needle stuck in the forest, and the rest of the city seems to be drawn up on the thread behind it.",
+		"First the needle of the Cathedral, then the whole cloth of the city pulled up after it.",
+	},
+	["sw.journey.w22.sighting.011"] = {
+		"shifts in the saddle to see around the gryphon's crest as the first towers rise out of the green ahead.",
+		"has to lean out past the gryphon's broad head to see anything in front, and is rewarded with a row of towers over the treetops.",
+	},
+	["sw.journey.w22.sighting.012"] = {
+		"From a distance it's the only thing in Elwynn that keeps still. Leaves shift, birds lift, carts crawl; the city just sits there, pale and patient.",
+		"Everything over the forest moves, the birds, the treetops, the beast under me. Ahead, one great pale thing doesn't, and that's how I know it's the city.",
+		"Out over the woods nothing holds still for long. The city does. It waits ahead like a stone in a stream, letting the whole green country flow past it.",
+	},
+	["sw.journey.w22.sighting.013"] = {
+		"Ah. Somebody's left a whole city lying in the woods.",
+		"Trees, trees, trees, kingdom. Right on schedule.",
+	},
+	["sw.journey.w22.slate.001"] = {
+		"peers down at the slates as the beast clears them and sees how patched they are: old dark ones furred with moss, new pale ones set in rows where a repair went through.",
+		"notices, from just above the roofs, that no two are the same color: each is a quilt of slates laid in different years, the newest still bright, the oldest gone green at the edges.",
+		"skims a roof close enough to read its history in the slates: a square of new ones where a chimney fell, a crooked seam where someone did the job cheap.",
+	},
+	["sw.journey.w22.slate.002"] = {
+		"Everyone calls the roofs blue. Close up, on the climb, they're a dozen colors: plum, iron, wet ash, a rust fleck in every other slate. Blue is only what they agree on at a distance.",
+		"At the height of the chimneys the slate stops being one color. It's purple where it's old, gray where it's new, and here and there a vein of something like rust. Distance is what paints it.",
+		"I never noticed the slates had grain, like wood. You need to pass a few feet above them, slowly, with nothing to do but look.",
+	},
+	["sw.journey.w22.slate.003"] = {
+		"spots a roof with a dozen slates gone, the bare laths showing like ribs, and through the gap a room with a bucket set out in the middle of the floor.",
+		"looks through a hole in a roof on the way up, straight into somebody's loft: a bed, a trunk, and a pot placed exactly under the gap.",
+	},
+	["sw.journey.w22.slate.004"] = {
+		"Slate doesn't burn, the roofers say, and that's why every roof below me is slate and not thatch. They say it as if nobody needed telling why.",
+		"Not one thatched roof in sight. Ask a roofer and you'll get the same answer every time: slate doesn't burn. Then they look at you as if you should have known.",
+		"Ask in any tavern and the roofers will tell you thatch had no place in the rebuilding. From the saddle you can see how strictly that was kept: slate, and slate, and slate.",
+	},
+	["sw.journey.w22.slate.005"] = {
+		"holds on as the slate roofs pull together beneath the climb until they read as one hide of overlapping scales, the lanes between them only creases in it.",
+		"sees the roofs below merge into a single scaled skin on the climb, slate lapping over slate, as if the city had grown a shell and forgotten to mention it.",
+	},
+	["sw.journey.w22.slate.006"] = {
+		"Rain on the slates turns the whole climb to pewter. Every gutter below spouts a little arc into the lane, and the lanes run with it toward the canals.",
+		"Wet roofs as far as I can see, slick and dark, every eave dribbling into the alleys. The beast flicks water off its wingtips with each stroke.",
+		"The rain makes the slates gleam like fish scales and the gutters gargle all at once. Even the beast seems to fly with its shoulders hunched.",
+	},
+	["sw.journey.w22.slate.007"] = {
+		"Look at those roofs. Somebody down there owes a roofer a lot of money.",
+		"Half those slates are loose. Glad I'm not walking under them.",
+	},
+	["sw.journey.w22.slate.008"] = {
+		"I tried counting chimney pots on the climb and gave up at forty. Clay ones, iron ones, one bent like an old man listening at a wall. Each roof sprouts its own little crowd.",
+		"The chimneys up here are a population of their own: squat, tall, cracked, capped with tin hats, and one leaning so far it ought to come with a warning.",
+		"Up among the chimney pots for a few strokes, and they look like a crowd of short, stout people, all facing different ways and none of them talking.",
+	},
+	["sw.journey.w22.slate.009"] = {
+		"climbs over roofs still dark with old wet, the slates drying in pale patches from the ridges down, under a sky that has finally cleared.",
+		"takes in the slates drying under the clear sky, each roof gone two-toned, dark at the eaves and pale at the ridge.",
+		"rises into clear air over roofs drying unevenly, pale ridges and dark gutters, as though the whole quarter had been dipped and hung up to drip.",
+	},
+	["sw.journey.w22.spiral.001"] = {
+		"leans with the beast into a wide turn above the roofs, and a row of chimney pots swings past one wingtip close enough to count.",
+		"tips into the first slow turn over the city, chimney pots wheeling by beneath one wing like the teeth of a comb.",
+		"rides the long bank over the rooftops, a crowd of chimney pots tilting past under one wing and then the other.",
+	},
+	["sw.journey.w22.spiral.002"] = {
+		"On each turn the same weathervane comes round below me, a tin rooster on a roof by the canal. By the third pass I could draw it from memory.",
+		"A tin rooster on some rooftop keeps swinging back under my boots, turn after turn. That rooster and I are old friends by now.",
+		"The circle brings the same weathervane round three times. Every time it points somewhere else, and so, I suspect, do I.",
+	},
+	["sw.journey.w22.spiral.003"] = {
+		"passes so low over a lane that the downdraft of the wings sets a line of washing flapping between two roofs, every shirt waving after the beast.",
+		"skims a rooftop where washing hangs across the gap to the next house, and each shirt on the line jumps up and flaps as the wings go by.",
+	},
+	["sw.journey.w22.spiral.004"] = {
+		"A roofer kneeling on the slates looks up as the beast circles and lifts her hammer at me, unhurried. Up here, apparently, everyone's a neighbor.",
+		"Somebody is mending a roof below, row by row of slate. She raises her hammer as the wings sweep past, the way you'd nod over a fence.",
+		"There's a roofer down there with a mouthful of nails, and she salutes the beast with her hammer on every turn. Neighbors of the high places.",
+	},
+	["sw.journey.w22.spiral.005"] = {
+		"Yes, beast, I've seen the roofs. Lovely roofs. Down, please.",
+		"That chimney again. Are you landing on it, or going round for a third look?",
+	},
+	["sw.journey.w22.spiral.006"] = {
+		"looks down into the yards behind the houses as the beast circles, the hidden squares the street never shows: a well, a pear tree, a hen scratching at nothing.",
+		"sees, on the turn, what the house fronts keep hidden: little yards behind them, a water butt in one, a cat asleep on a woodpile in the next.",
+		"glimpses from above the courtyards no one walking the lanes would ever guess at, each with its own crooked tree and its own bench.",
+	},
+	["sw.journey.w22.spiral.007"] = {
+		"All through the turn the beast's head never moves: it stays fixed on one patch of the roost while the body swings round it. Hunters look at things that way. I'm glad it isn't looking at me.",
+		"The wings go round and round, and the head stays pinned on the roost like a compass needle. Whatever it has picked out down there, it has made up its mind.",
+	},
+	["sw.journey.w22.spiral.008"] = {
+		"follows the gryphon's tail as it fans open and twists at every turn, a spread of stiff feathers steering the whole beast like a rudder.",
+		"feels each turn begin at the back, where the gryphon's tail feathers spread and tilt a moment before the wings follow.",
+	},
+	["sw.journey.w22.spiral.009"] = {
+		"On the second turn I spot a hat I know down in the street, belonging to someone I owe money. Once more round, beast. Let him reach the corner first.",
+		"I know that hat in the crowd below. Its owner and I have an unsettled sum between us. Circle slowly, beast; there's no hurry at all.",
+	},
+	["sw.journey.w22.spiral.010"] = {
+		"passes a rooftop flagpole so close that its pennant flicks against the beast's wingtip, and the beast shakes the wing as if something had stung it.",
+		"comes round a tower so tight that a pennant snaps across the edge of a wing; the beast shivers the whole wing like a horse shrugging off a fly.",
+	},
+	["sw.journey.w22.spiral.011"] = {
+		"Every ring the beast draws is tighter than the last, and the roofs climb nearer with each. Like watching water circle a drain, with me in the water.",
+		"The circles shrink as they go, the city coming up roof by roof. The sky is being wound in like a line on a reel.",
+		"Wide turn, narrower turn, narrower still. The roofs rise the way a fish rises on a line: slowly, then all at once.",
+	},
+	["sw.journey.w22.spiral.012"] = {
+		"Not the chimney. Not the chimney! Thank you.",
+		"Left wing, beast, mind the tower. Your other left.",
+	},
+	["sw.journey.w22.spiral.013"] = {
+		"circles in the dark over rows of shutters, each one outlined by a thin seam of lamplight, until two torches set wide apart mark out the roost.",
+		"turns slowly above the sleeping roofs, where the only lights are the cracks round the shutters and, farther on, the pair of torches that means the roost.",
+	},
+	["sw.journey.w22.spiral.014"] = {
+		"One more lap, then. I wasn't in a hurry.",
+		"Round and round. The roost will still be there, beast.",
+	},
+	["sw.journey.w22.spire.001"] = {
+		"passes level with the Cathedral's spire and sees what only masons and birds ever see: carving finished as carefully at the top as at the portal, for no eye at all.",
+		"comes level with the tip of the Cathedral spire, where the stonework is as fine and patient as anything at street level, made for nobody but the sky.",
+	},
+	["sw.journey.w22.spire.002"] = {
+		"The tip of the Cathedral spire, close up: a crow sitting there as if appointed to it, and a long white streak below that nobody will ever climb up to scrub.",
+		"Up close, the highest point of the Cathedral belongs to a crow, and the crow has been leaving its mark on it for some time.",
+	},
+	["sw.journey.w22.spire.003"] = {
+		"looks into the inner courts of Stormwind Keep, hidden from the city by its own walls: storerooms, a well, barrels stacked by a side gate, a yard swept bare.",
+		"finds that the Keep, seen from above, is less a palace than a cluster of yards and roofs fitted together, with a plain well in the middle of it all.",
+	},
+	["sw.journey.w22.spire.004"] = {
+		"From up here the Keep is a cluster of dark roofs. Nothing about it says a boy wears a crown under them, or that his father's chair has stood empty all this while.",
+		"No sign at this height that a king lives there. The Keep is roofs and chimneys like the rest; its weight is all in what people say on the ground.",
+	},
+	["sw.journey.w22.spire.005"] = {
+		"passes close by the tall tower of the Mage Quarter, and a figure at a high window looks up from a book with the face of a scholar interrupted mid-sentence.",
+		"skirts the Wizard's Sanctum near enough to see someone at an upper window pull the shutter firmly closed against the passing wings.",
+	},
+	["sw.journey.w22.spire.006"] = {
+		"glimpses the bells in their tower through the louvers as the flier passes, huge and still, a ringer's coat thrown over a beam beside them.",
+		"sees through the open belfry, at this height, the bells themselves at rest, larger than any cart, with a ladder leaning on the frame beside them.",
+	},
+	["sw.journey.w22.spire.007"] = {
+		"There's the Keep. Wave to the regent, beast.",
+		"Wave to the Keep. Somebody in there is surely too busy to wave back.",
+	},
+	["sw.journey.w22.spire.008"] = {
+		"Three heights rule this skyline: the Cathedral's spire, the Keep's towers, the mages' tower. Everything else is roofs keeping their heads down.",
+		"Only three things in Stormwind dare stand up into the sky: a spire for the Light, towers for the crown, a tower for the mages. The roofs below them all crouch politely.",
+	},
+	["sw.journey.w22.spire.009"] = {
+		"looks down the whole length of the Cathedral's roof, a great ridged spine of slate laid out like the keel of an upturned ship.",
+		"passes over the Cathedral lengthwise, its roof all ridges and gutters and small stone figures crouched at the corners, too high for anyone in the square to have noticed them.",
+	},
+	["sw.journey.w22.spire.010"] = {
+		"Cathedral Square from up here: a wide pale plate, a few robed specks crossing it slowly, and pigeons.",
+		"The square before the Cathedral is the widest open floor in the city. From up here the people crossing it look like crumbs on a tablecloth.",
+	},
+	["sw.journey.w22.spire.011"] = {
+		"Funny. The Cathedral is the size of a loaf from up here, and it still manages to look stern.",
+		"Even shrunk to the size of a loaf, the Cathedral looks disapproving. Impressive.",
+	},
+	["sw.journey.w22.stride.001"] = {
+		"I could trace the road from here without the beast: out of the gate, over the bridge, south through the trees, a pale crease in the green that someone pressed in long ago and nobody has smoothed out since.",
+		"The south road from up here: a fold in the forest, pressed in by carts and boots over so many years that the trees have given up arguing with it.",
+	},
+	["sw.journey.w22.stride.002"] = {
+		"overtakes a rider on the south road without a sound, then a wagon, then a woman leading a cow on a rope, and none of them look up.",
+		"passes silently over the traffic of the road below, a cart, a peddler, a boy driving geese, each bent on their own going and none glancing at the sky.",
+	},
+	["sw.journey.w22.stride.003"] = {
+		"Every bend in the road below is an hour of somebody's walking. I cross three of them while I finish this thought.",
+		"The road wanders through the forest the way a walker does, around every stump and boulder. The beast just goes over, and I feel a little guilty about it.",
+		"Down there the road argues with every hill. Up here there's nothing to argue with, and I almost miss the debate.",
+	},
+	["sw.journey.w22.stride.004"] = {
+		"Road's right there if you get tired, beast. I won't tell anyone.",
+		"You could walk it, you know. Down there. Like everybody else.",
+	},
+	["sw.journey.w22.stride.005"] = {
+		"shifts the pack once as the beast settles into its pace, then leaves it be, the way a walker stops fussing with the straps after the first mile.",
+		"gives the pack's straps a single tug once the flight evens out, then lets them alone for good.",
+	},
+	["sw.journey.w22.stride.006"] = {
+		"There's a moment when the beast stops climbing and starts traveling. You feel it through the saddle: less heave, more reach.",
+		"Out past the trees, at some point, the wings change their mind about what they're doing. Up was work. This is just going, long and even, and my knees can tell the difference.",
+	},
+	["sw.journey.w22.stride.007"] = {
+		"lets go of the harness with one hand at last, flexes fingers that have been clenched since the roost, and keeps them free.",
+		"loosens a cramped grip on the harness now that the walls are behind, working the fingers open slowly.",
+	},
+	["sw.journey.w22.stride.008"] = {
+		"The road south looks like a line drawn to explain Elwynn to someone very patient: farms this way, forest that way, and the trouble, as usual, further on.",
+		"Somebody drew Elwynn for me from up here and left the road in as a hint. Fields on this side, trees on that, and everything that needs doing somewhere along the line.",
+	},
+	["sw.journey.w22.stride.009"] = {
+		"A full pack sits differently at the start of a trip: high and tight, every strap still stiff. By the end it slumps like its owner.",
+		"At the start of a trip the boots are dry, the waterskin full, the straps still squeak. I'd like to remember this feeling when none of it is true any more.",
+	},
+	["sw.journey.w22.stride.010"] = {
+		"No questions about where. Just fly.",
+		"Wherever it is, take me there.",
+	},
+	["sw.journey.w22.stride.011"] = {
+		"follows the road as it slips in and out of the forest below, lost under the trees for a stretch and then surfacing further on, like a needle working through heavy cloth.",
+		"sees the south road duck under the canopy and come up again, over and over, pulled through the woods like thread through linen.",
+	},
+	["sw.journey.w22.stride.012"] = {
+		"I like the first stretch best. Nothing has gone wrong yet. Nothing has had the chance.",
+		"The best part of any trip is this part, right at the start, before the world has had a go at it.",
+		"At the start of a trip every plan still holds. It's the only time that's true, and I try to enjoy it.",
+	},
+	["sw.journey.w22.stride.013"] = {
+		"leaves at first light as the farms below wake one by one, a chimney here, a chimney there, until the whole forest is threaded with thin smoke.",
+		"sets out in the early gray, and under the wings Elwynn lights its kitchen fires farm by farm, small blue threads rising out of the trees.",
+	},
+	["sw.journey.w22.stride.014"] = {
+		"There. Now it's a trip.",
+		"And from here on, it's a proper journey.",
+	},
+	["sw.journey.w22.touchdown.001"] = {
+		"feels the beast come down in two halves: the hind paws first, soft and padded, then the taloned forefeet striking the stone with a sharp click.",
+		"is set down by hind legs that land like a cat's and forelegs that land like a hawk's, a soft thump followed by the scrape of claws.",
+		"sits through a landing that comes in two parts, a padded thump behind and a rattle of talons in front, as if two animals were arriving one after the other.",
+	},
+	["sw.journey.w22.touchdown.002"] = {
+		"At the touch of stone the whole animal changes under me. A moment ago every muscle was pulling; now it's a heavy, slack, contented weight, like a hauling rope let fall.",
+		"One instant the beast is all strain, wings and shoulders hauling on the air. The next it has sagged into the stone like a sack set down, and so have I.",
+	},
+	["sw.journey.w22.touchdown.003"] = {
+		"Touched down. No applause; it was mostly the beast.",
+		"And down. I kept my eyes open for nearly all of that.",
+	},
+	["sw.journey.w22.touchdown.004"] = {
+		"hangs a moment above the stone while the wings beat backward, twice, and a sheet of loose straw lifts off the roost and goes sailing over the parapet into the street.",
+		"comes down in a whirl of straw as the wings cup the air, and somewhere in the street below a voice complains about it at length.",
+	},
+	["sw.journey.w22.touchdown.005"] = {
+		"That landing was so soft I missed it. I sat there braced for a few more wingbeats until the handler coughed.",
+		"I never felt the touch. I sat gripping the harness, ready for a bump that had already come and gone, until the stillness gave it away.",
+	},
+	["sw.journey.w22.touchdown.006"] = {
+		"hears the beast settle, its tufted tail sweeping once across the stones behind, like a broom finishing a job.",
+		"sits still as the beast lands and lashes its long tufted tail from side to side, raising a little dust from the flagstones each time.",
+	},
+	["sw.journey.w22.touchdown.007"] = {
+		"As the beast lands, one handler holds up three fingers to another across the roost. Three out of what, nobody tells me.",
+		"One of the roost hands scores the landing on his fingers for a friend: four. I'd like to know what the best one was, and who flew it.",
+	},
+	["sw.journey.w22.touchdown.008"] = {
+		"Easy, easy. Good beast. Good landing.",
+		"Gently done. I won't forget it.",
+		"Lightly as a cat. Well flown, you.",
+	},
+	["sw.journey.w22.touchdown.009"] = {
+		"The beast lands, then shifts its weight from one foreleg to the other a few times, testing the stone like someone unsure of the ice. Satisfied, it lets the wings drop.",
+		"Down, and the beast treads the stone twice with each forefoot, as if it doubted the city were really holding still. I know the feeling.",
+	},
+	["sw.journey.w22.touchdown.010"] = {
+		"lands squarely beside a roost hand who has not moved a finger, and who goes on coiling a rope as though beasts settled at his elbow all day long.",
+		"is set down a stride from a stable hand mending a strap, who shifts his stool a finger's width to the left without looking up.",
+	},
+	["sw.journey.w22.touchdown.011"] = {
+		"A landing is the one moment the sky and the stone touch. For as long as it lasts I'm the thing they touch through.",
+		"Claws on stone: the whole of the sky ends in that small hard sound. It always seems too small a sound for so much ending.",
+	},
+	["sw.journey.w22.touchdown.012"] = {
+		"lands on flagstones warmed through by the day, and the warmth comes up through the beast's padded hind feet and into the saddle, a small kindness after the high air.",
+		"touches down on stone that has soaked up the day, and the roost gives off a faint warmth like a loaf just out of the oven.",
+	},
+	["sw.journey.w22.touchdown.013"] = {
+		"feels the pack strapped behind the saddle land a moment after the beast does, with a thump all its own and a rattle of whatever is loose inside it.",
+		"hears everything in the saddlebags arrive a beat late, a clank and a thud behind the beast's own touchdown, like an echo with luggage.",
+		"lands, and then the saddlebags land: a second, smaller arrival behind the first, full of clinks.",
+	},
+	["sw.journey.w22.treeline.001"] = {
+		"sees the forest begin almost at the end of the bridge, the first trees crowding the far bank as though they had walked up to look at the city and stopped there.",
+		"takes in how close Elwynn comes to the walls: a few fields' width, and then the trees, standing shoulder to shoulder at the edge like a crowd held back by a rope.",
+		"notes the forest's edge below, abrupt as a hem, the last trees leaning a little toward the city as if curious about it.",
+	},
+	["sw.journey.w22.treeline.002"] = {
+		"Elwynn from up here isn't one green, it's twenty: the near-black of the old trees, the yellow of a stubbled field, the soft pale green where sheep have cropped a meadow to the root.",
+		"Forest, I'd have said, is green. From the saddle I count at least a dozen kinds of it, and one field so yellow it looks like a spilled pot of mustard.",
+	},
+	["sw.journey.w22.treeline.003"] = {
+		"picks out the lake among the trees, flat and still, its edge furred with reeds, and for a moment the beast's own shape crosses it upside down.",
+		"sees the lake slide by below, a still pane set into the forest, and catches the beast's reflection gliding across it with its whole load.",
+	},
+	["sw.journey.w22.treeline.004"] = {
+		"The lake looks perfectly calm from here. Somewhere on its bank a fisherman is swearing at it anyway; I'd put money on it.",
+		"Up here the lake seems the most peaceful thing in Elwynn. I'd bet my purse there's a man on its shore with an empty line who disagrees.",
+	},
+	["sw.journey.w22.treeline.005"] = {
+		"looks down on a woodcutters' clearing, the stumps pale and round among the trunks like coins left out on a green cloth.",
+		"passes over a patch of felled forest where the stumps show up light and neat, counted out among the trees like a merchant's coins on baize.",
+	},
+	["sw.journey.w22.treeline.006"] = {
+		"All that green, and not a single shop. Elwynn has no idea what it's missing.",
+		"Miles of trees down there, and nobody charging for any of them. Shameful.",
+	},
+	["sw.journey.w22.treeline.007"] = {
+		"From the streets the forest is a wall of trunks at the end of the road. From up here it's a roof, soft and humped, and the beast skims it like a cat crossing slates.",
+		"Walk into Elwynn and you see trunks. Fly over it and you see the crowns, a rumpled green quilt that hides everything moving underneath.",
+		"On the ground Elwynn is all trunks and undergrowth. Over it, the forest turns its back to me, broad and green, with the road running along it like a parting in hair.",
+	},
+	["sw.journey.w22.treeline.008"] = {
+		"spots a heron lifting off the lake shore below, slow and unbothered, the only other flier in sight that needs no saddle.",
+		"watches a heron rise from the reeds at the water's edge, fold its neck and beat away low over the lake, giving the beast a wide and dignified berth.",
+	},
+	["sw.journey.w22.treeline.009"] = {
+		"The fences tell how far the city has fallen behind. Near the walls they're straight and freshly mended. A little further out, they start to lean.",
+		"Nearest the walls every fence is straight and every gate swings true. Out where the forest thickens, the fences slump as if they'd stopped expecting visitors.",
+		"You can read the distance from the walls in the fences. Fresh paint and square posts first, then bare wood, then whatever the farmer found lying about.",
+	},
+	["sw.journey.w22.treeline.010"] = {
+		"follows a thread of chimney smoke up out of the trees to where it frays apart, the only sign of the cottage hidden underneath.",
+		"notices smoke rising straight out of the canopy from some hidden farmhouse, and the smell of it, wood and something cooking, reaches the saddle a moment later.",
+	},
+	["sw.journey.w22.treeline.011"] = {
+		"There's the lake. Don't even think about it, beast. Nobody's stopping for fish.",
+		"Eyes front, beast. That lake has nothing for you.",
+	},
+	["sw.journey.w22.treeline.012"] = {
+		"The air changes once the forest is below. Stone and smoke go out of it, and something green comes in: resin, damp bark, leaves somebody is burning in a yard.",
+		"The city smells of people. Past the treeline the air is all bark and resin and turned earth, as if someone had opened a window.",
+	},
+	["sw.journey.w22.treeline.013"] = {
+		"passes over a field where a scarecrow stands with its arms flung wide, as if trying to flag the beast down; the beast does not stop.",
+		"flies over a scarecrow in a turnip field, arms out and hat askew, the only figure in Elwynn waving with such conviction.",
+	},
+	["sw.journey.w22.treeline.014"] = {
+		"We humans talk about Elwynn as the garden behind the city. From the saddle it's the other way round: the forest is the house, and the city a stone left on its step.",
+		"Ask anyone in Stormwind and Elwynn is the city's back garden. Seen from up here, the city is a pebble the forest hasn't got round to swallowing.",
+	},
+	["sw.journey.w22.treeline.015"] = {
+		"watches the rain pock the surface of the lake below until the whole of it looks like beaten pewter, the reeds bowed along its rim.",
+		"looks down on the lake gone dull and dimpled under the rain, every drop leaving its little crater, and the forest around it hunched and dripping.",
+	},
+	["sw.journey.w22.treeline.016"] = {
+		"Smell that? Trees. Not a gutter for miles.",
+		"Something up here smells green. Can't recall the last time the city did.",
+	},
+	["sw.journey.w22.walls.001"] = {
+		"Up close the walls aren't white at all: cream, dun, a dozen grays, and here and there a block brighter than the rest where someone patched a wound in the stone.",
+		"Nearer, the white turns out to be a quilt. Old blocks gone the color of bone, newer ones still pale, and the seams between them where the masons worked fastest.",
+	},
+	["sw.journey.w22.walls.002"] = {
+		"crosses the outer wall above a soldier on the wall-walk who is eating an apple and, very sensibly, does not look up.",
+		"passes over a guard on the battlements just as he bites into a heel of bread; he chews, considers the sky, and goes back to the bread.",
+		"skims the rampart above a sentry halfway through a sausage, who lifts it an inch in salute and returns to more important matters.",
+	},
+	["sw.journey.w22.walls.003"] = {
+		"The walls are much wider from above than from the road. There's a whole street up there, with its own traffic of guards and its own corners to loiter in.",
+		"Fly over the walls and you find they have a top, and the top has a life: guards walking, a bucket on a rope, someone's coat laid out on a crenel.",
+		"Nobody on the ground ever thinks about the top of a wall. It's paved, it has puddle stains and a forgotten stool, and it's busier than some villages.",
+	},
+	["sw.journey.w22.walls.004"] = {
+		"Low over the wall I could swear I see where the old stone stops and the new begins, a faint line along the courses, left in plain sight by whoever rebuilt it.",
+		"The guards say there's a height in the walls where the color changes: below it the stone the orcs couldn't pull down, above it the stone that went up after. From the air I almost believe them.",
+	},
+	["sw.journey.w22.walls.005"] = {
+		"Mind the battlements, beast. Somebody paid a fortune for those. Well. Somebody was supposed to.",
+		"Clear the wall, beast. Chip one of those crenels and the city will send you the bill.",
+	},
+	["sw.journey.w22.walls.006"] = {
+		"passes high over the Valley of Heroes, where the great statues are reduced to stone shoulders and the tops of stone heads, every hero slightly balding.",
+		"looks down on the heroes lining the way to the gate and finds them all pates and shoulders from this height, giants seen as only pigeons ever see them.",
+		"glances down at the statues by the gate and is faintly scandalized to find that, from above, the noblest of them has a bird on its head.",
+	},
+	["sw.journey.w22.walls.007"] = {
+		"From up here the bridge is one straight pale line over the water, and everyone on it walks the same way at the same pace, except one cart going against the stream. Everyone hates that cart.",
+		"Seen from above, the bridge is a river of hats all flowing toward the gate. One cart is trying to swim the other way. I don't envy it.",
+	},
+	["sw.journey.w22.walls.008"] = {
+		"counts the towers along the curtain wall, a banner on each, and gives up where the wall curves out of sight.",
+		"follows the ring of towers along the wall, a standard hanging from every one, until the curve carries it out of view.",
+	},
+	["sw.journey.w22.walls.009"] = {
+		"Walls are a promise made to people on the ground. From up here I can see how it's kept: the stair to every tower, the barrels by the posts, the sentry who has walked that stretch so often she no longer looks at it.",
+		"On foot you only see the face a wall shows the world. Flying over, you see the back of it: the stairs, the storerooms, the patient business of keeping a promise.",
+		"Up here the wall shows its working side. Ladders, braziers, a rack of pikes under an awning. Every bit of that is someone's whole day.",
+	},
+	["sw.journey.w22.walls.010"] = {
+		"looks down at the moat, a dark ribbon around the walls, where a single duck is drawing a long slow line: the only thing moving in all of Stormwind's defenses.",
+		"sees one duck crossing the moat far below, very slowly and quite unchallenged.",
+	},
+	["sw.journey.w22.walls.011"] = {
+		"Look at that queue at the gate. Best view of it there is, and I'm not in it.",
+		"Somebody down there has been waiting at that gate since before I set out. Wave, beast.",
+	},
+	["sw.journey.w22.walls.012"] = {
+		"crosses the wall at a slant and, for a moment, can see both sides of it at once: the quiet of Elwynn on one hand, the crowded city on the other, and a stripe of stone keeping them apart.",
+		"hangs for a single wingbeat right above the wall, forest to one side and rooftops to the other, before the city takes over the whole view.",
+	},
+	["sw.journey.w22.walls.013"] = {
+		"The gryphon dips a little crossing the wall, every time. I've never decided whether it's a habit or a courtesy.",
+		"Every gryphon I've flown with sinks a little over the wall. Taught by the handlers, or the beasts' own manners? Nobody at the roost will say.",
+	},
+	["sw.journey.w22.walls.014"] = {
+		"comes in over the wall by night, the lanterns of the watch spaced along it like beads on a string, each with its little circle of lit stone.",
+		"crosses the dark line of the wall at night, its posts marked out by lanterns, one small bright room of stone every few dozen paces.",
+		"can make out the wall at night only as a chain of lanterns hung in the dark, and the beast passes between two of them like a moth.",
+	},
+	["sw.journey.w22.wingbeat.001"] = {
+		"counts the first strokes without meaning to: the heavy ones that labor, the next that bite, and then the long easy ones that mean the climb has been won.",
+		"feels the first wingbeats as blows through the saddle, each one hauling the beast up a step, until the strokes lengthen and the hauling turns into flying.",
+		"rides out the first wingbeats, short, hard and loud as rugs being beaten, until they slow into a long rhythm the saddle can rock to.",
+	},
+	["sw.journey.w22.wingbeat.002"] = {
+		"Up close a wingbeat doesn't sound like a bird. It sounds like a sheet on a washing line being shaken out hard, right by my ear, over and over.",
+		"The wings make a sound I can feel in my teeth: a thick, heavy whump, like a blanket shaken out of a high window.",
+		"Nobody warns you about the noise. Each stroke is a heavy cloth slapping the air beside my head, and the city's own racket can't get a word in.",
+	},
+	["sw.journey.w22.wingbeat.003"] = {
+		"loosens {g:his|her} grip on the harness finger by finger as the wingbeats settle, and finds the leather has printed its stitching into the palm.",
+		"unclenches from the saddle by degrees once the climb steadies, and studies the red marks of the harness across both palms.",
+	},
+	["sw.journey.w22.wingbeat.004"] = {
+		"Under my knees the beast's shoulders roll with every stroke, big slabs of muscle sliding under the feathers. I'm sitting on a working animal, and it lets me know.",
+		"Every stroke comes up through the saddle into my knees: a shove, a roll, a settling. Like sitting astride a millwheel that happens to have feathers.",
+		"I can feel where the wings join on: two great hinges just behind my knees, working away as if I weighed nothing. I'd like to believe that.",
+	},
+	["sw.journey.w22.wingbeat.005"] = {
+		"Good stroke. And another. Keep counting them for me, would you?",
+		"That's the way. Long ones now. Long and dull, please.",
+	},
+	["sw.journey.w22.wingbeat.006"] = {
+		"listens to the harness creak in time with the wings, leather and buckle answering every stroke like a cart's axle on a long road.",
+		"hears the saddle's buckles chink at the top of each wingbeat, a small bright sound that keeps time better than any drummer.",
+	},
+	["sw.journey.w22.wingbeat.007"] = {
+		"Halfway through the climb the gryphon turns its head and gives me one long yellow look over its shoulder. Checking the load, I suppose. I sit very still.",
+		"The gryphon cranes round mid-stroke to look at me, beak half open. Whatever it decides, it keeps to itself, and goes back to climbing.",
+		"A gryphon can look backward without missing a wingbeat. Mine just did, at me, as if counting what it was paid to carry.",
+	},
+	["sw.journey.w22.wingbeat.008"] = {
+		"hears the street come up in pieces between the wingbeats: a shout, the stroke, a cart wheel, the stroke, a dog, and then only the strokes.",
+		"catches scraps of the city in the gaps between wingbeats, a hawker's cry cut in half, a laugh with its end missing.",
+	},
+	["sw.journey.w22.wingbeat.009"] = {
+		"The first turn of the climb tips the whole Trade District sideways. My eyes accept it. My stomach does not, and says so.",
+		"When the beast banks, the street below stands up on its edge like a plate on a shelf, and something inside me tries to slide off it.",
+		"One wing dips, the roofs swing up on that side, and for a moment the city is a wall I could fall onto. Then it lies down flat, as if nothing happened.",
+	},
+	["sw.journey.w22.wingbeat.010"] = {
+		"Higher than the chimneys. Then we can talk.",
+		"Clear the chimneys first. Admire the view after.",
+	},
+	["sw.journey.w22.wingbeat.011"] = {
+		"climbs off the roost into the dark, the handler's lantern swinging wildly in the downdraft of the first strokes and then steadying, a small gold point far below.",
+		"sets the roost's one lantern rocking with the first wingbeats, and watches its glow shrink to a spark among the dark roofs.",
+		"leaves the lantern on the platform bobbing in the wash of the wings, the only thing below that still says where the roost was.",
+	},
+	["sw.npc_meet.w22.counter.001"] = {
+		"I sold you a buckle just like that for a copper. Yours costs a silver. Explain the difference slowly.",
+		"How does a thing quadruple in value just by crossing to your side of the counter?",
+		"You buy cheap and sell dear. I know, I know. I just like to hear you deny it.",
+	},
+	["sw.npc_meet.w22.counter.002"] = {
+		"pays and is handed a receipt in a fine, slanting hand, the merchant insisting it be kept: in this city, apparently, even a candle needs paperwork.",
+		"tries to leave without the scrap of parchment the merchant is holding out, and is called back: a sale isn't finished until it is written.",
+		"receives a neatly written slip for a single coil of rope, signed and blotted, and the merchant's satisfied nod at a thing done properly.",
+	},
+	["sw.npc_meet.w22.counter.003"] = {
+		"Behind the counter hangs a framed writ with a wax seal. Whenever a price is questioned, the merchant's knuckle taps it, as if the seal agreed.",
+		"The merchant's license hangs on the wall like a relic, and gets a glance every time I frown at a number.",
+		"A sealed document in a frame, behind the scales. It says nothing about prices, I'd wager, but it gets pointed at whenever they come up.",
+	},
+	["sw.npc_meet.w22.counter.004"] = {
+		"is greeted with the very same sentence the last customer got, word for word and bow for bow, delivered as if freshly minted.",
+		"hears the merchant's greeting for the third time in three customers, identical down to the small tilt of the head, and somehow still warm.",
+		"receives a welcome so polished it could be framed: the same bow, the same phrase, the same hand spread toward the shelves.",
+	},
+	["sw.npc_meet.w22.counter.005"] = {
+		"haggles a single copper off the price and watches the merchant press a hand to the chest as though it had been taken from a rib.",
+		"wins two coppers in the haggle and is rewarded with a wince, a sigh, and a hand laid flat on the merchant's chest.",
+		"knocks the price down by a copper and gets a performance of quiet anguish from the merchant, who will clearly survive.",
+	},
+	["sw.npc_meet.w22.counter.006"] = {
+		"'The auction house,' says the merchant, as one might name a rival suitor. I'm sold a spool of thread and a speech.",
+		"Mention the auction house here and the merchant's smile goes thin. Small shops, it seems, have their own wars.",
+		"The merchant blames the auction house for everything but the price of bread. I nod, and buy something, out of solidarity.",
+	},
+	["sw.npc_meet.w22.counter.007"] = {
+		"waits while the merchant pushes a pair of spectacles up, peers over them instead, and pushes them down again to read the price.",
+		"is examined over the top of the merchant's spectacles; the lenses themselves, it seems, are kept strictly for the goods.",
+		"notices that the merchant wears spectacles for the coins and not for the customers, who get a look over the rims.",
+	},
+	["sw.npc_meet.w22.counter.008"] = {
+		"watches the merchant build a little tower of brass weights on the scale, take the top one off, and add a smaller one with ceremony.",
+		"sees the weights go onto the scale one by one, heaviest to lightest, the merchant's lips moving with each.",
+		"stands by while the scale settles, the merchant nudging the last tiny weight into place with one fingertip, as if it might bite.",
+	},
+	["sw.npc_meet.w22.counter.009"] = {
+		"If I buy two, is the smile thrown in, or is that extra?",
+		"Does the smile come with the purchase, or do I pay for it separately?",
+		"I'll take it. And the grin, if it's included.",
+	},
+	["sw.npc_meet.w22.counter.010"] = {
+		"has every scratch on {g:his|her} gear read out by the merchant, followed by the name of a smith who will sort it all out, and a wink.",
+		"is told, kindly and in detail, how worn the buckles of that pack are, and that the remedy happens to hang just behind the counter.",
+		"listens as the merchant diagnoses the state of {g:his|her} boots with one glance and prescribes a tin of grease, sold here.",
+	},
+	["sw.npc_meet.w22.counter.011"] = {
+		"Little beads on a wooden frame do the counting here, clicked across faster than I can follow, and a sum comes out I can't dispute.",
+		"Click, click, click across the bead frame, and a number comes out the far side, final as a court verdict.",
+		"I could check the sum myself, slowly. The beads have already decided, and the merchant's face says beads are never wrong.",
+	},
+	["sw.npc_meet.w22.counter.012"] = {
+		"A lord's footman takes a parcel without paying a copper; the merchant just writes a line in a fat book. The nobles here buy on credit, and pay when it suits them.",
+		"A separate ledger for the great houses, I notice, and far thicker than the one for coin on the counter.",
+		"The merchant smiles at a noble's servant and writes the sum in the credit book. The smile stays; the eyes go hard.",
+	},
+	["sw.npc_meet.w22.counter.013"] = {
+		"has the purchase tied with a cord and a knot the merchant clearly invented, which falls open at a single tug, as demonstrated twice.",
+		"looks on while the merchant ties the parcel with a flourish and then, proudly, shows how one pull of the loose end undoes it all.",
+		"leaves with a parcel knotted in some clever private fashion, after the merchant has tugged the loop once to prove it opens, and tied it up afresh.",
+	},
+	["sw.npc_meet.w22.errand.001"] = {
+		"The word 'small' comes up three times before anything is explained. In my experience each 'small' doubles it.",
+		"'Only a small matter.' 'Just a small favor.' 'A small thing, really.' I start counting, and stop liking the count.",
+		"Small, I'm told. Then small again. By the third small I'm fairly sure it's enormous.",
+	},
+	["sw.npc_meet.w22.errand.002"] = {
+		"is greeted with a full name, a house, and a short bow, the whole Stormwind courtesy, before anything is asked at all.",
+		"receives a formal introduction, name, family and a slight inclination of the head, and is plainly expected to give one back.",
+		"is presented with a name long enough to need a pause in the middle, and offers {g:his|her} own, which sounds very short beside it.",
+	},
+	["sw.npc_meet.w22.errand.003"] = {
+		"Before you start: do I have to sign anything? This city makes me sign everything.",
+		"Is there paperwork? There's always paperwork in Stormwind. I'd like to know how much.",
+		"Tell me now if there's a form. I'd like to brace myself.",
+	},
+	["sw.npc_meet.w22.errand.004"] = {
+		"Good cloth, well cut, and the cuffs frayed to threads. A family that used to matter, asking a stranger. Stormwind is full of debts nobody talks about.",
+		"The coat was costly once. The cuffs give it away: rubbed thin, darned in a color that doesn't match. In this city that tells a whole story about money.",
+	},
+	["sw.npc_meet.w22.errand.005"] = {
+		"is offered a cup of something warm before a word of business, as if hospitality had to be settled first.",
+		"has a cup pressed into {g:his|her} hands and is told to drink, and only when it is half gone does the asking start.",
+		"finds that the matter, whatever it is, must wait until {g:he|she} has been properly offered something to drink.",
+	},
+	["sw.npc_meet.w22.errand.006"] = {
+		"Stormwind has an office for everything, a clerk for every office. And still they come to a stranger in the street. That says a lot about the offices.",
+		"There's a desk in this city for every trouble under the Light. The fact that I'm being asked tells me which desks never answered.",
+	},
+	["sw.npc_meet.w22.errand.007"] = {
+		"watches a sealed letter tapped slowly against a palm, not yet offered, while the asker decides how much to say.",
+		"notices the folded paper in the asker's hand, turned over and over, the seal unbroken, as the opening words are chosen.",
+		"sees a letter held just out of reach, its seal facing in, while the asker weighs {g:him|her} up one last time.",
+	},
+	["sw.npc_meet.w22.errand.008"] = {
+		"'If it isn't too much trouble.' That's how they ask in Stormwind. It always is too much trouble. That's why they're asking.",
+		"Every request in this city comes wrapped in 'if it's no bother'. It's always a bother. The politeness is how you know.",
+	},
+	["sw.npc_meet.w22.errand.009"] = {
+		"Start with the end. I'll ask about the middle if I need it.",
+		"Skip ahead to what you need. The history can come later.",
+		"Give me the last part first. I'll work backwards.",
+	},
+	["sw.npc_meet.w22.errand.010"] = {
+		"is stopped by a polite little cough at {g:his|her} elbow, which in Stormwind is very nearly a shout.",
+		"turns at a discreet cough behind {g:him|her}, the city's way of calling out to a stranger without making a scene.",
+		"hears a small, deliberate clearing of the throat a pace away, and understands that {g:he|she} has just been hailed.",
+	},
+	["sw.npc_meet.w22.errand.011"] = {
+		"I haven't said yes. I've only stopped walking. And the relief in those eyes is already enormous.",
+		"All I did was stay put long enough to listen. From that face, you'd think I'd promised the whole of the Trade District.",
+		"Stopping costs me nothing. To the one asking, it seems to be half the help already.",
+	},
+	["sw.npc_meet.w22.errand.012"] = {
+		"I'm listening. If it's beyond me I'll say so straight away, so you can keep looking.",
+		"Go on. And if I'm the wrong one for it, I'll tell you before you waste the afternoon.",
+		"Tell me. Honestly, I'll say no quickly if I have to; that's a kindness too.",
+	},
+	["sw.npc_meet.w22.errand.013"] = {
+		"The pay is named before the trouble. A merchant's habit: put the price on the table, then see if the customer stays.",
+		"First the sum, round and clear. Then, once I'm interested, the reason for it. Someone here has sold things before.",
+	},
+	["sw.npc_meet.w22.errand.014"] = {
+		"is approached first by a servant, who does all the explaining, until the one who actually wants something arrives for the final sentence.",
+		"hears the whole preamble from a servant in livery; the master turns up only at the end, to say the last few words in person.",
+		"listens to a footman lay out the matter at length, then sees the person behind it step forward just in time to finish it.",
+	},
+	["sw.npc_meet.w22.errand.015"] = {
+		"First, a complaint about the Keep: letters sent, petitions filed, nothing answered. Only once that's off the chest do we get to me.",
+		"The asking begins with ten minutes on how nobody at court listens anymore. I nod. I'm the court now, apparently.",
+	},
+	["sw.npc_meet.w22.errand.016"] = {
+		"Is this something the guards ought to be doing? I'm only asking so I know who to glare at later.",
+		"Before you go on: why not the city watch? I'd like to know what I'm stepping into.",
+		"Have the guards already said no, or did you skip them?",
+	},
+	["sw.npc_meet.w22.errand.017"] = {
+		"sees the asker step up onto a doorstep before beginning, gaining just enough height to look {g:him|her} level in the eye.",
+		"notices the asker climbing one stone step to speak from, so that the asking is done eye to eye and not from below.",
+		"is addressed from a step's height, the asker having found a bit of curb to stand on first.",
+	},
+	["sw.npc_meet.w22.errand.018"] = {
+		"Between sentences the eyes go toward the Cathedral's spire and come back. Whatever this is, it's been prayed over first.",
+		"Each pause, a glance up at the Cathedral. I don't ask what was asked of the Light before I was asked.",
+	},
+	["sw.npc_meet.w22.errand.019"] = {
+		"If it serves the Alliance, you needn't sell it to me. Just tell me where.",
+		"Does it help the Alliance? Then skip the persuading, I'm already in.",
+	},
+	["sw.npc_meet.w22.errand.020"] = {
+		"listens as the matter is laid out on the asker's fingers, one point per finger, until a second hand has to be brought in.",
+		"watches the asker count off the particulars finger by finger, run out of one hand, and start, a little embarrassed, on the other.",
+		"follows the asker's counting fingers through the explanation, and notes with some unease when the thumb of the second hand comes up.",
+	},
+	["sw.npc_meet.w22.errand.021"] = {
+		"Every preamble in Stormwind starts the same way: how things were before the war. I've learned to wait politely for the present to arrive.",
+		"We begin in the old days, as Stormwind always does, before the burning, before the walls went back up. The present comes eventually.",
+	},
+	["sw.npc_meet.w22.errand.022"] = {
+		"You've practiced the polite version. Give me the one you'd tell a friend.",
+		"That's the speech for the nobles. I'll take the honest one.",
+		"I can hear the manners. Now let me hear the problem.",
+	},
+	["sw.npc_meet.w22.errand.023"] = {
+		"Half the words are said to me and the other half to the street, low, toward anyone who might be listening. Somebody here worries about being overheard.",
+		"The asker keeps watching the passersby while talking to me, the way people do in a city where every second person is someone's informer.",
+	},
+	["sw.npc_meet.w22.errand.024"] = {
+		"is asked to wait while a clerk with ink to the wrists finishes a line, blots it with sand, and only then looks up with a request.",
+		"stands by while the one who called {g:him|her} over sands a fresh page, taps it dry, and finally turns to the matter at hand.",
+		"watches a quill finish a sentence and a pinch of sand go over the wet ink before a word is spared for {g:him|her}.",
+	},
+	["sw.npc_meet.w22.errand.025"] = {
+		"Go ahead. I've nowhere I'd rather be than not knowing what this is.",
+		"Well, you've stopped me. Might as well tell me why.",
+		"You have me. Talk.",
+	},
+	["sw.npc_meet.w22.errand.026"] = {
+		"must say, before anything else, whether {g:he|she} can read, and sees the asker sag with relief at the answer.",
+		"gets one question first, quietly, as if it were delicate: can {g:he|she} read? The yes is received like good news from the Keep.",
+	},
+	["sw.npc_meet.w22.errand.027"] = {
+		"Slower, please. I'd like to get this right the first time.",
+		"Hold on. Say that part once more and let me repeat it back.",
+	},
+	["sw.npc_meet.w22.gryphonry.001"] = {
+		"waits while a gryphon preens the master's collar with great care, picking at a loose thread as though it were a bad feather.",
+		"watches a gryphon lean over the master's shoulder and set about tidying the collar with its beak, unasked and unstopped.",
+		"sees the master stand perfectly still while a gryphon grooms {other} like one of its own chicks.",
+	},
+	["sw.npc_meet.w22.gryphonry.002"] = {
+		"The master's coat is more feather than wool by now. Nobody brushes it off. I suspect nobody would know where to stop.",
+		"Feathers in the seams, feathers in the hair, a feather stuck to the ledger. The roost has claimed this one entirely.",
+	},
+	["sw.npc_meet.w22.gryphonry.003"] = {
+		"follows the master's finger down a ledger of the beasts, noting which flew last and which have earned their rest.",
+		"waits as the master checks a worn book where every beast has its column, and the rest it is owed is counted as carefully as coin.",
+		"glances at the master's tally of wings: each beast's flights marked in short strokes, and a little circle for every day off.",
+	},
+	["sw.npc_meet.w22.gryphonry.004"] = {
+		"Each of the gryphons has its own whistle. The master calls one by a rising note and a different head comes up for a falling one.",
+		"Two notes, then three, then a single long one. Every beast in the roost answers only to its own tune, and the master never gets them muddled.",
+		"The master whistles, and only one gryphon turns. It takes me a while to realize every one of them has a name made of notes.",
+	},
+	["sw.npc_meet.w22.gryphonry.005"] = {
+		"is fixed by one round golden eye as a gryphon tilts its head in short jerks, the way a sparrow studies a crumb.",
+		"finds a gryphon examining {g:him|her} sideways, head cocked first one way and then the other, with the frank interest of a bird considering a beetle.",
+		"becomes the object of a gryphon's sudden, bird-quick attention: a twitch of the head, a hard stare, another twitch.",
+	},
+	["sw.npc_meet.w22.gryphonry.006"] = {
+		"Mind if I say hello to them first? I'd rather they knew my face before anything else.",
+		"Can I let them have a look at me? Seems only polite, in their own roost.",
+		"Introduce me, would you? I like to be on speaking terms with anyone who has a beak that size.",
+	},
+	["sw.npc_meet.w22.gryphonry.007"] = {
+		"The master knows the price of fish in Stormwind to the copper, and complains about it as if the fishmongers were personal enemies.",
+		"Ask about the fares and you get the fares. Ask nothing and you get ten minutes on what fish costs in this city, and who's to blame.",
+	},
+	["sw.npc_meet.w22.gryphonry.008"] = {
+		"notices a gryphon nosing at the master's coat pocket again and again, and the master pretending, very badly, not to notice.",
+		"keeps an eye on a beak working patiently at the master's pocket while the master goes on talking, one hand already reaching in for the treat.",
+		"is present for the master's surrender: halfway through a sentence, out comes whatever was hidden in that pocket, to the gryphon's evident satisfaction.",
+	},
+	["sw.npc_meet.w22.gryphonry.009"] = {
+		"The master looks up at every pair of wings that crosses the walls and counts, lips moving, without a sound. I don't ask what happens when the count comes out short.",
+		"Every flier that comes over the walls gets counted. The master's lips move with it. What's done with a missing number, I'd rather not learn.",
+	},
+	["sw.npc_meet.w22.gryphonry.010"] = {
+		"That one keeps looking at me like I'm a fish. Is that a good sign or a bad one?",
+		"Why is that one staring? Do I smell of something it likes?",
+		"I think that gryphon has decided something about me. Tell me it's a nice decision.",
+	},
+	["sw.npc_meet.w22.gryphonry.011"] = {
+		"waits while the master stops mid-word to answer a gryphon's call with a click of the tongue, and then picks the sentence up again.",
+		"hears a gryphon cry out behind the master, and the master answer it, without turning, with two soft clicks.",
+		"listens to a short conversation between {other} and a beast, all clicks and creaks, before {g:his|her} own turn comes.",
+	},
+	["sw.npc_meet.w22.gryphonry.012"] = {
+		"Talons on stone make a dry little sound, like dice in a cup. The roost is full of it, and the master talks straight through.",
+		"Under every word the master says, the clicking of claws on the paving, restless, steady, like someone shaking dice and never throwing.",
+	},
+	["sw.npc_meet.w22.gryphonry.013"] = {
+		"is sneezed on, thoroughly, by a gryphon at close range; the master says only that it means the beast likes {g:him|her}.",
+		"takes a gryphon's sneeze full in the face and is assured by the master, quite seriously, that it was a compliment.",
+		"wipes {g:his|her} face after a gryphon sneezes on it, while the master explains that it only does that to people it trusts.",
+	},
+	["sw.npc_meet.w22.gryphonry.014"] = {
+		"To hear the master, the beasts have moods the way a sailor's sky has moods. 'That one's sulking. That one's in a fine temper. Don't take the gray.'",
+		"'He's sulking, she's restless, the old one's cheerful, which is rare.' The master gives me a report on the roost's temper before anything else.",
+	},
+	["sw.npc_meet.w22.gryphonry.015"] = {
+		"Whichever gryphon you'd send if it were your own errand. That's the one I want.",
+		"Give me the one you'd ride yourself. I'll trust your eye over mine.",
+	},
+	["sw.npc_meet.w22.gryphonry.016"] = {
+		"The master's knuckles are a map of small pecks and old scratches. Not one of them was given in anger, I'd guess. Just in passing.",
+		"Nicks along every finger, healed white. The master says the beasts don't bite; they only check, sometimes, whether a hand is food.",
+	},
+	["sw.npc_meet.w22.gryphonry.017"] = {
+		"You must hear every grumble in the kingdom at this post. Mine's a small one; I'll keep it.",
+		"I won't complain. I gather the whole kingdom does that here already.",
+	},
+	["sw.npc_meet.w22.gryphonry.018"] = {
+		"is steered off a certain patch of floor by the master, a patch the gryphons evidently regard as theirs by right.",
+		"takes one step too many toward the perches and is pulled back by the sleeve; that strip of paving, it seems, belongs to the beasts.",
+		"learns from the master's raised hand that there is a line on the floor nobody drew, and that the gryphons know exactly where it is.",
+	},
+	["sw.npc_meet.w22.gryphonry.019"] = {
+		"Do they ever tire of it? The same roads, over and over?",
+		"Do any of them have a favorite route, or is it all just sky to them?",
+	},
+	["sw.npc_meet.w22.hearth.001"] = {
+		"Keep the change, keep my secrets, and keep the soup coming.",
+		"A tip's in it for you if the soup keeps coming and nobody asks my business.",
+		"Soup, a bed, and no questions. I'll pay for all three.",
+	},
+	["sw.npc_meet.w22.hearth.002"] = {
+		"is greeted by an innkeeper with floured arms who goes on kneading dough the whole time, marking each question with a thump.",
+		"finds the innkeeper elbow-deep in bread dough, and the order is taken without a single fold missed.",
+		"settles terms with an innkeeper who never stops working a lump of dough on the counter, every price agreed with a slap of the palm.",
+	},
+	["sw.npc_meet.w22.hearth.003"] = {
+		"Behind the counter sits a crate of things guests have left: one boot, a lute string, a gnome's tiny spanner. The innkeeper guards it like a reliquary.",
+		"A box of forgotten belongings lives back there: gloves without partners, a cracked pipe, a book with no cover. Nothing is ever thrown out.",
+		"There's a crate under the counter full of what travelers leave behind. Half of Stormwind's lost things must end up in boxes like that.",
+	},
+	["sw.npc_meet.w22.hearth.004"] = {
+		"Whoever's on the stairs, the innkeeper names before they come into sight. Every step up there must creak in its own voice.",
+		"A creak overhead, and the innkeeper says a room number without looking up. That staircase is an informer.",
+		"I'd not like to sneak out of this inn. The innkeeper reads the stairs the way a scout reads tracks.",
+	},
+	["sw.npc_meet.w22.hearth.005"] = {
+		"The bed with the fewest stories attached, please. I've no wish to hear what happened in the others.",
+		"Is there a room where nothing memorable has ever happened? I'll take that one.",
+		"Give me the dullest room in the house. I mean that as praise.",
+	},
+	["sw.npc_meet.w22.hearth.006"] = {
+		"is told the house rules before the price: steel stays put away, no brawling on the stairs, and no singing after the last bell.",
+		"learns the innkeeper's rules before the room key: quarrels go outside, boots come off upstairs, and the cat is not to be fed.",
+		"gets the rules recited by rote, three of them, the last with a hard look: whatever the dwarves say, no dice on the good tables.",
+	},
+	["sw.npc_meet.w22.hearth.007"] = {
+		"A cat sleeps on the open ledger, and the innkeeper writes around it rather than move it. I like this place already.",
+		"The innkeeper notes my coin in the margin, because the cat has the rest of the page.",
+		"There's a cat on the account book. Nobody, the innkeeper included, would dream of shifting it.",
+	},
+	["sw.npc_meet.w22.hearth.008"] = {
+		"waits while the innkeeper gives the spit over the hearth two more turns, then wipes a hand and turns to business.",
+		"stands at the counter as the innkeeper finishes basting whatever turns on the spit, judging it can be left alone for exactly one order.",
+		"is served between turns of the spit, the innkeeper's other hand never quite letting go of the crank.",
+	},
+	["sw.npc_meet.w22.hearth.009"] = {
+		"Anything on the fire that wasn't fished out of a canal?",
+		"What's good? And don't say 'everything', I've heard that one.",
+		"Whatever comes out of the kitchen next. I trust your timing more than my choosing.",
+	},
+	["sw.npc_meet.w22.hearth.010"] = {
+		"comes in over a sack laid across the threshold for boots, and the innkeeper's eyes follow every print to see whether it was used.",
+		"is sent back to the sack by the entrance with a single raised eyebrow, and scrubs both boots on it before the innkeeper will speak.",
+		"earns an eyebrow from the innkeeper and a glance at the floor, and goes back to scrape {g:his|her} boots on the old sack meant for them.",
+	},
+	["sw.npc_meet.w22.hearth.011"] = {
+		"A room at the back, please. The front ones hear every cart in Stormwind.",
+		"Somewhere away from the street, if you have it. Carts and I disagree about sleep.",
+		"Back of the house, if there's space. Wheels on cobbles all through my sleep I can do without.",
+	},
+	["sw.npc_meet.w22.hearth.012"] = {
+		"No question about where I've come from. Just how long I'm staying, and whether I'll want feeding. Blessed, simple questions.",
+		"How long, and will I eat? That's the whole interrogation. I could hug this innkeeper.",
+		"No questions about the road. The innkeeper wants a number of days and an answer about food, and then leaves me be.",
+	},
+	["sw.npc_meet.w22.hearth.013"] = {
+		"{other} has the face of someone who has heard every traveler's tale and believed, at most, a third of it.",
+		"{other} has something restful about the eyes, like an old chair set out for anyone who comes in tired.",
+		"An innkeeper's welcome in a city of stone: unhurried, unsurprised, and the faint sense that a chair has been kept.",
+	},
+	["sw.npc_meet.w22.patrol.001"] = {
+		"hears the patrol before seeing it: a steady chink of mail in step, coming round the corner like a clock that walks.",
+		"picks out the patrol by ear first, the measured clink of mail keeping time, and moves aside before the guards are even in sight.",
+		"knows a patrol is near from the sound alone, rings of mail swinging in rhythm, and has made room by the time the blue tabards appear.",
+	},
+	["sw.npc_meet.w22.patrol.002"] = {
+		"The patrol never changes pace for a crowd. The crowd simply learns to be somewhere else a moment before it arrives.",
+		"Nobody orders the street to clear. The guards walk at the same speed, and the street clears itself, one step ahead of them.",
+		"I'm out of the patrol's path before deciding to be. The pace does the asking.",
+	},
+	["sw.npc_meet.w22.patrol.003"] = {
+		"sees a small boy march behind a patrol with a stick on his shoulder, and the last guard in line shorten stride just enough to let him keep up.",
+		"watches a child fall in at the tail of a patrol, matching it step for step, while the guards pretend with great dignity not to notice.",
+		"notices a little girl marching after two guards, chin high, and the mouth of the rear guard twitching under the helm.",
+	},
+	["sw.npc_meet.w22.patrol.004"] = {
+		"keeps to the far side of the street as a Stormwind guard turns, and walks the way an honest errand walks: not fast, not slow, never looking back.",
+		"slows to the pace of the crowd as a guard's helm swings round, and does not look at it, the way nobody with a clean conscience would.",
+		"feels a guard's look settle like a hand on the shoulder, and lets the crowd carry {g:him|her} past the lion on that tabard.",
+	},
+	["sw.npc_meet.w22.patrol.005"] = {
+		"Every guard in this city is a question I'd rather not be asked. I keep walking like someone who has the answer.",
+		"Blue and gold at every corner, and any one of them could end this visit with a single shout.",
+		"A guard of Stormwind, close enough to touch. I look at the shop signs, the cobbles, anything but those eyes.",
+	},
+	["sw.npc_meet.w22.patrol.006"] = {
+		"receives two fingers touched to the brim of a guard's helm, the small salute the watch keeps for anyone in the Alliance's service.",
+		"is given a brief touch of the helm by a passing guard, a courtesy between people on the same side.",
+		"gets the guard's quick two-fingered salute, offered to Alliance faces and returned as a matter of course.",
+	},
+	["sw.npc_meet.w22.patrol.007"] = {
+		"Two guards on patrol, and one has fallen half a step out. A tiny skip, and they're in time once more. Neither looks at the other.",
+		"The pair keep step without a word. When one drifts off the beat, a little hop puts it right, and the hop is never mentioned.",
+		"Watching two guards walk in step is oddly soothing. Whichever loses the rhythm finds it with a hop and a straight face.",
+	},
+	["sw.npc_meet.w22.patrol.008"] = {
+		"Each time it passes, this patrol turns its heads toward one particular alley. Something happened there once, and the watch has a long memory.",
+		"They always glance down that one side lane, the patrol. Whatever it was, the watch hasn't forgotten.",
+		"Every round, the same glance into the same narrow passage. A patrol's habits are a map of old trouble.",
+	},
+	["sw.npc_meet.w22.patrol.009"] = {
+		"Don't slow down on my account. I'll admire the marching from over here.",
+		"Go on, I'll keep clear. You've a whole city to walk around.",
+		"Make way for the watch, I know. I'm making it.",
+	},
+	["sw.npc_meet.w22.patrol.010"] = {
+		"To the guard I'm one more armed stranger in a city full of them. The kingdom asked for heroes and got a crowd.",
+		"The guard looks at me with the tired courtesy kept for adventurers: necessary, numerous, and forever asking where the bank is.",
+		"Armed strangers everywhere, and each one somebody's idea of help. The guard's face says the city is grateful, within limits.",
+	},
+	["sw.npc_meet.w22.tapster.001"] = {
+		"Everyone who comes in hears 'welcome back' from the innkeeper. Memory or habit, it lands the same way.",
+		"'Welcome back,' says the innkeeper, as to every face. I can't tell if I'm remembered, and I find I don't mind.",
+		"Everyone gets a 'welcome back' at this counter, whether they've been before or not. A kindness dressed as a mistake.",
+	},
+	["sw.npc_meet.w22.tapster.002"] = {
+		"glances at the board of room keys behind the innkeeper, one hook empty, and receives a look as though {g:he|she} might know where it went.",
+		"catches the innkeeper checking the row of keys on their hooks, counting twice, then fixing a thoughtful stare on the nearest guest.",
+		"notices one bare hook among the room keys, and the innkeeper noticing it too, then looking slowly round the room.",
+	},
+	["sw.npc_meet.w22.tapster.003"] = {
+		"Since I came in, the innkeeper has been polishing the same tankard. By now it must be the cleanest thing in Stormwind.",
+		"One tankard, one cloth, endless circles. I think the polishing is how the innkeeper listens.",
+		"That tankard never leaves the innkeeper's hands. Less a chore than a place to rest the eyes while hearing everything.",
+	},
+	["sw.npc_meet.w22.tapster.004"] = {
+		"listens as the innkeeper places each new arrival by the vowels alone: Goldshire, Lakeshire, the Dwarven District, without once asking.",
+		"hears the innkeeper hazard a guess at every voice that orders, the village or the district, and get most of them right.",
+		"overhears the innkeeper's game: a guest speaks, a hometown is named under the din, and quietly ticked off when the guest confirms it.",
+	},
+	["sw.npc_meet.w22.tapster.005"] = {
+		"The court never drinks here, but its footmen do. Gossip runs downhill to the innkeeper, who hears every name and repeats none.",
+		"When a guest drops Lady Prestor's name, the innkeeper finds a sudden need to check the kitchen. Interesting.",
+		"Servants of the great houses drink at counters like this one. The innkeeper must know more about the court than the court would like.",
+	},
+	["sw.npc_meet.w22.tapster.006"] = {
+		"Have you anything a dwarf would call a proper drink, or should I spare you the question?",
+		"I'll take the darkest thing you pour. If it argues back, even better.",
+		"Something brown and honest, in a mug that's seen a few years.",
+	},
+	["sw.npc_meet.w22.tapster.007"] = {
+		"gives a name for the ledger and watches the innkeeper spell it wrong, slowly and with great confidence, and blot it dry.",
+		"spells out {g:his|her} name for the innkeeper twice and sees it written down a third way, final and underlined.",
+		"is entered in the guest book under a name that is almost right; the innkeeper's quill has already moved on.",
+	},
+	["sw.npc_meet.w22.tapster.008"] = {
+		"The innkeeper remembers every unpaid cup in the district and mentions none of them. The silence is the bill.",
+		"Nobody here is ever reminded of a debt. They just find the innkeeper's smile a little thinner until it's settled.",
+		"There's no slate of debts on the wall. There's no need: it's all behind the innkeeper's eyes, to the copper.",
+	},
+	["sw.npc_meet.w22.tapster.009"] = {
+		"The pockets of that apron sag with keys, coins, a corkscrew and, unless I'm wrong, a sugar lump for somebody's horse.",
+		"Every pocket of the innkeeper's apron clinks or rustles. An innkeeper carries the whole house on the hips.",
+		"I count at least five pockets on that apron, each heavy with something. Keys, I suppose; coin; and things nobody asks about.",
+	},
+	["sw.npc_meet.w22.tapster.010"] = {
+		"follows the innkeeper's sorting of the takings into small towers by coin, copper, silver, a single gold, all neatly squared.",
+		"admires the way the innkeeper stacks the coins on the counter into tidy columns, coppers tallest, and knocks them square with the side of a hand.",
+		"waits for change while the innkeeper builds it from three little stacks of coin and slides it over as if laying a brick.",
+	},
+	["sw.npc_meet.w22.tapster.011"] = {
+		"Those in Alliance colors pay a little less here. The innkeeper never says so; the change just comes back heavier.",
+		"For those who fight for the Alliance, a slightly fuller bowl. No announcement, no wink. Just a ladle that lingers.",
+		"Anyone wearing the Alliance's colors gets rounded down. It isn't policy; it's gratitude, kept quiet.",
+	},
+	["sw.npc_meet.w22.tapster.012"] = {
+		"watches the innkeeper send a pot-boy up the stairs with a kettle and another down to the cellar with a look, all without a pause in the conversation.",
+		"takes in how the innkeeper runs the house with nods: a nod and a jug goes upstairs, a nod and a table is cleared, a nod and a quarrel quiets.",
+		"notices that the innkeeper never raises a voice to the serving staff. A tilt of the head, and somebody is already moving.",
+	},
+	["sw.npc_meet.w22.tapster.013"] = {
+		"sees the innkeeper refuse a soldier a fifth cup with a hand over the mug and a quiet word, and the soldier, astonishingly, accept it.",
+		"is there when the innkeeper covers a swaying patron's tankard with one palm, murmurs something, and sends him off upstairs to bed.",
+		"catches the innkeeper declining to pour for someone who has plainly had enough, with a kindness that leaves no room to argue.",
+	},
+	["sw.npc_meet.w22.tutor.001"] = {
+		"Even learning has a ledger in this city. My name goes into a book before a single thing goes into my head.",
+		"Before the lesson, the register: my name, in a careful hand, under a long column of other names. Stormwind writes everything down.",
+		"First the book, then the teaching. In Stormwind I suspect even the lessons get filed.",
+	},
+	["sw.npc_meet.w22.tutor.002"] = {
+		"is told to stand still and say nothing, and is watched doing it for longer than seems reasonable.",
+		"receives a single instruction from the trainer, to stand still, and discovers how hard that is with someone counting.",
+		"stands motionless at the trainer's word while the city clatters past, and is studied for every small fidget.",
+	},
+	["sw.npc_meet.w22.tutor.003"] = {
+		"Fair warning: my first question is a stupid one. The others get better.",
+		"I'll start with the daft question, so we can get it out of the way.",
+		"Bear with me. The first thing I ask is always the silly one.",
+	},
+	["sw.npc_meet.w22.tutor.004"] = {
+		"The trainer listens to my footsteps more than looks at me. By the third step I've apparently told the whole story.",
+		"Not a glance at my face. An ear cocked to how I walk across the floor, and a small grunt, as if a page had been read.",
+		"I'm judged by the sound of my feet before I'm judged by anything I say. Heavy on the heel, I gather.",
+	},
+	["sw.npc_meet.w22.tutor.005"] = {
+		"is asked what {g:he|she} hopes to learn, and watches the answer get written down and then, after some thought, half of it crossed out.",
+		"states plainly what {g:he|she} wants from the lesson; the trainer notes it on a slate, considers, and rubs out the second half.",
+		"gives a careful answer about what {g:he|she} came for, and sees most of it struck through with one short line of chalk.",
+	},
+	["sw.npc_meet.w22.tutor.006"] = {
+		"Shown once, slowly, and no more. If I want it a second time I'll have to find it in my own memory.",
+		"One demonstration, unhurried, every part of it plain. Then the trainer folds both arms, and I understand that was the only copy.",
+		"It's done once in front of me, carefully, the way one sets down something fragile. No encore is coming.",
+	},
+	["sw.npc_meet.w22.tutor.007"] = {
+		"Tell me the first thing your best pupil got wrong. I'd like to start in good company.",
+		"What did your best student get wrong at the start? I'll try to make a different mistake.",
+		"Who's the best you ever taught, and how bad were they on the first day?",
+	},
+	["sw.npc_meet.w22.tutor.008"] = {
+		"Younger than I expected, this trainer, and a good deal harder. Whatever patience comes with gray hair hasn't arrived yet.",
+		"I'd pictured someone old and kindly. What I get is someone not much older than the pupils, and in a hurry to be obeyed.",
+	},
+	["sw.npc_meet.w22.tutor.009"] = {
+		"is handed a cup of water before anything else, with the flat remark that nobody learns well thirsty.",
+		"finds a cup of water pushed across the table first; the lesson, it seems, can wait until it is empty.",
+		"is made to drink a cup of water before a word of teaching, the trainer watching until the last mouthful.",
+	},
+	["sw.npc_meet.w22.tutor.010"] = {
+		"Rank counts everywhere in Stormwind, except at this spot. The trainer gives a lord's son and a farmhand the same three words.",
+		"Silk sleeve or patched sleeve, it makes no difference here: the same nod, the same correction, the same price.",
+		"A city that seats people by their names, and one corner of it where nobody's name helps at all. I like it more than I expected.",
+	},
+	["sw.npc_meet.w22.tutor.011"] = {
+		"Don't tell me it's simple. Simple is what people say right before it isn't.",
+		"If you're about to say 'it's easy', please don't. That word has lied to me before.",
+		"Whatever you do, don't call it simple. I'll take hard and honest.",
+	},
+	["sw.npc_meet.w22.tutor.012"] = {
+		"Old enough to have taught in the city before it burned, this one. Whatever pupils there were then, there's no talk of them now.",
+		"That face has seen Stormwind fall and go up again stone by stone. Some of the pupils from before must be names on a wall somewhere.",
+	},
+	["sw.npc_meet.w22.tutor.013"] = {
+		"waits while the trainer corrects a pupil across the room without turning round, by sound alone, one short word.",
+		"notices that the trainer, facing {g:him|her}, still fixes a pupil's mistake at the far wall with a single word over the shoulder.",
+		"stands by as the trainer, back turned to the room, calls out exactly what someone behind is doing wrong.",
+	},
+	["sw.npc_meet.w22.tutor.014"] = {
+		"I'm asked about my last mistake, not my best day. Clearly my best days are of no use to anyone.",
+		"Nobody here wants to hear what went well. 'What went wrong, and when?' is the only question worth the fee.",
+		"Tell the trainer a triumph and you get a polite nod. Tell a blunder and the stool gets pulled closer.",
+	},
+	["sw.npc_meet.w22.tutor.015"] = {
+		"is offered a stool noticeably lower than the trainer's own, and decides, sitting on it, that this is no accident.",
+		"sits where pointed, on a stool a hand shorter than the trainer's, and spends the lesson looking up.",
+		"takes the low stool set out for pupils and finds {g:himself|herself} at exactly the height for being corrected.",
+	},
+	["sw.npc_meet.w22.tutor.016"] = {
+		"Out in the street, Stormwind hurries. In front of this trainer, nothing does. I slow down without being told.",
+		"The city rushes past the open door, carts and clerks and errands. The trainer moves as if nobody had ever been late.",
+		"Everyone in this city is on the way somewhere. Except the trainer, who has clearly arrived, and stays.",
+	},
+	["sw.npc_meet.w22.tutor.017"] = {
+		"I paid for answers. If you'd rather give me better questions, I'll take those instead.",
+		"Give me a good question to chew on. I'll find the answer myself, slowly.",
+		"I don't need it all at once. One thing I can practice until it's mine.",
+	},
+	["sw.npc_meet.w22.tutor.018"] = {
+		"The trainer's corner is in perfect order: every tool squared to the edge of the bench. I put something back crooked, and it's straightened before I've let go.",
+		"Nothing in reach of this trainer is ever out of place. I learn that by touching one thing, and watching it put right at once.",
+	},
+	["sw.npc_meet.w22.tutor.019"] = {
+		"peers at the trainer over a pair of spectacles that keep sliding down a long nose and are pushed back up, every time, with one knuckle.",
+		"watches the trainer's spectacles slip to the tip of the nose at every pause and get shoved home at every correction.",
+		"notices that every time something is about to be said that matters, the trainer's spectacles come off and get folded first.",
+	},
+	["sw.npc_meet.w22.tutor.020"] = {
+		"There's a stiff knee under that table. The trainer teaches sitting down and still sees everything I do standing up.",
+		"Bad leg, by the look of how the chair is pulled out. It hasn't slowed the eyes one bit.",
+	},
+	["sw.npc_meet.w22.tutor.021"] = {
+		"How long until I stop making the face you're making right now?",
+		"That look you're giving me. Is it permanent, or does it wear off once I improve?",
+		"Is that the face you give everyone, or am I special?",
+	},
+	["sw.npc_meet.w22.tutor.022"] = {
+		"Whatever I learn here goes out under the blue and gold, somewhere far from this room. The trainer knows it, and teaches like it.",
+		"Every lesson given in Stormwind ends up on some road of the Alliance. It's in the way the trainer won't let a small thing slide.",
+	},
+	["sw.npc_meet.w22.tutor.023"] = {
+		"sets the fee on the counter and sees it swept into a cracked bowl without being counted; the counting, apparently, is done with the eyes.",
+		"pays the trainer, who drops the coins into a chipped dish unexamined, and only then looks {g:him|her} properly in the face.",
+		"lays out the coins for the lesson; they go into an old bowl uncounted, as if the price were the least interesting thing about {g:him|her}.",
+	},
+	["sw.npc_meet.w22.tutor.024"] = {
+		"A short nod, at the end. Not praise, not quite. But I'd walk the whole Valley of Heroes on the strength of it.",
+		"Nothing kind is said. There's a nod, though, small and late, and I'll be turning it over for days.",
+	},
+	["sw.npc_meet.w22.tutor.025"] = {
+		"Start where you'd start with anyone. I'd rather not skip a step and pay for it later.",
+		"Treat me like I know nothing. Odds are you'll be half right.",
+	},
+	["sw.npc_meet.w22.tutor.026"] = {
+		"is kept waiting while the trainer finishes sweeping the floor, corner by corner, as though nothing could be taught on a dirty one.",
+		"stands aside for a broom: the floor is swept to the last corner before the trainer will so much as say good day.",
+	},
+	["sw.npc_meet.w22.vault.001"] = {
+		"receives a bow from the banker measured, it seems, to the exact depth {g:his|her} account deserves.",
+		"is greeted across the counter with a small, precise inclination of the head, neither a finger lower nor higher than the balance allows.",
+		"gets a courteous nod from the banker, the kind that has clearly been weighed against a column of figures first.",
+	},
+	["sw.npc_meet.w22.vault.002"] = {
+		"A coin is dropped on the counter and listened to. Good silver rings; a bad one thuds. The banker hears the difference before I would see it.",
+		"Each coin gets rung once against the wood, an ear tilted to it. The banker trusts the sound more than the face stamped on it.",
+	},
+	["sw.npc_meet.w22.vault.003"] = {
+		"Nothing that ticks, nothing that leaks. I checked twice.",
+		"Before you ask: it doesn't move, it doesn't drip, it doesn't smell. Much.",
+		"All of it's dry and all of it's dead. The inanimate kind of dead, I mean.",
+	},
+	["sw.npc_meet.w22.vault.004"] = {
+		"watches the banker finish an entry and shake fine sand over the wet ink, then tip it back into a little pot without losing a grain.",
+		"waits as the banker blots the ledger with a pinch of sand, taps the page twice, and pours the sand home again, every grain accounted for.",
+		"sees the sand go over the entry and back into its pot; even the blotting, at this counter, is done without waste.",
+	},
+	["sw.npc_meet.w22.vault.005"] = {
+		"This banker knows which noble houses are broke and which only pretend to be rich. Not a word of it will ever cross the counter.",
+		"Half the court's debts pass under that pen, I'd wager. The face above it gives away exactly nothing, not even boredom.",
+	},
+	["sw.npc_meet.w22.vault.006"] = {
+		"If it's all the same to you, I'd rather not hear what it's worth. I'd only start making plans.",
+		"Don't tell me the total. Knowing is how I end up spending it.",
+		"Keep the sum to yourself, please. I sleep better guessing.",
+	},
+	["sw.npc_meet.w22.vault.007"] = {
+		"sets down a bundle still dusty from the road, and watches the banker brush the counter clean the moment it is lifted away.",
+		"leaves a faint gray print on the polished counter, and sees a cloth appear and wipe it out before {g:he|she} has finished speaking.",
+		"notices that wherever {g:his|her} sleeve rests on the counter, the banker's cloth follows a moment later.",
+	},
+	["sw.npc_meet.w22.vault.008"] = {
+		"The banker writes the entry, and an apprentice at the back writes the very same line in a second book. In Stormwind even a sock is recorded twice.",
+		"Behind the banker a younger clerk copies everything into another ledger, word for word. Somewhere, I suppose, a third person checks they match.",
+	},
+	["sw.npc_meet.w22.vault.009"] = {
+		"sees a trinket held up close to the banker's spectacles, turned slowly, and described in the ledger in more detail than {g:he|she} could manage.",
+		"observes the banker lift a small object to one eye, turn it twice, and write down a description that is better than the object.",
+		"hands over a keepsake and hears it described aloud for the ledger, scratches and all, with a jeweler's dry accuracy.",
+	},
+	["sw.npc_meet.w22.vault.010"] = {
+		"My box holds the things I'm saving for a version of me that doesn't exist yet. The banker files them with a perfectly straight face.",
+		"Everything I keep here is for some future me with more room in the pack and better judgment. The banker has met neither of us.",
+	},
+	["sw.npc_meet.w22.vault.011"] = {
+		"is turned the ledger to sign, and finds the quill already dipped and held out, at exactly the right angle for {g:his|her} hand.",
+		"has the ledger spun round on the counter and a quill offered handle first, the place to sign marked by the banker's fingertip.",
+		"signs where a clean fingernail points, the quill handed over already wet, the whole ritual done without a word.",
+	},
+	["sw.npc_meet.w22.vault.012"] = {
+		"Voices drop near the counter, the way they do near an altar. All that coin behind the wall seems to ask for quiet.",
+		"Even the loud ones lower their voices at the counter. Money, in this city, is something you whisper near.",
+	},
+	["sw.npc_meet.w22.vault.013"] = {
+		"Same box, a little heavier. I'm the hopeful sort.",
+		"Put this with the rest. One day it'll all add up to something.",
+		"Another little something for the pile. It's going somewhere, I swear.",
+	},
+	["sw.npc_meet.w22.vault.014"] = {
+		"The same nod for a duke's steward and for me. Whatever else this banker thinks, the courtesy isn't for sale.",
+		"Ahead of me, someone in velvet; behind me, someone in mud. The banker's voice doesn't change by so much as a note between us.",
+	},
+	["sw.npc_meet.w22.vault.015"] = {
+		"is asked to sign a receipt for {g:his|her} own belongings, and does, with the faint feeling of having just borrowed them from {g:himself|herself}.",
+		"signs a slip confirming that the things are {g:his|hers}, which {g:he|she} knew, and that they are now the bank's to mind, which {g:he|she} also knew.",
+	},
+	["sw.npc_meet.w22.vault.016"] = {
+		"A guard by the bank's door seems to count everyone in and out. Since the Defias trouble, nobody in this city trusts a quiet counting house.",
+		"Somebody near the door watches each customer arrive and leave, and makes a little mark. Stormwind has learned to keep an eye on its own money.",
+	},
+	["sw.npc_meet.w22.vault.017"] = {
+		"Keep this one somewhere it won't get knocked about. It's had a long enough life already.",
+		"Gently with that. It's worth nothing, and I'd hate to lose it.",
+	},
+	["sw.npc_meet.w22.vault.018"] = {
+		"Every banker in Stormwind is polite in the same exact way, as if politeness were issued from the treasury with the quills.",
+		"I'd swear the bank hands out its manners with the ink: one 'certainly', two 'of course', and a smile that costs nothing and is lent at interest.",
+	},
+	["sw.npc_meet.w22.vault.019"] = {
+		"lingers at the counter as a clerk goes down a narrow stair behind the counter and comes back with {g:his|her} box held in both arms, like something asleep.",
+		"hears a clerk's steps go down somewhere behind the counter, a long way down, and come back up slower, carrying {g:his|her} box.",
+	},
+	["sw.npc_meet.w22.vault.020"] = {
+		"I'm only taking one thing out. Then putting two back, if I know myself.",
+		"Just the one item, please. I'll be back with three more by the end of the week, I expect.",
+	},
+	["sw.npc_meet.w22.wares.001"] = {
+		"My sack of oddments goes over the counter, a cracked tooth, a snapped buckle, a scrap of hide, and the merchant buys it all with the polite grief of a mourner.",
+		"Every bit of junk I sell gets the same pained, courteous nod. This merchant would buy a rat's tail and thank me for the chance.",
+		"Broken buckles, chipped teeth, mystery bones: the merchant takes them all, coin by careful coin, and never asks where they came from.",
+	},
+	["sw.npc_meet.w22.wares.002"] = {
+		"Every bin is labeled in the same careful hand, even the one barrel of nails. Somebody here loves order more than profit.",
+		"Labels on everything: thread by color, nails by length, candles by thickness. The merchant could find any of it blindfolded.",
+		"Order is the real stock of this shop. Everything else is just what the order happens to be holding.",
+	},
+	["sw.npc_meet.w22.wares.003"] = {
+		"What's the best thing you'll sell me for under a silver? Surprise me.",
+		"Under a silver, and useful. What have you got?",
+		"Show me what a single silver buys in Stormwind. Gently.",
+	},
+	["sw.npc_meet.w22.wares.004"] = {
+		"Westfall wool costs double since the Defias took the farms, the merchant tells me, as if I'd stolen the sheep myself.",
+		"Prices are up, the merchant sighs: nothing comes in from Westfall without an escort, and escorts are paid in coin. I'm paying for that escort.",
+		"Every bolt of cloth here carries a little of Westfall's trouble in its price. The merchant explains it with the patience of someone who has explained it all week.",
+	},
+	["sw.npc_meet.w22.wares.005"] = {
+		"Don't wrap it. I'll ruin it soon enough without help.",
+		"No need for the ribbon. It'll be muddy before the gate.",
+		"Leave the paper off. It's going straight into the bottom of a pack.",
+	},
+	["sw.npc_meet.w22.wares.006"] = {
+		"talks prices with a merchant whose eyes keep flicking past {g:his|her} shoulder to the street, where small hands sometimes reach for the stock.",
+		"notices the merchant's gaze leave the conversation every few words to check the front of the stall, where nothing has gone missing yet.",
+		"has half the merchant's attention; the other half is on a ragged boy loitering by the apples, and it never wavers.",
+	},
+	["sw.npc_meet.w22.wares.007"] = {
+		"Ink on one finger, wax on the cuff, a whiff of lamp oil. The merchant carries the inventory on the clothes.",
+		"The merchant smells faintly of everything sold here: leather, tallow, a sharp note of something for moths.",
+		"Wax under the nails, ink on a knuckle. You can read this merchant's stock off the hands.",
+	},
+	["sw.npc_meet.w22.wares.008"] = {
+		"Aloud, and kindly, the merchant corrects the apprentice's sum; then a second time, more quietly and less kindly.",
+		"An apprentice sweeps, the merchant counts, and every so often the broom stops so the boy can be told he's sweeping wrong.",
+		"I like a shop with an apprentice in it. You learn more from what the merchant scolds than from what the merchant sells.",
+	},
+	["sw.npc_meet.w22.wares.009"] = {
+		"is handed a candle to sniff, a strap to bend, a needle to test against a thumb: here the goods are introduced before they're priced.",
+		"is made to bend the strap, try the buckle and weigh the tinderbox in hand before a single price is named.",
+		"gets the goods put into {g:his|her} hands one after another, to feel and turn over, the merchant silent until the hands have decided.",
+	},
+	["sw.npc_meet.w22.wares.010"] = {
+		"A porter's twine is cut and coiled before the porter even reaches the counter. Regulars are served from memory here.",
+		"A baker comes in and leaves with the flour sacks already tallied. In this shop the regulars needn't speak.",
+		"I watch a regular get served without a word passing. Some day, perhaps, this merchant will know what I want before I do.",
+	},
+	["sw.npc_meet.w22.wares.011"] = {
+		"I'll be back. No, truly. People must say that to you constantly.",
+		"I'll think about it, which means I'll return. Probably.",
+		"Hold it for me. I mean to come back, and I'm told I'm reliable.",
+	},
+	["sw.npc_meet.w22.wares.012"] = {
+		"is shown a bolt of cloth unrolled the length of the counter with one flick, the merchant catching the end just before it reaches the floor.",
+		"watches a length of cloth fly out across the counter from one practiced flick of the merchant's wrist, and stop exactly at the edge.",
+		"sees the merchant unroll a bolt with a single snap, the end landing at the counter's edge as though measured to it.",
+	},
+	["sw.npc_meet.w22.wares.013"] = {
+		"{other} sweeps a hand over the counter as if presenting a kingdom, which in a way it is: rope, candles, thread and a great deal of pride.",
+		"{other} names each item on the shelf in turn, with the affection usually kept for horses.",
+		"The stock is presented with a flourish wasted on a shelf of thread and lamp oil, and the merchant doesn't mind the waste one bit.",
+	},
+	["sw.npc_meet.w22.watchman.001"] = {
+		"One question about the bank, and the guard answers with the whole city: bank, auction house, inns, trainers, in an order that never varies.",
+		"The guard's directions come as a list learned by heart, recited with the patience of someone who has said it to a thousand lost visitors.",
+		"I ask for one street and get a dozen, each with its landmark. Somebody drilled these guards in directions the way others drill them in marching.",
+	},
+	["sw.npc_meet.w22.watchman.002"] = {
+		"notices the guard's tabard: the blue gone pale across the shoulders, still deep and new where the belt has covered it for years.",
+		"makes out two blues on one guard's tabard, a tired one on the chest and a fresh one hidden under the belt, where nothing ever reaches it.",
+		"spots a darker stripe across a guard's tabard where the belt sits. That was the color once, before all the standing.",
+	},
+	["sw.npc_meet.w22.watchman.003"] = {
+		"The guard scans the street at a man's height, then lower, then lower again. In this city it pays to check for gnomes.",
+		"Eye level first, then down, then further down. A Stormwind guard never takes for granted how tall the next visitor will be.",
+		"That guard's gaze crosses the crowd at three heights: human, dwarf, gnome. Nobody slips under a look like that.",
+	},
+	["sw.npc_meet.w22.watchman.004"] = {
+		"Don't mind me. I've paid for everything I'm carrying, and I can prove most of it.",
+		"Easy. Everything on me was bought, earned or given. Mostly bought.",
+		"Every last thing in this pack has a receipt somewhere. Probably.",
+	},
+	["sw.npc_meet.w22.watchman.005"] = {
+		"catches a guard with half an apple in one glove; it vanishes behind the back so smoothly it might never have existed.",
+		"spots a guard chewing at the post, the jaw stopping dead the instant their eyes meet, a crust of bread suddenly nowhere.",
+		"glimpses the end of a guard's snack, an apple core palmed and gone, and the stern look that follows comes a shade too quickly.",
+	},
+	["sw.npc_meet.w22.watchman.006"] = {
+		"Which way to the bank? Point with one finger, please. A whole arm and people will think I'm being arrested.",
+		"Bank's that way? Just nod. If you point, half the street will stare at me.",
+		"A quiet nod toward the bank will do. Not the outstretched arm; it looks like an arrest.",
+	},
+	["sw.npc_meet.w22.watchman.007"] = {
+		"That helm is older than the guard under it. The dents in it were earned by someone else.",
+		"Young guard, old helm. Every dent on it belongs to an earlier head.",
+		"A fresh face under a battered helm. Stormwind hands its armor down, it seems, dents and all.",
+	},
+	["sw.npc_meet.w22.watchman.008"] = {
+		"The guard tells a loiterer to move along in a voice that has done it ten thousand times and still sounds more like advice than an order.",
+		"I hear a guard send a dawdler on his way. No edge to it at all: just the tone of someone recommending a better street.",
+		"'Keep moving', from a guard here, sounds like a tip from a friend. That's exactly why everyone obeys it.",
+	},
+	["sw.npc_meet.w22.watchman.009"] = {
+		"waits while a guard lifts the corner of a cart's canvas, glances at the barrels beneath, and lets it fall with a nod that sends the driver on.",
+		"stands behind a halted wagon as the guard peers under its cover, raps one barrel with a knuckle, and waves the whole load through.",
+		"lingers as a guard stops a cart with an open palm, looks under the tarp, sniffs once and steps back. The driver does not argue; nobody here does.",
+	},
+	["sw.npc_meet.w22.watchman.010"] = {
+		"A bored guard is the best news a city can give. This one looks very bored indeed.",
+		"Nothing in that guard's face but mild boredom. I find it more reassuring than any wall.",
+		"A dull look under a polished helm. Of all the things a city can show me, that's the most comforting.",
+	},
+	["sw.npc_meet.w22.watchman.011"] = {
+		"Does anyone ever bring you something hot while you stand here, or is that against the rules?",
+		"Do they ever let you sit down, or is that a hanging offense?",
+		"If I brought you a sausage, would that count as a bribe?",
+	},
+	["sw.npc_meet.w22.watchman.012"] = {
+		"watches a guard leave the post for exactly as long as it takes to steady an old woman down three steps, then return to the very same spot.",
+		"observes a guard step away just long enough to give an old man an arm down a short flight of stairs, and step back into place as if pulled on a cord.",
+		"notices a guard break stillness for one kindness, a hand under an old porter's elbow, and resume it at once.",
+	},
+	["sw.npc_meet.w22.watchman.013"] = {
+		"That guard has likely seen my face a hundred times and will never say so. City guards remember everyone and greet no one.",
+		"I'd bet the guard knows my face already. They never let on; a nod would be a confession of memory.",
+		"City guards remember every face and acknowledge none. Somewhere behind that helm I'm filed away, and that's all.",
+	},
+	["sw.npc_meet.w22.watchman.014"] = {
+		"Quiet street. Is that your doing, or the street's?",
+		"Is it quiet because you're here, or are you here because it's quiet?",
+		"Lovely calm corner. I'm guessing that's your work.",
+	},
+	["sw.npc_meet.w22.watchman.015"] = {
+		"spies a guard polishing one gauntlet against a thigh, absently, the way some people bite a nail, eyes fixed on the crowd all the while.",
+		"notices a guard working at a scuff on a vambrace with one thumb, a small private chore that never pulls the gaze off the street.",
+		"catches a guard buffing a knuckle of mail on the tabard's hem without once looking down.",
+	},
+	["sw.npc_meet.w22.watchman.016"] = {
+		"finds the guard reading a notice nailed beside the post, lips moving slightly, then turning back to the street with a brand-new suspicion.",
+		"looks on as a guard finishes a freshly posted notice and starts studying the passers-by with a new and very specific interest.",
+		"catches a guard comparing a sheet of parchment with the faces going by, one by one, in no hurry at all.",
+	},
+	["sw.npc_meet.w22.watchman.017"] = {
+		"{other} stands like a piece of the masonry. I'd half expect moss, if this city allowed moss.",
+		"Stone behind, stone underfoot, and the guard between them, as still as either.",
+	},
+	["sw.quest_complete.w22.afterward.001"] = {
+		"flexes the fingers of both hands, one after the other, as if counting them back after a long loan.",
+		"opens and closes each hand a few times in the street, slowly, checking that they belong to no one else now.",
+		"works the stiffness out of both hands, finger by finger, like someone returning borrowed tools.",
+	},
+	["sw.quest_complete.w22.afterward.002"] = {
+		"The first street after a finished job always looks wider than it is. Nothing in it is mine to fix.",
+		"Out in the street, and for once nothing I see is my business. The cobbles seem to run on further for it.",
+		"Funny how a street opens up once the job is gone. Same width as ever. It simply isn't asking me for anything.",
+	},
+	["sw.quest_complete.w22.afterward.003"] = {
+		"is whistling something with no tune at all before the first corner, and stops, faintly embarrassed, when a guard glances over.",
+		"falls into a tuneless whistle a few steps into the street, and swallows the rest of it the moment a passing guard turns to look.",
+		"starts to hum on the way out, badly, and keeps at it until a woman with a basket gives the noise a long, pained look.",
+	},
+	["sw.quest_complete.w22.afterward.004"] = {
+		"I keep patting my pockets as if the job were still in one of them. Habit is a slow clerk.",
+		"Third time I've checked my pockets for the thing I was worrying about. It wasn't a pocket sort of thing. Gone anyway.",
+		"My hands keep going to my belt for something to check. There's nothing left to check. They'll learn.",
+	},
+	["sw.quest_complete.w22.afterward.005"] = {
+		"Tallow from a chandler's, onions in somebody's pan, the green smell off the canal. My nose has come back from the job before the rest of me.",
+		"The street smells of frying onions and candle fat, and faintly of the canals. Apparently I'd stopped smelling things for a while.",
+		"Onions, tallow, canal water. The city's smells come back one by one, like people drifting back into a room.",
+	},
+	["sw.quest_complete.w22.afterward.006"] = {
+		"crouches at the edge of the street to retie a bootlace that has been loose for longer than anyone could say, and pulls it tight with care.",
+		"kneels by a wall to redo a boot's laces properly, the first unhurried knot in some while.",
+		"sets one foot up on a mounting block and relaces the boot from the bottom, slowly, as if there were all the time in Stormwind.",
+	},
+	["sw.quest_complete.w22.afterward.007"] = {
+		"My head is still going over the job, step by step, like a mill wheel turning after someone's shut off the water.",
+		"It's finished, and my mind keeps rehearsing it anyway. A play with no audience, on its fourth performance.",
+		"It's over, and still I'm replaying it, checking each step for the mistake I didn't make.",
+	},
+	["sw.quest_complete.w22.afterward.008"] = {
+		"walks off with both hands deep in {g:his|her} pockets, a posture nobody in the middle of a job ever takes.",
+		"pushes both hands into {g:his|her} pockets and strolls, a thing that only happens when nothing is owed to anyone.",
+		"strolls on with hands in pockets and no particular expression, the look of someone whose time, for the moment, is not rented out to anybody.",
+	},
+	["sw.quest_complete.w22.afterward.009"] = {
+		"My shoulders just came down an inch. I didn't know they'd gone up.",
+		"Huh. My jaw's been clenched this whole time. Let it go, jaw.",
+		"Something in my back just unlocked. Nobody make any sudden requests.",
+	},
+	["sw.quest_complete.w22.afterward.010"] = {
+		"kicks a loose pebble ahead along the cobbles, catches up with it, kicks it once more, and keeps the game going for half a street.",
+		"finds a stray pebble and nudges it along with the toe of a boot, corner after corner, until it drops through a gutter grate.",
+		"steers a small stone down the street with one foot, a game with no rules and no stake, and loses it at last under a cart.",
+	},
+	["sw.quest_complete.w22.afterward.011"] = {
+		"There's always a small sag after. Not sadness, quite. More like a floor that turns out to be one step lower than expected.",
+		"The finish is never as tall as the work. I step out of it the way you miss a stair in the dark.",
+		"Finished, and a little hollow. A job fills a space while it lasts, and the space stays when it goes.",
+	},
+	["sw.quest_complete.w22.afterward.012"] = {
+		"I'm going to walk very slowly to nowhere in particular. Don't try to stop me.",
+		"Strolling now. At the speed of a clerk on his way to a meeting he dreads.",
+		"Nowhere to be, and I intend to take the long way there.",
+	},
+	["sw.quest_complete.w22.afterward.013"] = {
+		"trades a long look with a cat on a ledge above the street, a creature that has plainly never finished a job in its life and is not sorry.",
+		"is studied from a sill by a fat tabby, whose whole manner says that work is something that happens to other people.",
+		"meets the yellow stare of a cat curled on a step, and loses the contest over who looks more at ease.",
+	},
+	["sw.quest_complete.w22.afterward.014"] = {
+		"My mouth is as dry as a clerk's ledger and I've only now noticed. Water first. Then the rest of my life.",
+		"Thirsty. The job never once let me notice, and now it's all I can think about.",
+		"A cup of water, before anything else. The work kept my throat quiet and now it's making up for lost time.",
+	},
+	["sw.quest_complete.w22.afterward.015"] = {
+		"stops at the top of a short flight of steps and looks down at the street for a moment, like a swimmer judging the water, before going in.",
+		"lingers on the top step above the traffic, picking a gap in it the way one waits for the right beat to join a dance.",
+		"waits at the head of a stair above the street until the stream of carts and walkers thins a little, then goes down and is swallowed by it.",
+	},
+	["sw.quest_complete.w22.afterward.016"] = {
+		"Back into a street built for longer legs. Every step out of a job in Stormwind is two of mine.",
+		"Finished, and now the walk back at human scale: curbs like ledges, stairs like small cliffs. I'll manage. I always do.",
+		"This city's steps were cut for human knees. I take them two hops apiece and arrive at the bottom of the job with my dignity mostly intact.",
+	},
+	["sw.quest_complete.w22.afterward.017"] = {
+		"In this fog Stormwind is all sound: a cart I can't see, a laugh from somewhere off to the left, my own boots. Nobody can see I'm done. I like that.",
+		"Fog thick enough to hide a guard at ten paces. I walk out of the job and into a gray room the size of the city.",
+		"Done, and the fog has the street. Lamps hang in it like coins in milk, and nobody can tell finished from unfinished at five paces.",
+	},
+	["sw.quest_complete.w22.afterward.018"] = {
+		"If anyone needs me, I'll be over there, doing nothing, very carefully.",
+		"I'll be about. Not busy. For the first time in a while, gloriously not busy.",
+		"Don't look for me for a bit. I'm off duty from everything.",
+	},
+	["sw.quest_complete.w22.afterward.019"] = {
+		"Does it show? That I'm finished, I mean. I feel like it shows.",
+		"Do I look different? I feel as if I ought to look different.",
+		"Nobody stare. I've just finished something and I'm still getting used to it.",
+	},
+	["sw.quest_complete.w22.handover.001"] = {
+		"waits while the other party wipes both hands on an apron, inspects them, and wipes them once more before offering one to shake.",
+		"is offered a hand only after it has been scrubbed twice on a leather apron and judged fit for company.",
+	},
+	["sw.quest_complete.w22.handover.002"] = {
+		"Stormwind nobles seldom thank you to your face. The words go to a steward, and the steward passes them on, plainer, like a gold piece changed into copper.",
+		"A lord of this city thanks you through a servant, never directly. The gratitude arrives secondhand, a little worn, and oddly more believable for it.",
+	},
+	["sw.quest_complete.w22.handover.003"] = {
+		"You can learn this city by who pays you. Priests pay slowly, officers pay on the count of three, and merchants pay as if each coin were saying goodbye to them in person.",
+		"Everyone in Stormwind hands over pay in their own fashion: priests as if giving alms, officers as if issuing kit, merchants as if seeing a relative off at the gate.",
+		"Priest, officer, shopkeeper: I could tell them apart blindfolded by the way the pay lands in my hand. Gently, squarely, reluctantly.",
+	},
+	["sw.quest_complete.w22.handover.004"] = {
+		"receives the pay at full arm's length, held out level and crisp the way kit is issued at a barracks, and takes it just as crisply.",
+		"takes what is owed from a hand held out stiff and straight, as if across a quartermaster's table, and finds {g:his|her} own arm answering in kind.",
+	},
+	["sw.quest_complete.w22.handover.005"] = {
+		"A priest of this city takes anything with both hands, a letter, a coin, a turnip, and gives the same way. Paid like that, you half feel you ought to kneel.",
+		"Whatever a priest of the cathedral hands you comes in two open palms, like bread at a table for the poor. Even a plain wage seems to want eating slowly.",
+	},
+	["sw.quest_complete.w22.handover.006"] = {
+		"You hand money over as if it were leaving for the war. It'll be fine. I'll look after it.",
+		"You can let go now. It's in good hands. Mine.",
+		"Open your fingers, go on. The coin knows the way.",
+	},
+	["sw.quest_complete.w22.handover.007"] = {
+		"is paid with the left hand while the right goes on writing, the other party's eyes never leaving the page.",
+		"takes the pay from one hand while the other finishes a sentence on a sheet nearby, quite undisturbed by the interruption.",
+	},
+	["sw.quest_complete.w22.handover.008"] = {
+		"The dwarves who work in this city pass you a purse the way they'd pass tongs at the forge: safe end toward you, eyes on your fingers until they close.",
+		"Bring a problem to one of Stormwind's dwarves and the pay comes back the way a tool is passed across an anvil: square, firm, and with a look that says don't drop it.",
+	},
+	["sw.quest_complete.w22.handover.009"] = {
+		"Too kind. No, truly, a shade too kind. I'm not dressed for that much.",
+		"Most gracious. I'll try to deserve it on the way out.",
+		"Gracious of you. I feel I ought to have combed something first.",
+	},
+	["sw.quest_complete.w22.handover.010"] = {
+		"takes the pay low and close, passed hand to hand below the line of anyone's eye, the way business is done in a city where the street is always listening.",
+		"receives the coin discreetly, slipped between two bodies as if the street had no right to know, which in Stormwind it seldom has.",
+	},
+	["sw.quest_complete.w22.handover.011"] = {
+		"The hand that paid me shook a little. Not much. Enough to tell me how long this had been sitting on somebody's chest.",
+		"A small tremor in the fingers as the pay came over. Whatever this was, it had kept someone awake for a good while.",
+	},
+	["sw.quest_complete.w22.handover.012"] = {
+		"For a moment the purse had two owners, one hand on each side of it, and neither quite sure whose turn it was to let go.",
+		"There's always an instant when the pay sits in two hands at once. Then one of them remembers itself, and it's mine.",
+	},
+	["sw.quest_complete.w22.handover.013"] = {
+		"hears a chair scrape back as the other party stands to hand over the pay, a small courtesy this city still keeps for work properly done.",
+		"is paid by someone who rises to do it, though sitting would have been easier, the old manners of Stormwind outlasting the convenience.",
+	},
+	["sw.quest_complete.w22.handover.014"] = {
+		"Pay first, thanks after, the shopkeepers of the Trade District say, so that nobody mistakes the thanks for part of the price.",
+		"Coin before kindness: the order of things in this city, by the merchants' own rule. That way the kindness, when it comes, is free.",
+	},
+	["sw.quest_complete.w22.handover.015"] = {
+		"Wait, wait, look at my hands. There. Now you may pay me.",
+		"One moment. I won't take honest coin with hands in this state.",
+	},
+	["sw.quest_complete.w22.handover.016"] = {
+		"has the pay set before {g:him|her} on a square of folded cloth, as a jeweler shows a ring, and feels obliged to lift it with matching care.",
+		"is offered the coin on a folded handkerchief, like something from a jeweler's window, and picks it off with two very careful fingers.",
+	},
+	["sw.quest_complete.w22.handover.017"] = {
+		"The worst moment of any hand-over is the half second when they look at you to see whether you look like someone who did it properly.",
+		"Before the pay comes, there's always a quick look up and down, weighing me against the job. I've learned to stand still for it, like a horse at a fair.",
+	},
+	["sw.quest_complete.w22.handover.018"] = {
+		"That's the lot. Ask me anything you like about it, now, while I still remember.",
+		"All yours. If there are questions, ask them now; by the next corner I'll have forgotten half.",
+	},
+	["sw.quest_complete.w22.handover.019"] = {
+		"is kept waiting through the end of somebody else's argument before the business can be closed, and studies the ceiling, the floor and {g:his|her} own nails in turn.",
+		"stands by while the other party finishes scolding an apprentice, then is turned to with a smile so sudden it seems to have been kept in a drawer.",
+	},
+	["sw.quest_complete.w22.handover.020"] = {
+		"In Stormwind even the hand-over has a queue behind it. I could feel the next person reading over my shoulder the whole time.",
+		"Someone was waiting behind me the entire time, close enough to learn my business by heart. Privacy in this city is a thing you rent by the hour, upstairs.",
+	},
+	["sw.quest_complete.w22.handover.021"] = {
+		"Don't get up. Truly. I can take coin from a person sitting down.",
+		"Stay seated, please. Gratitude doesn't need to stand.",
+	},
+	["sw.quest_complete.w22.ledger.001"] = {
+		"has the ledger turned round on the counter so the entry can be admired, and dutifully admires it, though it is only a date and a sum.",
+		"is shown the fresh line in the book with some pride, upside down and then right side up, and finds the right words of appreciation for a column of figures.",
+	},
+	["sw.quest_complete.w22.ledger.002"] = {
+		"My business went in under 'Sundries'. Of all the columns in this city, that's the one I'd have chosen, too.",
+		"Filed under 'Miscellaneous', in a hand that clearly writes that word a great deal. Stormwind's whole underside lives in that column.",
+	},
+	["sw.quest_complete.w22.ledger.003"] = {
+		"watches a line ruled under the entry with a straightedge, slowly, the pen held at exactly the right angle, as though the whole kingdom depended on it being straight.",
+		"sees the matter closed with a ruled line across the page, drawn so carefully that the clerk's tongue shows at the corner of the mouth.",
+	},
+	["sw.quest_complete.w22.ledger.004"] = {
+		"The ledger was chained to the desk. In a city this honest, somebody had still decided not to take any chances with the book.",
+		"A chain on the book, bolted to the counter. Nobody here steals ledgers, they told me. The chain was put on after someone did.",
+	},
+	["sw.quest_complete.w22.ledger.005"] = {
+		"The page was so full my line went into the margin, sideways, between a dispute about a water butt and somebody's bad debt. I'll be found there, if anyone looks, at an angle.",
+		"No room left on the page, so I went in up the margin, in tiny letters, climbing the edge like ivy. A very Stormwind way to be remembered.",
+	},
+	["sw.quest_complete.w22.ledger.006"] = {
+		"watches the other party lick a thumb, turn twenty pages, lick it again, turn twenty more, and finally arrive at the right one with a small sound of triumph.",
+		"waits while the book is leafed through by a damp thumb, page after page, until the place is found and tapped twice as if to keep it from escaping.",
+	},
+	["sw.quest_complete.w22.ledger.007"] = {
+		"listens to the click of counting beads as the sum is checked on a little wooden frame, the clerk's fingers flying faster than the eye can follow.",
+		"watches beads flicked back and forth on their wires with a sound like a hen pecking grain, and is told the total before the last one has stopped.",
+	},
+	["sw.quest_complete.w22.ledger.008"] = {
+		"On the page above mine there was a line struck through in red. Paid, or given up on. Ledgers don't say which, and the clerk's face didn't either.",
+		"A red stroke through an old entry, two lines up. Closed accounts look the same whether they were settled or abandoned. I hope that one was settled.",
+	},
+	["sw.quest_complete.w22.ledger.009"] = {
+		"Spell it however you like. I'll answer to anything that's paid.",
+		"Write me down as you hear me. Your version may be better.",
+		"My name? Close enough. I won't sue.",
+	},
+	["sw.quest_complete.w22.ledger.010"] = {
+		"I glimpsed older entries as the page turned: other names, other sums, years of small business in the same patient hand. The clerk has been at this longer than some of these streets have been paved.",
+		"The handwriting on the old pages matched the new. One person has kept that book for years, through regents and rumors, never changing the slope of the letters.",
+	},
+	["sw.quest_complete.w22.ledger.011"] = {
+		"is asked to wait while the sum is carried over to a fresh page, the old one being, as the clerk explains, completely full of other people's gratitude.",
+		"stands aside while a new page is begun for the entry, the clerk murmuring that the previous one had been closed with some ceremony only a short while ago.",
+	},
+	["sw.quest_complete.w22.ledger.012"] = {
+		"The dwarf kept tally on a notched stick, not a book. One cut for the job, a cross-cut for paid. Faster than any human ledger, and impossible to forge without a knife and a lot of nerve.",
+		"A tally stick in place of a ledger: notch, notch, a deeper notch for the sum. The dwarves of this city trust wood more than paper, and I've begun to see why.",
+	},
+	["sw.quest_complete.w22.ledger.013"] = {
+		"Must I witness my own entry? Very well. I solemnly confirm I was there.",
+		"You want me to read it back? 'Done. Paid.' Yes, that sounds like me.",
+	},
+	["sw.quest_complete.w22.ledger.014"] = {
+		"Ink well nearly dry, the pen scratching on the last of it. My entry is paler than the ones above, a little ghost of a line. It still counts.",
+		"The ink ran thin halfway through my entry. The first part's black, the rest a faint gray, like a sentence losing its nerve. It's still binding, I'm told.",
+	},
+	["sw.quest_complete.w22.ledger.015"] = {
+		"follows the clerk's finger down a long column, from the top, under every line, until it stops at the bottom and taps the total twice.",
+		"watches a fingertip travel the column of figures, lips counting without a sound, and stop at the foot with a small decisive tap.",
+	},
+	["sw.quest_complete.w22.ledger.016"] = {
+		"Everything I did fits in one line of a ledger, and the line isn't even full. There was room left over for a doodle, and I think the clerk was tempted.",
+		"One line, half a line really: a name, a figure, a tick. The clerk's pen hovered at the end as if it felt there should be more. There usually is.",
+	},
+	["sw.quest_complete.w22.ledger.017"] = {
+		"In red ink? Am I a debt or a warning?",
+		"Why red? Oh, it's the only pen. Good. I was worried.",
+	},
+	["sw.quest_complete.w22.ledger.018"] = {
+		"Two books, I noticed: one for what goes out, one for what comes in. Mine went in the first. The second looked a good deal thinner.",
+		"The clerk kept a fat book of payments and a slim one of receipts, side by side. I don't envy whoever has to make those two agree at the end of the month.",
+	},
+	["sw.quest_complete.w22.ledger.019"] = {
+		"Every kingdom keeps ledgers, and every child of Stormwind learns early to respect one. A sum written fair is a small piece of order in the world, and I'm glad to be in it.",
+		"Humans like their accounts squared, and I'm one of them. Seeing my name go down beside a fair figure in a Stormwind book is a quiet, ordinary sort of pride.",
+	},
+	["sw.quest_complete.w22.ledger.020"] = {
+		"watches the finished entry sprinkled with sand, the excess poured back into its pot with practiced care, so that not one grain of the city's sand is wasted.",
+		"sees the clerk pour sand over the wet line, tip the page, and funnel every grain back into its little box, an economy that seems to sum up the whole city.",
+	},
+	["sw.quest_complete.w22.ledger.021"] = {
+		"Put down that it was done well, not just done. There's a difference, and your book should know it.",
+		"Is there a column for 'done properly'? There ought to be.",
+		"Write 'well', not just 'done'. Ink's cheap.",
+	},
+	["sw.quest_complete.w22.ledger.022"] = {
+		"Date it, please. I'd like to know when I was paid well, for later.",
+		"Put the date beside it. Proof that it happened once.",
+		"Date it. If this city ever argues, I'll have the day on my side.",
+	},
+	["sw.quest_complete.w22.onward.001"] = {
+		"Heads, the Cathedral steps for a sit. Tails, the Dwarven District for something hot. Let's see what the coin thinks.",
+		"I'll flip for it. The copper decides; I just walk.",
+		"Left or right? Spin a copper. I've taken worse advice in this city.",
+	},
+	["sw.quest_complete.w22.onward.002"] = {
+		"turns toward the Valley of Heroes with no errand at all, only the wish to stand a while among the statues and feel the right size again.",
+		"drifts in the direction of the Valley of Heroes, where the great stone figures stand over the road, to be small in front of them for a few minutes.",
+	},
+	["sw.quest_complete.w22.onward.003"] = {
+		"I'll find a canal wall to lean on and watch the water do nothing for a while. It's very good at it, and I'd like lessons.",
+		"Down to the canals, to put my elbows on the stone and stare at the water until my head goes as flat as it is.",
+	},
+	["sw.quest_complete.w22.onward.004"] = {
+		"The Slaughtered Lamb, I think. Dark ale, darker corners, and nobody in there will want to hear how it went.",
+		"I'm for the Slaughtered Lamb. The ale's black and the company's worse, and none of it is anybody's errand.",
+	},
+	["sw.quest_complete.w22.onward.005"] = {
+		"Cathedral Square, I think, to sit on the rim of a fountain and watch everybody else be in a hurry. Best entertainment in the city, and free.",
+		"I'll find the edge of a fountain somewhere and sit on it like a gargoyle on its day off.",
+	},
+	["sw.quest_complete.w22.onward.006"] = {
+		"Maybe the Mage Quarter, to watch the apprentices singe their eyebrows. It's free, and it makes my own work look very safe.",
+		"A stroll through the Mage Quarter, I think. There's always some student in a scorched robe, and it does wonders for my sense of proportion.",
+	},
+	["sw.quest_complete.w22.onward.007"] = {
+		"takes three steps toward the Trade District, turns, takes two toward Old Town, and settles the matter by sitting on a bridge parapet to think it over.",
+		"starts off one way, reconsiders, starts off the other, and in the end leans on a railing between the two as if waiting for a third.",
+	},
+	["sw.quest_complete.w22.onward.008"] = {
+		"Anyone know a cookshop near the canals that isn't full of nobles' footmen? I've a hunger and a little coin.",
+		"I'm buying a round. One round. A small one. Who's in?",
+		"Somebody show me the best cheap meal in Stormwind. I've earned it, and I'll share the table.",
+	},
+	["sw.quest_complete.w22.onward.009"] = {
+		"The Pig and Whistle for me. A corner table, a bowl of whatever's cheapest, and my back to the wall.",
+		"I'm off to Old Town. There's a stool at the Pig and Whistle with nobody's name on it, and I mean to fill it.",
+	},
+	["sw.quest_complete.w22.onward.010"] = {
+		"wanders into the thick of the Trade District's shops and stands before a display of fine cloaks for some time, purely as a spectator sport.",
+		"makes for the cloth merchants with no intention whatever of buying, to finger good wool and draw a suspicious look or two, which is its own small pleasure.",
+	},
+	["sw.quest_complete.w22.onward.011"] = {
+		"I could go straight looking for the next piece of work. Or I could not. At the moment 'not' is ahead by a street.",
+		"There's surely more work somewhere in this city with my name on it. Let it wait at its desk a while; it's had practice.",
+	},
+	["sw.quest_complete.w22.onward.012"] = {
+		"Point me to the nearest seat that nobody's selling, renting or guarding.",
+		"Is there one free chair in Stormwind? Not a pew, not a stool you pay for. Just a chair.",
+	},
+	["sw.quest_complete.w22.onward.013"] = {
+		"Off to the Dwarven District. The ale there is poured by someone who knows how, and the talk is about stone, not nobles.",
+		"I'll take my thirst to the Dwarven District, where a dwarf can lean on a forge rail and hear a proper accent.",
+	},
+	["sw.quest_complete.w22.onward.014"] = {
+		"takes a lane never walked before, purely to find out where it goes, and comes out in a small courtyard with a well and a single potted shrub.",
+		"turns down an alley for no reason except that it is there, and finds at its end a tiny square with a well, three doors and nobody at all.",
+	},
+	["sw.quest_complete.w22.onward.015"] = {
+		"I'll wander up toward the roost and watch the gryphons come in. Not to fly. I just like the way they fold their wings, like someone shutting a good book.",
+		"Nowhere to fly to. Still, I might go and watch the beasts at the roost settle after their flights. Nothing in the city lands better.",
+	},
+	["sw.quest_complete.w22.onward.016"] = {
+		"If anyone catches me looking for more work before I've eaten, take my boots away.",
+		"If I start asking about more work any time soon, someone stop me. Firmly.",
+	},
+	["sw.quest_complete.w22.onward.017"] = {
+		"Plenty of daylight left and not an hour of it spoken for. That's a richer feeling than anything in my purse.",
+		"The day's barely half used and the job's done. The rest of it is mine to waste however I please.",
+	},
+	["sw.quest_complete.w22.onward.018"] = {
+		"Anyone know a quiet corner in this city? A real one, not one with a merchant in it.",
+		"Looking for the quietest street in Stormwind. Once I find it, don't tell anyone where it is.",
+		"Is there a corner of this city without a crier, a cart or a stall? I'll go there.",
+	},
+	["sw.quest_complete.w22.onward.019"] = {
+		"Where am I headed? Excellent question. I'll let you know when I arrive.",
+		"Destination? Somewhere with a roof and a bowl. The details are negotiable.",
+		"No plans. I'm following my feet, and they've been unreliable all week.",
+	},
+	["sw.quest_complete.w22.purse.001"] = {
+		"No need to count it aloud. The whole street needn't know my wages.",
+		"Quietly, if you're counting. Half of Stormwind has ears tuned to silver.",
+		"Count it low and quick, would you? In this city coin carries three streets.",
+	},
+	["sw.quest_complete.w22.purse.002"] = {
+		"follows the pay onto a small brass scale rather than counted, the pan dipping and settling while the giver squints at it like a doctor at a tongue.",
+		"notes the coins weighed instead of counted, tipped into a little brass pan one by one until the beam sits level and the merchant grunts approval.",
+	},
+	["sw.quest_complete.w22.purse.003"] = {
+		"To count it in front of them is rude. Not to count it is foolish. I settled on weighing it in my palm with a perfectly calm face.",
+		"Stormwind's oldest dilemma: count the pay under the giver's nose and insult them, or don't, and find out later. I did neither, and frowned slightly, which seemed to cover both.",
+	},
+	["sw.quest_complete.w22.purse.004"] = {
+		"is paid with a silver piece too large for the sum and has to dig out change for the giver, so that the reward ends with the rewarded counting copper back.",
+		"finds the giver short of small coin, accepts a silver instead, and ends up making change out of {g:his|her} own purse, which feels like a step backward.",
+	},
+	["sw.quest_complete.w22.purse.005"] = {
+		"This one's clipped. See the edge? I'll take a whole one, thank you.",
+		"Not that one, if you don't mind. Somebody's been shaving it.",
+	},
+	["sw.quest_complete.w22.purse.006"] = {
+		"feels the giver's fingers stay on the last coin a moment too long, as if saying goodbye to it, before they let it go.",
+		"notices how the final coin lingers under the other party's thumb, held back a beat by habit, before it is released.",
+	},
+	["sw.quest_complete.w22.purse.007"] = {
+		"The coins rang true on the counter. In Stormwind people actually listen for that, heads cocked, like tuning a lute.",
+		"A dropped coin in this city gets a second's silence from everyone in earshot. They're listening for lead. Mine passed.",
+	},
+	["sw.quest_complete.w22.purse.008"] = {
+		"counts along in silence as the pay is laid out in stacks of ten, the giver's lips moving, and then a single extra coin set apart and looked at as if it had wandered in uninvited.",
+		"follows the counting in little towers of ten until one coin is left over, regarded with suspicion, and finally added with visible regret.",
+	},
+	["sw.quest_complete.w22.purse.009"] = {
+		"Mixed coin, as ever: a few silver, a heap of copper, and one battered piece I'll need a moneychanger to explain. Stormwind pays with whatever's in the drawer.",
+		"The pay came in every size the city mints and one it doesn't. I'll find out at the bank what the stranger in the pile is worth.",
+	},
+	["sw.quest_complete.w22.purse.010"] = {
+		"Don't count it twice on my account. Once was very convincing.",
+		"You counted that three times. Is it growing, or are you hoping it shrinks?",
+		"Twice is plenty. If it changed between counts, I'd like to know the trick.",
+	},
+	["sw.quest_complete.w22.purse.011"] = {
+		"The coins were still warm from being held. Someone had been gripping that money for a while, waiting for me to walk in.",
+		"Warm coin. Not from any fire: from a fist that had been closed around it, I'd guess, the whole time it waited for me.",
+	},
+	["sw.quest_complete.w22.purse.012"] = {
+		"pulls the purse strings shut with a double knot, the kind a market woman ties, and gives the purse a small shake to hear it settle.",
+		"draws the drawstring tight, loops it twice round a finger and tucks the tail in, a neat little ritual of putting pay away.",
+	},
+	["sw.quest_complete.w22.purse.013"] = {
+		"Fair price. I'd have asked the same, if anyone had asked me.",
+		"That's square. No haggling needed, which is a first for this city.",
+		"Agreed, settled, paid. Nobody in Stormwind will believe it went that simply.",
+	},
+	["sw.quest_complete.w22.purse.014"] = {
+		"Pay changes face as it changes hands. On their side of the counter it was a sacrifice; on mine it's a few coins and a meal.",
+		"What I'm holding is, for them, a week of careful living. For me it's an afternoon. That's the trouble with pay: it never weighs the same at both ends.",
+	},
+	["sw.quest_complete.w22.purse.015"] = {
+		"The sum was agreed at the start, then recalculated, then rounded, then rounded back. We ended where we began, which apparently is how accounts are settled here.",
+		"Stormwind doesn't just pay you. It reviews the figure, tuts, carries a one, and arrives at exactly what was promised, looking surprised.",
+	},
+	["sw.quest_complete.w22.purse.016"] = {
+		"slides the coins off the counter edge into a cupped hand, the way shopkeepers do it, without a single one hitting the floor.",
+		"sweeps the pay to the edge of the counter and over into a waiting palm in one smooth motion, a trick learned at a hundred market stalls.",
+	},
+	["sw.quest_complete.w22.purse.017"] = {
+		"Is it rude to bite it? It's rude to bite it. I'll bite it later.",
+		"I won't bite the coin. Not here. Not with you watching.",
+	},
+	["sw.quest_complete.w22.purse.018"] = {
+		"Every coin minted in this kingdom has passed through a hundred palms, and I swear each palm took a little shine off. Mine are the color of old spoons.",
+		"Not one of these coins is new. They've the dull, honest look of money that has bought bread in every street of Stormwind and been grumbled over in each.",
+	},
+	["sw.quest_complete.w22.purse.019"] = {
+		"Stormwind hands you money as if it had just been reminded of a debt at a dinner party: smiling, prompt, and slightly wounded.",
+		"Paid promptly, smiling, and with the faint martyrdom of a host picking up the bill. This city is very good at being owed nothing.",
+	},
+	["sw.quest_complete.w22.purse.020"] = {
+		"I always weigh the pay in one hand before I look at it. The hand knows the sum before the eyes do, and it is seldom disappointed.",
+		"My palm does the first counting. It's been right more often than any clerk, and it never asks for a fee.",
+	},
+	["sw.quest_complete.w22.purse.021"] = {
+		"Gnomes count by weight and a sum in the head. I'd finished before the human across from me had built his second stack, and kept very politely quiet.",
+		"Humans count coin by piling it into little towers. I had the total before the first tower was done, and spent the rest of the time admiring the architecture.",
+	},
+	["sw.quest_complete.w22.purse.022"] = {
+		"bites the first coin out of old habit, sees the other party wince, and pockets the rest unbitten for the sake of good relations.",
+		"tests a coin between the back teeth, catches a look of pure Stormwind horror across the way, and decides the others are surely just as honest.",
+	},
+	["sw.quest_complete.w22.purse.023"] = {
+		"Paid in the gloom of a lamp, so I took the coin on trust and by feel. The milled edge is the silver; the smooth one is copper. My fingers can read money in the dark.",
+		"No telling silver from copper at this hour without holding it up to a lamp, and that looks greedy. I ran a thumb along each edge instead.",
+	},
+	["sw.quest_complete.w22.purse.024"] = {
+		"Small change, every piece. Heavier, so it feels like more.",
+		"All in little coins. My purse will sound rich, at least.",
+		"Small coin, every piece. I'll jingle like a festival.",
+	},
+	["sw.quest_complete.w22.purse.025"] = {
+		"Shall I count it, or shall we both pretend I trust you completely?",
+		"I'll count it later, somewhere you can't watch me do it. That's manners.",
+		"Counting it now would be rude, so I'll just stare at it until it confesses.",
+	},
+	["sw.quest_complete.w22.purse.026"] = {
+		"No change? Keep it, then. Call it a tip for being honest about the change.",
+		"Round it down, it's fine. I'm not carrying one copper across Stormwind on principle.",
+	},
+	["sw.quest_complete.w22.purse.027"] = {
+		"Oh. Look at that. I'll pretend I expected it.",
+		"That's more than I thought. Don't take it back while I decide what face to make.",
+	},
+	["sw.quest_complete.w22.reckon.001"] = {
+		"I'll forget the pay long before I forget some small thing from the job: a crack in a step, a certain voice, the smell of a room. Memory keeps the wrong receipts.",
+		"Years from now the coin will be long gone, and what I'll keep is some useless detail, a stair that creaked, the color of a door. It always goes that way.",
+	},
+	["sw.quest_complete.w22.reckon.002"] = {
+		"Would I have done it for nothing? I'd like to say yes. I'm glad I didn't have to find out.",
+		"If there'd been no pay, would I still have said yes? Probably. Possibly. I'm not going to ask myself twice.",
+	},
+	["sw.quest_complete.w22.reckon.003"] = {
+		"Each job leaves me a little different, too little to see in a mirror. One day I'll add them up and not recognize the total.",
+		"Something in me shifted by a hair. Nobody else will notice. Enough hairs and I'll be someone else entirely.",
+	},
+	["sw.quest_complete.w22.reckon.004"] = {
+		"says nothing for the length of a whole street, wearing the face of someone adding up a sum that has no coins in it.",
+		"walks a long stretch in silence, eyes on the cobbles a few paces ahead, as if reading something written there.",
+	},
+	["sw.quest_complete.w22.reckon.005"] = {
+		"Already somebody behind me is telling it all to a neighbor, and in that version I'm a little taller and a lot more polite. I'll take it.",
+		"By the time the tale reaches the end of that street I'll have better manners than I do. Stories are kind to strangers.",
+	},
+	["sw.quest_complete.w22.reckon.006"] = {
+		"This city has buried a king, burned, and stood back up. Whatever I just did won't trouble its memory. That's freeing, in its way.",
+		"Stormwind has outlived kings and fires. Next to that, my bit of work is less than a footnote, and there's a strange rest in being that small.",
+	},
+	["sw.quest_complete.w22.reckon.007"] = {
+		"Hope it holds. That's all. Hope it holds.",
+		"Let it stay mended. That's the only wish I've got.",
+		"May it last longer than most things in this city.",
+	},
+	["sw.quest_complete.w22.reckon.008"] = {
+		"In the middle of all this noise there's a small quiet, about my size, that walks where I walk. It comes after every finished job and never stays long.",
+		"Carts, criers, hammers, and in the middle of it a little hush that belongs to me. Finished work makes one, for a street or two.",
+	},
+	["sw.quest_complete.w22.reckon.009"] = {
+		"Thunder rolls over the roofs while I stand here with the work behind me. The city flinches and carries on. So do I.",
+		"A crack of thunder overhead, and every shopkeeper in the street ducks at once. I don't. Whatever the sky has to say, my work is already in.",
+	},
+	["sw.quest_complete.w22.reckon.010"] = {
+		"Big causes need speeches and armies. Small ones only need someone who shows up. Showing up, it seems, is my trade.",
+		"I can't mend the kingdom. A single crooked thing on a single street, though, I can, and just did.",
+	},
+	["sw.quest_complete.w22.reckon.011"] = {
+		"Somewhere in Stormwind there's a face already composing the words 'I don't suppose you could...'. I'll walk a little faster.",
+		"Out there, someone is rehearsing how to ask me for the next favor. I can feel it from here. Brisk walking is my only defense.",
+	},
+	["sw.quest_complete.w22.reckon.012"] = {
+		"rubs a thumb across the knuckles of the other hand, a small private gesture, as if smoothing down the end of something.",
+		"lets one hand rest flat over the other at the belt for a moment, a quiet little full stop that nobody else in the street notices.",
+	},
+	["sw.quest_complete.w22.reckon.013"] = {
+		"Humans build in stone because they haven't the time to grow anything. Work done for them is work done for people in a hurry, and somehow that makes it count for more.",
+		"Everything in this city is built quickly and meant to last. Helping people who live so short a while feels like adding a stone to a wall they'll never see finished.",
+	},
+	["sw.quest_complete.w22.reckon.014"] = {
+		"Keep well, Stormwind. Try not to need me for an hour or so.",
+		"There you are, city. One less thing. Don't spend it all at once.",
+		"Behave yourself, Stormwind. I'll be within shouting distance.",
+	},
+	["sw.quest_complete.w22.reckon.015"] = {
+		"I wonder what they'll do with the time they've got back. Something small, I hope. A long meal. An early bed.",
+		"Whoever I helped has an hour back that they didn't have before. I hope they waste it beautifully.",
+	},
+	["sw.quest_complete.w22.reckon.016"] = {
+		"Whatever the wide world is doing out there, inside these walls a thing was asked and a thing got done. Some days that's the only order I can find.",
+		"The world beyond the walls is a mess I can't tidy. Inside them, one small thing is now in its place. I'll hold on to that.",
+	},
+	["sw.quest_complete.w22.reckon.017"] = {
+		"So. That's done, then.",
+		"And that, it seems, is that.",
+		"Hm. Over already.",
+	},
+	["sw.quest_complete.w22.reckon.018"] = {
+		"That was good work. I'm allowed to say so out loud, once.",
+		"Done well, that. There. Said it. Won't say it twice.",
+		"Proper job. I'll tell myself, since there's nobody else to.",
+	},
+	["sw.quest_complete.w22.reckon.019"] = {
+		"Next time somebody says 'you look like you've a moment', I'm going to look busier.",
+		"Lesson learned: never stand still in Stormwind looking helpful.",
+	},
+	["sw.quest_complete.w22.seal.001"] = {
+		"eyes a signet ring turned twice on a finger before it is pressed into the wax, as if it had to be woken up first.",
+		"catches the giver twisting a heavy ring a half turn, huffing on the face of it, and setting it down into the wax with great ceremony.",
+	},
+	["sw.quest_complete.w22.seal.002"] = {
+		"The crest on that signet ring was worn almost smooth. An old house, and by the look of the cuffs a house that has had a few hard years.",
+		"A noble's ring, its device rubbed down to a ghost by generations of thumbs. The fine manners were intact. The coat was turned at the elbows.",
+	},
+	["sw.quest_complete.w22.seal.003"] = {
+		"hears a stamp come down twice on the paper, hard, the second time apparently for emphasis.",
+		"flinches slightly as a wooden stamp hits the desk with a bang that would do credit to a judge, then once more, softer, to make sure.",
+	},
+	["sw.quest_complete.w22.seal.004"] = {
+		"My mark? I usually do a little crooked star. Will a little crooked star do?",
+		"A cross, then. A good firm one. I've had practice.",
+		"Sign? Give me the quill. I'll do my best letters, all four of them.",
+	},
+	["sw.quest_complete.w22.seal.005"] = {
+		"waits while a stick of wax is held to a candle and turned, the drips gathered into a neat red pool, and is told sharply not to touch it yet.",
+		"is warned off with a raised finger as the hot wax sets on the paper, as though a single careless touch could undo the whole business.",
+	},
+	["sw.quest_complete.w22.seal.006"] = {
+		"Hot wax and old paper: the smell of a thing being made official. In Stormwind it hangs over every counter like incense in a chapel.",
+		"That smell of melted wax and ink. It means something has just become true in this city, at least on paper, which here is the kind of true that counts.",
+	},
+	["sw.quest_complete.w22.seal.007"] = {
+		"looks on as the seal comes down a little crooked, is scraped off with a knife, and the whole business begins again, straighter.",
+		"observes a seal pressed askew, a muttered word, the wax pried up with a blade and a fresh blob dripped down for a second attempt.",
+	},
+	["sw.quest_complete.w22.seal.008"] = {
+		"Does it need a second signature? Of course it does. Where is the second signature having lunch?",
+		"Countersigned by whom? Ah. And when does whom come back?",
+	},
+	["sw.quest_complete.w22.seal.009"] = {
+		"The stamp showed the lion of the realm, pressed in blue ink. A small lion, a little smudged, but I felt it watching me sign.",
+		"Even an ordinary clerk's stamp here carries a lion. It's a lot of kingdom to put on a scrap of paper, and the paper looked proud of it.",
+	},
+	["sw.quest_complete.w22.seal.010"] = {
+		"has a folded slip of paper pressed into {g:his|her} hand along with the pay, signed and stamped, and is told to keep it in case anyone ever asks.",
+		"receives, with the coin, a little square of paper bearing a signature and a smudge of seal, with the advice to keep it dry and keep it safe.",
+	},
+	["sw.quest_complete.w22.seal.011"] = {
+		"I've been given a paper proving I was paid. If I lose it, I suppose I'll need another paper proving I had the first one.",
+		"A receipt in Stormwind is less a record than a hostage. Lose it, and the city can always say it never happened.",
+	},
+	["sw.quest_complete.w22.seal.012"] = {
+		"is asked to press a thumb into an ink pad and then onto the page, and afterwards holds the inked thumb out from the body like something borrowed.",
+		"leaves a thumbprint beside {g:his|her} name at the other party's request, and spends a moment looking for anywhere at all to wipe it.",
+	},
+	["sw.quest_complete.w22.seal.013"] = {
+		"I signed my name and it came out shakier than I write it. Paperwork makes honest people look like forgers.",
+		"My signature looked like somebody else's. It always does on official paper, as if my hand knew it was being watched.",
+	},
+	["sw.quest_complete.w22.seal.014"] = {
+		"Shall I wait for the wax to cool, or is the waiting part of the honor?",
+		"I'll stand here till it sets, shall I? It seems the polite thing.",
+	},
+	["sw.quest_complete.w22.seal.015"] = {
+		"The ink pad had dried out. The clerk revived it with a little spit and a lot of pressure, and the kingdom's seal came out pale but present.",
+		"A dried ink pad, coaxed back to life with a drop of water and a long, patient thumb. Bureaucracy in Stormwind survives on such small rescues.",
+	},
+	["sw.quest_complete.w22.seal.016"] = {
+		"stands by as a document is folded in three, then once more, the seal laid across the last fold so that nobody may open it without the whole city knowing.",
+		"sees the paper folded with a ruler's precision and sealed across the edge, a small fortress of parchment closed on the business.",
+	},
+	["sw.quest_complete.w22.seal.017"] = {
+		"Wax, ribbon, seal. Stormwind closes even the smallest matter the way it would close a treaty, as if a thing not sealed might quietly come undone.",
+		"In this city a matter isn't finished when the work is done. It's finished when the wax has set. I've learned to stand still for that part.",
+	},
+	["sw.quest_complete.w22.seal.018"] = {
+		"Which copy is mine? The one with the blot? Of course it is.",
+		"Two copies, and mine's the crooked one. I'm honored, truly.",
+	},
+	["sw.quest_complete.w22.seal.019"] = {
+		"The papers still say 'by order of the regent' at the top. It's been written so often the clerks no longer slow down for it.",
+		"Every form in this city begins in the regent's name. The hand that wrote it had done it so many times the words ran into one.",
+	},
+	["sw.quest_complete.w22.seal.020"] = {
+		"The paper was sanded, shaken, waved dry, held up to the window and sanded again. By the end I trusted it more than I trust most people.",
+		"Sand on the ink, a tap to shake it off, a squint against the window: the document passed its inspection. I hadn't known I was being tested too.",
+	},
+	["sw.quest_complete.w22.seal.021"] = {
+		"The clerk's quill had been chewed to a stub. Whatever this city pays its scribes, it isn't enough to buy a second feather.",
+		"A quill bitten half away, a blotter more blot than paper. The kingdom's business runs on threadbare tools and very good handwriting.",
+	},
+	["sw.quest_complete.w22.seal.022"] = {
+		"Must it be wax? Your word will do. It's lighter to carry.",
+		"Skip the seal, if you like. I trust a face more than a lump of wax.",
+		"No need to seal it for me. My memory won't contest it.",
+	},
+	["sw.quest_complete.w22.seal.023"] = {
+		"Is that the official stamp or the friendly one? You've two on the desk.",
+		"Use the nice stamp. The one with the lion. I've earned the lion.",
+	},
+	["sw.quest_complete.w22.street.001"] = {
+		"steps out into the street just as a sweeper reaches that exact patch of cobble, and is swept around, broom and all, without a word.",
+		"is steered gently aside by a street sweeper's broom, which has its own route and is not changing it for anyone's finished business.",
+		"stands still a moment too long and finds a sweeper's broom working patiently around both boots.",
+	},
+	["sw.quest_complete.w22.street.002"] = {
+		"Somebody above is beating a rug over a balcony rail, and the dust comes down on me in a fine, democratic layer. Stormwind's idea of confetti.",
+		"A carpet thumped out from a balcony overhead, and I walk out of my finished business straight into its dust. Very ceremonial.",
+		"Up on a balcony a woman whacks a rug as if it owed her money. I get the dust. Close enough to a fanfare.",
+	},
+	["sw.quest_complete.w22.street.003"] = {
+		"has to sidestep a gang of children playing the Watch with sticks for halberds, who order {g:him|her} to halt and then wave {g:him|her} through on a nod.",
+		"is stopped by three children with broom-handle halberds, questioned sternly about {g:his|her} business, and let pass with a salute.",
+		"steps around a game of guards and thieves tearing down the street, the thieves winning, as they always do in children's games.",
+	},
+	["sw.quest_complete.w22.street.004"] = {
+		"Somebody in a room above the street is learning the flute, one wrong note after another, and the whole street is far too polite to mention it.",
+		"A flute somewhere upstairs, practicing the same four notes and missing the third every time. Stormwind walks underneath, wincing in unison.",
+		"Up in some attic a beginner is fighting a flute and losing. I stop to listen anyway. Somebody else's struggle is restful to hear after my own.",
+	},
+	["sw.quest_complete.w22.street.005"] = {
+		"passes a barber shaving a customer on a stool set out in the street, and both of them follow the passer-by with their eyes while the razor carries on by itself.",
+		"walks by a stool in the open where a man is being shaved, lathered to the eyes, who offers a dignified nod through the foam.",
+		"slows beside a barber's open-air stool just long enough to be offered a trim, and declines with a hand to the jaw and a grin.",
+	},
+	["sw.quest_complete.w22.street.006"] = {
+		"Two masons on a scaffold are tapping a new block into an old wall, and grumbling about a third mason who isn't there. The city mends itself all day long, one complaint after another.",
+		"On the corner a pair of masons is resetting a loose stone, measuring it by eye, cursing it by name. Stormwind is never quite finished either.",
+		"Somewhere close a chisel is ringing on stone, patient as a woodpecker. Whatever I've finished, this city never quite does.",
+	},
+	["sw.quest_complete.w22.street.007"] = {
+		"stops to hear a crier read out the latest notices, which turn out to be a lost hat, a found key, and a fine for leaving barrels in the street.",
+		"listens at a corner to a crier's whole list of announcements, a mislaid ring, a stray mule, a new rule about barrels, and moves on knowing nothing worth knowing.",
+		"lingers while a crier rattles through a list of lost property, half expecting to hear something of {g:his|her} own on it, and looks faintly let down not to.",
+	},
+	["sw.quest_complete.w22.street.008"] = {
+		"ducks under the end of a long plank as two apprentices try to carry it round a corner, the front one turning left and the back one, with great conviction, right.",
+		"waits while a pair of carpenter's boys argue a long beam around a tight corner: three tries, one bruised shin, and much advice from a doorstep.",
+		"flattens against a wall as a long ladder goes by on two shoulders, its back end sweeping the street like a slow wooden broom.",
+	},
+	["sw.quest_complete.w22.street.009"] = {
+		"stops below a ladder where a sign painter is giving a shop's lion a fresh coat of gold, tongue between his teeth, and moves on before the drip arrives.",
+		"pauses beneath a man repainting a shop sign from a ladder, touching up a faded loaf with great care, as though the bakery depended on it.",
+		"admires a freshly painted shop sign, still tacky, while its owner stands across the street admiring it too, arms folded, head on one side.",
+	},
+	["sw.quest_complete.w22.street.010"] = {
+		"That piper on the corner has played the same jig three times since I stopped. Somebody pay him to learn a second one.",
+		"Lovely tune. Would be lovelier the first time than the fourth.",
+		"The lute player over there knows exactly one song, and he's sharing it with the whole street.",
+	},
+	["sw.quest_complete.w22.street.011"] = {
+		"watches a shopkeeper rub out a price on a slate board and chalk in a slightly higher one, glancing round as if the street might object.",
+		"reaches a stall just as its keeper chalks a new price over an old one, a little higher, and catches the guilty look that goes with it.",
+		"overhears a stallkeeper explaining to a customer why the price has gone up since last week, a speech so practiced it has paragraphs.",
+	},
+	["sw.quest_complete.w22.street.012"] = {
+		"A cobbler's hammer is tapping somewhere close, small and steady. It was tapping before I finished and it'll be tapping long after I've gone. I find that oddly comforting.",
+		"From a cobbler's stall nearby comes a little hammer, never hurrying, never stopping. Whatever I finished, the soles of Stormwind are still being mended.",
+		"Tap, tap from a cobbler's bench nearby. The city wears out its shoes faster than anyone can mend them, and somebody keeps trying anyway.",
+	},
+	["sw.quest_complete.w22.street.013"] = {
+		"Even the guard on the corner is yawning. Glad this city wears out somebody besides me.",
+		"The guard over there just yawned behind his gauntlet. I saw it. Your secret's safe with me, soldier.",
+		"Long shift, soldier? Mine too, in its way. Chin up.",
+	},
+	["sw.quest_complete.w22.street.014"] = {
+		"stands aside for a wagon of fresh-cut stone grinding past on its way to some repair, pale blocks still dusty from the quarry.",
+		"makes room for a dray loaded with raw blocks of stone, the city still feeding on quarries, cartload after cartload.",
+		"presses back into a doorway as a cart heavy with quarry stone grinds by, its wheels leaving pale dust in the ruts of older wheels.",
+	},
+	["sw.quest_complete.w22.street.015"] = {
+		"An old woman on a step is shelling peas into a bowl and judging the street as it goes by. I got a small nod. Best review I'll have all week.",
+		"There's a grandmother on a doorstep with a bowl of beans and opinions about everyone who passes. I seem to have passed. Barely.",
+		"A woman on a step, busy with a bowl of beans, looks me up and down and goes back to the beans. No verdict yet. I'll try again when I'm more interesting.",
+	},
+	["sw.quest_complete.w22.street.016"] = {
+		"steps carefully around a porter asleep sitting up on his own grain sacks, one fist still closed tight around his wages.",
+		"goes quietly past a porter dozing upright against a stack of sacks, mouth open, hat over one eye, entirely at peace with the traffic.",
+		"lowers {g:his|her} voice without thinking when passing a porter asleep on his sacks, as though the whole street had agreed to let him be.",
+	},
+	["sw.quest_complete.w22.street.017"] = {
+		"makes way for two of the Watch carrying a happy drunk between them by the elbows, his feet still walking politely in the air.",
+		"steps back to let a pair of guards pass with a singing drunk held up between them, who wishes {g:him|her} well with enormous sincerity.",
+		"waits as two guards steer a cheerful drunk round a corner, the man insisting he knows the way and pointing firmly at a wall.",
+	},
+	["sw.quest_complete.w22.street.018"] = {
+		"The wall by the corner is plastered with notices: rooms to let, a missing cat, a reward for whoever can restore someone's good name. I'd never get through them all.",
+		"Bills pasted over bills on the corner wall, ten layers deep. Lost, found, wanted, for sale. The whole city is asking for something, all at once.",
+		"Somebody has pinned up a notice offering a reward for a lost ring, and somebody else has written 'try the canal' under it. Stormwind in two hands.",
+	},
+	["sw.quest_complete.w22.street.019"] = {
+		"steps out under the rain and has to pick a path between the downspouts of a whole street, each roof emptying its share onto the cobbles.",
+		"dodges the first gutter spout, misjudges the second, and walks on through the rain with one shoulder soaked and no complaint about it.",
+		"turns up a collar against the rain and keeps to the middle of the street, where at least the gutters can't reach.",
+	},
+	["sw.quest_complete.w22.street.020"] = {
+		"Done, and the city has gone over to its night business: shutters latched, one tavern still loud, a cat crossing the roofs as if it held the deeds.",
+		"Late. The street belongs to the Watch and the rats now, and to me, for as long as it takes to walk it.",
+		"Late, and quiet enough to hear the canals moving under the bridges. I could cross the whole city and meet nobody but a patrol.",
+	},
+	["sw.quest_complete.w22.street.021"] = {
+		"No, I don't need a lucky charm. Whatever luck I had, I've just used, and it worked.",
+		"Thank you, no ribbons. I've nowhere to wear them and nobody to impress.",
+		"Keep your trinkets. My purse and I have only just been introduced.",
+	},
+	["sw.quest_complete.w22.street.022"] = {
+		"No, I'm not anyone famous. Yes, I'm sure. Go and stare at somebody with a better hat.",
+		"Sorry to disappoint, but I'm nobody in particular. The interesting people are further up the street.",
+		"Me? Not a knight, not a lord. Just someone with tired feet. Off you go.",
+	},
+	["sw.quest_complete.w22.thanks.001"] = {
+		"Officers in this city thank you in the voice they use for reports: subject, action, outcome. I've heard warmer inventories of tent pegs.",
+		"Thanked in the form of a dispatch: task assigned, task completed, conduct satisfactory. All it lacked was a salute at the end, and I think it was considered.",
+	},
+	["sw.quest_complete.w22.thanks.002"] = {
+		"The merchant's thanks ended, as such things do here, in an offer: ten percent off anything in the shop, this week only, for a friend.",
+		"Gratitude, then a pitch. Before I'd put the pay away I'd been offered a discount on boots, a cousin's lodgings and a very good price on lamp oil.",
+	},
+	["sw.quest_complete.w22.thanks.003"] = {
+		"gets a thank-you in a rush of words that begins grateful, turns to the price of grain halfway through, and ends somewhere near the state of the roads.",
+		"listens to a thank-you that loses its way, wanders past the cost of firewood and a neighbor's dog, and has to be steered back to its point.",
+	},
+	["sw.quest_complete.w22.thanks.004"] = {
+		"You've said it three times. I heard it the first. It was good the first time.",
+		"Once is plenty. You meant it; I can tell.",
+		"There, that's enough thanks. Keep the rest for someone who needs it more.",
+	},
+	["sw.quest_complete.w22.thanks.005"] = {
+		"Some people here rehearse their thanks. You can hear it: the pauses in the right places, a word chosen and then changed. I liked it better for the effort.",
+		"That had been practiced. I could tell from the way the speech stumbled at the same word twice, as if a draft were still showing through.",
+	},
+	["sw.quest_complete.w22.thanks.006"] = {
+		"hears most of the thanks addressed to the floor by someone too shy to look up, and listens all the harder.",
+		"bends a little to catch a thanks mumbled at {g:his|her} boots, and nods at the top of a bowed head.",
+	},
+	["sw.quest_complete.w22.thanks.007"] = {
+		"'The house is grateful.' Not he, not she: the house. I've been thanked by a building, more or less, and a very old one.",
+		"The thanks came in the third person, as if it were the family name speaking and the person merely carrying it. Nobility is a heavy thing to say thank you through.",
+	},
+	["sw.quest_complete.w22.thanks.008"] = {
+		"Not at all. I mean, yes, you're welcome. I mean, it was nothing. Mostly.",
+		"You're welcome. No, thank you. No, wait. We've both thanked each other; I think that's legal.",
+		"Oh, it was... I was glad to... Well. Yes. Thank you for thanking me.",
+	},
+	["sw.quest_complete.w22.thanks.009"] = {
+		"Dwarves in this city thank you with a story. I've just heard about a cart axle, a mule and a brother-in-law, and somewhere in it was gratitude.",
+		"A thank-you from a Stormwind dwarf comes wrapped in an anecdote, the anecdote in another, and the whole parcel tied up with a promise of a drink.",
+	},
+	["sw.quest_complete.w22.thanks.010"] = {
+		"is thanked in a whisper, the other party glancing toward an inner room where someone, apparently, must not be disturbed.",
+		"leans in to hear thanks given under the voice, with a finger raised toward a closed door, and answers just as quietly.",
+	},
+	["sw.quest_complete.w22.thanks.011"] = {
+		"They didn't say much. They looked at me properly, though, the whole face, the way people here rarely have time to. That was the thanks.",
+		"No speech. Just a long, plain look, the kind Stormwind keeps for people it means to remember. I'll take that over a purse of silver.",
+	},
+	["sw.quest_complete.w22.thanks.012"] = {
+		"Glad to. Really. You don't owe me anything past what's in this purse.",
+		"That's kind. And we're square now, so don't carry it about.",
+		"You're welcome. No debts between us; that's paid in full.",
+	},
+	["sw.quest_complete.w22.thanks.013"] = {
+		"Thanked by someone who had clearly been let down before. There was a surprise under the gratitude, as if work done as promised were a rare coin in this city.",
+		"The thanks had a note of disbelief in it. Somebody had been failed before by a person who said yes, and had not expected better of me.",
+	},
+	["sw.quest_complete.w22.thanks.014"] = {
+		"is thanked by the wrong name, smiles, and lets it go, since correcting a grateful person is a poor way to end a pleasant moment.",
+		"hears the thanks addressed to someone else's name entirely, considers saying so, and decides that whoever that is has earned a nice surprise.",
+	},
+	["sw.quest_complete.w22.thanks.015"] = {
+		"The thanks came last, after the pay and the paperwork, like a coat remembered at the door. Better late, as they say, and it did fit.",
+		"Paid, signed, dismissed, and only then, halfway out, 'Oh, and thank you!' called after me. An afterthought, but an honest one.",
+	},
+	["sw.quest_complete.w22.thanks.016"] = {
+		"Careful, you'll have the whole street thinking I'm a hero. They'll want things.",
+		"Lower your voice, please. Gratitude that loud attracts more work.",
+	},
+	["sw.quest_complete.w22.thanks.017"] = {
+		"A priest's thanks has the cadence of the Cathedral in it: slow, round, each word set down like a candle. Even plain gratitude sounds like a rite in that voice.",
+		"Thanked by someone used to speaking under a high vault. The sentences rose and fell like a reading at the altar, and ended in a small, careful pause.",
+	},
+	["sw.quest_complete.w22.thanks.018"] = {
+		"receives a thanks so sudden and so fervent that it seems to embarrass the giver, who coughs, straightens a sleeve and becomes very businesslike again.",
+		"is thanked with real feeling for one unguarded moment, before the other party catches it, clears a throat and returns to the brisk manners of the city.",
+	},
+	["sw.quest_complete.w22.thanks.019"] = {
+		"Thanked as if I had been slightly late. Which, by Stormwind's clocks, I suppose everyone always is.",
+		"There was a 'finally' tucked inside the 'thank you'. Small, polite, unmistakable. This city never quite forgives you for the time things take.",
+	},
+	["sw.quest_complete.w22.thanks.020"] = {
+		"The best thanks I've had in this city was a hand on my arm, just above the elbow, and a squeeze. Nothing said at all. Nothing needed saying.",
+		"No words, only a quick grip of the forearm, the way soldiers do it. In a city of speeches, that was the most honest thing anyone's told me.",
+	},
+	["sw.quest_complete.w22.thanks.021"] = {
+		"I'll accept the thanks, but it was owed. Work done as promised shouldn't need much praise.",
+		"It's kind of you. But a promise kept isn't a gift; it's just the promise.",
+	},
+	["sw.quest_complete.w22.thanks.022"] = {
+		"Humans thank you briskly and mean every word. It took me a while to stop waiting for the rest of the courtesy and see that it had all been delivered.",
+		"Over before I'd settled in to hear it, that thanks. Humans keep their gratitude the way they keep their lives: brief, and full to the brim.",
+	},
+	["sw.quest_complete.w22.thanks.023"] = {
+		"has the thanks shouted over the din of a busy room, makes out one word in three, and answers all of them with a smile that will do for any.",
+		"catches perhaps half the thanks above the noise of the place, nods at the half that arrived, and trusts the rest was as kind.",
+	},
+	["sw.quest_complete.w22.thanks.024"] = {
+		"That's it? Fine. Short and sweet. Mostly short.",
+		"Brief. I like brief. One more word wouldn't have hurt, but I like brief.",
+		"Thanks received. Quick as a snap of the fingers, but received.",
+	},
+	["sw.quest_complete.w22.thanks.025"] = {
+		"At ease. Or is that only your line?",
+		"You're thanking me as if I were a parade. I'm one person, with mud on.",
+		"No need to stand to attention for me. I'm not a flag.",
+	},
+	["sw.quest_complete.w22.thanks.026"] = {
+		"Thank you for saying it properly. People rarely do.",
+		"That was a good thanks. I'll remember how you did it.",
+		"Thanks like that, I could stand here and take all day.",
+	},
+	["sw.quest_complete.w22.worth.001"] = {
+		"Every stone in this street was paid for by somebody, or wasn't. A city like this is mostly debts that learned to stand up.",
+		"Stone stands on whatever was owed for it. Walk Stormwind long enough and you start to feel the unpaid bits underfoot.",
+		"Half the stone in Stormwind is still owed to someone, the masons grumble. I walk on it softly, out of respect for the account.",
+	},
+	["sw.quest_complete.w22.worth.002"] = {
+		"In the Trade District this much work comes to two loaves, a pot of stew, a bed and a candle to see it by. Put that way, it's an honest trade.",
+		"Translated into Stormwind prices: a hot meal, a clean bed and change for a candle. Not riches. Not nothing either.",
+		"I tally it the way the city does, in loaves and beds. Work turns into bread here faster than anywhere I know.",
+	},
+	["sw.quest_complete.w22.worth.003"] = {
+		"For once in Stormwind somebody owes me, and not the other way round. I'm going to walk very tall for one street.",
+		"Owed a favor in the capital. I may have it framed.",
+		"A favor owed to me, in this city. Mark the occasion, someone. It may never come round twice.",
+	},
+	["sw.quest_complete.w22.worth.004"] = {
+		"Nobody in Stormwind is ever quite square. The baker owes the miller, the miller owes the carter, the carter owes the tavern. I've just slipped one small link out of the chain.",
+		"This city is a long chain of who-owes-whom, from the high towers down to the gutters. Somewhere along it, one link just came loose because of me.",
+		"Debts run through Stormwind the way the canals do, joining everything to everything. One small channel just ran dry, thanks to me.",
+	},
+	["sw.quest_complete.w22.worth.005"] = {
+		"passes a house where a man with a ledger under one arm is knocking at the door, patient and unhurried, the knock of someone who will be back.",
+		"notices a collector at a door further down the street, ledger open, voice low, and walks on a little more slowly than before.",
+		"hears a door shut hard further down the street, and sees a man with a ledger walk away from it without hurry, already reading the next name.",
+	},
+	["sw.quest_complete.w22.worth.006"] = {
+		"This coin will be in a baker's till by supper and a miller's purse within the week. I'm just the bit of road it travels in between.",
+		"Coin in Stormwind never sits still. Mine will have passed through three aprons before I've finished deciding what to buy.",
+		"I'm only holding this money for the city a while. It already knows where it's going; it's just waiting for me to catch up.",
+	},
+	["sw.quest_complete.w22.worth.007"] = {
+		"Stone lasts in this city; work like mine is chalk on it. It'll wash off by next market. It was still written.",
+		"Stormwind remembers in carved stone. What I did is more like a chalk mark on the stone: gone soon, true while it lasts.",
+		"This city was built to outlast everyone in it. My work was built to last about a week. Oddly, it's the week I'm proud of.",
+	},
+	["sw.quest_complete.w22.worth.008"] = {
+		"If honest work paid like a seat at court, I'd own half a street by now.",
+		"Honest labor pays in copper. Flattery at court pays in silver. I'll stay down here with the copper and the decent folk.",
+		"At court, I'm told, one well-placed word is worth a year of errands. I'll keep the errands.",
+	},
+	["sw.quest_complete.w22.worth.009"] = {
+		"To Stormwind it was nothing, a speck. To one household it was a week without a certain worry. Same work, two prices, and both true.",
+		"The city would value it at a copper. The people it helped would price it much higher. I've decided to believe the smaller market.",
+		"Ask a counting-house what it was worth and you'll hear a copper. Ask the people it helped and you'll hear something no counting-house stocks.",
+	},
+	["sw.quest_complete.w22.worth.010"] = {
+		"glances at a pawnbroker's shelf on the way past: a lute, three good cloaks, a wedding ring, a dented helm. The whole city's bad weeks, laid out for sale.",
+		"slows at a moneylender's stall where other people's treasures sit tagged in rows, every one of them a story that ended in debt.",
+		"goes past a moneylender's stall where a young couple is haggling in low voices over a brooch, and does not look back.",
+	},
+	["sw.quest_complete.w22.worth.011"] = {
+		"Help in this city comes back in strange coin: a cheaper loaf some other week, a nod from across the street, a space made for you on a crowded bench.",
+		"Nothing done here is repaid in kind. It returns sideways, months later: a door held, a price shaved, a word put in for you somewhere.",
+	},
+	["sw.quest_complete.w22.worth.012"] = {
+		"Square with you, square with the city, square with myself. Doesn't happen often. I'll enjoy it.",
+		"Nobody owes me, I owe nobody. Rarest feeling in Stormwind.",
+		"All accounts settled, on both sides. In this city that's practically a feast day.",
+	},
+	["sw.quest_complete.w22.worth.013"] = {
+		"The Alliance stands on a great deal of Stormwind's stone and Stormwind's dead. Work like mine puts a few coppers back into that account, and I'm glad to pay them.",
+		"Every banner of the Alliance owes something to this city. I've paid back a sliver of it, unasked, and I'd do it twice over.",
+	},
+	["sw.quest_complete.w22.worth.014"] = {
+		"The guards like to say you can spot a debtor in Stormwind by the streets he avoids. For the moment, every street in the city is open to me.",
+		"A debtor in this city, the Watch reckons, walks a crooked road to miss certain doors. Mine runs straight. Every door I pass can look me in the eye.",
+		"Owe nothing in this city, the porters say, and every street gets shorter: no detours round the moneylenders.",
+	},
+	["sw.quest_complete.w22.worth.015"] = {
+		"What's honest work worth in a city of nobles? Ask a noble. Then ask anyone else, and believe them.",
+		"Worth it? Ask me after I've seen what the inns charge.",
+		"Worth it? Here everything's worth exactly what someone can be made to pay. I'm choosing to be the exception.",
+	},
+	["sw.quest_complete.w22.worth.016"] = {
+		"My worth in this city isn't in a purse. It's whether, next time something goes wrong on that street, someone says: find that one again.",
+		"Coin is the small part of the pay. The large part is being the name someone remembers the next time trouble turns up.",
+	},
+	["sw.quest_complete.w22.worth.017"] = {
+		"We humans write down every debt and forget every kindness. I'm going to try it the other way round, at least as far as the next corner.",
+		"Humans keep ledgers for grudges and none for favors. I've just done a favor. I'll keep the book on it myself, in my head, in pencil.",
+	},
+	["sw.quest_complete.w22.worth.018"] = {
+		"These stones have seen worse trouble than mine. I'll keep my grumbling small.",
+		"Whatever I think I've been through, this city's been through more. Puts a job in its place.",
+	},
+	["sw.rest_enter.w22.abide.001"] = {
+		"The hours behind me keep asking to be sorted. I leave them in a heap; they'll keep till I've slept.",
+		"Everything that happened out there wants filing, labeling, judging. Not now. Let it lie on the floor of my head like dropped coats.",
+	},
+	["sw.rest_enter.w22.abide.002"] = {
+		"I keep trying to remember the name of someone who helped me out there. It's gone. The help isn't.",
+		"A stranger gave me directions and a nod, somewhere along the way. I've lost the face already. I hope the nod comes back to them doubled.",
+	},
+	["sw.rest_enter.w22.abide.003"] = {
+		"sits with elbows on knees, staring down at the cobbles between {g:his|her} boots, tracing the joints of the stones as though reading a map of the last few hours.",
+		"looks at the paving for a long time without seeing it, the seams between the stones turning slowly into roads only {g:he|she} can follow.",
+	},
+	["sw.rest_enter.w22.abide.004"] = {
+		"My thoughts are turning in circles like a dog choosing where to lie. Two more turns and they'll drop.",
+		"The mind circles, sniffs, circles once more, the way a hound settles in straw. Any moment now it'll flop down and be still.",
+	},
+	["sw.rest_enter.w22.abide.005"] = {
+		"Odd how the bad part shrinks once it's behind walls. Out there it filled the whole sky. In here it fits in a pocket.",
+		"Whatever went wrong looked enormous on the road. Set down on this table, it's smaller than the cup beside it.",
+		"Trouble is a matter of size, and walls are a measuring stick. Seen from in here, the worst of it hardly comes up to my knee.",
+	},
+	["sw.rest_enter.w22.abide.006"] = {
+		"Ask me what happened later. Right now I couldn't tell you my own name.",
+		"What did I do out there? Something. Several somethings. I'll sort them after supper.",
+	},
+	["sw.rest_enter.w22.abide.007"] = {
+		"Nobody in Stormwind owes me a thing, and still the woman at the stall smiled. I'll take that as wages enough.",
+		"A shopkeeper wished me good rest without being paid to. I tuck the words away with the rest of what I've earned.",
+	},
+	["sw.rest_enter.w22.abide.008"] = {
+		"I'd like to think about nothing. Instead I'm thinking about whether my boots need new soles. Close enough.",
+		"My grand reflections on everything that's happened keep turning into a list of things to mend. Strap, seam, buckle. Very profound.",
+	},
+	["sw.rest_enter.w22.abide.009"] = {
+		"laughs once, quietly, at nothing anyone else can see: some moment from out there arriving late.",
+		"smiles suddenly at the middle distance, as if a joke told hours ago had only now been understood.",
+	},
+	["sw.rest_enter.w22.abide.010"] = {
+		"These walls stand where the old ones fell. I sit inside them and think of everyone who never had walls like these to sit inside.",
+		"The city was rebuilt for the living, but the stones remember who was here before. I rest gently, as one does in a house that has known loss.",
+	},
+	["sw.rest_enter.w22.abide.011"] = {
+		"The king is missing, the regent looks tired, the court whispers. And still the bread gets baked and the gutters get swept. That's an odd comfort, and a real one.",
+		"Whatever goes on in the Keep, the baker still opens his shutters and the sweepers still sweep. A city that keeps its small habits is a city I can sleep in.",
+	},
+	["sw.rest_enter.w22.abide.012"] = {
+		"I could plan the next step. I won't. A planned rest is only work in a softer coat.",
+		"The map stays in the pack. If I so much as unfold it, the resting's over.",
+	},
+	["sw.rest_enter.w22.abide.013"] = {
+		"Don't ask what I've been doing. I'm still deciding what to call it.",
+		"It was work. Of a kind. I'll find a better word once I've eaten.",
+		"Busy. That's the short version. The long one needs a chair and a mug.",
+	},
+	["sw.rest_enter.w22.abide.014"] = {
+		"Out past these walls the Alliance holds a hundred lines. This one is held by soldiers in blue, and I get to sit behind it for a change.",
+		"Every banner I've followed ends up, one way or another, answering to this city. For an hour or two, the city can answer for me.",
+	},
+	["sw.rest_enter.w22.abide.015"] = {
+		"takes out a scrap of paper, writes three words on it, studies them for a while, and folds it away without showing anyone.",
+		"jots something in the margin of a battered notebook, crosses half of it out, and closes the cover as if that settles the matter.",
+	},
+	["sw.rest_enter.w22.abide.016"] = {
+		"Lamps catch along the canal, one and then the next, and with each one I let go of one more thing that happened out there.",
+		"The windows across the water are lighting up. I watch them fill, slowly, and feel the hours behind me go dim in exchange.",
+	},
+	["sw.rest_enter.w22.abide.017"] = {
+		"pats down pockets, sleeves and belt one by one, the old inventory of the road, and finds everything where it ought to be.",
+		"checks purse, pouch and pack in turn with quick, practiced hands, then lets the hands fall still once the count comes out right.",
+		"runs through the usual tally of belongings by touch alone, finishes it, and does not start it over.",
+	},
+	["sw.rest_enter.w22.abide.018"] = {
+		"rests chin on fist and lets the face go slack, the look of someone whose thoughts have wandered off and been allowed to.",
+		"props {g:his|her} head on one hand and lets the gaze drift, unsupervised, wherever it pleases.",
+		"leans an elbow on a knee and a cheek on a palm, and goes somewhere very far away without leaving the seat.",
+	},
+	["sw.rest_enter.w22.abide.019"] = {
+		"Good work, or bad? I'll know once I've slept on it.",
+		"I'll judge what I did out there later. Sleep makes a fairer judge than I do.",
+		"Whether it went well, I can't say yet. Ask me after a bed.",
+	},
+	["sw.rest_enter.w22.abide.020"] = {
+		"I'm not thinking about anything. That's the plan, anyway.",
+		"Busy thinking about nothing at all. Harder than it sounds.",
+	},
+	["sw.rest_enter.w22.haven.001"] = {
+		"Every guard I've passed looks faintly bored. In a city, a bored guard is the best news there is.",
+		"The watchmen in blue lean on their halberds like men waiting for a cart. Nothing worries them, so nothing has to worry me.",
+		"Not one guard in sight is in a hurry. I take their slowness as a promise.",
+	},
+	["sw.rest_enter.w22.haven.002"] = {
+		"overhears two city guards bickering mildly over whose turn it is to stand nearer the brazier, and finds the pettiness of it deeply restful.",
+		"catches a pair of guards in a long, serious debate about the best sausage in the city, and listens as if to a lullaby.",
+	},
+	["sw.rest_enter.w22.haven.003"] = {
+		"The outer wall is thick enough for a cart to turn on its top. Whoever built it had seen this city burn once and meant never to see it again.",
+		"Walls this deep are not built by people who trust the world. I lean on that distrust gratefully.",
+		"You could lose a cart on top of that wall. The masons built for a siege; I'm only borrowing the quiet it bought.",
+	},
+	["sw.rest_enter.w22.haven.004"] = {
+		"If those guards are half as stern as they look, I can take my boots off.",
+		"Look at those faces under the helmets. Nobody's getting past them, least of all me on my way out.",
+		"With guards like these, I could nap in the middle of the street. I won't. Probably.",
+	},
+	["sw.rest_enter.w22.haven.005"] = {
+		"Somewhere a watch is changing: one pair of boots goes off, another comes on. Neither pair is mine.",
+		"I hear the tramp of a relief going up to the walls. Somebody's shift is starting. Mine, at last, is over.",
+	},
+	["sw.rest_enter.w22.haven.006"] = {
+		"A lion on a tabard means nothing much to a stranger. To me it means I can close both eyes at once.",
+		"Blue and gold on every guard's chest. I was raised to trust those colors, and they still deserve it.",
+		"I know the lion on those tabards the way I know my own handwriting. Under it, I sleep sound.",
+	},
+	["sw.rest_enter.w22.haven.007"] = {
+		"sets {g:his|her} back against a wall built to stop armies, and asks it only to hold up one tired spine.",
+		"leans into the stone of a wall that has outlasted kings, and lets it take the weight for a change.",
+		"finds a stretch of old masonry at the right height and rests against it, like one veteran leaning on another.",
+	},
+	["sw.rest_enter.w22.haven.008"] = {
+		"A city this size has a rule for everything, even for which side of the bridge to walk on. For once I don't mind being told.",
+		"Rules about carts, rules about lanterns, rules about where to empty a bucket. Out there the only rule was don't get caught. I prefer these.",
+	},
+	["sw.rest_enter.w22.haven.009"] = {
+		"Every blue tabard that passes would want me gone, if it knew. Resting here is dozing in a lion's den, one eye on the lion.",
+		"Strange rest, this: the safest walls in the kingdom, and every one of them raised against my kind. I keep my hood up and my face dull.",
+	},
+	["sw.rest_enter.w22.haven.010"] = {
+		"The guards have already looked me over and decided I'm dull. Best compliment I've had in weeks.",
+		"Nobody's asked me my business yet. Either I look harmless or I look too tired to be trouble. Both true.",
+	},
+	["sw.rest_enter.w22.haven.011"] = {
+		"The worst people in the city are locked in the Stockade, and the next worst are too busy bidding at the auction house to bother me.",
+		"Cutthroats in the Stockade, cutpurses watched by the guards, and the rest of the rogues haggling over prices. Nobody's left over to trouble me.",
+	},
+	["sw.rest_enter.w22.haven.012"] = {
+		"watches a guard on a canal bridge stifle a yawn behind one gauntlet, and takes the yawn as a sign that nothing is coming.",
+		"notices the sentry on the nearest bridge shifting from foot to foot, plainly thinking about supper, and relaxes accordingly.",
+	},
+	["sw.rest_enter.w22.haven.013"] = {
+		"Somewhere in this city SI:7 is keeping an eye on everyone, me included. Oddly, that helps me rest.",
+		"If half of what's said about SI:7 is true, nobody here so much as sneezes unrecorded. Let them watch. I plan to be very dull.",
+	},
+	["sw.rest_enter.w22.haven.014"] = {
+		"Bolts on the doors, bars on the low windows, a lock on every chest. Other people's caution keeps me safe for nothing.",
+		"This city locks everything twice. Out there I was my own lock. In here I can leave that work to the ironmongers.",
+	},
+	["sw.rest_enter.w22.haven.015"] = {
+		"counts the guards in sight out of old habit, reaches six, and stops, since six is plenty.",
+		"starts tallying blue tabards along the street, loses count somewhere past five, and decides the number is comfortably large.",
+		"picks out every sentry within sight, one by one, then gives up the count as a job already well covered.",
+	},
+	["sw.rest_enter.w22.haven.016"] = {
+		"Late, and the patrols' boots ring slower on the stone. Their pace tells me nothing's wrong, and I trust their feet more than any word.",
+		"At this hour the only steps in the street are the watch's, even and unhurried. I could set a clock by them, and sleep by it.",
+	},
+	["sw.rest_enter.w22.haven.017"] = {
+		"There's a whole army on those walls. They can spare me for an hour.",
+		"Plenty of soldiers on duty. I counted. I'm not needed.",
+		"The walls are manned, the gate's shut, and I'm sitting. Everyone's where they should be.",
+	},
+	["sw.rest_enter.w22.haven.018"] = {
+		"receives a short nod from a passing guard, returns it, and seems to take it as leave to stop being careful.",
+		"trades a brief nod with a city guard on {g:his|her} rounds, the small courtesy of two people who both know the job, and only one of whom is on it.",
+		"gets a curt nod from a guard in a blue tabard and gives one back, an exchange that settles something between them without a word.",
+	},
+	["sw.rest_enter.w22.haven.019"] = {
+		"looks up past the roofs to the line of the outer wall, where small figures pace its top, and leaves the job to them.",
+		"follows a speck of a sentry along the top of the wall for a while, then lets the eyes drop, content that someone up there is looking out.",
+		"picks out the tiny shapes of the watch walking the battlements far above, and turns away from them with something close to gratitude.",
+	},
+	["sw.rest_enter.w22.haven.020"] = {
+		"A guard on every corner. I'd hug one, but I suspect it's against some rule.",
+		"Look at all these guards. I could kiss them. They'd arrest me, of course.",
+		"So many soldiers. Somebody tell them I'm grateful. From a safe distance.",
+	},
+	["sw.rest_enter.w22.haven.021"] = {
+		"I'd salute the guards if I could lift my arm that high.",
+		"My compliments to the watch. I'd stand to say it, but I won't.",
+		"My thanks to the watch. I'll wave. Later. When my arm works.",
+	},
+	["sw.rest_enter.w22.quiet.001"] = {
+		"The canals make a small sound against their stone, a lapping you only hear once you've stopped moving. I've stopped.",
+		"Under all the voices there's the water, slapping softly at the canal walls. It was there the whole time; I just wasn't still enough.",
+	},
+	["sw.rest_enter.w22.quiet.002"] = {
+		"listens to a cartwheel squeal its way down a street and out of hearing, and does not wonder at all where it is going.",
+		"follows the creak of a handcart from one end of the street to the other by ear alone, eyes half shut, untroubled by its destination.",
+	},
+	["sw.rest_enter.w22.quiet.003"] = {
+		"When the bells go I count them from habit, lose count, and let it go. Nobody is waiting on the number.",
+		"Bells from Cathedral Square. I start counting, drift off at four or five, and for once nothing depends on the total.",
+	},
+	["sw.rest_enter.w22.quiet.004"] = {
+		"A cat on a windowsill across the way is asleep with total commitment. I'm taking lessons.",
+		"There's a cat stretched on the step opposite, boneless as dropped laundry. I'd like to be that cat.",
+	},
+	["sw.rest_enter.w22.quiet.005"] = {
+		"watches someone shake a rug from an upper window, the dust drifting down in a slow cloud, and finds it more soothing than it has any right to be.",
+		"follows the slow fall of crumbs from a tablecloth shaken out of a high window, as absorbed as if it were a show.",
+	},
+	["sw.rest_enter.w22.quiet.006"] = {
+		"Far off, a hammer rings on an anvil, steady as a clock. Some smith in the Dwarven District has work. I have none. A fair arrangement.",
+		"The forges never quite stop in this city; there's always a distant hammer somewhere. I let it keep the time while I keep nothing.",
+	},
+	["sw.rest_enter.w22.quiet.007"] = {
+		"Nothing in the noise of the street is meant for me. A hawker, a dog, a woman calling a name that isn't mine.",
+		"A dozen voices at once, and not a single one of them saying my name. I could listen to that for hours.",
+		"Shouts, laughter, a door banging, a child wailing about something enormous and small. None of it asks me to stand up.",
+	},
+	["sw.rest_enter.w22.quiet.008"] = {
+		"Listen to that. Not one scream in it. Just haggling.",
+		"Hear that? People arguing about the price of turnips. Music.",
+	},
+	["sw.rest_enter.w22.quiet.009"] = {
+		"Children have chalked squares on the cobbles for some hopping game. I step round them with great care. It seems important.",
+		"Somebody's chalked a game on the paving, all squares and numbers. In a city where children can do that, I can sit down.",
+	},
+	["sw.rest_enter.w22.quiet.010"] = {
+		"watches sparrows quarrel over a crust in the gutter, picking the likely winner and changing sides twice.",
+		"tosses a few crumbs to the sparrows at {g:his|her} feet and watches the squabble that follows with the air of a judge at a tourney.",
+	},
+	["sw.rest_enter.w22.quiet.011"] = {
+		"Laundry strung between two windows: shirts, aprons, one small stocking. People who hang out washing expect to be here to take it in.",
+		"Washing on a line over the street, flapping a little. Nobody hangs out their best shirt in a place that might burn by suppertime.",
+	},
+	["sw.rest_enter.w22.quiet.012"] = {
+		"sits still long enough that a small dog trots over, sniffs one boot with great thoroughness, and lies down against it.",
+		"is inspected at length by a passing stray, which finds nothing objectionable and settles down across both boots.",
+	},
+	["sw.rest_enter.w22.quiet.013"] = {
+		"Mist off the canals has wrapped the streets. Every sound comes muffled, as if the city had pulled a blanket over itself, and me with it.",
+		"The fog has swallowed the far end of the street. What's left is small: a lamp, a wall, a bench. Small enough to rest in.",
+	},
+	["sw.rest_enter.w22.quiet.014"] = {
+		"Rain on the slate, a long soft rushing over every roof in the city. I'm under one of them, and that's the full extent of my ambition.",
+		"The rain drums on the slates and runs off the eaves in ropes. I watch it from under a roof like a miser watching someone else's bills.",
+	},
+	["sw.rest_enter.w22.quiet.015"] = {
+		"Somebody up a stair is practicing the fiddle badly: the same four notes, over and over. I find myself waiting for the fifth.",
+		"A fiddle somewhere overhead, scraping through the same tune and failing at the same turn every time. I've grown rather fond of the failure.",
+	},
+	["sw.rest_enter.w22.quiet.016"] = {
+		"Hear that? Nobody's chasing anybody. I'd forgotten cities sounded like this.",
+		"Just carts, shopkeepers and gossip. Best noise I've heard in weeks.",
+	},
+	["sw.rest_enter.w22.quiet.017"] = {
+		"watches two apprentices carry a long plank through the crowd, turning it this way and that, and is idly pleased each time nobody gets hit.",
+		"follows a porter weaving a ladder through the press of the street, wincing pleasantly at each near miss.",
+		"keeps half an eye on a boy wrestling a too-large crate across the street, ready to admire him if he makes it.",
+	},
+	["sw.rest_enter.w22.quiet.018"] = {
+		"listens to someone sweeping a doorstep across the way, the broom going in long, even strokes, and lets {g:his|her} eyes close in time with it.",
+		"follows the steady rasp of a broom on stone somewhere nearby until it becomes the only sound worth hearing.",
+	},
+	["sw.rest_enter.w22.quiet.019"] = {
+		"Shh. I'm listening to people be ordinary.",
+		"Hush a moment. Somebody's arguing about cabbages, and it's beautiful.",
+		"Such a racket in this city. I wouldn't change a note of it.",
+	},
+	["sw.rest_enter.w22.repose.001"] = {
+		"The Gilded Rose for a soft bed, the Pig and Whistle for a loud one, a bench by the water for none at all. Stormwind offers a whole menu of places to fall over.",
+		"A quiet room in the Trade District, a rowdy one in Old Town, or a step by the canal: in this city even collapsing comes with choices.",
+		"Inns at both ends of the city and benches in between. I'll pick by which one is closest to where my knees give out.",
+	},
+	["sw.rest_enter.w22.repose.002"] = {
+		"A rented bed smells of soap and of the forty strangers who slept in it before me. I don't mind them. They all left in one piece.",
+		"Somebody else's sheets, somebody else's soap, a pillow pressed flat by a hundred other heads. It's the finest thing I've seen in weeks.",
+	},
+	["sw.rest_enter.w22.repose.003"] = {
+		"presses a fist into the inn's mattress, the way a cook tests a loaf, and seems to find it done.",
+		"sits on the edge of the bed, bounces once, twice, and gives the springs a small approving nod.",
+		"prods the straw mattress at the inn with two fingers, frowns, prods again, and decides it will more than do.",
+	},
+	["sw.rest_enter.w22.repose.004"] = {
+		"In the Park the lawns are clipped short and nobody naps under the trees unless they've given up looking respectable. I'm very nearly there.",
+		"The grass in the Park looks soft enough to sleep on, and a guard looks ready to say otherwise. I'll weigh the two.",
+	},
+	["sw.rest_enter.w22.repose.005"] = {
+		"Wake me if the city's on fire. If it's only the bells, let them ring.",
+		"If anyone needs me, I'll be horizontal. Don't take it personally.",
+		"I'm going to lie down. I may get up. Nobody should plan around it.",
+	},
+	["sw.rest_enter.w22.repose.006"] = {
+		"Human beds. I could sleep across one sideways and still not touch either edge. I intend to try every direction.",
+		"Somebody built this bed for a person twice my height. I'll curl up in one corner of it like a cat on a barge.",
+	},
+	["sw.rest_enter.w22.repose.007"] = {
+		"Human beds are too soft by half. I'll sink into this one like a stone into a bog, and grumble about it once I'm up.",
+		"Feathers. Of course it's feathers. Give me a good straw tick and a plank under it. Still, I'll not refuse a bed that's offered.",
+	},
+	["sw.rest_enter.w22.repose.008"] = {
+		"lies down on top of the covers fully dressed, meaning to undress in a moment, and does not.",
+		"stretches out on the bed with boots still on and one arm across the eyes, intending only to rest them.",
+		"drops onto the narrow bed sideways, coat and all, and gives no sign of moving for a long while.",
+	},
+	["sw.rest_enter.w22.repose.009"] = {
+		"A pillow. I'd forgotten the exact shape of one, the way a head goes into it and is allowed to stay.",
+		"There's a particular hollow a tired head makes in a good pillow. I mean to make it, and keep it, for hours.",
+	},
+	["sw.rest_enter.w22.repose.010"] = {
+		"Whether sleep comes at all is anyone's guess. Lying flat behind a barred door is most of its good anyway.",
+		"Sleep may come or it may not; it keeps its own hours with me. Stillness, a roof, a city on guard: I'll call that rest and be content.",
+		"I don't ask much of sleep anymore. A dark corner, a lock, nobody needing me. The rest is a bonus.",
+	},
+	["sw.rest_enter.w22.repose.011"] = {
+		"Half the stoops in this city seem to have someone dozing on them, and the passers-by step around them as politely as round a puddle.",
+		"Stormwind is full of people asleep in odd places: a carter on his sacks, an apprentice against a pillar. I'll be one more.",
+	},
+	["sw.rest_enter.w22.repose.012"] = {
+		"shuts {g:his|her} eyes on a bench and is asleep before deciding to be, one hand still hooked through the strap of the pack.",
+		"leans back and drops off almost at once, mouth slightly open, fingers locked loosely around the pack's strap like a sleeping child's around a toy.",
+	},
+	["sw.rest_enter.w22.repose.013"] = {
+		"Is there a bed in this city that doesn't creak? No? A creaking one, then. Quickly.",
+		"I'll take any room with a door. Bad view, loud neighbors, crooked floor. Just a door.",
+	},
+	["sw.rest_enter.w22.repose.014"] = {
+		"If I dream, let it be of nothing much: an empty room, a shut door, a bell nobody needs to ring.",
+		"Let the dreams be small. A table, a cup, a window with nothing outside it worth worrying about.",
+	},
+	["sw.rest_enter.w22.repose.015"] = {
+		"So late the streets have thinned to a few footsteps, and every one of them sounds like someone heading to bed. Mine will be the last.",
+		"The city has gone quiet enough to hear a shutter close three houses down. One by one, it is all lying down. So am I.",
+	},
+	["sw.rest_enter.w22.repose.016"] = {
+		"climbs the inn's stairs one heavy step after another, muttering the count, and stops on the landing to resent the last few.",
+		"takes the inn's stairs as if each were a separate mountain, and reaches the top with the air of a conqueror.",
+	},
+	["sw.rest_enter.w22.repose.017"] = {
+		"turns a room key over in one palm, weighing it like a small treasure, then pockets it with great care.",
+		"holds up a heavy iron key by its ring and studies it a moment, as if it were the first key ever made.",
+		"slides a room key into an inner pocket and keeps one hand on it a while, the way one keeps a hand on a sleeping animal.",
+	},
+	["sw.rest_enter.w22.repose.018"] = {
+		"yawns so hugely that a passing apprentice catches it and yawns too, and both of them look faintly embarrassed.",
+		"lets out a jaw-cracking yawn, then another, and gives up any pretense of being fit for conversation.",
+		"yawns behind a hand, then without the hand, then simply sits there with eyes watering, defeated by it.",
+	},
+	["sw.rest_enter.w22.repose.019"] = {
+		"Show me a bed, a bench, a pile of sacks. I'm not fussy anymore.",
+		"Anything flat will do. Even a table. Especially a table.",
+		"I'd sleep in a barrel if someone rolled it somewhere quiet.",
+	},
+	["sw.rest_enter.w22.repose.020"] = {
+		"If I start snoring, take it as a compliment to the city.",
+		"Should I snore, consider it applause.",
+		"Any snoring you hear is my review of Stormwind. Five lions.",
+	},
+	["sw.rest_enter.w22.slack.001"] = {
+		"Fresh bread somewhere close. In Stormwind there's always an oven going within a street or two, and that alone is reason to stay.",
+		"Somebody's baking nearby: crust and yeast drifting over the stones. A city that smells of bread is a city I can sit down in.",
+	},
+	["sw.rest_enter.w22.slack.002"] = {
+		"A pie off a stall, a stew at an inn, an apple from a cart: the city lays its comforts out in rows, and I get to choose like a lord.",
+		"Out there, supper was whatever didn't run fast enough. Here it's a question of which stall, and how much coin I care to part with.",
+		"So many cookshops I could eat my way across the city and never sit at the same counter twice. A fine problem to have.",
+	},
+	["sw.rest_enter.w22.slack.003"] = {
+		"buys a meat pie from a stall and eats it standing, careful of the gravy, crumbs collecting down the front of {g:his|her} coat.",
+		"eats a hot pasty straight from the paper, turning it round and round to find the side that has cooled enough to bite.",
+	},
+	["sw.rest_enter.w22.slack.004"] = {
+		"Cheese. Bread. Anything that's never been dried, salted, or carried in a pack. That's my order.",
+		"Something soft to eat, please. My teeth have had enough of jerky to last them a lifetime.",
+		"Fresh food. Nothing cured, nothing smoked. I'll pay extra for anything that was alive this week.",
+	},
+	["sw.rest_enter.w22.slack.005"] = {
+		"The cheese in this city comes in from the Elwynn farms by the cartload. After hard biscuit, it's like eating a cushion.",
+		"Soft yellow cheese from the farms outside the walls, a knife, and nobody waiting for my share. I could weep, if I were the weeping kind.",
+	},
+	["sw.rest_enter.w22.slack.006"] = {
+		"The innkeeper put a cup in front of me before I'd asked. Either I look that tired, or this is the best-run inn in the kingdom.",
+		"I hadn't even sat down properly when a mug appeared at my elbow. Somebody here reads faces for a living.",
+	},
+	["sw.rest_enter.w22.slack.007"] = {
+		"picks the raisins out of a sweet bun one at a sitting and saves them for last, a small private ceremony nobody asks about.",
+		"tears a sweet bun into exact halves, eats the smaller one first, and treats the larger with visible reverence.",
+	},
+	["sw.rest_enter.w22.slack.008"] = {
+		"A mug of hot milk with honey, the sort of thing they give children and invalids. Just now I'm a little of both.",
+		"Warm milk, a spoon of honey stirred in. A drink for the sickroom. I'm not ashamed; I'm only tired.",
+	},
+	["sw.rest_enter.w22.slack.009"] = {
+		"If anyone's selling soup, I'm buying. If anyone's giving it away, I'm moving in.",
+		"Point me at something hot in a bowl and stand well back.",
+	},
+	["sw.rest_enter.w22.slack.010"] = {
+		"Elwynn apples off a barrow, crisp and a little sour. The first one goes in four bites. The second I take slowly, like someone with nowhere to be.",
+		"A bag of apples from the farms outside, still smelling of the orchard. I eat one down to the pips and feel, absurdly, rich.",
+	},
+	["sw.rest_enter.w22.slack.011"] = {
+		"pays a stallholder too much for a cup of cider and waves away the change, plainly in no mood to count anything.",
+		"hands over a coin for a cup of something sweet, does not wait for change, and drinks it standing at the stall's corner.",
+	},
+	["sw.rest_enter.w22.slack.012"] = {
+		"Somewhere in this city there's a tub of hot water with my name on it. Not literally. I'll have to pay for the name.",
+		"A real bath, with water I didn't haul and a fire I didn't build. Stormwind has them; I've only to find one and part with some silver.",
+	},
+	["sw.rest_enter.w22.slack.013"] = {
+		"Bath first, food second, people third. Possibly never.",
+		"Wash, eat, sleep. Conversation comes somewhere after that, if at all.",
+	},
+	["sw.rest_enter.w22.slack.014"] = {
+		"I could take a room. I could take a step by the canal. Stormwind doesn't care where I fold up, so long as I'm not in a cart's way.",
+		"An inn is one way to stop. A bench is another, and costs less. The city only asks that I stop somewhere out of the traffic.",
+	},
+	["sw.rest_enter.w22.slack.015"] = {
+		"sips a dark ale of the kind the city's dwarves brew, winces at the first mouthful, and goes on drinking with growing respect.",
+		"takes a pull of a stout so thick it could stand a spoon up, blinks hard, and nods to it as to a worthy opponent.",
+	},
+	["sw.rest_enter.w22.slack.016"] = {
+		"Human cooking: all butter and gravy. One plate of it and I'm anchored to the bench, which may be the whole idea.",
+		"They fry everything here, even the bread. I've eaten too much of it already, and I'm too heavy to regret it properly.",
+	},
+	["sw.rest_enter.w22.slack.017"] = {
+		"buys a sausage on a skewer from a cart and eats it in small, respectful bites, watching the street go by.",
+		"works through a skewer of grilled meat from a street cart slowly, bite by bite, plainly determined to make it last.",
+		"stands at a cart's side with a sausage on a stick, chewing thoughtfully, like a magistrate weighing evidence.",
+	},
+	["sw.rest_enter.w22.slack.018"] = {
+		"orders a second helping before finishing the first, a show of confidence the cook seems to appreciate.",
+		"eyes the pot, then the bowl, then the pot again, and pushes the bowl back for more before it is quite empty.",
+		"finishes a plate in silence and holds it out again without a word, a request every cook in the world understands.",
+	},
+	["sw.rest_enter.w22.slack.019"] = {
+		"lays out a small feast along a low wall: a heel of bread, a wedge of cheese, a pickled onion. {g:He|She} regards it like a general surveying a map.",
+		"unwraps bread, cheese and a twist of salt on a ledge, arranges them just so, and admires the arrangement before eating any of it.",
+		"spreads a cloth on a step and sets out a modest supper on it with all the care of a steward laying a high table.",
+	},
+	["sw.rest_enter.w22.slack.020"] = {
+		"Is that fresh bread? Lead on, nose.",
+		"Something's baking. I'm following it. Don't wait up.",
+		"That smell is bread, and that bread is mine. Out of the way.",
+	},
+	["sw.rest_enter.w22.slack.021"] = {
+		"I'll have whatever the guards eat. They look well on it.",
+		"Feed me what you feed the city watch. They seem sturdy enough.",
+		"Same as the guards, please. If it keeps them standing all day, it'll keep me sitting.",
+	},
+	["sw.rest_enter.w22.unbuckle.001"] = {
+		"unhooks the clasp at the collar and lets the cloak slide off both shoulders, where it lands in a heap like a shed skin.",
+		"works the cloak's clasp free with stiff fingers and lets the whole heavy weight of wool fold down behind {g:him|her}.",
+		"shrugs off the cloak and leaves it where it falls, a dark puddle of cloth with no further claim on anyone.",
+	},
+	["sw.rest_enter.w22.unbuckle.002"] = {
+		"eases the pack off one shoulder at a time and lowers it to the ground so gently it might be full of eggs.",
+		"sets the pack down with exaggerated care, as if it had earned some courtesy by surviving the trip.",
+	},
+	["sw.rest_enter.w22.unbuckle.003"] = {
+		"My knees have opinions. Every cobble of this city, they voiced one. Seated, they've gone quiet and sulky.",
+		"The knees complained about every stair and every slope. Now that I've stopped they won't speak to me at all.",
+		"Each step on these paving stones got a remark from my knees. Sitting, I've finally won the argument.",
+	},
+	["sw.rest_enter.w22.unbuckle.004"] = {
+		"I'd swear my feet have grown a size since I set out. They throb in the boots like two loaves left too long to rise.",
+		"The boots are the same size they always were. The feet inside them have other ideas, and loud ones.",
+	},
+	["sw.rest_enter.w22.unbuckle.005"] = {
+		"kneads a sore thigh with the heel of one hand, grimaces, and keeps at it with grim patience.",
+		"digs both thumbs into a cramped calf and works the knot out of it, jaw set, until the muscle gives up first.",
+		"rubs at a stiff knee in slow circles, the way one polishes a stubborn stain out of old wood.",
+	},
+	["sw.rest_enter.w22.unbuckle.006"] = {
+		"My eyes ache from searching every hedge and ridge for movement. A plain wall gives them nothing to search, and they're grateful.",
+		"For hours my eyes have done sentry work. Here there's only stone and shop signs to look at, and they let themselves go soft.",
+	},
+	["sw.rest_enter.w22.unbuckle.007"] = {
+		"Every buckle I own has bitten me somewhere. Off they come, all of them.",
+		"Straps, belts, laces: everything that holds me together is coming undone. On purpose, this time.",
+		"Give me a moment. I'm unfastening things. There are a lot of things.",
+	},
+	["sw.rest_enter.w22.unbuckle.008"] = {
+		"My hands smell of leather and old iron. A basin and a cake of soap, and they might pass for a burgher's.",
+		"There's road ground into every crease of my hands. I'll scrub them in the first basin I find and see what color they really are.",
+	},
+	["sw.rest_enter.w22.unbuckle.009"] = {
+		"sits on the low lip of a canal wall and lets both legs dangle over the water, heels knocking idly against the stone.",
+		"perches on the edge of a canal with boots hanging above the water and lets them sway there, slow as a pendulum running down.",
+	},
+	["sw.rest_enter.w22.unbuckle.010"] = {
+		"I walked the last stretch with my fists half closed. Opening them is like putting down two small stones I'd forgotten I was carrying.",
+		"My hands have been curled for hours around nothing. I lay them open on my knees, palms up, and leave them to remember how.",
+	},
+	["sw.rest_enter.w22.unbuckle.011"] = {
+		"loosens every strap that will loosen and sits a little wider and a little lower, like a sack of meal finding its shape.",
+		"slackens one fastening after another and settles deeper into the seat with each, until there is plainly nothing left to undo.",
+	},
+	["sw.rest_enter.w22.unbuckle.012"] = {
+		"The stiffness leaves in its own order: the hands first, then the back, and the neck last, grudgingly, as if it had to be talked round.",
+		"Everything in me lets go eventually, but not all at once. The shoulders are still debating it. The neck refuses to be rushed.",
+	},
+	["sw.rest_enter.w22.unbuckle.013"] = {
+		"Nobody touch my boots. They're airing. You've been warned.",
+		"I'd keep upwind of my boots for a while, if I were you. They've earned their rest too.",
+	},
+	["sw.rest_enter.w22.unbuckle.014"] = {
+		"sets down everything {g:he|she} has been carrying and stands for a moment with empty hands, faintly lost without the weight.",
+		"puts the last of the load on the floor and looks at {g:his|her} own empty hands as if they belonged to somebody else.",
+	},
+	["sw.rest_enter.w22.unbuckle.015"] = {
+		"Out there the body learns to brace for everything. In here it has to unlearn it muscle by muscle, and it was never quick at lessons.",
+		"My shoulders learned to wait for a blow. It'll take more than one sit-down to teach them that none is coming.",
+	},
+	["sw.rest_enter.w22.unbuckle.016"] = {
+		"pulls off one boot with a heroic tug, then sits contemplating the other for some time, as though it were a second, harder campaign.",
+		"wrestles a boot free, sets it down with a small grunt of triumph, and eyes its partner with deep reluctance.",
+		"gets one boot off and then simply stops, apparently content to go through life half shod for a while.",
+	},
+	["sw.rest_enter.w22.unbuckle.017"] = {
+		"scrapes the dried mud from each boot heel with a stick, slowly, the unhurried work of someone whose day of walking is over.",
+		"knocks one boot against the other until the caked dirt falls away in flakes, and seems pleased by the size of the pile.",
+		"picks a stone out of a boot tread with a fingernail and flicks it into the gutter, as if evicting a last passenger.",
+	},
+	["sw.rest_enter.w22.unbuckle.018"] = {
+		"rolls both sleeves to the elbow and lets the air reach forearms that have been bound and covered for hours.",
+		"pushes up {g:his|her} cuffs and holds bare wrists out a moment, turning them, as if checking they still bend.",
+		"loosens the laces of both cuffs and shoves the sleeves back, baring arms marked with the red lines of straps.",
+	},
+	["sw.rest_enter.w22.unbuckle.019"] = {
+		"Every part of me aches separately. I'll introduce you to them later.",
+		"Something in my back just clicked. I think it was relief.",
+		"I hurt in places I didn't know had names. A physician could make a list.",
+	},
+	["sw.subzone_enter.w22.canal.001"] = {
+		"crosses a bridge and hears {g:his|her} own steps come back off the water a moment late, as if someone below were walking upside down.",
+		"hears each footfall on the bridge answered a beat behind from under the arch, a small hollow echo that keeps pace all the way over.",
+		"stops halfway across a bridge to test the echo, and the arch below returns the scuff of a boot like a shy companion repeating the last word.",
+	},
+	["sw.subzone_enter.w22.canal.002"] = {
+		"looks down on two women kneeling on the bottom step, rinsing sheets in the canal and wringing them between them like a rope, quarreling the whole time without once losing the rhythm.",
+		"watches laundry rinsed on the canal steps and twisted between two pairs of arms until the water stops running; whatever the quarrel is about, the sheet is taking the worst of it.",
+	},
+	["sw.subzone_enter.w22.canal.003"] = {
+		"The ducks on the canals have learned which bridges the bakers' boys cross. They wait under exactly those, and ignore everyone else entirely.",
+		"Ducks bob under one particular bridge and nowhere else. A baker's boy crosses it twice between bells with a basket. The ducks keep better time than I do.",
+		"Six ducks, one bridge, one baker's boy with a basket, and a very tense negotiation over a crust. The boy is losing.",
+	},
+	["sw.subzone_enter.w22.canal.004"] = {
+		"follows a single red apple, dropped from some cart, as it rides the slow current past three bridges, cheered on by a growing line of children at the rail.",
+		"keeps an eye on an apple that has escaped a barrow and bobs off down the canal, two small boys running along the parapet beside it, shouting advice.",
+	},
+	["sw.subzone_enter.w22.canal.005"] = {
+		"Near the canals the air drops a coat's worth. The water keeps its own cool, close as a cellar, whatever the streets above are doing.",
+		"There's a chill that lives just over the canals, a hand's breadth deep, like the air in a cellar. The streets can do as they like; down by the water, the water decides.",
+	},
+	["sw.subzone_enter.w22.canal.006"] = {
+		"Mind your purse on the bridges. Not for thieves. For the rail: it's exactly the height to tip a purse in.",
+		"Careful leaning over. These parapets were built to catch elbows and lose coins.",
+		"Lean on the rail if you like. The canal is collecting donations.",
+	},
+	["sw.subzone_enter.w22.canal.007"] = {
+		"stops to watch a shaggy dog paddling along the canal with a stick in its jaws, ignoring every set of steps it passes and every whistle from the bridge.",
+		"joins half the bridge in admiring a dog that swims a whole reach of canal with a stick held high, climbs out at the far steps, shakes itself over three passersby and looks enormously proud.",
+		"pauses as a wet dog hauls itself up the canal steps, drops a stick at the nearest pair of boots and waits, dripping, with total confidence.",
+	},
+	["sw.subzone_enter.w22.canal.008"] = {
+		"Sound travels on the canals. I can hear a hammer from the Dwarven District and a fiddle from somewhere in Old Town, both arriving over the water as clear as if they were one bridge off.",
+		"The water carries voices strangely. A woman laughs two bridges down and it lands beside me as if she'd leaned in to tell me the joke.",
+		"On the canals a whisper can turn up a street away. Half the gossip of Stormwind must travel by water, without paying the boatmen.",
+	},
+	["sw.subzone_enter.w22.canal.009"] = {
+		"watches a mason working from a moored boat, tapping a new block into the canal wall while his mate holds the hull steady against the stone with both hands and a great deal of language.",
+		"lingers above a boat lashed to the canal wall, where a mason fits a pale new stone among the old dark ones, and the water slaps the hull every time the mallet comes down.",
+	},
+	["sw.subzone_enter.w22.canal.010"] = {
+		"There are frogs in the canals. From the bridges you'd never guess it, but stand still by the water long enough and one starts up, and then the whole wall answers.",
+		"Somewhere in the weed at the foot of the wall a frog is making a noise like a door that needs oil. Several others agree.",
+	},
+	["sw.subzone_enter.w22.canal.011"] = {
+		"walks the canals as the first boats push off, poles knocking softly on stone, and the boatmen calling the first prices of the day to one another across the water.",
+		"crosses the canals in the first light, when the boats are being untied one by one and the boatmen's voices carry low and hoarse over the still water.",
+	},
+	["sw.subzone_enter.w22.canal.012"] = {
+		"Somebody's frying fish on a boat down there. Somebody else is about to be very jealous, and it's me.",
+		"Fried fish on a boat brazier. If that boatman sells by the piece, I'm buying.",
+	},
+	["sw.subzone_enter.w22.canal.013"] = {
+		"Long weed hangs from the canal walls and streams the same way all along, combed flat by a current too slow to see. It's the only way to tell which way the canal is going.",
+		"The current here is too lazy to see, but the weed on the walls knows it. Every strand points the same way, like a crowd watching the same door.",
+		"Look at the weed, not the water. The water pretends to be still; the weed gives it away.",
+	},
+	["sw.subzone_enter.w22.canal.014"] = {
+		"picks out a guard posted at the crown of a bridge, turning slowly from one bank to the other like the hand of a clock that can't settle on the hour.",
+		"nods to a watchman leaning on a bridge parapet who looks down at the water only when nothing on either bank needs looking at, which isn't often.",
+		"glimpses a guard on the high point of a bridge rubbing at a mark on the parapet with his thumb, eyes never leaving the far bank.",
+	},
+	["sw.subzone_enter.w22.canal.015"] = {
+		"Gnomeregan ran on pipes and pumps and valves. These canals just lie there being water. It's oddly restful, and slightly maddening.",
+		"No pumps. No gauges. Not one valve. Humans let the water lie about in trenches and trust it to behave. I'd have fitted a meter on every bridge.",
+	},
+	["sw.subzone_enter.w22.canal.016"] = {
+		"makes room for a girl who lowers a bucket on a rope from the bridge, hauls it up half full, and carries it off with great care, sloshing, to some purpose of her own.",
+		"waits while a woman lets a bucket down from the parapet on a long rope, dips it with a practiced twist of the wrist, and draws it up without spilling a drop.",
+	},
+	["sw.subzone_enter.w22.canal.017"] = {
+		"The canals were dug for trade, the boatmen say, but when the city burned they were the only thing that wouldn't catch. People stood in them to the chest and watched the roofs go.",
+		"An old boatman told me his grandmother lived through the burning in this water, up to her chin under a bridge with a wet sack over her head. He tells it flatly, like the price of coal.",
+		"Ask the boatmen and they'll say the canals saved more lives in the First War than the walls did. They say it without pride, looking at the water.",
+	},
+	["sw.subzone_enter.w22.canal.018"] = {
+		"Every bridge here has a beggar, a guard or a cat. Never two. I don't make the rules.",
+		"Bridge, guard. Bridge, cat. Bridge, guard. The canals take turns.",
+		"Next bridge is a cat bridge. I can feel it.",
+	},
+	["sw.subzone_enter.w22.canal.019"] = {
+		"admires a swan gliding along the canal past a moored barge, white against the dark water, while every boatman gives it room without a word.",
+		"steps back as a swan climbs the canal steps with the air of a landlord collecting rent, and the people sitting there quietly move their bread out of its reach.",
+	},
+	["sw.subzone_enter.w22.canal.020"] = {
+		"Water between every district. Good for a city's trade, better for anyone who ever needs to vanish. I find myself counting the steps that go down into it.",
+		"If I ever had to disappear in Stormwind, I'd start here. Three places already where the wall is low enough to drop from, and the water asks no names.",
+	},
+	["sw.subzone_enter.w22.canal.021"] = {
+		"watches a boat folded from paper ride the canal past the steps, bravely upright, until a ripple turns it and it sails on backward with exactly the same courage.",
+		"spots a paper boat lodged against a mooring post, sodden and listing, a name written along its side in a child's large letters.",
+	},
+	["sw.subzone_enter.w22.canal.022"] = {
+		"Each bridge on the canals has its own voice. One rings under a boot, one thuds, one has a loose stone that clicks like a tongue. I could cross them blindfolded and name them.",
+		"Some bridges hum underfoot, some say nothing. One near here has a slab that rocks and clacks every time anyone steps on it, and nobody has fixed it, because everyone knows it.",
+	},
+	["sw.subzone_enter.w22.canal.023"] = {
+		"catches two neighbors arguing across the canal from opposite windows, the water between them carrying every word to a small and very attentive audience on the bridge.",
+		"hears a shouted quarrel going on across the water between two upper windows, and sees passersby on the bridge slow down, then stop, then quietly take sides.",
+	},
+	["sw.subzone_enter.w22.cathedral.001"] = {
+		"steps aside for two acolytes crossing the square with a long ladder between them, taking turns to apologize to everyone the far end nearly clips.",
+		"ducks as a ladder goes by at head height, carried by a pair of acolytes who are still arguing over which of them should walk in front.",
+		"waits while two young priests maneuver a ladder across the paving toward the cathedral front, turning it slowly, like a ship looking for its berth.",
+	},
+	["sw.subzone_enter.w22.cathedral.002"] = {
+		"The paving at the foot of the steps is worn into shallow hollows, just where people stop before going up. Years of hesitation, pressed into stone.",
+		"Before the lowest stair the flagstones dip, worn smooth by feet that paused there. Everyone, it seems, stops a moment before climbing.",
+		"There's a hollow in the stone right before the cathedral steps. Not from walking, I think. From people standing still and making up their minds.",
+	},
+	["sw.subzone_enter.w22.cathedral.003"] = {
+		"drifts past a scribe at a folding table beside the steps, writing a letter for a farmhand who dictates in a careful whisper and makes him read every line back.",
+		"slows by a letter-writer working on a board across his knees, his customer leaning close to spell out a name he has plainly never seen written.",
+		"overhears a scribe at the edge of the square taking down a letter word by word for an old woman, who stops him twice to make it sound more cheerful.",
+	},
+	["sw.subzone_enter.w22.cathedral.004"] = {
+		"Everywhere else in the city the guards keep people moving. In this square they let you stand as long as you like, and look away politely.",
+		"Nobody is moved along in Cathedral Square. Beggars, pilgrims, the lost: the guards leave them be, and even seem to slow their own pace.",
+		"The guards here walk differently. Slower, hands off their belts. Whoever stands still in this square is allowed to.",
+	},
+	["sw.subzone_enter.w22.cathedral.005"] = {
+		"Hat off, hat on? Nobody ever tells you the rules in a square like this.",
+		"Do I bow to the building? Everyone else seems to be doing something.",
+		"Shoulders back. Someone in there is probably watching. Someone up there, possibly.",
+	},
+	["sw.subzone_enter.w22.cathedral.006"] = {
+		"stops to let a small procession by: two priests bearing an enormous book on a cushion, a third walking behind with both hands out in case it slides.",
+		"makes room for a pair of priests carrying a huge bound book between them on a velvet cushion, with the grave concentration of people carrying soup.",
+		"follows with {g:his|her} eyes a great book going by on a cushion, borne by two clerics who take every step as though the stones were slick, and a boy trotting after with its clasp.",
+	},
+	["sw.subzone_enter.w22.cathedral.007"] = {
+		"A thread of incense drifts out from the cathedral and makes it as far as the fountain before the street takes it back with bread and horse and stone dust.",
+		"The incense smell stops halfway across the square, as if it had reached a line and been told politely to go no farther.",
+		"Incense on one side of the square, a hot-pie seller on the other, and the two smells meet in the middle and quarrel quietly.",
+	},
+	["sw.subzone_enter.w22.cathedral.008"] = {
+		"looks on as a woman brings a feverish child to the foot of the steps, and a priest comes down at once, kneeling on the stone to hear her out at the child's height.",
+		"glimpses a priest crouched on the bottom step beside a pale little boy and his father, listening more than speaking, one hand resting on the boy's head.",
+		"glances toward the steps, where a young priestess sits beside a sick child wrapped in a blanket, talking to it about nothing much in a very steady voice.",
+	},
+	["sw.subzone_enter.w22.cathedral.009"] = {
+		"The carved figures over the cathedral doors have lost their noses to the weather, every one. Somehow it makes them look kinder.",
+		"Up above the doors, the stone faces are worn soft and blunt. Whoever they were meant to be, they've become everyone's grandparents.",
+		"I like the carvings over the doors best: smoothed by the years until their stern expressions have all gone mild.",
+	},
+	["sw.subzone_enter.w22.cathedral.010"] = {
+		"Mind your language near the steps. Priests hear far better than they let on.",
+		"I'd keep the cursing for another street. The ones in white have sharp ears.",
+	},
+	["sw.subzone_enter.w22.cathedral.011"] = {
+		"pauses at a board by the cathedral where notices are pinned three deep: healing hours, alms days, and small papers asking after people nobody has seen in a while.",
+		"reads a corner of the notice board at the square's edge, where among the announcements of services someone has pinned a sketch of a missing face.",
+		"lingers in front of a crowded board of notices, its oldest papers gone soft and yellow under the new ones, each asking after a name.",
+	},
+	["sw.subzone_enter.w22.cathedral.012"] = {
+		"I don't kneel often. In this square my knees remember how, even before I've decided to.",
+		"The Light and I don't speak every day. Here, I find I've lowered my head before I meant to.",
+		"Something in me stands straighter in front of the cathedral. Habit, or the Light. I couldn't say which.",
+	},
+	["sw.subzone_enter.w22.cathedral.013"] = {
+		"crosses the square in the first gray of dawn, where a line of acolytes sweeps the cathedral steps from the top down, each broom a step behind the one above.",
+		"reaches the square as dawn comes up pale, the acolytes already at work on the steps with brooms, moving down them together like a slow wave.",
+		"finds the square almost empty at dawn, except for the brooms: a row of acolytes on the steps, sweeping in time, nobody speaking.",
+	},
+	["sw.subzone_enter.w22.cathedral.014"] = {
+		"A young priest on a bench is rehearsing a sermon in a mutter, losing his place, starting over, and making grand gestures at the empty bench across from him.",
+		"Someone is practicing a sermon here, half aloud. Every few lines he stops, crosses something out, and tries the same sentence with more conviction.",
+		"There's a priestess by the fountain reading a sermon to herself, lips moving, and frowning each time she reaches the same paragraph.",
+	},
+	["sw.subzone_enter.w22.cathedral.015"] = {
+		"hears {g:his|her} own footsteps come back from the cathedral front a moment late, as if someone were walking just behind.",
+		"notices how the tall face of the cathedral throws every sound back across the square: a laugh, a dropped cup, and {g:his|her} own steps, a beat behind.",
+		"crosses the open paving and catches the echo of each step returning from the cathedral wall, faint and slightly out of time.",
+	},
+	["sw.subzone_enter.w22.dwarven.001"] = {
+		"stops when a tiny spring shoots off a gnome's workbench, pings across the cobbles and vanishes, and three passersby drop to their knees to hunt for it without being asked.",
+		"witnesses a gnome tinkering on a step lose a spring with a bright little 'tink', and half the street join the search on hands and knees.",
+		"nearly treads on a runaway brass spring, and is thanked so warmly by the gnome who lost it that it feels like having saved a life.",
+	},
+	["sw.subzone_enter.w22.dwarven.002"] = {
+		"Every smith on this street has his beard tucked into his belt while he works. A dwarf will risk anything at the anvil except the beard.",
+		"Beards folded and tucked away behind leather aprons, all down the forge row. Vanity, or the memory of one beard that caught. Probably both.",
+		"The dwarves here work with their beards tucked into their belts, and untuck them the moment they step away, giving them a little shake like a cloak.",
+	},
+	["sw.subzone_enter.w22.dwarven.003"] = {
+		"is swallowed by a sudden white cloud as a smith plunges a red-hot bar into a trough of water, the hiss as loud as a startled cat and the steam rolling out across the street.",
+		"loses sight of the street for a moment in a gust of steam from a quenching tub of water, and comes out of it smelling faintly of hot iron and wet stone.",
+		"pauses while the steam off a smith's water barrel clears, the cobbles beyond it reappearing slowly, the smith already back at the anvil.",
+	},
+	["sw.subzone_enter.w22.dwarven.004"] = {
+		"Between the cobbles here there's a fine glitter: iron filings, years of them, swept into the cracks until the street sparkles when you look at it sideways.",
+		"The cracks in the paving stones are full of metal dust, filed off a thousand pieces of work. The whole street is quietly made of scraps.",
+		"Crouch and look and the gaps between the stones shine dully with filings and flakes of scale. This district is paved in leftovers.",
+	},
+	["sw.subzone_enter.w22.dwarven.005"] = {
+		"Ironforge in a pocket. Fewer stairs, same opinions.",
+		"A little slice of Ironforge, and every dwarf in it has advice for me.",
+		"Same hammers as Ironforge. Less mountain on top.",
+	},
+	["sw.subzone_enter.w22.dwarven.006"] = {
+		"stops by a dwarf cobbler on a low stool driving hobnails into a boot sole with short, exact taps, the finished boots lined up behind him like a patient queue.",
+		"studies a dwarf resoling a boot on an iron last between his knees, testing each hobnail with a thumb before he sets it.",
+		"slows by a cobbler's bench where a dwarf eyes every passing boot with a professional frown, as though tallying the work walking by.",
+	},
+	["sw.subzone_enter.w22.dwarven.007"] = {
+		"Some of the gnomes in this district have stalls stocked with tools that look salvaged, scorched and lovingly cleaned. Gnomeregan is gone. They brought out what they could carry.",
+		"A gnome tinker here keeps a little dented sign above his bench, older than everything else on it. From Gnomeregan, I'd wager, carried out when the city fell.",
+		"The gnomes on this street work as if they're in a hurry to rebuild something. Gnomeregan is lost to the troggs and worse; none of them say so, and all of them seem to know it.",
+	},
+	["sw.subzone_enter.w22.dwarven.008"] = {
+		"passes two old dwarves at a board scratched into the top of a barrel, playing with nuts and bolts for pieces and accusing each other of moving them while the other drank.",
+		"stops behind a game in progress on an upturned crate, where a bolt has just taken a nut, and the losing dwarf demands a recount of a game with no counting in it.",
+		"glances at a pair of dwarves bent over a game of hex nuts and washers, so absorbed that a cart has to go round them, which neither notices.",
+	},
+	["sw.subzone_enter.w22.dwarven.009"] = {
+		"The smell of this street is close enough to home that I stop listening for the next turn and just walk.",
+		"Coal, hot iron, someone's pipe, someone's dinner. For a few steps I could be back under the mountain.",
+		"A smith calls out a greeting in the old accent, and for a moment Stormwind feels like only a tunnel away from home.",
+	},
+	["sw.subzone_enter.w22.dwarven.010"] = {
+		"pauses by a shopfront where a dwarf opens and shuts a newly hung door over and over, head cocked, listening for a squeak only he can hear.",
+		"observes a smith working a fresh hinge back and forth on a door, oil can in hand, frowning at a sound nobody else in the street can make out.",
+		"hears a door being tried and tried once more, and a dwarf behind it muttering that a hinge that talks is a hinge that lies.",
+	},
+	["sw.subzone_enter.w22.dwarven.011"] = {
+		"At the biggest forge a striker brings his sledge down wherever the smith taps with a small hammer. Tap, boom, tap, boom: a whole conversation without a word in it.",
+		"The smith taps the spot, the striker hits it. Two hammers, one mind, and the small one is in charge.",
+		"I could listen to the smith and the striker for hours: the little hammer pointing, the heavy one answering, never once out of turn.",
+	},
+	["sw.subzone_enter.w22.dwarven.012"] = {
+		"Mind the sparks. And the gnome. Mostly the gnome.",
+		"Sparks to the left, a gnome with a wrench to the right. I'll take the middle.",
+		"Watch your step here: hot iron, loose bolts, and somebody's experiment.",
+	},
+	["sw.subzone_enter.w22.dwarven.013"] = {
+		"A gnome's self-pumping bellows wheezes away at one forge, doing the work of one apprentice and the complaining of three.",
+		"Some gnome has rigged a forge to blow its own bellows with a little clockwork engine. It works, mostly, and it sighs like an old man every time.",
+		"The clockwork bellows at that forge never rests, never tires, and never once stops squeaking. The dwarf beside it looks like he has chosen patience.",
+	},
+	["sw.subzone_enter.w22.dwarven.014"] = {
+		"enters the district as thunder rolls over the roofs, and sees the smiths glance up from their anvils with the grins of craftsmen hearing a rival's hammer.",
+		"hears the storm crack overhead and a dwarf at the nearest forge answer it with one great blow of his own, to cheers from the next forge down.",
+		"goes by a forge where the thunder makes an old smith laugh aloud; the smiths here, his apprentice explains, say the storm is only a bigger forge with worse manners.",
+	},
+	["sw.subzone_enter.w22.dwarven.015"] = {
+		"The shop signs on this street aren't painted wood like the rest of the city's. They're beaten iron, riveted to the wall, and look ready to outlast the walls.",
+		"Every sign here is hammered out of metal. A dwarf, it seems, won't hang anything outside that a good knock could dent.",
+	},
+	["sw.subzone_enter.w22.heroes.001"] = {
+		"runs an eye along the base of a statue, where a name was once cut deep and a great many fingertips have since worn it down to a shallow guess.",
+		"stops at a plinth whose carved letters have been touched smooth at the height of a hand, while those above a man's reach stand as sharp as the day they were cut.",
+		"traces with a glance the lettering on a plinth, crisp at the top and blurred at the bottom, where every child who passed had to touch it.",
+	},
+	["sw.subzone_enter.w22.heroes.002"] = {
+		"I asked a guard who the statues were. He named three with confidence, two with a shrug, and admitted the last one changes depending on who's asking.",
+		"Ask five people along this road who the statues are and you get five lists, all given with total certainty. The stone keeps out of it.",
+		"Everyone on this bridge knows exactly who the statues are. Nobody agrees. The heroes, wisely, say nothing.",
+	},
+	["sw.subzone_enter.w22.heroes.003"] = {
+		"notices that the statues of the valley wear pigeons the way kings wear crowns: always one on top, always looking pleased about it.",
+		"watches a mason on a ladder scrubbing a stone hero's helm clean of pigeon droppings, while the pigeon responsible waits on the next statue along for him to finish.",
+	},
+	["sw.subzone_enter.w22.heroes.004"] = {
+		"Half of Elwynn's farms roll through this valley on cart wheels: cabbages, hay, a pig with opinions. The heroes overhead have stopped armies. They don't stop cabbages.",
+		"Wagons of turnips trundling between statues of the kingdom's greatest. Somehow it's the turnips that convince me.",
+		"Above, the heroes of Stormwind. Below, a cart of onions with a squeaking wheel. I know which one the city would miss first.",
+	},
+	["sw.subzone_enter.w22.heroes.005"] = {
+		"witnesses a gate guard bend nearly double to hear a gnome state his business, then straighten, nod gravely, and wave him on with a salute pitched for someone much taller.",
+		"catches a sentry dropping to one knee to read a gnome's papers at eye level, as solemnly as if the gnome were a visiting lord.",
+	},
+	["sw.subzone_enter.w22.heroes.006"] = {
+		"The road here is wide enough for an army marching twelve abreast. It was built for one great day, the old soldiers say, and every other day it carries milk.",
+		"A road this broad was laid for parades and armies coming in under banners. Mostly it gets milk carts, and travelers who stop dead to stare at the statues.",
+	},
+	["sw.subzone_enter.w22.heroes.007"] = {
+		"Big fellows. I wonder if they ever get to sit down.",
+		"Stone heroes. Not one of them with a stiff neck. I'm jealous.",
+		"All that glory and not a single bench between them.",
+	},
+	["sw.subzone_enter.w22.heroes.008"] = {
+		"looks away as a woman pins a sprig of something green to a soldier's collar by the gate, steps back, and walks briskly off without looking round, which is the only way to do it.",
+		"goes round a pair saying goodbye beside the gate with their foreheads together, as the traffic of carts parts around them like water round a stone.",
+		"watches an old man see a young one off at the first statue, shake his hand once, and stay there long after with his hands in his pockets.",
+	},
+	["sw.subzone_enter.w22.heroes.009"] = {
+		"Somewhere on every front of the Alliance there's someone who marched out over this bridge. I've met them in mud and in deserts, and every one of them remembers these statues.",
+		"Ask any Alliance soldier far from here what they picture when they think of Stormwind, and half will say the statues on this bridge. Not the keep. The statues.",
+	},
+	["sw.subzone_enter.w22.heroes.010"] = {
+		"spots a heron standing knee-deep at the foot of a bridge pier, indifferent to the carts above, intent on something in the water it has clearly been watching longer than anyone has watched anything.",
+		"picks out a heron poised on a ledge of the moat wall, one leg folded, as unmoved by the traffic overhead as the stone heroes are.",
+	},
+	["sw.subzone_enter.w22.heroes.011"] = {
+		"Every dwarf who crosses this bridge stops to judge the stonework. Every one of them finds a joint to tut at. Never the same joint.",
+		"A dwarf ahead of me has stopped mid-bridge to run his thumb down a seam between two blocks. He grunts, which from a dwarf is a medal.",
+		"Watch the dwarves on this bridge. The humans look up at the statues; the dwarves look down at the masonry, and frown, and nod, and frown.",
+	},
+	["sw.subzone_enter.w22.heroes.012"] = {
+		"walks the valley under the lamps, where the great statues stand half lit, their faces lost above the reach of the light.",
+		"passes between the statues in the dark and finds that without their faces they seem bigger: only boots and hands and the hint of a cloak going up into nothing.",
+	},
+	["sw.subzone_enter.w22.heroes.013"] = {
+		"Their heroes line the road, chins up, every one of them a warrior someone on my side remembers very differently. I walk the middle of the bridge and look at none of them for long.",
+		"Stone giants of the Alliance on both sides of the road. Some of them, I'd wager, have names that are curses where I come from.",
+	},
+	["sw.subzone_enter.w22.heroes.014"] = {
+		"listens to a small boy counting the statues out loud for his mother, getting one more than last time, and insisting he's right.",
+		"steps round a girl walking backward to keep all the statues in sight at once, counting under her voice, until she bumps gently into a guard who has seen it before.",
+		"hears a child at the rail count the heroes twice and get two different numbers, then decide, firmly, that one of them must have moved.",
+	},
+	["sw.subzone_enter.w22.heroes.015"] = {
+		"Past the gate, Elwynn Forest is all green and birdsong; past the statues, the city is all stone and bells. The bridge is where the two smells meet and argue.",
+		"Pine resin from one end of the bridge, chimney smoke and horse from the other. In the middle of the valley the air can't make up its mind.",
+	},
+	["sw.subzone_enter.w22.heroes.016"] = {
+		"hangs back while a sergeant marches a squad of recruits along the valley, halting them under each statue in turn to bellow its name, the recruits repeating it like a lesson.",
+		"steps aside for a sergeant who stops a column of recruits at the foot of a statue and tells them in a parade-ground roar that they will not be getting one, so they had better earn something smaller.",
+	},
+	["sw.subzone_enter.w22.heroes.017"] = {
+		"Stand up straight, they're watching. The statues, I mean. Probably.",
+		"All these heroes and I've got mud to the ankles. Nobody look down.",
+	},
+	["sw.subzone_enter.w22.heroes.018"] = {
+		"The hinges on the great gate are as thick as my waist. Somebody greases them; I've never seen who. A gate like that doesn't creak. It decides.",
+		"Hinges the size of a dwarf. Whoever oils them must be the most important person in the city that no one has ever met.",
+		"I've never once seen that gate shut. Somebody must close it now and then, and I'd like to be there to hear it.",
+	},
+	["sw.subzone_enter.w22.heroes.019"] = {
+		"is hailed by a peddler at the foot of the bridge selling tiny painted statues of the valley's heroes, a copper apiece, though which hero is which depends entirely on the paint.",
+		"pauses over a tray of little clay heroes for sale by the road, each the length of a finger, the faces painted a little too cheerful for the originals.",
+		"is offered, by a hopeful boy with a tray, a clay hero the size of a thumb, and assured it is whichever hero the customer likes best.",
+	},
+	["sw.subzone_enter.w22.heroes.020"] = {
+		"In the stones of this bridge, the masons say, are blocks pulled from the rubble of the first city and set back in place. They won't say which. I catch myself looking for scorch marks.",
+		"Old stone from the burned city went back into this bridge, they say along the road. Nobody can point to the block. Maybe that's the point.",
+	},
+	["sw.subzone_enter.w22.heroes.021"] = {
+		"Hello, heroes. Don't get up.",
+		"Don't mind me, heroes. Just passing under your boots.",
+		"Sorry to interrupt, everyone. Carry on being magnificent.",
+	},
+	["sw.subzone_enter.w22.heroes.022"] = {
+		"pauses as a carter stops his wagon at the bridge to beat the dust of the road out of his hat against a statue's plinth, and apologizes to the statue.",
+		"turns to see a drover halt mid-bridge to knock the road from his boots against a plinth, then glance up at the stone hero above and touch his cap, just in case.",
+	},
+	["sw.subzone_enter.w22.keep.001"] = {
+		"edges past a servant on hands and knees polishing the brass edge of a stair, who stops, lets the boots go by, and polishes away the mark they left.",
+		"steps over a servant buffing a brass stair-rod with a rag, who waits without a word for the passing feet and then goes straight back to work on the very spot they touched.",
+		"becomes aware of a maid with a cloth following a little way behind every visitor on the stairs, erasing the keep's guests one footprint at a time as they climb.",
+	},
+	["sw.subzone_enter.w22.keep.002"] = {
+		"A page comes round a corner at a dead run, scroll in hand, sees the guards, and drops to a stately walk in a single stride. Two steps past them he's sprinting once more.",
+		"The pages of the keep have two speeds: a dignified walk where a guard can see, and a flat sprint everywhere else. I've watched one change gears three times in a corridor.",
+		"That page just walked past the guards like a bishop and broke into a run the moment he thought nobody important was watching. I'm not important. He was right.",
+	},
+	["sw.subzone_enter.w22.keep.003"] = {
+		"passes three clerks copying the same decree in three hands while a fourth reads it out to them a phrase at a go, flatly, as if it bored him.",
+		"glimpses a row of clerks bent over the same long sheet, pens dipping together like oars, their scratching loud in the stone hush.",
+	},
+	["sw.subzone_enter.w22.keep.004"] = {
+		"Say Lady Prestor's name in the keep and watch what people do with their hands. Some fold them. Some find a sleeve to straighten. Nobody leaves them still.",
+		"I heard a clerk mention Lady Prestor and another clerk drop his pen. Neither said a word more about it. The pen was picked up very slowly.",
+		"Everyone at court agrees Lady Prestor is gracious. They agree a little too quickly, the way people praise a dog they don't quite trust.",
+	},
+	["sw.subzone_enter.w22.keep.005"] = {
+		"I'll keep my hands where the guards like them. Which, judging by their faces, is nowhere.",
+		"Wipe your boots. No, the other boot. These floors are worth more than I am.",
+	},
+	["sw.subzone_enter.w22.keep.006"] = {
+		"notices that the keep smells of beeswax and cold stone, and faintly of soup being carried up some back stair to people who will eat it standing.",
+		"catches, under the polish and the candle smoke, a smell of onion broth from some service passage, the keep's kitchens going about their business as if no crown were involved.",
+		"picks up, among the wax and the stone, the plain smell of baking bread, and somewhere a cook's voice telling someone to mind the tray.",
+	},
+	["sw.subzone_enter.w22.keep.007"] = {
+		"Somewhere in the keep there's a chair at a table that nobody sits in and nobody moves. I don't know that. I'd only be surprised if there weren't.",
+		"The king sailed for a peace and the sea kept him. The keep goes on polishing his floors as if he'll want them clean when he walks in.",
+		"No one in these halls says the king is dead. They say away. The word is doing a great deal of work.",
+	},
+	["sw.subzone_enter.w22.keep.008"] = {
+		"hears the change of the guard somewhere deeper in the keep: a single word, a double knock of halberd butts on stone, and boots moving off in step.",
+		"listens to the watch changing out of sight, two knocks of a halberd on the flagstones and a muttered password, then a silence that seems a little fresher.",
+	},
+	["sw.subzone_enter.w22.keep.009"] = {
+		"They say the young king asks questions of everyone: guards, cooks, a mason fixing a step. The guards pretend to find it trying. They'd walk into fire for him.",
+		"A boy with a crown and a thousand questions, the cooks call him, and they say it fondly. Whatever else the court is, the kitchens are on his side.",
+		"The servants talk about the young king the way people talk about a nephew: a little worried, a little proud, and very quick to hush anyone who isn't kind.",
+	},
+	["sw.subzone_enter.w22.keep.010"] = {
+		"overhears a petitioner in a borrowed coat rehearsing a speech to the wall, lips moving, then starting it over from the top.",
+		"finds a farmer clutching his hat by the brim and repeating one sentence to himself, changing a word each time, as if the right one might open a door.",
+		"stands aside for a widow in her best gray, murmuring the opening of her petition over and over, softer each time, until the words have worn smooth.",
+	},
+	["sw.subzone_enter.w22.keep.011"] = {
+		"Quiet, everyone. Somewhere in here a kingdom is being held together with ink.",
+		"I'll whisper. Everyone else is, and I'd rather not be the only voice in the building.",
+		"Softly. This is where the paperwork of an entire kingdom sleeps, and it wakes up cross.",
+	},
+	["sw.subzone_enter.w22.keep.012"] = {
+		"hears a herald somewhere ahead calling a name, and a different voice, smaller, answering as if it had been waiting all its life to be called.",
+		"catches a herald calling out a name, twice, and the small scurry somewhere of a petitioner realizing it was theirs.",
+	},
+	["sw.subzone_enter.w22.keep.013"] = {
+		"Every child in the kingdom is told the keep is where the crown lives. Up close, it's mostly where the crown works, and the crown, just now, is short of hands.",
+		"The crown's house. A boy in it, a paladin minding it, and the whole kingdom outside hoping they both sleep well.",
+	},
+	["sw.subzone_enter.w22.keep.014"] = {
+		"catches a royal guard's eyes tracking {g:him|her} from under the helm the whole way past, while his head stays perfectly, almost insultingly still.",
+		"feels a guard's gaze settle on belt, sleeves and boots in that order, an inventory taken without the helm moving a finger's width.",
+	},
+	["sw.subzone_enter.w22.keep.015"] = {
+		"The regent was a paladin before he was anything else. They say he still kneels before he sits down to the kingdom's ledgers, and gets up stiffly.",
+		"A paladin minding the ledgers of a kingdom. I'd guess he'd rather be minding a gate. Ledgers don't fight fair.",
+	},
+	["sw.subzone_enter.w22.keep.016"] = {
+		"Whatever they decide in here, I'll be the one carrying it out on some muddy road. Fair enough.",
+		"Orders are born in this building and grow up on the road. I've met a few of them at the far end.",
+	},
+	["sw.subzone_enter.w22.keep.017"] = {
+		"walks into a cloud of some noble's perfume hanging in the still air, so strong that it lingers long after its owner, like a rumor.",
+		"passes through the wake of a lady's scent, roses and something sharper, that hangs where she walked like a signature.",
+		"moves through three perfumes in ten paces, each belonging to a different noble house, none of them on speaking terms.",
+	},
+	["sw.subzone_enter.w22.keep.018"] = {
+		"Stone this thick never warms through. The guards here wear wool under the mail and still stamp their feet when they think nobody's looking.",
+		"The keep is cool in every season. A guard told me the walls were made thick enough to stop a siege, and nobody thought to ask them to let a little warmth in.",
+	},
+	["sw.subzone_enter.w22.keep.019"] = {
+		"passes two nobles in close conversation who fall silent, smile, and wait with great courtesy for the footsteps to be out of earshot.",
+		"notices that a knot of courtiers goes quiet a pace before anyone reaches them and starts up a pace after, as tidy as a door closing and opening.",
+		"draws a pair of polite smiles from two courtiers who have stopped talking mid-word and will plainly not start again until the coast is clear.",
+	},
+	["sw.subzone_enter.w22.keep.020"] = {
+		"The heart of the Alliance, and nobody stopped me. If the court knew how little stands between it and a stranger with a hood, nobody in here would sleep.",
+		"Every banner on these walls says the same thing to someone like me: never again. I keep my face very still.",
+	},
+	["sw.subzone_enter.w22.keep.021"] = {
+		"Ah, the keep. Where every step echoes and every echo has a guard.",
+		"My boots are too loud for this place. All boots are.",
+	},
+	["sw.subzone_enter.w22.keep.022"] = {
+		"falls in for a few paces behind a steward with a ledger, who walks slowly along the hangings, counting the lion banners under his lips and frowning at one that has a loose thread.",
+		"glimpses a steward checking the banners one by one against a list, touching each hem the way a groom runs a hand down a horse's leg, and noting on the page the one that needs a needle.",
+	},
+	["sw.subzone_enter.w22.mage.001"] = {
+		"steps aside for an apprentice carrying books stacked to the chin, just as an older mage strolls past and, without looking, makes the top volume float away into her own hands.",
+		"eyes a teetering pile of books going by in an apprentice's arms just as the topmost one lifts gently into the air and follows an old mage like a dog called to heel.",
+		"sees an apprentice's stack of books lose its top volume to a flick of an elderly mage's fingers, and the apprentice not even look surprised.",
+	},
+	["sw.subzone_enter.w22.mage.002"] = {
+		"Even the shopkeepers in this quarter talk in library voices. I asked a price out loud and three people turned to look.",
+		"The Mage Quarter is quiet the way a reading room is quiet: not empty, just full of people who would like you to stop.",
+		"Nobody raises a voice here. A merchant just whispered a price to me as though it were a secret, and charged me as though it were one too.",
+	},
+	["sw.subzone_enter.w22.mage.003"] = {
+		"wanders by a reagent stall crowded with stoppered jars, each labeled in a cramped hand, where a customer uncorks one, sniffs, and puts it back very carefully.",
+		"lingers by shelves of little jars and pouches outside a shop, where a buyer holds one up to the eye, shakes it, and decides against whatever is moving inside.",
+		"notices a seller of powders and dried things weighing out a pinch of something gray for a customer, both of them standing as far from the scale as their arms allow.",
+	},
+	["sw.subzone_enter.w22.mage.004"] = {
+		"The moss between the stones in this quarter grows in colors moss shouldn't come in. Something spills here regularly, and the moss has adapted.",
+		"Violet moss. Pale blue moss. One patch by a drain that I'd swear is faintly ticking. The gutters of the Mage Quarter see a great deal.",
+		"Whatever the apprentices tip down the drains, the weeds between the cobbles have grown fond of it. Some have gone an unlikely shade of teal.",
+	},
+	["sw.subzone_enter.w22.mage.005"] = {
+		"Everyone in this quarter looks like they've just remembered something important and left it boiling.",
+		"Half the people here are walking fast and frowning. Something, somewhere, is on fire, or about to be.",
+	},
+	["sw.subzone_enter.w22.mage.006"] = {
+		"stops at the sight of a sheep standing alone in the middle of the street, looking deeply offended, which a moment later is a red-faced apprentice brushing wool off his sleeves.",
+		"goes round a bewildered sheep on the cobbles, and turns in time to see it become a young mage again, while a classmate across the street laughs much too loudly.",
+		"watches a sheep trot out of a side street bleating furiously, then stumble, blur and stand up as an apprentice in a crooked hat, swearing revenge on someone.",
+	},
+	["sw.subzone_enter.w22.mage.007"] = {
+		"Look at the hems of the robes here: singed, every one, some patched with a band of fresh cloth. The tailors of this quarter must do nothing but hems.",
+		"Every robe in the Mage Quarter has a scorched hem. There's a tailor down the street offering to replace them while you wait, and a crowd waiting.",
+		"They say in this quarter you can tell how far along an apprentice is by the hem: the more scorch marks, the more years of study.",
+	},
+	["sw.subzone_enter.w22.mage.008"] = {
+		"passes an apprentice handing out loaves to the beggars of the quarter, loaves that appeared out of nothing, and the beggars complaining, politely, that they taste of nothing too.",
+		"watches a young mage conjure bread for a line of hungry folk at the corner, and an old beggar chew thoughtfully and ask whether it comes in rye.",
+		"stands by as a mage produces a fresh round loaf from thin air for a beggar, who weighs it in his hand with deep suspicion and then eats it all the same.",
+	},
+	["sw.subzone_enter.w22.mage.009"] = {
+		"The candle seller in this quarter doesn't sell candles singly; he sells them by the armful, and the scholars buy them like bread.",
+		"In other streets a candle is a small expense. Here, I watched a woman in robes buy forty of them and ask whether he had more in the back.",
+		"Candles by the bundle, wicks by the yard. Nobody in this quarter seems to sleep while there's a page left to read.",
+	},
+	["sw.subzone_enter.w22.mage.010"] = {
+		"I'll keep my questions short. Mages give long answers.",
+		"One question, one answer. Here, that's asking a lot.",
+		"Ask a mage the way and you get the history of the street. I'll find it myself.",
+	},
+	["sw.subzone_enter.w22.mage.011"] = {
+		"watches a messenger knock at a tall narrow house, wait, knock once more, until a window high above opens just long enough for a key to drop at his feet.",
+		"stops as a key falls from an upper window and rings on the cobbles beside a waiting courier, the window already shut before he can look up.",
+		"comes upon a courier hammering patiently at a mage's door, and a voice from three floors up telling him to come back once the experiment has finished, or exploded.",
+	},
+	["sw.subzone_enter.w22.mage.012"] = {
+		"walks into a fog tinted faintly violet by the lamps of the quarter, the tower's outline coming and going above it like a thought half remembered.",
+		"moves through a fog that has taken on the colors of the windows around it, lilac by one shop, pale gold by another, ordinary gray everywhere else.",
+		"crosses the quarter in fog so thick that the only way to tell the streets apart is by the color of the light soaking through it.",
+	},
+	["sw.subzone_enter.w22.mage.013"] = {
+		"Two mages on a corner are arguing, heatedly, about a footnote. One of them has the book open and is jabbing at it. The other has a different edition.",
+		"I just heard a quarrel in this street that came down, as far as I could follow, to the placement of a comma in a very old book.",
+		"The fiercest argument in the quarter is happening on a bench between two gray beards, over a word that one of them insists was mistranslated a century ago.",
+	},
+	["sw.subzone_enter.w22.mage.014"] = {
+		"Of all the sounds in this quarter, the one I hear most isn't anything arcane. It's pages turning, from open windows all down the street.",
+		"No crackle, no bang this time. Just the dry whisper of pages from a dozen windows at once, as if the street itself were reading.",
+		"Stand still here and listen: page after page after page, turned somewhere above by people who have forgotten there's a street below.",
+	},
+	["sw.subzone_enter.w22.mage.015"] = {
+		"skirts a patch of street frozen solid for no reason the sky could give, three children taking turns to slide across it while an apprentice pretends it has nothing to do with him.",
+		"slips, recovers, and looks down at a perfect disk of ice on the cobbles, the kind of mistake a careless apprentice leaves behind and hopes nobody traces.",
+	},
+	["sw.subzone_enter.w22.oldtown.001"] = {
+		"lingers by a locksmith demonstrating a new lock to a customer, who watches the picks at work far more closely than an honest buyer would need to.",
+		"pauses by a locksmith's bench where a hooded customer asks, with great innocence, how long such a lock would hold against a clever pair of hands.",
+		"catches a locksmith showing off a padlock in the lane, and the locksmith noticing, in turn, that his audience is taking notes.",
+	},
+	["sw.subzone_enter.w22.oldtown.002"] = {
+		"The upper floors lean so far over the lane that two neighbors are passing a cooking pot across it, window to window, without either leaving the house.",
+		"Up there the houses almost touch. Someone just handed a loaf across the gap to the window opposite, as easy as passing salt.",
+		"In these lanes the top stories bow toward each other like old gossips. I've seen villages less neighborly.",
+	},
+	["sw.subzone_enter.w22.oldtown.003"] = {
+		"comes upon a dice game on an upturned barrel just as a guard rounds the corner; the dice vanish, and four players are suddenly discussing the price of turnips.",
+		"happens on a crouched circle of dice players as they straighten all together at the sound of a patrol, the barrel between them now holding nothing but a very innocent cup.",
+		"arrives in time to watch a game of knucklebones dissolve: a guard's helmet appears at the end of the lane, and the players remember urgent business in four directions.",
+	},
+	["sw.subzone_enter.w22.oldtown.004"] = {
+		"The walls in this quarter are a patchwork: pale new blocks set among dark old ones, mended wherever something fell. Nobody rebuilt Old Town; they darned it.",
+		"Every house here is two or three ages of stone at once, the new pieces lighter, fitted around what survived. A quilt more than a wall.",
+		"You can read the repairs in these walls like scars on a hand: a lighter block here, a different mortar there, an arch that doesn't match its door.",
+	},
+	["sw.subzone_enter.w22.oldtown.005"] = {
+		"Somebody round here is cooking cabbage, and losing.",
+		"Cabbage. Somewhere close, someone is boiling one into surrender.",
+		"Smells like a cabbage lost an argument with a pot.",
+	},
+	["sw.subzone_enter.w22.oldtown.006"] = {
+		"steps into the nearest recess as a file of soldiers comes marching down the narrow lane, and sees that the locals did the same a moment sooner, without looking up.",
+		"makes room for a sergeant and his squad tramping through the lane; the residents melt into porches and stairways with the ease of long practice.",
+		"presses against a wall as boots fill the lane from end to end, and watches an old woman with a basket wait it out, unbothered, as one waits for a cart to pass.",
+	},
+	["sw.subzone_enter.w22.oldtown.007"] = {
+		"The cats of Old Town are the fattest in the city. They work the tavern back doors in shifts and have never caught a mouse in their lives.",
+		"Every tavern here has a cat on its back step, round as a loaf. Kitchen scraps, I'd guess, and very little hunting.",
+		"A ginger cat the size of a small dog watches me from a tavern step. In this quarter even the cats look kept by the house.",
+	},
+	["sw.subzone_enter.w22.oldtown.008"] = {
+		"slows near a fiddler playing outside the Pig and Whistle, who breaks off mid-tune to argue with someone inside about the words, then picks up exactly where he stopped.",
+		"hears out a street fiddler by the tavern wall who plays the same lively tune three times over, each time a little faster, until a voice from a window begs for mercy.",
+		"hears a fiddle by the Pig and Whistle stop dead in the middle of a jig, the fiddler glaring at a coin that has turned out to be a button.",
+	},
+	["sw.subzone_enter.w22.oldtown.009"] = {
+		"The city's rogues learn their trade somewhere in these lanes. If any of them looks at me twice, I'll find out how good this disguise really is.",
+		"Of all the streets in Stormwind, this is the one where people are trained to see through a face. I keep mine dull and my pace unhurried.",
+		"Old Town is full of people paid to notice things. I would very much like to be the dullest thing in it.",
+	},
+	["sw.subzone_enter.w22.oldtown.010"] = {
+		"Old Town is where the city keeps its old soldiers. You see them on the cobbles, limping, and still falling into step with any patrol that passes.",
+		"There's a gray-haired man with a cane ahead of me who, when the patrol goes by, matches its stride without thinking, cane and all.",
+		"An old soldier on a bench taps his cane in time with the passing patrol, and his good leg keeps step under the bench.",
+	},
+	["sw.subzone_enter.w22.oldtown.011"] = {
+		"looks up at a house front climbed by a crooked outside stair, with a door on every landing and a different name chalked beside each.",
+		"follows with {g:his|her} eyes a wooden stair zigzagging up the side of a house, three doors stacked one above another, a washing line strung between the top two.",
+		"glances up at a narrow house with its stair on the outside, where a man halfway up is haggling with a woman at the top door over what he owes for the room.",
+	},
+	["sw.subzone_enter.w22.oldtown.012"] = {
+		"Hand off my purse, friend. Ah. It's my own hand. This street does things to a person.",
+		"Felt a hand at my belt. Mine, as it turns out. Old Town makes you jumpy.",
+		"Who's touching my purse? Oh. Me. Carry on.",
+	},
+	["sw.subzone_enter.w22.oldtown.013"] = {
+		"feels a tug at the sleeve: a boy no higher than a belt, asking if there's anything wants delivering quiet, then gone between two houses before the answer.",
+		"is approached by a skinny lad who murmurs an offer to carry messages, 'no questions, no names', and vanishes down a gap no wider than his shoulders.",
+		"turns at a small voice by {g:his|her} elbow offering discreet deliveries, and sees only an empty alley and a gate still moving.",
+	},
+	["sw.subzone_enter.w22.oldtown.014"] = {
+		"The regulars of the Pig and Whistle claim you can buy any rumor in Old Town for one drink, and the truth for two. Nobody I've asked has ever paid for the second.",
+		"A rumor costs an ale in this quarter, they say at the Pig and Whistle. The truth costs more, and comes with a warning not to repeat it.",
+		"In Old Town, the drinkers say, news travels from tavern to tavern faster than any guard can walk, and arrives improved.",
+	},
+	["sw.subzone_enter.w22.oldtown.015"] = {
+		"stands aside for two trainees carrying a battered straw dummy between them, its sack head lolling, like a pair of friends seeing a drunk home.",
+		"makes way for a straw dummy on its way to the training yard, stuffing leaking and one arm hanging off, held up by a pair of grim-faced trainees.",
+	},
+	["sw.subzone_enter.w22.park.001"] = {
+		"finds a night elf up in the fork of an old oak, reading, one bare foot dangling, as comfortable as anyone else would be in an armchair.",
+		"spots a pair of bare feet hanging from a low branch and, above them, a night elf with a book, who turns a page without once glancing at the path.",
+		"makes out a night elf settled high in a tree with a book across her knees, her boots left side by side at the foot of the trunk like a calling card.",
+	},
+	["sw.subzone_enter.w22.park.002"] = {
+		"At the edge of the Park the roots have started lifting the paving, slab by slab. Nobody hurries to stop them. The masons are patient; the trees are more patient.",
+		"Where the lawn meets the street, a root has heaved a paving stone up on its edge. The city lays stone, and the Park takes it back a finger's width a year.",
+		"The flagstones by the trees sit crooked, nudged up from below. Under my boots a root is winning a very slow argument.",
+	},
+	["sw.subzone_enter.w22.park.003"] = {
+		"That squirrel just looked me over and decided I'm not worth robbing. Rude.",
+		"Even the squirrels in here have opinions about my pockets.",
+	},
+	["sw.subzone_enter.w22.park.004"] = {
+		"meets a night elf carrying water from the canal in cupped hands, back and forth, to a sapling no taller than a boot, as if no bucket had ever been invented.",
+		"happens on a night elf kneeling by a sapling tied to a stick with string, pouring water around it a palmful at a go, slow trip after slow trip from the water's edge.",
+		"slows beside a night elf who walks to the canal and back with both hands cupped, losing half on the way, to water a sapling that could have used a bucket.",
+	},
+	["sw.subzone_enter.w22.park.005"] = {
+		"A gardener has roped off a square of fresh seed with string and four pegs. Every pigeon in the city has read the string as an invitation.",
+		"One patch of lawn is fenced with string and pegs, new seed inside. The pigeons inside the string look very pleased with the arrangement.",
+	},
+	["sw.subzone_enter.w22.park.006"] = {
+		"slows near an old man in a faded soldier's tabard going through slow drills with a fallen branch, every stroke correct, none of them in a hurry.",
+		"lingers by a gray-whiskered veteran working through the old drill with a stick, stepping each stance as exactly as if a sergeant were still counting.",
+	},
+	["sw.subzone_enter.w22.park.007"] = {
+		"Ten paces in and the street is a hum. Ten more and I can hear leaves rubbing together. The city hasn't left; it has only stepped back, like a crowd making room.",
+		"Twenty paces onto the grass and the city sinks to a murmur behind the trees. Not gone. Just standing back politely, the way people do at a sickbed.",
+		"The noise of Stormwind doesn't stop at the edge of the lawn. It thins, a little more with every tree, until what's left could almost be the sea in a shell.",
+	},
+	["sw.subzone_enter.w22.park.008"] = {
+		"is drawn to a tabby crouched in the long grass under a tree, tail twitching, while the blackbird it is stalking sings a little louder, purely to insult it.",
+		"eyes a cat flattened in the grass, inching toward a blackbird that hops just out of reach each time, with the air of having done this for years.",
+	},
+	["sw.subzone_enter.w22.park.009"] = {
+		"One trunk near the path is rubbed smooth at shoulder height, pale as a banister. Generations have leaned exactly there to think. I add my shoulder to the count.",
+		"There's a tree by the path polished bare at the height of a shoulder. Everyone who needed a moment leaned on the same spot. I lean too, and the bark is warm from the last one.",
+		"Somebody's shoulder wore that patch of bark smooth, and somebody's after that. I set mine to it and find it fits.",
+	},
+	["sw.subzone_enter.w22.park.010"] = {
+		"Five minutes on this grass. The city can wait five minutes. It's waited longer for worse.",
+		"Sit, look at a tree, get up. Best errand in Stormwind.",
+		"Nobody needs me for a little while. I'll spend it on a patch of lawn.",
+	},
+	["sw.subzone_enter.w22.park.011"] = {
+		"looks up past the treetops at the city wall, where ivy has climbed the stone higher than any ladder of the watch could reach.",
+		"follows the line of the wall above the trees, its pale stone gone green in long ragged streaks where the ivy has had its way for years.",
+	},
+	["sw.subzone_enter.w22.park.012"] = {
+		"The humans built their park the way they build everything: with a plan. The trees have been quietly ignoring the plan for years, and I like them for it.",
+		"A forest folded small and set inside a human wall. It isn't Teldrassil. It doesn't try to be, which is the kindest thing about it.",
+	},
+	["sw.subzone_enter.w22.park.013"] = {
+		"comes upon a gardener and a night elf druid in polite disagreement over a barrow of manure: the gardener points at a flowerbed, the druid at a tree, and the barrow waits between them.",
+		"skirts a gardener and a druid standing either side of a loaded wheelbarrow, each indicating a different bed with great courtesy and no sign of giving way.",
+	},
+	["sw.subzone_enter.w22.park.014"] = {
+		"Someone is on hands and knees by the flowerbeds with a little knife and a sack, cutting plants the gardeners swear they never sowed. Nobody stops her. Nobody's sure whose they are.",
+		"An herbalist kneels among the beds, snipping leaves into a pouch. The gardeners watch, argue among themselves whether it counts as weeding, and let it go.",
+		"A woman with a satchel is harvesting along the edge of a flowerbed as calmly as if it were hers. The gardener nearby has decided she's doing his weeding for free.",
+	},
+	["sw.subzone_enter.w22.park.015"] = {
+		"steps carefully around a small boy on his stomach in the grass, nose almost touching a beetle, who announces without looking up that it has six legs and he has counted twice.",
+		"gives a wide berth to a little girl lying flat in the grass with her chin on her fists, studying a beetle with the grave attention of a scholar.",
+	},
+	["sw.subzone_enter.w22.park.016"] = {
+		"Somebody tell the tax collectors: there's an entire grove in here and it hasn't paid a copper.",
+		"Trees, inside the walls, paying no rent. I want to know their secret.",
+		"Prime land in the capital, and they gave it to the oaks. Bless whoever lost that argument.",
+	},
+	["sw.subzone_enter.w22.park.017"] = {
+		"walks under the dark trees of the Park, where a few night elves sit in the grass, wide awake, talking softly as if the hour had only just begun.",
+		"finds the Park awake in its own way after dark: the humans gone home, and here and there a night elf in the grass, eyes bright, in no hurry at all.",
+	},
+	["sw.subzone_enter.w22.park.018"] = {
+		"Stone keeps a city safe. A few trees keep it sane. Whoever argued for this corner deserves a statue, and would probably prefer a bench.",
+		"Somebody, once, had to stand up before the nobles and argue that good building land should be left to grow grass. I'd like to have heard that speech.",
+		"Every plot in Stormwind could be a house, a shop or a warehouse. This one was let off. Someone powerful must have liked to sit under a tree.",
+	},
+	["sw.subzone_enter.w22.park.019"] = {
+		"halts where a hedge has been clipped into a long, careful wall, and a hole near the ground shows exactly where the neighborhood's dogs disagree with it.",
+		"walks beside a trim hedge with a ragged gap at the bottom, worn by every dog in the district, which the gardener has plainly given up trying to close.",
+	},
+	["sw.subzone_enter.w22.park.020"] = {
+		"Of all the places in this city, the Park is where I forget to be careful. That's exactly why the hood stays up in here.",
+		"Grass and birds and people dozing in the open. The enemy's capital has a soft corner. I make myself remember whose it is.",
+	},
+	["sw.subzone_enter.w22.park.021"] = {
+		"comes upon a gnome with a knotted string looped round a tree trunk, muttering figures into a notebook, while a night elf watches from a branch above in polite, total bafflement.",
+		"edges around a gnome pacing from one trunk to the next, counting steps aloud, and starting over, crossly, every time a squirrel crosses the count.",
+	},
+	["sw.subzone_enter.w22.park.022"] = {
+		"If anyone asks, I'm a log. Logs lie under trees all the time.",
+		"I'll be under that oak, doing an excellent impression of a fallen branch.",
+	},
+	["sw.subzone_enter.w22.park.023"] = {
+		"Someone has hung a child's wooden horse by its string from a low branch, where its owner might spot it. It turns slowly whenever the leaves stir, patient as a lantern.",
+		"A toy horse dangles from a branch by the path, its string looped over twice by whoever found it on the grass. It waits at exactly the height of a child's eye.",
+	},
+	["sw.subzone_enter.w22.trade.001"] = {
+		"sidesteps a porter carrying a tower of hatboxes so tall that he steers by the complaints of the people he bumps into.",
+		"makes way for a stack of hatboxes on legs, which apologizes from somewhere inside itself and keeps going.",
+		"flattens against a shop front as a porter goes by under a teetering column of hatboxes, navigating by ear.",
+	},
+	["sw.subzone_enter.w22.trade.002"] = {
+		"Under all the shouting, the real sound of this district is small: brass weights tapping onto the pans of a hundred scales, counter after counter.",
+		"Listen past the hawkers and you hear the scales. Tiny brass weights set down, lifted, set down once more, all along the street.",
+		"Every counter here has its little scale and its box of brass weights. The whole district clicks quietly, like a clock made of money.",
+	},
+	["sw.subzone_enter.w22.trade.003"] = {
+		"All the prices here are written in chalk. I notice chalk rubs out very easily.",
+		"Chalk on every price board. Nothing in this district is meant to stay put for long.",
+		"Prices in chalk, I see. So they're more of a suggestion.",
+	},
+	["sw.subzone_enter.w22.trade.004"] = {
+		"spots a tailor measuring a customer out on the step, the shop behind too crowded to turn round in, a row of pins held between her lips.",
+		"edges around a tailor at work on the paving, tape stretched along a stranger's arm, mumbling the figures through a mouthful of pins.",
+		"skirts a fitting being held in the open street: a customer with arms spread, a tailor circling with a tape, and a small crowd giving advice.",
+	},
+	["sw.subzone_enter.w22.trade.005"] = {
+		"The shop signs hang low over the street: a boot, a key, a loaf, a pair of scissors. Pictures, so nobody needs to read. Tall shoppers learn to duck.",
+		"A wooden boot, an iron key, a gilded loaf, all dangling at head height. In this district you read the street with your forehead.",
+		"Half the trade here is announced by carved signs hung so low that I keep ducking under a giant wooden boot.",
+	},
+	["sw.subzone_enter.w22.trade.006"] = {
+		"follows a dropped coin rolling away across the street, until three separate boots come down on it at once, their owners regarding one another in polite silence.",
+		"catches sight of a copper spinning loose from a counter, which gets no farther than a stride before a dozen pairs of eyes, and one quick foot, have caught it.",
+		"notices how a coin dropped here never rolls far: a heel stops it before it has gone a yard, and the argument over whose it was begins at once.",
+	},
+	["sw.subzone_enter.w22.trade.007"] = {
+		"Dwarven ironmongery on one stall, elven silks on the next, a gnome's clockwork on a third. The whole Alliance seems to end up for sale on this street sooner or later.",
+		"Everything the Alliance makes passes through here eventually: dwarven hinges, elven cloth, gnomish gadgets, all priced in the same human silver.",
+		"Ironforge steel, Darnassian silk, and a crate of gnomish springs nobody can identify. Goods from every corner end up on these counters.",
+	},
+	["sw.subzone_enter.w22.trade.008"] = {
+		"passes the guard at the bank door, who looks half asleep on his feet and whose eyes, the moment anyone in the street breaks into a run, are suddenly not asleep at all.",
+		"glances at a bank guard leaning on his halberd, eyelids heavy, until a child dashes past and his whole body turns toward the sound like a hound hearing its name.",
+		"notices the bank guard yawning, then notices him stop yawning, very quickly, as a cart lurches and someone shouts.",
+	},
+	["sw.subzone_enter.w22.trade.009"] = {
+		"I came for one thing. Three stalls in and the list has grown legs.",
+		"One errand. That was the plan. The street has other plans.",
+		"Just one thing, I said. The district laughed.",
+	},
+	["sw.subzone_enter.w22.trade.010"] = {
+		"Children run notes between the shops for a copper each, shouting the name on the outside as they go, which is how the whole street learns who owes whom.",
+		"The message-runners here are small and loud. They bawl the addressee's name all down the street, so a private note is the most public thing in the district.",
+	},
+	["sw.subzone_enter.w22.trade.011"] = {
+		"steps around a stack of fresh crates by a shop entrance, each stamped with a merchant's mark in black paint, a clerk ticking them off a list with a stub of charcoal.",
+		"waits while a carter and a clerk count crates off a wagon, one calling the painted marks aloud, the other ticking each with charcoal and disputing every fourth.",
+		"squeezes past a wagon being unloaded crate by crate, a clerk reading out the stenciled marks and the carter repeating each one a little louder, as if volume made it true.",
+	},
+	["sw.subzone_enter.w22.trade.012"] = {
+		"Rain, and the Trade District folds itself in half. Goods go under the awnings, buyers go under the goods, and the middle of the street belongs to the puddles.",
+		"When it rains here, the awnings come down a hand's width and every shopkeeper gains a roof full of customers who are not buying anything.",
+		"The rain drums on canvas all down the street. Under every awning a little crowd pretends to be interested in candles until it stops.",
+	},
+	["sw.subzone_enter.w22.trade.013"] = {
+		"comes across a cobbler at a corner who does nothing but mend purse strings, and has a queue.",
+		"spots a leatherworker on a stool at the corner, under a sign showing a purse, sewing new strings onto a stranger's while three more purses wait their turn in his lap.",
+		"stops to look at the busiest little trade on the street: an old man on a crate who restitches torn purses, a copper a seam, and never runs short of work.",
+	},
+	["sw.subzone_enter.w22.trade.014"] = {
+		"You can tell from the bank steps who came to put coin in and who came to take it out. The first group walks lighter. Odd, that.",
+		"I like watching people leave the bank. Those who left money behind look relieved; those who took some out look over their shoulders.",
+		"Faces on the bank steps: the depositors serene, the withdrawers already counting with their lips moving.",
+	},
+	["sw.subzone_enter.w22.trade.015"] = {
+		"I'll just look in at the auction house. Looking costs nothing. It's what comes after looking.",
+		"Only browsing. I say that every time, and the auction house always believes me.",
+		"Just a look at the auction house, no more. My purse has heard that one before.",
+	},
+	["sw.weather_change.w22.fairsky.001"] = {
+		"watches an old man carry a kitchen chair out to the canal wall as the sky clears, set it down facing the water, and sit as if he had paid for the seat.",
+		"sees chairs appear along the canal wall once the sky has cleared, each one carried out by someone gray-haired and settled facing the water.",
+		"notices a row of old women bringing stools out to the edge of the canal now the clouds have gone, and lining them up like a jury.",
+	},
+	["sw.weather_change.w22.fairsky.002"] = {
+		"With the clouds gone, the canals stop being the color of dishwater and remember they were green all along.",
+		"The sky opens and the canals change their minds: no longer pewter, but a deep, clear green with the stones of the bottom showing.",
+		"Clouds gone. The water between the districts goes from dull to green in the time it takes to cross one bridge.",
+	},
+	["sw.weather_change.w22.fairsky.003"] = {
+		"Hoods down, everyone. The sky has run out of things to say.",
+		"Hats off, hoods back. Whatever the sky was muttering about, it's finished.",
+		"Push your hood back. The sky has said its piece.",
+	},
+	["sw.weather_change.w22.fairsky.004"] = {
+		"glances up at a balcony in the Mage Quarter, where two apprentices have dragged out a brass tube the moment the sky cleared and are already arguing over which star is which.",
+		"spots apprentices on a rooftop of the Mage Quarter wheeling out a long brass tube to point at the cleared sky, their quarrel about one particular star carrying down to the street.",
+		"hears, from somewhere up among the roofs of the Mage Quarter, a young voice insisting that the third star from the spire is not where the book says it is.",
+	},
+	["sw.weather_change.w22.fairsky.005"] = {
+		"Sky's clear. Every roofer in Stormwind will be up a ladder before you can say slate.",
+		"Clear overhead. Count the ladders going up against the eaves; every roofer in the city was waiting for this.",
+		"There's the sky. Give it a moment and there'll be a roofer on every ridge in Stormwind.",
+	},
+	["sw.weather_change.w22.fairsky.006"] = {
+		"observes a sergeant of the watch walking down a line of guards as the sun comes out, stopping at every helmet that fails to throw it back at him.",
+		"spots the sun breaking through and landing on a file of guards' helmets, and the sergeant in front frowning at the one that stays dull.",
+		"picks out, now the sun is out, one helmet in the passing patrol that shines less than the rest, and sees that the sergeant has picked it out too.",
+	},
+	["sw.weather_change.w22.fairsky.007"] = {
+		"The clouds lift off the walls, and beyond them the hills of Elwynn come forward, green on green, as if they had been waiting outside to be let in.",
+		"Clear sky, and from the top of any stair the forest shows over the wall, one dark green line keeping the city company.",
+		"With the sky open, Elwynn leans over the city walls: a long green ridge I had half forgotten was there.",
+	},
+	["sw.weather_change.w22.fairsky.008"] = {
+		"steps around a hopping game chalked on the paving, drawn by children who came out the moment the sky cleared and are already quarreling over the rules.",
+		"has to stop short at the edge of a chalked grid on the flagstones, where a gaggle of children, out the instant the clouds lifted, are hopping and accusing each other of stepping on lines.",
+	},
+	["sw.weather_change.w22.fairsky.009"] = {
+		"A clear sky is honest with this city. It shows every scaffold, every crane, every roof still missing its last row of slates.",
+		"Under open sky you can count the work still left: a crane on one street, scaffolding on the next, a roof only half slated.",
+		"Clear weather and no clouds to hide behind: half the skyline of Stormwind is still wrapped in scaffolding.",
+	},
+	["sw.weather_change.w22.fairsky.010"] = {
+		"Sky's as clean as a fresh-minted coin. Shame the bank won't take it.",
+		"Look at that sky. Not one cloud. I'd bank it if I could.",
+		"Not a cloud anywhere. If the sky were up for auction, I'd be bidding.",
+	},
+	["sw.weather_change.w22.fairsky.011"] = {
+		"notes the anglers coming back to the canal wall as the clouds clear, each one claiming the same spot as always and glaring at anyone near it.",
+		"follows the canal anglers with an idle eye as they drift back to their places along the wall now the sky is clear, unpacking lines and tins of bait in an almost solemn silence.",
+		"counts six anglers along a single stretch of canal wall as the weather clears, all within arm's reach of each other, none of them speaking.",
+	},
+	["sw.weather_change.w22.fairsky.012"] = {
+		"The dwarves of the city squint at a clear sky the way other folk squint at a stranger. Too much of it, one of them told me, and nothing holding it up.",
+		"A dwarf by the canal looks up at the cleared sky and shakes his head. All that open air, he says, and not one beam to keep it where it is.",
+		"Clear sky, and the dwarf next to me mutters that it isn't right: all that height, and nobody thought to put a roof on it.",
+	},
+	["sw.weather_change.w22.fairsky.013"] = {
+		"pauses beside a tailor who has stepped out with a bolt of blue cloth to judge the dye in the sun at last, turning it this way and that like a jeweler with a stone.",
+		"spots a cloth merchant carrying a length of blue wool into the street now the sun is out, and holding it up against the sky to see whether it matches.",
+		"lingers by a seamstress holding two blue threads up to the sunlight, frowning, while her customer waits to hear which one is the true color of the kingdom.",
+	},
+	["sw.weather_change.w22.fairsky.014"] = {
+		"Out come the tavern tables as the sky clears, dragged onto the paving, with the drinkers trailing after them like ducklings.",
+		"Clear weather, and every tavern with a scrap of pavement puts a table on it. The customers follow their cups outside.",
+		"Clouds gone. Some innkeeper is already rolling a barrel into the street for a table, and the regulars are bringing their own stools.",
+	},
+	["sw.weather_change.w22.fairsky.015"] = {
+		"steps wide of a ladder where a sign painter, trusting the cleared sky, is touching up the gilt letters of a shopfront with a brush no thicker than a straw.",
+		"ducks under the ladder of a painter who climbed up to a shop board the moment the clouds went, and is laying fresh gold on a faded letter.",
+		"stops to watch a sign painter on a ladder, out with his pots now the sky has cleared, give a tired wooden boot above a cobbler's shop a new coat of black.",
+	},
+	["sw.weather_change.w22.fairsky.016"] = {
+		"Clear night. The stars come out over the rooftops so thick that the lamps along the canals look as if they've been copying them.",
+		"Not a cloud left, and the stars crowd down to the very edge of the walls. The city's lamps seem suddenly a little modest.",
+		"With the sky clear, the stars and the lamps of Stormwind face each other across the rooftops, and the stars have the numbers.",
+	},
+	["sw.weather_change.w22.fairsky.017"] = {
+		"glances toward the Dwarven District, where a gnome has climbed a chimney stack with a small kite and a dangling brass gauge, testing the cleared sky for reasons of his own.",
+		"catches sight of a little kite going up over the Dwarven District the moment the clouds part, a brass gadget swinging beneath it and a gnome at the end of the string, taking notes.",
+		"tracks a tiny kite rising over the forge chimneys as the sky clears, towing a brass gauge on a thread; somewhere below, a gnome is shouting numbers.",
+	},
+	["sw.weather_change.w22.fairsky.018"] = {
+		"A clean draft comes over the walls as the sky clears, with Elwynn in it: pine, cut hay, a farmyard somewhere downwind.",
+		"Clouds gone, and the air coming over the walls brings the forest with it. For a moment the street smells of pine needles instead of canal.",
+		"Clear air from the south, smelling of hay and resin. Elwynn sends its regards over the wall.",
+	},
+	["sw.weather_change.w22.fairsky.019"] = {
+		"There's the sky. I was beginning to think Stormwind came with a lid.",
+		"Oh, look, the sky. I'd half forgotten this city had one.",
+		"Sky's back. I thought someone had put a lid on the place.",
+	},
+	["sw.weather_change.w22.fairsky.020"] = {
+		"watches acolytes carry long benches out of the Cathedral and onto the square as the sky clears, setting them in rows for a reading in the open air.",
+		"makes way for a line of acolytes coming down the Cathedral steps with benches on their shoulders, now the weather has turned fair, a priest behind them pointing where each should go.",
+		"waits while a procession of benches crosses the square, each carried by two acolytes, now that the clouds have lifted enough to hold a sermon outside.",
+	},
+	["sw.weather_change.w22.fairsky.021"] = {
+		"The sky clears and the beggars move with it, out from the arches and onto the bridges, where every passerby has to come within reach of a cup.",
+		"Fair weather redraws the city's map of begging: off the sheltered steps, onto the bridges, one cup at each end.",
+		"Clear skies, and the beggars take up their fair-weather posts on the bridges. Nobody crosses a canal in Stormwind for free.",
+	},
+	["sw.weather_change.w22.fairsky.022"] = {
+		"Clear sky. Perfect for leaning on a bridge and accomplishing nothing.",
+		"Sky's open. I'm going to find a bridge rail and lean on it for a while.",
+		"Not a cloud. Somebody else can be busy; I've got a bridge to lean on.",
+	},
+	["sw.weather_change.w22.fairsky.023"] = {
+		"Sun on the canals, and the underside of every bridge comes alive with a net of moving light thrown up from the water.",
+		"The clouds part and the sun hits the water; under the nearest arch the stone is suddenly covered in trembling bright ripples.",
+	},
+	["sw.weather_change.w22.mist.001"] = {
+		"hears a boatman knock his oar twice against the hull before every bridge in the fog, and from somewhere ahead, two knocks answering.",
+		"stops on a canal bridge as a hollow knock-knock sounds out of the fog below: a boatman warning whoever might be coming the other way, and a faint double knock coming back.",
+		"listens to the boatmen talk to each other through the fog in raps of wood on wood, a slow conversation passing under one bridge after another.",
+	},
+	["sw.weather_change.w22.mist.002"] = {
+		"This fog has found every spider in Stormwind. Each web on the railings hangs heavy and silver with it, and I never knew there were so many.",
+		"Fog beads on the cobwebs along the bridge rails until every one shows, dozens of them, a whole hidden trade in thread made plain.",
+		"In this fog the spiderwebs come out of hiding: on lamp brackets, on railings, in the corners of shutters, each one strung with tiny gray pearls.",
+	},
+	["sw.weather_change.w22.mist.003"] = {
+		"Fog. Wonderful. Every canal edge in the city has just moved somewhere new.",
+		"Mind your feet in this fog. The canals haven't gone anywhere, they've just stopped saying where they are.",
+		"Careful. In fog like this the edge of the canal is wherever you put your next foot.",
+	},
+	["sw.weather_change.w22.mist.004"] = {
+		"hears two patrols meet head-on somewhere in the fog, both voices barking 'Halt!' at the same moment, then a pause, then some sheepish muttering.",
+		"watches two guards loom out of the fog at each other on a bridge, halberds coming down in perfect unison, before each recognizes the other's helmet and they look away.",
+		"catches the sound of two sentries challenging each other in the fog, the same word at the same instant, and then a short, embarrassed laugh.",
+	},
+	["sw.weather_change.w22.mist.005"] = {
+		"The fog smells of the lake: reeds, cold water, something green. It has carried the outside in over the walls and set it down in the streets.",
+		"Fog off the water, and the city smells like a lakeshore for once: wet reeds and cold stone, the canals' cleaner cousin.",
+		"This fog came off the lake and brought the lake with it. The streets smell of reeds and mud and something with fins.",
+	},
+	["sw.weather_change.w22.mist.006"] = {
+		"meets a hanging shop sign in the fog with {g:his|her} forehead, and hears it creak back and forth for some time afterward, as if laughing.",
+		"discovers a low-hung tavern sign in the fog the direct way, then has to stand there while it swings back for a second look.",
+		"pulls up short as a shop sign looms out of the fog at exactly head height, and steps around it with the dignity of someone who meant to.",
+	},
+	["sw.weather_change.w22.mist.007"] = {
+		"In fog this thick I navigate by counting bridges. Three from the bank, left at the smell of bread. It works until somebody moves the bread.",
+		"No towers, no roofs, no spire to steer by. I'm counting bridges under my boots like a sailor counting knots.",
+		"Fog has turned the city into arithmetic: so many bridges, so many corners, so many steps down. Lose count and you lose Stormwind.",
+	},
+	["sw.weather_change.w22.mist.008"] = {
+		"hears a fruit seller somewhere in the fog calling 'Apples, sweet apples!' over and over, since nobody can see them, the voice turning in every direction to find a customer.",
+		"trails a voice through the fog that keeps naming its wares, pies, hot pies, pork pies, until a stall finally takes shape around it.",
+		"notices that the market has become a chorus in the fog: with nothing to show, every seller is shouting the whole list of what lies on the table, item by item.",
+	},
+	["sw.weather_change.w22.mist.009"] = {
+		"The guards like to say that SI:7 orders fog by the barrel. Watching shapes slip past in this murk, I'm not sure they're joking.",
+		"SI:7 must love this, someone mutters at the bridge, and laughs, and looks over a shoulder anyway.",
+		"Fog over the city. Somewhere in Old Town, the joke goes, a clerk of SI:7 is ticking it off a list of deliveries.",
+	},
+	["sw.weather_change.w22.mist.010"] = {
+		"watches a guard work his way along the canal edge in the fog, tapping the stone ahead with the butt of his halberd like a blind man with a stick.",
+		"makes out the end of a halberd coming out of the fog first, tapping for the edge of the canal, and a very cautious guard arriving behind it.",
+		"follows the tap, tap of a halberd butt along the canal wall, where a guard in the fog is feeling out the edge one careful pace after another.",
+	},
+	["sw.weather_change.w22.mist.011"] = {
+		"Whoever that is, say something. I'd rather not walk into you.",
+		"Hello? Say something if you're a person. If you're a statue, carry on.",
+		"Sing out if you're there. This fog has me bumping into everything.",
+	},
+	["sw.weather_change.w22.mist.012"] = {
+		"Out by the gate, the stone heroes of the Valley of Heroes must be standing in this fog like giants waiting to be introduced.",
+		"Somewhere near the great gate the statues are standing in this fog with nobody to see them, giants with their heads in the clouds for once.",
+		"I keep thinking of the statues along the Valley of Heroes in fog like this, each one rising out of nothing only when its plinth is close enough to touch.",
+	},
+	["sw.weather_change.w22.mist.013"] = {
+		"wades through a low fog that has settled knee-deep in the streets, and watches a dog go by as nothing but a wagging tail above the white.",
+		"sees the fog lie low along the lane, so that passersby seem to float along cut off at the shins, and a cat crossing becomes only a pair of ears.",
+		"picks a way through fog pooled at knee height across the paving, where a small dog has vanished entirely except for the clicking of its claws.",
+	},
+	["sw.weather_change.w22.mist.014"] = {
+		"Nothing is falling from the sky, and still every eave in the street is dripping. The fog simply gathers on the slates and lets go.",
+		"Drip, drip from the gutters, and not a drop coming down. The fog has a slow, sly way of getting everything wet.",
+		"Fog doesn't fall, it settles, and then it drips off every ledge and sign in the city as if it had been doing that all along.",
+	},
+	["sw.weather_change.w22.mist.015"] = {
+		"Fog's taken the Keep, the Cathedral and the walls. Could be any town at all, if it didn't smell so much like Stormwind.",
+		"Not one tower in this fog. If it weren't for the canal smell, I'd swear I was somewhere else entirely.",
+	},
+	["sw.weather_change.w22.mist.016"] = {
+		"comes upon two carts that have met nose to nose in the middle of a bridge in the fog, their drivers arguing over who saw whom first while the horses calmly sniff each other.",
+		"hears, before seeing anything, two carters on a bridge disputing in the fog which of them has to back up, and the creak of neither one moving.",
+	},
+	["sw.weather_change.w22.mist.017"] = {
+		"The beasts at the roost sit hunched on their perches in this fog like wet hens, and the handlers have found a crate to play dice on between flights.",
+		"The fog has put the roost in a sulk. I can hear the handlers dicing between flights, and now and then a beast complaining about the weather.",
+		"Fog over the roost: the great beasts sulk on their perches, and somewhere among the straw a game of dice has broken out between flights.",
+	},
+	["sw.weather_change.w22.mist.018"] = {
+		"watches the fog on the canals come apart in long pale strands as the dawn comes up, like wool being carded.",
+		"catches the first gray of dawn reaching the canals, and the fog lying on them beginning to tear into ribbons that trail away under the bridges.",
+		"lingers on a bridge at first light while the fog peels off the water in slow threads, the far bank coming back stone by stone.",
+	},
+	["sw.weather_change.w22.mist.019"] = {
+		"The bell for the hour comes through the night fog from no direction at all. It might be ringing in the next street or under the canal.",
+		"Night and fog together. When the hour rings, the sound seems to come from everywhere, as if the fog itself had been struck.",
+		"In fog this thick, in the dark, the bells lose their place. The hour arrives from all sides at once and settles on the roofs the way the fog does.",
+	},
+	["sw.weather_change.w22.mist.020"] = {
+		"Third time I've passed this same baker. Either the fog is turning me round, or he's following me.",
+		"I'd swear that's the same fountain I passed before. This fog is walking me in circles.",
+		"Same stall, same smell of pies, third time. This fog has a sense of humor.",
+	},
+	["sw.weather_change.w22.mist.021"] = {
+		"picks out a tiny bell jingling through the fog at about boot height, and then the gnome it is tied to, hat first, picking a confident path between the legs of the crowd.",
+		"makes way for a little jingle in the fog that turns out to be a gnome with a bell sewn to the point of his hat, sensibly announcing himself to everyone taller.",
+		"smiles at a gnome who has tied a small bell to the tip of her hat for the fog, and is weaving through the crowd ringing at every step.",
+	},
+	["sw.weather_change.w22.mist.022"] = {
+		"The walls and the fog are almost the same color. Where one ends and the other begins, only the lines of mortar can tell.",
+		"Pale stone in pale fog: the buildings don't vanish so much as dissolve, and the mortar between the blocks is the last thing to go.",
+		"In this fog Stormwind is drawn in mortar lines only, the stone itself lost in the gray, like a sketch someone forgot to finish.",
+	},
+	["sw.weather_change.w22.mist.023"] = {
+		"watches the watch set a burning brazier at the end of a canal bridge in the fog, a red smudge to steer by, and a little knot of strangers gather to warm their hands at it.",
+		"sees guards light braziers at the bridgeheads as the fog thickens, each one a dull red glow marking where the stone stops and the water begins.",
+		"keeps to a line of fog-blurred red glows along the canal, braziers the watch has lit at every bridge so nobody walks off the edge of the city.",
+	},
+	["sw.weather_change.w22.shower.001"] = {
+		"zigzags down the street with everyone else, dodging the long arcs of rain thrown out from the spouts under every eave.",
+		"times a dash between two roof spouts, each one pouring the rain off the slates in a thick, curving rope onto the paving.",
+		"takes in a whole street learning the same dance in the rain: two steps, sidestep the spout, two steps, sidestep the next.",
+	},
+	["sw.weather_change.w22.shower.002"] = {
+		"Wet, the paving shows what it hides when dry: small chisel marks on every slab, a triangle, a cross, a crooked star. Each mason signed his work.",
+		"Rain darkens the slabs and brings out the masons' marks cut into them, little signs no one notices in the dry. Somebody was proud of every one of these stones.",
+		"In the rain the street turns into a ledger: every paving stone shows the mark of the hand that cut it.",
+	},
+	["sw.weather_change.w22.shower.003"] = {
+		"Hood up. Stormwind rain comes in sideways and goes out through the boots.",
+		"Pull your hood up. Rain here arrives at an angle and leaves by your toes.",
+		"Hood up, collar too. This rain doesn't fall, it files in.",
+	},
+	["sw.weather_change.w22.shower.004"] = {
+		"notices the rain bead and roll off a noble's oiled cloak while the porter walking behind him, carrying his trunk, soaks through to the shirt.",
+		"sees the same rain treat two men very differently: it runs off the waxed cloak of a gentleman like water off a duck, and sinks straight into the wool of the servant at his heels.",
+		"observes how the rain divides a street by purse: oiled cloaks shed it, plain wool drinks it.",
+	},
+	["sw.weather_change.w22.shower.005"] = {
+		"From the top of a stair the rain on ten thousand slates sounds like a great pan of something frying, the whole city sizzling gently.",
+		"Rain over the rooftops, so much slate at once that it hisses like fat in a skillet. Stormwind is being cooked slowly.",
+		"All that slate under the rain makes one sound, a long soft sizzle, as if the city had been set on the fire to warm through.",
+	},
+	["sw.weather_change.w22.shower.006"] = {
+		"stops to watch a gnome in the rain fighting a brass umbrella that opens, shuts and opens once more on its own, with a whir of springs and some very bad language.",
+		"sidesteps a gnome whose clockwork umbrella has decided to fold itself shut every dozen steps, dumping its load of rain down the back of his collar.",
+		"grins as a gnome's mechanical umbrella unfolds over his head in the rain with a proud little click, and keeps unfolding, wider and wider, until it scrapes both walls of the lane.",
+	},
+	["sw.weather_change.w22.shower.007"] = {
+		"The canal anglers stay put in the rain. Fish bite better wet, they swear, and it's the only time they get the canal to themselves.",
+		"Everyone else has run for the eaves; the anglers on the canal wall have only pulled their hats down. The fish come up in the rain, one of them tells me, without looking round.",
+		"Rain empties the bridges and leaves the anglers. They say fish like the noise of it on the water. I think the anglers like the quiet on the bank.",
+	},
+	["sw.weather_change.w22.shower.008"] = {
+		"Rain. Every slate in Stormwind was cut for this. I wasn't.",
+		"There it comes. The roofs of this city were made for rain; whoever lives under them improvises.",
+		"Rain on Stormwind. The roofs knew it was coming. Nobody told me.",
+	},
+	["sw.weather_change.w22.shower.009"] = {
+		"winces as a cart wheel finds a puddle at full speed and throws a sheet of rainwater over a gentleman in velvet, who stands dripping and composing a letter of complaint in his head.",
+		"steps back just in time as a carter takes the corner through the rain and his wheels fling a brown wave across the paving, onto the hem of a lady who had been rather pleased with her boots.",
+		"sees a cart rattle through the pelting rain, its wheels splashing everyone at the edge of the street with perfect fairness: a guard, a priest, a pickpocket and a goose.",
+	},
+	["sw.weather_change.w22.shower.010"] = {
+		"Every queue in the city smells of wet wool now: at the bank, at the bakers, at the bridge where the carts wait their turn.",
+		"Rain, and Stormwind smells like a sheepfold. Every cloak in the street steaming gently, every line at every counter one damp flock.",
+		"Wet wool everywhere. Stand in any line in this rain and you might as well be in a barn at shearing time.",
+	},
+	["sw.weather_change.w22.shower.011"] = {
+		"finds a lute player under a deep arch who has suddenly gained an audience of twenty, all sheltering from the rain and all too polite to leave.",
+		"listens, pressed under an archway with a dozen other people dodging the rain, to a fiddler who cannot believe his luck and is playing every song he knows, twice.",
+	},
+	["sw.weather_change.w22.shower.012"] = {
+		"A guard's helmet in the rain makes a sound like a small bell tapped by a very patient child. Three guards at a corner, and it's a carillon.",
+		"On the helmets of the watch the rain rings thin and quick. A patrol going by sounds like a tinker's cart.",
+		"Under the rain every helmet in the city starts to ring. The guards walk past in a little cloud of tinny music, faces perfectly stern.",
+	},
+	["sw.weather_change.w22.shower.013"] = {
+		"eyes a porter scattering fresh sawdust just inside the bank's entrance as the rain begins, and the very first customer tracking a brown trail straight across it.",
+		"notes a porter spreading sawdust across the threshold of the bank as the rain sets in, and a clerk behind him already sighing at the floor.",
+		"steps over a carpet of sawdust freshly thrown down at a shop's entrance for the rain, already printed with the boots of a dozen customers.",
+	},
+	["sw.weather_change.w22.shower.014"] = {
+		"On the stair by the bridge there's a hollow worn into one step by all the boots in the city, and in the rain it's the first to fill. A little pond, the shape of the crowd.",
+		"The rain finds every place the city's feet have worn down: the dip in a step, the groove before a counter, the path across a square. Water draws a map of where people go.",
+		"The puddles are a census of boots: the rain pools in every hollow the crowds have worn, and the busiest paths become strings of small mirrors.",
+	},
+	["sw.weather_change.w22.shower.015"] = {
+		"Rain like this, give it an hour and the street will apply to join the canal.",
+		"Keep this up and the gutters will want bridges of their own.",
+		"At this rate the canals will be asking the streets to move over.",
+	},
+	["sw.weather_change.w22.shower.016"] = {
+		"waits a turn at a plank somebody has laid across a flooded gutter in the rain, where a polite little queue has formed and each person crosses with arms out like a tightrope walker.",
+		"crosses the swollen gutter by the plank a shopkeeper has thrown over it in the rain, behind an old man who takes it inch by inch and in front of a boy who wants to jump.",
+	},
+	["sw.weather_change.w22.shower.017"] = {
+		"Rain in the dark. The watch calls the hour on the next street, and the words make it as far as the nearest lamp before the rain swallows them.",
+		"A watchman somewhere is calling the hour through the night rain. I catch the number and lose the rest.",
+		"The night rain takes the watchman's call and keeps most of it. All that reaches me is half a number and the word 'well'.",
+	},
+	["sw.weather_change.w22.shower.018"] = {
+		"watches a carter throw an old sack over his horse's back as the rain sets in, and the horse turn its head to look at it with deep suspicion.",
+		"sees a carter climb down in the rain to drape his own coat over the cart horse, and stand there in his shirt, arguing that it was the horse's idea.",
+		"notices the cart horses along the street all standing the same way in the rain, tails to the weather, heads low, like a row of tired clerks.",
+	},
+	["sw.weather_change.w22.shower.019"] = {
+		"Oddly, the canals smell better in the rain. Whatever lies along the edges gets rinsed, and for an hour the water smells only of water.",
+		"The rain does the canals a kindness: it beats down the smell of them, and the whole city stops wrinkling its nose.",
+		"Rain on the canals, and the green reek of them sinks under a cleaner smell. I could almost drink from one. Almost.",
+	},
+	["sw.weather_change.w22.shower.020"] = {
+		"There's room under this ledge for one more. Mind the drip.",
+		"Squeeze in, there's space under here. The drip on the left is free of charge.",
+		"Plenty of room under here till the rain eases. Not near the edge, it leaks.",
+	},
+	["sw.weather_change.w22.shower.021"] = {
+		"passes a dwarf strolling bareheaded through the rain, his beard hanging like a wrung mop, informing everyone under the eaves that in Dun Morogh this would count as fine weather.",
+		"nods to a dwarf who walks out into the rain without bothering with a hood, beard streaming, and laughs at the people huddled under the awnings.",
+		"smiles at a dwarf wringing out his beard in the rain like a washerwoman with a sheet, then walking on as though nothing had happened.",
+	},
+	["sw.weather_change.w22.shower.022"] = {
+		"Rain turns Stormwind into a city of backs. Everyone hunched, everyone hurrying, nobody's face higher than their collar.",
+		"In this rain I could walk the length of the Trade District and not see a single face, only hoods and shoulders going the other way.",
+		"Hats down, collars up, chins tucked. The rain has set the whole city to studying its own boots.",
+	},
+	["sw.weather_change.w22.shower.023"] = {
+		"Rain: the only thing in this city that comes free, and listen to everyone complain.",
+		"Free water from the sky, and not one merchant in Stormwind has found a way to sell it. Give them an hour.",
+		"Rain. The last free thing in Stormwind. Enjoy it before somebody taxes it.",
+	},
+	["sw.weather_change.w22.tempest.001"] = {
+		"sees each flash of lightning throw the colors of the Cathedral's windows out across the square for an instant, red and blue and gold on the paving, then nothing.",
+		"catches, in one white flash of the storm, the tall figures in the Cathedral's windows lit from outside and staring down at the city, before they go out like snuffed candles.",
+		"watches the Cathedral's tall windows flare in every flash of the storm, the painted figures in the glass appearing for a blink and then going dark.",
+	},
+	["sw.weather_change.w22.tempest.002"] = {
+		"The air in this storm is strange. I touched an iron railing on the bridge and a little blue spark bit my finger.",
+		"Something in this storm air bites. A spark jumped from the bridge rail to my knuckle, small and blue and very rude.",
+		"Even the railings are charged in this storm. I reached for one and it snapped a spark at me like a cat that didn't want stroking.",
+	},
+	["sw.weather_change.w22.tempest.003"] = {
+		"Hold on to your hat. And anything else you're fond of.",
+		"Grab your hat and whatever else you'd miss. This wind's collecting.",
+		"Hats in hand, everyone. The storm's taking donations.",
+	},
+	["sw.weather_change.w22.tempest.004"] = {
+		"jumps as a slate tears loose in the storm wind, skids down a roof and bursts on the paving a few steps ahead, and the whole street looks up at once.",
+		"hears a slate come skittering down the pitch of a roof in the storm and explode into black shards on the cobbles, and moves out from under the eaves rather quickly.",
+		"steps over the shards of a roof slate the storm has just thrown down, while a householder leans out of a high window to count the gaps.",
+	},
+	["sw.weather_change.w22.tempest.005"] = {
+		"The mages, people say, don't run from lightning: they step out onto their balconies with notebooks and argue over every flash like critics at a play.",
+		"A storm this size must be a feast for the mages. I picture them on their balconies, scoring each bolt out of ten.",
+		"Somewhere in the Mage Quarter, I'd bet, a mage is out on a balcony in this storm, timing the flashes and grumbling that the third was derivative.",
+	},
+	["sw.weather_change.w22.tempest.006"] = {
+		"watches a gnome hurry out into the storm holding a copper rod high over his head, and a dwarf come out after him, take him by the collar and haul him back indoors without a word.",
+		"sees a gnome scramble onto a crate in the storm with a long copper rod and a look of scientific delight, until a dwarf plucks him off it like an apple off a branch.",
+		"laughs despite the thunder at a gnome who has run out into the storm with a copper spike to 'collect a sample', and at the dwarf neighbor carrying him back under one arm.",
+	},
+	["sw.weather_change.w22.tempest.007"] = {
+		"The storm wind has every chimney in the city pointing the same way: a thousand smoke plumes laid flat over the roofs, like compass needles all agreeing.",
+		"Every column of smoke in Stormwind has been knocked flat by the storm and dragged off in one direction. The whole city looks combed.",
+		"Smoke from all the chimneys streams sideways in the gale, one long gray mane blown out over the rooftops.",
+	},
+	["sw.weather_change.w22.tempest.008"] = {
+		"Near one. Somebody's chimney just lost an argument.",
+		"Close! After this, half the weathervanes in the city will be pointing at the ground.",
+		"That struck somewhere near. Some roof will have a story to tell.",
+	},
+	["sw.weather_change.w22.tempest.009"] = {
+		"enjoys the moment a quarrel between a fishwife and a carter stops dead at a crack of thunder, both faces turned up to the sky, before it picks up exactly where it left off.",
+		"hears two neighbors shouting across a lane fall silent together at a roll of thunder, wait for it to finish, and then go back to the matter of the borrowed ladder.",
+		"notices an old couple bickering on a bench go quiet as the thunder rolls over, look at each other, and agree, for exactly as long as it lasts.",
+	},
+	["sw.weather_change.w22.tempest.010"] = {
+		"The storm has blown half of Elwynn over the walls. There are oak leaves in the Trade District and a whole twig on the bank steps.",
+		"Leaves everywhere, more than the Park could ever drop: the gale has carried the forest's litter into the streets, green and torn.",
+		"Elwynn is coming over the wall leaf by leaf. The wind drops oak and beech in the gutters as if returning things it borrowed.",
+	},
+	["sw.weather_change.w22.tempest.011"] = {
+		"Each roll of thunder sounds like a tavern taking a delivery: barrels bumping down a cellar ramp somewhere over the roofs, one after another.",
+		"The thunder comes in long rumbles that end with a thump, like a full cask let down the stairs a little too fast.",
+		"Thunder over the city, heavy and wooden, as if the sky were stocking a very large cellar.",
+	},
+	["sw.weather_change.w22.tempest.012"] = {
+		"follows the storm wind as it runs down the length of a canal, raising short choppy waves that slap the stone steps and fling spray over the walkway.",
+		"stands watching the gale whip the canal into small white-capped waves, all running the same way, as if the water had somewhere urgent to go.",
+		"keeps back from the canal edge as the storm drives the water into small hard waves that break against the stone banks.",
+	},
+	["sw.weather_change.w22.tempest.013"] = {
+		"Thunder like this, and I'd bet half the city has just remembered urgent business in Ironforge. Nothing rattles the roof of a tram tunnel.",
+		"A storm like this makes the Deeprun Tram look very wise. Underground, the dwarves say, the sky can shout all it likes.",
+		"Somewhere down the tram tunnel there's no thunder at all. I have never envied a hole in the ground so much.",
+	},
+	["sw.weather_change.w22.tempest.014"] = {
+		"notices a priest on the Cathedral steps reading aloud to a handful of listeners through the storm, pausing at each crack of thunder with perfect patience and taking up the sentence once it has passed.",
+		"sees an elderly priest go on with a reading from the Cathedral steps in the teeth of the storm, simply stopping each time the thunder speaks and waiting politely for it to finish.",
+		"hears, between thunderclaps, a priest's calm voice carrying on with a lesson, as if the storm were only someone in the back row who had never learned to whisper.",
+	},
+	["sw.weather_change.w22.tempest.015"] = {
+		"Lightning at night shows the whole plan of the city in one stroke: the canals drawn in silver, the bridges stitched across them, then black.",
+		"Each flash in the dark lays the canals out like silver thread on black cloth, and leaves them printed on my eyes for a moment after.",
+		"In the night storm the canals are invisible until the sky lights them: bright lines, gone, bright lines, gone.",
+	},
+	["sw.weather_change.w22.tempest.016"] = {
+		"looks up as the storm clouds come down so low over the city that the tallest towers of the Keep seem to be holding them up.",
+		"sees the thunderheads drag their bellies across the rooftops in the gray daylight, low enough that the Cathedral's spire seems to tear a seam in them.",
+		"observes the storm clouds bunching over the Keep, heavy and slate-dark, scraping along the tower tops as if looking for a way in.",
+	},
+	["sw.weather_change.w22.tempest.017"] = {
+		"The gale gets under every cloak in the street and turns it into a sail. People tack across the squares like small boats beating upwind.",
+		"Cloaks bellying, hems snapping: in this wind everyone crossing an open square leans at the same angle, like a field of grass.",
+		"Watch anyone with a long cloak try to cross a square in this storm. Half of them are being walked by their own clothes.",
+	},
+	["sw.weather_change.w22.tempest.018"] = {
+		"Somebody up there is throwing the crockery, and the roofs are catching it.",
+		"Hear that? The sky's in a foul mood.",
+		"Somebody upstairs is slamming every door in the house.",
+	},
+	["sw.weather_change.w22.tempest.019"] = {
+		"notices the city's pigeons packed shoulder to shoulder under the arch of a bridge as the storm rolls over, every one of them facing the same way, every one offended.",
+		"spots a whole crowd of birds crammed onto a ledge under the bridge, out of the storm wind, puffed up and silent as a row of disapproving aunts.",
+		"glances under a bridge where the storm has driven every pigeon in the neighborhood onto one narrow ledge, a gray row that shuffles and flinches at each thunderclap.",
+	},
+	["sw.weather_change.w22.tempest.020"] = {
+		"A dwarf under the eaves sniffs at the storm. In the mountains, he says, thunder like this would pass for polite conversation.",
+		"The dwarf beside me isn't impressed. In Dun Morogh, he says, a storm worth the name takes the roof with it and sends a note of apology after.",
+		"Every dwarf in earshot has a story about a worse storm. This one, apparently, is barely clearing its throat.",
+	},
+	["sw.weather_change.w22.tempest.021"] = {
+		"watches two children dare each other to run across the open square between one flash and the next, shrieking, while someone in a high window shouts their names.",
+		"follows a boy sprinting across an empty square in the storm on a dare, arriving at the far side red-faced and triumphant just as the thunder lands.",
+		"catches sight of a small girl racing the thunder across a bridge, and her friends cheering from under an arch as if she had won a tourney.",
+	},
+	["sw.weather_change.w22.tempest.022"] = {
+		"Shutters closed, and somebody fetch that cat down off the roof before it gets ideas.",
+		"Somebody get that cat off the ridge. It thinks it's braver than the storm.",
+		"There's a cat on the slates in this storm. Either it's mad or it knows something.",
+	},
 ]==])
