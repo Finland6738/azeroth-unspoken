@@ -273,6 +273,15 @@ Besides phrases, a pack can add events, registers, conditions, places, NPCs, **a
 
 The complete guide is [AzerothUnspoken/PACK_FORMAT.md](AzerothUnspoken/PACK_FORMAT.md); if you write or change an example, mark it `<!-- test -->` (or `<!-- test: error -->` for an example that is expected to fail) and `Tests/check_docs.py` loads it as an external pack. A pack must follow the same quality rules as above and must not use the network or send data ([ADR 0002](docs/adr/0002-fully-offline-no-ai.md)).
 
+**Romance 18+.** Texts for the tone *Explicit* of active romance go only in the optional pack `AzerothUnspoken_Romance18`, through `AzerothUnspoken.Romance:Register18`: adults only, consent always, nothing about a minor. Its format, its rules and how to test it offline are in [AzerothUnspoken_Romance18/README.md](AzerothUnspoken_Romance18/README.md). The samples this project writes are few and never graphic.
+
+### Making a release
+
+There is no release workflow: a release is made by hand from its tag. `python -I tools/package_release.py v<version>` builds two zips in `build/`:
+
+- `AzerothUnspoken-<version>.zip`: every addon folder except the 18+ pack. Attach it to the GitHub release and upload it to CurseForge.
+- `AzerothUnspoken_Romance18-<version>.zip`: the 18+ pack alone (any folder whose `.toc` has `## X-AzerothUnspoken-Romance:`). Attach it to the **GitHub release only**, with a line in the release notes saying it is optional and for adults; **never** upload it to CurseForge, and do not mention it in the CurseForge description. `Tests/check_package.py` proves the first zip never holds it.
+
 ## 5. Changing the code
 
 1. **Work on an issue** or open one. For big changes, talk about it first.

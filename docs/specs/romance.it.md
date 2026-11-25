@@ -6,8 +6,8 @@
 > che estende l'[ADR 0037](../adr/0037-romance-with-npcs-opposite-sex-and-the-vow.md). Step: [ROADMAP.md](../../ROADMAP.md),
 > sezione "Active romance".
 >
-> **Stato: R1-R3 costruiti (il motore, l'interfaccia, le frasi dei livelli 1-2).** Il pacchetto del livello 3 è lo step R4.
-> Che cosa ha fissato ogni step è nei punti 21 (R1), 22 (R2) e 23 (R3). I mockup sono in [`docs/design/mockups/`](../design/mockups/README.md)
+> **Stato: R1-R4 costruiti (il motore, l'interfaccia, le frasi dei livelli 1-2, il pacchetto 18+ facoltativo).**
+> Che cosa ha fissato ogni step è nei punti 21 (R1), 22 (R2), 23 (R3) e 24 (R4). I mockup sono in [`docs/design/mockups/`](../design/mockups/README.md)
 > (`romance-*.html`, i PNG in `png/`): sono proposte disegnate sui widget e sui token veri dell'addon, segnate *PROPOSED*.
 
 ## 1. Che cosa aggiunge, in un paragrafo
@@ -569,3 +569,39 @@ costruiva:
   verificare in gioco). Il registro curato non ne ha.
 - **Non scritti**: il pensiero alla locanda di notte rivolto alla persona amata (nessun evento lo fa scattare ancora; i
   pensieri seguono solo un corteggiamento) e nuove chiavi del diario (quelle di R1 bastano per i cinque ricordi).
+
+## 24. Che cosa ha fissato lo step R4
+
+- **Il pacchetto** `AzerothUnspoken_Romance18` (id `romance18_base`): il `.toc` del punto 12.1 (più `Author`,
+  `Version`, `X-Category`, `X-License` come le altre cartelle), `Registry.lua`, `Flirts.lua`, `Texts_enUS.lua`,
+  `Texts_itIT.lua`, `README.md` con il gemello italiano `README.it.md`, `NOTICE.md`. **Nove regole d'esempio** (due
+  accoglienze e una per la persona amata, un gentile *non stanotte*, un *no* chiaro, la scena del voto `open` e
+  `welcome`, un pensiero dopo un'accoglienza e uno dopo un no) e **tre risposte di corteggiamento** (`compliment`,
+  `invite` di notte, `glance`; stadi da `declared` a `vowed`), due o tre varianti per lingua, scritte da uno scrittore
+  Opus e controllate dal validatore dell'addon. Mature e mai esplicite nei dettagli, per scelta del proprietario; i testi
+  più spinti sono il pacchetto di un autore.
+- **Il secondo lucchetto** è `Romance:Register18(pacchetto, fn)`: ogni file del pacchetto vi avvolge la sua
+  registrazione. `fn` gira solo mentre il consenso 18+ è acceso; `Romance:Sync18`, chiamata dal consenso (acceso e
+  spento), toglie i pacchetti 18+ (`Engine:DropPack`, `Romance:DropFlirts`) quando si spegne e fa girare di nuovo le
+  parti quando torna, senza `/reload` (un addon caricato non si scarica, i suoi dati sì). Una frase di livello 3 non è
+  mai scelta sotto il livello 3.
+- **Il primo lucchetto all'accesso**: `Romance:LoadPack` gira anche a `WORLD_ENTER` e a `COMBAT_END` (mai in
+  combattimento), così un consenso salvato con il tono *Esplicito* carica il pacchetto dopo un `/reload`.
+- **Il terzo lucchetto per le regole**: l'errore `romance18` del validatore (livello 3 fuori da un pacchetto 18+; un
+  altro livello, o un evento che non è del romanticismo, dentro uno), accanto al controllo delle risposte di R1.
+- **Raggiungibile al livello 3**: le risposte dell'NPC e i pensieri (di notte in una locanda o a riposo, con un NPC
+  dichiarato o promesso) e le scene del voto. La dichiarazione è sempre cortese (viene prima dello stadio `declared`) e
+  un appuntamento prende il livello della sua opzione (1 o 2): nessuna opzione è di livello 3, quindi il pacchetto non ha
+  scene di appuntamento.
+- **Il pacchetto di un autore** sta nella stessa cartella (l'addon carica solo `romance.pack18.addon` e permette il
+  livello 3 solo mentre è caricata); il formato, le regole (solo adulti, sempre consenso, nulla su un minore) e la prova
+  senza il gioco sono nel suo `README.md`.
+- **Pacchettizzazione**: `tools/package_release.py` (`addon_folders`, `build`) mette ogni cartella il cui `.toc` ha
+  `## X-AzerothUnspoken-Romance:` in uno zip a sé, `<cartella>-<versione>.zip`, solo per il rilascio su GitHub; non c'è un
+  workflow di rilascio, quindi il passo a mano è in `CONTRIBUTING.md` (*Making a release*). `Tests/check_package.py`
+  costruisce i due zip in un repository usa e getta e controlla la divisione a `HEAD`.
+- **Test**: `Tests/TestRomance18.lua` (installato come lo scaricherebbe un giocatore: muto e non caricato senza consenso,
+  niente registrato anche se caricato a mano, registrato con il consenso, solo livello 3, il suo validatore pulito, le
+  sue frasi scelte al livello 3 e mai inviate, tolto con il consenso spento e di nuovo presente con il consenso acceso,
+  l'errore `romance18`). Gli strumenti che caricano lo scaricamento (`run_tests.py`, `check_docs.py`, `check_versi.py`,
+  `bench_scale.py`) lasciano fuori la cartella 18+, come lo zip principale.

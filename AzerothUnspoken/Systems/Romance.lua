@@ -311,6 +311,7 @@ function Ro:SetAdult(on)
 			NS.db.relations.romanceAdult = false
 			NS.db.relations.romanceTone = math.min(tonumber(NS.db.relations.romanceTone) or 1, 2)
 		end
+		self:Sync18()
 		return "off"
 	end
 	if self:AdultOn() then return "on" end
@@ -322,7 +323,67 @@ end
 NS.Consent:Register("romance_adult", { text = "consent_romance_adult_text", accept = function()
 	if NS.db then NS.db.relations.romanceAdult = true end
 	Ro:LoadPack()
+	Ro:Sync18()
 end })
+
+---------------------------------------------------------------------------
+-- The 18+ pack's way in (R4, spec 12.2): it registers only while the consent is on
+---------------------------------------------------------------------------
+Ro.adult = {}   -- the parts of the 18+ packs, in registration order: { pack, fn, done }
+
+---The only way an 18+ pack registers: `fn` registers one part of it (its rules, its flirts, the texts of a language)
+---with `romance18 = true`. It runs now if the 18+ consent is on; turning the consent off drops what it registered (the
+---rules with their texts, the flirts: the second lock), turning it on again registers it anew. With the consent off
+---nothing runs. Errors are kept in the diagnostics, never raised.
+---@param pack string the pack id (`RegisterPack`'s id, the flirts' pack)
+---@param fn function registers the part; called with NS
+---@return boolean registered the part is in the engine now
+function Ro:Register18(pack, fn)
+	if type(pack) ~= "string" or pack == "" or type(fn) ~= "function" then return false end
+	local part = { pack = pack, fn = fn }
+	table.insert(self.adult, part)
+	self:Sync18()
+	return part.done == true
+end
+
+---Brings the 18+ parts in line with the consent: registers the ones waiting while it is on, drops every 18+ pack while
+---it is off. Called by the consent (on and off) and by Register18.
+function Ro:Sync18()
+	if self:AdultOn() then
+		for _, part in ipairs(self.adult) do
+			if not part.done then
+				part.done = true
+				local ok, err = pcall(part.fn, NS)
+				if not ok and NS.Diagnostics then NS.Diagnostics:Error("romance18", tostring(err)) end
+			end
+		end
+		return
+	end
+	local drop, order = {}, {}
+	for _, part in ipairs(self.adult) do
+		if part.done and not drop[part.pack] then
+			drop[part.pack] = true
+			table.insert(order, part.pack)
+		end
+		part.done = nil
+	end
+	for _, pack in ipairs(order) do
+		if Engine.packs[pack] then Engine:DropPack(pack) end
+		self:DropFlirts(pack)
+	end
+end
+
+---Forgets the flirts of a pack (the 18+ pack when the consent goes off).
+---@param pack string
+function Ro:DropFlirts(pack)
+	for i = #self.flirts, 1, -1 do
+		local f = self.flirts[i]
+		if f.pack == pack then
+			self.flirtByKey[f.key] = nil
+			table.remove(self.flirts, i)
+		end
+	end
+end
 
 ---Loads the 18+ pack, only with the consent on and the tone Explicit (the first of the two locks). Never in combat.
 ---@return boolean loaded
@@ -1326,4 +1387,12 @@ Guards()
 function Ro:OnInit()
 	self.session = { recent = {}, last = nil, breakup = nil }
 	Kinds()
+end
+
+-- the first lock at login (spec 12.2): with the consent on and the tone Explicit, the 18+ pack loads when the
+-- character enters the world, or at the end of the fight it entered in (LoadPack never loads in combat)
+if NS.EventBus then
+	local function Load() if Ro:AdultOn() then Ro:LoadPack() end end
+	NS.EventBus:Subscribe("WORLD_ENTER", "romance18", Load)
+	NS.EventBus:Subscribe("COMBAT_END", "romance18", Load)
 end

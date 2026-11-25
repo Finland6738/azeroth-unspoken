@@ -26,6 +26,7 @@ To try the newest lines before the next release, download the repository itself 
    - **`AzerothUnspoken`**: the addon itself;
    - **`AzerothUnspoken_enUS`** and **`AzerothUnspoken_itIT`**: the lines in English and in Italian;
    - **`AzerothUnspoken_Kalimdor`** and **`AzerothUnspoken_EasternKingdoms`**, each with its `_enUS` and `_itIT` folder: the lines that belong to one continent;
+   - **`AzerothUnspoken_Romance18`** is **not** in this zip and is never on CurseForge: it is the optional 18+ pack of the romance tone *Explicit*, for adults who want it: from the first release after 0.3.3 it is a zip of its own on the same Releases page (`AzerothUnspoken_Romance18-<version>.zip`); 0.3.3 and earlier have none. Without it nothing changes. See [[Relationships|Relationships]].
    - **`AzerothUnspoken_Example`**, a small sample phrase pack (a few lines for fishing and for some places), and **`AzerothUnspoken_Versi`**, the verses pack (inscriptions, songs and rhymes, see [[Literary Forms|Literary-Forms]]). These two are optional. See [[Phrase Packs|Phrase-Packs]].
 4. Start the game. On the character selection screen click **AddOns** and make sure every **Azeroth Unspoken** entry is ticked. Most of them are marked *Load on demand*: that is expected (see below).
 

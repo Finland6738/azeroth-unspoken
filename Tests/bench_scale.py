@@ -83,7 +83,9 @@ def pack_folders(addon):
     out = []
     for d in sorted(os.listdir(root)):
         toc = os.path.join(root, d, d + ".toc")
-        if d.startswith(name + "_") and os.path.isfile(toc) and "## X-AzerothUnspoken-" in open(toc, encoding="utf-8").read():
+        text = open(toc, encoding="utf-8").read() if os.path.isfile(toc) else ""
+        # the 18+ pack (X-AzerothUnspoken-Romance, ADR 0061) is not part of the download
+        if d.startswith(name + "_") and "## X-AzerothUnspoken-" in text and "## X-AzerothUnspoken-Romance:" not in text:
             out.append(d)
     return out
 

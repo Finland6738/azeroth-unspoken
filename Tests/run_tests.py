@@ -20,7 +20,9 @@ def pack_folders():
     out = []
     for d in sorted(os.listdir(ROOT)):
         toc = os.path.join(ROOT, d, d + ".toc")
-        if d.startswith(ADDON_NAME + "_") and os.path.isfile(toc) and                 "## X-AzerothUnspoken-" in open(toc, encoding="utf-8").read():
+        text = open(toc, encoding="utf-8").read() if os.path.isfile(toc) else ""
+        # R4 (ADR 0061): the 18+ pack (X-AzerothUnspoken-Romance) is not part of the download; TestRomance18 loads it
+        if d.startswith(ADDON_NAME + "_") and "## X-AzerothUnspoken-" in text and "## X-AzerothUnspoken-Romance:" not in text:
             out.append(d)
     return out
 
@@ -496,7 +498,7 @@ for f_ in ("Widgets.lua", "JournalFrame.lua", "RelationsFrame.lua", "ProfileFram
         check("W.Window(" in "\n".join(src_), f"{f_}: the window is made by W.Window (#187)")
 check(win_frames_ == 2, f"the named frames of the windows: W.Window and the dialogue window ({win_frames_})")
 for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContext", "TestNames", "TestChatGateway", "TestNarrator", "TestWizardConsent", "TestWindows",
-             "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestEmotion", "TestMemory", "TestRelations", "TestPlayers", "TestNPCLevels", "TestNPCRomance", "TestRomance", "TestRomanceFrame", "TestRomanceContent", "TestPromises", "TestFavours", "TestLocalReputation", "TestHostility", "TestProximityShared",
+             "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestEmotion", "TestMemory", "TestRelations", "TestPlayers", "TestNPCLevels", "TestNPCRomance", "TestRomance", "TestRomanceFrame", "TestRomanceContent", "TestRomance18", "TestPromises", "TestFavours", "TestLocalReputation", "TestHostility", "TestProximityShared",
              "TestOtherPlace", "TestNPCAlive", "TestArcs", "TestCommands", "TestProfile", "TestProbeCombat", "TestContent", "TestScale",
              "TestSelection", "TestWorld", "TestDynamism", "TestKeyClaims", "TestPacks", "TestKeyboard", "TestLiterary",
              "TestLiteraryMeta", "TestSongbook", "TestNemesis", "TestCompanion", "TestIdentity", "TestLayout", "TestAssets", "TestTheme", "TestWidgets", "TestEmoteWheel", "TestBard"):
@@ -509,6 +511,9 @@ for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContex
     if name == "TestScale":
         # R1: il generatore dell'archivio sintetico (solo per i test, mai nel .toc)
         run_file(lt, os.path.join(HERE, "SyntheticArchive.lua"), "SyntheticArchive.lua")
+    if name == "TestRomance18":
+        # R4: the 18+ pack is installed from the repository, like a player who downloads it from the GitHub release
+        lt.globals().REPO_ROOT = ROOT.replace("\\", "/")
     if name == "TestPacks":
         # C0b: the regional files are read back to compare them with the pieces kept in memory
         lt.globals().REPO_ROOT = ROOT.replace("\\", "/")
@@ -1329,7 +1334,7 @@ check(proc.returncode == 0, "check_versi.py: il pacchetto dei versi si carica, Ã
 # 12) regole automatiche (R1): regola dei documenti per le PR, privacy dei file tracciati, forma dei workflow
 print("\nREGOLE DEL PROGETTO")
 for script in ("check_rules.py", "check_privacy.py", "check_user_block.py", "check_media.py", "check_locale.py",
-               "check_theme_colors.py", "check_mockups.py"):
+               "check_theme_colors.py", "check_mockups.py", "check_package.py"):
     proc = subprocess.run([sys.executable, "-I", "-X", "utf8", os.path.join(HERE, script)],
                           capture_output=True, text=True, encoding="utf-8")
     print("\n".join("  " + l for l in proc.stdout.rstrip().split("\n") if "  ok  " not in l))

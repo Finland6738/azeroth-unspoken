@@ -161,7 +161,7 @@ def main():
     probe = git("check-ignore", "-q", "AzerothUnspoken/Media/icons.tga")
     check(probe.returncode == 1, ".gitignore does not ignore Media/")
     package = read(os.path.join(ROOT, "tools", "package_release.py"))
-    check('git("archive"' in package, "the release package is built with `git archive` of the addon folders (Media/ comes with them)")
+    check(re.search(r'git\((?:root, )?"archive"', package) is not None, "the release package is built with `git archive` of the addon folders (Media/ comes with them)")
     inst = read(os.path.join(ROOT, "tools", "install_addon.py"))
     check("shutil.copytree(src, dst)" in inst, "install_addon.py copies the whole folder (Media/ included)")
 

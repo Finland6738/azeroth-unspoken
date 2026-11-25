@@ -1343,18 +1343,30 @@ function Validator:Run(opts)
 			end
 			-- active romance (ADR 0061, spec 9.4 and 16): a romance line is written at one tier (romanceTier) and never in
 			-- the character's voice, the one voice the narrator could propose to chat
+			-- (R4, spec 12.2, the third lock) tier 3 only in an 18+ pack (`romance18 = true`), which holds tier 3 romance
+			-- lines and nothing else
 			if NS.Romance then
+				local pk = Engine.packs[p.pack]
+				local adult, romance = pk and pk.romance18 == true, false
 				for _, ev in ipairs(p.events) do
 					if NS.Romance.EVENTS[ev] then
+						romance = true
 						local tier = type(p.when) == "table" and p.when.romanceTier
 						if type(tier) ~= "number" then
 							Add("error", "romanceTier", p.pack, id, nil, ("event '%s': a romance line declares romanceTier (1, 2 or 3)"):format(ev))
+						elseif adult and tier ~= 3 then
+							Add("error", "romance18", p.pack, id, nil, "an 18+ pack holds tier 3 only (romanceTier = 3)")
+						elseif not adult and tier == 3 then
+							Add("error", "romance18", p.pack, id, nil, "romanceTier = 3 only in an 18+ pack (romance18 = true)")
 						end
 						if p.speaker == "character" then
 							Add("error", "romanceVoice", p.pack, id, nil, ("event '%s': a romance line never speaks as the character"):format(ev))
 						end
 						break
 					end
+				end
+				if adult and not romance then
+					Add("error", "romance18", p.pack, id, nil, "an 18+ pack holds romance lines only (npcd_romance_*, romance_scene, romance_inner)")
 				end
 			end
 			-- eventi che citano una persona (relation_npc): la frase dichiara la condizione che garantisce il rapporto
