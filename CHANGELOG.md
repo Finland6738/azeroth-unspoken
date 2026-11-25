@@ -8,6 +8,10 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+## [0.3.3] - 2026-11-25
+
+A small development preview on top of 0.3.2: it adds **active romance** with NPCs (ADR 0061), on top of the passive romance of ADR 0037. Flirt answers appear in the NPC dialogue window, and the NPC welcomes them, stays cold or refuses by an affinity table (race, class, soul, temperament, relationship, situation), never at the cost of the relationship. A romance window holds the declaration, the dates and the vow; there is one beloved, jealousy after the vow and a break-up the player chooses. Two tone tiers ship, Courteous (default) and Intimate with a fade to black, with 133 romance lines (387 texts per language). The 18+ consent exists in Settings but stays off, and no 18+ pack is part of this release. The saved relationships move to version 10. Nothing of the romance has been tried in the game client yet.
+
 ### Active romance, step R3: the lines (ADR 0061)
 
 - **Added**: the romance lines of tiers 1 (Courteous) and 2 (Intimate), in Italian and English, pack `base_romance`:
@@ -3606,7 +3610,8 @@ Tools for the owner to run in the real client, so that the decisions D3 (memory 
 - A pack that registers a key that already exists (script, NPC, place, arc) replaces the base one without a warning ([#69](https://github.com/Finland6738/azeroth-unspoken/issues/69)).
 - License to be defined ([issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2)).
 
-[Unreleased]: https://github.com/Finland6738/azeroth-unspoken/compare/v0.3.2...main
+[Unreleased]: https://github.com/Finland6738/azeroth-unspoken/compare/v0.3.3...main
+[0.3.3]: https://github.com/Finland6738/azeroth-unspoken/compare/v0.3.2...v0.3.3
 [0.3.2]: https://github.com/Finland6738/azeroth-unspoken/compare/v0.3.1...v0.3.2
 [0.3.1]: https://github.com/Finland6738/azeroth-unspoken/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/Finland6738/azeroth-unspoken/compare/v0.2.1...v0.3.0
