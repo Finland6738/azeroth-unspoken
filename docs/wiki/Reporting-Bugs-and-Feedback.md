@@ -24,7 +24,7 @@ For something that does not work as expected. The form asks for:
 
 | Field | What to write | Where to find it |
 |---|---|---|
-| **Addon version** | for example `0.3.1` | the first line of `/au debug`, or the AddOns list |
+| **Addon version** | for example `0.3.2` | the first line of `/au debug`, or the AddOns list |
 | **Game client** | build and client language, for example `1.60.1.70658, English` | the second line of `/au debug` |
 | **Addon language** | English or Italiano | |
 | **Is Total RP 3 installed?** | Yes or No | |
