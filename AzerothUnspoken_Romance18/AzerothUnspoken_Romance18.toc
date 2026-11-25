@@ -5,7 +5,7 @@
 ## LoadOnDemand: 1
 ## X-AzerothUnspoken-Romance: 18
 ## Author: Finland6738
-## Version: 0.3.2
+## Version: 0.3.3
 ## X-Category: Roleplay
 ## X-License: All rights reserved (phrases and narrative data). See LICENSING.md
 

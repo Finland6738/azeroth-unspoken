@@ -10,10 +10,10 @@ This page explains how to install Azeroth Unspoken, how to check that it loaded,
 
 ## Download
 
-The latest release is **0.3.2**, a development preview like the first ones (0.1.0, 0.2.0, 0.2.1, 0.3.0, 0.3.1): it adds the Bard (songs and verses in a box of their own colour, shared on a click) and two more content waves, every feature is in, the lines are still growing wave by wave, and it has not been played through in game yet. To get it:
+The latest release is **0.3.3**, a development preview like the first ones (0.1.0, 0.2.0, 0.2.1, 0.3.0, 0.3.1, 0.3.2): it adds active romance with NPCs (flirt answers in the dialogue, a romance window for the declaration, the dates and the vow, one beloved, two tone tiers, Courteous and Intimate), every feature is in, the lines are still growing wave by wave, and it has not been played through in game yet. To get it:
 
 1. Open the [Releases page](https://github.com/Finland6738/azeroth-unspoken/releases).
-2. Under the latest release, download **`AzerothUnspoken-<version>.zip`** (for example `AzerothUnspoken-0.3.2.zip`). It holds only the addon folders.
+2. Under the latest release, download **`AzerothUnspoken-<version>.zip`** (for example `AzerothUnspoken-0.3.3.zip`). It holds only the addon folders.
 3. Unzip the file somewhere on your computer, for example on your desktop.
 
 To try the newest lines before the next release, download the repository itself instead: open the [GitHub repository](https://github.com/Finland6738/azeroth-unspoken), click the green **Code** button, then **Download ZIP**. Only the `AzerothUnspoken` folders inside it go into the game.
@@ -26,7 +26,7 @@ To try the newest lines before the next release, download the repository itself 
    - **`AzerothUnspoken`**: the addon itself;
    - **`AzerothUnspoken_enUS`** and **`AzerothUnspoken_itIT`**: the lines in English and in Italian;
    - **`AzerothUnspoken_Kalimdor`** and **`AzerothUnspoken_EasternKingdoms`**, each with its `_enUS` and `_itIT` folder: the lines that belong to one continent;
-   - **`AzerothUnspoken_Romance18`** is **not** in this zip and is never on CurseForge: it is the optional 18+ pack of the romance tone *Explicit*, a zip of its own on the same Releases page (`AzerothUnspoken_Romance18-<version>.zip`), for adults who want it. Without it nothing changes. See [[Relationships|Relationships]].
+   - **`AzerothUnspoken_Romance18`** is **not** in this zip and is never on CurseForge: it is the optional 18+ pack of the romance tone *Explicit*, for adults who want it: from the first release after 0.3.3 it is a zip of its own on the same Releases page (`AzerothUnspoken_Romance18-<version>.zip`); 0.3.3 and earlier have none. Without it nothing changes. See [[Relationships|Relationships]].
    - **`AzerothUnspoken_Example`**, a small sample phrase pack (a few lines for fishing and for some places), and **`AzerothUnspoken_Versi`**, the verses pack (inscriptions, songs and rhymes, see [[Literary Forms|Literary-Forms]]). These two are optional. See [[Phrase Packs|Phrase-Packs]].
 4. Start the game. On the character selection screen click **AddOns** and make sure every **Azeroth Unspoken** entry is ticked. Most of them are marked *Load on demand*: that is expected (see below).
 
