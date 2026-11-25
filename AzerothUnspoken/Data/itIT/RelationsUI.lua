@@ -163,6 +163,14 @@ NS:RegisterLanguage("it", {
 		rel_breakup_1 = "Chiudi con %s. La strada davanti è più silenziosa, e di nuovo tua.",
 		rel_breakup_2 = "Con %s è finita. Qualcosa ti resterà comunque.",
 		rel_breakup_3 = "Lasci andare %s. Niente si cancella: finisce semplicemente qui.",
+		-- ADR 0061 (step R2): la fase nel dettaglio, Chiudi la storia
+		rel_rom_stage = "Romanticismo: %s.",
+		rel_rom_beloved = "La persona amata.",
+		rel_rom_end = "Chiudi la storia",
+		rel_rom_end_tip = "Chiude la storia con la persona amata. Il voto, se fatto, resta nel diario.",
+		rel_rom_end_dlg = "Chiudi la storia",
+		rel_rom_end_text = "Chiudere la storia con %s? Il voto, se fatto, resta nel diario. Potrai corteggiare di nuovo dopo %d giorni.",
+		rel_toast_romance_ended = "La storia è finita.",
 		-- N5 (#217): favori e soprannomi (un avviso nomina l'NPC; per una visita anche la zona; le varianti si alternano)
 		mem_kind_relation_favour = "Un favore fatto",
 		rel_mem_favour = "Un favore fatto a un amico",

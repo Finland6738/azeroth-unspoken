@@ -637,7 +637,7 @@ def main():
     for build in (build_narrator, build_proposal, build_speak_button, build_wizard, build_settings, build_journal,
                   build_relations, build_consent, build_profile, build_dialogue, build_chat, build_wheel, build_aurora):
         build()
-    import romance   # ADR 0061: the proposed pages of active romance (romance-*.html)
+    import romance   # ADR 0061: the pages of active romance (romance-*.html)
     romance.build(add, client_popup)
     write_index()
     print(f"{len(INDEX)} mockups written")

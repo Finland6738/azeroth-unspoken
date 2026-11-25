@@ -95,11 +95,18 @@ Only if you turn on the **Attraction axis** (off by default). Romance is possibl
 
 Nothing changes in the game: the NPC does not behave differently. Moving the attraction slider yourself does not make the vow by itself: only something you do with the NPC can.
 
-#### Active romance (in progress)
+#### Active romance
 
-A romance **you** lead is being built: a romantic answer now and then in the [[NPC dialogues|NPC-Dialogues]], marked by a heart; the NPC may welcome it, stay cold or gently refuse (a refusal never ruins the friendship); a declaration, dates and the vow in a small window of their own; one beloved at a time, some jealousy after the vow, and a break-up only if you choose it. It stays private and needs the **Attraction axis**, like everything here.
+With the **Attraction axis** on, you can lead a romance yourself (setting **Active romance**, on by default; see [[Settings|Settings#romance]]). It is private and narration only: nothing goes to chat, and the NPC does not behave differently in the game.
 
-The engine is in the addon already, but **nothing of it shows yet**: the answers and the window come in the next update. Until then the vow happens by itself, as described above, and the NPC of the vow becomes your beloved. The saved relationships are now version 10: an older version of the addon reads them but does not change them.
+- **Romantic answers.** In the [[NPC dialogues|NPC-Dialogues]], with an NPC of the opposite sex you know at least a little, one extra answer may appear after the usual ones (two, once you are courting), marked by a heart and a colour of their own. The usual answers always stay. At most one per conversation, and not again with the same NPC for a few hours.
+- **The answer.** The NPC may **welcome** it, stay **cold**, or **refuse** gently: their temperament, your character's soul, race and class, how well you know each other, the place, the hour and your mood all count, and a little chance. A refusal costs a point of attraction and some quiet, never the friendship; three in a row and they ask for some room.
+- **The stages.** *Interest*, then *Courtship* (from Friend), then a **declaration**, and the **vow** at the top. The big moments open a small **romance window** of their own (a heart, the word *Romance* and the NPC's name, the label *addon ambient dialogue*): *Speak your heart* or *Not yet*, a **date** chosen among a few options that fit the place and the hour, *Make the vow*. It opens only when you click a moment's answer or type `/au romance` with the NPC targeted. Esc, the **x**, a fight or a loading screen close it as *Not now*, at no cost.
+- **One beloved.** The declaration makes them your beloved; nobody else is offered one. After the vow, flirting with someone else may reach your beloved (surely in the same town, perhaps elsewhere): they greet you a little colder for some days, and a date mends it sooner.
+- **Ending it.** Only you can end it: **End the romance** in your beloved's detail (it asks first), or `/au romance end` twice. The vow, if made, stays in your journal; you can court again after 30 days.
+- **The tone.** *Courteous* by default; *Intimate* moments fade to black. *Explicit* exists only behind a two-step 18+ consent, off by default, and only with a separate optional pack that is not on CurseForge.
+
+The journal keeps the declaration, the first date, a jealousy, an ending and a first refusal, with no names. Until the next update brings the romance lines, the window uses a few plain lines of its own and the dialogues show no romantic answers yet. The saved relationships are version 10: an older version of the addon reads them but does not change them.
 
 ### Your word: promises and oaths
 
@@ -384,6 +391,7 @@ The list, People met and Options tabs also have **Export** (text to copy, in a w
 | `/au relationships export` | text to copy |
 | `/au relationships auto on\|off` | register players by themselves |
 | `/au relationships attraction on\|off` | the attraction axis |
+| `/au romance` | active romance: the stage with your target and its moment (see [[Commands|Commands#romance]]) |
 | `/au relationships proximity on\|off` | recognise known players by nameplate and mouseover (this session only); `on` asks for a confirmation (repeat after a couple of seconds) |
 | `/au relationships share [on\|off\|all\|copy]` | the list shared by your characters: `on` shows the warning, repeat after a couple of seconds (within 30 s) to turn it on; `all` moves this character's choices into it; `copy` copies the shared choices into this character; no word shows whether it is on |
 | `/au relationships scope <name> shared\|character` | whose choices count for one player |

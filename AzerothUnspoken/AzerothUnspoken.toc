@@ -76,6 +76,7 @@ UI\ProfileFrame.lua
 UI\JournalFrame.lua
 UI\RelationsFrame.lua
 UI\DialogueFrame.lua
+UI\RomanceFrame.lua
 UI\EmoteWheel.lua
 UI\SettingsFrame.lua
 UI\Commands.lua

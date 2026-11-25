@@ -1581,6 +1581,35 @@ arrivano con lo step R2, quindi per ora sullo schermo non cambia quasi nulla. Se
 - **RA.3 · Un addon più vecchio.** Facoltativo: copia le variabili salvate, installa la versione precedente, entra.
     - **Atteso:** le relazioni si leggono ma non si cambiano (una versione più nuova), come per ogni altro blocco di dati.
 
+## RB: romanticismo attivo, step R2, l'interfaccia (ADR 0061)
+
+Costruito e provato solo fuori dal gioco. Prima accendi l'asse dell'attrazione (`/au relationships attraction on`). Le
+frasi romantiche arrivano con lo step R3, quindi per ora nei dialoghi non compare nessuna risposta romantica; la finestra
+usa alcune righe semplici sue. Se qualcosa non va, apri una issue con `/au debug` e una schermata.
+
+- **RB.1 · Impostazioni > Romanticismo.** Apri le impostazioni e scorri oltre Privacy.
+    - **Atteso:** *Romanticismo attivo* acceso, *Tono* Cortese, *Testi espliciti (18+)* spento, *Pacchetto 18+* non
+      installato; con l'asse dell'attrazione spento, l'interruttore grigio e *serve l'asse dell'Attrazione*.
+    - **Segnala:** una schermata per tema; una riga tagliata o sovrapposta.
+- **RB.2 · Il consenso 18+.** Clicca *Testi espliciti (18+)*, leggi, clicca di nuovo dopo due secondi; poi ancora una volta.
+    - **Atteso:** la finestra di conferma del gioco con l'avviso; un doppio clic veloce non fa nulla; acceso, poi spento
+      subito, e il tono torna al massimo Intimo.
+- **RB.3 · La finestra del romanticismo.** Con un NPC del sesso opposto che conosci bene (Amico, attrazione 50 o più),
+  prendilo come bersaglio e scrivi `/au romance`.
+    - **Atteso:** la finestra sopra il narratore e il dialogo, il cuore e *Romanticismo · <nome>*, *dialogo ambientale
+      dell'addon*, una riga semplice, *Apri il tuo cuore* a destra e *Non ancora*. Esc, la x e un combattimento la chiudono
+      senza cambiare nulla.
+    - **Segnala:** una schermata per tema; se Esc chiude anche qualcos'altro; dove si apre la finestra.
+- **RB.4 · Un appuntamento in una locanda di notte.** Dopo una dichiarazione, in una locanda dopo le 21, di nuovo
+  `/au romance`.
+    - **Atteso:** due o tre proposte con l'etichetta del tono e *Non stasera*; con Tono Intimo una proposta Intima; dopo,
+      la scena svanisce in un secondo e mezzo fino a *Più tardi.* (subito con le Animazioni spente).
+- **RB.5 · Il dettaglio delle Relazioni.** Apri il dettaglio della persona amata.
+    - **Atteso:** *Romanticismo: Dichiarazione.* (o Voto) e *La persona amata.*; il pulsante rosso **Chiudi la storia**
+      chiede prima e, confermato, la chiude; il diario conserva la fine senza nomi.
+- **RB.6 · I tasti.** Nelle Associazioni tasti del gioco esistono *Dialogo con l'NPC: risposta 4* e *risposta 5* (non
+  assegnati).
+
 ## Modulo riassuntivo (copia e compila)
 
 ```

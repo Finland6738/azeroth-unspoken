@@ -68,6 +68,7 @@ Four of them are **consents that cannot be given by mistake**: automatic sending
 | Your own Total RP 3 name | on | [[Settings]] |
 | Your own Total RP 3 traits | off | [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3]] |
 | Reading other players' Total RP 3 | off; a warning dialog and a confirmation | [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3]] |
+| Explicit romance texts (18+), in the account file | off; a warning dialog and a confirmation | [[Settings|Settings#romance]] |
 | Staying private while your Total RP 3 status is out of character | on | [[Chat Gateway]] |
 
 The addon never writes anything to Total RP 3.

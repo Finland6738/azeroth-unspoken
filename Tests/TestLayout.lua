@@ -366,7 +366,7 @@ end)
 -- text in text-1, which the floor of the box keeps at 4.5:1 (Narrator:Floor).
 T.run("UI-4: the voice colours and the narrator's texts keep their contrast in Nebula and in Aurora", function()
 	local Th, Narrator = NS.Theme, NS.Narrator
-	local voices = { "narrator", "inner", "character", "npc", "bard" }   -- the Bard: ADR 0060
+	local voices = { "narrator", "inner", "character", "npc", "bard", "romance" }   -- the Bard: ADR 0060; romance: ADR 0061
 	local function C(token, id) return { Th.Color(token, id) } end
 	local function Surface(id, alpha, scene)
 		local r, g, b = Th.Color("bg", id)

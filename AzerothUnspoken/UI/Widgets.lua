@@ -146,6 +146,9 @@ W.BUTTON_KINDS = {
 	neon      = { fill = "surface-1", ink = "text-1",      ring = "neon", glow = "neon", glowAlpha = 0.5 },
 	danger    = { ink = "err",        ring = "err" },
 	text      = { ink = "accent-text" },
+	-- ADR 0061: a flirt answer of the ambient dialogue, and a date option of the romance popup: the secondary surface, the
+	-- romance voice on the ring and the label (5.7:1 or more on surface-3 in both themes); the heart is drawn by the caller
+	romance   = { fill = "surface-3", ink = "voice-romance", ring = "voice-romance" },
 }
 W.HOVER, W.PRESSED = 0.08, 0.12   -- the white layers of the states (FDCP §3)
 W.DISABLED_ALPHA = 0.45
@@ -173,7 +176,7 @@ end
 ---@param width number
 ---@param height? number
 ---@param onClick? fun(self: table, button: string)
----@param kind? "primary"|"secondary"|"ghost"|"neon"|"danger"|"text"
+---@param kind? "primary"|"secondary"|"ghost"|"neon"|"danger"|"text"|"romance"
 ---@return table button
 function W.FlatButton(parent, text, width, height, onClick, kind)
 	kind = W.BUTTON_KINDS[kind or "secondary"] and (kind or "secondary") or "secondary"

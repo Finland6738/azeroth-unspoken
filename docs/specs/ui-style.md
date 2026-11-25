@@ -74,7 +74,7 @@ Components are those of FDCP §3 (the Button kinds *primary*, *secondary*, *ghos
   needs** to keep 4.5:1 over the brightest and the darkest world (`Narrator:Floor()`, worked out from the tokens: 0.6 in Nebula, whose light text
   needs a darker surface; 0.55 in Aurora). The contrast is computed over a white scene in both themes, as in `docs/design/UI_REVIEW.md`, and over a
   black one, which is the worst for Aurora (`Narrator.WorstContrast`).
-- **The voices** (narrator, inner voice, character, NPC, and the Bard since [ADR 0060](../adr/0060-the-bard-voice-and-sharing-a-piece.md)) are AU's only addition to FDCP's token list (UI-4): one colour token per voice per theme,
+- **The voices** (narrator, inner voice, character, NPC, the Bard since [ADR 0060](../adr/0060-the-bard-voice-and-sharing-a-piece.md), and romance since [ADR 0061](../adr/0061-active-romance-flirt-answers-an-affinity-table-one-beloved-and-three-tone-tiers.md)) are AU's only addition to FDCP's token list (UI-4): one colour token per voice per theme,
   chosen to differ in lightness as well as in hue, and passing the contrast test in Nebula and in Aurora. A voice is
   also told by its written label, by its accent bar and by the typeface of the inner voice
   ([#186](https://github.com/Finland6738/azeroth-unspoken/issues/186)); a colour is never the only difference. The Character and NPC colours must be
@@ -87,6 +87,7 @@ Components are those of FDCP §3 (the Button kinds *primary*, *secondary*, *ghos
   | `voice-character` | `#FFE08A` | `#935E00` | the character's words |
   | `voice-npc` | `#5BBF66` | `#0E5A28` | the NPC's words, and the NPC title of the ambient dialogue |
   | `voice-bard` | `#FF8FB8` | `#9C1F5E` | the Bard's box (ADR 0060): the songs, verses and tales the character remembers; also its note icon |
+  | `voice-romance` | `#FF7F6E` | `#A3301F` | active romance (ADR 0061): the flirt answers of the ambient dialogue, the romance popup's bar, label and heart |
 
   The tokens are **4.5:1 or more on the opaque `bg` surface** in both themes (the lowest is Aurora's Character, 5.1). Over a translucent box the
   text is the voice's token **only where it keeps 4.5:1 over the brightest and the darkest world at that opacity** (`Narrator:Ink`), and `text-1`

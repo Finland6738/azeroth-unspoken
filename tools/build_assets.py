@@ -180,6 +180,14 @@ ASSETS_LIST = [
     ("narrator-box-bard-sharing", "narrator-bard-sharing", "Narrator box", "The Bard sharing a song on /say: Next verse and Stop, only on your clicks."),
     ("narrator-box-bard-aurora", "narrator-bard-aurora", "Narrator box", "The Bard's box in the light theme Aurora, with /emote chosen."),
     ("narrator-box-bard-italian", "narrator-bard-it", "Narrator box", "The Bard's box in Italian: Bardo, Condividi."),
+    # active romance (ADR 0061)
+    ("romance-flirt-answers", "romance-dialogue-flirt", "Active romance", "Flirt answers after the neutral ones: the heart, the coral border, a tooltip."),
+    ("romance-refusal", "romance-refusal", "Active romance", "A gentle refusal: it costs a little attraction, never the friendship."),
+    ("romance-popup-declaration", "romance-popup-declaration", "Active romance", "The romance window at a declaration: Speak your heart or Not yet."),
+    ("romance-popup-date", "romance-popup-date", "Active romance", "A date at the inn at night: the options carry their tone."),
+    ("romance-popup-aurora", "romance-popup-aurora", "Active romance", "An intimate scene fades to black, in the light theme Aurora."),
+    ("romance-settings", "romance-settings-gate", "Active romance", "Settings > Romance and the two-step 18+ consent."),
+    ("romance-journal", "romance-journal", "Active romance", "The journal keeps a declaration, a jealousy and an ending, with no names."),
     # Chat Gateway
     ("chat-gateway-proposal", "proposal", "Chat Gateway", "A proposal waiting for your confirmation before it goes to /s."),
     ("chat-gateway-editor", "proposal-editor", "Chat Gateway", "The editor: change the line before you send it."),
@@ -509,12 +517,18 @@ def shot(html, out, exe):
     raise RuntimeError(f"the browser wrote no screenshot for {html}")
 
 
+def build_romance():
+    """ADR 0061: the pages of active romance (docs/design/mockups/tools/romance.py)."""
+    import romance  # noqa: E402
+    romance.build(bm.add, bm.client_popup)
+
+
 def main(names):
     mockkit.write_css(BUILD)
     for build in (bm.build_narrator, bm.build_proposal, bm.build_speak_button, bm.build_wizard, bm.build_settings,
                   bm.build_journal, bm.build_relations, bm.build_consent, bm.build_profile, bm.build_dialogue,
-                  bm.build_chat, bm.build_wheel, build_depths, build_italian, build_settings_sections, build_chat_more,
-                  build_gallery):
+                  bm.build_chat, bm.build_wheel, build_romance, build_depths, build_italian, build_settings_sections,
+                  build_chat_more, build_gallery):
         build()
     os.makedirs(CURSEFORGE, exist_ok=True)
     exe = render.browser()

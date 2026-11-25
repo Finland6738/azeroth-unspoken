@@ -14,6 +14,10 @@
 -- narrator's floor), the label "addon ambient dialogue" as a Badge that is always there, the NPC's title in the
 -- voice-npc token, the answers as FlatButtons (primary for "Listen", secondary for the answers), a fade-in from NS.Motion.
 -- It still has no Esc (ADR 0020). Not tried in the client.
+-- ADR 0061 (active romance, step R2): after the neutral answers up to two flirt answers (NPCAlive marks them `romance`):
+-- a FlatButton of the kind `romance` (the romance voice on the ring and the label), the heart of the icon sheet 6 units
+-- before the centred label, numbered 4 and 5 (keys NPC answer 4-5) and a tooltip that says what it is. The window grows
+-- by one button for each (five at most). `F.ROMANCE` tells Systems/Romance.lua that the frame can draw them.
 local ADDON, NS = ...
 local W = NS.Widgets
 local Theme, Motion = NS.Theme, NS.Motion
@@ -27,6 +31,10 @@ local MARGIN = 8
 local OVERLAP_PAD = 6
 local CHECK_EVERY = 0.5
 local NPC_TOKEN = Theme.VOICE_TOKENS.npc   -- the NPC voice of the narrator (#186)
+local ROMANCE_TOKEN = Theme.VOICE_TOKENS.romance   -- ADR 0061
+local HEART = 14            -- the heart before a flirt answer's label
+F.ROMANCE = true            -- ADR 0061: this frame draws flirt answers (Systems/Romance.lua asks before offering them)
+F.MAX_BUTTONS = 5           -- three neutral answers and two flirt answers
 
 -- finestre di Blizzard che la nostra non deve coprire (nomi di FrameXML: si controllano solo se esistono)
 F.BLIZZARD_FRAMES = { "GossipFrame", "QuestFrame", "MerchantFrame", "TaxiFrame", "ClassTrainerFrame", "BankFrame",
@@ -205,9 +213,14 @@ function F:Render(view)
 		for i, c in ipairs(view.choices or {}) do
 			local b = frame.choiceButtons[i]
 			if b then
-				-- #183: the number is the key that answers (NPC answer 1-3)
+				-- #183: the number is the key that answers (NPC answer 1-5)
 				b:SetText(i .. ". " .. c.text)
-				W.FitButton(b, WIDTH - 2 * MARGIN, WIDTH - 2 * MARGIN, 24)   -- a long answer is cut, the tooltip says it whole
+				-- ADR 0061: a flirt answer: its kind, the heart, a tooltip that says what it is; a neutral one is plain
+				b.romance, b.moment = c.romance == true, c.moment
+				b:SetStyle(b.romance and "romance" or "secondary")
+				b.heart:SetShown(b.romance)
+				b.auTip = b.romance and b.tipFn or nil
+				W.FitButton(b, WIDTH - 2 * MARGIN, WIDTH - 2 * MARGIN, b.romance and 24 + HEART + 6 or 24)   -- a long answer is cut, the tooltip says it whole
 				b.choiceIndex = i
 				table.insert(buttons, b)
 			end
@@ -240,6 +253,20 @@ function F:ApplySettings(skipLayout)
 	end
 end
 
+---ADR 0061: the tooltip of a flirt answer (a moment answer says the popup opens; with a beloved who is someone else,
+---that they may hear of it).
+---@param b table the button
+---@return string
+function F.FlirtTip(b)
+	local name = lastView and lastView.name or ""
+	if b and b.moment then return NS:L("rom_tip_moment", name) end
+	local Ro = NS.Romance
+	local npcID = NS.NPCAlive.session and NS.NPCAlive.session.who and NS.NPCAlive.session.who.npcID
+	local beloved = Ro and Ro:Beloved()
+	if beloved and beloved ~= npcID then return NS:L("rom_tip_flirt_other", name) end
+	return NS:L("rom_tip_flirt", name)
+end
+
 ---@return boolean ready la finestra è stata costruita
 function F:IsReady() return frame ~= nil end
 
@@ -253,7 +280,7 @@ end
 
 ---The key "NPC answer n" (#183): presses the n-th button the window shows (an answer; on an offer, Talk; at the end,
 ---Close). Nothing when the window is closed or has no such button.
----@param n integer 1-3
+---@param n integer 1-5
 ---@return boolean pressed
 function F:Press(n)
 	if not frame or not frame:IsShown() then return false end
@@ -342,13 +369,21 @@ local function Build()
 	frame.text:SetWordWrap(true)
 
 	frame.choiceButtons = {}
-	for i = 1, NS.NPCAlive.MAX_CHOICES do
+	for i = 1, F.MAX_BUTTONS do
 		local index = i
-		frame.choiceButtons[i] = W.FlatButton(frame, "", WIDTH - 2 * MARGIN, BUTTON_H, function()
+		local b = W.FlatButton(frame, "", WIDTH - 2 * MARGIN, BUTTON_H, function()
 			local ok, why = NS.NPCAlive:Choose(index)
 			if not ok and why then NS.NPCAlive:Explain("npc_refused_", why) end
 		end, "secondary")
-		frame.choiceButtons[i]:Hide()
+		-- ADR 0061: the heart of a flirt answer, 6 units before the centred label (hidden on a neutral answer)
+		b.heart = W.Icon(b, "heart", HEART, ROMANCE_TOKEN, "OVERLAY")
+		b.heart:SetPoint("RIGHT", b.label, "LEFT", -6, 0)
+		b.heart:Hide()
+		b.tipFn = function() return F.FlirtTip(b) end
+		W.Tooltip(b, b.tipFn)
+		b.auTip = nil   -- a neutral answer has no tooltip of its own (only the whole text when it is cut)
+		b:Hide()
+		frame.choiceButtons[i] = b
 	end
 	frame.openBtn = W.FlatButton(frame, "", WIDTH - 2 * MARGIN, BUTTON_H, function()
 		local ok, why = NS.NPCAlive:Open()

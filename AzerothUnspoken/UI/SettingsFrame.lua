@@ -576,6 +576,40 @@ local function CreatePanel()
 		function() NS.Config:Set("names.player", Cycle(NAME_STYLES, NS.db.names.player)) end, "opt_namestyle_tip")
 	Next()
 
+	-- Romance (ADR 0061, step R2): Active romance (it needs the attraction axis), the allowed tone, the 18+ consent (two
+	-- steps on, one off; in the account) and the state of the optional 18+ pack. Not a module: README's list does not change.
+	Header("opt_section_romance")
+	local Ro = NS.Romance
+	local romanceActive = Switch("opt_romance_active", function() return NS.db.relations.romanceActive == true end, function()
+		NS.db.relations.romanceActive = not NS.db.relations.romanceActive
+	end, "opt_romance_active_tip")
+	-- with the attraction axis off the switch is disabled and says what it needs
+	romanceActive.text:SetWidth(SECTION_W - CONTROL_X - 52 - LABEL_X)
+	romanceActive.needs = function()
+		if not (NS.Relationships and NS.Relationships:AttractionOn()) then return NS:L("rom_needs_attraction") end
+	end
+	local toneItems = {}
+	for i, id in ipairs({ "courteous", "intimate", "explicit" }) do
+		toneItems[i] = { id = i, text = function() return NS:L("rom_tone_" .. id) end }
+	end
+	local tone = Segment("opt_romance_tone", toneItems, function() return Ro:SettingTone() end, function(id)
+		local ok, why = Ro:SetTone(id)
+		if not ok and why == "adult" then NS:Print(NS:L("rom_tone_needs_adult")) end
+		panel:Refresh()
+	end, "opt_romance_tone_tip")
+	-- Explicit can be chosen only with the consent on (it reads as Intimate until the pack is loaded)
+	tone.after = function(r) r.seg.buttons[3]:SetEnabled(Ro:AdultOn()); r.seg.buttons[3]:SetAlpha(Ro:AdultOn() and 1 or 0.55) end
+	Toggle("opt_romance_adult", function() return ConsentState("romance_adult", Ro:AdultOn()) end, function()
+		local r = Ro:SetAdult(not Ro:AdultOn())
+		if r == "wait" then NS:Print(NS:L("consent_wait"))
+		elseif r == "on" or r == "off" then NS:Print(NS:L(r == "on" and "rom_adult_on" or "rom_adult_off")) end
+	end, "opt_romance_adult_tip")
+	Next()
+	-- the 18+ pack: not installed, installed, loaded (a status, not a control)
+	rows.opt_romance_pack = { key = "opt_romance_pack", status = true, label = Label("opt_romance_pack"),
+		text = ValueText(CONTROL_X, SECTION_W - CONTROL_X - LABEL_X), value = function() return NS:L("rom_pack_" .. Ro:PackWord()) end }
+	Next()
+
 	-- Info (UI-7): credits, licence, fan-made notice, the NEBULA logo and the links as copy boxes. Everything inside is
 	-- placed by LayoutInfo (called by Refresh), because the height of a text depends on the language.
 	Header("opt_section_info")
@@ -691,10 +725,15 @@ local function CreatePanel()
 			elseif r.switch then
 				local on = r.get() and true or false
 				r.switch:SetOn(on, true)
-				r.text:SetText(OnOff(on))
+				local needs = r.needs and r.needs()
+				r.switch:SetEnabled(needs == nil)
+				r.text:SetText(needs or OnOff(on))
+			elseif r.status then
+				r.text:SetText(r.value())
 			elseif r.seg then
 				for _, it in ipairs(r.items) do r.seg:SetItemText(it.id, it.text()) end
 				if not r.seg:Select(r.get()) then r.seg:Clear() end
+				if r.after then r.after(r) end
 			elseif r.slider then
 				local v = r.get()
 				r.slider:SetQuiet(v)

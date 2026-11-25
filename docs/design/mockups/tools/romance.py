@@ -1,10 +1,9 @@
-"""The PROPOSED mockups of active romance (ADR 0061, step R0): nothing here is built yet.
+"""The mockups of active romance (ADR 0061): drawn in step R0 as proposals, built in step R2.
 
 Each page is drawn on the real widgets and tokens of tools/mockup_lib.py and the windows of components.py, plus what ADR
-0061 adds: the voice token `voice-romance` (defined on each page here, not in mockups.css, until UI/Theme.lua has it in
-step R2), the flirt answers of the dialogue, the romance popup and the Settings section with the 18+ consent. The interface
-texts of romance are proposals in English (the locale files get them in R2-R3); every other text is read from the locale
-files. Names are invented. Every page carries the PROPOSED badge.
+0061 adds: the voice token `voice-romance` (in UI/Theme.lua and mockups.css since R2), the flirt answers of the dialogue
+(UI/DialogueFrame.lua), the romance popup (UI/RomanceFrame.lua) and the Settings section with the 18+ consent. The
+romance lines are samples (the content comes in step R3); names are invented.
 """
 import math
 
@@ -13,10 +12,8 @@ from components import (CONTROL_X, LABEL_X, S_CONTENT, S_SEC, dialogue, floor, i
                         _icon_button)
 from mockup_lib import L, badge, button, esc, icon, section, segmented, switch, text, tooltip, wow
 
-# the proposed voice token (ADR 0061 §9): coral in Nebula, brick red in Aurora
-ROMANCE = {"nebula": "#FF7F6E", "aurora": "#A3301F"}
-for _theme, _value in ROMANCE.items():
-    M.THEMES[_theme].setdefault("voice-romance", _value)   # for ink(): the contrast test of the voices
+# the voice token (ADR 0061 §9): coral in Nebula, brick red in Aurora; tools/mockup_lib.py holds it like Theme.lua
+ROMANCE = {theme: M.THEMES[theme]["voice-romance"] for theme in ("nebula", "aurora")}
 
 NPC = "Maren Holloway"                        # invented
 NPC_TITLE = "Innkeeper · " + NPC
@@ -27,16 +24,16 @@ TIP_FLIRT = f"A romantic answer: {NPC.split()[0]} may welcome it, stay cold or r
 REFUSAL = "You're kind. But I'd sooner we kept to the fire and the news, if it's all the same to you."
 INNER_REFUSED = "Not every door opens. This one stays a friend's door, and that is no small thing."
 TONES = {1: "Courteous", 2: "Intimate", 3: "Explicit"}
-CAPTION = "Proposed for ADR 0061 (not built): the romance texts are samples; the names are invented."
+CAPTION = "ADR 0061: the romance lines are samples (the content comes in step R3); the names are invented."
 
 
 def themed_vars(theme, body):
-    """The page's own definition of the proposed token, around everything drawn."""
-    return f'<div style="--voice-romance:{ROMANCE[theme]}">{body}</div>'
+    """The page's body: the token voice-romance comes from mockups.css since step R2."""
+    return body
 
 
 def flirt_button(label, y, hover=False, theme="nebula", width=364, left=8, chip=None):
-    """The proposed FlatButton kind `romance`: the secondary surface, a voice-romance border, the heart of the icon sheet
+    """The FlatButton kind `romance`: the secondary surface, a voice-romance border, the heart of the icon sheet
     at 8 units, the label at 28 in voice-romance ink (text-1 when the contrast test fails). chip: a tier word at the right."""
     a = 0.92
     tok = ink(theme, "voice-romance", a)
@@ -64,7 +61,7 @@ def dialogue_flirts(left, top, line, answers, flirts, hover=None, theme="nebula"
 
 def popup(left, top, s, tone=1, choices=(), stack=(), after=None, theme="nebula", lang="en", font=14, faded=None,
           close_label="Close"):
-    """The proposed romance popup (ADR 0061 §9, spec §11.2), built like the narrator box: 440 wide, the Panel at the
+    """The romance popup (ADR 0061 §9, spec §11.2), built like the narrator box: 440 wide, the Panel at the
     narrator's opacity, the 3-unit voice-romance bar, the header (the heart, Romance in voice-romance, the NPC's name in
     text-2, the tone chip, the close box), the badge "addon ambient dialogue", the scene in text-1, and at the bottom the
     choices: `choices` in one bar ([(label, kind)]), `stack` as full-width buttons above it ([(label, tier)]). faded: the
@@ -111,7 +108,7 @@ def popup(left, top, s, tone=1, choices=(), stack=(), after=None, theme="nebula"
 
 
 def settings_romance(theme="nebula", gate="reading"):
-    """The proposed Settings section Romance, in a plain stand-in of the client's Settings window (as components.settings
+    """The Settings section Romance, in a plain stand-in of the client's Settings window (as components.settings
     draws it), scrolled to the section."""
     T = lambda key: L("en", key)  # noqa: E731
     sy = 44
@@ -161,20 +158,20 @@ ROMANCE_MEMORIES = [
 
 def build(add, client_popup):
     """Writes the seven pages (spec §19) through build_mockups' add() and its stand-in of the client's dialog."""
-    group, target = "Active romance (proposed, ADR 0061)", "Relationships / NPC-Dialogues"
+    group, target = "Active romance (ADR 0061)", "Relationships / NPC-Dialogues"
 
     # 1. flirt answers in the dialogue
     body, h = dialogue_flirts(90, 30, L_NPC, ANSWERS, FLIRTS, hover=0)
     body += tooltip(TIP_FLIRT, left=150, top=30 + h + 6)
     add("romance-dialogue-flirt", "Romance - flirt answers in the dialogue", 560, 450, themed_vars("nebula", body), group,
-        target, scene="warm", seed=301, kind="proposed",
+        target, scene="warm", seed=301, kind="current",
         caption_extra="Two flirt answers after the three neutral ones: the heart, the coral border and words, a tooltip. " + CAPTION)
 
     # 2. a refusal: the NPC's line, the neutral answers stay, the inner voice notes it
     body, _ = dialogue_flirts(100, 24, REFUSAL, ["Tell me more.", "Thank you.", "Farewell."], [])
     body += narrator(100, 96, speaker="inner", s=INNER_REFUSED, remaining=0.6)
     add("romance-refusal", "Romance - a refusal", 640, 470, themed_vars("nebula", body), group, target, scene="warm",
-        seed=302, kind="proposed",
+        seed=302, kind="current",
         caption_extra="A refusal costs 1 attraction and nothing else; the flirts leave, the conversation goes on. " + CAPTION)
 
     # 3. the declaration
@@ -182,7 +179,7 @@ def build(add, client_popup):
          "does, she only waits, as if she already knows what you came back to say.")
     body = popup(100, 60, s, 1, choices=[("Speak your heart", "primary"), ("Not yet", "text")])
     add("romance-popup-declaration", "Romance popup - the declaration", 640, 360, themed_vars("nebula", body), group,
-        "Relationships", scene="dusk", seed=303, kind="proposed",
+        "Relationships", scene="dusk", seed=303, kind="current",
         caption_extra="Opened from a moment answer of the dialogue, never by itself; Esc means Not yet. " + CAPTION)
 
     # 4. a date at an inn at night: three options with their tier chips
@@ -191,7 +188,7 @@ def build(add, client_popup):
     body = popup(100, 40, s, 2, stack=[("A walk along the stream", 1), ("Supper by the fire", 1), ("Stay the night", 2)],
                  choices=[("Not tonight", "text")])
     add("romance-popup-date", "Romance popup - a date at the inn, at night", 640, 420, themed_vars("nebula", body), group,
-        "Relationships", scene="dusk", seed=304, kind="proposed",
+        "Relationships", scene="dusk", seed=304, kind="current",
         caption_extra="The options follow the situation and the allowed tone; their chips say the tier. " + CAPTION)
 
     # 5. after a welcomed tier-2 date: fade to black, light theme
@@ -199,14 +196,14 @@ def build(add, client_popup):
              "behind you both, and the inn goes on with its night.", "Later.")
     body = popup(100, 60, "", 2, faded=faded, theme="aurora")
     add("romance-popup-aurora", "Romance popup - fade to black (Aurora)", 640, 340, themed_vars("aurora", body), group,
-        "Relationships / Settings", scene="neutral", seed=305, theme="aurora", kind="proposed",
+        "Relationships / Settings", scene="neutral", seed=305, theme="aurora", kind="current",
         caption_extra="Tier 2 is told with modesty, then the text fades out and one word stays. " + CAPTION)
 
     # 6. the Settings section and the client's confirmation dialog of the 18+ consent
     html_, h = settings_romance("nebula", gate="reading")
     html_ += client_popup(220, h + 40, 460, 210, CONSENT, L("en", "consent_turn_on"), L("en", "consent_cancel"), True)
     add("romance-settings-gate", "Settings - Romance and the 18+ consent", 900, h + 40 + 210 + 90, themed_vars("nebula", html_),
-        group, "Settings / Privacy-and-Data", scene="neutral", seed=306, scale=1.25, kind="proposed",
+        group, "Settings / Privacy-and-Data", scene="neutral", seed=306, scale=1.25, kind="current",
         caption_extra="Off by default, kept in the account; Turn on is disabled for two seconds; Explicit stays disabled "
                       "until the gate is on and the separate pack is installed. " + CAPTION)
 
@@ -214,5 +211,5 @@ def build(add, client_popup):
     rows = [(t, w, [(L("en", "act_keep"), "secondary"), (L("en", "act_delete"), "danger")]) for t, w in ROMANCE_MEMORIES]
     body = journal(40, 56, "memories", rows)
     add("romance-journal", "Journal - romance memories", 840, 640, themed_vars("nebula", body), group, "Memory-and-Journal",
-        seed=307, kind="proposed",
+        seed=307, kind="current",
         caption_extra="[P] marks a permanent memory: the declaration and the break-up; no memory holds a name. " + CAPTION)

@@ -397,6 +397,10 @@ Commands.list = {
 	-- ADR 0060: the Bard's box, the Share button and its channel, a share by a typed command
 	{ name = "bard", fn = function(rest) NS.Bard:Command(rest) end,
 		usage = "bard [on/off / share on/off / channel say/emote / sing / next / stop]", desc = "help_bard", group = "bard" },
+	-- ADR 0061: active romance (the stage with the targeted NPC and the moment due, which it opens; the settings; the break-up)
+	{ name = "romance", fn = function(rest) NS.Romance:Command(rest) end,
+		usage = "romance [on/off / tone courteous/intimate/explicit / adult on/off / end / why]", desc = "help_romance",
+		group = "character" },
 	{ name = "stories", fn = function(rest) NS.StoryArcs:Command(rest) end,
 		usage = "stories [list / journal / choose <arc> <option> / start / suspend / resume / skip / disable / enable <arc/all> / max <1/2> / on / off / status]",
 		desc = "help_stories", group = "character" },
@@ -508,7 +512,7 @@ Commands.HINTS = {
 	pulsante = "button", pacchetti = "packs", pacchetto = "pack", valida = "validate", controlla = "validate",
 	info = "stats", memoria = "memory", opzioni = "options", lingua = "language", canale = "channel", modo = "mode",
 	chat = "mode", intensita = "intensity", ["intensità"] = "intensity", profondita = "depth", ["profondità"] = "depth",
-	letterarie = "literary", poesia = "literary", bardo = "bard", canta = "bard", nome = "name", cognome = "name",
+	letterarie = "literary", poesia = "literary", bardo = "bard", canta = "bard", romanticismo = "romance", amore = "romance", nome = "name", cognome = "name",
 	pausa = "pause", narratore = "narrator", anima = "soul", profilo = "soul", saluto = "greet", addio = "farewell",
 	brindisi = "toast", pensiero = "muse", minaccia = "threat", grido = "battlecry", preghiera = "pray",
 	vittoria = "victory", ringrazia = "thanks", grazie = "thanks", scherzo = "jest", prob = "chance",

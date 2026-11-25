@@ -31,7 +31,7 @@ T.run("#183: the keys of the proposal bar: discard, edit, channel", function()
 		"AzerothUnspoken_History", "AzerothUnspoken_Journal", "AzerothUnspoken_NPCAnswer" }) do
 		T.eq(type(_G[fn]), "function", fn)
 	end
-	for _, key in ipairs({ "DISCARD", "EDIT", "CHANNEL", "HISTORY", "JOURNAL", "ANSWER1", "ANSWER2", "ANSWER3" }) do
+	for _, key in ipairs({ "DISCARD", "EDIT", "CHANNEL", "HISTORY", "JOURNAL", "ANSWER1", "ANSWER2", "ANSWER3", "ANSWER4", "ANSWER5" }) do
 		T.eq(type(_G["BINDING_NAME_AZEROTHUNSPOKEN_" .. key]), "string", "name of the key " .. key)
 	end
 	-- Discard

@@ -29,7 +29,7 @@ ADDON = os.path.join(ROOT, "AzerothUnspoken")
 TOKENS = ["bg", "surface-1", "surface-2", "surface-3", "raised", "border-subtle", "border", "border-strong",
           "text-1", "text-2", "text-3", "on-accent", "accent", "accent-hover", "accent-text", "accent-2", "neon", "neon-core",
           "ok", "warn", "err", "highlight", "scrim", "grad-1", "grad-2", "grad-3", "grad-4",
-          "voice-narrator", "voice-inner", "voice-character", "voice-npc", "voice-bard"]
+          "voice-narrator", "voice-inner", "voice-character", "voice-npc", "voice-bard", "voice-romance"]
 
 THEMES = {
     "nebula": {
@@ -41,7 +41,7 @@ THEMES = {
         "highlight": "rgba(255,255,255,0.06)", "scrim": "rgba(5,2,10,0.72)",
         "grad-1": "#FC8C46", "grad-2": "#EE4662", "grad-3": "#9A2A9A", "grad-4": "#702AA8",
         "voice-narrator": "#C4B0FF", "voice-inner": "#7FD4FF", "voice-character": "#FFE08A", "voice-npc": "#5BBF66",
-        "voice-bard": "#FF8FB8",
+        "voice-bard": "#FF8FB8", "voice-romance": "#FF7F6E",
     },
     "aurora": {
         "bg": "#F5F8FA", "surface-1": "#FFFFFF", "surface-2": "#EAF0F4", "surface-3": "#E1E9EF", "raised": "#FFFFFF",
@@ -52,12 +52,12 @@ THEMES = {
         "highlight": "rgba(255,255,255,0.6)", "scrim": "rgba(11,27,43,0.45)",
         "grad-1": "#0054B6", "grad-2": "#007EA8", "grad-3": "#00A89A", "grad-4": "#70C446",
         "voice-narrator": "#4B2BB3", "voice-inner": "#005F8F", "voice-character": "#935E00", "voice-npc": "#0E5A28",
-        "voice-bard": "#9C1F5E",
+        "voice-bard": "#9C1F5E", "voice-romance": "#A3301F",
     },
 }
 THEME_NAMES = {"nebula": "Nebula", "aurora": "Aurora"}
 DARK = {"nebula": True, "aurora": False}
-VOICE_TOKENS = {"narrator": "voice-narrator", "inner": "voice-inner", "character": "voice-character", "npc": "voice-npc", "bard": "voice-bard"}
+VOICE_TOKENS = {"narrator": "voice-narrator", "inner": "voice-inner", "character": "voice-character", "npc": "voice-npc", "bard": "voice-bard", "romance": "voice-romance"}
 
 
 def rgba(value):

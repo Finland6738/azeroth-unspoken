@@ -163,6 +163,14 @@ NS:RegisterLanguage("en", {
 		rel_breakup_1 = "You end it with %s. The road ahead is quieter, and yours again.",
 		rel_breakup_2 = "It is over with %s. Some of it will stay with you anyway.",
 		rel_breakup_3 = "You let %s go. Nothing is erased: it simply ends here.",
+		-- ADR 0061 (step R2): the stage in the detail, End the romance
+		rel_rom_stage = "Romance: %s.",
+		rel_rom_beloved = "Your beloved.",
+		rel_rom_end = "End the romance",
+		rel_rom_end_tip = "Ends the romance with your beloved. The vow, if made, stays in your journal.",
+		rel_rom_end_dlg = "End the romance",
+		rel_rom_end_text = "End the romance with %s? The vow, if made, stays in your journal. You can court again after %d days.",
+		rel_toast_romance_ended = "The romance has ended.",
 		-- N5 (#217): favours and nicknames (a notice names the NPC; for a visit, the zone too; the variants take turns)
 		mem_kind_relation_favour = "A favor done",
 		rel_mem_favour = "A favor done for a friend",

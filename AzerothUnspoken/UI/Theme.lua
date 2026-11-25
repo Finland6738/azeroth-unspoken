@@ -25,16 +25,16 @@ end
 local function rgba(r, g, b, a) return { r / 255, g / 255, b / 255, a } end
 
 -- Token names, in the order of the spec's table. Every theme defines every one of them (the tests check the parity).
--- The first 27 are the sister addon's, identical on purpose. The last five are this addon's only addition (UI-4, spec
--- section 2.3; the Bard since ADR 0060): one colour per voice of the narrator (narrator, inner voice, character, NPC, Bard), chosen to differ in lightness as
+-- The first 27 are the sister addon's, identical on purpose. The last six are this addon's only addition (UI-4, spec
+-- section 2.3; the Bard since ADR 0060, romance since ADR 0061): one colour per voice of the narrator (narrator, inner voice, character, NPC, Bard, romance), chosen to differ in lightness as
 -- well as in hue and to keep 4.5:1 on the narrator's surface (Tests/TestLayout.lua). UI-8 compares the mockup tokens with
 -- these, so a change here is a deliberate one.
 Theme.TOKENS = { "bg", "surface-1", "surface-2", "surface-3", "raised", "border-subtle", "border", "border-strong",
 	"text-1", "text-2", "text-3", "on-accent", "accent", "accent-hover", "accent-text", "accent-2", "neon", "neon-core",
 	"ok", "warn", "err", "highlight", "scrim", "grad-1", "grad-2", "grad-3", "grad-4",
-	"voice-narrator", "voice-inner", "voice-character", "voice-npc", "voice-bard" }
+	"voice-narrator", "voice-inner", "voice-character", "voice-npc", "voice-bard", "voice-romance" }
 Theme.VOICE_TOKENS = { narrator = "voice-narrator", inner = "voice-inner", character = "voice-character", npc = "voice-npc",
-	bard = "voice-bard" }
+	bard = "voice-bard", romance = "voice-romance" }
 
 Theme.themes = {
 	nebula = {
@@ -52,6 +52,8 @@ Theme.themes = {
 			["voice-narrator"] = hex("#C4B0FF"), ["voice-inner"] = hex("#7FD4FF"), ["voice-character"] = hex("#FFE08A"), ["voice-npc"] = hex("#5BBF66"),
 			-- ADR 0060: the Bard, a rose apart from the narrator's violet and the inner voice's cyan
 			["voice-bard"] = hex("#FF8FB8"),
+			-- ADR 0061: active romance, a coral apart from the Bard's rose in hue and from the NPC's green in lightness
+			["voice-romance"] = hex("#FF7F6E"),
 	},
 	aurora = {
 		name = "Aurora", dark = false,
@@ -68,6 +70,8 @@ Theme.themes = {
 			["voice-narrator"] = hex("#4B2BB3"), ["voice-inner"] = hex("#005F8F"), ["voice-character"] = hex("#935E00"), ["voice-npc"] = hex("#0E5A28"),
 			-- ADR 0060: the Bard, a wine red apart from the narrator's indigo and the inner voice's blue
 			["voice-bard"] = hex("#9C1F5E"),
+			-- ADR 0061: active romance, a brick red apart from the Bard's wine red
+			["voice-romance"] = hex("#A3301F"),
 	},
 }
 
