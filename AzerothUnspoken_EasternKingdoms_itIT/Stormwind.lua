@@ -7455,4 +7455,5432 @@ AU:RegisterRegionalTexts("elwynnforest", "itIT", "eastern_stormwind", [==[
 		"allenta una fibbia che mordeva da un pezzo, e sembra crescere in altezza più o meno della larghezza della cinghia.",
 		"allarga la cintura di un buco, lì in mezzo alla strada, con la dignità di chi se l'è meritato.",
 	},
+	["sw.greet.w22.howdo.001"] = {
+		"Ciao! Hai smarrito la strada? Chiedi a una guardia: ti indica la banca, la locanda e tre istruttori che non avevi chiesto.",
+		"Ti serve la strada? Ogni guardia di Stormwind sa dove si trova tutto, e te lo dice. Tutto quanto.",
+		"Non trovi la strada? Niente vergogna: le guardie di questa città danno indicazioni come i preti fanno prediche.",
+	},
+	["sw.greet.w22.howdo.002"] = {
+		"Ciao. Un consiglio: stai lontano dal bordo dei canali. Ogni ora si prendono il cappello di qualcuno, e ogni tanto anche il qualcuno.",
+		"Fai la strada dei canali? Tieniti in mezzo al passaggio: i bordi scivolano più di quanto sembri. Salve.",
+		"Ehi! Le guardie dicono che ogni settimana qualcuno cade in un canale. Cerca di non essere quello di questa settimana.",
+	},
+	["sw.greet.w22.howdo.003"] = {
+		"Ciao. I tuoi gomiti sono sopravvissuti alla calca del Trade District? Io uno l'ho perso.",
+		"Salve! Hai l'aria un po' calpestata. Il Trade District fa questo effetto a tutti.",
+		"Vai nel Trade District? Gomiti in fuori e borsello in dentro. E salve.",
+	},
+	["sw.greet.w22.howdo.004"] = {
+		"Salve. Hai un vago odore di Pig and Whistle. Tranquillità: ce l'ha mezza Old Town.",
+		"Ehi, ciao. Il Pig and Whistle, vero? Lo immaginavo. Quell'odore non va via con un lavaggio solo.",
+	},
+	["sw.greet.w22.howdo.005"] = {
+		"Ciao. Se hai i capelli dritti, vieni dal Mage Quarter. I miei ci hanno messo un'ora a tornare giù.",
+		"Ehilà. Se senti un botto dal Mage Quarter, non scappare. Lo fanno tutti gli altri, e peggiora soltanto le cose.",
+		"Salve! Già attraversato il Mage Quarter? Te ne accorgi quando i capelli cominciano a crepitare.",
+	},
+	["sw.greet.w22.howdo.006"] = {
+		"Ciao! Non badare al gatto. Mi segue dall'ultimo ponte, e credo voglia il mio pranzo.",
+		"Ehi, salve. Ti piacciono i gatti? Bene, perché uno ha deciso di adottarmi e mi serve qualcuno a cui passarlo.",
+		"Un avvertimento: se un gatto grigio comincia a seguirti, non dargli da mangiare. È così che ha fregato me.",
+	},
+	["sw.greet.w22.howdo.007"] = {
+		"Ciao! Ti avviso: i bambini di questa città corrono da un capo all'altro di ogni strada e non si fermano per nessuno.",
+		"Salve. Se un bambino ti tira la manica e scappa, controlla le monete. Poi ridi: di solito ci sono ancora.",
+		"Ehi. I ragazzini qui giocano a guardie e Defias nei vicoli. Indovina chi vince sempre.",
+	},
+	["sw.greet.w22.howdo.008"] = {
+		"Ciao. Hai sentito cosa si bisbiglia a corte su Lady Prestor? Nemmeno io. E preferisco che resti così.",
+		"Salute. Non dire il nome di Lady Prestor troppo forte: vicino a Stormwind Keep la gente ammutolisce quando salta fuori.",
+		"Una parola all'orecchio: dicono che il reggente dia retta a Lady Prestor più del dovuto. Ecco, ora salve come si deve.",
+	},
+	["sw.greet.w22.howdo.009"] = {
+		"Salve. Notizie della nave del re? Scusa. In questa città tutti lo chiedono a tutti.",
+		"Ti saluto. Se mai senti notizie di re Varian, dillo alla prima guardia che incontri. Sperano tutte, ancora adesso.",
+		"Non hai saputo niente del re, vero? No. Nessuno ha saputo niente. Salute lo stesso.",
+	},
+	["sw.greet.w22.howdo.010"] = {
+		"Ciao. Vai al Deeprun Tram? Reggiti a qualcosa, e non fissare il buio troppo a lungo.",
+		"Ehi, salve! Sul tram siediti guardando avanti. Al contrario, lo stomaco comincia a protestare.",
+		"In viaggio col Deeprun Tram? Conta le lampade nella galleria: passa il tempo meglio che pensare all'acqua sopra.",
+	},
+	["sw.greet.w22.howdo.011"] = {
+		"Ciao! Come hai detto? Vengo dalle forge del Dwarven District e mi fischiano ancora le orecchie.",
+		"Salute! Scusa, sto urlando? Troppo tempo accanto alle incudini dei nani: tutti mi sembrano lontani.",
+		"Ehi! Parla un po' più forte. I martelli del Dwarven District si sono presi in prestito metà del mio udito per la prossima ora.",
+	},
+	["sw.greet.w22.howdo.012"] = {
+		"Salve. Se la pietra ti ha stancato, il Park è l'unico posto in città dove i piedi toccano l'erba.",
+		"Fatti un giro nel Park, ogni tanto: agli alberi non importa chi sia il reggente. Ciao.",
+		"Ciao. Quando la città diventa troppo rumorosa, vado a stare sotto gli alberi del Park. Prova anche tu.",
+	},
+	["sw.greet.w22.salute.001"] = {
+		"Pace a te, sotto il blu e l'oro. L'Alleanza potrebbe scegliere strade peggiori per incontrarsi.",
+		"Ti saluto, nella città del reggente. Che ogni amico dell'Alleanza ci si trovi al sicuro come mi ci trovo io.",
+		"Salute. Ironforge, Darnassus o queste strade: ovunque stiamo, rispondiamo alla stessa causa.",
+	},
+	["sw.greet.w22.salute.002"] = {
+		"Servo tuo. A corte i nobili si salutano così, e non lo pensano quasi mai. Io invece sì.",
+		"Umilissimo servitore, come si dice lassù a Stormwind Keep. Quaggiù un po' meno umile, ma è un piacere conoscerti.",
+		"Eccoti un inchino da cortigiano. L'ho imparato guardando i nobili, quindi forse mi esce un po' storto.",
+	},
+	["sw.greet.w22.salute.003"] = {
+		"In nome di re Anduin, salute a te. È giovane, ma la città si inchina lo stesso, e io con lei.",
+		"Onore a te, sotto il re ragazzo e il suo reggente. Fra tutti e due, le strade restano in pace.",
+		"Salve. Bolvar Fordragon tiene in ordine la città; il minimo che posso fare è tenere in ordine le mie maniere.",
+	},
+	["sw.greet.w22.salute.004"] = {
+		"Che la Luce ti custodisca. Lo dico ogni volta che vedo la cattedrale, e da quasi ogni angolo della città si vede.",
+		"La pace della Luce su di te, chiunque tu preghi, o anche se non preghi nessuno.",
+		"Che la Luce faccia un pezzo di strada con te, una volta passate le porte. Con me lo fa, mi piace pensare.",
+	},
+	["sw.greet.w22.salute.005"] = {
+		"Salute! Ti manca una forgia come si deve? Il Dwarven District è quanto di più vicino a Ironforge c'è da questa parte del tram.",
+		"Ehilà. Bella città, Stormwind. Peccato l'abbiano costruita sopra il terreno invece che dentro una montagna.",
+		"Gli umani fanno buone mura, glielo concedo. Peccato per i soffitti: non ce ne sono. Salute!",
+	},
+	["sw.greet.w22.salute.006"] = {
+		"Piacere di conoscerti. Perdona l'accento: ci sto lavorando.",
+		"Saluti. Sì. Saluti. In questa città si dice così, mi pare.",
+		"Salve, salve. Una città piacevole, tutto questo bianco. Molto... piacevole. Proseguiamo?",
+	},
+	["sw.greet.w22.salute.007"] = {
+		"Dopo le statue della Valley of Heroes un semplice saluto sembra poca cosa. Eccolo comunque.",
+		"Riverisco. Tutti quegli eroi di pietra lungo la Valley of Heroes, e nessuno ricambia mai un cenno. Tu sì.",
+		"Salve. Ogni volta che passo nella Valley of Heroes faccio un cenno alle statue. Nessuno aveva mai risposto, prima di te.",
+	},
+	["sw.greet.w22.salute.008"] = {
+		"Pace a te. Se la tua strada passa per Westfall, una parola gentile ai contadini: ne hanno avute poche.",
+		"Sai, metà di chi chiede monete per queste strade è salito da Westfall, dicono. Saluta anche loro, se passi.",
+		"Salute. Con i Defias a piede libero a Westfall, una faccia amica in città merita che ci si fermi.",
+	},
+	["sw.greet.w22.salute.009"] = {
+		"Salute! Questo è il saluto delle guardie, pugno sul petto. Ci ho fatto pratica su un lampione.",
+		"Un saluto militare, come lo fanno le guardie della città. Il loro è più secco, ma loro sono pagate per farlo.",
+		"Ehilà! Una volta ho provato a salutare come le guardie e per poco non facevo volare il cappello a un mercante. Ciao, con prudenza.",
+	},
+	["sw.greet.w22.salute.010"] = {
+		"I miei rispetti, a te e alla strada che hai davanti.",
+		"Un inchino, e buona fortuna.",
+	},
+	["sw.greet.w22.salute.011"] = {
+		"Ciao. Stai lontano dai guai: dicono che lo Stockade sia pieno e che la cucina non sia migliorata.",
+		"Occhio all'umore delle guardie, e salute: lo Stockade prende nuovi ospiti senza chiedere il permesso.",
+		"In questa città tieni la fedina pulita. Lo Stockade non ha vista e ha vicini anche peggiori.",
+	},
+	["sw.greet.w22.salute.012"] = {
+		"Salute. Vai a Stormwind Keep? Raddrizza il colletto: la corte nota tutto e non dimentica niente.",
+		"La sala del trono? Allora spazzola prima gli stivali. I cortigiani guardano in basso prima di guardarti in faccia. Salve.",
+		"Sali alla Keep? Lì dentro parla piano. Alla corte piace far ripetere le cose. Salve, comunque.",
+	},
+	["sw.greet.w22.wellmet.001"] = {
+		"Piacere di conoscerti. A Stormwind anche un saluto ha una tariffa, ma questo è gratis.",
+		"Salve! Bello incontrare qualcuno che non vuole essere pagato per il disturbo. In questa città lo vogliono quasi tutti.",
+		"Eccoti un saluto, senza spese. Abbastanza raro in questa città da meritare di dirlo.",
+	},
+	["sw.greet.w22.wellmet.002"] = {
+		"Ciao. Devo fare un inchino? Metà della città se lo aspetta, e l'altra metà ride se ci provi.",
+		"Qui non so mai se inchinarmi, fare un cenno o porgere la mano. Scegli tu, e salve.",
+		"Un inchino? Un cenno? A Stormwind non si capisce mai. Eccoti un po' tutti e due.",
+	},
+	["sw.greet.w22.wellmet.003"] = {
+		"Salve! Di sicuro ci siamo già visti, o ci vedremo. Stormwind ha troppe facce per tenerle tutte a mente.",
+		"Perdona se ho scordato il tuo nome: questa città me ne infila cento nuovi in testa ogni ora. Salute!",
+		"Salute. Il tuo nome? No, aspetta, non dirmelo. Tanto lo perderei da qualche parte fra qui e la banca.",
+	},
+	["sw.greet.w22.wellmet.004"] = {
+		"Ciao. Parla pure liberamente: qualcuno dello SI:7 starà ascoltando comunque, tanto vale essere interessanti.",
+		"Salute. Teniamoci sull'allegro. In questa città i muri hanno orecchie, e lo SI:7 le paga.",
+		"Salve. Non voltarti, ma quel perdigiorno vicino al muro potrebbe essere dello SI:7. O solo un perdigiorno. Ciao, in ogni caso.",
+	},
+	["sw.greet.w22.wellmet.005"] = {
+		"Ciao. Non stai portando una supplica a Stormwind Keep, vero? Bene. In un'ora non ne avevo incontrato nessuno come te.",
+		"Salve! Che piacere incontrare qualcuno che non si lamenta delle tasse. Non ti lamenti, giusto?",
+		"Nessuna lagnanza, nessuna supplica per il reggente? Allora sei una persona riposante. Ti saluto.",
+	},
+	["sw.greet.w22.wellmet.006"] = {
+		"Ti saluto. Si vede ancora chi sei. Certa gente questa città la inghiotte intera: bada che non capiti a te.",
+		"Salve. Stormwind consuma le persone fino a lasciare solo monete e titoli. Bello incontrare qualcuno che è di più.",
+		"Salute. Tieniti quella faccia. La città ha un modo tutto suo di lucidare la gente finché sembrano tutti mercanti.",
+	},
+	["sw.greet.w22.wellmet.007"] = {
+		"Ciao. Ti offrirei da bere, ma ogni taverna fra l'Old Town e il Mage Quarter conosce il mio conto a memoria.",
+		"Salve! Una birra? Paghi tu, però: allo Slaughtered Lamb non mi fanno più credito.",
+		"Un bicchiere per festeggiare l'incontro? Volentieri, se offri tu. Il mio conto al Gilded Rose ormai ha un conto tutto suo.",
+	},
+	["sw.greet.w22.wellmet.008"] = {
+		"Ciao! Come? Aspetta che smettano le campane. Metà di ogni conversazione, in questa città, se la prende la cattedrale.",
+		"Ripetimelo quando le campane hanno finito: la Cathedral Square riuscirebbe a coprire un'intera predica.",
+		"Ehi. Parla in fretta, prima che attacchino le campane della cattedrale e nessuno senta più nessuno.",
+	},
+	["sw.greet.w22.wellmet.009"] = {
+		"Salute, chiunque tu sia. Se sarà l'inizio di un'amicizia, lo scopriremo.",
+		"Salve. Non so ancora se fra noi resterà un saluto o nascerà un'amicizia, quindi te ne do uno buono per tutti e due i casi.",
+		"Piacere. In una città così grande, uno sconosciuto è solo qualcuno che nessuno ha ancora presentato. Fatto.",
+	},
+	["sw.greet.w22.wellmet.010"] = {
+		"Salve. Ci conosciamo? Lascia stare: in questa città costa meno essere cortesi che tirare a indovinare.",
+		"Chiunque tu sia, salve. Una cortesia non costa nulla, e a Stormwind questo la rende un affare.",
+	},
+	["sw.greet.w22.wellmet.011"] = {
+		"Ciao. Banchiere, sarto, prete o borseggiatore? A Stormwind li saluto tutti allo stesso modo, per sicurezza.",
+		"Salve. In questa città il mendicante e il nobile ricevono da me lo stesso cenno, e anche tu.",
+		"Salute. Mercante, mago o soldato, qui tutti meritano un saluto. Anche quelli che non lo ricambiano mai.",
+	},
+	["sw.greet.w22.wellmet.012"] = {
+		"Ciao. Hai mai guardato qualcuno pescare nei canali? Io sì, per un'ora. Nessuno dei due ha preso niente.",
+		"Hai una canna da pesca? I canali sono pieni di pesci, o almeno così continua a dirmi chi ci pesca. Salve.",
+		"Salve. Dicono che sotto uno dei ponti dei canali viva qualcosa di grosso. I pescatori non dicono quale.",
+	},
+	["sw.journey.w22.aerial.001"] = {
+		"sbircia giù nei cortili sul retro che nessuna strada mostra mai: un pozzo, una catasta di legna, una panca, un gatto addormentato sul coperchio di un barile.",
+		"scopre dietro le facciate una seconda città, che solo dall'aria si vede: cortili interni con pozzi e legnaie, tinozze per il bucato, una capra legata a un palo.",
+		"intravede i quadratini di faccende private nascosti dietro ogni isolato, ogni cortile un piccolo mondo con il suo pozzo.",
+	},
+	["sw.journey.w22.aerial.002"] = {
+		"Il mercato, visto dall'alto, è tutto tende: a strisce, rattoppate, sbiadite fino al colore del tè leggero, cucite in un'unica grande coperta sdrucita.",
+		"Sotto di me le bancarelle del Trade District spariscono sotto la tela. Ogni toppa è l'idea di colore vivace di un mercante diverso.",
+		"Tende, tende, tende. Se laggiù qualcuno vende qualcosa, la tela se lo tiene per sé.",
+	},
+	["sw.journey.w22.aerial.003"] = {
+		"osserva dall'alto come si muove davvero una folla di città: passa un carro, la gente si apre davanti e si richiude dietro, come alghe attorno a un pesce che spinge.",
+		"segue dall'aria un carretto lungo una via gremita, la folla che gli si apre davanti e si ricompone alle spalle, come l'erba alta che si piega al passaggio di un cane e poi si raddrizza.",
+	},
+	["sw.journey.w22.aerial.004"] = {
+		"Quassù le persone di Stormwind hanno tutte la stessa taglia. Il signore nel suo velluto e il ragazzo con la carriola: due puntini, più o meno allo stesso passo.",
+		"A quest'altezza non ci sono nobili né facchini, solo puntini. Dubito che ai nobili piacerebbe il panorama.",
+		"Da questa distanza non distinguo un duca da uno spazzino. Stessa taglia, stesso passo, stessa macchiolina scura sulla pietra. La città ne morirebbe di vergogna.",
+	},
+	["sw.journey.w22.aerial.005"] = {
+		"Rallenta un momento, bestia. Sto leggendo la città.",
+		"Piano. Fammela guardare per bene prima che scivoli via tutta.",
+		"Tieni la virata ancora un po'. La voglio tutta in un solo sguardo.",
+	},
+	["sw.journey.w22.aerial.006"] = {
+		"abbraccia per un momento tutta la città: le spalle contro la montagna, il volto verso la foresta, come una sentinella che ha trovato un buon muro a cui appoggiarsi.",
+		"vede come Stormwind è piantata nella terra: le spalle al fianco della montagna, la foresta ai piedi, e nessun modo di arrivarle addosso se non di fronte.",
+	},
+	["sw.journey.w22.aerial.007"] = {
+		"Si vedono i rammendi, da quassù. Certi tetti sono di un tono più chiaro, certi muri hanno un filare più nuovo, e le giunture attraversano i quartieri come i segni della marea su un molo.",
+		"Vista dall'aria, questa è una città rammendata: ardesie più chiare accanto a quelle scure, filari nuovi posati su quelli vecchi, toppe che corrono da una via all'altra.",
+	},
+	["sw.journey.w22.aerial.008"] = {
+		"nota, qua e là dove un tetto si fa piano, gli orti che in strada nessuno conosce: erbe nelle tinozze, fagioli che si arrampicano su un comignolo.",
+		"scorge gli orti pensili della città: una cassetta di fagioli, una fila di vasi d'erbe, un piccolo pero coraggioso che cresce da un barile.",
+	},
+	["sw.journey.w22.aerial.009"] = {
+		"Tutte quelle finestre, e dietro ognuna una vita intera di cui non saprò mai niente. Da quassù sono quadratini scuri allineati.",
+		"Migliaia di finestre in fila. Dietro una si litiga, dietro quella accanto si ride, e da quest'altezza sono tutte identiche.",
+	},
+	["sw.journey.w22.aerial.010"] = {
+		"per qualche colpo d'ala distingue i quartieri a orecchio: martellate dalla parte delle forge, il vociare del mercato proprio sotto, un silenzio raccolto dal lato della cattedrale.",
+		"sente ogni quartiere per conto suo a quest'altezza, come se la città fosse stata scucita: incudini in un angolo, voci al mercato, la quiete del Park.",
+	},
+	["sw.journey.w22.aerial.011"] = {
+		"Guarda: tutta Stormwind, e ogni briciola che si fa gli affari suoi.",
+		"Ne farei una mappa, se solo stesse ferma.",
+	},
+	["sw.journey.w22.aerial.012"] = {
+		"Vedo dentro metà dei cortili della città, da quassù. Stormwind, stendi il bucato con più pudore.",
+		"Vista così, questa città non ha segreti. Be', uno o due. Soprattutto biancheria.",
+		"Sì, lo vedo il tuo cortile, laggiù. Bei cavoli.",
+	},
+	["sw.journey.w22.aerial.013"] = {
+		"legge la città dalle sue luci mentre la bestia sale: un grappolo fitto attorno al mercato, una manciata sparsa sull'Old Town, un anello di torce attorno alla fortezza, e i canali come corsie nere in mezzo.",
+		"nel buio riesce a distinguere i quartieri solo dai lumi: affollati intorno al mercato, radi e storti sopra l'Old Town, disposti in un anello ordinato attorno alla fortezza.",
+	},
+	["sw.journey.w22.aerial.014"] = {
+		"Vedo la pioggia attraversare la città: prima si scuriscono i tetti dell'Old Town, poi quelli del mercato, poi quelli della fortezza, come una mano che tira una tenda.",
+		"L'acquazzone passa su Stormwind come una scopa lenta. Tetto dopo tetto le ardesie si fanno scure alle sue spalle, e da quassù vedo esattamente quale quartiere si sta bagnando.",
+	},
+	["sw.journey.w22.aerial.015"] = {
+		"Nemmeno una nuvola. Da qui conto tutte le statue della Valley.",
+		"Cielo limpido, e tutta la città stesa fino all'ultimo comignolo. Bestia, guarda lì.",
+	},
+	["sw.journey.w22.aerial.016"] = {
+		"La capitale del regno, tutta insieme e non più grande di una mano. Lothar condusse la nostra gente lontano dalle sue ceneri. A vederla intera così, capisco perché si è voluto rifarla.",
+		"La nostra gente un tempo si lasciò alle spalle le ceneri di questa città. Da quassù, intera e di nuovo indaffarata fino all'ultimo vicolo, sembra quasi impossibile crederci.",
+	},
+	["sw.journey.w22.alight.001"] = {
+		"resta {g:fermo|ferma} mentre la bestia ritira le ali a tappe, le penne lunghe che scivolano l'una sull'altra con un fruscio asciutto, come carte raccolte dal tavolo.",
+		"sente le ali richiudersi dietro la sella un poco alla volta, penna su penna, con il fruscio di carta di un mazzo che si ricompone.",
+	},
+	["sw.journey.w22.alight.002"] = {
+		"È atterrata su un pavimento di pietra piatto, eppure gli artigli si piegano sul bordo di una lastra come se stringessero un ramo. Certe abitudini sono più vecchie di qualunque città.",
+		"Appena atterrata, la bestia chiude gli artigli anteriori sull'orlo della pietra, come un falco che afferra un ramo. Qui di rami non ce ne sono. Gli artigli non lo sanno.",
+	},
+	["sw.journey.w22.alight.003"] = {
+		"si alza e si riabbassa con la bestia, che si arruffa come fanno i falchi: ogni penna del corpo sollevata insieme e poi di nuovo distesa.",
+		"si sente sollevare di un dito mentre la bestia gonfia ogni penna che possiede, le tiene così, poi le lascia ricadere lisce tutte insieme.",
+	},
+	["sw.journey.w22.alight.004"] = {
+		"Gli artigli ticchettano sulla pietra, tic, tic, come le dita di un impiegato sul bancone. Mi stanno dicendo che la corsa è finita.",
+		"La bestia tamburella con gli artigli sulle lastre mentre cerco le staffe. Ho visto impiegati di banca aspettare esattamente così.",
+	},
+	["sw.journey.w22.alight.005"] = {
+		"Un momento. Prima lasciala assestare.",
+		"Aspetta le ali. Si aspettano sempre le ali.",
+		"Calma. Si scende quando è ferma, non prima.",
+	},
+	["sw.journey.w22.alight.006"] = {
+		"La prima cosa che fa, prima ancora che io scenda di sella: gira la testa all'indietro e raddrizza una penna sulla spalla. Ognuno ha le sue priorità.",
+		"A terra, e il primo gesto della bestia è rimettere in fila col becco una sola penna arruffata. Il cavaliere può aspettare. La penna no.",
+	},
+	["sw.journey.w22.alight.007"] = {
+		"vede la cresta del grifone, rimasta dritta per tutta la discesa, appiattirsi sul cranio non appena le zampe toccano la pietra.",
+		"guarda le penne sulla testa del grifone, irte per tutta la discesa, ricadere una a una ora che il posatoio gli è sotto.",
+	},
+	["sw.journey.w22.alight.008"] = {
+		"Appena a terra batte il becco due volte. I custodi giurano che è una bestia soddisfatta di sé. Secondo me è una bestia che ha visto il secchio del pesce.",
+		"Due colpi secchi di becco all'atterraggio. Contentezza, mi ha detto una volta un custode. Dalla sella, a me sembra molto la fame.",
+	},
+	["sw.journey.w22.alight.009"] = {
+		"resta in sella mentre la bestia impasta la pietra con le zampe posteriori, come un gatto che lavora un cuscino, prima di abbassare il posteriore e fermarsi.",
+		"ondeggia piano in sella mentre la bestia pesta le lastre con le zampe di dietro, sinistra, destra, sinistra, come un gatto che si fa il letto, e poi si accuccia.",
+	},
+	["sw.journey.w22.alight.010"] = {
+		"La bestia resta con le ali mezze chiuse, ancora in ascolto di qualcosa lassù che io non sento più. Poi scuote la testa, ed è di nuovo un animale da posatoio.",
+		"Per un attimo dopo l'atterraggio continua a guardare in su, oltre i tetti, come se avesse lasciato qualcosa lassù. Poi il secchio della carne tintinna e il cielo è dimenticato.",
+	},
+	["sw.journey.w22.alight.011"] = {
+		"Sì, elegantissima. Puoi smettere di metterti in posa.",
+		"Ali dentro, bestia. Nessuno ti sta facendo il ritratto.",
+	},
+	["sw.journey.w22.alight.012"] = {
+		"nota la zampa anteriore della bestia aprirsi e chiudersi sulla pietra qualche volta dopo l'atterraggio, quattro dita uncinate che si allargano e si piegano come se contassero qualcosa.",
+		"vede una delle zampe artigliate della bestia flettersi sulla lastra, le dita che si aprono a ventaglio e si richiudono, come una mano che si scioglie le nocche intorpidite.",
+	},
+	["sw.journey.w22.away.001"] = {
+		"L'ultima cosa della città a lasciarmi andare è il suono più piccolo: un martello chissà dove, toc, toc, toc, finché le ali non lo coprono.",
+		"Di tutto il rumore alle spalle, un martello solo resiste più a lungo, un picchiettare di ferro che mi accompagna per un po' e poi semplicemente non c'è più.",
+	},
+	["sw.journey.w22.away.002"] = {
+		"In città tutti parlano sopra tutti. Quassù perfino i miei pensieri fanno rumore. Meglio che me ne venga uno che valga la pena.",
+		"Laggiù potevo pensare qualunque cosa, tanto nel baccano non la sentiva nessuno. Quassù i pensieri rimbombano. Li tratto con più cura.",
+	},
+	["sw.journey.w22.away.003"] = {
+		"apre un pugno ancora stretto sui lacci della borsa, un'abitudine dei ponti affollati della città che sopravvive alle mura per qualche colpo d'ala.",
+		"lascia finalmente la borsa che ha stretto per tutte le strade affollate: non è ancora nato il borseggiatore che lavori a quest'altezza.",
+	},
+	["sw.journey.w22.away.004"] = {
+		"Abbastanza silenzio da sentirmi pensare. Non sempre è una buona notizia.",
+		"Pace e silenzio. Dammi un attimo e comincio a chiacchierare con la bestia.",
+	},
+	["sw.journey.w22.away.005"] = {
+		"Stormwind è rumorosa come un mulino: dopo un po' smetti di sentirla, poi te ne vai, e il silenzio sembra quello di qualcuno che si è interrotto a metà frase.",
+		"Il rumore della città non lo noti finché non sparisce. Allora il silenzio ha una forma strana, come una frase lasciata a mezz'aria.",
+	},
+	["sw.journey.w22.away.006"] = {
+		"sente un cane abbaiare in una fattoria lontana là sotto, piccolo e nitidissimo, per un attimo la cosa più forte del mondo ora che le strade tacciono.",
+		"coglie l'abbaiare di un cane da cortile che sale dalla foresta, sottile e distinto, e per qualche colpo d'ala è l'unico suono sotto il cielo.",
+	},
+	["sw.journey.w22.away.007"] = {
+		"canticchia qualche battuta sotto il rumore delle ali, senza badare all'intonazione, come fa chi è certo che nessuno senta.",
+		"attacca a canticchiare un motivetto senza capo né coda appena la città è alle spalle, al sicuro: la bestia non potrà ripeterlo a nessuno.",
+	},
+	["sw.journey.w22.away.008"] = {
+		"Quassù niente impiegati, niente file, nessuna tariffa. Il cielo, finora, non fa pagare niente. Continuo ad aspettare che arrivi qualcuno con un registro.",
+		"Era un pezzo che non mi capitava di non stare in fila per qualcosa. L'aria è gratis. Mi insospettisce quasi.",
+	},
+	["sw.journey.w22.away.009"] = {
+		"si siede più morbidamente in sella appena il rumore della città svanisce, come se il baccano fosse stato per tutto il tempo una mano sulla spalla, e solo ora la lasciasse.",
+		"si appoggia all'indietro mentre il frastuono delle strade sfuma, la mascella che si scioglie come quando nella stanza accanto finisce finalmente una lunga lite.",
+	},
+	["sw.journey.w22.away.010"] = {
+		"Laggiù sono una faccia tra migliaia. Quassù i puntini sono loro, tutti quanti, e la mia è l'unica faccia per miglia.",
+		"Per le strade sono gomiti e scuse. Quassù c'è spazio da ogni lato, più di quanto sappia cosa farne.",
+	},
+	["sw.journey.w22.away.011"] = {
+		"Nessuno mi ha chiesto niente da un minuto intero. Un record.",
+		"Nemmeno una commissione gridata dietro. Sospetto.",
+	},
+	["sw.journey.w22.away.012"] = {
+		"Alle spalle le lanterne della città; davanti la foresta, buia come un pozzo, con qualche finestra di fattoria qua e là come una moneta caduta sul fondo.",
+		"Uscire da Stormwind di notte è come scendere da un palco illuminato. Qualche finestra ammicca tra gli alberi là sotto, e più in là niente del tutto.",
+	},
+	["sw.journey.w22.away.013"] = {
+		"si allontana sopra una foresta annegata nella nebbia, solo le cime più alte che spuntano dal bianco come le setole di una spazzola, e i suoni della città inghiottiti alle spalle.",
+		"esce sopra Elwynn soffocata dalla nebbia, sparita la foresta, sparita la strada, il rumore della città che affonda nel bianco alle spalle come nella lana.",
+	},
+	["sw.journey.w22.away.014"] = {
+		"Silenzio, tutti quanti. Ah. Non c'è nessuno.",
+		"Ssst... ah, l'abitudine. Quassù non c'è nessuno da zittire.",
+	},
+	["sw.journey.w22.bells.001"] = {
+		"Le campane salgono meglio di qualunque altro suono di una città. Ho sentito Stormwind sopra gli alberi prima di vederne una sola torre.",
+		"Il suono sale. Molto prima delle torri, una campana mi è arrivata da sopra Elwynn, sottile come un filo, e ho saputo che la città era lì.",
+		"L'orecchio trova la città per primo. Una campana lontana sopra la foresta, così debole da dubitarne, e poi arrivano le torri a darle ragione.",
+	},
+	["sw.journey.w22.bells.002"] = {
+		"sente una campana sola salire sottile e chiara sopra la foresta, e il grifone piega la testa verso di lei come un cane che si sente chiamare.",
+		"avverte il grifone girare la testa al primo rintocco che sale dalla città, i ciuffi delle orecchie che si drizzano come se il suono fosse per lui.",
+	},
+	["sw.journey.w22.bells.003"] = {
+		"Sentita da molto in alto, una campana suona più piccola e più lontana, come se suonasse per tutt'altra città.",
+		"Quassù le campane perdono il loro peso. Mi arrivano piccole e distanti, come se appartenessero a un posto di cui ho solo sentito parlare.",
+		"Curioso quanto sembri sola una campana vista dall'aria. Laggiù raduna la gente; quassù passa e basta.",
+	},
+	["sw.journey.w22.bells.004"] = {
+		"Senti? La città suona le campane. Non per me, lo so. Le prendo lo stesso.",
+		"Campane! No, non dirmi per chi sono. Faccio finta.",
+	},
+	["sw.journey.w22.bells.005"] = {
+		"Le campane arrivano a chi vola a pezzi: un rintocco, poi un colpo d'ali si mangia il successivo, poi due arrivano insieme come se si fossero aspettati.",
+		"Quassù uno scampanio arriva strappato: un colpo, un vuoto dove le ali lo scacciano, poi due note che rotolano dentro in ritardo.",
+		"Fra un colpo d'ali e l'altro colgo le campane a brandelli, mai la melodia intera, come una canzone sentita da una porta che continua a richiudersi.",
+	},
+	["sw.journey.w22.bells.006"] = {
+		"sente la più profonda delle campane più che udirla, un ronzio basso che risale per le cinghie della bardatura e si posa nelle ginocchia.",
+		"coglie la campana grande non con le orecchie ma attraverso le cinghie della bardatura, un ronzio lento che il cuoio sembra portare verso l'alto.",
+	},
+	["sw.journey.w22.bells.007"] = {
+		"La campana della cattedrale, che mi sale incontro sopra gli alberi. La Luce rispetta le sue ore, che io rispetti le mie o no.",
+		"Una campana della cattedrale che sale fino alle ali. La Luce non aspetta il mio comodo: suona e basta, e lascia che la raggiunga.",
+	},
+	["sw.journey.w22.bells.008"] = {
+		"Giù per le strade nessuno sente più le campane. Quassù fra me e il bronzo non c'è niente, e ogni colpo arriva a segno.",
+		"La gente di sotto non fa più caso alle campane. Arrivando in volo me le prendo in pieno, ogni rintocco, come voleva chi le suona.",
+	},
+	["sw.journey.w22.bells.009"] = {
+		"vede uno sbuffo grigio di piccioni alzarsi dai tetti intorno alla cattedrale quando attacca la campana, e la nuvola fa un solo giro prima di riposarsi.",
+		"guarda i piccioni sopra la Cathedral Square alzarsi tutti insieme al primo rintocco, girare intorno al campanile e tornare giù esattamente dov'erano.",
+	},
+	["sw.journey.w22.bells.010"] = {
+		"Strano: da quassù le campane della cattedrale e le incudini del Dwarven District sembrano un unico strumento, metallo che risponde a metallo sopra tutti i tetti.",
+		"Bronzo dalla cattedrale, ferro dalle forge, e a quest'altezza si mescolano, come se l'intera città venisse battuta in tono.",
+	},
+	["sw.journey.w22.bells.011"] = {
+		"arriva al crepuscolo mentre la campana della sera sale sopra le mura, i tetti di sotto che si spengono un quartiere dopo l'altro e la punta della cattedrale che tiene l'ultimo colore.",
+		"sente la campana di fine giornata salire verso le ali mentre la città affonda nel crepuscolo, la cima della cattedrale l'ultima cosa ancora accesa.",
+	},
+	["sw.journey.w22.bells.012"] = {
+		"Qualcuno dica ai campanari di smettere di annunciarmi. È imbarazzante.",
+		"Tutte queste campane per il mio arrivo? Non dovevate. Davvero.",
+	},
+	["sw.journey.w22.bells.013"] = {
+		"Laggiù una campana si ferma e sparisce. Quassù l'ultimo rintocco indugia, senza muri che lo inghiottano, finché un colpo d'ali non lo disperde.",
+		"L'ultima nota di una campana dura di più a quest'altezza. Quassù non c'è niente che la assorba, solo cielo.",
+	},
+	["sw.journey.w22.chart.001"] = {
+		"Ripercorro con gli occhi la strada fatta a piedi fino al posatoio, ed è lunga la metà di quanto giuravano i miei piedi. Le vie fanno gomiti e tornano indietro; la bestia va dritta.",
+		"Da qui riesco a seguire il giro che ho fatto per le strade, ed è una vergogna: tre svolte sbagliate e un anello attorno allo stesso angolo.",
+	},
+	["sw.journey.w22.chart.002"] = {
+		"conta i quartieri che scorrono sotto, uno per uno, come un furiere che si assicura che dal magazzino non manchi niente.",
+		"passa in rassegna i quartieri della città con un piccolo cenno per ciascuno, come un sergente che conta le teste dopo un guado.",
+	},
+	["sw.journey.w22.chart.003"] = {
+		"Le mappe che vendono al mercato sbagliano i canali. L'avevo sempre sospettato; adesso vedo esattamente dove, e un'altra non la compro.",
+		"Chi disegna le mappe che vendono al mercato quassù non c'è mai salito. I canali piegano in punti di cui l'inchiostro non sa niente.",
+	},
+	["sw.journey.w22.chart.004"] = {
+		"da quassù trova la città tesa fra due pesi: la fortezza a un'estremità, la cattedrale verso il centro, e ogni via che sembra scegliere a quale dei due voltarsi.",
+		"nota come le vie, viste dall'aria, decidano a chi essere fedeli: alcune corrono verso la fortezza, altre verso la cattedrale, e quelle dell'Old Town vanno dove gli pare.",
+	},
+	["sw.journey.w22.chart.005"] = {
+		"A piedi chiedo la strada due volte per quartiere. Dall'alto la città me la mostra e basta, senza una parola, con tutte le svolte che ho sbagliato.",
+		"Ogni via che mi ha fatto girare a vuoto sta aperta sotto di me, col suo segreto svelato. Vista da qui sembra così semplice che quasi mi offendo.",
+	},
+	["sw.journey.w22.chart.006"] = {
+		"Ah, ecco dove sbuca quel vicolo. Non l'avrei mai detto.",
+		"Ecco, vedi? Il canale fa la curva. Per questo finisco sempre allo stesso ponte.",
+		"Ah! Il Mage Quarter non è affatto storto. Sono io che ci cammino storto.",
+	},
+	["sw.journey.w22.chart.007"] = {
+		"Le guardie mi dicono sempre 'oltre il canale, poi a sinistra'. Da quassù vedo che di canali che rispondono a quella descrizione ce ne sono almeno nove.",
+		"'Passa il ponte e tieni l'acqua a destra', dicono le guardie. Dall'aria conto una dozzina di ponti, e tutti con l'acqua a destra.",
+	},
+	["sw.journey.w22.chart.008"] = {
+		"scorge laggiù qualcuno fermo a un incrocio che gira lentamente su se stesso, chiaramente sperduto a due vie dalla meta, e non può fare niente per aiutarlo.",
+		"segue una figurina a un angolo che sbircia in una via, poi in un'altra, poi torna indietro, mentre il posto che cerca è proprio dietro la fila di tetti successiva.",
+	},
+	["sw.journey.w22.chart.009"] = {
+		"Così dall'alto, solo dai tetti si capisce chi abita dove: ardesia in ordine dove ci sono i soldi, rattoppi e avvallamenti dove non ci sono.",
+		"I tetti tradiscono la città. Ordinati dove stanno le monete, rattoppati e incurvati dove non stanno, e un'intera via che aspetta un muratore che nessuno può pagarsi.",
+	},
+	["sw.journey.w22.chart.010"] = {
+		"Dalla strada avrei detto che il cuore della città fosse la fortezza. Da quassù la folla la pensa diversamente: i puntini sono più fitti intorno al mercato, e la fortezza se ne sta in disparte.",
+		"L'altezza cambia quello che conta. A piedi la fortezza è la corona della città. Dall'aria, a giudicare dalla folla, la vera corona è la casa d'aste.",
+		"Strano come sia la folla a disegnare la vera mappa. Il groviglio scuro e fitto è il mercato; la fortezza, con tutte le sue torri, è un margine tranquillo.",
+	},
+	["sw.journey.w22.chart.011"] = {
+		"Questo lo concedo ai muratori umani: da quassù le loro mura corrono dritte. I tetti, invece, li avrei fatti diversamente, tranne quelli del Dwarven District, s'intende.",
+		"Niente male, per una città senza una montagna sopra la testa. Mura dritte, canali in ordine. Un nano potrebbe viverci, in caso di bisogno, con un tetto degno di questo nome.",
+	},
+	["sw.journey.w22.cobbles.001"] = {
+		"scavalca i lunghi graffi chiari sulle lastre del posatoio, segni d'artigli posati uno sull'altro da tutti gli atterraggi che la città abbia mai visto.",
+		"abbassa lo sguardo sulle pietre dell'atterraggio, rigate di chiaro dove artigli senza numero sono scivolati e hanno fatto presa, come una pagina di scrittura frettolosa.",
+	},
+	["sw.journey.w22.cobbles.002"] = {
+		"esce dal posatoio attraverso un velo di sabbia grossa, rastrellata sul selciato perché gli artigli abbiano presa, che scricchiola sotto gli stivali per una dozzina di passi.",
+		"attraversa scricchiolando la graniglia che i garzoni spargono sulle pietre per gli artigli, e se ne porta un po' in strada nelle suole.",
+	},
+	["sw.journey.w22.cobbles.003"] = {
+		"Lassù un grido parte e semplicemente sparisce. Quaggiù i muri restituiscono ogni suono due volte, e i miei stessi stivali mi seguono come un secondo viandante.",
+		"In aria niente fa eco. Tra queste mura persino i miei passi si rispondono da soli, e ci vuole una strada o due per smettere di voltarmi.",
+	},
+	["sw.journey.w22.cobbles.004"] = {
+		"si ritrova senza volerlo qualche passo dietro una ronda della guardia cittadina, i loro stivali sulle pietre il primo ritmo regolare da quando le ali si sono fermate.",
+		"si accorge di andare al passo di una pattuglia per mezza strada, i tacchi delle guardie che battono il selciato all'unisono, prima di staccarsi verso la banca.",
+	},
+	["sw.journey.w22.cobbles.005"] = {
+		"riceve il benvenuto delle strade da un cagnolino in fondo al vicolo, che abbaia al posatoio fino a perdere la voce mentre le bestie lo ignorano del tutto.",
+		"passa accanto a un cagnetto piantato al bordo del posatoio, che abbaia agli animali con un coraggio smisurato mentre il padrone tira il guinzaglio.",
+	},
+	["sw.journey.w22.cobbles.006"] = {
+		"La prima cosa a cui i piedi devono pensare è lo scolo, una canalina di pietra in mezzo al vicolo con un filo d'acqua dentro. La scavalco. Le gambe ne fanno un'impresa.",
+		"Un rigagnolo d'acqua nel mezzo della strada, e le mie gambe rigide lo prendono per un fosso. Scavalcarlo è la cosa più difficile che abbia fatto da quando ho toccato terra.",
+	},
+	["sw.journey.w22.cobbles.007"] = {
+		"Un attimo fa il cielo era dappertutto. Ora è una striscia tra due file di grondaie, e continuo ad alzare gli occhi come per controllare che non se ne sia andato.",
+		"Tutta quell'aria aperta, e adesso il cielo è un nastro sopra la strada con una corda da bucato tesa in mezzo.",
+	},
+	["sw.journey.w22.cobbles.008"] = {
+		"si sente arrivare addosso, ai margini del posatoio, lo stridore di ruote cerchiate di ferro sulla pietra: un carro carico di botti che sobbalza verso il Trade District.",
+		"trasale al primo vero rumore della strada, un carro pesante che passa su cerchioni di ferro, con ogni pietra del selciato che ne scuote il carico.",
+	},
+	["sw.journey.w22.cobbles.009"] = {
+		"La strada sa di calce bagnata prima che di qualunque altra cosa. Poco lontano un muratore sta impastando la malta. In questa città, poco lontano, ce n'è sempre uno.",
+		"Malta. È il primo odore, umido e gessoso, da una vasca accanto a qualche impalcatura che non vedo. Questo posto lo stanno ancora rattoppando, pietra su pietra.",
+	},
+	["sw.journey.w22.cobbles.010"] = {
+		"sente quattro popoli nei primi dieci passi fuori dal posatoio: la cadenza ruvida di un nano, uno gnomo che parla il doppio più svelto del necessario, la risposta bassa di un elfo della notte, e un umano che cerca di stare dietro a tutti e tre.",
+		"distingue quattro accenti prima della fine della prima strada, ognuno a contrattare, salutare o lamentarsi a modo suo, e tutti in Comune.",
+	},
+	["sw.journey.w22.cobbles.011"] = {
+		"nota il selciato come solo gambe rigide possono notarlo: pietruzze posate a ventaglio, ogni giuntura una piccola cresta sentita attraverso la suola.",
+		"sente ogni giuntura del lastricato attraverso gli stivali per tutta la prima strada, le pietre posate a ventaglio, come se i piedi le leggessero.",
+	},
+	["sw.journey.w22.cobbles.012"] = {
+		"Senti qua. Mezza città che parla e nessuno che ascolta.",
+		"Carri, ambulanti, martelli. Sì, sono nel posto giusto.",
+	},
+	["sw.journey.w22.cobbles.013"] = {
+		"Dopo l'andatura delle ali, tutta la strada sembra guadare un fiume. I carri, i facchini, le guardie. E io peggio di tutti.",
+		"Quaggiù tutti camminano nel miele. Ci vuole mezza strada per capire che il miele è mio.",
+	},
+	["sw.journey.w22.cobbles.014"] = {
+		"Le prime parole che afferro a terra sono di un ambulante: «Castagne calde, due per un rame!» Niente di quel che ho sentito in cielo era utile la metà.",
+		"Una donna con un vassoio grida qualcosa sulle castagne calde. Dopo tutto quel cielo, è la frase più sensata del mondo.",
+	},
+	["sw.journey.w22.cobbles.015"] = {
+		"Senti che odore? Pece calda, cipolle e la pipa di qualcuno. La civiltà.",
+		"Rumore, fumo e gomiti. Sì, questa è una città.",
+	},
+	["sw.journey.w22.cobbles.016"] = {
+		"lascia il posatoio per le strade della notte, dove ogni passo si sente per tutto il vicolo e la lanterna di una sentinella si volta a vedere di chi è.",
+		"si allontana dal posatoio per vie rischiarate dai lampioni e ammutolite dalla notte, gli stivali rumorosi sulle pietre e le imposte di ogni bottega chiuse.",
+	},
+	["sw.journey.w22.cobbles.017"] = {
+		"scende dal posatoio nel pieno chiasso degli affari del giorno, facchini che gridano di far largo e da qualche parte un banditore che chiama i lotti.",
+		"atterra nell'ora più affollata del giorno, e deve aspettare al bordo del posatoio un varco nel fiume di carri e ceste.",
+	},
+	["sw.journey.w22.dismount.001"] = {
+		"trova la staffa attorcigliata di mezzo giro dal volo, e deve sfilarne lo stivale come una chiave da una serratura dura.",
+		"libera uno stivale dalla staffa, che in aria si è avvolta su sé stessa, girando il piede di qua e di là finché il cuoio non molla.",
+	},
+	["sw.journey.w22.dismount.002"] = {
+		"scende di sella su ginocchia che si piegano più del previsto, e trasforma l'inciampo in una sosta per riallacciarsi uno stivale. Al posatoio non ci casca nessuno.",
+		"tocca il selciato con uno sbandamento, poi resta giù su un ginocchio a trafficare con un laccio in perfetto ordine, finché le gambe non accettano di reggere.",
+	},
+	["sw.journey.w22.dismount.003"] = {
+		"Smontare dal lato sbagliato, come sempre: naso contro il fianco della bestia e tutto il posatoio tra me e la strada. Per uscire bisogna passare dietro la coda. Lo faccio con rispetto.",
+		"Scendo sempre dal lato che non dà sulla strada, e poi non resta che girare dietro l'animale. La coda ha un guizzo. Io allungo il passo.",
+	},
+	["sw.journey.w22.dismount.004"] = {
+		"Scendo. Guardate altrove, questa parte non mi viene mai elegante.",
+		"Fate largo, per favore. Smonto come un sacco di rape.",
+	},
+	["sw.journey.w22.dismount.005"] = {
+		"si sfila i guanti ai piedi del posatoio; posati su un paletto, conservano la piega della presa, due pugni vuoti che si tengono ancora.",
+		"si toglie i guanti dito per dito e li lascia cadere sulla sella, dove restano rattrappiti come se il volo non fosse mai finito.",
+	},
+	["sw.journey.w22.dismount.006"] = {
+		"Lassù la bestia portava quasi tutto il mio peso e non ne ha mai fatto parola. Sul selciato alle gambe arriva il conto intero, tutto insieme, e lo leggono riga per riga.",
+		"Per tutto il volo il mio peso è stato un problema di qualcun altro. Piedi a terra, e me lo riconsegnano intero, senza ricevuta.",
+	},
+	["sw.journey.w22.dismount.007"] = {
+		"fa passare una gamba in avanti sopra il collo della bestia invece che indietro sopra la groppa, e scivola giù dal davanti della sella come nessun custode insegnerebbe mai.",
+		"sceglie la via spiccia, gamba oltre il collo e giù lungo la spalla, e si guadagna un'occhiata lunga dall'animale e una ancora più lunga dal custode.",
+	},
+	["sw.journey.w22.dismount.008"] = {
+		"scivola giù dal grifone, e l'animale si alza di una spanna buona appena il peso sparisce, come un facchino che si raddrizza dopo una cassa.",
+		"mette piede a terra, e alle sue spalle il grifone si distende verso l'alto, zampe tese, contento di liberarsi del passeggero quanto un facchino del carico.",
+	},
+	["sw.journey.w22.dismount.009"] = {
+		"Mi tieni ferma la testa della bestia un momento? Vorrei portarmi in città tutte e dieci le dita.",
+		"Tienimi quel becco girato dall'altra parte mentre scendo, per cortesia.",
+	},
+	["sw.journey.w22.dismount.010"] = {
+		"Durante il volo tutta la roba dello zaino è scivolata in un angolo. Me lo carico e mi pende da una spalla come un bambino imbronciato.",
+		"Lo zaino si è riorganizzato da solo, lassù: le cose dure in fondo, quelle morbide schiacciate sotto. Lo sistemerò alla locanda. O mai.",
+	},
+	["sw.journey.w22.dismount.011"] = {
+		"è ancora per metà in sella quando il custode allenta il sottopancia, e fa l'ultimo tratto di traverso, sella compresa, giù lungo il fianco della bestia.",
+		"sente la sella scivolare perché il sottopancia è stato allentato di un buco troppo presto, e arriva sul selciato con una gamba ancora agganciata al cuoio.",
+	},
+	["sw.journey.w22.dismount.012"] = {
+		"Ogni volta, mentre scendo, vorrei dire qualcosa alla bestia. Le parole non arrivano mai in tempo, e lei non le aspetta.",
+		"A ogni atterraggio cerco un ringraziamento come si deve per l'animale. Quando l'ho trovato lo stanno già portando all'acqua, e il ringraziamento esce in strada con me.",
+	},
+	["sw.journey.w22.dismount.013"] = {
+		"Durante il volo non è caduto niente. Nemmeno io.",
+		"Lassù ho tenuto stretto tutto. Tutto tranne la mia buona opinione delle altezze.",
+	},
+	["sw.journey.w22.dismount.014"] = {
+		"è appena fuori di sella quando un tuono rotola sui tetti, e attraversa la strada a un trotto rigido verso il riparo della grondaia più vicina.",
+		"mette piede a terra nello schianto di un tuono che fa agitare tutte le bestie del posatoio, e si allontana lungo la strada a spalle curve.",
+	},
+	["sw.journey.w22.farewell.001"] = {
+		"Non saluto mai la città ad alta voce: non sentirebbe, e sarebbe ridicolo. Mi volto una volta sola, in fretta, come si controlla un chiavistello che si sa già tirato.",
+		"Niente addii per Stormwind, ha troppi ospiti per rispondere a tutti. Un'occhiata indietro, come a una porta già chiusa a chiave, ed è tutta la mia cerimonia.",
+	},
+	["sw.journey.w22.farewell.002"] = {
+		"alza una mano verso le mura in un saluto che nessuno laggiù potrebbe mai vedere, poi la riabbassa con un vago imbarazzo.",
+		"solleva una mano verso la città che si allontana, la tiene lì un momento per nessuno, e la rinfila sotto il mantello.",
+	},
+	["sw.journey.w22.farewell.003"] = {
+		"si volta una volta sola e trova la città già affondata dietro gli alberi, solo le torri più alte ancora piantate nel verde come spilli in un puntaspilli.",
+		"si gira all'indietro e vede quanto in fretta la foresta si sia presa la città: qualche guglia sopra le chiome, e il resto ripiegato sotto le foglie.",
+	},
+	["sw.journey.w22.farewell.004"] = {
+		"Addio, mura. Non lasciatevi spostare mentre non ci sono.",
+		"Resta dove sei, città. Me ne accorgo, se sposti qualcosa.",
+	},
+	["sw.journey.w22.farewell.005"] = {
+		"Andarsene è più facile in volo. Nessun ultimo angolo da girare, nessuno alla porta a salutarti. La città si rimpicciolisce e basta, finché diventa di qualcun altro.",
+		"A piedi una città si lascia strada per strada. Quassù non ci sono tappe: un attimo è sotto di me, quello dopo è una sagoma lontana, e poi solo un racconto.",
+		"Nessuno esce da una città a piedi tutto in una volta. In volo sì: mura, ponte, foresta, ed è già alle spalle prima che venga in mente l'ultima occhiata.",
+	},
+	["sw.journey.w22.farewell.006"] = {
+		"Ogni volta che parto prometto alla città di tornare con i debiti pagati e gli stivali risuolati. L'ha già sentita. Anche gli stivali.",
+		"Il solito voto in uscita: la prossima volta borsa piena e stivali senza buchi. Nemmeno la città ci crede.",
+	},
+	["sw.journey.w22.farewell.007"] = {
+		"si stringe il mantello mentre la città resta indietro, più che per il freddo dell'altezza per la vecchia abitudine di chiudere casa prima di partire.",
+		"si raccoglie il mantello addosso appena le mura sono sparite, il piccolo gesto ordinato di chi chiude a chiave prima di andarsene.",
+	},
+	["sw.journey.w22.farewell.008"] = {
+		"Continua a suonare le campane, Stormwind. Le ascolterò al ritorno.",
+		"Suona per me ogni tanto, città. Torno a controllare.",
+	},
+	["sw.journey.w22.farewell.009"] = {
+		"Dopo pochi colpi d'ala arriva sempre una fitta: avrei potuto aspettare ancora un po'. Passa. Il primo tratto di cielo serve a questo.",
+		"Lo stesso piccolo rimpianto ogni volta, più o meno qui, sopra gli alberi: potevo restare. Poi la bestia trova il suo passo e il rimpianto resta indietro con tutto il resto.",
+	},
+	["sw.journey.w22.farewell.010"] = {
+		"si gira verso la città e incrocia lo sguardo della bestia, voltata anche lei, come per assicurarsi che il posto resti dov'è.",
+		"guarda indietro, oltre la coda, le mura che rimpiccioliscono, e sorprende la bestia a fare lo stesso, un occhio girato, proprio come un compagno di viaggio che conta i bagagli.",
+	},
+	["sw.journey.w22.farewell.011"] = {
+		"L'Alleanza manda di continuo la sua gente fuori da quella porta. Passandoci sopra in grifone mi sento una lettera spedita dal regno, sigillata, da non aprire prima dell'arrivo.",
+		"Ogni grifone che lascia la città porta qualcuno di cui il regno ha bisogno altrove. Questo, per una volta, porta me.",
+	},
+	["sw.journey.w22.farewell.012"] = {
+		"Laggiù nessuno si accorgerà che manco. Il pane si venderà lo stesso, la banca chiuderà lo stesso nel momento peggiore. Lo trovo stranamente riposante.",
+		"La città non sentirà il buco che lascio. Non lo sente mai. C'è una certa libertà nell'essere così facili da sostituire.",
+		"La città vede mille arrivi e mille partenze. La mia è passata senza un'increspatura, e mi sta bene così.",
+	},
+	["sw.journey.w22.farewell.013"] = {
+		"Ciao, città, per ora. Tieni l'acqua sul fuoco.",
+		"Chiuso il conto con Stormwind. Per un po'.",
+	},
+	["sw.journey.w22.feathers.001"] = {
+		"Per un attimo dopo l'atterraggio l'aria del posatoio è piena di piccole piume, che girano piano, come se qualcuno avesse sprimacciato un cuscino.",
+		"Fiocchi di piumino restano sospesi intorno alla bestia quando si è assestata, così leggeri da sembrare indecisi se posarsi mai.",
+		"L'atterraggio si lascia dietro una piccola nevicata di piumino. Vaga sul posatoio e trova ogni piega che ho addosso.",
+	},
+	["sw.journey.w22.feathers.002"] = {
+		"nota un custode alzare il palmo aperto e fischiare due volte, breve, e la bestia abbassa la testa e fa l'ultimo passo fino al segno.",
+		"guarda la bestia obbedire a una mano aperta tesa in orizzontale e a due fischi brevi, pronta come un soldato col sergente.",
+	},
+	["sw.journey.w22.feathers.003"] = {
+		"Il custode fa segno con uno straccio, sinistra, sinistra, giù, e la bestia obbedisce a lui, non a me. Sono un bagaglio con delle opinioni.",
+		"Un colpo di polso del custode e la bestia vira. Ho tirato le redini nello stesso momento, per dignità. Non ci è cascato nessuno.",
+	},
+	["sw.journey.w22.feathers.004"] = {
+		"resta nella foschia di polvere sollevata dall'atterraggio, una nuvola chiara di pula e terriccio che indugia all'altezza delle ginocchia e si posa piano nelle pieghe degli stivali.",
+		"aspetta che la polvere dell'atterraggio torni giù: pula, terriccio e qualche piccola piuma, che piovono sulla sella come farina dal setaccio di un fornaio.",
+	},
+	["sw.journey.w22.feathers.005"] = {
+		"Grazie per il segnale. La bestia l'ha visto molto prima di me.",
+		"Bei segnali, amico. Senza, sarei {g:finito|finita} nell'abbeveratoio.",
+	},
+	["sw.journey.w22.feathers.006"] = {
+		"La custode schiocca la lingua due volte e la bestia abbassa subito la testa. Dovrei imparare quello schiocco. Lo userei in banca.",
+		"Due schiocchi di lingua della custode e il grande capo si abbassa, mansueto come un agnello. Se quel suono funziona sugli impiegati, pago per impararlo.",
+	},
+	["sw.journey.w22.feathers.007"] = {
+		"si vede togliere una piccola piuma dai capelli da un custode di passaggio, che la lascia cadere sulla paglia senza una parola e prosegue.",
+		"sente un rapido strattone al colletto: un custode di passaggio ha staccato una piuma rimasta lì, con la precisione di un sarto che toglie un filo, ed è andato oltre senza uno sguardo.",
+	},
+	["sw.journey.w22.feathers.008"] = {
+		"atterra nell'odore di piume bagnate, denso e lanoso, come una coperta lasciata sul filo, mentre la pioggia s'imperla e scivola sulla schiena unta della bestia.",
+		"scende con la pioggia che rimbalza sulle lastre, le penne esterne della bestia che lasciano colare l'acqua a fili mentre il piumino di sotto resta asciutto.",
+	},
+	["sw.journey.w22.feathers.009"] = {
+		"La polvere del posatoio è una cosa a sé: pula, piumino vecchio e il terriccio di più atterraggi di quanti chiunque abbia contato. Mi è già negli stivali, e ha intenzione di restarci.",
+		"Di qualunque cosa sia fatto il pavimento del posatoio, non è solo pietra. Pula, piumino e un terriccio grigio sottile, e adesso una buona parte viaggia nei miei polsini.",
+	},
+	["sw.journey.w22.feathers.010"] = {
+		"guarda oltre il parapetto e vede due bambini in strada che già si contendono le piume che scendono dal posatoio.",
+		"nota un bambino sotto il posatoio con un pugno di piume alzato come un mazzo di fiori, che scruta ancora l'aria in cerca d'altre.",
+	},
+	["sw.journey.w22.feathers.011"] = {
+		"Un grifone perde una penna a ogni atterraggio, dicono i custodi, come una moneta che scivola da una borsa usata troppo. Il mio ne ha lasciata una marrone sulla pietra, striata di crema.",
+		"I garzoni del posatoio dicono che nessun grifone atterra senza lasciarsi dietro una penna. Il mio ha pagato il pedaggio: una lunga penna marrone, posata di traverso sulla lastra come una penna d'oca.",
+	},
+	["sw.journey.w22.feathers.012"] = {
+		"si toglie un ricciolo di piumino dalla lingua dopo l'atterraggio, con l'aria vagamente tradita di chi ha tenuto la bocca chiusa per tutto il viaggio.",
+		"passa il primo momento sul posatoio a spazzolarsi il piumino dalle maniche, poi rinuncia quando un nuovo ciuffo si posa sulla spalla appena pulita.",
+	},
+	["sw.journey.w22.feathers.013"] = {
+		"Ho visto la tua mano. Giù è venuta, proprio come dicevi.",
+		"Il segnale era tuo, e l'atterraggio pure. Io ho solo tenuto duro.",
+		"L'hai fatta atterrare tu, non io. Grazie.",
+	},
+	["sw.journey.w22.feathers.014"] = {
+		"Tra due lastre del posatoio c'è una fessura piena di piumino vecchio, anni di piumino, schiacciato grigio e duro. Ogni atterraggio mai fatto qui ne ha lasciato un poco in quella crepa.",
+		"Nelle crepe del pavimento del posatoio il piumino si è pigiato tanto da diventare feltro. Ogni arrivo ne aggiunge un pizzico. Il mio l'ha appena fatto.",
+	},
+	["sw.journey.w22.feathers.015"] = {
+		"vede un custode dall'altra parte del posatoio alzare un braccio e tenerlo lì, pugno chiuso, e la bestia scende gli ultimi palmi come se quel pugno avesse un filo da tirare.",
+		"coglie l'attimo in cui il pugno alzato di un custode si apre, dita larghe, e la bestia risponde piegando le zampe sotto di sé e accucciandosi lì dov'è.",
+	},
+	["sw.journey.w22.feathers.016"] = {
+		"Qualcuno mi passi una spazzola. Sono per metà uccello.",
+		"Guardatemi. Ho più piume io della bestia.",
+	},
+	["sw.journey.w22.firststep.001"] = {
+		"Prima la banca. Le borse sono un guazzabuglio di roba raccolta e dimenticata, e il caveau è l'unico posto in città che non chiede a cosa serve.",
+		"Banca. Qualcosa nello zaino mi pungola la schiena da quando ero in sella, e vorrei chiuderlo sotto chiave e scordarmi che esiste.",
+	},
+	["sw.journey.w22.firststep.002"] = {
+		"punta al ponte sul canale più vicino prima di ogni altra cosa e si appoggia al parapetto, lasciando che la pietra regga il peso finché le gambe non tornano a sembrare gambe.",
+		"va per prima cosa a metà di un ponte sul canale, posa gli avambracci sul parapetto fresco e guarda per un po' l'acqua che non va da nessuna parte in particolare.",
+	},
+	["sw.journey.w22.firststep.003"] = {
+		"Dritto alla casa d'aste, a scoprire se qualcuno ha voluto quello che ci ho lasciato. La speranza è una pessima compagna di strada: continua ad allungare il passo.",
+		"La casa d'aste è la prima commissione, e quasi corro. O si è venduto qualcosa, o la delusione me la prendo subito, e via il pensiero.",
+	},
+	["sw.journey.w22.firststep.004"] = {
+		"Banca, bagno, letto. Se qualcuno mi ferma in mezzo, che venda almeno una delle tre cose.",
+		"Banca. Poi cibo. Poi qualcuno che mi dica dove ho lasciato le gambe.",
+	},
+	["sw.journey.w22.firststep.005"] = {
+		"dirige i passi verso il Gilded Rose, con la determinazione di chi per tutta la discesa ha pensato a una sedia ben precisa.",
+		"parte per il Gilded Rose a passo rigido e risoluto, con la faccia di chi è già {g:seduto|seduta}.",
+	},
+	["sw.journey.w22.firststep.006"] = {
+		"Una fibbia ha ceduto da qualche parte in aria. Allora il Dwarven District: seguirò i martelli finché non mi portano da un fabbro con un momento libero.",
+		"La suola dello stivale ha cominciato a sbattere. Alle forge del Dwarven District la sistemano, dopo averci riso sopra un bel po'.",
+	},
+	["sw.journey.w22.firststep.007"] = {
+		"volge i piedi verso l'Old Town e il Pig and Whistle, dove la birra costa meno che al Gilded Rose e nessuno fa caso a un'andatura che ondeggia.",
+		"prende la svolta che porta, prima o poi, all'Old Town e al Pig and Whistle: tanta strada per gambe rigide, ma alla fine la gente giusta.",
+	},
+	["sw.journey.w22.firststep.008"] = {
+		"Vado a sedermi un po' sui gradini della cattedrale. Lì nessuno ti chiede cosa vuoi: pensano che tu sia venuto a riflettere, e ti lasciano fare.",
+		"I gradini larghi della Cathedral Square sono la panca migliore della città. Resto lì finché il suolo smette di sembrarmi preso in prestito.",
+	},
+	["sw.journey.w22.firststep.009"] = {
+		"si ferma al limite del posatoio per sistemarsi lo zaino, scegliere una direzione e risistemarselo, poi si avvia verso la banca come se non ci fosse mai stato dubbio.",
+		"resta un momento dove il posatoio cede il passo alla strada, soppesando la banca contro la locanda, e lascia decidere il primo varco nella folla.",
+	},
+	["sw.journey.w22.firststep.010"] = {
+		"I piedi imboccano la svolta per la banca prima che io abbia deciso niente. Li lascio fare. L'hanno fatto più spesso del mio giudizio.",
+		"I piedi recitano la strada per la banca come una lezione imparata a memoria; il resto di me è rimasto da qualche parte sopra i tetti.",
+	},
+	["sw.journey.w22.firststep.011"] = {
+		"Indicatemi il Gilded Rose. Al resto ci penso io, zoppicando.",
+		"Qualcuno viene al Gilded Rose? Offro il primo giro a chi mi ci porta in braccio.",
+	},
+	["sw.journey.w22.firststep.012"] = {
+		"Prima della locanda, prima della banca: un istruttore. È da tre atterraggi che rimando, e ho finito le scuse che suonino bene ad alta voce.",
+		"Stavolta vado da un istruttore prima di tutto. L'ho detto anche l'ultima volta, e quella prima. I piedi la sanno più lunga, e scivolano verso la locanda.",
+	},
+	["sw.journey.w22.firststep.013"] = {
+		"Qualcuno va alla casa d'aste? Vengo con voi. Piano.",
+		"Prima commissione: ritrovare le gambe. Seconda: la casa d'aste.",
+	},
+	["sw.journey.w22.firststep.014"] = {
+		"va difilato alla banca e si mette in coda, con un lieve ondeggiare che non passa, come una canna tra gente che sulla pietra c'è sempre stata.",
+		"pochi minuti dopo l'atterraggio è già in fila alla banca, dietro uno gnomo con un sacco pienissimo, le gambe che ronzano ancora per il volo.",
+	},
+	["sw.journey.w22.firststep.015"] = {
+		"lascia le bestie alle spalle e cammina in una nebbia così fitta da nascondere l'altro lato della strada, e trova la banca dal rumore più che dalla sagoma.",
+		"si allontana dal posatoio nella foschia e avanza per la strada ovattata, orientandosi a voci e al cigolio di un'insegna.",
+	},
+	["sw.journey.w22.firststep.016"] = {
+		"A terra al crepuscolo, proprio mentre le bancarelle smontano. Ogni bottegaio della strada mi chiude un'imposta in faccia.",
+		"Lungo la strada stanno ritirando le tende proprio mentre atterro. Ho scelto l'ora esatta in cui nessuno vuole vendermi niente.",
+	},
+	["sw.journey.w22.footfall.001"] = {
+		"cammina a gambe arcuate per la prima dozzina di passi fuori dal posatoio, come se la bestia fosse ancora da qualche parte tra le ginocchia.",
+		"si allontana lungo la strada con l'andatura dondolante e a ginocchia larghe di chi è stato in sella, che il selciato non fa nulla per correggere.",
+	},
+	["sw.journey.w22.footfall.002"] = {
+		"Le labbra si sono screpolate nell'aria alta e le guance pizzicano come dopo uno schiaffo. La prima cosa che compro in città è un vasetto d'unguento, prima ancora del pane.",
+		"L'aria lassù mi ha scorticato la faccia. Pagherò a qualunque erborista del Trade District quel che chiede per qualcosa di unto da metterci sopra.",
+	},
+	["sw.journey.w22.footfall.003"] = {
+		"si ferma al bordo del posatoio a stirare le braccia sopra la testa, la schiena inarcata, mentre una guardia di passaggio guarda con grande attenzione da un'altra parte.",
+		"alza le braccia e si piega all'indietro fin dove la schiena lo permette, uno stiracchiamento lungo e scricchiolante sotto gli occhi della strada, che educatamente fa finta di nulla.",
+	},
+	["sw.journey.w22.footfall.004"] = {
+		"Le mani sanno di bestia: cuoio, olio e sotto qualcosa di muschiato, come un fienile con un segreto. Me le annuserò fino alla locanda.",
+		"L'odore dell'animale mi è rimasto su guanti e maniche. In mezzo a una folla di umani e nani, odoro vagamente di bestiame del cielo.",
+	},
+	["sw.journey.w22.footfall.005"] = {
+		"Nessuno mi chieda di correre. Non per un po'.",
+		"Queste gambe ormai appartengono a una sedia. Le ho solo in prestito.",
+	},
+	["sw.journey.w22.footfall.006"] = {
+		"fa scorrere una mano lungo il muro più vicino per il primo tratto di strada, i polpastrelli che saltellano sulle commessure di malta, finché le gambe non hanno più bisogno di compagnia.",
+		"all'inizio resta accosto alle facciate delle case, sfiorando ogni tanto la pietra col palmo, come ci si tiene vicini alla murata su un ponte che rolla.",
+	},
+	["sw.journey.w22.footfall.007"] = {
+		"Ogni muscolo che si è tenuto stretto molla la presa coi suoi tempi. I polpacci mi hanno già perdonato. Le spalle ci stanno ancora pensando.",
+		"Il corpo si scioglie in fila: prima le mani, poi la mascella, poi le spalle. Le ginocchia sono in fondo alla coda, e non hanno nessuna fretta.",
+	},
+	["sw.journey.w22.footfall.008"] = {
+		"incrocia lo sguardo di una guardia su quell'andatura rigida a gambe larghe, e si raddrizza subito in qualcosa di più decoroso, esattamente finché la guardia guarda.",
+		"trasforma un passo sbilenco in un'andatura da soldato appena una guardia si gira, e lo lascia ricadere appena quella distoglie gli occhi.",
+	},
+	["sw.journey.w22.footfall.009"] = {
+		"Lassù la fame non c'era. A quanto pare mi aspettava al posatoio, come un cane che sa quando arriva il padrone, e mi salta addosso appena tocco le pietre.",
+		"Neanche un pensiero al cibo per tutto il volo, e adesso la strada sa di cipolle fritte e mi mangerei la sella.",
+	},
+	["sw.journey.w22.footfall.010"] = {
+		"tende una mano aperta ai piedi del posatoio e guarda l'ultimo tremito della presa andarsene, come le increspature che si calmano in un catino.",
+		"allarga le dita e aspetta che il tremore delle redini le abbandoni, cosa che fa con comodo, un po' meno a ogni passo.",
+	},
+	["sw.journey.w22.footfall.011"] = {
+		"Due volte nella prima strada urto una spalla. In aria non c'era niente da scansare, e ai piedi ci vuole un po' per ricordare come si sta in mezzo alla folla.",
+		"Continuo a finire addosso alla gente. Non forte, non per sgarbo: come se la strada fosse vuota. Il cielo lascia cattive maniere.",
+	},
+	["sw.journey.w22.footfall.012"] = {
+		"Un attimo. Io e le mie gambe stiamo trattando.",
+		"Mi presti un braccio un momento? Solo fino all'angolo.",
+	},
+	["sw.journey.w22.footfall.013"] = {
+		"alza gli occhi dalla strada su un grifone che arriva sopra i tetti, e fa una smorfia di solidarietà per chiunque ci stia aggrappato lassù.",
+		"sosta sotto il posatoio a guardare un altro grifone scendere, e sente le proprie ginocchia irrigidirsi per un atterraggio che è di qualcun altro.",
+	},
+	["sw.journey.w22.footfall.014"] = {
+		"Gambe rigide e ciottoli bagnati: la coppia peggiore della città. Affronto la prima strada come un gatto sul colmo di un tetto, ogni zampa posata con cura.",
+		"La pioggia ha fatto del selciato una lastra di vetro. Atterro benissimo, e poi quasi cado nei primi dieci passi di strada.",
+	},
+	["sw.journey.w22.groom.001"] = {
+		"osserva il custode sollevare a una a una le zampe della bestia e togliere la sabbia tra gli artigli con un uncino di ferro ricurvo, come fa un maniscalco con un cavallo.",
+		"si attarda mentre un garzone del posatoio si tiene in grembo una grande zampa artigliata e la ripulisce con un piccolo uncino, poi la posa e passa alla successiva.",
+	},
+	["sw.journey.w22.groom.002"] = {
+		"si ferma a guardare la bestia che beve all'abbeveratoio del posatoio: becco giù, testa su, lasciar scendere l'acqua, e giù un'altra volta, paziente come un passero a una pozzanghera.",
+		"vede l'animale condotto all'acqua, dove beve come un uccellino qualunque, becco in giù e testa all'indietro per mandar giù, un sorso dopo l'altro.",
+	},
+	["sw.journey.w22.groom.003"] = {
+		"si scosta mentre la bestia, senza più sella, si scrolla dalla cresta alla coda, un'onda lunga che le corre addosso come un tappeto sbattuto dalla finestra.",
+		"ne prende la coda quando l'animale, tolta la sella, si scuote dalla testa ai quarti posteriori, e ne esce {g:spolverato|spolverata} di piumino fine.",
+	},
+	["sw.journey.w22.groom.004"] = {
+		"si fa svelto da parte per il garzone che segue ogni atterraggio con pala e secchio e che, a giudicare dalla faccia, un giorno libero non l'ha mai visto.",
+		"lascia passare il più giovane dei garzoni del posatoio, il cui mestiere intero è una pala, un secchio e camminare due passi dietro a qualunque cosa sia appena atterrata.",
+	},
+	["sw.journey.w22.groom.005"] = {
+		"Il custode mi dà la stessa occhiata che riserva agli animali: occhi, zampe, andatura. A quanto pare passo l'esame. Il secchio però non me lo offre nessuno.",
+		"Mi passano in rassegna mentre lascio il posatoio, alla svelta, come i custodi guardano un animale per vedere se zoppica. Pare che vada bene.",
+	},
+	["sw.journey.w22.groom.006"] = {
+		"sente il custode spalmare una ditata di sego su una fibbia della sella che cigola, e il cigolio, che ha battuto il tempo per tutto il volo, finalmente tace.",
+		"nota il vasetto di grasso alla cintura del custode, e il pollice che ci affonda e passa su ogni fibbia della bardatura man mano che la toglie.",
+	},
+	["sw.journey.w22.groom.007"] = {
+		"lascia il grifone a lisciarsi le penne, un'ala mezza aperta e il becco che corre lungo le remiganti, a rimettere in ordine quel che il volo ha scompigliato.",
+		"si volta e vede il grifone già intento a pulirsi, il becco che scorre su un'ala penna dopo penna, troppo occupato con sé per badare a chi se ne va.",
+	},
+	["sw.journey.w22.groom.008"] = {
+		"Sopra ogni box del posatoio c'è un nome dipinto. Vedo la mia bestia entrare in uno e il nome, come al solito, me lo perdo. Ha volato con me sulla schiena, e nessuno ci ha mai presentati.",
+		"Ogni animale del posatoio ha il suo nome sopra il box. Ne ho cavalcati una dozzina e non saprei dirne uno. Poco educato da parte mia. Probabilmente nemmeno loro sanno il mio.",
+	},
+	["sw.journey.w22.groom.009"] = {
+		"Quella bestia ha preso l'ultima virata con dolcezza. L'ho notato. Diglielo, che l'ho notato.",
+		"Dai un'occhiata all'ala sinistra di quell'animale. Su quel lato volava con un certo riguardo.",
+	},
+	["sw.journey.w22.groom.010"] = {
+		"guarda il custode togliere la polvere dagli angoli degli occhi della bestia con uno straccio bagnato, e le grandi palpebre chiudersi lente, fiduciose.",
+		"vede un panno umido passare piano su ciascun occhio dell'animale, che resta immobile come per nient'altro su tutto il posatoio.",
+	},
+	["sw.journey.w22.groom.011"] = {
+		"«Una presa da lappola», dice il custode, e decido di prenderlo per un complimento, visto che di meglio non ne arrivano.",
+		"Tutta la recensione del custode sul mio modo di stare in sella è un grugnito e la parola «zecca». Dagli istruttori ho sentito di peggio.",
+	},
+	["sw.journey.w22.groom.012"] = {
+		"vede il custode posare il palmo aperto sul petto della bestia e tenerlo lì, a saggiare il calore del volo come un cuoco saggia il forno.",
+		"nota una mano larga premuta sul petto dell'animale, tenuta, sollevata; qualunque cosa il custode abbia sentito, manda subito a prendere un secchio.",
+	},
+	["sw.journey.w22.groom.013"] = {
+		"No, no, pensa all'animale. Io mi dissello da me.",
+		"Non badare a me. Striglia quella con le ali.",
+	},
+	["sw.journey.w22.groom.014"] = {
+		"Non guardarmi così. Al tuo custode la mancia l'ho data.",
+		"Sì, sì, me ne vado. Puoi smettere di fissarmi.",
+	},
+	["sw.journey.w22.groom.015"] = {
+		"Non ho mai incontrato un grifone che pensasse granché dei suoi passeggeri. Questo mi consegna alla città con l'aria di chi rende un libro noioso.",
+		"Il grifone mi dà un'occhiata sola mentre scendo: carico tollerabile, niente di più. Detto da un grifone, è quasi affetto.",
+	},
+	["sw.journey.w22.groom.016"] = {
+		"Grazie, vecchio pennuto. Vai a cercarti qualcosa di meno coriaceo di me.",
+		"Vai pure, grifone. La tua cena ti aspetta, e non sono io.",
+	},
+	["sw.journey.w22.inbound.001"] = {
+		"La prima cosa che trovo da quassù è sempre la banca. Mi piace pensare che dica qualcosa della banca.",
+		"Fra tutti i punti di riferimento della città, l'occhio mi va prima alla banca. Non è un complimento per me.",
+		"Cattedrale, fortezza, canali, e io cosa cerco? La banca. Un pellegrino si vergognerebbe di me.",
+	},
+	["sw.journey.w22.inbound.002"] = {
+		"riconosce subito il Dwarven District dalla foschia più scura sospesa sulle fucine, una macchia sull'ardesia che il resto della città non ha.",
+		"trova il Dwarven District senza cercarlo: è l'angolo della città con un suo piccolo cielo di fumo di forgia.",
+	},
+	["sw.journey.w22.inbound.003"] = {
+		"scorge un ritaglio viola in mezzo a tutta quell'ardesia: il Mage Quarter, che si rifiuta di intonarsi col resto, come ha sempre fatto.",
+		"individua l'unica macchia ostinata di viola in un mare d'ardesia, e da quella riconosce il Mage Quarter.",
+	},
+	["sw.journey.w22.inbound.004"] = {
+		"Dall'alto il Park sembra un ritaglio di Elwynn che la città ha tenuto per sé quando ha sgombrato il resto, e che da allora annaffia.",
+		"Tutta quella pietra, e in un angolo un pezzo di alberi veri, recintato e ben curato. La città ha respinto il bosco e poi non ha saputo farne del tutto a meno.",
+		"Verde nell'angolo delle mura: il Park. Dopo tanta pietra sorvolata, quel pezzo sembra meno un giardino che una scusa rivolta ai boschi là fuori.",
+	},
+	["sw.journey.w22.inbound.005"] = {
+		"Trade District, dritto davanti. Borsa, preparati.",
+		"Ecco la casa d'aste. Sento le mie monete che cercano di nascondersi.",
+	},
+	["sw.journey.w22.inbound.006"] = {
+		"cerca il Pig and Whistle fra i tetti ammassati dell'Old Town e si accontenta di un comignolo che potrebbe essere il suo, o di chiunque altro.",
+		"prova a trovare il Pig and Whistle dall'alto, non ci riesce, e decide che la taverna c'è in spirito, sotto quel groviglio di tetti dell'Old Town.",
+		"va a caccia di una certa taverna fra i tetti dell'Old Town e trova, invece, undici comignoli dall'aria ugualmente assetata.",
+	},
+	["sw.journey.w22.inbound.007"] = {
+		"L'Old Town da quassù: il resto della città l'hanno tracciato col righello, l'Old Town l'hanno messo al suo posto a forza di liti, una per ogni angolo.",
+		"L'Old Town si riconosce dall'aria per gli angoli. Altrove le vie vanno d'accordo fra loro. Lì ogni vicolo sembra la fine di una lite.",
+	},
+	["sw.journey.w22.inbound.008"] = {
+		"guarda giù in un cortile della fortezza dove un quadrato di soldatini fa esercitazione, e gira tutto insieme come un'unica creatura con moltissimi stivali.",
+		"sorprende una compagnia in addestramento nel cortile della fortezza, file di figurine che ruotano a un grido troppo lontano per sentirlo.",
+	},
+	["sw.journey.w22.inbound.009"] = {
+		"La Cathedral Square si apre fra i tetti come un palmo rivolto in su, l'unico grande spazio vuoto della città che nessuno ha il permesso di riempire.",
+		"In mezzo a tutto quell'affollamento, la piazza davanti alla cattedrale è un vuoto chiaro e pulito. Ogni città tiene un posto su cui si rifiuta di costruire.",
+		"Dall'aria la città è stipata, muro contro muro, tetto contro tetto, tranne una grande piazza aperta. La cattedrale si tiene il suo spazio per i gomiti.",
+	},
+	["sw.journey.w22.inbound.010"] = {
+		"segue con lo sguardo un canale, un ponte dopo l'altro, finché non scivola sotto una fila di case e non riesce dove dovrebbe.",
+		"segue dall'alto un canale che cuce i quartieri, lo perde sotto un edificio, poi lo ritrova, più avanti di quanto sembrasse possibile.",
+		"prova a non perdere di vista un solo canale dall'aria e finisce per seguirne tre, ognuno convinto di essere quello importante.",
+	},
+	["sw.journey.w22.inbound.011"] = {
+		"A piedi conosco questa città dai suoi angoli: dove ho sbagliato strada, dove ho comprato il pasticcio cattivo. Da quassù nessuno dei miei angoli si vede, e tutto sembra innocente.",
+		"Ogni errore che ho fatto per queste vie, dall'alto, è nascosto. Niente svolte sbagliate, niente vicoli ciechi, solo tetti che fingono sia sempre stato semplice.",
+	},
+	["sw.journey.w22.inbound.012"] = {
+		"indica il Trade District al grifone, che non ci bada affatto e vira lo stesso da quella parte.",
+		"spinge il grifone verso il posatoio vicino al Trade District, e la bestia, che ci stava già andando, lascia credere a chi la monta di aver dato una mano.",
+	},
+	["sw.journey.w22.inbound.013"] = {
+		"Ecco la cattedrale, ecco la fortezza, ecco la banca. Tutto dove l'avevo lasciato.",
+		"Fortezza, cattedrale, canali. Tutto al suo posto.",
+	},
+	["sw.journey.w22.lift.001"] = {
+		"sente il custode dare un ultimo strattone alla cinghia del sottopancia, un grugnito soddisfatto, e d'un tratto le assi del posatoio non ci sono più.",
+		"guarda il custode controllare le fibbie con due dita svelte e fare un passo indietro: le tavole del posatoio scivolano via prima che il passo sia finito.",
+		"sta ancora annuendo all'ultima parola del custode quando la bestia si acquatta, scatta, e quel cenno resta sulla piattaforma.",
+	},
+	["sw.journey.w22.lift.002"] = {
+		"C'è un istante in cui la bestia si raccoglie sotto la sella, ogni muscolo teso, e non è ancora successo niente. Quell'istante mi piace più del volo.",
+		"Un attimo prima del balzo l'animale si tende dal collo alla coda, come una molla d'orologio caricata fino in fondo. Poi scatta, e il posatoio se ne va con lui.",
+		"Accucciarsi, fermarsi, scattare. Del fermarsi non parla mai nessuno, eppure in ogni volo è la parte che dura di più.",
+	},
+	["sw.journey.w22.lift.003"] = {
+		"si è appena {g:staccato|staccata} dalla piattaforma che il viaggiatore successivo si fa avanti dal custode, borsa già aperta, senza nemmeno alzare gli occhi.",
+		"si alza dal posatoio e vede, sotto la coda della bestia, il cliente dopo che sta già contrattando il prezzo della corsa.",
+	},
+	["sw.journey.w22.lift.004"] = {
+		"Piano, giù dal bordo. Piano è una parola, bestia. Impara.",
+		"Quelle assi andavano benissimo. Mi piacevano, quelle assi.",
+	},
+	["sw.journey.w22.lift.005"] = {
+		"La gente del posatoio continua il suo lavoro mentre salgo: un ragazzo spazza le piume in un mucchio, uno stalliere trascina un secchio di carne. Nessuno alza la testa. Per loro è solo una porta che sbatte.",
+		"Sotto di me il posatoio va avanti come sempre. Chi spazza spazza, lo stalliere porta il suo secchio, il custode conta le monete. Un viaggiatore che parte, lassù, non fa notizia.",
+		"Per me è un volo. Per il ragazzo che spazza le piume dalle assi è solo un altro colpo d'aria da un altro paio d'ali, che gli sparpaglia il mucchio.",
+	},
+	["sw.journey.w22.lift.006"] = {
+		"si alza in un turbine di polvere e piumino strappati alle assi, mentre di sotto il custode si tiene il cappello con una mano e aspetta che passi.",
+		"sale attraverso un vortice di piumino sollevato dalle ali, il custode che strizza gli occhi tenendo il cappello ben premuto.",
+	},
+	["sw.journey.w22.lift.007"] = {
+		"Il grifone ha lasciato il posatoio prima che finissi di sistemarmi. Non aspettano il permesso: aspettano il peso.",
+		"Un grifone sente il cavaliere che si sistema e la considera una conversazione conclusa. Volevo dire una cosa al custode. Troppo tardi.",
+		"Nessun segnale, nessuna parola: il grifone mi ha {g:sentito|sentita} sedere ed è partito. Ho il sospetto che l'abbia fatto più spesso di me.",
+	},
+	["sw.journey.w22.lift.008"] = {
+		"sente dietro il balzo il fischio a due note del custode, più per la bestia che per chi la monta, e poi soltanto ali.",
+		"parte salutato da un breve fischio dal posatoio, una nota bassa e una alta, a cui la bestia risponde col primo colpo d'ali pieno.",
+	},
+	["sw.journey.w22.lift.009"] = {
+		"Non salgono mai dritti. Prima la bestia si lascia cadere dal bordo, quel tanto che basta perché lo stomaco presenti un reclamo, e solo dopo prende quota.",
+		"La prima cosa che fa un volo è cadere. Una caduta breve, voluta, dal ciglio del posatoio. Poi le ali fanno presa, e io ricomincio a fidarmi.",
+		"Giù dal bordo, un cedimento, un tuffo allo stomaco, e poi la lunga tirata verso l'alto. So sempre che il tuffo arriva. Saperlo non è mai servito a niente.",
+	},
+	["sw.journey.w22.lift.010"] = {
+		"Di' al prossimo che le cinghie tengono!",
+		"Grazie! Credo! Chiedimelo quando atterriamo!",
+	},
+	["sw.journey.w22.lift.011"] = {
+		"vede il posatoio perdere i dettagli uno dopo l'altro durante la salita: prima la tazza sullo sgabello del custode, poi lo sgabello, poi il custode.",
+		"tiene d'occhio la piattaforma mentre sprofonda: l'abbeveratoio diventa una scheggia, il rotolo di corda una moneta, e il custode per ultimo.",
+	},
+	["sw.journey.w22.lift.012"] = {
+		"Quell'angolo laggiù è dove ho sbagliato strada venendo al posatoio. Visto dall'alto è ovvio. Dalla strada era un muro e due vicoli che si somigliavano.",
+		"Il vicolo che ho percorso per arrivare qui è già una linea di matita, e la folla che ho attraversato a spintoni una sbavatura sopra. Questa vista mi serviva mentre venivo.",
+		"Ogni strada che a piedi mi aveva {g:confuso|confusa} adesso si stende piatta, onesta e dritta, come se mi avesse solo giocato qualche scherzo finché ero là sotto.",
+	},
+	["sw.journey.w22.lift.013"] = {
+		"guarda il canale più vicino rimpicciolire durante la salita, da acqua a nastro a una sola riga tracciata, i ponti ridotti a piccoli trattini di traverso.",
+		"vede il canale sotto il posatoio farsi piatto e stretto mentre la bestia sale, i ponti trasformati nei piccoli tratti che uno scrivano traccia quando cancella una parola.",
+		"segue il canale accanto al Trade District che si assottiglia fino a una cordicella, gli argini di pietra che si stringono, i ponti non più larghi delle tacche incise su un bastone.",
+	},
+	["sw.journey.w22.lift.014"] = {
+		"Qualche colpo d'ala più su e la folla smette di essere gente. Diventa una corrente, densa vicino al mercato, rada nei vicoli, con piccoli mulinelli intorno a chi si ferma a chiacchierare.",
+		"A quest'altezza la folla del Trade District si muove come l'acqua: ristagna ai banchi, corre giù per la strada larga, e si ingorga dietro un carro lento.",
+		"Ora vedo il traffico come le guardie vorrebbero poterlo vedere: un carro incastrato a un angolo, il nodo che provoca, e il nodo che si allarga indietro per tre strade.",
+	},
+	["sw.journey.w22.lift.015"] = {
+		"Aspetta, ho lasciato lo stomaco sul posatoio.",
+		"E vai, allora. Io e la terra non eravamo poi così in confidenza.",
+	},
+	["sw.journey.w22.lines.001"] = {
+		"vede come i canali tagliano la città in isole, ogni quartiere nel suo anello d'acqua verde scuro, legato ai vicini soltanto dai ponti.",
+		"vede dall'aria quello che le strade nascondono: Stormwind è un arcipelago, ogni quartiere un'isola in un'ansa di canale, e i ponti i suoi soli ormeggi.",
+	},
+	["sw.journey.w22.lines.002"] = {
+		"Da quassù i ponti sembrano punti di cucitura, piccoli e stretti, che tengono ogni quartiere attaccato al successivo. Tagliane qualcuno e giurerei che la città si scucirebbe.",
+		"Ogni ponte laggiù è un punto di sutura. Contali, e capisci quanto qualcuno ha faticato per non lasciar andare alla deriva questi quartieri.",
+	},
+	["sw.journey.w22.lines.003"] = {
+		"scopre che i canali, visti dall'alto, non sono un'acqua sola ma tante: verde sotto i ponti, marrone dove sbocca una grondaia, quasi nera dove l'acqua è più profonda.",
+		"segue i canali con lo sguardo e li trova di ogni colore tranne l'azzurro: verde muschio, marrone fango, scuro come tè forte dove sono più profondi.",
+	},
+	["sw.journey.w22.lines.004"] = {
+		"Qualcosa di piccolo galleggia nel canale laggiù, una cassa, un cesto o il cappello di qualcuno. Non saprò mai cosa, e mi tormenterà per un po'.",
+		"C'è un puntino che scende lungo il canale. Un barile? Un cappello? Un'anatra con delle ambizioni? La bestia non ha intenzione di scendere a controllare.",
+	},
+	["sw.journey.w22.lines.005"] = {
+		"segue dall'alto la linea delle mura, il camminamento che corre chiaro e stretto in cima, con una sentinella minuscola a ogni svolta, come uno spillo che lo tiene fermo.",
+		"ripercorre dall'aria il lungo camminamento delle mura, con le sentinelle disposte a distanze così regolari che qualcuno deve averle misurate con una corda.",
+	},
+	["sw.journey.w22.lines.006"] = {
+		"Viste dall'alto, le mura sono più spesse di quanto sembrino dalla strada. Lassù due carri potrebbero incrociarsi, e avanzerebbe posto per una guardia che si lamenta.",
+		"In cima le mura sono più larghe di metà delle vie che racchiudono. La città ha speso più pietra per tenere fuori il mondo che per far muovere la sua gente.",
+	},
+	["sw.journey.w22.lines.007"] = {
+		"osserva dall'alto come ogni via scivola verso il Trade District, fili raccolti in un unico nodo da una mano impaziente.",
+		"vede ogni via della città pendere verso il mercato, come se tutto il posto fosse stato inclinato per far rotolare le monete in un'unica piazza.",
+	},
+	["sw.journey.w22.lines.008"] = {
+		"nota che la strada della Valley of Heroes è tracciata dritta come l'asta di una lancia, mentre le vie dentro le mura curvano, fanno gomiti e tornano indietro come gli pare.",
+		"riconosce subito la strada della Valley of Heroes, l'unica linea della città tirata per far bella figura, diritta come un fuso, mentre ogni altra via se ne va per le sue faccende.",
+	},
+	["sw.journey.w22.lines.009"] = {
+		"Chi ha scavato i canali lavorava col righello. Gli argini di pietra corrono dritti come le righe di un quaderno, mentre le vie accanto traballano come la calligrafia di un bambino.",
+		"Gli argini dei canali sono righe tracciate col regolo e le strade sono scarabocchi. A qualcuno importava molto più dell'acqua che del camminare.",
+	},
+	["sw.journey.w22.lines.010"] = {
+		"guarda due carri che si incontrano muso a muso a metà di un ponte sul canale, e resta abbastanza da capire che nessuno dei due conducenti ha intenzione di indietreggiare.",
+		"assiste dall'alto a uno stallo su uno stretto ponte del canale: due carri naso contro naso, e i conducenti in piedi a cassetta a litigare.",
+	},
+	["sw.journey.w22.lines.011"] = {
+		"Guarda i canali. È come se qualcuno avesse ripassato il contorno di ogni quartiere per non perderlo.",
+		"Vista da quassù, è l'acqua a tracciare i confini. Stormwind è stata ripassata a contorno, come un disegno da bambini.",
+	},
+	["sw.journey.w22.lines.012"] = {
+		"Le mura sono una linea tracciata fra due idee: dentro, ogni angolo squadrato e ogni pietra contata; fuori, alberi che non ne hanno mai sentito parlare.",
+		"Da quest'altezza le mura sono la cosa più semplice del mondo: una linea chiara, pietra e ordine da una parte, verde e confusione dall'altra.",
+	},
+	["sw.journey.w22.lines.013"] = {
+		"nota dall'aria che ogni tetto pende verso una grondaia, ogni grondaia verso uno scolo, ogni scolo verso i canali, come se Stormwind fosse stata costruita per versare.",
+		"distingue da quassù la pendenza della città: tetti inclinati verso le grondaie, grondaie verso gli scoli, scoli giù fino ai canali, un'intera capitale fatta a imbuto.",
+	},
+	["sw.journey.w22.lines.014"] = {
+		"Gira dalla parte della cattedrale, ti spiace? Mi piace la vista da quel lato.",
+		"Piega a sinistra, bestia, sopra il Park. Il verde fa bene agli occhi.",
+		"Portami una volta sopra i canali. Li voglio vedere tutti collegati.",
+	},
+	["sw.journey.w22.lines.015"] = {
+		"Quelle mura, da quassù, sembrano lo steccato di un orto. Non dite alle guardie che l'ho detto.",
+		"Ricordatevelo quando qualcuno chiama Stormwind una fortezza: da qui sembra un ovile molto ordinato.",
+		"Tutte quelle mura, e dall'alto un gatto ci passerebbe sopra con un passo.",
+	},
+	["sw.journey.w22.lines.016"] = {
+		"Col sole alto i canali avvampano tra i quartieri come tagli fatti con un coltello lucente, e la città sembra tagliata a fette.",
+		"Pieno giorno, e ogni canale laggiù ha preso il sole nello stesso istante. I quartieri stanno in mezzo come le caselle di una scacchiera, divisi da lame di luce.",
+	},
+	["sw.journey.w22.lines.017"] = {
+		"osserva la nebbia che si è posata solo nei canali, così che i quartieri ne emergono come isole separate, i ponti affogati nel bianco.",
+		"vede la foschia stesa nei canali e da nessun'altra parte, a disegnare in bianco ogni corso d'acqua, come se la città fosse stata contornata col gesso.",
+	},
+	["sw.journey.w22.nearing.001"] = {
+		"Da lontano è un unico blocco di pietra chiara. Più vicino si divide in tetti, i tetti in comignoli, i comignoli in piccioni. Continua a spezzarsi in pezzi più piccoli finché non è piena di gente.",
+		"Più si avvicina, più si scompone: una forma, poi i quartieri, poi le case, poi una donna che scuote un tappeto da un piano alto.",
+		"La distanza rende semplice una città. Ogni colpo d'ali più vicino aggiunge dettagli che non avevo chiesto: grondaie, carretti, un gatto sul colmo di un tetto, un uomo che litiga con una porta.",
+	},
+	["sw.journey.w22.nearing.002"] = {
+		"guarda la città smettere di essere una forma all'orizzonte e cominciare a essere una grandezza, il che è parecchio meno rassicurante.",
+		"vede Stormwind passare il confine, a un certo punto dell'avvicinamento, fra un bel panorama e un posto molto grande in cui orientarsi.",
+		"si accorge che il panorama davanti si trasforma pian piano da quadro in lista di commissioni, con le mura tutt'intorno.",
+	},
+	["sw.journey.w22.nearing.003"] = {
+		"Guarda quant'è grande. Ogni volta mi dimentico quant'è grande.",
+		"Ogni volta giuro che è più piccola di come la ricordo. E ogni volta mi sbaglio.",
+	},
+	["sw.journey.w22.nearing.004"] = {
+		"si accorge, mentre i tetti si avvicinano, che l'ardesia non è di un solo colore: i corsi nuovi scuri e lucidi, quelli vecchi sbiaditi quasi fino alla cenere.",
+		"vede i tetti farsi un mosaico man mano che si accostano, ardesia fresca e scura accanto ad ardesia vecchia, quasi sbiancata.",
+	},
+	["sw.journey.w22.nearing.005"] = {
+		"sente i suoni salire in ordine di grandezza: prima niente, poi un cane, poi una ruota sui ciottoli, poi un martello, poi tutti che parlano insieme.",
+		"ascolta la città muta là sotto cominciare a perdere rumore mentre la bestia scende: un cane, una ruota, il martello di qualcuno, e poi tutto quanto in un mucchio.",
+		"coglie dall'alto il primo suono della città, un cane che abbaia da solo, e poi il resto che si accalca dietro come invitati in ritardo.",
+	},
+	["sw.journey.w22.nearing.006"] = {
+		"passa abbastanza vicino sopra le case più prossime da vedere il bucato teso fra l'una e l'altra, le camicie di un'intera via appese al giudizio del cielo.",
+		"scende tanto da vedere i panni stesi fra le case, e una donna che appende lenzuola senza alzare gli occhi nemmeno una volta.",
+	},
+	["sw.journey.w22.nearing.007"] = {
+		"Da qui fuori posso coprire tutta la fortezza con un pollice. È l'unica volta che la fortezza e io avremo la stessa misura.",
+		"Alzi un pollice e la fortezza sparisce lì dietro. Goditela finché dura: a ogni colpo d'ali si fa più grande.",
+	},
+	["sw.journey.w22.nearing.008"] = {
+		"guarda l'ombra della bestia scivolare sulle ultime cime, increspare l'acqua del fossato e arrampicarsi sulle mura, arrivando un attimo prima di lei.",
+		"vede l'ombra delle ali correre avanti sopra la foresta, cadere nell'acqua e risalire la pietra, prima in città di una lunghezza.",
+	},
+	["sw.journey.w22.nearing.009"] = {
+		"vede la città così chiara contro la foresta che pare ritagliata dalla mappa più che disegnata, un buco netto in Elwynn con dentro della gente.",
+		"trova Stormwind, contro tutto quel verde, più ritagliata che costruita: un vuoto chiaro dai bordi taglienti in mezzo ai boschi.",
+		"resta {g:colpito|colpita}, avvicinandosi, da quanto poco la città si confonda con ciò che ha intorno, come se qualcuno avesse preso un coltello a Elwynn e lasciato in vista il buco.",
+	},
+	["sw.journey.w22.nearing.010"] = {
+		"Ogni volta più grande. Ci aggiungono una strada appena giro le spalle?",
+		"Giurerei che l'ultima volta quello non c'era. Costruiscono senza avvisarmi.",
+	},
+	["sw.journey.w22.nearing.011"] = {
+		"vede la città salire incontro alle ali, non tanto crescere quanto sollevarsi, come se l'intera massa chiara venisse alzata dalla foresta con una leva da muratore.",
+		"guarda Stormwind gonfiarsi finché non c'è più modo di vederla intera; l'occhio deve prenderla a pezzi, torre dopo torre.",
+	},
+	["sw.journey.w22.nearing.012"] = {
+		"Da quassù si vede la pioggia attraversare la città: l'ardesia si scurisce una via prima che arrivi, quartiere dopo quartiere.",
+		"In arrivo ho visto la pioggia prima di sentirla, i tetti che si scurivano in una linea che marciava attraverso la città verso di me.",
+	},
+	["sw.journey.w22.nearing.013"] = {
+		"Sotto uno di quei tetti c'è un letto col mio nome, se il prezzo è giusto.",
+		"Tutti quei tetti, e solo pochi con un letto che posso pagare. Su, cerchiamone uno.",
+	},
+	["sw.journey.w22.outbound.001"] = {
+		"sfiora la cima delle mura esterne, abbastanza da vedere il camminamento scavato in un solco leggero dagli stivali delle sentinelle.",
+		"passa basso sulle mura esterne e vede quello che dalle strade nessuno vede: la pietra del camminamento avvallata dove la ronda la percorre da anni.",
+		"supera le mura esterne di pochi palmi, tanto vicino da distinguere il solco che le pattuglie hanno consumato in cima, liscio come il letto di un fiume.",
+	},
+	["sw.journey.w22.outbound.002"] = {
+		"A piedi, andarsene vuol dire tutto il ponte, un cenno alla guardia e un carro da schivare. Con le ali bastano quattro colpi. Il ponte meritava di più.",
+		"Uscendo a piedi, il ponte è un piccolo viaggio a sé. In volo è una striscia chiara che mi scivola sotto prima che abbia finito di guardarla.",
+		"Il ponte, a piedi, vuol dire una bella camminata e una dozzina di saluti. Da quassù sparisce fra un colpo d'ala e l'altro, e nessuno ha ricevuto un saluto.",
+	},
+	["sw.journey.w22.outbound.003"] = {
+		"guarda giù mentre la bestia scavalca la porta e vede una breve fila di carri in attesa di entrare, ogni conducente chino sulle redini.",
+		"passa alto sopra la porta, dove qualche carro aspetta il suo turno con la guardia, e lascia la città senza dover rispondere a una sola domanda.",
+		"esce sopra la testa di tutti quelli in coda alla porta, l'unico viaggiatore a cui la guardia, per una volta, non chiederà niente.",
+	},
+	["sw.journey.w22.outbound.004"] = {
+		"Le mura si costruiscono per essere guardate da fuori, all'altezza di un viso. Da quassù se ne vede la schiena: scale, un secchio, uno sgabello che qualcuno continua a trascinare su per i turni lunghi.",
+		"Nessuno costruisce il retro di un muro perché lo si ammiri. Da qui lo vedo tutto: gradini consumati storti, un rotolo di corda, lo sgabello di una sentinella infilato in un angolo.",
+	},
+	["sw.journey.w22.outbound.005"] = {
+		"vede un cavallo da tiro fermarsi di colpo sul ponte e alzare la testa al passaggio delle ali; il carrettiere, che non alza mai gli occhi, continua a sgridarlo.",
+		"guarda un cavallo sul ponte piantare gli zoccoli e fissare il cielo, mentre il carrettiere, con lo sguardo sul selciato, lo maledice per la sosta.",
+	},
+	["sw.journey.w22.outbound.006"] = {
+		"Dall'alto il fossato non nasconde niente. Una ruota di carro rovesciata tra le alghe, uno stivale, qualcosa di chiaro che decido sia un sacco, e continuo a deciderlo.",
+		"Sorvola il fossato e scopri cosa butta via la città: mezza ruota, una cassa sfondata, uno stivale senza il compagno, affondati dove l'erba d'acqua è più fitta.",
+		"A quest'altezza il fossato è limpido come una vetrina. Una ruota vecchia, uno stivale più vecchio e una montagna di alghe che ha smesso di fingersi in ordine.",
+	},
+	["sw.journey.w22.outbound.007"] = {
+		"Oltre il muro, senza scala. Qualcuno avvisi la guardia che non è un'irruzione.",
+		"Me ne vado senza passare dalla porta. Le guardie lo detestano.",
+	},
+	["sw.journey.w22.outbound.008"] = {
+		"continua a guardare il ponte che scivola indietro, una lunga fascia chiara con la porta legata a un capo e la foresta all'altro.",
+		"guarda il ponte stringersi fino a diventare un fermaglio che appunta la città alla foresta, ed è il capo della città quello che si allontana.",
+	},
+	["sw.journey.w22.outbound.009"] = {
+		"Quella porta l'ho attraversata più volte di quante possa contarne, e ogni volta alzo la testa a guardarla. Per una volta è lei a guardare in su.",
+		"Ogni volta che varco quella porta allungo il collo per guardarla tutta. Passarle sopra è come sorprendere un uomo altissimo senza cappello.",
+	},
+	["sw.journey.w22.outbound.010"] = {
+		"attira lo sguardo di una guardia sulle mura esterne, che segue le ali con un lento giro dell'elmo e poi torna a fissare la strada vuota, come vuole il servizio.",
+		"passa quasi all'altezza degli occhi di una sentinella sulle mura; l'elmo si gira a seguire la bestia e torna a posto non appena è chiaro che se ne va invece di arrivare.",
+	},
+	["sw.journey.w22.outbound.011"] = {
+		"Laggiù, alla porta, le guardie augurano buona strada a chi parte. Quassù non lo dice nessuno, così lo dico io, piano, alla nuca della bestia.",
+		"Se esci a piedi, la guardia alla porta ti augura buona strada. Se esci in volo, devi arrangiarti. Buona strada, allora. A me.",
+	},
+	["sw.journey.w22.outbound.012"] = {
+		"supera la linea dove la pietra della città finisce sull'acqua, e in un solo colpo d'ala il terreno sotto passa dal selciato ai canneti.",
+		"esce sopra il punto in cui il piede delle mura incontra il fossato, un orlo duro contro l'acqua verde e molle, e poi c'è solo acqua, e poi solo erba.",
+	},
+	["sw.journey.w22.outbound.013"] = {
+		"Piano, grifone. Il muro è alle spalle. Andiamo a guadagnarci il pane.",
+		"Fuori dalle mura, grifone. Adesso vediamo di cosa ha bisogno il regno.",
+	},
+	["sw.journey.w22.outbound.014"] = {
+		"Saluta le guardie, bestia. No? Giusto.",
+		"Il muro resta dietro. È tutto il piano.",
+	},
+	["sw.journey.w22.pigeon.001"] = {
+		"nota che i piccioni sulla trave del posatoio non si spostano nemmeno quando la bestia balza; l'hanno visto mille volte e hanno smesso di stupirsi.",
+		"lascia il posatoio sotto una fila di piccioni appollaiati sulle travi, che guardano il decollo con gli occhi annoiati dei clienti fissi di una taverna.",
+	},
+	["sw.journey.w22.pigeon.002"] = {
+		"Un piccione ci ha affiancati per qualche colpo d'ala, faticando il doppio della bestia, poi ha virato verso una grondaia come se stesse andando lì comunque.",
+		"Per un attimo un piccione è rimasto all'altezza del mio ginocchio, ali che ronzavano come una manovella. Poi ha visto quanto saremmo saliti e si è ricordato di un impegno urgente su un davanzale.",
+		"Un piccione ha provato a sfidarci in partenza dal posatoio. Ha perso con grande dignità, deviando su un comignolo e lisciandosi le piume come se la gara non ci fosse mai stata.",
+	},
+	["sw.journey.w22.pigeon.003"] = {
+		"osserva dall'alto uno stormo di piccioni che gira sotto la bestia, e per una volta ne vede il dorso: grigio, a bande, i colli che virano al verde e al viola quando girano.",
+		"sale sopra i piccioni della città e li vede come non si mostrano mai a una strada: dorsi grigi e codrioni bianchi che si inclinano insieme, come un mazzo di carte girato tutto in un colpo.",
+	},
+	["sw.journey.w22.pigeon.004"] = {
+		"Il posatoio sembra pulitissimo finché non ci sei sopra. Allora vedi la verità: ogni trave, ogni ringhiera e perfino il cappello del custode, rigati di bianco dai piccioni che comandano davvero lì.",
+		"Da sopra il posatoio si capisce chi ne è il vero padrone. Ogni sporgenza è imbiancata dai piccioni, e i custodi hanno semplicemente imparato a stare sui pezzi puliti.",
+		"Mentre la piattaforma si allontana, capisco finalmente perché i custodi portano cappelli a tesa larga. Le travi sopra di loro sono un caseggiato di piccioni, e le assi sotto ne tengono il conto.",
+	},
+	["sw.journey.w22.pigeon.005"] = {
+		"Largo, piccioni. Passa un uccello grosso.",
+		"Spiacente, piccioni. Non siete più la cosa più alta del cielo.",
+	},
+	["sw.journey.w22.pigeon.006"] = {
+		"si volta e vede un piccione posarsi sul montatoio nell'istante in cui resta vuoto, e sistemarsi lì come se avesse prenotato il prossimo volo.",
+		"si guarda indietro dai primi colpi d'ala e vede un piccione che già passeggia impettito dove poggiavano i suoi stivali, beccando quello che vi hanno lasciato.",
+	},
+	["sw.journey.w22.pigeon.007"] = {
+		"Su ogni colmo sotto di me i piccioni stanno in fila, tutti girati dalla stessa parte, come punti lungo una cucitura. Non saprò mai cosa stiano guardando.",
+		"I piccioni orlano i colmi dei tetti così in ordine che pare li abbia sistemati uno scrivano: ognuno alla stessa piccola distanza dal vicino, tutte le teste girate dallo stesso lato.",
+		"Colmo dopo colmo, una linea tratteggiata di piccioni. Si distanziano con la stessa cura delle guardie su un muro, e fanno la ronda molto meglio.",
+	},
+	["sw.journey.w22.pigeon.008"] = {
+		"passa sopra una colombaia su un tetto dove un vecchio sta liberando i suoi uccelli, e per qualche colpo d'ala sale proprio in mezzo al suo stormo.",
+		"sale accanto a una piccionaia di legno su un tetto, gli sportellini aperti, e un uomo lì sotto che guarda torvo la bestia che gli ha appena sparpagliato tutti gli uccelli.",
+		"viene {g:superato|superata} da una dozzina di piccioni appena liberati da una piccionaia su un tetto; fanno un giro intorno alla bestia, la trovano noiosa e filano via sopra il canale.",
+	},
+	["sw.journey.w22.pigeon.009"] = {
+		"Un piccione ci è passato proprio sotto il becco del grifone. Il grifone l'ha guardato come un signore guarda il cane di un mendicante, e non ha nemmeno rallentato.",
+		"Salendo il grifone ha fatto scattare il becco una volta verso un piccione, più per abitudine che per fame, e l'ha mancato apposta, credo. Una cortesia tra colleghi.",
+	},
+	["sw.journey.w22.pigeon.010"] = {
+		"segue una piuma staccatasi dall'ala della bestia che scende a spirale nel vicolo, dove un facchino di passaggio la afferra, alza gli occhi e se la infila nel nastro del cappello.",
+		"vede una piuma staccarsi durante la salita e scendere ondeggiando verso la strada, lunga e bruna, niente a che vedere con quelle dei piccioni, mentre una fioraia allunga la mano per prenderla.",
+	},
+	["sw.journey.w22.pigeon.011"] = {
+		"Perfino i piccioni guardano in su. Questa è nuova.",
+		"Salutate i piccioni. No? Solo io, allora.",
+	},
+	["sw.journey.w22.quarters.001"] = {
+		"passa sopra i tetti dell'Old Town, un guazzabuglio di pendenze e toppe dove ogni casa sembra rattoppata da una mano diversa, d'umore diverso.",
+		"guarda giù sull'Old Town, dove i tetti si ammucchiano l'uno contro l'altro ad angoli strani, come case che si sono strette per scaldarsi e non si sono più spostate.",
+	},
+	["sw.journey.w22.quarters.002"] = {
+		"SI:7 sta laggiù nell'Old Town, chissà sotto quale tetto. Dall'aria sembrano tutti ugualmente innocenti, ed è proprio così che a loro piace.",
+		"Sto guardando dritto sulle spie di Stormwind e non saprei dire sotto quale tetto stiano. Complimenti, SI:7.",
+	},
+	["sw.journey.w22.quarters.003"] = {
+		"attraversa il Dwarven District, dove i tetti sono di un tono più scuro del resto della città, ogni ardesia spolverata dalla fuliggine delle forge.",
+		"vola nel fumo sopra il Dwarven District, carbone e metallo rovente, con i tetti sotto neri attorno ai loro camini tozzi.",
+	},
+	["sw.journey.w22.quarters.004"] = {
+		"Sotto il Dwarven District il tram sta sferragliando verso il profondo. Da quassù non se ne vede traccia; la città tiene per sé le sue gallerie.",
+		"La via per Ironforge passa sotto tutto questo, mi dicono, nel buio fondo. Dall'aria la città non lascia intuire di essere cava.",
+	},
+	["sw.journey.w22.quarters.005"] = {
+		"scorge, in un cortile del Mage Quarter, un anello di lastre bruciacchiate che qualcuno ha provato senza successo a ripulire.",
+		"nota che un cortile del Mage Quarter ha un cerchio annerito impresso nel selciato, e che laggiù nessuno ci passa sopra.",
+	},
+	["sw.journey.w22.quarters.006"] = {
+		"Dall'aria lo Slaughtered Lamb è solo un altro tetto del Mage Quarter. Qualunque cosa succeda in cantina, le ardesie non lo dicono.",
+		"Sorvolando lo Slaughtered Lamb, scopro che sembra un tetto di taverna come un altro. Le cantine sono l'unica cosa che lo sguardo di un uccello non raggiunge.",
+	},
+	["sw.journey.w22.quarters.007"] = {
+		"sorvola il Park, l'unico punto della città dove l'ardesia cede alle foglie, le chiome così fitte da sembrare muschio su una pietra.",
+		"attraversa il Park, e il verde delle chiome sotto è così folto che sembra ci si possa camminare sopra, un letto di muschio incastonato nell'ardesia.",
+	},
+	["sw.journey.w22.quarters.008"] = {
+		"In un varco tra gli alberi del Park c'è qualcuno sdraiato sull'erba che guarda dritto in su. Saluto con la mano, nel caso stia guardando me.",
+		"C'è una figura distesa sul prato del Park, il viso al cielo. Da quassù ci stiamo guardando, e solo uno dei due lo sa.",
+	},
+	["sw.journey.w22.quarters.009"] = {
+		"guarda dall'alto le statue della Valley of Heroes e vede quello che i loro scultori non volevano mostrare a nessuno: le cime delle teste, rigate di bianco, un passero su ogni spalla di pietra.",
+		"vede gli eroi della Valley da un'angolazione che nessuno aveva previsto: crani di pietra calvi, uccelli appollaiati sugli elmi, muschio nelle pieghe dei mantelli.",
+	},
+	["sw.journey.w22.quarters.010"] = {
+		"Viste dall'alto, le statue della Valley of Heroes sono una fila di punti fermi lungo la strada, e tutto quello che si muove gira loro intorno: carri, viandanti, un cane.",
+		"Da quest'altezza gli eroi della Valley sono le sole cose sulla strada che non si muovono. Tutto il resto scorre ai loro piedi senza alzare lo sguardo.",
+	},
+	["sw.journey.w22.quarters.011"] = {
+		"Sagome chiare accanto a una strada: ecco cosa sono, da quassù, gli eroi della Valley, i nomi sui piedistalli troppo piccoli per leggerli. Alla fine va così per tutti.",
+		"Le statue rimpiccioliscono più in fretta di quanto vorrei. Pochi colpi d'ala e gli eroi della Valley sono puntini chiari, i nomi illeggibili. La fama si conserva più o meno così.",
+		"Eroi di pietra, e da quest'altezza non saprei distinguerne uno dall'altro. Qualcuno ha lottato duramente per ognuno di quei piedistalli.",
+	},
+	["sw.journey.w22.quarters.012"] = {
+		"passa sopra la banca, il cui tetto è il più spoglio e massiccio del Trade District, come se i costruttori temessero ladri in arrivo anche dal cielo.",
+		"nota che la banca porta il tetto più robusto del Trade District, senza una sola finestra, opera di qualcuno che non si fidava di nessuno, nemmeno del cielo.",
+	},
+	["sw.journey.w22.quarters.013"] = {
+		"Quello laggiù è il Pig and Whistle. Un bel posto, da quest'altezza. Silenziosissimo.",
+		"Guarda, il Gilded Rose. Da lassù in alto non si sente quanto fanno pagare.",
+	},
+	["sw.journey.w22.quarters.014"] = {
+		"La fortezza, la cattedrale, il mercato, e l'Old Town che sembra aver dormito vestito. Ci sono tutti.",
+		"Guarda l'Old Town da quassù. Sembra un tetto ruzzolato giù per le scale che ha deciso di restare lì.",
+		"Visti così, i tetti dell'Old Town sono una vergogna. Li adoro.",
+	},
+	["sw.journey.w22.quarters.015"] = {
+		"I miei saluti agli eroi laggiù. Qualcuno dovrebbe dirgli degli uccelli.",
+		"Su con la vita, eroi. Ah, già, non potete. Comunque avete un passero in testa.",
+		"Salve, eroi della Valley! Occhio ai piccioni.",
+	},
+	["sw.journey.w22.quarters.016"] = {
+		"si sporge sul collo del grifone per guardare dritto giù sulla Valley of Heroes, e la bestia, compiacente, abbassa un'ala perché le statue ruotino in vista.",
+		"sente il grifone inclinare un'ala sulla città, come se anche a lui piacesse dare una bella occhiata al verde del Park prima di proseguire.",
+	},
+	["sw.journey.w22.rooftop.001"] = {
+		"passa così vicino a una finestra di soffitta che la tendina si muove, e dentro una donna al tavolo alza gli occhi dal rammendo, l'ago sollevato, finché le ali non sono passate.",
+		"sfiora una finestrella di sottotetto all'altezza del davanzale e intravede una branda, un mozzicone di candela e un uomo che dorme con gli stivali addosso, e non si sveglia.",
+		"sale davanti a un abbaino dove uno scrivano sta copiando accanto alla finestra; solleva la penna, guarda passare la bestia e la intinge nell'inchiostro come prima.",
+	},
+	["sw.journey.w22.rooftop.002"] = {
+		"Fili da bucato corrono da un tetto all'altro sopra i vicoli stretti: camicie, lenzuola e un paio di mutandoni enormi. Dalla strada sembrano festoni. Dall'alto sono panni stesi.",
+		"Ogni vicolo vicino al posatoio è cucito da una parte all'altra con fili da bucato. Sorvolo le camicie di qualcuno, le lenzuola di qualcuno, i calzini di una casa intera, e mi sembra di conoscerli un po' troppo bene.",
+		"Visti dall'alto, i panni stesi sopra i vicoli sono la bandiera più sincera della città: rattoppati, sbiaditi, e sventolano senza alcuna cerimonia.",
+	},
+	["sw.journey.w22.rooftop.003"] = {
+		"passa sopra un gatto grigio sul colmo di un tetto, che si appiattisce sulle lastre d'ardesia, orecchie indietro, e fissa la bestia con lo sdegno del legittimo proprietario.",
+		"fa schizzare un gatto lungo una grondaia e giù per un pluviale, lasciando tutto il colmo del tetto alle ali.",
+	},
+	["sw.journey.w22.rooftop.004"] = {
+		"Saliamo attraverso il fumo dei comignoli di una strada intera: montone, cipolle, qualcuno che brucia il pane. I tetti offrono al cielo gli stessi odori che i vicoli offrono a me.",
+		"Ogni comignolo che passiamo sbuffa il pasto di qualcuno: stufato, poi pesce, poi qualcosa che nessuno dovrebbe cucinare. Poi siamo sopra a tutti.",
+		"La salita sa dei vicoli di sotto, portati su dalle canne fumarie: cipolle, sego e ferro caldo. Solo un po' più in alto l'aria smette di raccontarmi cosa mangiano i vicini.",
+	},
+	["sw.journey.w22.rooftop.005"] = {
+		"passa così vicino a una banderuola che lo spostamento d'aria la fa girare, e per un attimo il gallo di ferro punta dritto sulla bestia, come se fosse rimasta l'unica direzione.",
+		"sale accanto a una banderuola su un frontone e la fa ruotare nel soffio delle ali; gira due volte, esita, e si ferma sulla coda della bestia.",
+		"fa cigolare un galletto di latta sul suo perno con i primi colpi d'ala, e lo lascia puntato dietro il volo, convinto che la bestia sia l'unica notizia da dare.",
+	},
+	["sw.journey.w22.rooftop.006"] = {
+		"Sui tetti c'è tutta una seconda città che dalla strada nessuno conosce: vasi di erbe, una panca, una scala lasciata contro un comignolo, la bottiglia nascosta di qualcuno.",
+		"Solo dall'aria vedi cosa tiene la gente sui tetti. Vasi di fagioli. Una sedia rotta. Una cassetta di legno con dentro qualcosa che qualcuno, chiaramente, non vuole in casa.",
+		"I tetti hanno segreti che le strade non condividono: un'altalena di corda tra due comignoli, un boschetto di vasi di basilico, un paio di stivali messi ad asciugare e dimenticati.",
+	},
+	["sw.journey.w22.rooftop.007"] = {
+		"attraversa in pieno il pennacchio del comignolo di una fucina durante la salita ed esce dall'altra parte che sa di carbone, con la fuliggine sulle maniche a dimostrarlo.",
+		"viene {g:portato|portata} attraverso il fumo di una forgia mentre la bestia prende quota: un attimo di grigio caldo e amaro, poi aria pulita e uno starnuto della bestia.",
+	},
+	["sw.journey.w22.rooftop.008"] = {
+		"Adesso riesco a seguire le grondaie: ogni tetto versa in un tubo, ogni tubo in un vicolo, ogni vicolo giù fino a un canale. Qualcuno ha disegnato questa città prima per l'acqua e poi per la gente.",
+		"I tetti pendono tutti dallo stesso lato, verso il canale più vicino. Dalla strada non te ne accorgi. Dalla sella è chiaro come i solchi di un campo arato.",
+		"Ogni grondaia di questi tetti ha un'opinione su dove debba andare l'acqua, e sono tutte d'accordo: il canale. Solo dall'aria si vede la votazione.",
+	},
+	["sw.journey.w22.rooftop.009"] = {
+		"Scusate, tetti. Passiamo soltanto.",
+		"Attento a quel comignolo. E a quello. Anche a quello!",
+	},
+	["sw.journey.w22.rooftop.010"] = {
+		"sente gli artigli posteriori del grifone staccare una lastra dal colmo durante la salita, e la sente rimbalzare giù nel vicolo molto dopo che il tetto è rimasto indietro.",
+		"sente partire un'ardesia del colmo quando le zampe posteriori del grifone la sfiorano, e si lascia dietro una cascatella di schegge che rotola verso la soglia di qualcuno.",
+		"viene {g:portato|portata} oltre l'ultimo tetto da un grifone che non lo supera del tutto; una zampa artigliata striscia sulle lastre, e di sotto qualcosa si rompe con il suono di un piatto caduto.",
+	},
+	["sw.journey.w22.rooftop.011"] = {
+		"Su un tetto, di sotto, un uomo dorme supino, braccia conserte, il cappello sulla faccia. Le ali gli passano proprio sopra. Non si muove. Lo invidio più di quanto sappia dire.",
+		"Su un tetto piatto un tizio sta disteso col cappello sugli occhi, perso nel sonno. Gli passiamo a pochi passi sopra la testa. Non lo saprà mai.",
+		"Qualcuno ha trovato l'unico angolo tranquillo di questa città: una sporgenza tra due comignoli, un mantello piegato per cuscino. Spero che il rumore delle ali non l'abbia svegliato.",
+	},
+	["sw.journey.w22.rooftop.012"] = {
+		"guarda giù le bancarelle mentre la bestia sale, e le vede diventare un mosaico di tendoni, a righe e in tinta unita, con i compratori che si vedono solo come cappelli in mezzo.",
+		"osserva i banchi vicino al posatoio ripiegarsi in quadrati di tela colorata, una scacchiera stesa sulla strada, i mercanti nascosti sotto le proprie tende.",
+		"vede il mercato sotto la salita farsi un vassoio di tessere colorate: tendone rosso, tendone verde, uno strappato rattoppato con tela di sacco, e in mezzo solo cime di teste.",
+	},
+	["sw.journey.w22.rooftop.013"] = {
+		"Il selciato della piazzetta qui sotto è posato a ventaglio, curva dentro curva, come i cerchi di un sasso gettato in uno stagno. Chi ci cammina sopra non lo indovinerebbe mai.",
+		"Solo dalla sella si vede che i ciottoli vicino al posatoio seguono un disegno, archi dentro archi. Il lavoro attento di qualche selciatore, e tutta la città ci cammina sopra senza vederlo.",
+		"Qualcuno ha posato quei ciottoli in grandi curve, fila dopo fila, e solo gli uccelli e chi vola le vedranno mai. Devono avere una strana specie di pazienza, i muratori.",
+	},
+	["sw.journey.w22.rooftop.014"] = {
+		"Vedo dritto dentro quella soffitta. Qualcuno la metta in ordine.",
+		"Guarda, c'è il vicolo dove mi ero {g:perso|persa}. Minuscolo, eh?",
+	},
+	["sw.journey.w22.roostward.001"] = {
+		"guarda il posatoio crescere tra i tetti: prima un quadrato chiaro, poi balle di paglia, un abbeveratoio, e infine una scopa appoggiata a un palo.",
+		"vede il posatoio prendere forma mentre la bestia ci scende sopra, una macchia piatta fra le ardesie che diventa fieno, abbeveratoi e uno sgabello con sopra il pranzo di qualcuno.",
+		"distingue il posatoio pezzo dopo pezzo durante la discesa: un quadrato di pietra, un mucchio di paglia, una fila di mastelli per il mangime, la giacca di un custode appesa a un chiodo.",
+	},
+	["sw.journey.w22.roostward.002"] = {
+		"Il naso trova il posatoio per primo: paglia umida, carne cruda, l'odore muschiato di tante bestie tenute vicine. Sotto di me la testa della bestia si alza ad annusare.",
+		"Prima ancora di distinguere il posatoio tra i tetti ne sento l'odore, paglia e avanzi di macelleria. Lo sente anche la bestia, e accelera, ingorda com'è.",
+	},
+	["sw.journey.w22.roostward.003"] = {
+		"Ecco il posatoio. Calma, bestia. Tu e io, tutti e due.",
+		"Posatoio davanti. Se hai un atterraggio decente in corpo, bestia, è il momento di tirarlo fuori.",
+		"Lo vedo. Fieno, secchi, qualcuno che sbraccia. Dev'essere lì.",
+	},
+	["sw.journey.w22.roostward.004"] = {
+		"scorge un garzone trascinare di corsa una balla di paglia via dalle pietre d'atterraggio, alzando gli occhi due volte per calcolare quanto tempo gli resta.",
+		"guarda un garzone del posatoio spostare un secchio con un calcio e poi, ripensandoci, tornare indietro a toglierlo di mezzo come si deve.",
+	},
+	["sw.journey.w22.roostward.005"] = {
+		"Sul posatoio c'è un abbeveratoio, e per un attimo ci vedo dentro la bestia e me, una macchia d'ali e un piccolo cavaliere scuro, che si gonfiano fino a riempirlo da bordo a bordo.",
+		"L'abbeveratoio vicino ai trespoli coglie la discesa: una macchia d'ali nell'acqua che cresce e cresce, finché l'ombra stessa della bestia la cancella.",
+	},
+	["sw.journey.w22.roostward.006"] = {
+		"scende tanto vicino alle mura del posatoio da vedere la malta tra i blocchi, e un nido di rondine di fango secco infilato in alto sotto una sporgenza.",
+		"passa davanti al muro del posatoio, abbastanza vicino da distinguere il muschio nelle commessure e un nido di rondini aggrappato sotto il cornicione.",
+	},
+	["sw.journey.w22.roostward.007"] = {
+		"Il custode laggiù sta mangiando una mela e non smette nemmeno per la bestia. Se lui non si preoccupa, ho deciso di non preoccuparmi neanch'io.",
+		"Sul posatoio qualcuno finisce una mela mentre la bestia gli scende addosso, senza la minima fretta. Prendo coraggio da quella mela.",
+		"Il custode non alza gli occhi dalla mela finché la bestia non è a pochi colpi d'ala. O si fida ciecamente dell'animale, o ha visto cavalieri peggiori di me.",
+	},
+	["sw.journey.w22.roostward.008"] = {
+		"scende verso il posatoio con il tuono che rotola sui tetti, mentre i custodi si affrettano a gettare teli cerati sui trespoli vuoti.",
+		"scende in fretta sotto un cielo che brontola, le penne della bestia ritte e i custodi sul posatoio che già la chiamano a gran voce.",
+	},
+	["sw.journey.w22.roostward.009"] = {
+		"Da quassù le lastre del posatoio sono consumate e chiare in due punti, una accanto all'altra, come il pavimento davanti a un bancone affollato. La bestia punta la più vicina senza che glielo chieda.",
+		"Le lastre del posatoio sono lisciate in due chiazze chiare, dove ogni bestia si posa. La mia sceglie la più vicina da lontanissimo, come un cliente abituale che va dritto al suo sgabello.",
+	},
+	["sw.journey.w22.roostward.010"] = {
+		"Qualcuno sposti quella carriola!",
+		"Di chi è quella carriola? Spostatela, per favore, prima che questa bestia ci atterri dentro.",
+	},
+	["sw.journey.w22.roostward.011"] = {
+		"Sul muretto del posatoio dorme un gatto, mentre un animale capace d'inghiottirlo in un boccone gli piomba accanto dal cielo. Vorrei imparare una calma così.",
+		"Un soriano grasso abita il posatoio, acciambellato sul parapetto. Apre un occhio quando le ali calano intorno a lui, e lo richiude.",
+	},
+	["sw.journey.w22.roostward.012"] = {
+		"vede un custode sul bordo del posatoio agitare una striscia di stoffa blu verso un trespolo libero, ancora e ancora, finché la bestia non inclina le ali da quella parte.",
+		"segue lo sventolio di uno straccio blu nel pugno di un custode, agitato verso un trespolo vuoto; la bestia si allinea come tirata da un filo.",
+	},
+	["sw.journey.w22.roostward.013"] = {
+		"Sale il posatoio e il cielo si assottiglia, come la folla che ti si dirada intorno quando chiude un cancello. Ne vorrei ancora un po'. La bestia vorrebbe la sua cena.",
+		"A ogni colpo d'ala verso il basso resta meno cielo sopra la testa. Lassù ne avevo un paese intero. Qui ne avrò una striscia tra due tetti.",
+	},
+	["sw.journey.w22.roostward.014"] = {
+		"Tenetevi i cappelli, laggiù!",
+		"Teste basse, laggiù! Passano le ali.",
+	},
+	["sw.journey.w22.roostward.015"] = {
+		"Prima della città parla il posatoio: il manico di un secchio che sbatte, un fischio breve, qualcuno che ride alla fine di una battuta di cui non sentirò mai l'inizio.",
+		"Prima che mi arrivi il rumore della strada, salgono nell'ultimo tratto d'aria i piccoli suoni del posatoio: un secchio posato, una scopa che raschia, una risata troncata.",
+	},
+	["sw.journey.w22.sighting.001"] = {
+		"nota gli alberi di Elwynn finire più avanti lungo una linea troppo dritta per un bosco, e capisce che la città è lì dietro prima ancora che spunti una torre.",
+		"vede il verde là sotto interrompersi su un bordo tirato a righello, quella linea dritta che sanno fare solo i costruttori, e si sporge per guardare oltre.",
+		"scorge, lontano, il punto in cui il bosco si arrende tutto in una volta lungo un margine netto. Niente cresce così in ordine da solo.",
+	},
+	["sw.journey.w22.sighting.002"] = {
+		"Prima le torri, poi le mura. La città sbircia sempre prima di farsi vedere.",
+		"Guarda, le torri spuntano già sopra gli alberi. Le mura fanno ancora le timide.",
+	},
+	["sw.journey.w22.sighting.003"] = {
+		"Eccola. Quella cosa chiara oltre gli alberi. No, più in là. Sì, quella cosa chiara enorme.",
+		"La vedi? Sopra le cime. Difficile mancarla, quando smetti di fissare gli alberi.",
+	},
+	["sw.journey.w22.sighting.004"] = {
+		"In avvicinamento i tetti là sotto cambiano prima che compaia la città: la paglia lascia il posto alle scandole, le scandole all'ardesia. Si legge il denaro che si addensa verso le mura.",
+		"Paglia, poi legno, poi ardesia. Molto prima delle mura, i tetti sotto di me dicono che la città è vicina, e quanto diventano tutti più ricchi man mano che ci si accosta.",
+		"Le fattorie sotto le ali si fanno più fitte e i loro tetti più cari. Stormwind comincia parecchio prima della sua pietra.",
+	},
+	["sw.journey.w22.sighting.005"] = {
+		"conta le torri che spuntano dal verde, perde il conto ogni volta che la bestia scende di colpo, e ricomincia con pazienza testarda.",
+		"prova a contare le torri man mano che emergono dagli alberi, e ci rinuncia al terzo tuffo delle ali.",
+		"tiene il conto delle torri sopra la linea del bosco, arriva a nove, poi a undici, poi a sei, e conclude che la città è semplicemente grande.",
+	},
+	["sw.journey.w22.sighting.006"] = {
+		"Da lontano la città sembra finita. Più vicino si vedono le impalcature, ritte fra i tetti come spilli dimenticati in un orlo. Stormwind la stanno ancora cucendo.",
+		"Ogni volta che appare c'è un'impalcatura da qualche parte. Questa città non si è mai considerata finita, nemmeno per un giorno.",
+	},
+	["sw.journey.w22.sighting.007"] = {
+		"Elwynn arriva fino al fossato e lì si ferma, come una folla a cui hanno detto di aspettare fuori. In mezzo c'è la città, chiarissima e molto sicura di sé.",
+		"Il bosco giunge al bordo dell'acqua e non oltre. Da quassù più che un confine pare una folla tenuta educatamente a distanza.",
+		"Tutti quegli alberi che premono verso le mura, e il fossato che li tiene indietro senza una parola. Dev'essere la sentinella più paziente del regno.",
+	},
+	["sw.journey.w22.sighting.008"] = {
+		"all'alba vede la città prima come un pallore sopra gli alberi, già lì quando il bosco non ha ancora trovato i suoi colori.",
+		"distingue le mura nella penombra dell'alba, chiare sopra una foresta ancora color ardesia, la prima cosa di Elwynn a svegliarsi.",
+	},
+	["sw.journey.w22.sighting.009"] = {
+		"Per un po' ci sono solo cielo, alberi e le spalle della bestia che lavorano. Poi una torre rompe la linea del bosco, e la quiete finisce prima che arrivi un solo suono.",
+		"La quiete dell'aria finisce con qualcosa che si vede, non che si sente: una torre sopra le cime, e ho già la testa piena di strade.",
+	},
+	["sw.journey.w22.sighting.010"] = {
+		"Per prima spunta la punta della cattedrale, un ago piantato nel bosco, e il resto della città sembra tirato su dal filo che le va dietro.",
+		"Prima l'ago della cattedrale, poi tutta la stoffa della città, tirata su a seguire.",
+	},
+	["sw.journey.w22.sighting.011"] = {
+		"si sposta in sella per vedere oltre la cresta del grifone mentre le prime torri si alzano dal verde, più avanti.",
+		"deve sporgersi oltre la testa larga del grifone per vedere qualcosa davanti, e ne ha in premio una fila di torri sopra gli alberi.",
+	},
+	["sw.journey.w22.sighting.012"] = {
+		"Da lontano è l'unica cosa di Elwynn che resta ferma. Le foglie si muovono, gli uccelli si levano, i carri arrancano; la città se ne sta lì, pallida e paziente.",
+		"Sopra la foresta tutto si muove, gli uccelli, le cime, la bestia sotto di me. Più avanti, una grande cosa chiara no, ed è così che riconosco la città.",
+		"Sopra i boschi niente resta fermo a lungo. La città sì. Aspetta là davanti come un sasso in un torrente, e lascia scorrere intorno tutta la campagna verde.",
+	},
+	["sw.journey.w22.sighting.013"] = {
+		"Ah. Qualcuno ha lasciato una città intera in mezzo al bosco.",
+		"Alberi, alberi, alberi, regno. Puntuale come sempre.",
+	},
+	["sw.journey.w22.slate.001"] = {
+		"scruta le lastre d'ardesia mentre la bestia le supera e vede quante toppe hanno: le vecchie scure coperte di muschio, le nuove chiare messe in fila dove è passata una riparazione.",
+		"nota, appena sopra i tetti, che non ce ne sono due dello stesso colore: ognuno è una trapunta di ardesie posate in anni diversi, le più nuove ancora lucide, le più vecchie verdi ai bordi.",
+		"sfiora un tetto abbastanza da leggerne la storia nelle ardesie: un quadrato di lastre nuove dove è crollato un comignolo, una cucitura storta dove qualcuno ha lavorato al risparmio.",
+	},
+	["sw.journey.w22.slate.002"] = {
+		"Tutti dicono che i tetti sono azzurri. Da vicino, in salita, hanno una dozzina di colori: prugna, ferro, cenere bagnata, una macchia di ruggine ogni due lastre. L'azzurro è solo quello su cui si mettono d'accordo da lontano.",
+		"All'altezza dei comignoli l'ardesia smette di avere un colore solo. Viola dov'è vecchia, grigia dov'è nuova, e qua e là una venatura quasi di ruggine. È la distanza che la dipinge.",
+		"Non mi ero mai {g:accorto|accorta} che l'ardesia avesse una venatura, come il legno. Bisogna passarci sopra a pochi palmi, piano, senza niente da fare se non guardare.",
+	},
+	["sw.journey.w22.slate.003"] = {
+		"scorge un tetto a cui mancano una dozzina di lastre, i listelli nudi che si vedono come costole, e attraverso il buco una stanza con un secchio piazzato in mezzo al pavimento.",
+		"guarda dentro il buco di un tetto salendo, dritto nel solaio di qualcuno: un letto, un baule, e una pentola messa esattamente sotto lo squarcio.",
+	},
+	["sw.journey.w22.slate.004"] = {
+		"L'ardesia non brucia, dicono i conciatetti, ed è per questo che ogni tetto sotto di me è d'ardesia e non di paglia. Lo dicono come se non ci fosse bisogno di spiegare perché.",
+		"Non si vede un solo tetto di paglia. Chiedi a un conciatetti e la risposta è sempre la stessa: l'ardesia non brucia. Poi ti guarda come se avessi dovuto saperlo.",
+		"Chiedi in qualunque taverna e i conciatetti ti diranno che nella ricostruzione la paglia non era ammessa. Dalla sella si vede con quanto rigore: ardesia, e ardesia, e ardesia.",
+	},
+	["sw.journey.w22.slate.005"] = {
+		"si tiene forte mentre i tetti d'ardesia si stringono sotto la salita, finché sembrano un'unica pelle di scaglie sovrapposte, e i vicoli in mezzo solo pieghe.",
+		"vede i tetti di sotto fondersi in un solo dorso a squame durante la salita, lastra su lastra, come se la città si fosse fatta crescere un guscio senza dirlo a nessuno.",
+	},
+	["sw.journey.w22.slate.006"] = {
+		"La pioggia sulle ardesie fa della salita un unico peltro. Ogni grondaia di sotto sputa un piccolo arco nel vicolo, e i vicoli corrono con l'acqua verso i canali.",
+		"Tetti bagnati a perdita d'occhio, viscidi e scuri, ogni gronda che gocciola nei vicoli. A ogni colpo d'ala la bestia si scuote l'acqua dalle punte.",
+		"La pioggia fa luccicare l'ardesia come scaglie di pesce e le grondaie gorgogliano tutte insieme. Perfino la bestia sembra volare con le spalle curve.",
+	},
+	["sw.journey.w22.slate.007"] = {
+		"Guarda quei tetti. Qualcuno là sotto deve un sacco di soldi a un conciatetti.",
+		"Metà di quelle lastre ballano. Meno male che non ci sto camminando sotto.",
+	},
+	["sw.journey.w22.slate.008"] = {
+		"Ho provato a contare i comignoli durante la salita e mi sono {g:arreso|arresa} a quaranta. Di coccio, di ferro, uno piegato come un vecchio che origlia a un muro. Ogni tetto ha la sua piccola folla.",
+		"I comignoli quassù sono un popolo a parte: tozzi, alti, crepati, col cappello di latta, e uno così inclinato che dovrebbe portare un cartello d'avviso.",
+		"Per qualche colpo d'ala siamo tra i comignoli, e sembrano una folla di gente bassa e robusta, ognuno girato da una parte diversa e nessuno che parla.",
+	},
+	["sw.journey.w22.slate.009"] = {
+		"sale sopra tetti ancora scuri d'umido, le ardesie che si asciugano a chiazze chiare dal colmo in giù, sotto un cielo finalmente sgombro.",
+		"abbraccia con lo sguardo le ardesie che si asciugano sotto il cielo sereno, ogni tetto diviso in due toni, scuro alla gronda e chiaro al colmo.",
+		"sale nell'aria limpida sopra tetti che asciugano a fatica, colmi chiari e grondaie scure, come se il quartiere intero fosse stato immerso e appeso a sgocciolare.",
+	},
+	["sw.journey.w22.spiral.001"] = {
+		"si piega con la bestia in un'ampia virata sopra i tetti, e una fila di comignoli scorre sotto un'ala, così vicina da poterli contare.",
+		"entra nella prima virata lenta sulla città, i comignoli che girano sotto un'ala come i denti di un pettine.",
+		"segue la lunga inclinazione sopra i tetti, una piccola folla di comignoli che sfila sotto un'ala e poi sotto l'altra.",
+	},
+	["sw.journey.w22.spiral.002"] = {
+		"A ogni giro mi ripassa sotto lo stesso segnavento, un gallo di latta su un tetto vicino al canale. Al terzo passaggio potrei disegnarlo a memoria.",
+		"Un gallo di latta su qualche tetto continua a tornarmi sotto gli stivali, giro dopo giro. Quel gallo e io ormai ci conosciamo bene.",
+		"Il cerchio mi rimette davanti tre volte lo stesso segnavento. Ogni volta punta da un'altra parte, e ho il sospetto che io faccia lo stesso.",
+	},
+	["sw.journey.w22.spiral.003"] = {
+		"passa così basso su un vicolo che il soffio delle ali fa sbattere una fila di panni stesi tra due tetti, e ogni camicia saluta la bestia che se ne va.",
+		"sfiora un tetto da cui il bucato pende fino alla casa di fronte, e ogni camicia sul filo sobbalza e sventola al passaggio delle ali.",
+	},
+	["sw.journey.w22.spiral.004"] = {
+		"Una conciatetti inginocchiata sulle lastre alza gli occhi mentre la bestia gira e mi saluta con il martello, senza fretta. Quassù, a quanto pare, si è vicini di casa.",
+		"Qualcuno sta riparando un tetto qui sotto, una fila di ardesia dopo l'altra. Alza il martello quando le ali le passano accanto, come chi saluta da sopra una siepe.",
+		"Laggiù c'è una donna con la bocca piena di chiodi che saluta la bestia con il martello a ogni giro. Vicini di casa ad alta quota.",
+	},
+	["sw.journey.w22.spiral.005"] = {
+		"Sì, bestia, li ho visti i tetti. Bellissimi tetti. Giù, per favore.",
+		"Di nuovo quel comignolo. Ci atterriamo sopra, o facciamo un terzo giro per ammirarlo?",
+	},
+	["sw.journey.w22.spiral.006"] = {
+		"guarda giù nei cortili dietro le case mentre la bestia gira, i quadrati nascosti che la strada non mostra mai: un pozzo, un pero, una gallina che razzola sul nulla.",
+		"vede, in virata, ciò che le facciate nascondono: piccoli cortili sul retro, una botte d'acqua in uno, un gatto addormentato su una catasta di legna nel successivo.",
+		"scorge dall'alto cortili che chi cammina per i vicoli non immaginerebbe mai, ognuno con il suo albero storto e la sua panca.",
+	},
+	["sw.journey.w22.spiral.007"] = {
+		"Per tutta la virata la testa della bestia non si muove: resta piantata su un punto del posatoio mentre il corpo le gira intorno. I cacciatori guardano così. Meno male che non guarda me.",
+		"Le ali girano e girano, e la testa resta fissa sul posatoio come l'ago di una bussola. Qualunque cosa abbia scelto laggiù, ha già deciso.",
+	},
+	["sw.journey.w22.spiral.008"] = {
+		"guarda la coda del grifone aprirsi a ventaglio e torcersi a ogni virata, un fascio di penne rigide che governa tutta la bestia come un timone.",
+		"sente ogni virata cominciare da dietro, dove le penne della coda del grifone si allargano e si inclinano un attimo prima che le ali le seguano.",
+	},
+	["sw.journey.w22.spiral.009"] = {
+		"Al secondo giro riconosco un cappello giù in strada: è di uno a cui devo dei soldi. Fai un altro giro, bestia. Lasciagli girare l'angolo.",
+		"Quel cappello tra la folla lo conosco. Tra me e il suo padrone c'è una somma in sospeso. Gira piano, bestia: nessuna fretta.",
+	},
+	["sw.journey.w22.spiral.010"] = {
+		"passa accanto all'asta di una bandiera su un tetto, così vicino che lo stendardo sfiora la punta dell'ala, e la bestia scuote l'ala come se qualcosa l'avesse punta.",
+		"gira attorno a una torre così stretto che una bandierina schiocca contro il bordo dell'ala; la bestia fa fremere l'ala intera, come un cavallo che si scrolla di dosso una mosca.",
+	},
+	["sw.journey.w22.spiral.011"] = {
+		"Ogni anello che la bestia disegna è più stretto del precedente, e i tetti salgono più vicini a ogni giro. Come guardare l'acqua che gira verso uno scarico, con me dentro l'acqua.",
+		"I cerchi si stringono man mano, e la città sale incontro tetto dopo tetto. Il cielo viene riavvolto come una lenza sul mulinello.",
+		"Virata larga, virata più stretta, più stretta ancora. I tetti salgono come un pesce all'amo: piano, e poi tutto in un colpo.",
+	},
+	["sw.journey.w22.spiral.012"] = {
+		"Non il comignolo. Non il comignolo! Grazie.",
+		"Ala sinistra, bestia, attenta alla torre. L'altra sinistra.",
+	},
+	["sw.journey.w22.spiral.013"] = {
+		"gira nel buio sopra file di imposte, ognuna contornata da un filo sottile di luce di lampada, finché due torce ben distanziate segnano il posatoio.",
+		"vira lentamente sopra i tetti addormentati, dove le sole luci sono le fessure attorno alle imposte e, più in là, le due torce che vogliono dire posatoio.",
+	},
+	["sw.journey.w22.spiral.014"] = {
+		"Un altro giro, allora. Tanto non avevo fretta.",
+		"Gira e rigira. Il posatoio sarà ancora lì, bestia.",
+	},
+	["sw.journey.w22.spire.001"] = {
+		"passa all'altezza della guglia della cattedrale e vede ciò che vedono solo i muratori e gli uccelli: intagli rifiniti in cima con la stessa cura che al portale, per nessun occhio.",
+		"arriva al livello della punta della guglia della cattedrale, dove la pietra è lavorata con la stessa pazienza che giù in strada, fatta per nessuno se non per il cielo.",
+	},
+	["sw.journey.w22.spire.002"] = {
+		"La punta della guglia della cattedrale, vista da vicino: un corvo appollaiato come se l'avessero nominato lì, e sotto una lunga striscia bianca che nessuno salirà mai a pulire.",
+		"Da vicino, il punto più alto della cattedrale appartiene a un corvo, e il corvo ci lascia il suo segno da parecchio tempo.",
+	},
+	["sw.journey.w22.spire.003"] = {
+		"guarda dentro i cortili interni di Stormwind Keep, che le sue stesse mura nascondono alla città: magazzini, un pozzo, barili accatastati vicino a una porta laterale, un cortile spazzato fino alla pietra.",
+		"scopre che la fortezza, vista dall'alto, è meno una reggia che un groviglio di cortili e tetti incastrati, con un semplice pozzo nel mezzo.",
+	},
+	["sw.journey.w22.spire.004"] = {
+		"Da quassù la fortezza è un mucchio di tetti scuri. Niente dice che là sotto un ragazzo porta una corona, né che il seggio di suo padre è vuoto da tutto questo tempo.",
+		"Nessun segno, a quest'altezza, che lì ci abiti un re. La fortezza è fatta di tetti e camini come il resto; il suo peso sta tutto in quello che si dice a terra.",
+	},
+	["sw.journey.w22.spire.005"] = {
+		"passa accanto all'alta torre del Mage Quarter, e una figura a una finestra in alto alza gli occhi da un libro con la faccia di uno studioso interrotto a metà frase.",
+		"sfiora il Wizard's Sanctum abbastanza da vedere qualcuno a una finestra alta chiudere con decisione l'imposta davanti alle ali di passaggio.",
+	},
+	["sw.journey.w22.spire.006"] = {
+		"intravede le campane nella loro torre, oltre le feritoie, mentre la bestia passa: enormi e ferme, con la giacca di un campanaro buttata su una trave lì accanto.",
+		"vede, a quest'altezza, oltre la cella campanaria aperta, le campane stesse a riposo, più grandi di un carro, con una scala appoggiata all'incastellatura.",
+	},
+	["sw.journey.w22.spire.007"] = {
+		"Ecco la fortezza. Saluta il reggente, bestia.",
+		"Saluta la fortezza. Là dentro sono di sicuro tutti troppo occupati per ricambiare.",
+	},
+	["sw.journey.w22.spire.008"] = {
+		"Tre altezze comandano il profilo di questa città: la guglia della cattedrale, le torri della fortezza, la torre dei maghi. Tutto il resto sono tetti che tengono la testa bassa.",
+		"Solo tre cose a Stormwind osano alzarsi nel cielo: una guglia per la Luce, torri per la corona, una torre per i maghi. I tetti, sotto, si accucciano educati.",
+	},
+	["sw.journey.w22.spire.009"] = {
+		"percorre con lo sguardo tutta la lunghezza del tetto della cattedrale, una grande spina dorsale d'ardesia distesa come la chiglia di una nave rovesciata.",
+		"passa sopra la cattedrale per il lungo, e il tetto sotto è tutto creste, grondaie e figurine di pietra accucciate agli angoli, troppo in alto perché qualcuno dalla piazza le abbia mai notate.",
+	},
+	["sw.journey.w22.spire.010"] = {
+		"La Cathedral Square, da quassù: un grande piatto chiaro, qualche puntino in tonaca che lo attraversa piano, e i piccioni.",
+		"La piazza davanti alla cattedrale è il pavimento scoperto più grande della città. Dall'alto chi la attraversa sembra briciole su una tovaglia.",
+	},
+	["sw.journey.w22.spire.011"] = {
+		"Strano. Da quassù la cattedrale è grande quanto una pagnotta, e riesce comunque ad avere un'aria severa.",
+		"Anche ridotta a una pagnotta, la cattedrale ha l'aria di disapprovare. Notevole.",
+	},
+	["sw.journey.w22.stride.001"] = {
+		"Da qui potrei seguire la strada anche senza la bestia: fuori dalla porta, oltre il ponte, a sud tra gli alberi, una piega chiara nel verde che qualcuno ha stirato tanto tempo fa e che nessuno ha più spianato.",
+		"La strada del sud vista da quassù: una piega nella foresta, schiacciata da carri e stivali per così tanti anni che gli alberi hanno smesso di discuterci.",
+	},
+	["sw.journey.w22.stride.002"] = {
+		"supera senza un suono un cavaliere sulla strada del sud, poi un carro, poi una donna che tira una mucca per la corda, e nessuno alza gli occhi.",
+		"passa in silenzio sopra il traffico della strada, un carro, un venditore ambulante, un ragazzo che spinge le oche, ognuno preso dal suo cammino e nessuno che guardi il cielo.",
+	},
+	["sw.journey.w22.stride.003"] = {
+		"Ogni curva della strada laggiù è un'ora di cammino di qualcuno. Ne taglio tre mentre finisco di pensarlo.",
+		"La strada vaga nella foresta come chi va a piedi, girando attorno a ogni ceppo e a ogni masso. La bestia ci passa sopra, e io mi sento un po' in colpa.",
+		"Laggiù la strada litiga con ogni collina. Quassù non c'è niente con cui litigare, e la discussione quasi mi manca.",
+	},
+	["sw.journey.w22.stride.004"] = {
+		"Se ti stanchi, bestia, la strada è lì sotto. Non lo dico a nessuno.",
+		"Potresti farla a piedi, sai. Laggiù. Come tutti.",
+	},
+	["sw.journey.w22.stride.005"] = {
+		"sistema lo zaino una volta sola mentre la bestia trova il suo ritmo, poi lo lascia stare, come chi cammina e smette di armeggiare con le cinghie dopo il primo miglio.",
+		"dà un solo strattone alle cinghie dello zaino appena il volo si fa regolare, poi le lascia in pace.",
+	},
+	["sw.journey.w22.stride.006"] = {
+		"C'è un momento in cui la bestia smette di salire e comincia a viaggiare. Lo senti attraverso la sella: meno spinta, più allungo.",
+		"Oltre gli alberi, a un certo punto, le ali cambiano idea su cosa stanno facendo. Salire era fatica. Questo è soltanto andare, lungo e uguale, e le ginocchia se ne accorgono.",
+	},
+	["sw.journey.w22.stride.007"] = {
+		"lascia finalmente la presa sull'imbracatura con una mano, piega le dita rimaste contratte dal posatoio in poi e le tiene libere.",
+		"allenta la stretta rigida sui finimenti ora che le mura sono alle spalle, e riapre piano le dita.",
+	},
+	["sw.journey.w22.stride.008"] = {
+		"La strada del sud sembra una linea tracciata per spiegare Elwynn a qualcuno molto paziente: le fattorie di qua, la foresta di là, e i guai, come al solito, più avanti.",
+		"Qualcuno mi ha disegnato Elwynn da quassù e ci ha lasciato la strada come suggerimento. Campi da una parte, alberi dall'altra, e tutto quello che c'è da fare lungo la linea.",
+	},
+	["sw.journey.w22.stride.009"] = {
+		"Uno zaino pieno sta diverso all'inizio del viaggio: alto e stretto, ogni cinghia ancora rigida. Alla fine si affloscia come chi lo porta.",
+		"All'inizio di un viaggio gli stivali sono asciutti, la borraccia è piena e le cinghie scricchiolano. Vorrei ricordarmela, questa sensazione, quando non sarà più vero niente.",
+	},
+	["sw.journey.w22.stride.010"] = {
+		"Niente domande sul dove. Vola e basta.",
+		"Ovunque sia, portami là.",
+	},
+	["sw.journey.w22.stride.011"] = {
+		"segue la strada che entra ed esce dalla foresta là sotto, persa tra gli alberi per un tratto e poi riaffiorata più avanti, come un ago che lavora una stoffa pesante.",
+		"vede la strada del sud infilarsi sotto le chiome e riemergere, una volta dopo l'altra, tirata attraverso il bosco come un filo nel lino.",
+	},
+	["sw.journey.w22.stride.012"] = {
+		"Il primo tratto è quello che preferisco. Niente è andato storto, finora. Niente ne ha avuto il tempo.",
+		"Il bello di ogni viaggio è questo, proprio all'inizio, prima che il mondo ci metta le mani.",
+		"Al principio di un viaggio ogni piano regge. È l'unico momento in cui è vero, e cerco di godermelo.",
+	},
+	["sw.journey.w22.stride.013"] = {
+		"parte alle prime luci mentre le fattorie laggiù si svegliano a una a una, un camino qui, un camino là, finché tutta la foresta è attraversata da fili di fumo sottile.",
+		"si mette in viaggio nel grigio del primo mattino, e sotto le ali Elwynn accende i fuochi delle cucine una fattoria dopo l'altra, piccoli fili azzurri che salgono dagli alberi.",
+	},
+	["sw.journey.w22.stride.014"] = {
+		"Ecco. Adesso è un viaggio vero.",
+		"E da qui comincia il viaggio sul serio.",
+	},
+	["sw.journey.w22.touchdown.001"] = {
+		"sente la bestia posarsi in due metà: prima le zampe posteriori, morbide e imbottite, poi gli artigli anteriori che battono sulla pietra con uno scatto secco.",
+		"si fa deporre da zampe posteriori che atterrano come quelle di un gatto e anteriori che atterrano come quelle di un falco: un tonfo morbido, poi il raschio degli artigli.",
+		"resta in sella durante un atterraggio in due tempi, un tonfo attutito dietro e un crepitio di artigli davanti, come se arrivassero due animali uno dopo l'altro.",
+	},
+	["sw.journey.w22.touchdown.002"] = {
+		"Al contatto con la pietra l'animale intero cambia sotto di me. Un attimo prima ogni muscolo tirava; ora è un peso grave, molle, soddisfatto, come una fune lasciata cadere.",
+		"Un istante la bestia è tutta tensione, ali e spalle che si aggrappano all'aria. Quello dopo si è afflosciata sulla pietra come un sacco posato, e io con lei.",
+	},
+	["sw.journey.w22.touchdown.003"] = {
+		"Giù. Niente applausi: il grosso l'ha fatto la bestia.",
+		"E giù. Ho tenuto gli occhi aperti quasi per tutto il tempo.",
+	},
+	["sw.journey.w22.touchdown.004"] = {
+		"vede la bestia restare sospesa un attimo sopra la pietra mentre le ali battono all'indietro, due volte, e un velo di paglia si stacca dal posatoio e vola oltre il parapetto, giù in strada.",
+		"scende in un turbine di paglia mentre le ali raccolgono l'aria, e da qualche parte giù in strada una voce se ne lamenta a lungo.",
+	},
+	["sw.journey.w22.touchdown.005"] = {
+		"Non ho sentito niente. Ho continuato a stringere le cinghie aspettando un altro paio di colpi d'ala, finché il custode non ha tossito.",
+		"Il contatto non l'ho proprio sentito. Ho tenuto strette le cinghie, in attesa di un urto che era già passato, finché l'immobilità non me l'ha detto.",
+	},
+	["sw.journey.w22.touchdown.006"] = {
+		"avverte la bestia assestarsi, e la sua coda col ciuffo spazzare una volta le pietre alle spalle, come una scopa che finisce il lavoro.",
+		"resta immobile mentre la bestia atterra e sferza la lunga coda col ciuffo da una parte all'altra, sollevando un po' di polvere dalle lastre a ogni colpo.",
+	},
+	["sw.journey.w22.touchdown.007"] = {
+		"Mentre la bestia atterra, un custode alza tre dita verso un altro, dall'altra parte del posatoio. Tre su quanto, nessuno me lo dice.",
+		"Uno dei garzoni dà il voto all'atterraggio sulle dita, per il suo compare: quattro. Vorrei sapere qual è stato il migliore, e chi l'ha fatto.",
+	},
+	["sw.journey.w22.touchdown.008"] = {
+		"Piano, piano. Brava bestia. Bell'atterraggio.",
+		"Con garbo. Non me lo scorderò.",
+		"Leggera come un gatto. Hai volato bene, tu.",
+	},
+	["sw.journey.w22.touchdown.009"] = {
+		"La bestia atterra, poi sposta il peso da una zampa anteriore all'altra un paio di volte, saggiando la pietra come chi non si fida del ghiaccio. Soddisfatta, lascia ricadere le ali.",
+		"Giù, e la bestia calpesta la pietra due volte per zampa, come se dubitasse che la città stia davvero ferma. Conosco la sensazione.",
+	},
+	["sw.journey.w22.touchdown.010"] = {
+		"atterra proprio accanto a un garzone che non ha mosso un dito, e che continua ad avvolgere una corda come se le bestie gli si posassero accanto in continuazione.",
+		"si ritrova a terra a un passo da un garzone che ricuce una cinghia, e che sposta lo sgabello di un dito a sinistra senza alzare lo sguardo.",
+	},
+	["sw.journey.w22.touchdown.011"] = {
+		"Un atterraggio è il solo momento in cui il cielo e la pietra si toccano. Finché dura, sono io il punto attraverso cui si toccano.",
+		"Artigli sulla pietra: tutto il cielo finisce in quel piccolo rumore secco. Mi sembra sempre un rumore troppo piccolo per una fine così grande.",
+	},
+	["sw.journey.w22.touchdown.012"] = {
+		"atterra su lastre scaldate a fondo dalla giornata, e il tepore sale dalle zampe imbottite della bestia fino alla sella, una piccola gentilezza dopo l'aria d'alta quota.",
+		"tocca terra su una pietra che ha assorbito il giorno, e il posatoio emana un calore lieve, come una pagnotta appena sfornata.",
+	},
+	["sw.journey.w22.touchdown.013"] = {
+		"sente lo zaino legato dietro la sella atterrare un attimo dopo la bestia, con un tonfo tutto suo e un tintinnio di quel che c'è di sciolto dentro.",
+		"sente tutto il contenuto delle bisacce arrivare in ritardo, un clangore e un tonfo dietro l'atterraggio della bestia, come un'eco con i bagagli.",
+		"atterra, e poi atterrano le bisacce: un secondo arrivo, più piccolo, dietro il primo, pieno di tintinnii.",
+	},
+	["sw.journey.w22.treeline.001"] = {
+		"vede la foresta cominciare quasi alla fine del ponte, i primi alberi stretti sull'altra riva come se fossero venuti a guardare la città e si fossero fermati lì.",
+		"misura quanto Elwynn arrivi vicino alle mura: qualche campo appena, e poi gli alberi, spalla a spalla sul margine come una folla trattenuta da una corda.",
+		"nota sotto di sé il limite della foresta, netto come un orlo, gli ultimi alberi un poco piegati verso la città, quasi per curiosità.",
+	},
+	["sw.journey.w22.treeline.002"] = {
+		"Da quassù Elwynn non è un verde solo, ne sono venti: il quasi nero degli alberi vecchi, il giallo di una stoppia, il verde chiaro e morbido dove le pecore hanno brucato un prato fino alla radice.",
+		"La foresta, avrei detto, è verde. Dalla sella ne conto almeno una dozzina, di verdi, e un campo così giallo da sembrare un vaso di senape rovesciato.",
+	},
+	["sw.journey.w22.treeline.003"] = {
+		"scorge il lago tra gli alberi, piatto e fermo, l'orlo peloso di canne, e per un attimo la sagoma stessa della bestia lo attraversa capovolta.",
+		"vede il lago scorrere sotto, una lastra immobile incastonata nella foresta, e coglie il riflesso della bestia che ci scivola sopra con tutto il suo carico.",
+	},
+	["sw.journey.w22.treeline.004"] = {
+		"Da qui il lago sembra calmissimo. Su una delle sue rive, ci scommetto, un pescatore lo sta maledicendo lo stesso.",
+		"Da quassù il lago pare la cosa più tranquilla di Elwynn. Scommetto la borsa che sulla riva c'è un tale con la lenza vuota che non è d'accordo.",
+	},
+	["sw.journey.w22.treeline.005"] = {
+		"guarda dall'alto una radura di boscaioli, i ceppi chiari e tondi tra i tronchi come monete lasciate su un panno verde.",
+		"sorvola un tratto di bosco tagliato, dove i ceppi spiccano chiari e ordinati, contati tra gli alberi come le monete di un mercante sul feltro.",
+	},
+	["sw.journey.w22.treeline.006"] = {
+		"Tutto quel verde e neanche una bottega. Elwynn non sa cosa si perde.",
+		"Miglia di alberi là sotto, e nessuno che li faccia pagare. Uno scandalo.",
+	},
+	["sw.journey.w22.treeline.007"] = {
+		"Dalle strade la foresta è un muro di tronchi in fondo alla via. Da quassù è un tetto morbido e gibboso, e la bestia lo sfiora come un gatto che attraversa le tegole.",
+		"Entra a Elwynn e vedi tronchi. Sorvolala e vedi le chiome, una trapunta verde stropicciata che nasconde tutto ciò che ci si muove sotto.",
+		"A terra Elwynn è tutta tronchi e sottobosco. Da sopra la foresta mi mostra la schiena, larga e verde, con la strada che la percorre come una scriminatura tra i capelli.",
+	},
+	["sw.journey.w22.treeline.008"] = {
+		"vede un airone staccarsi dalla riva del lago, lento e per nulla turbato, l'unico altro volatore in vista che non ha bisogno di sella.",
+		"guarda un airone levarsi dai canneti sul bordo dell'acqua, ripiegare il collo e allontanarsi basso sul lago, lasciando alla bestia un largo e dignitoso spazio.",
+	},
+	["sw.journey.w22.treeline.009"] = {
+		"Gli steccati dicono a che distanza è rimasta la città. Vicino alle mura sono dritti e appena riparati. Un po' più in là cominciano a pendere.",
+		"Accanto alle mura ogni steccato è dritto e ogni cancello chiude bene. Dove la foresta si infittisce, le staccionate si afflosciano come se non aspettassero più visite.",
+		"La distanza dalle mura si legge negli steccati. Prima vernice fresca e pali squadrati, poi legno nudo, poi quello che il contadino ha trovato in giro.",
+	},
+	["sw.journey.w22.treeline.010"] = {
+		"segue un filo di fumo di camino che sale dagli alberi fino a sfilacciarsi, unico segno della casa nascosta là sotto.",
+		"nota del fumo salire dritto dalle chiome da qualche fattoria nascosta, e l'odore, legna e qualcosa sul fuoco, arriva alla sella un attimo dopo.",
+	},
+	["sw.journey.w22.treeline.011"] = {
+		"Ecco il lago. Non ci pensare nemmeno, bestia. Niente soste per il pesce.",
+		"Occhi avanti, bestia. Quel lago non ha niente per te.",
+	},
+	["sw.journey.w22.treeline.012"] = {
+		"L'aria cambia appena la foresta passa sotto. Escono la pietra e il fumo, entra qualcosa di verde: resina, corteccia umida, foglie che qualcuno brucia in un cortile.",
+		"La città sa di gente. Oltre il limite degli alberi l'aria è tutta corteccia, resina e terra smossa, come se qualcuno avesse aperto una finestra.",
+	},
+	["sw.journey.w22.treeline.013"] = {
+		"passa sopra un campo dove uno spaventapasseri sta a braccia spalancate, come per fermare la bestia; la bestia non si ferma.",
+		"sorvola uno spaventapasseri in un campo di rape, braccia aperte e cappello di sbieco, l'unico in tutta Elwynn a salutare con tanta convinzione.",
+	},
+	["sw.journey.w22.treeline.014"] = {
+		"Noi umani parliamo di Elwynn come del giardino dietro la città. Dalla sella è il contrario: la casa è la foresta, e la città un sasso lasciato sulla soglia.",
+		"Chiedi a chiunque a Stormwind ed Elwynn è l'orto dietro casa della città. Vista da quassù, la città è un ciottolo che la foresta non si è ancora decisa a inghiottire.",
+	},
+	["sw.journey.w22.treeline.015"] = {
+		"guarda la pioggia butterare la superficie del lago, finché tutto sembra peltro battuto, le canne piegate lungo la riva.",
+		"vede il lago farsi opaco e bucherellato sotto la pioggia, ogni goccia il suo piccolo cratere, e la foresta intorno curva e gocciolante.",
+	},
+	["sw.journey.w22.treeline.016"] = {
+		"Senti? Alberi. Nemmeno un tombino per miglia.",
+		"Quassù c'è odore di verde. Non ricordo l'ultima volta che la città ne ha avuto.",
+	},
+	["sw.journey.w22.walls.001"] = {
+		"Da vicino le mura non sono affatto bianche: crema, fulvo, una dozzina di grigi, e qua e là un blocco più chiaro degli altri dove qualcuno ha rattoppato una ferita nella pietra.",
+		"Più vicino, il bianco si rivela una trapunta. Blocchi vecchi diventati color osso, altri più nuovi ancora chiari, e le cuciture in mezzo dove i muratori hanno lavorato più in fretta.",
+	},
+	["sw.journey.w22.walls.002"] = {
+		"supera le mura esterne sopra un soldato di ronda che sta mangiando una mela e, con molto buon senso, non alza lo sguardo.",
+		"passa sopra una guardia sugli spalti proprio mentre addenta un tozzo di pane; mastica, valuta il cielo, e torna al pane.",
+		"sfiora il bastione sopra una sentinella a metà di una salsiccia, che la alza appena in segno di saluto e torna a faccende più importanti.",
+	},
+	["sw.journey.w22.walls.003"] = {
+		"Dall'alto le mura sono molto più larghe che dalla strada. Lassù c'è una via intera, con il suo traffico di guardie e i suoi angoli dove bighellonare.",
+		"Sorvola le mura e scopri che hanno una cima, e la cima ha una vita: guardie che camminano, un secchio appeso a una corda, il mantello di qualcuno steso su un merlo.",
+		"Chi sta a terra non pensa mai alla sommità di un muro. È lastricata, ha macchie di pozzanghere e uno sgabello dimenticato, ed è più trafficata di certi villaggi.",
+	},
+	["sw.journey.w22.walls.004"] = {
+		"Bassi sopra le mura giurerei di vedere dove finisce la pietra vecchia e comincia la nuova, una linea leggera lungo i filari, lasciata in bella vista da chi le ha ricostruite.",
+		"Le guardie dicono che c'è un'altezza, nelle mura, in cui il colore cambia: sotto, la pietra che gli orchi non riuscirono ad abbattere; sopra, quella tirata su dopo. Dall'aria quasi ci credo.",
+	},
+	["sw.journey.w22.walls.005"] = {
+		"Attenta ai merli, bestia. Qualcuno li ha pagati una fortuna. Be'. Qualcuno avrebbe dovuto.",
+		"Passa alta sulle mura, bestia. Sbecca uno di quei merli e la città ti manda il conto.",
+	},
+	["sw.journey.w22.walls.006"] = {
+		"passa alto sopra la Valley of Heroes, dove le grandi statue si riducono a spalle di pietra e cime di teste di pietra, ogni eroe un po' stempiato.",
+		"guarda dall'alto gli eroi che fiancheggiano la via della porta e da quest'altezza li trova tutti crani e spalle, giganti visti come li vedono soltanto i piccioni.",
+		"dà un'occhiata alle statue presso la porta e resta vagamente {g:scandalizzato|scandalizzata} nello scoprire che, dall'alto, la più nobile ha un uccello in testa.",
+	},
+	["sw.journey.w22.walls.007"] = {
+		"Il ponte, da quassù, è una sola linea chiara e dritta sull'acqua, e tutti ci camminano nello stesso verso allo stesso passo, tranne un carro che va controcorrente. Tutti odiano quel carro.",
+		"Visto dall'alto, il ponte è un fiume di cappelli che scorre verso la porta. Un carro prova a nuotare dall'altra parte. Non lo invidio.",
+	},
+	["sw.journey.w22.walls.008"] = {
+		"conta le torri lungo la cinta, uno stendardo su ciascuna, e rinuncia dove il muro curva fuori dalla vista.",
+		"segue l'anello di torri lungo le mura, un vessillo appeso a ognuna, finché la curva non lo porta oltre lo sguardo.",
+	},
+	["sw.journey.w22.walls.009"] = {
+		"Le mura sono una promessa fatta a chi sta a terra. Da quassù vedo come la si mantiene: la scala di ogni torre, i barili accanto ai posti di guardia, la sentinella che ha percorso quel tratto tante volte da non guardarlo più.",
+		"A piedi vedi solo la faccia che un muro mostra al mondo. Sorvolandolo ne vedi il retro: le scale, i magazzini, il lavoro paziente di mantenere una promessa.",
+		"Quassù il muro mostra il suo lato di lavoro. Scale a pioli, bracieri, una rastrelliera di picche sotto una tettoia. Ognuna di quelle cose è la giornata intera di qualcuno.",
+	},
+	["sw.journey.w22.walls.010"] = {
+		"guarda giù il fossato, un nastro scuro intorno alle mura, dove un'anatra sola traccia una lunga riga lenta: l'unica cosa in movimento di tutte le difese di Stormwind.",
+		"vede un'anatra attraversare il fossato molto più in basso, piano piano e senza che nessuno la fermi.",
+	},
+	["sw.journey.w22.walls.011"] = {
+		"Guarda che coda alla porta. La miglior vista possibile, e io non ci sono dentro.",
+		"Qualcuno laggiù aspetta a quella porta da prima che partissi. Saluta, bestia.",
+	},
+	["sw.journey.w22.walls.012"] = {
+		"attraversa le mura di sbieco e per un istante ne vede entrambi i lati: la quiete di Elwynn da una parte, la città affollata dall'altra, e una striscia di pietra a tenerle separate.",
+		"per un solo colpo d'ala si trova proprio sopra le mura, il bosco da un lato e i tetti dall'altro, prima che la città si prenda tutta la vista.",
+	},
+	["sw.journey.w22.walls.013"] = {
+		"Il grifone cala un poco quando passa sopra le mura, ogni volta. Non ho mai deciso se sia un'abitudine o una cortesia.",
+		"Tutti i grifoni con cui ho volato calano un po' sopra le mura. Gliel'hanno insegnato i gestori, o sono buone maniere loro? Al posatoio nessuno lo dice.",
+	},
+	["sw.journey.w22.walls.014"] = {
+		"arriva di notte sopra le mura, le lanterne della ronda allineate come perle su un filo, ognuna col suo cerchietto di pietra illuminata.",
+		"attraversa di notte la linea scura delle mura, i posti di guardia segnati dalle lanterne, una piccola stanza di pietra accesa ogni poche decine di passi.",
+		"di notte vede le mura solo come una catena di lanterne appese al buio, e la bestia passa fra due di esse come una falena.",
+	},
+	["sw.journey.w22.wingbeat.001"] = {
+		"conta senza volerlo i primi colpi d'ala: quelli pesanti che faticano, quelli dopo che mordono l'aria, e infine quelli lunghi e facili che vogliono dire salita vinta.",
+		"sente i primi colpi d'ala come botte attraverso la sella, ognuno che tira su la bestia di un gradino, finché i battiti si allungano e la fatica diventa volo.",
+		"regge i primi battiti, corti, duri e rumorosi come tappeti sbattuti, finché rallentano in un ritmo lungo su cui la sella può cullarsi.",
+	},
+	["sw.journey.w22.wingbeat.002"] = {
+		"Da vicino un colpo d'ala non suona come un uccello. Suona come un lenzuolo steso che qualcuno sbatte forte, proprio accanto al mio orecchio, una volta e poi un'altra.",
+		"Le ali fanno un rumore che sento nei denti: un tonfo spesso e pesante, come una coperta scossa da una finestra alta.",
+		"Nessuno ti avvisa del rumore. Ogni battito è un panno pesante che schiaffeggia l'aria vicino alla testa, e il chiasso della città non riesce più a dire la sua.",
+	},
+	["sw.journey.w22.wingbeat.003"] = {
+		"allenta la presa sulle cinghie, un dito dopo l'altro, mentre i battiti si assestano, e si ritrova le cuciture del cuoio stampate nel palmo.",
+		"si stacca dalla sella poco per volta, quando la salita si fa regolare, e studia i segni rossi delle cinghie sui palmi.",
+	},
+	["sw.journey.w22.wingbeat.004"] = {
+		"Sotto le ginocchia le spalle della bestia rotolano a ogni battito, grossi fasci di muscoli che scorrono sotto le piume. Sto in groppa a un animale che lavora, e me lo fa sapere.",
+		"Ogni colpo d'ala mi sale dalla sella alle ginocchia: una spinta, un rollio, un assestarsi. Come stare a cavalcioni di una ruota di mulino a cui sono spuntate le piume.",
+		"Sento il punto dove si attaccano le ali: due grandi cardini appena dietro le ginocchia, che lavorano come se io non pesassi niente. Mi piacerebbe crederci.",
+	},
+	["sw.journey.w22.wingbeat.005"] = {
+		"Bel colpo. E un altro. Continua a contarli tu per me, va bene?",
+		"Così. Adesso lunghi. Lunghi e noiosi, per favore.",
+	},
+	["sw.journey.w22.wingbeat.006"] = {
+		"ascolta la bardatura scricchiolare a tempo con le ali, cuoio e fibbie che rispondono a ogni colpo come l'assale di un carro su una strada lunga.",
+		"sente le fibbie della sella tintinnare in cima a ogni battito, un suono piccolo e chiaro che tiene il tempo meglio di qualunque tamburino.",
+	},
+	["sw.journey.w22.wingbeat.007"] = {
+		"A metà salita il grifone gira la testa e mi lancia da sopra la spalla una lunga occhiata gialla. Controlla il carico, immagino. Resto immobile.",
+		"Il grifone si volta a metà battito per guardarmi, il becco socchiuso. Qualunque cosa decida, se la tiene per sé, e torna a salire.",
+		"Un grifone sa guardarsi indietro senza perdere un colpo d'ala. Il mio l'ha appena fatto, verso di me, come per contare quello che lo pagano per portare.",
+	},
+	["sw.journey.w22.wingbeat.008"] = {
+		"sente la strada salire a pezzi tra un colpo d'ala e l'altro: un grido, il battito, una ruota di carro, il battito, un cane, e poi solo i battiti.",
+		"coglie brandelli di città negli intervalli tra i battiti, il richiamo di un ambulante tagliato a metà, una risata senza la fine.",
+	},
+	["sw.journey.w22.wingbeat.009"] = {
+		"La prima virata della salita inclina di lato tutto il Trade District. Gli occhi si adeguano. Lo stomaco no, e lo fa sapere.",
+		"Quando la bestia vira, la strada di sotto si drizza di taglio come un piatto sulla mensola, e qualcosa dentro di me cerca di scivolarne giù.",
+		"Un'ala si abbassa, da quella parte i tetti si sollevano, e per un attimo la città è un muro contro cui potrei cadere. Poi si rimette giù, come se niente fosse.",
+	},
+	["sw.journey.w22.wingbeat.010"] = {
+		"Più in alto dei comignoli. Poi ne parliamo.",
+		"Prima passiamo i comignoli. La vista la ammiriamo dopo.",
+	},
+	["sw.journey.w22.wingbeat.011"] = {
+		"si stacca dal posatoio nel buio, la lanterna del custode che oscilla furiosa nel risucchio dei primi battiti e poi si calma, un puntino d'oro molto più in basso.",
+		"fa dondolare l'unica lanterna del posatoio con i primi colpi d'ala, e ne guarda la luce farsi scintilla tra i tetti scuri.",
+		"lascia la lanterna sulla piattaforma a ballare nello spostamento d'aria delle ali, l'unica cosa laggiù che dice ancora dove fosse il posatoio.",
+	},
+	["sw.npc_meet.w22.counter.001"] = {
+		"Ti ho venduto una fibbia identica per un rame. La tua costa un argento. Spiegami la differenza, piano.",
+		"Com'è che un oggetto quadruplica di valore solo passando dalla tua parte del banco?",
+		"Compri a poco e vendi caro, lo so, lo so. Mi piace solo sentirtelo negare.",
+	},
+	["sw.npc_meet.w22.counter.002"] = {
+		"paga e riceve una ricevuta scritta in una grafia fine e inclinata, con il mercante che insiste perché la conservi: in questa città, a quanto pare, anche una candela vuole le sue carte.",
+		"prova ad andarsene senza il pezzetto di pergamena che il mercante tende oltre il banco, e viene {g:richiamato|richiamata}: una vendita non è finita finché non è scritta.",
+		"riceve un foglietto ben scritto per un solo rotolo di corda, firmato e asciugato, e il cenno soddisfatto del mercante davanti a una cosa fatta come si deve.",
+	},
+	["sw.npc_meet.w22.counter.003"] = {
+		"Dietro il banco c'è una licenza incorniciata con un sigillo di ceralacca. Ogni volta che qualcuno discute un prezzo, la nocca del mercante ci batte sopra, come se il sigillo fosse d'accordo.",
+		"La licenza del mercante è appesa al muro come una reliquia, e riceve un'occhiata ogni volta che aggrotto la fronte davanti a una cifra.",
+		"Un documento sigillato in una cornice, dietro la bilancia. Scommetto che dei prezzi non dice nulla, ma viene indicato appena se ne parla.",
+	},
+	["sw.npc_meet.w22.counter.004"] = {
+		"viene {g:accolto|accolta} con la stessa identica frase toccata al cliente prima, parola per parola e inchino per inchino, pronunciata come se fosse appena coniata.",
+		"ascolta il saluto del mercante per la terza volta in tre clienti, identico fino alla piccola inclinazione del capo, eppure ancora caloroso.",
+		"riceve un benvenuto così lucidato che si potrebbe incorniciarlo: lo stesso inchino, la stessa frase, la stessa mano aperta verso gli scaffali.",
+	},
+	["sw.npc_meet.w22.counter.005"] = {
+		"strappa un rame al prezzo e vede il mercante premersi una mano sul petto come se gliel'avessero tolto da una costola.",
+		"vince due rami nella trattativa e viene {g:ricompensato|ricompensata} con una smorfia, un sospiro e una mano posata sul petto del mercante.",
+		"fa scendere il prezzo di un rame e si gode una recita di angoscia composta da parte del mercante, che chiaramente sopravvivrà.",
+	},
+	["sw.npc_meet.w22.counter.006"] = {
+		"«La casa d'aste», dice il mercante, come si nomina un pretendente rivale. Mi vende un rocchetto di filo e un discorso.",
+		"Basta nominare la casa d'aste e il sorriso del mercante si assottiglia. Anche le piccole botteghe hanno le loro guerre.",
+		"Il mercante dà la colpa alla casa d'aste di tutto, tranne che del prezzo del pane. Annuisco e compro qualcosa, per solidarietà.",
+	},
+	["sw.npc_meet.w22.counter.007"] = {
+		"aspetta che il mercante alzi gli occhiali, dia un'occhiata da sopra le lenti, e li riabbassi per leggere il prezzo.",
+		"viene {g:esaminato|esaminata} da sopra gli occhiali del mercante; le lenti, a quanto pare, servono rigorosamente solo per la merce.",
+		"nota che il mercante porta gli occhiali per le monete e non per i clienti, che ricevono un'occhiata da sopra la montatura.",
+	},
+	["sw.npc_meet.w22.counter.008"] = {
+		"osserva il mercante costruire una torretta di pesi d'ottone sulla bilancia, togliere quello in cima e aggiungerne uno più piccolo con solennità.",
+		"vede i pesi salire sulla bilancia uno dopo l'altro, dal più pesante al più leggero, e le labbra del mercante muoversi a ogni pezzo.",
+		"aspetta che la bilancia si assesti, mentre il mercante spinge in posizione l'ultimo minuscolo peso con la punta di un dito, come se potesse mordere.",
+	},
+	["sw.npc_meet.w22.counter.009"] = {
+		"Se ne compro due, il sorriso è omaggio o si paga a parte?",
+		"Il sorriso è compreso nell'acquisto, o va pagato a parte?",
+		"Lo prendo. E anche quel ghigno, se è incluso.",
+	},
+	["sw.npc_meet.w22.counter.010"] = {
+		"si sente elencare dal mercante ogni graffio dell'equipaggiamento, seguito dal nome di un fabbro che sistemerà tutto, e da un occhiolino.",
+		"apprende, con gentilezza e nei dettagli, quanto siano consumate le fibbie di quello zaino, e che il rimedio è appeso proprio dietro il banco.",
+		"ascolta il mercante diagnosticare lo stato dei suoi stivali con un'occhiata e prescrivere un barattolo di grasso, in vendita qui.",
+	},
+	["sw.npc_meet.w22.counter.011"] = {
+		"Qui contano delle perline su un telaietto di legno, fatte scorrere più in fretta di quanto riesca a seguirle, e ne esce una somma che non posso contestare.",
+		"Clic, clic, clic sul pallottoliere, e dall'altra parte esce un numero, definitivo come una sentenza di corte.",
+		"Potrei rifare il conto io, con calma. Le perline hanno già deciso, e la faccia del mercante dice che le perline non sbagliano mai.",
+	},
+	["sw.npc_meet.w22.counter.012"] = {
+		"Il valletto di un signore si porta via un pacco senza pagare un rame; il mercante scrive solo una riga in un librone. I nobili qui comprano a credito, e pagano quando gli pare.",
+		"C'è un registro a parte per le grandi casate, noto, ed è molto più spesso di quello delle monete sul banco.",
+		"Il mercante sorride al servo di un nobile e scrive la cifra nel libro dei crediti. Il sorriso resta; gli occhi si induriscono.",
+	},
+	["sw.npc_meet.w22.counter.013"] = {
+		"ottiene l'acquisto legato con una cordicella e un nodo chiaramente inventato dal mercante, che si scioglie con un solo strattone, come dimostrato due volte.",
+		"osserva il mercante legare il pacco con uno svolazzo e poi, tutto fiero, mostrare come basti tirare il capo libero per scioglierlo.",
+		"se ne va con un pacchetto annodato in qualche modo ingegnoso e personale, dopo che il mercante ha tirato il cappio una volta per provare che si apre, e l'ha rifatto.",
+	},
+	["sw.npc_meet.w22.errand.001"] = {
+		"La parola «piccolo» spunta tre volte prima che si spieghi qualcosa. Per esperienza, ogni «piccolo» raddoppia la faccenda.",
+		"«Solo una piccola cosa.» «Un piccolo favore.» «Roba da poco, davvero.» Comincio a contare, e il conto non mi piace.",
+		"Piccola, mi dicono. Poi ancora piccola. Al terzo «piccola» ho quasi la certezza che sia enorme.",
+	},
+	["sw.npc_meet.w22.errand.002"] = {
+		"riceve un nome completo, una casata e un breve inchino, tutta la cortesia di Stormwind, prima che venga chiesto qualcosa.",
+		"si vede fare una presentazione in piena regola, nome, famiglia e un leggero cenno del capo, e capisce che ne deve una in cambio.",
+		"si sente recitare un nome così lungo da richiedere due pause, e offre il proprio, che accanto sembra cortissimo.",
+	},
+	["sw.npc_meet.w22.errand.003"] = {
+		"Prima di cominciare: devo firmare qualcosa? In questa città mi fanno firmare tutto.",
+		"Ci sono carte da riempire? A Stormwind ci sono sempre. Vorrei sapere quante.",
+		"Dimmi subito se c'è un modulo. Vorrei prepararmi.",
+	},
+	["sw.npc_meet.w22.errand.004"] = {
+		"Stoffa buona, ben tagliata, e i polsini consumati fino alla trama. Una famiglia che un tempo contava, a chiedere aiuto a un estraneo. Stormwind è piena di debiti di cui nessuno parla.",
+		"Una giacca che una volta era costata cara. I polsini la tradiscono: lisi, rammendati con un filo di un altro colore. In questa città dicono tutto sui soldi.",
+	},
+	["sw.npc_meet.w22.errand.005"] = {
+		"riceve l'offerta di una tazza di qualcosa di caldo prima di una sola parola d'affari, come se l'ospitalità andasse sistemata per prima.",
+		"si ritrova una tazza fra le mani con l'invito a bere, e solo quando è mezza vuota la richiesta comincia.",
+		"scopre che la faccenda, qualunque sia, deve aspettare finché non {g:gli|le} avranno offerto da bere come si deve.",
+	},
+	["sw.npc_meet.w22.errand.006"] = {
+		"Stormwind ha un ufficio per ogni cosa e uno scrivano per ogni ufficio. Eppure vengono a chiedere a un estraneo per strada. La dice lunga sugli uffici.",
+		"In questa città c'è una scrivania per ogni guaio sotto la Luce. Il fatto che chiedano a me mi dice quali scrivanie non hanno mai risposto.",
+	},
+	["sw.npc_meet.w22.errand.007"] = {
+		"osserva una lettera sigillata battuta piano contro il palmo, non ancora porta, mentre chi chiede decide quanto dire.",
+		"nota il foglio piegato nella mano di chi chiede, girato e rigirato col sigillo intatto, mentre si scelgono le prime parole.",
+		"vede una lettera tenuta appena fuori portata, col sigillo rivolto all'interno, mentre viene {g:soppesato|soppesata} un'ultima volta.",
+	},
+	["sw.npc_meet.w22.errand.008"] = {
+		"«Se non è troppo disturbo.» A Stormwind si chiede così. È sempre troppo disturbo. È per questo che chiedono.",
+		"Ogni richiesta in questa città arriva incartata in un «se non è un fastidio». È sempre un fastidio. La cortesia serve a fartelo capire.",
+	},
+	["sw.npc_meet.w22.errand.009"] = {
+		"Comincia dalla fine. Se mi serve, ti chiedo della parte in mezzo.",
+		"Vai dritto a quello che ti serve. La storia può aspettare.",
+		"Dimmi prima l'ultima parte. Al resto ci arrivo a ritroso.",
+	},
+	["sw.npc_meet.w22.errand.010"] = {
+		"viene {g:fermato|fermata} da un colpetto di tosse educato accanto al gomito, che a Stormwind equivale quasi a un grido.",
+		"si volta a un colpo di tosse discreto alle spalle, il modo con cui la città chiama un estraneo senza fare scenate.",
+		"sente un piccolo raschiare di gola, ben calcolato, a un passo di distanza, e capisce che il richiamo era proprio per sé.",
+	},
+	["sw.npc_meet.w22.errand.011"] = {
+		"Non ho detto di sì. Mi sono solo {g:fermato|fermata}. E il sollievo in quegli occhi è già enorme.",
+		"Ho solo smesso di camminare per ascoltare. A guardare quella faccia, si direbbe che abbia promesso l'intero Trade District.",
+		"Fermarmi non mi costa nulla. A chi chiede, sembra già metà dell'aiuto.",
+	},
+	["sw.npc_meet.w22.errand.012"] = {
+		"Ti ascolto. Se è più grande di me te lo dico subito, così puoi continuare a cercare.",
+		"Avanti. E se non sono la persona giusta, te lo dico prima che tu perda il pomeriggio.",
+		"Dimmi. Se devo dire di no lo dico in fretta: è una gentilezza anche quella.",
+	},
+	["sw.npc_meet.w22.errand.013"] = {
+		"Prima si dice la paga, poi il guaio. Abitudine da mercante: il prezzo sul tavolo, e poi si vede se il cliente resta.",
+		"Prima la cifra, tonda e chiara. Poi, quando ho mostrato interesse, il motivo. Qui qualcuno ha già venduto qualcosa nella vita.",
+	},
+	["sw.npc_meet.w22.errand.014"] = {
+		"viene {g:avvicinato|avvicinata} prima da un servitore, che spiega tutto, finché chi vuole davvero qualcosa arriva per l'ultima frase.",
+		"ascolta tutto il preambolo da un domestico in livrea; il padrone compare solo alla fine, per dire di persona le ultime parole.",
+		"ascolta un valletto esporre la faccenda per filo e per segno, poi vede chi c'è dietro farsi avanti giusto in tempo per concluderla.",
+	},
+	["sw.npc_meet.w22.errand.015"] = {
+		"Prima, una lamentela sulla Keep: lettere spedite, suppliche presentate, nessuna risposta. Solo dopo essersi sfogati si arriva a me.",
+		"La richiesta comincia con dieci minuti su come a corte nessuno ascolti più. Annuisco. A quanto pare, adesso la corte sono io.",
+	},
+	["sw.npc_meet.w22.errand.016"] = {
+		"È roba che dovrebbero fare le guardie? Lo chiedo solo per sapere chi guardare storto, dopo.",
+		"Prima che continui: perché non la guardia cittadina? Vorrei sapere dove sto mettendo i piedi.",
+		"Le guardie ti hanno già detto di no, o le hai saltate?",
+	},
+	["sw.npc_meet.w22.errand.017"] = {
+		"vede chi chiede salire su un gradino prima di cominciare, quanto basta per guardare dritto negli occhi chi ha davanti.",
+		"si accorge che chi chiede sale su un gradino di pietra per parlare, così che la richiesta si faccia occhi negli occhi e non dal basso.",
+		"si sente rivolgere la parola dall'altezza di un gradino, dopo che chi chiede ha trovato un pezzo di marciapiede su cui montare.",
+	},
+	["sw.npc_meet.w22.errand.018"] = {
+		"Fra una frase e l'altra gli occhi vanno alla guglia della Cathedral e tornano. Qualunque cosa sia, prima ci hanno pregato sopra.",
+		"A ogni pausa, uno sguardo verso la Cathedral. Non chiedo cosa sia stato chiesto alla Luce prima di chiederlo a me.",
+	},
+	["sw.npc_meet.w22.errand.019"] = {
+		"Se serve all'Alleanza, non c'è bisogno di vendermela. Dimmi solo dove.",
+		"Aiuta l'Alleanza? Allora risparmiati la persuasione, ci sto già.",
+	},
+	["sw.npc_meet.w22.errand.020"] = {
+		"ascolta la faccenda esposta sulle dita di chi chiede, un punto per dito, finché non tocca passare alla seconda mano.",
+		"guarda chi chiede contare i dettagli dito per dito, finire una mano e cominciare, un po' in imbarazzo, con l'altra.",
+		"segue le dita di chi chiede lungo tutta la spiegazione, e nota con una certa inquietudine quando si alza il pollice della seconda mano.",
+	},
+	["sw.npc_meet.w22.errand.021"] = {
+		"Ogni preambolo a Stormwind comincia allo stesso modo: com'erano le cose prima della guerra. Ho imparato ad aspettare educatamente che arrivi il presente.",
+		"Si parte dai vecchi tempi, come sempre a Stormwind, prima dell'incendio, prima che rialzassero le mura. Al presente ci si arriva, prima o poi.",
+	},
+	["sw.npc_meet.w22.errand.022"] = {
+		"Hai provato la versione educata. Dammi quella che racconteresti a un amico.",
+		"Questo è il discorso per i nobili. Io prendo quello sincero.",
+		"Le buone maniere le ho sentite. Ora fammi sentire il problema.",
+	},
+	["sw.npc_meet.w22.errand.023"] = {
+		"Metà delle parole sono per me e l'altra metà per la strada, a voce bassa, verso chiunque possa ascoltare. Qualcuno qui teme di essere sentito.",
+		"Chi chiede continua a guardare i passanti mentre mi parla, come si fa in una città dove una persona su due fa la spia per qualcuno.",
+	},
+	["sw.npc_meet.w22.errand.024"] = {
+		"deve aspettare che uno scrivano sporco d'inchiostro fino ai polsi finisca una riga, la asciughi con la sabbia e solo allora alzi gli occhi con una richiesta.",
+		"resta lì mentre chi l'ha fatto avvicinare sparge sabbia su una pagina fresca, la batte asciutta e finalmente si volta verso la faccenda.",
+		"guarda una penna finire una frase e un pizzico di sabbia cadere sull'inchiostro umido prima che {g:gli|le} venga rivolta una parola.",
+	},
+	["sw.npc_meet.w22.errand.025"] = {
+		"Prego. Non c'è posto dove preferirei essere che qui, a non sapere di cosa si tratta.",
+		"Mi hai {g:fermato|fermata}. Tanto vale che mi dica perché.",
+		"Mi hai. Parla.",
+	},
+	["sw.npc_meet.w22.errand.026"] = {
+		"deve dire, prima di tutto, se sa leggere, e vede chi chiede afflosciarsi di sollievo alla risposta.",
+		"riceve per prima una domanda, a bassa voce, come fosse delicata: sa leggere? Il sì viene accolto come una buona notizia dalla Keep.",
+	},
+	["sw.npc_meet.w22.errand.027"] = {
+		"Più piano, per favore. Vorrei capirla bene al primo colpo.",
+		"Aspetta. Ridimmi quella parte, e lasciami ripeterla.",
+	},
+	["sw.npc_meet.w22.gryphonry.001"] = {
+		"aspetta mentre un grifone liscia con gran cura il colletto del maestro, tirando un filo allentato come fosse una piuma fuori posto.",
+		"guarda un grifone sporgersi oltre la spalla del maestro e mettersi a sistemargli il colletto col becco, senza che nessuno glielo chieda o glielo impedisca.",
+		"vede il maestro stare perfettamente immobile mentre un grifone si prende cura di {other} come di un suo pulcino.",
+	},
+	["sw.npc_meet.w22.gryphonry.002"] = {
+		"La giacca del maestro ormai è più piume che lana. Nessuno la spazzola. Sospetto che nessuno saprebbe dove fermarsi.",
+		"Piume nelle cuciture, piume nei capelli, una piuma incollata al registro. La voliera se l'è preso per intero.",
+	},
+	["sw.npc_meet.w22.gryphonry.003"] = {
+		"segue il dito del maestro lungo un registro delle bestie, segnando quale ha volato per ultima e quale si è guadagnata il riposo.",
+		"resta in attesa mentre il maestro controlla un libro consunto dove ogni bestia ha la sua colonna, e il riposo che le spetta è contato con la stessa cura delle monete.",
+		"dà un'occhiata al conteggio del maestro: i voli di ogni bestia segnati a trattini, e un cerchietto per ogni giorno di riposo.",
+	},
+	["sw.npc_meet.w22.gryphonry.004"] = {
+		"Ogni grifone ha il suo fischio. Il maestro ne chiama uno con una nota che sale, e un'altra testa si alza per una che scende.",
+		"Due note, poi tre, poi una sola lunga. Ogni bestia della voliera risponde solo alla sua melodia, e il maestro non le confonde mai.",
+		"Il maestro fischia, e si volta un solo grifone. Ci metto un po' a capire che ognuno ha un nome fatto di note.",
+	},
+	["sw.npc_meet.w22.gryphonry.005"] = {
+		"si ritrova {g:fissato|fissata} da un occhio tondo e dorato, mentre un grifone inclina la testa a scatti, come un passero che studia una briciola.",
+		"scopre un grifone che {g:lo|la} esamina di sbieco, la testa piegata prima da una parte e poi dall'altra, con l'interesse sincero di un uccello davanti a uno scarabeo.",
+		"diventa l'oggetto di un'attenzione improvvisa e svelta da uccello: uno scatto del capo, uno sguardo fisso, un altro scatto.",
+	},
+	["sw.npc_meet.w22.gryphonry.006"] = {
+		"Posso salutarli prima? Preferisco che conoscano la mia faccia prima di tutto il resto.",
+		"Posso lasciare che mi diano un'occhiata? Mi sembra educato, a casa loro.",
+		"Me li presenti? Mi piace essere in confidenza con chiunque abbia un becco così.",
+	},
+	["sw.npc_meet.w22.gryphonry.007"] = {
+		"Il maestro conosce il prezzo del pesce a Stormwind fino al rame, e se ne lamenta come se i pescivendoli fossero nemici personali.",
+		"Chiedi delle tariffe e ti dice le tariffe. Non chiedi niente e ti becchi dieci minuti su quanto costa il pesce in città, e di chi è la colpa.",
+	},
+	["sw.npc_meet.w22.gryphonry.008"] = {
+		"nota un grifone che fruga e rifruga col becco nella tasca della giacca del maestro, e il maestro che finge, malissimo, di non accorgersene.",
+		"guarda un becco lavorare paziente la tasca del maestro, che intanto continua a parlare con una mano già dentro a cercare il bocconcino.",
+		"assiste alla resa del maestro, che a metà frase consegna quel che teneva nascosto in tasca, con evidente soddisfazione del grifone.",
+	},
+	["sw.npc_meet.w22.gryphonry.009"] = {
+		"Il maestro alza gli occhi a ogni paio d'ali che supera le mura e conta sottovoce. Non chiedo cosa succede quando il conto non torna.",
+		"Ogni ala che arriva oltre le mura viene contata. Le labbra del maestro si muovono insieme. Cosa si fa di un numero mancante, preferisco non saperlo.",
+	},
+	["sw.npc_meet.w22.gryphonry.010"] = {
+		"Quello continua a guardarmi come se fossi un pesce. È un buon segno o uno cattivo?",
+		"Perché quello mi fissa? Ho addosso l'odore di qualcosa che gli piace?",
+		"Credo che quel grifone abbia deciso qualcosa su di me. Dimmi che è una bella decisione.",
+	},
+	["sw.npc_meet.w22.gryphonry.011"] = {
+		"aspetta che il maestro si interrompa a metà parola per rispondere al verso di un grifone con uno schiocco di lingua, e poi riprenda la frase.",
+		"sente un grifone gridare alle spalle del maestro, e il maestro rispondergli, senza voltarsi, con due schiocchi leggeri.",
+		"ascolta una breve conversazione fra {other} e una bestia, tutta schiocchi e scricchiolii, prima che arrivi il suo turno.",
+	},
+	["sw.npc_meet.w22.gryphonry.012"] = {
+		"Gli artigli sulla pietra fanno un rumorino secco, come dadi in un bicchiere. La voliera ne è piena, e il maestro ci parla sopra.",
+		"Sotto ogni parola del maestro, il ticchettio degli artigli sul selciato, inquieto e costante, come qualcuno che agita i dadi senza mai lanciarli.",
+	},
+	["sw.npc_meet.w22.gryphonry.013"] = {
+		"si becca, in pieno, lo starnuto di un grifone a distanza ravvicinata; il maestro dice solo che significa che {g:gli|le} sta simpatico.",
+		"riceve uno starnuto di grifone dritto in faccia, e il maestro {g:gli|le} assicura, serissimo, che era un complimento.",
+		"si pulisce il viso dopo lo starnuto di un grifone, mentre il maestro spiega che lo fa solo con chi gli ispira fiducia.",
+	},
+	["sw.npc_meet.w22.gryphonry.014"] = {
+		"A sentire il maestro, le bestie hanno umori come il cielo di un marinaio. «Quello tiene il broncio. Quella è di buon umore. Non prendere il grigio.»",
+		"«Lui è imbronciato, lei è nervosa, il vecchio è allegro, che è una rarità.» Prima di ogni altra cosa, il maestro mi fa il bollettino dell'umore della voliera.",
+	},
+	["sw.npc_meet.w22.gryphonry.015"] = {
+		"Il grifone che manderesti se fosse una commissione tua. Voglio quello.",
+		"Dammi quello che cavalcheresti tu. Mi fido del tuo occhio più che del mio.",
+	},
+	["sw.npc_meet.w22.gryphonry.016"] = {
+		"Le nocche del maestro sono una mappa di beccatine e vecchi graffi. Nessuno dato con cattiveria, direi. Solo di passaggio.",
+		"Piccoli tagli su ogni dito, rimarginati e sbiancati. Il maestro dice che le bestie non mordono: controllano soltanto, ogni tanto, se una mano è cibo.",
+	},
+	["sw.npc_meet.w22.gryphonry.017"] = {
+		"A questo posto devi sentire tutti i brontolii del regno. Il mio è piccolo: me lo tengo.",
+		"Non mi lamento. Mi pare di capire che qui ci pensa già tutto il regno.",
+	},
+	["sw.npc_meet.w22.gryphonry.018"] = {
+		"si fa allontanare dal maestro da un certo tratto di pavimento, che i grifoni evidentemente considerano loro di diritto.",
+		"fa un passo di troppo verso i trespoli e viene {g:tirato|tirata} indietro per la manica; quella striscia di selciato, pare, appartiene alle bestie.",
+		"capisce dalla mano alzata del maestro che sul pavimento c'è una linea che nessuno ha tracciato, e che i grifoni sanno benissimo dov'è.",
+	},
+	["sw.npc_meet.w22.gryphonry.019"] = {
+		"Non si stancano mai? Le stesse strade, sempre quelle?",
+		"Qualcuno di loro ha un percorso preferito, o per loro è tutto cielo e basta?",
+	},
+	["sw.npc_meet.w22.hearth.001"] = {
+		"Tieni il resto, tieni i miei segreti, e continua a portare zuppa.",
+		"C'è una mancia per te, se la zuppa non finisce e nessuno mi chiede cosa faccio.",
+		"Zuppa, un letto e niente domande. Pago tutte e tre le cose.",
+	},
+	["sw.npc_meet.w22.hearth.002"] = {
+		"trova un oste con le braccia infarinate che continua a impastare per tutto il tempo, scandendo ogni domanda con un colpo.",
+		"incontra l'oste immerso fino ai gomiti nella pasta del pane, e l'ordinazione viene presa senza saltare una sola piega.",
+		"tratta con un oste che non smette di lavorare un panetto sul banco, e ogni prezzo si chiude con una manata.",
+	},
+	["sw.npc_meet.w22.hearth.003"] = {
+		"Dietro il banco c'è una cassa di cose dimenticate dagli ospiti: uno stivale, una corda di liuto, la minuscola chiave inglese di uno gnomo. L'oste la custodisce come una reliquia.",
+		"Là dietro vive una scatola di oggetti dimenticati: guanti scompagnati, una pipa incrinata, un libro senza copertina. Non si butta via niente.",
+		"Sotto il banco c'è una cassa piena di quello che i viaggiatori lasciano indietro. Metà delle cose perse di Stormwind deve finire in casse così.",
+	},
+	["sw.npc_meet.w22.hearth.004"] = {
+		"Chiunque scenda le scale, l'oste lo nomina prima che compaia. Ogni gradino lassù deve scricchiolare con una voce sua.",
+		"Uno scricchiolio dall'alto, e l'oste dice il numero di una stanza senza alzare gli occhi. Quella scala fa la spia.",
+		"Non vorrei mai sgattaiolare via da questa locanda. L'oste legge le scale come un esploratore legge le tracce.",
+	},
+	["sw.npc_meet.w22.hearth.005"] = {
+		"Il letto con meno storie alle spalle, per favore. Non voglio sapere cos'è successo negli altri.",
+		"C'è una stanza dove non è mai successo niente di memorabile? Prendo quella.",
+		"Dammi la stanza più noiosa della casa. È un complimento.",
+	},
+	["sw.npc_meet.w22.hearth.006"] = {
+		"si sente elencare le regole della casa prima del prezzo: l'acciaio resta al suo posto, niente risse sulle scale, e niente canti dopo l'ultima campana.",
+		"impara le regole dell'oste prima di avere la chiave: le liti si fanno fuori, di sopra si va senza stivali, e il gatto non si nutre.",
+		"riceve le regole recitate a memoria, tre in tutto, l'ultima con uno sguardo duro: checché ne dicano i nani, niente dadi sui tavoli buoni.",
+	},
+	["sw.npc_meet.w22.hearth.007"] = {
+		"Un gatto dorme sul registro aperto, e l'oste ci scrive intorno piuttosto che spostarlo. Questo posto mi piace già.",
+		"L'oste annota le mie monete a margine, perché il resto della pagina è del gatto.",
+		"C'è un gatto sul libro dei conti. Nessuno, oste compreso, si sognerebbe di spostarlo.",
+	},
+	["sw.npc_meet.w22.hearth.008"] = {
+		"aspetta che l'oste dia altri due giri allo spiedo sul focolare, prima che si pulisca una mano e passi agli affari.",
+		"resta al banco mentre l'oste finisce di ungere quel che gira sullo spiedo, e decide che può restare solo il tempo di un'ordinazione.",
+		"si fa servire tra un giro di spiedo e l'altro, con l'altra mano dell'oste che non molla mai la manovella.",
+	},
+	["sw.npc_meet.w22.hearth.009"] = {
+		"C'è qualcosa sul fuoco che non sia stato ripescato da un canale?",
+		"Cosa c'è di buono? E non dire «tutto», quella la conosco.",
+		"Qualunque cosa esca per prima dalla cucina. Mi fido più dei tuoi tempi che delle mie scelte.",
+	},
+	["sw.npc_meet.w22.hearth.010"] = {
+		"entra scavalcando un sacco steso sulla soglia per gli stivali, e gli occhi dell'oste seguono ogni impronta per vedere se è servito.",
+		"viene {g:rimandato|rimandata} al sacco vicino all'ingresso da un solo sopracciglio alzato, e ci strofina entrambi gli stivali prima che l'oste parli.",
+		"si guadagna un sopracciglio dell'oste e un'occhiata al pavimento, e torna a raschiarsi gli stivali sul vecchio sacco messo lì apposta.",
+	},
+	["sw.npc_meet.w22.hearth.011"] = {
+		"Una stanza sul retro, per favore. Quelle davanti sentono ogni carro di Stormwind.",
+		"Qualcosa lontano dalla strada, se ce l'hai. I carri e io abbiamo idee diverse sul sonno.",
+		"Sul retro della casa, se c'è posto. Delle ruote sul selciato mentre dormo faccio volentieri a meno.",
+	},
+	["sw.npc_meet.w22.hearth.012"] = {
+		"L'oste non chiede da dove vengo. Solo quanto mi fermo, e se voglio mangiare. Domande benedette, semplici.",
+		"Quanto resti, e mangi? È tutto l'interrogatorio. Potrei abbracciare quest'oste.",
+		"Nessuna domanda sulla strada. L'oste vuole un numero di giorni e una risposta sul cibo, e poi mi lascia in pace.",
+	},
+	["sw.npc_meet.w22.hearth.013"] = {
+		"{other} ha la faccia di chi ha sentito tutte le storie dei viaggiatori e ne ha creduto, al massimo, un terzo.",
+		"{other} ha qualcosa di riposante nello sguardo, come una vecchia sedia lasciata lì per chiunque arrivi stanco.",
+		"L'accoglienza di un oste in una città di pietra: senza fretta, senza sorpresa, e la vaga impressione che una sedia sia stata tenuta da parte.",
+	},
+	["sw.npc_meet.w22.patrol.001"] = {
+		"sente la pattuglia prima di vederla: un tintinnio di maglia regolare, al passo, che svolta l'angolo come un orologio che cammina.",
+		"riconosce la pattuglia a orecchio, dal clangore misurato della maglia che batte il tempo, e si fa da parte prima ancora di vedere le guardie.",
+		"capisce che arriva una pattuglia dal suono degli anelli di maglia che oscillano a ritmo, e ha già fatto spazio quando compaiono i tabarri azzurri.",
+	},
+	["sw.npc_meet.w22.patrol.002"] = {
+		"La pattuglia non cambia andatura per nessuna folla. È la folla che impara a trovarsi altrove un attimo prima che arrivi.",
+		"Nessuno ordina alla strada di sgombrare. Le guardie camminano sempre alla stessa velocità, e la strada si sgombra da sola, un passo avanti a loro.",
+		"Mi sono già {g:scostato|scostata} prima di deciderlo. Il passo della pattuglia chiede permesso per conto suo.",
+	},
+	["sw.npc_meet.w22.patrol.003"] = {
+		"vede un ragazzino marciare dietro una pattuglia con un bastone in spalla, e l'ultima guardia della fila accorciare il passo quanto basta perché le stia dietro.",
+		"osserva un bambino accodarsi alla pattuglia, passo dopo passo, mentre le guardie fingono con gran dignità di non accorgersene.",
+		"nota una bambina che marcia dietro due guardie a mento alto, e la bocca della guardia in coda che sotto l'elmo trattiene un mezzo sorriso.",
+	},
+	["sw.npc_meet.w22.patrol.004"] = {
+		"si tiene sul lato opposto della strada mentre una guardia di Stormwind si volta, e cammina come cammina una commissione onesta: né svelta né lenta, senza voltarsi mai.",
+		"rallenta al passo della folla quando l'elmo di una guardia gira da quella parte, e non lo guarda, come non lo guarderebbe nessuno con la coscienza pulita.",
+		"sente lo sguardo di una guardia posarsi come una mano sulla spalla, e si lascia portare dalla folla oltre il leone di quel tabarro.",
+	},
+	["sw.npc_meet.w22.patrol.005"] = {
+		"Ogni guardia di questa città è una domanda che preferirei non sentirmi fare. Continuo a camminare come chi ha la risposta.",
+		"Azzurro e oro a ogni angolo, e una qualunque di quelle guardie potrebbe chiudere la visita con un solo grido.",
+		"Una guardia di Stormwind, abbastanza vicina da toccarla. Guardo le insegne, il selciato, tutto tranne quegli occhi.",
+	},
+	["sw.npc_meet.w22.patrol.006"] = {
+		"riceve due dita portate alla tesa dell'elmo da una guardia, il piccolo saluto che la ronda riserva a chi serve l'Alleanza.",
+		"si vede rivolgere un rapido tocco all'elmo da una guardia di passaggio, una cortesia tra gente della stessa parte.",
+		"ottiene il veloce saluto a due dita della guardia, offerto ai volti dell'Alleanza e ricambiato come cosa ovvia.",
+	},
+	["sw.npc_meet.w22.patrol.007"] = {
+		"Due guardie di pattuglia, e una è finita mezzo passo fuori tempo. Un saltello, e tornano al passo. Nessuna delle due guarda l'altra.",
+		"La coppia tiene il passo senza una parola. Quando una perde il ritmo, un piccolo salto rimette tutto a posto, e del salto non si parla.",
+		"Guardare due guardie che camminano al passo ha qualcosa di rilassante. Quella che perde il ritmo lo ritrova con un saltello e la faccia seria.",
+	},
+	["sw.npc_meet.w22.patrol.008"] = {
+		"Ogni volta che passa, questa pattuglia volta la testa verso lo stesso vicolo. Lì è successo qualcosa, un tempo, e la ronda ha la memoria lunga.",
+		"Guardano sempre in quel vicoletto laterale, le guardie di pattuglia. Qualunque cosa fosse, la ronda non l'ha dimenticata.",
+		"A ogni giro, la stessa occhiata nello stesso stretto passaggio. Le abitudini di una pattuglia sono una mappa di vecchi guai.",
+	},
+	["sw.npc_meet.w22.patrol.009"] = {
+		"Non rallentate per me. Ammiro la marcia da qui.",
+		"Prego, sto alla larga. Avete una città intera da girare.",
+		"Largo alla ronda, lo so. Mi sposto.",
+	},
+	["sw.npc_meet.w22.patrol.010"] = {
+		"Per la guardia sono solo l'ennesimo forestiero armato in una città che ne è piena. Il regno chiedeva eroi e ha avuto una folla.",
+		"La guardia mi squadra con la cortesia stanca riservata agli avventurieri: necessari, numerosissimi, e sempre lì a chiedere dov'è la banca.",
+		"Forestieri armati ovunque, e ognuno convinto di essere d'aiuto. La faccia della guardia dice che la città è grata, entro certi limiti.",
+	},
+	["sw.npc_meet.w22.tapster.001"] = {
+		"L'oste accoglie chiunque entri con un «eccoti qua», come si fa con chi si conosce. Memoria o abitudine, l'effetto è lo stesso.",
+		"«Eccoti qua», dice l'oste, come a ogni faccia. Non capisco se mi riconosce, e scopro che non m'importa.",
+		"A questo banco tutti si sentono dire «eccoti qua», che siano già passati o no. Una gentilezza travestita da errore.",
+	},
+	["sw.npc_meet.w22.tapster.002"] = {
+		"lancia un'occhiata alla tavola delle chiavi dietro l'oste, con un gancio vuoto, e riceve uno sguardo come se sapesse dov'è finita.",
+		"sorprende l'oste a controllare la fila di chiavi appese, contarle due volte e fissare pensieroso l'ospite più vicino.",
+		"nota un gancio nudo tra le chiavi delle stanze, e l'oste che lo nota a sua volta, poi si guarda intorno con calma.",
+	},
+	["sw.npc_meet.w22.tapster.003"] = {
+		"Da quando sono {g:entrato|entrata}, l'oste lucida lo stesso boccale. Ormai dev'essere la cosa più pulita di Stormwind.",
+		"Un boccale, uno straccio, cerchi senza fine. Credo che lucidare sia il modo in cui l'oste ascolta.",
+		"Quel boccale non lascia mai le mani dell'oste. Più che una faccenda, è un posto dove tenere gli occhi mentre si sente tutto.",
+	},
+	["sw.npc_meet.w22.tapster.004"] = {
+		"ascolta l'oste collocare ogni nuovo arrivato dalle sole vocali: Goldshire, Lakeshire, il Dwarven District, senza mai chiedere.",
+		"sente l'oste azzardare un'ipotesi a ogni voce che ordina, il villaggio o il quartiere, e indovinarne quasi tutte.",
+		"coglie il gioco dell'oste: un ospite parla, un paese viene nominato sottovoce, e spuntato in silenzio quando l'ospite conferma.",
+	},
+	["sw.npc_meet.w22.tapster.005"] = {
+		"La corte non beve qui, ma i suoi valletti sì. I pettegolezzi scendono fino all'oste, che sente ogni nome e non ne ripete nessuno.",
+		"Quando un cliente nomina Lady Prestor, l'oste scopre un bisogno improvviso di controllare la cucina. Interessante.",
+		"I servi delle grandi casate bevono a banchi come questo. L'oste deve sapere della corte più di quanto la corte gradirebbe.",
+	},
+	["sw.npc_meet.w22.tapster.006"] = {
+		"Hai qualcosa che un nano chiamerebbe una bevuta seria, o è meglio che non ti metta in imbarazzo?",
+		"Prendo la cosa più scura che versi. Se risponde a tono, meglio ancora.",
+		"Qualcosa di scuro e onesto, in un boccale che ha visto qualche anno.",
+	},
+	["sw.npc_meet.w22.tapster.007"] = {
+		"dà un nome per il registro e guarda l'oste scriverlo sbagliato, lentamente e con gran sicurezza, prima di asciugarlo.",
+		"scandisce il proprio nome all'oste due volte e lo vede scritto in un terzo modo, definitivo e sottolineato.",
+		"finisce nel registro degli ospiti con un nome quasi giusto; la penna dell'oste è già passata oltre.",
+	},
+	["sw.npc_meet.w22.tapster.008"] = {
+		"L'oste ricorda ogni boccale non pagato del quartiere e non ne nomina nessuno. Il silenzio è il conto.",
+		"Qui nessuno si sente mai ricordare un debito. Trova solo il sorriso dell'oste un po' più sottile, finché non salda.",
+		"Al muro non c'è nessuna lavagna dei debiti. Non serve: è tutto dietro gli occhi dell'oste, fino al rame.",
+	},
+	["sw.npc_meet.w22.tapster.009"] = {
+		"Le tasche di quel grembiule pendono di chiavi, monete, un cavatappi e, se non sbaglio, una zolletta di zucchero per il cavallo di qualcuno.",
+		"Ogni tasca del grembiule dell'oste tintinna o fruscia. Un oste si porta tutta la casa sui fianchi.",
+		"Conto almeno cinque tasche su quel grembiule, ciascuna appesantita da qualcosa. Chiavi, suppongo; monete; e cose su cui nessuno fa domande.",
+	},
+	["sw.npc_meet.w22.tapster.010"] = {
+		"segue l'oste che divide l'incasso in torrette per tipo di moneta, rame, argento, un unico pezzo d'oro, tutte ben squadrate.",
+		"ammira il modo in cui l'oste impila le monete del banco in colonnine ordinate, quelle di rame le più alte, e le pareggia col taglio della mano.",
+		"aspetta il resto mentre l'oste lo compone da tre piccole pile di monete e lo fa scivolare avanti come se posasse un mattone.",
+	},
+	["sw.npc_meet.w22.tapster.011"] = {
+		"Chi porta i colori dell'Alleanza qui paga un po' meno. L'oste non lo dice mai; il resto torna solo più pesante.",
+		"Per chi combatte per l'Alleanza, una scodella appena più piena. Nessun annuncio, nessun occhiolino. Solo un mestolo che indugia.",
+		"Con chiunque vesta i colori dell'Alleanza l'oste arrotonda per difetto. Non è una regola; è gratitudine, detta piano.",
+	},
+	["sw.npc_meet.w22.tapster.012"] = {
+		"guarda l'oste mandare un garzone su per le scale con un bricco e un altro giù in cantina con un'occhiata, senza interrompere la conversazione.",
+		"si accorge che l'oste governa la casa a cenni: un cenno e una brocca sale le scale, un cenno e un tavolo si sgombra, un cenno e una lite si placa.",
+		"nota che l'oste non alza mai la voce col personale. Un'inclinazione della testa, e qualcuno si sta già muovendo.",
+	},
+	["sw.npc_meet.w22.tapster.013"] = {
+		"vede l'oste negare un quinto boccale a un soldato con una mano sopra il bicchiere e una parola tranquilla, e il soldato, incredibilmente, accettare.",
+		"è lì quando l'oste copre col palmo il boccale di un avventore che ondeggia, gli mormora qualcosa e lo spedisce di sopra a dormire.",
+		"sorprende l'oste a rifiutarsi di versare a chi ha chiaramente bevuto abbastanza, con una gentilezza che non lascia spazio a discussioni.",
+	},
+	["sw.npc_meet.w22.tutor.001"] = {
+		"Anche imparare, in questa città, ha il suo registro. Il mio nome finisce in un libro prima che una sola cosa mi entri in testa.",
+		"Prima della lezione, il registro: il mio nome in bella calligrafia, in fondo a una lunga colonna di altri nomi. Stormwind mette tutto per iscritto.",
+		"Prima il libro, poi l'insegnamento. A Stormwind, sospetto, archiviano perfino le lezioni.",
+	},
+	["sw.npc_meet.w22.tutor.002"] = {
+		"riceve l'ordine di restare immobile e in silenzio, sotto uno sguardo che dura più di quanto sembri ragionevole.",
+		"si sente dare una sola istruzione, restare immobile, e scopre quanto sia difficile con qualcuno che conta i secondi.",
+		"resta immobile mentre la città sferraglia lì attorno, e ogni minimo scatto viene notato.",
+	},
+	["sw.npc_meet.w22.tutor.003"] = {
+		"Ti avverto: la prima domanda è stupida. Le altre migliorano.",
+		"Comincio dalla domanda sciocca, così ce la togliamo di mezzo.",
+		"Abbi pazienza. La prima cosa che chiedo è sempre quella sciocca.",
+	},
+	["sw.npc_meet.w22.tutor.004"] = {
+		"Chi insegna ascolta i miei passi più di quanto mi guardi. Al terzo, a quanto pare, ho già raccontato tutto.",
+		"Nemmeno un'occhiata al viso. Un orecchio teso al modo in cui attraverso la stanza, e un piccolo grugnito, come a pagina letta.",
+		"Vengo {g:giudicato|giudicata} dal rumore dei miei piedi prima che da qualsiasi parola. Troppo peso sul tallone, mi pare di capire.",
+	},
+	["sw.npc_meet.w22.tutor.005"] = {
+		"dice cosa spera di imparare, e vede la risposta finire per iscritto e poi, dopo un attimo di riflessione, cancellata per metà.",
+		"spiega chiaramente cosa vuole dalla lezione; l'istruttore lo annota su una lavagnetta, ci pensa e cancella la seconda metà.",
+		"dà una risposta accurata sul motivo della visita, e la vede quasi tutta barrata da un solo, breve tratto di gesso.",
+	},
+	["sw.npc_meet.w22.tutor.006"] = {
+		"Me lo mostrano una volta, piano, e basta. Se lo voglio una seconda volta dovrò ripescarlo dalla mia memoria.",
+		"Una dimostrazione sola, senza fretta, ogni passaggio chiaro. Poi le braccia si incrociano, e capisco che era l'unica copia.",
+		"Lo fa una volta davanti a me, con cura, come si posa una cosa fragile. Il bis non arriverà.",
+	},
+	["sw.npc_meet.w22.tutor.007"] = {
+		"Dimmi qual è la prima cosa che ha sbagliato il tuo allievo migliore. Mi piacerebbe cominciare in buona compagnia.",
+		"Cos'ha sbagliato all'inizio il tuo studente migliore? Cercherò di fare un errore diverso.",
+		"Chi è il migliore che hai mai avuto, e quanto era scarso il primo giorno?",
+	},
+	["sw.npc_meet.w22.tutor.008"] = {
+		"Più giovane di quanto pensassi, e parecchio più severo. La pazienza che arriva coi capelli grigi non è ancora arrivata.",
+		"Mi aspettavo qualcuno di anziano e bonario. Mi ritrovo davanti chi ha pochi anni più degli allievi, e fretta di essere obbedito.",
+	},
+	["sw.npc_meet.w22.tutor.009"] = {
+		"riceve una tazza d'acqua prima di ogni altra cosa, con l'osservazione asciutta che chi ha sete impara male.",
+		"trova una tazza d'acqua spinta sul tavolo prima di tutto; la lezione, a quanto pare, può aspettare che sia vuota.",
+		"deve bere una tazza d'acqua prima di sentire una sola parola d'insegnamento, sotto uno sguardo che arriva fino all'ultimo sorso.",
+	},
+	["sw.npc_meet.w22.tutor.010"] = {
+		"A Stormwind il rango conta ovunque, tranne qui davanti. Al figlio di un lord e a un bracciante tocca la stessa frase.",
+		"Manica di seta o manica rattoppata, non fa differenza: stesso cenno, stessa correzione, stesso prezzo.",
+		"Una città che assegna i posti secondo il nome, e un angolo dove il nome non aiuta nessuno. Mi piace più di quanto pensassi.",
+	},
+	["sw.npc_meet.w22.tutor.011"] = {
+		"Non dirmi che è semplice. Semplice è quello che si dice un attimo prima che non lo sia.",
+		"Se stai per dire «è facile», per favore, evita. Quella parola mi ha già mentito.",
+		"Qualunque cosa tu faccia, non chiamarla semplice. Meglio difficile e onesto.",
+	},
+	["sw.npc_meet.w22.tutor.012"] = {
+		"Abbastanza in là con gli anni da aver insegnato in città prima che bruciasse. Degli allievi di allora non si parla.",
+		"Quel viso ha visto Stormwind cadere e risorgere pietra su pietra. Qualcuno degli allievi di prima dev'essere un nome inciso da qualche parte.",
+	},
+	["sw.npc_meet.w22.tutor.013"] = {
+		"aspetta mentre l'istruttore corregge un allievo dall'altra parte della stanza senza voltarsi, solo a orecchio, con una parola.",
+		"nota che l'istruttore, pur guardando dalla sua parte, sistema l'errore di un allievo in fondo alla sala con una parola sola, gettata alle spalle.",
+		"resta lì mentre l'istruttore, di schiena rispetto alla sala, dice esattamente cosa sta sbagliando chi sta dietro.",
+	},
+	["sw.npc_meet.w22.tutor.014"] = {
+		"Mi chiedono dell'ultimo errore, non della mia giornata migliore. Le giornate migliori, evidentemente, non servono a nessuno.",
+		"Qui nessuno vuole sapere cosa è andato bene. «Cosa è andato storto, e quando?» è l'unica domanda che vale la tariffa.",
+		"Racconti un trionfo e ricevi un cenno educato. Racconti uno sbaglio e lo sgabello si avvicina.",
+	},
+	["sw.npc_meet.w22.tutor.015"] = {
+		"si vede offrire uno sgabello parecchio più basso di quello dell'istruttore, e mentre ci si siede conclude che non è un caso.",
+		"siede al posto indicato, su uno sgabello più basso di una spanna, e passa la lezione a guardare in su.",
+		"prende lo sgabello basso riservato agli allievi e si ritrova esattamente all'altezza giusta per le correzioni.",
+	},
+	["sw.npc_meet.w22.tutor.016"] = {
+		"Fuori, Stormwind corre. Davanti a chi insegna qui, niente corre. Rallento senza che me lo dicano.",
+		"La città sfreccia oltre la porta aperta, carri, scrivani, commissioni. L'istruttore si muove come se nessuno fosse mai stato in ritardo.",
+		"In questa città sono tutti diretti da qualche altra parte. Tranne l'istruttore, che è evidentemente arrivato, e resta.",
+	},
+	["sw.npc_meet.w22.tutor.017"] = {
+		"Ho pagato per avere risposte. Se preferisci darmi domande migliori, prendo quelle.",
+		"Dammi una buona domanda da masticare. La risposta la trovo da {g:solo|sola}, piano piano.",
+		"Non mi serve tutto subito. Una cosa sola, da esercitare finché non diventa mia.",
+	},
+	["sw.npc_meet.w22.tutor.018"] = {
+		"L'angolo dell'istruttore è in ordine perfetto: ogni attrezzo allineato al bordo del banco. Ne rimetto uno storto, e viene raddrizzato prima che lo lasci.",
+		"Niente, a portata di mano di chi insegna qui, sta mai fuori posto. Lo imparo toccando una cosa sola, e vedendola rimessa a posto all'istante.",
+	},
+	["sw.npc_meet.w22.tutor.019"] = {
+		"guarda l'istruttore oltre un paio di occhiali che continuano a scivolare lungo il naso e vengono rispinti su, ogni volta, con una nocca.",
+		"osserva gli occhiali dell'istruttore scendere sulla punta del naso a ogni pausa e tornare al loro posto a ogni correzione.",
+		"nota che ogni volta che sta per arrivare qualcosa d'importante, l'istruttore si toglie gli occhiali e li ripiega.",
+	},
+	["sw.npc_meet.w22.tutor.020"] = {
+		"Sotto quel tavolo c'è un ginocchio rigido. L'istruttore insegna da seduto, e vede lo stesso tutto quello che faccio in piedi.",
+		"Una gamba malandata, a giudicare da come viene tirata indietro la sedia. Gli occhi non hanno rallentato per niente.",
+	},
+	["sw.npc_meet.w22.tutor.021"] = {
+		"Quanto ci vuole perché io smetta di farti fare quella faccia?",
+		"Quello sguardo che mi stai dando. È permanente, o passa quando miglioro?",
+		"Quella faccia la fai a tutti, o sono un caso speciale?",
+	},
+	["sw.npc_meet.w22.tutor.022"] = {
+		"Quello che imparo qui partirà sotto il blu e l'oro, lontano da questa stanza. L'istruttore lo sa, e insegna di conseguenza.",
+		"Ogni lezione data a Stormwind finisce su qualche strada dell'Alleanza. Si capisce da come l'istruttore non lascia passare nemmeno una piccolezza.",
+	},
+	["sw.npc_meet.w22.tutor.023"] = {
+		"posa la tariffa sul banco e la vede finire in una ciotola sbeccata senza essere contata; il conto, pare, si fa con gli occhi.",
+		"paga l'istruttore, che lascia cadere le monete in un piatto scheggiato senza guardarle, e solo dopo {g:lo|la} guarda davvero in faccia.",
+		"allinea le monete della lezione; spariscono in una vecchia ciotola senza essere contate, come se il prezzo fosse la cosa meno interessante.",
+	},
+	["sw.npc_meet.w22.tutor.024"] = {
+		"Un cenno breve, alla fine. Non un elogio, non del tutto. Ma con quello attraverserei tutta la Valley of Heroes.",
+		"Di gentile non viene detto nulla. Però c'è un cenno, piccolo e tardivo, e me lo rigirerò in testa per giorni.",
+	},
+	["sw.npc_meet.w22.tutor.025"] = {
+		"Comincia da dove cominceresti con chiunque. Preferisco non saltare un passaggio e pagarlo dopo.",
+		"Trattami come se non sapessi niente. Con buone probabilità avrai ragione a metà.",
+	},
+	["sw.npc_meet.w22.tutor.026"] = {
+		"deve aspettare che l'istruttore finisca di spazzare il pavimento, angolo per angolo, come se su un pavimento sporco non si potesse insegnare niente.",
+		"si scansa davanti a una scopa: il pavimento viene spazzato fino all'ultimo angolo prima che l'istruttore si degni di dire buongiorno.",
+	},
+	["sw.npc_meet.w22.vault.001"] = {
+		"riceve dal banchiere un inchino calibrato, pare, sulla profondità esatta che merita il suo conto.",
+		"viene {g:salutato|salutata} oltre il banco con un piccolo, preciso cenno del capo, né un dito più in basso né più in alto di quanto consenta il saldo.",
+		"si vede rivolgere un cenno cortese dal banchiere, di quelli che chiaramente sono stati prima confrontati con una colonna di cifre.",
+	},
+	["sw.npc_meet.w22.vault.002"] = {
+		"Una moneta viene lasciata cadere sul banco e ascoltata. L'argento buono suona; quello cattivo fa un tonfo. Il banchiere sente la differenza prima che io possa vederla.",
+		"Ogni moneta viene fatta suonare una volta contro il legno, con l'orecchio teso. Il banchiere si fida del suono più che della faccia coniata.",
+	},
+	["sw.npc_meet.w22.vault.003"] = {
+		"Niente che ticchetti, niente che goccioli. Ho controllato due volte.",
+		"Prima che tu me lo chieda: non si muove, non gocciola, non puzza. Non troppo.",
+		"È tutto asciutto e tutto inerte. Inerte come un sasso, intendo.",
+	},
+	["sw.npc_meet.w22.vault.004"] = {
+		"guarda il banchiere finire una registrazione e spargere sabbia fine sull'inchiostro fresco, per poi rimetterla in un vasetto senza perderne un granello.",
+		"aspetta mentre il banchiere asciuga il registro con un pizzico di sabbia, batte due volte la pagina e la riversa nel suo vasetto, granello per granello.",
+		"vede la sabbia passare sulla registrazione e tornare nel suo vasetto; a questo banco perfino asciugare l'inchiostro si fa senza sprechi.",
+	},
+	["sw.npc_meet.w22.vault.005"] = {
+		"Questo banchiere sa quali casate nobili sono al verde e quali fingono soltanto di essere ricche. Non una parola passerà mai il banco.",
+		"Metà dei debiti della corte passa sotto quella penna, ci scommetto. La faccia lì sopra non lascia trapelare nulla, nemmeno la noia.",
+	},
+	["sw.npc_meet.w22.vault.006"] = {
+		"Se per te è lo stesso, preferisco non sapere quanto vale. Comincerei solo a fare progetti.",
+		"Non dirmi il totale. È sapendolo che finisco per spenderlo.",
+		"Tieniti la cifra, per favore. Dormo meglio tirando a indovinare.",
+	},
+	["sw.npc_meet.w22.vault.007"] = {
+		"posa un fagotto ancora impolverato dalla strada, e vede il banchiere spazzare il banco nell'istante in cui viene sollevato.",
+		"lascia una leggera impronta grigia sul banco lucido, e vede comparire uno straccio che la cancella prima che abbia finito di parlare.",
+		"nota che ovunque la sua manica si appoggi sul banco, lo straccio del banchiere arriva un attimo dopo.",
+	},
+	["sw.npc_meet.w22.vault.008"] = {
+		"Il banchiere scrive la registrazione, e un apprendista sul retro ricopia la stessa identica riga in un secondo libro. A Stormwind anche un calzino si registra due volte.",
+		"Dietro il banchiere uno scrivano più giovane ricopia tutto in un altro registro, parola per parola. Da qualche parte, immagino, un terzo controlla che coincidano.",
+	},
+	["sw.npc_meet.w22.vault.009"] = {
+		"vede un ninnolo avvicinato agli occhiali del banchiere, girato piano e descritto nel registro con più dettagli di quanti ne saprebbe dare chi l'ha portato.",
+		"guarda il banchiere portare un oggetto vicino a un occhio, girarlo due volte e scriverne una descrizione migliore dell'oggetto stesso.",
+		"consegna un ricordo e lo sente descrivere ad alta voce per il registro, graffi compresi, con la precisione asciutta di un gioielliere.",
+	},
+	["sw.npc_meet.w22.vault.010"] = {
+		"La mia cassetta custodisce le cose che metto da parte per una versione di me che ancora non esiste. Il banchiere le archivia senza battere ciglio.",
+		"Tutto quello che tengo qui è per un me futuro, con più spazio nella sacca e più giudizio. Il banchiere non ha conosciuto nessuno dei due.",
+	},
+	["sw.npc_meet.w22.vault.011"] = {
+		"trova il registro già girato verso di sé, e la penna già intinta e porta, all'angolo giusto per la sua mano.",
+		"vede il registro ruotare sul banco e una penna offerta dal manico, col punto della firma indicato dal dito del banchiere.",
+		"firma dove indica un'unghia pulita, con la penna consegnata già bagnata d'inchiostro, tutto il rito svolto senza una parola.",
+	},
+	["sw.npc_meet.w22.vault.012"] = {
+		"Vicino al banco le voci si abbassano, come vicino a un altare. Tutte quelle monete dietro il muro sembrano chiedere silenzio.",
+		"Anche i più chiassosi abbassano la voce al banco. In questa città, ai soldi ci si avvicina sussurrando.",
+	},
+	["sw.npc_meet.w22.vault.013"] = {
+		"La solita cassetta, un po' più pesante. Sono un tipo ottimista.",
+		"Mettilo con il resto. Un giorno farà una somma.",
+		"Un'altra cosetta per il mucchio. Sta andando da qualche parte, giuro.",
+	},
+	["sw.npc_meet.w22.vault.014"] = {
+		"Lo stesso cenno per l'amministratore di un duca e per me. Qualunque cosa pensi questo banchiere, la cortesia non è in vendita.",
+		"Davanti a me qualcuno vestito di velluto; dietro, qualcuno coperto di fango. Fra noi tre la voce del banchiere non cambia di una nota.",
+	},
+	["sw.npc_meet.w22.vault.015"] = {
+		"deve firmare una ricevuta per le sue stesse cose, e lo fa, con la vaga sensazione di averle appena prese in prestito da sé.",
+		"firma un foglietto che conferma che quelle cose sono sue, cosa che sapeva, e che ora tocca alla banca custodirle, cosa che sapeva anche.",
+	},
+	["sw.npc_meet.w22.vault.016"] = {
+		"Una guardia accanto alla porta della banca sembra contare chiunque entri ed esca. Dai guai coi Defias, in questa città nessuno si fida di una banca tranquilla.",
+		"Qualcuno vicino alla porta osserva ogni cliente che arriva e che riparte, e fa un segnetto. Stormwind ha imparato a tenere d'occhio i propri soldi.",
+	},
+	["sw.npc_meet.w22.vault.017"] = {
+		"Questo tienilo dove non prenda colpi. Ne ha già passate abbastanza.",
+		"Piano con quello. Non vale niente, e mi dispiacerebbe perderlo.",
+	},
+	["sw.npc_meet.w22.vault.018"] = {
+		"Tutti i banchieri di Stormwind sono cortesi esattamente allo stesso modo, come se la cortesia venisse distribuita dal tesoro insieme alle penne.",
+		"Giurerei che la banca distribuisca le buone maniere insieme all'inchiostro: un «certamente», due «naturalmente», e un sorriso che non costa nulla ed è prestato a interesse.",
+	},
+	["sw.npc_meet.w22.vault.019"] = {
+		"indugia al banco mentre un impiegato scende una scala stretta dietro il banco e torna con la sua cassetta stretta fra le braccia, come qualcosa che dorme.",
+		"sente i passi di un impiegato scendere da qualche parte dietro il banco, molto in basso, e risalire più lenti, con la sua cassetta.",
+	},
+	["sw.npc_meet.w22.vault.020"] = {
+		"Tiro fuori solo una cosa. Poi ne rimetto due, se mi conosco.",
+		"Solo un oggetto, grazie. Per la fine della settimana sarò qui con altri tre, immagino.",
+	},
+	["sw.npc_meet.w22.wares.001"] = {
+		"Il mio sacco di cianfrusaglie passa oltre il banco, un dente scheggiato, una fibbia rotta, un brandello di pelle, e il mercante compra tutto col cordoglio educato di chi va a un funerale.",
+		"Ogni pezzo di robaccia che vendo riceve lo stesso cenno cortese e sofferente. Questo mercante comprerebbe una coda di ratto e mi ringrazierebbe dell'occasione.",
+		"Fibbie rotte, denti sbeccati, ossa misteriose: il mercante si prende tutto, moneta dopo moneta, e non chiede mai da dove arrivi.",
+	},
+	["sw.npc_meet.w22.wares.002"] = {
+		"Ogni cassetta ha un'etichetta scritta con la stessa grafia attenta, perfino l'unico barile di chiodi. Qui qualcuno ama l'ordine più del guadagno.",
+		"Etichette dappertutto: filo per colore, chiodi per lunghezza, candele per spessore. Il mercante troverebbe tutto a occhi chiusi.",
+		"La vera merce di questa bottega è l'ordine. Tutto il resto è solo ciò che l'ordine si trova a contenere.",
+	},
+	["sw.npc_meet.w22.wares.003"] = {
+		"Qual è la cosa migliore che mi vendi per meno di un argento? Sorprendimi.",
+		"Sotto l'argento, e che serva a qualcosa. Cos'hai?",
+		"Fammi vedere cosa compra un argento solo, a Stormwind. Con delicatezza.",
+	},
+	["sw.npc_meet.w22.wares.004"] = {
+		"La lana del Westfall costa il doppio da quando i Defias si sono presi le fattorie, mi dice il mercante, come se le pecore le avessi rubate io.",
+		"I prezzi sono saliti, sospira il mercante: dal Westfall non arriva niente senza scorta, e la scorta si paga. Quella scorta la sto pagando io.",
+		"Ogni pezza di stoffa qui porta nel prezzo un po' dei guai del Westfall. Il mercante lo spiega con la pazienza di chi lo ripete da giorni.",
+	},
+	["sw.npc_meet.w22.wares.005"] = {
+		"Non incartarlo. Lo rovinerò presto anche senza aiuto.",
+		"Niente nastro. Prima delle porte della città sarà già infangato.",
+		"Lascia stare la carta. Finisce dritto in fondo allo zaino.",
+	},
+	["sw.npc_meet.w22.wares.006"] = {
+		"contratta con un mercante il cui sguardo continua a scivolare verso la strada, dove a volte qualche manina si allunga sulla merce.",
+		"nota che lo sguardo del mercante abbandona la conversazione ogni poche parole per controllare il davanti del banco, dove per ora non manca niente.",
+		"ha metà dell'attenzione del mercante; l'altra metà è su un ragazzino lacero che bighellona vicino alle mele, e non vacilla mai.",
+	},
+	["sw.npc_meet.w22.wares.007"] = {
+		"Inchiostro su un dito, cera sul polsino, un sentore d'olio da lampada. Il mercante si porta l'inventario addosso.",
+		"Il mercante sa vagamente di tutto quel che vende: cuoio, sego, una nota pungente di qualcosa contro le tarme.",
+		"Cera sotto le unghie, inchiostro sulla nocca. La merce di questo mercante si legge sulle mani.",
+	},
+	["sw.npc_meet.w22.wares.008"] = {
+		"Ad alta voce, e con gentilezza, il mercante corregge il conto dell'apprendista; poi una seconda volta, più piano e meno gentilmente.",
+		"Un apprendista spazza, il mercante conta, e ogni tanto la scopa si ferma perché al ragazzo venga spiegato che spazza male.",
+		"Mi piacciono le botteghe con un apprendista dentro. S'impara più da quello che il mercante rimprovera che da quello che vende.",
+	},
+	["sw.npc_meet.w22.wares.009"] = {
+		"si vede porgere una candela da annusare, una cinghia da piegare, un ago da provare sul pollice: qui la merce si presenta prima di avere un prezzo.",
+		"deve piegare la cinghia, provare la fibbia e soppesare l'acciarino prima che venga nominato un solo prezzo.",
+		"si ritrova la merce nelle mani un pezzo dopo l'altro, da tastare e rigirare, mentre il mercante tace finché le mani non hanno deciso.",
+	},
+	["sw.npc_meet.w22.wares.010"] = {
+		"Lo spago del facchino è già tagliato e arrotolato prima che lui arrivi al banco. Qui gli habitué si servono a memoria.",
+		"Entra un fornaio ed esce con i sacchi di farina già contati. In questa bottega i clienti abituali non hanno bisogno di parlare.",
+		"Vedo servire un cliente abituale senza che passi una parola. Un giorno, forse, questo mercante saprà cosa voglio prima di me.",
+	},
+	["sw.npc_meet.w22.wares.011"] = {
+		"Torno. No, davvero. Immagino te lo dicano tutti.",
+		"Ci penso, il che vuol dire che torno. Probabilmente.",
+		"Tienimelo da parte. Ho intenzione di tornare, e dicono che sono una persona affidabile.",
+	},
+	["sw.npc_meet.w22.wares.012"] = {
+		"assiste allo srotolarsi di una pezza di stoffa lungo tutto il banco, con un solo colpo di polso, e il mercante ne afferra il capo un attimo prima che tocchi terra.",
+		"guarda una striscia di stoffa volare sul banco per un solo, esperto scatto del polso del mercante, e fermarsi esattamente sul bordo.",
+		"vede il mercante srotolare una pezza con un unico schiocco, e il capo atterrare sul bordo del banco come se fosse stato misurato apposta.",
+	},
+	["sw.npc_meet.w22.wares.013"] = {
+		"{other} passa una mano sopra il banco come se presentasse un regno, e in un certo senso lo è: corde, candele, filo e una gran dose d'orgoglio.",
+		"{other} nomina uno per uno gli articoli sullo scaffale, con l'affetto che di solito si riserva ai cavalli.",
+		"La merce viene presentata con uno svolazzo sprecato per uno scaffale di filo e olio da lampada, e lo spreco non pesa affatto al mercante.",
+	},
+	["sw.npc_meet.w22.watchman.001"] = {
+		"Una domanda sulla banca, e la guardia risponde con tutta la città: banca, casa d'aste, locande, maestri, sempre nello stesso ordine.",
+		"Le indicazioni della guardia arrivano come un elenco imparato a memoria, recitato con la pazienza di chi l'ha già detto a mille forestieri smarriti.",
+		"Chiedo una strada e ne ricevo una dozzina, ognuna col suo punto di riferimento. Qualcuno ha addestrato queste guardie alle indicazioni come altri alla marcia.",
+	},
+	["sw.npc_meet.w22.watchman.002"] = {
+		"nota il tabarro della guardia: l'azzurro sbiadito sulle spalle, ancora intenso e nuovo dove la cintura lo copre da anni.",
+		"distingue due azzurri sul tabarro di una guardia, uno stanco sul petto e uno fresco nascosto sotto la cintura, dove non arriva mai niente.",
+		"scorge una striscia più scura sul tabarro della guardia, all'altezza della cintura. Il colore era quello, prima di tutte quelle ore in piedi.",
+	},
+	["sw.npc_meet.w22.watchman.003"] = {
+		"La guardia scruta la strada all'altezza di un uomo, poi più in basso, poi più in basso ancora. In questa città conviene controllare se passa uno gnomo.",
+		"Prima all'altezza degli occhi, poi giù, poi più giù. Una guardia di Stormwind non dà mai per scontata la statura di chi arriva.",
+		"Lo sguardo di quella guardia attraversa la folla a tre altezze: umano, nano, gnomo. Sotto un'occhiata così non sfugge nessuno.",
+	},
+	["sw.npc_meet.w22.watchman.004"] = {
+		"Non badare a me. Tutto quello che porto l'ho pagato, e quasi tutto posso dimostrarlo.",
+		"Calma. Ogni cosa che ho addosso è comprata, guadagnata o regalata. Comprata, perlopiù.",
+		"Per ogni singola cosa in questo zaino esiste una ricevuta. Credo.",
+	},
+	["sw.npc_meet.w22.watchman.005"] = {
+		"sorprende una guardia con mezza mela in un guanto; sparisce dietro la schiena con tanta naturalezza che forse non è mai esistita.",
+		"becca una guardia che mastica al suo posto, la mascella che si blocca appena gli sguardi s'incrociano, e un tozzo di pane che non c'è più.",
+		"intravede la fine della merenda di una guardia, un torsolo nascosto nel palmo e svanito, e l'aria severa che segue arriva un po' troppo in fretta.",
+	},
+	["sw.npc_meet.w22.watchman.006"] = {
+		"Da che parte la banca? Indica con un dito, per favore. Con tutto il braccio, la gente penserà che mi stai arrestando.",
+		"La banca è di là? Basta un cenno. Se indichi, mezza strada si gira a fissarmi.",
+		"Un cenno discreto verso la banca va benissimo. Il braccio teso no: sembra un arresto.",
+	},
+	["sw.npc_meet.w22.watchman.007"] = {
+		"Quell'elmo è più vecchio della guardia che lo porta. Le ammaccature se le è guadagnate qualcun altro.",
+		"Guardia giovane, elmo vecchio. Ogni bozza appartiene a una testa di prima.",
+		"Una faccia fresca sotto un elmo malconcio. Stormwind passa le armature di mano in mano, ammaccature comprese.",
+	},
+	["sw.npc_meet.w22.watchman.008"] = {
+		"La guardia invita un perdigiorno a circolare con una voce che l'ha fatto diecimila volte e ancora sembra più un consiglio che un ordine.",
+		"Sento una guardia rimandare per la sua strada un tizio che ciondolava. Nessuna asprezza: solo il tono di chi consiglia una via migliore.",
+		"«Circolare», detto da una guardia qui, suona come il suggerimento di un amico. Per questo lo seguono tutti.",
+	},
+	["sw.npc_meet.w22.watchman.009"] = {
+		"aspetta mentre una guardia solleva un lembo del telo di un carro, getta un'occhiata ai barili e lo lascia ricadere con un cenno che rimanda avanti il carrettiere.",
+		"resta dietro un carro fermo mentre la guardia sbircia sotto la copertura, bussa su un barile con una nocca e fa passare tutto il carico.",
+		"indugia mentre una guardia ferma un carro col palmo aperto, guarda sotto il telone, annusa una volta e arretra. Il carrettiere non discute; qui non discute nessuno.",
+	},
+	["sw.npc_meet.w22.watchman.010"] = {
+		"Una guardia annoiata è la notizia migliore che una città possa dare. Questa sembra annoiatissima.",
+		"Sulla faccia della guardia solo un vago tedio. Mi rassicura più di qualsiasi muraglia.",
+		"Uno sguardo spento sotto un elmo lucidato. Di tutto ciò che una città può mostrarmi, è la cosa più confortante.",
+	},
+	["sw.npc_meet.w22.watchman.011"] = {
+		"Qualcuno ti porta mai qualcosa di caldo mentre stai qui, o è contro il regolamento?",
+		"Ti lasciano mai sederti, o è un reato da forca?",
+		"Se ti portassi una salsiccia, conterebbe come corruzione?",
+	},
+	["sw.npc_meet.w22.watchman.012"] = {
+		"osserva una guardia lasciare il posto giusto il tempo di aiutare una vecchia a scendere tre gradini, e tornare esattamente nello stesso punto.",
+		"segue con gli occhi una guardia che si allontana quanto basta per dare il braccio a un vecchio su una breve scala, e rientra al suo posto come tirata da una corda.",
+		"nota una guardia rompere l'immobilità per una sola gentilezza, una mano sotto il gomito di un anziano facchino, e riprenderla subito.",
+	},
+	["sw.npc_meet.w22.watchman.013"] = {
+		"Quella guardia ha visto la mia faccia chissà quante volte e non lo dirà mai. Le guardie di città ricordano tutti e non salutano nessuno.",
+		"Scommetto che la guardia mi conosce già di vista. Non lo danno mai a vedere; un cenno sarebbe una confessione.",
+		"Le guardie di città ricordano ogni faccia e non ne riconoscono nessuna. Sotto quell'elmo ho la mia scheda, e basta.",
+	},
+	["sw.npc_meet.w22.watchman.014"] = {
+		"Strada tranquilla. Merito tuo o della strada?",
+		"È tranquillo perché ci sei tu, o ci sei tu perché è tranquillo?",
+		"Bell'angolo calmo. Immagino sia opera tua.",
+	},
+	["sw.npc_meet.w22.watchman.015"] = {
+		"sorprende una guardia a lucidare un guanto d'arme contro la coscia, distratta, come altri si mangiano le unghie, con gli occhi sempre fissi sulla folla.",
+		"nota una guardia che lavora col pollice su un graffio del bracciale, una piccola faccenda privata che non le stacca mai lo sguardo dalla strada.",
+		"coglie una guardia che strofina una nocca del guanto sull'orlo del tabarro senza abbassare gli occhi nemmeno una volta.",
+	},
+	["sw.npc_meet.w22.watchman.016"] = {
+		"trova la guardia intenta a leggere un avviso inchiodato accanto alla postazione, muovendo appena le labbra, prima di tornare alla strada con un sospetto nuovo di zecca.",
+		"assiste mentre una guardia finisce di leggere un avviso appena affisso e comincia a studiare i passanti con un interesse nuovo e molto preciso.",
+		"sorprende una guardia a confrontare un foglio di pergamena con le facce che passano, una per una, senza nessuna fretta.",
+	},
+	["sw.npc_meet.w22.watchman.017"] = {
+		"{other} sta lì come un pezzo della muratura. Mi aspetterei quasi del muschio, se questa città lo permettesse.",
+		"Pietra alle spalle, pietra sotto i piedi, e la guardia in mezzo, immobile quanto l'una e l'altra.",
+	},
+	["sw.quest_complete.w22.afterward.001"] = {
+		"piega le dita di entrambe le mani, una dopo l'altra, come per contarle dopo averle date a lungo in prestito.",
+		"apre e chiude le mani più volte in mezzo alla via, piano, per accertarsi che non appartengano più a nessun altro.",
+		"scioglie la rigidezza delle mani dito per dito, come chi restituisce attrezzi presi a nolo.",
+	},
+	["sw.quest_complete.w22.afterward.002"] = {
+		"La prima via dopo un lavoro finito pare sempre più larga di quel che è. Niente, lì in mezzo, tocca a me aggiustarlo.",
+		"Fuori, in strada, e per una volta niente di quel che vedo mi riguarda. Il selciato sembra allungarsi apposta.",
+		"Buffo come una via si allarghi quando il lavoro non c'è più. È larga come sempre. Solo che non mi chiede niente.",
+	},
+	["sw.quest_complete.w22.afterward.003"] = {
+		"fischietta qualcosa senza alcuna melodia prima ancora del primo angolo, e smette, un po' in imbarazzo, quando una guardia si volta.",
+		"attacca un fischio stonato dopo pochi passi in strada, e se ne inghiotte il resto appena una guardia di passaggio gira la testa.",
+		"canticchia uscendo, male, e insiste finché una donna con una cesta non rivolge al rumore un'occhiata lunga e sofferta.",
+	},
+	["sw.quest_complete.w22.afterward.004"] = {
+		"Continuo a tastarmi le tasche come se il lavoro fosse ancora in una di esse. L'abitudine è uno scrivano lento.",
+		"È la terza volta che mi frugo le tasche cercando il pensiero di prima. Non era roba da tasca. Se n'è andato lo stesso.",
+		"Le mani tornano alla cintura a cercare qualcosa da controllare. Non resta niente da controllare. Impareranno.",
+	},
+	["sw.quest_complete.w22.afterward.005"] = {
+		"Sego da una bottega di candele, cipolle nella padella di qualcuno, l'odore verde dei canali. Il naso è tornato dal lavoro prima del resto di me.",
+		"La via sa di cipolle fritte e di grasso di candela, e appena appena dei canali. A quanto pare per un po' avevo smesso di sentire gli odori.",
+		"Cipolle, sego, acqua di canale. Gli odori della città tornano uno dopo l'altro, come gente che rientra in una stanza.",
+	},
+	["sw.quest_complete.w22.afterward.006"] = {
+		"si accovaccia al margine della via a riallacciare uno stivale slacciato da chissà quanto, e tira il laccio con cura.",
+		"s'inginocchia accanto a un muro per rifare come si deve i lacci di uno stivale: il primo nodo senza fretta da un bel pezzo.",
+		"appoggia un piede su un montatoio e riallaccia lo stivale dal fondo, piano, come se a Stormwind il tempo avanzasse.",
+	},
+	["sw.quest_complete.w22.afterward.007"] = {
+		"La testa continua a ripassare il lavoro, passo per passo, come una ruota di mulino che gira ancora quando l'acqua l'hanno già chiusa.",
+		"È finito, e la mente lo prova e riprova lo stesso. Una commedia senza pubblico, alla quarta replica.",
+		"Fatto, eppure continuo a rigirarmelo in testa, cercando a ogni passo l'errore che non ho commesso.",
+	},
+	["sw.quest_complete.w22.afterward.008"] = {
+		"si allontana con le mani affondate nelle tasche, una posa che nessuno prende mai a metà di un lavoro.",
+		"infila le mani in tasca e se ne va a passeggio, cosa che succede solo quando non si deve niente a nessuno.",
+		"prosegue a passeggio con le mani in tasca e un'espressione qualunque, l'aria di chi, per il momento, ha il tempo tutto per sé.",
+	},
+	["sw.quest_complete.w22.afterward.009"] = {
+		"Le spalle mi sono appena scese di un dito. Non sapevo che fossero salite.",
+		"Toh. Avevo la mascella serrata da chissà quanto. Molla, mascella.",
+		"Qualcosa nella schiena si è appena sbloccato. Nessuno mi chieda niente all'improvviso.",
+	},
+	["sw.quest_complete.w22.afterward.010"] = {
+		"calcia avanti un sassolino sul selciato, lo raggiunge, gli dà un altro colpetto, e porta avanti il gioco per mezza via.",
+		"trova un sasso sperduto e lo spinge avanti con la punta dello stivale, un angolo dopo l'altro, finché non cade in una grata.",
+		"guida una pietruzza lungo la strada con un piede, un gioco senza regole e senza posta, e alla fine la perde sotto un carro.",
+	},
+	["sw.quest_complete.w22.afterward.011"] = {
+		"Dopo c'è sempre un piccolo cedimento. Non proprio tristezza. Più un pavimento che si rivela un gradino più in basso del previsto.",
+		"La fine non è mai alta quanto il lavoro. Ne esco come quando si manca uno scalino al buio.",
+		"Fatto, e un po' vuoto. Un lavoro occupa uno spazio finché dura, e lo spazio resta quando se ne va.",
+	},
+	["sw.quest_complete.w22.afterward.012"] = {
+		"Adesso cammino pianissimo verso nessun posto in particolare. Non provate a fermarmi.",
+		"Ora si passeggia. Alla velocità di uno scrivano diretto a una riunione che teme.",
+		"Non devo essere da nessuna parte, e ho intenzione di arrivarci per la strada lunga.",
+	},
+	["sw.quest_complete.w22.afterward.013"] = {
+		"scambia una lunga occhiata con un gatto su un cornicione sopra la via, una creatura che con ogni evidenza non ha mai finito un lavoro in vita sua e non se ne pente.",
+		"finisce sotto lo sguardo di un grosso gatto tigrato, da un davanzale: tutto il suo contegno dice che il lavoro è roba per gli altri.",
+		"incrocia lo sguardo giallo di un gatto acciambellato su un gradino, e perde la gara a chi sembra più tranquillo.",
+	},
+	["sw.quest_complete.w22.afterward.014"] = {
+		"Ho la bocca secca come il registro di uno scrivano, e me ne accorgo solo adesso. Prima l'acqua. Poi il resto della vita.",
+		"Che sete. Il lavoro non me l'ha mai lasciata sentire, e adesso non penso ad altro.",
+		"Una tazza d'acqua, prima di ogni altra cosa. Il lavoro teneva zitta la gola e adesso quella recupera il tempo perso.",
+	},
+	["sw.quest_complete.w22.afterward.015"] = {
+		"si ferma in cima a una breve rampa di scalini e guarda la via per un momento, come un nuotatore che valuta l'acqua, prima di tuffarcisi.",
+		"indugia sull'ultimo gradino sopra il viavai, cercandovi un varco come si aspetta la battuta giusta per entrare in una danza.",
+		"aspetta in cima a una scala sopra la via che il flusso di carri e passanti si diradi un poco, poi scende e ci si confonde dentro.",
+	},
+	["sw.quest_complete.w22.afterward.016"] = {
+		"Ritorno in una via fatta per gambe più lunghe. Ogni passo per uscire da un lavoro, a Stormwind, ne vale due dei miei.",
+		"Finito, e ora il ritorno a misura d'umano: marciapiedi come cornicioni, scale come piccole scogliere. Me la caverò. Come sempre.",
+		"I gradini di questa città sono tagliati per ginocchia umane. Li faccio a due saltelli l'uno e arrivo in fondo al lavoro con la dignità quasi intatta.",
+	},
+	["sw.quest_complete.w22.afterward.017"] = {
+		"Con questa nebbia Stormwind è solo suoni: un carro che non vedo, una risata da qualche parte sulla sinistra, i miei stivali. Nessuno vede che ho finito. Mi piace.",
+		"Una nebbia così fitta da nascondere una guardia a dieci passi. Esco dal lavoro ed entro in una stanza grigia grande quanto la città.",
+		"Fatto, e la nebbia si è presa la via. Le lanterne ci galleggiano come monete nel latte, e a cinque passi nessuno distingue il finito dal non finito.",
+	},
+	["sw.quest_complete.w22.afterward.018"] = {
+		"Se qualcuno mi cerca, sono là, a non fare niente, con grande attenzione.",
+		"Sono nei paraggi. Senza impegni. Per la prima volta da un po', gloriosamente senza impegni.",
+		"Non cercatemi per un po'. Sono fuori servizio da tutto.",
+	},
+	["sw.quest_complete.w22.afterward.019"] = {
+		"Si vede? Che ho finito, intendo. Ho l'impressione che si veda.",
+		"Ho un'aria diversa? Mi sembra che dovrei averla.",
+		"Nessuno mi fissi. Ho appena finito una cosa e ci sto ancora facendo l'abitudine.",
+	},
+	["sw.quest_complete.w22.handover.001"] = {
+		"aspetta che l'altro si strofini le mani sul grembiule, le esamini e le strofini un'altra volta, prima di tenderne una.",
+		"ottiene una mano solo dopo che è passata due volte sul grembiule di cuoio ed è stata giudicata presentabile.",
+	},
+	["sw.quest_complete.w22.handover.002"] = {
+		"I nobili di Stormwind ringraziano di rado in faccia. Le parole vanno a un maggiordomo, e il maggiordomo te le gira più semplici, come un pezzo d'oro cambiato in rame.",
+		"Un signore di questa città ti ringrazia per interposta persona, mai direttamente. La gratitudine arriva di seconda mano, un po' sciupata, e chissà perché più credibile.",
+	},
+	["sw.quest_complete.w22.handover.003"] = {
+		"Questa città la impari da chi ti paga. I preti pagano adagio, gli ufficiali al tre, e i mercanti come se ogni moneta li salutasse di persona.",
+		"A Stormwind ognuno consegna la paga a modo suo: i preti come un'elemosina, gli ufficiali come una dotazione, i mercanti come chi accompagna un parente alla porta.",
+		"Prete, ufficiale, bottegaio: li distinguerei a occhi bendati da come la paga mi cade in mano. Piano, dritta, malvolentieri.",
+	},
+	["sw.quest_complete.w22.handover.004"] = {
+		"riceve la paga a braccio teso, porta in piano e senza esitazioni, come si distribuisce l'equipaggiamento in caserma, e la prende con lo stesso piglio.",
+		"prende il dovuto da una mano tesa rigida e dritta, come al banco di un furiere, e si accorge che il proprio braccio risponde allo stesso modo.",
+	},
+	["sw.quest_complete.w22.handover.005"] = {
+		"Un prete di questa città prende ogni cosa a due mani, una lettera, una moneta, una rapa, e dà allo stesso modo. A farsi pagare così, viene quasi voglia di inginocchiarsi.",
+		"Qualunque cosa ti porga un prete della cattedrale arriva su due palmi aperti, come il pane alla mensa dei poveri. Perfino una paga qualunque sembra da gustare adagio.",
+	},
+	["sw.quest_complete.w22.handover.006"] = {
+		"La consegni come se partisse per la guerra. Starà bene, ne avrò cura io.",
+		"Puoi mollarla, adesso. È in buone mani. Le mie.",
+		"Apri le dita, coraggio. La moneta conosce la strada.",
+	},
+	["sw.quest_complete.w22.handover.007"] = {
+		"incassa dalla mano sinistra mentre la destra continua a scrivere, e gli occhi dell'altro non lasciano mai il foglio.",
+		"prende il compenso da una mano sola: l'altra finisce una frase su un foglio lì accanto, per nulla turbata dall'interruzione.",
+	},
+	["sw.quest_complete.w22.handover.008"] = {
+		"I nani che lavorano in questa città ti passano una borsa come passerebbero una tenaglia alla forgia: il lato sicuro verso di te, e gli occhi sulle tue dita finché non si chiudono.",
+		"Porta un problema a uno dei nani di Stormwind e la paga ti torna indietro come un attrezzo passato sopra l'incudine: dritta, salda, e con un'occhiata che dice di non farla cadere.",
+	},
+	["sw.quest_complete.w22.handover.009"] = {
+		"Troppo gentile. Davvero, un filo troppo. Non ho l'abito adatto.",
+		"Molto cortese. Cercherò di meritarmelo mentre esco.",
+		"Che garbo. Mi sa che avrei dovuto pettinarmi, prima.",
+	},
+	["sw.quest_complete.w22.handover.010"] = {
+		"prende la paga in basso, passata da mano a mano sotto la linea degli sguardi, come si fanno gli affari in una città dove la strada ascolta sempre.",
+		"riceve le monete con discrezione, fatte scivolare fra due corpi come se la via non avesse diritto di sapere; e a Stormwind di rado ce l'ha.",
+	},
+	["sw.quest_complete.w22.handover.011"] = {
+		"La mano che mi ha pagato tremava appena. Poco. Quanto basta per dirmi da quanto tempo questa faccenda pesava sul petto di qualcuno.",
+		"Un piccolo tremito nelle dita, mentre la paga passava di mano. Qualunque cosa fosse, aveva tenuto sveglio qualcuno per un bel pezzo.",
+	},
+	["sw.quest_complete.w22.handover.012"] = {
+		"Per un istante la borsa ha avuto due padroni, una mano per parte, e nessuno dei due sicuro a chi toccasse mollare.",
+		"C'è sempre un attimo in cui la paga sta in due mani insieme. Poi una delle due si ricorda di sé, ed è la mia.",
+	},
+	["sw.quest_complete.w22.handover.013"] = {
+		"sente una sedia strisciare all'indietro: l'altro si alza per consegnare la paga, una piccola cortesia che la città riserva ancora al lavoro fatto bene.",
+		"si fa pagare da qualcuno che si alza apposta, benché da seduto sarebbe stato più comodo: le vecchie maniere di Stormwind sopravvivono alla comodità.",
+	},
+	["sw.quest_complete.w22.handover.014"] = {
+		"Prima la paga, poi il grazie, dicono i bottegai del Trade District, così nessuno scambia il grazie per una parte del prezzo.",
+		"Prima le monete, poi la gentilezza: è la regola dei mercanti di questa città. Così la gentilezza, quando arriva, è gratis.",
+	},
+	["sw.quest_complete.w22.handover.015"] = {
+		"Aspetta, guarda che mani. Ecco. Adesso puoi pagarmi.",
+		"Un momento. Non prendo monete oneste con le mani ridotte così.",
+	},
+	["sw.quest_complete.w22.handover.016"] = {
+		"si trova davanti la paga posata su un quadrato di stoffa piegata, come un gioielliere mostra un anello, e si sente in dovere di prenderla con pari cura.",
+		"riceve le monete su un fazzoletto ripiegato, come merce da vetrina di gioielliere, e le solleva con due dita molto prudenti.",
+	},
+	["sw.quest_complete.w22.handover.017"] = {
+		"Il momento peggiore di ogni consegna è quel mezzo secondo in cui ti guardano per capire se hai l'aria di chi ha fatto le cose per bene.",
+		"Prima della paga c'è sempre un'occhiata dalla testa ai piedi, a pesarmi contro il lavoro. Ho imparato a restare {g:fermo|ferma} come un cavallo in fiera.",
+	},
+	["sw.quest_complete.w22.handover.018"] = {
+		"Questo è tutto. Chiedimi quello che vuoi, adesso, finché me lo ricordo.",
+		"È tutto tuo. Se hai domande, falle ora: al prossimo angolo ne avrò già scordato metà.",
+	},
+	["sw.quest_complete.w22.handover.019"] = {
+		"deve aspettare la fine della lite di qualcun altro prima di chiudere la faccenda, e studia a turno il soffitto, il pavimento e le proprie unghie.",
+		"resta in attesa che l'altro finisca di sgridare un apprendista, poi si vede rivolgere un sorriso così improvviso che pare tenuto in un cassetto.",
+	},
+	["sw.quest_complete.w22.handover.020"] = {
+		"A Stormwind anche la consegna ha la sua coda. Per tutto il tempo ho sentito il prossimo leggermi da sopra la spalla.",
+		"Qualcuno mi aspettava alle spalle da principio alla fine, abbastanza vicino da imparare a memoria i fatti miei. Qui la riservatezza si affitta a ore, al piano di sopra.",
+	},
+	["sw.quest_complete.w22.handover.021"] = {
+		"Non alzarti. Davvero. So prendere monete anche da chi sta seduto.",
+		"Resta pure a sedere, per favore. La gratitudine non ha bisogno di stare in piedi.",
+	},
+	["sw.quest_complete.w22.ledger.001"] = {
+		"trova il registro girato sul banco perché ammiri la voce appena scritta, e la ammira con diligenza, benché sia solo una data e una cifra.",
+		"si vede mostrare con un certo orgoglio la riga fresca nel libro, prima capovolta e poi dritta, e trova le parole giuste per apprezzare una colonna di numeri.",
+	},
+	["sw.quest_complete.w22.ledger.002"] = {
+		"La mia faccenda è finita sotto «Varie». Fra tutte le colonne di questa città, è quella che avrei scelto anch'io.",
+		"Archiviata sotto «Diverse», con una calligrafia che quella parola la scrive di sicuro parecchio. Tutto il sottobosco di Stormwind vive in quella colonna.",
+	},
+	["sw.quest_complete.w22.ledger.003"] = {
+		"guarda tirare una riga sotto la voce con un regolo, adagio, la penna tenuta all'angolo esatto, come se tutto il regno dipendesse da quanto è dritta.",
+		"vede la faccenda chiusa da una riga tracciata sulla pagina, con tanta cura che la punta della lingua dello scrivano spunta all'angolo della bocca.",
+	},
+	["sw.quest_complete.w22.ledger.004"] = {
+		"Il registro era incatenato al tavolo. In una città così onesta, qualcuno aveva comunque deciso di non rischiare col libro.",
+		"Una catena sul libro, imbullonata al banco. Qui nessuno ruba i registri, mi hanno detto. La catena l'hanno messa dopo che qualcuno l'ha fatto.",
+	},
+	["sw.quest_complete.w22.ledger.005"] = {
+		"La pagina era così piena che la mia riga è finita nel margine, di traverso, fra una lite per una botte e il debito insoluto di qualcuno. Se qualcuno cerca, mi troverà lì, inclinato.",
+		"Spazio finito sulla pagina, così sono {g:entrato|entrata} su per il margine, a lettere minute, arrampicandomi sul bordo come l'edera. Un modo molto da Stormwind di essere ricordati.",
+	},
+	["sw.quest_complete.w22.ledger.006"] = {
+		"guarda l'altro inumidirsi il pollice, voltare venti pagine, inumidirlo ancora, voltarne altre venti e arrivare infine a quella giusta con un piccolo verso di trionfo.",
+		"aspetta mentre il libro viene sfogliato da un pollice umido, pagina dopo pagina, finché il punto non è trovato e picchiettato due volte per non farlo scappare.",
+	},
+	["sw.quest_complete.w22.ledger.007"] = {
+		"ascolta il ticchettio delle palline mentre la somma viene verificata su un telaietto di legno, le dita dello scrivano più rapide dell'occhio.",
+		"guarda le palline scattare avanti e indietro sui fili con un suono di gallina che becca il grano, e si sente dire il totale prima che l'ultima si sia fermata.",
+	},
+	["sw.quest_complete.w22.ledger.008"] = {
+		"Sulla pagina sopra la mia c'era una riga barrata in rosso. Pagata, o lasciata perdere. I registri non lo dicono, e la faccia dello scrivano nemmeno.",
+		"Un tratto rosso su una vecchia voce, due righe più su. I conti chiusi si somigliano tutti, saldati o abbandonati che siano. Spero che quello fosse saldato.",
+	},
+	["sw.quest_complete.w22.ledger.009"] = {
+		"Scrivilo come ti pare. Rispondo a qualunque nome venga pagato.",
+		"Scrivimi come mi senti. La tua versione potrebbe essere migliore.",
+		"Il mio nome? Ci siamo quasi. Non farò causa.",
+	},
+	["sw.quest_complete.w22.ledger.010"] = {
+		"Mentre la pagina girava ho intravisto voci più vecchie: altri nomi, altre somme, anni di piccoli affari nella stessa mano paziente. Quello scrivano lo fa da prima che lastricassero certe di queste strade.",
+		"La calligrafia delle pagine vecchie era uguale a quella nuova. Una sola persona tiene quel libro da anni, fra reggenti e dicerie, senza mai cambiare la pendenza delle lettere.",
+	},
+	["sw.quest_complete.w22.ledger.011"] = {
+		"deve aspettare che la somma venga riportata su una pagina nuova, perché quella vecchia, spiega lo scrivano, è piena zeppa della gratitudine di altri.",
+		"aspetta che si cominci una pagina nuova per la voce, mentre lo scrivano mormora che la precedente è stata chiusa con una certa cerimonia poco fa.",
+	},
+	["sw.quest_complete.w22.ledger.012"] = {
+		"Il nano teneva il conto su un bastone con le tacche, non su un libro. Una tacca per il lavoro, una di traverso per il pagato. Più svelto di qualunque registro umano, e impossibile da falsificare senza un coltello e molta faccia tosta.",
+		"Un bastone a tacche al posto del registro: tacca, tacca, una più profonda per la somma. I nani di questa città si fidano più del legno che della carta, e comincio a capire perché.",
+	},
+	["sw.quest_complete.w22.ledger.013"] = {
+		"Devo fare da testimone alla mia stessa voce? Va bene. Confermo solennemente che c'ero.",
+		"Vuoi che la rilegga? «Fatto. Pagato.» Sì, mi somiglia.",
+	},
+	["sw.quest_complete.w22.ledger.014"] = {
+		"Il calamaio quasi secco, la penna che graffia l'ultimo fondo. La mia voce è più pallida di quelle di sopra, un piccolo fantasma di riga. Conta lo stesso.",
+		"L'inchiostro si è diradato a metà della mia voce. La prima parte è nera, il resto un grigio tenue, come una frase che perde il coraggio. Vale lo stesso, mi dicono.",
+	},
+	["sw.quest_complete.w22.ledger.015"] = {
+		"segue il dito dello scrivano lungo una colonna, dall'alto, sotto ogni riga, finché si ferma in fondo e batte due volte sul totale.",
+		"guarda un polpastrello scorrere la colonna di cifre, le labbra che contano sottovoce, e fermarsi ai piedi con un colpetto deciso.",
+	},
+	["sw.quest_complete.w22.ledger.016"] = {
+		"Tutto quello che ho fatto sta in una riga di registro, e la riga non è nemmeno piena. Restava spazio per uno scarabocchio, e credo che lo scrivano ci abbia pensato.",
+		"Una riga, mezza in realtà: un nome, una cifra, un segno di spunta. La penna dello scrivano è rimasta sospesa alla fine come se sentisse che doveva esserci altro. Di solito c'è.",
+	},
+	["sw.quest_complete.w22.ledger.017"] = {
+		"Con l'inchiostro rosso? Sono un debito o un avvertimento?",
+		"Perché rosso? Ah, è l'unica penna. Bene. Mi ero {g:preoccupato|preoccupata}.",
+	},
+	["sw.quest_complete.w22.ledger.018"] = {
+		"Due libri, ho notato: uno per le uscite, uno per le entrate. La mia è finita nel primo. Il secondo sembrava parecchio più magro.",
+		"Lo scrivano teneva affiancati un libro grasso dei pagamenti e uno sottile degli incassi. Non invidio chi deve metterli d'accordo a fine mese.",
+	},
+	["sw.quest_complete.w22.ledger.019"] = {
+		"Ogni regno ha i suoi registri, e ogni bambino umano di Stormwind impara presto a rispettarli. Una somma scritta giusta è un pezzetto d'ordine nel mondo, e sono {g:contento|contenta} di farne parte.",
+		"Agli umani piacciono i conti in pari, e io sono {g:umano|umana}. Vedere il mio nome scritto accanto a una cifra giusta in un libro di Stormwind è un orgoglio quieto e ordinario.",
+	},
+	["sw.quest_complete.w22.ledger.020"] = {
+		"guarda la voce finita cosparsa di sabbia, e l'eccesso riversato nel vasetto con cura esperta, perché neanche un granello della sabbia cittadina vada sprecato.",
+		"vede lo scrivano versare sabbia sulla riga fresca, inclinare la pagina e rimandare ogni granello nella sua scatoletta, un'economia che pare riassumere tutta la città.",
+	},
+	["sw.quest_complete.w22.ledger.021"] = {
+		"Scrivi che è stato fatto bene, non solo fatto. C'è differenza, e il tuo libro dovrebbe saperlo.",
+		"C'è una colonna per «fatto come si deve»? Dovrebbe esserci.",
+		"Scrivi «bene», non solo «fatto». L'inchiostro costa poco.",
+	},
+	["sw.quest_complete.w22.ledger.022"] = {
+		"Mettici la data, per favore. Voglio sapere quando mi hanno pagato bene, per dopo.",
+		"Accanto, la data. La prova che è successo almeno una volta.",
+		"Datalo. Se un giorno questa città avrà da ridire, avrò il giorno dalla mia.",
+	},
+	["sw.quest_complete.w22.onward.001"] = {
+		"Testa, i gradini della cattedrale per sedermi. Croce, il Dwarven District per qualcosa di caldo. Vediamo cosa ne pensa la moneta.",
+		"Lo tiro a sorte. Decide il rame; io cammino e basta.",
+		"Sinistra o destra? Facciamo girare un rame. In questa città ho seguito consigli peggiori.",
+	},
+	["sw.quest_complete.w22.onward.002"] = {
+		"si avvia verso la Valley of Heroes senza alcuna commissione, solo con la voglia di restare un po' tra le statue e ritrovare la propria misura.",
+		"si lascia portare in direzione della Valley of Heroes, dove le grandi figure di pietra sovrastano la strada, per essere poca cosa davanti a loro qualche minuto.",
+	},
+	["sw.quest_complete.w22.onward.003"] = {
+		"Mi cerco un muretto sui canali a cui appoggiarmi e guardo l'acqua che non fa niente, per un po'. Ci riesce benissimo, e vorrei prendere lezioni.",
+		"Giù ai canali, a mettere i gomiti sulla pietra e fissare l'acqua finché la testa non mi diventa piatta come lei.",
+	},
+	["sw.quest_complete.w22.onward.004"] = {
+		"Allo Slaughtered Lamb, direi. Birra scura, angoli più scuri, e là dentro nessuno vorrà sapere com'è andata.",
+		"Vado allo Slaughtered Lamb. La birra è nera e la compagnia peggio, e niente di tutto questo è una commissione per qualcuno.",
+	},
+	["sw.quest_complete.w22.onward.005"] = {
+		"La Cathedral Square, direi, a sedermi sul bordo di una fontana a guardare tutti gli altri che hanno fretta. Il miglior spettacolo della città, e gratis.",
+		"Mi cerco il bordo di una fontana da qualche parte e mi ci siedo come un doccione nel suo giorno libero.",
+	},
+	["sw.quest_complete.w22.onward.006"] = {
+		"Magari il Mage Quarter, a guardare gli apprendisti che si bruciacchiano le sopracciglia. È gratis, e fa sembrare il mio lavoro sicurissimo.",
+		"Una passeggiata nel Mage Quarter, direi. C'è sempre qualche studente con la tunica bruciacchiata, e fa miracoli per il mio senso delle proporzioni.",
+	},
+	["sw.quest_complete.w22.onward.007"] = {
+		"fa tre passi verso il Trade District, si volta, ne fa due verso l'Old Town, e chiude la questione sedendosi sul parapetto di un ponte a pensarci su.",
+		"parte in una direzione, ci ripensa, parte nell'altra, e alla fine si appoggia a una ringhiera tra le due, come in attesa di una terza.",
+	},
+	["sw.quest_complete.w22.onward.008"] = {
+		"Qualcuno conosce una trattoria vicino ai canali che non sia piena di valletti dei nobili? Ho fame e qualche moneta.",
+		"Offro un giro. Uno. Piccolo. Chi ci sta?",
+		"Qualcuno mi indichi il miglior pasto economico di Stormwind. Me lo sono guadagnato, e divido volentieri la tavola.",
+	},
+	["sw.quest_complete.w22.onward.009"] = {
+		"Per me il Pig and Whistle. Un tavolo d'angolo, una scodella di quel che costa meno, e le spalle al muro.",
+		"Vado nell'Old Town. Al Pig and Whistle c'è uno sgabello senza il nome di nessuno, e ho intenzione di occuparlo.",
+	},
+	["sw.quest_complete.w22.onward.010"] = {
+		"si inoltra nel fitto delle botteghe del Trade District e resta a lungo davanti a una mostra di mantelli pregiati, come a uno spettacolo.",
+		"si dirige verso i mercanti di stoffe senza la minima intenzione di comprare, per tastare la buona lana e attirarsi qualche occhiata sospettosa, che è un piccolo piacere a sé.",
+	},
+	["sw.quest_complete.w22.onward.011"] = {
+		"Potrei mettermi subito a cercare il prossimo lavoro. Oppure no. Al momento il 'no' è in vantaggio di una via.",
+		"Di sicuro da qualche parte in questa città c'è altro lavoro col mio nome sopra. Che aspetti un po' alla sua scrivania; è abituato.",
+	},
+	["sw.quest_complete.w22.onward.012"] = {
+		"Indicatemi la seduta più vicina che nessuno venda, affitti o sorvegli.",
+		"C'è una sedia libera a Stormwind? Non una panca della cattedrale, non uno sgabello a pagamento. Solo una sedia.",
+	},
+	["sw.quest_complete.w22.onward.013"] = {
+		"Si va al Dwarven District. Lì la birra la spilla qualcuno che sa come si fa, e si parla di pietra, non di nobili.",
+		"Porto la mia sete nel Dwarven District, dove un nano può appoggiarsi alla ringhiera di una forgia e sentire un accento come si deve.",
+	},
+	["sw.quest_complete.w22.onward.014"] = {
+		"imbocca un vicolo mai percorso, solo per scoprire dove porta, e sbuca in un cortiletto con un pozzo e un solo arbusto in un vaso.",
+		"svolta in un vicolo senza altro motivo che il fatto che c'è, e in fondo trova una piazzetta minuscola con un pozzo, tre porte e nessuno.",
+	},
+	["sw.quest_complete.w22.onward.015"] = {
+		"Faccio un giro verso il posatoio a guardare i grifoni che atterrano. Non per volare. Mi piace solo come chiudono le ali, come chi chiude un buon libro.",
+		"Non ho posti dove volare. Però potrei andare a guardare le bestie del posatoio che si sistemano dopo il volo. Niente in città atterra meglio.",
+	},
+	["sw.quest_complete.w22.onward.016"] = {
+		"Se qualcuno mi sorprende a cercare altro lavoro prima di aver mangiato, mi tolga gli stivali.",
+		"Se a breve mi metto a chiedere altro lavoro, qualcuno mi fermi. Con decisione.",
+	},
+	["sw.quest_complete.w22.onward.017"] = {
+		"Resta ancora tanta luce del giorno, e nemmeno un'ora è già impegnata. È una ricchezza più grande di qualunque cosa abbia in borsa.",
+		"Il giorno è usato appena a metà e il lavoro è fatto. Il resto è mio, da sprecare come mi pare.",
+	},
+	["sw.quest_complete.w22.onward.018"] = {
+		"Qualcuno conosce un angolo tranquillo in questa città? Uno vero, non uno con dentro un mercante.",
+		"Cerco la via più silenziosa di Stormwind. Quando la trovo, non ditelo a nessuno.",
+		"C'è un angolo di questa città senza un banditore, un carro o una bancarella? Vado lì.",
+	},
+	["sw.quest_complete.w22.onward.019"] = {
+		"Dove vado? Ottima domanda. Te lo dico quando arrivo.",
+		"Destinazione? Un posto con un tetto e una scodella. I dettagli sono trattabili.",
+		"Nessun piano. Seguo i piedi, e sono stati inaffidabili tutta la settimana.",
+	},
+	["sw.quest_complete.w22.purse.001"] = {
+		"Non serve contarle ad alta voce. Non è il caso che tutta la via sappia la mia paga.",
+		"Piano, se le conti. Mezza Stormwind ha le orecchie accordate sull'argento.",
+		"Contale sottovoce e in fretta, per favore. In questa città il tintinnio arriva a tre strade di distanza.",
+	},
+	["sw.quest_complete.w22.purse.002"] = {
+		"guarda la paga finire su una bilancina d'ottone invece di essere contata, il piatto che scende e si assesta mentre chi paga lo scruta come un medico una lingua.",
+		"vede le monete pesate anziché contate, versate una a una in un piattino d'ottone finché il giogo non sta in bolla e il mercante grugnisce il suo assenso.",
+	},
+	["sw.quest_complete.w22.purse.003"] = {
+		"Contarle davanti a chi paga è scortese. Non contarle è da sciocchi. Ho scelto di soppesarle nel palmo con una faccia perfettamente tranquilla.",
+		"Il dilemma più antico di Stormwind: contare la paga sotto il naso di chi te la dà e offenderlo, oppure no, e scoprirlo dopo. Non ho fatto né l'una né l'altra cosa: ho aggrottato appena la fronte, che pareva valere per entrambe.",
+	},
+	["sw.quest_complete.w22.purse.004"] = {
+		"riceve un pezzo d'argento troppo grosso per la cifra e deve trovare il resto per chi paga, così la ricompensa finisce col premiato che restituisce rame.",
+		"scopre che chi paga è senza spiccioli, accetta un argento al loro posto e finisce per dare il resto di tasca propria, che sa tanto di passo indietro.",
+	},
+	["sw.quest_complete.w22.purse.005"] = {
+		"Questa è tosata. Vedi il bordo? Ne prendo una intera, grazie.",
+		"Quella no, se non ti spiace. Qualcuno l'ha limata.",
+	},
+	["sw.quest_complete.w22.purse.006"] = {
+		"sente le dita di chi paga indugiare sull'ultima moneta un istante di troppo, come per salutarla, prima di lasciarla andare.",
+		"nota come l'ultima moneta resti sotto il pollice dell'altro un attimo in più, trattenuta per abitudine, prima di essere ceduta.",
+	},
+	["sw.quest_complete.w22.purse.007"] = {
+		"Le monete hanno suonato giuste sul banco. A Stormwind la gente lo ascolta davvero, con la testa inclinata, come chi accorda un liuto.",
+		"In questa città una moneta che cade ottiene un istante di silenzio da chiunque sia a portata d'orecchio. Si cerca il piombo. Le mie sono passate.",
+	},
+	["sw.quest_complete.w22.purse.008"] = {
+		"guarda la paga contata in pile da dieci, le labbra che si muovono in silenzio, e poi una moneta in più messa da parte e fissata come se si fosse intrufolata senza invito.",
+		"segue il conteggio a torrette da dieci finché ne avanza una, osservata con sospetto e infine aggiunta con evidente rammarico.",
+	},
+	["sw.quest_complete.w22.purse.009"] = {
+		"Monete miste, come sempre: qualche argento, un mucchio di rame e un pezzo ammaccato che dovrà spiegarmi un cambiavalute. Stormwind paga con quello che c'è nel cassetto.",
+		"La paga è arrivata in tutti i tagli che la città conia, più uno che non conia. In banca scoprirò quanto vale l'estraneo del mucchio.",
+	},
+	["sw.quest_complete.w22.purse.010"] = {
+		"Non contarla due volte per me. La prima era già molto convincente.",
+		"L'hai contata tre volte. Sta crescendo, o speri che si rimpicciolisca?",
+		"Due volte bastano. Se fosse cambiata fra un conteggio e l'altro, vorrei sapere il trucco.",
+	},
+	["sw.quest_complete.w22.purse.011"] = {
+		"Le monete erano ancora tiepide di mano. Qualcuno aveva stretto quei soldi per un bel po', aspettando che entrassi.",
+		"Monete tiepide. Non per il fuoco: per un pugno che le ha tenute chiuse, direi, per tutto il tempo che mi aspettavano.",
+	},
+	["sw.quest_complete.w22.purse.012"] = {
+		"chiude i lacci della borsa con un doppio nodo, di quelli che fanno le donne al mercato, e la scuote appena per sentirla assestarsi.",
+		"stringe il cordino, lo avvolge due volte attorno a un dito e ne infila la coda, un piccolo rito ordinato per mettere via la paga.",
+	},
+	["sw.quest_complete.w22.purse.013"] = {
+		"Prezzo giusto. Avrei chiesto lo stesso, se qualcuno me l'avesse domandato.",
+		"Siamo pari. Niente contrattazione, ed cosa mai vista in questa città.",
+		"Pattuito, chiuso, pagato. A Stormwind nessuno crederà che sia andata così liscia.",
+	},
+	["sw.quest_complete.w22.purse.014"] = {
+		"La paga cambia faccia passando di mano. Dalla loro parte del banco era un sacrificio; dalla mia sono poche monete e un pasto.",
+		"Quello che stringo, per loro, è una settimana di vita attenta. Per me è un pomeriggio. È il guaio della paga: non pesa mai uguale ai due capi.",
+	},
+	["sw.quest_complete.w22.purse.015"] = {
+		"La somma era stata fissata all'inizio, poi ricalcolata, poi arrotondata, poi riarrotondata all'indietro. Siamo finiti dove eravamo partiti: a quanto pare qui i conti si chiudono così.",
+		"Stormwind non si limita a pagarti. Rivede la cifra, schiocca la lingua, riporta uno, e arriva esattamente a quanto promesso, con l'aria sorpresa.",
+	},
+	["sw.quest_complete.w22.purse.016"] = {
+		"fa scivolare le monete dal bordo del banco nel cavo della mano, come fanno i bottegai, senza che una sola tocchi terra.",
+		"spinge la paga fino all'orlo del banco e giù nel palmo che aspetta, in un solo gesto fluido, trucco imparato a cento bancarelle.",
+	},
+	["sw.quest_complete.w22.purse.017"] = {
+		"È scortese morderla? È scortese morderla. La morderò dopo.",
+		"Non morderò la moneta. Non qui. Non mentre guardi.",
+	},
+	["sw.quest_complete.w22.purse.018"] = {
+		"Ogni moneta coniata in questo regno è passata per cento palmi, e giurerei che ogni palmo ne ha tolto un po' di lucido. Le mie hanno il colore dei cucchiai vecchi.",
+		"Nemmeno una di queste monete è nuova. Hanno l'aria opaca e onesta dei soldi che hanno comprato pane in ogni via di Stormwind e ci sono stati brontolati sopra.",
+	},
+	["sw.quest_complete.w22.purse.019"] = {
+		"Stormwind ti dà i soldi come chi si è appena sentito ricordare un debito a cena: sorridente, puntuale e un po' offeso.",
+		"{g:Pagato|Pagata} subito, col sorriso e con quel lieve martirio del padrone di casa che salda il conto. Questa città è bravissima a non dovere niente a nessuno.",
+	},
+	["sw.quest_complete.w22.purse.020"] = {
+		"Soppeso sempre la paga in una mano prima di guardarla. La mano conosce la cifra prima degli occhi, e di rado rimane delusa.",
+		"Il primo conto lo fa il palmo. Ha avuto ragione più spesso di qualunque scrivano, e non chiede mai una tariffa.",
+	},
+	["sw.quest_complete.w22.purse.021"] = {
+		"Noi gnomi contiamo a peso e con un calcolo a mente. Avevo finito prima che l'umano di fronte avesse costruito la seconda pila, e ho taciuto con gran cortesia.",
+		"Gli umani contano le monete ammucchiandole in torrette. Io avevo il totale prima che la prima torre fosse finita, e ho passato il resto del tempo ad ammirarne l'architettura.",
+	},
+	["sw.quest_complete.w22.purse.022"] = {
+		"morde la prima moneta per vecchia abitudine, vede l'altro trasalire e intasca il resto senza morsi, per amor di buoni rapporti.",
+		"saggia una moneta fra i denti di dietro, intercetta uno sguardo di puro orrore alla Stormwind e decide che le altre saranno di sicuro altrettanto oneste.",
+	},
+	["sw.quest_complete.w22.purse.023"] = {
+		"{g:Pagato|Pagata} alla luce fioca di una lampada, così ho preso le monete sulla fiducia e al tatto. Il bordo zigrinato è l'argento, quello liscio il rame. Le mie dita sanno leggere i soldi al buio.",
+		"A quest'ora non si distingue l'argento dal rame senza alzarlo verso una lampada, e sembra avido. Ho passato il pollice sul bordo di ciascuna, invece.",
+	},
+	["sw.quest_complete.w22.purse.024"] = {
+		"Moneta spicciola, fino all'ultimo pezzo. Pesa di più, quindi sembra di più.",
+		"Tutto in monetine. Almeno la borsa suonerà da ricca.",
+		"Tutti spiccioli. Tintinnerò come un giorno di fiera.",
+	},
+	["sw.quest_complete.w22.purse.025"] = {
+		"La conto, o facciamo finta tutti e due che mi fido ciecamente?",
+		"La conterò dopo, dove non puoi vedermi. Questione di educazione.",
+		"Contarla adesso sarebbe scortese, quindi la fisserò finché non confessa.",
+	},
+	["sw.quest_complete.w22.purse.026"] = {
+		"Niente resto? Tienilo, allora. Chiamala mancia per l'onestà.",
+		"Arrotonda per difetto, va bene. Non mi porto un rame per mezza Stormwind per principio.",
+	},
+	["sw.quest_complete.w22.purse.027"] = {
+		"Oh. Ma guarda. Farò finta di aspettarmelo.",
+		"È più di quanto pensassi. Non riprendertelo mentre decido che faccia fare.",
+	},
+	["sw.quest_complete.w22.reckon.001"] = {
+		"Dimenticherò la paga molto prima di qualche dettaglio del lavoro: una crepa in un gradino, una certa voce, l'odore di una stanza. La memoria conserva le ricevute sbagliate.",
+		"Fra anni le monete saranno sparite da un pezzo, e a me resterà qualche dettaglio inutile, uno scalino che scricchiolava, il colore di una porta. Va sempre così.",
+	},
+	["sw.quest_complete.w22.reckon.002"] = {
+		"L'avrei fatto per niente? Mi piacerebbe dire di sì. Meglio non averlo dovuto scoprire.",
+		"Se non ci fosse stata paga, avrei detto di sì lo stesso? Probabilmente. Forse. Non me lo chiederò una seconda volta.",
+	},
+	["sw.quest_complete.w22.reckon.003"] = {
+		"Ogni lavoro mi cambia un poco, troppo poco per accorgersene allo specchio. Un giorno farò la somma e non riconoscerò il totale.",
+		"Qualcosa in me si è spostato di un capello. Nessun altro se ne accorgerà. Abbastanza capelli, e sarò un'altra persona.",
+	},
+	["sw.quest_complete.w22.reckon.004"] = {
+		"non dice una parola per tutta la lunghezza di una via, con la faccia di chi fa una somma in cui non entrano monete.",
+		"percorre un lungo tratto in silenzio, gli occhi sul selciato qualche passo avanti, come se vi leggesse qualcosa di scritto.",
+	},
+	["sw.quest_complete.w22.reckon.005"] = {
+		"Già adesso qualcuno alle mie spalle racconta tutto a un vicino, e nella sua versione ho qualche spanna in più e molte più buone maniere. Mi va bene.",
+		"Quando il racconto arriverà in fondo a quella via avrò maniere migliori delle mie. Le storie sono gentili con gli estranei.",
+	},
+	["sw.quest_complete.w22.reckon.006"] = {
+		"Questa città ha sepolto un re, è bruciata ed è tornata in piedi. Quello che ho appena fatto non le peserà sulla memoria. A suo modo, è una liberazione.",
+		"Stormwind è sopravvissuta a re e incendi. Accanto a questo, il mio lavoretto vale meno di una nota a margine, e c'è uno strano riposo nell'essere così piccoli.",
+	},
+	["sw.quest_complete.w22.reckon.007"] = {
+		"Speriamo che regga. Tutto qui. Speriamo che regga.",
+		"Che resti a posto. È l'unico desiderio che ho.",
+		"Che duri più della maggior parte delle cose di questa città.",
+	},
+	["sw.quest_complete.w22.reckon.008"] = {
+		"In mezzo a tutto questo rumore c'è un piccolo silenzio, della mia misura, che cammina dove cammino io. Arriva dopo ogni lavoro finito e non si ferma mai a lungo.",
+		"Carri, banditori, martelli, e nel mezzo una piccola quiete tutta mia. Il lavoro finito ne crea una, per una via o due.",
+	},
+	["sw.quest_complete.w22.reckon.009"] = {
+		"Il tuono rotola sopra i tetti mentre me ne sto qui, a lavoro finito. La città trasale e va avanti. Anch'io.",
+		"Uno schianto di tuono sopra la testa, e tutti i bottegai della via si abbassano insieme. Io no. Qualunque cosa abbia da dire il cielo, il mio lavoro è già al sicuro.",
+	},
+	["sw.quest_complete.w22.reckon.010"] = {
+		"Le grandi cause vogliono discorsi ed eserciti. Quelle piccole vogliono solo qualcuno che si presenti. Presentarmi, pare, è il mio mestiere.",
+		"Non posso aggiustare il regno. Una sola cosa storta in una sola via, però, sì, e l'ho appena fatto.",
+	},
+	["sw.quest_complete.w22.reckon.011"] = {
+		"Da qualche parte a Stormwind c'è una faccia che sta già componendo le parole 'Non è che per caso potresti...'. Allungo un po' il passo.",
+		"Là fuori qualcuno sta provando come chiedermi il prossimo favore. Lo sento da qui. Il passo svelto è la mia unica difesa.",
+	},
+	["sw.quest_complete.w22.reckon.012"] = {
+		"si passa il pollice sulle nocche dell'altra mano, un piccolo gesto privato, come per lisciare la fine di qualcosa.",
+		"posa per un attimo una mano sull'altra all'altezza della cintura, un piccolo punto fermo che nessun altro nella via nota.",
+	},
+	["sw.quest_complete.w22.reckon.013"] = {
+		"Gli umani costruiscono in pietra perché non hanno il tempo di far crescere niente. Lavorare per loro è lavorare per gente che ha fretta, e chissà come questo gli dà più valore.",
+		"In questa città tutto è costruito in fretta e fatto per durare. Aiutare chi vive così poco è come aggiungere una pietra a un muro che non vedrà mai finito.",
+	},
+	["sw.quest_complete.w22.reckon.014"] = {
+		"Stammi bene, Stormwind. Cerca di non avere bisogno di me per un'oretta.",
+		"Ecco fatto, città. Una cosa in meno. Non sprecarla tutta subito.",
+		"Fa' la brava, Stormwind. Sarò a portata di grido.",
+	},
+	["sw.quest_complete.w22.reckon.015"] = {
+		"Mi chiedo cosa faranno del tempo che hanno riavuto. Qualcosa di piccolo, spero. Un pasto lungo. Andare a letto presto.",
+		"Chiunque abbia aiutato ha un'ora in più che prima non aveva. Spero la sprechi meravigliosamente.",
+	},
+	["sw.quest_complete.w22.reckon.016"] = {
+		"Qualunque cosa stia combinando il mondo là fuori, dentro queste mura una cosa è stata chiesta e una cosa è stata fatta. Certi giorni è l'unico ordine che riesco a trovare.",
+		"Il mondo oltre le mura è un disordine che non posso riassettare. Dentro, una piccola cosa ora è al suo posto. Me la tengo stretta.",
+	},
+	["sw.quest_complete.w22.reckon.017"] = {
+		"Bene. Allora è fatta.",
+		"E questo, a quanto pare, è quanto.",
+		"Mh. Già finito.",
+	},
+	["sw.quest_complete.w22.reckon.018"] = {
+		"È stato un buon lavoro. Ho il diritto di dirlo ad alta voce, una volta.",
+		"Fatto bene, quello. Ecco. L'ho detto. Non lo ripeto.",
+		"Un lavoro fatto come si deve. Me lo dico da me, visto che non c'è nessun altro a dirmelo.",
+	},
+	["sw.quest_complete.w22.reckon.019"] = {
+		"La prossima volta che qualcuno mi dice 'hai l'aria di avere un momento', avrò l'aria più indaffarata.",
+		"Lezione imparata: mai stare fermi a Stormwind con l'aria disponibile.",
+	},
+	["sw.quest_complete.w22.seal.001"] = {
+		"guarda un anello con sigillo girato due volte attorno al dito prima di essere premuto nella cera, come se andasse svegliato.",
+		"vede chi paga ruotare di mezzo giro un anello pesante, alitarci sopra e calarlo nella cera con grande cerimonia.",
+	},
+	["sw.quest_complete.w22.seal.002"] = {
+		"Lo stemma su quell'anello era consunto quasi liscio. Una casata antica e, a giudicare dai polsini, una casata che ha passato qualche anno duro.",
+		"L'anello di un nobile, con l'emblema ridotto a un fantasma da generazioni di pollici. Le belle maniere erano intatte. La giacca era rivoltata ai gomiti.",
+	},
+	["sw.quest_complete.w22.seal.003"] = {
+		"sente un timbro calare due volte sul foglio, con forza, la seconda a quanto pare per enfasi.",
+		"sussulta appena quando un timbro di legno colpisce il tavolo con un colpo degno di un giudice, poi un'altra volta, più piano, per sicurezza.",
+	},
+	["sw.quest_complete.w22.seal.004"] = {
+		"Il mio segno? Di solito faccio una stellina storta. Va bene una stellina storta?",
+		"Una croce, allora. Bella decisa. Ho fatto pratica.",
+		"Firmare? Dammi la penna. Ci metto le mie lettere migliori, tutte e quattro.",
+	},
+	["sw.quest_complete.w22.seal.005"] = {
+		"aspetta mentre un bastoncino di ceralacca viene tenuto sulla candela e ruotato, le gocce raccolte in una pozzetta rossa ordinata, e si sente dire secco di non toccare ancora.",
+		"si vede intimare con un dito alzato di stare alla larga mentre la cera calda si rapprende sul foglio, come se un solo tocco distratto potesse disfare l'intera faccenda.",
+	},
+	["sw.quest_complete.w22.seal.006"] = {
+		"Cera calda e carta vecchia: l'odore di una cosa che diventa ufficiale. A Stormwind aleggia su ogni banco come l'incenso in una cappella.",
+		"Quell'odore di ceralacca fusa e d'inchiostro. Vuol dire che qualcosa è appena diventato vero, in questa città, almeno sulla carta, che qui è il genere di vero che conta.",
+	},
+	["sw.quest_complete.w22.seal.007"] = {
+		"guarda il sigillo calare un po' storto, lo vede raschiare via col coltello e aspetta tutta la faccenda da capo, più dritta.",
+		"osserva un sigillo impresso di sbieco, una parola borbottata, la cera sollevata con una lama e una goccia nuova colata per un secondo tentativo.",
+	},
+	["sw.quest_complete.w22.seal.008"] = {
+		"Serve una seconda firma? Ma certo. E la seconda firma dov'è andata a pranzo?",
+		"Controfirmato da chi? Ah. E chi, quando torna?",
+	},
+	["sw.quest_complete.w22.seal.009"] = {
+		"Il timbro mostrava il leone del regno, impresso in inchiostro blu. Un leone piccolo, un po' sbavato, ma mentre firmavo lo sentivo guardarmi.",
+		"Qui perfino il timbro di uno scrivano qualunque porta un leone. È tanto regno da mettere su un pezzetto di carta, e la carta ne sembrava fiera.",
+	},
+	["sw.quest_complete.w22.seal.010"] = {
+		"riceve insieme alla paga un foglietto piegato, firmato e timbrato, con la raccomandazione di tenerlo nel caso qualcuno chieda.",
+		"riceve con le monete un quadratino di carta con una firma e un'ombra di sigillo, e il consiglio di tenerlo all'asciutto e al sicuro.",
+	},
+	["sw.quest_complete.w22.seal.011"] = {
+		"Mi hanno dato un foglio che prova che sono {g:stato pagato|stata pagata}. Se lo perdo, immagino mi servirà un altro foglio per provare che avevo il primo.",
+		"Una ricevuta a Stormwind più che un documento è un ostaggio. Perdila, e la città potrà sempre dire che non è successo niente.",
+	},
+	["sw.quest_complete.w22.seal.012"] = {
+		"deve premere il pollice su un tampone d'inchiostro e poi sulla pagina, e dopo tiene il pollice macchiato lontano dal corpo come una cosa avuta in prestito.",
+		"lascia l'impronta del pollice accanto al proprio nome, come richiesto, e passa un momento a cercare un posto qualsiasi dove pulirlo.",
+	},
+	["sw.quest_complete.w22.seal.013"] = {
+		"Ho firmato e il nome è venuto più tremolante di come lo scrivo. Le scartoffie fanno sembrare falsari le persone oneste.",
+		"La mia firma pareva quella di un altro. Succede sempre sulla carta ufficiale, come se la mano sapesse di essere osservata.",
+	},
+	["sw.quest_complete.w22.seal.014"] = {
+		"Aspetto che la cera si raffreddi, o l'attesa fa parte dell'onore?",
+		"Resto qui finché non fa presa, vero? Mi pare la cosa educata.",
+	},
+	["sw.quest_complete.w22.seal.015"] = {
+		"Il tampone si era seccato. Lo scrivano l'ha rianimato con un po' di saliva e molta pressione, e il sigillo del regno è uscito pallido ma presente.",
+		"Un tampone secco, riportato in vita con una goccia d'acqua e un pollice lungo e paziente. La burocrazia di Stormwind sopravvive grazie a questi piccoli salvataggi.",
+	},
+	["sw.quest_complete.w22.seal.016"] = {
+		"guarda un documento piegato in tre, poi ancora una volta, il sigillo steso sull'ultima piega perché nessuno possa aprirlo senza che tutta la città lo sappia.",
+		"vede il foglio piegato con la precisione di un righello e sigillato sul bordo, un piccolo scrigno di pergamena chiusa sulla faccenda.",
+	},
+	["sw.quest_complete.w22.seal.017"] = {
+		"Cera, nastro, sigillo. Stormwind chiude anche la faccenda più piccola come chiuderebbe un trattato, quasi che una cosa non sigillata potesse disfarsi in silenzio.",
+		"In questa città una faccenda non è chiusa quando il lavoro è fatto. È chiusa quando la cera ha fatto presa. Ho imparato a restare {g:fermo|ferma} anche per quella parte.",
+	},
+	["sw.quest_complete.w22.seal.018"] = {
+		"Quale copia è la mia? Quella con la macchia? Ma certo.",
+		"Due copie, e la mia è quella storta. Che onore, davvero.",
+	},
+	["sw.quest_complete.w22.seal.019"] = {
+		"In cima alle carte c'è ancora scritto «per ordine del reggente». L'hanno scritto così spesso che gli scrivani non rallentano più.",
+		"Ogni modulo di questa città comincia nel nome del reggente. La mano che l'ha scritto l'aveva fatto tante di quelle volte che le parole si fondevano in una.",
+	},
+	["sw.quest_complete.w22.seal.020"] = {
+		"Il foglio è stato cosparso di sabbia, scosso, sventolato, alzato verso la finestra e insabbiato di nuovo da capo. Alla fine mi fidavo più di lui che della maggior parte della gente.",
+		"Sabbia sull'inchiostro, un colpetto per scuoterla, uno sguardo socchiuso contro la finestra: il documento ha superato l'ispezione. Non sapevo che stessero esaminando anche me.",
+	},
+	["sw.quest_complete.w22.seal.021"] = {
+		"La penna dello scrivano era rosicchiata fino al moncone. Qualunque cosa questa città paghi i suoi scribi, non basta per una seconda piuma.",
+		"Una penna mangiucchiata a metà, una carta assorbente più macchia che carta. Gli affari del regno girano con attrezzi lisi e una calligrafia ottima.",
+	},
+	["sw.quest_complete.w22.seal.022"] = {
+		"Proprio la ceralacca? Mi basta la tua parola. È più leggera da portare.",
+		"Lascia stare il sigillo, se vuoi. Mi fido più di una faccia che di un grumo di cera.",
+		"Non serve sigillarlo per me. La mia memoria non lo contesterà.",
+	},
+	["sw.quest_complete.w22.seal.023"] = {
+		"Quello è il timbro ufficiale o quello amichevole? Ne hai due sul tavolo.",
+		"Usa il timbro bello. Quello col leone. Il leone me lo sono guadagnato.",
+	},
+	["sw.quest_complete.w22.street.001"] = {
+		"sbuca in strada proprio quando uno spazzino arriva a quel preciso pezzo di selciato, e la scopa fa il giro attorno a {g:lui|lei} senza una parola.",
+		"deve farsi da parte davanti alla scopa di uno spazzino, che ha il suo giro e non lo cambia per gli affari conclusi di nessuno.",
+		"si attarda un momento di troppo e si ritrova la scopa di uno spazzino che lavora paziente intorno a entrambi gli stivali.",
+	},
+	["sw.quest_complete.w22.street.002"] = {
+		"Qualcuno di sopra sbatte un tappeto dalla ringhiera di un balcone, e la polvere mi scende addosso in uno strato fine e democratico. Sono i coriandoli di Stormwind.",
+		"Un tappeto battuto da un balcone sopra la mia testa, e io esco dai miei affari conclusi dritto dentro la sua polvere. Molto cerimoniale.",
+		"Su un balcone una donna picchia un tappeto come se le dovesse dei soldi. A me tocca la polvere. Quasi una fanfara.",
+	},
+	["sw.quest_complete.w22.street.003"] = {
+		"deve scansare una banda di bambini che giocano alla Guardia con bastoni al posto delle alabarde, che {g:gli|le} intimano l'alt e poi {g:lo|la} lasciano passare con un cenno.",
+		"si vede sbarrare il passo da tre bambini con alabarde di manici di scopa, che {g:lo|la} interrogano severi sui suoi affari e poi salutano e fanno passare.",
+		"gira attorno a una partita a guardie e ladri che corre giù per la via; vincono i ladri, come sempre nei giochi dei bambini.",
+	},
+	["sw.quest_complete.w22.street.004"] = {
+		"Qualcuno in una stanza sopra la via sta imparando il flauto, una nota sbagliata dopo l'altra, e tutta la strada è troppo educata per farlo notare.",
+		"Un flauto da qualche parte al piano di sopra, che prova le stesse quattro note e manca la terza ogni volta. Stormwind ci passa sotto, con una smorfia all'unisono.",
+		"In qualche soffitta un principiante combatte con un flauto e perde. Mi fermo ad ascoltare lo stesso. La fatica di un altro, dopo la mia, è riposante da sentire.",
+	},
+	["sw.quest_complete.w22.street.005"] = {
+		"passa accanto a un barbiere che rade un cliente su uno sgabello piazzato in mezzo alla via, e tutti e due seguono il passante con gli occhi mentre il rasoio va avanti da solo.",
+		"cammina accanto a uno sgabello all'aperto dove un uomo si fa radere, insaponato fino agli occhi, che rivolge un cenno dignitoso attraverso la schiuma.",
+		"rallenta accanto allo sgabello all'aperto di un barbiere quel tanto che basta per vedersi offrire una spuntatina, e rifiuta con una mano sulla mascella e un sorriso.",
+	},
+	["sw.quest_complete.w22.street.006"] = {
+		"Due muratori su un'impalcatura battono un blocco nuovo dentro un muro vecchio, e intanto sparlano di un terzo muratore che non c'è. La città si rammenda tutto il giorno, a forza di lamentele.",
+		"All'angolo due muratori rimettono a posto una pietra smossa, la misurano a occhio, la maledicono per nome. Nemmeno Stormwind è mai finita del tutto.",
+		"Da qualche parte lì vicino uno scalpello suona sulla pietra, paziente come un picchio. Qualunque cosa io abbia finito, questa città non finisce mai del tutto.",
+	},
+	["sw.quest_complete.w22.street.007"] = {
+		"si ferma ad ascoltare un banditore che legge gli ultimi avvisi: un cappello smarrito, una chiave ritrovata e una multa per chi lascia barili in mezzo alla via.",
+		"ascolta a un angolo l'intera lista di un banditore, un anello perduto, un mulo sbandato, una nuova regola sui barili, e riparte senza saperne niente di più.",
+		"si sofferma mentre un banditore sgrana una lista di oggetti smarriti, quasi aspettandosi di sentirci qualcosa di suo, e ci rimane un po' male a non sentirlo.",
+	},
+	["sw.quest_complete.w22.street.008"] = {
+		"si abbassa sotto l'estremità di una lunga asse mentre due apprendisti cercano di farle girare un angolo, quello davanti verso sinistra e quello dietro, con grande convinzione, verso destra.",
+		"aspetta mentre due garzoni di falegname trattano con una lunga trave per farle girare un angolo stretto: tre tentativi, uno stinco ammaccato e molti consigli da una soglia.",
+		"si schiaccia contro un muro mentre una lunga scala passa su due spalle, con l'estremità posteriore che spazza la via come una lenta scopa di legno.",
+	},
+	["sw.quest_complete.w22.street.009"] = {
+		"sosta sotto una scala dove un pittore d'insegne sta dando una mano d'oro fresco al leone di una bottega, con la lingua tra i denti, e riparte prima che arrivi la goccia.",
+		"indugia sotto un uomo che ridipinge un'insegna in cima a una scala, ritoccando con gran cura una pagnotta sbiadita, come se la bottega dipendesse da quello.",
+		"ammira un'insegna appena dipinta, ancora fresca, mentre il padrone della bottega, dall'altro lato della via, l'ammira a sua volta, braccia conserte e testa piegata.",
+	},
+	["sw.quest_complete.w22.street.010"] = {
+		"Quel suonatore di zufolo all'angolo ha suonato la stessa giga tre volte da quando mi sono {g:fermato|fermata}. Qualcuno lo paghi per impararne una seconda.",
+		"Bella melodia. Sarebbe più bella la prima volta che la quarta.",
+		"Il suonatore di liuto laggiù conosce una sola canzone, e la regala a chiunque sia a portata d'orecchio.",
+	},
+	["sw.quest_complete.w22.street.011"] = {
+		"guarda un bottegaio cancellare un prezzo da una lavagnetta e scriverne col gesso uno un po' più alto, guardandosi intorno come se la via potesse protestare.",
+		"passa davanti a un banco proprio mentre il padrone scrive col gesso un prezzo nuovo su quello vecchio, un po' più alto, e coglie l'aria colpevole che lo accompagna.",
+		"sente per caso un bottegaio spiegare a un cliente perché il prezzo è salito dalla settimana scorsa, con un discorso così rodato da avere i paragrafi.",
+	},
+	["sw.quest_complete.w22.street.012"] = {
+		"Da qualche parte lì vicino batte il martelletto di un ciabattino, piccolo e regolare. Batteva prima che finissi e batterà quando non ci sarò più. Lo trovo stranamente consolante.",
+		"Da un banco di ciabattino lì accanto arriva un martelletto, mai di fretta, mai fermo. Qualunque cosa io abbia finito, le suole di Stormwind continuano a essere riparate.",
+		"Tic, tic da un banco di ciabattino lì vicino. La città consuma le scarpe più in fretta di quanto chiunque riesca a ripararle, e qualcuno ci prova lo stesso.",
+	},
+	["sw.quest_complete.w22.street.013"] = {
+		"Persino la guardia all'angolo sbadiglia. Meno male che la città sfianca anche qualcun altro.",
+		"Quella guardia ha appena sbadigliato dietro il guanto d'arme. L'ho visto. Il tuo segreto è al sicuro, soldato.",
+		"Turno lungo, soldato? Anche il mio, a modo suo. Su con la testa.",
+	},
+	["sw.quest_complete.w22.street.014"] = {
+		"si fa da parte per un carro di pietra appena tagliata che passa cigolando verso qualche riparazione, blocchi chiari ancora impolverati di cava.",
+		"fa spazio a un carro carico di blocchi grezzi: la città continua a mangiarsi le cave, un carico dopo l'altro.",
+		"si stringe contro un portone mentre un carro carico di pietra di cava passa macinando, e le ruote lasciano polvere chiara nei solchi di ruote più vecchie.",
+	},
+	["sw.quest_complete.w22.street.015"] = {
+		"Una vecchia su un gradino sguscia piselli in una ciotola e giudica la via man mano che passa. A me ha concesso un piccolo cenno. La miglior recensione della settimana.",
+		"C'è una nonna su una soglia con una ciotola di fagioli e un'opinione su chiunque passi. A quanto pare ho superato l'esame. Di poco.",
+		"Una donna su un gradino, alle prese con una ciotola di fagioli, mi squadra da capo a piedi e torna ai fagioli. Nessun verdetto, per ora. Ci riproverò quando sarò più interessante.",
+	},
+	["sw.quest_complete.w22.street.016"] = {
+		"aggira con cautela un facchino addormentato a sedere sui suoi stessi sacchi di grano, un pugno ancora ben stretto attorno alla paga.",
+		"va oltre in silenzio accanto a un facchino che sonnecchia dritto contro una pila di sacchi, bocca aperta, cappello su un occhio, in perfetta pace col traffico.",
+		"abbassa la voce senza pensarci passando accanto a un facchino addormentato sui suoi sacchi, come se tutta la via si fosse accordata per lasciarlo stare.",
+	},
+	["sw.quest_complete.w22.street.017"] = {
+		"fa largo a due della Guardia che portano un ubriaco allegro sottobraccio, coi piedi che continuano a camminare educatamente a mezz'aria.",
+		"si tira indietro per lasciar passare un paio di guardie con un ubriaco che canta sorretto in mezzo a loro, e che {g:gli|le} augura ogni bene con enorme sincerità.",
+		"aspetta mentre due guardie guidano un ubriaco allegro dietro un angolo; lui giura di conoscere la strada e indica con decisione un muro.",
+	},
+	["sw.quest_complete.w22.street.018"] = {
+		"Il muro dell'angolo è tappezzato di avvisi: stanze in affitto, un gatto scomparso, una ricompensa per chi restituisca a qualcuno il buon nome. Non finirei mai di leggerli.",
+		"Manifesti incollati su manifesti, sul muro dell'angolo, dieci strati. Perduto, ritrovato, cercasi, vendesi. Tutta la città chiede qualcosa, tutta insieme.",
+		"Qualcuno ha appeso un avviso con una ricompensa per un anello perduto, e qualcun altro ci ha scritto sotto 'provate nel canale'. Stormwind in due calligrafie.",
+	},
+	["sw.quest_complete.w22.street.019"] = {
+		"esce sotto la pioggia e deve scegliersi un percorso fra i pluviali di un'intera via, ogni tetto che scarica la sua parte sul selciato.",
+		"evita il primo getto di grondaia, sbaglia il secondo, e prosegue sotto la pioggia con una spalla fradicia e nessun lamento.",
+		"alza il bavero contro la pioggia e tiene il centro della via, dove almeno le grondaie non arrivano.",
+	},
+	["sw.quest_complete.w22.street.020"] = {
+		"Fatto, e la città è passata alle sue faccende notturne: imposte sprangate, una taverna ancora rumorosa, un gatto che attraversa i tetti come se ne possedesse gli atti.",
+		"È tardi. Ora la via appartiene alla Guardia e ai topi, e a me, per il tempo che mi serve a percorrerla.",
+		"È tardi, e c'è abbastanza silenzio da sentire i canali che scorrono sotto i ponti. Potrei attraversare tutta la città e incontrare solo una ronda.",
+	},
+	["sw.quest_complete.w22.street.021"] = {
+		"No, non mi serve un portafortuna. La fortuna che avevo l'ho appena usata, e ha funzionato.",
+		"Grazie, niente nastri. Non ho dove metterli né nessuno da impressionare.",
+		"Tieniti i ninnoli. La mia borsa e io ci siamo appena {g:conosciuti|conosciute}.",
+	},
+	["sw.quest_complete.w22.street.022"] = {
+		"No, non sono nessuno di famoso. Sì, ne sono {g:sicuro|sicura}. Va' a fissare qualcuno con un cappello migliore.",
+		"Mi spiace deluderti, ma non sono nessuno in particolare. La gente interessante è più su lungo la via.",
+		"Io? Né cavaliere né signore. Solo qualcuno con i piedi stanchi. Su, circola.",
+	},
+	["sw.quest_complete.w22.thanks.001"] = {
+		"Gli ufficiali di questa città ringraziano con la voce dei rapporti: soggetto, azione, esito. Ho sentito inventari di picchetti da tenda più calorosi.",
+		"{g:Ringraziato|Ringraziata} in forma di dispaccio: incarico assegnato, incarico eseguito, condotta soddisfacente. Mancava solo il saluto finale, e credo ci abbiano pensato.",
+	},
+	["sw.quest_complete.w22.thanks.002"] = {
+		"Il ringraziamento del mercante è finito, come succede qui, in un'offerta: il dieci per cento su tutto il negozio, solo per questa settimana, per gli amici.",
+		"Gratitudine, poi la proposta. Prima che avessi messo via la paga mi erano stati offerti uno sconto sugli stivali, l'alloggio di un cugino e un ottimo prezzo sull'olio per lampade.",
+	},
+	["sw.quest_complete.w22.thanks.003"] = {
+		"riceve un fiume di parole di gratitudine che comincia riconoscente, a metà svolta sul prezzo del grano e finisce più o meno sullo stato delle strade.",
+		"ascolta un ringraziamento che perde la strada, vaga fra il costo della legna e il cane di un vicino, e va ricondotto al punto.",
+	},
+	["sw.quest_complete.w22.thanks.004"] = {
+		"L'hai detto tre volte. L'ho sentito la prima. Era già bello la prima.",
+		"Una volta basta. Lo pensavi davvero, si vede.",
+		"Ecco, abbastanza grazie. Tieni il resto per chi ne ha più bisogno.",
+	},
+	["sw.quest_complete.w22.thanks.005"] = {
+		"Qui c'è chi prova il ringraziamento prima di farlo. Si sente: le pause al posto giusto, una parola scelta e poi cambiata. Mi è piaciuto di più per lo sforzo.",
+		"Era stato provato. Lo capivo da come il discorso inciampava due volte sulla stessa parola, come se sotto si vedesse ancora la brutta copia.",
+	},
+	["sw.quest_complete.w22.thanks.006"] = {
+		"ascolta un grazie rivolto quasi tutto al pavimento da qualcuno troppo timido per alzare gli occhi, e presta tanta più attenzione.",
+		"si china un poco per afferrare un grazie borbottato ai propri stivali, e annuisce alla sommità di una testa china.",
+	},
+	["sw.quest_complete.w22.thanks.007"] = {
+		"«La casata è grata.» Non lui, non lei: la casata. Mi ha ringraziato un edificio, più o meno, e pure parecchio vecchio.",
+		"Il grazie è arrivato in terza persona, come se parlasse il nome di famiglia e la persona si limitasse a portarlo. La nobiltà è una cosa pesante attraverso cui dire grazie.",
+	},
+	["sw.quest_complete.w22.thanks.008"] = {
+		"Ma figurati. Cioè, sì, prego. Cioè, non è stato niente. Più o meno.",
+		"Prego. No, grazie a te. No, aspetta. Grazie reciproci, allora; credo sia permesso.",
+		"Oh, è stato... Mi ha fatto piacere... Insomma. Sì. Grazie del grazie.",
+	},
+	["sw.quest_complete.w22.thanks.009"] = {
+		"I nani di questa città ti ringraziano con una storia. Ho appena sentito parlare di un asse di carro, di un mulo e di un cognato, e da qualche parte in mezzo c'era la gratitudine.",
+		"Un grazie da un nano di Stormwind arriva incartato in un aneddoto, l'aneddoto in un altro, e tutto il pacchetto legato con la promessa di un boccale.",
+	},
+	["sw.quest_complete.w22.thanks.010"] = {
+		"si sente ringraziare in un sussurro, con l'altro che lancia occhiate verso una stanza interna dove qualcuno, pare, non va disturbato.",
+		"si avvicina per sentire un grazie detto sottovoce, con un dito alzato verso una porta chiusa, e risponde altrettanto piano.",
+	},
+	["sw.quest_complete.w22.thanks.011"] = {
+		"Non hanno detto molto. Però mi hanno guardato davvero, tutta la faccia, come qui raramente si ha il tempo di fare. Il grazie era quello.",
+		"Nessun discorso. Solo uno sguardo lungo e semplice, di quelli che Stormwind riserva alla gente che intende ricordare. Lo preferisco a una borsa d'argento.",
+	},
+	["sw.quest_complete.w22.thanks.012"] = {
+		"Con piacere. Davvero. Non mi devi nulla oltre a quello che c'è in questa borsa.",
+		"Gentile. E ora siamo pari, quindi non portartelo dietro.",
+		"Prego. Niente debiti fra noi: è saldato fino all'ultimo.",
+	},
+	["sw.quest_complete.w22.thanks.013"] = {
+		"{g:Ringraziato|Ringraziata} da qualcuno che chiaramente era già stato deluso. Sotto la gratitudine c'era sorpresa, come se un lavoro fatto come promesso fosse moneta rara in questa città.",
+		"Il ringraziamento aveva una nota d'incredulità. Qualcuno era già stato tradito da chi aveva detto di sì, e da me non si aspettava di meglio.",
+	},
+	["sw.quest_complete.w22.thanks.014"] = {
+		"si sente ringraziare col nome sbagliato, sorride e lascia correre: correggere qualcuno che ti è grato è un brutto modo di chiudere un bel momento.",
+		"sente il grazie rivolto a un nome che non è il suo, valuta di farlo notare, e decide che chiunque sia quell'altro si merita una bella sorpresa.",
+	},
+	["sw.quest_complete.w22.thanks.015"] = {
+		"Per ultimo è arrivato il grazie, dopo la paga e le scartoffie, come un mantello ricordato sulla soglia. Meglio tardi che mai, e in fondo mi stava bene.",
+		"Pagato, firmato, congedato, e solo allora, a metà strada verso l'uscita, «Ah, e grazie!» mi è stato gridato dietro. Un ripensamento, ma onesto.",
+	},
+	["sw.quest_complete.w22.thanks.016"] = {
+		"Piano, o tutta la via penserà che sono un eroe. E poi vorranno cose.",
+		"Abbassa la voce, per favore. Una gratitudine così rumorosa attira altro lavoro.",
+	},
+	["sw.quest_complete.w22.thanks.017"] = {
+		"Il grazie di un prete ha la cadenza della cattedrale: lento, rotondo, ogni parola posata come una candela. In quella voce persino una gratitudine semplice suona come un rito.",
+		"Mi ha ringraziato qualcuno abituato a parlare sotto una volta alta. Le frasi salivano e scendevano come una lettura all'altare, e finivano in una piccola pausa accurata.",
+	},
+	["sw.quest_complete.w22.thanks.018"] = {
+		"riceve un ringraziamento così improvviso e accorato che pare imbarazzare chi lo fa, il quale tossicchia, si aggiusta una manica e torna molto professionale.",
+		"raccoglie un grazie pieno di sentimento vero, per un attimo senza difese, prima che l'altro se ne accorga, si schiarisca la gola e torni alle maniere spicce della città.",
+	},
+	["sw.quest_complete.w22.thanks.019"] = {
+		"{g:Ringraziato|Ringraziata} come se fossi in lieve ritardo. Che, per gli orologi di Stormwind, è dove tutti stanno sempre.",
+		"Dentro il «grazie» c'era nascosto un «finalmente». Piccolo, educato, inconfondibile. Questa città non ti perdona mai del tutto il tempo che le cose richiedono.",
+	},
+	["sw.quest_complete.w22.thanks.020"] = {
+		"Il ringraziamento più bello che ho avuto in questa città è stata una mano sul braccio, appena sopra il gomito, e una stretta. Nessuna parola. Non serviva.",
+		"Niente parole, solo una presa veloce all'avambraccio, come fanno i soldati. In una città di discorsi, è la cosa più onesta che qualcuno mi abbia detto.",
+	},
+	["sw.quest_complete.w22.thanks.021"] = {
+		"Accetto il grazie, ma era dovuto. Un lavoro fatto come promesso non dovrebbe aver bisogno di troppe lodi.",
+		"È gentile da parte tua. Ma una promessa mantenuta non è un regalo: è solo la promessa.",
+	},
+	["sw.quest_complete.w22.thanks.022"] = {
+		"Gli umani ringraziano in fretta e pensano ogni parola. Mi ci è voluto un po' per smettere di aspettare il resto della cortesia e capire che era già stata consegnata tutta.",
+		"Era già finito, quel grazie, prima che mi fossi {g:disposto|disposta} ad ascoltarlo. Gli umani trattano la gratitudine come la vita: breve, e piena fino all'orlo.",
+	},
+	["sw.quest_complete.w22.thanks.023"] = {
+		"si sente gridare il grazie sopra il chiasso di una stanza affollata, ne coglie una parola su tre e risponde a tutte con un sorriso che va bene per ognuna.",
+		"afferra forse metà del ringraziamento sopra il rumore del posto, annuisce alla metà che è arrivata e si fida che il resto fosse altrettanto gentile.",
+	},
+	["sw.quest_complete.w22.thanks.024"] = {
+		"Tutto qui? Va bene. Breve e dolce. Soprattutto breve.",
+		"Conciso. Mi piace conciso. Una parola in più non avrebbe guastato, ma mi piace conciso.",
+		"Grazie ricevuto. Rapido come uno schiocco di dita, ma ricevuto.",
+	},
+	["sw.quest_complete.w22.thanks.025"] = {
+		"Riposo. O quella battuta tocca solo a te?",
+		"Mi ringrazi come se fossi una parata. Sono una persona sola, e con un po' di fango addosso.",
+		"Non serve metterti sull'attenti per me. Non sono una bandiera.",
+	},
+	["sw.quest_complete.w22.thanks.026"] = {
+		"Grazie di averlo detto come si deve. Succede di rado.",
+		"È stato un bel grazie. Mi ricorderò come l'hai detto.",
+		"Ringraziamenti così potrei starli a sentire per ore.",
+	},
+	["sw.quest_complete.w22.worth.001"] = {
+		"Ogni pietra di questa via l'ha pagata qualcuno, oppure no. Una città così è fatta soprattutto di debiti che hanno imparato a reggersi in piedi.",
+		"La pietra poggia su quanto era dovuto per lei. Cammina abbastanza per Stormwind e cominci a sentire sotto i piedi i pezzi mai pagati.",
+		"Metà della pietra di Stormwind è ancora dovuta a qualcuno, brontolano i muratori. Ci cammino sopra a passo leggero, per rispetto del conto.",
+	},
+	["sw.quest_complete.w22.worth.002"] = {
+		"Al Trade District questo lavoro vale due pagnotte, una pentola di stufato, un letto e una candela per vederci. Detta così, è uno scambio onesto.",
+		"Tradotto in prezzi di Stormwind: un pasto caldo, un letto pulito e il resto per una candela. Non è una ricchezza. Ma nemmeno niente.",
+		"Faccio il conto come lo fa la città, in pagnotte e letti. Qui il lavoro diventa pane più in fretta che in qualunque altro posto io conosca.",
+	},
+	["sw.quest_complete.w22.worth.003"] = {
+		"Per una volta a Stormwind qualcuno è in debito con me, e non il contrario. Per una via intera camminerò a testa altissima.",
+		"Un favore che mi spetta, nella capitale. Quasi quasi lo faccio incorniciare.",
+		"Un favore dovuto a me, in questa città. Qualcuno segni l'occasione. Potrebbe non ricapitare più.",
+	},
+	["sw.quest_complete.w22.worth.004"] = {
+		"A Stormwind nessuno è mai del tutto in pari. Il fornaio deve al mugnaio, il mugnaio al carrettiere, il carrettiere alla taverna. Io ho appena sfilato un anellino dalla catena.",
+		"Questa città è una lunga catena di chi deve a chi, dalle torri più alte fino ai tombini. In qualche punto, un anello si è appena allentato per merito mio.",
+		"I debiti attraversano Stormwind come i canali, e collegano tutto con tutto. Un piccolo ramo si è appena prosciugato, grazie a me.",
+	},
+	["sw.quest_complete.w22.worth.005"] = {
+		"passa davanti a una casa dove un uomo con un registro sotto il braccio bussa alla porta, paziente e senza fretta: il bussare di chi tornerà.",
+		"nota un esattore davanti a una porta più in là, registro aperto, voce bassa, e prosegue un po' più lentamente di prima.",
+		"sente sbattere una porta più in là, e vede un uomo col registro che se ne allontana senza fretta, già intento a leggere il nome successivo.",
+	},
+	["sw.quest_complete.w22.worth.006"] = {
+		"Questa moneta sarà nella cassa di un fornaio per cena e nella borsa di un mugnaio entro la settimana. Io sono solo il pezzo di strada che percorre nel mezzo.",
+		"A Stormwind il denaro non sta mai fermo. Il mio sarà passato per tre grembiuli prima che io abbia finito di decidere cosa comprare.",
+		"Questi soldi li tengo solo per un po', per conto della città. Sanno già dove andranno; aspettano soltanto che io li raggiunga.",
+	},
+	["sw.quest_complete.w22.worth.007"] = {
+		"In questa città la pietra dura; un lavoro come il mio è gesso sopra di lei. Sparirà entro il prossimo mercato. Ma è stato scritto.",
+		"Stormwind ricorda con la pietra scolpita. Quel che ho fatto è più un segno di gesso sulla pietra: presto svanito, vero finché dura.",
+		"Questa città è stata costruita per sopravvivere a tutti quelli che la abitano. Il mio lavoro, per durare più o meno una settimana. Stranamente, è la settimana che mi inorgoglisce.",
+	},
+	["sw.quest_complete.w22.worth.008"] = {
+		"Se il lavoro onesto pagasse come un posto a corte, a quest'ora avrei mezza via a mio nome.",
+		"Il lavoro onesto paga in rame. L'adulazione a corte paga in argento. Io resto quaggiù, col rame e con la gente per bene.",
+		"A corte, mi dicono, una parola ben piazzata vale un anno di commissioni. Io mi tengo le commissioni.",
+	},
+	["sw.quest_complete.w22.worth.009"] = {
+		"Per Stormwind non era niente, un granello. Per una casa era una settimana senza un certo pensiero. Stesso lavoro, due prezzi, ed entrambi veri.",
+		"La città lo valuterebbe un rame. Le persone che ha aiutato gli darebbero un prezzo molto più alto. Ho deciso di credere al mercato più piccolo.",
+		"Chiedi a un banco di cambio quanto valeva e ti diranno un rame. Chiedilo a chi ne ha avuto aiuto e sentirai qualcosa che nessun banco tiene in magazzino.",
+	},
+	["sw.quest_complete.w22.worth.010"] = {
+		"passando getta un'occhiata allo scaffale di un banco dei pegni: un liuto, tre buoni mantelli, una fede nuziale, un elmo ammaccato. Le settimane storte di tutta la città, in vendita.",
+		"rallenta davanti al banco di un usuraio dove i tesori degli altri stanno in fila col loro cartellino, ognuno una storia finita in debito.",
+		"passa accanto al banco di un usuraio dove una giovane coppia contratta a bassa voce per una spilla, e non si volta.",
+	},
+	["sw.quest_complete.w22.worth.011"] = {
+		"In questa città l'aiuto ritorna in monete strane: una pagnotta un po' meno cara un'altra settimana, un cenno dall'altro lato della via, un posto che ti fanno su una panca affollata.",
+		"Niente di quel che si fa qui viene ripagato con la stessa moneta. Ritorna di sbieco, mesi dopo: una porta tenuta aperta, un prezzo limato, una buona parola spesa per te da qualche parte.",
+	},
+	["sw.quest_complete.w22.worth.012"] = {
+		"In pari con te, in pari con la città, in pari con {g:me stesso|me stessa}. Non capita spesso. Me lo godo.",
+		"Nessuno mi deve niente, io non devo niente a nessuno. La sensazione più rara di Stormwind.",
+		"Tutti i conti saldati, da entrambe le parti. In questa città è quasi una festa comandata.",
+	},
+	["sw.quest_complete.w22.worth.013"] = {
+		"L'Alleanza poggia su molta pietra di Stormwind e su molti dei suoi morti. Un lavoro come il mio rimette qualche rame in quel conto, e lo verso volentieri.",
+		"Ogni stendardo dell'Alleanza deve qualcosa a questa città. Io ne ho restituito una scheggia, senza che nessuno lo chiedesse, e lo rifarei due volte.",
+	},
+	["sw.quest_complete.w22.worth.014"] = {
+		"Le guardie amano dire che a Stormwind un debitore si riconosce dalle vie che evita. Per il momento, tutte le vie della città sono aperte per me.",
+		"Un debitore in questa città, a sentire la Guardia, fa una strada storta per non passare davanti a certe porte. La mia va dritta. Ogni porta che incontro può guardarmi in faccia.",
+		"Non dovere niente a nessuno, in questa città, e ogni via si accorcia, dicono i facchini: niente giri larghi intorno agli usurai.",
+	},
+	["sw.quest_complete.w22.worth.015"] = {
+		"Quanto vale il lavoro onesto in una città di nobili? Chiedilo a un nobile. Poi chiedilo a chiunque altro, e credi a loro.",
+		"Ne è valsa la pena? Chiedimelo dopo aver visto quanto chiedono le locande.",
+		"Ne è valsa la pena? Qui tutto vale esattamente quanto si riesce a far pagare a qualcun altro. Io scelgo di essere l'eccezione.",
+	},
+	["sw.quest_complete.w22.worth.016"] = {
+		"Quanto valgo in questa città non sta in una borsa. Sta nel fatto che, la prossima volta che qualcosa va storto in quella via, qualcuno dica: ritrovate quella persona.",
+		"Il denaro è la parte piccola della paga. Quella grande è essere il nome che qualcuno ricorda quando i guai si fanno vivi.",
+	},
+	["sw.quest_complete.w22.worth.017"] = {
+		"Noi umani annotiamo ogni debito e dimentichiamo ogni gentilezza. Provo a fare il contrario, almeno fino al prossimo angolo.",
+		"Gli umani tengono registri per i rancori e nessuno per i favori. Io ne ho appena fatto uno. Il conto lo terrò da me, a mente, a matita.",
+	},
+	["sw.quest_complete.w22.worth.018"] = {
+		"Queste pietre hanno visto guai peggiori dei miei. Terrò i lamenti piccoli.",
+		"Qualunque cosa io creda di aver passato, questa città ne ha passate di più. Rimette un lavoro al suo posto.",
+	},
+	["sw.rest_enter.w22.abide.001"] = {
+		"Le ore che ho alle spalle chiedono di essere messe in ordine. Le lascio in un mucchio; possono aspettare che abbia dormito.",
+		"Tutto quel che è successo là fuori vuole essere archiviato, etichettato, giudicato. Non ora. Che resti sul pavimento della testa come cappotti buttati lì.",
+	},
+	["sw.rest_enter.w22.abide.002"] = {
+		"Continuo a cercare di ricordare il nome di qualcuno che là fuori mi ha dato una mano. Se n'è andato. La mano, no.",
+		"Uno sconosciuto, lungo la strada, mi ha indicato la via con un cenno. La faccia l'ho già persa. Spero che quel cenno gli torni indietro raddoppiato.",
+	},
+	["sw.rest_enter.w22.abide.003"] = {
+		"se ne sta coi gomiti sulle ginocchia, lo sguardo sui ciottoli tra gli stivali, a seguire le commessure delle pietre come se leggesse la mappa delle ultime ore.",
+		"fissa a lungo il selciato senza vederlo, mentre le fessure tra le pietre diventano piano piano strade che solo {g:lui|lei} sa seguire.",
+	},
+	["sw.rest_enter.w22.abide.004"] = {
+		"I pensieri girano in tondo come un cane che sceglie dove sdraiarsi. Altri due giri e crollano.",
+		"La mente gira, annusa, fa un altro giro, come un segugio che si sistema nella paglia. Da un momento all'altro si butterà giù e starà ferma.",
+	},
+	["sw.rest_enter.w22.abide.005"] = {
+		"Strano come la parte brutta si rimpicciolisca, una volta dietro le mura. Là fuori riempiva il cielo intero. Qui dentro sta in una tasca.",
+		"Quel che è andato storto, sulla strada, sembrava enorme. Posato su questo tavolo è più piccolo della tazza che ha accanto.",
+		"I guai sono una questione di misura, e le mura fanno da metro. Visto da qui dentro, il peggio mi arriva appena al ginocchio.",
+	},
+	["sw.rest_enter.w22.abide.006"] = {
+		"Chiedetemi più tardi cos'è successo. Adesso non saprei dirvi nemmeno come mi chiamo.",
+		"Cosa ho fatto là fuori? Qualcosa. Parecchi qualcosa. Li metto in ordine dopo cena.",
+	},
+	["sw.rest_enter.w22.abide.007"] = {
+		"Nessuno a Stormwind mi deve niente, eppure la donna della bancarella mi ha sorriso. La prendo come paga sufficiente.",
+		"Un bottegaio mi ha augurato buon riposo senza che nessuno lo pagasse. Metto via quelle parole insieme al resto di quel che ho guadagnato.",
+	},
+	["sw.rest_enter.w22.abide.008"] = {
+		"Vorrei non pensare a niente. Invece sto pensando se gli stivali hanno bisogno di suole nuove. Ci siamo quasi.",
+		"Le mie grandi riflessioni su tutto quello che è successo finiscono sempre in una lista di cose da riparare. Cinghia, cucitura, fibbia. Profondissimo.",
+	},
+	["sw.rest_enter.w22.abide.009"] = {
+		"ride una volta, piano, di qualcosa che nessun altro vede: un momento di là fuori che arriva in ritardo.",
+		"sorride all'improvviso nel vuoto, come se avesse capito solo adesso una battuta sentita ore fa.",
+	},
+	["sw.rest_enter.w22.abide.010"] = {
+		"Queste mura stanno dove sono cadute le vecchie. Me ne sto qui dentro e penso a tutti quelli che mura così non le hanno mai avute.",
+		"La città l'hanno ricostruita per i vivi, ma le pietre ricordano chi c'era prima. Riposo con delicatezza, come si fa in una casa che ha conosciuto un lutto.",
+	},
+	["sw.rest_enter.w22.abide.011"] = {
+		"Il re è scomparso, il reggente ha l'aria stanca, la corte bisbiglia. Eppure il pane si cuoce e i rigagnoli si spazzano. È un conforto strano, ma vero.",
+		"Qualunque cosa succeda nella Keep, il fornaio apre ancora le imposte e gli spazzini spazzano ancora. In una città che tiene alle sue piccole abitudini posso dormire.",
+	},
+	["sw.rest_enter.w22.abide.012"] = {
+		"Potrei pianificare la prossima mossa. Non lo farò. Un riposo pianificato è solo lavoro con un cappotto più morbido.",
+		"La mappa resta nella sacca. Se appena la apro, il riposo è finito.",
+	},
+	["sw.rest_enter.w22.abide.013"] = {
+		"Non chiedetemi cosa ho fatto. Sto ancora decidendo come chiamarlo.",
+		"Era lavoro. Più o meno. Troverò una parola migliore dopo aver mangiato.",
+		"Da fare. Questa è la versione breve. Quella lunga richiede una sedia e un boccale.",
+	},
+	["sw.rest_enter.w22.abide.014"] = {
+		"Oltre queste mura l'Alleanza tiene cento linee. Questa la tengono soldati in blu, e per una volta io posso starmene dietro a riposare.",
+		"Ogni stendardo sotto cui ho marciato, in un modo o nell'altro, risponde a questa città. Per adesso è la città a rispondere per me.",
+	},
+	["sw.rest_enter.w22.abide.015"] = {
+		"tira fuori un pezzetto di carta, ci scrive tre parole, le studia per un po', e lo ripiega senza mostrarlo a nessuno.",
+		"annota qualcosa sul margine di un taccuino malconcio, ne cancella metà, e chiude la copertina come se la questione fosse chiusa.",
+	},
+	["sw.rest_enter.w22.abide.016"] = {
+		"Le lanterne si accendono lungo il canale, una e poi l'altra, e a ognuna lascio andare un'altra cosa successa là fuori.",
+		"Le finestre al di là dell'acqua si accendono. Le guardo riempirsi piano di luce, e sento le ore passate spegnersi in cambio.",
+	},
+	["sw.rest_enter.w22.abide.017"] = {
+		"si tasta tasche, maniche e cintura una dopo l'altra, il vecchio inventario della strada, e trova tutto dove dovrebbe essere.",
+		"controlla borsa, borsello e sacca a turno, con mani rapide ed esperte, poi le lascia ferme quando il conto torna.",
+		"ripassa al tatto il solito elenco delle sue cose, lo finisce, e non lo ricomincia.",
+	},
+	["sw.rest_enter.w22.abide.018"] = {
+		"appoggia il mento sul pugno e lascia il viso abbandonarsi, l'aria di chi ha i pensieri andati a spasso e ha deciso di lasciarli andare.",
+		"si regge la testa con una mano e lascia che lo sguardo vaghi, senza sorveglianza, dove gli pare.",
+		"posa un gomito sul ginocchio e una guancia sul palmo, e se ne va lontanissimo senza muoversi dal sedile.",
+	},
+	["sw.rest_enter.w22.abide.019"] = {
+		"Buon lavoro o cattivo? Lo saprò quando ci avrò dormito sopra.",
+		"Quel che ho fatto là fuori lo giudicherò dopo. Il sonno è un giudice più equo di me.",
+		"Se è andata bene non so ancora dirlo. Chiedetemelo dopo un letto.",
+	},
+	["sw.rest_enter.w22.abide.020"] = {
+		"Non sto pensando a niente. Almeno questo è il piano.",
+		"Impegnatissimo a non pensare a nulla. È più difficile di quanto sembri.",
+	},
+	["sw.rest_enter.w22.haven.001"] = {
+		"Ogni guardia che ho incrociato ha l'aria vagamente annoiata. In una città, una guardia annoiata è la notizia migliore che ci sia.",
+		"Le sentinelle in blu si appoggiano all'alabarda come chi aspetta un carro. Loro non si preoccupano di niente, quindi nemmeno io devo farlo.",
+		"Nessuna delle guardie che vedo ha fretta. Prendo la loro lentezza per una promessa.",
+	},
+	["sw.rest_enter.w22.haven.002"] = {
+		"sente due guardie cittadine che battibeccano svogliate su a chi tocchi stare più vicino al braciere, e trova quella meschinità profondamente riposante.",
+		"sorprende una coppia di guardie in una discussione lunga e seria su quale sia la salsiccia migliore della città, e la ascolta come una ninnananna.",
+	},
+	["sw.rest_enter.w22.haven.003"] = {
+		"Il muro esterno è così spesso che un carro potrebbe farci manovra sopra. Chi l'ha costruito aveva già visto bruciare questa città, e non voleva rivederlo.",
+		"Mura così profonde non le alza gente che si fida del mondo. Mi appoggio a quella diffidenza con gratitudine.",
+		"Lassù, in cima a quel muro, ci si perderebbe un carro. I muratori costruivano per un assedio; io prendo solo in prestito la calma che ne è venuta.",
+	},
+	["sw.rest_enter.w22.haven.004"] = {
+		"Se quelle guardie sono severe anche solo la metà di quanto sembrano, posso togliermi gli stivali.",
+		"Guardate che facce, sotto quegli elmi. Di lì non passa nessuno, e io meno di tutti, se provo a uscire.",
+		"Con guardie così potrei schiacciare un pisolino in mezzo alla strada. Non lo farò. Forse.",
+	},
+	["sw.rest_enter.w22.haven.005"] = {
+		"Da qualche parte cambia la guardia: un paio di stivali smonta, un altro attacca. Nessuno dei due è il mio.",
+		"Sento il passo cadenzato del cambio che sale verso le mura. Il turno di qualcuno comincia. Il mio, finalmente, è finito.",
+	},
+	["sw.rest_enter.w22.haven.006"] = {
+		"Un leone su una casacca, a un forestiero, dice poco. A me dice che posso chiudere tutti e due gli occhi insieme.",
+		"Blu e oro sul petto di ogni guardia. Mi hanno insegnato a fidarmi di quei colori, e quei colori se lo meritano ancora.",
+		"Conosco il leone di quelle casacche come conosco la mia calligrafia. Sotto di lui dormo sonni tranquilli.",
+	},
+	["sw.rest_enter.w22.haven.007"] = {
+		"appoggia la schiena a un muro costruito per fermare gli eserciti, e gli chiede soltanto di reggere una spina dorsale stanca.",
+		"si abbandona contro la pietra di un muro che è sopravvissuto ai re, e per una volta lascia che il peso lo porti lui.",
+		"trova un tratto di vecchia muratura dell'altezza giusta e ci si appoggia, come un veterano che si regge a un altro.",
+	},
+	["sw.rest_enter.w22.haven.008"] = {
+		"Una città così grande ha una regola per tutto, perfino per il lato del ponte su cui camminare. Per una volta, che mi dicano cosa fare non mi pesa.",
+		"Regole per i carri, regole per le lanterne, regole per dove vuotare un secchio. Là fuori l'unica regola era non farsi prendere. Preferisco queste.",
+	},
+	["sw.rest_enter.w22.haven.009"] = {
+		"Ogni casacca blu che passa mi vorrebbe fuori, se sapesse. Riposare qui è sonnecchiare nella tana del leone, con un occhio sul leone.",
+		"Strano riposo, questo: le mura più sicure del regno, e ognuna alzata contro quelli come me. Tengo il cappuccio calato e la faccia anonima.",
+	},
+	["sw.rest_enter.w22.haven.010"] = {
+		"Le guardie mi hanno già squadrato e deciso che sono una noia. Il complimento più bello da settimane.",
+		"Ancora nessuno mi ha chiesto cosa ci faccio qui. O sembro {g:innocuo|innocua}, o sembro troppo {g:stanco|stanca} per creare guai. Vere tutte e due.",
+	},
+	["sw.rest_enter.w22.haven.011"] = {
+		"I peggiori della città sono chiusi nello Stockade, e quelli appena meno peggio sono troppo occupati a fare offerte alla casa d'aste per darmi fastidio.",
+		"I tagliagole nello Stockade, i borseggiatori tenuti d'occhio dalle guardie, e il resto dei furfanti a contrattare sui prezzi. Non resta nessuno per me.",
+	},
+	["sw.rest_enter.w22.haven.012"] = {
+		"osserva una guardia su un ponte del canale che soffoca uno sbadiglio dietro il guanto di ferro, e lo prende per un segno che non sta arrivando niente.",
+		"nota la sentinella sul ponte più vicino che passa il peso da un piede all'altro, con la testa chiaramente alla cena, e si rilassa di conseguenza.",
+	},
+	["sw.rest_enter.w22.haven.013"] = {
+		"Da qualche parte in questa città lo SI:7 tiene d'occhio tutti, anche me. Stranamente, mi aiuta a riposare.",
+		"Se è vera la metà di quello che si dice dello SI:7, qui nessuno starnutisce senza che qualcuno lo annoti. Che guardino pure. Ho intenzione di essere di una noia mortale.",
+	},
+	["sw.rest_enter.w22.haven.014"] = {
+		"Chiavistelli alle porte, sbarre alle finestre basse, un lucchetto su ogni baule. La prudenza degli altri mi protegge gratis.",
+		"Questa città chiude tutto a doppia mandata. Là fuori la serratura ero io. Qui dentro posso lasciare il lavoro ai fabbri.",
+	},
+	["sw.rest_enter.w22.haven.015"] = {
+		"conta le guardie a vista per vecchia abitudine, arriva a sei e si ferma: sei bastano e avanzano.",
+		"comincia a contare le casacche blu lungo la strada, perde il conto dopo cinque, e decide che il numero è più che rassicurante.",
+		"individua una per una le sentinelle a portata d'occhio, poi lascia perdere il conto: è un lavoro già coperto a dovere.",
+	},
+	["sw.rest_enter.w22.haven.016"] = {
+		"È tardi, e gli stivali delle ronde risuonano più lenti sulla pietra. Il loro passo mi dice che va tutto bene, e mi fido dei loro piedi più che di qualsiasi parola.",
+		"A quest'ora gli unici passi in strada sono quelli della ronda, regolari e senza fretta. Potrei regolarci un orologio, e dormirci sopra.",
+	},
+	["sw.rest_enter.w22.haven.017"] = {
+		"Su quelle mura c'è un esercito intero. Per un'ora possono fare a meno di me.",
+		"Di soldati in servizio ce ne sono a bizzeffe. Li ho contati. Non servo.",
+		"Le mura sono presidiate, il portone è chiuso, e io sto seduto. Ognuno al suo posto.",
+	},
+	["sw.rest_enter.w22.haven.018"] = {
+		"riceve un breve cenno da una guardia di passaggio, lo ricambia, e sembra prenderlo come il permesso di smettere di stare in guardia.",
+		"scambia un cenno rapido con una guardia cittadina che fa il suo giro, la piccola cortesia fra due che conoscono il mestiere, e uno solo dei quali è di turno.",
+		"si vede rivolgere un cenno asciutto da una guardia in casacca blu e lo restituisce: uno scambio che sistema qualcosa fra i due senza bisogno di parole.",
+	},
+	["sw.rest_enter.w22.haven.019"] = {
+		"alza lo sguardo oltre i tetti fino alla linea delle mura esterne, dove piccole figure ne percorrono la cima, e lascia a loro il lavoro.",
+		"segue per un po' il puntino di una sentinella lungo la sommità delle mura, poi abbassa gli occhi, {g:contento|contenta} che lassù qualcuno guardi fuori.",
+		"distingue le sagome minuscole della ronda che cammina sui bastioni, molto più in alto, e distoglie lo sguardo con qualcosa di molto simile alla gratitudine.",
+	},
+	["sw.rest_enter.w22.haven.020"] = {
+		"Una guardia a ogni angolo. Ne abbraccerei una, ma sospetto che ci sia una regola contro.",
+		"Guardate quante guardie. Le bacerei. Mi arresterebbero, naturalmente.",
+		"Quanti soldati. Qualcuno dica loro che sono riconoscente. Da una distanza di sicurezza.",
+	},
+	["sw.rest_enter.w22.haven.021"] = {
+		"Saluterei le guardie, se riuscissi ad alzare il braccio fin lassù.",
+		"I miei omaggi alla ronda. Mi alzerei per dirlo, ma non lo farò.",
+		"Grazie alla ronda. Farò un cenno. Più tardi. Quando il braccio funzionerà.",
+	},
+	["sw.rest_enter.w22.quiet.001"] = {
+		"I canali fanno un piccolo rumore contro la pietra, uno sciabordio che senti solo quando smetti di muoverti. Io ho smesso.",
+		"Sotto tutte le voci c'è l'acqua, che batte piano contro i muri dei canali. È sempre stata lì; ero io a non stare {g:fermo|ferma} abbastanza.",
+	},
+	["sw.rest_enter.w22.quiet.002"] = {
+		"ascolta la ruota di un carro che cigola giù per una strada fino a sparire, e non si chiede affatto dove stia andando.",
+		"segue a orecchio il cigolio di un carretto da un capo all'altro della strada, gli occhi socchiusi, senza curarsi di dove vada.",
+	},
+	["sw.rest_enter.w22.quiet.003"] = {
+		"Quando suonano le campane le conto per abitudine, perdo il conto, e lascio perdere. Nessuno aspetta il risultato.",
+		"Campane dalla Cathedral Square. Comincio a contare, mi perdo verso il quarto o il quinto rintocco, e per una volta dal totale non dipende niente.",
+	},
+	["sw.rest_enter.w22.quiet.004"] = {
+		"Un gatto sul davanzale di fronte dorme con una dedizione totale. Prendo lezioni.",
+		"Sul gradino di fronte c'è un gatto disteso, molle come un panno caduto dallo stendibiancheria. Vorrei essere quel gatto.",
+	},
+	["sw.rest_enter.w22.quiet.005"] = {
+		"guarda qualcuno che sbatte un tappeto da una finestra alta, la polvere che scende in una nuvola lenta, e lo trova più rilassante di quanto avrebbe diritto di essere.",
+		"segue la caduta lenta delle briciole da una tovaglia sbattuta da una finestra alta, {g:assorto|assorta} come davanti a uno spettacolo.",
+	},
+	["sw.rest_enter.w22.quiet.006"] = {
+		"Lontano, un martello batte su un'incudine, regolare come un orologio. Qualche fabbro del Dwarven District ha da lavorare. Io no. Mi pare equo.",
+		"In questa città le forge non si fermano mai del tutto; c'è sempre un martello lontano da qualche parte. Lascio che tenga il tempo lui, mentre io non tengo niente.",
+	},
+	["sw.rest_enter.w22.quiet.007"] = {
+		"Niente, nel rumore della strada, è rivolto a me. Un venditore, un cane, una donna che chiama un nome che non è il mio.",
+		"Una dozzina di voci insieme, e nemmeno una che dica il mio nome. Potrei ascoltarle per ore.",
+		"Grida, risate, una porta sbattuta, un bambino che piange per qualcosa di enorme e minuscolo. Niente di tutto questo mi chiede di alzarmi.",
+	},
+	["sw.rest_enter.w22.quiet.008"] = {
+		"Sentite qua. Neanche un urlo. Solo gente che mercanteggia.",
+		"Lo sentite? Gente che litiga sul prezzo delle rape. Musica.",
+	},
+	["sw.rest_enter.w22.quiet.009"] = {
+		"Dei bambini hanno disegnato col gesso dei riquadri sui ciottoli per qualche gioco a saltelli. Ci giro intorno con gran cura. Mi sembra importante.",
+		"Qualcuno ha tracciato col gesso un gioco sul selciato, tutto riquadri e numeri. In una città dove i bambini possono farlo, posso sedermi anch'io.",
+	},
+	["sw.rest_enter.w22.quiet.010"] = {
+		"guarda dei passeri che si contendono una crosta nel rigagnolo, scommette mentalmente sul vincitore e cambia parte due volte.",
+		"getta qualche briciola ai passeri ai suoi piedi e segue la zuffa che ne nasce con l'aria di un giudice al torneo.",
+	},
+	["sw.rest_enter.w22.quiet.011"] = {
+		"Bucato steso fra due finestre: camicie, grembiuli, una calzina. Chi stende i panni si aspetta di essere ancora qui a ritirarli.",
+		"Panni stesi sopra la strada, che sventolano appena. Nessuno appende la camicia buona in un posto che potrebbe bruciare prima di cena.",
+	},
+	["sw.rest_enter.w22.quiet.012"] = {
+		"resta immobile così a lungo che un cagnolino arriva trotterellando, annusa uno stivale con estrema scrupolosità, e ci si sdraia contro.",
+		"subisce un lungo esame da parte di un randagio di passaggio, che non trova niente da ridire e si accomoda di traverso su entrambi gli stivali.",
+	},
+	["sw.rest_enter.w22.quiet.013"] = {
+		"La nebbia dei canali ha avvolto le strade. Ogni suono arriva ovattato, come se la città si fosse tirata addosso una coperta, e me con lei.",
+		"La nebbia si è mangiata il fondo della strada. Quel che resta è piccolo: una lanterna, un muro, una panca. Abbastanza piccolo per riposarci dentro.",
+	},
+	["sw.rest_enter.w22.quiet.014"] = {
+		"La pioggia sull'ardesia, un fruscio lungo e morbido su tutti i tetti della città. Io sto sotto uno di quelli, e la mia ambizione finisce lì.",
+		"La pioggia tamburella sulle lastre e scende dalle gronde a corde. La guardo da sotto un tetto come un avaro guarda i conti di un altro.",
+	},
+	["sw.rest_enter.w22.quiet.015"] = {
+		"Qualcuno su per una scala si esercita al violino, male: sempre le stesse quattro note. Mi sorprendo ad aspettare la quinta.",
+		"Un violino da qualche parte di sopra, che arranca sulla solita aria e inciampa ogni volta allo stesso passaggio. All'inciampo mi sono quasi {g:affezionato|affezionata}.",
+	},
+	["sw.rest_enter.w22.quiet.016"] = {
+		"Lo sentite? Nessuno sta inseguendo nessuno. Mi ero {g:dimenticato|dimenticata} che le città suonassero così.",
+		"Solo carri, bottegai e pettegolezzi. Il rumore più bello che sento da settimane.",
+	},
+	["sw.rest_enter.w22.quiet.017"] = {
+		"guarda due apprendisti che portano un'asse lunghissima in mezzo alla folla, girandola di qua e di là, e prova un vago piacere ogni volta che nessuno viene colpito.",
+		"segue un facchino che si fa largo nella calca con una scala in spalla, trasalendo con gusto a ogni colpo sfiorato.",
+		"tiene mezzo occhio su un ragazzo alle prese con una cassa troppo grande da portare dall'altra parte della strada, pronto ad ammirarlo se ce la fa.",
+	},
+	["sw.rest_enter.w22.quiet.018"] = {
+		"ascolta qualcuno che spazza una soglia lì di fronte, la scopa che va a colpi lunghi e regolari, e lascia che gli occhi si chiudano allo stesso ritmo.",
+		"segue il raschiare costante di una scopa sulla pietra, lì vicino, finché non diventa l'unico suono che valga la pena sentire.",
+	},
+	["sw.rest_enter.w22.quiet.019"] = {
+		"Sss. Sto ascoltando la gente che fa cose normali.",
+		"Zitti un attimo. Qualcuno sta litigando sui cavoli, ed è bellissimo.",
+		"Che baccano, in questa città. Non ne cambierei una nota.",
+	},
+	["sw.rest_enter.w22.repose.001"] = {
+		"Il Gilded Rose per un letto morbido, il Pig and Whistle per uno rumoroso, una panca vicino all'acqua per nessun letto. Stormwind offre un menù intero di posti dove crollare.",
+		"Una stanza tranquilla nel Trade District, una chiassosa nell'Old Town, o uno scalino lungo il canale: in questa città perfino crollare offre una scelta.",
+		"Locande ai due capi della città e panchine nel mezzo. Sceglierò quella più vicina al punto in cui mi cedono le ginocchia.",
+	},
+	["sw.rest_enter.w22.repose.002"] = {
+		"Un letto a nolo sa di sapone e dei quaranta sconosciuti che ci hanno dormito prima di me. Non mi danno fastidio. Se ne sono andati tutti interi.",
+		"Lenzuola di altri, sapone di altri, un cuscino schiacciato da cento teste prima della mia. È la cosa più bella che vedo da settimane.",
+	},
+	["sw.rest_enter.w22.repose.003"] = {
+		"affonda un pugno nel materasso della locanda, come un cuoco che saggia una pagnotta, e a quanto pare la trova cotta al punto giusto.",
+		"si siede sul bordo del letto, molleggia una volta, due, e rivolge alle molle un piccolo cenno di approvazione.",
+		"pungola con due dita il pagliericcio della locanda, aggrotta la fronte, pungola ancora, e decide che va più che bene.",
+	},
+	["sw.rest_enter.w22.repose.004"] = {
+		"Nel Park i prati sono rasati corti e nessuno schiaccia un pisolino sotto gli alberi, a meno di aver rinunciato a sembrare rispettabile. Mi manca poco.",
+		"L'erba del Park sembra abbastanza morbida per dormirci, e una guardia sembra pronta a dire il contrario. Valuterò le due cose.",
+	},
+	["sw.rest_enter.w22.repose.005"] = {
+		"Svegliatemi se la città va a fuoco. Se sono solo le campane, lasciatele suonare.",
+		"Se qualcuno mi cerca, sarò in posizione orizzontale. Non prendetela sul personale.",
+		"Vado a sdraiarmi. Forse mi rialzo. Nessuno ci faccia affidamento.",
+	},
+	["sw.rest_enter.w22.repose.006"] = {
+		"Letti umani. Potrei dormirci di traverso e non toccare comunque nessuno dei due bordi. Ho intenzione di provarle tutte, le direzioni.",
+		"Qualcuno ha fatto questo letto per una persona alta il doppio di me. Mi raggomitolerò in un angolo, come un gatto su una chiatta.",
+	},
+	["sw.rest_enter.w22.repose.007"] = {
+		"I letti degli umani sono troppo morbidi, e di parecchio. Ci affonderò come un sasso in una palude, e brontolerò quando mi rialzo.",
+		"Piume. Ovvio che sono piume. Datemi un buon pagliericcio con un'asse sotto. Comunque, un letto offerto non lo rifiuto.",
+	},
+	["sw.rest_enter.w22.repose.008"] = {
+		"si stende {g:vestito|vestita} di tutto punto sopra le coperte, con l'idea di spogliarsi fra un momento, e non lo fa.",
+		"si allunga sul letto con gli stivali ancora ai piedi e un braccio sugli occhi, con l'intenzione di farli solo riposare.",
+		"si lascia cadere di traverso sul letto stretto, cappotto compreso, e non dà segno di volersi muovere per un bel pezzo.",
+	},
+	["sw.rest_enter.w22.repose.009"] = {
+		"Un cuscino. Avevo dimenticato la sua forma esatta, il modo in cui la testa ci affonda e ha il permesso di restarci.",
+		"C'è un incavo preciso che una testa stanca lascia in un buon cuscino. Ho intenzione di farlo, e di tenermelo, per ore.",
+	},
+	["sw.rest_enter.w22.repose.010"] = {
+		"Se il sonno arriverà, chi lo sa. Stare distesi dietro una porta sbarrata ne vale comunque gran parte.",
+		"Il sonno può venire come no: con me fa gli orari che vuole. Immobilità, un tetto, una città che fa la guardia: lo chiamo riposo e mi basta.",
+		"Ormai al sonno chiedo poco. Un angolo buio, una serratura, nessuno che abbia bisogno di me. Il resto è in più.",
+	},
+	["sw.rest_enter.w22.repose.011"] = {
+		"Metà dei gradini d'ingresso di questa città sembra avere qualcuno che ci sonnecchia sopra, e i passanti lo scansano educati come una pozzanghera.",
+		"Stormwind è piena di gente addormentata in posti strani: un carrettiere sui suoi sacchi, un apprendista contro una colonna. Sarò uno in più.",
+	},
+	["sw.rest_enter.w22.repose.012"] = {
+		"chiude gli occhi su una panca e si addormenta prima di averlo deciso, una mano ancora infilata nella cinghia della sacca.",
+		"si appoggia all'indietro e crolla quasi subito, la bocca socchiusa, le dita strette alla cinghia della sacca come quelle di un bambino che dorme col suo giocattolo.",
+	},
+	["sw.rest_enter.w22.repose.013"] = {
+		"Esiste in questa città un letto che non cigoli? No? Allora uno che cigola. In fretta.",
+		"Prendo qualsiasi stanza con una porta. Vista brutta, vicini rumorosi, pavimento storto. Basta la porta.",
+	},
+	["sw.rest_enter.w22.repose.014"] = {
+		"Se sogno, che sia di poco: una stanza vuota, una porta chiusa, una campana che nessuno ha bisogno di suonare.",
+		"Che i sogni siano piccoli. Un tavolo, una tazza, una finestra con fuori niente di cui preoccuparsi.",
+	},
+	["sw.rest_enter.w22.repose.015"] = {
+		"Così tardi che per strada sono rimasti pochi passi, e ognuno sembra di qualcuno che va a dormire. I miei saranno gli ultimi.",
+		"La città si è fatta così silenziosa che si sente chiudere un'imposta tre case più in là. A uno a uno, si stendono tutti. Anch'io.",
+	},
+	["sw.rest_enter.w22.repose.016"] = {
+		"sale le scale della locanda un gradino pesante dopo l'altro, contandoli a mezza voce, e si ferma sul pianerottolo a detestare gli ultimi.",
+		"affronta le scale della locanda come se ogni gradino fosse una montagna a sé, e arriva in cima con l'aria di un conquistatore.",
+	},
+	["sw.rest_enter.w22.repose.017"] = {
+		"rigira la chiave di una stanza nel palmo, soppesandola come un piccolo tesoro, poi se la mette in tasca con gran cura.",
+		"solleva una pesante chiave di ferro per l'anello e la studia un momento, come se fosse la prima chiave mai forgiata.",
+		"fa scivolare la chiave della stanza in una tasca interna e ci tiene sopra una mano per un po', come si tiene la mano su un animale che dorme.",
+	},
+	["sw.rest_enter.w22.repose.018"] = {
+		"sbadiglia così smisuratamente che un apprendista di passaggio se lo prende e sbadiglia a sua volta, e tutti e due hanno l'aria un po' imbarazzata.",
+		"si lascia andare a uno sbadiglio da slogarsi la mascella, poi a un altro, e rinuncia a qualsiasi pretesa di poter conversare.",
+		"sbadiglia dietro una mano, poi senza mano, poi resta lì con gli occhi che lacrimano, {g:sconfitto|sconfitta}.",
+	},
+	["sw.rest_enter.w22.repose.019"] = {
+		"Mostratemi un letto, una panca, un mucchio di sacchi. Non sto più a fare storie.",
+		"Va bene qualsiasi cosa piatta. Anche un tavolo. Soprattutto un tavolo.",
+		"Dormirei in un barile, se qualcuno lo facesse rotolare in un posto tranquillo.",
+	},
+	["sw.rest_enter.w22.repose.020"] = {
+		"Se comincio a russare, prendetelo come un complimento alla città.",
+		"Se dovessi russare, consideratelo un applauso.",
+		"Qualsiasi russare sentiate è la mia recensione di Stormwind. Cinque leoni.",
+	},
+	["sw.rest_enter.w22.slack.001"] = {
+		"Pane fresco, da qualche parte qui vicino. A Stormwind c'è sempre un forno acceso a una strada o due di distanza, e già questo è un motivo per restare.",
+		"Qualcuno sta infornando qui vicino: profumo di crosta e di lievito che scivola sulle pietre. In una città che sa di pane mi posso sedere.",
+	},
+	["sw.rest_enter.w22.slack.002"] = {
+		"Un pasticcio da una bancarella, uno stufato in locanda, una mela da un carretto: la città mette in fila le sue comodità, e io scelgo come un signore.",
+		"Là fuori la cena era quello che non correva abbastanza in fretta. Qui è questione di quale bancarella, e di quante monete mi va di spendere.",
+		"Così tante rosticcerie che potrei attraversare la città mangiando senza sedermi due volte allo stesso banco. Un bel problema da avere.",
+	},
+	["sw.rest_enter.w22.slack.003"] = {
+		"compra un pasticcio di carne a una bancarella e lo mangia in piedi, {g:attento|attenta} al sugo, con le briciole che si raccolgono sul davanti del cappotto.",
+		"mangia un fagottino caldo direttamente dalla carta, girandolo e rigirandolo in cerca del lato abbastanza tiepido da addentare.",
+	},
+	["sw.rest_enter.w22.slack.004"] = {
+		"Formaggio. Pane. Qualunque cosa non sia stata essiccata, salata o portata in una sacca. Ordino questo.",
+		"Qualcosa di morbido da mangiare, per favore. I miei denti ne hanno abbastanza di carne secca per tutta la vita.",
+		"Roba fresca. Niente stagionato, niente affumicato. Pago di più per qualsiasi cosa fosse viva questa settimana.",
+	},
+	["sw.rest_enter.w22.slack.005"] = {
+		"Il formaggio in questa città arriva dalle fattorie di Elwynn a carrettate. Dopo le gallette, è come mangiare un cuscino.",
+		"Formaggio giallo e morbido dalle fattorie fuori dalle mura, un coltello, e nessuno che aspetti la sua parte. Potrei commuovermi, se fossi il tipo.",
+	},
+	["sw.rest_enter.w22.slack.006"] = {
+		"L'oste mi ha messo davanti una tazza prima che la chiedessi. O ho una faccia così stanca, o questa è la locanda meglio gestita del regno.",
+		"Non mi ero ancora {g:seduto|seduta} per bene che un boccale mi è comparso accanto al gomito. Qui qualcuno legge le facce per mestiere.",
+	},
+	["sw.rest_enter.w22.slack.007"] = {
+		"toglie l'uvetta da una focaccina dolce, chicco per chicco, e la tiene per ultima, una piccola cerimonia privata su cui nessuno fa domande.",
+		"divide una focaccina dolce in due metà esatte, mangia prima la più piccola e tratta la più grande con visibile reverenza.",
+	},
+	["sw.rest_enter.w22.slack.008"] = {
+		"Una tazza di latte caldo col miele, roba che si dà ai bambini e ai malati. In questo momento sono un po' tutti e due.",
+		"Latte tiepido, un cucchiaio di miele girato dentro. Una bevanda da capezzale. Non me ne vergogno: è solo stanchezza.",
+	},
+	["sw.rest_enter.w22.slack.009"] = {
+		"Se qualcuno vende zuppa, compro. Se qualcuno la regala, mi trasferisco.",
+		"Indicatemi qualcosa di caldo in una scodella e state ben lontani.",
+	},
+	["sw.rest_enter.w22.slack.010"] = {
+		"Mele di Elwynn da un carretto, croccanti e un po' aspre. La prima sparisce in quattro morsi. La seconda la mangio piano, come chi non ha nessun posto dove andare.",
+		"Un sacchetto di mele delle fattorie là fuori, che sanno ancora di frutteto. Ne mangio una fino ai semi e mi sento, assurdamente, {g:ricco|ricca}.",
+	},
+	["sw.rest_enter.w22.slack.011"] = {
+		"paga un ambulante più del dovuto per una tazza di sidro e rifiuta il resto con un gesto, chiaramente senza voglia di contare niente.",
+		"allunga una moneta per una tazza di qualcosa di dolce, non aspetta il resto, e la beve in piedi all'angolo del banco.",
+	},
+	["sw.rest_enter.w22.slack.012"] = {
+		"Da qualche parte in questa città c'è una tinozza d'acqua calda col mio nome sopra. Non alla lettera: il nome dovrò pagarlo.",
+		"Un bagno vero, con acqua che non ho portato io e un fuoco che non ho acceso io. Stormwind ne ha; devo solo trovarne uno e sganciare un po' d'argento.",
+	},
+	["sw.rest_enter.w22.slack.013"] = {
+		"Prima il bagno, poi il cibo, poi la gente. Forse mai.",
+		"Lavarmi, mangiare, dormire. La conversazione viene dopo, se viene.",
+	},
+	["sw.rest_enter.w22.slack.014"] = {
+		"Potrei prendere una stanza. Potrei prendermi uno scalino sul canale. A Stormwind non importa dove mi accascio, basta che non sia in mezzo ai carri.",
+		"Una locanda è un modo di fermarsi. Una panchina è un altro, e costa meno. La città chiede solo che mi fermi da qualche parte fuori dal passaggio.",
+	},
+	["sw.rest_enter.w22.slack.015"] = {
+		"sorseggia una birra scura di quelle che fanno i nani della città, fa una smorfia al primo sorso, e continua a bere con rispetto crescente.",
+		"manda giù un sorso di una birra così densa che ci starebbe in piedi un cucchiaio, sbatte forte le palpebre, e le fa un cenno come a un degno avversario.",
+	},
+	["sw.rest_enter.w22.slack.016"] = {
+		"La cucina degli umani: tutto burro e sugo. Un piatto e resto {g:ancorato|ancorata} alla panca, il che forse è proprio lo scopo.",
+		"Qui friggono tutto, perfino il pane. Ne ho già mangiato troppo, e sono troppo {g:appesantito|appesantita} per pentirmene come si deve.",
+	},
+	["sw.rest_enter.w22.slack.017"] = {
+		"compra una salsiccia infilzata su uno spiedo da un carretto e la mangia a piccoli morsi rispettosi, guardando passare la strada.",
+		"si dedica piano a uno spiedino di carne alla griglia preso da un carretto, un morso alla volta, chiaramente {g:deciso|decisa} a farlo durare.",
+		"resta accanto a un carretto con una salsiccia su un bastoncino, masticando {g:pensieroso|pensierosa}, come un magistrato che soppesa le prove.",
+	},
+	["sw.rest_enter.w22.slack.018"] = {
+		"ordina il bis prima di aver finito la prima porzione, una dimostrazione di fiducia che il cuoco sembra apprezzare.",
+		"guarda la pentola, poi la scodella, poi di nuovo la pentola, e allunga la scodella per averne ancora prima che sia del tutto vuota.",
+		"finisce un piatto in silenzio e lo porge di nuovo senza una parola, una richiesta che ogni cuoco del mondo capisce.",
+	},
+	["sw.rest_enter.w22.slack.019"] = {
+		"dispone un piccolo banchetto lungo un muretto: un tozzo di pane, uno spicchio di formaggio, una cipollina sott'aceto. Lo contempla come un generale davanti a una mappa.",
+		"scarta pane, formaggio e un cartoccio di sale su una sporgenza, li sistema per bene, e ammira la composizione prima di toccarne qualcosa.",
+		"stende un panno su un gradino e ci dispone una cena modesta con tutta la cura di un maggiordomo che apparecchia la tavola d'onore.",
+	},
+	["sw.rest_enter.w22.slack.020"] = {
+		"È pane fresco, questo? Fai strada, naso.",
+		"Qualcosa sta cuocendo. Lo seguo. Non aspettatemi.",
+		"Quell'odore è pane, e quel pane è mio. Fate largo.",
+	},
+	["sw.rest_enter.w22.slack.021"] = {
+		"Prendo quello che mangiano le guardie. Sembra che faccia loro bene.",
+		"Datemi da mangiare quel che date alla ronda cittadina. Mi pare gente robusta.",
+		"Lo stesso delle guardie, grazie. Se le tiene in piedi tutto il giorno, terrà seduto me.",
+	},
+	["sw.rest_enter.w22.unbuckle.001"] = {
+		"sgancia il fermaglio al collo e lascia scivolare il mantello dalle spalle, che finisce in un mucchio come una pelle cambiata.",
+		"libera il fermaglio del mantello con dita rigide e lascia che tutto quel peso di lana si afflosci alle sue spalle.",
+		"si scrolla di dosso il mantello e lo lascia dov'è caduto, una pozza scura di stoffa che non pretende più niente da nessuno.",
+	},
+	["sw.rest_enter.w22.unbuckle.002"] = {
+		"si sfila la sacca una spalla alla volta e la posa a terra con tanta delicatezza che sembra piena di uova.",
+		"appoggia la sacca con una cura esagerata, come se si fosse guadagnata un po' di riguardo per essere arrivata fin qui.",
+	},
+	["sw.rest_enter.w22.unbuckle.003"] = {
+		"Le mie ginocchia hanno delle opinioni. Su ogni ciottolo di questa città me ne hanno espressa una. Da sedute, se ne stanno zitte e imbronciate.",
+		"Le ginocchia hanno protestato per ogni scalino e ogni salita. Adesso che mi sono {g:fermato|fermata} non mi rivolgono più la parola.",
+		"A ogni passo su queste lastre le ginocchia avevano qualcosa da ridire. Stando {g:seduto|seduta}, la discussione l'ho vinta io.",
+	},
+	["sw.rest_enter.w22.unbuckle.004"] = {
+		"Giurerei che i piedi mi sono cresciuti di un numero da quando sono {g:partito|partita}. Pulsano negli stivali come due pagnotte lasciate a lievitare troppo.",
+		"Gli stivali sono sempre della stessa misura. I piedi dentro la pensano diversamente, e lo dicono forte.",
+	},
+	["sw.rest_enter.w22.unbuckle.005"] = {
+		"impasta una coscia indolenzita col palmo della mano, fa una smorfia, e continua con paziente ostinazione.",
+		"affonda i pollici in un polpaccio contratto e scioglie il nodo a forza, la mascella serrata, finché il muscolo non si arrende per primo.",
+		"massaggia un ginocchio rigido con lenti movimenti circolari, come chi lucida via una macchia ostinata dal legno vecchio.",
+	},
+	["sw.rest_enter.w22.unbuckle.006"] = {
+		"Mi fanno male gli occhi a forza di cercare un movimento in ogni siepe e ogni crinale. Un muro qualsiasi non offre niente da cercare, e loro ringraziano.",
+		"Per ore gli occhi hanno fatto la sentinella. Qui ci sono solo pietre e insegne di botteghe da guardare, e si lasciano andare.",
+	},
+	["sw.rest_enter.w22.unbuckle.007"] = {
+		"Ogni fibbia che possiedo mi ha morso da qualche parte. Via, tutte quante.",
+		"Cinghie, cinture, lacci: tutto quello che mi tiene insieme si sta slacciando. Stavolta apposta.",
+		"Un attimo. Sto slacciando roba. È parecchia, la roba.",
+	},
+	["sw.rest_enter.w22.unbuckle.008"] = {
+		"Le mani sanno di cuoio e di ferro vecchio. Un catino e un pezzo di sapone, e potrebbero passare per quelle di un borghese.",
+		"Ho la strada incrostata in ogni piega delle mani. Le strofinerò nel primo catino che trovo, per vedere di che colore sono davvero.",
+	},
+	["sw.rest_enter.w22.unbuckle.009"] = {
+		"si siede sul bordo basso del muro di un canale e lascia penzolare le gambe sopra l'acqua, i talloni che battono pigri contro la pietra.",
+		"si appollaia sul ciglio di un canale con gli stivali sospesi sull'acqua e li lascia dondolare piano, come un pendolo che si scarica.",
+	},
+	["sw.rest_enter.w22.unbuckle.010"] = {
+		"Ho fatto l'ultimo tratto coi pugni mezzi chiusi. Aprirli è come posare due sassolini che avevo dimenticato di portare.",
+		"Le mani sono rimaste piegate per ore intorno al nulla. Le appoggio aperte sulle ginocchia, palmi in su, e lascio che si ricordino come si fa.",
+	},
+	["sw.rest_enter.w22.unbuckle.011"] = {
+		"allenta ogni cinghia che si lasci allentare e si siede un po' più largo e un po' più basso, come un sacco di farina che trova la sua forma.",
+		"molla una chiusura dopo l'altra e a ognuna sprofonda un po' di più nel sedile, finché chiaramente non resta più niente da slacciare.",
+	},
+	["sw.rest_enter.w22.unbuckle.012"] = {
+		"La rigidità se ne va con un ordine tutto suo: prima le mani, poi la schiena, e il collo per ultimo, di malavoglia, come se andasse convinto.",
+		"Prima o poi in me si scioglie tutto, ma non tutto insieme. Le spalle ne stanno ancora discutendo. Il collo non si lascia mettere fretta.",
+	},
+	["sw.rest_enter.w22.unbuckle.013"] = {
+		"Nessuno tocchi i miei stivali. Stanno prendendo aria. Uomo avvisato.",
+		"Al posto vostro starei un po' alla larga dai miei stivali. Anche loro si sono guadagnati il riposo.",
+	},
+	["sw.rest_enter.w22.unbuckle.014"] = {
+		"posa tutto quello che portava e resta un momento a mani vuote, vagamente {g:smarrito|smarrita} senza quel peso.",
+		"mette a terra l'ultima parte del carico e si guarda le mani vuote come se fossero di un altro.",
+	},
+	["sw.rest_enter.w22.unbuckle.015"] = {
+		"Là fuori il corpo impara a prepararsi a tutto. Qui dentro deve disimpararlo un muscolo alla volta, e non è mai stato svelto a imparare.",
+		"Le mie spalle hanno imparato ad aspettarsi un colpo. Non basterà una sola sosta per convincerle che non ne arriveranno.",
+	},
+	["sw.rest_enter.w22.unbuckle.016"] = {
+		"si toglie uno stivale con uno strattone eroico, poi resta un bel po' a contemplare l'altro, come fosse una seconda campagna, più dura.",
+		"lotta con uno stivale finché non lo libera, lo posa con un piccolo grugnito di trionfo, e guarda il compagno con profonda riluttanza.",
+		"riesce a togliersi uno stivale e poi si ferma lì, a quanto pare contento di girare mezzo scalzo per un po'.",
+	},
+	["sw.rest_enter.w22.unbuckle.017"] = {
+		"raschia il fango secco dai tacchi degli stivali con un bastoncino, piano, il lavoro senza fretta di chi ha smesso di camminare.",
+		"batte uno stivale contro l'altro finché la terra incrostata non si stacca a scaglie, e sembra {g:soddisfatto|soddisfatta} della dimensione del mucchietto.",
+		"toglie con un'unghia un sassolino dalla suola e lo fa schizzare nel rigagnolo, come se sfrattasse l'ultimo passeggero.",
+	},
+	["sw.rest_enter.w22.unbuckle.018"] = {
+		"arrotola le maniche fino al gomito e lascia che l'aria arrivi agli avambracci, rimasti stretti e coperti per ore.",
+		"tira su i polsini e tiene un momento i polsi nudi in avanti, girandoli, come per controllare che si pieghino ancora.",
+		"allenta i lacci di entrambi i polsini e spinge indietro le maniche, scoprendo braccia segnate dalle righe rosse delle cinghie.",
+	},
+	["sw.rest_enter.w22.unbuckle.019"] = {
+		"Mi fa male ogni parte del corpo, ognuna per conto suo. Ve le presento dopo.",
+		"Qualcosa nella schiena ha appena fatto clic. Credo fosse sollievo.",
+		"Ho male in punti che non sapevo avessero un nome. Un cerusico ci farebbe un elenco.",
+	},
+	["sw.subzone_enter.w22.canal.001"] = {
+		"attraversa un ponte e sente i propri passi tornare dall'acqua con un attimo di ritardo, come se qualcuno, sotto, camminasse a testa in giù.",
+		"sente ogni passo sul ponte ripetuto con un attimo di ritardo da sotto l'arco, un'eco piccola e cava che tiene il ritmo fino in fondo.",
+		"si ferma a metà ponte per provare l'eco, e l'arco sottostante restituisce lo strascico di uno stivale come un compagno timido che ripete l'ultima parola.",
+	},
+	["sw.subzone_enter.w22.canal.002"] = {
+		"si imbatte in due donne inginocchiate sull'ultimo gradino che sciacquano lenzuola nel canale e le strizzano tra loro come una fune, litigando tutto il tempo senza mai perdere il ritmo.",
+		"osserva il bucato sciacquato sui gradini del canale e torto fra due paia di braccia finché l'acqua non smette di colare: qualunque sia il motivo della lite, ne fa le spese il lenzuolo.",
+	},
+	["sw.subzone_enter.w22.canal.003"] = {
+		"Le anatre dei canali hanno imparato quali ponti attraversano i garzoni dei fornai. Aspettano sotto quelli, e di tutti gli altri non si curano affatto.",
+		"Le anatre galleggiano sotto un ponte preciso e da nessun'altra parte. Il garzone del fornaio lo passa due volte fra un rintocco e l'altro, col cesto. Le anatre conoscono l'ora meglio di me.",
+		"Sei anatre, un ponte, un garzone col cesto e una trattativa tesissima su una crosta. Il ragazzo sta perdendo.",
+	},
+	["sw.subzone_enter.w22.canal.004"] = {
+		"segue con lo sguardo una mela rossa, caduta da qualche carro, che cavalca la corrente lenta oltre tre ponti, incitata da una fila crescente di bambini al parapetto.",
+		"tiene d'occhio una mela scappata da una carriola che se ne va ballonzolando giù per il canale, con due ragazzini che le corrono accanto lungo il parapetto gridandole consigli.",
+	},
+	["sw.subzone_enter.w22.canal.005"] = {
+		"Vicino ai canali l'aria cala di un mantello. L'acqua tiene una frescura tutta sua, raccolta come in una cantina, qualunque cosa facciano le strade di sopra.",
+		"Sopra i canali vive una frescura spessa un palmo, come l'aria di una cantina. Le strade facciano pure come credono: vicino all'acqua decide l'acqua.",
+	},
+	["sw.subzone_enter.w22.canal.006"] = {
+		"Occhio alla borsa sui ponti. Non per i ladri: per il parapetto, alto giusto per farla scivolare di sotto.",
+		"Attenzione a sporgersi. Questi parapetti sono fatti apposta per fermare i gomiti e perdere le monete.",
+		"Appoggiati pure al parapetto. Il canale accetta offerte.",
+	},
+	["sw.subzone_enter.w22.canal.007"] = {
+		"resta a guardare un cane arruffato che nuota lungo il canale con un bastone fra i denti, ignorando ogni gradinata che incontra e ogni fischio dal ponte.",
+		"applaude, con mezzo ponte, un cane che nuota per un intero tratto di canale col bastone alto, risale dai gradini in fondo, si scrolla addosso a tre passanti e sembra fierissimo.",
+		"sosta mentre un cane fradicio si issa sui gradini del canale, lascia cadere un bastone davanti al primo paio di stivali e aspetta, gocciolante, con fiducia totale.",
+	},
+	["sw.subzone_enter.w22.canal.008"] = {
+		"Il suono viaggia sui canali. Sento un martello dal Dwarven District e un violino da qualche parte nell'Old Town, e arrivano sull'acqua nitidi come se fossero a un ponte di distanza.",
+		"L'acqua porta le voci in modo strano. Una donna ride due ponti più in là, e la risata mi arriva accanto come se si fosse chinata a raccontarmi la battuta.",
+		"Sui canali un bisbiglio può spuntare a una strada di distanza. Metà dei pettegolezzi di Stormwind deve viaggiare per acqua, senza pagare i barcaioli.",
+	},
+	["sw.subzone_enter.w22.canal.009"] = {
+		"guarda un muratore che lavora da una barca ormeggiata, battendo un blocco nuovo nella parete del canale mentre il compagno tiene ferma la barca contro la pietra con tutte e due le mani e un vocabolario notevole.",
+		"si sofferma sopra una barca legata al muro del canale, dove un muratore incastra una pietra nuova e chiara fra le vecchie e scure, e l'acqua schiaffeggia lo scafo a ogni colpo di mazzuolo.",
+	},
+	["sw.subzone_enter.w22.canal.010"] = {
+		"Nei canali ci sono le rane. Dai ponti non lo diresti mai, ma basta stare un po' immobili vicino all'acqua e una attacca, e poi risponde tutto il muro.",
+		"Da qualche parte fra le alghe ai piedi del muro una rana fa il verso di una porta che avrebbe bisogno d'olio. Parecchie altre sono d'accordo.",
+	},
+	["sw.subzone_enter.w22.canal.011"] = {
+		"percorre i canali mentre le prime barche si staccano, le pertiche che battono piano sulla pietra, e i barcaioli che si scambiano da una sponda all'altra i primi prezzi della giornata.",
+		"attraversa i canali alla prima luce, quando le barche vengono slegate a una a una e le voci dei barcaioli corrono basse e roche sull'acqua ferma.",
+	},
+	["sw.subzone_enter.w22.canal.012"] = {
+		"Qualcuno sta friggendo del pesce su una barca laggiù. Qualcun altro sta per diventare molto invidioso, e sono io.",
+		"Pesce fritto sul braciere di una barca. Se quel barcaiolo vende al pezzo, compro.",
+	},
+	["sw.subzone_enter.w22.canal.013"] = {
+		"Lunghe alghe pendono dai muri del canale e si allungano tutte nello stesso verso, pettinate da una corrente troppo lenta per vederla. È l'unico modo di capire da che parte va il canale.",
+		"La corrente qui è troppo pigra per vederla, ma le alghe sui muri la conoscono. Ogni filo punta dalla stessa parte, come una folla che guarda la stessa porta.",
+		"Guarda le alghe, non l'acqua. L'acqua finge di stare ferma; le alghe la tradiscono.",
+	},
+	["sw.subzone_enter.w22.canal.014"] = {
+		"individua una guardia piazzata in cima a un ponte che si volta lenta da una sponda all'altra, come la lancetta di un orologio che non sa decidersi sull'ora.",
+		"fa un cenno a una guardia appoggiata al parapetto di un ponte, che guarda l'acqua solo quando su nessuna delle due rive c'è altro da guardare, cioè di rado.",
+		"intravede una guardia sul punto più alto di un ponte che strofina col pollice una macchia sul parapetto, senza mai staccare gli occhi dall'altra riva.",
+	},
+	["sw.subzone_enter.w22.canal.015"] = {
+		"Gnomeregan andava a tubi, pompe e valvole. Questi canali se ne stanno lì a fare l'acqua e basta. Riposante, in modo strano, e un tantino esasperante.",
+		"Niente pompe. Niente manometri. Neanche una valvola. Gli umani lasciano l'acqua a oziare dentro fossati e si fidano che si comporti bene. Io avrei messo un contatore su ogni ponte.",
+	},
+	["sw.subzone_enter.w22.canal.016"] = {
+		"fa spazio a una bambina che dal ponte cala un secchio con una corda fino all'acqua, lo tira su mezzo pieno e se lo porta via con gran cura, sciabordando, per qualche suo scopo.",
+		"aspetta mentre una donna cala un secchio dal parapetto con una lunga corda, lo immerge con un colpo di polso esperto e lo ritira su senza versarne una goccia.",
+	},
+	["sw.subzone_enter.w22.canal.017"] = {
+		"I canali furono scavati per i commerci, dicono i barcaioli, ma quando la città bruciò erano l'unica cosa che non prendeva fuoco. La gente ci stava dentro fino al petto e guardava i tetti crollare.",
+		"Un vecchio barcaiolo mi ha raccontato che sua nonna sopravvisse all'incendio in quest'acqua, immersa fino al mento sotto un ponte con un sacco bagnato in testa. Lo racconta piatto, come il prezzo del carbone.",
+		"Chiedi ai barcaioli e ti diranno che nella Prima Guerra i canali salvarono più vite delle mura. Lo dicono senza orgoglio, guardando l'acqua.",
+	},
+	["sw.subzone_enter.w22.canal.018"] = {
+		"Ogni ponte qui ha un mendicante, una guardia o un gatto. Mai due insieme. Le regole non le faccio io.",
+		"Ponte, guardia. Ponte, gatto. Ponte, guardia. I canali fanno a turno.",
+		"Il prossimo è un ponte da gatto. Me lo sento.",
+	},
+	["sw.subzone_enter.w22.canal.019"] = {
+		"ammira un cigno che scivola sul canale oltre una chiatta ormeggiata, bianco sull'acqua scura, mentre ogni barcaiolo gli cede il passo senza una parola.",
+		"si scosta quando un cigno risale i gradini del canale con l'aria di un padrone di casa venuto a riscuotere, e la gente seduta lì sposta in silenzio il pane fuori dalla sua portata.",
+	},
+	["sw.subzone_enter.w22.canal.020"] = {
+		"Acqua fra un quartiere e l'altro. Buona per i commerci di una città, ancora meglio per chi un giorno dovesse sparire. Mi sorprendo a contare le gradinate che ci scendono dentro.",
+		"Se mai dovessi sparire a Stormwind, comincerei da qui. Ho già contato tre punti dove il muro è abbastanza basso da lasciarsi cadere, e l'acqua non chiede nomi.",
+	},
+	["sw.subzone_enter.w22.canal.021"] = {
+		"guarda una barchetta di carta navigare lungo il canale oltre i gradini, dritta e coraggiosa, finché un'increspatura la fa girare e lei prosegue all'indietro con lo stesso identico coraggio.",
+		"scorge una barchetta di carta incagliata contro un palo d'ormeggio, fradicia e inclinata, con un nome scritto sul fianco nelle lettere grandi di un bambino.",
+	},
+	["sw.subzone_enter.w22.canal.022"] = {
+		"Ogni ponte dei canali ha la sua voce. Uno suona sotto lo stivale, uno rimbomba sordo, uno ha una pietra smossa che schiocca come una lingua. Potrei attraversarli bendato e chiamarli per nome.",
+		"Certi ponti ronzano sotto i piedi, altri tacciono. Uno qui vicino ha una lastra che dondola e batte ogni volta che qualcuno ci mette piede, e nessuno l'ha mai aggiustata, perché tutti la conoscono.",
+	},
+	["sw.subzone_enter.w22.canal.023"] = {
+		"coglie due vicini che litigano da una finestra all'altra sopra il canale, e l'acqua fra loro porta ogni parola a un pubblico piccolo e attentissimo sul ponte.",
+		"sente una lite urlata che rimbalza sull'acqua fra due finestre ai piani alti, e vede i passanti sul ponte rallentare, poi fermarsi, poi schierarsi in silenzio.",
+	},
+	["sw.subzone_enter.w22.cathedral.001"] = {
+		"si fa da parte per due accoliti che attraversano la piazza con una lunga scala fra loro, e chiedono scusa a turno a chiunque l'estremità rischi di urtare.",
+		"si abbassa mentre passa una scala all'altezza della testa, portata da due accoliti che stanno ancora discutendo su chi debba stare davanti.",
+		"aspetta che due giovani sacerdoti manovrino una scala sul selciato verso la facciata della cattedrale, girandola piano, come una nave che cerca l'ormeggio.",
+	},
+	["sw.subzone_enter.w22.cathedral.002"] = {
+		"Il selciato ai piedi della scalinata è consumato in conche leggere, proprio dove la gente si ferma prima di salire. Anni di esitazioni, impresse nella pietra.",
+		"Davanti al primo gradino le lastre si incurvano, lisciate da piedi che lì hanno sostato. Tutti, a quanto pare, si concedono un momento prima della salita.",
+		"C'è un avvallamento nella pietra subito prima della scalinata. Non viene dal camminare, credo. Viene da chi restava fermo a decidersi.",
+	},
+	["sw.subzone_enter.w22.cathedral.003"] = {
+		"sfila accanto a uno scrivano seduto a un tavolino pieghevole vicino alla scalinata, che scrive una lettera per un bracciante: lui detta in un sussurro attento e si fa rileggere ogni riga.",
+		"rallenta vicino a uno scrivano che lavora su un'asse appoggiata alle ginocchia, mentre il cliente si china a compitare un nome che non ha mai visto scritto.",
+		"nota uno scrivano ai margini della piazza che mette giù una lettera parola per parola per una vecchia, che lo ferma due volte perché suoni più allegra.",
+	},
+	["sw.subzone_enter.w22.cathedral.004"] = {
+		"Ovunque in città le guardie fanno circolare la gente. In questa piazza si può restare dove si è quanto pare, e loro guardano altrove per educazione.",
+		"Nessuno viene fatto sloggiare dalla Cathedral Square. Mendicanti, pellegrini, smarriti: le guardie li lasciano in pace, e sembrano perfino rallentare il passo.",
+		"Qui le guardie camminano in un altro modo. Più piano, le mani lontane dalla cintura. Chi si ferma in questa piazza ha il permesso di farlo.",
+	},
+	["sw.subzone_enter.w22.cathedral.005"] = {
+		"Cappello in mano o in testa? In una piazza così nessuno ti dice mai le regole.",
+		"Devo inchinarmi all'edificio? Tutti gli altri qualcosa stanno facendo.",
+		"Spalle dritte. Là dentro qualcuno probabilmente guarda. Lassù, forse, qualcun altro.",
+	},
+	["sw.subzone_enter.w22.cathedral.006"] = {
+		"lascia passare una piccola processione: due sacerdoti che reggono un libro enorme su un cuscino, e un terzo dietro con le mani tese, caso mai scivolasse.",
+		"fa spazio a due sacerdoti che portano fra loro un gran volume rilegato su un cuscino di velluto, con la serietà concentrata di chi trasporta una zuppa.",
+		"guarda sfilare un grosso libro su un cuscino, sorretto da due chierici che posano ogni passo come se le pietre fossero unte, e un ragazzino dietro che ne tiene il fermaglio.",
+	},
+	["sw.subzone_enter.w22.cathedral.007"] = {
+		"Un filo d'incenso esce dalla cattedrale e arriva fino alla fontana, prima che la strada se lo riprenda con pane, cavalli e polvere di pietra.",
+		"L'odore d'incenso si ferma a metà piazza, come se fosse arrivato a una riga e qualcuno gli avesse detto con garbo di non andare oltre.",
+		"Incenso da una parte della piazza, un venditore di pasticci caldi dall'altra, e i due odori si incontrano nel mezzo e litigano sottovoce.",
+	},
+	["sw.subzone_enter.w22.cathedral.008"] = {
+		"vede una donna portare un bambino febbricitante ai piedi della scalinata, e un sacerdote scendere subito e inginocchiarsi sulla pietra per ascoltarla all'altezza del piccolo.",
+		"scorge un sacerdote accovacciato sull'ultimo gradino accanto a un bimbo pallido e a suo padre, che ascolta più di quanto parli, una mano posata sulla testa del piccolo.",
+		"guarda verso la scalinata, dove una giovane sacerdotessa siede accanto a un bambino malato avvolto in una coperta e gli parla di poco o niente con voce fermissima.",
+	},
+	["sw.subzone_enter.w22.cathedral.009"] = {
+		"Le figure scolpite sopra le porte della cattedrale hanno perso il naso per le intemperie, tutte quante. Chissà come, le fa sembrare più gentili.",
+		"Sopra le porte i volti di pietra si sono consumati, morbidi e smussati. Chiunque dovessero essere, sono diventati i nonni di tutti.",
+		"Le sculture sopra le porte sono quelle che preferisco: gli anni le hanno levigate finché ogni severità si è addolcita.",
+	},
+	["sw.subzone_enter.w22.cathedral.010"] = {
+		"Attenzione alle parole vicino alla scalinata. I sacerdoti sentono molto meglio di quanto diano a vedere.",
+		"Le imprecazioni le terrei per un'altra strada. Quelli in bianco hanno l'orecchio fino.",
+	},
+	["sw.subzone_enter.w22.cathedral.011"] = {
+		"sosta davanti a una bacheca vicino alla cattedrale dove gli avvisi sono appuntati a tre strati: orari delle cure, giorni delle elemosine e foglietti che chiedono di persone che da tempo nessuno vede.",
+		"legge un angolo della bacheca ai margini della piazza, dove fra gli annunci delle funzioni qualcuno ha appuntato lo schizzo di un volto scomparso.",
+		"resta davanti a una bacheca affollata, i fogli più vecchi diventati morbidi e gialli sotto i nuovi, ognuno a chiedere di un nome.",
+	},
+	["sw.subzone_enter.w22.cathedral.012"] = {
+		"Non mi inginocchio spesso. In questa piazza le mie ginocchia se lo ricordano, ancora prima che io lo decida.",
+		"La Luce e io non ci parliamo tutti i giorni. Qui, mi accorgo di aver chinato il capo prima di volerlo.",
+		"Davanti alla cattedrale qualcosa in me si raddrizza. Abitudine, o la Luce. Non saprei dire quale delle due.",
+	},
+	["sw.subzone_enter.w22.cathedral.013"] = {
+		"attraversa la piazza nel primo grigio dell'alba, dove una fila di accoliti spazza la scalinata della cattedrale dall'alto in basso, ogni scopa un gradino dietro quella di sopra.",
+		"arriva nella piazza mentre l'alba sale pallida, gli accoliti già all'opera sui gradini con le scope, che scendono insieme come un'onda lenta.",
+		"trova la piazza quasi vuota all'alba, tranne le scope: una fila di accoliti sui gradini che spazzano a tempo, senza una parola.",
+	},
+	["sw.subzone_enter.w22.cathedral.014"] = {
+		"Un giovane sacerdote su una panca prova una predica a mezza bocca, perde il segno, ricomincia, e fa grandi gesti verso la panca vuota di fronte.",
+		"Qualcuno qui sta provando una predica, a voce mezza alta. Ogni tante righe si ferma, cancella qualcosa e riprova la stessa frase con più convinzione.",
+		"Vicino alla fontana c'è una sacerdotessa che si legge una predica da sola, muovendo le labbra, e si acciglia ogni volta che arriva allo stesso paragrafo.",
+	},
+	["sw.subzone_enter.w22.cathedral.015"] = {
+		"sente i propri passi tornare indietro dalla facciata della cattedrale con un attimo di ritardo, come se qualcuno camminasse subito dietro.",
+		"nota come l'alta facciata della cattedrale rimandi ogni suono attraverso la piazza: una risata, una tazza caduta, e i suoi stessi passi, un tempo dopo.",
+		"attraversa il selciato aperto e coglie l'eco di ogni passo che torna dal muro della cattedrale, debole e un po' fuori tempo.",
+	},
+	["sw.subzone_enter.w22.dwarven.001"] = {
+		"si ferma quando una minuscola molla schizza via dal banco di uno gnomo, tintinna sul selciato e sparisce, e tre passanti si mettono in ginocchio a cercarla senza che nessuno lo chieda.",
+		"guarda uno gnomo che armeggia su un gradino perdere una molla con un piccolo «tin» squillante, e mezza strada unirsi alla ricerca a carponi.",
+		"per poco non calpesta una molla d'ottone fuggitiva, e lo gnomo che l'aveva persa si profonde in ringraziamenti tali che pare d'avergli salvato la vita.",
+	},
+	["sw.subzone_enter.w22.dwarven.002"] = {
+		"Ogni fabbro di questa via lavora con la barba infilata nella cintura. Un nano all'incudine rischia tutto, tranne la barba.",
+		"Barbe ripiegate e nascoste dietro i grembiuli di cuoio, lungo tutta la fila delle fucine. Vanità, o il ricordo di una barba che ha preso fuoco. Tutt'e due, probabilmente.",
+		"I nani qui lavorano con la barba infilata nella cintura, e appena si allontanano la tirano fuori e le danno una scrollatina, come a un mantello.",
+	},
+	["sw.subzone_enter.w22.dwarven.003"] = {
+		"entra in una nuvola bianca improvvisa mentre un fabbro immerge una barra rovente in un trogolo d'acqua, il sibilo forte come quello di un gatto spaventato e il vapore che rotola sulla strada.",
+		"perde di vista la via per un istante in una vampata di vapore che sale da una tinozza d'acqua di tempra, e ne esce con un vago odore di ferro caldo e pietra bagnata.",
+		"aspetta che il vapore del barile d'acqua di un fabbro si diradi, il selciato che riappare piano, e il fabbro già tornato all'incudine.",
+	},
+	["sw.subzone_enter.w22.dwarven.004"] = {
+		"Fra i ciottoli, qui, c'è un luccichio sottile: limatura di ferro, anni di limatura, spazzata nelle fessure finché la strada non brilla, a guardarla di sbieco.",
+		"Le crepe fra le pietre del selciato sono piene di polvere di metallo, limata via da mille lavori. Tutta la via è fatta, in silenzio, di scarti.",
+		"Ci si china a guardare, e le fessure fra le pietre luccicano opache di limatura e scaglie. Questo quartiere è lastricato di avanzi.",
+	},
+	["sw.subzone_enter.w22.dwarven.005"] = {
+		"Ironforge in tascabile. Meno scale, stesse opinioni.",
+		"Una fettina di Ironforge, e ogni nano che ci sta ha un consiglio per me.",
+		"Gli stessi martelli di Ironforge. Con meno montagna sopra.",
+	},
+	["sw.subzone_enter.w22.dwarven.006"] = {
+		"si sofferma presso un ciabattino nano su uno sgabello basso che pianta chiodi da scarpone in una suola a colpetti brevi e precisi, gli stivali finiti allineati dietro di lui come una fila paziente.",
+		"segue un nano che risuola uno stivale su una forma di ferro stretta fra le ginocchia, saggiando col pollice ogni chiodo prima di piantarlo.",
+		"rallenta accanto al banco di un ciabattino dove un nano squadra ogni stivale che passa con cipiglio da professionista, come se contasse il lavoro che cammina.",
+	},
+	["sw.subzone_enter.w22.dwarven.007"] = {
+		"Certi gnomi di questo quartiere hanno banchi pieni di attrezzi che sembrano recuperati, anneriti e puliti con amore. Gnomeregan non c'è più. Si sono portati via quel che potevano.",
+		"Uno gnomo stagnaio qui tiene sopra il banco una piccola insegna ammaccata, più vecchia di tutto il resto. Di Gnomeregan, scommetto, portata via quando la città è caduta.",
+		"Gli gnomi di questa via lavorano come se avessero fretta di ricostruire qualcosa. Gnomeregan è persa, ai troggs e a peggio; nessuno di loro lo dice, e tutti sembrano saperlo.",
+	},
+	["sw.subzone_enter.w22.dwarven.008"] = {
+		"scorge due vecchi nani chini su una scacchiera graffiata sul coperchio di un barile, che giocano con dadi e bulloni come pedine e si accusano a vicenda di averli spostati mentre l'altro beveva.",
+		"osserva da dietro una partita in corso su una cassa rovesciata, dove un bullone ha appena mangiato un dado, e il nano che perde pretende il riconteggio di un gioco in cui non si conta niente.",
+		"dà un'occhiata a due nani curvi su una partita a dadi esagonali e rondelle, così assorti che un carro deve girargli intorno, e nessuno dei due se ne accorge.",
+	},
+	["sw.subzone_enter.w22.dwarven.009"] = {
+		"L'odore di questa via somiglia abbastanza a casa che smetto di cercare la prossima svolta e cammino e basta.",
+		"Carbone, ferro rovente, la pipa di qualcuno, la cena di qualcun altro. Per qualche passo potrei essere sotto la montagna.",
+		"Un fabbro saluta con l'accento di casa, e per un momento Stormwind sembra soltanto una galleria più in là.",
+	},
+	["sw.subzone_enter.w22.dwarven.010"] = {
+		"rallenta davanti a una bottega dove un nano apre e chiude più e più volte una porta appena montata, la testa inclinata, in ascolto di un cigolio che sente solo lui.",
+		"studia un fabbro che muove avanti e indietro un cardine nuovo su una porta, l'oliatore in mano, accigliato per un rumore che nessun altro in strada distingue.",
+		"sente una porta provata e riprovata, e un nano dall'altra parte che borbotta che un cardine che parla è un cardine che mente.",
+	},
+	["sw.subzone_enter.w22.dwarven.011"] = {
+		"Alla forgia più grande un battimazza cala la mazza dovunque il fabbro batta col martelletto. Tic, bum, tic, bum: un'intera conversazione senza una parola.",
+		"Il fabbro batte il punto, il battimazza lo colpisce. Due martelli, una testa sola, e quello piccolo comanda.",
+		"Potrei ascoltare per ore il fabbro e il suo battimazza: il martelletto che indica, quello pesante che risponde, mai una volta fuori turno.",
+	},
+	["sw.subzone_enter.w22.dwarven.012"] = {
+		"Attenti alle scintille. E allo gnomo. Soprattutto allo gnomo.",
+		"Scintille a sinistra, uno gnomo con una chiave inglese a destra. Io passo nel mezzo.",
+		"Occhio a dove metti i piedi: ferro rovente, bulloni sparsi e l'esperimento di qualcuno.",
+	},
+	["sw.subzone_enter.w22.dwarven.013"] = {
+		"Il mantice automatico di uno gnomo sbuffa a una delle fucine, e fa il lavoro di un apprendista e le lamentele di tre.",
+		"Qualche gnomo ha attrezzato una forgia perché si soffi da sola il mantice, con un piccolo motore a molla. Funziona, quasi sempre, e ogni volta sospira come un vecchio.",
+		"Il mantice a orologeria di quella forgia non riposa, non si stanca e non smette mai di cigolare. Il nano accanto ha l'aria di chi ha scelto la pazienza.",
+	},
+	["sw.subzone_enter.w22.dwarven.014"] = {
+		"arriva nel quartiere mentre il tuono rotola sui tetti, e vede i fabbri alzare gli occhi dalle incudini col ghigno di artigiani che sentono il martello di un rivale.",
+		"sente il temporale schioccare sopra la testa e un nano alla forgia più vicina rispondergli con un gran colpo tutto suo, fra gli applausi della forgia accanto.",
+		"passa davanti a una forgia dove il tuono fa ridere forte un vecchio fabbro; i fabbri di qui, spiega il suo apprendista, dicono che la tempesta è solo una forgia più grande e più maleducata.",
+	},
+	["sw.subzone_enter.w22.dwarven.015"] = {
+		"Le insegne di questa via non sono di legno dipinto come nel resto della città. Sono di ferro battuto, rivettate al muro, e sembrano pronte a sopravvivere ai muri stessi.",
+		"Ogni insegna qui è martellata nel metallo. Un nano, a quanto pare, non appende fuori niente che un buon colpo possa ammaccare.",
+	},
+	["sw.subzone_enter.w22.heroes.001"] = {
+		"fa scorrere lo sguardo sul basamento di una statua, dove un tempo era inciso a fondo un nome che moltissime dita hanno ormai consumato fino a renderlo un'ipotesi.",
+		"si ferma davanti a un piedistallo le cui lettere incise sono lisciate all'altezza di una mano, mentre quelle oltre la portata di un uomo restano nitide come il giorno in cui furono scolpite.",
+		"segue con l'occhio le lettere di un piedistallo, nette in alto e sfocate in basso, dove ogni bambino di passaggio ha dovuto toccarle.",
+	},
+	["sw.subzone_enter.w22.heroes.002"] = {
+		"Ho chiesto a una guardia chi fossero le statue. Ne ha nominate tre con sicurezza, due con un'alzata di spalle, e ha ammesso che l'ultima cambia a seconda di chi chiede.",
+		"Chiedi a cinque persone lungo questa strada chi siano le statue e avrai cinque elenchi, tutti pronunciati con certezza assoluta. La pietra se ne tiene fuori.",
+		"Su questo ponte tutti sanno esattamente chi sono le statue. Nessuno è d'accordo. Gli eroi, saggiamente, tacciono.",
+	},
+	["sw.subzone_enter.w22.heroes.003"] = {
+		"nota che le statue della valle portano i piccioni come i re portano la corona: sempre uno in cima, sempre con l'aria compiaciuta.",
+		"guarda un muratore su una scala che pulisce l'elmo di un eroe di pietra dagli escrementi di piccione, mentre il piccione responsabile aspetta sulla statua accanto che lui finisca.",
+	},
+	["sw.subzone_enter.w22.heroes.004"] = {
+		"Mezzo Elwynn passa da questa valle sulle ruote di un carro: cavoli, fieno, un maiale con le sue idee. Gli eroi lassù hanno fermato eserciti. I cavoli no.",
+		"Carri di rape che sfilano fra le statue dei più grandi del regno. Chissà perché, sono le rape a convincermi.",
+		"Sopra, gli eroi di Stormwind. Sotto, un carretto di cipolle con una ruota che cigola. So bene quale dei due la città rimpiangerebbe per primo.",
+	},
+	["sw.subzone_enter.w22.heroes.005"] = {
+		"assiste alla scena di una guardia del cancello che si piega quasi in due per ascoltare uno gnomo dichiarare i suoi affari, poi si raddrizza, annuisce seria e lo lascia andare con un saluto pensato per qualcuno molto più alto.",
+		"coglie una sentinella che s'inginocchia per leggere all'altezza giusta i documenti di uno gnomo, con la solennità riservata a un signore in visita.",
+	},
+	["sw.subzone_enter.w22.heroes.006"] = {
+		"La strada qui è abbastanza larga per un esercito in marcia a dodici per fila. Fu fatta per un solo grande giorno, dicono i vecchi soldati, e tutti gli altri giorni porta il latte.",
+		"Una strada così larga è stata posata per le parate e per gli eserciti che entrano sotto gli stendardi. Per lo più si becca carretti del latte, e viandanti che si piantano lì a fissare le statue.",
+	},
+	["sw.subzone_enter.w22.heroes.007"] = {
+		"Che pezzi d'uomo. Chissà se ogni tanto li lasciano sedere.",
+		"Eroi di pietra. Nessuno col torcicollo. Li invidio.",
+		"Tutta quella gloria e nemmeno una panchina fra loro.",
+	},
+	["sw.subzone_enter.w22.heroes.008"] = {
+		"distoglie lo sguardo mentre una donna appunta un rametto verde sul colletto di un soldato vicino al cancello, fa un passo indietro e si allontana svelta senza voltarsi, che è l'unico modo per riuscirci.",
+		"gira intorno a due persone che si salutano accanto al cancello con le fronti unite, mentre il traffico dei carri si divide intorno a loro come l'acqua intorno a un sasso.",
+		"guarda un vecchio accompagnare un giovane fino alla prima statua, stringergli la mano una volta sola e restare lì a lungo, le mani in tasca.",
+	},
+	["sw.subzone_enter.w22.heroes.009"] = {
+		"Su ogni fronte dell'Alleanza c'è qualcuno che ha attraversato in marcia questo ponte. Li ho incontrati nel fango e nei deserti, e ognuno si ricorda di queste statue.",
+		"Chiedi a un soldato dell'Alleanza lontano da qui che cosa vede quando pensa a Stormwind, e la metà ti dirà le statue su questo ponte. Non il castello. Le statue.",
+	},
+	["sw.subzone_enter.w22.heroes.010"] = {
+		"scorge un airone immerso fino alle ginocchia ai piedi di un pilone del ponte, indifferente ai carri di sopra, tutto preso da qualcosa nell'acqua che osserva da più tempo di quanto chiunque abbia mai osservato alcunché.",
+		"individua un airone in bilico su una sporgenza del muro del fossato, una zampa ripiegata, indifferente al traffico di sopra quanto gli eroi di pietra.",
+	},
+	["sw.subzone_enter.w22.heroes.011"] = {
+		"Ogni nano che attraversa questo ponte si ferma a giudicare la muratura. Ognuno trova un giunto da disapprovare. Mai lo stesso.",
+		"Un nano davanti a me si è fermato a metà ponte per far scorrere il pollice lungo la commessura fra due blocchi. Grugnisce, che detto da un nano vale una medaglia.",
+		"Guarda i nani su questo ponte. Gli umani alzano gli occhi alle statue; i nani li abbassano sulla muratura, e si accigliano, e annuiscono, e si accigliano.",
+	},
+	["sw.subzone_enter.w22.heroes.012"] = {
+		"percorre la valle sotto le lanterne, dove le grandi statue stanno illuminate a metà, i volti perduti oltre il raggio della luce.",
+		"cammina fra le statue al buio e scopre che senza volto sembrano più grandi: solo stivali, mani e l'accenno di un mantello che sale nel nulla.",
+	},
+	["sw.subzone_enter.w22.heroes.013"] = {
+		"I loro eroi fiancheggiano la strada, mento alto, e ognuno è un guerriero che dalla mia parte qualcuno ricorda in tutt'altro modo. Cammino al centro del ponte e non ne fisso nessuno a lungo.",
+		"Giganti di pietra dell'Alleanza, ai due lati della strada. Alcuni, scommetto, hanno nomi che dalle mie parti sono maledizioni.",
+	},
+	["sw.subzone_enter.w22.heroes.014"] = {
+		"ascolta un bambino che conta ad alta voce le statue per sua madre, ne trova una in più dell'ultima volta e insiste di avere ragione.",
+		"gira intorno a una bambina che cammina all'indietro per tenere d'occhio tutte le statue insieme, contandole sottovoce, finché non urta piano una guardia che ha già visto la scena.",
+		"sente un bambino al parapetto contare gli eroi due volte, ottenere due numeri diversi e stabilire, deciso, che uno di loro dev'essersi spostato.",
+	},
+	["sw.subzone_enter.w22.heroes.015"] = {
+		"Oltre il cancello, Elwynn Forest è tutto verde e canto d'uccelli; oltre le statue, la città è tutta pietra e campane. Il ponte è dove i due odori si incontrano e litigano.",
+		"Resina di pino da un capo del ponte, fumo di camini e cavalli dall'altro. A metà della valle l'aria non riesce a decidersi.",
+	},
+	["sw.subzone_enter.w22.heroes.016"] = {
+		"resta indietro mentre un sergente fa marciare una squadra di reclute lungo la valle, fermandole sotto ogni statua per urlarne il nome, e le reclute lo ripetono come una lezione.",
+		"si scosta per un sergente che ferma una colonna di reclute ai piedi di una statua e annuncia con voce da piazza d'armi che loro una statua non l'avranno, quindi farebbero meglio a guadagnarsi qualcosa di più piccolo.",
+	},
+	["sw.subzone_enter.w22.heroes.017"] = {
+		"Schiena dritta, ci guardano. Le statue, dico. Probabilmente.",
+		"Tutti questi eroi, e io col fango fino alle caviglie. Nessuno guardi in basso.",
+	},
+	["sw.subzone_enter.w22.heroes.018"] = {
+		"I cardini del grande cancello sono grossi quanto la mia vita. Qualcuno li ingrassa, non ho mai visto chi. Un cancello così non cigola: decide.",
+		"Cardini grandi quanto un nano. Chi li unge dev'essere la persona più importante della città che nessuno abbia mai incontrato.",
+		"Non ho mai visto quel cancello chiuso. Qualcuno ogni tanto lo chiuderà, e mi piacerebbe esserci per sentirlo.",
+	},
+	["sw.subzone_enter.w22.heroes.019"] = {
+		"si sente chiamare da un venditore ambulante ai piedi del ponte, che vende minuscole statuine dipinte degli eroi della valle, un rame l'una, anche se quale eroe sia quale dipende solo dalla vernice.",
+		"si sofferma su un vassoio di piccoli eroi d'argilla in vendita lungo la strada, ciascuno lungo un dito, con i volti dipinti un po' troppo allegri rispetto agli originali.",
+		"si vede offrire da un ragazzino speranzoso con un vassoio un eroe d'argilla grande quanto un pollice, con l'assicurazione che è l'eroe che il cliente preferisce.",
+	},
+	["sw.subzone_enter.w22.heroes.020"] = {
+		"Fra le pietre di questo ponte, dicono i muratori, ci sono blocchi tirati fuori dalle macerie della prima città e rimessi al loro posto. Non dicono quali. Mi sorprendo a cercare segni di bruciato.",
+		"Pietra vecchia della città bruciata è finita di nuovo in questo ponte, dicono lungo la strada. Nessuno sa indicare il blocco. Forse il senso è proprio quello.",
+	},
+	["sw.subzone_enter.w22.heroes.021"] = {
+		"Salve, eroi. Non alzatevi.",
+		"Non fate caso a me, eroi. Passo solo sotto i vostri stivali.",
+		"Scusate il disturbo, signori. Continuate pure a essere magnifici.",
+	},
+	["sw.subzone_enter.w22.heroes.022"] = {
+		"aspetta mentre un carrettiere arresta il carro sul ponte per battere la polvere della strada dal cappello contro il piedistallo di una statua, e poi chiede scusa alla statua.",
+		"si volta e vede un mandriano fermarsi a metà ponte per scrollarsi la strada dagli stivali contro un piedistallo, poi alzare gli occhi all'eroe di pietra lassù e toccarsi il berretto, non si sa mai.",
+	},
+	["sw.subzone_enter.w22.keep.001"] = {
+		"supera un servitore carponi che lucida il bordo d'ottone di un gradino, si ferma, lascia passare gli stivali e cancella col panno l'impronta che hanno lasciato.",
+		"scavalca un inserviente che lustra con uno straccio una bacchetta d'ottone sulle scale; aspetta senza una parola che i piedi passino, poi torna subito a strofinare il punto esatto che hanno toccato.",
+		"nota una cameriera con un panno che segue a breve distanza ogni visitatore sulle scale, cancellando gli ospiti del castello un'impronta dopo l'altra mentre salgono.",
+	},
+	["sw.subzone_enter.w22.keep.002"] = {
+		"Un paggio sbuca da un angolo di corsa, con un rotolo in mano, vede le guardie e in un solo passo rallenta a un'andatura solenne. Due passi oltre, sta già correndo come prima.",
+		"I paggi del castello hanno due velocità: un passo dignitoso dove una guardia può vederli, e una corsa a rotta di collo ovunque altrove. Ne ho visto uno cambiare marcia tre volte in un corridoio.",
+		"Quel paggio è passato davanti alle guardie con l'aria di un vescovo, e si è messo a correre appena ha creduto che nessuno d'importante lo guardasse. Io non sono importante. Aveva ragione.",
+	},
+	["sw.subzone_enter.w22.keep.003"] = {
+		"passa davanti a tre scrivani che copiano lo stesso decreto con tre calligrafie, mentre un quarto lo detta una frase per volta, con voce piatta, come se lo annoiasse.",
+		"intravede una fila di scrivani curvi sullo stesso lungo foglio, le penne che s'intingono insieme come remi, il grattare forte nel silenzio della pietra.",
+	},
+	["sw.subzone_enter.w22.keep.004"] = {
+		"Pronuncia il nome di Lady Prestor nel castello e guarda che cosa fa la gente con le mani. Qualcuno le intreccia, qualcuno trova una manica da sistemare. Nessuno le lascia ferme.",
+		"Ho sentito uno scrivano nominare Lady Prestor e un altro lasciar cadere la penna. Nessuno dei due ha aggiunto una parola. La penna è stata raccolta molto lentamente.",
+		"A corte tutti concordano che Lady Prestor è squisita. Concordano un po' troppo in fretta, come si loda un cane di cui non ci si fida del tutto.",
+	},
+	["sw.subzone_enter.w22.keep.005"] = {
+		"Terrò le mani dove piacciono alle guardie. Cioè, a giudicare dalle facce, da nessuna parte.",
+		"Pulisciti gli stivali. No, l'altro. Questi pavimenti valgono più di me.",
+	},
+	["sw.subzone_enter.w22.keep.006"] = {
+		"nota che il castello sa di cera d'api e di pietra fresca, e appena appena della minestra che qualcuno porta su per una scala di servizio a gente che la mangerà in piedi.",
+		"sente, sotto la cera e il fumo delle candele, un odore di brodo di cipolla che sale da qualche passaggio di servizio: le cucine del castello vanno avanti come se nessuna corona c'entrasse.",
+		"distingue, fra la cera e la pietra, l'odore semplice del pane in forno, e da qualche parte la voce di una cuoca che dice a qualcuno di badare al vassoio.",
+	},
+	["sw.subzone_enter.w22.keep.007"] = {
+		"Da qualche parte nel castello c'è una sedia a un tavolo dove nessuno si siede e che nessuno sposta. Non lo so per certo. Mi stupirei solo che non ci fosse.",
+		"Il re è salpato per una pace e il mare se l'è tenuto. Il castello continua a lucidare i suoi pavimenti, come se li volesse puliti quando rientrerà.",
+		"Nessuno, qui, dice che il re è morto. Dicono lontano. Quella parola lavora moltissimo.",
+	},
+	["sw.subzone_enter.w22.keep.008"] = {
+		"sente il cambio della guardia da qualche parte più addentro: una sola parola, un doppio colpo di alabarde sulla pietra, e stivali che si allontanano al passo.",
+		"ascolta la guardia che cambia lontano dalla vista, due colpi d'alabarda sulle lastre e una parola d'ordine borbottata, poi un silenzio che pare un po' più fresco.",
+	},
+	["sw.subzone_enter.w22.keep.009"] = {
+		"Dicono che il giovane re faccia domande a tutti: alle guardie, ai cuochi, a un muratore che aggiusta un gradino. Le guardie fingono di trovarlo stancante. Per lui si butterebbero nel fuoco.",
+		"Un ragazzo con una corona e mille domande, lo chiamano i cuochi, e lo dicono con affetto. Qualunque cosa sia la corte, le cucine stanno dalla sua parte.",
+		"I servitori parlano del giovane re come si parla di un nipote: un po' in pena, un po' orgogliosi, e prontissimi a zittire chi non è gentile.",
+	},
+	["sw.subzone_enter.w22.keep.010"] = {
+		"sente per caso un postulante con una giacca presa in prestito provare un discorso contro il muro, le labbra che si muovono, e poi ricominciarlo da capo.",
+		"trova un contadino che stringe il cappello per la tesa e si ripete una frase, cambiando una parola ogni volta, come se quella giusta potesse aprire una porta.",
+		"si scosta per lasciar passare una vedova nel suo grigio migliore, che mormora l'inizio della sua supplica più e più volte, sempre più piano, finché le parole non si sono consumate.",
+	},
+	["sw.subzone_enter.w22.keep.011"] = {
+		"Silenzio, tutti. Qui dentro, da qualche parte, un regno si tiene insieme con l'inchiostro.",
+		"Bisbiglio anch'io. Lo fanno tutti, e preferisco che la mia non sia l'unica voce dell'edificio.",
+		"Piano. Qui dorme la burocrazia di un regno intero, e quando si sveglia è di cattivo umore.",
+	},
+	["sw.subzone_enter.w22.keep.012"] = {
+		"sente da qualche parte più avanti un araldo chiamare un nome, e un'altra voce, più piccola, rispondere come se avesse aspettato tutta la vita di essere chiamata.",
+		"coglie un araldo che chiama un nome, due volte, e da qualche parte il piccolo trambusto di un postulante che si accorge che era il suo.",
+	},
+	["sw.subzone_enter.w22.keep.013"] = {
+		"A ogni bambino del regno si dice che il castello è dove abita la corona. Visto da vicino, è soprattutto dove la corona lavora, e al momento le mancano le braccia.",
+		"La casa della corona. Un ragazzo dentro, un paladino a vegliarla, e tutto il regno là fuori a sperare che dormano bene tutti e due.",
+	},
+	["sw.subzone_enter.w22.keep.014"] = {
+		"si accorge che gli occhi di una guardia reale {g:lo|la} seguono da sotto l'elmo per tutto il tragitto, mentre la testa resta perfettamente, quasi offensivamente immobile.",
+		"sente lo sguardo di una guardia posarsi su cintura, maniche e stivali, in quest'ordine: un inventario completo senza che l'elmo si sposti di un dito.",
+	},
+	["sw.subzone_enter.w22.keep.015"] = {
+		"Il reggente era un paladino prima di ogni altra cosa. Dicono che s'inginocchi ancora prima di sedersi ai registri del regno, e che si rialzi a fatica.",
+		"Un paladino a badare ai conti di un regno. Scommetto che preferirebbe badare a una porta. I registri non combattono lealmente.",
+	},
+	["sw.subzone_enter.w22.keep.016"] = {
+		"Qualunque cosa decidano qui dentro, sarò io a portarla a termine su qualche strada fangosa. Mi sta bene.",
+		"Gli ordini nascono in questo edificio e crescono per strada. Ne ho incontrati parecchi, all'altro capo.",
+	},
+	["sw.subzone_enter.w22.keep.017"] = {
+		"entra in una nuvola del profumo di qualche nobile, sospesa nell'aria ferma, così forte da restare a lungo dopo il suo proprietario, come una diceria.",
+		"attraversa la scia del profumo di una dama passata da poco, rose e qualcosa di più pungente, che resta sospeso lungo il suo percorso come una firma.",
+		"attraversa tre profumi in dieci passi, ognuno di una casata diversa, e nessuna delle tre si rivolge la parola.",
+	},
+	["sw.subzone_enter.w22.keep.018"] = {
+		"Pietra così spessa non si scalda mai fino in fondo. Le guardie portano la lana sotto la maglia e pestano comunque i piedi quando credono che nessuno le veda.",
+		"Il castello è fresco in ogni stagione. Una guardia mi ha detto che i muri furono fatti tanto spessi da fermare un assedio, e a nessuno venne in mente di chiedergli di lasciar passare un po' di tepore.",
+	},
+	["sw.subzone_enter.w22.keep.019"] = {
+		"passa accanto a due nobili in fitta conversazione che tacciono, sorridono e aspettano con grande cortesia che i passi si allontanino abbastanza.",
+		"nota che un capannello di cortigiani si zittisce un passo prima che qualcuno gli arrivi accanto e riprende un passo dopo, preciso come una porta che si chiude e si riapre.",
+		"si guadagna due sorrisi educati da due cortigiani che hanno smesso di parlare a metà parola e chiaramente non riprenderanno finché la via non sarà sgombra.",
+	},
+	["sw.subzone_enter.w22.keep.020"] = {
+		"Il cuore dell'Alleanza, e nessuno mi ha {g:fermato|fermata}. Se la corte sapesse quanto poco c'è fra lei e uno sconosciuto incappucciato, qui dentro non dormirebbe nessuno.",
+		"Ogni stendardo su questi muri dice la stessa cosa a chi è come me: mai più. Tengo il viso immobilissimo.",
+	},
+	["sw.subzone_enter.w22.keep.021"] = {
+		"Ah, il castello. Dove ogni passo rimbomba e ogni rimbombo ha la sua guardia.",
+		"I miei stivali sono troppo rumorosi per questo posto. Tutti gli stivali lo sono.",
+	},
+	["sw.subzone_enter.w22.keep.022"] = {
+		"si accoda per qualche passo a un intendente con un registro, che cammina piano lungo i drappi, contando sottovoce gli stendardi col leone e accigliandosi davanti a uno che ha un filo allentato.",
+		"scorge un intendente che controlla gli stendardi uno a uno su un elenco, toccandone ogni orlo come uno stalliere passa la mano sulla zampa di un cavallo, e segna sulla pagina quello che ha bisogno di un ago.",
+	},
+	["sw.subzone_enter.w22.mage.001"] = {
+		"si scansa per un apprendista con i libri impilati fino al mento, proprio mentre una maga più anziana passa e, senza guardare, fa volare il volume in cima dritto nelle proprie mani.",
+		"osserva una pila traballante di libri sfilare fra le braccia di un apprendista, e il volume più in alto sollevarsi piano nell'aria e seguire un vecchio mago come un cane richiamato.",
+		"vede la pila di un apprendista perdere il libro di cima a un cenno delle dita di un mago anziano, e l'apprendista non fare nemmeno una faccia sorpresa.",
+	},
+	["sw.subzone_enter.w22.mage.002"] = {
+		"Perfino i bottegai di questo quartiere parlano a voce da biblioteca. Ho chiesto un prezzo ad alta voce e si sono girati in tre.",
+		"Il Mage Quarter è silenzioso come una sala di lettura: non vuoto, solo pieno di gente che vorrebbe che la smettessi.",
+		"Qui nessuno alza la voce. Un mercante mi ha appena sussurrato un prezzo come fosse un segreto, e me l'ha fatto pagare come tale.",
+	},
+	["sw.subzone_enter.w22.mage.003"] = {
+		"gironzola davanti a un banco di reagenti affollato di barattoli tappati, ognuno etichettato con una grafia fitta, dove un cliente ne stappa uno, annusa, e lo rimette a posto con grande cautela.",
+		"indugia vicino a scaffali di vasetti e sacchetti fuori da una bottega, dove un compratore ne alza uno all'altezza degli occhi, lo scuote e rinuncia a qualunque cosa si muova là dentro.",
+		"nota un venditore di polveri e cose essiccate che pesa un pizzico di qualcosa di grigio per un cliente, tutti e due con le braccia tese il più lontano possibile dalla bilancia.",
+	},
+	["sw.subzone_enter.w22.mage.004"] = {
+		"Il muschio fra le pietre di questo quartiere cresce in colori che un muschio non dovrebbe avere. Qualcosa qui si rovescia spesso, e il muschio si è adattato.",
+		"Muschio viola. Muschio azzurro pallido. Una chiazza vicino a uno scolo che giurerei faccia un leggero tic tac. I tombini del Mage Quarter ne vedono di ogni.",
+		"Qualunque cosa gli apprendisti versino negli scoli, le erbacce fra i ciottoli ci si sono affezionate. Alcune hanno preso un improbabile color verde acqua.",
+	},
+	["sw.subzone_enter.w22.mage.005"] = {
+		"In questo quartiere tutti hanno l'aria di essersi appena ricordati di qualcosa d'importante lasciato sul fuoco.",
+		"Metà della gente qui cammina svelta e accigliata. Qualcosa, chissà dove, sta andando a fuoco, o ci andrà presto.",
+	},
+	["sw.subzone_enter.w22.mage.006"] = {
+		"si ferma alla vista di una pecora sola in mezzo alla strada, con l'aria profondamente offesa, che un istante dopo è un apprendista paonazzo intento a scrollarsi la lana dalle maniche.",
+		"gira attorno a una pecora smarrita sul selciato, e si volta in tempo per vederla ridiventare un giovane mago, mentre un compagno dall'altra parte della strada ride decisamente troppo forte.",
+		"guarda una pecora sbucare trotterellando da un vicolo belando furiosa, poi inciampare, sfocarsi e rialzarsi come un apprendista col cappello storto che giura vendetta a qualcuno.",
+	},
+	["sw.subzone_enter.w22.mage.007"] = {
+		"Guarda gli orli delle vesti, qui: bruciacchiati, tutti, alcuni rattoppati con una fascia di stoffa nuova. I sarti di questo quartiere non devono fare altro che orli.",
+		"Ogni veste del Mage Quarter ha l'orlo bruciato. Giù per la via c'è un sarto che offre di sostituirli mentre aspetti, e davanti alla sua porta si aspetta parecchio.",
+		"Da queste parti dicono che si capisce a che punto è un apprendista dall'orlo della veste: più bruciature, più anni di studio.",
+	},
+	["sw.subzone_enter.w22.mage.008"] = {
+		"passa accanto a un apprendista che distribuisce pagnotte ai mendicanti del quartiere, pagnotte comparse dal nulla, e ai mendicanti che si lamentano, con educazione, che non sanno di nulla neanche in bocca.",
+		"guarda un giovane mago evocare pane per una fila di affamati all'angolo, e un vecchio mendicante masticare pensoso e chiedere se ce l'ha anche di segale.",
+		"vede un mago tirare fuori dal nulla una pagnotta tonda e fresca per un mendicante, che la soppesa con profondo sospetto e poi la mangia lo stesso.",
+	},
+	["sw.subzone_enter.w22.mage.009"] = {
+		"Il candelaio di questo quartiere non vende le candele una per una: le vende a bracciate, e gli studiosi le comprano come il pane.",
+		"In altre strade una candela è una piccola spesa. Qui ho visto una donna in tunica comprarne quaranta e chiedere se ne aveva altre nel retro.",
+		"Candele a fasci, stoppini a metri. Pare che in questo quartiere nessuno dorma finché resta una pagina da leggere.",
+	},
+	["sw.subzone_enter.w22.mage.010"] = {
+		"Farò domande brevi. I maghi danno risposte lunghe.",
+		"Una domanda, una risposta. Qui è chiedere parecchio.",
+		"Chiedi la strada a un mago e ti racconta la storia della via. Faccio da {g:solo|sola}.",
+	},
+	["sw.subzone_enter.w22.mage.011"] = {
+		"guarda un messaggero bussare a una casa alta e stretta, aspettare, bussare un'altra volta, finché una finestra lassù non si apre giusto il tempo di lasciar cadere una chiave ai suoi piedi.",
+		"si blocca quando una chiave cade da una finestra in alto e risuona sul selciato accanto a un corriere in attesa, la finestra già richiusa prima che lui alzi gli occhi.",
+		"s'imbatte in un corriere che batte paziente alla porta di un mago, e in una voce dal terzo piano che gli dice di ripassare quando l'esperimento sarà finito, o esploso.",
+	},
+	["sw.subzone_enter.w22.mage.012"] = {
+		"entra in una nebbia tinta appena di viola dalle lanterne del quartiere, con la sagoma della torre che appare e scompare là sopra come un pensiero ricordato a metà.",
+		"avanza in una nebbia che ha preso i colori delle finestre intorno, lilla davanti a una bottega, oro pallido davanti a un'altra, grigio qualunque dappertutto.",
+		"attraversa il quartiere in una nebbia così fitta che le vie si distinguono solo dal colore della luce che la impregna.",
+	},
+	["sw.subzone_enter.w22.mage.013"] = {
+		"Due maghi all'angolo litigano, accalorati, per una nota a piè di pagina. Uno ha il libro aperto e ci picchia sopra il dito. L'altro ha un'edizione diversa.",
+		"Ho appena sentito una lite, in questa via, che a quanto ho capito si riduceva alla posizione di una virgola in un libro antichissimo.",
+		"La disputa più feroce del quartiere si svolge su una panca fra due barbe grigie, per una parola che uno dei due giura sia stata tradotta male un secolo fa.",
+	},
+	["sw.subzone_enter.w22.mage.014"] = {
+		"Di tutti i suoni di questo quartiere, quello che sento di più non ha niente di arcano. Sono pagine che si voltano, dalle finestre aperte per tutta la via.",
+		"Niente crepitii, niente scoppi, stavolta. Solo il fruscio secco delle pagine da una dozzina di finestre insieme, come se leggesse la strada stessa.",
+		"Basta fermarsi qui e ascoltare: pagina dopo pagina dopo pagina, voltate da qualche parte lassù da gente che ha dimenticato che sotto c'è una strada.",
+	},
+	["sw.subzone_enter.w22.mage.015"] = {
+		"costeggia un tratto di strada gelato senza alcun motivo che il cielo possa dare, tre bambini che ci scivolano sopra a turno mentre un apprendista finge di non c'entrare niente.",
+		"scivola, si riprende e guarda in basso un disco di ghiaccio perfetto sul selciato, il tipo di errore che un apprendista distratto si lascia dietro sperando che nessuno risalga a lui.",
+	},
+	["sw.subzone_enter.w22.oldtown.001"] = {
+		"indugia presso un fabbro che mostra una serratura nuova a un cliente, il quale segue il lavoro dei grimaldelli molto più da vicino di quanto servirebbe a un compratore onesto.",
+		"si attarda vicino al banco di un magnano dove un cliente incappucciato chiede, con grande innocenza, quanto reggerebbe un lucchetto così contro un paio di mani abili.",
+		"sorprende un fabbro che fa sfoggio di un lucchetto nel vicolo, e il fabbro che nota, a sua volta, che il pubblico prende appunti.",
+	},
+	["sw.subzone_enter.w22.oldtown.002"] = {
+		"I piani alti sporgono tanto sul vicolo che due vicine si passano una pentola da una finestra all'altra, senza che nessuna esca di casa.",
+		"Lassù le case quasi si toccano. Qualcuno ha appena passato una pagnotta alla finestra di fronte, facile come passare il sale.",
+		"In questi vicoli gli ultimi piani si inchinano l'uno verso l'altro come vecchie comari. Ho visto villaggi meno affiatati.",
+	},
+	["sw.subzone_enter.w22.oldtown.003"] = {
+		"s'imbatte in una partita a dadi su un barile rovesciato proprio mentre una guardia gira l'angolo: i dadi spariscono, e quattro giocatori discutono all'improvviso del prezzo delle rape.",
+		"vede un cerchio di giocatori accovacciati raddrizzarsi tutti insieme al rumore di una pattuglia, e sul barile in mezzo ora non resta che un boccale innocentissimo.",
+		"arriva in tempo per vedere una partita sciogliersi: in fondo al vicolo spunta l'elmo di una guardia, e i giocatori si ricordano affari urgenti in quattro direzioni.",
+	},
+	["sw.subzone_enter.w22.oldtown.004"] = {
+		"I muri di questo quartiere sono una toppa sull'altra: blocchi chiari e nuovi fra quelli vecchi e scuri, rattoppati dovunque qualcosa fosse caduto. L'Old Town nessuno l'ha ricostruita: l'hanno rammendata.",
+		"Ogni casa, qui, è fatta di due o tre età di pietra insieme, i pezzi nuovi più chiari, incastrati intorno a ciò che è sopravvissuto. Più una trapunta che un muro.",
+		"Le riparazioni di questi muri si leggono come cicatrici su una mano: un blocco più chiaro qui, una malta diversa là, un arco che non si accorda con la sua porta.",
+	},
+	["sw.subzone_enter.w22.oldtown.005"] = {
+		"Qui intorno qualcuno sta cucinando cavoli, e sta perdendo.",
+		"Cavolo. Qui vicino qualcuno sta bollendo un cavolo fino alla resa.",
+		"Odore di cavolo che ha perso una lite con la pentola.",
+	},
+	["sw.subzone_enter.w22.oldtown.006"] = {
+		"si ritira nella rientranza più vicina mentre una fila di soldati marcia giù per il vicolo stretto, e vede che i residenti l'hanno fatto un attimo prima, senza nemmeno alzare gli occhi.",
+		"fa spazio a un sergente e alla sua squadra che avanzano pesanti nel vicolo; i residenti si dileguano in portici e scale con la scioltezza di una lunga abitudine.",
+		"si stringe contro un muro mentre gli stivali riempiono il vicolo da un capo all'altro, e guarda una vecchia con la cesta aspettare, imperturbabile, come si aspetta che passi un carro.",
+	},
+	["sw.subzone_enter.w22.oldtown.007"] = {
+		"I gatti dell'Old Town sono i più grassi della città. Fanno i turni alle porte posteriori delle taverne e in vita loro non hanno mai preso un topo.",
+		"Ogni taverna qui ha un gatto sul gradino del retro, tondo come una pagnotta. Avanzi di cucina, direi, e pochissima caccia.",
+		"Un gatto rosso grosso come un cagnolino mi osserva dal gradino di una taverna. In questo quartiere perfino i gatti sembrano mantenuti dalla casa.",
+	},
+	["sw.subzone_enter.w22.oldtown.008"] = {
+		"rallenta vicino a un violinista che suona fuori dal Pig and Whistle, il quale si interrompe a metà motivo per litigare con qualcuno dentro sulle parole, poi riprende esattamente da dove si era fermato.",
+		"passa accanto a un violinista di strada contro il muro della taverna che suona la stessa aria allegra tre volte di fila, ogni volta un po' più svelta, finché una voce da una finestra non implora pietà.",
+		"sente un violino accanto al Pig and Whistle fermarsi di colpo a metà di una giga, e il suonatore fissare torvo una moneta che si è rivelata un bottone.",
+	},
+	["sw.subzone_enter.w22.oldtown.009"] = {
+		"I furfanti di questa città imparano il mestiere da qualche parte fra questi vicoli. Se qualcuno di loro mi guarda due volte, scoprirò quanto regge davvero questo travestimento.",
+		"Fra tutte le strade di Stormwind, questa è quella dove la gente viene addestrata a vedere oltre una faccia. Tengo la mia spenta e il passo tranquillo.",
+		"L'Old Town è piena di gente pagata per notare le cose. Vorrei tanto essere la cosa più noiosa che c'è.",
+	},
+	["sw.subzone_enter.w22.oldtown.010"] = {
+		"L'Old Town è il posto dove la città tiene i suoi vecchi soldati. Li vedi sul selciato, zoppicanti, che si mettono ancora al passo con ogni pattuglia che passa.",
+		"Davanti a me c'è un uomo dai capelli grigi col bastone che, quando passa la pattuglia, ne prende il passo senza pensarci, bastone compreso.",
+		"Un vecchio soldato su una panca batte il bastone a tempo con la pattuglia che passa, e la gamba buona, sotto la panca, segna il passo.",
+	},
+	["sw.subzone_enter.w22.oldtown.011"] = {
+		"alza gli occhi su una facciata scalata da una scala esterna storta, con una porta a ogni pianerottolo e accanto a ognuna un nome diverso scritto col gesso.",
+		"segue con lo sguardo una scala di legno che sale a zigzag lungo il fianco di una casa, tre porte una sopra l'altra e un filo per il bucato teso fra le due più alte.",
+		"passa davanti a una casa stretta con la scala all'esterno, e un uomo a metà rampa che tratta con una donna affacciata alla porta in cima quanto deve per la stanza.",
+	},
+	["sw.subzone_enter.w22.oldtown.012"] = {
+		"Giù le mani dalla mia borsa, amico. Ah. È la mia mano. Questa strada fa brutti scherzi.",
+		"Ho sentito una mano alla cintura. La mia, si scopre. L'Old Town mette i nervi a fior di pelle.",
+		"Chi mi tocca la borsa? Oh. Io. Continuate pure.",
+	},
+	["sw.subzone_enter.w22.oldtown.013"] = {
+		"sente uno strattone alla manica: un ragazzino non più alto di una cintura, che chiede se c'è qualcosa da consegnare in silenzio, e sparisce fra due case prima della risposta.",
+		"viene avvicinato da un ragazzetto magro che sussurra un'offerta per portare messaggi, «niente domande, niente nomi», e si dilegua in un passaggio largo quanto le sue spalle.",
+		"si volta a una vocina vicino al gomito che offre consegne discrete, e vede soltanto un vicolo vuoto e un cancello che si muove ancora.",
+	},
+	["sw.subzone_enter.w22.oldtown.014"] = {
+		"Gli habitué del Pig and Whistle giurano che nell'Old Town una voce qualunque si compra con una bevuta, e la verità con due. Nessuno di quelli a cui ho chiesto ha mai pagato la seconda.",
+		"Una diceria costa una birra, in questo quartiere, dicono al Pig and Whistle. La verità costa di più, e arriva con l'avvertenza di non ripeterla.",
+		"Nell'Old Town, raccontano i bevitori, le notizie corrono da una taverna all'altra più svelte di qualunque guardia, e arrivano migliorate.",
+	},
+	["sw.subzone_enter.w22.oldtown.015"] = {
+		"si scosta per due allievi che portano fra loro un fantoccio di paglia malconcio, la testa di sacco ciondolante, come due amici che riaccompagnano a casa un ubriaco.",
+		"cede il passo a un fantoccio di paglia diretto al cortile d'addestramento, l'imbottitura che perde e un braccio penzolante, sorretto da due allievi dalla faccia scura.",
+	},
+	["sw.subzone_enter.w22.park.001"] = {
+		"scopre un elfo della notte appollaiato nella biforcazione di una vecchia quercia, un libro in mano e un piede nudo a penzoloni, comodo come altri lo sarebbero in poltrona.",
+		"intravede due piedi nudi che penzolano da un ramo basso e, più su, un elfo della notte con un libro, che volta pagina senza degnare il sentiero di un'occhiata.",
+		"nota un'elfa della notte seduta in alto su un albero, il libro sulle ginocchia e gli stivali lasciati in bell'ordine ai piedi del tronco, come un biglietto da visita.",
+	},
+	["sw.subzone_enter.w22.park.002"] = {
+		"Al margine del Park le radici hanno cominciato a sollevare il lastricato, una lastra dopo l'altra. Nessuno ha fretta di fermarle. I muratori sono pazienti; gli alberi di più.",
+		"Dove il prato incontra la strada, una radice ha rizzato una lastra di taglio. La città posa pietra, e il Park se la riprende un dito all'anno.",
+		"Le lastre vicino agli alberi stanno storte, spinte da sotto. Sotto i miei stivali una radice sta vincendo una discussione lentissima.",
+	},
+	["sw.subzone_enter.w22.park.003"] = {
+		"Quello scoiattolo mi ha squadrato e ha deciso che non valgo un furto. Che maleducato.",
+		"Persino gli scoiattoli, qui, hanno un'opinione sulle mie tasche.",
+	},
+	["sw.subzone_enter.w22.park.004"] = {
+		"incrocia un elfo della notte che porta acqua dal canale nel cavo delle mani, avanti e indietro, fino a un alberello non più alto di uno stivale, come se nessuno avesse mai inventato il secchio.",
+		"si imbatte in un elfo della notte inginocchiato accanto a un alberello legato a un bastoncino, che gli versa intorno l'acqua una manciata per volta, un viaggio lento dopo l'altro dalla riva.",
+		"rallenta accanto a un elfo della notte che va al canale e torna con le mani a coppa, perdendone metà per strada, per annaffiare un alberello che un secchio l'avrebbe gradito.",
+	},
+	["sw.subzone_enter.w22.park.005"] = {
+		"Un giardiniere ha recintato un quadrato di semina fresca con uno spago e quattro paletti. Tutti i piccioni della città hanno letto lo spago come un invito.",
+		"Un pezzo di prato è chiuso da spago e paletti, con il seme nuovo dentro. I piccioni dentro lo spago sembrano molto soddisfatti dell'accordo.",
+	},
+	["sw.subzone_enter.w22.park.006"] = {
+		"rallenta vicino a un vecchio con un tabarro da soldato stinto che ripete lenti esercizi con un ramo caduto, ogni colpo giusto, nessuno affrettato.",
+		"indugia accanto a un veterano dai baffi grigi che ripassa la vecchia sequenza con un bastone, e prende ogni posizione con la precisione di chi sente ancora un sergente contare.",
+	},
+	["sw.subzone_enter.w22.park.007"] = {
+		"Dieci passi dentro e la strada è un ronzio. Altri dieci e sento le foglie strofinarsi tra loro. La città non se n'è andata: si è solo fatta da parte, come una folla che fa spazio.",
+		"Venti passi sull'erba e la città si riduce a un mormorio oltre gli alberi. Non sparita: si tiene in disparte, educata, come si fa accanto al letto di un malato.",
+		"Il rumore di Stormwind non si ferma al bordo del prato. Si assottiglia, un po' di più a ogni albero, finché quel che resta potrebbe quasi essere il mare dentro una conchiglia.",
+	},
+	["sw.subzone_enter.w22.park.008"] = {
+		"osserva un gatto soriano acquattato nell'erba alta sotto un albero, la coda che freme, mentre il merlo che sta braccando canta un po' più forte, solo per offenderlo.",
+		"scorge un gatto schiacciato nell'erba che striscia verso un merlo, e il merlo che saltella appena fuori portata ogni volta, con l'aria di chi lo fa da anni.",
+	},
+	["sw.subzone_enter.w22.park.009"] = {
+		"Un tronco vicino al sentiero è lisciato all'altezza della spalla, chiaro come un corrimano. Generazioni intere si sono appoggiate proprio lì a pensare. Aggiungo la mia spalla al conto.",
+		"C'è un albero lungo il sentiero consumato fino al legno all'altezza di una spalla. Chi aveva bisogno di un momento si è appoggiato sempre lì. Mi appoggio anch'io, e la corteccia è tiepida di chi c'era prima.",
+		"Una spalla ha consumato quel tratto di corteccia, e poi un'altra, e un'altra. Ci appoggio la mia e scopro che ci sta bene.",
+	},
+	["sw.subzone_enter.w22.park.010"] = {
+		"Cinque minuti su quest'erba. La città può aspettare cinque minuti. Ha aspettato di più per cose peggiori.",
+		"Sedersi, guardare un albero, rialzarsi. La commissione migliore di Stormwind.",
+		"Per un po' nessuno ha bisogno di me. Lo spendo su un pezzo di prato.",
+	},
+	["sw.subzone_enter.w22.park.011"] = {
+		"alza gli occhi oltre le chiome, verso le mura, dove l'edera è salita sulla pietra più in alto di qualunque scala della guardia.",
+		"segue la linea delle mura sopra gli alberi, la pietra chiara rigata di verde in lunghe strisce sfilacciate dove l'edera fa quel che vuole da anni.",
+	},
+	["sw.subzone_enter.w22.park.012"] = {
+		"Gli umani hanno costruito il loro parco come costruiscono tutto: con un progetto. Gli alberi ignorano in silenzio il progetto da anni, e per questo mi piacciono.",
+		"Una foresta piegata in piccolo e posata dentro un muro umano. Non è Teldrassil. Non ci prova nemmeno, ed è la cosa più gentile che abbia.",
+	},
+	["sw.subzone_enter.w22.park.013"] = {
+		"si imbatte in un giardiniere e in un druido elfo della notte in cortese disaccordo su una carriola di letame: il giardiniere indica un'aiuola, il druido un albero, e la carriola aspetta in mezzo.",
+		"costeggia un giardiniere e un druido piantati ai due lati di una carriola carica, ognuno a indicare un'aiuola diversa con grande cortesia e nessuna intenzione di cedere.",
+	},
+	["sw.subzone_enter.w22.park.014"] = {
+		"Qualcuno, carponi accanto alle aiuole con un coltellino e un sacco, taglia piante che i giardinieri giurano di non aver mai seminato. Nessuno la ferma. Nessuno sa di chi siano.",
+		"Un'erborista è inginocchiata tra le aiuole e taglia foglie dentro una borsa. I giardinieri guardano, discutono fra loro se valga come diserbo, e lasciano correre.",
+		"Una donna con una bisaccia raccoglie lungo il bordo di un'aiuola tranquilla come se fosse sua. Il giardiniere lì accanto ha deciso che gli sta togliendo le erbacce gratis.",
+	},
+	["sw.subzone_enter.w22.park.015"] = {
+		"scavalca con cura un bambino disteso a pancia in giù nell'erba, il naso quasi su uno scarabeo, che annuncia senza alzare lo sguardo che ha sei zampe e lui le ha contate due volte.",
+		"gira largo intorno a una bambina distesa sull'erba col mento sui pugni, che studia uno scarabeo con la serietà di un erudito.",
+	},
+	["sw.subzone_enter.w22.park.016"] = {
+		"Qualcuno avverta gli esattori: qui dentro c'è un boschetto intero e non ha mai pagato un rame.",
+		"Alberi, dentro le mura, senza pagare l'affitto. Voglio sapere il loro segreto.",
+		"Il terreno migliore della capitale, e l'hanno dato alle querce. Lodato chi ha perso quella discussione.",
+	},
+	["sw.subzone_enter.w22.park.017"] = {
+		"cammina sotto gli alberi scuri del Park, dove qualche elfo della notte siede nell'erba, sveglissimo, e parla piano come se l'ora fosse appena cominciata.",
+		"trova il Park sveglio a modo suo, col buio: gli umani rincasati e qua e là un elfo della notte nell'erba, gli occhi accesi, senza alcuna fretta.",
+	},
+	["sw.subzone_enter.w22.park.018"] = {
+		"La pietra tiene al sicuro una città. Qualche albero la tiene sana di mente. Chi ha difeso questo angolo meriterebbe una statua, e forse preferirebbe una panchina.",
+		"Qualcuno, una volta, ha dovuto alzarsi davanti ai nobili e sostenere che un buon terreno da costruzione andava lasciato all'erba. Avrei voluto sentire quel discorso.",
+		"Ogni pezzo di Stormwind potrebbe essere una casa, una bottega o un magazzino. Questo l'hanno risparmiato. Qualche potente doveva amare il sedersi sotto un albero.",
+	},
+	["sw.subzone_enter.w22.park.019"] = {
+		"sosta dove una siepe è stata potata a muro lungo e accurato, con un buco rasoterra che mostra esattamente dove i cani del quartiere non sono d'accordo.",
+		"cammina lungo una siepe ben rifilata con un varco sfilacciato in basso, aperto da tutti i cani della zona, che il giardiniere ha chiaramente smesso di chiudere.",
+	},
+	["sw.subzone_enter.w22.park.020"] = {
+		"Di tutti i posti di questa città, il Park è quello dove mi dimentico di stare {g:attento|attenta}. Proprio per questo, qui, il cappuccio resta alzato.",
+		"Erba, uccelli, gente che sonnecchia all'aperto. La capitale del nemico ha un angolo tenero. Mi costringo a ricordare di chi è.",
+	},
+	["sw.subzone_enter.w22.park.021"] = {
+		"trova uno gnomo che ha avvolto uno spago a nodi intorno a un tronco e borbotta numeri su un taccuino, mentre un elfo della notte lo osserva da un ramo più su con perplessità cortese e assoluta.",
+		"sfila accanto a uno gnomo che misura a passi la distanza da un tronco all'altro, contando ad alta voce, e ricomincia da capo, stizzito, ogni volta che uno scoiattolo gli taglia il conto.",
+	},
+	["sw.subzone_enter.w22.park.022"] = {
+		"Se qualcuno chiede, sono un tronco. I tronchi stanno sotto gli alberi di continuo.",
+		"Sarò sotto quella quercia, a fare un'ottima imitazione di un ramo caduto.",
+	},
+	["sw.subzone_enter.w22.park.023"] = {
+		"Qualcuno ha appeso per lo spago un cavallino di legno a un ramo basso, dove il padrone possa vederlo. Gira piano ogni volta che le foglie si muovono, paziente come una lanterna.",
+		"Un cavallino giocattolo pende da un ramo vicino al sentiero, lo spago avvolto due volte da chi l'ha trovato sull'erba. Aspetta proprio all'altezza degli occhi di un bambino.",
+	},
+	["sw.subzone_enter.w22.trade.001"] = {
+		"si scansa davanti a un facchino carico di cappelliere, una pila così alta che lui si orienta seguendo le proteste di chi urta.",
+		"lascia passare una colonna di cappelliere con le gambe, che chiede scusa da qualche parte là dentro e tira dritto.",
+		"si appiattisce contro una vetrina mentre un facchino sfila sotto una torre traballante di cappelliere, guidato solo dall'orecchio.",
+	},
+	["sw.subzone_enter.w22.trade.002"] = {
+		"Sotto tutte le grida, il vero suono di questo quartiere è minuto: pesi d'ottone che toccano i piatti di cento bilance, un banco dopo l'altro.",
+		"Basta ascoltare oltre i venditori e si sentono le bilance. Pesetti d'ottone posati, sollevati, posati daccapo, per tutta la via.",
+		"Ogni banco ha la sua bilancina e la sua scatola di pesi. L'intero quartiere ticchetta piano, come un orologio fatto di monete.",
+	},
+	["sw.subzone_enter.w22.trade.003"] = {
+		"Qui tutti i prezzi sono scritti col gesso. Noto che il gesso si cancella con niente.",
+		"Gesso su ogni lavagna dei prezzi. In questo quartiere niente è fatto per durare.",
+		"Prezzi scritti col gesso, eh. Quindi sono più che altro un consiglio.",
+	},
+	["sw.subzone_enter.w22.trade.004"] = {
+		"passa accanto a una sarta che prende le misure a un cliente sul gradino, la bottega dietro troppo piena per girarcisi, una fila di spilli fra le labbra.",
+		"gira intorno a un sarto all'opera sul selciato, il metro teso lungo il braccio di uno sconosciuto, che borbotta le cifre con la bocca piena di spilli.",
+		"costeggia una prova d'abito fatta in mezzo alla strada: un cliente a braccia larghe, un sarto che gli gira attorno col metro e un capannello che dà consigli.",
+	},
+	["sw.subzone_enter.w22.trade.005"] = {
+		"Le insegne delle botteghe pendono basse sulla via: uno stivale, una chiave, una pagnotta, un paio di forbici. Figure, così nessuno ha bisogno di leggere. Chi è alto impara a chinarsi.",
+		"Uno stivale di legno, una chiave di ferro, una pagnotta dorata, tutti a dondolare all'altezza della testa. Qui la strada si legge con la fronte.",
+		"Metà dei commerci di questo quartiere si annuncia con insegne intagliate, appese così in basso che continuo a chinarmi sotto un enorme stivale di legno.",
+	},
+	["sw.subzone_enter.w22.trade.006"] = {
+		"osserva una moneta caduta rotolare via sul selciato e tre stivali diversi piombarle sopra nello stesso istante, mentre i proprietari si guardano in un silenzio educato.",
+		"coglie un soldo di rame che sfugge a un banco e non fa neanche un passo prima che una dozzina di occhi, e un piede svelto, lo abbiano fermato.",
+		"nota che qui una moneta caduta non va mai lontano: un tacco la blocca prima di un metro, e subito comincia la lite su chi l'abbia persa.",
+	},
+	["sw.subzone_enter.w22.trade.007"] = {
+		"Ferramenta dei nani su un banco, sete elfiche su quello accanto, congegni a orologeria di uno gnomo sul terzo. Prima o poi tutta l'Alleanza sembra finire in vendita su questa strada.",
+		"Tutto quel che l'Alleanza fabbrica passa di qui, una volta o l'altra: cardini dei nani, stoffe elfiche, aggeggi gnomeschi, tutti col prezzo in argento umano.",
+		"Acciaio di Ironforge, seta di Darnassus e una cassa di molle gnomesche che nessuno sa riconoscere. Le merci di ogni angolo finiscono su questi banchi.",
+	},
+	["sw.subzone_enter.w22.trade.008"] = {
+		"passa davanti alla guardia sulla porta della banca, che pare dormire in piedi, e i cui occhi, appena qualcuno per strada si mette a correre, di colpo non dormono affatto.",
+		"lancia un'occhiata a una guardia della banca appoggiata all'alabarda, le palpebre pesanti, finché un bambino non sfreccia via e tutto il suo corpo si volta verso il rumore come un segugio che sente il proprio nome.",
+		"nota la guardia della banca che sbadiglia, poi la nota smettere di sbadigliare, in gran fretta, quando un carro sobbalza e qualcuno grida.",
+	},
+	["sw.subzone_enter.w22.trade.009"] = {
+		"Ero {g:venuto|venuta} per una cosa sola. Tre bancarelle dopo, la lista ha messo le gambe.",
+		"Una commissione. Questo era il piano. La strada ne ha un altro.",
+		"Solo una cosa, avevo detto. Il quartiere si è messo a ridere.",
+	},
+	["sw.subzone_enter.w22.trade.010"] = {
+		"I bambini portano biglietti da una bottega all'altra per un soldo di rame l'uno, gridando il nome scritto fuori mentre corrono: è così che tutta la via scopre chi deve a chi.",
+		"I fattorini di qui sono piccoli e chiassosi. Urlano il nome del destinatario da un capo all'altro della strada, e un biglietto privato diventa la cosa più pubblica del quartiere.",
+	},
+	["sw.subzone_enter.w22.trade.011"] = {
+		"aggira una pila di casse nuove davanti a una bottega, ognuna col marchio di un mercante dipinto in nero, mentre un commesso le spunta da una lista con un mozzicone di carboncino.",
+		"aspetta mentre un carrettiere e un commesso contano le casse giù da un carro: uno legge ad alta voce i marchi dipinti, l'altro li spunta col carboncino e ogni quarta cassa ha da ridire.",
+		"si infila accanto a un carro che si scarica cassa dopo cassa: un commesso legge i marchi stampigliati e il carrettiere li ripete un po' più forte, come se il volume li rendesse veri.",
+	},
+	["sw.subzone_enter.w22.trade.012"] = {
+		"Piove, e il quartiere si piega in due. La merce va sotto le tende, i compratori sotto la merce, e il centro della strada è delle pozzanghere.",
+		"Quando piove, qui le tende si abbassano di un palmo e ogni bottegaio si ritrova sotto il tetto una folla di clienti che non comprano niente.",
+		"La pioggia tamburella sulla tela per tutta la via. Sotto ogni tenda un capannello finge di interessarsi alle candele finché non smette.",
+	},
+	["sw.subzone_enter.w22.trade.013"] = {
+		"scopre all'angolo un ciabattino che non fa altro che riparare i lacci delle borse, e ha la fila.",
+		"nota un cuoiaio seduto su uno sgabello all'angolo, sotto un'insegna a forma di borsa, che cuce lacci nuovi a quella di uno sconosciuto mentre altre tre aspettano il turno in grembo.",
+		"si ferma a guardare il mestiere più indaffarato della via: un vecchio su una cassa che ricuce borse strappate, un soldo a cucitura, e il lavoro non gli manca mai.",
+	},
+	["sw.subzone_enter.w22.trade.014"] = {
+		"Dai gradini della banca si capisce chi è venuto a lasciare monete e chi a prenderle. I primi camminano più leggeri. Strano, no?",
+		"Mi piace guardare la gente che esce dalla banca. Chi ha lasciato soldi ha l'aria sollevata; chi li ha ritirati si guarda alle spalle.",
+		"Facce sui gradini della banca: chi deposita è sereno, chi ritira sta già contando e muove le labbra.",
+	},
+	["sw.subzone_enter.w22.trade.015"] = {
+		"Do solo un'occhiata alla casa d'aste. Guardare non costa niente. È quello che viene dopo.",
+		"Sto solo guardando. Lo dico ogni volta, e la casa d'aste mi crede sempre.",
+		"Un'occhiata alla casa d'aste e basta. La mia borsa l'ha già sentita, questa.",
+	},
+	["sw.weather_change.w22.fairsky.001"] = {
+		"guarda un vecchio portare una sedia di cucina fino al muretto del canale, ora che il cielo si è aperto, posarla rivolta all'acqua e sedersi come se avesse pagato il posto.",
+		"vede spuntare sedie lungo il muretto del canale appena il cielo si schiarisce, ognuna portata fuori da qualcuno coi capelli bianchi e girata verso l'acqua.",
+		"nota una fila di vecchiette che portano sgabelli sul bordo del canale ora che le nuvole se ne sono andate, e li allineano come una giuria.",
+	},
+	["sw.weather_change.w22.fairsky.002"] = {
+		"Senza nuvole, i canali smettono di avere il colore dell'acqua dei piatti e si ricordano di essere sempre stati verdi.",
+		"Il cielo si apre e i canali cambiano idea: non più color peltro, ma un verde fondo e limpido, con i sassi del fondo in vista.",
+		"Via le nuvole. L'acqua fra un quartiere e l'altro passa dallo spento al verde nel tempo di attraversare un ponte.",
+	},
+	["sw.weather_change.w22.fairsky.003"] = {
+		"Giù i cappucci, gente. Il cielo ha finito le cose da dire.",
+		"Via i cappelli, cappucci indietro. Qualunque cosa borbottasse il cielo, ha smesso.",
+		"Buttati indietro il cappuccio. Il cielo ha detto la sua.",
+	},
+	["sw.weather_change.w22.fairsky.004"] = {
+		"alza gli occhi verso un balcone del Mage Quarter, dove due apprendisti hanno trascinato fuori un tubo d'ottone appena il cielo si è sgombrato e già litigano su quale stella sia quale.",
+		"scorge degli apprendisti su un tetto del Mage Quarter che spingono fuori un lungo tubo d'ottone puntato verso il cielo sereno; la loro lite su una certa stella arriva fin giù in strada.",
+		"sente, chissà dove fra i tetti del Mage Quarter, una voce giovane che giura che la terza stella dalla guglia non è dove dice il libro.",
+	},
+	["sw.weather_change.w22.fairsky.005"] = {
+		"Cielo sgombro. Ogni conciatetti di Stormwind sarà su una scala prima che tu dica ardesia.",
+		"Sereno, lassù. Conta le scale che salgono contro le gronde: ogni conciatetti della città aspettava proprio questo.",
+		"Ecco il cielo. Un momento ancora e ci sarà un conciatetti su ogni colmo di Stormwind.",
+	},
+	["sw.weather_change.w22.fairsky.006"] = {
+		"osserva un sergente della guardia passare lungo una fila di soldati mentre esce il sole, fermandosi davanti a ogni elmo che non glielo rimanda indietro.",
+		"vede il sole bucare le nuvole e posarsi sugli elmi di una fila di guardie, e il sergente davanti aggrottare la fronte verso l'unico che resta opaco.",
+		"si accorge, ora che c'è il sole, che un elmo della pattuglia di passaggio brilla meno degli altri, e che se n'è accorto anche il sergente.",
+	},
+	["sw.weather_change.w22.fairsky.007"] = {
+		"Le nuvole si staccano dalle mura, e oltre le colline di Elwynn si fanno avanti, verde su verde, come se aspettassero fuori di essere fatte entrare.",
+		"Cielo sgombro, e dalla cima di qualunque scalinata la foresta spunta oltre le mura, una linea verde scuro che tiene compagnia alla città.",
+		"Col cielo aperto, Elwynn si sporge sopra le mura della città: una lunga cresta verde che avevo quasi dimenticato.",
+	},
+	["sw.weather_change.w22.fairsky.008"] = {
+		"gira intorno a una campana disegnata col gesso sul selciato da bambini usciti appena il cielo si è aperto, che già litigano sulle regole.",
+		"deve fermarsi di colpo sul bordo di una griglia di gesso sulle lastre, dove un branco di bambini, fuori nell'istante in cui le nuvole si sono alzate, saltella e si accusa a vicenda di aver pestato le righe.",
+	},
+	["sw.weather_change.w22.fairsky.009"] = {
+		"Un cielo sereno è onesto con questa città. Mostra ogni impalcatura, ogni gru, ogni tetto a cui manca ancora l'ultima fila di ardesie.",
+		"Sotto il cielo aperto si contano i lavori rimasti: una gru in una via, un'impalcatura in quella dopo, un tetto coperto a metà.",
+		"Tempo sereno e nessuna nuvola dietro cui nascondersi: mezzo profilo di Stormwind è ancora fasciato di ponteggi.",
+	},
+	["sw.weather_change.w22.fairsky.010"] = {
+		"Cielo pulito come una moneta appena coniata. Peccato che la banca non lo accetti.",
+		"Guarda che cielo. Neanche una nuvola. Se potessi lo metterei in banca.",
+		"Nemmeno una nuvola. Se il cielo fosse all'asta, farei un'offerta.",
+	},
+	["sw.weather_change.w22.fairsky.011"] = {
+		"vede tornare i pescatori sul muretto del canale mentre le nuvole se ne vanno, ognuno a reclamare il posto di sempre e a fulminare chiunque gli si avvicini.",
+		"segue con occhio pigro i pescatori del canale che riprendono i loro posti lungo il muretto ora che il cielo è sereno, tirando fuori lenze e scatolette d'esca in un silenzio quasi solenne.",
+		"conta sei pescatori su un solo tratto di muretto del canale mentre il tempo si rischiara, tutti a un braccio l'uno dall'altro, e nessuno che parli.",
+	},
+	["sw.weather_change.w22.fairsky.012"] = {
+		"I nani della città guardano un cielo sereno come altri guardano uno sconosciuto. Troppo, mi ha detto uno di loro, e niente che lo regga.",
+		"Un nano vicino al canale alza gli occhi al cielo sgombro e scuote la testa. Tutta quell'aria aperta, dice, e nemmeno una trave a tenerla al suo posto.",
+		"Cielo limpido, e il nano accanto a me borbotta che non va bene: tutta quell'altezza, e a nessuno è venuto in mente di metterci un tetto.",
+	},
+	["sw.weather_change.w22.fairsky.013"] = {
+		"si ferma accanto a un sarto uscito con una pezza di stoffa blu per giudicare finalmente la tinta al sole, girandola di qua e di là come un gioielliere con una pietra.",
+		"scorge un mercante di stoffe portare in strada un taglio di lana blu ora che c'è il sole, e tenerlo alto contro il cielo per vedere se ci somiglia.",
+		"indugia accanto a una sarta che solleva due fili blu verso la luce del sole, accigliata, mentre la cliente aspetta di sapere quale sia il vero colore del regno.",
+	},
+	["sw.weather_change.w22.fairsky.014"] = {
+		"Si sgombra il cielo, ed ecco fuori i tavoli delle taverne, trascinati sul selciato, con i bevitori dietro come anatroccoli.",
+		"Tempo sereno, e ogni taverna con un palmo di marciapiede ci piazza un tavolo. I clienti seguono i loro boccali fuori.",
+		"Via le nuvole. Un oste sta già rotolando una botte in strada per farne un tavolo, e gli habitué si portano gli sgabelli da casa.",
+	},
+	["sw.weather_change.w22.fairsky.015"] = {
+		"gira largo intorno a una scala dove un pittore d'insegne, fidandosi del cielo sgombro, ritocca le lettere dorate di una bottega con un pennello sottile come una pagliuzza.",
+		"passa sotto la scala di un pittore salito all'insegna di una bottega appena le nuvole se ne sono andate, che stende oro fresco su una lettera sbiadita.",
+		"resta a guardare un pittore d'insegne su una scala, uscito coi suoi barattoli ora che il cielo è sereno, ridare il nero a uno stivale di legno stanco sopra la bottega di un calzolaio.",
+	},
+	["sw.weather_change.w22.fairsky.016"] = {
+		"Notte serena. Le stelle escono sopra i tetti così fitte che le lanterne lungo i canali sembrano averle copiate.",
+		"Non resta una nuvola, e le stelle si affollano fino all'orlo delle mura. Le lanterne della città, di colpo, paiono un po' modeste.",
+		"Col cielo sgombro, le stelle e le lanterne di Stormwind si fronteggiano sopra i tetti, e le stelle sono in vantaggio numerico.",
+	},
+	["sw.weather_change.w22.fairsky.017"] = {
+		"lancia un'occhiata verso il Dwarven District, dove uno gnomo è salito su un comignolo con un piccolo aquilone e un indicatore d'ottone appeso sotto, a saggiare il cielo sgombro per motivi tutti suoi.",
+		"scorge un aquiloncino salire sopra il Dwarven District appena le nuvole si aprono, con un congegno d'ottone che dondola sotto e uno gnomo in fondo al filo che prende appunti.",
+		"tiene d'occhio un aquilone minuscolo che sale sopra i camini delle forge mentre il cielo si rischiara, trascinando un indicatore d'ottone appeso a un filo; più in basso, uno gnomo grida numeri.",
+	},
+	["sw.weather_change.w22.fairsky.018"] = {
+		"Sopra le mura, ora che il cielo è sgombro, arriva un'aria pulita con dentro Elwynn: pino, fieno tagliato, un'aia da qualche parte sottovento.",
+		"Via le nuvole, e l'aria che scavalca le mura si porta dietro la foresta. Per un momento la strada sa di aghi di pino invece che di canale.",
+		"Aria limpida da sud, che sa di fieno e di resina. Elwynn manda i suoi saluti oltre le mura.",
+	},
+	["sw.weather_change.w22.fairsky.019"] = {
+		"Ecco il cielo. Cominciavo a pensare che Stormwind avesse il coperchio.",
+		"Oh, guarda, il cielo. Avevo quasi scordato che questa città ne avesse uno.",
+		"Torna il cielo. Pensavo che qualcuno ci avesse messo sopra un coperchio.",
+	},
+	["sw.weather_change.w22.fairsky.020"] = {
+		"guarda degli accoliti portare lunghe panche fuori dalla cattedrale e sulla piazza mentre il cielo si rischiara, mettendole in fila per una lettura all'aperto.",
+		"fa largo a una fila di accoliti che scendono i gradini della cattedrale con le panche in spalla, ora che il tempo si è messo al bello, con un sacerdote dietro che indica dove va ciascuna.",
+		"aspetta che una processione di panche attraversi la piazza, ognuna portata da due accoliti, ora che le nuvole si sono alzate abbastanza per tenere un sermone all'aperto.",
+	},
+	["sw.weather_change.w22.fairsky.021"] = {
+		"Il cielo si apre e i mendicanti si spostano con lui, fuori dagli archi e sui ponti, dove ogni passante deve arrivare a portata di ciotola.",
+		"Il bel tempo ridisegna la mappa dell'elemosina in città: via dai gradini riparati, sopra i ponti, una ciotola a ogni capo.",
+		"Cielo sereno, e i mendicanti prendono i loro posti da bel tempo sui ponti. A Stormwind nessuno attraversa un canale gratis.",
+	},
+	["sw.weather_change.w22.fairsky.022"] = {
+		"Cielo sereno. Perfetto per appoggiarsi a un ponte e non combinare niente.",
+		"Il cielo è aperto. Vado a cercarmi la spalletta di un ponte, e lì mi fermo un po'.",
+		"Neanche una nuvola. Che sia qualcun altro a darsi da fare; io ho un ponte su cui appoggiarmi.",
+	},
+	["sw.weather_change.w22.fairsky.023"] = {
+		"Sole sui canali, e la pancia di ogni ponte si anima di una rete di luce mobile riflessa dall'acqua.",
+		"Le nuvole si aprono e il sole batte sull'acqua; sotto l'arco più vicino la pietra si copre di colpo di increspature luminose che tremano.",
+	},
+	["sw.weather_change.w22.mist.001"] = {
+		"sente un barcaiolo battere due volte il remo contro lo scafo prima di ogni ponte, nella nebbia, e più avanti, chissà dove, due colpi che rispondono.",
+		"si ferma su un ponte del canale mentre dalla nebbia di sotto sale un toc-toc sordo: un barcaiolo che avverte chiunque arrivi dall'altra parte, e un doppio colpo lontano che torna indietro.",
+		"ascolta i barcaioli parlarsi attraverso la nebbia a colpi di legno su legno, una conversazione lenta che passa sotto un ponte dopo l'altro.",
+	},
+	["sw.weather_change.w22.mist.002"] = {
+		"Questa nebbia ha trovato tutti i ragni di Stormwind. Ogni tela sulle ringhiere ne pende pesante e argentata, e non sapevo che ce ne fossero così tante.",
+		"Sulle ragnatele lungo le spallette del ponte la nebbia si posa in perle finché non si vedono tutte, decine, un intero mestiere di fili nascosto e ora in piena vista.",
+		"Con questa nebbia le ragnatele escono allo scoperto: sui bracci delle lanterne, sulle ringhiere, negli angoli delle imposte, ognuna infilata di minuscole perle grigie.",
+	},
+	["sw.weather_change.w22.mist.003"] = {
+		"Nebbia. Splendido. Ogni bordo di canale della città si è appena spostato.",
+		"Occhio ai piedi con questa nebbia. I canali non sono andati da nessuna parte, hanno solo smesso di dire dove stanno.",
+		"Attenzione. Con una nebbia così, il bordo del canale è dove metti il prossimo passo.",
+	},
+	["sw.weather_change.w22.mist.004"] = {
+		"sente due pattuglie incontrarsi di petto chissà dove nella nebbia, entrambe che abbaiano «Alt!» nello stesso istante, poi una pausa, poi qualche borbottio imbarazzato.",
+		"guarda due guardie sbucare dalla nebbia una davanti all'altra su un ponte, abbassando le alabarde in perfetto accordo, prima di riconoscersi dall'elmo e guardare altrove.",
+		"coglie il suono di due sentinelle che si intimano l'alt a vicenda nella nebbia, la stessa parola nello stesso momento, e poi una risatina breve e impacciata.",
+	},
+	["sw.weather_change.w22.mist.005"] = {
+		"La nebbia sa di lago: canne, acqua fredda, qualcosa di verde. Si è portata dentro le mura il mondo di fuori e l'ha posato nelle strade.",
+		"Nebbia dall'acqua, e per una volta la città odora di riva: canne bagnate e pietra fredda, il cugino più pulito dei canali.",
+		"Questa nebbia è salita dal lago e si è portata il lago dietro. Le strade sanno di canne, di fango e di qualcosa con le pinne.",
+	},
+	["sw.weather_change.w22.mist.006"] = {
+		"incontra con la fronte un'insegna appesa nella nebbia, e la sente cigolare avanti e indietro per un bel po', come se ridesse.",
+		"scopre nel modo più diretto un'insegna di taverna appesa bassa nella nebbia, e deve restare lì mentre torna a dondolare verso di sé per una seconda occhiata.",
+		"si blocca davanti a un'insegna che sbuca dalla nebbia esattamente all'altezza della testa, e la aggira con la dignità di chi l'aveva fatto apposta.",
+	},
+	["sw.weather_change.w22.mist.007"] = {
+		"Con una nebbia così fitta mi oriento contando i ponti. Tre dalla banca, a sinistra all'odore di pane. Funziona finché qualcuno non sposta il pane.",
+		"Niente torri, niente tetti, nessuna guglia su cui regolarsi. Conto i ponti sotto gli stivali come un marinaio conta i nodi.",
+		"La nebbia ha trasformato la città in aritmetica: tanti ponti, tanti angoli, tanti gradini in giù. Perdi il conto e perdi Stormwind.",
+	},
+	["sw.weather_change.w22.mist.008"] = {
+		"sente un fruttivendolo, chissà dove nella nebbia, gridare «Mele, mele dolci!» senza sosta, visto che nessuno le vede, voltando la voce in ogni direzione in cerca di un cliente.",
+		"va dietro a una voce che nella nebbia continua a nominare la sua merce, pasticci, pasticci caldi, pasticci di maiale, finché attorno non prende forma un banco.",
+		"nota che nella nebbia il mercato è diventato un coro: non potendo mostrare niente, ogni venditore grida l'elenco intero di quel che ha sul banco, pezzo per pezzo.",
+	},
+	["sw.weather_change.w22.mist.009"] = {
+		"Le guardie amano dire che lo SI:7 ordina la nebbia a barili. A guardare le sagome che scivolano via in questo grigiore, non giurerei che scherzino.",
+		"Lo SI:7 andrà a nozze con questa, borbotta qualcuno vicino al ponte, e ride, e si guarda comunque alle spalle.",
+		"Nebbia sulla città. Nell'Old Town, dice la battuta, un impiegato dello SI:7 la sta spuntando da un elenco di consegne.",
+	},
+	["sw.weather_change.w22.mist.010"] = {
+		"guarda una guardia avanzare lungo il bordo del canale nella nebbia, saggiando la pietra davanti a sé col calcio dell'alabarda come un cieco col bastone.",
+		"vede uscire dalla nebbia prima la punta di un'alabarda, che picchietta in cerca del bordo del canale, e poi una guardia molto prudente dietro.",
+		"segue il tic, tic del calcio di un'alabarda lungo il muretto del canale, dove una guardia nella nebbia tasta il bordo un passo prudente dopo l'altro.",
+	},
+	["sw.weather_change.w22.mist.011"] = {
+		"Chiunque tu sia, di' qualcosa. Preferirei non venirti addosso.",
+		"Ehi? Di' qualcosa se sei una persona. Se sei una statua, fa' pure.",
+		"Fatti sentire se ci sei. In questa nebbia vado a sbattere contro tutto.",
+	},
+	["sw.weather_change.w22.mist.012"] = {
+		"Fuori verso il portone, gli eroi di pietra della Valley of Heroes staranno in questa nebbia come giganti in attesa di essere presentati.",
+		"Vicino al grande portone le statue stanno in piedi in questa nebbia senza nessuno a guardarle, giganti con la testa fra le nuvole, per una volta.",
+		"Continuo a pensare alle statue della Valley of Heroes con una nebbia così, ognuna che spunta dal nulla solo quando il basamento è a portata di mano.",
+	},
+	["sw.weather_change.w22.mist.013"] = {
+		"guada una nebbia bassa che si è posata nelle strade all'altezza delle ginocchia, e vede passare un cane ridotto a una coda che scodinzola sopra il bianco.",
+		"vede la nebbia stendersi bassa lungo il vicolo, così che i passanti sembrano galleggiare tagliati agli stinchi, e un gatto che attraversa diventa solo un paio d'orecchie.",
+		"si apre la strada in una nebbia che ristagna all'altezza del ginocchio sul selciato, dove un cagnolino è sparito del tutto, tranne il ticchettio delle unghie.",
+	},
+	["sw.weather_change.w22.mist.014"] = {
+		"Dal cielo non cade niente, eppure ogni gronda della strada gocciola. La nebbia si raccoglie sulle ardesie e poi si lascia andare.",
+		"Plic, plic dalle grondaie, e nemmeno una goccia che scenda. La nebbia ha un modo lento e furbo di bagnare tutto.",
+		"La nebbia non cade, si posa, e poi gocciola da ogni cornicione e da ogni insegna della città come se non avesse mai fatto altro.",
+	},
+	["sw.weather_change.w22.mist.015"] = {
+		"Si è presa tutto, la nebbia: la fortezza, la cattedrale e le mura. Potrebbe essere una città qualunque, se non avesse così tanto l'odore di Stormwind.",
+		"Neanche una torre, con questa nebbia. Se non fosse per l'odore dei canali, giurerei di essere da tutt'altra parte.",
+	},
+	["sw.weather_change.w22.mist.016"] = {
+		"si imbatte in due carri che si sono incontrati muso contro muso in mezzo a un ponte nella nebbia, con i conducenti che discutono su chi abbia visto chi per primo mentre i cavalli si annusano tranquilli.",
+		"sente, prima di vedere qualunque cosa, due carrettieri su un ponte che nella nebbia litigano su chi debba fare marcia indietro, e il cigolio di nessuno dei due che si muove.",
+	},
+	["sw.weather_change.w22.mist.017"] = {
+		"Le bestie del posatoio, con questa nebbia, stanno ingobbite sui trespoli come galline bagnate, e i guardiani hanno trovato una cassa su cui giocare a dadi tra un volo e l'altro.",
+		"Il posatoio, con questa nebbia, è di malumore. Sento i guardiani giocarsi i dadi tra un volo e l'altro, e ogni tanto una bestia che si lamenta del tempo.",
+		"Nebbia sul posatoio: le grandi bestie tengono il broncio sulle pertiche, e in mezzo alla paglia è scoppiata una partita a dadi tra un volo e l'altro.",
+	},
+	["sw.weather_change.w22.mist.018"] = {
+		"guarda la nebbia sui canali sfilacciarsi in lunghe ciocche chiare mentre sale l'alba, come lana passata al cardo.",
+		"vede il primo grigio dell'alba arrivare sui canali, e la nebbia che ci sta sopra cominciare a strapparsi in nastri che scivolano via sotto i ponti.",
+		"indugia su un ponte alle prime luci mentre la nebbia si stacca dall'acqua in fili lenti, e la riva opposta ritorna pietra dopo pietra.",
+	},
+	["sw.weather_change.w22.mist.019"] = {
+		"La campana dell'ora arriva attraverso la nebbia notturna da nessuna direzione. Potrebbe suonare nella via accanto o sotto il canale.",
+		"Notte e nebbia insieme. Quando suona l'ora, il suono sembra venire da ogni parte, come se a essere colpita fosse la nebbia.",
+		"Con una nebbia così fitta, nel buio, le campane perdono il loro posto. L'ora arriva da tutti i lati insieme e si posa sui tetti come fa la nebbia.",
+	},
+	["sw.weather_change.w22.mist.020"] = {
+		"È la terza volta che passo davanti a questo stesso fornaio. O la nebbia mi fa girare in tondo, o mi sta seguendo lui.",
+		"Giurerei che è la stessa fontana di prima. Questa nebbia mi fa girare in cerchio.",
+		"Stesso banco, stesso odore di pasticci, terza volta. Questa nebbia ha il senso dell'umorismo.",
+	},
+	["sw.weather_change.w22.mist.021"] = {
+		"sente un campanellino arrivare tintinnando nella nebbia più o meno all'altezza degli stivali, e poi lo gnomo a cui è legato, cappello in testa, che si fa strada sicuro fra le gambe della folla.",
+		"si fa da parte per un piccolo tintinnio nella nebbia che si rivela uno gnomo con un campanello cucito sulla punta del cappello, che saggiamente si annuncia a tutti quelli più alti di lui.",
+		"sorride a una gnoma che per la nebbia si è legata un campanellino alla punta del cappello, e attraversa la folla suonando a ogni passo.",
+	},
+	["sw.weather_change.w22.mist.022"] = {
+		"Le mura e la nebbia hanno quasi lo stesso colore. Dove finiscono le une e comincia l'altra, lo dicono solo le righe della malta.",
+		"Pietra chiara in nebbia chiara: le case non spariscono, si sciolgono, e la malta fra i blocchi è l'ultima cosa ad andarsene.",
+		"In questa nebbia Stormwind è disegnata solo a righe di malta, la pietra persa nel grigio, come uno schizzo che qualcuno ha dimenticato di finire.",
+	},
+	["sw.weather_change.w22.mist.023"] = {
+		"guarda la ronda piazzare un braciere acceso in capo a un ponte del canale nella nebbia, una macchia rossa da cui farsi guidare, e un gruppetto di sconosciuti radunarsi a scaldarsi le mani.",
+		"vede le guardie accendere bracieri alle teste dei ponti mentre la nebbia si infittisce, ognuno un bagliore rosso spento che segna dove finisce la pietra e comincia l'acqua.",
+		"si tiene a una fila di bagliori rossi sfocati dalla nebbia lungo il canale, bracieri che la ronda ha acceso a ogni ponte perché nessuno cada giù dal bordo della città.",
+	},
+	["sw.weather_change.w22.shower.001"] = {
+		"scende la strada a zigzag con tutti gli altri, schivando i lunghi archi di pioggia che sputano i doccioni sotto ogni gronda.",
+		"calcola lo scatto fra due doccioni, ognuno dei quali rovescia la pioggia dei tetti in una corda spessa e curva sul selciato.",
+		"osserva un'intera strada imparare lo stesso ballo sotto la pioggia: due passi, uno scarto per il doccione, due passi, uno scarto per il prossimo.",
+	},
+	["sw.weather_change.w22.shower.002"] = {
+		"Bagnate, le lastre del selciato mostrano quello che da asciutte nascondono: piccoli segni di scalpello su ogni pietra, un triangolo, una croce, una stella storta. Ogni scalpellino firmava il suo lavoro.",
+		"Scurite dalla pioggia, le lastre lasciano vedere i segni degli scalpellini incisi sopra, segnetti che all'asciutto nessuno nota. Qualcuno era fiero di ognuna di queste pietre.",
+		"Sotto la pioggia la strada diventa un registro: ogni lastra mostra il segno della mano che l'ha tagliata.",
+	},
+	["sw.weather_change.w22.shower.003"] = {
+		"Su il cappuccio. La pioggia di Stormwind entra di traverso ed esce dagli stivali.",
+		"Tirati su il cappuccio. Qui la pioggia arriva di sbieco e se ne va dalle dita dei piedi.",
+		"Cappuccio su, e anche il bavero. Questa pioggia non cade, si mette in fila ed entra.",
+	},
+	["sw.weather_change.w22.shower.004"] = {
+		"nota la pioggia imperlarsi e scivolare via dal mantello cerato di un nobile, mentre il facchino dietro di lui, col baule in spalla, si inzuppa fino alla camicia.",
+		"vede la stessa pioggia trattare due uomini in modo molto diverso: scorre via dal mantello incerato di un signore come dalle penne di un'anatra, e affonda dritta nella lana del servo alle sue calcagna.",
+		"constata come la pioggia divida una strada per borsa: i mantelli cerati la respingono, la lana semplice se la beve.",
+	},
+	["sw.weather_change.w22.shower.005"] = {
+		"Dalla cima di una scalinata, la pioggia su diecimila ardesie suona come una gran padella di qualcosa che frigge, la città intera che sfrigola piano.",
+		"Pioggia sui tetti, tanta ardesia tutta insieme che sibila come lardo in padella. Stormwind cuoce a fuoco lento.",
+		"Tutta quell'ardesia sotto la pioggia fa un suono solo, un lungo sfrigolio sommesso, come se avessero messo la città sul fuoco a scaldare.",
+	},
+	["sw.weather_change.w22.shower.006"] = {
+		"si ferma a guardare uno gnomo sotto la pioggia alle prese con un ombrello d'ottone che si apre, si chiude e si riapre da solo, con un ronzio di molle e qualche parola pessima.",
+		"scansa uno gnomo il cui ombrello a molla ha deciso di richiudersi da solo ogni dozzina di passi, rovesciandogli l'acqua piovana giù per il colletto.",
+		"sogghigna mentre l'ombrello meccanico di uno gnomo si apre sopra la sua testa sotto la pioggia con un piccolo scatto orgoglioso, e continua ad aprirsi, sempre più largo, finché non gratta tutti e due i muri del vicolo.",
+	},
+	["sw.weather_change.w22.shower.007"] = {
+		"I pescatori del canale non si muovono sotto la pioggia. Col bagnato il pesce abbocca meglio, giurano, ed è l'unica volta che il canale è tutto per loro.",
+		"Tutti gli altri sono corsi sotto le gronde; i pescatori sul muretto si sono solo calati il cappello sugli occhi. Con la pioggia il pesce sale, mi dice uno di loro, senza voltarsi.",
+		"Con la pioggia i ponti si svuotano e restano i pescatori. Dicono che al pesce piaccia il rumore sull'acqua. Secondo me ai pescatori piace il silenzio sulla riva.",
+	},
+	["sw.weather_change.w22.shower.008"] = {
+		"Pioggia. Ogni ardesia di Stormwind è stata tagliata per questo. Io no.",
+		"Eccola che arriva. I tetti di questa città sono fatti per la pioggia; chi ci sta sotto si arrangia.",
+		"Pioggia su Stormwind. I tetti lo sapevano; a me nessuno l'ha detto.",
+	},
+	["sw.weather_change.w22.shower.009"] = {
+		"fa una smorfia quando la ruota di un carro prende una pozzanghera in piena corsa e rovescia un velo d'acqua piovana su un signore in velluto, che resta lì a gocciolare componendo a mente una lettera di protesta.",
+		"si tira indietro appena in tempo mentre un carrettiere prende la curva sotto la pioggia e le ruote lanciano un'onda marrone sul selciato, dritta sull'orlo della veste di una dama fino a un attimo prima molto fiera dei suoi stivaletti.",
+		"vede un carro sferragliare sotto la pioggia battente, schizzando con perfetta imparzialità tutti quelli sul bordo della via: una guardia, un sacerdote, un borsaiolo e un'oca.",
+	},
+	["sw.weather_change.w22.shower.010"] = {
+		"Ogni fila in città adesso sa di lana bagnata: in banca, dal fornaio, al ponte dove i carri aspettano il turno.",
+		"Pioggia, e Stormwind sa di ovile. Ogni mantello per strada fuma piano, ogni coda davanti a ogni banco è un gregge umido.",
+		"Lana bagnata dappertutto. Mettiti in una fila qualunque con questa pioggia e sembra di stare in una stalla al tempo della tosatura.",
+	},
+	["sw.weather_change.w22.shower.011"] = {
+		"trova un suonatore di liuto sotto un arco profondo che di colpo si è guadagnato un pubblico di venti persone, tutte al riparo dalla pioggia e tutte troppo educate per andarsene.",
+		"ascolta, sotto un'arcata insieme a una dozzina di persone che scansano la pioggia, un violinista che non crede alla sua fortuna e suona ogni canzone che conosce, due volte.",
+	},
+	["sw.weather_change.w22.shower.012"] = {
+		"Su un elmo di guardia, la pioggia fa il rumore di un campanellino picchiettato da un bambino molto paziente. Tre guardie a un angolo, ed è un concerto di campane.",
+		"Sugli elmi della ronda la pioggia suona sottile e svelta. Una pattuglia che passa sembra il carretto di uno stagnino.",
+		"Sotto la pioggia ogni elmo della città comincia a tintinnare. Le guardie passano in una nuvoletta di musica di latta, con le facce serissime.",
+	},
+	["sw.weather_change.w22.shower.013"] = {
+		"guarda un facchino spargere segatura fresca appena oltre l'ingresso della banca mentre comincia la pioggia, e il primo cliente in assoluto lasciarci sopra una scia marrone.",
+		"nota un facchino stendere segatura sulla soglia della banca mentre la pioggia si fa fitta, e un impiegato alle sue spalle già sospirare guardando il pavimento.",
+		"scavalca un tappeto di segatura appena gettata all'ingresso di una bottega per la pioggia, già stampato dagli stivali di una dozzina di clienti.",
+	},
+	["sw.weather_change.w22.shower.014"] = {
+		"Sulla scala vicino al ponte c'è un gradino incavato da tutti gli stivali della città, e con la pioggia è il primo a riempirsi. Un laghetto con la forma della folla.",
+		"Ogni punto che i piedi della città hanno consumato, la pioggia lo trova: l'incavo di un gradino, il solco davanti a un banco, il sentiero che taglia una piazza. L'acqua disegna la mappa di dove va la gente.",
+		"Le pozzanghere sono un censimento di stivali: la pioggia si ferma in ogni conca scavata dalla folla, e le strade più battute diventano file di piccoli specchi.",
+	},
+	["sw.weather_change.w22.shower.015"] = {
+		"Con una pioggia così, dagli un'ora e la strada farà domanda per entrare nel canale.",
+		"Se continua così, i rigagnoli vorranno dei ponti tutti loro.",
+		"Di questo passo i canali chiederanno alle strade di farsi più in là.",
+	},
+	["sw.weather_change.w22.shower.016"] = {
+		"aspetta il suo turno davanti a un'asse che qualcuno ha messo sopra un rigagnolo gonfio di pioggia: si è formata una piccola fila educata, e ognuno attraversa a braccia larghe come un funambolo.",
+		"passa il rigagnolo ingrossato sull'asse che un bottegaio ci ha buttato sopra per la pioggia, dietro un vecchio che avanza un dito per volta e davanti a un ragazzino che vorrebbe saltare.",
+	},
+	["sw.weather_change.w22.shower.017"] = {
+		"Pioggia nel buio. La ronda chiama l'ora nella via accanto, e le parole arrivano fino alla lanterna più vicina, poi la pioggia se le prende.",
+		"Una guardia, chissà dove, grida l'ora sotto la pioggia notturna. Afferro il numero e perdo il resto.",
+		"La pioggia della notte si prende il richiamo della ronda e se ne tiene quasi tutto. A me arrivano mezzo numero e la parola «bene».",
+	},
+	["sw.weather_change.w22.shower.018"] = {
+		"guarda un carrettiere buttare un vecchio sacco sulla groppa del cavallo mentre la pioggia si fa fitta, e il cavallo girare la testa per guardarlo con profondo sospetto.",
+		"vede un carrettiere scendere sotto la pioggia per stendere la sua giacca sul cavallo del carro, e restare lì in camicia sostenendo che l'idea è stata del cavallo.",
+		"nota che i cavalli da tiro lungo la strada stanno tutti girati dallo stesso lato sotto la pioggia, coda all'acqua, testa bassa, come una fila di impiegati stanchi.",
+	},
+	["sw.weather_change.w22.shower.019"] = {
+		"Stranamente, con la pioggia i canali hanno un odore migliore. Quello che sta lungo i bordi viene sciacquato, e per un'ora l'acqua sa soltanto d'acqua.",
+		"La pioggia fa una gentilezza ai canali: ne abbatte l'odore, e la città intera smette di arricciare il naso.",
+		"Pioggia sui canali, e il loro tanfo verde affonda sotto un odore più pulito. Quasi ne berrei un sorso. Quasi.",
+	},
+	["sw.weather_change.w22.shower.020"] = {
+		"Sotto questa sporgenza c'è posto per un altro. Occhio alla goccia.",
+		"Stringiti, qui sotto c'è spazio. La goccia a sinistra è gratis.",
+		"C'è posto in abbondanza qui sotto finché la pioggia non cala. Solo non sul bordo: perde.",
+	},
+	["sw.weather_change.w22.shower.021"] = {
+		"incrocia un nano che passeggia a capo scoperto sotto la pioggia, con la barba che pende come uno straccio strizzato, spiegando a chiunque stia sotto le gronde che a Dun Morogh questo sarebbe bel tempo.",
+		"fa un cenno a un nano che esce sotto la pioggia senza nemmeno tirarsi su il cappuccio, la barba che gronda, e ride della gente rintanata sotto le tende.",
+		"sorride a un nano che si strizza la barba sotto la pioggia come una lavandaia con un lenzuolo, e poi riprende a camminare come se niente fosse.",
+	},
+	["sw.weather_change.w22.shower.022"] = {
+		"La pioggia trasforma Stormwind in una città di schiene. Tutti curvi, tutti di fretta, nessuna faccia più alta del bavero.",
+		"Con questa pioggia potrei attraversare tutto il Trade District senza vedere una sola faccia, solo cappucci e spalle che vanno dall'altra parte.",
+		"Cappelli giù, baveri su, menti infilati nel collo. La pioggia ha messo tutta la città a studiarsi gli stivali.",
+	},
+	["sw.weather_change.w22.shower.023"] = {
+		"Pioggia: l'unica cosa gratis in questa città, e senti come si lamentano tutti.",
+		"Acqua gratis dal cielo, e nemmeno un mercante di Stormwind ha trovato il modo di venderla. Dategli un'ora.",
+		"Pioggia. L'ultima cosa gratis a Stormwind. Godetevela prima che qualcuno ci metta una tassa.",
+	},
+	["sw.weather_change.w22.tempest.001"] = {
+		"vede ogni lampo proiettare per un istante i colori delle vetrate della cattedrale sulla piazza, rosso, blu e oro sul selciato, poi più niente.",
+		"coglie, in un lampo bianco della tempesta, le alte figure delle vetrate della cattedrale illuminate da fuori, a fissare la città, prima che si spengano come candele soffiate.",
+		"guarda le alte finestre della cattedrale accendersi a ogni lampo della tempesta, le figure dipinte nel vetro che compaiono per un battere di ciglia e poi si spengono.",
+	},
+	["sw.weather_change.w22.tempest.002"] = {
+		"L'aria di questa tempesta è strana. Ho toccato una ringhiera di ferro sul ponte e una scintilla azzurra mi ha morso il dito.",
+		"Qualcosa in quest'aria di tempesta morde. Una scintilla è saltata dalla spalletta del ponte alle mie nocche, piccola, azzurra e molto maleducata.",
+		"Con questa tempesta perfino le ringhiere sono cariche. Ne ho cercata una e mi ha sputato una scintilla come un gatto che non voleva carezze.",
+	},
+	["sw.weather_change.w22.tempest.003"] = {
+		"Tenetevi il cappello. E qualunque altra cosa a cui tenete.",
+		"Afferra il cappello e tutto quello che ti mancherebbe. Questo vento fa collezione.",
+		"Cappelli in mano, gente. La tempesta raccoglie offerte.",
+	},
+	["sw.weather_change.w22.tempest.004"] = {
+		"sobbalza quando un'ardesia si stacca nel vento della tempesta, scivola giù da un tetto e scoppia sul selciato a pochi passi davanti, e tutta la strada alza gli occhi nello stesso momento.",
+		"sente un'ardesia scivolare lungo la falda di un tetto nella tempesta ed esplodere in schegge nere sui ciottoli, e si toglie da sotto le gronde piuttosto in fretta.",
+		"scavalca i cocci di un'ardesia che la tempesta ha appena buttato giù, mentre un padrone di casa si sporge da una finestra alta a contare i buchi.",
+	},
+	["sw.weather_change.w22.tempest.005"] = {
+		"I maghi, dice la gente, non scappano dai fulmini: escono sui balconi coi taccuini e discutono ogni lampo come critici a teatro.",
+		"Una tempesta così dev'essere un banchetto per i maghi. Me li immagino sui balconi a dare un voto da uno a dieci a ogni fulmine.",
+		"Scommetto che nel Mage Quarter c'è un mago su un balcone, con questa tempesta, che cronometra i lampi e si lamenta che il terzo era poco originale.",
+	},
+	["sw.weather_change.w22.tempest.006"] = {
+		"guarda uno gnomo correre fuori nella tempesta con una sbarra di rame alzata sopra la testa, e un nano uscirgli dietro, prenderlo per il colletto e riportarlo dentro senza una parola.",
+		"vede uno gnomo arrampicarsi su una cassa nella tempesta con una lunga verga di rame e un'aria di delizia scientifica, finché un nano non lo stacca da lì come una mela dal ramo.",
+		"ride, nonostante il tuono, di uno gnomo corso fuori nella tempesta con uno spuntone di rame per «raccogliere un campione», e del vicino nano che se lo riporta dentro sotto un braccio.",
+	},
+	["sw.weather_change.w22.tempest.007"] = {
+		"Il vento della tempesta fa puntare ogni camino della città dalla stessa parte: mille pennacchi di fumo stesi sui tetti, come aghi di bussola tutti d'accordo.",
+		"Ogni colonna di fumo di Stormwind è stata abbattuta dalla tempesta e trascinata via in una sola direzione. La città intera sembra pettinata.",
+		"Il fumo di tutti i camini corre di lato nella burrasca, una lunga criniera grigia soffiata sopra i tetti.",
+	},
+	["sw.weather_change.w22.tempest.008"] = {
+		"Vicino, questo. Il camino di qualcuno ha appena perso una discussione.",
+		"Vicino! Dopo questa, mezze banderuole della città indicheranno il terreno.",
+		"Ha colpito qui vicino. Qualche tetto avrà una storia da raccontare.",
+	},
+	["sw.weather_change.w22.tempest.009"] = {
+		"guarda una lite fra una pescivendola e un carrettiere fermarsi di colpo a uno schianto di tuono, tutte e due le facce rivolte in alto, e poi riprendere esattamente da dove si era interrotta.",
+		"sente due vicini che si urlano da una parte all'altra del vicolo tacere insieme a un rombo di tuono, aspettare che finisca, e poi tornare alla questione della scala prestata.",
+		"nota due vecchi che bisticciano su una panchina zittirsi mentre il tuono passa, guardarsi, ed essere d'accordo, esattamente finché dura.",
+	},
+	["sw.weather_change.w22.tempest.010"] = {
+		"La tempesta ha spinto mezza Elwynn oltre le mura. Ci sono foglie di quercia nel Trade District e un rametto intero sui gradini della banca.",
+		"Foglie dappertutto, più di quante il Park potrebbe mai perderne: la burrasca ha portato in strada lo strame della foresta, verde e strappato.",
+		"Elwynn scavalca le mura foglia dopo foglia. Il vento lascia quercia e faggio nei rigagnoli, come se restituisse cose prese in prestito.",
+	},
+	["sw.weather_change.w22.tempest.011"] = {
+		"Ogni rombo di tuono sembra una taverna che riceve una consegna: botti che rotolano giù per lo scivolo di una cantina, chissà dove sopra i tetti, una dopo l'altra.",
+		"Il tuono arriva in lunghi brontolii che finiscono con un tonfo, come una botte piena calata per le scale un po' troppo in fretta.",
+		"Tuono sulla città, pesante e di legno, come se il cielo stesse riempiendo una cantina enorme.",
+	},
+	["sw.weather_change.w22.tempest.012"] = {
+		"segue il vento della tempesta che corre lungo tutto un canale, sollevando onde corte e nervose che schiaffeggiano i gradini di pietra e lanciano spruzzi sul camminamento.",
+		"vede la burrasca frustare il canale in piccole onde dalla cresta bianca, tutte nella stessa direzione, come se l'acqua avesse un posto urgente dove andare.",
+		"resta indietro dal bordo del canale mentre la tempesta spinge l'acqua in piccole onde dure che si rompono contro gli argini di pietra.",
+	},
+	["sw.weather_change.w22.tempest.013"] = {
+		"Con tuoni così, scommetto che mezza città si è appena ricordata di avere affari urgenti a Ironforge. Nella galleria del tram non c'è tetto che tremi.",
+		"Una tempesta così fa sembrare molto saggio il Deeprun Tram. Sottoterra, dicono i nani, il cielo può gridare quanto gli pare.",
+		"Giù nella galleria del tram non si sente un tuono. Non ho mai invidiato tanto un buco per terra.",
+	},
+	["sw.weather_change.w22.tempest.014"] = {
+		"nota un sacerdote sui gradini della cattedrale che legge ad alta voce per una manciata di ascoltatori in mezzo alla tempesta, fermandosi a ogni schianto di tuono con pazienza perfetta e riprendendo la frase quando è passato.",
+		"vede un anziano sacerdote proseguire una lettura dai gradini della cattedrale in piena tempesta, fermandosi semplicemente ogni volta che parla il tuono e aspettando, educato, che finisca.",
+		"sente, fra un tuono e l'altro, la voce calma di un sacerdote che va avanti con una lezione, come se la tempesta fosse solo qualcuno in fondo alla sala che non ha mai imparato a bisbigliare.",
+	},
+	["sw.weather_change.w22.tempest.015"] = {
+		"Un lampo nella notte mostra tutta la pianta della città in un colpo solo: i canali disegnati in argento, i ponti cuciti di traverso, poi nero.",
+		"Ogni lampo nel buio stende i canali come filo d'argento su un panno nero, e me li lascia stampati negli occhi ancora per un momento.",
+		"Nella tempesta notturna i canali sono invisibili finché il cielo non li accende: righe chiare, spente, righe chiare, spente.",
+	},
+	["sw.weather_change.w22.tempest.016"] = {
+		"alza gli occhi mentre le nubi della tempesta scendono così basse sulla città che le torri più alte della fortezza sembrano reggerle.",
+		"vede i nembi trascinare la pancia sui tetti nella luce grigia del giorno, così bassi che la guglia della cattedrale sembra aprirci una cucitura.",
+		"osserva le nubi della tempesta ammassarsi sopra la fortezza, pesanti e scure come ardesia, raschiando le cime delle torri come se cercassero un modo per entrare.",
+	},
+	["sw.weather_change.w22.tempest.017"] = {
+		"La burrasca si infila sotto ogni mantello della strada e ne fa una vela. La gente bordeggia attraverso le piazze come barchette controvento.",
+		"Mantelli gonfi, orli che schioccano: con questo vento chiunque attraversi una piazza aperta si piega con la stessa angolazione, come un campo d'erba.",
+		"Guarda chiunque abbia un mantello lungo provare ad attraversare una piazza con questa tempesta. Metà di loro si fa portare a spasso dai vestiti.",
+	},
+	["sw.weather_change.w22.tempest.018"] = {
+		"Qualcuno lassù sta tirando i piatti, e li prendono i tetti.",
+		"Senti? Il cielo è d'umore nerissimo.",
+		"Qualcuno al piano di sopra sta sbattendo tutte le porte di casa.",
+	},
+	["sw.weather_change.w22.tempest.019"] = {
+		"nota i piccioni della città stretti spalla a spalla sotto l'arcata di un ponte mentre passa la tempesta, tutti girati dalla stessa parte, tutti offesi.",
+		"scorge una folla di uccelli pigiati su una cornice sotto il ponte, al riparo dal vento della tempesta, gonfi e muti come una fila di zie che disapprovano.",
+		"lancia un'occhiata sotto un ponte dove la tempesta ha spinto tutti i piccioni del quartiere su un'unica cornice stretta, una fila grigia che si rimescola e trasale a ogni tuono.",
+	},
+	["sw.weather_change.w22.tempest.020"] = {
+		"Un nano sotto le gronde arriccia il naso davanti alla tempesta. In montagna, dice, un tuono così passerebbe per conversazione educata.",
+		"Il nano accanto a me non è colpito. A Dun Morogh, dice, una tempesta degna di questo nome si porta via il tetto e poi manda un biglietto di scuse.",
+		"Ogni nano a portata d'orecchio ha la storia di una tempesta peggiore. Questa, a quanto pare, si sta appena schiarendo la voce.",
+	},
+	["sw.weather_change.w22.tempest.021"] = {
+		"guarda due bambini sfidarsi a traversare di corsa la piazza vuota fra un lampo e l'altro, strillando, mentre qualcuno da una finestra alta grida i loro nomi.",
+		"segue con gli occhi un ragazzino che attraversa di volata una piazza vuota nella tempesta per scommessa, e arriva dall'altra parte rosso in faccia e trionfante proprio mentre cade il tuono.",
+		"scorge una bambina che fa a gara col tuono attraverso un ponte, e le amiche che applaudono da sotto un arco come se avesse vinto un torneo.",
+	},
+	["sw.weather_change.w22.tempest.022"] = {
+		"Chiudete le imposte, e qualcuno tiri giù quel gatto dal tetto prima che si faccia strane idee.",
+		"Qualcuno levi quel gatto dal colmo. Crede di essere più coraggioso della tempesta.",
+		"C'è un gatto sulle ardesie con questa tempesta. O è matto o sa qualcosa.",
+	},
 ]==])

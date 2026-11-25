@@ -87,6 +87,48 @@ goes from 26,012 to **27,239 intentions** and from 62,255 to **65,255 texts per 
 - **Owner sample:** [docs/content/reviews/W21.md](docs/content/reviews/W21.md) (`cli sample --state review --share
   0.02`: 25 intentions).
 
+### Content wave W22: the capital Stormwind City, its flights, its quest turn-ins, its NPCs, its districts, its rest, its weather and its greetings (issue #138)
+
+The twenty-second content wave of [docs/content/WAVES.md](docs/content/WAVES.md), random need only. Its pools were the
+first row of the table after W21, all with the `zone` condition: the **small pools of the capital Stormwind City** (its
+`muse` pool was already full after W19), 3,000 texts per language in 7 events. **1,214 intentions, 3,000 texts per
+language** (6,000 in both), written by fifteen parallel writer subagents (authors `ai-w22-<unit>`), each on its own
+angle of the city and its own id families, trimmed to each pool's need (no text over it: 19 third variants dropped),
+and passed through the archive (drafts, `cli dups --state draft` with no exact and no near duplicate and no over-used
+opening or closing, submit, owner sample, approve, export; the round trip is an empty diff). No literary piece and no
+`tier` field; the invented sayings and customs are attributed to a voice. The addon goes from 27,239 to **28,453
+intentions** and from 65,255 to **68,255 texts per language**. All ids are `sw.<event>.w22.<family>.NNN` in
+`eastern_stormwind`.
+
+- **Added: Stormwind City flights** (`journey`, 415 intentions, 923 texts) in six angles: the climb off the gryphon
+  roost, the whole city seen from the air, leaving it behind over Elwynn (`journey = "start"`, in flight); the approach
+  over the forest, the descent to the roost, and the first steps on the ground (`journey = "arrival"`). No line names
+  where the flight goes or comes from.
+- **Added: Stormwind City quest turn-ins** (`quest_complete`, 216 intentions, 513 texts): the hand-over itself (the
+  giver's manner, the pay, the seal and the ledger) and what comes after it in the streets. No line names the quest, the
+  giver or the reward, or says where the work was done.
+- **Added: Stormwind City NPC meetings** (`npc_meet`, 171 intentions, 472 texts): the guard, the innkeeper, the
+  merchant, the trainer, the questgiver, the gryphon master and the banker.
+- **Added: Stormwind City districts** (`subzone_enter`, 165 intentions, 437 texts): the Trade District, Cathedral
+  Square, Old Town, the Dwarven District, the Mage Quarter, The Park, The Canals, Stormwind Keep and the Valley of
+  Heroes, each with its client subzone name. No line says from which side the character came; no line claims the
+  king, the regent or Lady Prestor sees the character, and no `indoors` on the Keep.
+- **Added: Stormwind City rest, weather and greetings** (`rest_enter`, 120 intentions, 283 texts; `weather_change`, 91
+  intentions, 267 texts: clear, rain, fog 67 each and storm 66, each line about its own weather; `greet`, 36
+  intentions, 105 texts).
+- **A zone line holds for the whole city and nothing more**, as in W16-W21: no "our people" or home ground without an
+  Alliance `race` or `faction` (at most 1 line in 8; a few lines give the view of a Horde intruder under `faction =
+  "Horde"`), no claim that the character is new, no hour or falling weather without `time` or `weather`, no district
+  named as "here" without its `subzone`, no gryphon as the character's own mount without `faction`, no fight against
+  the citizens, no harbor (Classic has none), and nothing a Forsaken's body cannot do. `indoors = true` only on a few
+  lines plainly inside an inn. District names stay English in Italian.
+- **The gap after W22** (per language): soft and strict need met (gap **0**); random need 276,398, gap **210,961**
+  (was 213,961, exactly 3,000 less). **73 waves** left. The next row of WAVES.md is now **Darnassus** (3,000).
+- **Measured.** `run_tests` M2: pick 35.8 → **35.8** thousand Lua instructions (p95 61.5 → **61.5**) (reference 36.4, fails at 54.6); `bench_pool` (C0j): a pick on pools grown 16 times costs **35.9** against **35.5** on today's (**1.01** times; gate 1.25). `bench_scale`: memory 53.2 → 57.4 MB, pick 25.5 → 25.5 thousand instructions (p95 54.1); bytes per synthetic rule 1,894 → 1,702 at 10,000 rules, 1,265 → 1,232 at 50,000. `bench_trial --long 20`, seeds 1-5, first exact repetition (mean) and repeated share, main → W22: human (Elwynn, Stormwind) 10.5 → **11.4** h and 1.4% → **1.5%**; orc **9.4** h and **1.2%**, troll **9.3** h and **1.6%**, identical seed by seed (their routes never reach Stormwind). On the human seeds traced (1, 3) the first repeats are Elwynn `muse` lines (`elw.muse.w17.realm.010` on both); no W22 line repeats and every Stormwind line spoken in 20 hours is distinct (41-48 per run).
+- **Tests:** counts: base intentions 28410, lines loaded 28417; README totals. No test needed a change of logic.
+- **Owner sample:** [docs/content/reviews/W22.md](docs/content/reviews/W22.md) (`cli sample --state review --share
+  0.02`).
+
 ## [0.3.1] - 2026-11-24
 
 A small development preview on top of 0.3.0: it adds the **radial emote wheel** (ADR 0059), a round wheel of the game's emotes that opens while a key is held and plays the one the mouse points at when the key is released, with presets, its own Settings section and commands, and the regression tests of the two layout fixes of 0.3.0. The key ships unbound. The lines are the same as in 0.3.0. Nothing of the wheel has been tried in the game client yet.
