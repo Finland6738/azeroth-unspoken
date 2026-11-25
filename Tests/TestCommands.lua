@@ -628,7 +628,7 @@ T.run("#189: /au help stampa i gruppi, /au help <gruppo> le righe di un gruppo",
 	Fresh()
 	local groups = {}
 	for _, g in ipairs(Commands.GROUPS) do groups[g] = true end
-	T.eq(#Commands.GROUPS, 6, "sei gruppi: Start, Narrator, Chat, Character, Emotes (ADR 0059), Diagnostics")
+	T.eq(#Commands.GROUPS, 7, "sette gruppi: Start, Narrator, Chat, Character, Bard (ADR 0060), Emotes (ADR 0059), Diagnostics")
 	for _, spec in ipairs(Commands.list) do
 		if spec.usage then T.ok(groups[spec.group], spec.name .. ": ha un gruppo (" .. tostring(spec.group) .. ")") end
 		if spec.see then T.ok(Commands.byName[spec.see] and Commands.byName[spec.see].usage, spec.name .. ": rimanda a una riga") end

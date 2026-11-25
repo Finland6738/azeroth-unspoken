@@ -83,13 +83,14 @@ I componenti sono quelli di FDCP §3 (i tipi di Button *primary*, *secondary*, *
   | `voice-inner` | `#7FD4FF` | `#005F8F` | la voce interiore |
   | `voice-character` | `#FFE08A` | `#935E00` | le parole del personaggio |
   | `voice-npc` | `#5BBF66` | `#0E5A28` | le parole dell'NPC e il titolo NPC del dialogo ambientale |
+  | `voice-bard` | `#FF8FB8` | `#9C1F5E` | il riquadro del Bardo (ADR 0060): le canzoni, i versi e i racconti che il personaggio ricorda; anche la sua icona della nota |
 
   I token hanno **4,5:1 o più sulla superficie opaca `bg`** in entrambi i temi (il più basso è il Personaggio di Aurora, 5,1). Su un riquadro
   traslucido il testo è il token della voce **solo dove tiene 4,5:1 sul mondo più chiaro e su quello più scuro a quell'opacità** (`Narrator:Ink`), e
   `text-1` altrimenti, che il minimo qui sopra tiene a 4,5:1: le quattro voci di Nebula si leggono nel loro colore da 0,8 in su, un'opacità più bassa dà
   `text-1`, e quelle di Aurora danno `text-1` su un mondo scuro se il riquadro non è opaco. La barra e la linea del tempo sono sempre il token della
   voce (un elemento grafico, 3:1). Le parole attenuate (`text-2`) seguono la stessa regola. UI-8 confronta i token delle anteprime con `Theme.TOKENS`, che
-  ora ha 31 nomi: i 27 di FDCP e questi quattro.
+  ora ha 32 nomi: i 27 di FDCP e questi cinque.
 - **Tipi di pulsante.** *danger* (un'azione che perde dati: il token `err` per contorno ed etichetta, mai un riempimento) e *text* (un pulsante simile a un
   collegamento, per "Salta" nella procedura guidata). Non aggiungono token di colore: *danger* usa `err`.
 - **Consensi.** Il testo che il giocatore legge per dare un consenso, e ogni nota sulla privacy, è di 12 unità o più. Un consenso attivo mostra lo

@@ -85,9 +85,9 @@ end
 -- /au help a gruppi (UI-19, #189): una finestra di chat predefinita mostra circa dieci righe, quindi `/au help`
 -- stampa solo i gruppi e `/au help <gruppo>` le righe di un gruppo (al massimo nove). `all` le stampa tutte, per
 -- gruppo, con la diagnostica in fondo; un nome di comando stampa la sua riga.
-Commands.GROUPS = { "start", "narrator", "chat", "character", "emotes", "diagnostics" }   -- emotes: ADR 0059
+Commands.GROUPS = { "start", "narrator", "chat", "character", "bard", "emotes", "diagnostics" }   -- emotes: ADR 0059; bard: ADR 0060
 local HELP_WORDS = K.Register("help_groups", {
-	start = "start", narrator = "narrator", chat = "chat", character = "character", emotes = "emotes",
+	start = "start", narrator = "narrator", chat = "chat", character = "character", bard = "bard", emotes = "emotes",
 	diagnostics = "diagnostics", all = "all",
 })
 
@@ -372,7 +372,7 @@ Commands.list = {
 	{ name = "language", short = { "lang" }, fn = Language, usage = "language [it / en]", desc = "help_language", group = "start" },
 	{ name = "intensity", fn = Intensity, usage = "intensity <0-100>", desc = "help_intensity", group = "narrator" },
 	{ name = "depth", fn = Depth, usage = "depth natural / literary / elevated", desc = "help_depth", group = "narrator" },
-	{ name = "literary", fn = Literary, usage = "literary never / rare / normal", desc = "help_literary", group = "start" },
+	{ name = "literary", fn = Literary, usage = "literary never / rare / normal", desc = "help_literary", group = "bard" },
 	{ name = "name", fn = Name, usage = "name [first / last / both]", desc = "help_name", group = "start" },
 	{ name = "mode", fn = Mode, usage = "mode private / preview / confirm / auto", desc = "help_mode", group = "chat" },
 	{ name = "channel", fn = Channel, usage = "channel auto / say / emote / party / raid / guild / instance / next",
@@ -393,7 +393,10 @@ Commands.list = {
 		usage = "journal [list / places / flag <name> / export / pin <n> / delete <n> / forget <place> / reset]",
 		desc = "help_journal", group = "character" },
 	{ name = "songbook", fn = function(rest) NS.Songbook:Command(rest) end, usage = "songbook [list / reset]",
-		desc = "help_songbook", group = "character" },
+		desc = "help_songbook", group = "bard" },
+	-- ADR 0060: the Bard's box, the Share button and its channel, a share by a typed command
+	{ name = "bard", fn = function(rest) NS.Bard:Command(rest) end,
+		usage = "bard [on/off / share on/off / channel say/emote / sing / next / stop]", desc = "help_bard", group = "bard" },
 	{ name = "stories", fn = function(rest) NS.StoryArcs:Command(rest) end,
 		usage = "stories [list / journal / choose <arc> <option> / start / suspend / resume / skip / disable / enable <arc/all> / max <1/2> / on / off / status]",
 		desc = "help_stories", group = "character" },
@@ -505,7 +508,7 @@ Commands.HINTS = {
 	pulsante = "button", pacchetti = "packs", pacchetto = "pack", valida = "validate", controlla = "validate",
 	info = "stats", memoria = "memory", opzioni = "options", lingua = "language", canale = "channel", modo = "mode",
 	chat = "mode", intensita = "intensity", ["intensità"] = "intensity", profondita = "depth", ["profondità"] = "depth",
-	letterarie = "literary", poesia = "literary", nome = "name", cognome = "name",
+	letterarie = "literary", poesia = "literary", bardo = "bard", canta = "bard", nome = "name", cognome = "name",
 	pausa = "pause", narratore = "narrator", anima = "soul", profilo = "soul", saluto = "greet", addio = "farewell",
 	brindisi = "toast", pensiero = "muse", minaccia = "threat", grido = "battlecry", preghiera = "pray",
 	vittoria = "victory", ringrazia = "thanks", grazie = "thanks", scherzo = "jest", prob = "chance",

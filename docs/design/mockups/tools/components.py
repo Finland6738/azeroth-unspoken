@@ -18,7 +18,8 @@ from mockup_lib import (L, badge, button, card, chip, choicelist, dialog, editbo
                         segmented, slider, style, switch, table, tabs, text, thinbar, toast, tooltip, window, wow)
 
 CHANNEL = {"SAY": "/s", "EMOTE": "/e", "YELL": "/y", "PARTY": "/p", "RAID": "/raid", "GUILD": "/g", "INSTANCE_CHAT": "/i"}
-VOICE_KEY = {"narrator": "voice_narrator", "inner": "voice_inner", "character": "voice_character", "npc": "voice_npc"}
+VOICE_KEY = {"narrator": "voice_narrator", "inner": "voice_inner", "character": "voice_character", "npc": "voice_npc",
+             "bard": "voice_bard"}   # the Bard: ADR 0060
 
 
 # ---------------------------------------------------------------------------------------------------------------
@@ -97,9 +98,18 @@ def history_line(time, speaker, s, lang="en", sent=None, theme="nebula", alpha=0
     return out + "".join("\n" + hexed(voice, "    " + (line or " ")) for line in rest)
 
 
+def _share_button(label, hover=False):
+    """ADR 0060: the Share button, primary, with the Material Symbols `share` icon 9 units in, before its label."""
+    w = M.fit_width(label, 0, 999, 38)
+    return (f'<div style="position:relative;flex:none">{button(label, w, 24, "primary", hover=hover, inline=True)}'
+            f'<div class="abs" style="left:9px;top:5px;pointer-events:none">{icon("share", 14, "on-accent")}</div></div>')
+
+
 def narrator(left, bottom, speaker, s, lang="en", proposal=None, sent=None, editor=None, editor_sel=False,
              paused=False, alpha=0.8, font=14, remaining=0.7, history=None, hover_btn=None, left_s=25, held=0,
-             key=None, reveal=None, scroll=None, theme="nebula", channel_hover=False):
+             key=None, reveal=None, scroll=None, theme="nebula", channel_hover=False, share=None):
+    """share (ADR 0060, the Bard's box): None, or {"channel": "SAY" | "EMOTE", "progress": None | (sent, total)}: the Share
+    bar (the channel chip; Share, or "Next verse n/m" and Stop while the piece is being shared)."""
     a = max(floor(theme), alpha)
     accent = M.VOICE_TOKENS[speaker]
     voice_ink = ink(theme, accent, a)
@@ -115,14 +125,20 @@ def narrator(left, bottom, speaker, s, lang="en", proposal=None, sent=None, edit
         meta.append(L(lang, "narrator_held", held))
     if paused:
         meta.append(L(lang, "narrator_paused"))
+    progress = share and share.get("progress")
+    if progress:
+        meta.append(L(lang, "bard_sharing", CHANNEL.get(share["channel"], share["channel"])))
     label = hexed(voice_ink, L(lang, VOICE_KEY[speaker])) + (hexed(muted, " · " + " · ".join(meta)) if meta else "")
     label_size = max(12, font - 2)
     head = max(ICON + 4, label_size + 12)
-    extra_h = 12 + (30 if editor is not None else 0) + (34 if proposal else 0)
+    extra_h = 12 + (30 if editor is not None else 0) + (34 if (proposal or share) else 0)
     icon_top = (head - ICON) // 2
     header = (f'<div style="position:relative;height:{head}px">'
-              + text(label, "BodyMedium", None, mode="trunc", left=PAD, top=round((head - label_size * 1.25) / 2),
-                     width=WIDTH - PAD - 98, extra=f";font-size:{label_size}px")
+              + (f'<div class="abs" style="left:{PAD}px;top:{(head - 16) // 2}px">{icon("note", 16, accent)}</div>'
+                 if speaker == "bard" else "")
+              + text(label, "BodyMedium", None, mode="trunc", left=PAD + (20 if speaker == "bard" else 0),
+                     top=round((head - label_size * 1.25) / 2),
+                     width=WIDTH - PAD - 98 - (20 if speaker == "bard" else 0), extra=f";font-size:{label_size}px")
               + _icon_button(">" if paused else "II", 8 + 2 * (ICON + ICON_GAP), icon_top, hover_btn == "pause")
               + _icon_button("H", 8 + ICON + ICON_GAP, icon_top, hover_btn == "history")
               + _icon_button("x", 8, icon_top, hover_btn == "close") + "</div>")
@@ -148,6 +164,23 @@ def narrator(left, bottom, speaker, s, lang="en", proposal=None, sent=None, edit
             extra = 0 if not (k == "send" and key) else len(key) * 7 + 8
             btns.append(button(lbl, M.fit_width(lbl, 0, 999, pad) + extra, 24, kind, hover=hover_btn == k, inline=True,
                                key=key if k == "send" else None))
+        parts.append(f'<div class="abs" style="left:3px;right:0;bottom:35px;height:1px;background:var(--border-subtle)"></div>'
+                     f'<div class="abs" style="left:{PAD}px;right:8px;bottom:6px;height:24px;display:flex;gap:6px">'
+                     f'{chip_html}<div style="flex:1"></div>{"".join(btns)}</div>')
+    elif share:
+        # ADR 0060: the Share bar of a Bard piece, where the proposal bar would be
+        chan = CHANNEL.get(share["channel"], share["channel"])
+        w_chip = int(len(chan) * 7) + 40
+        chip_html = (f'<div class="chip{" hot" if channel_hover else ""}" style="position:relative;height:24px;'
+                     f'width:{w_chip}px;justify-content:space-between;padding:0 8px 0 10px">{esc(chan)}{icon("chevron", 12, "text-2")}</div>')
+        btns = []
+        if progress:
+            stop = L(lang, "btn_share_stop")
+            nxt = L(lang, "btn_share_next", progress[0], progress[1] - 1)
+            btns.append(button(stop, M.fit_width(stop, 0, 999, 8), 24, "text", hover=hover_btn == "stop", inline=True))
+            btns.append(_share_button(nxt, hover_btn == "share"))
+        else:
+            btns.append(_share_button(L(lang, "btn_share"), hover_btn == "share"))
         parts.append(f'<div class="abs" style="left:3px;right:0;bottom:35px;height:1px;background:var(--border-subtle)"></div>'
                      f'<div class="abs" style="left:{PAD}px;right:8px;bottom:6px;height:24px;display:flex;gap:6px">'
                      f'{chip_html}<div style="flex:1"></div>{"".join(btns)}</div>')
@@ -722,6 +755,13 @@ def settings_content(lang="en", theme="nebula", reload_needed=False, others_stat
         p += seg("opt_depth", [(d, T("depth_" + d)) for d in ("natural", "literary", "elevated")], "literary", sy)
         sy += 36
         p += seg("opt_literary", [(f, T("literary_" + f)) for f in ("never", "rare", "normal")], "normal", sy)
+        sy += 36
+        # ADR 0060: the Bard's box, its Share button and the channel of a share
+        p += sw("opt_bard", True, sy)
+        sy += 28
+        p += sw("opt_bard_share", True, sy)
+        sy += 28
+        p += seg("opt_bard_channel", [(c, T("channel_" + c)) for c in ("SAY", "EMOTE")], "SAY", sy)
         sy += 36
         p += toggle("opt_cooldown", "45 s", sy)
         sy += 28

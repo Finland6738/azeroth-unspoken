@@ -8,7 +8,7 @@ Every command of Azeroth Unspoken. Type them in the chat box, like any other sla
 - **Command names and their arguments are always in English, whatever language you chose.** The interface language (see [[Languages]]) changes the descriptions and messages, never the words you type. In Italian, for example, you still type `/au journal`; the addon answers in Italian.
 - Commands are not case-sensitive.
 - There are no aliases: each command has one name. The only extra spellings are a few short forms, listed in the tables (`/au lang` for `/au language`, `/au rel` for `/au relationships`, and `s`, `e`, `p`, `g`, `i` as channel names).
-- Typing `/au` alone or `/au help` prints the **groups of commands**: Start, Narrator, Chat, Character, Emotes and Diagnostics. `/au help <group>` prints one group (for example `/au help chat`), `/au help <command>` one command (`/au help journal`) and `/au help all` every command. Each fits in a default chat window, except `all`: scroll the chat up to read it. Group names are typed in English, like the commands.
+- Typing `/au` alone or `/au help` prints the **groups of commands**: Start, Narrator, Chat, Character, Bard, Emotes and Diagnostics. `/au help <group>` prints one group (for example `/au help chat`), `/au help <command>` one command (`/au help journal`) and `/au help all` every command. Each fits in a default chat window, except `all`: scroll the chat up to read it. Group names are typed in English, like the commands.
 - A word the addon does not know gets a short answer with the closest command, for example "Did you mean `/au journal`?" if you type `/au diario`.
 - Commands do not send anything to chat by themselves. A command that produces a line shows it in the narrator box, or as a proposal if you turned chat proposals on (see [[Chat Gateway]]).
 - In the tables, `<this>` is a value you fill in, `[this]` is optional, and `a\|b` means "a or b". In the game, `/au help` writes `a / b` (or `a/b` inside an option): a bare `|` is the client's escape character, so the addon never prints one.
@@ -42,6 +42,7 @@ Every command of Azeroth Unspoken. Type them in the chat box, like any other sla
 | `/au emotion` | your character's mood |
 | `/au journal` | your character's journal |
 | `/au songbook` | the verses and songs your character heard |
+| `/au bard` | the Bard: its box, the Share button and its channel |
 | `/au relationships` | your relationships |
 | `/au stories` | your personal stories |
 | `/au talk` | the ambient dialogue with an NPC |
@@ -56,7 +57,7 @@ Every command of Azeroth Unspoken. Type them in the chat box, like any other sla
 | Command | What it does |
 |---|---|
 | `/au help` | Prints the groups of commands, one line each, with a description in your interface language. `/au` with nothing after it does the same. |
-| `/au help <group>` | Prints the commands of one group: `start`, `narrator`, `chat`, `character` or `diagnostics`. |
+| `/au help <group>` | Prints the commands of one group: `start`, `narrator`, `chat`, `character`, `bard`, `emotes` or `diagnostics`. |
 | `/au help <command>` | Prints the help line of one command, for example `/au help stories`. |
 | `/au help all` | Prints every command, group by group, with the diagnostics last (about 40 lines). |
 | `/au on` | Turns the addon back on. |
@@ -159,6 +160,21 @@ Anything you write after the command is used as the target, for example `/au gre
 | `/au emotion reset` | Clears the current mood. |
 
 See [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3]] for every value.
+
+## The Bard
+
+The songs, verses and tales your character remembers, in the Bard's box, and their share in chat (only on your click).
+The group `/au help bard` also lists `/au literary` and `/au songbook`. See [[Literary Forms|Literary-Forms#the-bard]].
+
+| Command | What it does |
+|---|---|
+| `/au bard` | Shows the three settings: the Bard's box, the Share button, the channel. |
+| `/au bard on` · `/au bard off` | The Bard's box on (default) or off (songs and verses appear in the inner voice, as before). |
+| `/au bard share on\|off` | Shows or hides the Share button (in the box and in the songbook). |
+| `/au bard channel say\|emote` | The channel of a share: `/say` (default; in the open world each verse needs a click) or `/emote`. |
+| `/au bard sing [say\|emote]` | Shares the last Bard piece shown: an emote on `/emote`, then one verse per message. A typed command counts as your click. |
+| `/au bard next` | Sends the next verse of the share under way (on `/say` in the open world each one needs a click or this command). |
+| `/au bard stop` | Ends the share: nothing more is sent. |
 
 ## Emotes
 

@@ -1532,6 +1532,36 @@ Costruita e provata solo fuori dal gioco. Ogni passo dice che cosa guardare; se 
       subito; senza suoni, silenzio.
     - **Cosa riportare:** una schermata per tema, un suono che non si sente o che è sbagliato.
 
+## BD: il Bardo (ADR 0060)
+
+Costruito e provato solo fuori dal gioco. Installa il pacchetto dei versi (`AzerothUnspoken_Versi`). Se qualcosa non va,
+apri una issue con `/au debug` e una schermata.
+
+- **BD.1 · Il riquadro del Bardo.** `/au event lore_test` qualche volta, finché arriva una canzone o un verso (non
+  un'iscrizione).
+    - **Atteso:** il riquadro con una nota prima dell'etichetta *Bardo*, un colore rosa (Nebula) o rosso vino (Aurora), i
+      versi uno alla volta; un'iscrizione resta nella voce interiore, la filastrocca del locandiere nella voce dell'NPC; la
+      cronologia dice *Bardo*.
+    - **Segnala:** una schermata per tema; un colore difficile da leggere su un luogo chiaro o scuro.
+- **BD.2 · Condividi in /emote.** Su un brano del Bardo, clicca il chip finché dice */e*, poi **Condividi**.
+    - **Atteso:** in chat *<nome> intona una vecchia canzone:* (o *recita qualche verso:*), poi ogni verso tra virgolette, a
+      circa 4 secondi l'uno dall'altro, senza altri clic; il riquadro resta fino all'ultimo verso; nient'altro parte.
+    - **Segnala:** un messaggio mancante o tagliato, un messaggio bloccato dal gioco (`/au debug`), il tempo tra i messaggi.
+- **BD.3 · Condividi in /say nel mondo aperto.** Scegli */s* e clicca **Condividi**, poi **Verso seguente** per ogni verso.
+    - **Atteso:** l'emote subito, poi un verso per clic (un clic troppo presto aspetta); **Ferma** la termina; nulla parte
+      senza un clic.
+    - **Segnala:** un verso partito senza clic, o un clic che non invia nulla.
+- **BD.4 · /say in un'istanza, e il canzoniere.** In un dungeon, condividi in */s*; poi apri il Canzoniere del diario, un
+  brano sentito, e clicca */emote* sulla riga *Condividilo in chat, riga per riga*.
+    - **Atteso:** nel dungeon i versi partono da soli; dal canzoniere il brano compare nel riquadro del Bardo e la
+      condivisione parte.
+- **BD.5 · Mai da solo.** Con `/au mode auto` (e il suo consenso), gioca per un po'.
+    - **Atteso:** nessuna canzone o verso arriva in chat senza un tuo clic. Un combattimento durante una condivisione la ferma.
+- **BD.6 · Le impostazioni.** *Impostazioni > Generale*: **Bardo** spento, **Pulsante Condividi** spento, **Condividi in**;
+  `/au bard`.
+    - **Atteso:** Bardo spento: le canzoni nella voce interiore; Condividi spento: nessuna barra sotto il brano e nessuna
+      riga nel canzoniere.
+
 ## Modulo riassuntivo (copia e compila)
 
 ```
@@ -1697,6 +1727,7 @@ C0g gesti per sé ....... benda su di sé cura? ___  su un altro muta? ___  urlo
 C0h su di sé ........... pozione + amico: frase all'amico? ___  cura su di sé + amico: all'amico? ___  cura all'amico ok? ___
 C0i voce e battaglia ... la locandiera suona come lei? ___  troppo ripetitiva? ___  frasi di battaglia brevi? ___
 Altro (strano, brutto, fastidioso): ______________________
+BD Bardo ............... colore ok? ___  /e da solo? ___  /s un clic per verso? ___  mai da solo? ___
 ```
 
 Grazie. Con questi risultati sistemo ciò che il client vero ha smentito, prima di scrivere i prossimi pezzi (schema dati, Narrative Director).

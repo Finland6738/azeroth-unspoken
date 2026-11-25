@@ -57,6 +57,7 @@ Systems\StoryArcs.lua
 Systems\Songbook.lua
 Systems\Nemesis.lua
 Systems\Companion.lua
+Systems\Bard.lua
 
 # --- interfaccia ---
 UI\Assets.lua

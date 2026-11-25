@@ -1,4 +1,4 @@
-# 0060. Active romance: flirt answers, an affinity table, one beloved and three tone tiers
+# 0061. Active romance: flirt answers, an affinity table, one beloved and three tone tiers
 
 - Status: Accepted (design, step R0; the engine, the interface, the content and the 18+ pack come in R1-R4, and nothing of
   it has been tried in the game client)
@@ -202,7 +202,7 @@ flirt.
 
 - **Flirt answers** in the dialogue window: a FlatButton of a new kind *romance*, the addon's own **heart** icon (already
   in the icon sheet) at its left, its label in the new voice token, a tooltip.
-- **The romance popup**, `AzerothUnspokenRomance`: built like the narrator box and the Bard's box (a translucent Panel,
+- **The romance popup**, `AzerothUnspokenRomance`: built like the narrator box and the Bard's box of [ADR 0060](0060-the-bard-voice-and-sharing-a-piece.md) (a translucent Panel,
   a 3-unit accent bar, the label row with the heart before *Romance* and the NPC's name, the text, a choice bar at the
   bottom), with the badge *addon ambient dialogue*, a tone chip, and 2-3 choice buttons (one primary). Esc or the close
   box means *Not now*, with no cost. It closes when combat starts, never opens by itself, never takes the mouse from the

@@ -2,7 +2,7 @@
 
 > English version. The Italian twin is [romance.it.md](romance.it.md); when they differ, fix both.
 >
-> Specification of step **R0** of active romance. Decision: [ADR 0060](../adr/0060-active-romance-flirt-answers-an-affinity-table-one-beloved-and-three-tone-tiers.md),
+> Specification of step **R0** of active romance. Decision: [ADR 0061](../adr/0061-active-romance-flirt-answers-an-affinity-table-one-beloved-and-three-tone-tiers.md),
 > which extends [ADR 0037](../adr/0037-romance-with-npcs-opposite-sex-and-the-vow.md). Steps: [ROADMAP.md](../../ROADMAP.md),
 > section "Active romance".
 >
@@ -455,7 +455,7 @@ name; nothing is sent, nothing changes in the game.
 
 | Step | Files (main) | Done when |
 |---|---|---|
-| R0 | ADR 0060, this spec and its twin, seven mockups, ROADMAP, CHANGELOG | docs merged |
+| R0 | ADR 0061, this spec and its twin, seven mockups, ROADMAP, CHANGELOG | docs merged |
 | R1 | `Systems/Romance.lua`, `Data/Romance.lua`, `Data/Relationships.lua`, `Systems/Relationships.lua` (version 10, cleaning, migration, kin from the target), `Systems/NPCAlive.lua` (flirts, validator), `Engine/RuleEngine.lua`, `Core/Consent.lua` use, `Core/Config.lua`, tests, wiki, G1 | tests pass |
 | R2 | `UI/RomanceFrame.lua`, `UI/DialogueFrame.lua`, `UI/SettingsFrame.lua`, `UI/RelationsFrame.lua`, `UI/Commands.lua`, `UI/Theme.lua` (`voice-romance`), locale files, mockups and assets, wiki | tests and mockup checks pass |
 | R3 | `Data/RegistryRomance.lua`, `AzerothUnspoken_enUS|itIT/Romance.lua`, `Data/<lang>/RelationsUI.lua`, the flirts, `romance.exclude` | counts and validator pass |

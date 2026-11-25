@@ -30,6 +30,8 @@ Config.COMBAT_SETTINGS = { "show", "chatframe", "hold", "silent" }
 Config.CHAT_CHANNELS = { "auto", "SAY", "EMOTE", "PARTY", "RAID", "GUILD", "INSTANCE_CHAT" }
 -- #118, D15: how often the literary forms speak (literary.frequency): never, rare (the default), normal
 Config.LITERARY_FREQUENCIES = { "never", "rare", "normal" }
+-- ADR 0060: the channels a Bard piece can be shared on (bard.channel), by the player's click only
+Config.BARD_CHANNELS = { "SAY", "EMOTE" }
 -- #281: how the addon names the player's own character (names.player): the first name, the last name, or both (the
 -- default). The name comes from Total RP 3 (first and last name) or from the WoW name, whose first word is the first name
 -- and the rest the surname (Core/ContextResolver.lua, NS:PlayerName)
@@ -141,6 +143,7 @@ Config.CHAT_LIMITS = {
 ---@field npcAlive AUNPCAliveSettings NPC Alive (S8)
 ---@field arcs AUArcSettings Story Arcs (S9)
 ---@field literary { frequency: string } #118: literary forms never | rare | normal (Config.LITERARY_FREQUENCIES)
+---@field bard { enabled: boolean, share: boolean, channel: string } ADR 0060: the Bard box, the Share button, its channel
 ---@field names { player: string } #281: the character's own name: first | last | both (Config.NAME_STYLES)
 ---@field ui AUUISettings
 
@@ -236,6 +239,14 @@ Config.defaults = {
 	-- default: about one every 20-30 minutes at intensity 50, never in combat. "never" turns them off, "normal" doubles them
 	literary = {
 		frequency = "rare",
+	},
+	-- The Bard (ADR 0060): the songs, verses and tales the character remembers are shown in a box of their own colour,
+	-- titled "Bard" (enabled; off: in the inner voice as before). `share`: the box and the songbook offer Share, which
+	-- sends the piece to chat line by line on the player's click only (never automatically); `channel`: SAY or EMOTE
+	bard = {
+		enabled = true,
+		share = true,
+		channel = "SAY",
 	},
 	-- #281: how the character is named before an emote (narrator, emote proposals outside /e, /au test): the first name,
 	-- the last name or both (the default: the whole WoW name, or the Total RP 3 first and last name). Without a surname
@@ -341,6 +352,7 @@ Config.rules = {
 	["pacing.recentPhraseWindow"] = { min = 1, max = 200, integer = true },
 	["pacing.inCombat"] = { enum = Config.COMBAT_SETTINGS },
 	["literary.frequency"] = { enum = Config.LITERARY_FREQUENCIES },
+	["bard.channel"] = { enum = Config.BARD_CHANNELS },
 	["names.player"] = { enum = Config.NAME_STYLES },
 }
 

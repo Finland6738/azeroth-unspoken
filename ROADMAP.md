@@ -205,12 +205,12 @@ Asked by the owner on 2026-11-24: a romance the player does with NPCs, on top of
 answers in the ambient dialogue, an affinity table that decides welcome, cold or refusal, stages up to the vow, one beloved,
 jealousy and a break-up, a romance popup for the big moments, and three tone tiers (Courteous, Intimate with a fade to
 black, and Explicit only behind an 18+ consent and in a separate pack that never reaches CurseForge). Decision:
-[ADR 0060](docs/adr/0060-active-romance-flirt-answers-an-affinity-table-one-beloved-and-three-tone-tiers.md); spec:
+[ADR 0061](docs/adr/0061-active-romance-flirt-answers-an-affinity-table-one-beloved-and-three-tone-tiers.md); spec:
 [docs/specs/romance.md](docs/specs/romance.md). One pull request per step, merged by the parent session.
 
 | Step | What | State |
 |---|---|---|
-| R0 | ADR 0060, the spec in English and Italian, seven proposed mockups (`docs/design/mockups/romance-*`). Docs only | in review |
+| R0 | ADR 0061, the spec in English and Italian, seven proposed mockups (`docs/design/mockups/romance-*`). Docs only | in review |
 | R1 | Engine: `Systems/Romance.lua`, `Data/Romance.lua`, the gates, the affinity score, stages and moments, one beloved, jealousy, break-up, tone selection, the 18+ consent, the flirt exception in the validator, `relationships.version` 10 and its migration, tests | to do |
 | R2 | Interface: flirt answers in the dialogue window, the romance popup (`voice-romance`), Settings > Romance, the Relationships detail, the journal kinds, `au romance`, mockups and assets | to do |
 | R3 | Content of tiers 1-2 in Italian and English (Opus writers): flirt answers, NPC replies, popup scenes, inner voice, journal lines; `romance.exclude` | to do |

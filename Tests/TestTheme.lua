@@ -23,10 +23,10 @@ end
 ---------------------------------------------------------------------------
 -- tokens and settings
 ---------------------------------------------------------------------------
-T.run("both themes define every token, with the names of the sister addon plus the four voices, and nothing else", function()
+T.run("both themes define every token, with the names of the sister addon plus the five voices, and nothing else", function()
 	-- the sister addon's 27 tokens, then this addon's only addition (UI-4, spec section 2.3): one colour per voice
-	T.eq(#Theme.TOKENS, 31, "27 tokens of the sister addon and 4 voices")
-	for i, speaker in ipairs({ "narrator", "inner", "character", "npc" }) do
+	T.eq(#Theme.TOKENS, 32, "27 tokens of the sister addon and 5 voices (the Bard: ADR 0060)")
+	for i, speaker in ipairs({ "narrator", "inner", "character", "npc", "bard" }) do
 		T.eq(Theme.TOKENS[27 + i], "voice-" .. speaker, "token " .. 27 + i .. " is the voice of the " .. speaker)
 		T.eq(Theme.VOICE_TOKENS[speaker], "voice-" .. speaker, "Theme.VOICE_TOKENS maps " .. speaker)
 	end

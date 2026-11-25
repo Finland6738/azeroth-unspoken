@@ -15,7 +15,7 @@ For the CurseForge gallery: [curseforge/](curseforge/README.md) has fourteen of 
 
 ## Contents
 
-- [Narrator box](#narrator-box) (15)
+- [Narrator box](#narrator-box) (19)
 - [Chat Gateway](#chat-gateway) (7)
 - [First-run wizard](#first-run-wizard) (9)
 - [Settings](#settings) (14)
@@ -47,6 +47,10 @@ For the CurseForge gallery: [curseforge/](curseforge/README.md) has fourteen of 
 | <a href="narrator-box-long-reading.png"><img src="narrator-box-long-reading.png" width="320" alt="narrator-box-long-reading"></a> | **[narrator-box-long-reading.png](narrator-box-long-reading.png)**<br>A long private reading (a rhyme, a song), revealed line by line. |
 | <a href="narrator-box-long-reading-scroll.png"><img src="narrator-box-long-reading-scroll.png" width="320" alt="narrator-box-long-reading-scroll"></a> | **[narrator-box-long-reading-scroll.png](narrator-box-long-reading-scroll.png)**<br>A reading longer than twelve lines scrolls inside the box. |
 | <a href="narrator-history.png"><img src="narrator-history.png" width="320" alt="narrator-history"></a> | **[narrator-history.png](narrator-history.png)**<br>The narrator history, opened from the box's header. |
+| <a href="narrator-box-bard.png"><img src="narrator-box-bard.png" width="320" alt="narrator-box-bard"></a> | **[narrator-box-bard.png](narrator-box-bard.png)**<br>The Bard (ADR 0060): a song the character remembers, in its own colour, with the Share bar. |
+| <a href="narrator-box-bard-sharing.png"><img src="narrator-box-bard-sharing.png" width="320" alt="narrator-box-bard-sharing"></a> | **[narrator-box-bard-sharing.png](narrator-box-bard-sharing.png)**<br>The Bard sharing a song on /say: Next verse and Stop, only on your clicks. |
+| <a href="narrator-box-bard-aurora.png"><img src="narrator-box-bard-aurora.png" width="320" alt="narrator-box-bard-aurora"></a> | **[narrator-box-bard-aurora.png](narrator-box-bard-aurora.png)**<br>The Bard's box in the light theme Aurora, with /emote chosen. |
+| <a href="narrator-box-bard-italian.png"><img src="narrator-box-bard-italian.png" width="320" alt="narrator-box-bard-italian"></a> | **[narrator-box-bard-italian.png](narrator-box-bard-italian.png)**<br>The Bard's box in Italian: Bardo, Condividi. |
 
 ## Chat Gateway
 
@@ -79,7 +83,7 @@ For the CurseForge gallery: [curseforge/](curseforge/README.md) has fourteen of 
 | Image | What it shows |
 |---|---|
 | <a href="settings-panel.png"><img src="settings-panel.png" width="320" alt="settings-panel"></a> | **[settings-panel.png](settings-panel.png)**<br>The settings panel as it opens in the client's options window. |
-| <a href="settings-section-general.png"><img src="settings-section-general.png" width="320" alt="settings-section-general"></a> | **[settings-section-general.png](settings-section-general.png)**<br>The General section: language, intensity, depth, literary forms, pause between lines, window scale. |
+| <a href="settings-section-general.png"><img src="settings-section-general.png" width="320" alt="settings-section-general"></a> | **[settings-section-general.png](settings-section-general.png)**<br>The General section: language, intensity, depth, literary forms, the Bard and its Share button, pause between lines, window scale. |
 | <a href="settings-section-appearance.png"><img src="settings-section-appearance.png" width="320" alt="settings-section-appearance"></a> | **[settings-section-appearance.png](settings-section-appearance.png)**<br>The Appearance section: the theme (Nebula or Aurora), neon effects, animations, the fonts, the window positions. |
 | <a href="settings-section-emote-wheel.png"><img src="settings-section-emote-wheel.png" width="320" alt="settings-section-emote-wheel"></a> | **[settings-section-emote-wheel.png](settings-section-emote-wheel.png)**<br>The Emote wheel section: its key (the middle mouse button after a second click), the slices, the emote names, the cancel zone, the hold delay, the sounds, the presets, and the emote of each slice (stepped or typed). |
 | <a href="settings-section-chat.png"><img src="settings-section-chat.png" width="320" alt="settings-section-chat"></a> | **[settings-section-chat.png](settings-section-chat.png)**<br>The Chat section: what may reach chat, the default channel, how long a proposal waits, the speak button. |

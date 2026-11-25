@@ -38,14 +38,15 @@ Assets.textures = {
 }
 
 -- Cells of the icon sheet, in the order of tools/make_media.py (16 per row).
--- 48 icons, drawn for this addon (docs/third-party.md): FDCP's 40, then heart, quill, chat, scroll (UI-1), then hand, note,
--- smile, train (the emote wheel, ADR 0059).
+-- 49 icons (docs/third-party.md): FDCP's 40, then heart, quill, chat, scroll (UI-1), then hand, note, smile, train (the
+-- emote wheel, ADR 0059), drawn for this addon; then share (the Bard's Share button, ADR 0060), Google's Material Symbols.
 Assets.icons = { "chevron", "check", "cross", "dashed", "skull", "shield", "heal", "sword", "star", "gear", "arrow_up",
 	"arrow_down", "lock", "eye", "dot", "plus",
 	"info", "warn", "search", "filter", "copy", "trash", "edit", "calendar", "clock", "user", "users", "crown",
 	"coin", "refresh", "download", "upload",
 	"bell", "flag", "minus", "gem", "bag", "book", "link", "arrow_left",
-	"heart", "quill", "chat", "scroll", "hand", "note", "smile", "train" }
+	"heart", "quill", "chat", "scroll", "hand", "note", "smile", "train",
+	"share" }
 
 -- Fonts. Orbitron ships whole (it declares a Reserved Font Name): it is used for the title only, in capitals, and has
 -- no middle dot or arrow. `fallback` is the game font used when SetFont fails or the user chose the game fonts.

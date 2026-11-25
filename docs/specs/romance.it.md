@@ -2,7 +2,7 @@
 
 > Versione italiana. Il gemello inglese è [romance.md](romance.md), che fa fede; quando differiscono, si correggono entrambi.
 >
-> Specifica dello step **R0** del romanticismo attivo. Decisione: [ADR 0060](../adr/0060-active-romance-flirt-answers-an-affinity-table-one-beloved-and-three-tone-tiers.md),
+> Specifica dello step **R0** del romanticismo attivo. Decisione: [ADR 0061](../adr/0061-active-romance-flirt-answers-an-affinity-table-one-beloved-and-three-tone-tiers.md),
 > che estende l'[ADR 0037](../adr/0037-romance-with-npcs-opposite-sex-and-the-vow.md). Step: [ROADMAP.md](../../ROADMAP.md),
 > sezione "Active romance".
 >
@@ -476,7 +476,7 @@ diario contengono identificatori, mai un nome; non si invia nulla, nel gioco non
 
 | Step | File (principali) | Fatto quando |
 |---|---|---|
-| R0 | ADR 0060, questa specifica e il suo gemello, sette mockup, ROADMAP, CHANGELOG | documenti uniti |
+| R0 | ADR 0061, questa specifica e il suo gemello, sette mockup, ROADMAP, CHANGELOG | documenti uniti |
 | R1 | `Systems/Romance.lua`, `Data/Romance.lua`, `Data/Relationships.lua`, `Systems/Relationships.lua` (versione 10, pulizia, migrazione, lettura dal bersaglio), `Systems/NPCAlive.lua` (risposte, validatore), `Engine/RuleEngine.lua`, uso di `Core/Consent.lua`, `Core/Config.lua`, test, wiki, G1 | i test passano |
 | R2 | `UI/RomanceFrame.lua`, `UI/DialogueFrame.lua`, `UI/SettingsFrame.lua`, `UI/RelationsFrame.lua`, `UI/Commands.lua`, `UI/Theme.lua` (`voice-romance`), file di lingua, mockup e asset, wiki | test e controlli dei mockup passano |
 | R3 | `Data/RegistryRomance.lua`, `AzerothUnspoken_enUS|itIT/Romance.lua`, `Data/<lingua>/RelationsUI.lua`, le risposte di corteggiamento, `romance.exclude` | conteggi e validatore passano |

@@ -310,6 +310,17 @@ local function CreatePanel()
 	for i, id in ipairs(LITERARY) do literaryItems[i] = { id = id, text = function() return NS:L("literary_" .. id) end } end
 	Segment("opt_literary", literaryItems, function() return NS.db.literary.frequency end,
 		function(id) NS.Config:Set("literary.frequency", id) end, "opt_literary_tip")
+	-- ADR 0060: the Bard's box, its Share button and the channel of a share
+	Switch("opt_bard", function() return NS.db.bard.enabled end,
+		function() NS.Config:Set("bard.enabled", not NS.db.bard.enabled) end, "opt_bard_tip")
+	Switch("opt_bard_share", function() return NS.db.bard.share end,
+		function() NS.Config:Set("bard.share", not NS.db.bard.share) end, "opt_bard_share_tip")
+	local bardChannels = {}
+	for i, id in ipairs(NS.Config.BARD_CHANNELS) do
+		bardChannels[i] = { id = id, text = function() return NS:L("channel_" .. id) end }
+	end
+	Segment("opt_bard_channel", bardChannels, function() return NS.db.bard.channel end,
+		function(id) NS.Config:Set("bard.channel", id) end, "opt_bard_channel_tip")
 	Toggle("opt_cooldown", function() return NS.db.pacing.globalCooldownSeconds .. " s" end, function()
 		local nxt = COOLDOWNS[1]
 		for _, s in ipairs(COOLDOWNS) do
