@@ -357,10 +357,13 @@ T.run("romance R2: Settings > Romance: Active romance, the tone, the 18+ consent
 	tone.seg:Select(3)
 	T.eq(NS.db.relations.romanceTone, 3, "Explicit chosen")
 	T.eq(S:Row("opt_romance_pack").text:GetText(), NS:L("rom_pack_missing"), "the pack: not installed")
+	local note = S:Row("opt_romance_pack_note").text:GetText()
+	T.eq(note, NS:L("opt_romance_pack_note"), "the note on where the pack comes from")
+	T.ok(not note:find("http", 1, true) and not note:find("www.", 1, true), "the note has no link")
 	adult.button:Click()
 	T.eq(Ro:AdultOn(), false, "off in one click")
 	T.eq(NS.db.relations.romanceTone, 2, "the tone back to Intimate")
-	for _, k in ipairs({ "opt_section_romance", "opt_romance_active", "opt_romance_tone", "opt_romance_adult", "opt_romance_pack" }) do
+	for _, k in ipairs({ "opt_section_romance", "opt_romance_active", "opt_romance_tone", "opt_romance_adult", "opt_romance_pack", "opt_romance_pack_note" }) do
 		T.ok(NS:L(k) ~= k, "a text for " .. k)
 	end
 end)

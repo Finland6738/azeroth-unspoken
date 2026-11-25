@@ -609,6 +609,11 @@ local function CreatePanel()
 	rows.opt_romance_pack = { key = "opt_romance_pack", status = true, label = Label("opt_romance_pack"),
 		text = ValueText(CONTROL_X, SECTION_W - CONTROL_X - LABEL_X), value = function() return NS:L("rom_pack_" .. Ro:PackWord()) end }
 	Next()
+	-- where the pack comes from (owner, 2026-11-25): plain words, no link (the only link in the addon is Ko-fi)
+	local packNote = ValueText(LABEL_X, SECTION_W - 2 * LABEL_X, "Small", "text-3")
+	if packNote.SetWordWrap then packNote:SetWordWrap(true) end
+	rows.opt_romance_pack_note = { status = true, text = packNote, value = function() return NS:L("opt_romance_pack_note") end }
+	Next(36)
 
 	-- Info (UI-7): credits, licence, fan-made notice, the NEBULA logo and the links as copy boxes. Everything inside is
 	-- placed by LayoutInfo (called by Refresh), because the height of a text depends on the language.

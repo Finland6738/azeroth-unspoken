@@ -142,6 +142,7 @@ NS:RegisterLanguage("it", {
 		opt_romance_adult = "Testi espliciti (18+)",
 		opt_romance_adult_tip = "Un consenso in due passi: l'avviso, poi un secondo clic. Vale per tutto l'account. Si spegne con un clic.",
 		opt_romance_pack = "Pacchetto 18+",
+		opt_romance_pack_note = "Esiste un pacchetto romance 18+ facoltativo, per adulti; non è distribuito qui. I dettagli sono sulla pagina GitHub del progetto.",
 		help_romance = "romanticismo attivo: la fase con il bersaglio e il suo momento; on/off, tono, consenso 18+, fine, perché",
 		song_share_row = "Condividilo in chat, riga per riga:",
 		song_tip_share_say = "Mostralo nel riquadro del Bardo e cantalo in /say (nel mondo aperto, un clic per verso).",
