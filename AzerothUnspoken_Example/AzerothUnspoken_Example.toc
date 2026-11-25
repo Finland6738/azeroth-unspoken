@@ -2,7 +2,7 @@
 ## Title: Azeroth Unspoken - Example pack
 ## Notes: Example phrase pack: a new event (fishing), scripted rules and lines tied to places.
 ## Author: Finland6738
-## Version: 0.3.1
+## Version: 0.3.2
 ## Dependencies: AzerothUnspoken
 ## X-Category: Roleplay
 ## X-License: MIT
