@@ -12,6 +12,51 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 - **Changed**: the CI job `Tests` is no longer a required check on `main` until release 1.0 (owner's decision; ADR 0022, amendment). The full suite still runs locally before every PR and on CI for every PR and push to `main`; a red run on `main` is fixed before the next merge, and `Tests` becomes required again before 1.0. `Docs rule` stays required. This saves about 30 minutes per content wave. CONTRIBUTING, ROADMAP, the PR template and the CI workflow comment say so.
 
+### Content wave W23: the capital Darnassus, its thoughts, its quest turn-ins, its NPCs, its terraces, its rest and its weather (issue #138)
+
+The twenty-third content wave of [docs/content/WAVES.md](docs/content/WAVES.md), random need only. Its pools were the
+first row of the table after W22, all with the `zone` condition: the **capital Darnassus**, 3,000 texts per language.
+**1,304 intentions, 3,000 texts per language** (6,000 in both), written by fifteen parallel writer subagents (authors
+`ai-w23-<unit>`), each on its own angle of the city and its own id families, trimmed to each pool's need (no text over
+it: 10 third variants and one intention dropped), and passed through the archive (drafts, `cli dups --state draft`
+with no exact and no near duplicate and no over-used opening or closing, submit, owner sample, approve, export; the
+round trip is an empty diff). No literary piece and no `tier` field; the invented sayings and customs are attributed to
+a voice. The addon goes from 28,586 to **29,890 intentions** and from 68,642 to **71,642 texts per language**. All ids
+are `dar.<event>.w23.<family>.NNN` in `kalimdor_darnassus`.
+
+- **Added: Darnassus thoughts** (`muse`, 695 intentions, 1,590 texts) in seven angles: the tree itself, the water, the
+  kaldorei at their days, being a guest among them, history and grief (always as memory or as voices), the living
+  things of the city, and the character's own errands and small moments.
+- **Added: Darnassus quest turn-ins** (`quest_complete`, 279 intentions, 618 texts): the hand-over, what comes after
+  it, and what the character says aloud. No line names the quest, the giver or the reward, or says where the work was
+  done.
+- **Added: Darnassus NPC meetings** (`npc_meet`, 95 intentions, 218 texts): the Sentinel on guard, the innkeeper, the
+  merchant, the trainer, the questgiver and the banker (the city has no flight master).
+- **Added: Darnassus terraces** (`subzone_enter`, 114 intentions, 290 texts): the Cenarion Enclave, the Temple of the
+  Moon, The Temple Gardens, Craftsmen's Terrace, Tradesmen's Terrace and Warrior's Terrace, each with its client
+  subzone name (both spellings where the client has two). No line says from which side the character came; Tyrande
+  and Staghelm never see the character, and no `indoors` on the Temple.
+- **Added: Darnassus rest and weather** (`rest_enter`, 83 intentions, 176 texts; `weather_change`, 38 intentions, 108
+  texts: clear 40, rain 36, fog 16, storm 16, as the need model weighs them, each line about its own weather).
+- **Not written: the Darnassus flights.** The row listed `journey` 574 texts, but a Darnassus `journey` line cannot
+  fire: Darnassus has no flight master, the hippogryph lands at Rut'theran Village (zone Teldrassil), and the `journey`
+  event is resolved at once on landing. The wave wrote the next Darnassus pools in their place (`subzone_enter`,
+  `rest_enter`, `weather_change`), so the gap still falls by 3,000; see "Engine finding" in the PR.
+- **A zone line holds for the whole city and nothing more**, as in W16-W22: no "our people", home ground or Elune as
+  the speaker's own without a `race` or `faction` (`race = "NightElf"`, a guest's own race, `faction`, or `not =
+  {race = "NightElf"}` for a non-elf's view; at most 1 line in 8, 90 lines in all, 13 of them a Horde intruder's
+  unease), no claim that the character is new, no hour, moon in the sky or falling weather without `time` or
+  `weather`, no terrace named as "here" without its `subzone`, no hippogryph or nightsaber as the character's own
+  mount, no fight against the citizens, and nothing a Forsaken's body cannot do. `indoors = true` only on 4 rest lines
+  plainly inside the inn. Place names stay English in Italian.
+- **The gap after W23** (per language): soft and strict need met (gap **0**); random need 276,398, gap **207,961**
+  (was 210,961, exactly 3,000 less). **72 waves** left. The next row of WAVES.md is now **Thunder Bluff** (3,000);
+  Darnassus keeps 1,273 (its `journey` 574 among them) in a later row.
+- **Measured.** `run_tests` M2: pick 35.8 → **35.9** thousand Lua instructions (p95 61.5 → **61.5**) (reference 36.4, fails at 54.6); `bench_pool` (C0j): a pick on pools grown 16 times costs **35.9** against **35.5** on today's (**1.01** times; gate 1.25). `bench_scale`: memory 58.4 → 60.6 MB, pick 25.5 → 25.5 thousand instructions (p95 54.1); bytes per synthetic rule 1,702 → 1,710 at 10,000 rules, 1,235 → 1,246 at 50,000. `bench_trial --long 20`, seeds 1-5, first exact repetition (mean) and repeated share, main → W23: orc **9.4** h and **1.2%**, troll **9.3** h and **1.6%**, human **11.4** h and **1.5%**, identical seed by seed (no route of the trial reaches Darnassus).
+- **Tests:** counts: base intentions 29847, lines loaded 29854; README totals. No test needed a change of logic.
+- **Owner sample:** [docs/content/reviews/W23.md](docs/content/reviews/W23.md) (`cli sample --state review --share
+  0.02`).
+
 ## [0.3.4] - 2026-11-25
 
 A small development preview on top of 0.3.3 that completes active romance (ADR 0061) with its last step: the optional **18+ pack** `AzerothUnspoken_Romance18`, a few mature, never graphic samples of the tone *Explicit* in Italian and English. It is a second download, `AzerothUnspoken_Romance18-0.3.4.zip`, on the GitHub release only, never on CurseForge, and it loads only with the two-step 18+ consent on and the tone *Explicit*. Settings > Romance gains a short note on where the pack comes from, with no link. Nothing of the pack has been tried in the game client yet.
