@@ -50,7 +50,7 @@ language**. All ids are `thb.<event>.w24.<family>.NNN` in `kalimdor_thunderbluff
 - **The gap after W24** (per language): soft and strict need met (gap **0**); random need 276,398, gap **204,961**
   (was 207,961, exactly 3,000 less). **71 waves** left. The next row of WAVES.md is now **Undercity** (3,000); Thunder
   Bluff keeps 1,256 in a later row.
-- **Measured.** MEASURED_TBD
+- **Measured.** `run_tests` M2: pick 35.9 → **35.9** thousand Lua instructions (p95 61.5 → **61.5**) (reference 36.4, fails at 54.6); `bench_pool` (C0j): a pick on pools grown 16 times costs **35.9** against **35.5** on today's (**1.01** times; gate 1.25). `bench_scale`: memory 60.6 → 62.8 MB, pick 25.5 → 25.5 thousand instructions (p95 54.1); bytes per synthetic rule 1,710 → 1,679 at 10,000 rules, 1,246 → 1,244 at 50,000. `bench_trial --long 20`, seeds 1-5, first exact repetition (mean) and repeated share, main → W24: orc **9.4** h and **1.2%**, troll **9.3** h and **1.6%**, human **11.4** h and **1.5%**, identical seed by seed (no route of the trial reaches Thunder Bluff).
 - **Tests:** counts: base intentions 31145, lines loaded 31152; README totals. No test needed a change of logic.
 - **Owner sample:** [docs/content/reviews/W24.md](docs/content/reviews/W24.md) (`cli sample --state review --share
   0.02`).
