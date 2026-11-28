@@ -12,6 +12,49 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 - **Changed**: the CI job `Tests` is no longer a required check on `main` until release 1.0 (owner's decision; ADR 0022, amendment). The full suite still runs locally before every PR and on CI for every PR and push to `main`; a red run on `main` is fixed before the next merge, and `Tests` becomes required again before 1.0. `Docs rule` stays required. This saves about 30 minutes per content wave. CONTRIBUTING, ROADMAP, the PR template and the CI workflow comment say so.
 
+### Content wave W24: the capital Thunder Bluff, its thoughts, its quest turn-ins, its flights and its NPCs (issue #138)
+
+The twenty-fourth content wave of [docs/content/WAVES.md](docs/content/WAVES.md), random need only. Its pools were the
+first row of the table after W23, all with the `zone` condition: the **capital Thunder Bluff**, 3,000 texts per
+language. **1,298 intentions, 3,000 texts per language** (6,000 in both), written by fourteen parallel writer subagents
+(authors `ai-w24-<unit>`, Opus at medium effort), each on its own angle of the city and its own id families, trimmed to
+each pool's need (no text over it: 12 third variants dropped), and passed through the archive (drafts, `cli dups
+--state draft` with no exact and no near duplicate and no over-used opening or closing, submit, owner sample, approve,
+export; the round trip is an empty diff). No literary piece and no `tier` field; the invented sayings and customs are
+attributed to a voice. The addon goes from 29,890 to **31,188 intentions** and from 71,642 to **74,642 texts per
+language**. All ids are `thb.<event>.w24.<family>.NNN` in `kalimdor_thunderbluff`.
+
+- **Added: Thunder Bluff thoughts** (`muse`, 681 intentions, 1,588 texts) in seven angles: how the city stands on its
+  mesas (rock, poles, lashings, bridges, lifts), the work of its crafts, the tauren at their days, the spiritual life
+  seen from outside, history and the Horde (as memory or as voices), height and distance over Mulgore, and the
+  character's own errands and small moments.
+- **Added: Thunder Bluff quest turn-ins** (`quest_complete`, 279 intentions, 615 texts): the hand-over, what comes
+  after it, and what the character says aloud. No line names the quest, the giver or the reward, or says where the
+  work was done or how the character came up to the city.
+- **Added: Thunder Bluff flights** (`journey`, 249 intentions, 571 texts: 285 at take-off, 286 at landing). Unlike
+  Darnassus and Undercity, the wind rider roost stands on the city's own main rise, so both stages fire with `zone =
+  "Thunder Bluff"` (`World:CheckFlightStart` offers `journey` while on the taxi at the roost, `CheckFlightEnd` on
+  landing there), as the approved W02/W05 lines already assumed. A take-off line never says where the flight goes, a
+  landing line never says where it came from; only `journeyMin = 300` lines speak of a long flight.
+- **Added: Thunder Bluff NPC meetings** (`npc_meet`, 89 intentions, 226 texts): the Bluffwatcher on guard 46, the
+  innkeeper 34, the merchant 38, the trainer 34, the questgiver 28, the banker 24 and the wind rider master 22. No
+  line gives the NPC's gender.
+- **A zone line holds for the whole city and nothing more**, as in W16-W23: no "our people", home ground or the Earth
+  Mother as the speaker's own without a `race` or `faction` (`race = "Tauren"`, a guest's own race, `faction =
+  "Horde"`, or `not = {race = "Tauren"}` for a guest's view; at most 1 line in 8 per writer, 80 lines in all), no
+  claim that the character is new, no hour, sun or moon in the sky or falling weather without `time` or `weather` (64
+  lines), no rise named as "here" without its client `subzone` (Elder Rise, Spirit Rise, Hunter Rise, The Pools of
+  Vision; 37 lines), no kodo or wind rider as the character's own mount outside the flights, no fight against the
+  citizens, no `indoors = true`, and nothing a Forsaken's body cannot do. Place names stay English in Italian ("la
+  Madre Terra" and "i Reietti" as the archive writes them).
+- **The gap after W24** (per language): soft and strict need met (gap **0**); random need 276,398, gap **204,961**
+  (was 207,961, exactly 3,000 less). **71 waves** left. The next row of WAVES.md is now **Undercity** (3,000); Thunder
+  Bluff keeps 1,256 in a later row.
+- **Measured.** `run_tests` M2: pick 35.9 → **35.9** thousand Lua instructions (p95 61.5 → **61.5**) (reference 36.4, fails at 54.6); `bench_pool` (C0j): a pick on pools grown 16 times costs **35.9** against **35.5** on today's (**1.01** times; gate 1.25). `bench_scale`: memory 60.6 → 62.8 MB, pick 25.5 → 25.5 thousand instructions (p95 54.1); bytes per synthetic rule 1,710 → 1,679 at 10,000 rules, 1,246 → 1,244 at 50,000. `bench_trial --long 20`, seeds 1-5, first exact repetition (mean) and repeated share, main → W24: orc **9.4** h and **1.2%**, troll **9.3** h and **1.6%**, human **11.4** h and **1.5%**, identical seed by seed (no route of the trial reaches Thunder Bluff).
+- **Tests:** counts: base intentions 31145, lines loaded 31152; README totals. No test needed a change of logic.
+- **Owner sample:** [docs/content/reviews/W24.md](docs/content/reviews/W24.md) (`cli sample --state review --share
+  0.02`).
+
 ### Content wave W23: the capital Darnassus, its thoughts, its quest turn-ins, its NPCs, its terraces, its rest and its weather (issue #138)
 
 The twenty-third content wave of [docs/content/WAVES.md](docs/content/WAVES.md), random need only. Its pools were the
