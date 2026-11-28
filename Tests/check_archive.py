@@ -970,6 +970,29 @@ def need_report():
           and ("muse", "place", "durotar@horde") not in pools, "a contested zone has a pool per faction, a faction zone one")
     check(("pet_bond", "class", "hunter") in pools and ("pet_bond", "class", "mage") not in pools,
           "the companions speak only for their classes")
+    # ADR 0050 amendment (2026-11-28): journey speaks only where a flight of the faction starts or ends
+    jp = model["journey_places"]
+    check(set(jp["elsewhere"]) | set(jp["elsewhere"].values()) | set(jp["none"]) |
+          {z for zs in jp["none_for"].values() for z in zs} <= set(places) and set(jp["none_for"]) <= {"alliance", "horde"}
+          and all(places[c]["kind"] == "capital" and places[z]["kind"] == "zone" for c, z in jp["elsewhere"].items()),
+          "the places of journey_places are places of Data/Places.lua; `elsewhere` moves a capital to a zone")
+    check(all(("journey", "place", k) not in pools for k in ("darnassus", "undercity", "elwynnforest", "durotar",
+                                                              "alteracmountains@horde", "badlands@alliance"))
+          and ("muse", "place", "darnassus") in pools and ("journey", "place", "badlands@horde") in pools,
+          "no journey place pool where no flight of the faction starts or ends (Darnassus, Undercity, the starting "
+          "zones, Badlands for the Alliance); the other events of those places keep theirs")
+    nojp = dict(model, journey_places={})
+    pnj, _ = need.need(nojp, places)
+    tel, dar = pools[("journey", "place", "teldrassil")]["strict"], pnj[("journey", "place", "darnassus")]["strict"]
+    check(abs(tel - pnj[("journey", "place", "teldrassil")]["strict"] - dar) < 1e-6 and
+          pools[("journey", "place", "stormwindcity")]["strict"] == pnj[("journey", "place", "stormwindcity")]["strict"] and
+          pools[("journey", "generic", "")]["strict"] == pnj[("journey", "generic", "")]["strict"],
+          "the journeys of Darnassus are credited to Teldrassil, where its hippogryph lands; Stormwind and the generic "
+          "journey pool do not change")
+    never = need.unreachable_places(model, places)["journey"]
+    check(never.get("darnassus") == "Darnassus" and never.get("alteracmountains@alliance") == "Alterac Mountains" and
+          "badlands@alliance" not in never and "teldrassil" not in never,
+          "the report lists as never speaking the journey lines of the capitals and zones without a flight master")
     # C0g (ADR 0054): a class pool fires at the factor of its class; a class that cannot fire an event has no pool of it
     hp = pools[("heal:self", "class", "priest")]["strict"] + pools[("heal:other", "class", "priest")]["strict"]
     hw = pools[("heal", "class", "warrior")]["strict"]

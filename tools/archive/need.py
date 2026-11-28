@@ -331,19 +331,54 @@ def _windows(series, w):
     return out
 
 
-def profile(model, ch, slots, places):
+def place_key(name, places, faction):
+    """The key of the place pool of a place for a character of this faction (a contested zone has one per faction)."""
+    pl = places[name]
+    return key(name) + ("@" + faction.lower() if pl["kind"] == "zone" and not pl["faction"] else "")
+
+
+def journey_remap(model, ch):
+    """{place: the place whose pool its place lines of `journey_places.events` fill, or None for no place pool} for
+    this character (ADR 0050 amendment of 2026-11-28): journey speaks only where a flight of its faction starts or
+    ends, with the zone of that moment, so a capital whose flight master stands outside it credits that zone, and a
+    zone with no flight master of the faction has no journey place lines."""
+    jp = model.get("journey_places") or {}
+    out = dict(jp.get("elsewhere") or {})
+    for z in list(jp.get("none") or []) + list((jp.get("none_for") or {}).get(ch["faction"].lower()) or []):
+        out[z] = None
+    return out
+
+
+def unreachable_places(model, places):
+    """{event: {place pool key: place}} of the place pools that `journey_places` says can never speak for any
+    character: the capitals whose flight master is elsewhere and the zones with none (both pools of a contested zone).
+    A zone with no flight master of one faction only (`none_for`) is left out: its lines without a faction speak for
+    the other one."""
+    jp = model.get("journey_places") or {}
+    keys = {}
+    for name in list((jp.get("elsewhere") or {})) + list(jp.get("none") or []):
+        for faction in ("alliance", "horde"):
+            keys[place_key(name, places, faction)] = name
+    return {ev: keys for ev in jp.get("events") or []}
+
+
+def profile(model, ch, slots, places, remap=None):
     """What a life holds whatever the event: for each group of slots (all of them; those of a place, a mood, a band, a
     weather) the slots in each channel (CHANNELS: the setting, and whether the zone has a mood) over the whole life, and
-    the distinct counts over every `soft_hours` in a row."""
+    the distinct counts over every `soft_hours` in a row. `remap` ({place: place or None}, `journey_remap`) moves the
+    place group of a slot to another place, or leaves the slot out of every place group; the slot keeps its own
+    setting and every other group."""
     n, w = len(slots), max(1, int(round(model["soft_hours"] / model["slot_hours"])))
     vec = collections.defaultdict(lambda: [[0.0] * n for _ in CHANNELS])
     allv = [[0.0] * n for _ in CHANNELS]
+    remap = remap or {}
     for i, (p, band) in enumerate(slots):
         pl = places[p]
         s = CHANNELS.index((SETTINGS.index(pl["setting"]), bool(pl["mood"])))
         allv[s][i] = 1.0
-        contested = pl["kind"] == "zone" and not pl["faction"]
-        vec[("place", key(p) + ("@" + ch["faction"].lower() if contested else ""))][s][i] = 1.0
+        target = remap.get(p, p)
+        if target is not None:
+            vec[("place", place_key(target, places, ch["faction"]))][s][i] = 1.0
         if pl["mood"]:
             vec[("mood", pl["mood"])][s][i] = 1.0
         vec[("band", band)][s][i] = 1.0
@@ -363,15 +398,18 @@ def _fire(coef, group):
     return (sum(c * t for c, t in zip(coef, total)), max(sum(c * t for c, t in zip(coef, x)) for x in windows))
 
 
-def pool_firings(model, ch, prof, rate, factors=None):
+def pool_firings(model, ch, prof, rate, factors=None, profs=None):
     """{(event, layer, value): (firings in the life, most firings in soft_hours)} of one character for every layer but
     the class, and {event: firings of its class pool}, at the rate of the event for a class with factor 1 (`need`
-    scales them by the factor of each class; an event no class of the character fires is left out)."""
+    scales them by the factor of each class; an event no class of the character fires is left out). `profs`
+    ({event: profile}) gives an event its own profile (`journey_remap`)."""
     step = model["slot_hours"]
     out, classes = {}, {}
+    base = prof
     for ev in sorted({e for r in rate.values() for e in r}):
         if factors and not any(class_factor(factors, ev, c) for c in ch["classes"]):
             continue
+        prof = (profs or {}).get(ev, base)
         f = tuple(rate[s].get(ev, 0.0) * step for s in SETTINGS)
         if not any(f):
             continue
@@ -421,8 +459,13 @@ def need(model, places):
 
     selfs = cast_shares(model)
     for ch in chars:
-        prof = profile(model, ch, timeline(model, ch, places), places)
-        fired, classes = pool_firings(model, ch, prof, rate, factors)
+        slots = timeline(model, ch, places)
+        prof = profile(model, ch, slots, places)
+        # journey speaks where a flight of the faction starts or ends (ADR 0050 amendment of 2026-11-28)
+        remap = journey_remap(model, ch)
+        jprof = profile(model, ch, slots, places, remap) if remap else prof
+        profs = {ev: jprof for ev in (model.get("journey_places") or {}).get("events") or []}
+        fired, classes = pool_firings(model, ch, prof, rate, factors, profs)
         scale = {}
         for k, (strict, soft) in fired.items():
             ev = k[0]
@@ -724,6 +767,16 @@ def compute(con, root=store.ROOT, model=None, state="approved"):
         a["gap_strict"].update(r["gap_strict"])
     res["by_place"] = {k: dict(v, have=dict(v["have"]), gap_strict=dict(v["gap_strict"]))
                        for k, v in sorted(areas.items(), key=lambda kv: -kv[1]["need_strict"])}
+    # the lines of a place pool that can never speak (journey where no flight of the faction starts or ends)
+    # (a contested zone counts once: a line without a faction is in both of its pools)
+    never, seen = unreachable_places(model, places), collections.OrderedDict()
+    for r in rows:
+        name = never.get(r["event"], {}).get(r["value"]) if r["layer"] == "place" else None
+        if name and any(r["have"].values()):
+            u = seen.setdefault((r["event"], name), {"event": r["event"], "place": name, "condition": 'zone = "%s"' % name,
+                                                     "have": {l: 0 for l in langs}})
+            u["have"] = {l: max(u["have"][l], r["have"][l]) for l in langs}
+    res["unreachable"] = list(seen.values())
     res["waves"] = waves(rows, model, langs)
     return res
 
@@ -900,6 +953,14 @@ def to_markdown(res, top=30):
         lines += ["- Event mix measured by `%s` (%s hours in the open world, %s in a capital; %s and %s interventions per "
                   "hour before the scaling)." % (ms["command"], ms["hours"]["open"], ms["hours"]["city"],
                                                  ms["per_hour"]["open"], ms["per_hour"]["city"])]
+    if res.get("unreachable"):
+        lines += ["", "## Lines that can never speak", "",
+                  "Place lines of `journey` where no flight of the faction starts or ends (`journey_places` of the model, "
+                  "ADR 0050 amendment of 2026-11-28): they count in no pool and no wave writes more. They are kept "
+                  "(retiring them is the owner's call).", ""]
+        lines += _table(["event", "place", "condition"] + ["texts " + l for l in langs],
+                        [[u["event"], u["place"], "`%s`" % u["condition"]] + [_fmt(u["have"].get(l, 0)) for l in langs]
+                         for u in res["unreachable"]])
     lines += ["", "## By layer", ""]
     lines += _table(["layer", "strict need", "soft need"] + ["have " + l for l in langs] + ["gap " + l for l in langs],
                     [[k, _fmt(v["need_strict"]), _fmt(v["need_soft"])] + [_fmt(v["have"].get(l, 0)) for l in langs] +
