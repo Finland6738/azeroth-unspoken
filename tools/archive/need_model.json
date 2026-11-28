@@ -337,6 +337,35 @@
   "landmark",
   "memory_return"
  ],
+ "_journey_places": "Where the place lines of the events in `events` can speak (ADR 0050 amendment of 2026-11-28). journey is offered only when a flight starts or ends (World:CheckFlightStart/CheckFlightEnd in Systems/World.lua), with the zone of that moment: the zone of a flight master of the character's faction. `elsewhere`: a capital whose flight master stands in another zone; its firings are credited to the place pool of that zone (Darnassus: the hippogryph lands at Rut'theran Village, in Teldrassil; Undercity: the bat handler stands on the ruins above it, in Tirisfal Glades). `none`: a zone with no flight master of either faction (the starting zones fly from their capital); `none_for`: a zone with no flight master of that faction. Their firings stay in the generic and situation pools (the event fires, elsewhere) but give no place pool. Facts of the Classic era, not yet checked in the Forever client.",
+ "journey_places": {
+  "events": [
+   "journey"
+  ],
+  "elsewhere": {
+   "Darnassus": "Teldrassil",
+   "Undercity": "Tirisfal Glades"
+  },
+  "none": [
+   "Elwynn Forest",
+   "Dun Morogh",
+   "Durotar",
+   "Mulgore",
+   "Alterac Mountains",
+   "Deadwind Pass"
+  ],
+  "none_for": {
+   "alliance": [
+    "Badlands",
+    "Swamp of Sorrows",
+    "Thousand Needles"
+   ],
+   "horde": [
+    "Blasted Lands",
+    "Western Plaguelands"
+   ]
+  }
+ },
  "_tier_shares": "The share of the picks of each level of specificity with usable lines, renormalised over those levels (Engine.TIER_SHARES in AzerothUnspoken/Engine/WeightedSelector.lua, owner decision of 2026-11-04, ADR 0051; Tests/check_archive.py checks they match): generic = tier 0, situation = tier 1 (class, race, faction, mood, time, weather, creature type, level band), place = tiers 2-4 (zone, subzone, landmark).",
  "tier_shares": {
   "generic": 0.15,

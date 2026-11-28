@@ -8,6 +8,27 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### Need model: `journey` place lines only where a flight starts or ends (ADR 0050, amendment)
+
+Found by W23 (PR #317): the engine offers `journey` only when a flight starts or ends (`World:CheckFlightStart` and
+`CheckFlightEnd`), with the zone of that moment, but `cli need` gave a `journey` place pool to every capital and zone.
+
+- **Fixed**: `need_model.json` has a `journey_places` field. Darnassus (the hippogryph lands at Rut'theran Village, in
+  Teldrassil) and Undercity (the bat handler stands above it, in Tirisfal Glades) credit their journeys to that zone;
+  Elwynn Forest, Dun Morogh, Durotar, Mulgore, Alterac Mountains and Deadwind Pass have no flight master, and Badlands,
+  Swamp of Sorrows and Thousand Needles (Alliance) and Blasted Lands and Western Plaguelands (Horde) none of that faction:
+  no `journey` place pool there, the firings stay in the generic and situation pools. Classic-era facts, not yet
+  checked in the Forever client.
+- **Changed**: the need after W24. Darnassus and Undercity lose their `journey` need (642 random texts each, gap 574
+  and 572); Teldrassil and Tirisfal Glades go from 34 to 675 each (70 strict each). Strict need 29,536 → 29,498, random
+  276,398 → 276,109, pools 2,011 → 1,998; gap 0 → 70 to the strict need and 204,961 → 204,964 to the random one per
+  language. In [WAVES.md](docs/content/WAVES.md) Undercity goes from 4,263 to 3,691 texts and Darnassus from 1,273 to
+  699; W01 now begins with the journeys of Teldrassil and Tirisfal Glades (640 each); still 71 waves. "How to run a
+  wave" says where `journey` lines can speak.
+- **Added**: NEED.md and `need.json` list the lines that can never speak: the `journey` lines of Darnassus (29
+  intentions, 68 texts per language), Undercity (31, 70), Elwynn Forest, Dun Morogh, Durotar, Mulgore and Alterac
+  Mountains. They are kept (retiring them is the owner's call). `Tests/check_archive.py` checks the rule.
+
 ### Project rules: merges no longer wait for CI `Tests` until 1.0
 
 - **Changed**: the CI job `Tests` is no longer a required check on `main` until release 1.0 (owner's decision; ADR 0022, amendment). The full suite still runs locally before every PR and on CI for every PR and push to `main`; a red run on `main` is fixed before the next merge, and `Tests` becomes required again before 1.0. `Docs rule` stays required. This saves about 30 minutes per content wave. CONTRIBUTING, ROADMAP, the PR template and the CI workflow comment say so.
